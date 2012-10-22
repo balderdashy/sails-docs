@@ -10,9 +10,3 @@ _TODO_
 http://expressjs.com/
 _TODO_
 
-# Resourceful Routing
-_TODO_
-
-# Custom Routes
-See ```routes.js```
-_TODO_
