@@ -1,5 +1,11 @@
 _TODO_
 
+# What is a View?
+_TODO_
+
+# Where do I define Views?
+_TODO_
+
 # Server-side Templates, Layouts, and View Partials
 EJS is the default.
 _TODO_
