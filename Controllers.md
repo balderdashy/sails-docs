@@ -4,5 +4,9 @@ _TODO_
 http://expressjs.com/
 _TODO_
 
-# Routing From URLs
+# Resourceful Routing
+_TODO_
+
+# Custom Routes
+See ```routes.js```
 _TODO_
