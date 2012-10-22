@@ -1,3 +1,25 @@
+# Basics
+Sails supports two different ways of interacting with models: Promises and asynchronous callbacks.
+
+# Promises
+```
+Rabbit.create({
+  name: 'Roger',
+  age: 4
+});
+```
+
+# Async Callbacks
+
+```
+Rabbit.create({
+  name: 'Roger',
+  age: 4
+}).done(function (err,resultSet) { /* ... */ });
+```
+
+# Validation
+
 # What About Migrations?
 
-Migrations 
+Migrations are possible using our ORM (Sequelize).  However, we've found for most basic use cases, the built-in, configurable DB synchronization is sufficient.
