@@ -10,14 +10,15 @@ Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) for 
 Since Sails supports both relational and non-relational databases, we must support both standard SQL associations (links) and bundled JSON, Mongo-style associations (embeds)
 
 ## Embedding
+``` todo ```
 
 ## Linking
+``` todo ```
 
+# Querying Models
+You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them.  Sails supports two different ways of interacting with models: Promises and asynchronous callbacks.
 
-# Using Models in Controllers and Views
-Sails supports two different ways of interacting with models: Promises and asynchronous callbacks.
-
-## Promises
+### Promises
 ```
 Rabbit.create({
   name: 'Roger',
@@ -25,8 +26,7 @@ Rabbit.create({
 });
 ```
 
-## Async Callbacks
-
+### Async Callbacks
 ```
 Rabbit.create({
   name: 'Roger',
@@ -34,7 +34,20 @@ Rabbit.create({
 }).done(function (err,resultSet) { /* ... */ });
 ```
 
+## Create
+``` todo ```
+
+## Read
+``` todo ```
+
+## Update
+``` todo ```
+
+## Destroy
+``` todo ```
+
 # Validation
+``` todo ```
 
 # What About Migrations?
 
