@@ -1,5 +1,6 @@
-# Supported Databases
+Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) for normalizing interactions with models, no matter what data source you're using.  It also defines an interface for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory state (i.e. Session storage.)
 
+# Supported Database
 * mySQL
 * MongoDB
 * Postgres
