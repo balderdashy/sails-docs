@@ -1,7 +1,21 @@
-# Basics
+# Supported Databases
+* mySQL
+* MongoDB
+* Postgres
+* SQLite
+
+# Associations
+Since Sails supports both relational and non-relational databases, we must support both standard SQL associations (links) and bundled JSON, Mongo-style associations (embeds)
+
+## Embedding
+
+## Linking
+
+
+# Using Models in Controllers and Views
 Sails supports two different ways of interacting with models: Promises and asynchronous callbacks.
 
-# Promises
+## Promises
 ```
 Rabbit.create({
   name: 'Roger',
@@ -9,7 +23,7 @@ Rabbit.create({
 });
 ```
 
-# Async Callbacks
+## Async Callbacks
 
 ```
 Rabbit.create({
