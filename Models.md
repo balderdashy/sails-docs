@@ -143,8 +143,10 @@ User.findAll({
 });
 ```
 
-## Update
+## updateAttributes
 ```
+`updateAttributes()` allows you to update an instance of a model from the database.
+
 // For example, to update a user's name, 
 // first we find the user
 User.find({ where: { name: 'Johnny' } }).done(function (err,someUser) {
@@ -163,7 +165,8 @@ User.find({ where: { name: 'Johnny' } }).done(function (err,someUser) {
 });
 ```
 
-## Destroy
+## destroy
+`destroy()` allows you to delete an instance of a model from the database.
 
 ```
 // For example, to delete a user named Johnny,
