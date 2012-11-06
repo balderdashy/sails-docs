@@ -49,14 +49,13 @@ _TODO_
 -->
 
 #### One-To-One
+_TODO_
 
 #### One-To-Many
+_TODO_
 
 #### Many-To-Many
-
-```
-
-```
+_TODO_
 
 # Where do I define Models?
 Models are defined in the `models` directory in the root of your Sails application.
