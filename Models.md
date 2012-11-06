@@ -60,6 +60,9 @@ _TODO_
 # Where do I define Models?
 Models are defined in the `models` directory in the root of your Sails application.
 
+# Automatic schema creation
+Depending on your configuration, the database tables will be recreated automatically.
+_TODO_
 
 # Querying Models
 You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them.  
