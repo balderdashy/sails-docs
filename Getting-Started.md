@@ -1,11 +1,40 @@
 # What is Sails?
-_TODO_
+Sails makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development.  It's especially good for building APIs, single page apps/sites, and realtime features like chat.
+
+# Installation
+
+To install the latest stable release:
+```
+npm install sails
+```
+
+Or to install globally with the command line tool: ```sudo npm install -g sails```
 
 # Creating a New Sails Project
-_TODO_
+
+The global install of Sails comes bundled with a command-line tool which allows you to generate a new app as shown below:
+
+```bash
+
+    # Create the app
+    sails foo
+    cd foo
+
+    # Install dependencies
+    npm install -d
+
+    # Fire up the server
+    node app.js			
+```
+
+
+
+
+
 
 # Hello, Sails!
-_TODO_
+
+
 
 # Creating a Model
 _TODO_
