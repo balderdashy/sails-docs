@@ -36,14 +36,14 @@ Then in your hello controller inside the index action you will send back a strin
 
 ```javascript
 
-		var HelloController = {
+	var HelloController = {
 
-			index: function(req, res) {
-				res.send('Hello!');
-			}
+		index: function(req, res) {
+			res.send('Hello!');
 		}
+	}
 
-		exports = HelloController;
+	exports = HelloController;
 ```
 
 After you have added that, you will want to remove the default index.html page that shows at the
@@ -59,7 +59,6 @@ not have to define incoming routes to controller actions. You can manually defin
 and here we will do so. Change the file to look like this.
 
 ```javascript
-			
 
 		exports = {
 			'/': {
