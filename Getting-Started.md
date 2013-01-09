@@ -30,12 +30,13 @@ The global install of Sails comes bundled with a command-line tool which allows 
 sails foo
 cd foo
 
-<!-- # Install dependencies -->
-<!-- npm install -->
 
 # Fire up the server	
 sails start
 ```
+
+<!-- # Install dependencies
+npm install -->
 
 At this point if you visit <a href="http://localhost:1337/">http://localhost:1337/</a> You will see
 the default index.html page that Sails starts with. Lets get Sails to tell us Hello.
