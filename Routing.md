@@ -10,14 +10,22 @@ This table routes urls to controllers/actions.
 If the URL is not specified here, the default route for a URL is:  /:controller/:action/:id
 where :controller, :action, and the :id request parameter are derived from the url
 
-If :action is not specified, Sails will redirect to the appropriate action 
-based on the HTTP verb: (using REST/Backbone conventions)
+If :action is not specified, Sails will redirect to the appropriate action.  Out of the box, Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 
 ```
-	GET   :	/:controller/read/:id
-	POST  :	/:controller/create
-	PUT   :	/:controller/update/:id
-	DELETE:	/:controller/destroy/:id
+	# Backbone Conventions
+	GET   :	/:controller			=> findAll()
+	GET   :	/:controller/:id		=> find(id)
+	POST  :	/:controller/:id		=> create(id)
+	PUT   :	/:controller/:id		=> update(id)
+	DELETE:	/:controller/:id		=> destroy(id)
+
+	# You can also explicitly state the action
+	GET   :	/:controller/findAll		=> findAll()
+	GET   :	/:controller/find/:id		=> find(id)
+	POST  :	/:controller/create		=> create(id)
+	PUT   :	/:controller/update/:id		=> update(id)
+	DELETE:	/:controller/destroy/:id	=> destroy(id)
 ```
 
 If the requested controller/action doesn't exist:
@@ -90,3 +98,10 @@ var routes = {
 module.exports = routes;
 
 ```
+
+
+# Parameters
+
+Parameters  can be defined in 3 ways:
+
+// todo
