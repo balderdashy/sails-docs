@@ -1,17 +1,20 @@
 
 # What is a Controller?
 Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
-being the middle man between your model and your views....
+being the middle man between your model and your views.
 
-# Where are Controllers defined?
-Controllers are defined in the api/controllers/ folder. By default when you create a controller with
-actions using the command line they produce a single file with the actions as methods.
+# Where are Controllers Defined?
+Controllers are defined in the ***/api/controllers/** folder. By default when you create a
+controller using the command line, you can add additional arguments that represent the controller
+actions.
 
 ```
-sails generate controller comment create destory tag
+sails generate controller comment create destory tag like
 ```
 generates:
 ```javascript
+
+// Comment controller with generated actions.
 var CommentController = {
 	create: function(req, res) {
 
@@ -24,13 +27,17 @@ var CommentController = {
 	tag: function(req, res) {
 
 	}
+
+	like: function(req, res) {
+
+	}
 }
 
 exports = CommentController;
 ```
 
 Alternively if you add a federated flag ```-f``` to the end of your generate controller command the
-controller will be created as a folder wit each action being its own file. This is useful if
+controller will be created as a folder with each action being its own file. This is useful if
 your actions contain a bunch of logic. No more super long controller files! The best part about this
 is that, routing to these actions works the exact same way!
 
@@ -43,16 +50,12 @@ will create the directory, **api/controllers/comment/** with three files
 **api/controllers/comment/tag.js**.
  
 # Express Crash-Course
-Sails uses many of the same res methods as express does.
+When responding to a request, Sails uses many of the same res methods as Express.
 
 ## res.view()
-This method is an enhanced version of  Express's res.render() which automatically renders the 
-appropriate view based on the entity and action. The original function is still accessible via
-res.render().
-
-```javascript
-	res.view();
-```
+This method is an enhanced version of  Express's **res.render()**. The method **res.view()**
+automatically renders the appropriate view based on the controller and action. The original function
+is still accessible via **res.render()**.
 
 
 ## res.send()
