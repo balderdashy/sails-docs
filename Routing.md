@@ -1,12 +1,6 @@
-_TODO_
-
-# Resourceful Routing
-_TODO_
-
-# Custom Routes
-
 This table routes urls to controllers/actions.
 
+# Resourceful Routing
 If the URL is not specified here, the default route for a URL is:  /:controller/:action/:id
 where :controller, :action, and the :id request parameter are derived from the url
 
@@ -27,6 +21,8 @@ If :action is not specified, Sails will redirect to the appropriate action.  Out
 	PUT   :	/:controller/update/:id		=> update(id)
 	DELETE:	/:controller/destroy/:id	=> destroy(id)
 ```
+
+# Custom Routes
 
 If the requested controller/action doesn't exist:
   - if a view exists ( /views/:controller/:action.ejs ), Sails will render that view
