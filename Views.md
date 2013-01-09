@@ -1,7 +1,7 @@
-_TODO_
+Views represent your the UI of your application.
 
 # What is a View?
-In Sails a view is the representation of the UI of your application. Views are by default, ejs
+In Sails a view is the representation of the UI of your application. Views are, by default, ejs
 files. This ejs, or any other configurable templating libray, takes care of the presentation of the
 data. Sails even allows you to create templates that are injected into the DOM. With this, all
 you ever have respond with is JSON objects in your controllers, creating truely API-driven
