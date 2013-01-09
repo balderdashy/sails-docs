@@ -195,9 +195,9 @@ User.findAll({
 ```
 
 ### dynamic finders
-With waterline you can use a very helpful tool called dynamic finders. You can query your models
-with automatically genereated methods that depend on the attributes you define for the model. For
-example, if you had a book model that looks like this.
+With Sails built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
+query your models with automatically genereated methods that depend on the attributes you define for
+the model. For example, if you had a book model that looks like this.
 
 ```javascript
 var Book = {
