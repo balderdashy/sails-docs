@@ -36,7 +36,7 @@ a bunch of logic. No more super long controller files! The best part about this 
 these actions works the exact same way!
 
 ```
-sails generate controller comment create destory tag
+sails generate controller comment create destory tag -f
 ```
 will will create:
 api/controllers/comment/ with three files api/controllers/comment/create.js,
