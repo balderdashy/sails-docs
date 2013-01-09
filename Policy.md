@@ -66,7 +66,5 @@ module.exports = policy;
 ```
 
 As you can see, this can make for much cleaner controller action code in that you only need the
-business logic. The miscellaneous jobs such as validating data or making sure users are authorized no longer
-has to be in the action, and instead live in modular middleware files. 
-
-
+business logic. The miscellaneous jobs such as validating data or making sure users are authorized
+no longer has to be in the action, and instead live in modular middleware files. 

@@ -1,15 +1,18 @@
 **Notice: This documentation is for the newest release of Sails that is still in production but will
 be out very soon. Most of this documentation will not work if you install sails from the npm
-registery.**
+registery. **
 
 # Installation
 
 To install the latest stable release:
-```
-npm install sails
-```
 
-Or to install globally with the command line tool: ```sudo npm install -g sails```
+**Note: At this time the stable release on the npm registry does not work with this guide. You
+should instead do ```sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline```
+<!-- ```
+sudo npm install -g sails
+``` -->
+
+<!-- Or to install globally with the command line tool: ```sudo npm install -g sails``` -->
 
 
 # Creating a New Sails Project
