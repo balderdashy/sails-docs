@@ -54,6 +54,8 @@ res.render().
 	res.view();
 ```
 
+
+
 __from the <a href="http://expressjs.com/2x/guide.html">express guide</a>.__
 ## res.send()
 The res.send() method is a high level response utility allowing you to pass objects to respond with
