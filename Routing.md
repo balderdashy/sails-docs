@@ -25,7 +25,7 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 ```
 
 If the requested controller/action doesn't exist:
-  - if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
+	- if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
   - if no view exists, but a model exists, Sails will automatically generate a JSON API for the 
   	model which matches **:controller**.
   - if no view OR model exists, Sails will respond with a 404.
