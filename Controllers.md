@@ -111,9 +111,12 @@ Return the value of param name when present or default.
 
 Checks route params (req.params), ex: /user/:id :
 	- Checks query string params (req.query), ex: ?id=12
-	- Checks urlencoded body params (req.body), ex: id=12
-	- To utilize urlencoded request bodies, req.body should be an object. This can be done by using
+  - Checks urlencoded body params (req.body), ex: id=12
+  - To utilize urlencoded request bodies, req.body should be an object. This can be done by using
 		the _express.bodyParser middleware.
+
+Checks route params (req.params), ex: /user/:id :
+	
 
 Express supports “redirect mapping”, which by default provides home, and back. The back map checks
 the Referrer and Referer headers, while home utilizes the “basepath” setting and defaults to “/”.
