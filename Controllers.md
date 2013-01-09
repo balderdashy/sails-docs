@@ -60,9 +60,9 @@ is still accessible via **res.render()**.
 
 ## res.send()
 __from the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.__
-The res.send() method is a high level response utility allowing you to pass objects to respond with
-json, strings for html, Buffer instances, or numbers representing the status code. The following are
-all valid uses:
+The **res.send()** method is a high level response utility allowing you to pass objects to respond
+with json, strings for html, Buffer instances, or numbers representing the status code. The
+following are all valid uses:
 
 ```javascript
 	res.send(); // 204
@@ -75,16 +75,17 @@ all valid uses:
 ```
 
 By default the Content-Type response header is set, however if explicitly assigned through
-res.send() or previously with res.header() or res.contentType() it will not be set again.
+**res.send()** or previously with **res.header()** or **res.contentType()** it will not be set
+again.
 
-Note that this method end()s the response, so you will want to use node’s res.write() for multiple
+Note that this method ends the response, so you will want to use node’s **res.write()** for multiple
 writes or streaming.
 
 ## res.json()
 __from the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.__
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
-however res.send(obj) will send JSON as well, though not ideal for cases when you want to send for
-example a string as JSON, since the default for res.send(string) is text/html.
+however **res.send(obj)** will send JSON as well, though not ideal for cases when you want to send
+for example a string as JSON, since the default for **res.send(string)** is text/html.
 
 ```javascript
 	res.json(null);
