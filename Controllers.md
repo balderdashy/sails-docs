@@ -45,20 +45,20 @@ is that, routing to these actions works the exact same way!
 sails generate controller comment create destory tag -f
 ```
 will create the directory, **api/controllers/comment/** with three files 
-**api/controllers/comment/create.js**,
-**api/controllers/comment/destory.js**, and
-**api/controllers/comment/tag.js**.
+**/api/controllers/comment/create.js**,
+**/api/controllers/comment/destory.js**, and
+**/api/controllers/comment/tag.js**.
  
 # Express Crash-Course
 When responding to a request, Sails uses many of the same res methods as Express.
 
-## res.view()
+## res.view([view, options[, fn]])
 This method is an enhanced version of  Express's **res.render()**. The method **res.view()**
 automatically renders the appropriate view based on the controller and action. The original function
 is still accessible via **res.render()**.
 
 
-## res.send()
+## res.send(body|status[, headers|status[, status]])
 __from the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.__
 The **res.send()** method is a high level response utility allowing you to pass objects to respond
 with json, strings for html, Buffer instances, or numbers representing the status code. The
@@ -81,7 +81,7 @@ again.
 Note that this method ends the response, so you will want to use node’s **res.write()** for multiple
 writes or streaming.
 
-## res.json()
+## res.json(obj[, headers|status[, status]])
 __from the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.__
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
 however **res.send(obj)** will send JSON as well, though not ideal for cases when you want to send
@@ -94,7 +94,7 @@ for example a string as JSON, since the default for **res.send(string)** is text
 	res.json('I dont have that', 404);
 ```
 
-## res.redirect()
+## res.redirect(url[, status])
 __from the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.__
 Redirect to the given url with a default response status of 302.
 
