@@ -97,10 +97,3 @@ var routes = {
 module.exports = routes;
 
 ```
-
-
-# Parameters
-
-Parameters  can be defined in 3 ways:
-
-// todo
