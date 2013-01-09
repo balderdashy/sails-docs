@@ -86,7 +86,7 @@ email enter the following.
 sails generate model User name:string age:int email:string
 ```
 
-# Automatic JSON API: Better Than Saffolding
+# Automatic JSON API: Better Than Scaffolding
 
 Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for 
 modern web apps! Instead, Sails automatically builds a RESTful JSON API for your models. Best of
