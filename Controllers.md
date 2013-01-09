@@ -113,5 +113,5 @@ Return the value of param **name** when present or **default**.
   - Checks query string params (req.query), ex: ?id=12
   - Checks urlencoded body params (req.body), ex: id=12
 
-To utilize urlencoded request bodies, req.body should be an object. This can be done by using
-the _express.bodyParser middleware.
+<!-- To utilize urlencoded request bodies, req.body should be an object. This can be done by using
+the _express.bodyParser middleware. -->
