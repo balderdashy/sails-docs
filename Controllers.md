@@ -1,7 +1,7 @@
 
 # What is a Controller?
 Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
-being the middle man between your model and your views.... _TODO: add content_
+being the middle man between your model and your views....
 
 # Where are Controllers defined?
 Controllers are defined in the api/controllers/ folder. By default when you create a controller with
