@@ -1,3 +1,7 @@
+**Notice: This documentation is for the newest release of Sails that is still in production but will
+be out very soon. Most of this documentation will not work if you install sails from the npm
+registery.**
+
 # What is Sails?
 Sails makes it easy to build custom, enterprise-grade Node.js apps. It is designed to resemble the MVC architecture from frameworks like Ruby on Rails, but with support for the more modern, data-oriented style of web app development.  It's especially good for building APIs, single page apps/sites, and realtime features like chat.
 

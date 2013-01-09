@@ -1,3 +1,7 @@
+**Notice: This documentation is for the newest release of Sails that is still in production but will
+be out very soon. Most of this documentation will not work if you install sails from the npm
+registery.**
+
 Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) for normalizing
 interactions with models, no matter what data source you're using.  It also defines an interface
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory

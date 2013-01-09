@@ -1,3 +1,7 @@
+**Notice: This documentation is for the newest release of Sails that is still in production but will
+be out very soon. Most of this documentation will not work if you install sails from the npm
+registery.**
+
 There are three kinds of views in Sails. There are traditional view partials, view templates, and
 the layout.
 
