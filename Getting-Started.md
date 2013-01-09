@@ -1,6 +1,6 @@
 **Notice: This documentation is for the newest release of Sails that is still in production but will
 be out very soon. Most of this documentation will not work if you install sails from the npm
-registery. **
+registery.**
 
 # Installation
 
@@ -27,9 +27,8 @@ The global install of Sails comes bundled with a command-line tool which allows 
 
 ```
 # Create the app
-sails foo
-cd foo
-
+sails new testProject
+cd testProject
 
 # Fire up the server	
 sails start
@@ -69,27 +68,31 @@ After you have added that, you will want to remove the default index.html page t
 start of your application.
 
 ```
-rm public/index.html
+rm ui/public/index.html
 ```
 
 We want the application to display this hello response when a request for the root "/" route
-comes in. Go into the **/config/routes.js** file. You can manually define these mappings, and here 
-we will do so. Change the file to look like this. 
+comes in. Go into the **/config/routes.js** file. Here you can manually define these mappings,
+and here we will do so. Change the file to look like this.
 
 ```javascript
-exports = {
+var routes = {
 	'/': {
 		controller: 'home',
 		action: 'index'
 	}
 }
+
+module.exports = routes;
 ```
 
-One great feature of Sails is that by default, you do not have to define incoming routes to
-controller actions. This is talked more about in the 
+As you will see when working more with Sails, one great feature is that by default, you do not have
+to define incoming routes to controller actions. This is talked more about in the 
 <a href="https://github.com/balderdashy/sails/wiki/Routing">Routing page</a> of this wiki.
 
-Finally, restart the server
+Finally, restart the server by going to your node terminal and pressing control+c. Then enter the
+following.
+
 ```
 sails start
 ```
@@ -104,8 +107,10 @@ type by adding arguments at the end of the command. To generate a User model wit
 email enter the following.
 
 ```
-sails generate model User name:string age:int email:string
+sails generate model User
 ```
+
+You will see that this creates a user model at **/api/model/Users.js**.
 
 # Automatic JSON API: Better Than Scaffolding
 
