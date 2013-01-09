@@ -10,11 +10,14 @@ To install the latest stable release form npm:
 ```
 sudo npm install -g sails
 ```
-**Note: At this time the stable release on the npm registry does not work with this guide. You
-should instead enter
+**Note**: At this time the stable release on the npm registry does not work with this guide. You
+should instead enter:
 
-```sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline```
-if you would like this getting started guide to work.**
+```
+sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline
+```
+
+this version will work with this guide at the time of this writing.
 <!-- Or to install globally with the command line tool: ```sudo npm install -g sails``` -->
 
 
