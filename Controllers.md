@@ -26,6 +26,8 @@ var CommentController = {
 
 	}
 }
+
+exports = CommentController;
 ```
 
 Alternively if you add a federated flag ```-f``` to the end of your controller then the controller will 
