@@ -81,7 +81,7 @@ sails start
 ```
 
 Now when you visit <a href="http://localhost:1337/">http://localhost:1337/</a> the browser should
-have recieved the response 'Hello World!'.
+have recieved the response **'Hello World!'**.
 
 
 # Creating a Model
