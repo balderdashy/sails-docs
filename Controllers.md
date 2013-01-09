@@ -38,10 +38,10 @@ these actions works the exact same way!
 ```
 sails generate controller comment create destory tag -f
 ```
-will will create three seperate files, 
-api/controllers/comment/ with three files api/controllers/comment/create.js,
-api/controllers/comment/destory.js, and
-api/controllers/comment/tag.js.
+will will create the directory, 
+**api/controllers/comment/** with three files **api/controllers/comment/create.js**,
+**api/controllers/comment/destory.js**, and
+**api/controllers/comment/tag.js**.
  
 # Express Crash-Course
 http://expressjs.com/
