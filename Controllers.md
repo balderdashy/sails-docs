@@ -50,6 +50,10 @@ This method is an enhanced version of  Express's res.render() which automaticall
 appropriate view based on the entity and action. The original function is still accessible via
 res.render().
 
+```javascript
+	res.view();
+```
+
 __from the <a href="http://expressjs.com/2x/guide.html">express guide</a>.__
 ## res.send()
 The res.send() method is a high level response utility allowing you to pass objects to respond with
