@@ -56,7 +56,7 @@ start of your application.
 
 ```
 rm public/index.html
-``
+```
 
 We want the application to display this hello response when a request for the root "/" route
 comes in. Go into the **/config/routes.js** file. You can manually define these mappings, and here 
