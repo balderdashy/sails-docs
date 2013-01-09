@@ -30,8 +30,8 @@ The global install of Sails comes bundled with a command-line tool which allows 
 sails foo
 cd foo
 
-# Install dependencies
-npm install
+<!-- # Install dependencies -->
+<!-- npm install -->
 
 # Fire up the server	
 sails start
