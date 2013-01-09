@@ -78,15 +78,20 @@ the home controller, which will respond with 'Hello!'.
 
 
 # Creating a Model
-Creating a model is just as easy too.
+Creating a model is very easy with the command line tool. You can even define attributes and their
+type by adding arguments at the end of the command. To generate a User model with a name, age, and
+email enter the following.
 
 ```
-sails generate model User
+sails generate model User name:string age:int email:string
 ```
 
 # Automatic JSON API: Better Than Saffolding
 
-HTML scaffolds just don't make sense for modern web apps.  Instead, Sails automatically builds a RESTful JSON API for your models.  Best of all, it supports HTTP _and_ WebSockets!
+Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for 
+modern web apps! Instead, Sails automatically builds a RESTful JSON API for your models. Best of
+all, it supports HTTP _and_ WebSockets! By default for every controller you create, you get the
+basic CRUD operations created automatically.
 
 # Security
 _TODO_
