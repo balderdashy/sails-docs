@@ -17,7 +17,7 @@ should instead enter:
 sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline
 ```
 
-This version will work with this guide at the time of this writing.
+This version will work with this guide at the time of writing.
 <!-- Or to install globally with the command line tool: ```sudo npm install -g sails``` -->
 
 
