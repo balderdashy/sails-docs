@@ -10,7 +10,7 @@ To install the latest stable release form npm:
 ```
 sudo npm install -g sails
 ```
-**Note**: At this time the stable release on the npm registry does not work with this guide. You
+**Note!!!!**: At this time the stable release on the npm registry does not work with this guide. You
 should instead enter:
 
 ```
