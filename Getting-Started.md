@@ -13,15 +13,15 @@ Or to install globally with the command line tool: ```sudo npm install -g sails`
 The global install of Sails comes bundled with a command-line tool which allows you to generate a new app as shown below:
 
 ```
-    # Create the app
-    sails foo
-    cd foo
+# Create the app
+sails foo
+cd foo
 
-    # Install dependencies
-    npm install
+# Install dependencies
+npm install
 
-    # Fire up the server
-    node app.js			
+# Fire up the server
+node app.js			
 ```
 
 
@@ -29,28 +29,28 @@ The global install of Sails comes bundled with a command-line tool which allows 
 To get Sails to say "Hello!", you need only to create a controller
 
 ```
-    sails generate controller hello index
+sails generate controller hello index
 ```
 
 Then in your hello controller inside the index action you will send back a string
 
 ```javascript
 
-	var HelloController = {
+var HelloController = {
 
-		index: function(req, res) {
-			res.send('Hello!');
-		}
+	index: function(req, res) {
+		res.send('Hello!');
 	}
+}
 
-	exports = HelloController;
+exports = HelloController;
 ```
 
 After you have added that, you will want to remove the default index.html page that shows at the
 start of your application
 
 ```
-		rm public/index.html
+rm public/index.html
 ```
 
 We now want the application to display this hello response when a request for the root "/" route
@@ -60,17 +60,17 @@ and here we will do so. Change the file to look like this.
 
 ```javascript
 
-		exports = {
-			'/': {
-				controller: 'home',
-				action: 'index'
-			}
-		}
+exports = {
+	'/': {
+		controller: 'home',
+		action: 'index'
+	}
+}
 ```
 
 Finally, start the server
 ```
-		sails app.js
+sails app.js
 ```
 
 Now when you visit <a href="http://localhost:1337/">http://localhost:1337/</a> the index action of
@@ -81,7 +81,7 @@ the home controller, which will respond with 'Hello!'.
 Creating a model is just as easy too.
 
 ```
-		sails generate model User
+sails generate model User
 ```
 
 # Automatic JSON API: Better Than Saffolding
