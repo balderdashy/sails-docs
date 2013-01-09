@@ -4,7 +4,7 @@ Sails controllers work very similar to controllers in other MVC frameworks. Thin
 being the middle man between your model and your views.
 
 # Where are Controllers Defined?
-Controllers are defined in the ***/api/controllers/** folder. By default when you create a
+Controllers are defined in the **/api/controllers/** folder. By default when you create a
 controller using the command line, you can add additional arguments that represent the controller
 actions.
 
