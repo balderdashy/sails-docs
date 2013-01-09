@@ -39,6 +39,8 @@ var policy = {
 		destory: 'authenticated'
 	}
 };
+module.exports = policy;
+```
 
 the **'authenticated'** value simply runs the logic in the **/middleware/authenticated.js** file.
 This can be anything, but in this case, this logic will make sure a user is in an authenticated
