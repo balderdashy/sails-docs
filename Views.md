@@ -37,6 +37,8 @@ Both **rigging.css** and **rigging.js** partials inject compiles css and js asse
 The **body** partial is where the req views will be injected. Finally, **rigging.templateLibrary**
 is used for cliend side template injection.
 
+__TODO: put in layout.ejs example__
+
 
 Infomation about view partials
 can be found <a href="http://expressjs.com/2x/guide.html#view-partials">here</a>.
