@@ -1,4 +1,5 @@
-Views represent your the UI of your application.
+There are three kinds of views in Sails. There are traditional view partials, view templates, and
+the layout.
 
 # What is a View?
 In Sails a view is the representation of the UI of your application. Views are, by default, ejs
