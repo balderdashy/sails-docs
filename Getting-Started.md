@@ -135,16 +135,16 @@ http://localhost:1337/user/1
 
 # Create a new user
 http://localhost:1337/user/create
-# (or send an HTTP POST to http://localhost:1337/user)
+(or send an HTTP POST to http://localhost:1337/user)
 
 # Update the user with id 1
 http://localhost:1337/user/update/1
-# (or send an HTTP PUT to http://localhost:1337/user/1)
+(or send an HTTP PUT to http://localhost:1337/user/1)
 
 # Destroy the user with id 1
 http://localhost:1337/user/destroy/1
-# (or send an HTTP DELETE to http://localhost:1337/user/1)
-
+(or send an HTTP DELETE to http://localhost:1337/user/1)
+```
 
 # Security
 _TODO_
