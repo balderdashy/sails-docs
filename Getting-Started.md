@@ -1,4 +1,3 @@
-
 > **Notice:** This documentation is for the bleeding-edge build of Sails.  Most of this documentation will not work if you install sails from the npm registry.  The documentation below walks you through installation of the bleeding-edge version.  This guide will be updated when the next production npm release is out.
 
 # Installation
@@ -38,8 +37,9 @@ one route. Lets start with the controller.
 sails generate controller hello index
 ```
 
-We then want to edit the index actions in your hello controller. We will send back the string
-'Hello World!'.
+This will generate a file called `HelloController.js` in your app's `api/controllers` directory with one action, `index()`.
+
+Now let's edit that action to send back the string `'Hello World!'`.
 
 ```javascript
 
@@ -67,7 +67,7 @@ and here we will do so. Change the file to look like this.
 ```javascript
 var routes = {
 	'/': {
-		controller: 'home',
+		controller: 'hello',
 		action: 'index'
 	}
 }
