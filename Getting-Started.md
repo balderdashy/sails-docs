@@ -1,23 +1,15 @@
-**Notice: This documentation is for the newest release of Sails that is still in production but will
-be out very soon. Most of this documentation will not work if you install sails from the npm
-registery.**
+
+> **Notice:** This documentation is for the bleeding-edge build of Sails.  Most of this documentation will not work if you install sails from the npm registry.  The documentation below walks you through installation of the bleeding-edge version.  This guide will be updated when the next production npm release is out.
 
 # Installation
 
-To install the latest stable release form npm:
-
-
-```
-sudo npm install -g sails
-```
-**Note!!!!**: At this time the stable release on the npm registry does not work with this guide. You
-should instead enter:
+At this time the stable release on the npm registry does not work with this guide. To install the bleeding-edge version:
 
 ```
 sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline
 ```
 
-This version will work with this guide at the time of writing.
+<!-- This version will work with this guide at the time of writing. -->
 <!-- Or to install globally with the command line tool: ```sudo npm install -g sails``` -->
 
 
@@ -31,14 +23,11 @@ sails new testProject
 cd testProject
 
 # Fire up the server	
-sails start
+sails lift
 ```
 
-<!-- # Install dependencies
-npm install -->
-
-At this point if you visit <a href="http://localhost:1337/">http://localhost:1337/</a> You will see
-the default index.html page that Sails starts with. Lets get Sails to tell us Hello.
+The default port for Sails is 1337.  At this point if you visit <a href="http://localhost:1337/">http://localhost:1337/</a> You will see
+the default index.html page.  Now, let's get Sails to tell us Hello.
 
 
 # Hello, Sails!
