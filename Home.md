@@ -3,7 +3,7 @@
 # Installation
 
 Installing Sails is pretty dern easy.  Just type:
-```
+```sh
 sudo npm install -g sails
 ```
 
@@ -12,7 +12,7 @@ sudo npm install -g sails
 
 The global install of Sails comes bundled with a command-line tool which allows you to generate a new app as shown below:
 
-```
+```sh
 # Create the app
 sails new testProject
 
@@ -31,7 +31,7 @@ the default index.html page.  Now, let's get Sails to tell us Hello.
 To get Sails to say "Hello World!", you need only to define one controller with an action and define
 one route. Lets start with the controller.
 
-```
+```sh
 sails generate controller hello index
 ```
 
@@ -54,7 +54,7 @@ exports = HelloController;
 After you have added that, you will want to remove the default index.html page that shows at the
 start of your application.
 
-```
+```sh
 rm ui/public/index.html
 ```
 
@@ -80,7 +80,7 @@ to define incoming routes to controller actions. This is talked more about in th
 Finally, restart the server by going to your node terminal and pressing control+c. Then enter the
 following.
 
-```
+```sh
 sails lift
 ```
 
@@ -96,7 +96,7 @@ sails generate model User
 
 You will see that this creates a user model at **/api/model/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
 
-```
+```javascript
 var User = {
         attributes      : {
                 name: 'STRING'
@@ -114,11 +114,11 @@ all, it supports HTTP _and_ WebSockets! By default for every controller you crea
 basic CRUD operations created automatically.
 
 For instance, after generating the User model above, if you visit `http://localhost:1337/user/create`, you'll see:
-```
+```json
 {
-  createdAt: "2013-01-10T01:33:19.105Z",
-  updatedAt: "2013-01-10T01:33:19.105Z",
-  id: 1
+  "createdAt": "2013-01-10T01:33:19.105Z",
+  "updatedAt": "2013-01-10T01:33:19.105Z",
+  "id": 1
 }
 ```
 
