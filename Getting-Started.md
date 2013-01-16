@@ -1,5 +1,3 @@
-> **Notice:** This documentation is for the bleeding-edge build of Sails.  Most of this documentation will not work if you install sails from the npm registry.  The documentation below walks you through installation of the bleeding-edge version.  This guide will be updated when the next production npm release is out.
-
 # Installation
 
 At this time the stable release on the npm registry does not work with this guide. To install the bleeding-edge version:
