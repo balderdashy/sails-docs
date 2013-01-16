@@ -1,6 +1,7 @@
-# Getting Started
+
+# Getting Started With Sails
+
 ![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png) 
-*Learn from the giant squid*
 
 # Installation
 
