@@ -1,6 +1,3 @@
-**Notice: This documentation is for the newest release of Sails that is still in production but will
-be out very soon. Most of this documentation will not work if you install sails from the npm
-registery.**
 
 # What is a Controller?
 Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
