@@ -1,13 +1,9 @@
 # Installation
 
-At this time the stable release on the npm registry does not work with this guide. To install the bleeding-edge version:
-
+Installing Sails is pretty dern easy.  Just type:
 ```
 sudo npm install -g sails
 ```
-
-<!-- This version will work with this guide at the time of writing. -->
-<!-- Or to install globally with the command line tool: ```sudo npm install -g sails``` -->
 
 
 # Creating a New Sails Project
