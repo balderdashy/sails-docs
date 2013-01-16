@@ -5,7 +5,7 @@
 At this time the stable release on the npm registry does not work with this guide. To install the bleeding-edge version:
 
 ```
-sudo npm install -g sails@git://github.com/balderdashy/sails.git#waterline
+sudo npm install -g sails
 ```
 
 <!-- This version will work with this guide at the time of writing. -->
