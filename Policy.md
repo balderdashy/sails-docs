@@ -1,7 +1,3 @@
-**Notice: This documentation is for the newest release of Sails that is still in production but will
-be out very soon. Most of this documentation will not work if you install sails from the npm
-registery.**
-
 Sometimes when you hit certain contoller actions, you want to make perform a job. You do not want to
 worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
 allow you to run a piece of middleware logic before your actions run. That way your actions can be
