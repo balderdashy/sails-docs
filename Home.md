@@ -15,6 +15,8 @@ The global install of Sails comes bundled with a command-line tool which allows 
 ```
 # Create the app
 sails new testProject
+
+# cd into the new folder
 cd testProject
 
 # Fire up the server	
