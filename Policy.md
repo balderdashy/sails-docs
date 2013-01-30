@@ -1,7 +1,6 @@
 Sometimes when you hit certain contoller actions, you want to perform a job. You do not want to
 worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
-allow you to run a piece of middleware logic before your actions run. That way your actions can be
-written assuming that .... 
+allow you to run a piece of middleware logic before your actions run. 
 
 # Defining Access Control Rules
 if you look in **/config/policy.js** file, by default you will see a single policy set.
@@ -40,9 +39,16 @@ module.exports = policy;
 
 the **'authenticated'** value simply runs the logic in the **/middleware/authenticated.js** file.
 This can be anything, but in this case, this logic will make sure a user is in an authenticated
-session of the appliction. It then allows the controller action logic to run if. 
+session of the appliction. It then allows the controller action logic to run. 
 
-_TODO: explain more about middleware_
+Your `middleware/authenticated.js` file might look like this:
+
+```js
+module.exports = function(req, res, next) {
+    // perform authentication logic
+    next()
+}
+```
 
 We would also want to make sure that authenticated users can create and read. In that case, we can
 just say that all the actions in the User controller require an authenticated user. We can write it
