@@ -1,4 +1,3 @@
-
 # What is a Controller?
 Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
 being the middle man between your model and your views.
@@ -33,7 +32,7 @@ var CommentController = {
 	}
 }
 
-exports = CommentController;
+module.exports = CommentController;
 ```
 
 Alternively if you add a federated flag ```-f``` to the end of your generate controller command the
