@@ -90,7 +90,7 @@ _TODO_
 
 # Querying Models
 You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them. Sails uses Waterline as its ORM. To learn more about it visit the 
-<a href="https://github.com/mikermcneil/waterline">Waterline github repo</a>.
+<a href="https://github.com/balderdashy/waterline">Waterline github repo</a>.
 
 
 <!---
