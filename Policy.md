@@ -41,7 +41,7 @@ the **'authenticated'** value simply runs the logic in the **/middleware/authent
 This can be anything, but in this case, this logic will make sure a user is in an authenticated
 session of the appliction. It then allows the controller action logic to run. 
 
-Your `middleware/authenticated.js` file might look like this:
+Your **middleware/authenticated.js** file might look like this:
 
 ```js
 module.exports = function(req, res, next) {
