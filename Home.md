@@ -1,11 +1,12 @@
-
 # Getting Started With Sails
 
 ![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png) 
 
 # Installation
 
-Installing Sails is pretty dern easy.  Just type:
+> New to Node.js?  Get started by following the directions here: http://nodejs.org/
+
+Once you have Node.js up and running, installing Sails is pretty dern easy.  Just type:
 ```sh
 sudo npm install -g sails
 ```
