@@ -24,6 +24,7 @@ sails new testProject
 cd testProject && sudo npm install
 
 # Fire up the server	
+# (you have to run this from the root of your project)
 sails lift
 ```
 
