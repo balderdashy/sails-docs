@@ -15,18 +15,32 @@ Traditional views are defined in the **ui/views/** directory while templates are
 # Server-side Views, Layout, and View Partials
 Server-side views in the **/ui/views/** directory are by default ejs files that will handle the job
 of presenting data when requested a view but the client. The method ```res.view()``` call will
-respond to a client with the appropriate view. If no controller or action for a request exist, Sails resourceful routing also serves a view if the view **/views/:controller/:action.ejs** exists.
+respond to a client with the appropriate view. If no controller or action for a request exist, Sails resourceful routing automatically serves a view if the view **/views/:controller/:action.ejs** exists.
 
+Here's an example of a view (ui/views/corndog/index.ejs) that consumes some data sent down from a controller:
+
+```
+<div>
+  <h1>My first view</h1>
+
+  <h2>My corndog collection:</h2>
+  <ul>
+    <% _.each(corndogs, function (corndog) { %>
+    <li><%- corndog.name %></li>
+    <% }) %>
+  </ul>
+</div>
+```
+
+And here's what the controller looks like:
 ```javascript
-	var User = {
+	var Corndog = {
 
-		follow: function(req, res) {
-
-			// some logic goes here
-			...
-
-			// will respond with the '/ui/view/user/follow.ejs' view
-			return res.view();
+		index: function(req, res) {
+			return res.view({
+				corndogs: [{name: 'Hank the Corndog'}, {name: 'Lenny the Corndog'}]
+			});
+		});
 		}
 	}
 ```
