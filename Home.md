@@ -20,8 +20,8 @@ The global install of Sails comes bundled with a command-line tool which allows 
 # Create the app
 sails new testProject
 
-# cd into the new folder
-cd testProject
+# cd into the new project and install a local copy of Sails
+cd testProject && sudo npm install
 
 # Fire up the server	
 sails lift
