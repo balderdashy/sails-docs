@@ -34,7 +34,7 @@ Here's an example of a view (ui/views/corndog/index.ejs) that consumes some data
 
 And here's what the controller looks like:
 ```javascript
-	var Corndog = {
+	var CorndogController = {
 
 		index: function(req, res) {
 			return res.view({
@@ -43,6 +43,7 @@ And here's what the controller looks like:
 		});
 		}
 	}
+	module.exports = CorndogController;
 ```
 
 Opening up **/ui/views/layout.ejs** you will see some ejs partials ```<%- rigging.css ->```,
