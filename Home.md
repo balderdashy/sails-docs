@@ -64,7 +64,9 @@ rm ui/public/index.html
 
 We want the application to display this hello response when a request for the root "/" route
 comes in. Go into the **/config/routes.js** file. Here you can manually define these mappings,
-and here we will do so. Change the file to look like this.
+and here we will do so. 
+
+Uncomment the home route (remove the // at the beginning of the line) and change it to look like this:
 
 ```javascript
 var routes = {
