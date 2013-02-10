@@ -26,7 +26,7 @@ Here's an example of a view (ui/views/corndog/index.ejs) that consumes some data
   <h2>My corndog collection:</h2>
   <ul>
     <% _.each(corndogs, function (corndog) { %>
-    <li><%- corndog.name %></li>
+    <li><%= corndog.name %></li>
     <% }) %>
   </ul>
 </div>
