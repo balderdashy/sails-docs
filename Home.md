@@ -43,6 +43,8 @@ This will generate a file called `HelloController.js` in your app's `api/control
 
 Now let's edit that action to send back the string `'Hello World!'`.
 
+Modify the `index` action of your HelloController so it looks like this:
+
 ```javascript
 
 var HelloController = {
