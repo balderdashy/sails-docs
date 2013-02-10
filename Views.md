@@ -40,7 +40,6 @@ And here's what the controller looks like:
 			return res.view({
 				corndogs: [{name: 'Hank the Corndog'}, {name: 'Lenny the Corndog'}]
 			});
-		});
 		}
 	}
 	module.exports = CorndogController;
