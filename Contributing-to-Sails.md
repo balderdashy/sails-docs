@@ -27,7 +27,7 @@ When you're done, you can commit your fix, push up your code, and then go into g
 ![Screen Shot 2013-02-12 at 2.55.40 PM.png](http://i.imgur.com/GBg0AOi.png) 
 
 
-## Misc
+## Trying out your fork with your application
 If you have a project using Sails, and you want to test your new version, please do the following:
 
 In your Sails repo:
