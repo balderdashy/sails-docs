@@ -91,8 +91,7 @@ Depending on your configuration, the database tables will be recreated automatic
 _TODO_
 
 # Querying Models
-You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them. Sails uses Waterline as its ORM. To learn more about it visit the 
-<a href="https://github.com/balderdashy/waterline">Waterline github repo</a>.
+You might want to interact with your models in all sorts of places, but the most common place to talk to models is in your controllers.  For posterity, a few other places you might want to access your models are views, services, and policies.
 
 
 <!---
