@@ -118,3 +118,39 @@ Return the value of param **name** when present or **default**.
 
 <!-- To utilize urlencoded request bodies, req.body should be an object. This can be done by using
 the _express.bodyParser middleware. -->
+
+
+## Accessing your models
+
+In many cases, the reason you have a controller at all is that you want to do custom stuff with your models.  Otherwise, you could just use the defaults!
+
+For example, your controller might look like:
+```
+// Keep in mind you'd probably want to do this transactionally, in case the chicken is being pecked 
+var ChickenController = {
+
+  // Peck the chicken specified by id (subtract 50 HP)
+  peck: function (req,res) {
+    Chicken.find(req.param('id')).done(function (err,chicken) {
+      if (err) return res.send(err,500);
+      if (!chicken) return res.send("No other chicken with that id exists!", 404);
+      if (chicken.hp <= 0) return res.send("The other chicken is already dead!", 403);
+
+      // Subtract 50 HP from the chicken
+      chicken.hp -= 50;
+
+      // Persist the change
+      Chicken.update(chicken.id,chicken).done(function (err) {
+        if (err) return res.send(err,500);
+
+        // Report back with the new state of the chicken
+        res.json(chicken);
+      });
+    });
+
+  }
+};
+module.exports = ChickenController;
+```
+
+Check out the page on [Models](https://github.com/balderdashy/sails/wiki/Models) to learn more.
