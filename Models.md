@@ -127,13 +127,11 @@ User.create({
 }).done(function(err, user) {
 
   // Error handling
-  if (err) {
-    return console.log(err);
+  if (err) return console.log(err);
 
-  // The User was created successfully!
-  }else {
-    console.log("User created:", user);
-  }
+  // If we made it here, the User was created successfully!
+  console.log("User created:", user);
+
 });
 ```
 
@@ -197,9 +195,9 @@ User.findAll({
 ```
 
 ### dynamic finders
-With Sails built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
+Sails comes with a handy little feature called dynamic finders. You can
 query your models with automatically genereated methods that depend on the attributes you define for
-the model. For example, if you had a book model that looks like this.
+the model. For example, if you had a Book model that looks like this.
 
 ```javascript
 var Book = {
