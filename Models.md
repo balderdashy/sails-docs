@@ -1,11 +1,13 @@
-Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) for normalizing
+Like most MVC frameworks, Sails provides a method of normalizing
 interactions with models, no matter what data source you're using.  It also defines an interface
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory
-state (i.e. Session storage.)
+state.
+
+> NOTEL This part will probably be very familiar for you if you've worked with Ruby on Rails' Active Record, but this pattern of data access has [been around since 2003.](http://en.wikipedia.org/wiki/Active_record_pattern)
 
 # Supported Databases:
 * mySQL
-* In-memory development: Dirty db;
+* In-memory / on-disk: Dirty db;
 * Coming soon: SQLite
 * Coming soon: Postgres
 * Coming soon: MongoDB
