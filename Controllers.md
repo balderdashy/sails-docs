@@ -48,14 +48,13 @@ will create the directory, **api/controllers/comment/** with three files
 **/api/controllers/comment/destory.js**, and
 **/api/controllers/comment/tag.js**.
  
-# Express Crash-Course
+# Request/Response Crash-Course
 When responding to a request, Sails uses many of the same res methods as Express.
 
 ## res.view([view, options[, fn]])
 This method is an enhanced version of  Express's **res.render()**. The method **res.view()**
 automatically renders the appropriate view based on the controller and action. The original function
 is still accessible via **res.render()**.
-
 
 ## res.send(body|status[, headers|status[, status]])
 __from the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.__
@@ -113,6 +112,21 @@ var foo = req.param('foo');
 ```
 
 If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.
+
+
+## State
+
+### req.isSocket
+Whether or not this request was sent over Socket.io
+
+### req.isAjax
+Whether or not this is an AJAX/xhr request
+
+### req.isJson
+Whether or not this request is JSONish (has a JSON "Accept" or "Content-Type" header)
+
+### res.viewExists
+Whether or not the view for this controller exists.
 
 
 ## Accessing your models
