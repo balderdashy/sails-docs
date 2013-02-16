@@ -50,6 +50,8 @@ will create the directory, **api/controllers/comment/** with three files
  
 
 # The Request Object
+
+## req.param()
 Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
 
 ```
