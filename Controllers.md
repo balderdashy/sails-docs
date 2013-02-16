@@ -48,7 +48,28 @@ will create the directory, **api/controllers/comment/** with three files
 **/api/controllers/comment/destory.js**, and
 **/api/controllers/comment/tag.js**.
  
-# Request/Response Crash-Course
+
+# The Request Object
+Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
+
+```
+var foo = req.param('foo');
+```
+
+If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.
+
+
+### req.isSocket
+Whether or not this request was sent over Socket.io
+
+### req.isAjax
+Whether or not this is an AJAX/xhr request
+
+### req.isJson
+Whether or not this request is JSONish (has a JSON "Accept" or "Content-Type" header)
+
+
+# The Response Object
 When responding to a request, Sails uses many of the same res methods as Express.
 
 ## res.view([view, options[, fn]])
@@ -104,29 +125,11 @@ Redirect to the given url with a default response status of 302.
 	res.redirect('back');
 ```
 
-## Parameters
-Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
-
-```
-var foo = req.param('foo');
-```
-
-If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.
-
-
-## State
-
-### req.isSocket
-Whether or not this request was sent over Socket.io
-
-### req.isAjax
-Whether or not this is an AJAX/xhr request
-
-### req.isJson
-Whether or not this request is JSONish (has a JSON "Accept" or "Content-Type" header)
-
 ### res.viewExists
 Whether or not the view for this controller exists.
+
+
+
 
 
 ## Accessing your models
