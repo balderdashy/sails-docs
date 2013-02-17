@@ -1,3 +1,5 @@
+![seagull.jpg](http://i.imgur.com/npASTyA.jpg) 
+
 # Contributing to this project
 
 Thank you for your interest in supporting this project!  It makes me warm and fuzzy inside.  Really though.
@@ -36,4 +38,4 @@ sudo npm link
 In your project repo:
 sudo npm link sails
 
-Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@mikermcneil](twitter.com/mikermcneil)).
+Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@mikermcneil](twitter.com/mikermcneil)). 
