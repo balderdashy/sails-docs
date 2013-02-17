@@ -14,86 +14,19 @@ sudo npm install -g sails
 
 # Creating a New Sails Project
 
-The global install of Sails comes bundled with a command-line tool which allows you to generate a new app as shown below:
+Here's how you get off the ground:
 
 ```sh
 # Create the app
 sails new testProject
 
-# cd into the new project and install a local copy of Sails
-cd testProject && sudo npm install
+# cd into the new project
+cd testProject
 
 # Fire up the server	
 # (you have to run this from the root of your project)
 sails lift
 ```
-
-The default port for Sails is 1337.  At this point if you visit <a href="http://localhost:1337/">http://localhost:1337/</a> You will see
-the default index.html page.  Now, let's get Sails to tell us Hello.
-
-
-# Hello, Sails!
-To get Sails to say "Hello World!", you need only to define one controller with an action and define
-one route. Lets start with the controller.
-
-```sh
-sails generate controller hello index
-```
-
-This will generate a file called `HelloController.js` in your app's `api/controllers` directory with one action, `index()`.
-
-Now let's edit that action to send back the string `'Hello World!'`.
-
-Modify the `index` action of your HelloController so it looks like this:
-
-```javascript
-
-var HelloController = {
-
-	index: function(req, res) {
-		res.send('Hello World!');
-	}
-}
-
-exports = HelloController;
-```
-
-After you have added that, you will want to remove the default index.html page that shows at the
-start of your application.
-
-```sh
-rm ui/public/index.html
-```
-
-We want the application to display this hello response when a request for the root "/" route
-comes in. Go into the **/config/routes.js** file. Here you can manually define these mappings,
-and here we will do so. 
-
-Uncomment the home route (remove the // at the beginning of the line) and change it to look like this:
-
-```javascript
-var routes = {
-	'/': {
-		controller: 'hello',
-		action: 'index'
-	}
-}
-
-module.exports = routes;
-```
-
-As you will see when working more with Sails, one great feature is that by default, you do not have
-to define incoming routes to controller actions. This is talked more about in the 
-<a href="https://github.com/balderdashy/sails/wiki/Routing">Routing page</a> of this wiki.
-
-Finally, restart the server by going to your node terminal and pressing control+c. Then enter the
-following.
-
-```sh
-sails lift
-```
-
-Now when you visit <a href="http://localhost:1337/">http://localhost:1337/</a> your browser should say **'Hello World!'**.
 
 
 # Creating a Model
