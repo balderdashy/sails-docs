@@ -3,6 +3,11 @@
 
 ## Beta
 
+### 0.8.81 (unreleased)
++ .save(), .destroy(), and custom instance methods on models
++ Bootstrap function fires warning if callback not triggered after a few seconds (thanks @virpool)
++ Bug fixes w/ pubsub/model convenience methods.
+
 ### 0.8.80
 + Refactored app layout to make it a bit more straightforward.  To check out the the new folder structure, make a new project with `sails new foo`
 + Added robot.txt in new app generation
