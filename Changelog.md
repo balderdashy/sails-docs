@@ -4,6 +4,7 @@
 ## Beta
 
 ### 0.8.79
++ Adapter definitions are no longer functions-- instead the direct definition object is accepted.  This makes it easier, cleaner, and more declarative to create adapters.
 + Merged waterline into main Sails repo.
 + Brought in sails-util and sails-moduleloader, moved watelrine tests into top level.
 + Attribute values in models in result sets from Waterline are now cast to numbers, if they are number-looking strings.
