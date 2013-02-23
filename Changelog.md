@@ -3,6 +3,11 @@
 
 ## Beta
 
+### 0.8.80
++ Refactored app layout to make it a bit more straightforward.  To check out the the new folder structure, make a new project with `sails new foo`
++ Added robot.txt in new app generation
++ Bound all methods in adapter to have the right context.
+
 ### 0.8.79
 + Adapter definitions are no longer functions-- instead the direct definition object is accepted.  This makes it easier, cleaner, and more declarative to create adapters.
 + Merged waterline into main Sails repo.
