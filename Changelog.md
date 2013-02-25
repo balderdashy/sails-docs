@@ -3,8 +3,11 @@
 
 ## Beta
 
-### 0.8.81 (unreleased)
+### 0.8.83 (unreleased)
 + .save(), .destroy(), and custom instance methods on models
+
+
+### 0.8.82
 + Bootstrap function fires warning if callback not triggered after a few seconds (thanks @virpool)
 + Bug fixes w/ pubsub/model convenience methods.
 
