@@ -2,7 +2,7 @@ I'm working on including robust authentication code for new projects, but in the
 
 [https://gist.github.com/mikermcneil/5040752](https://gist.github.com/mikermcneil/5040752)
 
-```
+```javascript
 
 /*---------------------
   :: Session 
