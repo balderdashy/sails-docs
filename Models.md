@@ -3,7 +3,7 @@ interactions with models, no matter what data source you're using.  It also defi
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory
 state.
 
-> NOTEL This part will probably be very familiar for you if you've worked with Ruby on Rails' Active Record, but this pattern of data access has [been around since 2003.](http://en.wikipedia.org/wiki/Active_record_pattern)
+> NOTE: This part will probably be very familiar for you if you've worked with Ruby on Rails' Active Record, but this pattern of data access has [been around since 2003.](http://en.wikipedia.org/wiki/Active_record_pattern)
 
 # Supported Databases:
 * mySQL
