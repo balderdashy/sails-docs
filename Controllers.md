@@ -8,7 +8,7 @@ controller using the command line, you can add additional arguments that represe
 actions.
 
 ```
-sails generate controller comment create destory tag like
+sails generate controller comment create destroy tag like
 ```
 generates:
 ```javascript
