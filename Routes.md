@@ -31,7 +31,7 @@ If the requested controller/action doesn't exist:
   - if no view OR model exists, Sails will respond with a 404.
 
 # Custom Routes
-You can define your own custome routes in **config/routes.js**
+You can define your own custom routes in **config/routes.js**
 
 ```javascript
 var routes = {
