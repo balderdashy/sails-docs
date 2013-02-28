@@ -3,7 +3,7 @@ worry if the data you recieved is valid, if a user is authorized, or many other 
 allow you to run a piece of middleware logic before your actions run. 
 
 # Defining Access Control Rules
-if you look in **/config/policy.js** file, by default you will see a single policy set.
+if you look in **config/policy.js** file, by default you will see a single policy set.
 
 ```javascript
 var policy = {
@@ -37,11 +37,11 @@ var policy = {
 module.exports = policy;
 ```
 
-the **'authenticated'** value simply runs the logic in the **/middleware/authenticated.js** file.
+the **'authenticated'** value simply runs the logic in the **policies/authenticated.js** file.
 This can be anything, but in this case, this logic will make sure a user is in an authenticated
 session of the appliction. It then allows the controller action logic to run. 
 
-Your **middleware/authenticated.js** file might look like this:
+Your **policies/authenticated.js** file might look like this:
 
 ```js
 module.exports = function(req, res, next) {
