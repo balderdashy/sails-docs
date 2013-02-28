@@ -30,7 +30,7 @@ The model definition for `Person` might look like this:
 // Person.js
 var Person = {
   name: 'STRING',
-  age: 'INTEGER',
+  age: 'INT',
   birthDate: 'DATE',
   phoneNumber: 'STRING',
   emailAddress: 'STRING'
