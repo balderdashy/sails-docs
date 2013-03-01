@@ -11,10 +11,11 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 ```
 	# Backbone Conventions
 	GET   :	/:controller			=> findAll()
-	GET   :	/:controller/:id		=> find(id)
-	POST  :	/:controller/:id		=> create(id)
-	PUT   :	/:controller/:id		=> update(id)
-	DELETE:	/:controller/:id		=> destroy(id)
+	GET   :	/:controller/read/:id		=> find(id)
+	POST  :	/:controller/create		=> create()
+	POST  :	/:controller/create/:id		=> create(id)
+	PUT   :	/:controller/update/:id		=> update(id)
+	DELETE:	/:controller/destroy/:id	=> destroy(id)
 
 	# You can also explicitly state the action
 	GET   :	/:controller/findAll		=> findAll()
@@ -25,7 +26,7 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 ```
 
 If the requested controller/action doesn't exist:
-	- if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
+  - if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
   - if no view exists, but a model exists, Sails will automatically generate a JSON API for the 
   	model which matches **:controller**.
   - if no view OR model exists, Sails will respond with a 404.
@@ -34,12 +35,10 @@ If the requested controller/action doesn't exist:
 You can define your own custom routes in **config/routes.js**
 
 ```javascript
-var routes = {
-	
-	// Home page
+module.exports.routes = {
+	// To route the home page to the "index" action of the "home" controller:
 	'/': {
-		controller: 'meta',
-		action: 'home'
+		controller: 'home'
 	}
 
 	// Additional routes might look like:
@@ -62,39 +61,33 @@ var routes = {
 	// Additionally, unless you override them, new controllers will have 
 	// create(), find(), findAll(), update(), and destroy() actions, 
 	// and routes will exist for them as follows:
+
 	/*
 
-	'/user': {
+	// Standard RESTful routing
+	// (if index is not defined, findAll will be used)
+	'get /user': {
 		controller	: 'user',
-		action		: 'findAll'
+		action		: 'index'
 	}
-	'/user/:id': {
+	'get /user/:id': {
 		controller	: 'user',
 		action		: 'find'
 	}
-	'/user/create': {
+	'post /user': {
 		controller	: 'user',
 		action		: 'create'
 	}
-	'/user/find': {
-		controller	: 'user',
-		action		: 'find'
-	}
-	'/user/findAll': {
-		controller	: 'user',
-		action		: 'findAll'
-	}
-	'/user/update': {
+	'put /user/:id': {
 		controller	: 'user',
 		action		: 'update'
 	}
-	'/user/destroy': {
+	'delete /user/:id': {
 		controller	: 'user',
 		action		: 'destroy'
 	}
 	*/
 };
-module.exports = routes;
 
 ```
 
