@@ -31,7 +31,7 @@ var policy = {
 		// For the update and destroy actions apply 'authentication' instead
 		update: 'authenticated',
 
-		destory: 'authenticated'
+		destroy: 'authenticated'
 	}
 };
 module.exports = policy;
