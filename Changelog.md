@@ -3,9 +3,17 @@
 
 ## Beta
 
-### 0.8.83 (unreleased)
+### 0.8.86 (unreleased)
 + .save(), .destroy(), and custom instance methods on models
++ 
 
+### 0.8.85 (unreleased)
++ .save(), .destroy(), and custom instance methods on models
++ model validations (using https://github.com/balderdashy/anchor)
++ default values
+
+### 0.8.84 (unreleased)
++ Support for streaming from models (e.g. `User.stream().pipe(res);`)
 
 ### 0.8.82
 + Bootstrap function fires warning if callback not triggered after a few seconds (thanks @virpool)
