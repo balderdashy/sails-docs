@@ -3,15 +3,15 @@ worry if the data you recieved is valid, if a user is authorized, or many other 
 allow you to run a piece of middleware logic before your actions run. 
 
 # Defining Access Control Rules
-if you look in **config/policy.js** file, by default you will see a single policy set.
+if you look in **config/policies.js** file, by default you will see a single policy set.
 
 ```javascript
-var policy = {
+module.exports.policies = {
 
 	// Default policy (allow public access)
 	'*': true
+
 };
-module.exports = policy;
 ```
 
 This means that every action in every controller is accessible from any request.
@@ -24,7 +24,7 @@ policies to take care of that.
 Since we want to protect against that behavior, we need to define some policies.
 
 ```javascript
-var policy = {
+module.exports.policies = {
 
 	UserController: {
 
@@ -34,14 +34,13 @@ var policy = {
 		destroy: 'authenticated'
 	}
 };
-module.exports = policy;
 ```
 
-the **'authenticated'** value simply runs the logic in the **policies/authenticated.js** file.
+the **'authenticated'** value simply runs the logic in the **api/policies/authenticated.js** file.
 This can be anything, but in this case, this logic will make sure a user is in an authenticated
 session of the appliction. It then allows the controller action logic to run. 
 
-Your **policies/authenticated.js** file might look like this:
+Your **api/policies/authenticated.js** file might look like this:
 
 ```js
 module.exports = function(req, res, next) {
@@ -55,7 +54,7 @@ just say that all the actions in the User controller require an authenticated us
 like this.
 
 ```javascript
-var policy = {
+module.exports.policies = {
 
 	UserController: {
 
@@ -63,8 +62,6 @@ var policy = {
 		'*': 'authenticated'
 	}
 };
-
-module.exports = policy;
 ```
 
 As you can see, this can make for much cleaner controller action code in that you only need the
