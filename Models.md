@@ -1,13 +1,11 @@
-Like most MVC frameworks, Sails provides a method of normalizing
+Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) for normalizing
 interactions with models, no matter what data source you're using.  It also defines an interface
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory
-state.
-
-> NOTE: This part will probably be very familiar for you if you've worked with Ruby on Rails' Active Record, but this pattern of data access has [been around since 2003.](http://en.wikipedia.org/wiki/Active_record_pattern)
+state (i.e. Session storage.)
 
 # Supported Databases:
 * mySQL
-* In-memory / on-disk: Dirty db;
+* In-memory development: Dirty db;
 * Coming soon: SQLite
 * Coming soon: Postgres
 * Coming soon: MongoDB
@@ -30,7 +28,7 @@ The model definition for `Person` might look like this:
 // Person.js
 var Person = {
   name: 'STRING',
-  age: 'INT',
+  age: 'INTEGER',
   birthDate: 'DATE',
   phoneNumber: 'STRING',
   emailAddress: 'STRING'
@@ -91,7 +89,8 @@ Depending on your configuration, the database tables will be recreated automatic
 _TODO_
 
 # Querying Models
-You might want to interact with your models in all sorts of places, but the most common place to talk to models is in your controllers.  For posterity, a few other places you might want to access your models are views, services, and policies.
+You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them. Sails uses Waterline as its ORM. To learn more about it visit the 
+<a href="https://github.com/balderdashy/waterline">Waterline github repo</a>.
 
 
 <!---
@@ -126,11 +125,13 @@ User.create({
 }).done(function(err, user) {
 
   // Error handling
-  if (err) return console.log(err);
+  if (err) {
+    return console.log(err);
 
-  // If we made it here, the User was created successfully!
-  console.log("User created:", user);
-
+  // The User was created successfully!
+  }else {
+    console.log("User created:", user);
+  }
 });
 ```
 
@@ -194,9 +195,9 @@ User.findAll({
 ```
 
 ### dynamic finders
-Sails comes with a handy little feature called dynamic finders. You can
+With Sails built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
 query your models with automatically genereated methods that depend on the attributes you define for
-the model. For example, if you had a Book model that looks like this.
+the model. For example, if you had a book model that looks like this.
 
 ```javascript
 var Book = {
@@ -244,19 +245,18 @@ Book.findAllByAuthor('John R. Erickson').done(function(err, books) {
 
 ```javascript
 // For example, to update a user's name, 
-// first we find the user
+// .update(query, params to change, callback)
 User.update({
-  name: 'Johnny',
-  age: 24
-}).done(function(err, user) {
-
+  name: 'sally'
+},{
+  phone: '555-555-5555'
+}, function(err, user) {
   // Error handling
   if (err) {
     return console.log(err);
-
   // Updated user successfully!
   } else {
-      console.log("User updated:", user);
+    console.log("User updated:", user);
   }
 });
 ```
@@ -287,5 +287,3 @@ User.destroy({
 
 Migrations happen automatically. Data migrations do not exist at this time but you can contact us
 if this is a feature that you are interested in.
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/models)
