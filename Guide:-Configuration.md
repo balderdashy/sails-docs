@@ -10,7 +10,7 @@ One of the major advantages of Sails.JS that makes it such a powerhouse MVC is t
 * locales          (Folder that holds locale specific settings)
 	* english.js   (This file handles translated strings for Locale use)
 * local.ex.js      (This is an example file of local.js)
-* local.js         (This file handles any LOCAL overrides needed)
+* local.js         (This file is not included in the `.gitignore`, and so won't be pushed up to your git repository.  It handles any LOCAL overrides needed)
 * policies.js      (This file defines policies that are used to grant or deny access to users)
 * routes.js        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
 * views.js         (This file handles all view related settings, such as the view engine and layout)
