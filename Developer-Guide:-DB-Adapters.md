@@ -1,4 +1,5 @@
-# Note:
+Note:
+-----
 ### See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.
 
 ***
