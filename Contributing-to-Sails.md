@@ -17,7 +17,8 @@ git clone `git@github.com:YOUR_USER_NAME/sails.git`
 To merge recent changes into your fork, inside your project dir:
 ```
 git remote add core https://github.com/balderdashy/sails.git
-git pull core master
+git fetch core
+git merge core/master
 ```
 additional details, see [github](https://help.github.com/articles/fork-a-repo)
 
