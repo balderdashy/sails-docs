@@ -147,4 +147,4 @@ module.exports = (function(){
 ```
 
 ## Testing Setup
-To set up testing, from within the adapter directory, `sails-redis` in this case, do `npm link`. Then change to the `sails` directory and npm link to the custom module: `cd ../sails && npm link sails-redis`. Once that's done, you can verify that you can run tests by doing `npm test` from within `sails/`.
+To set up testing, from within the adapter directory, `sails-redis/` in this case, do `npm link`. Then change to the `sails/` directory and npm link to the custom module: `cd ../sails && npm link sails-redis`. Once that's done, you can verify that you can run tests by doing `npm test` from within `sails/`. The tests will fail at this point but that's okay, you just want to verify that they're running and can see your new adapter.
