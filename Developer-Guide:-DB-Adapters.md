@@ -1,3 +1,6 @@
+#Note:
+See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate)
+
 Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) called Waterline for normalizing
 interactions with models, no matter what data source you're using. In this guide, we'll be demonstrating how to build adapters for Waterline by building one for Redis.
 
