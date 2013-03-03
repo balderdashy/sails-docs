@@ -89,7 +89,7 @@ Our package.json:
 }
 ```
 
-And finally, some boilerplate for the adapter, which I'll explain in the next section. Note that some of this may be different for your adapter, but this is a good general starting point. You can also refer to the other adapters (sails-mysql, sails-dirty, and sails-mongo) to get a feel for how they vary:
+And finally, some boilerplate for the adapter, which I'll explain later. Note that some of this may be different for your adapter, but this is a good general starting point. You can also refer to the other adapters (sails-mysql, sails-dirty, and sails-mongo) to get a feel for how they vary:
 
 ```
 /*---------------------------------------------------------------
