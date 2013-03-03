@@ -1,6 +1,8 @@
-You'll want to take advantage of a tool that 'resurrects' your server if it crashes.  @techpines is working on bundling forever so you can run Sails as a daemon with `sails lift -d` in the next release.
+We are working hard on deck to get sails into ship shape.  Currently, we don't have a built in solution to launching a "production" server of sails.  We will be correcting that though.
 
-#### In the mean time, here's how you deploy in production mode:
+For now, You'll want to take advantage of a tool that 'resurrects' your server if it crashes.  
+
+#### Here's how you deploy in production mode:
 
 + Install forever: `sudo npm install -g forever`
 
@@ -9,9 +11,24 @@ You'll want to take advantage of a tool that 'resurrects' your server if it cras
 > More about forever: https://github.com/nodejitsu/forever
 
 #### Other things you'll likely want to do in production:
-+ configure your app to run on port 80
++ configure your app to run on port 80 
 + put it in "production" mode so that all of your css/js gets bundled up
-+ use mySQL
+
+**config/local.js**
+```javascript
+// Local configuration
+// 
+// Included in the .gitignore by default,
+// this is where you include configuration overrides for your local system
+// or for a production deployment.
+//
+// For example, to use port 80 on the local machine, override the `port` config
+
+module.exports.port = 80;
+module.exports.environment = 'production';
+
+```
++ use mySQL in **config/adapters.js**
 
 #### More on that here: 
 http://www.youtube.com/watch?v=GK-tFvpIR7c
