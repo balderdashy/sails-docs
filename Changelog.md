@@ -3,18 +3,21 @@
 ## Beta
 
 <!--
-### 0.8.86 (unreleased)
+### 0.8.9 (unreleased)
 + .save(), .destroy(), and custom instance methods on models
 + Front-end CoffeeScript support in AssetRack
 + Front-end jade template support
-
-### 0.8.85 (unreleased)
 + model validations (using https://github.com/balderdashy/anchor)
 + default values
 + MongoDB adapter 
 + Redis adapter 
 
 -->
+
+### 0.8.85
+_Saturday, March 3, 2013_
++ Check for and warn if port is currently being used on lift, with support for explicit hosts (https://github.com/balderdashy/sails/issues/197)
++ Model.stream() support over socket.io (https://github.com/balderdashy/sails/issues/196)
 
 ### 0.8.84
 _Saturday, March 2, 2013_
