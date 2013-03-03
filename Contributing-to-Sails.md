@@ -19,7 +19,7 @@ To merge recent changes into your fork, inside your project dir:
 git remote add core https://github.com/balderdashy/sails.git
 git pull core master
 ```
-additional details, see [stackoverflow](http://stackoverflow.com/questions/1123344/merging-between-forks-in-github)
+additional details, see [github](https://help.github.com/articles/fork-a-repo)
 
 ## Code
 Make your enhancements, fix bugs, do your `thang`.
