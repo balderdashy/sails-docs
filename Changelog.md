@@ -17,6 +17,7 @@
 -->
 
 ### 0.8.84
+_Saturday, March 2, 2013_
 + Bug fixes: (explicit hosts, and included an additional file in new app generation)
 
 ### 0.8.83
