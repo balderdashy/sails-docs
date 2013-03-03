@@ -9,6 +9,14 @@ Start by forking this repository:
 
 ![Screen Shot 2013-02-12 at 2.37.04 PM.png](http://i.imgur.com/h0CCcAu.png) 
 
+To merge recent changes into your fork, inside your project dir:
+```
+git remote add core https://github.com/balderdashy/sails.git
+git pull core master
+```
+additional details, see [stackoverflow](http://stackoverflow.com/questions/1123344/merging-between-forks-in-github)
+
+
 ## Clone
 Then clone your fork into your local filesystem:
 git clone `git@github.com:YOUR_USER_NAME/sails.git`
