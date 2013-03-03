@@ -20,6 +20,7 @@
 -->
 
 ### 0.8.83
+_Sat. March 2, 2013_
 + Support for streaming large datasets from models (e.g. `User.stream().pipe(res);`)
 + Bug fix for chains of multiple policies (thanks @themouette)
 + Jade template support (thanks @valinorsgatekeeper)
