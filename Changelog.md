@@ -3,6 +3,7 @@
 
 ## Beta
 
+<!--
 ### 0.8.86 (unreleased)
 + .save(), .destroy(), and custom instance methods on models
 + Front-end CoffeeScript support in AssetRack
@@ -15,6 +16,8 @@
 ### 0.8.84 (unreleased)
 + MongoDB adapter 
 + Redis adapter 
+
+-->
 
 ### 0.8.83
 + Support for streaming large datasets from models (e.g. `User.stream().pipe(res);`)
