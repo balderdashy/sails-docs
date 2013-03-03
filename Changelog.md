@@ -59,4 +59,9 @@
 ### 0.8.77
 + Patch updates the waterline-dirty dependency to deal with an issue with that adapter returning objects which map directly to the in-memory database (was causing changes made to found models to be persisted without calling .save())
 
+
+### < 0.8.77
++ I wasn't keeping good notes, sorry :(
++ Check out https://github.com/balderdashy/sails/commits/master if you want to dive in.
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/changelog)
