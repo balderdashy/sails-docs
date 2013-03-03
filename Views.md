@@ -10,7 +10,7 @@ application.
 
 # Where do I define Views?
 Traditional views are defined in the **/views/** directory while templates are defined in the 
-**/views/templates/** directory.
+**/assets/templates/** directory.
 
 # Server-side Views, Layout, and View Partials
 Server-side views in the **/views/** directory are by default ejs files that will handle the job
@@ -153,18 +153,17 @@ PROJECT FOLDER
     ├── 401.ejs
     ├── 404.ejs
     ├── layout.ejs
-    ├── <controller>
-    │   ├── index.ejs
-    │   ├── <action>.ejs
-    │   └── partials
-    │       ├── footer.ejs
-    │       ├── header.ejs
-    │       ├── page.ejs
-    │       └── sections
-    │           ├── about.ejs
-    │           ├── blog.ejs
-    │           └── chat.ejs
-    └── templates
+    └── <controller>
+        ├── index.ejs
+        ├── <action>.ejs
+        └── partials
+            ├── footer.ejs
+            ├── header.ejs
+            ├── page.ejs
+            └── sections
+                ├── about.ejs
+                ├── blog.ejs
+                └── chat.ejs
 ```
 
 This layout makes it really simple to navigate and keep things organized.
@@ -181,7 +180,7 @@ _TODO_ -->
 
 # Client-side Templates
 
-Any template files included in the **views/templates/** directory are automatically "absorbed"
+Any template files included in the **assets/templates/** directory are automatically "absorbed"
 as client-side templates and injected into the DOM wherever the ```<%- templateLibrary %>``` view
 partial is employed.
 
