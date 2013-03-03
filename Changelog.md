@@ -1,5 +1,4 @@
-# Sails version changelog
-
+# Captain's log
 
 ## Beta
 
@@ -20,7 +19,7 @@
 -->
 
 ### 0.8.83
-_Sat. March 2, 2013_
+_Saturday, March 2, 2013_
 + Support for streaming large datasets from models (e.g. `User.stream().pipe(res);`)
 + Bug fix for chains of multiple policies (thanks @themouette)
 + Jade template support (thanks @valinorsgatekeeper)
@@ -39,6 +38,7 @@ _Sat. March 2, 2013_
 
 
 ### 0.8.82
+_Sunday, February 24, 2013_
 + Bootstrap function fires warning if callback not triggered after a few seconds (thanks @virpool)
 + Bug fixes w/ pubsub/model convenience methods.
 
