@@ -1,4 +1,3 @@
-
 # Captain's log
 
 ## Beta
@@ -12,12 +11,13 @@
 ### 0.8.85 (unreleased)
 + model validations (using https://github.com/balderdashy/anchor)
 + default values
-
-### 0.8.84 (unreleased)
 + MongoDB adapter 
 + Redis adapter 
 
 -->
+
+### 0.8.84
++ Bug fixes: (explicit hosts, and included an additional file in new app generation)
 
 ### 0.8.83
 _Saturday, March 2, 2013_
