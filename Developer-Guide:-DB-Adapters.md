@@ -5,10 +5,10 @@ To get started, you'll need to clone the main sails repo and create or clone a r
 
 Next, we need to set up the project with the initial file structure, so do:
 
-`
+```
 cd sails-redis
 touch README.md
 touch package.json
 touch .gitignore
 touch RedisAdapter.js
-`
+```
