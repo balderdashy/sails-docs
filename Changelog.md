@@ -14,8 +14,12 @@
 
 -->
 
+### 0.8.86
+_Monday, March 4, 2013_
++ Patch to allow for easier SSL configuration.
+
 ### 0.8.85
-_Saturday, March 3, 2013_
+_Sunday, March 3, 2013_
 + Check for and warn if port is currently being used on lift, with support for explicit hosts (https://github.com/balderdashy/sails/issues/197)
 + Model.stream() support over socket.io (https://github.com/balderdashy/sails/issues/196)
 
