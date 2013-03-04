@@ -72,7 +72,7 @@ module.exports = {
  
 };
 ```
-Our global is set to _disk_, however, since we overridded the adapter for our user model, our user model will now be stored in the sails-mysql connection.  This conneciton is still configured at _/config/adapters.js_.  More on configuration at [Guide: Configuration](Guide: Configuration)
+Our global is set to _disk_, however, since we overridded the adapter for our user model, our user model will now be stored in the sails-mysql connection.  This conneciton is still configured at _/config/adapters.js_.  More on configuration at [Guide: Configuration](Guide:-Configuration)
 
 <!-- ### Associations -->
 
