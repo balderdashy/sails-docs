@@ -52,6 +52,27 @@ Validation rules
 
 defaultValue
 
+### Adapters
+If for some reason you need to override the app default adapter, you can do it here in models.  This will override the default _**ONLY**_ for this model.  
+
+Here is an example in _api/models/User.js_
+```javascript
+module.exports = {
+ adapter: 'sails-mysql',
+ attributes: {
+
+    // Simple attribute:
+    name: 'STRING',
+    email: 'STRING',
+    phoneNumber: {
+      type: 'STRING',
+      defaultValue: '555-555-5555'
+    }
+ }
+ 
+};
+```
+Our global is set to _disk_, however, since we overridded the adapter for our user model, our user model will now be stored in the sails-mysql connection.  This conneciton is still configured at _/config/adapters.js_.  More on configuration at [Guide: Configuration](Guide: Configuration)
 
 <!-- ### Associations -->
 
@@ -86,7 +107,6 @@ sails generate model Person name:string age:int email:string
 
 # Automatic schema creation
 Depending on your configuration, the database tables will be recreated automatically.
-_TODO_
 
 # Querying Models
 You'll want to create, access, modify, and destroy models from controllers, views, services, and policies, and so you'll need a way to deal with them. Sails uses Waterline as its ORM. To learn more about it visit the 
