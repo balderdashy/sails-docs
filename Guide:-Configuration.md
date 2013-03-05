@@ -184,11 +184,65 @@ This is just an example file for _local.js_.
 
 <span id="policies.js"></span>
 # policies.js
+So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 
+```javascript
+/**
+* Policy defines middleware that is run before each controller/controller.
+* Any policy dropped into the /middleware directory is made globally available through sails.middleware
+* Below, use the string name of the middleware
+*/
+module.exports.policies = {
 
+	// Default policy (allow public access)
+	'*': true
+
+	/** Example mapping: 
+	someController: {
+
+		// Apply the "authenticated" policy to all actions
+		'*': 'authenticated',
+
+		// For someAction, apply 'somePolicy' instead
+		someAction: 'somePolicy'
+	}
+	*/
+};
+```
+Each attribute of _policies_ is a key/value pair.  The _key_ is the action name that you want to restrict/unrestrict.  The _value_ can be a simple boolean (true/false) or the name of the policy you want to enforce.  Policies should be found/created as middleware in the _api/policies/_ folder.
 
 <span id="routes.js"></span>
 # routes.js
+Routing your requests to different parts of your app is handled by the _routes.js_ file.  This is where you would specify what to call when a user wants to see something like _http://yourcoolsite.org/users/_
+
+```javascript
+module.exports.routes = {
+	
+	// To route the home page to the "index" action of the "home" controller:
+	'/' : {
+		controller	: 'home'
+	}
+	'/user/' : {
+		controller  : 'user'
+		action      : 'findAll'
+	}
+
+};
+```
+Each attribute of _routes_ is a key/object pair.  The _key_ is the route that you want to control.  This can me "/" for the home page or /user/ for the users page.  It can really be whatever you want the user to be able to type and get content at.  The objects _controller:_ defines what controller to look in for this route, while the _action_ defines what action will be run when the route is executed.  If no action is given, Sails.JS assumes that you want to execute the index action.
 
 <span id="views.js"></span>
 # views.js
+The views.js file controls how your views will display.  From if you will use a layout file to what type of language can be used to create the view files.
+
+```javascript
+module.exports = {
+	viewEngine: 'ejs',
+	layout: true
+};
+```
+_**viewEngine:**_ \<string\>  (Optional) This is the view engine that will be used to parse the view files.
+
+_**layout:**_ \<bool or string\>  (Optional) This is a special value.  It can either be true or false.  If false, it will not use a layout for views.  If true, it will assume that the default file to use is _/views/layout.ejs_ and will use it.  If you pass it a string instead, it will use the file at the string that you passed it.
+
+If you plan to use a viewEngine other than the default, you must verify that it is available to Sails.JS.
