@@ -149,21 +149,43 @@ _**sequence:**_ \<array\>  This is an array of folders that will be included dur
 
 <span id="bootstrap.js"></span>
 # bootstrap.js
+Nothing special here.  This file is for code that needs to be run before the server is launched.
 
 <span id="locales"></span>
 # Locales
+This is a folder that contains the Language files for different locales.
 
-<span id="english.js"></span>d
+<span id="english.js"></span>
 ### english.js
+This file holds all of the language strings for the English Locale.
 
 <span id="local.js"></span>
-# lacal.js
+# local.js
+This file holds local overrides for an app.  For example, if you wanted to use a different port than the one for the app.
+
+```javascript
+// Local configuration
+// 
+// Included in the .gitignore by default,
+// this is where you include configuration overrides for your local system
+// or for a production deployment.
+//
+// For example, to use port 80 on the local machine, override the `port` config
+
+module.exports.host = '127.0.0.1';
+module.exports.port = 8080;
+module.exports.environment = 'production';
+```
+Many of the other configuration items in the other files can be included here for local overrides.  They normally follow the nameing convention of module.exports.\<config option\>. This can be determined by looking at the config files themselves.  For example, the adapters would be ```module.exports.adapters.default = mysql```
 
 <span id="local.ex.js"></span>
 ### local.ex.js
+This is just an example file for _local.js_.
 
 <span id="policies.js"></span>
 # policies.js
+
+
 
 <span id="routes.js"></span>
 # routes.js
