@@ -104,22 +104,22 @@ module.exports = {
 };
 ```
 
-_**appName:**_  This is the name of your application.  It is a string and can be any alpha-numeric string.
+_**appName:**_ \<string\>  This is the name of your application.  It is a string and can be any alpha-numeric string.
 
-_**host:**_  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
+_**host:**_ \<string\>  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
 
-_**port:**_  This is the port number that your application will run on.  This needs to be set to a numeric interger between 1 and 65535.
+_**port:**_ \<integer\>  This is the port number that your application will run on.  This needs to be set to a numeric interger between 1 and 65535.
 
-_**environment:**_  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
+_**environment:**_ \<string\>  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
 
-_**cache:**_  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
+_**cache:**_ \<object\>  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
 * maxAge: \<integer\>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
 
-_**log:**_  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
+_**log:**_ \<object\>  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
 * level: \<string\>  // This can be set to one of: verbose, info, debug, warn, error, silent
 * colorize: \<bool\>    // This can be set to one of: true, false
 
-_**session:**_  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
+_**session:**_ \<object\>  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
 * secret: \<string\>  // This can be set to any alphanmeric-symbolic string.
 * store: \<object\>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
 * key: \<string\>  // This can be set to any alphanmeric string.
