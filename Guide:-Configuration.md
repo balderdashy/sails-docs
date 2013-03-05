@@ -58,11 +58,11 @@ module.exports.adapters = {
 
 OK, so the first thing you may have noticed is the _default_ setting.  This is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other definded options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
 
-momery:  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
+_**momery:**_  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
 
-disk:  This is an option for _'default':_ .  Disk stores all data on disk in the .tmp folder.  This is persisted through restarts.
+_**disk:**_  This is an option for _'default':_ .  Disk stores all data on disk in the .tmp folder.  This is persisted through restarts.
 
-mysql:  This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
+_**mysql:**_ This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
 
 ### Future
 As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
