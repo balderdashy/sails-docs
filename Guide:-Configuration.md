@@ -113,16 +113,16 @@ _**port:**_  This is the port number that your application will run on.  This ne
 _**environment:**_  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
 
 _**cache:**_  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
-	* maxAge: <integer>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
+* maxAge: <integer>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
 
 _**log:**_  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
-	* level: <string>  // This can be set to one of: verbose, info, debug, warn, error, silent
-	* colorize: <bool>    // This can be set to one of: true, false
+* level: <string>  // This can be set to one of: verbose, info, debug, warn, error, silent
+* colorize: <bool>    // This can be set to one of: true, false
 
 _**session:**_  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
-	* secret: <string>  // This can be set to any alphanmeric-symbolic string.
-	* store: <object>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
-	* key: <string>  // This can be set to any alphanmeric string.
+* secret: <string>  // This can be set to any alphanmeric-symbolic string.
+* store: <object>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
+* key: <string>  // This can be set to any alphanmeric string.
 
 
 <span id="assets.js"></span>
