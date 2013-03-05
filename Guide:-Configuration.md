@@ -4,16 +4,16 @@ So you got Sails.JS installed now and its loading up your awesome new project.  
 One of the major advantages of Sails.JS that makes it such a powerhouse MVC is the fact that is incredibly flexable.  As with most porgrams now days, Sails.JS has configurations files.  Below is a list and short explination of each.
 
 * <a href="#adapters.js">adapters.js</a>      (This file handles database/datasource adapters)
-* application.js   (This file handles General settings for your application)
-* assets.js        (This file handles the asset settings for CSS/Js/styles and other resources)
-* bootstrap.js     (This file holds code that needs to be run before the app launches)
-* locales          (Folder that holds locale specific settings)
-	* english.js   (This file handles translated strings for Locale use)
-* local.ex.js      (This is an example file of local.js)
-* local.js         (This file is not included in the `.gitignore`, and so won't be pushed up to your git repository.  It handles any LOCAL overrides needed)
-* policies.js      (This file defines policies that are used to grant or deny access to users)
-* routes.js        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
-* views.js         (This file handles all view related settings, such as the view engine and layout)
+* <a href="#application.js">application.js</a>   (This file handles General settings for your application)
+* <a href="#assets.js">assets.js</a>        (This file handles the asset settings for CSS/Js/styles and other resources)
+* <a href="#bootstrap.js">bootstrap.js</a>     (This file holds code that needs to be run before the app launches)
+* <a href="#locales">locales</a>          (Folder that holds locale specific settings)
+	* <a href="#english.js">english.js</a>   (This file handles translated strings for Locale use)
+* <a href="#local.ex.js">local.ex.js</a>      (This is an example file of local.js)
+* <a href="#local.js">local.js</a>         (This file is not included in the `.gitignore`, and so won't be pushed up to your git repository.  It handles any LOCAL overrides needed)
+* <a href="#policies.js">policies.js</a>      (This file defines policies that are used to grant or deny access to users)
+* <a href="#routes.js">routes.js</a>        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
+* <a href="#views.js">views.js</a>         (This file handles all view related settings, such as the view engine and layout)
 
 <span id="adapters.js"></span>
 # adapters.js
