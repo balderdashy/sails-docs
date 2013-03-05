@@ -13,6 +13,9 @@
 + Redis adapter 
 
 -->
+### 0.8.87
+_Monday, March 4, 2013_
++ Patch fixes updates sails-dirty version which fixes sorting by date
 
 ### 0.8.86
 _Monday, March 4, 2013_
