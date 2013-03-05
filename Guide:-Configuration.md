@@ -81,7 +81,7 @@ The application.js file hold all the generalized configuration options for an ap
 # Locales
 
 <span id="english.js"></span>
-## english.js
+### english.js
 
 <span id="local.js"></span>
 # lacal.js
