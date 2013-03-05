@@ -9,8 +9,8 @@ One of the major advantages of Sails.JS that makes it such a powerhouse MVC is t
 * <a href="#bootstrap.js">bootstrap.js</a>     (This file holds code that needs to be run before the app launches)
 * <a href="#locales">locales</a>          (Folder that holds locale specific settings)
 	* <a href="#english.js">english.js</a>   (This file handles translated strings for Locale use)
-* <a href="#local.ex.js">local.ex.js</a>      (This is an example file of local.js)
 * <a href="#local.js">local.js</a>         (This file is included in the `.gitignore` and won't be pushed up to your git repository.  It handles any LOCAL overrides needed)
+	* <a href="#local.ex.js">local.ex.js</a>      (This is an example file of local.js)
 * <a href="#policies.js">policies.js</a>      (This file defines policies that are used to grant or deny access to users)
 * <a href="#routes.js">routes.js</a>        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
 * <a href="#views.js">views.js</a>         (This file handles all view related settings, such as the view engine and layout)
@@ -67,6 +67,33 @@ mysql:  This is an option for _'default':_ .  Mysql stores all data in a MySQL D
 ## Furture
 As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
 
+<span id="application.js"></span>
 # application.js
 The application.js file hold all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
 
+<span id="assets.js"></span>
+# assets.js
+
+<span id="bootstrap.js"></span>
+# bootstrap.js
+
+<span id="locales"></span>
+# Locales
+
+<span id="english.js"></span>
+## english.js
+
+<span id="local.js"></span>
+# lacal.js
+
+<span id="local.ex.js"></span>
+## local.ex.js
+
+<span id="policies.js"></span>
+# policies.js
+
+<span id="routes.js"></span>
+# routes.js
+
+<span id="views.js"></span>
+# views.js
