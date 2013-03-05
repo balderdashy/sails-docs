@@ -64,7 +64,7 @@ disk:  This is an option for _'default':_ .  Disk stores all data on disk in the
 
 mysql:  This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
 
-## Furture
+### Future
 As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
 
 <span id="application.js"></span>
@@ -87,7 +87,7 @@ The application.js file hold all the generalized configuration options for an ap
 # lacal.js
 
 <span id="local.ex.js"></span>
-## local.ex.js
+### local.ex.js
 
 <span id="policies.js"></span>
 # policies.js
