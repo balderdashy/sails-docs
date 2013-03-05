@@ -21,7 +21,7 @@ The adapters.js file is where you will specify your database options for the ent
 
 ```javascript
 // Configure installed adapters
-// If you define an attribute in your model definition, 
+// If you define an adapter in your model definition, 
 // it will override anything from this global config.
 module.exports.adapters = {
 
@@ -69,7 +69,61 @@ As more adapters are created, they will be added to this guide.  Sails.JS plans 
 
 <span id="application.js"></span>
 # application.js
-The application.js file hold all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
+The application.js file holds all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
+
+```javascript
+module.exports = {
+	
+	// Name of the application (used as default <title>)
+	appName: "Sails Application",
+
+	// Port this Sails application will live on
+	port: 1337,
+
+	// The environment the app is deployed in 
+	// (`development` or `production`)
+	//
+	// In `production` mode, all css and js are bundled up and minified
+	// And your views and templates are cached in-memory.  Gzip is also used.
+	// The downside?  Harder to debug, and the server takes longer to start.
+	environment: 'development',
+
+	// Logger
+	// Valid `level` configs:
+	// 
+	// - error
+	// - warn
+	// - debug
+	// - info
+	// - verbose
+	//
+	log: {
+		level: 'info'
+	}
+
+};
+```
+
+_**appName:**_  This is the name of your application.  It is a string and can be any alpha-numeric string.
+
+_**host:**_  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
+
+_**port:**_  This is the port number that your application will run on.  This needs to be set to a numeric interger between 1 and 65535.
+
+_**environment:**_  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
+
+_**cache:**_  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
+	* maxAge: <integer>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
+
+_**log:**_  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
+	* level: <string>  // This can be set to one of: verbose, info, debug, warn, error, silent
+	* colorize: <bool>    // This can be set to one of: true, false
+
+_**session:**_  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
+	* secret: <string>  // This can be set to any alphanmeric-symbolic string.
+	* store: <object>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
+	* key: <string>  // This can be set to any alphanmeric string.
+
 
 <span id="assets.js"></span>
 # assets.js
