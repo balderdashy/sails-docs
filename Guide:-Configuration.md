@@ -176,7 +176,7 @@ module.exports.host = '127.0.0.1';
 module.exports.port = 8080;
 module.exports.environment = 'production';
 ```
-Many of the other configuration items in the other files can be included here for local overrides.  They normally follow the nameing convention of ```module.exports.\<config option\>```. This can be determined by looking at the config files themselves.  For example, the adapters would be ```module.exports.adapters.default = mysql```
+Many of the other configuration items in the other files can be included here for local overrides.  They normally follow the nameing convention of ```module.exports.<config option>```. This can be determined by looking at the config files themselves.  For example, the adapters would be ```module.exports.adapters.default = mysql```
 
 <span id="local.ex.js"></span>
 ### local.ex.js
