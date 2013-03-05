@@ -13,6 +13,9 @@
 + Redis adapter 
 
 -->
+### 0.8.88
++ Adds coffeescript support on the front-end in dev and production environments via [asset-rack](https://github.com/techpines/asset-rack) (thanks @techpines!)
+
 ### 0.8.87
 _Monday, March 4, 2013_
 + Patch fixes updates sails-dirty version which fixes sorting by date
