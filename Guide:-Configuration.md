@@ -3,7 +3,7 @@ So you got Sails.JS installed now and its loading up your awesome new project.  
 # Overview of Configurations
 One of the major advantages of Sails.JS that makes it such a powerhouse MVC is the fact that is incredibly flexable.  As with most porgrams now days, Sails.JS has configurations files.  Below is a list and short explination of each.
 
-* adapters.js      (This file handles database/datasource adapters)
+* <a href="#adapters.js">adapters.js</a>      (This file handles database/datasource adapters)
 * application.js   (This file handles General settings for your application)
 * assets.js        (This file handles the asset settings for CSS/Js/styles and other resources)
 * bootstrap.js     (This file holds code that needs to be run before the app launches)
@@ -15,7 +15,7 @@ One of the major advantages of Sails.JS that makes it such a powerhouse MVC is t
 * routes.js        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
 * views.js         (This file handles all view related settings, such as the view engine and layout)
 
-# adapters.js
+<span id="adapters.js"># adapters.js</span>
 
 The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts.
 
@@ -58,4 +58,15 @@ module.exports.adapters = {
 
 OK, so the first thing you may have noticed is the _default_ setting.  This is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other definded options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
 
-momery:  This is an option for _'default':_ .
+momery:  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
+
+disk:  This is an option for _'default':_ .  Disk stores all data on disk in the .tmp folder.  This is persisted through restarts.
+
+mysql:  This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
+
+## Furture
+As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
+
+# application.js
+The application.js file hold all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
+
