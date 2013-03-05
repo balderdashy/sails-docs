@@ -15,8 +15,8 @@ One of the major advantages of Sails.JS that makes it such a powerhouse MVC is t
 * routes.js        (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
 * views.js         (This file handles all view related settings, such as the view engine and layout)
 
-<span id="adapters.js"># adapters.js</span>
-
+<span id="adapters.js"></span>
+# adapters.js
 The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts.
 
 ```javascript
