@@ -95,7 +95,7 @@ module.exports = function (req,res,next) {
 ```javascript
 // api/policies/policy1.js
 module.exports = function (req,res,next) {
-  // Or you might want to take some action at the beginning of each request
+  // Then you might want to take some action at the beginning of each request
   // to make it available in your controller
   req.lottery = Math.random();
   next();
