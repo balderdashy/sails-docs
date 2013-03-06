@@ -68,4 +68,15 @@ As you can see, this can make for much cleaner controller action code in that yo
 business logic. The miscellaneous jobs such as validating data or making sure users are authorized
 no longer has to be in the action, and instead live in modular middleware files. 
 
+## Chaining Policies
+
+To apply two policies to a given action, in order, you can specify an array of strings, each referring to a specific middleware. 
+
+```javascript
+controller1: {
+    action0: ['policy0', 'policy1'],
+    action1: true
+}
+```
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/policies)
