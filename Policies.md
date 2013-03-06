@@ -79,4 +79,27 @@ controller1: {
 }
 ```
 
+Then, in your policy definitions:
+```javascript
+// api/policies/policy0.js
+module.exports = function (req,res,next) {
+  // Verify that some constraint passes, or take some action at the beginning of each request
+  var passes = req.session.authenticated;
+ 
+  // Call next to continue on to next policy or the controller
+  if (passes) return next();
+  else return res.redirect('/login');
+}
+```
+
+```javascript
+// api/policies/policy1.js
+module.exports = function (req,res,next) {
+  // Or you might want to take some action at the beginning of each request
+  // to make it available in your controller
+  req.lottery = Math.random();
+  next();
+}
+```
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/policies)
