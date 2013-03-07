@@ -99,10 +99,11 @@ _TODO_ -->
 
 # Where do I define Models?
 Models are defined in the **api/models/** directory in your Sails application.
-You can create them with their attributes using.
+<!-- You can create them with their attributes using.   name:string age:int email:string -->
 
+You can generate a model with the command line tool:
 ```
-sails generate model Person name:string age:int email:string
+sails generate model Person
 ```
 
 # Automatic schema creation
