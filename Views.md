@@ -78,6 +78,16 @@ The default **/views/layout.ejs** will look like this:
 
 This layout file is the beginning to a html5 compatable website application.  This is about all you need.  If you want to add in custom links to javascript or to external resources that are not handled by assets, this is where you should do it.
 
+If you need to override a layout for a specific view, you can do so in the res.view call as below:
+
+```
+res.view({
+  layout: "different_layout"
+})
+```
+
+This could be called from any controller output.
+
 # View Partials
 
 Partials are just like they sound.  A View Partial is only a small part of the overall dom that you see on your web application.  With that said, a partial is nothing more than another (smaller) ejs file.  Lets take a look at a partial from the sails example, and how we should include it from another ejs file.
