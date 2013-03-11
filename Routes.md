@@ -92,7 +92,7 @@ module.exports.routes = {
 ```
 
 # Wildcard Routes
-Wildcard routes can also be defined in **config/routes.js**.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the _:unkownRoute_ static from express as the route.  And example of this is shown below.
+Wildcard routes can also be defined in **config/routes.js**.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the _:unkownRoute_ arbitrary variable as the route.  An example of this is shown below.
 
 ```javascript
 // config/routes.js
@@ -111,7 +111,9 @@ modules.exports.routes = {
 };
 ```
 
-Also, if say your route is the username of a user on your system, you could do the following.
+Arbitrary variables will take any value that is put in the router and pass it down to the controller and action you specify.
+
+Another example, if say you want the route as the username of a user on your system, you could do the following.
 
 ```javascript
   '/:username': {
@@ -120,5 +122,21 @@ Also, if say your route is the username of a user on your system, you could do t
   }
 ```
 
+and in your controller,
+
+```javascript
+module.exports = {
+  profile: function (req,res) {
+    var username = req.param('username');
+    User.findByUsername(username).done(function (err, user) {
+       if (err) return res.send(err,500);
+       res.view({ user: user });
+    });
+  }
+
+};
+```
+
+This setup will allow UserA to visit http://yoursite.com/UserA and depending on your view, may see their profile page.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/routes)
