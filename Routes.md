@@ -91,4 +91,34 @@ module.exports.routes = {
 
 ```
 
+# Wildcard Routes
+Wildcard routes can also be defined in **config/routes.js**.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the _:unkownRoute_ static from express as the route.  And example of this is shown below.
+
+```javascript
+// config/routes.js
+
+modules.exports.routes = {
+  '/some/route': {
+    controller: 'something',
+    action: 'foo'
+  },
+
+  // Wildcard (404) handler
+  '/:unknownRoute': {
+    controller: 'notfound'
+    action: 'index'
+  }
+};
+```
+
+Also, if say your route is the username of a user on your system, you could do the following.
+
+```javascript
+  '/:username': {
+    controller: 'user',
+    action: 'profile'
+  }
+```
+
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/routes)
