@@ -10,7 +10,7 @@ Traditional views are defined in the **/views/** directory while templates are d
 **/assets/templates/** directory.
 
 # Server-side Views, Layout, and View Partials
-Server-side views in the **/views/** directory are by default ejs files that will handle the job
+Server-side views in the **/views/** directory are by default EJS files that will handle the job
 of presenting data when a view requested by the client. The method ```res.view()``` call will
 respond to a client with the appropriate view. If no controller or action for a request exist, Sails resourceful routing automatically serves a view if the view **/views/:controller/:action.ejs** exists.
 
@@ -42,7 +42,7 @@ And here's what the controller looks like:
 	module.exports = CorndogController;
 ```
 
-Opening up **/views/layout.ejs** you will see some ejs partials ```<%- assets.css ->```, ```<%- assets.js ->```, ```<%- body ->```, and ```<%- assets.templateLibrary ->```.
+Opening up **/views/layout.ejs** you will see some EJS partials ```<%- assets.css ->```, ```<%- assets.js ->```, ```<%- body ->```, and ```<%- assets.templateLibrary ->```.
 
 Both **assets.css** and **assets.js** partials inject compiled css and js assets into your layout.
 The **body** partial is where the req views will be injected. Finally, **assets.templateLibrary**
@@ -73,7 +73,7 @@ The default **/views/layout.ejs** will look like this:
 </html>
 ```
 
-This layout file is the beginning to a html5 compatable website application.  This is about all you need.  If you want to add in custom links to javascript or to external resources that are not handled by assets, this is where you should do it.
+This layout file is the beginning to a HTML5 compatable website application.  This is about all you need.  If you want to add in custom links to JavaScript or to external resources that are not handled by assets, this is where you should do it.
 
 If you need to override a layout for a specific view, you can do so in the res.view call as below:
 
@@ -87,7 +87,7 @@ This could be called from any controller output.
 
 # View Partials
 
-Partials are just like they sound.  A View Partial is only a small part of the overall dom that you see on your web application.  With that said, a partial is nothing more than another (smaller) ejs file.  Lets take a look at a partial from the sails example, and how we should include it from another ejs file.
+Partials are just like they sound.  A View Partial is only a small part of the overall DOM that you see on your web application.  With that said, a partial is nothing more than another (smaller) EJS file. Lets take a look at a partial from the Sails example, and how we should include it from another EJS file.
 
 **/views/site/partials/footer.ejs**
 ```
@@ -103,7 +103,7 @@ Partials are just like they sound.  A View Partial is only a small part of the o
 	</span>
 <footer>
 ```
-As you can see, this is nothing more than a simple ejs file.  Nothing special, nothing magical.
+As you can see, this is nothing more than a simple EJS file.  Nothing special, nothing magical.
 
 Now, lets call it from our index file.
 
@@ -136,22 +136,22 @@ Something a little more complicated?  Sure!  We'll do a 2 level partial this tim
 </section>
 ```
 
-Still simple, but whats this? we are now including other partials from within our partial?  YES! that is exactly what we are doing.  From what you can see now...we can create a hierarchial system of partials that make it easy to navigate through the files for designers.
+Still simple, but whats this? We are now including other partials from within our partial?  YES! that is exactly what we are doing.  From what you can see now... we can create a hierarchical system of partials that make it easy to navigate through the files for designers.
 
-Lets take a look at the "about" section.  Since we are dealing with html5, we like to name the folders that the partials are held in accordingly.  Why? because it just makes sense!
+Lets take a look at the "about" section.  Since we are dealing with HTML5, we like to name the folders that the partials are held in accordingly.  Why? because it just makes sense!
 
 **/views/site/partials/sections/about.ejs**
 ```
 <p>
-Sails.js is built on Node.js for easily building fast, scalable network applications. Sails.js provides a MVC framework perfect for data-intensive real-time applications that run across distributed devices.  Sails.js provides a json API right out of the box.<br>
+SailsJS is built on NodeJS for easily building fast, scalable network applications. SailsJS provides a MVC framework perfect for data-intensive real-time applications that run across distributed devices.  SailsJS provides a JSON API right out of the box.<br>
 <br>
 Current Version: v0.8.82
 </p>
 ```
 
-Lets look at this a bit now.  We just included a partial from within another partial.  We can use relative pathing to include and because our **/views/site/partials/page.ejs** page and **/views/site/partials/sections** folder are at the same level in the file system, relative pathing is easy to use.  Simple right?  We thought so too.
+Lets look at this a bit now.  We just included a partial from within another partial.  We can use relative pathing to include and because our **/views/site/partials/page.ejs** page and **/views/site/partials/sections** folder are at the same level in the file system, relative pathing is easy to use.  Simple right?  We thought so, too.
 
-We have a stucture that we prefer to use for partials to make things easy to read.  This is by no means a "have-to-use" structure, but we do suggest it, as its our standards.
+We have a structure that we prefer to use for partials to make things easy to read.  This is by no means a "have-to-use" structure, but we do suggest it, as it is our standard.
 
 
 ```
@@ -193,4 +193,4 @@ partial is employed.
 
 #Templating Engine Configuration
 
-One of the benefits of Sail.JS is flexability.  Sails.JS's views system allows for other templating engines than the default.  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and just change the engine in **/config/views.js**.
+One of the benefits of SailJS is flexability.  SailsJS's views system allows for other templating engines than the default (EJS).  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and just change the engine in **/config/views.js**.
