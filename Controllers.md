@@ -35,6 +35,7 @@ var CommentController = {
 module.exports = CommentController;
 ```
 
+<!--
 Alternively if you add a federated flag ```-f``` to the end of your generate controller command the
 controller will be created as a folder with each action being its own file. This is useful if
 your actions contain a bunch of logic. No more super long controller files! The best part about this
@@ -47,7 +48,8 @@ will create the directory, **api/controllers/comment/** with three files
 **/api/controllers/comment/create.js**,
 **/api/controllers/comment/destory.js**, and
 **/api/controllers/comment/tag.js**.
- 
+
+-->
 
 # The Request Object
 
