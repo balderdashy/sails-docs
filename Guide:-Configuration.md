@@ -1,7 +1,7 @@
 So you got Sails.JS installed now and its loading up your awesome new project.  What? thats not good enough? OK, lets see what we can configure to make it better for your needs!!!
 
 # Overview of Configurations
-One of the major advantages of Sails.JS that makes it such a powerhouse MVC is the fact that is incredibly flexable.  As with most porgrams now days, Sails.JS has configurations files.  Below is a list and short explination of each.
+One of the major advantages of Sails.JS that makes it such a powerhouse MVC is the fact that is incredibly flexable.  As with most programs now days, Sails.JS has configurations files.  Below is a list and short explination of each.
 
 * <a href="#adapters.js">adapters.js</a>      (This file handles database/datasource adapters)
 * <a href="#application.js">application.js</a>   (This file handles General settings for your application)
