@@ -3,16 +3,22 @@
 ## Beta
 
 <!--
-### 0.8.9 (unreleased)
-+ .save(), .destroy(), and custom instance methods on models
-+ Front-end CoffeeScript support in AssetRack
-+ Front-end jade template support
+### 0.9.0 (breaks 0.8.x projects)
++ Traces of "proper" active record .save(), .destroy(), removed.  Now when you call User.findAll(), you get a list of objects which contain just the models' data.  This prevents confusion with using .values
 + model validations (using https://github.com/balderdashy/anchor)
-+ default values
-+ MongoDB adapter 
 + Redis adapter 
++ MongoDB adapter 
 
+### 0.8.9 (upcoming release)
++ Haml template support on back-end for new projects (thanks @dcbartlett)
++ default values in models (defaultsTo)
++ Chained policies fixed
 -->
+
+
+### 0.8.89-1 (latest stable)
++ Front-end CoffeeScript support in AssetRack
+
 ### 0.8.88
 + Adds coffeescript support on the front-end in dev and production environments via [asset-rack](https://github.com/techpines/asset-rack) (thanks @techpines!)
 
