@@ -20,8 +20,14 @@
 -->
 
 
-### 0.8.89-1 (latest stable)
-+ Front-end CoffeeScript support in AssetRack
+### 0.8.892 (latest stable)
++ Front-end CoffeeScript support in AssetRack (thanks @techpines!)
++ Chained policy support
++ New styles for default home page (thanks @egdelwonk!)
++ Windows compat. fix (thanks @feroc1ty!)
++ Support for string IDs (thanks @tedkulp!)
++ Attribute scaffolding for model generation (thanks @Tidwell)
++ Support for big int string conversion in id normalization (thanks @d4mn!)
 
 ### 0.8.88
 + Adds coffeescript support on the front-end in dev and production environments via [asset-rack](https://github.com/techpines/asset-rack) (thanks @techpines!)
