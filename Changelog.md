@@ -5,6 +5,10 @@
 <!--
 ### 0.9.0 (breaks 0.8.x projects)
 + Traces of "proper" active record .save(), .destroy(), removed.  Now when you call User.findAll(), you get a list of objects which contain just the models' data.  This prevents confusion with using .values
++ Removed CRUD synonyms
++ Config option to disable convenience API calls (model/create, model/findAll, etc.)
++ Option to generate actual files when generating blueprints
++ Removed all reference to blueprints as "scaffolds".  Blueprints are more than temporary placeholders-- they are the preferred method of serving an API from your app.
 + model validations (using https://github.com/balderdashy/anchor)
 + Redis adapter 
 + MongoDB adapter 
