@@ -193,4 +193,4 @@ partial is employed.
 
 #Templating Engine Configuration
 
-One of the benefits of SailJS is flexability.  SailsJS's views system allows for other templating engines than the default (EJS).  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and just change the engine in **/config/views.js**.
+One of the benefits of SailJS is flexability.  SailsJS's views system allows for other templating engines than the default (EJS).  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and just change the engine in **/config/views.js**, or use `sails new appname --template=jade` for new projects.
