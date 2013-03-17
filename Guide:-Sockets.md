@@ -48,11 +48,14 @@ In controllers, when handling a socket request, req and res are automatically se
 
 ### req.listen(room)
 Subscribe the current socket to broadcasts from the specified room
+e.g. `req.listen('off the wall chats')`
 
 ### res.broadcast(room, uri, data)
-Broadcast a JSON message to all connected sockets in the specified room that looks like this:
+Broadcast a JSON message to all connected sockets in the specified room.
+e.g. `req.broadcast('off the wall chats', 'chat/create', {message: 'who is going out tonight?', user: {id: 3, username: 'Roscoe'}, id: 283})`
 
-```
+The broadcasted JSON looks like this:
+```json
 {
   "uri": uri,
   "data": data
