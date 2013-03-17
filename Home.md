@@ -92,7 +92,7 @@ You can control access to your application's endpoints using policies.  See: htt
 ## Using https
 HTTPS works the same way in Sails as it does in Express.  Drop your certificate and key file into your project, then configure the path to them.  For example, if you put your cert and key in a directory called `ssl` in the root of your project, you'd want to add the following to your `config/application.js` file:
 
-```
+```javascript
 module.exports.ssl = {
   cert : fs.readFileSync(sails.config.appPath+'/ssl/combined.crt'),
   key  : fs.readFileSync(sails.config.appPath+'/ssl/yoursite.com.key')
