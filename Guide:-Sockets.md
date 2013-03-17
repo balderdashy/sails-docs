@@ -42,28 +42,53 @@ socket.request('/user',{}, function (response) {
 
 Similarly, creating, updating, and destroying models using the blueprint can be accessed just like they are via HTTP, and events will be automatically broadcasted to the other subscribed sockets.  All without writing any code!  
 
+# Built-in socket methods
+In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express.  `req.socket` contains a raw reference to the underlying socket.io socket.  The following extra socket.io specific methods are also appended to the req and res objects:
+
+
+### req.listen(room)
+Subscribe the current socket to broadcasts from the specified room
+
+### res.broadcast(room, uri, data)
+Broadcast a JSON message to all connected sockets in the specified room that looks like this:
+
+```
+{
+  "uri": uri,
+  "data": data
+}
+```
+
 # Pubsub convenience hooks
+Since models are automatically furnished with a collection-wide "class room" and an "instance room" for each instance, it gives us some interesting opportunities to offer convient accessor methods for performing common publish/subscribe operations.  Check out some of the socket-oriented convenience methods you can use.
+
 
 ### Model.subscribe(req, models)
 Subscribe the request object's socket (`req`) to the specified `models`
+e.g. `User.subscribe(req,[{id: 7}])`
 
 ### Model.unsubscribe(req, models)
 Unsubscribe the request object's socket (`req`) from the specified `models`
+e.g. `User.unsubscribe(req,[{id: 7}, {id: 2}])`
 
 ### Model.introduce(req,id)
 Take all of the class room models and 'introduce' them to a new instance room
 (good for when a new instance is created-- connecting sockets must subscribe to it)
+e.g. `User.introduce(req,3)`
 
 ### Model.publish(req,models,message)
 Broadcast a `message` to sockets connected to the specified `models` using the request object (`req`).
+e.g. `User.publish(req,[{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})`
 
 ### Model.room(id)
 Return the room name for the instance in this collection with the given id
+e.g. `User.room(3)`
 
 ### Model.subscribers(id)
 Return the set of sockets subscribed to this instance (if id specified) or class room (if it's not)
+e.g. `User.subscribers(7)`
 
-Documentation to come, see https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for now.
+See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implementation details.
 
 
 # Need more?
