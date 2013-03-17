@@ -1,0 +1,1 @@
+[using sails with passport](https://github.com/vicapow/sails-passport)
