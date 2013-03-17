@@ -42,10 +42,10 @@ And here's what the controller looks like:
 	module.exports = CorndogController;
 ```
 
-Opening up **/views/layout.ejs** you will see some EJS partials ```<%- assets.css ->```, ```<%- assets.js ->```, ```<%- body ->```, and ```<%- assets.templateLibrary ->```.
+Opening up **/views/layout.ejs** you will see some EJS partials ```<%- assets.css() ->```, ```<%- assets.js() ->```, ```<%- body ->```, and ```<%- assets.templateLibrary() ->```.
 
-Both **assets.css** and **assets.js** partials inject compiled css and js assets into your layout.
-The **body** partial is where the req views will be injected. Finally, **assets.templateLibrary**
+Both **assets.css()** and **assets.js()** partials inject compiled css and js assets into your layout.
+The **body** partial is where the req views will be injected. Finally, **assets.templateLibrary()**
 is used for client side template injection.
 
 The default **/views/layout.ejs** will look like this:
@@ -60,15 +60,15 @@ The default **/views/layout.ejs** will look like this:
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		
 		<!-- JavaScript and stylesheets from your public folder are included here -->
-		<%- assets.css %>
-		<%- assets.js %>
+		<%- assets.css() %>
+		<%- assets.js() %>
 	</head>
 
 	<body>
 		<%- body %>
 
 		<!-- Templates from your view path are included here -->
-		<%- assets.templateLibrary %>
+		<%- assets.templateLibrary() %>
 	</body>
 </html>
 ```
