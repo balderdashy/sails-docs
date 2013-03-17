@@ -101,5 +101,7 @@ e.g. `User.subscribers(7)`
 See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implementation details.
 
 
-# Need more?
+# Need more control?
+If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out; they did a good job making it pretty straightforward. You can read more here: http://socket.io/#how-to-use
+
 The root Socket.io object is available globally in Sails via `sails.io`.  You can also access the currently connected socket in the request object, via `req.socket` in your controllers.
