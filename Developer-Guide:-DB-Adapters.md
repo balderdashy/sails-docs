@@ -1,4 +1,6 @@
-Note: See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.
+# Building Your Own Adapters
+
+> Note: See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.
 -----
 
 Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) called Waterline for normalizing
