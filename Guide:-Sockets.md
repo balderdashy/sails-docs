@@ -43,6 +43,26 @@ socket.request('/user',{}, function (response) {
 Similarly, creating, updating, and destroying models using the blueprint can be accessed just like they are via HTTP, and events will be automatically broadcasted to the other subscribed sockets.  All without writing any code!  
 
 # Pubsub convenience hooks
+
+### Model.subscribe(req, models)
+Subscribe the request object's socket (`req`) to the specified `models`
+
+### Model.unsubscribe(req, models)
+Unsubscribe the request object's socket (`req`) from the specified `models`
+
+### Model.introduce(req,id)
+Take all of the class room models and 'introduce' them to a new instance room
+(good for when a new instance is created-- connecting sockets must subscribe to it)
+
+### Model.publish(req,models,message)
+Broadcast a `message` to sockets connected to the specified `models` using the request object (`req`).
+
+### Model.room(id)
+Return the room name for the instance in this collection with the given id
+
+### Model.subscribers(id)
+Return the set of sockets subscribed to this instance (if id specified) or class room (if it's not)
+
 Documentation to come, see https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for now.
 
 
