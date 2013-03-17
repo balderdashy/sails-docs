@@ -3,13 +3,6 @@ interactions with models, no matter what data source you're using.  It also defi
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory
 state (i.e. Session storage.)
 
-# Supported Databases:
-* mySQL
-* In-memory development: Dirty db;
-* Coming soon: SQLite
-* Coming soon: Postgres
-* Coming soon: MongoDB
-
 # What is a Model?
 A model is a persistent data type: a representation of data stored in a database. If you're using
 mySQL, a model might correspond to a table. If you're using MongoDB, it might correspond to a
@@ -48,31 +41,51 @@ only require if db uses types.
 updatedAt
 createdAt
 
-Validation rules
+<!--
+### Validation rules
+TODO
+-->
 
-defaultValue
+### defaultsTo
+The value this attribute should be set to if left unspecified during model creation.
 
 ### Adapters
-If for some reason you need to override the app default adapter, you can do it here in models.  This will override the default _**ONLY**_ for this model.  
 
-Here is an example in _api/models/User.js_
+Adapters can be included from npm, or defined locally in the `api/adapters` directory of your project.
+
+You can override the adapter globally for your application, or you can configure different models to point to different adapters.  To see how to change your default application adapter config, check out the Configuration section of this documentation at [Guide: Configuration](/balderdashy/sails/wiki/Guide:-Configuration)
+
+To override the adapter of a single model, you specify the adapter module's name and any extra configuration information necessary to make it work.
+
+For example:
+
 ```javascript
+// api/models/User.js
 module.exports = {
+
  adapter: 'sails-mysql',
+ user: 'root',
+ password: 'thePassword',
+ database: 'testdb',
+ host: '127.0.0.1',
+ 
+
  attributes: {
 
     // Simple attribute:
-    name: 'STRING',
-    email: 'STRING',
+    name: 'string',
+    email: 'string',
     phoneNumber: {
-      type: 'STRING',
-      defaultValue: '555-555-5555'
+      type: 'string',
+      defaultsTo: '555-555-5555'
     }
  }
  
 };
 ```
-Our global is set to _disk_, however, since we overridded the adapter for our user model, our user model will now be stored in the sails-mysql connection.  This conneciton is still configured at _/config/adapters.js_.  More on configuration at [Guide: Configuration](/balderdashy/sails/wiki/Guide:-Configuration)
+
+Our global is set to _disk_, however, since we overrode the adapter, our User models will now be stored in MySQL using the sails-mysql adapter. 
+
 
 <!-- ### Associations -->
 
