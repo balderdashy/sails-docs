@@ -36,7 +36,7 @@ type by adding arguments at the end of the command. To generate a User model, en
 sails generate model User
 ```
 
-You will see that this creates a user model at **/api/model/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
+You will see that this creates a user model at **/api/models/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
 
 ```javascript
 var User = {
