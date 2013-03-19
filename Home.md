@@ -39,13 +39,12 @@ sails generate model User
 You will see that this creates a user model at **/api/models/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
 
 ```javascript
-var User = {
+module.exports = {
         attributes      : {
                 name: 'STRING'
         }
 
 };
-module.exports = User;
 ```
 
 # What's Better Than Scaffolding?  How About a JSON API?
