@@ -105,3 +105,16 @@ See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implement
 If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out; they did a good job making it pretty straightforward. You can read more here: http://socket.io/#how-to-use
 
 The root Socket.io object is available globally in Sails via `sails.io`.  You can also access the currently connected socket in the request object, via `req.socket` in your controllers.
+
+# FAQ
+### 500 error: "handshake error" returned from socket.io request
+This is most likely because you don't have any express cookies yet in your current session and are requesting from a domain other than your server. To alleviate this and prevent the error from cropping back up, you should build in some kind of request to your server BEFORE you initialize your socket.io connection. So, if you're using Mast, something like this on your client side:
+
+```javascript
+// location of your server
+url = "http://localhost:1337/"
+// dummy request to the server, retrieves cookie. using jQuery, you can use whatever
+$.get(url, function() {})
+// NOW setup socket.io
+Mast.raise({ baseurl : url })
+```
