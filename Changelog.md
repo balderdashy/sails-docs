@@ -20,16 +20,21 @@
 
 
 ### 0.8.896
++ Main: Compatibility with Node v0.10.0 (patches node-dirty)
++ Main: Fixed crash that happened when absolute path was given as appPath
++ Main: `sails generate` generates actual code for the blueprint controller file
 + Assets: Added more logging features for less.
 + Assets: Reset.css now in mixins
-+ Routing: Added _controller.action_ syntax
 + Assets: Less assets are deligated to _Rack.LessAsset_
 + Assets: Less assets served from asset-rack will have their extenstions changed to css
-+ Main: Fixed crash that happened when absolute path was given as appPath
 + Policies: Implemented the controller syntax for defining a policy.
 + Naming: _scaffolds_ is now known as _blueprints_
 + Naming: _blueprints_ is now known as _boilerplates_
-+ Routing: Removed CRUD Synonyms. Supported are find, findAll, create, destroy, update 
++ Routing: Added _controller.action_ syntax
++ Routing: Removed CRUD Synonyms. Supported are find, findAll, create, destroy, update
++ Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes
++ Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  Does now.
+
 
 -->
 
