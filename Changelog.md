@@ -17,10 +17,33 @@
 + Haml template support on back-end for new projects (thanks @dcbartlett)
 + default values in models (defaultsTo)
 + Chained policies fixed
+
+
+### 0.8.896
++ Assets: Added more logging features for less.
++ Assets: Reset.css now in mixins
++ Routing: Added _controller.action_ syntax
++ Assets: Less assets are deligated to _Rack.LessAsset_
++ Assets: Less assets served from asset-rack will have their extenstions changed to css
++ Main: Fixed crash that happened when absolute path was given as appPath
++ Policies: Implemented the controller syntax for defining a policy.
++ Naming: _scaffolds_ is now known as _blueprints_
++ Naming: _blueprints_ is now known as _boilerplates_
++ Routing: Removed CRUD Synonyms. Supported are find, findAll, create, destroy, update 
+
 -->
 
+### 0.8.895 (latest stable)
++ Policies: Fixed the "*" route for controllers.
++ Policies: The "*" policy can now be set to _false_
++ Collections: Type restrictions are cleaner
++ Adapters: Default was changed to memory due to an issue with node-dirty
++ Log: _sails.config.log.level_ is passed to socket.io
++ Assets: Bug fixed: not calling next when compiling less with syntax (thanks vicapow)
++ Assets: Typescript supported on front end (thanks Diullei)
++ Assets: Meaningful less errors were added (thanks vicapow)
 
-### 0.8.892 (latest stable)
+### 0.8.892
 + Front-end CoffeeScript support in AssetRack (thanks @techpines!)
 + Chained policy support
 + New styles for default home page (thanks @egdelwonk!)
