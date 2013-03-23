@@ -124,6 +124,9 @@ _**session:**_ \<object\>  (Optional)  This is the setting object for sessions. 
 * store: \<object\>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
 * key: \<string\>  // This can be set to any alphanmeric string.
 
+_**viewEngine:**_ \<object\> (Optional) The templating engine to use for your views. Default is [EJS](http://embeddedjs.com/). Currently only EJS and [Jade](http://jade-lang.com/) are supported.
+
+_**layout:**_ \<object\> (Optional) The file in the /views/ folder to use as the default layout. Default is false, which uses layout.ejs
 
 <span id="assets.js"></span>
 # assets.js
