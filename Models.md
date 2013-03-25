@@ -316,6 +316,18 @@ User.destroy({
 });
 ```
 
+## Query Modifiers
+Modifiers can be used in your database queries.  These make it easier to get information from your database without having to write a bunch of code.
+
+### or
+In order to use an _or_ modifier, you would do the following.
+
+```javascript
+where: {
+  or: [{name: 'James'}, {name: 'Mike'}]
+}
+```
+
 # What About Migrations?
 
 Migrations happen automatically. Data migrations do not exist at this time but you can contact us
