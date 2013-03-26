@@ -11,7 +11,10 @@ relying on any one type of database.
 
 # How do I define a Model?
 Model definitions contain attributes and associations.
-
+Community Manager
+Balderdash - Sails.JS
+1.512.537.8156
+1.337.424.2501
 ### Attributes
 Attributes are basic pieces of information about a model.  For instance, a model called `Person`
 might have an attributes called `name`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
@@ -317,9 +320,20 @@ User.destroy({
 ```
 
 ## Query Modifiers
-Modifiers can be used in your database queries.  These make it easier to get information from your database without having to write a bunch of code.
+Modifiers can be used in your database queries.  These make it easier to get information from your database without having to write a bunch of code. Currently supported modifiers are _contains_, _or_, _startsWith_, _endsWith_, _greaterThan_, _lessThan_, _>=_, and _<=_.  Each of these are shown in examples below.
 
-### Modifier: or
+### Modifier: _contains_
+In order to use an _or_ modifier, you would do the following.
+
+```javascript
+where: {
+  name: {
+    contains: 'James'
+  }
+}
+```
+
+### Modifier: _or_
 In order to use an _or_ modifier, you would do the following.
 
 ```javascript
@@ -327,6 +341,13 @@ where: {
   or: [{name: 'James'}, {name: 'Mike'}]
 }
 ```
+
+name: {
+ '>': 'a'
+}
+
+
+
 
 # What About Migrations?
 
