@@ -357,5 +357,6 @@ name: {
 
 # What About Migrations?
 
-Migrations happen automatically. Data migrations do not exist at this time but you can contact us
-if this is a feature that you are interested in.
+In schemaful databases (like MySQL) schema migrations occur automatically.  Models default to `migrate:alter`, which tells Sails to attempt to auto-migrate the schema.
+
+Explicit production data migrations, like in Rails, do not exist at this time-- production data is precious, and manual migrations can be dangerous.  However, if this is a feature that you are interested in, please submit an issue, or better yet, a pull-request!
