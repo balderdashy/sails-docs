@@ -11,10 +11,16 @@ relying on any one type of database.
 
 # How do I define a Model?
 Model definitions contain attributes and associations.
+
+<!--
+Dennis- did you mean to put this here?
+
 Community Manager
 Balderdash - Sails.JS
 1.512.537.8156
 1.337.424.2501
+-->
+
 ### Attributes
 Attributes are basic pieces of information about a model.  For instance, a model called `Person`
 might have an attributes called `name`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
