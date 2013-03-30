@@ -25,7 +25,7 @@ var CommentController = {
 
 	tag: function(req, res) {
 
-	}
+	},
 
 	like: function(req, res) {
 
