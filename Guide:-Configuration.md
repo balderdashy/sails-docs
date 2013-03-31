@@ -226,7 +226,9 @@ Each attribute of _policies_ is a key/value pair.  The _key_ is the action name 
 
 <span id="routes.js"></span>
 # routes.js
-Routing your requests to different parts of your app is handled by the _routes.js_ file.  This is where you would specify what to call when a user wants to see something like _http://yourcoolsite.org/users/_
+Resourceful routing in Sails.js is automatic, but you can also assign custom routes from specific URLs to your controllers' actions.  
+
+For instance, if you have an AuthController with a `login` action, the url `http://yourdomain.com/auth/login` would automatically exist.  But if you also want `http://yourdomain.com/login` to work, your routes file might look like the following:
 
 ```javascript
 module.exports.routes = {
@@ -235,9 +237,10 @@ module.exports.routes = {
 	'/' : {
 		controller	: 'home'
 	},
-	'/user/' : {
-		controller  : 'user'
-		action      : 'findAll'
+
+	'/login' : {
+		controller  : 'auth'
+		action      : 'login'
 	}
 
 };
