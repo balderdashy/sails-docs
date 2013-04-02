@@ -1,3 +1,25 @@
+<!--
+Building Your Own Adapters
+Changelog
+Contributing to Sails
+Controllers
+Database Support
+examples
+Guide: Configuration
+Guide: Deployment
+Guide: Login Example
+Guide: Passport auth example
+Guide: Sockets
+Home
+Models
+Policies
+Routes
+Services
+Views
+What Is Sails
+-->
+
+<!--
 # Getting Started With Sails
 
 ![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png) 
@@ -103,4 +125,7 @@ module.exports.ssl = {
 https://github.com/balderdashy/sails/wiki/_pages
 
 
+-->
+
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/home)
+
