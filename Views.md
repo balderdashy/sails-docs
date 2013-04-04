@@ -109,9 +109,9 @@ Now, lets call it from our index file.
 
 **/views/site/index.ejs**
 ```
-<%- partial('partials/header')%>
-<%- partial('partials/page')%>
-<%- partial('partials/footer') %>  
+<%- partial('partials/header.ejs')%>
+<%- partial('partials/page.ejs')%>
+<%- partial('partials/footer.ejs') %>  
 ```
 
 Boring you say?  Well, maybe.  We don't have a lot in our index.ejs file, but thats because we don't need a lot.  We call the partials for the site we need to include.  Simply calling a partial by relative path will have it included at runtime.  This makes our code base very clean and easy to read.
