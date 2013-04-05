@@ -260,7 +260,7 @@ User.findAll({
     '>=': 'a'
   }
 }, cb);
-// you can also do <=, <, >, and !
+// you can also do <=, <, >, and ! See <a href="https://github.com/balderdashy/sails/wiki/Models#query-modifiers">query modifiers</a>
 
 // Alphabetical search.. but paginated:
 // (here's page 2)
