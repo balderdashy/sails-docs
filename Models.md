@@ -12,15 +12,6 @@ relying on any one type of database.
 # How do I define a Model?
 Model definitions contain attributes and associations.
 
-<!--
-Dennis- did you mean to put this here?
-
-Community Manager
-Balderdash - Sails.JS
-1.512.537.8156
-1.337.424.2501
--->
-
 ### Attributes
 Attributes are basic pieces of information about a model.  For instance, a model called `Person`
 might have an attributes called `name`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
@@ -96,11 +87,13 @@ module.exports = {
 Our global is set to _disk_, however, since we overrode the adapter, our User models will now be stored in MySQL using the sails-mysql adapter. 
 
 
-<!-- ### Associations -->
+### Associations
+
+Associations are not yet available for Sails.JS, however are on the immediate todo list.  Please check out issue #124 for more information regarding the proposed changes for associations.
 
 <!-- Associations describe how models are connected to each other.  The concept originates from SQL databases, but it has analogues in noSQL databases as well (links and embeds).  NoSQL support for Sails' ORM is currently under development. -->
 
-<!---
+<!--
 Since Sails supports both relational and non-relational databases, we must support both standard SQL associations (links) and bundled JSON, Mongo-style associations (embeds)
 
 ## Embedding
