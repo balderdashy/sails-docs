@@ -210,7 +210,7 @@ User.find({
 ## findAll
 `findAll()` lets you search for one or more models which meet the criteria you specify. You can also
 include a `limit` (max number of models to return), `skip` (useful for pagination), and sort
-`sort`. Find all will always retun an array even if only one model fits the criteria.
+`sort`. Find all will always return an array even if only one model fits the criteria.
 
 ```
 // For example, this query returns the first ten 18 year olds, sorted alphabetically
@@ -227,6 +227,53 @@ User.findAll({
     console.log("Users found:", users);
   }
 });
+```
+
+Below are some more examples.  Some of these examples include query modifiers.  You can view more about query modifiers <a href="https://github.com/balderdashy/sails/wiki/Models#query-modifiers">here</a>.
+
+```javascript
+// Search-as-you-type input field
+User.findAll({
+  name: {
+    startsWith: 'thelas'
+  }
+}, cb);
+
+// Search-as-you-type input field which checks multiple attributes
+User.findAll({
+  or: [
+    name: { startsWith: 'thelas' },
+    email: { startsWith: 'thelas' }
+  ]
+}, cb);
+
+// Keyword search
+User.findAll({
+  description: {
+    contains: 'roller coaster'
+  }
+}, cb);
+
+// Alphabetical search
+User.findAll({
+  name: {
+    '>=': 'a'
+  }
+}, cb);
+// you can also do <=, <, >, and !
+
+// Alphabetical search.. but paginated:
+// (here's page 2)
+User.findAll({
+  where: {
+    name: {
+      '>=': 'a'
+    }
+  },
+  limit: 15,
+  skip: 15,
+  sort: 'name ASC'
+}, cb);
 ```
 
 ### dynamic finders
