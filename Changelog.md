@@ -5,21 +5,25 @@
 <!--
 ### 0.9.0 (breaks 0.8.x projects)
 + Traces of "proper" active record .save(), .destroy(), removed.  Now when you call User.findAll(), you get a list of objects which contain just the models' data.  This prevents confusion with using .values
-+ Removed CRUD synonyms
 + Config option to disable convenience API calls (model/create, model/findAll, etc.)
 + Option to generate actual files when generating blueprints
-+ Removed all reference to blueprints as "scaffolds".  Blueprints are more than temporary placeholders-- they are the preferred method of serving an API from your app.
+
 + model validations (using https://github.com/balderdashy/anchor)
 + Redis adapter 
 + MongoDB adapter 
 
+
+-->
+
+
 ### 0.8.9 (upcoming release)
++ Controllers must now also be generated to use the default API (they can be empty)
 + Haml template support on back-end for new projects (thanks @dcbartlett)
 + default values in models (defaultsTo)
 + Chained policies fixed
-
-
-### 0.8.896
++ Removed all reference to blueprints as "scaffolds".  Blueprints are more than temporary placeholders-- they are the preferred method of serving an API from your app.
++ Refactored most of the code base
++ Removed CRUD synonyms
 + Main: Compatibility with Node v0.10.0 (patches node-dirty)
 + Main: Fixed crash that happened when absolute path was given as appPath
 + Main: `sails generate` generates actual code for the blueprint controller file
@@ -35,8 +39,6 @@
 + Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes
 + Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  Does now.
 
-
--->
 
 ### 0.8.895 (latest stable)
 + Policies: Fixed the "*" route for controllers.
