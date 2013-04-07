@@ -7,12 +7,9 @@
 + Traces of "proper" active record .save(), .destroy(), removed.  Now when you call User.findAll(), you get a list of objects which contain just the models' data.  This prevents confusion with using .values
 + Config option to disable convenience API calls (model/create, model/findAll, etc.)
 + Option to generate actual files when generating blueprints
-
 + model validations (using https://github.com/balderdashy/anchor)
 + Redis adapter 
 + MongoDB adapter 
-
-
 -->
 
 
