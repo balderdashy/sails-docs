@@ -27,7 +27,7 @@
 + Assets: Added more logging features for less.
 + Assets: Reset.css now in mixins
 + Assets: Less assets are deligated to _Rack.LessAsset_
-+ Assets: Less assets served from asset-rack will have their extentions changed to css
++ Assets: Less assets served from asset-rack will have their extensions changed to css
 + Policies: Implemented the controller syntax for defining a policy.
 + Naming: _scaffolds_ is now known as _blueprints_
 + Naming: _blueprints_ is now known as _boilerplates_
