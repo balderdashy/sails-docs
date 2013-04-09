@@ -36,7 +36,7 @@
 + Naming: _scaffolds_ is now known as _blueprints_
 + Naming: _blueprints_ is now known as _boilerplates_
 + Routing: Added _controller.action_ syntax
-+ Routing: Removed CRUD Synonyms. Supported are find, findAll, create, destroy, update
++ Routing: Removed CRUD Synonyms-- now you must explicitly use find, findAll, create, destroy, update  (cant use `get`,`detail`, `delete`, `edit`, etc. to indicate the same thing.  Turns out this was actually annoying, not helpful)
 + Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes
 + Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  Does now.
 + Config: _ and async no longer have to be global (but they are by default) They are configurable with `sails.config.globals._` and `sails.config.globals.async` (thanks @particlebanana!)
