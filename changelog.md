@@ -15,6 +15,7 @@
 
 
 ### 0.8.9  (latest stable)
+*April 9, 2013*
 
 > If I missed anything, please let me know!  This was a big release.
 
