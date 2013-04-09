@@ -13,7 +13,10 @@
 -->
 
 
-### 0.8.9 (upcoming release)
+### 0.8.9  (latest stable)
+
+> If I missed anything, please let me know!  This was a big release.
+
 + Controllers must now also be generated to use the default API (they can be empty)
 + Haml template support on back-end for new projects (thanks @dcbartlett)
 + default values in models (defaultsTo)
@@ -35,9 +38,15 @@
 + Routing: Removed CRUD Synonyms. Supported are find, findAll, create, destroy, update
 + Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes
 + Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  Does now.
++ Config: _ and async no longer have to be global (but they are by default) They are configurable with `sails.config.globals._` and `sails.config.globals.async` (thanks @particlebanana!)
++ New sails project can now be created in the current dir with `sails new .` (thanks @collinwren!)
++ More tests (thanks @collinwren and @benrudolph)
++ Travis CI integration (thanks @collinwren!)
 
 
-### 0.8.895 (latest stable)
+
+
+### 0.8.895
 + Policies: Fixed the "*" route for controllers.
 + Policies: The "*" policy can now be set to _false_
 + Collections: Type restrictions are cleaner
