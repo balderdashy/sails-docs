@@ -10,6 +10,7 @@
 + model validations (using https://github.com/balderdashy/anchor)
 + Redis adapter 
 + MongoDB adapter 
++ Main: `sails generate` generates actual code for the blueprint controller file
 -->
 
 
@@ -26,7 +27,6 @@
 + Removed CRUD synonyms
 + Main: Compatibility with Node v0.10.0 (patches node-dirty)
 + Main: Fixed crash that happened when absolute path was given as appPath
-+ Main: `sails generate` generates actual code for the blueprint controller file
 + Assets: Added more logging features for less.
 + Assets: Reset.css now in mixins
 + Assets: Less assets are deligated to _Rack.LessAsset_
