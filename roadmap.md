@@ -1,5 +1,4 @@
 
-
 # What's next?
 
 ## ASAP
@@ -10,7 +9,7 @@
 
 ## ~May 2013  (0.9.0)
 + Model validations, db constraints, and keys
-+ Built-in TemplateController (views and templates will still be separate concepts, but if you choose to use `<% %>` underscore/ejs-style templates, you can load your views asynchronously from the client.  This supports the use case of serving a single page application while still maintaining SEO/accessibility requirements.)
++ Built-in TemplateController which allows you to load load your templates asynchronously from the client.
 + New projects come optionally with boilerplate authentication code baked in
 
 ## ~July 2013 (1.0.0)
