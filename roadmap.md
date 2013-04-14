@@ -1,4 +1,3 @@
-
 # What's next?
 
 ## ASAP
@@ -11,6 +10,7 @@
 + Model validations, db constraints, and keys
 + Built-in TemplateController which allows you to load load your templates asynchronously from the client.
 + New projects come optionally with boilerplate authentication code baked in
++ Upgrade to Express 3.x
 
 ## ~July 2013 (1.0.0)
 + Associations (cross-model, cross-adapter)
