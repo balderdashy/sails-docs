@@ -1,3 +1,5 @@
+# Controllers
+
 # What is a Controller?
 Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
 being the middle man between your model and your views.
