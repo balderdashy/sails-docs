@@ -12,7 +12,7 @@ relying on any one type of database.
 # How do I define a Model?
 Model definitions contain attributes and associations.
 
-### Attributes
+## Attributes
 Attributes are basic pieces of information about a model.  For instance, a model called `Person`
 might have an attributes called `name`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
 The model definition for `Person` might look like this:
@@ -42,14 +42,14 @@ updatedAt
 createdAt
 
 <!--
-### Validation rules
+## Validation rules
 TODO
 -->
 
-### defaultsTo
+## defaultsTo
 The value this attribute should be set to if left unspecified during model creation.
 
-### Adapters
+## Adapters
 
 Adapters can be included from npm, or defined locally in the `api/adapters` directory of your project.
 
@@ -87,7 +87,7 @@ module.exports = {
 Our global is set to _disk_, however, since we overrode the adapter, our User models will now be stored in MySQL using the sails-mysql adapter. 
 
 
-### Associations
+## Associations
 
 Associations are not yet available for Sails.JS, however are on the immediate todo list.  Please check out issue #124 for more information regarding the proposed changes for associations.
 
@@ -131,7 +131,7 @@ You'll want to create, access, modify, and destroy models from controllers, view
 <!---
 Sails supports two different ways of interacting with models: Promises and asynchronous callbacks.
 
-### Promises
+## Promises
 ```
 Rabbit.create({
   name: 'Roger',
@@ -139,7 +139,7 @@ Rabbit.create({
 });
 ```
 
-### Async Callbacks
+## Async Callbacks
 ```
 Rabbit.create({
   name: 'Roger',
@@ -276,7 +276,7 @@ User.findAll({
 }, cb);
 ```
 
-### dynamic finders
+## dynamic finders
 With Sails built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
 query your models with automatically genereated methods that depend on the attributes you define for
 the model. For example, if you had a book model that looks like this.
@@ -379,7 +379,7 @@ where: {
 }
 ```
 
-### Modifier: _or_
+## Modifier: _or_
 In order to use an _or_ modifier, you would do the following.
 
 ```javascript
