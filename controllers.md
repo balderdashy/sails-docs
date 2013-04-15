@@ -84,7 +84,7 @@ automatically renders the appropriate view based on the controller and action. T
 is still accessible via **res.render()**.
 
 ### res.send(body|status[, headers|status[, status]])
-__from the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.__
+From the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.
 The **res.send()** method is a high level response utility allowing you to pass objects to respond
 with json, strings for html, Buffer instances, or numbers representing the status code. The
 following are all valid uses:
