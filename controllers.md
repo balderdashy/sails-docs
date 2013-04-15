@@ -1,8 +1,10 @@
-# What is a Controller?
-Sails controllers work very similar to controllers in other MVC frameworks. Think of controllers
-being the middle man between your model and your views.
+#Controllers
 
-# Where are Controllers Defined?
+## What is a Controller?
+Sails controllers work very similarly to controllers in other MVC frameworks. Think of controllers
+being the middleman between your model and your views.
+
+## Where are Controllers Defined?
 Controllers are defined in the **/api/controllers/** folder. By default when you create a
 controller using the command line, you can add additional arguments that represent the controller
 actions.
