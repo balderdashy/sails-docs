@@ -107,7 +107,7 @@ Note that this method ends the response, so you will want to use node’s **res.
 writes or streaming.
 
 ### res.json(obj[, headers|status[, status]])
-__from the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.__
+From the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
 however **res.send(obj)** will send JSON as well, though not ideal for cases when you want to send
 for example a string as JSON, since the default for **res.send(string)** is text/html.
@@ -120,7 +120,7 @@ for example a string as JSON, since the default for **res.send(string)** is text
 ```
 
 ### res.redirect(url[, status])
-__from the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.__
+From the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.
 Redirect to the given url with a default response status of 302.
 
 ```javascript
