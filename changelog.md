@@ -1,17 +1,4 @@
-
-<!--
-
-### 0.9.0 (breaks 0.8.x projects)
-+ Traces of "proper" active record .save(), .destroy(), removed.  Now when you call User.findAll(), you get a list of objects which contain just the models' data.  This prevents confusion with using .values
-+ Config option to disable convenience API calls (model/create, model/findAll, etc.)
-+ Option to generate actual files when generating blueprints
-+ model validations (using https://github.com/balderdashy/anchor)
-+ Redis adapter 
-+ MongoDB adapter 
-+ Main: `sails generate` generates actual code for the blueprint controller file
-
--->
-
+# Changelog
 
 ### 0.8.9  (latest stable)
 *April 9, 2013*
