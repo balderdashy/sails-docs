@@ -212,7 +212,7 @@ User.find({
 include a `limit` (max number of models to return), `skip` (useful for pagination), and sort
 `sort`. Find all will always return an array even if only one model fits the criteria.
 
-```
+```javascript
 // For example, this query returns the first ten 18 year olds, sorted alphabetically
 User.findAll({
   age: 18
