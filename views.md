@@ -16,7 +16,7 @@ respond to a client with the appropriate view. If no controller or action for a 
 
 Here's an example of a view (views/corndog/index.ejs) that consumes some data sent down from a controller:
 
-```
+```ejs
 <div>
   <h1>My first view</h1>
 
@@ -50,7 +50,7 @@ is used for client side template injection.
 
 The default **/views/layout.ejs** will look like this:
 
-```
+```ejs
 <!DOCTYPE html>
 <html>
 	<head>
@@ -77,7 +77,7 @@ This layout file is the beginning to a HTML5 compatable website application.  Th
 
 If you need to override a layout for a specific view, you can do so in the res.view call as below:
 
-```
+```javascript
 res.view({
   layout: "different_layout"
 })
@@ -90,7 +90,7 @@ This could be called from any controller output.
 Partials are just like they sound.  A View Partial is only a small part of the overall DOM that you see on your web application.  With that said, a partial is nothing more than another (smaller) EJS file. Lets take a look at a partial from the Sails example, and how we should include it from another EJS file.
 
 **/views/site/partials/footer.ejs**
-```
+```ejs
 <footer>
 	<span>
 		<div class="float-right">
@@ -108,7 +108,7 @@ As you can see, this is nothing more than a simple EJS file.  Nothing special, n
 Now, lets call it from our index file.
 
 **/views/site/index.ejs**
-```
+```ejs
 <%- partial('partials/header')%>
 <%- partial('partials/page')%>
 <%- partial('partials/footer') %>  
@@ -119,7 +119,7 @@ Boring you say?  Well, maybe.  We don't have a lot in our index.ejs file, but th
 Something a little more complicated?  Sure!  We'll do a 2 level partial this time.  Using our same index.ejs file lets take a look at the "page" partial.
 
 **/views/site/partials/page.ejs**
-```
+```ejs
 <section id="section1">
 	<span>
 		<%- partial('sections/about')%>
@@ -141,7 +141,7 @@ Still simple, but whats this? We are now including other partials from within ou
 Lets take a look at the "about" section.  Since we are dealing with HTML5, we like to name the folders that the partials are held in accordingly.  Why? because it just makes sense!
 
 **/views/site/partials/sections/about.ejs**
-```
+```ejs
 <p>
 SailsJS is built on NodeJS for easily building fast, scalable network applications. SailsJS provides a MVC framework perfect for data-intensive real-time applications that run across distributed devices.  SailsJS provides a JSON API right out of the box.<br>
 <br>
