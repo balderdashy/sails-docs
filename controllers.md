@@ -44,7 +44,7 @@ your actions contain a bunch of logic. No more super long controller files! The 
 is that, routing to these actions works the exact same way!
 
 ```
-sails generate controller comment create destory tag -f
+sails generate controller comment create destroy tag -f
 ```
 will create the directory, **api/controllers/comment/** with three files 
 **/api/controllers/comment/create.js**,
@@ -58,7 +58,7 @@ will create the directory, **api/controllers/comment/** with three files
 ## req.param()
 Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
 
-```
+```javascript
 var foo = req.param('foo');
 ```
 
@@ -143,7 +143,7 @@ Whether or not the view for this controller exists.
 In many cases, the reason you have a controller at all is that you want to do custom stuff with your models.  Otherwise, you could just use the defaults!
 
 For example, your controller might look like:
-```
+```javascript
 // Keep in mind you'd probably want to do this transactionally, in case the chicken is being pecked 
 var ChickenController = {
 
