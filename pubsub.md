@@ -1,1 +1,1 @@
-Pubsub info.
+Pubsub info
