@@ -18,7 +18,7 @@ I have [Windows](#install-on-windows)
 
 I have [Mac OSX](#install-on-osx)
 
-I have [Linux](#install-on-Linux)
+I have [Linux](#install-on-linux)
 
 <h2>
 <a id="install-on-windows" name="install-on-windows" class="anchor" href="#install-on-windows"><span class="mini-icon mini-icon-link"></span></a>
