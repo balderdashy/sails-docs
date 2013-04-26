@@ -21,6 +21,12 @@ I have [Mac OSX](#install-on-osx)
 I have [Linux](#install-on-Linux)
 
 ##Install on Windows
+
+<h2>
+<a id="install-on-windows" name="install-on-windows" class="anchor" href="#install-on-windows"><span class="mini-icon mini-icon-link"></span></a>
+Install on Windows
+</h2>
+
 Using [a package](http://nodejs.org/#download):
 
 _Simply [download Windows Installer](http://nodejs.org/#download)._
