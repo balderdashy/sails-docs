@@ -36,7 +36,7 @@ or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):
 ##Install on OSX
 Using [a package](http://nodejs.org/#download):
 
-Simply [download Macintosh Installer](http://nodejs.org/#download).
+_Simply [download Macintosh Installer](http://nodejs.org/#download)._
 
 Using [homebrew](https://github.com/mxcl/homebrew):
 
