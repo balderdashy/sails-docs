@@ -21,9 +21,9 @@ I have [Mac OSX](#install-on-osx)
 I have [Linux](#install-on-Linux)
 
 ##Install on Windows
-Using [a package](http://nodejs.org/#download)
+Using [a package](http://nodejs.org/#download):
 
-> Simply [download Windows Installer](http://nodejs.org/#download).
+Simply [download Windows Installer](http://nodejs.org/#download).
 
 Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):  
 
@@ -32,11 +32,11 @@ Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.or
 or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):  
 
     cinst nodejs.install
-    
-##Install on OSX
-Using [a package](http://nodejs.org/#download)
 
-> Simply [download Macintosh Installer](http://nodejs.org/#download).
+##Install on OSX
+Using [a package](http://nodejs.org/#download):
+
+Simply [download Macintosh Installer](http://nodejs.org/#download).
 
 Using [homebrew](https://github.com/mxcl/homebrew):
 
