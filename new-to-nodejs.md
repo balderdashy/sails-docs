@@ -132,3 +132,11 @@ Development versions are also available using ports
 or packages on FreeBSD
 
     pkg_add -r node-devel
+
+## On to Sails.JS
+Now that NodeJS is installed on your system, we can move on to Sails.JS.
+
+Click [here](getting-started) to continue.
+
+## Futher help!
+We know that sometimes things don't go as planned.  To help with getting nodeJS installed on your sysetem, we've provided simple instructions.  If you still have any issue with this, please feel free to visit NodeJS's [IRC Channel](irc://irc.freenode.net/node.js) or Our own [IRC Channel](irc://irc.freenode.net/sailsjs).
