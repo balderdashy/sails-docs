@@ -13,3 +13,11 @@ More simply put, NodeJS is an http server built to run quickly and effciently wh
 NodeJS will install on most major Operating systems.  Windows, MacOSX, and even many flavors of linux are supported.  
 
 Now, lets take a look at what OS you have.  Please choose from the following to be directed to instruction on setting up node.js for your specific OS.
+
+I have [Windows](#install_windows)
+I have [Mac OSX](#install_osx)
+I have [Linux](#install_Linux)
+
+##Install on Windows
+##Install on OSX
+##Install on Linux
