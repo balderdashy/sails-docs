@@ -1,6 +1,7 @@
+#Routes
 This table routes urls to controllers/actions.
 
-# Resourceful Routing
+#Resourceful Routing
 If the URL is not specified in **config/routes.js**, the default route for a URL is:
 **/:controller/:action/:id**
 where **:controller**, **:action**, and the **:id** request parameter are derived from the url
