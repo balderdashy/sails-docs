@@ -14,9 +14,11 @@ NodeJS will install on most major Operating systems.  Windows, MacOSX, and even 
 
 Now, lets take a look at what OS you have.  Please choose from the following to be directed to instruction on setting up node.js for your specific OS.
 
-I have [Windows](#install_windows)
-I have [Mac OSX](#install_osx)
-I have [Linux](#install_Linux)
+I have [Windows](#install-on-windows)
+
+I have [Mac OSX](#install-on-osx)
+
+I have [Linux](#install-on-Linux)
 
 ##Install on Windows
 ##Install on OSX
