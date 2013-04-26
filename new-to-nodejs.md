@@ -23,7 +23,7 @@ I have [Linux](#install-on-Linux)
 ##Install on Windows
 Using [a package](http://nodejs.org/#download):
 
-Simply [download Windows Installer](http://nodejs.org/#download).
+_Simply [download Windows Installer](http://nodejs.org/#download)._
 
 Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):  
 
