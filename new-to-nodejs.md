@@ -2,7 +2,7 @@
 
 Thats ok!  We'll try to get you pointed in the correct direction.
 
-##<a href="https://soundcloud.com/marak/marak-the-node-js-rap" style="color:black;">The NodeJS Rap</a>
+##[The NodeJS Rap](https://soundcloud.com/marak/marak-the-node-js-rap)
 First, Lets take a minute to understand what node.js is.  Per the nodejs.org website 
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
