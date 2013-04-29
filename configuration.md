@@ -1,3 +1,5 @@
+# Configuration
+
 So you got Sails.JS installed now and its loading up your awesome new project.  What? thats not good enough? OK, lets see what we can configure to make it better for your needs!!!
 
 # Overview of configuration files
@@ -16,7 +18,7 @@ One of the major advantages of Sails.js is its flexibility.  As with most MVC fr
 * <a href="#views.js">views.js</a>         (This file handles all view related settings, such as the view engine and layout)
 
 <span id="adapters.js"></span>
-# adapters.js
+## adapters.js
 The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts.
 
 ```javascript
@@ -68,7 +70,7 @@ _**mysql:**_ This is an option for _'default':_ .  Mysql stores all data in a My
 As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
 
 <span id="application.js"></span>
-# application.js
+## application.js
 The application.js file holds all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
 
 ```javascript
@@ -129,7 +131,7 @@ _**viewEngine:**_ \<object\> (Optional) The templating engine to use for your vi
 _**layout:**_ \<object\> (Optional) The file in the /views/ folder to use as the default layout. Default is false, which uses layout.ejs
 
 <span id="assets.js"></span>
-# assets.js
+## assets.js
 This file handles the assets that will be included at run time.
 
 ```javascript
@@ -151,7 +153,7 @@ module.exports.assets = {
 _**sequence:**_ \<array\>  This is an array of folders that will be included during runtime.  Each item will be processed in the order it is read in the array (fifo top-down).
 
 <span id="bootstrap.js"></span>
-# bootstrap.js
+## bootstrap.js
 The bootstrap function is run before the server is launched.  A callback function is passed as the first argument that you must trigger when you're finished, e.g.
 
 ```
@@ -165,7 +167,7 @@ module.exports.bootstrap = function (cb) {
 ```
 
 <span id="locales"></span>
-# Locales
+## Locales
 This is a folder that contains the Language files for different locales.
 
 <span id="english.js"></span>
@@ -173,7 +175,7 @@ This is a folder that contains the Language files for different locales.
 This file holds all of the language strings for the English Locale.
 
 <span id="local.js"></span>
-# local.js
+## local.js
 This file holds local overrides for an app.  For example, if you wanted to use a different port than the one for the app.
 
 ```javascript
@@ -196,7 +198,7 @@ Many of the other configuration items in the other files can be included here fo
 This is just an example file for _local.js_.
 
 <span id="policies.js"></span>
-# policies.js
+## policies.js
 So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 
 ```javascript
@@ -225,7 +227,7 @@ module.exports.policies = {
 Each attribute of _policies_ is a key/value pair.  The _key_ is the action name that you want to restrict/unrestrict.  The _value_ can be a simple boolean (true/false) or the name of the policy you want to enforce.  Policies should be found/created as middleware in the _api/policies/_ folder.
 
 <span id="routes.js"></span>
-# routes.js
+## routes.js
 Resourceful routing in Sails.js is automatic, but you can also assign custom routes from specific URLs to your controllers' actions.  
 
 For instance, if you have an AuthController with a `login` action, the url `http://yourdomain.com/auth/login` would automatically exist.  But if you also want `http://yourdomain.com/login` to work, your routes file might look like the following:
@@ -248,7 +250,7 @@ module.exports.routes = {
 Each attribute of _routes_ is a key/object pair.  The _key_ is the route that you want to control.  This can me "/" for the home page or /user/ for the users page.  It can really be whatever you want the user to be able to type and get content at.  The objects _controller:_ defines what controller to look in for this route, while the _action_ defines what action will be run when the route is executed.  If no action is given, Sails.JS assumes that you want to execute the index action.
 
 <span id="views.js"></span>
-# views.js
+## views.js
 The views.js file controls how your views will display.  From if you will use a layout file to what type of language can be used to create the view files.
 
 ```javascript
