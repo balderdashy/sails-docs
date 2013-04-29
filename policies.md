@@ -1,8 +1,9 @@
+# Policies
 Sometimes when you hit certain contoller actions, you want to perform a job. You do not want to
 worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
 allow you to run a piece of middleware logic before your actions run. 
 
-# Defining Access Control Rules
+## Defining Access Control Rules
 if you look in **config/policies.js** file, by default you will see a single policy set.
 
 ```javascript
