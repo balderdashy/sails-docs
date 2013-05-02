@@ -1,6 +1,6 @@
-#New to nodejs?
+#New to Node.js?
 
-Thats ok!  We'll try to get you pointed in the correct direction.
+Thats ok!  We'll get you pointed in the right direction.
 
 ##[The NodeJS Rap](https://soundcloud.com/marak/marak-the-node-js-rap)
 First, Lets take a minute to understand what node.js is.  Per the nodejs.org website 
