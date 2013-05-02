@@ -1,6 +1,6 @@
 # Configuration
 
-So you got Sails.JS installed now and its loading up your awesome new project.  What? thats not good enough? OK, lets see what we can configure to make it better for your needs!!!
+So, now you have Sails.js installed and it's loading up your awesome new project.  What? Thats not good enough? Okay, lets see what we can configure to make it better suit your needs!
 
 # Overview of configuration files
 One of the major advantages of Sails.js is its flexibility.  As with most MVC frameworks, Sails.js assumes standard conventions, but also allows you to change its configuration to fit your needs.  Below is a list and short explanation of each.
@@ -19,7 +19,7 @@ One of the major advantages of Sails.js is its flexibility.  As with most MVC fr
 
 <span id="adapters.js"></span>
 ## adapters.js
-The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts.
+The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts:
 
 ```javascript
 // Configure installed adapters
@@ -58,7 +58,7 @@ module.exports.adapters = {
 };
 ```
 
-OK, so the first thing you may have noticed is the _default_ setting.  This is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other definded options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
+Okay, so the first thing you may have noticed is the _default_ setting.  This is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other defined options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
 
 _**memory:**_  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
 
@@ -67,7 +67,7 @@ _**disk:**_  This is an option for _'default':_ .  Disk stores all data on disk 
 _**mysql:**_ This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
 
 ### Future
-As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide viriaty of data source adapters.
+As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide variety of data source adapters.
 
 <span id="application.js"></span>
 ## application.js
@@ -191,7 +191,7 @@ module.exports.host = '127.0.0.1';
 module.exports.port = 8080;
 module.exports.environment = 'production';
 ```
-Many of the other configuration items in the other files can be included here for local overrides.  They normally follow the nameing convention of ```module.exports.<config option>```. This can be determined by looking at the config files themselves.  For example, the adapters would be ```module.exports.adapters.default = mysql```
+Many of the other configuration items in the other files can be included here for local overrides.  They normally follow the naming convention of ```module.exports.<config option>```. This can be determined by looking at the config files themselves.  For example, the adapters would be ```module.exports.adapters.default = mysql```
 
 <span id="local.ex.js"></span>
 ### local.ex.js
@@ -263,4 +263,4 @@ _**viewEngine:**_ \<string\>  (Optional) This is the view engine that will be us
 
 _**layout:**_ \<bool or string\>  (Optional) This is a special value.  It can either be true or false.  If false, it will not use a layout for views.  If true, it will assume that the default file to use is _/views/layout.ejs_ and will use it.  If you pass it a string instead, it will use the file at the string that you passed it.
 
-If you plan to use a viewEngine other than the default, you must verify that it is available to Sails.JS.
+If you plan to use a viewEngine other than the default, you must verify that it is available to Sails.js.
