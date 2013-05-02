@@ -2,7 +2,7 @@
 
 # Contributing to this project
 
-Thank you for your interest in supporting this project!  It makes me warm and fuzzy inside.  Really though.
+Thank you for your interest in supporting Sails!  It makes me feel warm and fuzzy inside.  For real.
 
 ## Fork
 Start by forking this repository:
