@@ -6,13 +6,13 @@ Thats okay!  We'll get you pointed in the right direction.
 First, Lets take a minute to understand what node.js is.  Per the nodejs.org website 
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
-More simply put, NodeJS is an http server built to run quickly and efficiently while allowing you to use the same frontend and backend coding language for your application.
+More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
 
 ##What OS do I need?
 
-NodeJS will install on most major Operating systems.  Windows, MacOSX, and even many flavors of linux are supported.  
+Node.js will install on most major Operating systems.  Windows, MacOSX, and many flavors of Linux are supported.  
 
-Now, lets take a look at what OS you have.  Please choose from the following to be directed to instruction on setting up node.js for your specific OS.
+Now, lets take a look at what OS you have.  Please choose from the following for instructions on setting up Node.js:
 
 I have [Windows](#install-on-windows)
 
@@ -134,9 +134,9 @@ or packages on FreeBSD
     pkg_add -r node-devel
 
 ## On to Sails.JS
-Now that NodeJS is installed on your system, we can move on to Sails.JS.
+Now that Node.js is installed on your system, we can move on to Sails.js.
 
 Click [here](getting-started) to continue.
 
 ## Futher help!
-We know that sometimes things don't go as planned.  To help with getting nodeJS installed on your sysetem, we've provided simple instructions.  If you still have any issue with this, please feel free to visit NodeJS's [IRC Channel](irc://irc.freenode.net/node.js) or Our own [IRC Channel](irc://irc.freenode.net/sailsjs).
+We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
