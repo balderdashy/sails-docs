@@ -1,14 +1,14 @@
 #New to Node.js?
 
-Thats ok!  We'll get you pointed in the right direction.
+Thats okay!  We'll get you pointed in the right direction.
 
 ##[The NodeJS Rap](https://soundcloud.com/marak/marak-the-node-js-rap)
 First, Lets take a minute to understand what node.js is.  Per the nodejs.org website 
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
-More simply put, NodeJS is an http server built to run quickly and effciently while providing you with the ability to use the same frontend and backend coding language for your application.
+More simply put, NodeJS is an http server built to run quickly and efficiently while allowing you to use the same frontend and backend coding language for your application.
 
-##What OS do i need?
+##What OS do I need?
 
 NodeJS will install on most major Operating systems.  Windows, MacOSX, and even many flavors of linux are supported.  
 
