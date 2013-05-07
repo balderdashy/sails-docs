@@ -91,7 +91,7 @@ Our global is set to _disk_, however, since we overrode the adapter, our User mo
 
 ## Associations
 
-Associations are not yet available for Sails.JS, however are on the immediate todo list.  Please check out issue [#124](balderdashy/sails/issues/124) for more information regarding the proposed changes for associations.
+Associations are not yet available for Sails.JS, however are on the immediate todo list.  Please check out issue [#124](https://github.com/balderdashy/sails/issues/124) for more information regarding the proposed changes for associations.
 
 <!-- Associations describe how models are connected to each other.  The concept originates from SQL databases, but it has analogues in noSQL databases as well (links and embeds).  NoSQL support for Sails' ORM is currently under development. -->
 
