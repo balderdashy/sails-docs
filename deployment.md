@@ -39,3 +39,15 @@ The big omission from that video is that, if you plan on keeping your app runnin
 Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g sails forever` to install Sails and forever for the first time.  
 
 Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start .app.js`
+
+
+#### Deploying to NodeJitsu?
+Open up `config/application.js` in your app folder. In here, you'll need to edit the following lines.
+
+```
+	// Port this Sails application will live on
+	port: 80,
+	host: 'subdomain.jit.su',
+```
+
+The `host:` is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the `subdomain` when you run `jitsu deploy`
