@@ -42,6 +42,8 @@ Then `git clone` your project (or `scp` it onto the server if it's not in a git 
 
 
 #### Deploying to NodeJitsu?
+
+
 Open up `config/application.js` in your app folder. In here, you'll need to edit the following lines.
 
 ```
