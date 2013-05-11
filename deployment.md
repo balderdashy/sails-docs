@@ -42,7 +42,7 @@ Then `git clone` your project (or `scp` it onto the server if it's not in a git 
 
 
 #### Deploying to NodeJitsu?
-
+We get it! The Cloud is the future, and we want to help you get there.  To Depoloy to NodeJitsu, You'll need to make some minor modifications to your configuration.  Don't worry, It won't be like writing a new book or anything.
 
 Open up `config/application.js` in your app folder. In here, you'll need to edit the following lines.
 
