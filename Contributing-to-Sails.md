@@ -10,7 +10,7 @@ The following guidelines are required to be followed for code submissions to be 
  - Must have accompaning tests.
  - Must follow Sails.JS JShint Guidelines (See .jshint file in repo)
 
-Any pull request that is done to the Master branch will immediately be closed and not considered.  We apologize for this, however we want to keep master at a build state of passing at all times.  Just in case someone wants to use the most up-to-date awesomeness that isn't available in the npm package.
+Any pull request that is done to the Master branch will immediately be closed and asked to resubmit to development branch.  We apologize for this, however we want to keep master at a build state of passing at all times.  Just in case someone wants to use the most up-to-date awesomeness that isn't available in the npm package.
 
 Now that we are all on the same page, lets get to coding some awesomeness of our own :D
 
