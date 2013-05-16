@@ -57,6 +57,6 @@ sudo npm link
 In your project repo:
 npm link sails
 
-Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@mikermcneil](http://www.twitter.com/mikermcneil)). 
+Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@sailsjs](https://twitter.com/sailsjs)). 
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/contributing)
