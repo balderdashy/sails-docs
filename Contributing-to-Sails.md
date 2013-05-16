@@ -43,7 +43,7 @@ Please write a test for your addition/fix.  I know it kind of sucks, but it's ho
 -->
 
 ## Pull Request
-When you're done, you can commit your fix, push up your code, and then go into github and submit a pull request.  I'll look it over and get back to you ASAP.
+When you're done, you can commit your fix, push up your code, and then go into github and submit a pull request.  We'll look it over and get back to you ASAP.
 
 ![Screen Shot 2013-02-12 at 2.55.40 PM.png](http://i.imgur.com/GBg0AOi.png) 
 
@@ -55,8 +55,8 @@ In your Sails repo:
 sudo npm link
 
 In your project repo:
-sudo npm link sails
+npm link sails
 
-Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@mikermcneil](twitter.com/mikermcneil)). 
+Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit me up ([@mikermcneil](http://www.twitter.com/mikermcneil)). 
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/contributing)
