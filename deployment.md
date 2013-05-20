@@ -53,3 +53,35 @@ Open up `config/application.js` in your app folder. In here, you'll need to edit
 ```
 
 The `host:` is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the `subdomain` when you run `jitsu deploy`
+
+#### Heroku, Here we come!
+Deploying to the cloud is a lot of fun! However, just like any other site we want to launch, we have a bit of work to do first.
+
+To deploy to Heroku,  You'll need to have a heroku account already setup and have to the heroku tool-belt installed.  To do this, visit this page: https://toolbelt.heroku.com/
+
+Once that's done, we can start with the sails specific stuff.  Create and open the file Procfile at the root of your application.  We'll need to add the following to it.
+
+`Procfile`
+```
+web: node app.js
+```
+This instructs Heroku to create a web dyno and assign our node process to it.  To test that you did this correctly, you can type `foreman start` on your CLI.  This should start the server locally for you.
+
+This is great and all, but it won't quite work on Heroku yet.  We need to set the port to something Heroku will understand. Lets edit our `config/application.js` file accordingly.
+
+```
+port: process.env.PORT || 1337,
+```
+
+This will tell our application to look for the port that Heroku wants to let us use.  If it doesn't give one, then use port 1337.
+
+Now we can push our SailsJS Application up to Heroku.
+```
+heroku create
+git add .
+git commit -m "First commit to heroku"
+git push heroku master
+```
+This will clone your local repo to heroku and do the necessary steps to install it on heroku.  Go grab some coffee, this will take a few minutes.
+
+Thats it. Now we can check out our new app. Lets visit our newly created app, type `heroku open` on your command line.
