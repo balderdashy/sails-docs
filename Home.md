@@ -1,5 +1,3 @@
-See https://github.com/balderdashy/sails/wiki/_pages
-
 <!--
 Building Your Own Adapters
 Changelog
@@ -21,6 +19,8 @@ What Is Sails
 [New to NodeJS](/balderdashy/sails/wiki/configuration)<br />
 [Configuration](/balderdashy/sails/wiki/configuration)<br />
 [Deployment](/balderdashy/sails/wiki/deployment)<br />
+
+See https://github.com/balderdashy/sails/wiki/_pages for more pages.
 
 <!--
 # Getting Started With Sails
