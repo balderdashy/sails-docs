@@ -20,6 +20,8 @@ What Is Sails
 [Configuration](/balderdashy/sails/wiki/configuration)<br />
 [Deployment](/balderdashy/sails/wiki/deployment)<br />
 
+***
+
 See https://github.com/balderdashy/sails/wiki/_pages for more pages.
 
 <!--
