@@ -55,7 +55,7 @@ The value this attribute should be set to if left unspecified during model creat
 
 Adapters can be included from npm, or defined locally in the `api/adapters` directory of your project.
 
-You can override the adapter globally for your application, or you can configure different models to point to different adapters.  To see how to change your default application adapter config, check out the Configuration section of this documentation at [Guide: Configuration](/balderdashy/sails/wiki/Guide:-Configuration)
+You can override the adapter globally for your application, or you can configure different models to point to different adapters.  To see how to change your default application adapter config, check out the Configuration section of this documentation at [Guide: Configuration](/balderdashy/sails/wiki/configuration)
 
 To override the adapter of a single model, you specify the adapter module's name and any extra configuration information necessary to make it work.
 
