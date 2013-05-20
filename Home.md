@@ -1,6 +1,5 @@
 <!--
 Building Your Own Adapters
-Changelog
 Contributing to Sails
 Controllers
 Database Support
@@ -19,6 +18,10 @@ What Is Sails
 [New to NodeJS](/balderdashy/sails/wiki/configuration)<br />
 [Configuration](/balderdashy/sails/wiki/configuration)<br />
 [Deployment](/balderdashy/sails/wiki/deployment)<br />
+
+***
+For those of you that would like to contribute.
+[Changelog](/balderdashy/sails/wiki/changelog)
 
 ***
 
