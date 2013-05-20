@@ -20,7 +20,7 @@ What Is Sails
 [Deployment](/balderdashy/sails/wiki/deployment)<br />
 
 ***
-For those of you that would like to contribute.
+For those of you that would like to contribute.<br />
 [Changelog](/balderdashy/sails/wiki/changelog)
 
 ***
