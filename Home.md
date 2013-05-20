@@ -19,7 +19,9 @@ Views
 What Is Sails
 -->
 [New to NodeJS](/balderdashy/sails/wiki/configuration)
+
 [Configuration](/balderdashy/sails/wiki/configuration)
+
 [Deployment](/balderdashy/sails/wiki/deployment)
 
 <!--
