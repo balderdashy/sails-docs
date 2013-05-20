@@ -7,7 +7,9 @@ Contributing to Sails
 Controllers
 Database Support
 examples
-Guide: Configuration
+-->
+[Configuration](/balderdashy/sails/wiki/configuration)
+<!--
 Guide: Deployment
 Guide: Login Example
 Guide: Passport auth example
