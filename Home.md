@@ -18,9 +18,9 @@ Services
 Views
 What Is Sails
 -->
-* [New to NodeJS](/balderdashy/sails/wiki/configuration)
-* [Configuration](/balderdashy/sails/wiki/configuration)
-* [Deployment](/balderdashy/sails/wiki/deployment)
+[New to NodeJS](/balderdashy/sails/wiki/configuration)<br />
+[Configuration](/balderdashy/sails/wiki/configuration)<br />
+[Deployment](/balderdashy/sails/wiki/deployment)<br />
 
 <!--
 # Getting Started With Sails
