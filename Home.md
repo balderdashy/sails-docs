@@ -1,6 +1,5 @@
 <!--
 Building Your Own Adapters
-Contributing to Sails
 Controllers
 Database Support
 examples
@@ -21,7 +20,8 @@ What Is Sails
 
 ***
 For those of you that would like to contribute.<br />
-[Changelog](/balderdashy/sails/wiki/changelog)
+[Changelog](/balderdashy/sails/wiki/changelog)<br />
+[Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)<br />
 
 ***
 
