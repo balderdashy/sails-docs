@@ -7,10 +7,6 @@ Contributing to Sails
 Controllers
 Database Support
 examples
--->
-[Configuration](/balderdashy/sails/wiki/configuration)
-<!--
-Guide: Deployment
 Guide: Login Example
 Guide: Passport auth example
 Guide: Sockets
@@ -22,6 +18,9 @@ Services
 Views
 What Is Sails
 -->
+[New to NodeJS](/balderdashy/sails/wiki/configuration)
+[Configuration](/balderdashy/sails/wiki/configuration)
+[Deployment](/balderdashy/sails/wiki/deployment)
 
 <!--
 # Getting Started With Sails
