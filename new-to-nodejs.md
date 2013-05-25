@@ -136,7 +136,7 @@ or packages on FreeBSD
 ## On to Sails.JS
 Now that Node.js is installed on your system, we can move on to Sails.js.
 
-Click [here](getting-started) to continue.
+Click [here](balderdashy/sails/wiki/getting-started) to continue.
 
 ## Futher help!
 We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
