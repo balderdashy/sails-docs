@@ -32,7 +32,7 @@ To customize your own Grunt task, you must first ensure that the grunt plugin yo
   npm install --save-dev grunt-contrib-handlebars
 ```
 
-We can then configure the plugin options, load the task, and include it on of the registered grunt task. Here is a snippet of code of these relevent steps.
+We can then configure the plugin options, load the task, and include it in a registered grunt task. Here is a snippet of code for these steps.
 
 ```javascript
 module.exports = function(grunt) {
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
   // load the handlebars plugin
   grunt.loadTasks('grunt-contrib-handlebars');
 
-  // An example default task that runs the handlebars task
+  // A simple default task that runs the handlebars task
   grunt.registerTask('default', [
     'handlebars:dev'
   ]);
