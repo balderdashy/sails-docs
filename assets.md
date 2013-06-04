@@ -26,7 +26,7 @@ The default behavior for asset management is to precompile all templates, copy a
 
 TODO production enviroment default asset management
 
-## Configureing a Grunt Task
+## Configuring a Grunt Task
 To customize your own Grunt task, you must first ensure that the grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use the grunt handlebars plugin you could do this.
 ```bash
   npm install --save-dev grunt-contrib-handlebars
