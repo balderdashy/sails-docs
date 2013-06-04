@@ -4,7 +4,7 @@ _Note: Asset management with Grunt is new in version 0.9.0 of Sails._
 Sails uses a very powerful tool named Grunt to manage your assets. With Grunt, the asset management process is completely customizable and very easy to fit your projects needs.
 
 ## What is Grunt?
-Grunt is a javascript task manager that has a fast growing ecosystem of plugins that help automate any task that you could think of. Why did we decide to use this task runner to manage assets? From Grunts very own [website](http://gruntjs.com/).
+Grunt is a javascript task manager that has a fast growing ecosystem of plugins that help automate any task that you could think of. Why did we decide to use this task runner to manage assets? From Grunt's very own [website](http://gruntjs.com/).
 
 _In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort._
 
@@ -30,7 +30,7 @@ TODO configuring a grunt task example
 
 
 ## Example of Custom Asset Management
-Internally we like to use less with out projects. Here is a quick example of how we would add the grunt plugin to compile less into css and then inject it into out **index.hmtl** file
+Internally we like to use less with out projects. Here is a quick example of how you would add the grunt plugin to compile less into css.
 
 ```javascript
 module.exports = function(grunt) {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    // We no longer want to copy over all files, so we exclude .less files.
+    // We want to exclude .less files in the copy task.
     copy: {
       dev: {
         files: [
@@ -168,3 +168,5 @@ module.exports = function(grunt) {
   ...
 };
 ```
+
+TODO: sails build docs
