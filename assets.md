@@ -22,11 +22,49 @@ If you'd like a more comprehensive understanding of Grunt, [here](http://gruntjs
 In a Sails app, you will not need to create a Gruntfile or install any Grunt plugins to work right outside of the box. When you created you Sails project, this was done for you with some sensible default Grunt tasks configured and plugins installed. Of course, the plugins you use and the Grunt tasks that run are completely customizable by you.
 
 ## Default Asset Management with Grunt
-The default behavior for asset management is to precompile all templates, copy all assets to a temporary folder, and inject all needed assets into the main page. When you run ```sails lift``` to start your server, a Grunt task will run that will first precompile all of your templates in the **assets/templates/** folder in a js file that contains Javascript template functions. It will then copy all of your assets into a **.tmp/** folder in the application root. Finally we inject all of your css, scripts, and templates into the **index.html** file. A watch task is configured to repeat this process every time you make a change in your assets directory or any of its subdirectories.
+The default behavior for asset management is to precompile all templates, copy all assets to a temporary folder, and inject all needed assets into the main page. When you run ```sails lift``` to start your server, a Grunt task will run that will first precompile all of your templates in the **assets/templates/** folder in a JST file that contains Javascript template functions. It will then copy all of your assets into a **.tmp/** folder in the application root. Finally we inject all of your css, scripts, and templates into the **index.html** file. A watch task is configured to repeat this process every time you make a change in your assets directory or any of its subdirectories.
 
 TODO production enviroment default asset management
 
-TODO configuring a grunt task example
+## Configureing a Grunt Task
+To customize your own Grunt task, you must first ensure that the grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use the grunt handlebars plugin you could do this.
+```bash
+  npm install --save-dev grunt-contrib-handlebars
+```
+
+We can then configure the plugin options, load the task, and include it on of the registered grunt task. Here is a snippet of code of these relevent steps.
+
+```javascript
+module.exports = function(grunt) {
+  ...
+
+  // configure the handlebars task
+  handlebars: {
+    dev: {
+      options : {
+        namespace: "JST"
+      },
+      files: {
+        "path/to/results.js": "path/to/source.hbs",
+        "path/to/another.js": ["path/to/sources/*.hbs", "path/to/more/*.hbs"]
+      }
+    }
+  }
+
+  // load the handlebars plugin
+  grunt.loadTasks('grunt-contrib-handlebars');
+
+  // An example default task that runs the handlebars task
+  grunt.registerTask('default', [
+    'handlebars:dev'
+  ]);
+
+  ...
+}
+```
+
+[Here](http://gruntjs.com/sample-gruntfile) is a very well documented example of a full Gruntfile.
+
 
 
 ## Example of Custom Asset Management
