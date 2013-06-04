@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 
 
 ## Example of Custom Asset Management
-Internally we like to use less with out projects. Here is a quick example of how you would add the grunt plugin to compile less into css in a Sails app.
+Internally we like to use less with out projects. Here is a quick example of how you would add the grunt less plugin to compile less into css in a Sails app.
 
 ```javascript
 module.exports = function(grunt) {
