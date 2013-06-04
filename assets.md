@@ -1,4 +1,4 @@
-#Assets
+# Assets
 
 Sails uses a very powerful tool named Grunt to manage your assets. With Grunt, the asset management process is completely customizable and very easy to fit your projects needs.
 
@@ -21,8 +21,9 @@ If you'd like a more comprehensive understanding of Grunt, [here](http://gruntjs
 In a Sails app, you will not need to create a Gruntfile or install any Grunt plugins to work right outside of the box. When you created you Sails project, this was done for you with some sensible default Grunt tasks configured and plugins installed. Of course, the plugins you use and the Grunt tasks that run are completely customizable by you.
 
 ## Default Asset Management with Grunt
-The default behavior for asset management is to precompile all templates, copy all assets to a temporary folder, and inject all needed assets into the main page. Single page applications.
-the default when you run ```sails lift``` to start your server, a Grunt task will run that will first precompile all of your templates in the **assets/templates/** folder to a JST file. It will then copy all of your assets into a **.tmp/** folder in the application root. Finally we inject all of your css, scripts, and templates into the **index.html** file. A watch task is configured to repeat this process every time you make a change in your assets directory or any of its subdirectories.
+The default behavior for asset management is to precompile all templates, copy all assets to a temporary folder, and inject all needed assets into the main page. When you run ```sails lift``` to start your server, a Grunt task will run that will first precompile all of your templates in the **assets/templates/** folder to a JST file. It will then copy all of your assets into a **.tmp/** folder in the application root. Finally we inject all of your css, scripts, and templates into the **index.html** file. A watch task is configured to repeat this process every time you make a change in your assets directory or any of its subdirectories.
+
+TODO configuring a grunt task example
 
 ## Example of Custom Asset Management
 Internally we like to use less with out projects. Here is a quick example of how we would add the grunt plugin to compile less into css and then inject it into out **index.hmtl** file
@@ -67,8 +68,8 @@ module.exports = function(grunt) {
       }
     },
 
-    // configure the less pluging to compile all less files into there individual css files and place them in the
-    // .tmp/public/styles/ directory. We do not copy over the importer.less file.
+    // configure the less pluging to compile all less files into there individual css files and place
+    // them in the .tmp/public/styles/ directory. We do not copy over the importer.less file.
     less: {
       dev: {
         files: [
@@ -159,5 +160,7 @@ module.exports = function(grunt) {
   grunt.registerTask('assetsChanged', [
     'reloadAssets'
   ]);
+
+  ...
 };
 ```
