@@ -14,6 +14,10 @@ Services
 Views
 What Is Sails
 -->
+***
+These documentation files are currently being re-written for 0.9 branch.  Please visit [Here]() for the 0.8.x branch documentation.
+***
+
 [New to NodeJS](/balderdashy/sails/wiki/new-to-nodejs)<br />
 [Configuration](/balderdashy/sails/wiki/configuration)<br />
 [Deployment](/balderdashy/sails/wiki/deployment)<br />
