@@ -1,8 +1,12 @@
-### Available in Sails 0.9
+# Socket.io server configuration
+
+By convention, these properties are located in `config/io.js`.
+
+> Available in Sails 0.9
 
 > TODO: Write actual documentation for this stuff.
 
-#### Example
+#### Example (config/io.js)
 ```javascript
 // Configuration for internal socket.io server
 module.exports.io = {
