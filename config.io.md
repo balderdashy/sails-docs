@@ -1,4 +1,5 @@
-# Socket.io server configuration
+
+## Socket.io server configuration
 
 By convention, these properties are located in `config/io.js`.
 
