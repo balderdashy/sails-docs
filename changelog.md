@@ -1,9 +1,38 @@
 # Changelog
 
+### 0.9.0
+*June 6, 2913*
+
+#### Sails.JS
++ Main: Express 3.x has been integrated.
++ Assets: Asset Rack Removed.
++ Assets: Automatic less support removed.
++ Assets: Grunt system replaced Asset Rack.
++ Assets: Public folder removed from new projects.
++ Assets: Public folder is automatically build on lift.
++ Assets: Public folder can be built using "sails build" for external hosting.
++ Assets: Grunt allows for plugins now like sass or less.
++ Routing: Automatic 404 and 500 routing is removed.
++ Config: Asset Config is now handled via grunt file.
++ Config: Socket.IO can be configured with config/io.js.
++ Views: Layouts are removed.
++ Sessions: Redis is now able to be used for Persistant Sessions.
+
+#### Waterline
++ ORM: Waterline is pulled out of Sails.JS. (See [Waterline](http://www.github.com/balderdashy/waterline))
++ ORM: Validations are added. (See [Anchor](http://www.github.com/balderdashy/anchor))
++ ORM: Instance Methods are added.
++ ORM: Lifecycle Callbacks have been added. (See [Lifecycle Callbacks]())
++ ORM: findAll() has been replaced with find().
++ ORM: find() has been replaced with findOne().
++ ORM: .done() promise now works on all class methods
++ ORM: Promises have been added.
+
+#### Anchor
++ Validations:  Too many added to list, see [Validations]()
+
 ### 0.8.9  (latest stable)
 *April 9, 2013*
-
-> If I missed anything, please let me know!  This was a big release.
 
 + Controllers must now also be generated to use the default API (they can be empty)
 + Haml template support on back-end for new projects (thanks @dcbartlett)
@@ -29,9 +58,6 @@
 + New sails project can now be created in the current dir with `sails new .` (thanks @collinwren!)
 + More tests (thanks @collinwren and @benrudolph)
 + Travis CI integration (thanks @collinwren!)
-
-
-
 
 ### 0.8.895
 + Policies: Fixed the "*" route for controllers.
@@ -89,7 +115,6 @@ _Saturday, March 2, 2013_
 + Docs
 + Added app.js file back in, but this time hidden as '.app.js'.  It can be run however you like, or you can use `npm debug` to debug it.  To run daemonized, you can use `forever start .app.js`
 + Added notion of `sails.explicitHost` to track whether a host was explicitly specified.  If it was not, Express takes the approach of accepting `all connections via INADDR_ANY` (see http://expressjs.com/2x/guide.html#app.listen())  Now, if you specify `sails.config.host`, `sails.explicitHost` gets set, and Express will start the server deliberately using the host you specify.  In certain PaaS deployments, this is required.  For instance, this was causing problems in an Openshift deployment environment (big thanks to @hypereive for figuring that out).
-
 
 ### 0.8.82
 _Sunday, February 24, 2013_
