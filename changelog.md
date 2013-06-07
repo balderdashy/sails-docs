@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.9.0
-*June 6, 2013*
+*June 10, 2013*
 
 #### Sails.JS
 + Main: Express 3.x has been integrated.
