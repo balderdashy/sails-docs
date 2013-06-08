@@ -168,7 +168,7 @@ module.exports.bootstrap = function (cb) {
 ```
 <span id="io.js"></span>
 ## io.js
-See (config.io)
+See [config.io](config.io)
 
 <span id="locales"></span>
 ## Locales
