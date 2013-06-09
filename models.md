@@ -157,6 +157,120 @@ Available validations are:
   - minLength
   - maxLength
 
+## Instance Methods
+
+You can attach instance methods to a model which will be available on any record returned from
+a query. There are also a few helper instance methods that get attached to allow you to perform
+operations on a model instance without having to build the lookup criteria.
+
+Helper Instance Methods:
+
+  - save
+  - destroy
+  - toObject
+  - toJSON
+
+### Save Instance Method
+
+The save instance method will write the current values of the model instance to the datastore.
+It only takes a callback as it's argument.
+
+```javascript
+// Lookup a user
+User.findOne(1).done(function(err, user) {
+
+  // we now have a model with instance methods attached
+  // update an attribute value
+  user.email = 'foo.bar@gmail.com';
+
+  // save the updated value
+  user.save(function(err) {
+    // value has been saved
+  });
+
+});
+```
+
+### Destroy Instance Method
+
+The destroy instance method allows you to delete a single record from the datastore without having
+to build up a criteria search.
+
+```javascript
+// Lookup a user
+User.findOne(1).done(function(err, user) {
+
+  // we now have a model with instance methods attached
+
+  // destroy the record
+  user.destroy(function(err) {
+    // record has been removed
+  });
+
+});
+```
+
+### toObject/toJSON Instance Methods
+
+The `toObject()` method will return the currently set model values only, without any of the instance
+methods attached. Useful if you want to change or remove values before sending to the client.
+
+However we provide an even easier way to filter values before returning to the client when using
+the blueprints by allowing you to override the `toJSON()` method in your model. This function will
+automatically be called when using the blueprints so you don't need to write custom controllers in
+order to filter values.
+
+Example of filtering a password in your model definition:
+
+```javascript
+module.exports = {
+  attributes: {
+    name: 'string',
+    password: 'string',
+
+    // Override toJSON instance method
+    // to remove password value
+    toJSON: function() {
+      var obj = this.toObject();
+      delete obj.password;
+      return obj;
+    }
+  }
+}
+
+// Then later when you query it:
+
+User.findOne(1).done(function(err, user) {
+  // user.password doesn't exist
+});
+```
+
+### Custom Defined Instance Methods
+
+You may define custom instance methods that are available after querying a model. These are defined
+as functions in your model attributes.
+
+```javascript
+module.exports = {
+
+  attributes: {
+    firstName: 'string',
+    lastName: 'string',
+
+    // Define a custom instance method
+    fullName: function() {
+      return this.firstName + ' ' + this.lastName;
+    }
+  }
+}
+
+// Then use it in your query results like:
+User.findOne(1).done(function(err, user) {
+  // use the instance method
+  var name = user.fullName();
+});
+```
+
 ## Lifecycle Callbacks
 
 Lifecycle callbacks are functions you can define to run at certain times in a query. They are hooks
@@ -165,22 +279,22 @@ encrypting a password before creating or automatically generating a slugified ur
 
 **Callbacks run on Create**
 
-  - beforeValidate
-  - afterValidate
-  - beforeCreate
-  - afterCreate
+  - beforeValidation / *fn(values, cb)*
+  - afterValidation / *fn(values, cb)*
+  - beforeCreate / *fn(values, cb)*
+  - afterCreate / *fn(newlyInsertedRecord, cb)*
 
 **Callbacks run on Update**
 
-  - beforeValidate
-  - afterValidate
-  - beforeSave
-  - afterSave
+  - beforeValidate / *fn(valuesToUpdate, cb)*
+  - afterValidate / *fn(valuesToUpdate, cb)*
+  - beforeSave / *fn(valuesToUpdate, cb)*
+  - afterSave / *fn(updatedRecord, cb)*
 
 **Callbacks run on Destroy**
 
-  - beforeDestroy
-  - afterDestroy
+  - beforeDestroy / *fn(criteria, cb)*
+  - afterDestroy / *fn(cb)*
 
 ## Custom Table Names
 
@@ -217,23 +331,23 @@ For example:
 // api/models/User.js
 module.exports = {
 
- adapter: 'sails-mysql',
- user: 'root',
- password: 'thePassword',
- database: 'testdb',
- host: '127.0.0.1',
+  adapter: 'sails-mysql',
 
+  config: {
+    user: 'root',
+    password: 'thePassword',
+    database: 'testdb',
+    host: '127.0.0.1'
+  },
 
- attributes: {
-
-    // Simple attribute:
+  attributes: {
     name: 'string',
     email: 'string',
     phoneNumber: {
       type: 'string',
       defaultsTo: '555-555-5555'
     }
- }
+  }
 
 };
 ```
@@ -308,7 +422,7 @@ User.find()
 ```
 
 ## create
-To create a new instance of a model in the database, use `create()`.
+To create a new record in the database, use `create()`.
 
 ```javascript
 // For example
@@ -485,7 +599,8 @@ Book.findByAuthor('John R. Erickson').done(function(err, books) {
 ```
 
 ## update
-`update()` allows you to update an instance of a model from the database.
+`update()` allows you to update an instance of a model from the database. It will always return
+an array of records that have been updated.
 
 ```javascript
 // For example, to update a user's name,
@@ -494,23 +609,22 @@ User.update({
   name: 'sally'
 },{
   phone: '555-555-5555'
-}, function(err, user) {
+}, function(err, users) {
   // Error handling
   if (err) {
     return console.log(err);
-  // Updated user successfully!
+  // Updated users successfully!
   } else {
-    console.log("User updated:", user);
+    console.log("Users updated:", users);
   }
 });
 ```
 
 ## destroy
-`destroy()` allows you to delete an instance of a model from the database.
+`destroy()` allows you to delete models from the database. It will work on all matching criteria.
 
 ```javascript
 // For example, to delete a user named Johnny,
-// first find the user
 User.destroy({
   name: 'Johnny',
   age: 22
