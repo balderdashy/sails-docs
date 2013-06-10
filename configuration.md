@@ -107,29 +107,29 @@ module.exports = {
 };
 ```
 
-_**appName:**_ \<string\>  This is the name of your application.  It is a string and can be any alpha-numeric string.
+_**appName:**_ \<STRING\>  This is the name of your application.  It is a string and can be any alpha-numeric string.
 
-_**host:**_ \<string\>  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
+_**host:**_ \<STRING\>  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
 
-_**port:**_ \<integer\>  This is the port number that your application will run on.  This needs to be set to a numeric interger between 1 and 65535.
+_**port:**_ \<INT\>  This is the port number that your application will run on.  This needs to be set to a numeric interger between 1 and 65535.
 
-_**environment:**_ \<string\>  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
+_**environment:**_ \<STRING\>  This is the environment that the applicaiton is currently in.  This can be set to development, production, or test.
 
-_**cache:**_ \<object\>  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
-* maxAge: \<integer\>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
+_**cache:**_ \<OBJ\>  (Optional) This is the setting object for cache.  Being an object, this will have its own attributes to be set.
+* maxAge: \<INT\>  // This needs to be a positive numeric integer representing number of seconds that the cache should live.
 
-_**log:**_ \<object\>  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
-* level: \<string\>  // This can be set to one of: verbose, info, debug, warn, error, silent
-* colorize: \<bool\>    // This can be set to one of: true, false
+_**log:**_ \<OBJ\>  (Optional)  This is the setting object for Logs.  Being an object, this will have its own attributes to be set.
+* level: \<STRING\>  // This can be set to one of: verbose, info, debug, warn, error, silent
+* colorize: \<BOOL\>    // This can be set to one of: true, false
 
-_**session:**_ \<object\>  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
-* secret: \<string\>  // This can be set to any alphanmeric-symbolic string.
-* store: \<object\>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
-* key: \<string\>  // This can be set to any alphanmeric string.
+_**session:**_ \<OBJ\>  (Optional)  This is the setting object for sessions.  Being an object, this will have its own attributes to be set.
+* secret: \<STRING\>  // This can be set to any alphanmeric-symbolic string.
+* store: \<OBJ\>  // (Optional) This needs to be an object.  This overrides the default store that sessions are stored in.  This only needs to be edited in special circumstances.
+* key: \<STRING\>  // This can be set to any alphanmeric string.
 
-_**viewEngine:**_ \<object\> (Optional) The templating engine to use for your views. Default is [EJS](http://embeddedjs.com/). Currently only EJS and [Jade](http://jade-lang.com/) are supported.
+_**viewEngine:**_ \<OBJ\> (Optional) The templating engine to use for your views. Default is [EJS](http://embeddedjs.com/). Currently only EJS and [Jade](http://jade-lang.com/) are supported.
 
-_**layout:**_ \<object\> (Optional) The file in the /views/ folder to use as the default layout. Default is false, which uses layout.ejs
+_**layout:**_ \<OBJ\> (Optional) The file in the /views/ folder to use as the default layout. Default is false, which uses layout.ejs
 
 <span id="assets.js"></span>
 ## assets.js
@@ -362,8 +362,8 @@ module.exports = {
 	layout: true
 };
 ```
-_**viewEngine:**_ \<string\>  (Optional) This is the view engine that will be used to parse the view files.
+_**viewEngine:**_ \<STRING\>  (Optional) This is the view engine that will be used to parse the view files.
 
-_**layout:**_ \<bool or string\>  (Optional) This is a special value.  It can either be true or false.  If false, it will not use a layout for views.  If true, it will assume that the default file to use is _/views/layout.ejs_ and will use it.  If you pass it a string instead, it will use the file at the string that you passed it.
+_**layout:**_ \<BOOL or STRING\>  (Optional) This is a special value.  It can either be true or false.  If false, it will not use a layout for views.  If true, it will assume that the default file to use is _/views/layout.ejs_ and will use it.  If you pass it a string instead, it will use the file at the string that you passed it.
 
 If you plan to use a viewEngine other than the default, you must verify that it is available to Sails.js.
