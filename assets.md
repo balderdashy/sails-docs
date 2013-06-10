@@ -1,7 +1,7 @@
 # Assets
 _Note: Asset management with Grunt is new in version 0.9.0 of Sails._
 
-Sails uses a very powerful tool named Grunt to manage your assets. With Grunt, the asset management process is completely customizable and very easy to fit your projects needs.
+Sails uses a very powerful tool named Grunt to manage your assets. With Grunt, the asset management process is completely customizable and easily fits your projects needs.
 
 ## What is Grunt?
 Grunt is a javascript task manager that has a fast growing ecosystem of plugins that help automate any task that you could think of. Why did we decide to use this task runner to manage assets? From Grunt's very own [website](http://gruntjs.com/).
@@ -10,21 +10,15 @@ _In one word: automation. The less work you have to do when performing repetitiv
 
 With that in mind, Grunt not only allows you to manage assets very easily, but most of the code to do this is already written and accessable through grunt plugins. Just find a plugin you need, configure the task, and Grunt takes care of the rest.
 
-If you are using Grunt for the very first time, the only setup required is to install the grunt CLI globally on your machine.
-_Note: you may need to use sudo (for OSX, *nix, BSD etc) or run your command shell as Administrator (for Windows) to do this._
-```bash
-npm install -g grunt-cli
-```
-
 If you'd like a more comprehensive understanding of Grunt, [here](http://gruntjs.com/getting-started) is a good place to start.
 
 ## Sails and Grunt
-In a Sails app, you will not need to create a Gruntfile or install any Grunt plugins to work right outside of the box. When you created you Sails project, this was done for you with some sensible default Grunt tasks configured and plugins installed. Of course, the plugins you use and the Grunt tasks that run are completely customizable by you.
+In a Sails app, you will not need to create a Gruntfile or install any Grunt plugins to work right outside of the box. When you created your Sails project, this was done for you with some sensible default Grunt tasks configured and plugins installed. Of course, the plugins you use and the Grunt tasks that run are completely customizable by you.
 
 ## Default Asset Management with Grunt
 The default behavior for asset management is to precompile all templates, copy all assets to a temporary folder, and inject all needed assets into the main page. When you run ```sails lift``` to start your server, a Grunt task will run that will first precompile all of your templates in the **assets/templates/** folder in a JST file that contains Javascript template functions. It will then copy all of your assets into a **.tmp/** folder in the application root. Finally we inject all of your css, scripts, and templates into the **index.html** file. A watch task is configured to repeat this process every time you make a change in your assets directory or any of its subdirectories.
 
-TODO production enviroment default asset management
+<!-- TODO production enviroment default asset management -->
 
 ## Configuring a Grunt Task
 To customize your own Grunt task, you must first ensure that the grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use the grunt handlebars plugin you could do this.
@@ -68,7 +62,7 @@ module.exports = function(grunt) {
 
 
 ## Example of Custom Asset Management
-Internally we like to use less with out projects. Here is a quick example of how you would add the grunt less plugin to compile less into css in a Sails app.
+Internally we like to use less with our projects. Here is a quick example of how you would add the grunt less plugin to compile less into css in a Sails app.
 
 ```javascript
 module.exports = function(grunt) {
@@ -207,4 +201,15 @@ module.exports = function(grunt) {
 };
 ```
 
-TODO: sails build docs
+<!-- TODO: sails build docs -->
+<!--
+
+## Building Assets for CDN/Phonegap
+Sails allows you to build your assets in a way that can be used with CDN's or Phonegap.  Simply setup your assets like you would for launching the site in production mode.  Then run the following command from your projects root folder.
+
+```bash
+sails build 
+```
+
+This will output all the files needed to host your app on a CDN or use it with phonegap into ```/build/``` directory.
+  -->

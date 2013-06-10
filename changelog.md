@@ -7,7 +7,6 @@
 + Main: Express 3.x has been integrated.
 + Main: CSRF Attack Protection was added.
 + Assets: Asset Rack Removed.
-+ Assets: Automatic less support removed.
 + Assets: Grunt system replaced Asset Rack.
 + Assets: Public folder removed from new projects.
 + Assets: Public folder is automatically build on lift.

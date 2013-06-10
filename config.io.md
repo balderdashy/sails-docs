@@ -1,11 +1,8 @@
+> Available in Sails 0.9
 
 ## Socket.io server configuration
 
-By convention, these properties are located in `config/io.js`.
-
-> Available in Sails 0.9
-
-> TODO: Write actual documentation for this stuff.
+Configuration options for Socket.IO in conjunction with the way sails.js uses it are available in the ```config/io.js``` file.
 
 #### Example (config/io.js)
 ```javascript
