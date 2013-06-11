@@ -1,5 +1,5 @@
 # Adapters
-_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
+> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
 > Note: See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.
 
