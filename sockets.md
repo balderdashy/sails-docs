@@ -1,5 +1,5 @@
 # Automatic socket support
-_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](08x.sailsjs.org) for 0.8.x documentation._
+_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
 Out of the box, Sails handles Socket.io requests the same way it handles HTTP requests-- through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:
 

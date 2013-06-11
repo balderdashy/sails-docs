@@ -15,7 +15,7 @@ Views
 What Is Sails
 -->
 ***
-# These documentation files are currently being re-written for 0.9 branch.  Please visit [Here](http://08x.sailsjs.org/) for the 0.8.x branch documentation.
+# These documentation files are currently being re-written for 0.9 branch.  Please visit [Here](http://http://08x.sailsjs.org/) for the 0.8.x branch documentation.
 ***
 
 [New to NodeJS](/balderdashy/sails/wiki/new-to-nodejs)<br />

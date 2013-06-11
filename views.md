@@ -1,5 +1,5 @@
 #Views
-_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](08x.sailsjs.org) for 0.8.x documentation._
+_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
 There are three kinds of views in Sails. There are traditional view partials, view templates, and
 the layout.
