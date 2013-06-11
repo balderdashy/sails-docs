@@ -1,4 +1,5 @@
 # Configuration
+_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](08x.sailsjs.org) for 0.8.x documentation._
 
 So, now you have Sails.js installed and it's loading up your awesome new project.  What? Thats not good enough? Okay, lets see what we can configure to make it better suit your needs!
 
@@ -265,9 +266,13 @@ _**'flash policy port'**_ \<INT\>  Integer representing the port number to use f
 _**'destroy buffer size'**_ \<\>
 -->
 
-_**'destroy upgrade'**_ \<BOOL\> Boolean to destroy non-socket.io upgrade requests.  <!--If this is set to false, you can use regular socket clients with socket.io.-->
+_**'destroy upgrade'**_ \<BOOL\>  Boolean to destroy non-socket.io upgrade requests.  <!--If this is set to false, you can use regular socket clients with socket.io.-->
 
-_****_
+_**'browser client'**_ \<BOOL\>  Boolean to serve the statuc resources like socket.io.js to the client.
+
+_**'browser client cache'**_ \<BOOL\>  Boolean to turn on the caching of static files to memory.
+
+
 
 <span id="locales"></span>
 ## Locales

@@ -1,4 +1,6 @@
 # Policies
+_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](08x.sailsjs.org) for 0.8.x documentation._
+
 Sometimes when you hit certain contoller actions, you want to perform a job. You do not want to
 worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
 allow you to run a piece of middleware logic before your actions run. 

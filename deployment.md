@@ -1,3 +1,5 @@
+_Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](08x.sailsjs.org) for 0.8.x documentation._
+
 We are working hard on deck to get sails into ship shape.  Currently, we don't have a built in solution to launching a "production" server of sails.  We will be correcting that though.
 
 For now, You'll want to take advantage of a tool that 'resurrects' your server if it crashes.  
