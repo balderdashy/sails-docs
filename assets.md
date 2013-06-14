@@ -1,8 +1,4 @@
 # Assets
-> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
-
-> _Note: Asset management with Grunt is new in version 0.9.0 of Sails._
-
 Sails uses a very powerful tool named Grunt to manage your assets. With Grunt, the asset management process is completely customizable and easily fits your projects needs.
 
 ## What is Grunt?
