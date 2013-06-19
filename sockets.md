@@ -1,5 +1,5 @@
 # Automatic socket support
-Out of the box, Sails handles Socket.io requests the same way it handles HTTP requests-- through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:
+Out of the box, Sails.js handles Socket.io requests the same way it handles HTTP requests: through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:
 
 ```javascript
 // api/controllers/EchoController.js
@@ -18,7 +18,7 @@ module.exports = {
 };
 ```
 
-From an HTML page, we can access our controller like so:
+From an HTML page, you can access your controller like so:
 
 ```javascript
 var socket = io.connect('http://localhost:1337');
@@ -31,7 +31,7 @@ socket.request('/echo',{
 
 
 # Blueprints
-The default API blueprint supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
+The default API blueprint supports pubsub for socket requests out of the box.  So for instance, if you create a model called User, then send a Socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
 
 ```javascript
 var socket = io.connect('http://localhost:1337');
@@ -43,7 +43,7 @@ socket.request('/user',{}, function (response) {
 Similarly, creating, updating, and destroying models using the blueprint can be accessed just like they are via HTTP, and events will be automatically broadcasted to the other subscribed sockets.  All without writing any code!  
 
 # Built-in socket methods
-In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express.  `req.socket` contains a raw reference to the underlying socket.io socket.  The following extra socket.io specific methods are also appended to the req and res objects:
+In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express.  `req.socket` contains a raw reference to the underlying Socket.io socket.  The following extra Socket.io specific methods are also appended to the req and res objects:
 
 
 ### req.listen(room)
@@ -74,7 +74,7 @@ The broadcasted JSON would look like this:
 ```
 
 # Pubsub convenience hooks
-Since models are automatically furnished with a collection-wide "class room" and an "instance room" for each instance, it gives us some interesting opportunities to offer convient accessor methods for performing common publish/subscribe operations.  Check out some of the socket-oriented convenience methods you can use.
+Since models are automatically furnished with a collection-wide "class room" and an "instance room" for each instance, it gives us some interesting opportunities to offer convient accessor methods for performing common publish/subscribe operations.  Check out some of the socket-oriented convenience methods you can use:
 
 
 ### Model.subscribe(req, models)
@@ -106,13 +106,13 @@ See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implement
 
 
 # Need more control?
-If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out; they did a good job making it pretty straightforward. You can read more here: http://socket.io/#how-to-use
+If you need more precise functionality, the raw Socket.io API is pretty straightforward. You can read more here: http://socket.io/#how-to-use
 
 The root Socket.io object is available globally in Sails via `sails.io`.  You can also access the currently connected socket in the request object, via `req.socket` in your controllers.
 
 # FAQ
 ### 500 error: "handshake error" returned from socket.io request
-This is most likely because you don't have any express cookies yet in your current session and are requesting from a domain other than your server. To alleviate this and prevent the error from cropping back up, you should build in some kind of request to your server BEFORE you initialize your socket.io connection. So, if you're using Mast, something like this on your client side:
+This is most likely because you don't have any express cookies yet in your current session and are requesting from a domain other than your server. To prevent this error from popping back up, you should build in some kind of request to your server before you initialize your Socket.io connection. So, if you're using Mast, something like this on your client side:
 
 ```javascript
 // location of your server
