@@ -27,10 +27,10 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 ```
 
 If the requested controller/action doesn't exist:
-  - if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
-  - if no view exists, but a model exists, Sails will automatically generate a JSON API for the 
+  - If a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
+  - If no view exists, but a model exists, Sails will automatically generate a JSON API for the 
   	model which matches **:controller**.
-  - if no view OR model exists, Sails will respond with a 404.
+  - If no view OR model exists, Sails will respond with a 404.
 
 # Custom Routes
 You can define your own custom routes in **config/routes.js**
@@ -93,7 +93,7 @@ module.exports.routes = {
 ```
 
 # Wildcard Routes
-Wildcard routes can also be defined in **config/routes.js**.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the _:unkownRoute_ arbitrary variable as the route.  An example of this is shown below.
+Wildcard routes can also be defined in **config/routes.js**.  If, for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action, you can use the _:unkownRoute_ arbitrary variable as the route.  Here's an example of this:
 
 ```javascript
 // config/routes.js
@@ -114,7 +114,7 @@ modules.exports.routes = {
 
 Arbitrary variables will take any value that is put in the router and pass it down to the controller and action you specify.
 
-Another example, if say you want the route as the username of a user on your system, you could do the following.
+Another example:  If you want the route as the username of a user on your system, you could do the following:
 
 ```javascript
   '/:username': {
