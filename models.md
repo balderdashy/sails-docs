@@ -91,7 +91,7 @@ Our global is set to _disk_, however, since we overrode the adapter, our User mo
 
 ## Associations
 
-Associations are not yet available for Sails.JS, however are on the immediate todo list.  Please check out issue [#124](https://github.com/balderdashy/sails/issues/124) for more information regarding the proposed changes for associations.
+Associations are not yet available for Sails.js, however are on the immediate todo list.  Please check out issue [#124](https://github.com/balderdashy/sails/issues/124) for more information regarding the proposed changes for associations.
 
 <!-- Associations describe how models are connected to each other.  The concept originates from SQL databases, but it has analogues in noSQL databases as well (links and embeds).  NoSQL support for Sails' ORM is currently under development. -->
 
@@ -279,8 +279,8 @@ User.findAll({
 ```
 
 ## dynamic finders
-With Sails built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
-query your models with automatically genereated methods that depend on the attributes you define for
+With Sails.js's built in ORM , Waterline, you can use a very helpful tool called dynamic finders. You can
+query your models with automatically generated methods that depend on the attributes you define for
 the model. For example, if you had a book model that looks like this.
 
 ```javascript
