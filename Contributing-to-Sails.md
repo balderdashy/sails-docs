@@ -3,14 +3,14 @@
 Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.  For real.
 
 ## Guidelines
-Like any awesome project, we must have guidelines.  These guidelines are here to help keep the framewrok working in a flawless way for your use.  These guidelines should be followed for all contributions to the Sails.JS framework.
+To keep Sails.js as awesome as possible, we need to have a few guidelines for contributions to the framework.
 
-The following guidelines are required to be followed for code submissions to be considered.
+The following are required for code submissions to be considered:
  - Must be presented in the form of a Pull Request to Development Branch.
- - Must have accompaning tests.
- - Must follow Sails.JS JShint Guidelines (See .jshint file in repo)
+ - Must have accompanying tests.
+ - Must follow Sails.js JShint Guidelines (See .jshint file in repo)
 
-Any pull request that is done to the Master branch will immediately be closed and asked to resubmit to development branch.  We apologize for this, however we want to keep master at a build state of passing at all times.  Just in case someone wants to use the most up-to-date awesomeness that isn't available in the npm package.
+Any pull request that is done to the Master branch will immediately be closed and asked to resubmit to the development branch.  We apologize for this; however, we want to keep master at a build state of passing at all times, just in case someone wants to use the most up-to-date awesomeness that isn't available in the npm package.
 
 Now that we are all on the same page, lets get to coding some awesomeness of our own :D
 
