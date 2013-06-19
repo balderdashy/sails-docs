@@ -1,6 +1,6 @@
-We are working hard on deck to get sails into ship shape.  Currently, we don't have a built in solution to launching a "production" server of sails.  We will be correcting that though.
+We are working hard to get Sails.js ship-shape! Currently, however, we don't have a built in solution to launch a "production" server of Sails.
 
-For now, You'll want to take advantage of a tool that 'resurrects' your server if it crashes.  
+We hope to fix that soon... For now, though, you'll want to take advantage of a tool that "resurrects" your server if it crashes.  
 
 #### Here's how you deploy in production mode:
 
@@ -33,18 +33,18 @@ module.exports.environment = 'production';
 #### More on that here: 
 http://www.youtube.com/watch?v=GK-tFvpIR7c
 
-The big omission from that video is that, if you plan on keeping your app running (which you probably do!), you'll need to follow the steps mentioned above to use `forever.`
+The big omission from this video is that, if you plan on keeping your app running (which you probably do!), you'll need to follow the steps mentioned above to use `forever.`
 
 #### Getting your app on the server
 Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g sails forever` to install Sails and forever for the first time.  
 
-Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start .app.js`
+Then, `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start .app.js`
 
 
 #### Deploying to NodeJitsu?
-We get it! The Cloud is the future, and we want to help you get there.  To Depoloy to NodeJitsu, You'll need to make some minor modifications to your configuration.  Don't worry, It won't be like writing a new book or anything.
+We get it! The Cloud is the future, and we want to help you get there.  To Depoloy to NodeJitsu, You'll need to make some minor modifications to your configuration.  Don't worry, you won't have to write a novel or anything.
 
-Open up `config/application.js` in your app folder. In here, you'll need to edit the following lines.
+Open up `config/application.js` in your app folder. In here, you'll need to edit the following lines:
 
 ```
 	// Port this Sails application will live on
@@ -57,9 +57,9 @@ The `host:` is new to the file and is not created by default.  You will need to 
 #### Heroku, Here we come!
 Deploying to the cloud is a lot of fun! However, just like any other site we want to launch, we have a bit of work to do first.
 
-To deploy to Heroku,  You'll need to have a heroku account already setup and have to the heroku tool-belt installed.  To do this, visit this page: https://toolbelt.heroku.com/
+To deploy to Heroku,  You'll need to have a heroku account already set up and have to the Heroku toolbelt installed.  To do this, visit this page: https://toolbelt.heroku.com/
 
-Once that's done, we can start with the sails specific stuff.  Create and open the file Procfile at the root of your application.  We'll need to add the following to it.
+Once that's done, we can start with the Sails specific stuff.  Create and open the file Procfile at the root of your application.  You'll need to add the following to it.
 
 `Procfile`
 ```
@@ -67,21 +67,21 @@ web: node app.js
 ```
 This instructs Heroku to create a web dyno and assign our node process to it.  To test that you did this correctly, you can type `foreman start` on your CLI.  This should start the server locally for you.
 
-This is great and all, but it won't quite work on Heroku yet.  We need to set the port to something Heroku will understand. Lets edit our `config/application.js` file accordingly.
+This is great and all, but it won't quite work on Heroku yet.  You need to set the port to something Heroku will understand. Lets edit the `config/application.js` file accordingly.
 
 ```
 port: process.env.PORT || 1337,
 ```
 
-This will tell our application to look for the port that Heroku wants to let us use.  If it doesn't give one, then use port 1337.
+This will tell the application to look for the port that Heroku wants you to use.  If it doesn't give one, then use port 1337.
 
-Now we can push our SailsJS Application up to Heroku.
+Now you can push your Sails.js Application up to Heroku.
 ```
 heroku create
 git add .
 git commit -m "First commit to heroku"
 git push heroku master
 ```
-This will clone your local repo to heroku and do the necessary steps to install it on heroku.  Go grab some coffee, this will take a few minutes.
+This will clone your local repo to heroku and do the necessary steps to install it on Heroku.  (Go grab some coffee, this will take a few minutes.)
 
 Thats it. Now we can check out our new app. Lets visit our newly created app, type `heroku open` on your command line.
