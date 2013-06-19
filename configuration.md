@@ -1,6 +1,8 @@
 # Configuration
 
-So, now you have Sails.js installed and it's loading up your awesome new project.  What? Thats not good enough? Okay, lets see what we can configure to make it better suit your needs!
+So, now you have Sails.js installed and it's loading up your awesome new project.
+
+What? Thats not good enough? Alright then, lets see what we can configure to suit your needs!
 
 # Overview of configuration files
 One of the major advantages of Sails.js is its flexibility.  As with most MVC frameworks, Sails.js assumes standard conventions, but also allows you to change its configuration to fit your needs.  Below is a list and short explanation of each.
@@ -58,7 +60,7 @@ module.exports.adapters = {
 };
 ```
 
-Okay, so the first thing you may have noticed is the _default_ setting.  This is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other defined options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
+You may have noticed the _default_ setting: this is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other defined options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
 
 _**memory:**_  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
 
@@ -67,7 +69,7 @@ _**disk:**_  This is an option for _'default':_ .  Disk stores all data on disk 
 _**mysql:**_ This is an option for _'default':_ .  Mysql stores all data in a MySQL Database.  This is persisted through restarts.  This requires the setup of a Mysql server either locally or remote.
 
 ### Future
-As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide variety of data source adapters.
+As more adapters are created, they will be added to this guide.  Sails.js plans to support a wide variety of data source adapters.
 
 <span id="application.js"></span>
 ## application.js
@@ -247,7 +249,7 @@ module.exports.routes = {
 
 };
 ```
-Each attribute of _routes_ is a key/object pair.  The _key_ is the route that you want to control.  This can me "/" for the home page or /user/ for the users page.  It can really be whatever you want the user to be able to type and get content at.  The objects _controller:_ defines what controller to look in for this route, while the _action_ defines what action will be run when the route is executed.  If no action is given, Sails.JS assumes that you want to execute the index action.
+Each attribute of _routes_ is a key/object pair.  The _key_ is the route that you want to control.  This can me "/" for the home page or /user/ for the users page.  It can really be whatever you want the user to be able to type and get content at.  The objects _controller:_ defines what controller to look in for this route, while the _action_ defines what action will be run when the route is executed.  If no action is given, Sails.js assumes that you want to execute the index action.
 
 <span id="views.js"></span>
 ## views.js
