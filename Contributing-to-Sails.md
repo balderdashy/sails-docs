@@ -1,6 +1,6 @@
 # Contributing to this project
 
-Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.  For real.
+Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.
 
 ## Guidelines
 To keep Sails.js as awesome as possible, we need to have a few guidelines for contributions to the framework.
@@ -12,7 +12,7 @@ The following are required for code submissions to be considered:
 
 Any pull request that is done to the Master branch will immediately be closed and asked to resubmit to the development branch.  We apologize for this; however, we want to keep master at a build state of passing at all times, just in case someone wants to use the most up-to-date awesomeness that isn't available in the npm package.
 
-Now that we are all on the same page, lets get to coding some awesomeness of our own :D
+Now that we are all on the same page, lets get to coding!
 
 ## Fork
 Start by forking this repository:
