@@ -1,10 +1,10 @@
 # Policies
-Sometimes when you hit certain contoller actions, you want to perform a job. You do not want to
-worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
+Sometimes when you hit certain contoller actions, you want to perform a job. You don't want to
+worry about if the data you recieved is valid, if a user is authorized, etc. Policies
 allow you to run a piece of middleware logic before your actions run. 
 
 ## Defining Access Control Rules
-if you look in **config/policies.js** file, by default you will see a single policy set.
+If you look in the **config/policies.js** file, by default you will see a single policy set.
 
 ```javascript
 module.exports.policies = {
@@ -16,13 +16,13 @@ module.exports.policies = {
 ```
 
 This means that every action in every controller is accessible from any request.
-While this a good default, you can see how this can lead to problems if a non registered user wants
-to delete someone else from the database or update someone elses information. Let's define custom
+While this a good default, you can see how this can lead to problems if a non-registered user wants
+to delete someone else from the database or update someone else's information. Let's define custom
 policies to take care of that.
 
 ## Custom Policies
 
-Since we want to protect against that behavior, we need to define some policies.
+Since you want to protect against that behavior, you'll need to define some policies.
 
 ```javascript
 module.exports.policies = {
@@ -37,8 +37,8 @@ module.exports.policies = {
 };
 ```
 
-the **'authenticated'** value simply runs the logic in the **api/policies/authenticated.js** file.
-This can be anything, but in this case, this logic will make sure a user is in an authenticated
+The **'authenticated'** value simply runs the logic in the **api/policies/authenticated.js** file.
+This can be anything; in this case, this logic will make sure a user is in an authenticated
 session of the appliction. It then allows the controller action logic to run. 
 
 Your **api/policies/authenticated.js** file might look like this:
@@ -50,8 +50,8 @@ module.exports = function(req, res, next) {
 }
 ```
 
-We would also want to make sure that authenticated users can create and read. In that case, we can
-just say that all the actions in the User controller require an authenticated user. We can write it
+You'd also want to make sure that authenticated users can create and read. In that case, you can
+just say that all the actions in the User controller require an authenticated user. You can write it
 like this.
 
 ```javascript
@@ -67,7 +67,7 @@ module.exports.policies = {
 
 As you can see, this can make for much cleaner controller action code in that you only need the
 business logic. The miscellaneous jobs such as validating data or making sure users are authorized
-no longer has to be in the action, and instead live in modular middleware files. 
+no longer have to be in the action, and instead live in modular middleware files. 
 
 ## Chaining Policies
 
