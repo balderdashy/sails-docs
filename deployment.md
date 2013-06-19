@@ -82,6 +82,6 @@ git add .
 git commit -m "First commit to heroku"
 git push heroku master
 ```
-This will clone your local repo to heroku and do the necessary steps to install it on Heroku.  (Go grab some coffee, this will take a few minutes.)
+This will clone your local repo to Heroku and do the necessary steps to install it on Heroku.  (Go grab some coffee, this will take a few minutes.)
 
-Thats it. Now we can check out our new app. Lets visit our newly created app, type `heroku open` on your command line.
+Thats it! Now you can check out your new app: type `heroku open` on your command line.
