@@ -1,4 +1,4 @@
-We are working hard to get Sails.js ship-shape! Currently, however, we don't have a built in solution to launch a "production" server of Sails.
+We are working hard to get Sails.js in ship-shape! Currently, however, we don't have a built in solution to launch a "production" server of Sails.
 
 We hope to fix that soon... For now, though, you'll want to take advantage of a tool that "resurrects" your server if it crashes.  
 
