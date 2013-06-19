@@ -2,7 +2,7 @@
 
 So, now you have Sails.js installed and it's loading up your awesome new project.
 
-What? Thats not good enough? Alright then, lets see what we can configure to suit your needs!
+What? Thats not good enough? Well then, lets see what we can configure to suit your needs!
 
 # Overview of configuration files
 One of the major advantages of Sails.js is its flexibility.  As with most MVC frameworks, Sails.js assumes standard conventions, but also allows you to change its configuration to fit your needs.  Below is a list and short explanation of each.
