@@ -1,7 +1,7 @@
 # Changelog
 
 ### 0.8.9  (latest stable)
-*April 10, 2013*
+*April 9, 2013*
 
 > If I missed anything, please let me know!  This was a big release.
 
