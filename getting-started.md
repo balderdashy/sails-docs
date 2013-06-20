@@ -1,3 +1,5 @@
+> If you don't have Node.js yet, you'll want to make a quick pit stop here.
+
 # Getting Started
 
 ## Installation
