@@ -1,6 +1,4 @@
-> If you don't have Node.js yet, you'll want to make a quick pit stop here.
-
-# Getting Started
+> If you don't have Node.js yet, you'll want to make a quick pit stop [here](/balderdashy/sails/wiki/new-to-nodejs).
 
 ## Installation
 To install the latest stable release with the command-line tool:
