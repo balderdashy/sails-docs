@@ -13,6 +13,7 @@ We hope to fix that soon... For now, though, you'll want to take advantage of a 
 #### Other things you'll likely want to do in production:
 + configure your app to run on port 80 
 + put it in "production" mode so that all of your css/js gets bundled up
++ use SSL for connections to your application
 
 **config/local.js**
 ```javascript
@@ -26,6 +27,10 @@ We hope to fix that soon... For now, though, you'll want to take advantage of a 
 
 module.exports.port = 80;
 module.exports.environment = 'production';
+module.exports.ssl = {
+	cert: 'path/to/cert',
+	key: 'path/to/key'
+};
 
 ```
 + use mySQL in **config/adapters.js**
