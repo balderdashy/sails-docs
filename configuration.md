@@ -60,7 +60,7 @@ module.exports.adapters = {
 };
 ```
 
-You may have noticed the _default_ setting: this is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other defined options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](Models).
+You may have noticed the _default_ setting: this is set to _disk_ by default.  Disk means that the data is stored on the local file system instead of in a database.  You can change this to any of the other defined options below that.  This is the default that will be used throughtout your entire app.  If you need to override this on a per model basis, you can do that inside the model itself.  See [Models](/balderdashy/sails/wiki/Models).
 
 _**memory:**_  This is an option for _'default':_ .  Memory stores all data in memory.  This memory is erased when the server is shutdown.
 
