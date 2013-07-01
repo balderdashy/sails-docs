@@ -8,7 +8,7 @@ First, lets take a minute to understand what Node.js is.  Per [nodejs.org](http:
 
 More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
 
-##What OS do I need?
+#What OS do I need?
 
 Node.js will install on most major Operating systems.  Windows, MacOSX, and many flavors of Linux are supported.  
 
@@ -133,10 +133,10 @@ or packages on FreeBSD
 
     pkg_add -r node-devel
 
-# On to Sails.JS
+# Full speed ahead!
 Now that Node.js is installed on your system, we can move on to Sails.js.
 
-Click [here](/balderdashy/sails/wiki/getting-started) to continue.
+Click [here](http://sailsjs.org/#getStarted) to continue.
 
 # Futher help!
 We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
