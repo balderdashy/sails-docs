@@ -367,7 +367,7 @@ User.destroy({
 });
 ```
 
-## Query Modifiers
+# Query Modifiers
 Modifiers can be used in your database queries.  These make it easier to get information from your database without having to write a bunch of code. Currently supported modifiers are _contains_, _or_, _startsWith_, _endsWith_, _greaterThan_, _lessThan_, _>=_, and _<=_.  Each of these are shown in examples below.
 
 ## Modifier: _contains_
