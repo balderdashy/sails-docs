@@ -5,7 +5,7 @@ interactions with models, no matter what data source you're using.  It also defi
 for mapping your own custom models from external APIs, not-yet-supported databases, or in-memory
 state (i.e. Session storage.)
 
-# What is a Model?
+## What is a Model?
 A model is a persistent data type: a representation of data stored in a database. If you're using
 mySQL, a model might correspond to a table. If you're using MongoDB, it might correspond to a
 collection. In either case, our goal is to provide a simple, modular way of managing data without
