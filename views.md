@@ -1,15 +1,16 @@
+#Views
 There are three kinds of views in Sails: Traditional view partials, view templates, and
 the layout.
 
-# What is a View?
+## What is a View?
 In Sails, a view is the representation of the UI of your application. Views are, by default, EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. EJS, or any other configurable templating libray, takes care of the presentation of the data. Sails even allows you to create templates that are injected into the DOM. This means you only ever need to respond with JSON objects in your controllers, creating a truly API-driven
 application.
 
-# Where do I define Views?
+## Where do I define Views?
 Traditional views are defined in the **/views/** directory while templates are defined in the 
 **/assets/templates/** directory.
 
-# Server-side Views, Layout, and View Partials
+## Server-side Views, Layout, and View Partials
 Server-side views in the **/views/** directory are by default EJS files that will handle the job
 of presenting data when a view is requested by the client. The method ```res.view()``` call will
 respond to a client with the appropriate view. If no controller or action for a request exist, Sails.js's resourceful routing automatically serves a view if the view **/views/:controller/:action.ejs** exists.
@@ -85,7 +86,7 @@ res.view({
 
 This could be called from any controller output.
 
-# View Partials
+## View Partials
 
 Partials are just as they sound; a View Partial is only a small part of the overall DOM that you see on your web application.  With that said, a partial is nothing more than another (smaller) EJS file. Lets take a look at a partial from the Sails example, and how we should include it from another EJS file.
 
@@ -180,17 +181,17 @@ can be found <a href="http://expressjs.com/2x/guide.html#view-partials">here</a>
 
 <!-- _TODO_
 
-# View Promises
+## View Promises
 With Promises, views can be used to build complex API responses that join together several models
 without ever having to write a controller.  
 _TODO_ -->
 
-# Client-side Templates
+## Client-side Templates
 
 Any template files included in the **assets/templates/** directory are automatically "absorbed"
 as client-side templates and injected into the DOM wherever the ```<%- templateLibrary %>``` view
 partial is employed.
 
-#Templating Engine Configuration
+##Templating Engine Configuration
 
 One of the benefits of Sails.js is flexibility.  Sails.js's views system allows for other templating engines than the default (EJS).  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and change the engine in **/config/views.js**, or use `sails new appname --template=jade` for new projects.
