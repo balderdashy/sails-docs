@@ -138,7 +138,7 @@ Whether or not the view for this controller exists.
 
 
 
-## Accessing your models
+# Accessing your models
 
 In many cases, the reason you have a controller at all is that you want to do custom stuff with your models.  Otherwise, you could just use the defaults!
 

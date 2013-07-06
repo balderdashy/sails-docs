@@ -1,7 +1,7 @@
 #Routes
 This table routes urls to controllers/actions.
 
-#Resourceful Routing
+##Resourceful Routing
 If the URL is not specified in **config/routes.js**, the default route for a URL is:
 **/:controller/:action/:id**
 where **:controller**, **:action**, and the **:id** request parameter are derived from the url
@@ -32,7 +32,7 @@ If the requested controller/action doesn't exist:
   	model which matches **:controller**.
   - If no view OR model exists, Sails will respond with a 404.
 
-# Custom Routes
+## Custom Routes
 You can define your own custom routes in **config/routes.js**
 
 ```javascript
@@ -92,7 +92,7 @@ module.exports.routes = {
 
 ```
 
-# Wildcard Routes
+## Wildcard Routes
 Wildcard routes can also be defined in **config/routes.js**.  If, for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action, you can use the _:unkownRoute_ arbitrary variable as the route.  Here's an example of this:
 
 ```javascript
