@@ -16,7 +16,7 @@ module.exports.policies = {
 ```
 
 This means that every action in every controller is accessible from any request.
-While this a good default, you can see how this can lead to problems if a non-registered user wants
+While this is a good default, you can see how this can lead to problems if a non-registered user wants
 to delete someone else from the database or update someone else's information. Let's define custom
 policies to take care of that.
 
