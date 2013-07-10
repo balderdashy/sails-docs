@@ -1,8 +1,17 @@
 > _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
-We are working hard on deck to get sails into ship shape.  Currently, we don't have a built in solution to launching a "production" server of sails.  We will be correcting that though.
+## Deploying your Sails.js application
 
-For now, You'll want to take advantage of a tool that 'resurrects' your server if it crashes.  
+
+### Considerations
+
+Before you launch any web application, you should consider a few factors:
++ What is your expected traffic?
++ Are you contractually required to meet any uptime guarantees?
++ What sorts of front-end apps will be "hitting" your infrastructure?  And what kinds of things will they be requesting?
++ Will you be taking advantage of realtime pubsub features with Socket.io?
+
+
 
 #### Here's how you deploy in production mode:
 
