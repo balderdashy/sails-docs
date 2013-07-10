@@ -1,11 +1,14 @@
 # Changelog
 
 ### 0.9.0
-*June 10, 2013*
+*July 10, 2013*
 
 #### Sails.JS
 + Main: Express 3.x has been integrated.
 + Main: CSRF Attack Protection was added as part of the core.  Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, javascript plugins).
++ Main: Most of the core has been refactored for performance, code clarity, and simplicity to make contributions easier.
++ Main: Most of the core has been pulled into hooks.  In a subsequent patch release for 0.9.x, this process will make Socket.io optional.
++ Controllers: Automatic routing is now disable-able.
 + Assets: Grunt integration replaces Asset Rack.
 + Assets: Public folder removed from new projects.
 + Assets: Temporary 'public' folder is automatically built on lift, using the contents of the assets folder.
@@ -15,8 +18,10 @@
 + Assets: Asset bundling is now disabled by default, use `sails new foo --linker` to enable it
 + Config: Most configuration is now also explicit in new projects.  Defaults are still provided underneath.
 + Sockets: Socket.IO can now be configured with the options detailed in config/io.js.
++ Sockets: Built-in support for Redis MQ-- allows you to scale realtime apps to a multi-instance deployment without necessitating sticky sessions at your load balancer.
 + Views: Express 3 killed support for layouts/view partials.  Sails has been extended to maintain support for them with ejs and jade, but otherwise you are limited to what is supported by the engine itself.
-+ Sessions: Built in support for Redis and Mongo sessions for scaling your app to multi-instance deployments.
++ Views: Automatic routing to views is now disable-able.
++ Sessions: Built-in support for Redis and Mongo sessions for scaling your app to multi-instance deployments.
 
 #### Waterline
 + ORM: Waterline has been pulled out of Sails.js... Again. (See [Waterline](http://www.github.com/balderdashy/waterline))
