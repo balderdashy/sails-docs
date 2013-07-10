@@ -5,28 +5,28 @@
 
 #### Sails.JS
 + Main: Express 3.x has been integrated.
-+ Main: CSRF Attack Protection was added.
-+ Assets: Asset Rack Removed.
-+ Assets: Grunt system replaced Asset Rack.
++ Main: CSRF Attack Protection was added as part of the core.  Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, javascript plugins).
++ Assets: Grunt integration replaces Asset Rack.
 + Assets: Public folder removed from new projects.
-+ Assets: Public folder is automatically build on lift.
-+ Assets: Public folder can be built using "sails build" for external hosting.
-+ Assets: Grunt allows for plugins now like sass or less.
-+ Routing: Automatic 404 and 500 routing is removed.
-+ Config: Asset Config is now handled via grunt file.
-+ Config: Socket.IO can be configured with config/io.js.
-+ Views: Layouts are removed.
-+ Sessions: Redis is now able to be used for Persistant Sessions.
++ Assets: Temporary 'public' folder is automatically built on lift, using the contents of the assets folder.
++ Assets: Static assets can be compiled with "sails build" for external hosting of front-end assets
++ Assets: Grunt ecosystem allows for a <a href="https://github.com/gruntjs/grunt-contrib">wide variety</a> of front-end template/css/js preprocessor support (sass, hbs, stylus, dust, typescript, etc.)
++ Routing: Automatic 404 and 500 routing is replaced.
++ Assets: Asset bundling is now disabled by default, use `sails new foo --linker` to enable it
++ Config: Most configuration is now also explicit in new projects.  Defaults are still provided underneath.
++ Sockets: Socket.IO can now be configured with the options detailed in config/io.js.
++ Views: Express 3 killed support for layouts/view partials.  Sails has been extended to maintain support for them with ejs and jade, but otherwise you are limited to what is supported by the engine itself.
++ Sessions: Built in support for Redis and Mongo sessions for scaling your app to multi-instance deployments.
 
 #### Waterline
-+ ORM: Waterline is pulled out of Sails.JS. (See [Waterline](http://www.github.com/balderdashy/waterline))
-+ ORM: Validations are added. (See [Anchor](http://www.github.com/balderdashy/anchor))
-+ ORM: Instance Methods are added.
++ ORM: Waterline has been pulled out of Sails.js... Again. (See [Waterline](http://www.github.com/balderdashy/waterline))
++ ORM: Model attributes now support validations. (See [Anchor](http://www.github.com/balderdashy/anchor))
++ ORM: Custom instance methods can now be defined on models as virtual attributes.
 + ORM: Lifecycle Callbacks have been added. (See [Lifecycle Callbacks]())
 + ORM: findAll() has been replaced with find().
 + ORM: find() has been replaced with findOne().
-+ ORM: .done() promise now works on all class methods
-+ ORM: Promises have been added.
++ ORM: .done() promise now works on all ORM methods
++ ORM: Complete support for the Promise specificiation has been added.
 
 #### Anchor
 + Validations:  Too many added to list, see [Validations]()
