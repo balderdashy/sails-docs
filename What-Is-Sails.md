@@ -42,7 +42,9 @@ If you are developing an HTML/CSS front-end powered by Sails, there are some oth
     + Grunt has a strong, supportive community, and a wide array of plugins and build tools
     + Adding support for your favorite template engine or css/js preprocessor is as easy as modifying your project's Gruntfile
   + Asset bundling
-    + Sails bundles support for LESS, CoffeeScript, and JST templates (if you use the `--linker` option when creating your new project, your assets will be automatically bundled up and included in your layout HTML)
+    + Sails bundles support for LESS and JST templates
+    + If you use the `--linker` option when creating your new project, your assets will be automatically bundled up and included in your layout HTML
+    + Front-end support for SASS, Handlebars, CoffeeScript, Stylus, TypeScript, etc. is as easy as modifying your app's Gruntfile
     + In production mode, Sails will also minify and concatenate your assets
     + If you need to take web performance even further (this comes up for mobile web apps in particular), you can run `sails build` to output a CDN-ready snapshot of your apps assets    
   + PhoneGap, Chrome extensions, and SPA-friendliness
