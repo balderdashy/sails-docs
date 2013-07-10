@@ -1,3 +1,5 @@
+> _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+
 This doesn't hash the password, or use a salt or anything, but hopefully it will give you an idea of how it works.
 ```javascript
 
