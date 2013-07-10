@@ -42,6 +42,6 @@ What Is Sails
 [Changelog](/balderdashy/sails/wiki/changelog)<br />
 [Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)<br />
 
-See https://github.com/balderdashy/sails/wiki/_pages for more pages.
+See http://sailsjs.org/#documentation for a deeper dive.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/home)
