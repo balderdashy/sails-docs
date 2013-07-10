@@ -7,7 +7,7 @@ You can do all the things you're used to with MVC frameworks like CakePHP, Grail
 Sails is a Model, View, Controller architecture for Node.js, usually just called MVC. You can learn more about MVC <a href="https://docs.djangoproject.com/en/dev/faq/general/#django-appears-to-be-a-mvc-framework-but-you-call-the-controller-the-view-and-the-view-the-template-how-come-you-don-t-use-the-standard-names">here</a>, <a href="http://symfony.com/legacy/doc/askeet/1_0/en/3">here</a>, and <a href="http://guides.rubyonrails.org/getting_started.html#the-mvc-architecture">here</a>, but the tldr; is that it's the really awesome, industry-standard way of doing things for modern web apps.
 If you're wondering if Sails is a "proper MVC", you're probably right!  I don't really care whether it looks like Django, Zend, or Rails-- the important part is that it looks like the conventional MVC-esque architecture that we're used to, while still unlocking the new features you need to easily leverage WebSockets, streams, and data-driven APIs.
 
-## Plus
+## With a modern twist:
 Sails does a few things other MVC frameworks can't do:
 
   + Socket.io / Realtime / WebSockets
