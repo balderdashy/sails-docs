@@ -50,7 +50,9 @@ If you are developing an HTML/CSS front-end powered by Sails, there are some oth
     + Sails has easy-to-use CORS integration
     + Built-in support for cross-site request forgery (CSRF) protection, with a handy token-based option for single-page apps
 
-### Finally, a note for UX-focused guys/gals
+
+
+## Finally, a note for UX-focused guys/gals
 > From one geek to another:
 
 I work on a lot of web and mobile apps with our team at <a href="http://balderdash.co">Balderdash</a>.  More than ever before, it's important that your app not only work, but look and feel awesome.
