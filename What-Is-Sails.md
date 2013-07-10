@@ -14,17 +14,17 @@ If you're wondering if Sails is a "proper MVC", you're probably right! It wasnâ€
 Sails does a few things other MVC frameworks can't do:
 
   + Socket.io / Realtime / WebSockets
-    + Sails supports transport agnostic routing, which allows your controllers/policies to automatically handle Socket.io / WebSocket message.  In the past, you'd have to maintain a separate code base to make that happen.
+    + Sails supports transport agnostic routing, which allows your controllers/policies to automatically handle Socket.io / WebSocket messages.  In the past, you'd have to maintain a separate code base to make that happen.
     + This makes it much easier to add pubsub features, in particular the server-originated or 'comet' notifications you need for realtime apps, realtime analytics dashboards, and multiplayer games.
   + Performance
-    + Node has fantastic performance, and there are lots of resources out there about that
+    + Node has fantastic performance, and there are lots of resources out there to support that claim.
     + Specifically, we've had some great results using 4 EC2 small servers to scale Sails to 10,000 concurrent connections.
     + Built-in support for Redis session store, and Redis MQ for reverse pubsub routing
   + Node.js
-    + Node.js is the fastest-growing, all-javascript solution to <a href="https://www.youtube.com/watch?v=jo_B4LTHi3I">server-side development</a>
-    + Writing your code in one language on the front-end and back-end means less context-shifting, faster development, and better apps
+    + Node.js is the fastest-growing, all-javascript solution to <a href="https://www.youtube.com/watch?v=jo_B4LTHi3I">server-side development</a>.
+    + Writing your code in one language on the front-end and back-end means less context-shifting, faster development, and better apps.
   + Express
-    + Sails' controllers and policies are really just Express middleware
+    + Sails's controllers and policies are really just Express middleware
     + This means your Sails app logic is interoperable with existing Express apps, and vice versa
     + Supports the existing ecosystem of Express middleware
   + REST Blueprints
@@ -41,7 +41,7 @@ If you are developing an HTML/CSS front-end powered by Sails, there are some oth
 
   + Support for Grunt
     + As of Sails v0.9, all new projects come with a Gruntfile
-    + Think of Grunt to Node.js as mvn/ant is to Java, or as rake is to Ruby
+    + Grunt is to Node.js as mvn/ant is to Java, or as rake is to Ruby
     + Grunt has a strong, supportive community, and a wide array of plugins and build tools
     + Adding support for your favorite template engine or css/js preprocessor is as easy as modifying your project's Gruntfile
   + Asset bundling
@@ -60,8 +60,8 @@ If you are developing an HTML/CSS front-end powered by Sails, there are some oth
 ## Finally, a note for UX-focused guys/gals
 > From one geek to another:
 
-I work on a lot of web and mobile apps with our team at <a href="http://balderdash.co">Balderdash</a>.  More than ever before, it's important that your app not only work, but look and feel awesome.
-I originally built Sails to tackle these sorts of API-driven, front-end heavy apps for our startup and enterprise clients.  Since then, top-notch experiences have become industry standard (typically using Backbone, Angular, Ember, Knockout, etc.)
-Reducing the amount of time and energy you spend on your app's server code allows you to spend more time focusing on cool features.  The easier your backend code is to write and maintain, the more nimble you can be.  The more nimble you are, the more adaptable your project can be to your users' needs, and the faster you respond to bug fixes.  The more adaptable you.... you get the idea!
+I work on a lot of web and mobile apps with our team at <a href="http://balderdash.co">Balderdash</a>.  More than ever before, it's important that your applications not only work, but look and feel awesome.
+I originally built Sails to tackle these sorts of API-driven, front-end heavy projects for our startup and enterprise clients.  Since then, top-notch experiences have become industry standard (typically using Backbone, Angular, Ember, Knockout, etc.)
+Reducing the amount of time and energy you spend on your app's server code allows you to spend more time focusing on cool features.  The easier your backend code is to write and maintain, the more nimble you can be.  The more nimble you are, the more adaptable your project can be to your users' needs, and the faster you respond to bug fixes.  The more adaptable you are... you get the idea!
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/what_is_sails)
