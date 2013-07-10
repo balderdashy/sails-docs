@@ -1,20 +1,27 @@
 The Sails community supports the following databases out of the box:
 
-# Supported Adapters:
-* mySQL
-  * sails-mysql in npm
-* DirtyDB (for development only)
-  * sails-disk in npm
-  * sails-memory in npm
-* MongoDB
-  * sails-mongo in npm
-* Redis (still in testing) 
-  * sails-redis in npm
+## Supported Data Adapters:
+- [PostgreSQL](https://github.com/particlebanana/sails-postgresql) - *0.9+ compatible* - `sails-postgresql`
+- [MySQL](https://github.com/balderdashy/sails-mysql) - *0.9+ compatible* - `sails-mysql`
+- [MongoDB](https://github.com/balderdashy/sails-mongo) - *0.9+ compatible* - `sails-mongo`
+- [Memory](https://github.com/balderdashy/sails-memory) - *0.9+ compatible* - `sails-memory`
+- [Disk](https://github.com/balderdashy/sails-disk) - *0.9+ compatible* - `sails-disk`
 
-# Roadmap
-* SQLite
-* PostgreSQL
+## In-Progress Community Adapters:
 
-If the database you need isn't listed above, you can help contribute to an existing project or create your own.  Also, adapters are not limited to databases.  Web services like LDAP, Active Directory, and even things like Twitter and Facebook can be accessed via the ORM through adapters.
+  - [Redis](https://github.com/vanetix/sails-redis)
+  - [Riak](https://github.com/balderdashy/sails-riak)
+  - [Couch](https://github.com/craveprogramminginc/sails-couchdb)
 
+
+## Other Community Adapters
+> Also, adapters are not limited to databases.  The Sails.js ORM (Waterline) can be hooked up to communiate with any asynchronous web service!
+> Web services like LDAP, Active Directory, and even things like Twitter and Facebook can be accessed via the ORM through adapters.
+> You can get pretty avante garde here.
+  
+  - [IRC](https://github.com/balderdashy/sails-irc)
+  - [Twitter](https://github.com/balderdashy/sails-twitter)
+  - [JSDom](https://github.com/mikermcneil/sails-jsdom)
+
+If the database you need isn't listed above, you can help contribute to an existing project or create your own.
 Check out https://github.com/balderdashy/sails/wiki/Building-Your-Own-Adapters to learn more about that.
