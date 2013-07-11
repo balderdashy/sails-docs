@@ -50,4 +50,4 @@ _**mysql:**_ This is an option for _'default':_ .  Mysql stores all data in a My
 ### Future
 As more adapters are created, they will be added to this guide.  Sails.JS plans to support a wide variety of data source adapters.
 
-
+####You can find a list of supported adapters <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md">here</a>.
