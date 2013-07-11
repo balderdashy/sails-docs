@@ -1,7 +1,6 @@
 > _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
-
-The Sails community supports the following databases out of the box:
+Sails uses [Waterline](https://github.com/balderdashy/waterline) as its ORM, and supports all databases which have waterline adapters:
 
 ## Supported Data Adapters:
 
