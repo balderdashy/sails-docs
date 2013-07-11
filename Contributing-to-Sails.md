@@ -41,8 +41,8 @@ Make your enhancements, fix bugs, do your `thang`.
 
 
 ## Test
-Please write a test for your addition/fix.  I know it kind of sucks if you're not used to it, but it's how we maintain great code. You
-For our test suite, I'm using [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  If run into trouble with this part, please reach out to the Google Group!
+Please write a test for your addition/fix.  I know it kind of sucks if you're not used to it, but it's how we maintain great code. 
+For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  If run into trouble with this part, please reach out to the Google Group!
 
 ![Screen Shot 2013-02-12 at 2.56.59 PM.png](http://i.imgur.com/dalbOdZ.png) 
 
