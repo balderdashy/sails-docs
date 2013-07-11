@@ -1,22 +1,136 @@
 <span id="routes.js"></span>
 ## routes.js
-Resourceful routing in Sails.js is automatic, but you can also assign custom routes from specific URLs to your controllers' actions.  
+Sails uses a number of different strategies to route requests. Here they are top-to-bottom, in order of precedence:
 
-For instance, if you have an AuthController with a `login` action, the url `http://yourdomain.com/auth/login` would automatically exist.  But if you also want `http://yourdomain.com/login` to work, your routes file might look like the following:
+###1. Static Assets
+Flat files in your `assets` directory- (these are sometimes referred to as 'public')
 
-```javascript
-module.exports.routes = {
-    
-	// To route the home page to the "index" action of the "home" controller:
-	'/' : {
-		controller	: 'home'
-	},
+If you have an image file at `/assets/images/foo.jpg`, it will be made available automatically via the route:  `/images/foo.jpg`
 
-	'/login' : {
-		controller  : 'auth'
-		action      : 'login'
+
+###2. Static Routes
+This object routes static URLs to handler functions-- In most cases, these functions are actions inside of your controllers. For convenience, you can also connect routes directly to views or external URLs.
+
+By default, your root route (aka home page) points to a view located at `views/home/index.ejs`. (This would also work if you had a file at: `/views/home.ejs`)
+
+
+But what if you want your home page to display a signup form located at `views/user/signup.ejs`?
+```
+'/' : {
+	view : 'user/signup'
+}
+```
+
+Let's say you're building an email client, like Gmail. You might want your home route to serve an interface using custom logic. In this scenario, you have a custom controller `MessageController` with an `inbox` action: `'/' : 'message.inbox'`
+
+Alternatively, you can use the more verbose syntax:
+```
+'/': {
+	controller	: 'message',
+	action		: 'inbox'
+}
+```
+
+If you decided to call your action `index` instead of `inbox`, you can just use: `'/': 'message'`.
+
+
+
+Up until now, we haven't specified a specific HTTP method/verb. The routes above will apply to ALL verbs! If you want to set up a route only for one in particular (GET, POST, PUT, DELETE, etc.), just specify the verb before the path. 
+
+For example, if you have a `UserController` with a `signup` action, and somewhere else, you're serving a signup form that looks like:
+```
+<form action="/signup">
+	<input name="username" type="text"/>
+	<input name="password" type="password"/>
+</form>
+```
+You could define the following route: `'post /signup'	: 'user.signup'`.
+
+Finally, here's an example of how you would route all GET requests to the `/google` route to Google's website: `'get /google'	: 'http://google.com'`
+
+###3. Action Blueprints
+These routes can be disabled by setting (in config/controllers.js): `module.exports.controllers.routes.actions = false`
+ 
+
+All of your controllers' actions are automatically bound to a route.  For example: If you have a controller, `FooController`:
++ its action `bar` is accessible at `/foo/bar`
++ its action `index` is accessible at `/foo/index`, and also `/foo`
+
+
+###4. View Blueprints
+
+These routes can be disabled by setting (in config/controllers.js): `module.exports.views.routes = false`
+
+If you have a view file at `/views/foo/bar.ejs`, it will be rendered and served automatically via the route:  `/foo/bar`
+
+
+###5. Shortcut CRUD blueprints
+These routes can be disabled by setting (in config/controllers.js): `module.exports.controllers.routes.shortcuts = false`
+
+If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
++ `/foo/find/:id?`	->	search lampshades using specified criteria or with id=:id
++ `/foo/create`	->	create a lampshade using specified values		
++ `/foo/update/:id`	->	update the lampshade with id=:id		
++ `/foo/destroy/:id`	->	delete lampshade with id=:id
+
+###6. REST blueprints
+These routes can be disabled by setting (in config/controllers.js): `module.exports.controllers.routes.rest = false`
+ 
+If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
++ `get /foo/:id?`	->	search lampshades using specified criteria or with id=:id
++ `post /foo`		-> create a lampshade using specified values
++ `put /foo/:id`	->	update the lampshade with id=:id
++ `delete /foo/:id`	->	delete lampshade with id=:id
+
+###7. Default 404 (not found) handler
+If no matches are found, Sails will respond using this handler:
+```
+module.exports[404] = function notFound (req, res, defaultNotFoundBehavior) {
+
+	// Respond to request, respecting any attempts at content negotiation
+	if (req.wantsJSON) {
+		res.send(404);
 	}
+
+	// If the clients wants HTML, send the `views/404.*` page by default
+	else res.view('404');
+};
+```
+
+### Default server error handler
+If an error is thrown, Sails will respond using this default 500 (server error) handler:
+```
+module.exports[500] = function (errors, req, res, defaultErrorBehavior) {
+
+	// Ensure that `errors` is a list
+	var displayedErrors = (typeof errors !== 'object' || !errors.length ) ?
+		[errors] :
+		errors;
+
+	// Ensure that each error is formatted correctly
+	// Then log them
+	for (var i in displayedErrors) {
+		if (!displayedErrors[i] instanceof Error) {
+			displayedErrors[i] = require('util').inspect(new Error(displayedErrors[i]));
+			sails.log.error(displayedErrors[i]);
+		}
+	}
+
+	// In production, don't display any identifying information about the error(s)
+	var response = {};
+	if (sails.config.environment === 'development') {
+		response = {
+			errors: displayedErrors
+		};
+	}
+
+	// Respond to request, respecting any attempts at content negotiation
+	if (req.wantsJSON) {
+		res.json(response, 500);
+	}
+
+	// If the clients wants HTML, send the `views/500.*` page by default
+	else res.view('500', response);
 
 };
 ```
-Each attribute of _routes_ is a key/object pair.  The _key_ is the route that you want to control.  This can me "/" for the home page or /user/ for the users page.  It can really be whatever you want the user to be able to type and get content at.  The objects _controller:_ defines what controller to look in for this route, while the _action_ defines what action will be run when the route is executed.  If no action is given, Sails.JS assumes that you want to execute the index action.
