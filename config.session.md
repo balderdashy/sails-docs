@@ -1,7 +1,7 @@
-##Session
+##Session.js
 
 ####Session secret
-Session secret is automatically generated when you create a new app. You can replace it in the session.js file.
+Session secret is automatically generated when you create a new app. You can replace it in this file.
 ####Redis
 This file also contains lines that can be uncommented in production to set up a shared Redis session store that can be shared across multiple Sails.js servers.
 ####Mongo
