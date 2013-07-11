@@ -10,7 +10,7 @@ So, you don't want your mom to access your secret stash of ... code?  Then this 
 */
 module.exports.policies = {
 
-    // Default policy (allow public access)
+	// Default policy (allow public access)
 	'*': true
 
 	/** Example mapping: 
