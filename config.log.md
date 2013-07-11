@@ -1,6 +1,1 @@
-Valid `level` configs:
--error
--warn
--debug
--info
--verbose
+Valid `level` configs: error, warn, debug, info, verbose
