@@ -18,31 +18,31 @@ What Is Sails
 -->
 ## Getting Started and the Basics:
 
-[New to Node.js](/balderdashy/sails/wiki/new-to-nodejs)<br />
-[Getting Started](/balderdashy/sails/wiki/Getting-started)<br />
-[Models](/balderdashy/sails/wiki/models)<br />
-[Controllers](/balderdashy/sails/wiki/controllers)<br />
-[Assets](/balderdasy/sails/wiki/assets)<br />
-[examples](/balderdashy/sails/wiki/examples)<br />
+[New to Node.js](/balderdashy/sails/wiki/new-to-nodejs)  
+[Getting Started](/balderdashy/sails/wiki/Getting-started)  
+[Models](/balderdashy/sails/wiki/models)  
+[Controllers](/balderdashy/sails/wiki/controllers)  
+[Assets](/balderdasy/sails/wiki/assets)  
+[examples](/balderdashy/sails/wiki/examples)  
 
 ## A little more Advanced:
 
-[Configuration](/balderdashy/sails/wiki/configuration)<br />
-[Adapters](/balderdashy/sails/wiki/adapters)<br />
-[Polocies](/balderdashy/sails/wiki/policies)<br />
-[Services](/balderdashy/sails/wiki/services)<br />
-[Sockets](/balderdashy/sails/wiki/sockets)<br />
-[outes](/balderdashy/sails/wiki/routes)<br />
+[Configuration](/balderdashy/sails/wiki/configuration)  
+[Adapters](/balderdashy/sails/wiki/adapters)  
+[Polocies](/balderdashy/sails/wiki/policies)  
+[Services](/balderdashy/sails/wiki/services)  
+[Sockets](/balderdashy/sails/wiki/sockets)  
+[Routes](/balderdashy/sails/wiki/routes)  
 [PubSub](/balderdashy/sails/wiki/pubsub)
 
 ## Ready to Deploy?:
 
-[Deployment](/balderdashy/sails/wiki/deployment)<br />
+[Deployment](/balderdashy/sails/wiki/deployment)  
 
 ## For those of you that would like to contribute.
 
-[Changelog](/balderdashy/sails/wiki/changelog)<br />
-[Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)<br />
+[Changelog](/balderdashy/sails/wiki/changelog)  
+[Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)  
 
 See http://sailsjs.org/#documentation for a deeper dive.
 
