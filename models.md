@@ -21,47 +21,28 @@ class methods.
 ## Attributes
 
 Attributes are basic pieces of information about a model. For instance, a model called `Person`
-might have attributes called `name`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
+might have attributes called `firstName`, `lastName, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
 The model definition for `Person` might look like this:
 
 ```javascript
 // Person.js
 var Person = {
-  name: 'STRING',
-  age: 'INTEGER',
-  birthDate: 'DATE',
-  phoneNumber: 'STRING',
-  emailAddress: 'STRING'
-};
-
-exports = Person;
-```
-
-Attributes can also be defined as an object. This allows you to attach additional properties
-such as validations to certain attributes.
-
-```javascript
-// Person.js
-var Person = {
-
-  name: {
-    type: 'string',
-    required: 'true'
-  },
-
+  firstName: 'STRING',
+  lastName: 'STRING',
   age: {
-    type: 'integer',
-    min: 18,
-    max: 18
-  },
-
+    type: 'INTEGER',
+    max: 150,
+    required: true
+  }
+  birthDate: 'DATE',
+  phoneNumber: {
+    type: 'STRING'
+  }
   emailAddress: {
-    // types can be validations as well
-    // they will be converted to strings when sending to the database
-    type: 'email'
+    type: 'email', // Email type will get validated by the ORM
+    required: true
   },
-
-  // etc
+  
 };
 
 exports = Person;
@@ -83,33 +64,7 @@ The following attribute types are currently available:
   - array
   - json
 
-### defaultsTo
-The value this attribute should be set to if left unspecified during model creation.
-
-ex:
-```javascript
-module.exports = {
-  attributes: {
-    role: 'string',
-    defaultsTo: 'member'
-  }
-};
-```
-
-### columnName
-A custom column name definition in the adapter. This allows you to integrate with legacy databases
-if needed and have a clean api for building on top of. It also allows for a column name prefix.
-
-```javascript
-module.exports = {
-  attributes: {
-    name: {
-      type: 'string',
-      columnName: 'sails_name'
-    }
-  }
-};
-```
+To learn more about what methods are available to you, check out the [waterline documentation](https://github.com/balderdashy/waterline).
 
 ## Validations
 
@@ -381,7 +336,7 @@ module.exports = {
 };
 ```
 
-Our global is set to `disk`, however, since we overrode the adapter, our User models will now be
+Our global is set to `disk`, however since we overrode the adapter our User models will now be
 stored in MySQL using the sails-mysql adapter.
 
 ### Schemaless Mode
