@@ -54,6 +54,28 @@ will create the directory, **api/controllers/comment/** with three files
 
 -->
 
+# How do I use the controller once I've created it?
+After a controller has been defined, Sails will automatically map out routes to give you easy access.  
+For the controller above, the routes would be the following:  
+`http://localhost:1337/comment/create`  
+`http://localhost:1337/comment/destroy`  
+`http://localhost:1337/comment/tag`  
+`http://localhost:1337/comment/like`  
+
+Additionally, thanks to blueprints, you also get these methods by default:  
+`get /:controller/:id?`  
+`post /:controller`  
+`put /:controller/:id`  
+`delete /:controller/:id`  
+
+`/:controller/find/:id?`  
+`/:controller/create`  
+`/:controller/update/:id`  
+`/:controller/destroy/:id`  
+
+To turn off the CRUD routes, simply set the 'shortcuts' flag to false in `config/controllers.js`,  
+and to turn off REST routes, simply set the 'rest' flag to false in `config/conttrollers.js`
+
 # The Request Object
 
 ## req.param()
@@ -150,7 +172,7 @@ var ChickenController = {
 
   // Peck the chicken specified by id (subtract 50 HP)
   peck: function (req,res) {
-    Chicken.find(req.param('id')).done(function (err,chicken) {
+    Chicken.find(req.param('id')).exec(function (err, chicken) {
       if (err) return res.send(err,500);
       if (!chicken) return res.send("No other chicken with that id exists!", 404);
       if (chicken.hp <= 0) return res.send("The other chicken is already dead!", 403);
@@ -159,7 +181,7 @@ var ChickenController = {
       chicken.hp -= 50;
 
       // Persist the change
-      Chicken.update(chicken.id,chicken).done(function (err) {
+      chicken.save(function (err) {
         if (err) return res.send(err,500);
 
         // Report back with the new state of the chicken
