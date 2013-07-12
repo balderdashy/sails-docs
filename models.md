@@ -38,19 +38,19 @@ exports = Person;
 ```
 
 Attributes can also be defined as an object. This allows you to attach additional properties
-such as validations to a certain attribute.
+such as validations to certain attributes.
 
 ```javascript
 // Person.js
 var Person = {
 
   name: {
-    type: 'STRING',
+    type: 'string',
     required: 'true'
   },
 
   age: {
-    type: 'INTEGER',
+    type: 'integer',
     min: 18,
     max: 18
   },
@@ -67,20 +67,48 @@ var Person = {
 exports = Person;
 ```
 
+#### Available Attribute Types:
+
+The following attribute types are currently available:
+
+  - string
+  - text
+  - integer
+  - float
+  - date
+  - time
+  - datetime
+  - boolean
+  - binary
+  - array
+  - json
+
 ### defaultsTo
 The value this attribute should be set to if left unspecified during model creation.
+
+ex:
+```javascript
+module.exports = {
+  attributes: {
+    role: 'string',
+    defaultsTo: 'member'
+  }
+};
+```
 
 ### columnName
 A custom column name definition in the adapter. This allows you to integrate with legacy databases
 if needed and have a clean api for building on top of. It also allows for a column name prefix.
 
 ```javascript
-attributes: {
-  name: {
-    type: 'string',
-    columnName: 'sails_name'
+module.exports = {
+  attributes: {
+    name: {
+      type: 'string',
+      columnName: 'sails_name'
+    }
   }
-}
+};
 ```
 
 ## Validations
@@ -332,7 +360,7 @@ For example:
 // api/models/User.js
 module.exports = {
 
-  adapter: 'sails-mysql',
+  adapter: 'mysql',
 
   config: {
     user: 'root',
@@ -353,8 +381,41 @@ module.exports = {
 };
 ```
 
-Our global is set to _disk_, however, since we overrode the adapter, our User models will now be
+Our global is set to `disk`, however, since we overrode the adapter, our User models will now be
 stored in MySQL using the sails-mysql adapter.
+
+### Schemaless Mode
+
+For adapters that don't require a schema such as Mongo or Redis the default setting is to be schemaless. This means
+that you don't need to specify attributes on your model in order to persist them. For some cases this may be fine but
+in other cases you would like to specify that all data sticks to a schema.
+
+You can toggle the `schema` flag on models on or off. However note that if you are using a schema database such as MySQL
+or PostgreSQL you will not be able to use the model if `schema` is set to false.
+
+```javascript
+module.exports = {
+ 
+ adapter: 'mongo',
+ schema: true,
+ 
+ attributes: {
+   // some attributes
+ }
+};
+```
+
+You may also set the `schema` flag globally in your `config/adapters.js` for a datastore. This will enable/disable a schema
+on all your models.
+
+```javascript
+module.exports.adapters = {
+  mongo: {
+    module: 'sails-mongo',
+    schema: true
+  }
+};
+```
 
 
 ## Associations
