@@ -45,39 +45,6 @@ And here's what the controller looks like:
 	module.exports = CorndogController;
 ```
 
-Opening up **/views/layout.ejs** you will see some EJS partials ```<%- assets.css() ->```, ```<%- assets.js() ->```, ```<%- body ->```, and ```<%- assets.templateLibrary() ->```.
-
-Both **assets.css()** and **assets.js()** partials inject compiled css and js assets into your layout.
-The **body** partial is where the req views will be injected. Finally, **assets.templateLibrary()**
-is used for client side template injection.
-
-The default **/views/layout.ejs** will look like this:
-
-```html
-<!DOCTYPE html>
-<html>
-	<head>
-		<title><%- title %></title>
-
-		<!-- Viewport mobile tag for sensible mobile support -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		
-		<!-- JavaScript and stylesheets from your public folder are included here -->
-		<%- assets.css() %>
-		<%- assets.js() %>
-	</head>
-
-	<body>
-		<%- body %>
-
-		<!-- Templates from your view path are included here -->
-		<%- assets.templateLibrary() %>
-	</body>
-</html>
-```
-
-This layout file is the beginning to a HTML5 compatable website application.  This is about all you need.  If you want to add in custom links to JavaScript or to external resources that are not handled by assets, this is where you should do it.
-
 If you need to override a layout for a specific view, you can do so in the res.view call as below:
 
 ```javascript
@@ -104,7 +71,7 @@ Partials are just like they sound.  A View Partial is only a small part of the o
 		<div class="clearfix">
 		</div>
 	</span>
-<footer>
+<footer>
 ```
 As you can see, this is nothing more than a simple EJS file.  Nothing special, nothing magical.
 
@@ -188,11 +155,6 @@ With Promises, views can be used to build complex API responses that join togeth
 without ever having to write a controller.  
 _TODO_ -->
 
-# Client-side Templates
-
-Any template files included in the **assets/templates/** directory are automatically "absorbed"
-as client-side templates and injected into the DOM wherever the ```<%- templateLibrary %>``` view
-partial is employed.
 
 #Templating Engine Configuration
 
