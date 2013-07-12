@@ -21,7 +21,7 @@ class methods.
 ## Attributes
 
 Attributes are basic pieces of information about a model. For instance, a model called `Person`
-might have attributes called `firstName`, `lastName, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
+might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
 The model definition for `Person` might look like this:
 
 ```javascript
