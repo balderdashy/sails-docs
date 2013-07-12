@@ -197,6 +197,7 @@ layout into `assets/linker`. This will make your assets file structure look like
 
 ```
 assets/
+  images/
   linker/
     js/
     styles/
