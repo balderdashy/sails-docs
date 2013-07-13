@@ -5,8 +5,9 @@ There are three kinds of views in Sails. There are traditional view partials, vi
 the layout.
 
 ## What is a View?
-In Sails a view is the representation of the UI of your application. Views are, by default, EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. EJS, or any other configurable templating libray, takes care of the presentation of the data. Sails even allows you to create templates that are injected into the DOM. With this, all you ever have respond with is JSON objects in your controllers, creating a truely API-driven
-application.
+In Sails a view is the representation of the UI of your application. Views are, by default, EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. 
+Sails uses EJS, or its other configurable templating libraries, to present your app's data as HTML. Sails allows you to create templates that are injected into the DOM. 
+With this, all you ever have to respond with is JSON objects in your controllers, creating a truely API-driven application.
 
 ## Where do I define Views?
 Traditional views are defined in the **/views/** directory while templates are defined in the 
