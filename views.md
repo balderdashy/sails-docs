@@ -146,17 +146,35 @@ PROJECT FOLDER
 
 This layout makes it really simple to navigate and keep things organized.
 
-More infomation about view partials
-can be found <a href="http://expressjs.com/2x/guide.html#view-partials">here</a>.
 
-<!-- _TODO_
-
-# View Promises
-With Promises, views can be used to build complex API responses that join together several models
-without ever having to write a controller.  
-_TODO_ -->
-
-
-#Templating Engine Configuration
+## View Engine Configuration
 
 One of the benefits of SailJS is flexability.  SailsJS's views system allows for other templating engines than the default (EJS).  The JADE Node Template Engine is available for use as well.  Just install it via *npm* and just change the engine in **/config/views.js**, or use `sails new appname --template=jade` for new projects.
+
+
+
+
+## What about using multiple layouts?
+
+Express 3 removed native support for layouts.  In Sails, we've managed to keep this around, but we don't officially support multiple layouts.
+
+That said, at least in EJS, instead of indicating your custom layout with the `layout` local,
+you must use `_layoutFile`:
+```
+res.view({
+  _layoutFile: 'relativePathToYourCustomLayoutFromTheTargetView.ejs'
+});
+```
+
+The path to the layout you're wanting to use should be specified  **relative** to the view you're rendering.
+
+So if you're in the create action of the UserController, rendering a view (`views/user/create.ejs`), the relative path to your custom layout might be: `../staticSiteLayout.ejs`
+
+```text
+PROJECT FOLDER
+└── views
+    ├── staticSiteLayout.ejs
+    ├── layout.ejs
+    └── user
+    	└── create.ejs
+```
