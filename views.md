@@ -4,15 +4,15 @@
 There are three kinds of views in Sails. There are traditional view partials, view templates, and
 the layout.
 
-# What is a View?
+## What is a View?
 In Sails a view is the representation of the UI of your application. Views are, by default, EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. EJS, or any other configurable templating libray, takes care of the presentation of the data. Sails even allows you to create templates that are injected into the DOM. With this, all you ever have respond with is JSON objects in your controllers, creating a truely API-driven
 application.
 
-# Where do I define Views?
+## Where do I define Views?
 Traditional views are defined in the **/views/** directory while templates are defined in the 
 **/assets/templates/** directory.
 
-# Server-side Views, Layout, and View Partials
+## Server-side Views, Layout, and View Partials
 Server-side views in the **/views/** directory are by default EJS files that will handle the job
 of presenting data when a view requested by the client. The method ```res.view()``` call will
 respond to a client with the appropriate view. If no controller or action for a request exist, Sails resourceful routing automatically serves a view if the view **/views/:controller/:action.ejs** exists.
@@ -55,7 +55,7 @@ res.view({
 
 This could be called from any controller output.
 
-# View Partials
+## View Partials
 
 Partials are just like they sound.  A View Partial is only a small part of the overall DOM that you see on your web application.  With that said, a partial is nothing more than another (smaller) EJS file. Lets take a look at a partial from the Sails example, and how we should include it from another EJS file.
 
