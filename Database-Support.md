@@ -2,6 +2,15 @@
 
 Sails uses [Waterline](https://github.com/balderdashy/waterline) as its ORM, and supports all databases which have waterline adapters:
 
+
+## Developing Custom Adapters
+
+If the database you need isn't listed above, you can help contribute to an existing project or create your own.
+Check out https://github.com/balderdashy/sails/wiki/Building-Your-Own-Adapters to learn more about that.
+
+
+The Sails community supports the following databases out of the box:
+
 ## Supported Data Adapters:
 
 - [PostgreSQL](https://github.com/particlebanana/sails-postgresql) - *0.9+ compatible* - `sails-postgresql`
@@ -26,8 +35,6 @@ Sails uses [Waterline](https://github.com/balderdashy/waterline) as its ORM, and
   - [Twitter](https://github.com/balderdashy/sails-twitter)
   - [JSDom](https://github.com/mikermcneil/sails-jsdom)
 
-
-## Developing Custom Adapters
 
 If the database you need isn't listed above, you can help contribute to an existing project or create your own.
 Check out https://github.com/balderdashy/sails/wiki/Building-Your-Own-Adapters to learn more about that.
