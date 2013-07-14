@@ -15,7 +15,7 @@ If you'd like a more comprehensive understanding of Grunt, [here](http://gruntjs
 ## Default Asset Management with Grunt
 Here is what the default grunt file does:
 
- - clear the .tmp folder created by the last time the app was run
+ - clear the .tmp folder created by the last time the app was run. Your .tmp foulder is the public facing directory.
  - compile JST templates from assets/linker
  - compile Less styles
  - copy assets into a .tmp/public folder (this is where static files are served from)
