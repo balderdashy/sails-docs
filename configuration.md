@@ -15,5 +15,5 @@ One of the major advantages of Sails.js is its flexibility.  As with most MVC fr
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.policies.md">policies.js</a>         (This file defines policies that are used to grant or deny access to users)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.routes.md">routes.js</a>             (This file contains all the user specified routes for the system.  The system will attempt dynamic routing if this is blank)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.session.md">session.js</a>
-* <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.sockets.md">io.js</a>                     (This file handles the Socket.IO Configuration options.)
+* <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.sockets.md">sockets.js</a>                     (This file handles the Socket.IO Configuration options.)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md">views.js</a>               (This file handles all view related settings, such as the view engine and layout)
