@@ -1,4 +1,4 @@
-##Log
+## log.js
 This file contains the configuration of the log levels for your app.
 
 There are 5 different levels to the log:

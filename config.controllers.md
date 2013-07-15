@@ -1,3 +1,4 @@
+## controllers.js
 module.exports = {
   
 	// (Note: global blueprint config may be overridden on a per-controller basis

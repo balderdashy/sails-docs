@@ -1,4 +1,4 @@
-## Socket.io server configuration
+## sockets.js
 > _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 Configuration options for Socket.IO in conjunction with the way sails.js uses it are available in the ```config/io.js``` file.

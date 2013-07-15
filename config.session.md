@@ -1,4 +1,4 @@
-##Session.js
+## session.js
 
 ####Session secret
 Session secret is automatically generated when you create a new app. You can replace it in this file.
