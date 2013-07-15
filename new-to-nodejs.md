@@ -42,6 +42,7 @@ Using [macports](http://www.macports.org/):
 <a id="install-on-linux" name="install-on-linux" class="anchor" href="#install-on-linux"><span class="mini-icon mini-icon-link"></span></a>
 Install on Linux
 </h2>
+
 ### Ubuntu, Mint
 
 Example install:
