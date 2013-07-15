@@ -1,4 +1,3 @@
-<span id="policies.js"></span>
 ## policies.js
 So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 

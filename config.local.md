@@ -1,4 +1,3 @@
-<span id="local.js"></span>
 ## local.js
 This file holds local overrides for an app.  For example, if you wanted to use a different port than the one for the app.
 

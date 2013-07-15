@@ -1,4 +1,3 @@
-<span id="views.js"></span>
 ## views.js
 The views.js file controls how your views will display.  From if you will use a layout file to what type of language can be used to create the view files.
 

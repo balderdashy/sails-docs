@@ -1,4 +1,3 @@
-<span id="routes.js"></span>
 ## routes.js
 Sails uses a number of different strategies to route requests. Here they are top-to-bottom, in order of precedence:
 

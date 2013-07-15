@@ -1,4 +1,3 @@
-<span id="application.js"></span>
 ## application.js
 The application.js file holds all the generalized configuration options for an application.  This means that everything that doesn't have its own file can be found here.
 
