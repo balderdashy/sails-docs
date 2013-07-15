@@ -6,6 +6,8 @@ So, now you have Sails.js installed and it's loading up your awesome new project
 # Overview of configuration files
 One of the major advantages of Sails.js is its flexibility.  As with most MVC frameworks, Sails.js assumes standard conventions, but also allows you to change its configuration to fit your needs.  Below is a list and short explanation of each.
 
+* <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.404.md">404.js</a>         (This file handles the default behavior for 404 pages)
+* <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.500.md">500.js</a>         (This file handles the default behavior for 500 pages)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.adapters.md">adapters.js</a>         (This file handles database/datasource adapters)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.bootstrap.md">bootstrap.js</a>       (This file holds code that needs to be run before the app launches)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.controllers.md">controllers.js</a>

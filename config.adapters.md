@@ -1,4 +1,4 @@
-## adapters.js
+##adapters.js
 The adapters.js file is where you will specify your database options for the entire app.  Lets take a look at the file and get familiar with all the parts:
 
 ```javascript
