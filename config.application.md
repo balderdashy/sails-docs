@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-_**appName:**_ \<STRING\>  This is the name of your application.  It is a string and can be any alpha-numeric string.
+_**appName:**_ `STRING`  This is the name of your application.  It is a string and can be any alpha-numeric string.
 
 _**host:**_ \<STRING\>  (Optional) This is the host that your app will "think" it is running on.  I.E. it will only be accessable from this host.
 
