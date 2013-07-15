@@ -11,6 +11,7 @@ One of the major advantages of Sails.js is its flexibility.  As with most MVC fr
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.adapters.md">adapters.js</a>         (This file handles database/datasource adapters)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.bootstrap.md">bootstrap.js</a>       (This file holds code that needs to be run before the app launches)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.controllers.md">controllers.js</a>
+* <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.csrf.md">csrf.js</a>
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.local.md">local.js</a>               (This file is included in the `.gitignore` and won't be pushed up to your git repository.  It handles any LOCAL overrides needed)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.locales.md">locales</a>          (Folder that holds locale specific settings)
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.log.md">log.js</a>
