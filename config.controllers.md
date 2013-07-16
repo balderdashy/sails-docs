@@ -66,10 +66,10 @@ module.exports = {
 
 The first thing to note is the default blueprint options will apply to all controllers but can be overriden individually by placing these options under a `blueprints` object in that controller file. Within the blueprints object we have these properties:
 
-`prefix` This is the optional mount path prefix for blueprint routes. This prefix will be appended to the url path so if you assigned `prefix: '/api/v2'` then an example url path would be `/api/v2/user/update/1`.
+`_**prefix:**_` This is the optional mount path prefix for blueprint routes. This prefix will be appended to the url path so if you assigned `prefix: '/api/v2'` then an example url path would be `/api/v2/user/update/1`.
 
-`routes` In this object you can determine which routes with with the different HTTP methods get automatically generated for each controller action. For example if you wanted to disable the automatic creation of all routes that perform **GET** requests you can write this `get :controller/:action?: false`. You can also disable the automatic creation the REST shortcuts that are created for you. For development these shortcuts help you perform CRUD methods very quickly right in the browser.
+`_**routes:**_` In this object you can determine which routes with with the different HTTP methods get automatically generated for each controller action. For example if you wanted to disable the automatic creation of all routes that perform **GET** requests you can write this `get :controller/:action?: false`. You can also disable the automatic creation the REST shortcuts that are created for you. For development these shortcuts help you perform CRUD methods very quickly right in the browser.
 
 > _Note: These shotcuts can, and should be disabled when you are going to deploy your app in production._
 
-'expectingIntegerId' This property will allow you to catch a request only if the `id` is an integer.
+'_**expectingIntegerId:**_' This property will allow you to catch a request only if the `id` is an integer.
