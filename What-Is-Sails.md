@@ -24,7 +24,7 @@ Sails does a few things other MVC frameworks can't do:
     + Node.js is the fastest-growing, all-javascript solution to <a href="https://www.youtube.com/watch?v=jo_B4LTHi3I">server-side development</a>.
     + Writing your code in one language on the front-end and back-end means less context-shifting, faster development, and better apps.
   + Express
-    + Sails's controllers and policies are really just Express middleware
+    + Sails's controllers and policies are really just [Express](http://expressjs.com/) middleware
     + This means your Sails app logic is interoperable with existing Express apps, and vice versa
     + Supports the existing ecosystem of Express middleware
   + REST Blueprints
