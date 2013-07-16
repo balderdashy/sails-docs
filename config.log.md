@@ -1,19 +1,21 @@
 ## log.js
 This file contains the configuration of the log levels for your app.
 
-There are 5 different levels to the log:
+```javascript
+    module.exports = {
 
-1. **error**
-  * `sails.log.error('hello');` only logs errors.
+    // Valid `level` configs:
+    // i.e. the minimum log level to capture with sails.log.*()
+    //
+    // 'error' : Display calls to `.error()`
+    // 'warn'	: Display calls from `.error()` to `.warn()`
+    // 'debug'	: Display calls from `.error()`, `.warn()` to `.debug()`
+    // 'info'	: Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
+    // 'verbose': Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
+    //
+    log: {
+       level: 'info'
+    }
 
-2. **warn**
-  * `sails.log.warn('hello');` contains both warn and errors.
-
-3. **debug**
-  * Debug is the default level. `sails.log.debug('hello');` is the same as just typing `sails.log('hello');`
-
-4. **info**
-  * `sails.log.info('hello');` also contains error, warn, and debug.
-
-5. **verbose**
-  * `sails.log.verbose('hello');` has information from all of the levels.
+};
+```
