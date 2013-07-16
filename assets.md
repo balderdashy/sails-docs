@@ -50,7 +50,7 @@ assets/
 ```
 
 Since the order of styles and javascript is important, if you would like to change the order of injection, open your
-`Gruntfile.js` file. You will see three arrays at the top of the file where you can determine use Grunt-style
+`Gruntfile.js` file. You will see three arrays at the top of the file where you can use Grunt-style
 wildcard/glob/splat expressions to order your assets.
 
 Here is an example
