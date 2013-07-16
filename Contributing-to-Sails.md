@@ -19,7 +19,7 @@ If you have a high priority hot-fix for the currently deployed version, please l
 Now that we are all on the same page, lets get to coding some awesomeness of our own :D
 
 ## Fork
-Start by forking this repository:
+Start by forking [this repository](https://github.com/balderdashy/sails/tree/development):
 
 ![Screen Shot 2013-02-12 at 2.37.04 PM.png](http://i.imgur.com/h0CCcAu.png)
 
@@ -42,7 +42,7 @@ Make your enhancements, fix bugs, do your `thang`.
 
 ## Test
 Please write a test for your addition/fix.  I know it kind of sucks if you're not used to it, but it's how we maintain great code. 
-For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  If run into trouble with this part, please reach out to the Google Group!
+For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  If run into trouble with this part, please reach out to the [Google Group!](https://groups.google.com/forum/#!forum/sailsjs)
 
 ![Screen Shot 2013-02-12 at 2.56.59 PM.png](http://i.imgur.com/dalbOdZ.png) 
 
