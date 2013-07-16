@@ -1,12 +1,11 @@
-## bootstrap.js
-The bootstrap function is run before the server is launched.  A callback function is passed as the first argument that you must trigger when you're finished, e.g.
+## Bootstrap
+This is an asynchronous boostrap function that runs before your Sails app gets lifted. This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
 
-```
+```javascript
 module.exports.bootstrap = function (cb) {
-  User.create({
-    name: 'Colonel Sanders',
-    email: 'colonel@kfc.com',
-    age: 286
-  }, cb);
+
+  // It's very important to trigger this callback method when you are finished 
+  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  cb();
 };
 ```
