@@ -39,7 +39,7 @@ Jade templates are also supported
 // TEMPLATES END
 ```
 
-If you did not create an application with the `--linker` option. You will need to create the following file structure
+If you did not create an application with the `--linker` option. You will need to create the following file structure and also add the special flags metioned above into the desired views
 ```
 assets/
   linker/
