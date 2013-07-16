@@ -154,6 +154,7 @@ Helper Instance Methods:
   - toObject
   - toJSON
 
+
 ### Save Instance Method
 
 The save instance method will write the current values of the model instance to the datastore.
@@ -261,21 +262,21 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 that you can tap into in order to change data. An example use case would be automatically
 encrypting a password before creating or automatically generating a slugified url attribute.
 
-**Callbacks run on Create**
+_Callbacks run on Create_
 
   - beforeValidation / *fn(values, cb)*
   - afterValidation / *fn(values, cb)*
   - beforeCreate / *fn(values, cb)*
   - afterCreate / *fn(newlyInsertedRecord, cb)*
 
-**Callbacks run on Update**
+_Callbacks run on Update_
 
   - beforeValidate / *fn(valuesToUpdate, cb)*
   - afterValidate / *fn(valuesToUpdate, cb)*
   - beforeSave / *fn(valuesToUpdate, cb)*
   - afterSave / *fn(updatedRecord, cb)*
 
-**Callbacks run on Destroy**
+_Callbacks run on Destroy_
 
   - beforeDestroy / *fn(criteria, cb)*
   - afterDestroy / *fn(cb)*
