@@ -2,14 +2,14 @@
 
 > _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
-Sail 0.9.x is a major change from 0.8.x and you will need to make some changes in order for your application
+Sail 0.9.x is a major upgrade from 0.8.x and you will need to make some changes in order for your application
 to be compatible with the new version. This guide will walk you through what has changed and what you
 will need to update in your current codebase.
 
 ## What Has Changed
 
 In 0.9.x we have made some major updates. This is just a quick runthrough of some of the larger changes
-that will probably effect an application that is currently running on 0.8.x. For a complete list of
+that will probably affect an application that is currently running on 0.8.x. For a complete list of
 changes you can view the [Changelog](/balderdashy/sails-wiki/changelog).
 
 ### Express 3.x Support
@@ -46,10 +46,10 @@ For more information on [Grunt](http://gruntjs.com/) visit their website or read
 
 ### Waterline ORM
 
-Waterline has been completely rewritten and split out into it's own project again. In the new version
+Waterline has been completely rewritten and split out into its own project again. In the new version
 there are some exiciting features that have been added to help you build data-driven applications.
 
-[Validations](https://github.com/balderdashy/waterline#validations) are now fully supported for model attributes. You can see a full list of available validations on the [Models Page](/balderdashy/sails-wiki/models).
+[Validations](https://github.com/balderdashy/waterline#validations) are now fully supported for model attributes. You can see a full list of available validations on the [Models Page](https://github.com/balderdashy/sails/wiki/models).
 
 We also added support for Rails-like [Lifecycle Callbacks](https://github.com/balderdashy/waterline#lifecycle-callbacks). This gives you hooks into various stages of the data process to run functions. It's super useful for stuff like
 encrypting passwords in a `beforeCreate` method.
@@ -66,7 +66,7 @@ in your custom controllers. If you are using the blueprints for serving your dat
 need to make any changes on those controllers.
 
 For more information on the Waterline and Model interfaces you can read the updated
-[Models Page](/balderdashy/sails-wiki/models).
+[Models Page](https://github.com/balderdashy/sails/wiki/models).
 
 Information on [Waterline](https://github.com/balderdashy/waterline) is available in the project's
 Readme file.
@@ -132,7 +132,7 @@ files to make working with your app easier. The new configuration options give y
 override many of the settings that were previously unavailable as well as some new options such as
 remote session and socket storage.
 
-  - Delete `config/assets.js` as it's no longer needed and handled by the new `Gruntfile.js`
+  - Delete `config/assets.js` as it's no longer needed.  Asset handling is performed by the new `Gruntfile.js`.
   - Copy over the new [application.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/application.js) file into `config/applications.js`
   - Copy over the new [controllers.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js) file into `config/controllers.js`
   - Copy over the new [io.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/io.js) file into `config/io.js`
@@ -160,7 +160,7 @@ When you are ready to deploy you can run: `sails build` or alternatively `grunt 
 
 In your `views/layout.ejs` file you will need to remove the asset partials used by Asset-Rack. You now
 have the option to choose how you want to include your assets. If you would like to point directly to
-your assets they will available from the `.tmp/public` folder can be included like:
+your assets they will available from the `.tmp/public` folder and can be included like:
 
 ```html
 <link href="/styles/main.css" rel="stylesheet" type="text/css">
@@ -228,7 +228,7 @@ $ sails -v
 
 You should see: `info: v0.9.0` to ensure it was updated correctly.
 
-## Your Done
+## You&rsquo;re Done
 
 You should now be able to call `sails lift` or `node app.js` and start your application on the new
 version of Sails.
@@ -236,8 +236,8 @@ version of Sails.
 The next step is to read through the docs and see all the new features you can take advantage of.
 Sails is now more powerful than ever and 0.9.x is a huge step on the way to a 1.0 release.
 
-We are excited to get it into developer's hands and see all the awesome new applications you build
+We are excited to get it into developers&rsquo; hands and see all the awesome new applications they build
 on top of it. We have many more new features planned for the 0.9.x branch and will continue pushing
 out features that make Sails the best framework for building Node.js apps on.
 
-A final shoutout and thanks to all the contributors that have helped shape 0.9.
+A final shoutout and thanks to all of the contributors that have helped shape 0.9.
