@@ -1,4 +1,4 @@
-## policies.js
+##Policies
 So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 
 Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies for a given controller or action.
@@ -11,52 +11,26 @@ The default policy for all controllers and actions is `*': true`  (allows public
 
 ####Here's an example of adding some policies to a controller:
 ```javascript
-module.exports.policies = {
-
-  // Default policy for all controllers and actions
-  // (`true` allows public access) 
-  '*': true
-
-  /*
-	// Here's an example of adding some policies to a controller
 	RabbitController: {
 
 		// Apply the `false` policy as the default for all of RabbitController's actions
 		// (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
 		'*': false,
-
+	
 		// For the action `nurture`, apply the 'isRabbitMother' policy 
 		// (this overrides `false` above)
 		nurture	: 'isRabbitMother',
-
+	
 		// Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
 		// before letting any users feed our rabbits
 		feed : ['isNiceToAnimals', 'hasRabbitFood']
 	}
-	*/
-};
+```
 
+Here's what the `isNiceToAnimals` policy from above might look like: (this file would be located at `policies/isNiceToAnimals.js`)
 
-/**
- * Here's what the `isNiceToAnimals` policy from above might look like:
- * (this file would be located at `policies/isNiceToAnimals.js`)
- *
- * We'll make some educated guesses about whether our system will
- * consider this user someone who is nice to animals.
- *
- * Besides protecting rabbits (while a noble cause, no doubt), 
- * here are a few other example use cases for policies:
- *
- *	+ cookie-based authentication
- *	+ role-based access control
- *	+ limiting file uploads based on MB quotas
- *	+ OAuth
- *	+ BasicAuth
- *	+ or any other kind of authentication scheme you can imagine
- *
- */
-
-/*
+We'll make some educated guesses about whether our system will consider this user someone who is nice to animals.
+```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
 	
 	// `req.session` contains a set of data specific to the user making this request.
@@ -79,6 +53,13 @@ module.exports = function isNiceToAnimals (req, res, next) {
 	// to let them through to the next policy or our controller
 	next();
 };
-*/
-}
 ```
+
+Besides protecting rabbits (while a noble cause, no doubt), here are a few other example use cases for policies:
++ cookie-based authentication
++ role-based access control
++ limiting file uploads based on MB quotas
++ OAuth
++ BasicAuth
++ or any other kind of authentication scheme you can imagine
+
