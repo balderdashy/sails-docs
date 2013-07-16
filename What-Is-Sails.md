@@ -17,6 +17,7 @@ Sails does a few things other MVC frameworks can't do:
   + Socket.io / Realtime / WebSockets
     + Sails supports transport agnostic routing, which allows your controllers/policies to automatically handle Socket.io / WebSocket messages.  In the past, you'd have to maintain a separate code base to make that happen.
     + This makes it much easier to add pubsub features, in particular the server-originated or 'comet' notifications you need for realtime apps, realtime analytics dashboards, and multiplayer games.
+------
   + Performance
     + Node has fantastic performance, and there are lots of resources out there to support that claim.
     + Specifically, we've had some great results using 4 EC2 small servers to scale Sails to 10,000 concurrent connections.
