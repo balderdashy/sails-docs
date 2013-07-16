@@ -262,21 +262,21 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 that you can tap into in order to change data. An example use case would be automatically
 encrypting a password before creating or automatically generating a slugified url attribute.
 
-_Callbacks run on Create_
+_Callbacks run on Create:_
 
   - beforeValidation / *fn(values, cb)*
   - afterValidation / *fn(values, cb)*
   - beforeCreate / *fn(values, cb)*
   - afterCreate / *fn(newlyInsertedRecord, cb)*
 
-_Callbacks run on Update_
+_Callbacks run on Update:_
 
   - beforeValidate / *fn(valuesToUpdate, cb)*
   - afterValidate / *fn(valuesToUpdate, cb)*
   - beforeSave / *fn(valuesToUpdate, cb)*
   - afterSave / *fn(updatedRecord, cb)*
 
-_Callbacks run on Destroy_
+_Callbacks run on Destroy:_
 
   - beforeDestroy / *fn(criteria, cb)*
   - afterDestroy / *fn(cb)*
