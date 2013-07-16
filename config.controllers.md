@@ -69,6 +69,7 @@ The first thing to note is the default blueprint options will apply to all contr
 `prefix` This is the optional mount path prefix for blueprint routes. This prefix will be appended to the url path so if you assigned `prefix: '/api/v2'` then an example url path would be `/api/v2/user/update/1`.
 
 `routes` In this object you can determine which routes with with the different HTTP methods get automatically generated for each controller action. For example if you wanted to disable the automatic creation of all routes that perform **GET** requests you can write this `get :controller/:action?: false`. You can also disable the automatic creation the REST shortcuts that are created for you. For development these shortcuts help you perform CRUD methods very quickly right in the browser.
-__Note__ These shotcuts can, and should be disabled when you are going to deploy your app in production.
+
+> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
 'expectingIntegerId' This property will allow you to catch a request only if the `id` is an integer.
