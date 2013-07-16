@@ -1,6 +1,6 @@
 ## 500.js
 
-Like a 404 response, 500 errors also have a file that contains the default error handler when this error occurs. By default, Sails will try to display the stack of errors that you recieve so you can easily identify the problem. If you are running in `production` mode, sails will nowt display any identifiying information about the error(s). To set your own default behavior, override the logic in this file.
+Like a 404 response, 500 errors also have a file that contains the default error handler when this error occurs. By default, Sails will try to display the stack of errors that you recieve so you can easily identify the problem. If you are running in `production` mode, sails will not display any identifiying information about the error(s). To set your own default behavior, override the logic in this file.
 
 This is the default implementation:
 
