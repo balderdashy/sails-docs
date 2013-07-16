@@ -14,7 +14,7 @@ If you're wondering if Sails is a "proper MVC", you're probably right! It wasnâ€
 Sails does a few things other MVC frameworks can't do:
 
 
-  + - Socket.io / Realtime / WebSockets
+  + Socket.io / Realtime / WebSockets
     + Sails supports transport agnostic routing, which allows your controllers/policies to automatically handle Socket.io / WebSocket messages.  In the past, you'd have to maintain a separate code base to make that happen.
     + This makes it much easier to add pubsub features, in particular the server-originated or 'comet' notifications you need for realtime apps, realtime analytics dashboards, and multiplayer games.
   + Performance
