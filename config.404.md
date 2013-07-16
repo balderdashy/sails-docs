@@ -1,19 +1,19 @@
 ## 404.js
 
-When you recieve a 404 response from the server, the error handler is contained in this file. By default, the server will first try to send JSON containing the 404 error status. If your app is using server side views, then a 404 view will be sent. 
+This is the Default 404 (not found) handler.
 
-Here is the default implementation:
+If no matches are found, Sails will respond using this handler:
+
+
 
 ```javascript
-module.exports[404] = function pageNotFound (req, res, defaultNotFoundBehavior) {
-  
+module.exports[404] = function pageNotFound(req, res, defaultNotFoundBehavior) {
+
   // If the user-agent wants a JSON response,
   // the views hook is disabled,
   // or the 404 view doesn't exist,
   // send JSON
-  if (req.wantsJSON || 
-    !sails.config.hooks.views || !res.view ||
-    !sails.hooks.views.middleware[404]) {
+  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[404]) {
     return res.json({
       status: 404
     }, 404);
@@ -24,3 +24,4 @@ module.exports[404] = function pageNotFound (req, res, defaultNotFoundBehavior) 
   
 };
 ```
+For more information on 404/notfound handling in Sails/Express, check out: http://expressjs.com/faq.html#404-handling
