@@ -70,6 +70,6 @@ The first thing to note is the default blueprint options will apply to all contr
 
 `routes` In this object you can determine which routes with with the different HTTP methods get automatically generated for each controller action. For example if you wanted to disable the automatic creation of all routes that perform **GET** requests you can write this `get :controller/:action?: false`. You can also disable the automatic creation the REST shortcuts that are created for you. For development these shortcuts help you perform CRUD methods very quickly right in the browser.
 
-> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
+> _Note: These shotcuts can, and should be disabled when you are going to deploy your app in production._
 
 'expectingIntegerId' This property will allow you to catch a request only if the `id` is an integer.
