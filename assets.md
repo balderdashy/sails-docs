@@ -48,3 +48,30 @@ assets/
     styles/
     templates/
 ```
+
+Since the order of styles and javascript is important, if you would like to change the order of injection, open your
+`Gruntfile.js` file. You will see three arrays at the top of the file where you can determine use Grunt-style
+wildcard/glob/splat expressions to order your assets.
+
+Here is an example
+```javascript
+module.exports = function (grunt) {
+ 
+ 'use strict';
+ 
+ ...
+ 
+  var jsFilesToInject = [
+    // Need this order for these libraries to work correctly
+    'linker/js/vendor/jquery.js',
+    'linker/js/vendor/underscore.js',
+    'linker/js/vendor/backbone.js',
+    
+    // Inject all of js assests after
+    'linker/**/*.js'
+  ];
+ 
+ ...
+ 
+}
+```
