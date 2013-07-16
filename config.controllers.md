@@ -1,4 +1,4 @@
-## controllers.js
+##Controllers
 
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
