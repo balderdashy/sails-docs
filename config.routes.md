@@ -30,7 +30,7 @@ Alternatively, you can use the more verbose syntax:
 }
 ```
 
-If you decided to call your action `index` instead of `inbox`, you can just use: `'/': 'message'`.
+If you decided to call your action `index` instead of `inbox`, since the `index` action is the default, you can shortcut even further to: `'/': 'MessageController'`
 
 
 
@@ -82,54 +82,4 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 + `delete /foo/:id`	->	delete lampshade with id=:id
 
 ###7. Default 404 (not found) handler
-If no matches are found, Sails will respond using this handler:
-```javascript
-module.exports[404] = function notFound (req, res, defaultNotFoundBehavior) {
-
-	// Respond to request, respecting any attempts at content negotiation
-	if (req.wantsJSON) {
-		res.send(404);
-	}
-
-	// If the clients wants HTML, send the `views/404.*` page by default
-	else res.view('404');
-};
-```
-
-### Default server error handler
-If an error is thrown, Sails will respond using this default 500 (server error) handler:
-```javascript
-module.exports[500] = function (errors, req, res, defaultErrorBehavior) {
-
-	// Ensure that `errors` is a list
-	var displayedErrors = (typeof errors !== 'object' || !errors.length ) ?
-		[errors] :
-		errors;
-
-	// Ensure that each error is formatted correctly
-	// Then log them
-	for (var i in displayedErrors) {
-		if (!displayedErrors[i] instanceof Error) {
-			displayedErrors[i] = require('util').inspect(new Error(displayedErrors[i]));
-			sails.log.error(displayedErrors[i]);
-		}
-	}
-
-	// In production, don't display any identifying information about the error(s)
-	var response = {};
-	if (sails.config.environment === 'development') {
-		response = {
-			errors: displayedErrors
-		};
-	}
-
-	// Respond to request, respecting any attempts at content negotiation
-	if (req.wantsJSON) {
-		res.json(response, 500);
-	}
-
-	// If the clients wants HTML, send the `views/500.*` page by default
-	else res.view('500', response);
-
-};
-```
+Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app's 404 logic.
