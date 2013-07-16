@@ -14,7 +14,7 @@ By default, your root route (aka home page) points to a view located at `views/h
 
 
 But what if you want your home page to display a signup form located at `views/user/signup.ejs`?
-```
+```javascript
 '/' : {
 	view : 'user/signup'
 }
@@ -23,7 +23,7 @@ But what if you want your home page to display a signup form located at `views/u
 Let's say you're building an email client, like Gmail. You might want your home route to serve an interface using custom logic. In this scenario, you have a custom controller `MessageController` with an `inbox` action: `'/' : 'message.inbox'`
 
 Alternatively, you can use the more verbose syntax:
-```
+```javascript
 '/': {
 	controller	: 'message',
 	action		: 'inbox'
@@ -37,7 +37,7 @@ If you decided to call your action `index` instead of `inbox`, you can just use:
 Up until now, we haven't specified a specific HTTP method/verb. The routes above will apply to ALL verbs! If you want to set up a route only for one in particular (GET, POST, PUT, DELETE, etc.), just specify the verb before the path. 
 
 For example, if you have a `UserController` with a `signup` action, and somewhere else, you're serving a signup form that looks like:
-```
+```html
 <form action="/signup">
 	<input name="username" type="text"/>
 	<input name="password" type="password"/>
@@ -83,7 +83,7 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 
 ###7. Default 404 (not found) handler
 If no matches are found, Sails will respond using this handler:
-```
+```javascript
 module.exports[404] = function notFound (req, res, defaultNotFoundBehavior) {
 
 	// Respond to request, respecting any attempts at content negotiation
@@ -98,7 +98,7 @@ module.exports[404] = function notFound (req, res, defaultNotFoundBehavior) {
 
 ### Default server error handler
 If an error is thrown, Sails will respond using this default 500 (server error) handler:
-```
+```javascript
 module.exports[500] = function (errors, req, res, defaultErrorBehavior) {
 
 	// Ensure that `errors` is a list
