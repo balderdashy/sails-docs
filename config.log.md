@@ -1,25 +1,16 @@
-## log.js
-This file contains the configuration of the log levels for your app.
+## Logger configuration
+
+The logger file configures the log level for your app, as well as the transport.
 
 *(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
 
-For more information on the Sails logger, check out: http://sailsjs.org/#documentation
+####There are 5 different levels to the log:
 
-```javascript
-    module.exports = {
++ **'error'** : Display calls to `.error()`
++ **'warn'**    : Display calls from `.error()` to `.warn()`
++ **'debug'**	: Display calls from `.error()`, `.warn()` to `.debug()`
++ **'info'**	: Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
++ **'verbose'**: Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
 
-    // Valid `level` configs:
-    // i.e. the minimum log level to capture with sails.log.*()
-    //
-    // 'error' : Display calls to `.error()`
-    // 'warn'	: Display calls from `.error()` to `.warn()`
-    // 'debug'	: Display calls from `.error()`, `.warn()` to `.debug()`
-    // 'info'	: Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
-    // 'verbose': Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
-    //
-    log: {
-       level: 'info'
-    }
 
-};
-```
+By default, the level is set to `info`.
