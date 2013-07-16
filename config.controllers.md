@@ -1,8 +1,12 @@
 ## controllers.js
+
+The controllers.js config file allows you to customize the default capabilities of your controllers that are there for you convenience. Let us look at the options in more detail below:
+
+```javascript
 module.exports = {
   
 	// (Note: global blueprint config may be overridden on a per-controller basis
-	//			by setting the 'blueprint' property in a controller)
+	// by setting the 'blueprint' property in a controller)
 	blueprints: {
 
 		// Optional mount path prefix for blueprint routes
@@ -58,3 +62,13 @@ module.exports = {
 	csrf: false
 
 };
+```
+
+The first thing to note is the default blueprint options will apply to all controllers but can be overriden individually by placing these options under a `blueprints` object in that controller file. Within the blueprints object we have these properties:
+
+`prefix` This is the optional mount path prefix for blueprint routes. This prefix will be appended to the url path so if you assigned `prefix: '/api/v2'` then an example url path would be `/api/v2/user/update/1`.
+
+`routes` In this object you can determine which routes with with the different HTTP methods get automatically generated for each controller action. For example if you wanted to disable the automatic creation of all routes that perform **GET** requests you can write this `get :controller/:action?: false`. You can also disable the automatic creation the REST shortcuts that are created for you. For development these shortcuts help you perform CRUD methods very quickly right in the browser.
+__Note__ These shotcuts can, and should be disabled when you are going to deploy your app in production.
+
+'expectingIntegerId' This property will allow you to catch a request only if the `id` is an integer.
