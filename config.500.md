@@ -1,17 +1,14 @@
 ## 500.js
 
-Like a 404 response, 500 errors also have a file that contains the default error handler when this error occurs. By default, Sails will try to display the stack of errors that you recieve so you can easily identify the problem. If you are running in `production` mode, sails will not display any identifiying information about the error(s). To set your own default behavior, override the logic in this file.
+If an error is thrown, Sails will respond using this default error handler:
 
-This is the default implementation:
 
 ```javascript
 
 module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErrorBehavior) {
 
   // Ensure that `errors` is a list
-  var displayedErrors = (typeof errors !== 'object' || !errors.length) ?
-    [errors] :
-    errors;
+  var displayedErrors = (typeof errors !== 'object' || !errors.length) ? [errors] : errors;
 
   // Ensure that each error is formatted correctly
   // Then log them
@@ -35,9 +32,7 @@ module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErro
   // the views hook is disabled,
   // or the 500 view doesn't exist,
   // send JSON
-  if (req.wantsJSON ||
-    !sails.config.hooks.views || !res.view ||
-    !sails.hooks.views.middleware[500]) {
+  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[500]) {
 
     // Create JSON-readable version of errors
     for (var j in response.errors) {
@@ -59,5 +54,6 @@ module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErro
   res.view('500', response);
 
 };
-  
 ```
+
+For more information on error handling in Sails/Express, check out: http://expressjs.com/guide.html#error-handling
