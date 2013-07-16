@@ -1,116 +1,65 @@
-## sockets.js
+Socket Configuration
 > _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
-Configuration options for Socket.IO in conjunction with the way sails.js uses it are available in the ```config/io.js``` file.
+These configuration options provide transparent access to Sails' encapsulated pubsub/socket server for complete customizability.
 
-These configuration options provide transparent access to Sails' encapsulated
-pubsub/socket server for complete customizability.
-
-For more information on using Sails with Sockets, check out:
-http://sailsjs.org/#documentation
-
-#### Example (config/io.js)
-
-```javascript
-module.exports.sockets = {
-
-    // A array of allowed transport methods which the clients will try to use.
-    // The flashsocket transport is disabled by default
-    // You can enable flashsockets by adding 'flashsocket' to this list:
+####transports
+Here is an array of allowed transport methods which the clients will try to use. The flashsocket transport is disabled by default; you can enable flashsockets by adding 'flashsocket' to this list:
+```javascript   
     transports: [
     'websocket',
     'htmlfile',
     'xhr-polling',
     'jsonp-polling'
    ],
+```
 
-    // The data store where socket.io will store its message queue 
-    // and answer pubsub logic
-    adapter: 'memory',
-
-
-    // Node.js (and consequently Sails.js) apps scale horizontally.
-    // It's a powerful, efficient approach, but it involves a tiny bit of planning.
-    // At scale, you'll want to be able to copy your app onto multiple Sails.js servers
-    // and throw them behind a load balancer.
-    //
-    // One of the big challenges of scaling an application is that these sorts of clustered 
-    // deployments cannot share memory, since they are on physically different machines.
-    // On top of that, there is no guarantee that a user will "stick" with the same server between
-    // requests, since the load balancer will route each request to the server with the 
-    // least impact on load. All pubsub processing and shared memory has to be offloaded
-    // to a shared, remote messaging queue (usually Redis)
-    //
-    // Luckily, Sails provides production MQ support for Redis by default!
-
-    // To enable a remote redis pubsub server: 
-    // adapter: 'redis',
-
-    // The IP address and configuration of your redis host:
-    // (if left unset, Sails will try to connect to a redis via port 6379 on localhost)
-    //
-    // host: '127.0.0.1',
-    // port: 6379,
-    // db: 'sails',
-    // pass: '<redis auth password>'
+####adapter: 'memory'
+The data store where socket.io will store its message queue and answer pubsub logic
 
 
+####MQ Support for Redis
+Node.js (and consequently Sails.js) apps scale horizontally. It's a powerful, efficient approach, but it involves a tiny bit of planning. At scale, you'll want to be able to copy your app onto multiple Sails.js servers and throw them behind a load balancer.
 
-    // Match string representing the origins that are allowed to connect to the Socket.IO server
-    origins: '*:*',
+One of the big challenges of scaling an application is that these sorts of clustered deployments cannot share memory, since they are on physically different machines. On top of that, there is no guarantee that a user will "stick" with the same server between requests, since the load balancer will route each request to the server with the least impact on load. All pubsub processing and shared memory has to be offloaded to a shared, remote messaging queue (usually Redis)
 
-    // Should we use heartbeats to check the health of Socket.IO connections?
-    heartbeats: true,
+Luckily, Sails provides production MQ support for Redis by default!
 
-    // When client closes connection, the # of seconds to wait before attempting a reconnect.
-    // This value is sent to the client after a successful handshake.
-    'close timeout': 60,
+To enable a remote redis pubsub server:
+```javascript
+adapter: 'redis',
 
-    // The # of seconds between heartbeats sent from the client to the server
-    // This value is sent to the client after a successful handshake.
-    'heartbeat timeout': 60,
+// The IP address and configuration of your redis host:
+// (if left unset, Sails will try to connect to a redis via port 6379 on localhost)
 
-    // The max # of seconds to wait for an expcted heartbeat before declaring the pipe broken
-    // This number should be less than the `heartbeat timeout`
-    'heartbeat interval': 25,
+host: '127.0.0.1',
+port: 6379,
+db: 'sails',
+pass: '<redis auth password>'
+```
 
-    // The maximum duration of one HTTP poll-
-    // if it exceeds this limit it will be closed.
-    'polling duration': 20,
 
-    // Enable the flash policy server if the flashsocket transport is enabled
-    // 'flash policy server': true,
+####origins
+Match string representing the origins that are allowed to connect to the Socket.IO server
 
-    // By default the Socket.IO client will check port 10843 on your server 
-    // to see if flashsocket connections are allowed.
-    // The Adobe Flash Player normally uses 843 as default port, 
-    // but Socket.io defaults to a non root port (10843) by default
-    //
-    // If you are using a hosting provider that doesn't allow you to start servers
-    // other than on port 80 or the provided port, and you still want to support flashsockets 
-    // you can set the `flash policy port` to -1
-    'flash policy port': 10843,
+####heartbeats
+Sets whether we should use heartbeats to check the health of Socket.IO connections
 
-    // Used by the HTTP transports. The Socket.IO server buffers HTTP request bodies up to this limit. 
-    // This limit is not applied to websocket or flashsockets.
-    'destroy buffer size': '10E7',
++ `'close timeout'`: When client closes connection, the # of seconds to wait before attempting a reconnect. This value is sent to the client after a successful handshake.
++ `'heartbbeat timeout'`: The # of seconds between heartbeats sent from the client to the server. This value is sent to the client after a successful handshake.
++ `'heartbeat interval'`:  The max # of seconds to wait for an expcted heartbeat before declaring the pipe broken. This number should be less than the `heartbeat timeout`
++ `'polling duration'`: The maximum duration of one HTTP poll; if it exceeds this limit it will be closed.
++ `'flash policy server'`: Enables the flash policy server if the flashsocket transport is enabled. 
++ `'flash policy port'`: By default the Socket.IO client will check port 10843 on your server to see if flashsocket connections are allowed. The Adobe Flash Player normally uses 843 as default port but Socket.io defaults to a non root port (10843) by default. If you are using a hosting provider that doesn't allow you to start servers other than on port 80 or the provided port, and you still want to support flashsockets  you can set the `flash policy port` to -1
++ `'destroy buffer size'`: Used by the HTTP transports. The Socket.IO server buffers HTTP request bodies up to this limit. This limit is not applied to websocket or flashsockets.
++`'destroy upgrade'`: Do we need to destroy non-socket.io upgrade requests?
++`'browser client'`: Should Sails/Socket.io serve the `socket.io.js` client? (as well as WebSocketMain.swf for Flash sockets, etc.)
++`'browser client cache'`:  Cache the Socket.IO file generation in the memory of the process to speed up the serving of the static files.
++`'browser client minification'`: Does Socket.IO need to send a minified build of the static client script?
++`'browser client etag'`: Does Socket.IO need to send an ETag header for the static requests?
++`'browser client'`:
++`'browser client'`:
 
-    // Do we need to destroy non-socket.io upgrade requests?
-    'destroy upgrade': true,
-
-    // Should Sails/Socket.io serve the `socket.io.js` client? 
-    // (as well as WebSocketMain.swf for Flash sockets, etc.)
-    'browser client': true,
-
-    // Cache the Socket.IO file generation in the memory of the process
-    // to speed up the serving of the static files.
-	'browser client cache': true,
-
-	// Does Socket.IO need to send a minified build of the static client script?
-	'browser client minification': false,
-
-	// Does Socket.IO need to send an ETag header for the static requests?
-	'browser client etag': false,
 
 	// Adds a Cache-Control: private, x-gzip-ok="", max-age=31536000 header to static requests, 
 	// but only if the file is requested with a version number like /socket.io/socket.io.v0.9.9.js.
@@ -174,4 +123,4 @@ module.exports.sockets = {
 	resource: '/socket.io'
 
 };
-```
+
