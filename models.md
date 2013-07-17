@@ -265,21 +265,56 @@ encrypting a password before creating or automatically generating a slugified ur
 _Callbacks run on Create:_
 
     - beforeValidation / *fn(values, cb)*
-    - afterValidation / *fn(values, cb)*
     - beforeCreate / *fn(values, cb)*
     - afterCreate / *fn(newlyInsertedRecord, cb)*
 
 _Callbacks run on Update:_
 
-    - beforeValidate / *fn(valuesToUpdate, cb)*
-    - afterValidate / *fn(valuesToUpdate, cb)*
-    - beforeSave / *fn(valuesToUpdate, cb)*
-    - afterSave / *fn(updatedRecord, cb)*
+    - beforeValidation / *fn(valuesToUpdate, cb)*
+    - beforeUpdate / *fn(valuesToUpdate, cb)*
+    - afterUpdate / *fn(updatedRecord, cb)*
 
 _Callbacks run on Destroy:_
 
     - beforeDestroy / *fn(criteria, cb)*
     - afterDestroy / *fn(cb)*
+
+**Examples**
+
+Encrypt a password before saving to the database.
+
+```javascript
+var bcrypt = require('bcrypt');
+
+module.exports = {
+  
+  attributes: {
+    
+    username: {
+      type: 'string',
+      required: true
+    },
+    
+    password: {
+      type: 'string',
+      minLength: 6,
+      required: true,
+      columnName: 'encrypted_password'
+    }
+    
+  },
+  
+  
+  // Lifecycle Callbacks
+  beforeCreate: function(values, next) {
+    bcrypt.hash(values.password, 10, function(err, hash) {
+      if(err) return next(err);
+      values.password = hash;
+      next();
+    });
+  }
+};
+```
 
 ## Custom Table Names
 
