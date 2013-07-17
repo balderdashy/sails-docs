@@ -1,8 +1,8 @@
 ## 404.js
 
-This is the Default 404 (not found) handler.
+This is the default 404 (not found) handler.
 
-If no matches are found, Sails will respond using this handler:
+If a request is made that has no matching [routes](https://github.com/balderdashy/sails-wiki/blob/0.9/routes.md), Sails will respond using this handler:
 
 
 
