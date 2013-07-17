@@ -7,13 +7,13 @@ NOTE
 >You may also override these settings on a per-controller basis by modifying the 'blueprints' object in your controllers
 
 ###blueprints
-####*prefix*
+####*prefix* (string)
 Optional mount path prefix for blueprints (the automatically bound routes in your controllers) e.g. '/api/v2'
-####*actions*
+####*actions* (boolean)
 Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
-####*shortcuts*
+####*shortcuts* (boolean)
 These CRUD shortcuts exist for your convenience during development, but you'll want to disable them in production.: `'/:controller/find/:id?'`, `'/:controller/create'`, `'/:controller/update/:id'`, and `'/:controller/destroy/:id'`
-####*rest*
+####*rest* (boolean)
 Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
-####*expectIntegerId*
-If a blueprint route catches a request, only match :id param if it's an integer.  e.g. only trigger route handler if requests look like: `get /user/8` instead of: `get /user/a8j4g9jsd9ga4ghjasdha`
+####*expectIntegerId* (boolean)
+If a blueprint route catches a request, only match :id param if it's an integer.  e.g. only trigger route handler if requests look like: `get /user/8` instead of: `get /user/a8j4g9jsd9ga4ghjasdha`.  You&rsquo;ll usually want to change this to `false` when using a database that uses strings for unique IDs, such as Mongo.
