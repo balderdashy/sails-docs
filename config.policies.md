@@ -1,15 +1,15 @@
 #Policies
-So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
+So, you don&rsquo;t want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 
 Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies for a given controller or action.
 
 Any policy file (e.g. `authenticated.js`) can be dropped into the `/policies` folder, at which point it can be accessed below by its filename, minus the extension, (e.g. `authenticated`).
 
 
-The default policy for all controllers and actions is `*': true`  (allows public access).
+The default policy for all controllers and actions is `'*': true`  (allows public access).
 
 
-##Here's an example of adding some policies to a controller:
+##Here&rsquo;s an example of adding some policies to a controller:
 ```javascript
 	RabbitController: {
 
@@ -27,9 +27,9 @@ The default policy for all controllers and actions is `*': true`  (allows public
 	}
 ```
 
-Here's what the `isNiceToAnimals` policy from above might look like: (this file would be located at `policies/isNiceToAnimals.js`)
+Here&rsquo;s what the `isNiceToAnimals` policy from above might look like: (this file would be located at `policies/isNiceToAnimals.js`)
 
-We'll make some educated guesses about whether our system will consider this user someone who is nice to animals.
+We&rsquo;ll make some educated guesses about whether our system will consider this user someone who is nice to animals.
 ```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
 	
@@ -62,4 +62,3 @@ Besides protecting rabbits (while a noble cause, no doubt), here are a few other
 + OAuth
 + BasicAuth
 + or any other kind of authentication scheme you can imagine
-
