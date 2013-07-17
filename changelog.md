@@ -1,9 +1,9 @@
 # Changelog
 
-### 0.9.0
+## 0.9.0
 *July 10, 2013*
 
-#### Sails.JS
+### Sails.JS
 + Main: Express 3.x has been integrated.
 + Main: CSRF Attack Protection was added as part of the core.  Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, javascript plugins).
 + Main: Most of the core has been refactored for performance, code clarity, and simplicity to make contributions easier.
@@ -23,7 +23,7 @@
 + Views: Automatic routing to views is now disable-able.
 + Sessions: Built-in support for Redis and Mongo sessions for scaling your app to multi-instance deployments.
 
-#### Waterline
+### Waterline
 + ORM: Waterline has been pulled out of Sails.js... Again. (See [Waterline](http://www.github.com/balderdashy/waterline))
 + ORM: Model attributes now support validations. (See [Anchor](http://www.github.com/balderdashy/anchor))
 + ORM: Custom instance methods can now be defined on models as virtual attributes.
@@ -33,10 +33,10 @@
 + ORM: .done() promise now works on all ORM methods
 + ORM: Complete support for the Promise specificiation has been added.
 
-#### Anchor
+### Anchor
 + Validations:  Too many added to list, see [Validations]()
 
-### 0.8.9  (latest stable)
+## 0.8.9  (latest stable)
 *April 9, 2013*
 
 + Controllers must now also be generated to use the default API (they can be empty)
@@ -64,7 +64,7 @@
 + More tests (thanks @collinwren and @benrudolph)
 + Travis CI integration (thanks @collinwren!)
 
-### 0.8.895
+## 0.8.895
 + Policies: Fixed the "*" route for controllers.
 + Policies: The "*" policy can now be set to _false_
 + Collections: Type restrictions are cleaner
@@ -74,7 +74,7 @@
 + Assets: Typescript supported on front end (thanks Diullei)
 + Assets: Meaningful less errors were added (thanks vicapow)
 
-### 0.8.892
+## 0.8.892
 + Front-end CoffeeScript support in AssetRack (thanks @techpines!)
 + Chained policy support
 + New styles for default home page (thanks @egdelwonk!)
@@ -83,27 +83,27 @@
 + Attribute scaffolding for model generation (thanks @Tidwell)
 + Support for big int string conversion in id normalization (thanks @d4mn!)
 
-### 0.8.88
+## 0.8.88
 + Adds coffeescript support on the front-end in dev and production environments via [asset-rack](https://github.com/techpines/asset-rack) (thanks @techpines!)
 
-### 0.8.87
+## 0.8.87
 _Monday, March 4, 2013_
 + Patch fixes updates sails-dirty version which fixes sorting by date
 
-### 0.8.86
+## 0.8.86
 _Monday, March 4, 2013_
 + Patch to allow for easier SSL configuration.
 
-### 0.8.85
+## 0.8.85
 _Sunday, March 3, 2013_
 + Check for and warn if port is currently being used on lift, with support for explicit hosts (https://github.com/balderdashy/sails/issues/197)
 + Model.stream() support over socket.io (https://github.com/balderdashy/sails/issues/196)
 
-### 0.8.84
+## 0.8.84
 _Saturday, March 2, 2013_
 + Bug fixes: (explicit hosts, and included an additional file in new app generation)
 
-### 0.8.83
+## 0.8.83
 _Saturday, March 2, 2013_
 + Support for streaming large datasets from models (e.g. `User.stream().pipe(res);`)
 + Bug fix for chains of multiple policies (thanks @themouette)
@@ -121,17 +121,17 @@ _Saturday, March 2, 2013_
 + Added app.js file back in, but this time hidden as '.app.js'.  It can be run however you like, or you can use `npm debug` to debug it.  To run daemonized, you can use `forever start .app.js`
 + Added notion of `sails.explicitHost` to track whether a host was explicitly specified.  If it was not, Express takes the approach of accepting `all connections via INADDR_ANY` (see http://expressjs.com/2x/guide.html#app.listen())  Now, if you specify `sails.config.host`, `sails.explicitHost` gets set, and Express will start the server deliberately using the host you specify.  In certain PaaS deployments, this is required.  For instance, this was causing problems in an Openshift deployment environment (big thanks to @hypereive for figuring that out).
 
-### 0.8.82
+## 0.8.82
 _Sunday, February 24, 2013_
 + Bootstrap function fires warning if callback not triggered after a few seconds (thanks @virpool)
 + Bug fixes w/ pubsub/model convenience methods.
 
-### 0.8.80
+## 0.8.80
 + Refactored app layout to make it a bit more straightforward.  To check out the the new folder structure, make a new project with `sails new foo`
 + Added robot.txt in new app generation
 + Bound all methods in adapter to have the right context.
 
-### 0.8.79
+## 0.8.79
 + Adapter definitions are no longer functions-- instead the direct definition object is accepted.  This makes it easier, cleaner, and more declarative to create adapters.
 + Merged waterline into main Sails repo.
 + Brought in sails-util and sails-moduleloader, moved watelrine tests into top level.
@@ -141,11 +141,11 @@ _Sunday, February 24, 2013_
 + Upgraded waterline-dirty dep.
 
 
-### 0.8.77
+## 0.8.77
 + Patch updates the waterline-dirty dependency to deal with an issue with that adapter returning objects which map directly to the in-memory database (was causing changes made to found models to be persisted without calling .save())
 
 
-### < 0.8.77
+## < 0.8.77
 + I wasn't keeping good notes, sorry :(
 + Check out https://github.com/balderdashy/sails/commits/master if you want to dive in.
 
