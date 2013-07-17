@@ -42,6 +42,7 @@ Sails does a few things other MVC frameworks can't do:
   + role-based access control
   + custom policies (e.g. file storage quotas)
   
+
 ---
 ## Convenience features for front-end developers
 If you are developing an HTML/CSS front-end powered by Sails, there are some other convenience features we've included that might help you out.
