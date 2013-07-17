@@ -3,7 +3,7 @@
 
 So, now you have Sails.js installed and it's loading up your awesome new project.  What? Thats not good enough? Okay, lets see what we can configure to make it better suit your needs!
 
-# Overview of configuration files
+## Overview of configuration files
 One of the major advantages of Sails.js is its flexibility.  As with most MVC frameworks, Sails.js assumes standard conventions, but also allows you to change its configuration to fit your needs.  Below is a list and short explanation of each.
 
 * <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/config.404.md">404.js</a>         (This file handles the default behavior for 404 pages)
