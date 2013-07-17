@@ -1,7 +1,7 @@
-## locales
+# locales
 This is a folder that contains the Language files for different locales.
 
-###Default stringfile
+##Default stringfile
 
  If you're building an internationalized application that needs support for multiple languages, you'll want to pull all of the static strings out of your application, then provide a translation file for each of your target languages.
 
@@ -14,7 +14,7 @@ This is a folder that contains the Language files for different locales.
 
 More about this implementation: https://github.com/mashpie/i18n-node
 
-###locales.de.js
+##locales.de.js
 This file is provided in the folder as an example:
 Note that this is part of a campaign to rebrand our app for the German market as Bleistift Buben (or "Pencil Boys")
 
@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-###What About i18n on the client?
+##What About i18n on the client?
 The above technique works great out of the box for server-side views. But what about rich client apps?  HTML 5, SPAs, PhoneGap, Chrome Extensions and stuff? What if your HTML templates are being served from a CDN? If you are using **client-side** templates, you can reuse Sails' i18n support to help you get your translated templates to the browser.  
 
 If you want to use Sails to internationalize your client-side templates, just put your front-end templates in a subdirectory of your app's `/views` folder.
