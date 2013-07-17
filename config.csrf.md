@@ -4,7 +4,7 @@
 
 This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
 
-This allows us to have certainty that our users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
+This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
   
 This token has a short-lived expiration timeline, and must be acquired by either:
 
