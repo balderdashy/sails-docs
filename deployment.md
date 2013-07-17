@@ -1,9 +1,8 @@
-
-## Deploying your Sails.js application
+# Deploying your Sails.js application
 > _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 
-### Considerations
+## Considerations
 
 Before you launch any web application, you should consider a few factors:
 + What is your expected traffic?
@@ -13,7 +12,7 @@ Before you launch any web application, you should consider a few factors:
 
 
 
-#### Here's how you deploy in production mode:
+## Here's how you deploy in production mode:
 *note: This is a quick start. The proper way to deploy is with [upstart](http://upstart.ubuntu.com) and [nginx](http://nginx.org/) and takes a lot more work to set up.
 + Install forever: `sudo npm install -g forever`
 
@@ -22,7 +21,7 @@ Before you launch any web application, you should consider a few factors:
 > More about forever: https://github.com/nodejitsu/forever
 
 
-#### Other things you'll likely want to do in production:
+## Other things you'll likely want to do in production:
 + configure your app to run on port 80 (if not behind a proxy like nginx)
 + put it in "production" mode so that all of your css/js gets bundled up (requires [linker](/balderdashy/sails/wiki/assets))
 
@@ -52,13 +51,13 @@ http://www.youtube.com/watch?v=GK-tFvpIR7c
 
 The big omission from that video is that, if you plan on keeping your app running (which you probably do!), you'll need to follow the steps mentioned above to use `forever.`
 
-#### Getting your app on the server
+## Getting your app on the server
 Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
 
 Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
 
 
-#### Deploying to NodeJitsu?
+## Deploying to NodeJitsu?
 We get it! The Cloud is the future, and we want to help you get there.  To Depoloy to NodeJitsu, You'll need to make some minor modifications to your configuration.  Don't worry, It won't be like writing a new book or anything.
 
 Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
