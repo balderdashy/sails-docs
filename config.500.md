@@ -1,4 +1,4 @@
-## 500.js
+# 500.js
 
 If an error is thrown, Sails will respond using this default error handler:
 
