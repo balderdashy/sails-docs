@@ -41,7 +41,7 @@ Sails does a few things other MVC frameworks can't do:
   + authentication logic
   + role-based access control
   + custom policies (e.g. file storage quotas)
-  
+  + 
 
 ---
 ## Convenience features for front-end developers
