@@ -1,4 +1,4 @@
-##Cross-Site Request Forgery Protection
+#Cross-Site Request Forgery Protection
 
  When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
 
@@ -8,12 +8,12 @@ This allows you to have certainty that your users' requests haven't been hijacke
   
 This token has a short-lived expiration timeline, and must be acquired by either:
 
-####A)   For traditional view-driven web apps:
+###A)   For traditional view-driven web apps:
 Fetching it from one of your views, where it may be accessed as a local variable, e.g.: `<%= _csrf %>`
 
 *or*
 
-####B) For AJAX/Socket-heavy and/or single-page apps: 
+###B) For AJAX/Socket-heavy and/or single-page apps: 
 Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
 
 
