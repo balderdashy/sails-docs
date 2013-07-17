@@ -54,7 +54,7 @@ will create the directory, **api/controllers/comment/** with three files
 
 -->
 
-# How do I use the controller once I've created it?
+## How do I use the controller once I've created it?
 After a controller has been defined, Sails will automatically map out routes to give you easy access.  
 For the controller above, the routes would be the following:  
 `http://localhost:1337/comment/create`  
@@ -76,9 +76,9 @@ Additionally, thanks to blueprints, you also get these methods by default:
 To turn off the CRUD routes, simply set the 'shortcuts' flag to false in `config/controllers.js`,  
 and to turn off REST routes, simply set the 'rest' flag to false in `config/conttrollers.js`
 
-# The Request Object
+## The Request Object
 
-## req.param()
+### req.param()
 Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
 
 ```javascript
@@ -98,7 +98,7 @@ Whether or not this is an AJAX/xhr request
 Whether or not this request is JSONish (has a JSON "Accept" or "Content-Type" header)
 
 
-# The Response Object
+## The Response Object
 When responding to a request, Sails uses many of the same res methods as Express.
 
 ### res.view([view, options[, fn]])
