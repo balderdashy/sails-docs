@@ -1,4 +1,4 @@
-## 404.js
+# 404.js
 
 This is the default 404 (not found) handler.
 
