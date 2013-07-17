@@ -3,7 +3,7 @@
 
 ## What is a Controller?
 Sails controllers work very similarly to controllers in other MVC frameworks. Think of controllers
-being the middleman between your model and your views.
+as being the middleman between your model and your views.
 
 ## Where are Controllers Defined?
 Controllers are defined in the **/api/controllers/** folder. By default when you create a
@@ -39,14 +39,12 @@ module.exports = CommentController;
 ```
 
 <!--
-Alternively if you add a federated flag ```-f``` to the end of your generate controller command the
+Alternively if you add a federated flag [[[2]]] to the end of your generate controller command the
 controller will be created as a folder with each action being its own file. This is useful if
 your actions contain a bunch of logic. No more super long controller files! The best part about this
 is that, routing to these actions works the exact same way!
 
-```
-sails generate controller comment create destroy tag -f
-```
+[[[3]]]
 will create the directory, **api/controllers/comment/** with three files 
 **/api/controllers/comment/create.js**,
 **/api/controllers/comment/destory.js**, and
@@ -54,7 +52,7 @@ will create the directory, **api/controllers/comment/** with three files
 
 -->
 
-## How do I use the controller once I've created it?
+## How do I use the controller once I&rsquo;ve created it?
 After a controller has been defined, Sails will automatically map out routes to give you easy access.  
 For the controller above, the routes would be the following:  
 `http://localhost:1337/comment/create`  
@@ -73,8 +71,8 @@ Additionally, thanks to blueprints, you also get these methods by default:
 `/:controller/update/:id`  
 `/:controller/destroy/:id`  
 
-To turn off the CRUD routes, simply set the 'shortcuts' flag to false in `config/controllers.js`,  
-and to turn off REST routes, simply set the 'rest' flag to false in `config/conttrollers.js`
+To turn off the CRUD routes, simply set the &lsquo;shortcuts&rsquo; flag to false in `config/controllers.js`,  
+and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in `config/conttrollers.js`
 
 ## The Request Object
 
@@ -95,14 +93,14 @@ Whether or not this request was sent over Socket.io
 Whether or not this is an AJAX/xhr request
 
 ### req.isJson
-Whether or not this request is JSONish (has a JSON "Accept" or "Content-Type" header)
+Whether or not this request is JSONish (has a JSON &ldquo;Accept&rdquo; or &ldquo;Content-Type&rdquo; header)
 
 
 ## The Response Object
 When responding to a request, Sails uses many of the same res methods as Express.
 
 ### res.view([view, options[, fn]])
-This method is an enhanced version of  Express's **res.render()**. The method **res.view()**
+This method is an enhanced version of  Express&rsquo;s **res.render()**. The method **res.view()**
 automatically renders the appropriate view based on the controller and action. The original function
 is still accessible via **res.render()**.
 
@@ -195,5 +193,3 @@ module.exports = ChickenController;
 ```
 
 Check out the page on [Models](https://github.com/balderdashy/sails/wiki/Models) to learn more.
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/Controllers)
