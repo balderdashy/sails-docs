@@ -1,4 +1,4 @@
-##Policies
+#Policies
 So, you don't want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
 
 Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies for a given controller or action.
@@ -9,7 +9,7 @@ Any policy file (e.g. `authenticated.js`) can be dropped into the `/policies` fo
 The default policy for all controllers and actions is `*': true`  (allows public access).
 
 
-####Here's an example of adding some policies to a controller:
+##Here's an example of adding some policies to a controller:
 ```javascript
 	RabbitController: {
 
