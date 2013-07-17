@@ -15,23 +15,23 @@ If you'd like a more comprehensive understanding of Grunt, [here](http://gruntjs
 ## Default Asset Management with Grunt
 Here is what the default grunt file does:
 
- - clear the .tmp folder created by the last time the app was run. Your .tmp folder is the public facing directory of your web application.
- - compile JST templates from assets/linker
- - compile Less styles
- - copy assets into a .tmp/public folder (this is where static files are served from)
- - run secret injector code
-   - automatically inject assets into dev files. See [Assets Documentation](/balderdashy/sails/wiki/assets) for more details
- - watch for changes
+ - clears the .tmp folder created the last time the app was run. Your .tmp folder is the public facing directory of your web application.
+ - compiles JST templates from assets/linker
+ - compiles Less styles
+ - copies assets into a .tmp/public folder (this is where static files are served from)
+ - runs secret injector code
+   - automatically injects assets into dev files. See [Assets Documentation](https://github.com/balderdashy/sails-wiki/blob/0.9/asset-management.md) for more details
+ - watches for changes to your files
 
 <!-- TODO production enviroment default asset management -->
 
 ## Configuring a Grunt Task
-To customize your own Grunt task, you must first ensure that the grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use the grunt handlebars plugin you could do this.
+To customize your own Grunt task, you must first ensure that the Grunt plugin you are going to use is installed. You can install it from your terminal. If you wanted to use Grunt's Handlebars plugin you could do this:
 ```bash
   npm install --save-dev grunt-contrib-handlebars
 ```
 
-We can then configure the plugin options, load the task, and include it in a registered grunt task. Here is a snippet of code for these steps.
+We can then configure the plugin options, load the task, and include it in a registered Grunt task. Here is a snippet of code for these steps:
 
 ```javascript
 module.exports = function(grunt) {
