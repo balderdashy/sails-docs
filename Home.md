@@ -29,7 +29,7 @@ What Is Sails
 
 [Configuration](/balderdashy/sails/wiki/configuration)  
 [Adapters](/balderdashy/sails/wiki/adapters)  
-[Polocies](/balderdashy/sails/wiki/policies)  
+[Policies](/balderdashy/sails/wiki/policies)  
 [Services](/balderdashy/sails/wiki/services)  
 [Sockets](/balderdashy/sails/wiki/sockets)  
 [Routes](/balderdashy/sails/wiki/routes)  
