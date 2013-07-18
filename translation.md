@@ -12,6 +12,7 @@ Here is an example locale file (`config/locales/es.js`):
 ```
 ## Usage
 Locales can be accessed through either `res.i18n()`, or in views through the `i18n()` function.
+Remember that the keys are case sensitive and require exact key matches.
 e.g.:
 ```ejs
 <h1> <%= i18n('Hello!') %> </h1>
