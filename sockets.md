@@ -23,8 +23,8 @@ module.exports = {
 From an HTML page, we can access our controller like so:
 
 ```javascript
-var socket = io.connect('http://localhost:1337');
-socket.request('/echo',{
+// socket is globalized by sails
+socket.get('/echo',{
   message: 'hi there!'
 }, function (response) {
   // response === {success: true, message: 'hi there!'}
@@ -36,13 +36,21 @@ socket.request('/echo',{
 The default API blueprint supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
 
 ```javascript
-var socket = io.connect('http://localhost:1337');
-socket.request('/user',{}, function (response) {
+socket.get('/user', function (response) {
   // response contains a list of all users
+});
+socket.post('/user/1',{name: 'foo'}, function (response) {
+  // create a new user
+});
+socket.put('/user/1',{name: 'foobar'}, function (response) {
+  // update the user
+});
+socket.delete('/user/1',{}, function (response) {
+  // delete the user
 });
 ```
 
-Similarly, creating, updating, and destroying models using the blueprint can be accessed just like they are via HTTP, and events will be automatically broadcasted to the other subscribed sockets.  All without writing any code!  
+These calls will subscribe you to changes to the model, see your `assets/js/app.js` file to see default socket setup.
 
 ## Built-in socket methods
 In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express.  `req.socket` contains a raw reference to the underlying socket.io socket.  The following extra socket.io specific methods are also appended to the req and res objects:
