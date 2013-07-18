@@ -148,5 +148,3 @@ _Sunday, February 24, 2013_
 ## < 0.8.77
 + I wasn't keeping good notes, sorry :(
 + Check out https://github.com/balderdashy/sails/commits/master if you want to dive in.
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/changelog)
