@@ -25,9 +25,6 @@ Locale config can be found in `config/i18n.js`, from which you can set your supp
 // Which locales are supported?
 locales: ['en', 'es'],
 
-// What is the default locale?
-defaultLocale: 'en',
-
 // Where are your locale translations located?
 localesDirectory: '/config/locales'
 ```
