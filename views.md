@@ -16,7 +16,7 @@ Traditional views are defined in the **/views/** directory while templates are d
 ## Server-side Views, Layout, and View Partials
 Server-side views in the **/views/** directory are by default EJS files that will handle the job
 of presenting data when a view requested by the client. The method ```res.view()``` call will
-respond to a client with the appropriate view. If no controller or action for a request exist, Sails resourceful routing automatically serves a view if the view **/views/:controller/:action.ejs** exists.
+respond to a client with the appropriate view.
 
 Here's an example of a view (views/corndog/index.ejs) that consumes some data sent down from a controller:
 
