@@ -8,5 +8,5 @@
 
 ## (1.0.0)
 + Finish the refactoring of the core to support the use case of each module being independent, and being able to use tools like `yo` to manage assets
-+ Built-in TemplateController which allows you to load load your templates asynchronously from the client.
++ Built-in TemplateController which allows you to load your templates asynchronously from the client.
 + New projects come optionally with boilerplate authentication code baked in
