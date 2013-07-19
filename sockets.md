@@ -1,5 +1,8 @@
-# Sokets / Pubsub
+# Sockets / Pubsub
 > _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
+
+
+## HTTP + Socket.io Interoperability
 
 Out of the box, Sails handles Socket.io requests the same way it handles HTTP requests-- through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:
 
@@ -32,7 +35,7 @@ socket.get('/echo',{
 ```
 
 
-## Blueprints
+## CRUD Blueprints
 The default API blueprint supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
 
 ```javascript
@@ -54,7 +57,7 @@ These calls will subscribe you to changes to the model, see your `assets/js/app.
 
 
 
-## Publish/subscribe methods
+## Publish/subscribe (pubsub) methods
 
 These methods can be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you've seen in the blueprints.
 
@@ -64,7 +67,7 @@ e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
 
 
 
-### Model.publishCreate( values, [socket] )
+### Model.publishCreate( values, [socketToOmit] )
 Inform all sockets who are members of the "class room" for `Model` that a new instance has been created.  Those sockets will also be automatically subscribed to the new instance's room.
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
@@ -75,7 +78,7 @@ User.publishCreate(newUser)
 ````
 
 
-### Model.publishUpdate( id, values, [socket] )
+### Model.publishUpdate( id, values, [socketToOmit] )
 Inform all sockets who are subscribed to the specified `id`'s instance room for `Model` that the instance has been updated. 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
@@ -88,7 +91,7 @@ User.publishUpdate( 7, {
 ````
 
 
-### Model.publishDestroy( id, [socket] )
+### Model.publishDestroy( id, [socketToOmit] )
 Inform all sockets who are subscribed to the specified `id`'s instance room for `Model` that the instance has been destroyed. 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
