@@ -45,7 +45,7 @@ socket.post('/user/1',{name: 'foo'}, function (response) {
 socket.put('/user/1',{name: 'foobar'}, function (response) {
   // update the user
 });
-socket.delete('/user/1',{}, function (response) {
+socket.delete('/user/1', function (response) {
   // delete the user
 });
 ```
@@ -87,28 +87,29 @@ The broadcasted JSON would look like this:
 Since models are automatically furnished with a collection-wide "class room" and an "instance room" for each instance, it gives us some interesting opportunities to offer convient accessor methods for performing common publish/subscribe operations.  Check out some of the socket-oriented convenience methods you can use.
 
 
-### Model.subscribe(req, models)
+### Model.subscribe( req.socket, model[s] )
 Subscribe the request object's socket (`req`) to the specified `models`
 e.g. `User.subscribe(req,[{id: 7}])`
 
-### Model.unsubscribe(req, models)
+### Model.unsubscribe( req.socket, model[s] )
 Unsubscribe the request object's socket (`req`) from the specified `models`
 e.g. `User.unsubscribe(req,[{id: 7}, {id: 2}])`
 
-### Model.introduce(req,id)
+### Model.introduce( req.socket, id )
 Take all of the class room models and 'introduce' them to a new instance room
 (good for when a new instance is created-- connecting sockets must subscribe to it)
 e.g. `User.introduce(req,3)`
 
-### Model.publish(req,models,message)
+### Model.publish( req.socket, models ,message )
 Broadcast a `message` to sockets connected to the specified `models` using the request object (`req`).
 e.g. `User.publish(req,[{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})`
 
-### Model.room(id)
+### Model.room( id )
 Return the room name for the instance in this collection with the given id
+If id is null, return the name of the "class" or collection-wide room (for listening to `create`s)
 e.g. `User.room(3)`
 
-### Model.subscribers(id)
+### Model.subscribers( id )
 Return the set of sockets subscribed to this instance (if id specified) or class room (if it's not)
 e.g. `User.subscribers(7)`
 
