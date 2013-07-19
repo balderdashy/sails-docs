@@ -36,7 +36,8 @@ var Person = {
   }
   birthDate: 'DATE',
   phoneNumber: {
-    type: 'STRING'
+    type: 'STRING',
+    defaultsTo: '111-222-3333'
   }
   emailAddress: {
     type: 'email', // Email type will get validated by the ORM
