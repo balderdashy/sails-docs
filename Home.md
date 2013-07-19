@@ -33,7 +33,7 @@ What Is Sails
 [Services](/balderdashy/sails/wiki/services)  
 [Sockets](/balderdashy/sails/wiki/sockets)  
 [Routes](/balderdashy/sails/wiki/routes)  
-[PubSub](/balderdashy/sails/wiki/pubsub)
+[Translation](/balderdashy/sails/wiki/translation)
 
 ## Ready to Deploy?:
 
