@@ -7,7 +7,7 @@ the layout.
 ## What is a View?
 In Sails a view is the representation of the UI of your application. Views are, by default, EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. 
 Sails uses EJS, or its other configurable templating libraries, to present your app's data as HTML. Sails allows you to create templates that are injected into the DOM. 
-With this, all you ever have to respond with is JSON objects in your controllers, creating a truely API-driven application.
+With this, all you ever have to respond with is JSON objects in your controllers, creating a truly API-driven application.
 
 ## Where do I define Views?
 Traditional views are defined in the **/views/** directory while templates are defined in the 
