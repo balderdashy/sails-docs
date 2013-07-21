@@ -228,9 +228,12 @@ $ sails -v
 
 You should see: `info: v0.9.0` to ensure it was updated correctly.
 
+####Note:
+>Make sure that if your app uses an earlier version of sails, you remove the local dependency with `rm -rf node_modules/sails`.
+
 ## You&rsquo;re Done
 
-You should now be able to call `sails lift` or `node app.js` and start your application on the new
+You should now be able to call `sails lift` and start your application on the new
 version of Sails.
 
 The next step is to read through the docs and see all the new features you can take advantage of.
