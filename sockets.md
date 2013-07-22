@@ -62,7 +62,13 @@ These calls will subscribe you to changes to the model, see your `assets/js/app.
 These methods can be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you've seen in the blueprints.
 
 ### Model.subscribe( req.socket, model[s] )
-Subscribe the request object's socket (`req`) to the specified `models`
+Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
+Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
+e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
+
+### Model.subscribe( req.socket )
+Subscribe the request object's socket (`req`) to the collection
+Your socket on the client will receive a message every time a new user is created.
 e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
 
 
