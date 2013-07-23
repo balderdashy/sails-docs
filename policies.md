@@ -1,108 +1,123 @@
 # Policies (ACL)
 > _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
-Sometimes when you hit certain controller actions, you want to perform a job. You do not want to
-worry if the data you recieved is valid, if a user is authorized, or many other things. Policies
-allow you to run a piece of middleware logic before your actions run. 
+> ##### So, you don&rsquo;t want your mom to access your secret stash of ... code?  Here's how you can make that happen. 
 
-## Defining Access Control Rules
-if you look in **config/policies.js** file, by default you will see a single policy set.
+## What Are Policies?
+
+Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
+
+Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
+
+
+## Writing Your First Policy
+
+Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
+
+When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your controllers.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
+
+For example, the `canWrite` policy mentioned above might look something like this:
 
 ```javascript
-module.exports.policies = {
+// policies/canWrite.js
+module.exports = function canWrite (req, res, next) {
+  var targetFolderId = req.param('id');
+  var userId = req.session.user.id;
+  
+  Permission
+  .findOneByFolderId( targetFolderId )
+  .exec( function foundPermission (err, permission) {
 
-	// Default policy (allow public access)
-	'*': true
+    // Unexpected error occurred-- skip to the app's default error (500) handler
+    if (err) return next(err);
 
+    // No permission exists linking this user to this folder.  Maybe they got removed from it?  Maybe they never had permission in the first place?  Who cares?
+    if ( ! permission ) return res.redirect('/notAllowed');
+    
+    // OK, so a permission was found.  Let's be sure it's a "write".
+    if ( permission.type !== 'write' ) return res.redirect('/notAllowed');
+
+    // If we made it all the way down here, looks like everything's ok, so we'll let the user through
+    next();
+  });
 };
 ```
 
-This means that every action in every controller is accessible from any request.
-While this a good default, you can see how this can lead to problems if a non registered user wants
-to delete someone else from the database or update someone elses information. Let's define custom
-policies to take care of that.
 
-## Custom Policies
+## How do I protect my controllers with policies?
 
-Since we want to protect against that behavior, we need to define some policies.
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
 
+This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  Declarative programming has many benefits, but in particular, it is both conventional and adaptable.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
+
+You can apply one or more policies to a given controller or action.  Any file in your `/policies` folder (e.g. `authenticated.js`) is referable in your ACL (`config/policies.js`) by its filename minus the extension, (e.g.  `'authenticated'`).  
+
+Additionally, there are a few special, built-in policy mappings:
+  + `true`: public access  (allows anyone to get to the mapped controller/action)
+  +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
+
+ `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
+
+### Here&rsquo;s an example of adding some policies to a controller:
 ```javascript
-module.exports.policies = {
+	RabbitController: {
 
-	UserController: {
-
-		// For the update and destroy actions apply 'authentication' instead
-		update: 'authenticated',
-
-		destroy: 'authenticated'
+		// Apply the `false` policy as the default for all of RabbitController's actions
+		// (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
+		'*': false,
+	
+		// For the action `nurture`, apply the 'isRabbitMother' policy 
+		// (this overrides `false` above)
+		nurture	: 'isRabbitMother',
+	
+		// Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
+		// before letting any users feed our rabbits
+		feed : ['isNiceToAnimals', 'hasRabbitFood']
 	}
-};
 ```
 
-the **'authenticated'** value simply runs the logic in the **api/policies/authenticated.js** file.
-This can be anything, but in this case, this logic will make sure a user is in an authenticated
-session of the appliction. It then allows the controller action logic to run. 
+Here&rsquo;s what the `isNiceToAnimals` policy from above might look like: (this file would be located at `policies/isNiceToAnimals.js`)
 
-Your **api/policies/authenticated.js** file might look like this:
-
-```js
-module.exports = function(req, res, next) {
-    // perform authentication logic
-    next()
-}
-```
-
-We would also want to make sure that authenticated users can create and read. In that case, we can
-just say that all the actions in the User controller require an authenticated user. We can write it
-like this.
-
+We&rsquo;ll make some educated guesses about whether our system will consider this user someone who is nice to animals.
 ```javascript
-module.exports.policies = {
-
-	UserController: {
-
-		// All actions in the user controller need authenticaton.
-		'*': 'authenticated'
+module.exports = function isNiceToAnimals (req, res, next) {
+	
+	// `req.session` contains a set of data specific to the user making this request.
+	// It's kind of like our app's "memory" of the current user.
+	
+	// If our user has a history of animal cruelty, not only will we 
+	// prevent her from going even one step further (`return`), 
+	// we'll go ahead and redirect her to PETA (`res.redirect`).
+	if ( req.session.user.hasHistoryOfAnimalCruelty ) {
+		return res.redirect('http://PETA.org');
 	}
+
+	// If the user has been seen frowning at puppies, we have to assume that
+	// they might end up being mean to them, so we'll 
+	if ( req.session.user.frownsAtPuppies ) {
+		return res.redirect('http://www.dailypuppy.com/');
+	}
+
+	// Finally, if the user has a clean record, we'll call the `next()` function
+	// to let them through to the next policy or our controller
+	next();
 };
 ```
 
-As you can see, this can make for much cleaner controller action code in that you only need the
-business logic. The miscellaneous jobs such as validating data or making sure users are authorized
-no longer has to be in the action, and instead live in modular middleware files. 
+#### Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:
++ cookie-based authentication
++ role-based access control
++ limiting file uploads based on MB quotas
++ any other kind of authentication scheme you can imagine
 
-## Chaining Policies
 
-To apply two policies to a given action, in order, you can specify an array of strings, each referring to a specific middleware. 
+## What about me?  I'm using Passport?!
 
-```javascript
-controller1: {
-    action0: ['policy0', 'policy1'],
-    action1: true
-}
-```
+Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
-Then, in your policy definitions:
-```javascript
-// api/policies/policy0.js
-module.exports = function (req,res,next) {
-  // Verify that some constraint passes, or take some action at the beginning of each request
-  var passes = req.session.authenticated;
- 
-  // Call next to continue on to next policy or the controller
-  if (passes) return next();
-  else return res.redirect('/login');
-}
-```
+There are a few good examples of this floating around.  Here's a good one (hasn't been tested in v0.9.x yet):
+https://gist.github.com/theangryangel/5060446
 
-```javascript
-// api/policies/policy1.js
-module.exports = function (req,res,next) {
-  // Then you might want to take some action at the beginning of each request
-  // to make it available in your controller
-  req.lottery = Math.random();
-  next();
-}
-```
+
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/policies)
