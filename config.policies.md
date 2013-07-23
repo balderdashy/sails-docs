@@ -1,6 +1,6 @@
 # Policies
 
-So, you don&rsquo;t want your mom to access your secret stash of ... code?  Then this is where you make that happen.  
+> ##### So, you don&rsquo;t want your mom to access your secret stash of ... code?  Here's how you can make that happen. 
 
 Policies are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity, then make it easy to make iterative changes if your needs change.
 
