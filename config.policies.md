@@ -52,7 +52,7 @@ To set the default policy mapping for a controller, use the `*` notation:
 
 ## Built-in policies
 
-#### `true`
+### true
 
 > This is the default policy mapped to all controllers and actions in a new project.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
@@ -70,7 +70,7 @@ module.exports = {
 ```
 
 
-#### `false`
+### false
 
 **NO** access to the mapped controller/action.  No requests get through.  Period.
 
