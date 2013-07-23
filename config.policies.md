@@ -1,12 +1,21 @@
-#Policies
-So, you don&rsquo;t want your mom to access your secret stash of ... code?  Then this is where you make that happen.  Policies are like any other system for authentication control.  You can allow or deny access in fine granularity with policies.
+# Policies
 
-Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies for a given controller or action.
+So, you don&rsquo;t want your mom to access your secret stash of ... code?  Then this is where you make that happen.  
 
-Any policy file (e.g. `authenticated.js`) can be dropped into the `/policies` folder, at which point it can be accessed below by its filename, minus the extension, (e.g. `authenticated`).
+Policies are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity, then make it easy to make iterative changes if your needs change.
+
+When you get down to the meat of it, policies are simply Connect/Express middleware functions which run **before** your controllers. 
 
 
-The default policy for all controllers and actions is `'*': true`  (allows public access).
+You can apply one or more policies for a given controller or action.
+
+Any policy file (e.g. `authenticated.js`) can be dropped into the `/policies` folder, at which point it can be referenced by its filename, minus the extension, (e.g. `authenticated`).  
+
+There are a few special, built-in policy mappings:
+  + `true`: public  (allows anyone to access the mapped controller/action)
+  +  `false`: disabled (allows **no-one** to access the mapped controller/action)
+
+ `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to make sure you have all of your controllers explicitly mapped.
 
 
 ##Here&rsquo;s an example of adding some policies to a controller:
