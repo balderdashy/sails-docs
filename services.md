@@ -25,7 +25,7 @@ exports.sendInviteEmail = function(options) {
             "to":[
                 {"email": options.email, "name": options.name}
             ],
-            "text": "Dear "+options.name+",\nYour in the Beta! Click <insert link> to verify your account"
+            "text": "Dear "+options.name+",\nYou're in the Beta! Click <insert link> to verify your account"
         }
     };
     
