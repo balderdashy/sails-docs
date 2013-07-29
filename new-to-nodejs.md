@@ -136,7 +136,7 @@ or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):
     cinst nodejs.install
 
 
-## On to Sails.JS
+## On to Sails.js
 Now that Node.js is installed on your system, we can move on to Sails.js.
 
 Click [here](https://github.com/balderdashy/sails-wiki/blob/0.9/getting-started.md) to continue.
