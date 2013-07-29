@@ -42,7 +42,7 @@ The default API blueprint supports pubsub for socket requests out of the box.  S
 socket.get('/user', function (response) {
   // response contains a list of all users
 });
-socket.post('/user/1',{name: 'foo'}, function (response) {
+socket.post('/user',{name: 'foo'}, function (response) {
   // create a new user
 });
 socket.put('/user/1',{name: 'foobar'}, function (response) {
