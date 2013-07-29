@@ -47,7 +47,27 @@ You could define the following route: `'post /signup'	: 'user.signup'`.
 
 Finally, here&rsquo;s an example of how you would route all GET requests to the `/google` route to Google&rsquo;s website: `'get /google'	: 'http://google.com'`
 
-##3. Action Blueprints
+## 3. Advanced Route config
+#### Upload Limit
+By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
+```javascript
+'/': {
+	...,
+	uploadLimit: '100mb'
+}
+```
+The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
+#### CORS (Cross origin resource sharing)
+Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
+```javascript
+'/': {
+	...,
+	cors: true
+	// cors: 'http://sailsjs.org, http://sailsjs.com'
+}
+```
+If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
+##4. Action Blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.actions = false`
  
 
@@ -56,14 +76,14 @@ All of your controllers' actions are automatically bound to a route.  For exampl
 + its action `index` is accessible at `/foo/index`, and also `/foo`
 
 
-##4. View Blueprints
+##5. View Blueprints
 
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.views.routes = false`
 
 If you have a view file at `/views/foo/bar.ejs`, it will be rendered and served automatically via the route:  `/foo/bar`
 
 
-##5. Shortcut CRUD blueprints
+##6. Shortcut CRUD blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.shortcuts = false`
 
 If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
@@ -72,7 +92,7 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 + `/foo/update/:id`	->	update the lampshade with id=:id		
 + `/foo/destroy/:id`	->	delete lampshade with id=:id
 
-##6. REST blueprints
+##7. REST blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.rest = false`
  
 If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
@@ -81,5 +101,5 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 + `put /foo/:id`	->	update the lampshade with id=:id
 + `delete /foo/:id`	->	delete lampshade with id=:id
 
-##7. Default 404 (not found) handler
+##8. Default 404 (not found) handler
 Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app&rsquo;s 404 logic.
