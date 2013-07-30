@@ -1,26 +1,6 @@
 # Sails.js Custom Adapter Interfaces
 #### A reference and support document for developers creating Sails/Waterline adapters
 
-
-
-## Why would I need a custom adapter?
-
----------------------------------------------------------------------------
-
-> **From Wikipedia:**
-> *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
->
->
-> Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.
-
----------------------------------------------------------------------------
-
-When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) 
-
-Waterline was designed to answer a fundamental question about these types of integrations.  If you're writing a callback for something, why not wrap that logic up into an adapter and reuse it?
-take advantage of Sails' conventions/community?  It's just as easy to write, and you get the advantage of a standardized API for accessing and mutating data.  Best of all, you (and your team) can reuse the adapter in other projects.
-
-
 ---------------------------------------------------------------------------
 
 > ### A quick personal note:
@@ -29,6 +9,28 @@ take advantage of Sails' conventions/community?  It's just as easy to write, and
 > ~ Mike
 
 ---------------------------------------------------------------------------
+
+
+
+## Why would I need a custom adapter?
+
+When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) 
+
+> **From Wikipedia:**
+> *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
+>
+>
+> Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.
+
+In other words, Waterline is not just an ORM for your database.  It is a purpose-agnostic, open standard and toolset for integrating with all kinds of RESTful services, datasources, and devices, whether it's LDAP, Neo4J, or [a lamp](https://www.youtube.com/watch?v=OmcQZD_LIAE).
+I know, I know.. Not everything fits perfectly into a RESTful/CRUD mold!  Sometimes the service you're integrating with has more of an RPC-style interface, with one-off method names.  That's ok-- you can define any adapter methods you like! You still get all of the trickle-down config and connection-management goodness of Waterline core.
+
+To recap, writing your API integrations as adapters is **easier**, takes **less time**, and **absorbs a considerable amount of risk**, since you get the advantage of a **standardized set of conventions**, a **documented API**, and a **built-in community** of other developers who have gone through the same process.  Best of all, you (and your team) can **reuse the adapter** in other projects, **speeding up development** and **saving time and money**.
+
+Finally, if you choose to release your adapter as open-source, you provide a tremendous boon to our little framework and our budding Sails.js ecosystem.  Even if it's not via Sails, I encourage you to give back to the OSS community, even if you've never forked a repo before-- don't be intimidated, it's not that bad!
+
+I tip my hat to you in advance :)
+
 
 ## Interfaces
 
@@ -172,7 +174,7 @@ Mike and the team behind Sails.js at Balderdash support a handful of commonly us
 
 ### Disk
 
-Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project.  Most importantly, this adapter is bundled with Sails and works out of the box without installing anything :) 
+Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project.  Most importantly, this adapter is bundled with Sails and works out of the box.
 
 ###### Interfaces implemented:
 + Semantic
