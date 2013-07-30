@@ -25,6 +25,7 @@ take advantage of Sails' conventions/community?  It's just as easy to write, and
 
 > ### A quick personal note:
 > The more high-quality adapters we collectively release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.
+>
 > ~ Mike
 
 ---------------------------------------------------------------------------
