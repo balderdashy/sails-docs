@@ -52,7 +52,13 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 
 Implementing the basic semantic interface (CRUD) is really a step towards a complete implementation of the Queryable interface, but with some services/datasources, about as far as you'll be able to get using native methods.
 
-Keep in mind that, if you write a `find()` function, developers can also use all of its synonyms, including dynamic finders and `findOne()`.  When they're called, they'll automatically be converted into the appropriate criteria object for the basic `find()` definition in your adapter.
+By supporting the Semantic interface, you also get the following:
++ if you write a `find()` function, developers can also use all of its synonyms, including dynamic finders and `findOne()`.  When they're called, they'll automatically be converted into the appropriate criteria object for the basic `find()` definition in your adapter.
++ as long as you implement basic `where` functionality (see `Queryable` below), Waterline can derive a simplistic version of associations support for you.  To optimize the default assumptions with native methods, override the appropriate methods in your adapter.
++ automatic socket.io pubsub support is provided by Sails-- it manages "rooms" for every class (collection) and each instance (model)
+  + As soon as a socket subscribes to the "class room" using `Foo.subscribe()`, it starts receiving `Foo.publishCreate()` notifications any time they're fired for `Foo`.
+  + When a socket subscribes to one or more "instance room(s)" (usually the results of a `find()`), it will receive `Foo.publishUpdate()` and `Foo.publishDestroy()` notifications for the relevant instances.
+  + If a socket is subscribed to an "instance room", it will also be subscribed for "updates" and "destroys" to all instances of other models with a 1:* association with `Foo`.  The socket will also be notified of and subscribed to new matching instances of the associated model.
 
 > All officially supported Sails.js database adapters implement this interface.
 
@@ -66,8 +72,6 @@ Keep in mind that, if you write a `find()` function, developers can also use all
 ###### Instance methods
 + `henry.save()`
 + `henry.destroy()`
-
-
 
 
 
@@ -162,9 +166,22 @@ Adapters which implement one-way messages should do so using `send()` or a prefi
 
 
 ## Pubsub (interface)
-Adapters implementing the pubsub interface 
+Adapters implementing the pubsub interface use a MQ to report changes from the service/database back up to the app.
+
+They should call Sails' `Model.publishUpdate()`, `Model.publishCreate()`, and `Model.publishDestroy()` to publish changes and take advantage of automatic room management functionality.
+`Model.subscribe()` should still be called at the app layer, not in our adapter.
+We don't want to force users to handle realtime events-- we don't know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.
+
+Examples:
++ Twitter streaming API (see new tweets as they come in)
++ IRC (see new chats as they come in)
++ Stock prices (visualize the latest market data as soon as it is available)
++ Hardware scanners (see new data as it comes in)
 
 
+## Transactional (interface)
+Atomic, consistent, isolated, and durable.
+###### TODO
 
 
 
