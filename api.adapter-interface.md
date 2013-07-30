@@ -1,8 +1,13 @@
+
+---------------------------------------------------------------------------
+
 > **From Wikipedia:**
 > *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
 >
 >
 > Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.
+
+---------------------------------------------------------------------------
 
 # Sails/Waterline Adapter Interface
 
@@ -11,8 +16,16 @@ When building a Sails app, the sending or receiving of any asynchronous communic
 
 If you're writing a callback for something, why not wrap that logic up into an adapter and take advantage of Sails' conventions/community?  It's just as easy to write, and you get the advantage of a standardized API for accessing and mutating data.  Best of all, you (and your team) can reuse the adapter in other projects.
 
-> The more high-quality adapters you release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.  We welcome your support!
 
+
+
+
+---------------------------------------------------------------------------
+
+> Please consider this:
+> The more high-quality adapters we collectively release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.
+
+---------------------------------------------------------------------------
 
 ## Interfaces
 
