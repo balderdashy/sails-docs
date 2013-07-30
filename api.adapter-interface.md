@@ -1,3 +1,9 @@
+# Sails.js Custom Adapter Interfaces
+#### A reference and support document for developers creating Sails/Waterline adapters
+
+
+
+## Why would I need a custom adapter?
 
 ---------------------------------------------------------------------------
 
@@ -9,20 +15,15 @@
 
 ---------------------------------------------------------------------------
 
-# Sails/Waterline Adapter Interface
-
 When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) 
 
-
-If you're writing a callback for something, why not wrap that logic up into an adapter and take advantage of Sails' conventions/community?  It's just as easy to write, and you get the advantage of a standardized API for accessing and mutating data.  Best of all, you (and your team) can reuse the adapter in other projects.
-
-
-
+Waterline was designed to answer a fundamental question about these types of integrations.  If you're writing a callback for something, why not wrap that logic up into an adapter and reuse it?
+take advantage of Sails' conventions/community?  It's just as easy to write, and you get the advantage of a standardized API for accessing and mutating data.  Best of all, you (and your team) can reuse the adapter in other projects.
 
 
 ---------------------------------------------------------------------------
 
-> Please consider this:
+> ### A quick personal note:
 > The more high-quality adapters we collectively release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.
 
 ---------------------------------------------------------------------------
