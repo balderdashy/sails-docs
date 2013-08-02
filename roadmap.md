@@ -6,6 +6,8 @@
 + Express's default support for file uploads via formidable is not suitable for production apps with large file uploads (>100MB)
   + Built-in, friendly support for streaming file uploads using Waterline's adapters which implements the binary-stream interface
   + (i.e. you can't buffer 100GB uploads to disk)
+  + Use formidable's onPart event to process file uploads
+  + Everything else should be handle by formidable's built-in parser
   + In progress
 + Pull out Sails.log (winston wrapper) as a separate module so it can be used by waterline
 + Create generic sails-session adapter to allow any sails CRUD adapter to be used as a session store. then add config
