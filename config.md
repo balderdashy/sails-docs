@@ -19,6 +19,9 @@
 ####[CSRF](https://github.com/balderdashy/sails-wiki/blob/0.9/config.csrf.md)
 >When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
 
+####[Express](https://github.com/balderdashy/sails-wiki/blob/0.9/config.express.md)
+>If you want to use custom middleware or add local variables and helpers to templates you can do so by configuring express in this config file.
+
 ####[Local](https://github.com/balderdashy/sails-wiki/blob/0.9/config.local.md)
 >While you’re developing your app, this config file should include any settings specifically for your development computer (db passwords, etc.)
 
