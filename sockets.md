@@ -6,10 +6,14 @@
 Sails makes HTTP and Socket.io interoperable, making it easier than ever to add realtime/pubsub/comet functionality to your app.
 
 1) Using standard controllers
+
 2) Using the CRUD blueprints
-3) Using the built-in pubsub methods (e.g. `User.publishCreate()`)
-4) Using the low-level pubsub methods (`req.listen` and `req.broadcast`)
-5) Accessing raw socket.io via `req.socket` and `sails.io`
+
+3) Using the built-in realtime _sync_ methods (e.g. `User.publishCreate()`)
+
+4) Using Sails built-in low-level pubsub/socket methods (e.g. `req.listen`, `User.subscribers`)
+
+5) Obtaining raw access to socket.io via `req.socket` and `sails.io`
 
 
 ## Using standard controllers
@@ -44,6 +48,8 @@ socket.get('/echo',{
 });
 ```
 
+In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express. If you need it, `req.socket` contains a raw reference to the underlying socket.io socket.  If you ever need to access it directly, you can do so.  But for the majority of use cases, using Sails' built-in behavior will keep your syntax simple and conventional.
+
 
 ## Using CRUD Blueprints
 The default API blueprint supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
@@ -73,51 +79,54 @@ Sails exposes some convenient accessor methods for performing common publish/sub
 
 Under the covers, Sails blueprints work their realtime magic by automatically furnishing models with a collection-wide "class room" and an "instance room" for each instance.  
 
+
+### Model.subscribe( req.socket )
+
 ##### The "class room"
 If you have a visitor whose socket is subscribed to the "class room" (e.g. `User.subscribe( req.socket )`), she'll receive messages _any time_ `User.publishCreate()` is called.  
 
-##### The "instance rooms"
+Subscribe the request object's socket (`req.socket`) to this model's class room.
+Your subscribed socket on the client will receive a message every time a new instance of the specified model is created.  Any time `publishCreate` is called, sockets subscribed to the class room are automatically subscribed to newly created models' instance rooms (more on that below).
+
+e.g. `User.subscribe( req.socket )`
+
+
+
+### Model.subscribe( req.socket, model[s] )
+
+##### "instance rooms"
 If the visitor is subscribed to one or more "instance rooms" (e.g. `User.subscribe( req.socket, listOfUserInstances )` ), she'll receive messages when `User.publishUpdate()` or `User.publishDestroy()` is called involving one of the instances she cares about.
+
+Subscribe the request object's socket (`req.socket`) to the specified model, id OR array of `models` or ids.  Subscribed sockets will receive a message every time the specified model(s) are updated or destroyed from here on out.
+
+e.g. 
++ `User.subscribe(req.socket , [7, 3] )`
++ `Player.subscribe(req.socket , todaysLuckyGuests )`
++ `User.subscribe(req.socket , req.session.userId )`
++ `Product.subscribe(req.socket, saleItems )`
 
 <!-- TODO -->
 <!-- 
 
-### req.socket.subscribeToUpdate( model[s] )
-Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
-Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
-e.g. `req.socket.subscribeToUpdate( [ {id: 7} ] )`
+# Coming soon:
 
-### req.socket.subscribeToDestroy( model[s] )
-Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
-Your socket on the client will receive a message if the specified user(s) are destroyed.
-They will be unsubscribed automatically afterwards.
-e.g. `req.socket.subscribeToUpdate( [ {id: 7} ] )`
+### req.socket.watch( model[s] )
+Watch the specified array of `models` or single model with this socket (`req.socket`).  Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
+e.g. `req.socket.watch( [ {id: 7} ] )`
 
-### req.socket.subscribeToCreate( Model )
-Subscribe the request object's socket (`req`) to the collection
-In the example below, our user's socket will receive a message in their browser every time a new user is **created**.
-If a socket is subscribed to creates, it will also be automatically subscribed to update and destroy events for any new instances.
-e.g. `req.socket.subscribeToCreate( User );
+### req.socket.subscribeTo( Model )
+Subscribe the request object's socket (`req.socket`) to the collection's class room.  In the example below, our user's socket will receive a message in their browser every time a new user is **created**.
+
+Note: If a socket is subscribed to creates, it will also be automatically subscribed to update and destroy events for any new instances.
+
+e.g. `req.socket.subscribeTo( User );
 
 -->
-
 
 
 > IMPORTANT NOTE: `Model.subscribe( req.socket, [])` is not the same as `Model.subscribe( req.socket )`.  The latter usage will subscribe to the "class room."  The former will subscribe to nothing!  This is because the presence of the second argument (in this case the empty list `[]`) signals to Sails that you're subscribing to instances, but in this case you've specified none!
 
 
-### Model.subscribe( req.socket, model[s] )
-
-Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
-Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
-e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
-
-### Model.subscribe( req.socket )
-
-> IMPORTANT NOTE: 
-Subscribe the request object's socket (`req`) to the collection
-Your socket on the client will receive a message every time a new user is created.
-e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
 
 
 
@@ -159,8 +168,7 @@ User.publishDestroy(7);
 
 
 
-## Using low-level pubsub methods
-
+## Using low-level pubsub/socket methods
 
 ### Model.unsubscribe( req.socket, model[s] )
 Unsubscribe the request object's socket (`req`) from the specified `models`
@@ -186,42 +194,17 @@ e.g. `User.subscribers(7)`
 
 See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implementation details.
 
-## Lower level socket methods
-In controllers, when handling a socket request, req and res are automatically set up to take the appropriate actions using Socket.io instead of Express.  `req.socket` contains a raw reference to the underlying socket.io socket.  The following extra socket.io specific methods are also appended to the req and res objects:
 
-
-### req.listen(room)
-*alias in 0.8.9: `req.subscribe()`*
-
+##### req.listen(room)
 Subscribe the current socket to broadcasts from the specified room
 e.g. `req.listen('off the wall chats')`
-
-### res.broadcast(room, uri, data)
-*alias in 0.8.9: `res.publish()`*
-
-Broadcast a JSON message to all connected sockets in the specified room.
-e.g. `res.broadcast('off the wall chats', '/chat/create', {message: 'who is going out tonight?', user: {id: 3, username: 'Roscoe'}, id: 283})`
-
-The broadcasted JSON would look like this:
-```json
-{
-  "uri": "/chat/create",
-  "data": {
-    "id": 283,
-    "message": "who is going out tonight?",
-    "user": {
-      "id": 3,
-      "username": "Roscoe"
-    }
-  }
-}
-```
 
 
 ## Still need more control?
 If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out; they did a good job making it pretty straightforward. You can read more here: http://socket.io/#how-to-use
 
 The root Socket.io object is available globally in Sails via `sails.io`.  You can also access the currently connected socket in the request object, via `req.socket` in your controllers.
+
 
 
 
