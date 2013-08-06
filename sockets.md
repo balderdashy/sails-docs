@@ -61,6 +61,28 @@ These calls will subscribe you to changes to the model, see your `assets/js/app.
 
 These methods can be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you've seen in the blueprints.
 
+<!-- TODO -->
+<!-- 
+
+### req.socket.subscribeToUpdate( model[s] )
+Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
+Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
+e.g. `req.socket.subscribeToUpdate( [ {id: 7} ] )`
+
+### req.socket.subscribeToDestroy( model[s] )
+Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
+Your socket on the client will receive a message if the specified user(s) are destroyed.
+They will be unsubscribed automatically afterwards.
+e.g. `req.socket.subscribeToUpdate( [ {id: 7} ] )`
+
+### req.socket.subscribeToCreate( Model )
+Subscribe the request object's socket (`req`) to the collection
+In the example below, our user's socket will receive a message in their browser every time a new user is **created**.
+If a socket is subscribed to creates, it will also be automatically subscribed to update and destroy events for any new instances.
+e.g. `req.socket.subscribeToCreate( User );
+
+-->
+
 ### Model.subscribe( req.socket, model[s] )
 Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
 Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
