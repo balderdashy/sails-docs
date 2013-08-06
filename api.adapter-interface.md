@@ -151,14 +151,14 @@ Implementing the Streaming CRUD interface is actually pretty simple-- you just n
 Implementing the Blob interface allows you to upload and download binary data (aka files) to the service/database.  These "blobs" might be MP3 music files (~5MB) but they could also be data-center backups (~50TB).  Because of this, it's crucial that adapters which implement this interface use streams for uploads (incoming, into data source from Sails) and downloads (outgoing, from data source to Sails).
 
 ###### Class methods
-+ `upload()`
-+ `download()`
++ `write()`
++ `read()`
 
 
 
 ## One-Way (interface)
 
-Adapters which implement one-way messages should do so using `send()` or a prefixed `send*()` method.  This lets developers know that it's not safe to assume that these operations are reversible.  An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.
+Adapters which implement one-way messages should do so using `send()` or a suffixed `send*()` method.  This lets developers know that it's not safe to assume that these operations are reversible.  An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.
 
 ###### Class methods
 + `send()`
