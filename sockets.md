@@ -1,8 +1,18 @@
 # Sockets / Pubsub
 > _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
+## Contents
 
-## HTTP + Socket.io Interoperability
+Sails makes HTTP and Socket.io interoperable, making it easier than ever to add realtime/pubsub/comet functionality to your app.
+
+1) Using standard controllers
+2) Using the CRUD blueprints
+3) Using the built-in pubsub methods (e.g. `User.publishCreate()`)
+4) Using the low-level pubsub methods (`req.listen` and `req.broadcast`)
+5) Accessing raw socket.io via `req.socket` and `sails.io`
+
+
+## Using standard controllers
 
 Out of the box, Sails handles Socket.io requests the same way it handles HTTP requests-- through the Express interface.  It does this by creating a fake Express request and automatically routing the socket requests to the proper controller and action.  For instance, here is a simple controller:
 
@@ -35,7 +45,7 @@ socket.get('/echo',{
 ```
 
 
-## CRUD Blueprints
+## Using CRUD Blueprints
 The default API blueprint supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
 
 ```javascript
@@ -57,9 +67,17 @@ These calls will subscribe you to changes to the model, see your `assets/js/app.
 
 
 
-## Publish/subscribe (pubsub) methods
+## Using built-in pubsub methods
 
-These methods can be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you've seen in the blueprints.
+Sails exposes some convenient accessor methods for performing common publish/subscribe operations.  The following methods may be used in your custom controllers to give you lower-level access to the same kind of realtime functionality you've seen in the blueprints.
+
+Under the covers, Sails blueprints work their realtime magic by automatically furnishing models with a collection-wide "class room" and an "instance room" for each instance.  
+
+##### The "class room"
+If you have a visitor whose socket is subscribed to the "class room" (e.g. `User.subscribe( req.socket )`), she'll receive messages _any time_ `User.publishCreate()` is called.  
+
+##### The "instance rooms"
+If the visitor is subscribed to one or more "instance rooms" (e.g. `User.subscribe( req.socket, listOfUserInstances )` ), she'll receive messages when `User.publishUpdate()` or `User.publishDestroy()` is called involving one of the instances she cares about.
 
 <!-- TODO -->
 <!-- 
@@ -83,12 +101,20 @@ e.g. `req.socket.subscribeToCreate( User );
 
 -->
 
+
+
+> IMPORTANT NOTE: `Model.subscribe( req.socket, [])` is not the same as `Model.subscribe( req.socket )`.  The latter usage will subscribe to the "class room."  The former will subscribe to nothing!  This is because the presence of the second argument (in this case the empty list `[]`) signals to Sails that you're subscribing to instances, but in this case you've specified none!
+
+
 ### Model.subscribe( req.socket, model[s] )
+
 Subscribe the request object's socket (`req`) to the specified array of `models` or single model.
 Your socket on the client will receive a message every time the specified user(s) are updated or destroyed.
 e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
 
 ### Model.subscribe( req.socket )
+
+> IMPORTANT NOTE: 
 Subscribe the request object's socket (`req`) to the collection
 Your socket on the client will receive a message every time a new user is created.
 e.g. `User.subscribe(req.socket , [ {id: 7} ] )`
@@ -130,8 +156,11 @@ User.publishDestroy(7);
 ````
 
 
-## Lower level pubsub methods
-Since models are automatically furnished with a collection-wide "class room" and an "instance room" for each instance, it gives us some interesting opportunities to offer convient accessor methods for performing common publish/subscribe operations.  Check out some of the socket-oriented convenience methods you can use.
+
+
+
+## Using low-level pubsub methods
+
 
 ### Model.unsubscribe( req.socket, model[s] )
 Unsubscribe the request object's socket (`req`) from the specified `models`
