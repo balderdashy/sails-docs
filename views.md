@@ -10,11 +10,11 @@ Sails uses EJS, or its other configurable templating libraries, to present your 
 With this, all you ever have to respond with is JSON objects in your controllers, creating a truly API-driven application.
 
 ## Where do I define Views?
-Traditional views are defined in the **/views/** directory while templates are defined in the 
-**/assets/templates/** directory.
+Traditional views are defined in the `/views/` directory while templates are defined in the 
+`/assets/templates/` directory.
 
 ## Server-side Views, Layout, and View Partials
-Server-side views in the **/views/** directory are by default EJS files that will handle the job
+Server-side views in the `/views/` directory are by default EJS files that will handle the job
 of presenting data when a view requested by the client. The method ```res.view()``` call will
 respond to a client with the appropriate view.
 
@@ -60,7 +60,7 @@ This could be called from any controller output.
 
 Partials are just like they sound.  A View Partial is only a small part of the overall DOM that you see on your web application.  With that said, a partial is nothing more than another (smaller) EJS file. Lets take a look at a partial from the Sails example, and how we should include it from another EJS file.
 
-**/views/site/partials/footer.ejs**
+####`/views/site/partials/footer.ejs`
 ```html
 <footer>
 	<span>
@@ -78,7 +78,7 @@ As you can see, this is nothing more than a simple EJS file.  Nothing special, n
 
 Now, lets call it from our index file.
 
-**/views/site/index.ejs**
+####`/views/site/index.ejs`
 ```html
 <%- partial('partials/header')%>
 <%- partial('partials/page')%>
@@ -89,7 +89,7 @@ Boring you say?  Well, maybe.  We don't have a lot in our index.ejs file, but th
 
 Something a little more complicated?  Sure!  We'll do a 2 level partial this time.  Using our same index.ejs file lets take a look at the "page" partial.
 
-**/views/site/partials/page.ejs**
+####`/views/site/partials/page.ejs`
 ```html
 <section id="section1">
 	<span>
@@ -111,7 +111,7 @@ Still simple, but whats this? We are now including other partials from within ou
 
 Lets take a look at the "about" section.  Since we are dealing with HTML5, we like to name the folders that the partials are held in accordingly.  Why? because it just makes sense!
 
-**/views/site/partials/sections/about.ejs**
+####`/views/site/partials/sections/about.ejs`
 ```html
 <p>
 SailsJS is built on NodeJS for easily building fast, scalable network applications. SailsJS provides a MVC framework perfect for data-intensive real-time applications that run across distributed devices.  SailsJS provides a JSON API right out of the box.<br>
