@@ -76,7 +76,7 @@ and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in 
 
 ## The Request Object
 
-### req.param()
+### `req.param()`
 Whether it was sent as POSTed JSON, to look up the value of a request parameter, do:
 
 ```javascript
@@ -86,20 +86,20 @@ var foo = req.param('foo');
 If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.
 
 
-### req.isSocket
+### `req.isSocket`
 Whether or not this request was sent over Socket.io
 
-### req.isAjax
+### `req.isAjax`
 Whether or not this is an AJAX/xhr request
 
-### req.isJson
+### `req.isJson`
 Whether or not this request is JSONish (has a JSON &ldquo;Accept&rdquo; or &ldquo;Content-Type&rdquo; header)
 
 
 ## The Response Object
 When responding to a request, Sails uses many of the same res methods as Express.
 
-### res.view([view, options[, fn]])
+### `res.view([view, options[, fn]])`
 This method is an enhanced version of  Express&rsquo;s **res.render()**. The method **res.view()**
 automatically renders the appropriate view based on the controller and action. The original function
 is still accessible via **res.render()**.
