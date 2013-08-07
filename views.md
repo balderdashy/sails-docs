@@ -160,7 +160,7 @@ Express 3 removed native support for layouts.  In Sails, we've managed to keep t
 
 That said, at least in EJS, instead of indicating your custom layout with the `layout` local,
 you must use `_layoutFile`:
-```
+```javascript
 res.view({
   _layoutFile: 'relativePathToYourCustomLayoutFromTheTargetView.ejs'
 });
