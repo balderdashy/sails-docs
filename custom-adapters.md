@@ -1,9 +1,9 @@
 # Adapters
 > _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
-> Note: See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.
 
------
+####*See [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for a quick start guide.*
+
 
 Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) called Waterline for normalizing
 interactions with models, no matter what data source you're using. In this guide, we'll be demonstrating how to build adapters for Waterline by building one for Redis.
@@ -160,14 +160,14 @@ To set up testing, from within the adapter directory, `sails-redis/` in this cas
 
 ## Adapter API
 
-### Model.update(collectionName, criteria, newValues, cb) :: cb(err, success)
-> Update one or more models
+### `Model.update(collectionName, criteria, newValues, cb) :: cb(err, success)`
+####Update one or more models:
 + err is truthy if an error occurred
 + success is truthy if the update was successful
 + err AND success are falsy if the update was unsuccessful because the criteria in question didn't return any extant models
 
-### Model.destroy(collectionName, criteria, cb) :: cb(err, success)
-> Destroy one or more models
+### `Model.destroy(collectionName, criteria, cb) :: cb(err, success)`
+####Destroy one or more models:
 + err is truthy if an error occurred
 + success is truthy if the update was successful
 + err AND success are falsy if the operation was unsuccessful because the criteria in question didn't return any extant models
