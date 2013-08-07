@@ -14,7 +14,7 @@ Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAu
 
 Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
 
-When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your controllers.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
+When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your controllers.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just **one thing**.
 
 For example, the `canWrite` policy mentioned above might look something like this:
 
