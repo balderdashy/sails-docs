@@ -104,7 +104,7 @@ This method is an enhanced version of  Express&rsquo;s **res.render()**. The met
 automatically renders the appropriate view based on the controller and action. The original function
 is still accessible via **res.render()**.
 
-### res.send(body|status[, headers|status[, status]])
+### `res.send(body|status[, headers|status[, status]])`
 From the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.
 The **res.send()** method is a high level response utility allowing you to pass objects to respond
 with json, strings for html, Buffer instances, or numbers representing the status code. The
@@ -127,7 +127,7 @@ again.
 Note that this method ends the response, so you will want to use node’s **res.write()** for multiple
 writes or streaming.
 
-### res.json(obj[, headers|status[, status]])
+### `res.json(obj[, headers|status[, status]])`
 From the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
 however **res.send(obj)** will send JSON as well, though not ideal for cases when you want to send
@@ -140,7 +140,7 @@ for example a string as JSON, since the default for **res.send(string)** is text
 	res.json('I dont have that', 404);
 ```
 
-### res.redirect(url[, status])
+### `res.redirect(url[, status])`
 From the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.
 Redirect to the given url with a default response status of 302.
 
@@ -152,7 +152,7 @@ Redirect to the given url with a default response status of 302.
 	res.redirect('back');
 ```
 
-### res.viewExists
+### `res.viewExists`
 Whether or not the view for this controller exists.
 
 
