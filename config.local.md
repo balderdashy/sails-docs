@@ -8,7 +8,7 @@ This file is included in your .gitignore, so if you&rsquo;re using git as a vers
 Good news is, that means you can specify configuration for your local machine in this file without inadvertently committing personal information (like database passwords) to the repo.  Plus, this prevents other members of your team from commiting their local configuration changes on top of yours.
 
 
-##port
+##Port
 The `port` setting determines which TCP port your app will be deployed on.
 Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
 
@@ -17,7 +17,7 @@ By default, if it&rsquo;s set, Sails uses the `PORT` environment variable. Other
 More about ports: http://en.wikipedia.org/wiki/Port_(computer_networking)
 
 
-##environment
+##Environment
 The runtime &ldquo;environment&rdquo; of your Sails app is either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
 
 In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
