@@ -80,7 +80,7 @@ Sails exposes some convenient accessor methods for performing common publish/sub
 Under the covers, Sails blueprints work their realtime magic by automatically furnishing models with a collection-wide "class room" and an "instance room" for each instance.  
 
 
-### Model.subscribe( req.socket )
+### `Model.subscribe( req.socket )`
 
 ##### The "class room"
 If you have a visitor whose socket is subscribed to the "class room" (e.g. `User.subscribe( req.socket )`), she'll receive messages _any time_ `User.publishCreate()` is called.  
@@ -92,7 +92,7 @@ e.g. `User.subscribe( req.socket )`
 
 
 
-### Model.subscribe( req.socket, model[s] )
+### `Model.subscribe( req.socket, model[s] )`
 
 ##### "instance rooms"
 If the visitor is subscribed to one or more "instance rooms" (e.g. `User.subscribe( req.socket, listOfUserInstances )` ), she'll receive messages when `User.publishUpdate()` or `User.publishDestroy()` is called involving one of the instances she cares about.
@@ -130,7 +130,7 @@ e.g. `req.socket.subscribeTo( User );
 
 
 
-### Model.publishCreate( values, [socketToOmit] )
+### `Model.publishCreate( values, [socketToOmit] )`
 Inform all sockets who are members of the "class room" for `Model` that a new instance has been created.  Those sockets will also be automatically subscribed to the new instance's room.
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
@@ -141,7 +141,7 @@ User.publishCreate(newUser)
 ```
 
 
-### Model.publishUpdate( id, values, [socketToOmit] )
+### `Model.publishUpdate( id, values, [socketToOmit] )`
 Inform all sockets who are subscribed to the specified `id`'s instance room for `Model` that the instance has been updated. 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
@@ -154,7 +154,7 @@ User.publishUpdate( 7, {
 ```
 
 
-### Model.publishDestroy( id, [socketToOmit] )
+### `Model.publishDestroy( id, [socketToOmit] )`
 Inform all sockets who are subscribed to the specified `id`'s instance room for `Model` that the instance has been destroyed. 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
@@ -170,32 +170,32 @@ User.publishDestroy(7);
 
 ## Using low-level pubsub/socket methods
 
-### Model.unsubscribe( req.socket, model[s] )
+### `Model.unsubscribe( req.socket, model[s] )`
 Unsubscribe the request object's socket (`req`) from the specified `models`
 e.g. `User.unsubscribe(req.socket,[{id: 7}, {id: 2}])`
 
-### Model.introduce( req.socket, id )
+### `Model.introduce( req.socket, id )`
 Take all of the class room models and 'introduce' them to a new instance room
 (good for when a new instance is created-- connecting sockets must subscribe to it)
 e.g. `User.introduce(req.socket,3)`
 
-### Model.publish( req.socket, models, message )
+### `Model.publish( req.socket, models, message )`
 Broadcast a `message` to sockets connected to the specified `models` using the request object (`req`).
 e.g. `User.publish(req,[{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})`
 
-### Model.room( id )
+### `Model.room( id )`
 Return the room name for the instance in this collection with the given id
 If id is null, return the name of the "class" or collection-wide room (for listening to `create`s)
 e.g. `User.room(3)`
 
-### Model.subscribers( id )
+### `Model.subscribers( id )`
 Return the set of sockets subscribed to this instance (if id specified) or class room (if it's not)
 e.g. `User.subscribers(7)`
 
 See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implementation details.
 
 
-##### req.listen(room)
+##### `req.listen(room)`
 Subscribe the current socket to broadcasts from the specified room
 e.g. `req.listen('off the wall chats')`
 
