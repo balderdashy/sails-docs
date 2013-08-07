@@ -1,6 +1,6 @@
 # Roadmap
 
-> What's next?
+What's next?
 
 ## Sails Core
 + Express's default support for file uploads via formidable is not suitable for production apps with large file uploads (>100MB)
