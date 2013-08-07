@@ -1,5 +1,5 @@
 # Assets
-> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
+> _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 Assets refer to anything (js, css, html, images, etc) that needs to be accessible to the outside world. 
 The `assets` folder is where all of your assets will go, and will be served as static assets. 
