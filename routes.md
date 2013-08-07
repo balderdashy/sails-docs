@@ -4,9 +4,9 @@
 This table routes urls to controllers/actions.
 
 ##Resourceful Routing
-If the URL is not specified in **config/routes.js**, the default route for a URL is:
-**/:controller/:action/:id**
-where **:controller**, **:action**, and the **:id** request parameter are derived from the url
+If the URL is not specified in `config/routes.js`, the default route for a URL is:
+`/:controller/:action/:id`
+where `:controller`, `:action`, and the `:id` request parameter are derived from the url
 
 If **:action** is not specified, Sails will redirect to the appropriate action.  Out of the box,
 Sails supports RESTful resourceful route conventions, as used in Backbone.js.
@@ -29,13 +29,13 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 ```
 
 If the requested controller/action doesn't exist:
-  - if a view exists ( **/views/:controller/:action.ejs** ), Sails will render that view
+  - if a view exists ( `/views/:controller/:action.ejs`), Sails will render that view
   - if no view exists, but a model exists, Sails will automatically generate a JSON API for the 
-  	model which matches **:controller**.
+  	model which matches `:controller`.
   - if no view OR model exists, Sails will respond with a 404.
 
 ## Custom Routes
-You can define your own custom routes in **config/routes.js**
+You can define your own custom routes in `config/routes.js`
 
 ```javascript
 module.exports.routes = {
@@ -95,7 +95,7 @@ module.exports.routes = {
 ```
 
 ## Wildcard Routes
-Wildcard routes can also be defined in **config/routes.js**.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the _:unkownRoute_ arbitrary variable as the route.  An example of this is shown below.
+Wildcard routes can also be defined in `config/routes.js`.  If say for example, you want all unknown routes (routes that aren't real) to point to a specific controller and action.  Then you can use the `:unkownRoute` arbitrary variable as the route.  An example of this is shown below.
 
 ```javascript
 // config/routes.js
