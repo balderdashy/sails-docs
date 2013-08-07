@@ -13,12 +13,12 @@ MySQL, a model might correspond to a table. If you're using MongoDB, it might co
 collection. In either case, our goal is to provide a simple, modular way of managing data without
 relying on any one type of database.
 
-# How do I define a Model?
+## How do I define a Model?
 
 Model definitions contain attributes, validations, instance methods, lifecycle callbacks and
 class methods.
 
-## Attributes
+### Attributes
 
 Attributes are basic pieces of information about a model. For instance, a model called `Person`
 might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
@@ -67,7 +67,7 @@ The following attribute types are currently available:
 
 To learn more about what methods are available to you, check out the [waterline documentation](https://github.com/balderdashy/waterline).
 
-## Validations
+### Validations
 
 Validations are defined on you attributes when defining a model. It uses
 [Anchor](https://github.com/balderdashy/anchor) behind the scenes to run validations whenever you
@@ -142,7 +142,7 @@ Available validations are:
   - minLength
   - maxLength
 
-## Instance Methods
+### Instance Methods
 
 You can attach instance methods to a model which will be available on any record returned from
 a query. There are also a few helper instance methods that get attached to allow you to perform
@@ -437,7 +437,7 @@ _TODO_
 #### Many-To-Many
 _TODO_ -->
 
-# Where do I define Models?
+## Where do I define Models?
 Models are defined in the **api/models/** directory in your Sails application.
 <!-- You can create them with their attributes using.   name:string age:int email:string -->
 
@@ -446,10 +446,10 @@ You can generate a model with the command line tool:
 sails generate model Person
 ```
 
-# Automatic schema creation
+## Automatic schema creation
 Depending on your configuration, the database tables will be recreated automatically.
 
-# Querying Models
+## Querying Models
 You'll want to create, access, modify, and destroy models from controllers, views, services, and
 policies, and so you'll need a way to deal with them.
 
@@ -475,7 +475,7 @@ User.find()
 });
 ```
 
-## create
+## `create`
 To create a new record in the database, use `create()`.
 
 ```javascript
@@ -497,7 +497,7 @@ User.create({
 });
 ```
 
-## findOne
+## `findOne`
 To lookup a model by id, use `findOne(id)`. You can call also look for a model by passing in an
 object composed of the desired matching criteria.
 
@@ -534,7 +534,7 @@ User.findOne({
 });
 ```
 
-## find
+## `find`
 `find()` lets you search for one or more models which meet the criteria you specify. You can also
 include a `limit` (max number of models to return), `skip` (useful for pagination), and sort
 `sort`. Find all will always return an array even if only one model fits the criteria.
@@ -605,7 +605,7 @@ User.find({
 }, cb);
 ```
 
-## dynamic finders
+## Dynamic finders
 With Sails built in ORM, [Waterline](https://github.com/balderdashy/waterline), you can use a very
 helpful tool called dynamic finders. You can query your models with automatically genereated methods
 that depend on the attributes you define for the model. For example, if you had a book model that
@@ -652,7 +652,7 @@ Book.findByAuthor('John R. Erickson').done(function(err, books) {
 });
 ```
 
-## update
+## `update`
 `update()` allows you to update an instance of a model from the database. It will always return
 an array of records that have been updated.
 
@@ -674,7 +674,7 @@ User.update({
 });
 ```
 
-## destroy
+## `destroy`
 `destroy()` allows you to delete models from the database. It will work on all matching criteria.
 
 ```javascript
@@ -701,8 +701,8 @@ database without having to write a bunch of code. Currently supported modifiers 
 _or_, _startsWith_, _endsWith_, _greaterThan_, _lessThan_, _>=_, and _<=_.
 Each of these are shown in examples below.
 
-## Modifier: _contains_
-In order to use a _contains_ modifier, you would do the following.
+## Modifier: `contains`
+In order to use a `contains` modifier, you would do the following.
 
 ```javascript
 where: {
@@ -712,8 +712,8 @@ where: {
 }
 ```
 
-## Modifier: _or_
-In order to use an _or_ modifier, you would do the following.
+## Modifier: `or`
+In order to use an `or` modifier, you would do the following.
 
 ```javascript
 where: {
@@ -725,7 +725,7 @@ name: {
  '>': 'a'
 }
 
-# What About Migrations?
+## What About Migrations?
 
 In schemaful databases (like MySQL) schema migrations occur automatically.  Models default to
 `migrate:alter`, which tells Sails to attempt to auto-migrate the schema.
@@ -734,7 +734,7 @@ Explicit production data migrations, like in Rails, do not exist at this time-- 
 precious, and manual migrations can be dangerous.  However, if this is a feature that you are
 interested in, please submit an issue, or better yet, a pull-request!
 
-## More Information
+### More Information
 
 For more information on using Models you can visit the
 [Waterline](https://github.com/balderdashy/waterline) documentation which goes more in depth on how
