@@ -1,5 +1,5 @@
 # Policies (ACL)
-> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
+> _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 So, you don&rsquo;t want your mom to access your secret stash of ... code?  Here's how you can make that happen. 
 
