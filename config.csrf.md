@@ -8,7 +8,7 @@ This allows you to have certainty that your users' requests haven't been hijacke
   
 This token has a short-lived expiration timeline, and must be acquired by either:
 
-###A)   For traditional view-driven web apps:
+###*For traditional view-driven web apps:*
 Fetching it from one of your views, where it may be accessed as a local variable, i.e.: `<%= _csrf %>`
 e.g.:
 ```html
@@ -16,9 +16,9 @@ e.g.:
  <input type='hidden' name='_csrf' value='<%= _csrf %>'>
 </form>
 ```
-*or*
+####*or*
 
-###B) For AJAX/Socket-heavy and/or single-page apps: 
+###*For AJAX/Socket-heavy and/or single-page apps:*
 Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
 
 
