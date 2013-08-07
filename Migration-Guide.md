@@ -182,19 +182,19 @@ in the `Gruntfile`
   - For stylesheets you can replace `<%- assets.css() %>` with the following:
 ```
 <!--STYLES-->
- <!--STYLES END-->
+  <!--STYLES END-->
 ```
 
   - For javascript you can replace `<%- assets.js() %>` with the following:
 ```
 <!--SCRIPTS-->
- <!--SCRIPTS END-->
+  <!--SCRIPTS END-->
 ```
 
   - For templates you can replace `<%- assets.templateLibrary() %>` with the following:
 ```
 <!--TEMPLATES-->
- <!--TEMPLATES END-->
+  <!--TEMPLATES END-->
 ```
 
 To get your assets automatically linked you will need to place any assets you want injected into the
