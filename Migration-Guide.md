@@ -76,7 +76,7 @@ Readme file.
 The first step to migrating an application to 0.9.x will be handling your assets. This is the largest
 part of the transition as so much has changed.
 
-### Step 1: Creating a Gruntfile
+### **Step 1:** Creating a Gruntfile
 
 The first thing we will need to do is create a `Gruntfile.js` file in the top level of your application.
 Sails 0.9.x has one included with some basic defaults we can use to get started. This will give you
@@ -85,19 +85,19 @@ into your layout.
 
   - Copy the [Default Gruntfile](https://github.com/balderdashy/sails/blob/development/bin/boilerplates/Gruntfile.js) into your application's top-level directory and make sure the filename is `Gruntfile.js`.
 
-### Step 2: Update Package.json
+### **Step 2:** Update Package.json
 
 You will need to update your `package.json` file to include the new 0.9 version of Sails along with
 adding the Grunt dependency.
 
-  - Add the following options to your `package.json` file:
+  1. Add the following options to your `package.json` file:
 
     - `"sails": "0.9.0"`
     - `"grunt": "0.4.1"`
 
-  - run `npm install` to install the new dependencies.
+  2. Run `npm install` to install the new dependencies.
 
-## Step 3: Update Adapters Config
+## **Step 3:** Update Adapters Config
 
 In Sails 0.8.x the default development adapter was `sails-dirty` which is an in-memory adapter that
 syncs to disk. In Sails 0.9.x we have moved to our own development adapters named `sails-disk` and
@@ -125,23 +125,23 @@ module.exports.adapters = {
 }
 ```
 
-### Step 3: Update Application Config Files
+### **Step 4:** Update Application Config Files
 
 Sails 0.9.x exposes many more configuration options. It's a good idea to setup all these new configuration
 files to make working with your app easier. The new configuration options give you the ability to
 override many of the settings that were previously unavailable as well as some new options such as
 remote session and socket storage.
 
-  - Delete `config/assets.js` as it's no longer needed.  Asset handling is performed by the new `Gruntfile.js`.
-  - Copy over the new [application.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/application.js) file into `config/applications.js`
-  - Copy over the new [controllers.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js) file into `config/controllers.js`
-  - Copy over the new [io.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/io.js) file into `config/io.js`
-  - Copy over the new [log.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/log.js) file into `config/log.js`
-  - Copy over the new [routes.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/routes.js) into `config/routes.js` and be sure to add in your old application's routes. This exposes the new **404** and **500** handlers.
-  - Copy over the new [session.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/session.js) file into `config/session.js`
-  - Copy over the new [views.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/views.js) file into `config/views.js`
+1. Delete `config/assets.js` as it's no longer needed.  Asset handling is performed by the new `Gruntfile.js`.
+2. Copy over the new [application.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/application.js) file into `config/applications.js`
+3. Copy over the new [controllers.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js) file into `config/controllers.js`
+4. Copy over the new [io.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/io.js) file into `config/io.js`
+5. Copy over the new [log.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/log.js) file into `config/log.js`
+6. Copy over the new [routes.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/routes.js) into `config/routes.js` and be sure to add in your old application's routes. This exposes the new **404** and **500** handlers.
+7. Copy over the new [session.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/session.js) file into `config/session.js`
+8. Copy over the new [views.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/views.js) file into `config/views.js`
 
-### Step 4: Handle Assets in the Deprecated Public Folder
+### **Step 5:** Handle Assets in the Deprecated Public Folder
 
 In Sails 0.9.x the public folder is no longer supported. All assets are moved to the `assets` folder.
 This will be handled by Grunt and copied into a `.tmp/public` folder which is served as static assets.
@@ -153,10 +153,10 @@ somewhere else if you would like.
 When you are ready to deploy you can run: `sails build` or alternatively `grunt build` to create a
 `www` folder in your top level directory that you can deploy to S3 or Cloudfront.
 
-  - Copy any assets you currently have in `public` over to the `assets` directory.
-  - Delete the `public` folder.
+  1. Copy any assets you currently have in `public` over to the `assets` directory.
+  2. Delete the `public` folder.
 
-### Step 5: Remove Asset-Rack Partials from Layout
+### **Step 6:** Remove Asset-Rack Partials from Layout
 
 In your `views/layout.ejs` file you will need to remove the asset partials used by Asset-Rack. You now
 have the option to choose how you want to include your assets. If you would like to point directly to
@@ -204,7 +204,7 @@ assets/
     templates/
 ```
 
-### Update Global Sails
+### **Step 7:** Update Global Sails
 
 The last step is to update your global version of Sails to the new 0.9.x branch. This is the easiest
 part! Simply run the following command.
@@ -228,8 +228,7 @@ $ sails -v
 
 You should see: `info: v0.9.0` to ensure it was updated correctly.
 
-####Note:
->Make sure that if your app uses an earlier version of sails, you remove the local dependency with `rm -rf node_modules/sails`.
+>**Note**: Make sure that if your app uses an earlier version of sails, you remove the local dependency with `rm -rf node_modules/sails`.
 
 ## You&rsquo;re Done
 
