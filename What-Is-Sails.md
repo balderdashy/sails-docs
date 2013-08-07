@@ -68,7 +68,7 @@ If you are developing an HTML/CSS front-end powered by Sails, there are some oth
 
 
 ## Finally, a note for UX-focused guys/gals
-> **From one geek to another:**
+> ####From one geek to another:
 
 > I work on a lot of web and mobile apps with our team at <a href="http://balderdash.co">Balderdash</a>.  More than ever before, it's important that your applications not only work, but look and feel awesome.
 I originally built Sails to tackle these sorts of API-driven, front-end heavy projects for our startup and enterprise clients.  Since then, top-notch experiences have become industry standard (typically using Backbone, Angular, Ember, Knockout, etc.)
