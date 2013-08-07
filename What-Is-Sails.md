@@ -31,8 +31,7 @@ Sails's controllers and policies are really just [Express](http://expressjs.com/
 + Supports the existing ecosystem of Express middleware
 
 ### REST Blueprints
-  + Automatically generated JSON API for manipulating models
-    + (you don't have to write any backend code to build simple CRUD apps)
+  + Automatically generated JSON API for manipulating models (You don't have to write any backend code to build simple CRUD apps)
   + Automatic route bindings for your controller actions
 
 ### Built-in support for controller/action-level middleware mappings of:
