@@ -19,14 +19,16 @@ Sails supports transport agnostic routing, which allows your controllers/policie
 
 ### Performance
 Node has fantastic performance. Specifically, we've had some great results using 4 EC2 small servers to scale Sails to 10,000 concurrent connections.
-  + Built-in support for Redis session store, and Redis MQ for reverse pubsub routing
+
++ Built-in support for Redis session store, and Redis MQ for reverse pubsub routing
 
 ### Node.js
 Node.js is the fastest-growing, all-javascript solution to <a href="https://www.youtube.com/watch?v=jo_B4LTHi3I">server-side development</a>. Writing your code in one language on the front-end and back-end means less context-shifting, faster development, and better apps.
 
 ### Express
 Sails's controllers and policies are really just [Express](http://expressjs.com/) middleware. This means your Sails app logic is interoperable with existing Express apps, and vice versa
-  + Supports the existing ecosystem of Express middleware
+
++ Supports the existing ecosystem of Express middleware
 
 ### REST Blueprints
   + Automatically generated JSON API for manipulating models
