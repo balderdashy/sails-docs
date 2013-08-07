@@ -6,7 +6,7 @@ Sails controllers work very similarly to controllers in other MVC frameworks. Th
 as being the middleman between your model and your views.
 
 ## Where are Controllers Defined?
-Controllers are defined in the **/api/controllers/** folder. By default when you create a
+Controllers are defined in the `/api/controllers/` folder. By default when you create a
 controller using the command line, you can add additional arguments that represent the controller
 actions.
 
@@ -100,13 +100,13 @@ Whether or not this request is JSONish (has a JSON &ldquo;Accept&rdquo; or &ldqu
 When responding to a request, Sails uses many of the same res methods as Express.
 
 ### `res.view([view, options[, fn]])`
-This method is an enhanced version of  Express&rsquo;s **res.render()**. The method **res.view()**
+This method is an enhanced version of  Express&rsquo;s `res.render()`. The method `res.view()`
 automatically renders the appropriate view based on the controller and action. The original function
-is still accessible via **res.render()**.
+is still accessible via `res.render()`.
 
 ### `res.send(body|status[, headers|status[, status]])`
 From the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.
-The **res.send()** method is a high level response utility allowing you to pass objects to respond
+The `res.send()` method is a high level response utility allowing you to pass objects to respond
 with json, strings for html, Buffer instances, or numbers representing the status code. The
 following are all valid uses:
 
@@ -121,17 +121,17 @@ following are all valid uses:
 ```
 
 By default the Content-Type response header is set, however if explicitly assigned through
-**res.send()** or previously with **res.header()** or **res.contentType()** it will not be set
+`res.send()` or previously with `res.header()` or `res.contentType()` it will not be set
 again.
 
-Note that this method ends the response, so you will want to use node’s **res.write()** for multiple
+Note that this method ends the response, so you will want to use node’s `res.write()` for multiple
 writes or streaming.
 
 ### `res.json(obj[, headers|status[, status]])`
 From the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
-however **res.send(obj)** will send JSON as well, though not ideal for cases when you want to send
-for example a string as JSON, since the default for **res.send(string)** is text/html.
+however `res.send(obj)` will send JSON as well, though not ideal for cases when you want to send
+for example a string as JSON, since the default for `res.send(string)` is text/html.
 
 ```javascript
 	res.json(null);
