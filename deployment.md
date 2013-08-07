@@ -13,12 +13,12 @@ Before you launch any web application, you should consider a few factors:
 
 
 ## Here's how you deploy in production mode:
-*note: This is a quick start. The proper way to deploy is with [upstart](http://upstart.ubuntu.com) and [nginx](http://nginx.org/) and takes a lot more work to set up.
-+ Install forever: `sudo npm install -g forever`
+> **Note:** This is a quick start. The proper way to deploy is with [upstart](http://upstart.ubuntu.com) and [nginx](http://nginx.org/) and takes a lot more work to set up.
 
++ Install forever: `sudo npm install -g forever`
 + From your app directory, start the server with forever: `forever start app.js --prod`
 
-> More about forever: https://github.com/nodejitsu/forever
+More about forever: https://github.com/nodejitsu/forever
 
 
 ## Other things you'll likely want to do in production:
