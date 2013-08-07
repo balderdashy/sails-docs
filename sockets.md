@@ -5,15 +5,15 @@
 
 Sails makes HTTP and Socket.io interoperable, making it easier than ever to add realtime/pubsub/comet functionality to your app.
 
-1) Using standard controllers
+1. Using standard controllers
 
-2) Using the CRUD blueprints
+2. Using the CRUD blueprints
 
-3) Using the built-in realtime _sync_ methods (e.g. `User.publishCreate()`)
+3. Using the built-in realtime _sync_ methods (e.g. `User.publishCreate()`)
 
-4) Using Sails built-in low-level pubsub/socket methods (e.g. `req.listen`, `User.subscribers`)
+4. Using Sails built-in low-level pubsub/socket methods (e.g. `req.listen`, `User.subscribers`)
 
-5) Obtaining raw access to socket.io via `req.socket` and `sails.io`
+5. Obtaining raw access to socket.io via `req.socket` and `sails.io`
 
 
 ## Using standard controllers
@@ -135,10 +135,10 @@ Inform all sockets who are members of the "class room" for `Model` that a new in
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
 
-````javascript
+```javascript
 // For example
 User.publishCreate(newUser)
-````
+```
 
 
 ### Model.publishUpdate( id, values, [socketToOmit] )
@@ -146,12 +146,12 @@ Inform all sockets who are subscribed to the specified `id`'s instance room for 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
 
-````javascript
+```javascript
 // For example
 User.publishUpdate( 7, {
   name: req.param('name')
 });
-````
+```
 
 
 ### Model.publishDestroy( id, [socketToOmit] )
@@ -159,10 +159,10 @@ Inform all sockets who are subscribed to the specified `id`'s instance room for 
 
 Optionally, if `socket` argument is specified, it will be omitted from the broadcast.
 
-````javascript
+```javascript
 // For example
 User.publishDestroy(7);
-````
+```
 
 
 
