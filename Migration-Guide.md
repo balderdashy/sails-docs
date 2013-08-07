@@ -180,16 +180,22 @@ To use the script linker you will need to replace your asset-rack partials with 
 in the `Gruntfile`
 
   - For stylesheets you can replace `<%- assets.css() %>` with the following:
-    `<!--STYLES-->`
-    `<!--STYLES END-->`
+```
+<!--STYLES-->
+<!--STYLES END-->
+```
 
   - For javascript you can replace `<%- assets.js() %>` with the following:
-    `<!--SCRIPTS-->`
-    `<!--SCRIPTS END-->`
+```
+<!--SCRIPTS-->
+<!--SCRIPTS END-->
+```
 
   - For templates you can replace `<%- assets.templateLibrary() %>` with the following:
-    `<!--TEMPLATES-->`
-    `<!--TEMPLATES END-->`
+```
+<!--TEMPLATES-->
+<!--TEMPLATES END-->
+```
 
 To get your assets automatically linked you will need to place any assets you want injected into the
 layout into `assets/linker`. This will make your assets file structure look like:
