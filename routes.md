@@ -8,7 +8,7 @@ If the URL is not specified in `config/routes.js`, the default route for a URL i
 `/:controller/:action/:id`
 where `:controller`, `:action`, and the `:id` request parameter are derived from the url
 
-If **:action** is not specified, Sails will redirect to the appropriate action.  Out of the box,
+If `:action` is not specified, Sails will redirect to the appropriate action.  Out of the box,
 Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 
 ```
