@@ -1,11 +1,8 @@
-#New to Node.js?
+#New to [Node.js](https://soundcloud.com/marak/marak-the-node-js-rap)?
 Thats okay!  We'll get you pointed in the right direction.
 
-> _Note: These docs are now for version 0.9.0 of Sails.  Please visit [here](http://08x.sailsjs.org) for 0.8.x documentation._
 
-####[The Node.js Rap](https://soundcloud.com/marak/marak-the-node-js-rap)
-
-First, lets take a minute to understand what Node.js is.  Per [nodejs.org](http://nodejs.org):
+Per [nodejs.org](http://nodejs.org):
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
 More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
