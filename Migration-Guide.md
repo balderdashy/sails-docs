@@ -90,14 +90,13 @@ into your layout.
 You will need to update your `package.json` file to include the new 0.9 version of Sails along with
 adding the Grunt dependency.
 
-  1. Add the following options to your `package.json` file:
+1. Add the following options to your `package.json` file:
+  + `"sails": "0.9.0"`
+  + `"grunt": "0.4.1"`
 
-    - `"sails": "0.9.0"`
-    - `"grunt": "0.4.1"`
+2. Run `npm install` to install the new dependencies.
 
-  2. Run `npm install` to install the new dependencies.
-
-## **Step 3:** Update Adapters Config
+### **Step 3:** Update Adapters Config
 
 In Sails 0.8.x the default development adapter was `sails-dirty` which is an in-memory adapter that
 syncs to disk. In Sails 0.9.x we have moved to our own development adapters named `sails-disk` and
@@ -230,7 +229,7 @@ You should see: `info: v0.9.0` to ensure it was updated correctly.
 
 >**Note**: Make sure that if your app uses an earlier version of sails, you remove the local dependency with `rm -rf node_modules/sails`.
 
-## You&rsquo;re Done
+## You&rsquo;re done!
 
 You should now be able to call `sails lift` and start your application on the new
 version of Sails.
