@@ -22,7 +22,7 @@ To apply a policy to a specific action in particular, you should specify it on t
 ### To an Entire Controller
 
 To set the default policy mapping for a controller, use the `*` notation:
-> Note: Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.  In this example, `isLoggedIn` is overriding `false`.
+> **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.  In this example, `isLoggedIn` is overriding `false`.
 
 ```javascript
 {
@@ -34,7 +34,7 @@ To set the default policy mapping for a controller, use the `*` notation:
 ```
 
 ### Globally
-> Note: Global policy mappings do not "cascade" or "trickle down" either.  Specified mappings, whether they're default controller mappings or for specific actions, will **ALWAYS** override the global mapping.  In this example, `isLoggedIn` is overriding `false`.
+> **Note:** Global policy mappings do not "cascade" or "trickle down" either.  Specified mappings, whether they're default controller mappings or for specific actions, will **ALWAYS** override the global mapping.  In this example, `isLoggedIn` is overriding `false`.
 
 ```javascript
 {
