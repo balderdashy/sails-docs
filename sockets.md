@@ -137,8 +137,26 @@ Optionally, if `socket` argument is specified, it will be omitted from the broad
 
 ```javascript
 // For example
-User.publishCreate(newUser)
+User.publishCreate({
+  id: 3,
+  name: 'Randy'
+})
 ```
+
+Client-side sockets who were subscribed to the class room and are listening to the `message` event would receive a JSON message like the following:
+```javascript
+{
+  data: {
+    id: 3,
+    name: 'Randy'
+  }
+  id: 3
+  model: 'user'
+  verb: 'create'
+}
+```
+
+
 
 
 ### `Model.publishUpdate( id, values, [socketToOmit] )`
@@ -149,9 +167,22 @@ Optionally, if `socket` argument is specified, it will be omitted from the broad
 ```javascript
 // For example
 User.publishUpdate( 7, {
-  name: req.param('name')
+  name: 'Amanda'
 });
 ```
+
+Client-side sockets who were subscribed to the class room and are listening to the `message` event would receive a JSON message like the following:
+```javascript
+{
+  data: {
+    name: 'Amanda'
+  }
+  id: 7
+  model: 'user'
+  verb: 'update'
+}
+```
+
 
 
 ### `Model.publishDestroy( id, [socketToOmit] )`
@@ -164,7 +195,14 @@ Optionally, if `socket` argument is specified, it will be omitted from the broad
 User.publishDestroy(7);
 ```
 
-
+Client-side sockets who were subscribed to the class room and are listening to the `message` event would receive a JSON message like the following:
+```javascript
+{
+  id: 7
+  model: 'user'
+  verb: 'destroy'
+}
+```
 
 
 
