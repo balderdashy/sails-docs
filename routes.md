@@ -21,7 +21,7 @@ Sails supports RESTful resourceful route conventions, as used in Backbone.js.
 	DELETE:	/:controller/destroy/:id	=> destroy(id)
 
 	# You can also explicitly state the action
-	GET   :	/:controller/findAll		=> findAll()
+	GET   :	/:controller/find		=> findAll()
 	GET   :	/:controller/find/:id		=> find(id)
 	POST  :	/:controller/create		=> create(id)
 	PUT   :	/:controller/update/:id		=> update(id)
@@ -62,18 +62,15 @@ module.exports.routes = {
 	// a route will be automatically exist mapping it to /user/juggle.
 	//
 	// Additionally, unless you override them, new controllers will have 
-	// create(), find(), findAll(), update(), and destroy() actions, 
+	// create(), find(), update(), and destroy() actions, 
 	// and routes will exist for them as follows:
 
 	/*
 
 	// Standard RESTful routing
-	// (if index is not defined, findAll will be used)
-	'get /user': {
-		controller	: 'user',
-		action		: 'index'
-	}
-	'get /user/:id': {
+	
+	// If no id is given, an array of all users will be returned
+	'get /user/:id?': {
 		controller	: 'user',
 		action		: 'find'
 	}
@@ -88,7 +85,14 @@ module.exports.routes = {
 	'delete /user/:id': {
 		controller	: 'user',
 		action		: 'destroy'
+	},
+	
+	// Override the default index action (find) by declaring an "index" method in your controller
+	'get /user': {
+		controller	: 'user',
+		action		: 'index'
 	}
+	
 	*/
 };
 
