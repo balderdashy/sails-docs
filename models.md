@@ -27,26 +27,27 @@ The model definition for `Person` might look like this:
 ```javascript
 // Person.js
 var Person = {
-  firstName: 'STRING',
-  lastName: 'STRING',
-  age: {
-    type: 'INTEGER',
-    max: 150,
-    required: true
+  attributes: {
+    firstName: 'STRING',
+    lastName: 'STRING',
+    age: {
+      type: 'INTEGER',
+      max: 150,
+      required: true
+    }
+    birthDate: 'DATE',
+    phoneNumber: {
+      type: 'STRING',
+      defaultsTo: '111-222-3333'
+    }
+    emailAddress: {
+      type: 'email', // Email type will get validated by the ORM
+      required: true
+    }
   }
-  birthDate: 'DATE',
-  phoneNumber: {
-    type: 'STRING',
-    defaultsTo: '111-222-3333'
-  }
-  emailAddress: {
-    type: 'email', // Email type will get validated by the ORM
-    required: true
-  },
-  
 };
 
-exports = Person;
+module.exports = Person;
 ```
 
 #### Available Attribute Types:
