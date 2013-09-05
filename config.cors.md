@@ -49,7 +49,7 @@ To override specific CORS configuration parameters for a route, add a `cors` pro
    controller: "FooController",
    action: "index",
    cors: {
-     origin: "http://www.sailsjs.org, http://www.sailsjs.com",
+     origin: "http://sailsjs.org, http://sailsjs.com",
      credentials: false
 }
 ```
