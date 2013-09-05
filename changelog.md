@@ -1,7 +1,7 @@
 # Changelog
 
 
-## 0.9.4
+## 0.9.4  (latest stable)
 *September 5, 2013*
 
 + Improved csrf prevention support (thanks to @sgress454)
@@ -58,7 +58,7 @@
 ### Anchor
 + Validations:  Too many added to list, see [Validations]()
 
-## 0.8.9  (latest stable)
+## 0.8.9
 *April 9, 2013*
 
 + Controllers must now also be generated to use the default API (they can be empty)
