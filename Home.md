@@ -18,7 +18,7 @@ What Is Sails
 -->
 ## Getting Started and the Basics:
 
-[New to Node.js](/new-to-nodejs)  
+[New to Node.js](/new-to-nodejs.md)  
 [Getting Started](/balderdashy/sails/wiki/Getting-started)  
 [Models](/balderdashy/sails/wiki/models)  
 [Controllers](/balderdashy/sails/wiki/controllers)  
