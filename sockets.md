@@ -230,7 +230,7 @@ e.g. `User.room(3)`
 Return the set of sockets subscribed to this instance (if id specified) or class room (if it's not)
 e.g. `User.subscribers(7)`
 
-See https://github.com/balderdashy/sails/blob/master/lib/pubsub.js for implementation details.
+See https://github.com/balderdashy/sails/blob/master/lib/hooks/pubsub/index.js for implementation details.
 
 
 ##### `req.listen(room)`
