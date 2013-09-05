@@ -10,7 +10,7 @@ will need to update in your current codebase.
 
 In 0.9.x we have made some major updates. This is just a quick runthrough of some of the larger changes
 that will probably affect an application that is currently running on 0.8.x. For a complete list of
-changes you can view the [Changelog](/balderdashy/sails-wiki/changelog).
+changes you can view the [Changelog](/changelog.md).
 
 ### Express 3.x Support
 
