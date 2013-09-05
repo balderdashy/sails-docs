@@ -19,30 +19,30 @@ What Is Sails
 ## Getting Started and the Basics:
 
 [New to Node.js](https://github.com/balderdashy/sails-wiki/blob/0.9/new-to-nodejs.md)  
-[Getting Started](/getting-started.md)  
-[Models](/models.md)  
-[Controllers](/controllers.md)  
-[Assets](/assets.md)  
-[examples](/examples.md)  
+[Getting Started](https://github.com/balderdashy/sails-wiki/blob/0.9/getting-started.md)  
+[Models](https://github.com/balderdashy/sails-wiki/blob/0.9/models.md)  
+[Controllers](https://github.com/balderdashy/sails-wiki/blob/0.9/controllers.md)  
+[Assets](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)  
+[examples](https://github.com/balderdashy/sails-wiki/blob/0.9/examples.md)
 
 ## A little more Advanced:
 
-[Configuration](/configuration.md)  
-[Adapters](/api.adapter-interface.md)  
-[Policies](/policies.md)  
-[Services](/services.md)  
-[Sockets](/sockets.md)  
-[Routes](/routes.md)  
-[Translation](/translation.md)
+[Configuration](https://github.com/balderdashy/sails-wiki/blob/0.9/configuration.md)  
+[Adapters](https://github.com/balderdashy/sails-wiki/blob/0.9/api.adapter-interface.md)  
+[Policies](https://github.com/balderdashy/sails-wiki/blob/0.9/policies.md)  
+[Services](https://github.com/balderdashy/sails-wiki/blob/0.9/services.md)  
+[Sockets](https://github.com/balderdashy/sails-wiki/blob/0.9/sockets.md)
+[Routes](https://github.com/balderdashy/sails-wiki/blob/0.9/routes.md)  
+[Translation](https://github.com/balderdashy/sails-wiki/blob/0.9/translation.md)
 
 ## Ready to Deploy?:
 
-[Deployment](/deployment.md)  
+[Deployment](https://github.com/balderdashy/sails-wiki/blob/0.9/deployment.md)  
 
 ## For those of you that would like to contribute.
 
-[Changelog](/changelog.md)  
-[Contributing to Sails](/Contributing-to-Sails.md)  
+[Changelog](https://github.com/balderdashy/sails-wiki/blob/0.9/changelog.md)  
+[Contributing to Sails](https://github.com/balderdashy/sails-wiki/blob/0.9/Contributing-to-Sails.md)  
 
 See http://sailsjs.org/#!documentation for a deeper dive.
 
