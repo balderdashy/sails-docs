@@ -5,7 +5,7 @@ differences between Express and Socket.io and hooks into Sails&rsquo; middleware
 to access and auto-save to `req.session` with Socket.io the same way you would with Express.
 
 For more information on configuring the session, check out:
-http://sailsjs.org/#documentation
+http://sailsjs.org/#!documentation
 
 ##`secret`
 Session secret is automatically generated when your new app is created.
