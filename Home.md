@@ -27,7 +27,7 @@ What Is Sails
 
 ## A little more Advanced:
 
-[Configuration](/configuration,md)  
+[Configuration](/configuration.md)  
 [Adapters](/adapters.md)  
 [Policies](/policies.md)  
 [Services](/services.md)  
