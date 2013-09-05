@@ -1,5 +1,27 @@
 # Changelog
 
+
+## 0.9.4
+*September 5, 2013*
+
++ Improved csrf prevention support (thanks to @sgress454)
++ Support for CORS (thanks to @sgress454)
++ CoffeeScript supported client-side by default in gruntfile thanks to @reecelewellen
++ Improves/fixes internationalization (thanks to @xdissent and @silvinci)
++ All tests pass (thanks to @sgress454)
++ Improvements, fixes to built-in pubsub / socket behaviors (thanks to @xdissent and @irlnathan)
++ Removed vanilla HAML support and tests since it was incomplete (jade is still supported)
++ Other minor bug fixes/inconsistencies and documentation enhancements
+
+> And thanks a ton to anybody I left out!  Send me a message on twitter and I'll add you.
+
+<!--
+## 0.9.3
+## 0.9.2
+## 0.9.1
+-->
+
+
 ## 0.9.0
 *July 10, 2013*
 
