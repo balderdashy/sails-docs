@@ -132,7 +132,7 @@ override many of the settings that were previously unavailable as well as some n
 remote session and socket storage.
 
 1. Delete `config/assets.js` as it's no longer needed.  Asset handling is performed by the new `Gruntfile.js`.
-2. Copy over the new [application.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/application.js) file into `config/applications.js`
+2. Copy over the new [local.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/local.js) file into `config/local.js`
 3. Copy over the new [controllers.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js) file into `config/controllers.js`
 4. Copy over the new [io.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/io.js) file into `config/io.js`
 5. Copy over the new [log.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/log.js) file into `config/log.js`
