@@ -19,7 +19,7 @@ What Is Sails
 ## Getting Started and the Basics:
 
 [New to Node.js](/new-to-nodejs.md)  
-[Getting Started](/Getting-started.md)  
+[Getting Started](/getting-started.md)  
 [Models](/models.md)  
 [Controllers](/controllers.md)  
 [Assets](/assets.md)  
