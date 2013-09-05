@@ -134,7 +134,7 @@ remote session and socket storage.
 1. Delete `config/assets.js` as it's no longer needed.  Asset handling is performed by the new `Gruntfile.js`.
 2. Copy over the new [local.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/local.js) file into `config/local.js`
 3. Copy over the new [controllers.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/controllers.js) file into `config/controllers.js`
-4. Copy over the new [io.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/io.js) file into `config/io.js`
+4. Copy over the new [sockets.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/sockets.js) file into `config/socket.js`
 5. Copy over the new [log.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/log.js) file into `config/log.js`
 6. Copy over the new [routes.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/routes.js) into `config/routes.js` and be sure to add in your old application's routes. This exposes the new **404** and **500** handlers.
 7. Copy over the new [session.js](https://raw.github.com/balderdashy/sails/development/bin/boilerplates/config/session.js) file into `config/session.js`
