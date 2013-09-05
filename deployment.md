@@ -23,7 +23,7 @@ More about forever: https://github.com/nodejitsu/forever
 
 ## Other things you'll likely want to do in production:
 + Configure your app to run on port 80 (if not behind a proxy like nginx)
-+ Put it in "production" mode so that all of your css/js gets bundled up (requires [linker](/assets.md))
++ Put it in "production" mode so that all of your css/js gets bundled up (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
 
 **config/local.js**
 ```javascript
