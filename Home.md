@@ -28,7 +28,7 @@ What Is Sails
 ## A little more Advanced:
 
 [Configuration](/configuration.md)  
-[Adapters](/adapters.md)  
+[Adapters](/api.adapter-interface.md)  
 [Policies](/policies.md)  
 [Services](/services.md)  
 [Sockets](/sockets.md)  
@@ -44,6 +44,6 @@ What Is Sails
 [Changelog](/changelog.md)  
 [Contributing to Sails](/Contributing-to-Sails.md)  
 
-See http://sailsjs.org/#documentation for a deeper dive.
+See http://sailsjs.org/#!documentation for a deeper dive.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/home)
