@@ -342,7 +342,7 @@ project.
 You can override the adapter globally for your application, or you can configure different models
 to point to different adapters. To see how to change your default application adapter config,
 check out the Configuration section of this documentation at
-[Configuration](/configuration.md)
+[Configuration](https://github.com/balderdashy/sails-wiki/blob/0.9/configuration.md)
 
 To override the adapter of a single model, you specify the adapter module's name and any extra
 configuration information necessary to make it work.
