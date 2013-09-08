@@ -8,9 +8,15 @@
 + Support for CORS (thanks to @sgress454)
 + CoffeeScript supported client-side by default in gruntfile thanks to @reecelewellen
 + Improves/fixes internationalization (thanks to @xdissent and @silvinci)
++ i18n upgraded to 0.4.1
 + All tests pass (thanks to @sgress454)
 + Improvements, fixes to built-in pubsub / socket behaviors (thanks to @xdissent and @irlnathan)
 + Removed vanilla HAML support and tests since it was incomplete (jade is still supported)
++ Config: Sails core is no longer automatically copied as a dependency during `sails new`.  This speeds up the process significantly and avoids occassional recursive copy death spirals.
++ Config: Added explicit `--port` option to `sails lift`.
++ Sockets: Added query string parsing to requests.
++ Sockets: Headers can now be specified in requests (** this has implications on full compatibility w/ most Express middleware! **)
++ Routing: Fixed issues with default 404 and 500 responses.
 + Other minor bug fixes/inconsistencies and documentation enhancements
 
 > And thanks a ton to anybody I left out!  Send me a message on twitter and I'll add you.
