@@ -722,10 +722,6 @@ where: {
 }
 ```
 
-name: {
- '>': 'a'
-}
-
 ## What About Migrations?
 
 In schemaful databases (like MySQL) schema migrations occur automatically.  Models default to
