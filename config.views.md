@@ -33,10 +33,27 @@ e.g. your default might be `layout: 'layouts/public'`, But you might override th
 
 
 ##Engine
-###Templating engine/language to be used for your app&rsquo;s **server-side** views
-Currently supported:
-+ ejs
-+ jade
+###View engine (aka template language) to use for your app's *server-side* views
+
+While this setting defaults to `ejs`, Sails (like Express) supports all view engines which implement 
+TJ Holowaychuk's `consolidate.js`, including, but not limited to:
+
++ ejs, jade, handlebars, mustache
++ underscore, hogan, haml, haml-coffee, dust
++ atpl, eco, ect, jazz, jqtpl, JUST, liquor, QEJS
++ swig, templayed, toffee, walrus, & whiskers
+
+
+To further customize your `engine` configuration, you can use the alternative format
+to enable use of various consolidate supported engines in custom ways:
+
+```javascript
+engine: {
+    ext: 'html',
+    fn: require('consolidate').swig
+}
+```
+
 
 ###Using Layouts With Other View Engines
 In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
