@@ -322,7 +322,7 @@ module.exports = {
 
 You can define a custom table name on your adapter by adding a `tableName` attribute. If no table
 name is supplied it will use the filename as the table name when passing it to an adapter. So if
-you model is name UserModel the table name will be set to user by default.
+your model's name is UserModel, the table name will be set to "user" by default.
 
 ```javascript
 // api/models/User.js
