@@ -34,12 +34,12 @@ var Person = {
       type: 'INTEGER',
       max: 150,
       required: true
-    }
+    },
     birthDate: 'DATE',
     phoneNumber: {
       type: 'STRING',
       defaultsTo: '111-222-3333'
-    }
+    },
     emailAddress: {
       type: 'email', // Email type will get validated by the ORM
       required: true
