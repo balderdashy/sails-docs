@@ -105,7 +105,7 @@ As well as `groupBy` and the aggregators:
 + `average`
 
 `IN` queries:
-Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandolph', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.  
+Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.  
 
 Sub-attribute modifiers:
 You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 } }`) with the notable exception of `contains`, `startsWith`, and `endsWith`, since support for those modifiers can be derived programatically by leveraging your definition of  `like`.
