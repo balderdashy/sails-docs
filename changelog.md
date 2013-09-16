@@ -45,7 +45,7 @@
 + Routing: Automatic 404 and 500 routing is replaced.
 + Assets: Asset bundling is now disabled by default, use `sails new foo --linker` to enable it
 + Config: Most configuration is now also explicit in new projects.  Defaults are still provided underneath.
-+ Sockets: Socket.IO can now be configured with the options detailed in config/io.js.
++ Sockets: Socket.IO can now be configured with the options detailed in config/sockets.js.
 + Sockets: Built-in support for Redis MQ-- allows you to scale realtime apps to a multi-instance deployment without necessitating sticky sessions at your load balancer.
 + Views: Express 3 killed support for layouts/view partials.  Sails has been extended to maintain support for them with ejs and jade, but otherwise you are limited to what is supported by the engine itself.
 + Views: Automatic routing to views is now disable-able.
