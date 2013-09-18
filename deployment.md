@@ -150,6 +150,8 @@ The `host:` is new to the file and is not created by default.  You will need to 
 ##### Deploying to Heroku?
 > TODO
 
+In the mean time, @chadn posted an example Heroku deployment with Sails.js here: https://github.com/chadn/heroku-sails
+
 
 
 ##### Getting help
