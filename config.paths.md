@@ -1,4 +1,12 @@
-# Configuring paths for your app's modules
+# Configuring custom module directories
+
+Convention is good.  But sometimes, because of your organization's build process, or the way your code repository is set up, or whatever, you may need to change where your app files are located.
+
+> That said, please forgive one last piece of advice: 
+> Don't change these paths unless you have to!  It'll make it harder for people to work on your app, in the future (including you), and adds needless complexity to an otherwise simple and conventional application structure.
+
+
+
 
 > TODO: finish this
 
