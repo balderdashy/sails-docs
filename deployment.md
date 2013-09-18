@@ -29,7 +29,7 @@ Before you launch any web application, you should ask yourself a few questions:
 
 Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
 
-### Configure
+##### Configure
 
 + Configure your app to run on port 80 (if not behind a proxy like nginx)
 + Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
@@ -39,7 +39,7 @@ Node.js is pretty dern fast.  For many apps, one server is enough to handle the 
   + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
     + e.g. enable the `flashsocket` transport
 
-### Deploy
+##### Deploy
 
 In production, instead of `sails lift`, you'll want to use forever to make sure your app will keep running, even if it crashes.
 
@@ -55,7 +55,7 @@ In production, instead of `sails lift`, you'll want to use forever to make sure 
 If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
 you'll want to set up a scalable architecture that your app can scale as more and more people use it.
 
-### Example architecture
+##### Example architecture
 ```
                        Sails.js server
                              ....                 
@@ -67,7 +67,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 ```
 
 
-### Configuring your app for a clustered deployment
+##### Configuring your app for a clustered deployment
 
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) is scalable (e.g. sharding/cluster) 
 + Configure your app to use a shared session store
@@ -78,7 +78,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
     + Note: If you'd rather not set up a socket store, a workable solution for your use case may be enabling sticky sessions at your load balancer.
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 
-### Deploying a Sails cluster on multiple servers
+##### Deploying a Sails cluster on multiple servers
 
 + Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
   + Start up Sails on each instance using `forever`
@@ -90,13 +90,13 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 ## FAQ
 
 
-### Can I use environment variables?
+##### Can I use environment variables?
 
 You can also configure the `port` and `environment` settings in Sails using environment variables.
 `NODE_ENV=production sails lift`
 `PORT=443 sails lift`
 
-### Where do I put my production database credentials?  Other settings?
+##### Where do I put my production database credentials?  Other settings?
 
 For your other deployment/machine-specific settings, namely any kind of credentials, you should use `config/local.js`.  
 It's included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
@@ -122,17 +122,17 @@ module.exports = {
 }
 ```
 
-### How do I get my Sails app on the server?
+##### How do I get my Sails app on the server?
 Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
 
 Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
 
 
 
-### Deploying to Modulus?
+##### Deploying to Modulus?
 > TODO
 
-### Deploying to NodeJitsu?
+##### Deploying to NodeJitsu?
 To deploy to NodeJitsu, you'll need to make some minor modifications to your configuration:
 
 Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
@@ -145,16 +145,14 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 
 The `host:` is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the `subdomain` when you run `jitsu deploy`
 
-<!-- TODO: heroku deploy (with grunt postinstall script) -->
 
 
-
-### Deploying to Heroku?
+##### Deploying to Heroku?
 > TODO
 
 
 
-## Getting help
+##### Getting help
 
 These days, it's getting easier and easier to deploy powerful applications at scale.  That said, there isn't always time to do these things yourself.
 Sails.js is maintained by my company, [Balderdash](http://balderdash.co), a Node.js consultancy in Austin, TX. If your company needs professional support, reach out and we're happy to help.
