@@ -1,4 +1,4 @@
-> _Note: You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _Note: You are viewing the Sails.js v0.9.x documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 This example uses the [bcrypt](https://github.com/ncb000gt/node.bcrypt.js) module to securely encrypt and compare passwords.
 By default, the login action would be triggered in response to requests for /session/login; this behavior can be configured using [custom routes](https://github.com/balderdashy/sails/wiki/routes).

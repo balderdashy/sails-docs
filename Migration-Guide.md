@@ -1,6 +1,6 @@
 # Migration Guide
 
-> _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _**Note:** You are viewing the Sails.js v0.9.x documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 Sail 0.9.x is a major upgrade from 0.8.x and you will need to make some changes in order for your application
 to be compatible with the new version. This guide will walk you through what has changed and what you

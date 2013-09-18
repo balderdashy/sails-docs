@@ -1,5 +1,5 @@
 #Controllers
-> _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _**Note:** You are viewing the Sails.js v0.9.x documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 ## What is a Controller?
 Sails controllers work very similarly to controllers in other MVC frameworks. Think of controllers
