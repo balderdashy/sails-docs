@@ -23,7 +23,7 @@ Views are defined in your app's `views/` folder by default, but like all of the 
 
 To display dynamic data (stuff that changes depending on the user/request) in our views, we need to consider two things:
 
-##### (1) How will the data will show up in the HTML?
+##### (1) How will the data show up in the HTML?
 
 By default, views are EJS ([Embedded JavaScript](http://embeddedjs.com/)) files. that look like `home/index.ejs`.  The notation for EJS templates looks a lot like what you might have seen before in PHP (`<?php ?>`), Ruby (`.erb`), Java (`.jsp`), or Grails (`.gsp`).
 
@@ -58,7 +58,7 @@ Here's an example of a view (views/corndog/index.ejs) that consumes some data se
 
 
 
-##### (2) Where will the data will come from?
+##### (2) Where will the data come from?
 
 In Sails (and every other MVC framework), views have their dynamic data passed down from a controller.  The method `res.view()` in Sails controllers allows you to respond to the client with the view which corresponds with the controller and action you're running it from.  For example, calling `res.view()` in the `index` action in `controllers/FooController.js` would render the view at `views/foo/index.ejs`.  Calling `res.view()` in the `create` action of the `UserController` would render the view at `views/user/index.ejs`.  Make sense?
 
