@@ -6,15 +6,15 @@
 ## What is a View?
 If we wanted to be academic about it, (which we will for a moment, forgive me) a view is the representation of the data presented by your application.
 
-> ##### Building a native iOS app in Cocoa, or an Android app in Java?
-> Views, in Sails, are **just** for serving HTML.  If you're using Sails for a game, or a native iOS/Android app, or a toaster, you probably don't need to worry about them right now.  Still, since you usually need to build *something* for mobile and/or desktop web browsers (e.g. a website for your game, or browser-viewable profiles for your mobile app), you might want to read on anyways.
-
 But for us, in the world of building web apps, it's important to understand that views in Sails are **HTML templates sent down from the server**.  In other words, a Sails view is equivalent to any other plain-jane HTML page-- it's just that some parts can change depending on the data we send down into it from our controller.
 
 > ##### What about client-side templates and SPAs?
 > These sorts of server-side views, in most of the 2000s, were a central component of web applications.  Nowadays, more and more web experiences are being built as SPAs (Single Page Apps), using client-side routes for different sections of the UI (e.g. #my_profile, or #user/3af84920abb4) and loading HTML templates *from the browser* in all sorts of interesting ways. You might be familiar with this concept from web UI frameworks like Backbone, Angular, Ember, Knockout, etc.
 > Sails is built **specifically for** these types of modern apps, but in this section of the docs, we'll be focusing on server-side views.  If you've got a good handle on how this works in Node.js from working with a framework like Express, feel free to skip ahead!
 
+> ##### But I don't need to serve any HTML!
+> No problem!  Views, in Sails, are **just** for serving HTML.  If you're using Sails for a game, a native iOS/Android app using Cocoa/Java, or a toaster, you probably don't need to worry about them right now.  Feel free to skip this section.
+> Still, since you usually need to build *something* for mobile and/or desktop web browsers (e.g. a website for your game, or browser-viewable profiles for your mobile app), you might want to read on anyways.
 
 ## Where do I put my views?
 Views are defined in your app's `views/` folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-wiki/blob/0.9/config.paths.md).
