@@ -1,12 +1,13 @@
 #Views
 > _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
-> ##### Building a native iOS app in Cocoa, or an Android app in Java?
-> Views, in Sails, are **just** for serving HTML.  If you're using Sails for a game, or a native iOS/Android app, or a toaster, you probably don't need to worry about them right now.  Still, since you usually need to build *something* for mobile and/or desktop web browsers (e.g. a website for your game, or browser-viewable profiles for your mobile app), you might want to read on anyways.
 
 
 ## What is a View?
 If we wanted to be academic about it, (which we will for a moment, forgive me) a view is the representation of the data presented by your application.
+
+> ##### Building a native iOS app in Cocoa, or an Android app in Java?
+> Views, in Sails, are **just** for serving HTML.  If you're using Sails for a game, or a native iOS/Android app, or a toaster, you probably don't need to worry about them right now.  Still, since you usually need to build *something* for mobile and/or desktop web browsers (e.g. a website for your game, or browser-viewable profiles for your mobile app), you might want to read on anyways.
 
 But for us, in the world of building web apps, it's important to understand that views in Sails are **HTML templates sent down from the server**.  In other words, a Sails view is equivalent to any other plain-jane HTML page-- it's just that some parts can change depending on the data we send down into it from our controller.
 
