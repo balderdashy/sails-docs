@@ -11,9 +11,18 @@ Before you launch any web application, you should consider a few factors:
 + Will you be taking advantage of realtime pubsub features with Socket.io?
 
 
+## Before You Deploy
+
+### Single-server deployments
+
+
+### Clustered deployments
+
++ Configure your app to use a shared socket store
++ Configure your app 
+
 
 ## Here's how you deploy in production mode:
-> **Note:** This is a quick start. The proper way to deploy is with [upstart](http://upstart.ubuntu.com) and [nginx](http://nginx.org/) and takes a lot more work to set up.
 
 + Install forever: `sudo npm install -g forever`
 + From your app directory, start the server with forever: `forever start app.js --prod`
@@ -21,9 +30,9 @@ Before you launch any web application, you should consider a few factors:
 More about forever: https://github.com/nodejitsu/forever
 
 
-## Other things you'll likely want to do in production:
+## Other things you'll want to do in production:
 + Configure your app to run on port 80 (if not behind a proxy like nginx)
-+ Put it in "production" mode so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
++ Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
 + Enable csrf protection for your POST, PUT, and DELETE requests
 + Enable SSL
 
