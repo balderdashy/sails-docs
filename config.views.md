@@ -20,16 +20,12 @@ With using a layout, when one of your views is served, it is injected into the `
 
 The `layout` setting may be set to one of:
 
-+ true			::	use default (&lsquo;layout&rsquo;), located at `views/layout.ejs`
-+ false		::	don&rsquo;t use a layout
-+ &ldquo;string&rdquo;		::	the relative path to your layout from `views/`
-+ the view engine extension, e.g. &ldquo;.ejs&rdquo;, may be omitted)
++ false		::	don&rsquo;t use a layout (just render the view by itself)
++ &ldquo;string&rdquo;		::	the relative path to your layout from your views folder (`views/`)
 
+If you&rsquo;d like to use more than one `layout` file, you can! 
+See the [full documentation on views](https://github.com/balderdashy/sails-wiki/blob/0.9/views.md) for more information.
 
-If you&rsquo;d like to use more than one `layout` file, you can! Before rendering a view, override the `layout` locally by setting `res.locals.layout`. (handy if you parts of your app are completely different from each other.)
-
-e.g. your default might be `layout: 'layouts/public'`, But you might override that in some of your controllers with:
-`layout: 'layouts/internal'`
 
 
 ##Engine
