@@ -1,5 +1,5 @@
 # Models
-> _**Note:** You are viewing the Sails.js v0.9.0 documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _**Note:** You are viewing the Sails.js v0.9.x documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 Like most MVC frameworks, Sails provides an ORM (Object Relational Mapping) called
 [Waterline](https://github.com/balderdashy/waterline) for normalizing interactions with models,

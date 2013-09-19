@@ -1,5 +1,5 @@
 #Socket Configuration
-> _Note: You are viewing the Sails.js v0.9.0 documentation.  If you&rsquo;re looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _Note: You are viewing the Sails.js v0.9.x documentation.  If you&rsquo;re looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
 
 These configuration options provide transparent access to Sails&rsquo; encapsulated pubsub/socket server for complete customizability.
 
