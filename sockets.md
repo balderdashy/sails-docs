@@ -235,9 +235,13 @@ e.g. `User.subscribers(7)`
 See https://github.com/balderdashy/sails/blob/master/lib/hooks/pubsub/index.js for implementation details.
 
 
-##### `req.listen(room)`
+### `req.listen(room)`
 Subscribe the current socket to broadcasts from the specified room
 e.g. `req.listen('off the wall chats')`
+
+### `res.broadcast(room, data)`
+Broadcast to a room
+e.g. `res.broadcast('off the wall chats', {chatterer: 'Joe Blow', message: 'This chat is off the wall!})`
 
 
 ## Still need more control?
