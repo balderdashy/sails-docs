@@ -50,6 +50,8 @@ V. Roadmap
 
 ## TODO
 
+Below is a list of guides, docs, and sections we could use some help with.
+
 ##### Guides
 + Generating a RESTful JSON API (blueprints)
 + Customizing Your API
