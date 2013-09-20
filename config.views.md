@@ -27,7 +27,7 @@ If you&rsquo;d like to use more than one `layout` file, you can!
 See the [full documentation on views](https://github.com/balderdashy/sails-wiki/blob/0.9/views.md) for more information.
 
 
-
+<!--
 ##Engine
 ###View engine (aka template language) to use for your app's *server-side* views
 
@@ -49,7 +49,7 @@ engine: {
     fn: require('consolidate').swig
 }
 ```
-
+-->
 
 ###Using Layouts With Other View Engines
 In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
