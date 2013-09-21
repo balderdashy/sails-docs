@@ -211,17 +211,17 @@ Client-side sockets who were subscribed to the class room and are listening to t
 ## Using low-level pubsub/socket methods
 
 ### `Model.unsubscribe( req.socket, model[s] )`
-Unsubscribe the request object's socket (`req`) from the specified `models`
+Unsubscribe the request object's socket (`req`) from the specified `models`, which can be full model objects or model IDs.
 e.g. `User.unsubscribe(req.socket,[{id: 7}, {id: 2}])`
 
-### `Model.introduce( req.socket, id )`
+### `Model.introduce( id, [socketToOmit] )`
 Take all of the class room models and 'introduce' them to a new instance room
 (good for when a new instance is created-- connecting sockets must subscribe to it)
-e.g. `User.introduce(req.socket,3)`
+e.g. `User.introduce(3)`
 
-### `Model.publish( req.socket, models, message )`
+### `Model.publish( models, message, [socketToOmit] )`
 Broadcast a `message` to sockets connected to the specified `models` using the request object (`req`).
-e.g. `User.publish(req,[{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})`
+e.g. `User.publish([{id: 7},{id: 2}], {latitude: 31.2325, longitude: 22.1135})`
 
 ### `Model.room( id )`
 Return the room name for the instance in this collection with the given id
