@@ -5,7 +5,7 @@ This configuration file lets you easily add [Express](http://expressjs.com/) mid
 module.exports.express = {
 
   // customMiddleware allows you to inject a piece of middleware before each requeset
-  // Worth nothing that this **only applies to HTTP requests**-- while most parts of Sails work for both
+  // Worth noting that this **only applies to HTTP requests**-- while most parts of Sails work for both
   // HTTP and sockets, and most Express/Connect middleware should work without a problem for both using
   // Sails' built-in interpreter, this configuration exists mainly to allow direct access to the Express 
   // middleware chain.
@@ -19,7 +19,7 @@ module.exports.express = {
   */
   //
   // Defaults to `false`
-  // Disable by seting to `false`
+  // Disable by setting to `false`
   //
   // customMiddleware: false
   
