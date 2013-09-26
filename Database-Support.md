@@ -22,7 +22,7 @@ Check out https://github.com/balderdashy/sails/wiki/custom-adapters to learn mor
 
 
 ## Other Community Adapters
-Also, adapters are not limited to databases.  The Sails.js ORM (Waterline) can be hooked up to communiate with any asynchronous web service! 
+Also, adapters are not limited to databases.  The Sails.js ORM (Waterline) can be hooked up to communicate with any asynchronous web service! 
 Web services like LDAP, Active Directory, and even things like Twitter and Facebook can be accessed via the ORM through adapters.
 You can get pretty avante garde here.
   
