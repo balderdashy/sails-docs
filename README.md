@@ -19,9 +19,9 @@ I. Guides
   3. Customizing your API
     a. Routes
     b. Policies
-    b. Using Sockets (socket.io)
-    c. Models
-    d. Controllers
+    c. Using Sockets (socket.io)
+    d. Models
+    e. Controllers
   4. Building HTML Views
   5. Assets (js/css/etc)
   6. Writing Custom Adapters
@@ -29,8 +29,7 @@ I. Guides
 
 
 II. Reference
-  1. 
-  4. Building HTML Views
+  1. Building HTML Views
   2. Configuration
 
 
@@ -80,4 +79,4 @@ Below is a list of guides, docs, and sections we could use some help with.
 
 
 ##### Community Resources
-A list of all the great tutorials and stuff from the Sails community
+A list of all the great tutorials and stuff from the Sails community.
