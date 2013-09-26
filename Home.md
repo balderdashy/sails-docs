@@ -4,7 +4,7 @@
 Building Your Own Adapters
 Controllers
 Database Support
-examples
+Examples
 Guide: Login Example
 Guide: Passport auth example
 Guide: Sockets
