@@ -70,7 +70,7 @@ To learn more about what methods are available to you, check out the [waterline 
 
 ### Validations
 
-Validations are defined on you attributes when defining a model. It uses
+Validations are defined on your attributes when defining a model. It uses
 [Anchor](https://github.com/balderdashy/anchor) behind the scenes to run validations whenever you
 create or update a record.
 
@@ -413,7 +413,7 @@ module.exports.adapters = {
 
 ## Associations
 
-Associations are not yet available for Sails.JS, however are on the immediate todo list.
+Associations are not yet available for Sails.JS, however they are on the immediate todo list.
 Please check out issue [#124](https://github.com/balderdashy/sails/issues/124) for more
 information regarding the proposed changes for associations.
 
@@ -499,7 +499,7 @@ User.create({
 ```
 
 ## `findOne`
-To lookup a model by id, use `findOne(id)`. You can call also look for a model by passing in an
+To lookup a model by id, use `findOne(id)`. You can also look for a model by passing in an
 object composed of the desired matching criteria.
 
 ```javascript
@@ -557,7 +557,7 @@ User.find({
 });
 ```
 
-Below are some more examples.  Some of these examples include query modifiers.
+Additional examples are below, some of these include query modifiers.
 You can view more about query modifiers
 <a href="https://github.com/balderdashy/sails/wiki/Models#query-modifiers">here</a>.
 
@@ -608,7 +608,7 @@ User.find({
 
 ## Dynamic finders
 With Sails built in ORM, [Waterline](https://github.com/balderdashy/waterline), you can use a very
-helpful tool called dynamic finders. You can query your models with automatically genereated methods
+helpful tool called dynamic finders. You can query your models with automatically generated methods
 that depend on the attributes you define for the model. For example, if you had a book model that
 looks like this.
 
