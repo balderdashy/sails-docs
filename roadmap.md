@@ -12,7 +12,7 @@ Express's default support for file uploads via formidable is not suitable for pr
   + Built-in, friendly support for streaming file uploads using Waterline's adapters which implements the binary-stream interface
   + (i.e. you can't buffer 100GB uploads to disk)
   + Use formidable's onPart event to process file uploads
-  + Everything else should be handle by formidable's built-in parser
+  + Everything else should be handled by formidable's built-in parser
 
 #### Logging
 Pull out Sails.log (winston wrapper) as a separate module so it can be used by waterline
@@ -27,7 +27,7 @@ Document the plugin (hook) system
 Pull out CLI as a separate module so that it can develop in parallel- investigate `yo` integration for generators
 
 ## Gruntfile
-+ Pull out Gruntfile as a separate module so that it can develop in parallel- investigate integration with CLI for so that the proper generators `yo` integration for generators
++ Pull out Gruntfile as a separate module so that it can develop in parallel- investigate integration with CLI so that the proper generators `yo` integration for generators
 + Provide public access to templates for async loading by default (it's totally possible to do this now, but let's make it easier)
 
 
