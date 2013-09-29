@@ -4,7 +4,7 @@
 ## 0.9.4  (latest stable)
 *September 5, 2013*
 
-+ Improved csrf prevention support (thanks to @sgress454)
++ Improved CSRF prevention support (thanks to @sgress454)
 + Support for CORS (thanks to @sgress454)
 + CoffeeScript supported client-side by default in gruntfile thanks to @reecelewellen
 + Improves/fixes internationalization (thanks to @xdissent and @silvinci)
@@ -76,17 +76,17 @@
 + Removed CRUD synonyms
 + Main: Compatibility with Node v0.10.0 (patches node-dirty)
 + Main: Fixed crash that happened when absolute path was given as appPath
-+ Assets: Added more logging features for less.
++ Assets: Added more logging features for LESS.
 + Assets: Reset.css now in mixins
-+ Assets: Less assets are deligated to _Rack.LessAsset_
-+ Assets: Less assets served from asset-rack will have their extensions changed to css
++ Assets: LESS assets are deligated to _Rack.LessAsset_
++ Assets: LESS assets served from asset-rack will have their extensions changed to css
 + Policies: Implemented the controller syntax for defining a policy.
 + Naming: _scaffolds_ is now known as _blueprints_
 + Naming: _blueprints_ is now known as _boilerplates_
 + Routing: Added _controller.action_ syntax
-+ Routing: Removed CRUD Synonyms-- now you must explicitly use find, findAll, create, destroy, update  (cant use `get`,`detail`, `delete`, `edit`, etc. to indicate the same thing.  Turns out this was actually annoying, not helpful)
++ Routing: Removed CRUD Synonyms-- now you must explicitly use find, findAll, create, destroy, update  (can't use `get`,`detail`, `delete`, `edit`, etc. to indicate the same thing.  Turns out this was actually annoying, not helpful)
 + Routing: Fix in API blueprint for regression around PUT/DELETE automatic RESTful routes
-+ Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  Does now.
++ Routing: Fix for resourceful routing.  /model/[id] didn't work with verbs.  It now does.
 + Config: _ and async no longer have to be global (but they are by default) They are configurable with `sails.config.globals._` and `sails.config.globals.async` (thanks @particlebanana!)
 + New sails project can now be created in the current dir with `sails new .` (thanks @collinwren!)
 + More tests (thanks @collinwren and @benrudolph)
@@ -98,9 +98,9 @@
 + Collections: Type restrictions are cleaner
 + Adapters: Default was changed to memory due to an issue with node-dirty
 + Log: _sails.config.log.level_ is passed to socket.io
-+ Assets: Bug fixed: not calling next when compiling less with syntax (thanks vicapow)
-+ Assets: Typescript supported on front end (thanks Diullei)
-+ Assets: Meaningful less errors were added (thanks vicapow)
++ Assets: Bug fixed: not calling next when compiling LESS with syntax (thanks vicapow)
++ Assets: Typescript supported on front-end (thanks Diullei)
++ Assets: Meaningful LESS errors were added (thanks vicapow)
 
 ## 0.8.892
 + Front-end CoffeeScript support in AssetRack (thanks @techpines!)
@@ -109,7 +109,7 @@
 + Windows compat. fix (thanks @feroc1ty!)
 + Support for string IDs (thanks @tedkulp!)
 + Attribute scaffolding for model generation (thanks @Tidwell)
-+ Support for big int string conversion in id normalization (thanks @d4mn!)
++ Support for big int string conversion in ID normalization (thanks @d4mn!)
 
 ## 0.8.88
 + Adds coffeescript support on the front-end in dev and production environments via [asset-rack](https://github.com/techpines/asset-rack) (thanks @techpines!)
