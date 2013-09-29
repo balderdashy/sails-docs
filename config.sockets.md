@@ -78,14 +78,14 @@ Enables the flash policy server if the flashsocket transport is enabled.
 ##flash policy port
 `'flash policy port': 10843`
 
-By default the Socket.IO client will check port 10843 on your server to see if flashsocket connections are allowed. The Adobe Flash Player normally uses 843 as default port but Socket.io defaults to a non root port (10843) by default.
+By default the Socket.io client will check port 10843 on your server to see if flashsocket connections are allowed. The Adobe Flash Player normally uses 843 as default port but Socket.io defaults to a non root port (10843) by default.
 
 If you are using a hosting provider that doesn&rsquo;t allow you to start servers other than on port 80 or the provided port, and you still want to support flashsockets  you can set the `flash policy port` to -1
 
 ##destroy buffer size
 `'destroy buffer size': '10E7'`
 
-Used by the HTTP transports. The Socket.IO server buffers HTTP request bodies up to this limit. This limit is not applied to websocket or flashsockets.
+Used by the HTTP transports. The Socket.io server buffers HTTP request bodies up to this limit. This limit is not applied to websocket or flashsockets.
 
 ##destroy upgrade
 `'destroy upgrade': true`
@@ -100,17 +100,17 @@ Should Sails/Socket.io serve the `socket.io.js` client? (as well as WebSocketMai
 ##browser client cache
 `'browser client cache': true`
 
-Cache the Socket.IO file generation in the memory of the process to speed up the serving of the static files.
+Cache the Socket.io file generation in the memory of the process to speed up the serving of the static files.
 
 ##browser client minification
 `'browser client minification': false`
 
-Does Socket.IO need to send a minified build of the static client script?
+Does Socket.io need to send a minified build of the static client script?
 
 ##browser client etag
 `'browser client etag': false`
 
-Does Socket.IO need to send an ETag header for the static requests?
+Does Socket.io need to send an ETag header for the static requests?
 
 ##browser client expires
 `'browser client expires': 315360000`
@@ -120,7 +120,7 @@ Adds a Cache-Control: private, x-gzip-ok=&ldquo;&rdquo;, max-age=31536000 header
 ##browser client gzip
 `'browser client gzip': false`
 
-Does Socket.IO need to GZIP the static files? This process is only done once and the computed output is stored in memory so we don&rsquo;t have to spawn a gzip process for each request.
+Does Socket.io need to GZIP the static files? This process is only done once and the computed output is stored in memory so we don&rsquo;t have to spawn a gzip process for each request.
 
 ##browser client handler
 `'browser client handler': false`
@@ -136,7 +136,7 @@ Meant to be used when running socket.io behind a proxy. Should be set to true wh
 ##authorization
 `authorization: true`
 
-Global authorization for Socket.IO access. This is called when the initial handshake is performed with the server. By default, Sails verifies that a valid cookie was sent with the upgrade request However, in the case of cross-domain requests, no cookies are sent for some transports, so sockets will fail to connect.  You might also just want to allow anyone to connect w/o a cookie!
+Global authorization for Socket.io access. This is called when the initial handshake is performed with the server. By default, Sails verifies that a valid cookie was sent with the upgrade request However, in the case of cross-domain requests, no cookies are sent for some transports, so sockets will fail to connect.  You might also just want to allow anyone to connect w/o a cookie!
  
 To bypass this cookie check, you can set `authorization: false`, which will silently create an anonymous cookie+session for the user.
 
@@ -147,7 +147,7 @@ You can also use your own custom logic with: `authorization: function (data, acc
 ##store
 `store: undefined`
 
-Direct access to the socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)
+Direct access to the Socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)
 
 ##logger
 `logger: undefined`
@@ -167,9 +167,9 @@ Whether to color the log type when output to the logger. (`undefined` indicates 
 ##static
 `'static': undefined`
 
-A Static instance that is used to serve the socket.io client and its dependencies.
+A Static instance that is used to serve the Socket.io client and its dependencies.
 
 ##resource
 `resource: '/socket.io'`
 
-The entry point where Socket.IO starts looking for incoming connections. This should be the same between the client and the server.
+The entry point where Socket.io starts looking for incoming connections. This should be the same between the client and the server.
