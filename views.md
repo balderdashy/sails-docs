@@ -60,7 +60,7 @@ Here's an example of a view (views/corndog/index.ejs) that consumes some data se
 
 ##### (2) Where will the data come from?
 
-In Sails (and every other MVC framework), views have their dynamic data passed down from a controller.  The method `res.view()` in Sails controllers allows you to respond to the client with the view which corresponds with the controller and action you're running it from.  For example, calling `res.view()` in the `index` action in `controllers/FooController.js` would render the view at `views/foo/index.ejs`.  Calling `res.view()` in the `create` action of the `UserController` would render the view at `views/user/index.ejs`.  Make sense?
+In Sails (and every other MVC framework), views have their dynamic data passed down from a controller.  The method `res.view()` in Sails controllers allows you to respond to the client with the view which corresponds with the controller and action you're running it from.  For example, calling `res.view()` in the `index` action in `controllers/FooController.js` would render the view at `views/foo/index.ejs`.  Calling `res.view()` in the `create` action of the `UserController` would render the view at `views/user/create.ejs`.  Make sense?
 
 To pass data into the view, include it as the `data` argument to `res.view(data)`.  However, **it must be a plain JavaScript object!**  You cannot send down an array directly-- however you can include it as one of the keys of your object.  In other words, something like the following would work just fine:
 
