@@ -22,6 +22,6 @@ The runtime &ldquo;environment&rdquo; of your Sails app is either &lsquo;develop
 In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
 
 In production, Sails configures itself (and its dependencies) to optimize performance.
-You should always put your app in production mode before you deploy it to a server -- This helps ensure that your Sails app remains stable, performant, and scalable.
+You should always put your app in production mode before you deploy it to a server -- this helps ensure that your Sails app remains stable, performant, and scalable.
 
 By default, Sails sets its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will run in the &lsquo;development&rsquo; environment.
