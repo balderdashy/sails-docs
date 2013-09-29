@@ -1,5 +1,5 @@
 Policies are use to prevent users from taking unauthorized actions.  
-Below is an example of retrieving the UserID from session and comparing it to the userid that is passed to the server.  This will verify that both the query is properly formed, and that the user is allowed to make that query.
+Below is an example of retrieving the UserID from session and comparing it to the userID that is passed to the server.  This will verify that both the query is properly formed, and that the user is allowed to make that query.
 
 ```
 // api/policies/userIdMatches.js
