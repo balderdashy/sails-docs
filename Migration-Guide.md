@@ -15,7 +15,7 @@ changes you can view the [Changelog](https://github.com/balderdashy/sails-wiki/b
 ### Express 3.x Support
 
 In 0.9.x we have finally moved to [Express 3](http://expressjs.com/) behind the scenes, which is
-welcome news to many. This has some minor effect on applications that may have been using Express 2.x
+welcome news to many. This has some minor effects on applications that may have been using Express 2.x
 functionality but for most applications you will not need to change your code in order to be compatible
 with the newer version. If you have custom middleware you may want to run through the
 [Express 2.x to 3.x Migration Guide](https://github.com/visionmedia/express/wiki/Migrating-from-2.x-to-3.x)
@@ -34,7 +34,7 @@ over how you handle assets in both development and production modes.
 You are now able to take full advantage of the entire [grunt-plugin](http://gruntjs.com/plugins)
 ecosystem. You can decide which template engine to use and which css preprocessor you prefer without
 having to worry about support from Sails core. It also allows you to configure the loading order of
-your assets however you choose without having to seperate your files into multiple folders to control
+your assets however you choose, without having to seperate your files into multiple folders to control
 ordering or alphabetically naming your files.
 
 We have provided a default **Gruntfile** which will be automatically added to new projects with some basic
