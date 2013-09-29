@@ -10,7 +10,7 @@ However, Sails does do a few extra things to help you out:
  - Automatic JST compilation
  - Optional automatic asset injection, minification, and concatenation
 
-In order to take advantage of asset injection, minification, and concatenation you must put your assets in folder under 
+In order to take advantage of asset injection, minification, and concatenation you must put your assets in a folder under 
 `assets/linker`. Any asset you put in `linker` will be automatically injected based on special flags in your views.
 ```html
 <!--SCRIPTS-->
