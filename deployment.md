@@ -33,7 +33,7 @@ Node.js is pretty dern fast.  For many apps, one server is enough to handle the 
 
 + Configure your app to run on port 80 (if not behind a proxy like nginx)
 + Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
-+ Enable csrf protection for your POST, PUT, and DELETE requests
++ Enable CSRF protection for your POST, PUT, and DELETE requests
 + Enable SSL
 + IF YOU'RE USING SOCKETS: 
   + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
