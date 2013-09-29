@@ -538,7 +538,7 @@ User.findOne({
 ## `find`
 `find()` lets you search for one or more models which meet the criteria you specify. You can also
 include a `limit` (max number of models to return), `skip` (useful for pagination), and sort
-`sort`. Find all will always return an array even if only one model fits the criteria.
+`sort`. Find will always return an array even if only one model fits the criteria.
 
 ```javascript
 // For example, this query returns the first ten 18 year olds, sorted alphabetically
