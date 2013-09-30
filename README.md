@@ -54,9 +54,8 @@ Below is a list of guides, docs, and sections we could use some help with.
 ##### Guides
 + Generating a RESTful JSON API (blueprints)
 + Customizing Your API
-  + Configuring CRUD blueprints
   + Customizing blueprints
-    + Customizing built-in CRUD methods
+    + Customizing built-in CRUD methods (e.g. `GET /yourmodelname`)
     + 404
       + Customizing your 404 page
       + Using `res.notFound()`
@@ -71,11 +70,18 @@ Below is a list of guides, docs, and sections we could use some help with.
     + Custom policies
 
 
-##### API Docs
-+ Models methods (e.g. `Model.find()` )
-+ Request (e.g. `req.params.all()`)
-+ Response (e.g. `res.json()`)
-+ API Blueprints (e.g. `GET /yourmodelname`)
+
+##### API Reference
++ Model class methods (e.g. `User.findOne()` )
++ Model instance methods (e.g. `user.save()` )
++ Request (`req`)
+  + Intersection of the things from Express and what we support in the socket.io interpreter
+  + Plus the new methods we add in Sails (`req.params.all()`)
++ Response (`res`)
+  + Intersection of the things from Express and what we support in the socket.io interpreter
+  + Plus the new methods we add in Sails (`req.params.all()`)
++ Global sails object (`sails`)
+  + `sails.config`
 
 
 ##### Community Resources
