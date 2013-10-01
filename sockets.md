@@ -37,7 +37,7 @@ module.exports = {
 };
 ```
 
-From an HTML page, we can access our controller like so:
+Start sails and open the Sails Welcome Page (e.g. localhost:1337) in a browser.  From within the browser conosle we can access our controller like so:
 
 ```javascript
 // socket is globalized by sails
@@ -45,6 +45,7 @@ socket.get('/echo',{
   message: 'hi there!'
 }, function (response) {
   // response === {success: true, message: 'hi there!'}
+  console.log(response);
 });
 ```
 
@@ -54,7 +55,7 @@ In controllers, when handling a socket request, req and res are automatically se
 ## Using CRUD Blueprints
 The default blueprint API supports pubsub for socket requests out of the box.  So for instance if you create a model called User, then send a socket.io message to the server from the client requesting a list of users, the client will be automatically subscribed to changes to the users collection for the remainder of the connection:
 
-> `socket.get()`, `socket.post()`, etc. are methods available in the client-side SDK included in new Sails projects.  In this example, we'll use them to talk to the backend via Socket.io.  Please be aware that you can use these methods whether or not you're using CRUD blueprints.
+> IMPORTANT NOTE: in order to access `socket.get()`, `socket.post()`, etc., the page using the methods must have access to the client-side SDK `socket.io.js` which is included in new Sails projects.  In this example, we'll use them to talk to the backend via Socket.io.  Please be aware that you can use these methods whether or not you're using CRUD blueprints.
 
 ```javascript
 socket.get('/user', function (response) {
