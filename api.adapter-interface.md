@@ -49,6 +49,8 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 
 
 ## Semantic (interface)
+> e.g. `RestAPI`
+
 
 Implementing the basic semantic interface (CRUD) is really a step towards a complete implementation of the Queryable interface, but with some services/datasources, about as far as you'll be able to get using native methods.
 
@@ -57,10 +59,10 @@ By supporting the Semantic interface, you also get the following:
 + as long as you implement basic `where` functionality (see `Queryable` below), Waterline can derive a simplistic version of associations support for you.  To optimize the default assumptions with native methods, override the appropriate methods in your adapter.
 + automatic socket.io pubsub support is provided by Sails-- it manages "rooms" for every class (collection) and each instance (model)
   + As soon as a socket subscribes to the "class room" using `Foo.subscribe()`, it starts receiving `Foo.publishCreate()` notifications any time they're fired for `Foo`.
-  + When a socket subscribes to one or more "instance room(s)" (usually the results of a `find()`), it will receive `Foo.publishUpdate()` and `Foo.publishDestroy()` notifications for the relevant instances.
+  + When a socket subscribes to one or more "instance room(s)" (e.g. `Foo.subscribe(req, [3,2]`), it will receive `Foo.publishUpdate()` and `Foo.publishDestroy()` notifications for the relevant instances.
   + If a socket is subscribed to an "instance room", it will also be subscribed for "updates" and "destroys" to all instances of other models with a 1:* association with `Foo`.  The socket will also be notified of and subscribed to new matching instances of the associated model.
 
-> All officially supported Sails.js database adapters implement this interface.
+> All officially supported Sails.js database adapters implement the `Semantic` interface.
 
 ###### Class methods
 + `Model.create()`
@@ -77,11 +79,11 @@ By supporting the Semantic interface, you also get the following:
 
 ## Queryable (interface)
 
-> All officially supported Sails.js database adapters implement this interface.
-
 Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don't always apply.
 
 If query modifiers are enabled, the adapter must support `Model.find()`, as well as the **complete** query interface, or, where it is impossible to do so, at least provide helper notices.  If coverage of the interace is unfinished, it's still not a bad idea to make the adapter available, but it's important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.
+
+> All officially supported Sails.js database adapters implement this interface.
 
 ###### Query modifiers
 Query modifiers include filters:
@@ -114,6 +116,7 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 + `'<' `
 + `'>='`
 + `'<='`
++ TODO: range queries (e.g. `{ '<':4, >= 2 }`)
 
 
 
@@ -134,9 +137,23 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 
 
-## Streaming (interface)
+## Semantic-Streamable (interface)
 
-> Traditionally, communicating to a server via HTTP is like wading across a river with a big bag of rocks.  Streaming is like skipping them across the water one by one.
+> Communicating with another server via messages/packets is the gold standard of performance-- 
+> network latency is the slowest I/O operation computers deal with, yet ironically, the standard methodology
+> used by most developers/frameworks/libraries outside of Node.js is detrimental to performance.
+> 
+> In the Node community, you might say we're in the midst of a bit of an I/O renaissance.
+>
+> The standard approach to communicating with another server (or a disk) involves loading a message into memory
+> from the source, and then sending the entire object to the destination at once.
+>
+> This is like trying to transport a heavy bag of gold over a river by wading across with it on your back.
+> Even if you're very strong, with enough gold, you will drown.  This is analogous to your server
+> running out of RAM as it buffers data in memory, and the resulting scalability problem.
+>
+> Using Node streams is a different ball game.  It's like splitting up the big bag into smaller containers, then
+> floating them across one by one.  This way, no matter how much gold you end up with, you never drown.
 
 A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.  
 
@@ -147,6 +164,8 @@ Implementing the Streaming CRUD interface is actually pretty simple-- you just n
 
 
 ## Blob (interface)
+
+> e.g. `sails-local-fs`, `sails-s3`
 
 Implementing the Blob interface allows you to upload and download binary data (aka files) to the service/database.  These "blobs" might be MP3 music files (~5MB) but they could also be data-center backups (~50TB).  Because of this, it's crucial that adapters which implement this interface use streams for uploads (incoming, into data source from Sails) and downloads (outgoing, from data source to Sails).
 
