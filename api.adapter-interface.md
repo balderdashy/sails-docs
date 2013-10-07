@@ -278,6 +278,7 @@ None
 
 ### Git
 >Not currently available.
+
 None
 
 ### [CouchDB](https://github.com/craveprogramminginc/sails-couchdb)
@@ -301,7 +302,7 @@ None
 ### [ElasticSearch](https://github.com/UsabilityDynamics/waterline-elasticsearch)
 + Semantic
 
-### JSDom
+### [JSDom](https://github.com/mikermcneil/sails-jsdom)
 None
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
