@@ -270,35 +270,38 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 > in various states of completion
 
-### Mandrill (email-sending service by MailChimp)
+### [Mandrill (email-sending service by MailChimp)](https://github.com/mikermcneil/sails-mandrill)
 + One-Way
 
-### Github
+### [Heroku](https://github.com/chadn/heroku-sails)
 None
 
 ### Git
+>Not currently available.
 None
 
-### CouchDB
+### [CouchDB](https://github.com/craveprogramminginc/sails-couchdb)
 + Semantic
 
-### Riak
+### [Riak](https://npmjs.org/package/sails-riak)
 + Semantic
 
-### Redis
+### [Redis](https://github.com/balderdashy/sails-redis)
 + Semantic
 
-### REST
+### [REST](https://github.com/zohararad/sails-rest)
 + Semantic
 
-### IRC
+### [IRC](https://github.com/balderdashy/sails-irc)
 + Pubsub
 
-### Twitter
+### [Twitter](https://github.com/balderdashy/sails-twitter)
 None
 
-### ElasticSearch
+### [ElasticSearch](https://github.com/UsabilityDynamics/waterline-elasticsearch)
 + Semantic
 
 ### JSDom
 None
+
+### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
