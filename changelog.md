@@ -1,7 +1,28 @@
 # Changelog
 
+## 0.9.7  (latest stable)
+*October 10, 2013*
 
-## 0.9.4  (latest stable)
++ Complete improvement/refactoring of configuration loader (fixes bugs)
++ Complete improvement/refactoring of ORM loader (fixes bugs)
++ Continued improvements of tests
++ Include a modified version of consolidate to better support view engines
++ Blueprints are now configurable per-controller (thanks @xdissent, and everyone else who helped!)
+  + (waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)
+  + New `prefix` option in global blueprint config, as well as per-controller.
+  + New `jsonp` option in global controller config, as well as per-controller.
+  + New `pluralize` option in global controller config, as well as per-controller.
++ Models can now easily use one or more custom named connections which use different adapters
+  + (waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)
++ Adds configurable default behavior for 403/404/500/400 HTTP status code error cases.
+  + (waiting to expose this and deprecate the old behavior in the docs until the next minor release to avoid causing any breaking changes)
++ Properly namespace the `io` in bundled `sails.io.js` client in new projects (thanks @drosen0)
++ Better handle crash scenario, particularly in nodemon (thanks @edy)
+
+Thanks to everyone else I missed, and to everyone else who helped out with this release!
+
+
+## 0.9.4
 *September 5, 2013*
 
 + Improved CSRF prevention support (thanks to @sgress454)
