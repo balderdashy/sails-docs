@@ -19,7 +19,7 @@ Check out https://github.com/balderdashy/sails/wiki/custom-adapters to learn mor
   - [Redis](https://github.com/vanetix/sails-redis)
   - [Riak](https://github.com/balderdashy/sails-riak)
   - [Couch](https://github.com/craveprogramminginc/sails-couchdb)
-
+  - [ElasticSearch](https://github.com/UsabilityDynamics/waterline-elasticsearch)
 
 ## Other Community Adapters
 Also, adapters are not limited to databases.  The Sails.js ORM (Waterline) can be hooked up to communicate with any asynchronous web service! 
