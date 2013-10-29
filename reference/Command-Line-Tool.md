@@ -4,17 +4,17 @@ Command Line Tool
 The command line tool allows blah blah....
 
 
-## sails console
+### sails console
 
 
-## sails generate
+### sails generate
 
 
-## sails lift
+### sails lift
 
 
-## sails version
+### sails version
 
 
-## sails new
+### sails new
 
