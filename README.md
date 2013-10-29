@@ -14,8 +14,21 @@ Guide and reference documentation for the 0.9.x release of Sails.  Content for t
 I. Guides
 
   1. What is Sails?
-  2. Generating a RESTful JSON API
-    a. https://www.youtube.com/watch?v=GK-tFvpIR7c
+    a. Sails.js make it easy to build custom, enterprise-grade Node.js apps. It is designed to mimic the MVC pattern of frameworks like Ruby on Rails, but with support for the requirements of modern apps: data-driven APIs with scalable, service-oriented architecture. It's especially good for building chat, realtime dashboards, or multiplayer games.
+  2. Generating a RESTful JSON API (https://www.youtube.com/watch?v=GK-tFvpIR7c)
+    a. sails new foo, generate model+controller
+    b. Test it out w/ Postman
+      i. Filter by param
+        - query modifiers, etc.
+      ii.  Paginate (limit + skip)
+      iii. Sort
+      iv. Creating a thing
+        - nested stuff works
+      v. Updating a thing
+        - nested stuff works
+      vi. Deleting a thing
+    c. Test it out w/ sockets from the home page
+      i. Built-in subscribe and publish
   3. Customizing your API
     a. Routes
     b. Policies
