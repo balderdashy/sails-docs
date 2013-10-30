@@ -6,7 +6,7 @@ This command will quietly lift your sails app, web server and all.  At this poin
 
 This might come in handy when you want to quickly add a record to a model and can't be bothered installing PostMAN.  It's also a good tool for diagnosing problems in your app.  If you can't access something over console, neither can your app.  
 
-Example Usage
+#####Example Usage
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails console
 
@@ -24,7 +24,9 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
     seenBy: 'everyone' }]
 ```
 
-Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell. For more information, see node REPL docs @ http://nodejs.org/api/repl.html
+Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell.
+
+For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 
 ### sails generate
 
