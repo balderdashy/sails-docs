@@ -30,13 +30,12 @@ For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 
 ### sails generate
 Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
-#### Generate only a new controller
+##### Generate new controller
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
 info: Generating model and controller for newmodel...
 ```
-
-#### Generate only a new model
+##### Generate new model
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate model newmodel
 warn: For the record :: to serve the blueprint API for this model,
@@ -44,20 +43,28 @@ warn: you'll also need to have an empty controller.
 info: Generated model for newmodel!
 
 ```
-
-#### Generate a controler and model
+##### Generate both!
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
 info: Generated controller for newmodel!
 ```
 
-
-
 ### sails lift
+The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
+
+- \-\-verbose
+this be verbose bro
+- \-\-port=
+- \-\-environment=
 
 
 ### sails version
 
 
 ### sails new
+````
+ichabod@ichabod:~/node/sails$ sails new myApp
+debug: Building new Sails.js app in ./myApp...
 
+info: New app created!
+````
