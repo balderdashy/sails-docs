@@ -40,6 +40,7 @@ The lift argument launches your app.  You can also add the folowing flags behind
 - \-\-port=<integer> - Use this for changing the port on lift.
 - \-\-environment=<development|production> - Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
 ##### Example Usage
+
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails lift --port=1338 --verbose --environment=production
 
