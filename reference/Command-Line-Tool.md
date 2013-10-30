@@ -1,6 +1,116 @@
 Command Line Tool
 =====================
 
+### sails new
+The new argument is used for creating a new sails app.
+#####Example usage
+````
+catGuy@catGuy:~/node/sails$ sails new myApp
+debug: Building new Sails.js app in ./myApp...
+
+info: New app created!
+````
+
+### sails generate
+Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
+##### Generate new controller
+```sh
+catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
+info: Generating model and controller for newmodel...
+```
+##### Generate new model
+```sh
+catGuy@catGuy:~/node/sails/blogApp$ sails generate model newmodel
+warn: For the record :: to serve the blueprint API for this model,
+warn: you'll also need to have an empty controller.
+info: Generated model for newmodel!
+
+```
+##### Generate both!
+```sh
+catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
+info: Generated controller for newmodel!
+```
+
+### sails lift
+The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
+
+- \-\-verbose - This displays extra information in console relevent to your app
+- \-\-silly - This flag displays ALL of the information.  All of it.
+- \-\-port=<integer> - Use this for changing the port on lift.
+- \-\-environment=<development|production> - Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
+##### Example Usage
+```sh
+catGuy@catGuy:~/node/sails/blogApp$ sails lift --port=1338 --verbose --environment=production
+
+verbose: Enabling CoffeeScript...
+verbose: Using Express router...
+verbose: Configuring express.static flat-file middleware...
+verbose: Loading app Gruntfile...
+verbose: Tracking new grunt child process...
+verbose: Loading hook: request
+verbose: Hook loaded successfully: request
+verbose: Loading hook: orm
+verbose: Loading the app's models and adapters...
+verbose: Loading app models...
+verbose: Loading app adapters...
+verbose: Loading hook: views
+verbose: Setting view engine to ejs...
+verbose: Setting Model.adapter with ad-hoc clone ids =>  [ 'adhoc_adapter_0' ]
+verbose: Starting ORM...
+verbose: Registering model `users` in Waterline (ORM) with definition :: 
+verbose: Applying policy to users.create... [ [Function: alwaysAllow], [Function: create] ]
+verbose: Applying policy to users.destroy... [ [Function: alwaysAllow], [Function: destroy] ]
+verbose: Applying policy to users.find... [ [Function: alwaysAllow], [Function: find] ]
+verbose: Applying policy to users.update... [ [Function: alwaysAllow], [Function: update] ]
+verbose: Applying policy ::  [ [Function: alwaysAllow] ]  to  403
+verbose: Policy-controller bindings complete!
+verbose: Binding route ::   /*
+verbose: Loading app services...
+verbose: Waiting for all hooks to declare that they're ready...
+verbose: Sails loaded successfully.
+verbose: Starting app at /node/sails/myApp...
+erbose: Running the setup logic in `sails.config.bootstrap(cb)`...
+info: 
+info: 
+info:    Sails.js           <|
+info:    v0.9.7              |\
+info:                       /|.\
+info:                      / || \
+info:                    ,'  |'  \
+info:                 .-'.-==|/_--'
+info:                 `--'-------' 
+info:    __---___--___---___--___---___--___
+info:  ____---___--___---___--___---___--___-__
+info: 
+info: Server lifted in `node/sails/myApp`
+info: To see your app, visit http://localhost:1338
+info: To shut down Sails, press <CTRL> + C at any time.
+
+debug: --------------------------------------------------------
+debug: :: Wed Oct 30 2013 14:02:53 GMT-0500 (CDT)
+debug: 
+debug: Environment	: production
+debug: Port		: 1338
+debug: --------------------------------------------------------
+verbose: Lifting guard-- all conditions satisfied.
+verbose: Binding RESTful controller blueprints for  users
+verbose: Binding route ::  get /users/:id?
+verbose: Binding route ::  post /users
+verbose: Binding route ::  put /users/:id?
+verbose: Binding route ::  delete /users/:id?
+verbose: Binding shortcut controller blueprints for  users
+verbose: Binding route ::   /users/find/:id?
+verbose: Binding route ::   /users/create
+verbose: Binding route ::   /users/update/:id?
+verbose: Binding route ::   /users/destroy/:id?
+verbose: Grunt :: Running "clean:dev" (clean) task
+verbose: Grunt :: Cleaning ".tmp/public"...
+verbose: Grunt :: OK
+verbose: Grunt :: 
+verbose: Grunt :: Done, without errors.
+
+```
 ### sails console
 This command will quietly lift your sails app, web server and all.  At this point, it sends the <link>global sails object</link> to the node.js shell.  This means you can access all of your model instances, their methods, and much more, all by using javascript commands.
 
@@ -28,43 +138,9 @@ Once inside sails console, two consecutive CTRL+C will close the app and exit ba
 
 For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 
-### sails generate
-Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
-##### Generate new controller
-```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
-info: Generating model and controller for newmodel...
-```
-##### Generate new model
-```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate model newmodel
-warn: For the record :: to serve the blueprint API for this model,
-warn: you'll also need to have an empty controller.
-info: Generated model for newmodel!
-
-```
-##### Generate both!
-```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
-info: Generated controller for newmodel!
-```
-
-### sails lift
-The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
-
-- \-\-verbose
-this be verbose bro
-- \-\-port=
-- \-\-environment=
-
-
 ### sails version
-
-
-### sails new
+#####Example Usage
 ````
-ichabod@ichabod:~/node/sails$ sails new myApp
-debug: Building new Sails.js app in ./myApp...
-
-info: New app created!
+catGuy@catGuy:~/node/sails/myApp$ sails version
+info: v0.9.7
 ````
