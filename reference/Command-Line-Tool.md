@@ -13,7 +13,8 @@ catGuy@catGuy:~/node/sails/blogApp$ sails console
 debug: Welcome to the Sails console (v0.9.7)
 debug: ( to exit, type <CTRL>+<C> )
 
-sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)})
+sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
+
 [ { blogName: 'First Blog',
     description: 'Hey, my first blog entry.',
     keywords: 'first new blog lol',
@@ -22,6 +23,9 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)})
     id: 1,
     seenBy: 'everyone' }]
 ```
+
+Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell. For more information, see node REPL docs @ http://nodejs.org/api/repl.html
+
 ### sails generate
 
 
