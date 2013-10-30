@@ -32,6 +32,7 @@ catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
 info: Generated controller for newmodel!
 ```
 
+
 ### sails lift
 The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
 
@@ -113,6 +114,8 @@ verbose: Grunt ::
 verbose: Grunt :: Done, without errors.
 
 ```
+
+
 ### sails console
 This command will quietly lift your sails app, web server and all.  At this point, it sends the <link>global sails object</link> to the node.js shell.  This means you can access all of your model instances, their methods, and much more, all by using javascript commands.
 
@@ -139,6 +142,7 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
 Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell.
 
 For more information, see node REPL docs @ http://nodejs.org/api/repl.html
+
 
 ### sails version
 #####Example Usage
