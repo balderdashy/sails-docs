@@ -7,7 +7,7 @@ This command will quietly lift your sails app, web server and all.  At this poin
 This might come in handy when you want to quickly add a record to a model and can't be bothered installing PostMAN.  It's also a good tool for diagnosing problems in your app.  If you can't access something over console, neither can your app.  
 
 Example Usage
-```
+```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails console
 
 debug: Welcome to the Sails console (v0.9.7)
