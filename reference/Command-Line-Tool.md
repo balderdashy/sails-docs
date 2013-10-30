@@ -39,6 +39,7 @@ The lift argument launches your app.  You can also add the folowing flags behind
 - \-\-silly - This flag displays ALL of the information.  All of it.
 - \-\-port=<integer> - Use this for changing the port on lift.
 - \-\-environment=<development|production> - Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
+
 ##### Example Usage
 
 ```sh
@@ -52,7 +53,7 @@ verbose: Tracking new grunt child process...
 verbose: Loading hook: request
 verbose: Hook loaded successfully: request
 verbose: Loading hook: orm
-verbose: Loading the app's models and adapters...
+verbose: Loading the apps models and adapters...
 verbose: Loading app models...
 verbose: Loading app adapters...
 verbose: Loading hook: views
