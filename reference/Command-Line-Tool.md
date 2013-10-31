@@ -10,6 +10,8 @@ debug: Building new Sails.js app in ./myApp...
 
 info: New app created!
 ````
+Also available is the \-\-linker flag.
+This will create your app using automatic asset linking (and we all know what that means)
 
 ### sails generate
 Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
@@ -36,10 +38,12 @@ info: Generated controller for newmodel!
 ### sails lift
 The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
 
-- \-\-verbose - This displays extra information in console relevent to your app
-- \-\-silly - This flag displays ALL of the information.  All of it.
-- \-\-port=<integer> - Use this for changing the port on lift.
-- \-\-environment=<development|production> - Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
+- \-\-verbose                                   This displays extra information in console relevent to your app
+- \-\-silly                                     This flag displays ALL of the information.  All of it.
+- \-\-port=<integer>                            Use this for changing the port on lift.
+- \-\-environment=<development|production>      Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
+- \-\-dev                                       This is shorthand for environment=development
+- \-\-prod                                      This is shorthand for environment=production
 
 ##### Example Usage
 
@@ -149,4 +153,16 @@ For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 ````
 catGuy@catGuy:~/node/sails/myApp$ sails version
 info: v0.9.7
+````
+
+### sails run <command>
+Run simply does blah blah blah.  Available commands are
+
+- command 1
+- command 2
+
+#####Example Usage
+````
+catGuy@catGuy:~/node/sails/myApp$ sails run 
+
 ````
