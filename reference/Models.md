@@ -74,7 +74,7 @@ Users.find().limit(1).done(
 
 #### validate
 
-The validate method checks the attributes that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
+The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
 There will be no parameters in the callback unless there is an error.  No news is good news.
 ##### Example Usage
 
