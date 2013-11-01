@@ -19,8 +19,8 @@ Sails has these pub pub-sub type methods.
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
 |  .save       | callback ```function```  |  callback ```function (err,savedValue)```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function(err,destroyedValue)``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function(err,validatedValue)``` |       Yes      |
+|  .destroy    | callback ```function```  |  callback ```function (err,destroyedValue)``` |       Yes     |
+|  .validate   | callback ```function``` |  callback ```function (err,validatedValue)``` |       Yes      |
 |  .toObject   |      none            |  model values ```object```                   |        No         |
 |  .toJSON     |      none            |  clone of model ```object```                 |        No         |
 
@@ -31,9 +31,22 @@ The save method updates the database with the parent instance's current values a
 
 ##### Example Usage
 
-```json
+```javascript
 
-m.save()
+Users.find().limit(1).done(
+	function(err,mI){
+		mI[0]['petName'] = 'BooBoo';
+		mI[0].save(
+			function(err,s){
+				console.log('User with ID '+s.id+' now has name '+s.petName);
+			});
+	});
+
+// User with ID 1 now has name BooBoo
+
+// Don't forget to handle your errors.
+// Don't forget to abide by the rules you set in your model
+
 
 ```
 
@@ -43,7 +56,7 @@ This method destroys the parent model instance and returns an object containing 
 
 ##### Example Usage
 
-```json
+```javascript
 
 m.destroy()
 
@@ -55,7 +68,7 @@ The validate method takes the currently set attributes and validates the model. 
 
 ##### Example Usage
 
-```json
+```javascript
 
 m.validate()
 
@@ -67,7 +80,7 @@ This returns a cloned object containing only the model values. It is useful for 
 
 ##### Example Usage
 
-```json
+```javascript
 
 m.toJSON()
 
@@ -79,7 +92,7 @@ This returns a cloned object and can be overriden to manipulate records . Same a
 	
 ##### Example Usage
 
-```json
+```javascript
 
 m.toJSON()
 
