@@ -74,13 +74,23 @@ Users.find().limit(1).done(
 
 #### validate
 
-The validate method takes the currently set attributes and validates the model. This is shorthand for Model.validate({ attributes }, cb)
-There will be no parameters to the callback unless there is an error validating.  Remember, no news is good news.
+The validate method checks the attributes that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
+There will be no parameters in the callback unless there is an error.  No news is good news.
 ##### Example Usage
 
 ```javascript
 
-m.validate()
+Users.find().limit(1).done(
+	function(err,mI){
+		mI[0]['petName'] = ['pookie','BooBoo'];
+		mI[0].validate(
+			function(err){
+				if (err)
+					console.log(JSON.stringify(err));
+			});
+	});
+	
+// {"ValidationError":{"petName":[{"data":["pookie","BooBoo"],"message":"Validation error: \"pookie,BooBoo\" is not of type \"string\"","rule":"string"}]}}
 
 ```
 
