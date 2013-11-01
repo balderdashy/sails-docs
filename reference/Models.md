@@ -21,8 +21,8 @@ Sails has these pub pub-sub type methods.
 |  .save       | callback ```function```  |  callback ```function ({ err } , { savedValue } )```     |       Yes    |
 |  .destroy    | callback ```function```  |  callback ```function ( { err } )``` |       Yes     |
 |  .validate   | callback ```function``` |  callback ```function ( { err } )``` |       Yes      |
-|  .toObject   |      none            |  model values ```object```                   |        No         |
-|  .toJSON     |      none            |  clone of model ```object```                 |        No         |
+|  .toObject   |      none            |  clone of instance ```object```                   |        No         |
+|  .toJSON     |      none            |  clone of instance ```object```                 |        No         |
 
 
 #### save
@@ -111,24 +111,43 @@ module.exports = {
 
 #### toObject
 
-This returns a cloned object containing only the model values. It is useful for doing operations on the current values minus the instance methods.
+This returns a cloned object containing only the model values. It is useful for doing operations on the current values minus the instance methods.  While you could do something like the example below, you will probably only want to use this when overriding the default .toJSON instance method. See the .toJSON example for the most common use case.
 
 ##### Example Usage
 
 ```javascript
 
-m.toJSON()
+Users.find().limit(1).done(
+	function(err,mI){
+		var datUser = mI[0].toObject();
+		console.log(datUser);
+	});
+/*
+{ id: 2,
+  createdAt: '2013-10-31T22:42:25.459Z',
+  updatedAt: Fri Nov 01 2013 13:54:38 GMT-0500 (CDT),
+  petName: 'BooBoo' }
+*/
+
+// Don't forget to handle your errors
 
 ```
 
 #### toJSON
 
-This returns a cloned object and can be overriden to manipulate records . Same as toObject but made to be overriden.
-	
+By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.  Instead of writing custom code for every controller action that uses the model (including the "out of the box" blueprints) , you can manipulate outgoing records by simple overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
+
 ##### Example Usage
+
+For model
 
 ```javascript
 
-m.toJSON()
+
 
 ```
+
+
+#### Custom Instance Methods
+
+By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.  Instead of writing custom code for every controller action that uses the model (including the "out of the box" blueprints) , you can manipulate outgoing records by simple overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
