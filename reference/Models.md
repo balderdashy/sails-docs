@@ -18,9 +18,9 @@ Sails has these pub pub-sub type methods.
 
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|  .save       | callback ```function```  |  callback ```function (err,savedValue)```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function (err,destroyedValue)``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function (err,validatedValue)``` |       Yes      |
+|  .save       | callback ```function```  |  callback ```function (err,{savedValue})```     |       Yes    |
+|  .destroy    | callback ```function```  |  callback ```function (err)``` |       Yes     |
+|  .validate   | callback ```function``` |  callback ```function (err,{validatedValue})``` |       Yes      |
 |  .toObject   |      none            |  model values ```object```                   |        No         |
 |  .toJSON     |      none            |  clone of model ```object```                 |        No         |
 
@@ -58,7 +58,18 @@ This method destroys the parent model instance and returns an object containing 
 
 ```javascript
 
-m.destroy()
+Users.find().limit(1).done(
+	function(err,mI){
+		mI[0].destroy(
+			function(err){
+				console.log('User with ID '+mI[0].id+' was destroyed');
+			});
+	});
+
+// User with ID 1 was destroyed
+
+// Don't forget to handle your errors.
+
 
 ```
 
