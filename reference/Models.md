@@ -18,9 +18,9 @@ Sails has these pub pub-sub type methods.
 
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|  .save       | callback ```function```  |  callback ```function (err,{savedValue})```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function (err)``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function (err,{validatedValue})``` |       Yes      |
+|  .save       | callback ```function```  |  callback ```function ({ err },{savedValue})```     |       Yes    |
+|  .destroy    | callback ```function```  |  callback ```function ({ err })``` |       Yes     |
+|  .validate   | callback ```function``` |  callback ```function ({ err })``` |       Yes      |
 |  .toObject   |      none            |  model values ```object```                   |        No         |
 |  .toJSON     |      none            |  clone of model ```object```                 |        No         |
 
@@ -28,7 +28,7 @@ Sails has these pub pub-sub type methods.
 #### save
 
 The save method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
-
+* Warning!  Your data will not be validated before it is saved.  Call .validate() before you .save() !
 ##### Example Usage
 
 ```javascript
@@ -47,12 +47,11 @@ Users.find().limit(1).done(
 // Don't forget to handle your errors.
 // Don't forget to abide by the rules you set in your model
 
-
 ```
 
 #### destroy
 
-This method destroys the parent model instance and returns an object containing it's former value.
+This method destroys the parent model instance then runs a callback.
 
 ##### Example Usage
 
@@ -76,7 +75,7 @@ Users.find().limit(1).done(
 #### validate
 
 The validate method takes the currently set attributes and validates the model. This is shorthand for Model.validate({ attributes }, cb)
-
+There will be no parameters to the callback unless there is an error validating.  Remember, no news is good news.
 ##### Example Usage
 
 ```javascript
