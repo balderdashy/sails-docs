@@ -29,6 +29,7 @@ Sails has these pub pub-sub type methods.
 
 The save method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
 * Warning!  Your data will not be validated before it is saved.  Call .validate() before you .save() !
+
 ##### Example Usage
 
 ```javascript
@@ -76,6 +77,7 @@ Users.find().limit(1).done(
 
 The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
 There will be no parameters in the callback unless there is an error.  No news is good news.
+
 ##### Example Usage
 
 ```javascript
