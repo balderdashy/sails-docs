@@ -18,9 +18,9 @@ Sails has these pub pub-sub type methods.
 
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|  .save       | callback ```function```  |  callback ```function ({ err },{savedValue})```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function ({ err })``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function ({ err })``` |       Yes      |
+|  .save       | callback ```function```  |  callback ```function ({ err } , { savedValue } )```     |       Yes    |
+|  .destroy    | callback ```function```  |  callback ```function ( { err } )``` |       Yes     |
+|  .validate   | callback ```function``` |  callback ```function ( { err } )``` |       Yes      |
 |  .toObject   |      none            |  model values ```object```                   |        No         |
 |  .toJSON     |      none            |  clone of model ```object```                 |        No         |
 
