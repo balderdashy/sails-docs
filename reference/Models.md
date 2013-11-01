@@ -94,6 +94,19 @@ Users.find().limit(1).done(
 
 ```
 
+For model
+
+```javascript
+module.exports = {
+
+  attributes: {
+  	petName: 'string'
+
+  }
+
+};
+```
+
 #### toObject
 
 This returns a cloned object containing only the model values. It is useful for doing operations on the current values minus the instance methods.
