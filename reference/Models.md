@@ -111,7 +111,8 @@ module.exports = {
 
 #### toObject and toJSON
 
-By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.  Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simple overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
+By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
+Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
 The toObject method also returns a cloned object however, it is stripped of all instance methods.  You will probably only want to use .toObject when overriding the default .toJSON instance method. The example below should demonstrate it's most common use as well as the difference between the two.
 
