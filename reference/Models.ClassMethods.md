@@ -1,21 +1,21 @@
 # CRUD Methods
-The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method.
+The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. All Methods are asyncronous.
 
 ### Overview
-| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
-| ------------ | -------------------  | ---------------------------------------- | --------------------- |
-| .create() | Object or Array, callback | deferred object if no callback | yes |
-| .update() | Object, Object, callback | deferred object if no callback | yes |
-| .destroy() | Object, callback | deferred object if no callback | yes |
-| .count() | Object, Object, callback | deferred object if no callback | yes |
-| .createEach() | Array, callback | deferred object if no callback | yes|
-| .findOrCreateEach() | Object, Array, callback | deferred object if no callback | yes |
-| .findOrCreate() | Object, Object, callback | deferred object if no callback | yes |
-| .findOne() | Object, callback | deferred object if no callback | yes |
-| .find() | Object, Object, callback | deferred object if no callback | yes |
-| .startsWith() | Object, callback | deferred object if no callback | yes |
-| .endsWith() | Object, callback | deferred object if no callback | yes |
-| .stream() | Object | stream | yes |
+| Method Name  |       Parameters     |                    Returned              
+| ------------ | -------------------  | ----------------------------------------
+| .create() | Object or Array, callback | deferred object if no callback |
+| .update() | Object, Object, callback | deferred object if no callback |
+| .destroy() | Object, callback | deferred object if no callback |
+| .count() | Object, Object, callback | deferred object if no callback |
+| .createEach() | Array, callback | deferred object if no callback |
+| .findOrCreateEach() | Object, Array, callback | deferred object if no callback |
+| .findOrCreate() | Object, Object, callback | deferred object if no callback |
+| .findOne() | Object, callback | deferred object if no callback |
+| .find() | Object, Object, callback | deferred object if no callback |
+| .startsWith() | Object, callback | deferred object if no callback |
+| .endsWith() | Object, callback | deferred object if no callback |
+| .stream() | Object | stream |
 
 
 
