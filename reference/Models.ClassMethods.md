@@ -5,7 +5,7 @@ The methods below are the basic crud methods offered by the ORM. Here is a very 
 | Method Name  |       Parameters     |                    Returned             | Callback Parameter 
 | ------------ | -------------------  | ----------------------------------------| --------------------
 | .create() | Object or Array, callback | deferred object if no callback |
-| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| deferred object if no callback | ```function```({```error```},{```updatedRecord```}
+| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| deferred object or callback | ```Error```  or {```updatedRecord```}
 | .destroy() | Object, callback | deferred object if no callback |
 | .count() | Object, Object, callback | deferred object if no callback |
 | .createEach() | Array, callback | deferred object if no callback |
