@@ -17,7 +17,3 @@ The following features are considered deprecated and should at some point be rem
 - .findOneLike()
 - .findLike()
 - .contains()
-
-## reh
-Oh yeah
-
