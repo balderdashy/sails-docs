@@ -277,6 +277,24 @@ This makes sure attributes
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
+###
+
+| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
+| ------------ | -------------------  | ---------------------------------------- | --------------------- |
+|.findOneBy`<attribute>`()||||
+|.findOneBy`<attribute>`In()||||
+|.findOneBy`<attribute>`Like()||||
+|.findBy`<attribute>`()||||
+|.findBy`<attribute>`In()||||
+|.findBy`<attribute>`Like()||||
+|.countBy`<attribute>`()||||
+|.countBy`<attribute>`In()||||
+|.countBy`<attribute>`Like()||||
+|.`<attribute>`StartsWith()||||
+|.`<attribute>`Contains()||||
+|.`<attribute>`EndsWith()||||
+
+
 ### .findOneBy`<attribute>`()
 #### Purpose
 
