@@ -1,5 +1,5 @@
 # CRUD Methods
-The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. All Methods are asyncronous.
+The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. More detailed info can be found below. All methods are asyncronous.
 
 ### Overview
 | Method Name  |       Parameters     |                    Returned             | Callback Parameters 
