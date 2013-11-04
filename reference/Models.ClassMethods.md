@@ -4,8 +4,8 @@ The methods below are the basic crud methods offered by the ORM. Here is a very 
 ### Overview
 | Method Name  |       Parameters     |                    Returned             | Callback Parameter 
 | ------------ | -------------------  | ----------------------------------------| --------------------
-| .create() | Object or Array, callback | deferred object or callback | function (```Error```)
-| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| deferred object or callback | function (```Error```) function (```Error```,[```updatedRecord```])
+| .create() | Object or Array, callback | "deferred object" or callback | function (```Error```)
+| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| "deferred object" or callback | function (```Error```),[```updatedRecord```])
 | .destroy() | Object, callback | "deferred object" or callback | function (```Error```)
 | .count() | Object, Object, callback | "deferred object" or callback | function (```Error```)
 | .createEach() | Array, callback | "deferred object" or callback | function (```Error```)
