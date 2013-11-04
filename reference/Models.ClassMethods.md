@@ -4,17 +4,17 @@ The methods below are the basic crud methods offered by the ORM. Here is a very 
 ### Overview
 | Method Name  |       Parameters     |                    Returned             | Callback Parameter 
 | ------------ | -------------------  | ----------------------------------------| --------------------
-| .create() | Object or Array, callback | deferred object if no callback |
-| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| deferred object or callback | ```Error```  or [```updatedRecord```]
-| .destroy() | Object, callback | deferred object if no callback |
-| .count() | Object, Object, callback | deferred object if no callback |
-| .createEach() | Array, callback | deferred object if no callback |
-| .findOrCreateEach() | Object, Array, callback | deferred object if no callback |
-| .findOrCreate() | Object, Object, callback | deferred object if no callback |
-| .findOne() | Object, callback | deferred object if no callback |
-| .find() | Object, Object, callback | deferred object if no callback |
-| .startsWith() | Object, callback | deferred object if no callback |
-| .endsWith() | Object, callback | deferred object if no callback |
+| .create() | Object or Array, callback | deferred object or callback | function (```Error```)
+| .update() | findCriterea {```object```}, updatedRecord {```bbject```}, callback| deferred object or callback | function (```Error```) function (```Error```,[```updatedRecord```])
+| .destroy() | Object, callback | "deferred object" or callback | function (```Error```)
+| .count() | Object, Object, callback | "deferred object" or callback | function (```Error```)
+| .createEach() | Array, callback | "deferred object" or callback | function (```Error```)
+| .findOrCreateEach() | Object, Array, callback | "deferred object" or callback | function (```Error```)
+| .findOrCreate() | Object, Object, callback | "deferred object" or callback | function (```Error```)
+| .findOne() | Object, callback | "deferred object" or callback | function (```Error```)
+| .find() | Object, Object, callback | "deferred object" or callback | function (```Error```)
+| .startsWith() | Object, callback | "deferred object" or callback | function (```Error```)
+| .endsWith() | Object, callback | "deferred object" or callback | function (```Error```)
 | .stream() | Object | stream |
 
 
