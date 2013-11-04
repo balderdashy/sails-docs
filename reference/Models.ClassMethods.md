@@ -1,7 +1,7 @@
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
-### .findOneBy`<attribute>`()
+### .findOneBy `<attribute>` ()
 #### Purpose
 
 #### Example Usage
@@ -12,7 +12,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .findOneBy'<attribute>'In()
+### .findOneBy`<attribute>`In()
 #### Purpose
 
 #### Example Usage
@@ -23,7 +23,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .findOneBy'<attribute>'Like()
+### .findOneBy`<attribute>`Like()
 #### Purpose
 
 #### Example Usage
@@ -34,7 +34,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .findBy'<attribute>'()
+### .findBy`<attribute>`()
 #### Purpose
 
 #### Example Usage
@@ -45,7 +45,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .findBy'<attribute>'In()
+### .findBy`<attribute>`In()
 #### Purpose
 
 #### Example Usage
@@ -56,7 +56,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .findBy'<attribute>'Like()
+### .findBy`<attribute>`Like()
 #### Purpose
 
 #### Example Usage
@@ -67,7 +67,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .countBy'<attribute>'()
+### .countBy`<attribute>`()
 #### Purpose
 
 #### Example Usage
@@ -78,7 +78,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .countBy'<attribute>'In()
+### .countBy`<attribute>`In()
 #### Purpose
 
 #### Example Usage
@@ -89,7 +89,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .countBy'<attribute>'Like()
+### .countBy`<attribute>`Like()
 #### Purpose
 
 #### Example Usage
@@ -100,7 +100,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .'<attribute>'StartsWith()
+### .`<attribute>`StartsWith()
 #### Purpose
 
 #### Example Usage
@@ -111,7 +111,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .'<attribute>'Contains()
+### .`<attribute>`Contains()
 #### Purpose
 
 #### Example Usage
@@ -122,7 +122,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
-### .'<attribute>'EndsWith
+### .`<attribute>`EndsWith
 
 
 # CRUD Methods
