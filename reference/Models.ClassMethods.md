@@ -1,8 +1,35 @@
 # CRUD Methods
+The methods below allow you to do crud and stuff.
+
+### Overview
+| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
+| ------------ | -------------------  | ---------------------------------------- | --------------------- |
+|.validate()||||
+|.join()||||
+|.create()||||
+|.update()||||
+|.destroy()||||
+|.count()||||
+|.createEach()||||
+|.findOrCreateEach()||||
+|.findOrCreate()||||
+|.findOne()||||
+|.find()||||
+|.where()||||
+|.select()||||
+|.findAll()||||
+|.findOneLike()||||
+|.findLike()||||
+|.startsWith()||||
+|.endsWith()||||
+|.contains()||||
+|.stream()||||
+|._initialize()||||
 
 
 ### .validate()
 #### Purpose
+This makes sure attributes 
 
 #### Example Usage
 
