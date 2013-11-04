@@ -4,19 +4,18 @@ The methods below allow you to do crud and stuff.
 ### Overview
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|.validate()||||
-|.create()||||
-|.update()||||
-|.destroy()||||
-|.count()||||
-|.createEach()||||
-|.findOrCreateEach()||||
-|.findOrCreate()||||
-|.findOne()||||
-|.find()||||
-|.startsWith()||||
-|.endsWith()||||
-|.stream()||||
+| .create() | Object or Array, callback | deferred object if no callback | yes |
+| .update() | Object, Object, callback | deferred object if no callback | yes |
+| .destroy() | Object, callback | deferred object if no callback | yes |
+| .count() | Object, Object, callback | deferred object if no callback | yes |
+| .createEach() | Array, callback | deferred object if no callback | yes|
+| .findOrCreateEach() | Object, Array, callback | deferred object if no callback | yes |
+| .findOrCreate() | Object, Object, callback | deferred object if no callback | yes |
+| .findOne() | Object, callback | deferred object if no callback | yes |
+| .find() | Object, Object, callback | deferred object if no callback | yes |
+| .startsWith() | Object, callback | deferred object if no callback | yes |
+| .endsWith() | Object, callback | deferred object if no callback | yes |
+| .stream() ||| yes |
 
 
 
