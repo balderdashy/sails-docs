@@ -1,371 +1,372 @@
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
-## .findOneBy< attribute >()
-### Purpose
+### .findOneBy'<attribute>'()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .findOneBy< attribute >In()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .findOneBy'<attribute>'In()
+#### Purpose
 
-## .findOneBy< attribute >Like()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .findBy< attribute >()
-### Purpose
+### .findOneBy'<attribute>'Like()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .findBy< attribute >In()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .findBy'<attribute>'()
+#### Purpose
 
-## .findBy< attribute >Like()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .countBy< attribute >()
-### Purpose
+### .findBy'<attribute>'In()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .countBy< attribute >In()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .findBy'<attribute>'Like()
+#### Purpose
 
-## .countBy< attribute >Like()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .< attribute >StartsWith()
-### Purpose
+### .countBy'<attribute>'()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .< attribute >Contains()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
+#### Notes
+
+### .countBy'<attribute>'In()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
 ```
 
-### Notes
+#### Notes
 
-## .< attribute >EndsWith
+### .countBy'<attribute>'Like()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .'<attribute>'StartsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .'<attribute>'Contains()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .'<attribute>'EndsWith
+
 
 # CRUD Methods
 
 
-## .validate()
-### Purpose
+### .validate()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+#### Purpose
 
-## .join()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .create()
-### Purpose
+### .join()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .update()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .create()
+#### Purpose
 
-## .destroy()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .count()
-### Purpose
+### .update()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .createEach()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .destroy()
+#### Purpose
 
-## .findOrCreateEach()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .findOrCreate()
-### Purpose
+### .count()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .findOne()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .createEach()
+#### Purpose
 
-## .find()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .where()
-### Purpose
+### .findOrCreateEach()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .select()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .findOrCreate()
+#### Purpose
 
-## .findAll()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .findOneLike()
-### Purpose
+### .findOne()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .findLike()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .find()
+#### Purpose
 
-## .startsWith()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## .endsWith()
-### Purpose
+### .where()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 
-```
-
-```
-
-### Notes
-
-## .contains()
-### Purpose
-
-### Example Usage
+```javascript 
 
 ```
 
-```
+#### Notes
 
-### Notes
+### .select()
+#### Purpose
 
-## .stream()
-### Purpose
+#### Example Usage
 
-### Example Usage
-
-```
+```javascript 
 
 ```
 
-### Notes
+#### Notes
 
-## ._initialize()
-### Purpose
+### .findAll()
+#### Purpose
 
-### Example Usage
+#### Example Usage
+
+```javascript 
 
 ```
 
+#### Notes
+
+### .findOneLike()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
 ```
 
-### Notes
+#### Notes
+
+### .findLike()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .startsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .endsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .contains()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .stream()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### ._initialize()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
 
 
