@@ -17,8 +17,8 @@ This will create your app using automatic asset linking (and we all know what th
 Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
 ##### Generate new controller
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
-info: Generating model and controller for newmodel...
+catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
+info: Generated controller for newmodel!
 ```
 ##### Generate new model
 ```sh
@@ -30,8 +30,8 @@ info: Generated model for newmodel!
 ```
 ##### Generate both!
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
-info: Generated controller for newmodel!
+catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
+info: Generating model and controller for newmodel...
 ```
 
 
