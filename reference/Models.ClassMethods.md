@@ -1,130 +1,3 @@
-# Dynamic Finders
-These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
-
-### .findOneBy`<attribute>`()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findOneBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findOneBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .countBy`<attribute>`()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .countBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .countBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .`<attribute>`StartsWith()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .`<attribute>`Contains()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .`<attribute>`EndsWith
-
-
 # CRUD Methods
 
 
@@ -369,4 +242,134 @@ These methods are automatically generated for each attribute in each model of yo
 
 #### Notes
 
+
+
+
+
+
+# Dynamic Finders
+These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
+
+### .findOneBy`<attribute>`()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .findOneBy`<attribute>`In()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .findOneBy`<attribute>`Like()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .findBy`<attribute>`()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .findBy`<attribute>`In()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .findBy`<attribute>`Like()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .countBy`<attribute>`()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .countBy`<attribute>`In()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .countBy`<attribute>`Like()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .`<attribute>`StartsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .`<attribute>`Contains()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .`<attribute>`EndsWith
 
