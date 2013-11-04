@@ -15,7 +15,7 @@ The methods below allow you to do crud and stuff.
 | .find() | Object, Object, callback | deferred object if no callback | yes |
 | .startsWith() | Object, callback | deferred object if no callback | yes |
 | .endsWith() | Object, callback | deferred object if no callback | yes |
-| .stream() ||| yes |
+| .stream() | Object | stream | yes |
 
 
 
