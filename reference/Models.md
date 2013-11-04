@@ -7,8 +7,8 @@ Sails models have the following blah blah blah
 Sails supports the following class methods.
 
 
-#### ORM
-Sails supports these class methods for ORM type stuff
+
+
 
 #### Pub-Sub
 Sails has these pub pub-sub type methods.  
