@@ -2,9 +2,9 @@
 The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. All Methods are asyncronous.
 
 ### Overview
-| Method Name  |       Parameters     |                    Returned             | Callback Parameter 
+| Method Name  |       Parameters     |                    Returned             | Callback Parameters 
 | ------------ | -------------------  | ----------------------------------------| --------------------
-| .create() | Object or Array, callback | deferred object or callback | ```function ( Error )```
+| .create() | Object or Array, callback | "deferred object" or callback | ```function ( Error )```
 | .update() | -```findCriterea {} or []``` -```updatedRecord {} or []``` -```callback()```| deferred object or callback | ```function ( Error , [ updatedRecord ] )```
 | .destroy() | Object, callback | "deferred object" or callback | ```function ( Error )```
 | .count() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
