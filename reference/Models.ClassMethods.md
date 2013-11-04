@@ -17,14 +17,10 @@ The methods below allow you to do crud and stuff.
 |.find()||||
 |.where()||||
 |.select()||||
-|.findAll()||||
-|.findOneLike()||||
-|.findLike()||||
 |.startsWith()||||
 |.endsWith()||||
-|.contains()||||
 |.stream()||||
-|._initialize()||||
+
 
 
 ### .validate()
@@ -282,14 +278,8 @@ These methods are automatically generated for each attribute in each model of yo
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
 |.findOneBy`<attribute>`()||||
-|.findOneBy`<attribute>`In()||||
-|.findOneBy`<attribute>`Like()||||
 |.findBy`<attribute>`()||||
-|.findBy`<attribute>`In()||||
-|.findBy`<attribute>`Like()||||
 |.countBy`<attribute>`()||||
-|.countBy`<attribute>`In()||||
-|.countBy`<attribute>`Like()||||
 |.`<attribute>`StartsWith()||||
 |.`<attribute>`Contains()||||
 |.`<attribute>`EndsWith()||||
