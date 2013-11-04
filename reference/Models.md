@@ -27,7 +27,7 @@ Sails has these pub pub-sub type methods.
 
 #### save
 
-The save method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
+The `save` method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
 * Warning!  Your data will not be validated before it is saved.  Call .validate() before you .save() !
 
 ##### Example Usage
