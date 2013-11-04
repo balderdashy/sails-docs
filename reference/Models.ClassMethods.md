@@ -1,7 +1,7 @@
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
-### .findOneBy'<attribute>'()
+### .findOneBy '<attribute>' ()
 #### Purpose
 
 #### Example Usage
