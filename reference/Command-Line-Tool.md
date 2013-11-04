@@ -154,15 +154,3 @@ For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 catGuy@catGuy:~/node/sails/myApp$ sails version
 info: v0.9.7
 ````
-
-### sails run <command>
-Run simply does blah blah blah.  Available commands are
-
-- command 1
-- command 2
-
-#####Example Usage
-````
-catGuy@catGuy:~/node/sails/myApp$ sails run 
-
-````
