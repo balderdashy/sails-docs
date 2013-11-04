@@ -5,7 +5,6 @@ The methods below allow you to do crud and stuff.
 | Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
 | ------------ | -------------------  | ---------------------------------------- | --------------------- |
 |.validate()||||
-|.join()||||
 |.create()||||
 |.update()||||
 |.destroy()||||
@@ -15,8 +14,6 @@ The methods below allow you to do crud and stuff.
 |.findOrCreate()||||
 |.findOne()||||
 |.find()||||
-|.where()||||
-|.select()||||
 |.startsWith()||||
 |.endsWith()||||
 |.stream()||||
@@ -25,39 +22,31 @@ The methods below allow you to do crud and stuff.
 
 ### .validate()
 #### Purpose
-This makes sure attributes 
+This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
 
 #### Example Usage
 
 ```javascript 
 
-```
+Users.findOne(1).exec(function(err,mI){
 
-#### Notes
+	// petName is defined as a 'string'.  Let's give it an array and see what happens.
 
-#### Purpose
+	mI.petName = [1,2];
+	
+	Users.validate(mI,function(err){
+		sails.log('Error:'+JSON.stringify(msg));
+	});
+});
 
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .join()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
+// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
 
 ```
-
 #### Notes
 
 ### .create()
 #### Purpose
+Creates a new record.
 
 #### Example Usage
 
@@ -69,6 +58,7 @@ This makes sure attributes
 
 ### .update()
 #### Purpose
+Updates an existing record.
 
 #### Example Usage
 
@@ -80,6 +70,7 @@ This makes sure attributes
 
 ### .destroy()
 #### Purpose
+Destroys a record that may or may not exist.
 
 #### Example Usage
 
@@ -91,6 +82,7 @@ This makes sure attributes
 
 ### .count()
 #### Purpose
+This method counts the number of model records
 
 #### Example Usage
 
@@ -103,6 +95,8 @@ This makes sure attributes
 ### .createEach()
 #### Purpose
 
+Creates a record for each object passed to it in an array.
+
 #### Example Usage
 
 ```javascript 
@@ -113,7 +107,7 @@ This makes sure attributes
 
 ### .findOrCreateEach()
 #### Purpose
-
+You pass it two arrays.  Weird Syntax.
 #### Example Usage
 
 ```javascript 
@@ -124,6 +118,7 @@ This makes sure attributes
 
 ### .findOrCreate()
 #### Purpose
+This checks for the existence of a record.  If it can't be found, it is created.
 
 #### Example Usage
 
@@ -135,7 +130,7 @@ This makes sure attributes
 
 ### .findOne()
 #### Purpose
-
+This finds and returns a single record that meets the criterea.
 #### Example Usage
 
 ```javascript 
@@ -146,6 +141,7 @@ This makes sure attributes
 
 ### .find()
 #### Purpose
+Finds and returns all records that meet the criterea object that you pass it.
 
 #### Example Usage
 
@@ -155,60 +151,6 @@ This makes sure attributes
 
 #### Notes
 
-### .where()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .select()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findAll()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findOneLike()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findLike()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
 
 ### .startsWith()
 #### Purpose
@@ -232,17 +174,6 @@ This makes sure attributes
 
 #### Notes
 
-### .contains()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
 ### .stream()
 #### Purpose
 
@@ -253,18 +184,6 @@ This makes sure attributes
 ```
 
 #### Notes
-
-### ._initialize()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
 
 
 

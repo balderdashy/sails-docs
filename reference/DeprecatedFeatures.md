@@ -17,3 +17,7 @@ The following features are considered deprecated and should at some point be rem
 - .findOneLike()
 - .findLike()
 - .contains()
+- .join()
+- .where() This is an alias for find.  It only exists for compatibility with a very old version of waterline.  Don't use it.  Use find.  
+- .select() This is also an alias for find.  It only exists for compatibility with a very old version of waterline.  Don't use it.  Use find. 
+
