@@ -77,7 +77,7 @@ Users.destroy({name:'Flynn'},function deleteCB(err){
 
 ### .findOrCreate()
 #### Purpose
-This checks for the existence of a record.  If it can't be found, it is created.
+This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
 #### Example Usage
 
@@ -134,14 +134,21 @@ Users.find({},function findCB(err,found){
 
 ### .startsWith()
 #### Purpose
-
+This is shorthand for a .find() query that uses the startsWith query modifier.
 #### Example Usage
 
 ```javascript 
+Users.startsWith({name:'Fl'},function swCB(err,found){
+	console.log('User  '+found[0].name+' starts with \'Fl\'');
+	});
+	
+// User  Flynn starts with 'Fl'
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
 #### Notes
+Although you may pass .startsWith an object or an array of objects, it will always return an array.
 
 ### .endsWith()
 #### Purpose
@@ -149,22 +156,17 @@ Users.find({},function findCB(err,found){
 #### Example Usage
 
 ```javascript 
+Users.endsWith({name:'ie'},function ewCB(err,found){
+	console.log('User '+found[0].name+' ends with \'ie\'');
+	});
+	
+// User Jessie ends with 'ie'
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
 #### Notes
-
-### .stream()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
+Although you may pass .startsWith an object or an array of objects, it will always return an array.
 
 
 # Dynamic Finders
@@ -172,14 +174,14 @@ These methods are automatically generated for each attribute in each model of yo
 
 ###
 
-| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
-| ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|.findOneBy`<attribute>`()||||
-|.findBy`<attribute>`()||||
-|.countBy`<attribute>`()||||
-|.`<attribute>`StartsWith()||||
-|.`<attribute>`Contains()||||
-|.`<attribute>`EndsWith()||||
+| Method Name  |       Parameters     | Callback Parameters |
+| ------------ | -------------------  | ------------------- |
+|.findOneBy`<attribute>`()|||
+|.findBy`<attribute>`()|||
+|.countBy`<attribute>`()|||
+|.`<attribute>`StartsWith()|||
+|.`<attribute>`Contains()|||
+|.`<attribute>`EndsWith()|||
 
 
 ### .findOneBy`<attribute>`()
@@ -396,3 +398,45 @@ Users.findOne(1).exec(function(err,mI){
 
 #### Notes
 
+
+### .stream()
+#### Purpose
+This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
+#### Example Usage (controller code)
+
+```javascript 
+
+
+	    SearchResult.stream({
+	            limit: maxPerPage,
+	            skip: offset
+	    }, {
+	            write: function(model, index, cb) {
+	 
+	                    // Output prefix
+	                    if (index === 0) {
+	                            return cb(null, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+	                    } else {
+	 
+	                            // Convert & characters to escaped HTML entities &amp;
+	                            // (see http://stackoverflow.com/questions/3431280/validation-problem-entityref-expecting-what-should-i-do)
+	                            var url = model.url || '';
+	                            url = url.replace(/\&/g,'&amp;');
+	 
+	                            return cb(null, '<url>' +
+	                                    '<loc>'+url+'</loc>' +
+	                                    '<priority>'+model.priority+'</priority>' +
+	                                    '<changefreq>daily</changefreq>' +
+	                                    '</url>');
+	                    }
+	            },
+	            end: function(cb) {
+	                    // Output suffix
+	                    cb(null, '</urlset>');
+	            }
+	    }).pipe(res);
+
+```
+
+#### Notes
+This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
