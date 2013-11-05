@@ -38,6 +38,9 @@ Users.create({name:'Walter Jr'},function createCB(err,created){
 ```
 #### Notes
 
+
+
+
 ### .update()
 #### Purpose
 Updates an existing record.
@@ -56,6 +59,10 @@ Users.update({name:'Walter Jr'},{name:'Flynn'},function updateCB(err,updated){
 #### Notes
 Although you may pass .update() an object or an array of objects, it will always return an array.
 
+
+
+
+
 ### .destroy()
 #### Purpose
 Destroys a record that may or may not exist.
@@ -72,6 +79,9 @@ Users.destroy({name:'Flynn'},function deleteCB(err){
 
 ```
 #### Notes
+
+
+
 
 ### .findOrCreate()
 #### Purpose
@@ -91,6 +101,9 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'},function createFindCB(err,rec
 ```
 #### Notes
 
+
+
+
 ### .findOne()
 #### Purpose
 This finds and returns a single record that meets the criterea.
@@ -106,6 +119,9 @@ Users.findOne({name:'Jessie'},function findOneCB(err,found){
 
 ```
 #### Notes
+
+
+
 
 ### .find()
 #### Purpose
@@ -127,6 +143,7 @@ Users.find({},function findCB(err,found){
 #### Notes
 
 
+
 ### .startsWith()
 #### Purpose
 This is shorthand for a .find() query that uses the startsWith query modifier.
@@ -143,6 +160,8 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 ```
 #### Notes
 Although you may pass .startsWith an object or an array of objects, it will always return an array.
+
+
 
 ### .endsWith()
 #### Purpose
@@ -186,6 +205,9 @@ Users.findOne(1).exec(function(err,mI){
 
 ```#### Notes
 
+
+
+
 ### .count()
 #### Purpose
 
@@ -201,6 +223,9 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 
 ```
 #### Notes
+
+
+
 
 ### .stream()
 #### Purpose
@@ -262,6 +287,8 @@ Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TY
 |.`<attribute>`Contains()||
 |.`<attribute>`EndsWith()||
 
+
+
 ### .findBy`<attribute>`()
 #### Purpose
 Find and return records by a specific model attribute.
@@ -281,6 +308,7 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 #### Notes
 
 
+
 ### .findOneBy`<attribute>`()
 #### Purpose
 Find and return one record by a specific model attribute.
@@ -298,6 +326,9 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 #### Notes
 This will always return a single object.
 
+
+
+
 ### .countBy`<attribute>`()
 #### Purpose
 Count the number of records in a model with a particular model attribute. 
@@ -312,6 +343,9 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // Don't forget to handle your errors
 ```
 #### Notes
+
+
+
 
 
 ### .`<attribute>`StartsWith()
@@ -333,6 +367,9 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 Warning! Your attribute in the method name must be lowerCase!
 Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
+
+
+
 ### .`<attribute>`EndsWith
 #### Purpose
 
@@ -343,6 +380,9 @@ Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 ```
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
+
+
+
 
 ### .`<attribute>`Contains()
 #### Purpose
@@ -361,4 +401,6 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 ```
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
+
+
 
