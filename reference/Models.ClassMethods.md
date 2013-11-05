@@ -10,15 +10,12 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()```| ```function ( Error , updatedRecord )```
 | .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
 | .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```
-| .findOrCreateEach() | -```findCriterea {} or [{}]```<br>-```recordToCreate []```<br>-```callback()``` | ```function ( Error , recordToCreate)```
-| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordToCreate {} or []```<br>-```callback()``` | ```function ( Error , recordToCreate)```
-| .findOne() | -```newRecords {} or [{}]``` -```callback()```  | ```function ( Error )```
-| .find() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()``` | ```function ( Error )```
-| .startsWith() | -```newRecords {} or [{}]```<br>-```callback()```  | ```function ( Error )```
-| .endsWith() | -```newRecords {} or [{}]```<br>-```callback()```  | ```function ( Error )```
-| .stream() | Object | stream ||
-
-
+| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or []```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
+| .findOne() | -```findCriterea {}```<br>-```callback()```  | ```function ( Error , foundRecord)```
+| .find() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
+| .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
+| .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
+| .stream() | ```findCriterea {}``` | No callback! A node stream object is returned |
 
 ### .validate()
 #### Purpose
