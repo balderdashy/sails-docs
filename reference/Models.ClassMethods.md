@@ -7,39 +7,16 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
 | .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()```| ```function ( Error , updatedRecords )```
+| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or [{}]```<br>-```callback()```| ```function ( Error , updatedRecords )```
 | .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
 | .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```
-| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or []```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
+| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or [{}]```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
 | .findOne() | -```findCriterea {}```<br>-```callback()```  | ```function ( Error , foundRecord)```
 | .find() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
 | .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
 | .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
 | .stream() | ```findCriterea {}``` | No callback! A node stream object is returned |
 
-### .validate()
-#### Purpose
-This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
-
-#### Example Usage
-
-```javascript 
-
-Users.findOne(1).exec(function(err,mI){
-
-	// petName is defined as a 'string'.  Let's give it an array and see what happens.
-
-	mI.petName = [1,2];
-	
-	Users.validate(mI,function(err){
-		sails.log('Error:'+JSON.stringify(err));
-	});
-});
-
-// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
-
-```
-#### Notes
 
 ### .create()
 #### Purpose
@@ -89,16 +66,6 @@ This method counts the number of model records
 
 #### Notes
 
-### .findOrCreateEach()
-#### Purpose
-You pass it two arrays.  Weird Syntax.
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
 
 ### .findOrCreate()
 #### Purpose
@@ -168,8 +135,6 @@ Finds and returns all records that meet the criterea object that you pass it.
 ```
 
 #### Notes
-
-
 
 
 
@@ -310,18 +275,95 @@ These methods are automatically generated for each attribute in each model of yo
 #### Notes
 
 ### .`<attribute>`EndsWith
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
 
 
 # Misc Class Methods
+### Overview
+Here are some other class methods that don't fit in the other sections.
 
-Theses are some miscellaneous methods that you can use.
-
-| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
-| ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|.validate()||||
+| Method Name  |       Parameters     | Callback Parameters |
+| ------------ | -------------------  | ------------------- | 
+|.validate()|||
 |.join()||||
 |.count()||||
 |.contains()||||
 |.select()||||
-|._initialize()||||
+
+
+### .validate()
+#### Purpose
+This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
+
+#### Example Usage
+
+```javascript 
+
+Users.findOne(1).exec(function(err,mI){
+
+	// petName is defined as a 'string'.  Let's give it an array and see what happens.
+
+	mI.petName = [1,2];
+	
+	Users.validate(mI,function(err){
+		sails.log('Error:'+JSON.stringify(err));
+	});
+});
+
+// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
+
+```
+#### Notes
+
+### .join()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .count()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .contains()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
+
+### .select()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+
+```
+
+#### Notes
 
