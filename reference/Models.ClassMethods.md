@@ -28,12 +28,11 @@ Creates a new record.
 
 // create a new record with no attributes
 
-Users.create({},function(err,created){
-	console.log('Created user with id '+created.id);
-});
+Users.create({name:'Walter Jr'},function createCB(err,created){
+	console.log('Created user with name '+created.name);
+	});
 
-// Created user with id 13
-
+// Created user with name Walter Jr
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
 
@@ -46,10 +45,17 @@ Updates an existing record.
 #### Example Usage
 
 ```javascript 
+Users.update({name:'Walter Jr'},{name:'Flynn'},function updateCB(err,updated){
+	console.log('Updated user to have name '+updated[0].name);
+	});
+	
+// Updated user to have name Flynn
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
 #### Notes
+Although you may pass .update() an object or an array of objects, it will always return an array.
 
 ### .destroy()
 #### Purpose
@@ -58,23 +64,16 @@ Destroys a record that may or may not exist.
 #### Example Usage
 
 ```javascript 
+Users.destroy({name:'Flynn'},function deleteCB(err){
+	console.log('The record has been deleted');
+	});
+	
+// The record has been deleted
+// Don't forget to handle your errors
 
 ```
 
 #### Notes
-
-### .count()
-#### Purpose
-This method counts the number of model records
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
 
 ### .findOrCreate()
 #### Purpose
@@ -83,6 +82,13 @@ This checks for the existence of a record.  If it can't be found, it is created.
 #### Example Usage
 
 ```javascript 
+
+Users.findOrCreate({name:'Walter'},{name:'Jessie'},function createFindCB(err,record){
+	console.log('What\'s cookin\' '+record.name+'?');
+	});
+	
+// What's cookin' Jessie?
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
@@ -94,6 +100,12 @@ This finds and returns a single record that meets the criterea.
 #### Example Usage
 
 ```javascript 
+Users.findOne({name:'Jessie'},function findOneCB(err,found){
+	console.log('We found '+found.name);
+	});
+	
+//We found Jessie
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
@@ -101,11 +113,19 @@ This finds and returns a single record that meets the criterea.
 
 ### .find()
 #### Purpose
-Finds and returns all records that meet the criterea object that you pass it.
+Finds and returns all records that meet the criterea object(s) that you pass it.
 
 #### Example Usage
 
 ```javascript 
+Users.find({},function findCB(err,found){
+	while (found.length)
+		console.log('Found User with name '+found.pop().name)
+	});
+
+// Found User with name Flynn
+// Found User with name Jessie
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
 
