@@ -120,6 +120,7 @@ See the adapters section below for information on targeted blob store adapters.
   + Microsoft SkyDrive
   + Apple iCloud
   + Dropbox
+  + Google Drive
   + OpenStack Swift
   + Amazon EBS
   + Azure Storage
