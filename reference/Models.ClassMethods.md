@@ -7,7 +7,7 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
 | .create() | -```newRecords {} or [{}]```\n-```callback()``` | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]```\n-```updatedRecord {} or []```\n-```callback()```| ```function ( Error , [ updatedRecord ] )```
+| .update() | -```findCriterea {} or [{}]```-```updatedRecord {} or []``` -```callback()```| ```function ( Error , [ updatedRecord ] )```
 | .destroy() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error )```
 | .count() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error, integer )```
 | .findOrCreateEach() | Object, Array, callback  | ```function ( Error )```
@@ -35,7 +35,7 @@ Users.findOne(1).exec(function(err,mI){
 	mI.petName = [1,2];
 	
 	Users.validate(mI,function(err){
-		sails.log('Error:'+JSON.stringify(msg));
+		sails.log('Error:'+JSON.stringify(err));
 	});
 });
 
