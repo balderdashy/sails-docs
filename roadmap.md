@@ -52,7 +52,6 @@ See the adapters section below for information on targeted blob store adapters.
   + Support for most aggregations and the `GROUP BY` operator has existed since v0.9
   + Needs to be documented and more thoroughly tested.
   + Needs better usage errors.
-  + 
 
 + Error Messages
   + ~v0.10.0
@@ -118,8 +117,10 @@ See the adapters section below for information on targeted blob store adapters.
   + Local filesystem/network mount ([done](https://github.com/balderdashy/sails-local-fs)-- this will be the default when `file-parser` is used in Sails core)
   + Amazon S3 ([done](https://github.com/mikermcneil/sails-s3)-- uses knox)
   + Joyent Manta
-  + OpenStack Swift
+  + Microsoft SkyDrive
+  + Apple iCloud
   + Dropbox
+  + OpenStack Swift
   + Amazon EBS
   + Azure Storage
   + Box.net
