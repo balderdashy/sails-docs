@@ -1,7 +1,7 @@
 # CRUD Methods
 The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. More detailed infor can be found below.  All Methods are asyncronous.
-For every class method, the callback parameter is optional.  If one is not supplied, it will return a "deferred object".  For more information about "deferred objects", see http://omfgdogs.com
 
+For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
 ### Overview
 | Method Name  |       Parameters     | Callback Parameters 
