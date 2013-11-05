@@ -105,7 +105,7 @@ Users.findOne({name:'Jessie'},function findOneCB(err,found){
 	});
 	
 //We found Jessie
-// Don't forget to handle your errors and abide by the rules you defined in your model
+// Don't forget to handle your errors
 
 ```
 
@@ -125,7 +125,7 @@ Users.find({},function findCB(err,found){
 
 // Found User with name Flynn
 // Found User with name Jessie
-// Don't forget to handle your errors and abide by the rules you defined in your model
+// Don't forget to handle your errors
 
 ```
 
@@ -143,7 +143,7 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 	});
 	
 // User  Flynn starts with 'Fl'
-// Don't forget to handle your errors and abide by the rules you defined in your model
+// Don't forget to handle your errors
 
 ```
 
@@ -161,7 +161,7 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 	});
 	
 // User Jessie ends with 'ie'
-// Don't forget to handle your errors and abide by the rules you defined in your model
+// Don't forget to handle your errors
 
 ```
 
@@ -172,116 +172,73 @@ Although you may pass .startsWith an object or an array of objects, it will alwa
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
+Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
+
 ###
 
 | Method Name  |       Parameters     | Callback Parameters |
 | ------------ | -------------------  | ------------------- |
-|.findOneBy`<attribute>`()|||
-|.findBy`<attribute>`()|||
-|.countBy`<attribute>`()|||
-|.`<attribute>`StartsWith()|||
-|.`<attribute>`Contains()|||
-|.`<attribute>`EndsWith()|||
+|.findOneBy`<attribute>`()| modelParameter, |
+|.findBy`<attribute>`()||
+|.countBy`<attribute>`()||
+|.`<attribute>`StartsWith()||
+|.`<attribute>`Contains()||
+|.`<attribute>`EndsWith()||
+
+### .findBy`<attribute>`()
+#### Purpose
+Find and return records by a specific model attribute.
+#### Example Usage
+
+```javascript 
+Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
+	while (found.length)
+		console.log('Found User with name '+found.pop().name);
+	});
+	
+// Found User with name Walter
+// Found User with name Flynn
+// Don't forget to handle your errors
+
+```
+
+#### Notes
 
 
 ### .findOneBy`<attribute>`()
 #### Purpose
-
+Find and return one record by a specific model attribute.
 #### Example Usage
 
 ```javascript 
+Users.findOneByName('Walter').exec(function findCB(err,found){
+	console.log('Found User with name '+found.name);
+	});
+	
+// Found User with name Walter
+// Don't forget to handle your errors
 
 ```
 
 #### Notes
-
-### .findOneBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findOneBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .findBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
+This will always return a single object.
 
 ### .countBy`<attribute>`()
 #### Purpose
-
+Count the number of records in a model with a particular model attribute. 
 #### Example Usage
 
 ```javascript 
-
+Users.countByName('Walter').exec(function countCB(err,found){
+	console.log('There are '+found+' users called \'Walter\'');
+	});
+	
+// There are 1 users called 'Walter'
+// Don't forget to handle your errors
 ```
 
 #### Notes
 
-### .countBy`<attribute>`In()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .countBy`<attribute>`Like()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
 
 ### .`<attribute>`StartsWith()
 #### Purpose
@@ -289,21 +246,19 @@ These methods are automatically generated for each attribute in each model of yo
 #### Example Usage
 
 ```javascript 
+Users.nameStartsWith('W', function startsWithCB(err,found){
+	while (found.length)
+		console.log('User '+found.pop().name+' has name that starts with \'W\'');
+	});
+
+// User Walter has name that starts with 'W'
+// Don't forget to handle your errors
 
 ```
 
 #### Notes
-
-### .`<attribute>`Contains()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
+Warning! Your attribute in the method name must be lowerCase!
+Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
 ### .`<attribute>`EndsWith
 #### Purpose
@@ -315,6 +270,27 @@ These methods are automatically generated for each attribute in each model of yo
 ```
 
 #### Notes
+Warning! Your attribute in the method name must be lowerCase!
+
+### .`<attribute>`Contains()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.nameEndsWith('sie', function endsWithCB(err,found){
+	while (found.length)
+		console.log('User '+found.pop().name+' has name that ends with \'sie\'');
+	});
+	
+// User Jessie has name that ends with 'sie'
+// Don't forget to handle your errors
+
+```
+
+#### Notes
+Warning! Your attribute in the method name must be lowerCase!
+
 
 
 # Misc Class Methods
