@@ -9,11 +9,11 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
 | .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()```| ```function ( Error , updatedRecord )```
 | .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
-| .count() | -```findCriterea {} or [{}]```<br>-```callback()```  | ```function ( Error, integer )```
-| .findOrCreateEach() | Object, Array, callback  | ```function ( Error )```
-| .findOrCreate() | Object, Object, callback  | ```function ( Error )```
+| .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```
+| .findOrCreateEach() | -```findCriterea {} or [{}]```<br>-```recordToCreate []```<br>-```callback()``` | ```function ( Error , recordToCreate)```
+| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordToCreate {} or []```<br>-```callback()``` | ```function ( Error , recordToCreate)```
 | .findOne() | -```newRecords {} or [{}]``` -```callback()```  | ```function ( Error )```
-| .find() | Object, Object, callback  | ```function ( Error )```
+| .find() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()``` | ```function ( Error )```
 | .startsWith() | -```newRecords {} or [{}]```<br>-```callback()```  | ```function ( Error )```
 | .endsWith() | -```newRecords {} or [{}]```<br>-```callback()```  | ```function ( Error )```
 | .stream() | Object | stream ||
