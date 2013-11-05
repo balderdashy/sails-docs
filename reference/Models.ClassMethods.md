@@ -36,7 +36,6 @@ Users.create({name:'Walter Jr'},function createCB(err,created){
 // Created user with name Walter Jr
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
-
 #### Notes
 
 ### .update()
@@ -54,7 +53,6 @@ Users.update({name:'Walter Jr'},{name:'Flynn'},function updateCB(err,updated){
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
-
 #### Notes
 Although you may pass .update() an object or an array of objects, it will always return an array.
 
@@ -73,7 +71,6 @@ Users.destroy({name:'Flynn'},function deleteCB(err){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 
 ### .findOrCreate()
@@ -92,7 +89,6 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'},function createFindCB(err,rec
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
-
 #### Notes
 
 ### .findOne()
@@ -109,7 +105,6 @@ Users.findOne({name:'Jessie'},function findOneCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 
 ### .find()
@@ -129,7 +124,6 @@ Users.find({},function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 
 
@@ -147,7 +141,6 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 Although you may pass .startsWith an object or an array of objects, it will always return an array.
 
@@ -165,7 +158,6 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 Although you may pass .endsWith an object or an array of objects, it will always return an array.
 
@@ -192,8 +184,7 @@ Users.findOne(1).exec(function(err,mI){
 
 // Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
 
-```
-#### Notes
+```#### Notes
 
 ### .count()
 #### Purpose
@@ -209,7 +200,6 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 
 ### .stream()
@@ -250,7 +240,6 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 	    }).pipe(res);
 
 ```
-
 #### Notes
 This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
 
@@ -289,7 +278,6 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 
 
@@ -307,7 +295,6 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 This will always return a single object.
 
@@ -324,7 +311,6 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // There are 1 users called 'Walter'
 // Don't forget to handle your errors
 ```
-
 #### Notes
 
 
@@ -343,7 +329,6 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
 Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
@@ -356,7 +341,6 @@ Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 ```javascript 
 
 ```
-
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
 
@@ -375,7 +359,6 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 // Don't forget to handle your errors
 
 ```
-
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
 
