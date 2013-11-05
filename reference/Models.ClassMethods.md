@@ -4,18 +4,18 @@ For every class method, the callback parameter is optional.  If one is not suppl
 
 
 ### Overview
-| Method Name  |       Parameters     |                    Returned             | Callback Parameters 
-| ------------ | -------------------  | ----------------------------------------| --------------------
-| .create() | -```newRecords {} or [{}]``` -```callback()```| "deferred object" or callback | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]``` -```updatedRecord {} or []``` -```callback()```| deferred object or callback | ```function ( Error , [ updatedRecord ] )```
-| .destroy() | -```findCriterea {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
-| .count() | -```findCriterea {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error, integer )```
-| .findOrCreateEach() | Object, Array, callback | "deferred object" or callback | ```function ( Error )```
-| .findOrCreate() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
-| .findOne() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
-| .find() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
-| .startsWith() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
-| .endsWith() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
+| Method Name  |       Parameters     | Callback Parameters 
+| ------------ | -------------------  | --------------------
+| .create() | -```newRecords {} or [{}]``` -```callback()``` | ```function ( Error , newRecords)```
+| .update() | -```findCriterea {} or [{}]``` -```updatedRecord {} or []``` -```callback()```| ```function ( Error , [ updatedRecord ] )```
+| .destroy() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error )```
+| .count() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error, integer )```
+| .findOrCreateEach() | Object, Array, callback  | ```function ( Error )```
+| .findOrCreate() | Object, Object, callback  | ```function ( Error )```
+| .findOne() | -```newRecords {} or [{}]``` -```callback()```  | ```function ( Error )```
+| .find() | Object, Object, callback  | ```function ( Error )```
+| .startsWith() | -```newRecords {} or [{}]``` -```callback()```  | ```function ( Error )```
+| .endsWith() | -```newRecords {} or [{}]``` -```callback()```  | ```function ( Error )```
 | .stream() | Object | stream ||
 
 
