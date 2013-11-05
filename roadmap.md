@@ -132,6 +132,7 @@ See the adapters section below for information on targeted blob store adapters.
   + IRC (exists, needs testers)
   + Heroku (exists, needs testers)
   + Git (exists, needs testers)
+  + Segment.io (exists, needs testers)
   + Facebook
 
 
