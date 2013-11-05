@@ -6,8 +6,8 @@ For every class method, the callback parameter is optional.  If one is not suppl
 ### Overview
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
-| .create() | -```newRecords {} or [{}]```\n-```callback()``` | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]```-```updatedRecord {} or []``` -```callback()```| ```function ( Error , [ updatedRecord ] )```
+| .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
+| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or []```<br>-```callback()```| ```function ( Error , updatedRecord )```
 | .destroy() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error )```
 | .count() | -```findCriterea {} or [{}]``` -```callback()```  | ```function ( Error, integer )```
 | .findOrCreateEach() | Object, Array, callback  | ```function ( Error )```
