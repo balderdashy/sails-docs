@@ -322,5 +322,6 @@ Theses are some miscellaneous methods that you can use.
 |.join()||||
 |.count()||||
 |.contains()||||
+|.select()||||
 |._initialize()||||
 
