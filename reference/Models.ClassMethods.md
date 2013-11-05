@@ -1,20 +1,19 @@
 # CRUD Methods
-The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. More detailed info can be found below. All methods are asyncronous.
+The methods below are the basic crud methods offered by the ORM. Here is a very quick reference for each method. More detailed infor can be found below.  All Methods are asyncronous.
 
 ### Overview
 | Method Name  |       Parameters     |                    Returned             | Callback Parameters 
 | ------------ | -------------------  | ----------------------------------------| --------------------
-| .create() | Object or Array, callback | "deferred object" or callback | ```function ( Error )```
-| .update() | -```findCriterea {} or []``` -```updatedRecord {} or []``` -```callback()```| deferred object or callback | ```function ( Error , [ updatedRecord ] )```
-| .destroy() | Object, callback | "deferred object" or callback | ```function ( Error )```
-| .count() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
-| .createEach() | Array, callback | "deferred object" or callback | ```function ( Error )```
+| .create() | -```newRecords {} or [{}]``` -```callback()```| "deferred object" or callback | ```function ( Error , newRecords)```
+| .update() | -```findCriterea {} or [{}]``` -```updatedRecord {} or []``` -```callback()```| deferred object or callback | ```function ( Error , [ updatedRecord ] )```
+| .destroy() | -```findCriterea {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
+| .count() | -```findCriterea {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error, integer )```
 | .findOrCreateEach() | Object, Array, callback | "deferred object" or callback | ```function ( Error )```
 | .findOrCreate() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
-| .findOne() | Object, callback | "deferred object" or callback | ```function ( Error )```
+| .findOne() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
 | .find() | Object, Object, callback | "deferred object" or callback | ```function ( Error )```
-| .startsWith() | Object, callback | "deferred object" or callback | ```function ( Error )```
-| .endsWith() | Object, callback | "deferred object" or callback | ```function ( Error )```
+| .startsWith() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
+| .endsWith() | -```newRecords {} or [{}]``` -```callback()``` | "deferred object" or callback | ```function ( Error )```
 | .stream() | Object | stream ||
 
 
@@ -82,19 +81,6 @@ Destroys a record that may or may not exist.
 ### .count()
 #### Purpose
 This method counts the number of model records
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .createEach()
-#### Purpose
-
-Creates a record for each object passed to it in an array.
 
 #### Example Usage
 
