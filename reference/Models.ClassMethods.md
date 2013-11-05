@@ -26,6 +26,15 @@ Creates a new record.
 
 ```javascript 
 
+// create a new record with no attributes
+
+Users.create({},function(err,created){
+	console.log('Created user with id '+created.id);
+});
+
+// Created user with id 13
+
+// Don't forget to handle your errors and abide by the rules you defined in your model
 ```
 
 #### Notes
