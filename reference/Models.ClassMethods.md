@@ -311,3 +311,16 @@ These methods are automatically generated for each attribute in each model of yo
 
 ### .`<attribute>`EndsWith
 
+
+# Misc Class Methods
+
+Theses are some miscellaneous methods that you can use.
+
+| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
+| ------------ | -------------------  | ---------------------------------------- | --------------------- |
+|.validate()||||
+|.join()||||
+|.count()||||
+|.contains()||||
+|._initialize()||||
+
