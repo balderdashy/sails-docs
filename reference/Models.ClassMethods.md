@@ -9,12 +9,13 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
 | .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or [{}]```<br>-```callback()```| ```function ( Error , updatedRecords )```
 | .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
-| .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```
 | .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or [{}]```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
 | .findOne() | -```findCriterea {}```<br>-```callback()```  | ```function ( Error , foundRecord)```
 | .find() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
 | .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
 | .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
+|.validate()|-```findCriterea {} or [{}]```<br>-```callback()```| `Error`|
+| .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```|
 | .stream() | ```findCriterea {}``` | No callback! A node stream object is returned |
 
 
@@ -166,7 +167,94 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 ```
 
 #### Notes
-Although you may pass .startsWith an object or an array of objects, it will always return an array.
+Although you may pass .endsWith an object or an array of objects, it will always return an array.
+
+
+
+### .validate()
+#### Purpose
+This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
+
+#### Example Usage
+
+```javascript 
+
+Users.findOne(1).exec(function(err,mI){
+
+	// petName is defined as a 'string'.  Let's give it an array and see what happens.
+
+	mI.petName = [1,2];
+	
+	Users.validate(mI,function(err){
+		sails.log('Error:'+JSON.stringify(err));
+	});
+});
+
+// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
+
+```
+#### Notes
+
+### .count()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.count({name:'Flynn'}).exec(function countCB(err,found){
+	console.log('There are '+found+' users called \'Flynn\'');
+	});
+	
+// There are 1 users called 'Flynn'
+// Don't forget to handle your errors
+
+```
+
+#### Notes
+
+### .stream()
+#### Purpose
+This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
+#### Example Usage (controller code)
+
+```javascript 
+
+
+	    SearchResult.stream({
+	            limit: maxPerPage,
+	            skip: offset
+	    }, {
+	            write: function(model, index, cb) {
+	 
+	                    // Output prefix
+	                    if (index === 0) {
+	                            return cb(null, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+	                    } else {
+	 
+	                            // Convert & characters to escaped HTML entities &amp;
+	                            // (see http://stackoverflow.com/questions/3431280/validation-problem-entityref-expecting-what-should-i-do)
+	                            var url = model.url || '';
+	                            url = url.replace(/\&/g,'&amp;');
+	 
+	                            return cb(null, '<url>' +
+	                                    '<loc>'+url+'</loc>' +
+	                                    '<priority>'+model.priority+'</priority>' +
+	                                    '<changefreq>daily</changefreq>' +
+	                                    '</url>');
+	                    }
+	            },
+	            end: function(cb) {
+	                    // Output suffix
+	                    cb(null, '</urlset>');
+	            }
+	    }).pipe(res);
+
+```
+
+#### Notes
+This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
+
+
 
 
 # Dynamic Finders
@@ -174,7 +262,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
 
-###
+### Overview
 
 | Method Name  |       Parameters     | Callback Parameters |
 | ------------ | -------------------  | ------------------- |
@@ -291,128 +379,3 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
 
-
-
-# Misc Class Methods
-### Overview
-Here are some other class methods that don't fit in the other sections.
-
-| Method Name  |       Parameters     | Callback Parameters |
-| ------------ | -------------------  | ------------------- | 
-|.validate()|||
-|.join()||||
-|.count()||||
-|.contains()||||
-|.select()||||
-
-
-### .validate()
-#### Purpose
-This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
-
-#### Example Usage
-
-```javascript 
-
-Users.findOne(1).exec(function(err,mI){
-
-	// petName is defined as a 'string'.  Let's give it an array and see what happens.
-
-	mI.petName = [1,2];
-	
-	Users.validate(mI,function(err){
-		sails.log('Error:'+JSON.stringify(err));
-	});
-});
-
-// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
-
-```
-#### Notes
-
-### .join()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .count()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .contains()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-### .select()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-
-```
-
-#### Notes
-
-
-### .stream()
-#### Purpose
-This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
-#### Example Usage (controller code)
-
-```javascript 
-
-
-	    SearchResult.stream({
-	            limit: maxPerPage,
-	            skip: offset
-	    }, {
-	            write: function(model, index, cb) {
-	 
-	                    // Output prefix
-	                    if (index === 0) {
-	                            return cb(null, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
-	                    } else {
-	 
-	                            // Convert & characters to escaped HTML entities &amp;
-	                            // (see http://stackoverflow.com/questions/3431280/validation-problem-entityref-expecting-what-should-i-do)
-	                            var url = model.url || '';
-	                            url = url.replace(/\&/g,'&amp;');
-	 
-	                            return cb(null, '<url>' +
-	                                    '<loc>'+url+'</loc>' +
-	                                    '<priority>'+model.priority+'</priority>' +
-	                                    '<changefreq>daily</changefreq>' +
-	                                    '</url>');
-	                    }
-	            },
-	            end: function(cb) {
-	                    // Output suffix
-	                    cb(null, '</urlset>');
-	            }
-	    }).pipe(res);
-
-```
-
-#### Notes
-This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
