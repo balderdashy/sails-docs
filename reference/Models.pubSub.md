@@ -1,11 +1,14 @@
 Pub-Sub Methods
 ================
 
+
+
 # .publishCreate()
 ### Purpose
 
 ### Example Usage
 ```
+
 
 ```
 
@@ -18,6 +21,7 @@ Pub-Sub Methods
 ### Example Usage
 ```
 
+
 ```
 
 ### Notes
@@ -27,6 +31,7 @@ Pub-Sub Methods
 
 ### Example Usage
 ```
+
 
 ```
 
@@ -39,10 +44,10 @@ Pub-Sub Methods
 ### Example Usage
 ```
 
+
 ```
 
 ### Notes
-
 
 
 # .subscribe(req,id)
@@ -51,6 +56,7 @@ Pub-Sub Methods
 
 ### Example Usage
 ```
+
 
 ```
 
