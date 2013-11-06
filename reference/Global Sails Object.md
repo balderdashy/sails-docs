@@ -13,21 +13,19 @@ The global sails object is blah blah ablh
 - io.sockets.clients('roomname')
 
 
-### Setup
 
-### Usage
+# Sails.log
+Here are all of the logging methods available on the global sails object.  
 
+- sails.log() = sails.log.debug
 
+- sails.log.verbose
 
-Logs
+- sails.log.info
 
-default log level is info
+- sails.log.warn
 
-sails.log() = sails.log.debug
-.log.verbose
-.log.info
-.log.warn
-.log.error
+- sails.log.error
 
 
 (takes i
