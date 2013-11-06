@@ -1,6 +1,6 @@
 The Sails Object
 ================
-The global sails object is blah blah ablh
+
 
 # sails.io
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
@@ -10,7 +10,7 @@ This is the raw reference to socket.io .  Use it when you want low level access 
 - io.sockets.clients('roomname')
 
 
-# Sails.log
+# sails.log
 ### Purpose
 These methods provide different levels of logging functionality in sails.
 
@@ -45,6 +45,7 @@ These is where you can find the custom websockets functionality sails provides t
 # sails.config()
 
 # sails.model.user()
+
 This is the same as User.<modelName>()
 If you disable globals, use sails.model.user for User[model]
 (lowercases the model name)
