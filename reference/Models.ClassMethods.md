@@ -390,25 +390,3 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 Warning! Your attribute in the method name must be lowerCase!
 Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
-
-
-### .`<attribute>`Contains()
-#### Purpose
-
-#### Example Usage
-
-```javascript 
-Users.nameEndsWith('sie', function endsWithCB(err,found){
-	while (found.length)
-		console.log('User '+found.pop().name+' has name that ends with \'sie\'');
-	});
-	
-// User Jessie has name that ends with 'sie'
-
-
-```
-#### Notes
-Warning! Your attribute in the method name must be lowerCase!
-
-
-
