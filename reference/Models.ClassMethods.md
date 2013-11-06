@@ -7,13 +7,13 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
 | .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or [{}]```<br>-```callback()```| ```function ( Error , updatedRecords )```
+| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or [{}]```<br>-```callback()```| ```function ( Error , [updatedRecords] )```
 | .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
 | .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or [{}]```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
 | .findOne() | -```findCriterea {}```<br>-```callback()```  | ```function ( Error , foundRecord)```
 | .find() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
-| .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
-| .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
+| .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```
+| .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```
 |.validate()|-```findCriterea {} or [{}]```<br>-```callback()```| `Error`|
 | .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```|
 | .stream() | ```findCriterea {}``` | No callback! A node stream object is returned |
@@ -29,7 +29,7 @@ Creates a new record.
 
 // create a new record with no attributes
 
-Users.create({name:'Walter Jr'},function createCB(err,created){
+Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 	console.log('Created user with name '+created.name);
 	});
 
@@ -48,7 +48,7 @@ Updates an existing record.
 #### Example Usage
 
 ```javascript 
-Users.update({name:'Walter Jr'},{name:'Flynn'},function updateCB(err,updated){
+Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
 	console.log('Updated user to have name '+updated[0].name);
 	});
 	
@@ -70,7 +70,7 @@ Destroys a record that may or may not exist.
 #### Example Usage
 
 ```javascript 
-Users.destroy({name:'Flynn'},function deleteCB(err){
+Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 	console.log('The record has been deleted');
 	});
 	
@@ -91,7 +91,7 @@ This checks for the existence of the record in the first parameter.  If it can't
 
 ```javascript 
 
-Users.findOrCreate({name:'Walter'},{name:'Jessie'},function createFindCB(err,record){
+Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
 	console.log('What\'s cookin\' '+record.name+'?');
 	});
 	
@@ -110,7 +110,7 @@ This finds and returns a single record that meets the criterea.
 #### Example Usage
 
 ```javascript 
-Users.findOne({name:'Jessie'},function findOneCB(err,found){
+Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 	console.log('We found '+found.name);
 	});
 	
@@ -130,7 +130,7 @@ Finds and returns all records that meet the criterea object(s) that you pass it.
 #### Example Usage
 
 ```javascript 
-Users.find({},function findCB(err,found){
+Users.find({}).exec(function findCB(err,found){
 	while (found.length)
 		console.log('Found User with name '+found.pop().name)
 	});
@@ -161,6 +161,7 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 #### Notes
 Although you may pass .startsWith an object or an array of objects, it will always return an array.
 
+Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
 ### .endsWith()
@@ -179,6 +180,7 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 ```
 #### Notes
 Although you may pass .endsWith an object or an array of objects, it will always return an array.
+Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
 
@@ -203,7 +205,9 @@ Users.findOne(1).exec(function(err,mI){
 
 // Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
 
-```#### Notes
+```
+
+#### Notes
 
 
 
@@ -280,13 +284,11 @@ Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TY
 
 | Method Name  |       Parameters     | Callback Parameters |
 | ------------ | -------------------  | ------------------- |
-|.findOneBy`<attribute>`()| modelParameter, |
-|.findBy`<attribute>`()||
-|.countBy`<attribute>`()||
-|.`<attribute>`StartsWith()||
-|.`<attribute>`Contains()||
-|.`<attribute>`EndsWith()||
-
+|.findBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```|
+|.findOneBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecord)```|
+|.countBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , integer )```|
+|.`<attribute>`StartsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
+|.`<attribute>`EndsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
 
 
 ### .findBy`<attribute>`()
@@ -343,10 +345,10 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // Don't forget to handle your errors
 ```
 #### Notes
+The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
 
-
-
-
+SUM [ matchedObjects * RecordsMatchedByObject ]
+// how the hell do I say this?
 
 ### .`<attribute>`StartsWith()
 #### Purpose
@@ -376,11 +378,17 @@ Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 #### Example Usage
 
 ```javascript 
+Users.nameEndsWith('sie', function endsWithCB(err,found){
+	console.log('User '+found[0].name+' has name that ends with \'sie\'');
+	});
+	
+// User Jessie has name that ends with 'sie'
+// Don't forget to handle your errors
 
 ```
 #### Notes
 Warning! Your attribute in the method name must be lowerCase!
-
+Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
 
 
@@ -396,7 +404,7 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 	});
 	
 // User Jessie has name that ends with 'sie'
-// Don't forget to handle your errors
+
 
 ```
 #### Notes
