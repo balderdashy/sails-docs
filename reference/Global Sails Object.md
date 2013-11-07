@@ -73,7 +73,7 @@ These is where you can find the custom websockets functionality sails provides t
 # sails.model.user()
 
 ### Purpose
-This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User[model] . 
+This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User.<modelName> . 
 
 ### Example Usage
 
