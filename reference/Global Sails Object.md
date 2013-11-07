@@ -51,25 +51,6 @@ if (sails.config.environment && !sails.config.csrf)
 ### Notes
 
 
-
-<code><help>
-
-
-# sails.io.sockets()
-This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
-
-- io.sockets.in('roomname').emit('msg')
-- io.sockets.emit('roomname')
-- io.sockets.clients('roomname')
-
-# sails.io()
-These is where you can find the custom websockets functionality sails provides through socket.io
-
-</help></code>
-
-
-
-
 # sails.model.user()
 
 ### Purpose
@@ -85,3 +66,20 @@ This is the same as User.<modelName>().  If you disable globals, you can use sai
 ### Notes
 
 Keep in mind that this method will convert your entire model name to lowercase.
+
+
+
+/// Help below
+
+
+# sails.io.sockets()
+This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
+
+- io.sockets.in('roomname').emit('msg')
+- io.sockets.emit('roomname')
+- io.sockets.clients('roomname')
+
+# sails.io()
+These is where you can find the custom websockets functionality sails provides through socket.io
+
+
