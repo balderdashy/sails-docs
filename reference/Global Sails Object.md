@@ -1,15 +1,6 @@
 The Sails Object
 ================
 
-
-# sails.io.sockets()
-This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
-
-- io.sockets.in('roomname').emit('msg')
-- io.sockets.emit('roomname')
-- io.sockets.clients('roomname')
-
-
 # sails.log
 ### Purpose
 These methods provide different levels of logging functionality in sails.
@@ -34,17 +25,63 @@ These will accept an infinite number of arguments of any data type, seperated by
 
 # sails.config()
 ### Purpose
+The config object allows you to see your apps configuration settings. 
 
-This object has all live configuration
-    allows you to perform different actions based on config like production mode 
+- sails.config.log.level
+- sails.config.port
+- sails.config.environment
+- sails.config.host
+- sails.config.adapters.default
+- sails.config.controllers.blueprints.actions
+- sails.config.controllers.blueprints.shortcuts
+- sails.config.controllers.blueprints.rest
+- sails.config.views.engine.ext
+- sails.config.csrf
 
+### Example Usage
+```javascript
+
+// Make sure csrf is enabled if we are in production mode.  Throw an error otherwise.
+
+if (sails.config.environment && !sails.config.csrf)
+    throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in production mode!');
+
+```
+
+### Notes
+
+
+
+<code><help>
+
+
+# sails.io.sockets()
+This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
+
+- io.sockets.in('roomname').emit('msg')
+- io.sockets.emit('roomname')
+- io.sockets.clients('roomname')
 
 # sails.io()
 These is where you can find the custom websockets functionality sails provides through socket.io
 
+</help></code>
+
+
+
+
 # sails.model.user()
 
-This is the same as User.<modelName>()
-If you disable globals, use sails.model.user for User[model]
-(lowercases the model name)
+### Purpose
+This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User[model] . 
 
+### Example Usage
+
+```javascript
+
+// lolwut
+
+```
+### Notes
+
+Keep in mind that this method will convert your entire model name to lowercase.
