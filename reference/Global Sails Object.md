@@ -2,7 +2,7 @@ The Sails Object
 ================
 
 
-# sails.io
+# sails.io.sockets()
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
 
 - io.sockets.in('roomname').emit('msg')
