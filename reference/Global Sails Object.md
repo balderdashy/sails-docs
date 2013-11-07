@@ -42,8 +42,6 @@ This object has all live configuration
 # sails.io()
 These is where you can find the custom websockets functionality sails provides through socket.io
 
-# sails.config()
-
 # sails.model.user()
 
 This is the same as User.<modelName>()
