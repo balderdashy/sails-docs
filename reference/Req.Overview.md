@@ -4,7 +4,7 @@ Below is a chart describing Sails.js support of the .req() methods.
 
 |Name| Author  | HTTP ?  | socket.io |
 |----|-------------|---------|---------|
-| req.params | Express | :) |   |
+| req.params | Express | :-) |   |
 | req.query | Express | :) |   |
 | req.body | Express | :) |   |
 | req.files | Express | :) |   |
@@ -25,11 +25,15 @@ Below is a chart describing Sails.js support of the .req() methods.
 | req.xhr | Express | :) |   |
 | req.protocol | Express | :) |   |
 | req.secure | Express | :) |   |
+| req.session | Express | :) |   |
 | req.subdomains | Express | :) |   |
 | req.originalUrl | Express | :) |   |
 | req.acceptedLanguages | Express | :) |   |
 | req.acceptedCharsets | Express | :) |   |
 | req.acceptsCharset() | Express | :) |   |
-| req.acceptsLangua | Express | :) |   |
+| req.acceptsLanguage() | Express | :) |   |
 |||||
 | req.socket | Sails | :( | :) |
+| req.params.all() | Sails | :) | :( |
+| req.wantsJSON | Sails | :) | :) |
+
