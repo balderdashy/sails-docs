@@ -4,8 +4,25 @@ Below is a chart describing Sails.js support of the .res() methods.
 
 |Name| Author  | HTTP ?  | socket.io |
 |----|-------------|---------|---------|
-| res.params | Express | :-) | :-) |
-
+| res.status() | Express | :-) | :-) |
+| res.set() | Express | :-) | :-( |
+| res.get() | Express | :-) | :-( |
+| res.cookie() | Express | :-) | :-( |
+| res.clearCookie() | Express | :-) | :-( |
+| res.redirect() | Express | :-) | :-) |
+| res.location() | Express | :-) | :-( |
+| res.charset | Express | :-) | :-) |
+| res.send() | Express | :-) | :-) |
+| res.json() | Express | :-) | :-) |
+| res.jsonp() | Express | :-) | :-) |
+| res.type() | Express | :-) | :-( |
+| res.format() | Express | :-) | :-( |
+| res.attachment() | Express | :-) | :-( |
+| res.sendfile() | Express | :-) | :-( |
+| res.download() | Express | :-) | :-( |
+| res.links() | Express | :-) | :-( |
+| res.locals | Express | :-) | :-) |
+| res.render() | Express | :-) | :-( |
 |||||
 |||||
-| res.isSocket | Sails | :-) | :-) |
+| res.view | Sails | :-) | :-( |
