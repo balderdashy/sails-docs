@@ -34,13 +34,13 @@ Below is a chart describing Sails.js support of the .req() methods.
 | req.acceptsLanguage() | Express | :-) | :-( |
 |||||
 |||||
+| req.isSocket | Sails | :-) | :-) |
+| req.method | Sails | :-) | :-) |
 | req.params.all() | Sails | :-) | :-) |
 | req.socket.id | Sails | :-( | :-) |
 | req.socket.join | Sails | :-( | :-) |
 | req.socket.leave | Sails | :-( | :-) |
 | req.socket.broadcast  | Sails | :-( | :-) |
+| req.transport  | Sails | :-( | :-) |
+| req.url | Sails | :-) | :-) |
 | req.wantsJSON | Sails | :-) | :-) |
-
-
- :-) |
-
