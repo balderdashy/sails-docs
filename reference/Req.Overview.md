@@ -1,7 +1,8 @@
-# .req() via Sails 
+# Sails Support of .req()
+Below is a chart describing Sails.js support of the .req() methods.
 ### Overview
 
-|Name| Author  | HTTP ?  | Socket.io |
+|Name| Author  | HTTP ?  | socket.io |
 |----|-------------|---------|---------|
 | req.params | Express | :) |   |
 | req.query | Express | :) |   |
@@ -30,3 +31,5 @@
 | req.acceptedCharsets | Express | :) |   |
 | req.acceptsCharset() | Express | :) |   |
 | req.acceptsLangua | Express | :) |   |
+|||||
+| req.socket | Sails | :( | :) |
