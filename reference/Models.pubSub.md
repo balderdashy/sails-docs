@@ -62,3 +62,16 @@ Subscribe a socket to a handful of models in this collection
 
 ### Notes
 This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
+
+# .unsubscribe(req)
+### Purpose
+Subscribe a socket to a handful of models in this collection
+### Example Usage
+```
+
+
+```
+
+### Notes
+
+
