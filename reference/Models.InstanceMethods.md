@@ -21,9 +21,9 @@ The `save` method updates the database with the parent instance's current values
 
 ```javascript
 
-Users.find().limit(1).done(
+Users.find().limit(1).exec(
 	function(err,mI){
-		mI[0]['petName'] = 'BooBoo';
+		mI[0].petName = 'BooBoo';
 		mI[0].save(
 			function(err,s){
 				console.log('User with ID '+s.id+' now has name '+s.petName);
