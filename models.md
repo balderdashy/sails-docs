@@ -572,9 +572,10 @@ User.find({
 // Search-as-you-type input field which checks multiple attributes
 User.find({
   or: [
-    name: { startsWith: 'thelas' },
-    email: { startsWith: 'thelas' }
-  ]
+        { name: { startsWith: 'thelas' }},
+        { email: { startsWith: 'thelas' }}
+      ]
+      
 }, cb);
 
 // Keyword search
