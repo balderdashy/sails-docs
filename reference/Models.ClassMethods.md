@@ -1,163 +1,372 @@
-### Instance Methods
-### Overview
+# CRUD Methods
 
-| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
-| ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|  .save       | callback ```function```  |  callback ```function ({ err } , { savedValue } )```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function ( { err } )``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function ( { err } )``` |       Yes      |
-|  .toObject   |      none            |  clone of instance ```object```                   |        No         |
-|  .toJSON     |      none            |  clone of instance ```object```                 |        No         |
-
-
-### save
-
-The `save` method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
-
-> Warning!
-> Your data will not be validated before it is saved.  Call `.validate()` before you `.save()` !
+### .create()
+#### Purpose
+Creates a new record.
 
 #### Example Usage
 
-```javascript
+```javascript 
 
-Users.find().limit(1).exec(
-	function(err,mI){
-		mI[0].petName = 'BooBoo';
-		mI[0].save(
-			function(err,s){
-				console.log('User with ID '+s.id+' now has name '+s.petName);
-			});
+// create a new record with no attributes
+
+Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
+	console.log('Created user with name '+created.name);
 	});
 
-// User with ID 1 now has name BooBoo
-
-// Don't forget to handle your errors.
-// Don't forget to abide by the rules you set in your model
-
+// Created user with name Walter Jr
+// Don't forget to handle your errors and abide by the rules you defined in your model
 ```
+#### Notes
 
-### destroy
 
-This method destroys the parent model instance then runs a callback.
+
+
+### .update()
+#### Purpose
+Updates an existing record.
 
 #### Example Usage
 
-```javascript
-
-Users.find().limit(1).exec(
-	function(err,mI){
-		mI[0].destroy(
-			function(err){
-				console.log('User with ID '+mI[0].id+' was destroyed');
-			});
-	});
-
-// User with ID 1 was destroyed
-
-// Don't forget to handle your errors.
-
-
-```
-
-### validate
-
-The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
-There will be no parameters in the callback unless there is an error.  No news is good news.
-
-#### Example Usage
-
-```javascript
-
-Users.find().limit(1).exec(
-	function(err,mI){
-		mI[0].petName = ['pookie','BooBoo'];
-		mI[0].validate(
-			function(err){
-				if (err)
-					console.log(JSON.stringify(err));
-			});
+```javascript 
+Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
+	console.log('Updated user to have name '+updated[0].name);
 	});
 	
-// {"ValidationError":{"petName":[{"data":["pookie","BooBoo"],"message":"Validation error: \"pookie,BooBoo\" is not of type \"string\"","rule":"string"}]}}
+// Updated user to have name Flynn
+// Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
+#### Notes
+Although you may pass .update() an object or an array of objects, it will always return an array.
 
-For model
 
-```javascript
-module.exports = {
 
-  attributes: {
-  	petName: 'string'
 
-  }
 
-};
-```
-
-### toObject and toJSON
-
-By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
-
-The toObject method also returns a cloned object however, it is stripped of all instance methods.  You will probably only want to use .toObject when overriding the default .toJSON instance method. The example below should demonstrate it's most common use as well as the difference between the two.
+### .destroy()
+#### Purpose
+Destroys a record that may or may not exist.
 
 #### Example Usage
 
-```javascript
-
-Users.find().limit(1).exec(
-	function(err,mI){
-		var datUser = mI[0].toObject();
-		console.log(datUser);
+```javascript 
+Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
+	console.log('The record has been deleted');
 	});
-
-/* { id: 2,
-  createdAt: '2013-10-31T22:42:25.459Z',
-  updatedAt: '2013-11-01T20:12:55.534Z',
-  petName: 'BooBoo',
-  phoneNumber: '101-150-1337' } */
-
-Users.find().limit(1).exec(
-	function(err,mI){
-		var datUser = mI[0].toJSON();
-		console.log(datUser);
-	});
-
-/* { id: 2,
-  createdAt: '2013-10-31T22:42:25.459Z',
-  updatedAt: '2013-11-01T20:12:55.534Z',
-  petName: 'BooBoo' } */
-
-
-
+	
+// The record has been deleted
 // Don't forget to handle your errors
 
 ```
+#### Notes
 
-For model
 
-```javascript
 
-module.exports = {
-  attributes: {
-    petName: 'string',
-    phoneNumber: 'string',
 
-    // Override the default toJSON method
+### .findOrCreate()
+#### Purpose
+This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.phoneNumber;
-      return obj;
-    }
-  }
-}
+#### Example Usage
+
+```javascript 
+
+Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
+	console.log('What\'s cookin\' '+record.name+'?');
+	});
+	
+// What's cookin' Jessie?
+// Don't forget to handle your errors and abide by the rules you defined in your model
+
+```
+#### Notes
+
+
+
+
+### .findOne()
+#### Purpose
+This finds and returns a single record that meets the criterea.
+#### Example Usage
+
+```javascript 
+Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
+	console.log('We found '+found.name);
+	});
+	
+//We found Jessie
+// Don't forget to handle your errors
+
+```
+#### Notes
+
+
+
+
+### .find()
+#### Purpose
+Finds and returns all records that meet the criterea object(s) that you pass it.
+
+#### Example Usage
+
+```javascript 
+Users.find({}).exec(function findCB(err,found){
+	while (found.length)
+		console.log('Found User with name '+found.pop().name)
+	});
+
+// Found User with name Flynn
+// Found User with name Jessie
+// Don't forget to handle your errors
+
+```
+#### Notes
+
+
+
+### .startsWith()
+#### Purpose
+This is shorthand for a .find() query that uses the startsWith query modifier.
+#### Example Usage
+
+```javascript 
+Users.startsWith({name:'Fl'},function swCB(err,found){
+	console.log('User  '+found[0].name+' starts with \'Fl\'');
+	});
+	
+// User  Flynn starts with 'Fl'
+// Don't forget to handle your errors
+
+```
+#### Notes
+Although you may pass .startsWith an object or an array of objects, it will always return an array.
+
+Warning! This method does not support .exec() !  You MUST supply a callback.  
+
+
+### .endsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.endsWith({name:'ie'},function ewCB(err,found){
+	console.log('User '+found[0].name+' ends with \'ie\'');
+	});
+	
+// User Jessie ends with 'ie'
+// Don't forget to handle your errors
+
+```
+#### Notes
+Although you may pass .endsWith an object or an array of objects, it will always return an array.
+Warning! This method does not support .exec() !  You MUST supply a callback.  
+
+
+
+### .validate()
+#### Purpose
+This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
+
+#### Example Usage
+
+```javascript 
+
+Users.findOne(1).exec(function(err,mI){
+
+	// petName is defined as a 'string'.  Let's give it an array and see what happens.
+
+	mI.petName = [1,2];
+	
+	Users.validate(mI,function(err){
+		sails.log('Error:'+JSON.stringify(err));
+	});
+});
+
+// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
 
 ```
 
+#### Notes
 
-### Custom Instance Methods
 
-If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the guide on models at http://omfgdogs.com
+
+
+### .count()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.count({name:'Flynn'}).exec(function countCB(err,found){
+	console.log('There are '+found+' users called \'Flynn\'');
+	});
+	
+// There are 1 users called 'Flynn'
+// Don't forget to handle your errors
+
+```
+#### Notes
+
+
+
+
+### .stream()
+#### Purpose
+This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
+#### Example Usage (controller code)
+
+```javascript 
+
+
+	    SearchResult.stream({
+	            limit: maxPerPage,
+	            skip: offset
+	    }, {
+	            write: function(model, index, cb) {
+	 
+	                    // Output prefix
+	                    if (index === 0) {
+	                            return cb(null, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+	                    } else {
+	 
+	                            // Convert & characters to escaped HTML entities &amp;
+	                            // (see http://stackoverflow.com/questions/3431280/validation-problem-entityref-expecting-what-should-i-do)
+	                            var url = model.url || '';
+	                            url = url.replace(/\&/g,'&amp;');
+	 
+	                            return cb(null, '<url>' +
+	                                    '<loc>'+url+'</loc>' +
+	                                    '<priority>'+model.priority+'</priority>' +
+	                                    '<changefreq>daily</changefreq>' +
+	                                    '</url>');
+	                    }
+	            },
+	            end: function(cb) {
+	                    // Output suffix
+	                    cb(null, '</urlset>');
+	            }
+	    }).pipe(res);
+
+```
+#### Notes
+This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
+
+
+
+
+# Dynamic Finders
+These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
+
+Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
+
+### Overview
+
+| Method Name  |       Parameters     | Callback Parameters |
+| ------------ | -------------------  | ------------------- |
+|.findBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```|
+|.findOneBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecord)```|
+|.countBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , integer )```|
+|.`<attribute>`StartsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
+|.`<attribute>`EndsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
+
+
+### .findBy`<attribute>`()
+#### Purpose
+Find and return records by a specific model attribute.
+#### Example Usage
+
+```javascript 
+Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
+	while (found.length)
+		console.log('Found User with name '+found.pop().name);
+	});
+	
+// Found User with name Walter
+// Found User with name Flynn
+// Don't forget to handle your errors
+
+```
+#### Notes
+
+
+
+### .findOneBy`<attribute>`()
+#### Purpose
+Find and return one record by a specific model attribute.
+#### Example Usage
+
+```javascript 
+Users.findOneByName('Walter').exec(function findCB(err,found){
+	console.log('Found User with name '+found.name);
+	});
+	
+// Found User with name Walter
+// Don't forget to handle your errors
+
+```
+#### Notes
+This will always return a single object.
+
+
+
+
+### .countBy`<attribute>`()
+#### Purpose
+Count the number of records in a model with a particular model attribute. 
+#### Example Usage
+
+```javascript 
+Users.countByName('Walter').exec(function countCB(err,found){
+	console.log('There are '+found+' users called \'Walter\'');
+	});
+	
+// There are 1 users called 'Walter'
+// Don't forget to handle your errors
+```
+#### Notes
+The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
+
+SUM [ matchedObjects * RecordsMatchedByObject ]
+// how the hell do I say this?
+
+### .`<attribute>`StartsWith()
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.nameStartsWith('W', function startsWithCB(err,found){
+	while (found.length)
+		console.log('User '+found.pop().name+' has name that starts with \'W\'');
+	});
+
+// User Walter has name that starts with 'W'
+// Don't forget to handle your errors
+
+```
+#### Notes
+Warning! Your attribute in the method name must be lowerCase!
+Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
+
+
+
+
+### .`<attribute>`EndsWith
+#### Purpose
+
+#### Example Usage
+
+```javascript 
+Users.nameEndsWith('sie', function endsWithCB(err,found){
+	console.log('User '+found[0].name+' has name that ends with \'sie\'');
+	});
+	
+// User Jessie has name that ends with 'sie'
+// Don't forget to handle your errors
+
+```
+#### Notes
+Warning! Your attribute in the method name must be lowerCase!
+Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
