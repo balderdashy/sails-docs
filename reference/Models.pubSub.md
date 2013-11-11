@@ -5,10 +5,14 @@ Pub-Sub Methods
 
 # .publishCreate()
 ### Purpose
-Publish the creation of a model
+PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
 ### Example Usage
-```
+Controller Code for 'users'
+```javascript
 
+```
+Controller Code for 'users'
+```javascript
 
 ```
 
@@ -19,8 +23,7 @@ Publish the creation of a model
 ### Purpose
 Publish an update on a particular model
 ### Example Usage
-```
-
+```javascript
 
 ```
 
@@ -30,8 +33,7 @@ Publish an update on a particular model
 ### Purpose
 Publish the destruction of a model
 ### Example Usage
-```
-
+```javascript
 
 ```
 
@@ -42,8 +44,7 @@ Publish the destruction of a model
 ### Purpose
 Subscribe a socket to a handful of models in this collection
 ### Example Usage
-```
-
+```javascript
 
 ```
 
@@ -55,8 +56,7 @@ Subscribe a socket to a handful of models in this collection
 ### Purpose
 Subscribe a socket to a handful of models in this collection
 ### Example Usage
-```
-
+```javascript
 
 ```
 
@@ -67,8 +67,7 @@ This method will be deprecated in an upcoming release. Subscriptions should be c
 ### Purpose
 Subscribe a socket to a handful of models in this collection
 ### Example Usage
-```
-
+```javascript
 
 ```
 
