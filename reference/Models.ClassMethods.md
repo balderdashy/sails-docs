@@ -6,17 +6,17 @@ For every class method, the callback parameter is optional.  If one is not suppl
 ### Overview
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
-| .create() | -```newRecords {} or [{}]```<br>-```callback()``` | ```function ( Error , newRecords)```
-| .update() | -```findCriterea {} or [{}]```<br>-```updatedRecord {} or [{}]```<br>-```callback()```| ```function ( Error , [updatedRecords] )```
-| .destroy() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error )```
-| .findOrCreate() | -```findCriterea {} or [{}]```<br>-```recordsToCreate {} or [{}]```<br>-```callback()``` | ```function ( Error , foundOrCreated)```
-| .findOne() | -```findCriterea {}```<br>-```callback()```  | ```function ( Error , foundRecord)```
-| .find() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```
-| .startsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```
-| .endsWith() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```
-|.validate()|-```findCriterea {} or [{}]```<br>-```callback()```| `Error`|
-| .count() | -```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error, integer )```|
-| .stream() | ```findCriterea {}``` | No callback! A node stream object is returned |
+| .create() | - newRecords ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , newRecords)```
+| .update() | - findCriterea ```{}``` or ```[{}]```<br>-updatedRecord ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [updatedRecords] )```
+| .destroy() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ```  | ```function ( Error )```
+| .findOrCreate() | - findCriterea ```{}``` or ```[{}]```<br>-recordsToCreate ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , foundOrCreated)```
+| .findOne() | - findCriterea ```{}```<br>- callback ``` function ``` | ```function ( Error , foundRecord)```
+| .find() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , foundRecords)```
+| .startsWith() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [foundRecords])```
+| .endsWith() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [foundRecords])```
+|.validate()|- findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | `Error`|
+| .count() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error, integer )```|
+| .stream() | findCriterea ```{}``` | No callback! A node stream object is returned |
 
 ### .create()
 #### Purpose
