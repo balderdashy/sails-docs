@@ -3,7 +3,7 @@ The methods below are the basic crud methods availebl in sails.  Here is a very 
 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
-### Overview
+# Overview
 | Method Name  |       Parameters     | Callback Parameters 
 | ------------ | -------------------  | --------------------
 | .create() | - newRecords ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , newRecords)```
@@ -18,11 +18,12 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | .count() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error, integer )```|
 | .stream() | findCriterea ```{}``` | No callback! A node stream object is returned |
 
-### .create()
-#### Purpose
+
+# .create()
+### Purpose
 Creates a new record.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 
@@ -35,16 +36,16 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 // Created user with name Walter Jr
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
-#### Notes
+### Notes
 >
 
 
 
-### .update()
-#### Purpose
+# .update()
+### Purpose
 Updates an existing record.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
@@ -55,18 +56,18 @@ Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updat
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
-#### Notes
+### Notes
 >Although you may pass .update() an object or an array of objects, it will always return an array.
 
 
 
 
 
-### .destroy()
-#### Purpose
+# .destroy()
+### Purpose
 Destroys a record that may or may not exist.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
@@ -77,16 +78,16 @@ Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >
 
 
 
-### .findOrCreate()
-#### Purpose
+# .findOrCreate()
+### Purpose
 This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 
@@ -98,15 +99,15 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(e
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
-#### Notes
+### Notes
 >
 
 
 
-### .findOne()
-#### Purpose
+# .findOne()
+### Purpose
 This finds and returns a single record that meets the criterea.
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
@@ -117,16 +118,16 @@ Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >
 
 
 
-### .find()
-#### Purpose
+# .find()
+### Purpose
 Finds and returns all records that meet the criterea object(s) that you pass it.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.find({}).exec(function findCB(err,found){
@@ -139,14 +140,14 @@ Users.find({}).exec(function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >
 
 
-### .startsWith()
-#### Purpose
+# .startsWith()
+### Purpose
 This is shorthand for a .find() query that uses the startsWith query modifier.
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.startsWith({name:'Fl'},function swCB(err,found){
@@ -157,15 +158,15 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >Although you may pass .startsWith an object or an array of objects, it will always return an array.
 >Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
-### .endsWith()
-#### Purpose
+# .endsWith()
+### Purpose
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.endsWith({name:'ie'},function ewCB(err,found){
@@ -176,17 +177,17 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >Although you may pass .endsWith an object or an array of objects, it will always return an array.
 Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
 
-### .validate()
-#### Purpose
+# .validate()
+### Purpose
 This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 
@@ -205,15 +206,15 @@ Users.findOne(1).exec(function(err,mI){
 
 ```
 
-#### Notes
+### Notes
 >
 
 
 
-### .count()
-#### Purpose
+# .count()
+### Purpose
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.count({name:'Flynn'}).exec(function countCB(err,found){
@@ -224,15 +225,15 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >
 
 
 
-### .stream()
-#### Purpose
+# .stream()
+### Purpose
 This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
-#### Example Usage (controller code)
+### Example Usage (controller code)
 
 ```javascript 
 
@@ -267,7 +268,7 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 	    }).pipe(res);
 
 ```
-#### Notes
+### Notes
 >This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
 
 
@@ -278,7 +279,7 @@ These methods are automatically generated for each attribute in each model of yo
 
 Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
 
-### Overview
+# Overview
 
 | Method Name  |       Parameters     | Callback Parameters |
 | ------------ | -------------------  | ------------------- |
@@ -289,10 +290,10 @@ Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TY
 |.`<attribute>`EndsWith()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecords)```|
 
 
-### .findBy`<attribute>`()
-#### Purpose
+# .findBy`<attribute>`()
+### Purpose
 Find and return records by a specific model attribute.
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
@@ -305,14 +306,14 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >
 
 
-### .findOneBy`<attribute>`()
-#### Purpose
+# .findOneBy`<attribute>`()
+### Purpose
 Find and return one record by a specific model attribute.
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.findOneByName('Walter').exec(function findCB(err,found){
@@ -323,16 +324,16 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >This will always return a single object.
 
 
 
 
-### .countBy`<attribute>`()
-#### Purpose
+# .countBy`<attribute>`()
+### Purpose
 Count the number of records in a model with a particular model attribute. 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.countByName('Walter').exec(function countCB(err,found){
@@ -342,17 +343,17 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // There are 1 users called 'Walter'
 // Don't forget to handle your errors
 ```
-#### Notes
+### Notes
 >The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
 
 SUM [ matchedObjects * RecordsMatchedByObject ]
 
 // how the hell do I say this?
 
-### .`<attribute>`StartsWith()
-#### Purpose
+# .`<attribute>`StartsWith()
+### Purpose
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.nameStartsWith('W', function startsWithCB(err,found){
@@ -364,17 +365,17 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >Warning! Your attribute in the method name must be lowerCase!
 >Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
 
 
 
-### .`<attribute>`EndsWith
-#### Purpose
+# .`<attribute>`EndsWith
+### Purpose
 
-#### Example Usage
+### Example Usage
 
 ```javascript 
 Users.nameEndsWith('sie', function endsWithCB(err,found){
@@ -385,6 +386,6 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 // Don't forget to handle your errors
 
 ```
-#### Notes
+### Notes
 >Warning! Your attribute in the method name must be lowerCase!
 >Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
