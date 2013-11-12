@@ -1,6 +1,16 @@
 Pub-Sub Methods
 ================
 
+### Overview
+| Method Name  |       Parameters     |
+| ------------ | -------------------  |
+| .publishCreate() | ``` recordID ``` and ``` { dataToPublish } ``` | 
+| .publishUpdate() | ``` recordID ``` and ``` { dataToPublish } ``` |
+| .publishDestroy() | ``` recordID ``` |
+| .subscribe() | ``` { req.socket } ``` |
+| .subscribe() | ``` { req.socket } ``` and ``` [ recordIDs ] ``` |
+| .unsubscribe() | ``` { req.socket } ``` |
+| .unsubscribe() | ``` { req.socket } ``` and ``` [ recordIDs ] ``` |
 
 
 # .publishCreate()
@@ -221,7 +231,7 @@ Click Me to destroy user 'Walter' ! </div>
 ### Notes
 
 
-# .subscribe(req)
+# .subscribe({})
 ### Purpose
 1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
 ### Example Usage
@@ -235,7 +245,7 @@ Controller Code
 ### Notes
 - This is equivelent to blah blah in socket.io
 
-# .subscribe(req,id)
+# .subscribe({},[])
 
 ### Purpose
 This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
@@ -259,14 +269,28 @@ Controller Code
 - This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
 
 
-# .unsubscribe(req)
+# .unsubscribe({})
 ### Purpose
-This method will unsubscribe a socket from particular model class and all of its instances.
+1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
 ### Example Usage
 Controller Code
 ```javascript
 
 Users.unsubscribe(req.socket);
+
+```
+
+### Notes
+Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
+
+# .unsubscribe({},[])
+### Purpose
+This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
+### Example Usage
+Controller Code
+```javascript
+
+Users.unsubscribe(req.socket,[1,2,3,4,5,6]);
 
 ```
 
