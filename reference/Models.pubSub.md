@@ -128,7 +128,7 @@ window.onload = function subscribeAndListen(){
     });
 };
 
-function makeNew(){
+function doEdit(){
 
     // Send the name to the testSocket action on the 'Users' contoller
 
@@ -137,7 +137,7 @@ function makeNew(){
 
 </script>
 <center>
-<div id="newGuy" class="addButton" onClick="makeNew()">
+<div id="newGuy" class="addButton" onClick="doEdit()">
 Click Me to add a new User! </div>
 
 ```
@@ -204,7 +204,7 @@ window.onload = function subscribeAndListen(){
     });
 };
 
-function makeNew(){
+function destroy(){
 
     // Send the name to the testSocket action on the 'Users' contoller
     socket.request('/users/testSocket/',{name:'Walter'});
@@ -212,7 +212,7 @@ function makeNew(){
 
 </script>
 <center>
-<div id="newGuy" class="addButton" onClick="makeNew()">
+<div id="newGuy" class="addButton" onClick="destroy()">
 Click Me to destroy user 'Walter' ! </div>
 
 
@@ -233,7 +233,7 @@ Controller Code
 ```
 
 ### Notes
-
+- This is equivelent to blah blah in socket.io
 
 # .subscribe(req,id)
 
@@ -255,7 +255,9 @@ Controller Code
 
 
 ### Notes
-This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
+- This is equivelent to blah blah in socket.io 
+- This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
+
 
 # .unsubscribe(req)
 ### Purpose
