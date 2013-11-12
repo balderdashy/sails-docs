@@ -16,7 +16,7 @@ For every class method, the callback parameter is optional.  If one is not suppl
 | .endsWith() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [foundRecords])```
 |.validate()|- findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | `Error`|
 | .count() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error, integer )```|
-| .stream() | findCriterea ```{}``` | No callback! A node stream object is returned |
+| .stream() | - findCriterea ```{}```<br> - ```{customMethods}``` | No callback! A node stream object is returned |
 
 
 # .create()
@@ -233,51 +233,60 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 # .stream()
 ### Purpose
 This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
-### Example Usage (controller code)
+### Example Usage
 
-```javascript 
+UsersController.js
+```javascript
+module.exports = {
+    
+  testStream: function(req,res){
+
+    if (req.param('startStream') && req.isSocket){
+
+        var getSocket = req.socket;
+        
+        // Start the stream.  Pipe it to sockets.
+        Users.stream({name:'Walter'}).pipe(getSocket.emit);
+        
+    } else {
+
+      res.view();
+    
+    }
 
 
-	    SearchResult.stream({
-	            limit: maxPerPage,
-	            skip: offset
-	    }, {
-	            write: function(model, index, cb) {
-	 
-	                    // Output prefix
-	                    if (index === 0) {
-	                            return cb(null, '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
-	                    } else {
-	 
-	                            // Convert & characters to escaped HTML entities &amp;
-	                            // (see http://stackoverflow.com/questions/3431280/validation-problem-entityref-expecting-what-should-i-do)
-	                            var url = model.url || '';
-	                            url = url.replace(/\&/g,'&amp;');
-	 
-	                            return cb(null, '<url>' +
-	                                    '<loc>'+url+'</loc>' +
-	                                    '<priority>'+model.priority+'</priority>' +
-	                                    '<changefreq>daily</changefreq>' +
-	                                    '</url>');
-	                    }
-	            },
-	            end: function(cb) {
-	                    // Output suffix
-	                    cb(null, '</urlset>');
-	            }
-	    }).pipe(res);
+  }
+}
+````
+
+views/users/testSocket.ejs
+```javascript
+<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
+
+<script>
+window.onload = function startListening(){
+    socket.on('gotUser',function(data){
+    	console.log(data.name+' number '+data.id+' has joined the party');
+    });
+};
+
+</script>
+<center>
+<div class="addButton" onClick="socket.get('/users/testStream/',{startStream:true})">
+Stream all the Users ! </div>
 
 ```
+
 ### Notes
 >This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
-
+>Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
 
 
 
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
-Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
+> Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
 
 # Overview
 
