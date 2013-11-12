@@ -24,7 +24,7 @@ Below is a chart describing Sails.js support of the .req() methods.
 | req.secure | Express | :-) | :-( |
 | req.session | Express | :-) | :-) |
 | req.subdomains | Express | :-) | :-( |
-| req.method | Method | :-) | :-) |
+| req.method | Express | :-) | :-) |
 | req.originalUrl | Express | :-) | :-( |
 | req.acceptedLanguages | Express | :-) | :-( |
 | req.acceptedCharsets | Express | :-) | :-( |
