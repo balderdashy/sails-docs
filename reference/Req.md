@@ -2,344 +2,344 @@ Request (req)
 -------------
 Sails is built on Express. Because of this, you can access all of the express methods and properties on the req() object over http.  Sails has also added a few methods on top of socket.io that allows you to access some of them over websockets.
 
-# req.files
-### Purpose
+### req.files
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.param()
-### Purpose
+### req.param()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.route
-### Purpose
+### req.route
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.cookies
-### Purpose
+### req.cookies
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.signedCookies
-### Purpose
+### req.signedCookies
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.get()
-### Purpose
+### req.get()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.accepts()
-### Purpose
+### req.accepts()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.accepted
-### Purpose
+### req.accepted
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.is()
-### Purpose
+### req.is()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.ip
-### Purpose
+### req.ip
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.ips
-### Purpose
+### req.ips
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.path
-### Purpose
+### req.path
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.host
-### Purpose
+### req.host
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.fresh
-### Purpose
+### req.fresh
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.stale
-### Purpose
+### req.stale
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.xhr
-### Purpose
+### req.xhr
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.protocol
-### Purpose
+### req.protocol
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.secure
-### Purpose
+### req.secure
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.session
-### Purpose
+### req.session
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.subdomains
-### Purpose
+### req.subdomains
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.method
-### Purpose
+### req.method
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.originalUrl
-### Purpose
+### req.originalUrl
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.acceptedLanguages
-### Purpose
+### req.acceptedLanguages
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.acceptedCharsets
-### Purpose
+### req.acceptedCharsets
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.acceptsCharset()
-### Purpose
+### req.acceptsCharset()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.acceptsLanguage()
-### Purpose
+### req.acceptsLanguage()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.isSocket
-### Purpose
+### req.isSocket
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.params.all()
-### Purpose
+### req.params.all()
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.socket.id
-### Purpose
+### req.socket.id
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.socket.join
-### Purpose
+### req.socket.join
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.socket.leave
-### Purpose
+### req.socket.leave
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.socket.broadcast
-### Purpose
+### req.socket.broadcast
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.transport
-### Purpose
+### req.transport
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.url
-### Purpose
+### req.url
+#### Purpose
 
-### Example Usage
+#### Example Usage
 ```javascript
 
 ```
 
-### Notes
+#### Notes
 
-# req.wantsJSON
+### req.wantsJSON
