@@ -35,7 +35,6 @@ Users.find().limit(1).exec(
 
 ```
 #### Notes
-> Warning! Your data will not be validated before it is saved.  Call `.validate()` before you `.save()` !
 
 
 ### destroy
