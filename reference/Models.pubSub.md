@@ -47,7 +47,7 @@ views/users/testSocket.ejs
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to the model 'users'
-    socket.request('/users/testSocket/');
+    socket.get('/users/testSocket/');
 
     // Listen for the event called 'message' emited by the publishCreate() method.
     socket.on('message',function(obj){
@@ -60,7 +60,7 @@ function makeNew(){
 
     // Send the new users name to the 'testSocket' action on the 'users' contoller
 
-    socket.request('/users/testSocket/',{name:'Walter'});
+    socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 </script>
@@ -119,7 +119,7 @@ views/users/testSocket.ejs
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to all of the 'users' model instances (records)
-    socket.request('/users/testSocket/');
+    socket.get('/users/testSocket/');
 
     // Listen for the event called 'message' emited by the publishUpdate() method.
     socket.on('message',function(obj){
@@ -132,7 +132,7 @@ function doEdit(){
 
     // Send the name to the testSocket action on the 'Users' contoller
 
-    socket.request('/users/testSocket/',{name:'Walter'});
+    socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 </script>
@@ -196,7 +196,7 @@ views/users/testSocket.ejs
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to all of the 'users' model instances (records)
-    socket.request('/users/testSocket/');
+    socket.get('/users/testSocket/');
 
     // Listen for the event called 'message' emited by the publishDestroy() method.
     socket.on('message',function(obj){
@@ -207,7 +207,7 @@ window.onload = function subscribeAndListen(){
 function destroy(){
 
     // Send the name to the testSocket action on the 'Users' contoller
-    socket.request('/users/testSocket/',{name:'Walter'});
+    socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 </script>
