@@ -1,4 +1,5 @@
-### Instance Methods
+# Instance Methods
+
 ### Overview
 
 | Method Name  |       Parameters     |     Callback Parameters     |   Is It Asyncronous?  |
@@ -10,7 +11,7 @@
 |  .toJSON     |      none            |  ``` { cloneOfRecord } ```     |        No         |
 
 
-### save
+### .save()
 
 #### Purpose
 The `save` method updates the database with the parent instance's current values and returns the newly saved object. 
@@ -37,7 +38,7 @@ Users.find().limit(1).exec(
 #### Notes
 
 
-### destroy
+### .destroy()
 
 #### Purpose
 This method destroys the parent model instance then runs a callback.
@@ -64,7 +65,7 @@ Users.find().limit(1).exec(
 #### Notes
 
 
-### validate
+### .validate()
 
 #### Purpose
 The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
@@ -103,13 +104,28 @@ module.exports = {
 
 #### Notes
 
-### toObject and toJSON
+
+### .toObject()
 
 #### Purpose
-By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
+The toObject method returns a cloned model instance (record) but stripped of all instance methods.
+#### Example Usage
 
-The toObject method also returns a cloned object however, it is stripped of all instance methods.  You will probably only want to use .toObject when overriding the default .toJSON instance method. The example below should demonstrate it's most common use as well as the difference between the two.
+```javascript
+
+// See usage in .toJSON()
+
+```
+
+#### Notes
+> You will only want to use .toObject when overriding the default .toJSON instance method.
+
+
+
+### .toJSON()
+
+#### Purpose
+This method also returns a cloned model instance.  This one however includes all instance methods.
 
 #### Example Usage
 
@@ -164,6 +180,9 @@ module.exports = {
 }
 
 ```
+#### Notes
+> The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
+Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
 
 ### Custom Instance Methods
