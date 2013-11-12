@@ -36,7 +36,7 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
 #### Notes
-
+>
 
 
 
@@ -56,7 +56,7 @@ Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updat
 
 ```
 #### Notes
-Although you may pass .update() an object or an array of objects, it will always return an array.
+>Although you may pass .update() an object or an array of objects, it will always return an array.
 
 
 
@@ -78,7 +78,7 @@ Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 
 ```
 #### Notes
-
+>
 
 
 
@@ -99,7 +99,7 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(e
 
 ```
 #### Notes
-
+>
 
 
 
@@ -118,7 +118,7 @@ Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 
 ```
 #### Notes
-
+>
 
 
 
@@ -140,7 +140,7 @@ Users.find({}).exec(function findCB(err,found){
 
 ```
 #### Notes
-
+>
 
 
 ### .startsWith()
@@ -158,9 +158,8 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 
 ```
 #### Notes
-Although you may pass .startsWith an object or an array of objects, it will always return an array.
-
-Warning! This method does not support .exec() !  You MUST supply a callback.  
+>Although you may pass .startsWith an object or an array of objects, it will always return an array.
+>Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
 ### .endsWith()
@@ -178,7 +177,7 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 
 ```
 #### Notes
-Although you may pass .endsWith an object or an array of objects, it will always return an array.
+>Although you may pass .endsWith an object or an array of objects, it will always return an array.
 Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
@@ -207,7 +206,7 @@ Users.findOne(1).exec(function(err,mI){
 ```
 
 #### Notes
-
+>
 
 
 
@@ -226,7 +225,7 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 
 ```
 #### Notes
-
+>
 
 
 
@@ -269,7 +268,7 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 
 ```
 #### Notes
-This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
+>This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
 
 
 
@@ -307,7 +306,7 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 
 ```
 #### Notes
-
+>
 
 
 ### .findOneBy`<attribute>`()
@@ -325,7 +324,7 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 
 ```
 #### Notes
-This will always return a single object.
+>This will always return a single object.
 
 
 
@@ -344,9 +343,10 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // Don't forget to handle your errors
 ```
 #### Notes
-The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
+>The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
 
 SUM [ matchedObjects * RecordsMatchedByObject ]
+
 // how the hell do I say this?
 
 ### .`<attribute>`StartsWith()
@@ -365,8 +365,8 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 
 ```
 #### Notes
-Warning! Your attribute in the method name must be lowerCase!
-Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
+>Warning! Your attribute in the method name must be lowerCase!
+>Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 
 
 
@@ -386,5 +386,5 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 
 ```
 #### Notes
-Warning! Your attribute in the method name must be lowerCase!
-Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
+>Warning! Your attribute in the method name must be lowerCase!
+>Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
