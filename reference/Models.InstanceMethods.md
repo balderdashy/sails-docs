@@ -1,6 +1,6 @@
 # Instance Methods
 
-### Overview
+# Overview
 
 | Method Name  |       Parameters     |     Callback Parameters     |   Is It Asyncronous?  |
 | ------------ | -------------------  | --------------------------- | --------------------- |
@@ -11,12 +11,12 @@
 |  .toJSON     |      none            |  ``` { cloneOfRecord } ```     |        No         |
 
 
-### .save()
+# .save()
 
-#### Purpose
+### Purpose
 The `save` method updates the database with the parent instance's current values and returns the newly saved object. 
 
-#### Example Usage
+### Example Usage
 
 ```javascript
 
@@ -35,15 +35,15 @@ Users.find().limit(1).exec(
 // Don't forget to abide by the rules you set in your model
 
 ```
-#### Notes
+### Notes
 
 
-### .destroy()
+# .destroy()
 
-#### Purpose
+### Purpose
 This method destroys the parent model instance then runs a callback.
 
-#### Example Usage
+### Example Usage
 
 ```javascript
 
@@ -62,16 +62,16 @@ Users.find().limit(1).exec(
 
 ```
 
-#### Notes
+### Notes
 
 
-### .validate()
+# .validate()
 
-#### Purpose
+### Purpose
 The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
 There will be no parameters in the callback unless there is an error.  No news is good news.
 
-#### Example Usage
+### Example Usage
 
 ```javascript
 
@@ -102,14 +102,14 @@ module.exports = {
 };
 ```
 
-#### Notes
+### Notes
 
 
-### .toObject()
+# .toObject()
 
-#### Purpose
+### Purpose
 The toObject method returns a cloned model instance (record) but stripped of all instance methods.
-#### Example Usage
+### Example Usage
 
 ```javascript
 
@@ -117,17 +117,17 @@ The toObject method returns a cloned model instance (record) but stripped of all
 
 ```
 
-#### Notes
+### Notes
 > You will only want to use .toObject when overriding the default .toJSON instance method.
 
 
 
-### .toJSON()
+# .toJSON()
 
-#### Purpose
+### Purpose
 This method also returns a cloned model instance.  This one however includes all instance methods.
 
-#### Example Usage
+### Example Usage
 
 ```javascript
 
@@ -180,11 +180,11 @@ module.exports = {
 }
 
 ```
-#### Notes
+### Notes
 > The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
 Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
 
-### Custom Instance Methods
+# Custom Instance Methods
 
 If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the guide on models at http://omfgdogs.com
