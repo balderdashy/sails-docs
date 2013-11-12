@@ -282,11 +282,11 @@ Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TY
 
 | Method Name  |       Parameters     | Callback Parameters |
 | ------------ | -------------------  | ------------------- |
-|.findBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , [foundRecords])```|
-|.findOneBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecord)```|
-|.countBy`<attribute>`()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , integer )```|
-|.`<attribute>`StartsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
-|.`<attribute>`EndsWith()|-```findCriterea {} or [{}]```<br>-```callback()``` | ```function ( Error , foundRecords)```|
+|.findBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , [foundRecords])```|
+|.findOneBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecord)```|
+|.countBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , integer )```|
+|.`<attribute>`StartsWith()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecords)```|
+|.`<attribute>`EndsWith()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecords)```|
 
 
 ### .findBy`<attribute>`()
