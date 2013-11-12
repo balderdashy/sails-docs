@@ -1,234 +1,231 @@
-Response (res)
--------------
+res.status()
+### Purpose
 
-### res.status()
-#### Purpose
-
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.set()
-#### Purpose
+# res.set()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.get()
-#### Purpose
+# res.get()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.cookie()
-#### Purpose
+# res.cookie()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.clearCookie()
-#### Purpose
+# res.clearCookie()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.redirect()
-#### Purpose
+# res.redirect()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.location()
-#### Purpose
+# res.location()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.charset
-#### Purpose
+# res.charset
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.send()
-#### Purpose
+# res.send()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.json()
-#### Purpose
+# res.json()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.jsonp()
-#### Purpose
+# res.jsonp()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.type()
-#### Purpose
+# res.type()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.format()
-#### Purpose
+# res.format()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.attachment()
-#### Purpose
+# res.attachment()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.sendfile()
-#### Purpose
+# res.sendfile()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.download()
-#### Purpose
+# res.download()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.links()
-#### Purpose
+# res.links()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.locals
-#### Purpose
+# res.locals
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.render()
-#### Purpose
+# res.render()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
-### res.view()
-#### Purpose
+# res.view()
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
 
-#### Purpose
+### Purpose
 
-#### Example Usage
+### Example Usage
 ```javascript
 
 ```
 
-#### Notes
+### Notes
 >
 
