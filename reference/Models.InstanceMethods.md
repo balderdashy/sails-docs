@@ -1,21 +1,19 @@
 ### Instance Methods
 ### Overview
 
-| Method Name  |       Parameters     |                    Returned              |   Is It Asyncronous?  |
-| ------------ | -------------------  | ---------------------------------------- | --------------------- |
-|  .save       | callback ```function```  |  callback ```function ({ err } , { savedValue } )```     |       Yes    |
-|  .destroy    | callback ```function```  |  callback ```function ( { err } )``` |       Yes     |
-|  .validate   | callback ```function``` |  callback ```function ( { err } )``` |       Yes      |
-|  .toObject   |      none            |  clone of instance ```object```                   |        No         |
-|  .toJSON     |      none            |  clone of instance ```object```                 |        No         |
+| Method Name  |       Parameters     |     Callback Parameters     |   Is It Asyncronous?  |
+| ------------ | -------------------  | --------------------------- | --------------------- |
+|  .save       | callback ```function```  | ``` function ({ err } , { savedValue } )```     |       Yes    |
+|  .destroy    | callback ```function```  | ``` function ( { err } )``` |       Yes     |
+|  .validate   | callback ```function``` |  ``` function ( { err } )``` |       Yes      |
+|  .toObject   |      none            |   ``` { cloneOfRecord } ```    |        No         |
+|  .toJSON     |      none            |  ``` { cloneOfRecord } ```     |        No         |
 
 
 ### save
 
-The `save` method updates the database with the parent instance's current values and returns the newly saved object. This is shorthand for Model.update({ attributes }, cb)
-
-> Warning!
-> Your data will not be validated before it is saved.  Call `.validate()` before you `.save()` !
+#### Purpose
+The `save` method updates the database with the parent instance's current values and returns the newly saved object. 
 
 #### Example Usage
 
@@ -36,9 +34,13 @@ Users.find().limit(1).exec(
 // Don't forget to abide by the rules you set in your model
 
 ```
+#### Notes
+> Warning! Your data will not be validated before it is saved.  Call `.validate()` before you `.save()` !
+
 
 ### destroy
 
+#### Purpose
 This method destroys the parent model instance then runs a callback.
 
 #### Example Usage
@@ -60,8 +62,12 @@ Users.find().limit(1).exec(
 
 ```
 
+#### Notes
+
+
 ### validate
 
+#### Purpose
 The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
 There will be no parameters in the callback unless there is an error.  No news is good news.
 
@@ -96,8 +102,11 @@ module.exports = {
 };
 ```
 
+#### Notes
+
 ### toObject and toJSON
 
+#### Purpose
 By default, the only difference between toJSON and toObject is the absence of methods inside toObject.  The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
 Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints) , you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
