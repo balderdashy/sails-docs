@@ -19,7 +19,7 @@ The `save` method updates the database with the parent instance's current values
 
 ```javascript
 
-Users.find().limit(1).exec(
+Users.findOne().exec(
 	function(err,mI){
 		mI[0].petName = 'BooBoo';
 		mI[0].save(
@@ -47,7 +47,7 @@ This method destroys the parent model instance then runs a callback.
 
 ```javascript
 
-Users.find().limit(1).exec(
+Users.findOne().exec(
 	function(err,mI){
 		mI[0].destroy(
 			function(err){
@@ -75,7 +75,7 @@ There will be no parameters in the callback unless there is an error.  No news i
 
 ```javascript
 
-Users.find().limit(1).exec(
+Users.findOne().exec(
 	function(err,mI){
 		mI[0].petName = ['pookie','BooBoo'];
 		mI[0].validate(
@@ -116,7 +116,7 @@ The toObject method also returns a cloned object however, it is stripped of all 
 
 ```javascript
 
-Users.find().limit(1).exec(
+Users.findOne().exec(
 	function(err,mI){
 		var datUser = mI[0].toObject();
 		console.log(datUser);
@@ -128,7 +128,7 @@ Users.find().limit(1).exec(
   petName: 'BooBoo',
   phoneNumber: '101-150-1337' } */
 
-Users.find().limit(1).exec(
+Users.findOne().exec(
 	function(err,mI){
 		var datUser = mI[0].toJSON();
 		console.log(datUser);
