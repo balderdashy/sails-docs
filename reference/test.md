@@ -22,7 +22,7 @@ Creates a new record.
 
 ```javascript 
 
-// create a new record with no attributes
+// create a new record with name 'Walter Jr'
 
 Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 	console.log('Created user with name '+created.name);
@@ -32,4 +32,4 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
 ### Notes
->
+> If no callback is included, a chainable object is returned
