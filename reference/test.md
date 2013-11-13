@@ -8,15 +8,15 @@ Creates a new record.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Records to Create   | `{}`, `[{}]`, `bool`, `int`, `string`| Yes		     |
-| 2 |     callback        | `function`            | Yes        |
+| 1 | Records to Create   | `{}`, `[{}]`        | Yes	     |
+| 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types  |
-|---|---------------------|----------------------|
-| 1 |  Error              | Error                |
-| 2 |  Records Created    | `{}`, `[{}]`, `bool`, `int`, `string`|
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
