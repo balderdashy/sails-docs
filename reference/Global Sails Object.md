@@ -70,7 +70,7 @@ This is the same as User.<modelName>().  If you disable globals, you can use sai
 
 
 sails.io.sockets()
-------------------
+==================
 
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
 
