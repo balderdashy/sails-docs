@@ -30,9 +30,9 @@ res.set({
 ### Notes
 >
 
-# res.get()
+# res.get(```string```)
 ### Purpose
-Get the case-insensitive response header field
+Get the case-insensitive response header `field`
 
 ### Example Usage
 ```javascript
