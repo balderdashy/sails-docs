@@ -72,6 +72,8 @@
   
 
 # .create()
+### Purpose
+Creates a new record.
 
 ### Overview
 
@@ -88,4 +90,20 @@
 |---|---------------------|----------------------|
 | 1 |  Error              | Error                |
 | 2 |  Records Created    | Object, Object Array |
+
+### Example Usage
+
+```javascript 
+
+// create a new record with no attributes
+
+Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
+	console.log('Created user with name '+created.name);
+	});
+
+// Created user with name Walter Jr
+// Don't forget to handle your errors and abide by the rules you defined in your model
+```
+### Notes
+>
 
