@@ -73,11 +73,11 @@ This is the same as User.<modelName>().  If you disable globals, you can use sai
 # sails.io.sockets()
 
 
-This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
+This is the raw reference to socket.io .  Use it when you want low level access to socket.io .  If you are new to sockets, you should use the <a href=""> sails pubsub class methods </a> for socket.io .  
 
 For more information, see the socket.io docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> right here </a>.
 
-# io.sockets.clients('roomname')
+# sails.io.sockets.clients('roomname')
 ### Purpose
 Gives an array containing the sockets currently connected to the supplied room name.
 
@@ -130,10 +130,10 @@ Join 'Beyonce' ! </div>
 
 
 ### Notes
->
+> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
 
 
-# io.sockets.emit('eventName')
+# sails.io.sockets.emit('eventName')
 
 ### Purpose
 Emit a message to every client, regardless of what room they are in.  
@@ -189,7 +189,7 @@ Join 'Beyonce' ! </div>
 > This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
 
 
-# io.sockets.in('roomname').emit('msg',{})
+# sails.io.sockets.in('roomname').emit('msg',{})
 
 ### Purpose
 Send a message to everyone in the specified room.
