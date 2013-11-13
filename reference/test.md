@@ -8,7 +8,7 @@ Creates a new record.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Records to Create   | `{Object}`, `[{Object Array}]`| Yes		     |
+| 1 | Records to Create   | `{}`, `[{}]`, `bool`, `int`, `string`| Yes		     |
 | 2 |     callback        | `function`            | Yes        |
 
 #### Callback Parameters
@@ -16,7 +16,7 @@ Creates a new record.
 | # |     Description     | Possible Data Types  |
 |---|---------------------|----------------------|
 | 1 |  Error              | Error                |
-| 2 |  Records Created    | `{Object}`, `[{Object Array}]`|
+| 2 |  Records Created    | `{}`, `[{}]`, `bool`, `int`, `string`|
 
 ### Example Usage
 
