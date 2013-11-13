@@ -1,19 +1,29 @@
-res.status()
+#res.status()
 ### Purpose
+Chainable alias of node's '`res.statusCode=`.
 
 ### Example Usage
 ```javascript
-
+res.status(404).sendfile('path/to/404.png');
 ```
 
 ### Notes
 >
 
-# res.set()
+# res.set(field, [value])
 ### Purpose
+Set header ```field``` to ```value```, or pass an object to set multiple fields at once.
 
 ### Example Usage
 ```javascript
+
+res.set('Content-Type', 'text/plain');
+
+res.set({
+  'Content-Type': 'text/plain',
+  'Content-Length': '123',
+  'ETag': '12345'
+})
 
 ```
 
@@ -22,6 +32,7 @@ res.status()
 
 # res.get()
 ### Purpose
+Get the case-insensitive response header field
 
 ### Example Usage
 ```javascript
