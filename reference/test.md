@@ -8,15 +8,15 @@ Creates a new record.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Records to Create   | Object, Object Array| Yes		     |
-| 2 |     callback        | function            | Yes        |
+| 1 | Records to Create   | `{Object}`, `[{Object Array}]`| Yes		     |
+| 2 |     callback        | `function`            | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types  |
 |---|---------------------|----------------------|
 | 1 |  Error              | Error                |
-| 2 |  Records Created    | Object, Object Array |
+| 2 |  Records Created    | `{Object}`, `[{Object Array}]`|
 
 ### Example Usage
 
