@@ -68,3 +68,17 @@
   + Setup: config files
     + all of the `config.*.md` files
   + Usage: `sails.config`
+  + 
+  
+
+
+
+|    Parameters       | Accepted Data Types | Required ? |
+|---------------------|---------------------|------------|
+|     param1          | String, object,int  | Yes		     |
+|     callback        | function            | Yes        |
+|                     |                     |            |
+| Callback Parameters | Possible Data Types |------------|
+|---------------------|---------------------|------------|
+|      Error          |     Error           |------------|
+|  RecordsFound       | Object, Object Array|------------|
