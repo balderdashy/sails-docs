@@ -71,30 +71,21 @@
   + 
   
 
-# .methodOne()
+# .create()
 
 ### Overview
 
-|    Parameters       | Accepted Data Types | Required ? |
+#### Parameters
+
+|    Description     | Accepted Data Types | Required ? |
 |---------------------|---------------------|------------|
-|     param1          | String, object,int  | Yes		     |
+|     newRecords          | String, object,int  | Yes		     |
 |     callback        | function            | Yes        |
 
-| Callback Parameters | Possible Data Types |
+#### Callback Parameters
+
+|     Description     | Possible Data Types |
 |---------------------|---------------------|
 |      Error          |     Error           |
 |  RecordsFound       | Object, Object Array|
 
-
-
-
-
-|    Parameters       | Accepted Data Types | Required ? |  
-|---------------------|---------------------|------------|  
-|     param1          | String, object,int  | Yes		     |  
-|     callback        | function            | Yes        |  
-
-| Callback Parameters | Possible Data Types |
-|---------------------|---------------------|
-|      Error          |     Error           |
-|  RecordsFound       | Object, Object Array|
