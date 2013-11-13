@@ -134,27 +134,27 @@ Checks if the supplied argument is found in the list of acceptable <a href="http
 ```javascript
 // Accept: text/html
 req.accepts('html');
-// => "html"
+//  "html"
 
 // Accept: text/*, application/json
 req.accepts('html');
-// => "html"
+//  "html"
 req.accepts('text/html');
-// => "text/html"
+//  "text/html"
 req.accepts('json, text');
-// => "json"
+//  "json"
 req.accepts('application/json');
-// => "application/json"
+//  "application/json"
 
 // Accept: text/*, application/json
 req.accepts('image/png');
 req.accepts('png');
-// => undefined
+//  undefined
 
 // Accept: text/*;q=.5, application/json
 req.accepts(['html', 'json']);
 req.accepts('html, json');
-// => "json"
+//  "json"
 ```
 
 ### Notes
@@ -191,16 +191,16 @@ Check if the incoming request contains the "Content-Type" header field, and it m
 req.is('html');
 req.is('text/html');
 req.is('text/*');
-// => true
+//  true
 
 // When Content-Type is application/json
 req.is('json');
 req.is('application/json');
 req.is('application/*');
-// => true
+//  true
 
 req.is('html');
-// => false
+//  false
 
 ```
 
@@ -214,7 +214,7 @@ This property contains the IP address of the client initiating the request.
 
 console.log(req.ip);
 
-// => "127.0.0.1"
+//  "127.0.0.1"
 
 ```
 
@@ -255,7 +255,7 @@ Returns the hostname from the "Host" header field (without the port number)
 ```javascript
 // Host: "example.com:3000"
 console.log(req.host);
-// => "example.com"
+//  "example.com"
 
 ```
 
@@ -270,7 +270,7 @@ Check if the request is fresh - aka Last-Modified and/or the ETag still match, i
 
 console.log(req.fresh)
 
-// => true
+//  true
 ```
 
 ### Notes
@@ -293,7 +293,7 @@ Check if the request was issued with the "X-Requested-With" header field set to 
 ```javascript
 
 console.log(req.xhr);
-// => true
+//  true
 
 ```
 
@@ -306,7 +306,7 @@ This property contains the transport protocol of the request
 ### Example Usage
 ```javascript
 console.log(req.protocol)
-// => "http"
+//  "http"
 ```
 
 ### Notes
