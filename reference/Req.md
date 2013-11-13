@@ -7,7 +7,7 @@ Sails is built on Express. Because of this, you can access all of the express me
 This is an object containing information about files uploaded through the Express bodyParser.  
 
 ### Example Usage
-If a file field was named "image", and a file was uploaded, req.files.image would contain the following File object:
+If a file field was named "image" and as a value contained a sucessfully uploaded file, req.files.image would contain the following File object:
 ```javascript
 { size: 74643,
   path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
