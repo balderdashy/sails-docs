@@ -14,7 +14,8 @@ These methods provide different levels of logging functionality in sails.
 ### Example Usage
 ```
 
-//Logs using the log level currently set in config.  If not specified, sails defaults to 'something'.  Note, this is equivelent to sails.log.debug() 
+//Logs using the log level currently set in config.  
+//If not specified, sails defaults to 'something'.  Note, this is equivelent to sails.log.debug() 
 
 
 ```
