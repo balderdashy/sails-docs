@@ -69,8 +69,9 @@ This is the same as User.<modelName>().  If you disable globals, you can use sai
 > Keep in mind that this method will convert your entire model name to lowercase.
 
 
-sails.io.sockets()
-==================
+
+# sails.io.sockets()
+
 
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io . 
 
@@ -132,38 +133,114 @@ Join 'Beyonce' ! </div>
 >
 
 
-# io.sockets.emit('roomname')
+# io.sockets.emit('eventName')
 
 ### Purpose
+Emit a message to every client, regardless of what room they are in.  
 
 ### Example Usage
 
+UsersController.js
 ```javascript
 
+module.exports{
+
+  index: function(req,res){
+        if (req.isSocket){
+
+          // Have the requesting socket join the room 'beyonce'
+          req.socket.join('beyonce',function(){
+
+            // Lets emit a message to everyone
+            // Subscribe in multiple tabs and see what happns.
+            
+            sails.io.sockets.emit('message',{HelloFrom:req.socket.id});
+          });
+
+        } else {
+
+              res.view();
+        }
+  }
+}
+
+```
+
+views/Users/index.ejs
+```html
+<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
+
+<script>
+
+function makeNew(){
+    console.log('Joining room \'beyonce\'');
+    socket.get('/users/index/');
+}
+
+</script>
+
+<center>
+<div class="addButton" onClick="makeNew()">
+Join 'Beyonce' ! </div>
 
 ```
 
 ### Notes
->
+> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
 
 
-# io.sockets.in('roomname').emit('msg')
+# io.sockets.in('roomname').emit('msg',{})
 
 ### Purpose
+Send a message to everyone in the specified room.
 
 ### Example Usage
-
+UsersController.js
 ```javascript
 
+module.exports{
+
+  index: function(req,res){
+        if (req.isSocket){
+
+          // Have the requesting socket join the room 'beyonce'
+          req.socket.join('beyonce',function(){
+
+            // Now that someone is subscribed, let's emit a message to the room
+            // Subscribe in multiple tabs and see what happns.
+            
+            sails.io.sockets.in('beyonce').emit('message',{HelloFrom:req.socket.id});
+          });
+
+        } else {
+
+              res.view();
+        }
+  }
+}
+
+```
+
+views/Users/index.ejs
+```html
+<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
+
+<script>
+
+function makeNew(){
+    console.log('Joining room \'beyonce\'');
+    socket.get('/users/index/');
+}
+
+</script>
+
+<center>
+<div class="addButton" onClick="makeNew()">
+Join 'Beyonce' ! </div>
 
 ```
 
 ### Notes
->
-
-
-- io.sockets.in('roomname').emit('msg')
-- io.sockets.emit('roomname')
-- io.sockets.clients('roomname')
+> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
 
 
