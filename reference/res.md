@@ -470,3 +470,62 @@ riceNoodles: function(req,res){
 
 ### Notes
 >
+
+# res.badRequest()
+### Purpose
+do whatever is in config/400.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+# res.forbidden()
+### Purpose
+Do whatever is in config/403.js
+
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+
+# res.notFound()
+### Purpose
+Do whatever is in config/404.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+
+# res.serverError()
+### Purpose
+Do whatever is in config/500.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
