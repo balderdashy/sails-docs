@@ -88,13 +88,13 @@
 
 
 
+|                   Method One Overview                  |
+|    Parameters       | Accepted Data Types | Required ? |  
+|---------------------|---------------------|------------|  
+|     param1          | String, object,int  | Yes		     |  
+|     callback        | function            | Yes        |  
 
-|    Parameters       | Accepted Data Types | Required ? |  | Callback Parameters | Possible Data Types |
-|---------------------|---------------------|------------|  |---------------------|---------------------|
-|     param1          | String, object,int  | Yes		     |  |      Error          |     Error           |
-|     callback        | function            | Yes        |  |  RecordsFound       | Object, Object Array|
-
-
-
-
-
+| Callback Parameters | Possible Data Types |
+|---------------------|---------------------|
+|      Error          |     Error           |
+|  RecordsFound       | Object, Object Array|
