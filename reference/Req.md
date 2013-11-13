@@ -48,7 +48,7 @@ var myParam = req.param('blueStuff');
 ```
 
 ### Notes
-> This is nice.  Sails makes it nicer by making ALL params available through req.params.all().  See this method below.
+> This is nice.  Sails makes it nicer by making ALL params available through req.params.all().  See this method somewhere below.
 
 # req.route
 ### Purpose
