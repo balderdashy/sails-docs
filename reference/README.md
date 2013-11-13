@@ -77,15 +77,15 @@
 
 #### Parameters
 
-|    Description     | Accepted Data Types | Required ? |
-|---------------------|---------------------|------------|
-|     newRecords          | String, object,int  | Yes		     |
-|     callback        | function            | Yes        |
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Records to Create   | Object, Object Array| Yes		     |
+| 2 |     callback        | function            | Yes        |
 
 #### Callback Parameters
 
-|     Description     | Possible Data Types |
-|---------------------|---------------------|
-|      Error          |     Error           |
-|  RecordsFound       | Object, Object Array|
+| # |     Description     | Possible Data Types  |
+|---|---------------------|----------------------|
+| 1 |  Error              | Error                |
+| 2 |  Records Created    | Object, Object Array |
 
