@@ -8,7 +8,7 @@ This is an object containing information about files uploaded through the Expres
 
 ### Example Usage
 If a file field was named "image", and a file was uploaded, req.files.image would contain the following File object:
-```json
+```javascript
 { size: 74643,
   path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
   name: 'edge.png',
