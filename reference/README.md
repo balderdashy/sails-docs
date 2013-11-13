@@ -88,7 +88,7 @@
 
 
 
-|                   Method One Overview                  |
+
 |    Parameters       | Accepted Data Types | Required ? |  
 |---------------------|---------------------|------------|  
 |     param1          | String, object,int  | Yes		     |  
