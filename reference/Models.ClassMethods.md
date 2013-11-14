@@ -23,6 +23,7 @@ For every class method, the callback parameter is optional.  If one is not suppl
 ### Purpose
 Creates a new record.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -59,6 +60,7 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 ### Purpose
 Updates an existing record.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -95,6 +97,7 @@ Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updat
 ### Purpose
 Destroys a record that may or may not exist.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -129,6 +132,7 @@ Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 ### Purpose
 This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -164,6 +168,7 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(e
 ### Purpose
 This finds and returns a single record that meets the criterea.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -199,6 +204,7 @@ Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 ### Purpose
 Finds and returns all records that meet the criterea object(s) that you pass it.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -234,6 +240,7 @@ Users.find({}).exec(function findCB(err,found){
 ### Purpose
 This is shorthand for a .find() query that uses the startsWith query modifier.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -267,6 +274,7 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 # .endsWith()
 ### Purpose
 This method performs a query on the model and returns those ...
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -302,6 +310,7 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 ### Purpose
 This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -343,6 +352,7 @@ Users.findOne(1).exec(function(err,mI){
 # .count()
 ### Purpose
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -377,6 +387,7 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 ### Purpose
 This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -461,6 +472,7 @@ These methods are automatically generated for each attribute in each model of yo
 ### Purpose
 Find and return records by a specific model attribute.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
@@ -496,6 +508,7 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 ### Purpose
 Find and return one record by a specific model attribute.
 
+### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
