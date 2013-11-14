@@ -4,7 +4,7 @@ Instance Methods
 # .save()
 
 ### Purpose
-The `save` method updates the database with the parent instance's current values and returns the newly saved object. 
+The `save` method updates your record in the database using the current attributes.  It then returns the newly saved object in the callback. 
 
 ### Overview
 #### Parameters
@@ -25,7 +25,7 @@ The `save` method updates the database with the parent instance's current values
 
 ```javascript
 
-Users.find().limit(1).exec(
+User.find().limit(1).exec(
 	function(err,mI){
 		mI[0].petName = 'BooBoo';
 		mI[0].save(
@@ -46,7 +46,7 @@ Users.find().limit(1).exec(
 # .destroy()
 
 ### Purpose
-This method destroys the parent model instance then runs a callback.
+Destroys the your record in the database. It returns an error in the callback if it has trouble. 
 
 ### Overview
 #### Parameters
@@ -66,7 +66,7 @@ This method destroys the parent model instance then runs a callback.
 
 ```javascript
 
-Users.find().limit(1).exec(
+User.find().limit(1).exec(
 	function(err,mI){
 		mI[0].destroy(
 			function(err){
@@ -108,7 +108,7 @@ There will be no parameters in the callback unless there is an error.  No news i
 
 ```javascript
 
-Users.find().limit(1).exec(
+User.find().limit(1).exec(
 	function(err,mI){
 		mI[0].petName = ['pookie','BooBoo'];
 		mI[0].validate(
@@ -181,7 +181,7 @@ The toObject method returns a cloned model instance (record) but stripped of all
 # .toJSON()
 
 ### Purpose
-This method also returns a cloned model instance.  This one however includes all instance methods.
+This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.
 
 ### Overview
 #### Parameters
@@ -209,7 +209,7 @@ This method also returns a cloned model instance.  This one however includes all
 
 ```javascript
 
-Users.find().limit(1).exec(
+User.find().limit(1).exec(
 	function(err,mI){
 		var datUser = mI[0].toObject();
 		console.log(datUser);
@@ -221,7 +221,7 @@ Users.find().limit(1).exec(
   petName: 'BooBoo',
   phoneNumber: '101-150-1337' } */
 
-Users.find().limit(1).exec(
+User.find().limit(1).exec(
 	function(err,mI){
 		var datUser = mI[0].toJSON();
 		console.log(datUser);
