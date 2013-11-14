@@ -11,6 +11,17 @@ User.find()
 
 
 
+User.find()
+.where({
+  name: ['mike','nick]    <-- This is an 'in' query
+})
+
+
+This will find users named either mike or nick.  This is like a sql 'in' query.
+
+
+
+
 The argument to where is a "criteria object."
 Let's learn about criteria objects.
 
