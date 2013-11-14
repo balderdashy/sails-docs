@@ -3,21 +3,6 @@ The methods below are the basic crud methods availebl in sails.  Here is a very 
 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
-# Overview
-| Method Name  |       Parameters     | Callback Parameters 
-| ------------ | -------------------  | --------------------
-| .create() | - newRecords ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , newRecords)```
-| .update() | - findCriterea ```{}``` or ```[{}]```<br>-updatedRecord ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [updatedRecords] )```
-| .destroy() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ```  | ```function ( Error )```
-| .findOrCreate() | - findCriterea ```{}``` or ```[{}]```<br>-recordsToCreate ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , foundOrCreated)```
-| .findOne() | - findCriterea ```{}```<br>- callback ``` function ``` | ```function ( Error , foundRecord)```
-| .find() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , foundRecords)```
-| .startsWith() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [foundRecords])```
-| .endsWith() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error , [foundRecords])```
-|.validate()|- findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | `Error`|
-| .count() | - findCriterea ```{}``` or ```[{}]```<br>- callback ``` function ``` | ```function ( Error, integer )```|
-| .stream() | - findCriterea ```{}```<br> - ```{customMethods}``` | No callback! A node stream object is returned |
-
 
 # .create()
 ### Purpose
@@ -355,6 +340,7 @@ Users.findOne(1).exec(function(err,mI){
 # .count()
 ### Purpose
 This method returns the number of records in your database that meet the given search criterea
+
 ### Overview
 #### Parameters
 
@@ -457,19 +443,6 @@ Stream all the Users ! </div>
 
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
-
-> Warning!  The first parameter of every dynamic finder MUST HAVE THE SAME DATA TYPE that you declared for the model attribute by which you are searching. The only exception to this is when you wish to return multiple records.  In this case, the first parameter must be an array containing data of the type specified in your controller for that attribute.
-
-# Overview
-
-| Method Name  |       Parameters     | Callback Parameters |
-| ------------ | -------------------  | ------------------- |
-|.findBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , [foundRecords])```|
-|.findOneBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecord)```|
-|.countBy`<attribute>`()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , integer )```|
-|.`<attribute>`StartsWith()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecords)```|
-|.`<attribute>`EndsWith()|-findCriterea ```{}``` or ```[{}]```<br>- callback ```function``` | ```function ( Error , foundRecords)```|
-
 
 # .findBy`<attribute>`()
 ### Purpose
@@ -645,18 +618,7 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 
 
 Pub-Sub Methods
-================
-
-# Overview
-| Method Name  |       Parameters     |
-| ------------ | -------------------  |
-| .publishCreate() | ``` recordID ``` and ``` { dataToPublish } ``` | 
-| .publishUpdate() | ``` recordID ``` and ``` { dataToPublish } ``` |
-| .publishDestroy() | ``` recordID ``` |
-| .subscribe() | ``` { req.socket } ``` |
-| .subscribe() | ``` { req.socket } ``` and ``` [ recordIDs ] ``` |
-| .unsubscribe() | ``` { req.socket } ``` |
-| .unsubscribe() | ``` { req.socket } ``` and ``` [ recordIDs ] ``` |
+----------------
 
 
 # .publishCreate()
