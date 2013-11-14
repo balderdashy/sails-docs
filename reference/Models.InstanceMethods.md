@@ -1,20 +1,25 @@
-# Instance Methods
-
-# Overview
-
-| Method Name  |       Parameters     |     Callback Parameters     |   Is It Asyncronous?  |
-| ------------ | -------------------  | --------------------------- | --------------------- |
-|  .save       | callback ```function```  | ``` function ({ err } , { savedValue } )```     |       Yes    |
-|  .destroy    | callback ```function```  | ``` function ( { err } )``` |       Yes     |
-|  .validate   | callback ```function``` |  ``` function ( { err } )``` |       Yes      |
-|  .toObject   |      none            |   ``` { cloneOfRecord } ```    |        No         |
-|  .toJSON     |      none            |  ``` { cloneOfRecord } ```     |        No         |
-
+Instance Methods
+-----------------
 
 # .save()
 
 ### Purpose
 The `save` method updates the database with the parent instance's current values and returns the newly saved object. 
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | `Error`             |
+| 2 |  Saved Record       | `{ }`               |
+
 
 ### Example Usage
 
@@ -43,6 +48,20 @@ Users.find().limit(1).exec(
 ### Purpose
 This method destroys the parent model instance then runs a callback.
 
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | `Error`             |
+
+
 ### Example Usage
 
 ```javascript
@@ -70,6 +89,20 @@ Users.find().limit(1).exec(
 ### Purpose
 The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
 There will be no parameters in the callback unless there is an error.  No news is good news.
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | `Error`             |
+
 
 ### Example Usage
 
@@ -103,12 +136,35 @@ module.exports = {
 ```
 
 ### Notes
+> Note, This method is not asynchronous
 
 
 # .toObject()
 
 ### Purpose
 The toObject method returns a cloned model instance (record) but stripped of all instance methods.
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+|   |    NO PARAMS        |                     |            |
+
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+|   |    NO CALLBACK      |                     |
+
+
+#### Return Value
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+|   |   Cloned Record     |        `{ }`        |
+
 ### Example Usage
 
 ```javascript
@@ -126,6 +182,28 @@ The toObject method returns a cloned model instance (record) but stripped of all
 
 ### Purpose
 This method also returns a cloned model instance.  This one however includes all instance methods.
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+|   |    NO PARAMS        |                     |            |
+
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+|   |    NO CALLBACK      |                     |
+
+
+#### Return Value
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+|   |   Cloned Record     |        `{ }`        |
+
 
 ### Example Usage
 
@@ -182,8 +260,10 @@ module.exports = {
 ```
 ### Notes
 > The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  You would use this to keep private data like email addresses and passwords from being sent back to every client.
+> Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
+> You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
+> Note, This method is not asynchronous
 
 # Custom Instance Methods
 
