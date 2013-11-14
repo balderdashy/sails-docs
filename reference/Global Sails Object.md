@@ -14,14 +14,16 @@ These methods provide different levels of logging functionality in sails.
 ### Example Usage
 ```
 
-//Logs using the log level currently set in config.  
-//If not specified, sails defaults to 'something'.  Note, this is equivelent to sails.log.debug() 
 
+// Logs using the log level currently set in config.
+sails.log('There',{sure:'are'},['a','lot'],'of',[{log:'levels'}, 'huh'],'?',true);
+
+// There { sure: 'are' } [ 'a', 'lot' ] of [ { log: 'levels' }, 'huh' ] ? true
 
 ```
 
 ### Notes
-These will accept an infinite number of arguments of any data type, seperated by commas.
+> These will accept an infinite number of arguments of any data type, seperated by commas.
 
 
 # sails.config()
