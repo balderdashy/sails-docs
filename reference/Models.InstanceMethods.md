@@ -91,8 +91,7 @@ User.find().exec(
 # .validate()
 
 ### Purpose
-The validate method checks the keys/values that are currently set on the model instance against the validations that you specified in the attributes object of your model. This is shorthand for Model.validate({ attributes }, cb)
-There will be no parameters in the callback unless there is an error.  No news is good news.
+Checks the current keys/values on the record against the validations specified in the attributes object of your model. 
 
 ### Overview
 #### Parameters
@@ -142,8 +141,11 @@ module.exports = {
 ```
 
 ### Notes
+> This is shorthand for Model.validate({ attributes }, cb)
 > If you .save() without first validating, waterline tries to convert.  If it cant, it will throw an error.
 > In this case, it would have converted the array to the string 'Marie,Hank'
+
+> There will be no parameters in the callback unless there is an error.  No news is good news.
 
 > Note, This method is not asynchronous
 
