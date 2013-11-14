@@ -23,6 +23,20 @@ For every class method, the callback parameter is optional.  If one is not suppl
 ### Purpose
 Creates a new record.
 
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -44,6 +58,20 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 # .update()
 ### Purpose
 Updates an existing record.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -67,6 +95,20 @@ Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updat
 ### Purpose
 Destroys a record that may or may not exist.
 
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -86,6 +128,20 @@ Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 # .findOrCreate()
 ### Purpose
 This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -107,6 +163,22 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(e
 # .findOne()
 ### Purpose
 This finds and returns a single record that meets the criterea.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
+
 ### Example Usage
 
 ```javascript 
@@ -126,6 +198,20 @@ Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 # .find()
 ### Purpose
 Finds and returns all records that meet the criterea object(s) that you pass it.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -147,6 +233,21 @@ Users.find({}).exec(function findCB(err,found){
 # .startsWith()
 ### Purpose
 This is shorthand for a .find() query that uses the startsWith query modifier.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -165,6 +266,20 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 
 # .endsWith()
 ### Purpose
+This method performs a query on the model and returns those ...
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -178,14 +293,28 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 
 ```
 ### Notes
->Although you may pass .endsWith an object or an array of objects, it will always return an array.
-Warning! This method does not support .exec() !  You MUST supply a callback.  
+> Although you may pass .endsWith an object or an array of objects, it will always return an array.
+> Warning! This method does not support .exec() !  You MUST supply a callback.  
 
 
 
 # .validate()
 ### Purpose
 This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -214,6 +343,20 @@ Users.findOne(1).exec(function(err,mI){
 # .count()
 ### Purpose
 
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -233,6 +376,21 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 # .stream()
 ### Purpose
 This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 UsersController.js
@@ -302,6 +460,21 @@ These methods are automatically generated for each attribute in each model of yo
 # .findBy`<attribute>`()
 ### Purpose
 Find and return records by a specific model attribute.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -322,6 +495,21 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 # .findOneBy`<attribute>`()
 ### Purpose
 Find and return one record by a specific model attribute.
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -342,6 +530,19 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 # .countBy`<attribute>`()
 ### Purpose
 Count the number of records in a model with a particular model attribute. 
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 ```javascript 
@@ -361,6 +562,19 @@ SUM [ matchedObjects * RecordsMatchedByObject ]
 
 # .`<attribute>`StartsWith()
 ### Purpose
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 
 ### Example Usage
 
@@ -383,6 +597,19 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 
 # .`<attribute>`EndsWith
 ### Purpose
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 
 ### Example Usage
 
@@ -419,6 +646,19 @@ Pub-Sub Methods
 # .publishCreate()
 ### Purpose
 PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 UsersController.js
 ```javascript
@@ -489,6 +729,19 @@ The client's socket must have first been subscribed using the .subscribe({}) met
 # .publishUpdate()
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 UsersController.js
@@ -562,6 +815,19 @@ The client's socket must have first been subscribed using the .subscribe({},[]) 
 # .publishDestroy()
 ### Purpose
 Publish the destruction of a model
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 
 UsersController.js
@@ -637,6 +903,19 @@ Click Me to destroy user 'Walter' ! </div>
 # .subscribe({})
 ### Purpose
 1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 Controller Code
 ```javascript
@@ -652,6 +931,19 @@ Controller Code
 
 ### Purpose
 This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 
 ### Example Usage
 Controller Code
@@ -675,6 +967,19 @@ Controller Code
 # .unsubscribe({})
 ### Purpose
 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 Controller Code
 ```javascript
@@ -689,6 +994,19 @@ Most of the time you shouldn't use this since sessions are destroyed when the cl
 # .unsubscribe({},[])
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    |         | 	     |
+| 2 |     Callback        | `function`          | Yes        |
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | Error               |
+| 2 |  Records Created    | `{}`, `[{}]`        |
+
 ### Example Usage
 Controller Code
 ```javascript
