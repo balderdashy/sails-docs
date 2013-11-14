@@ -50,7 +50,7 @@ Updates existing record in the database that match the given criterea.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |   Find Criterea     |   `{}`,`[{}]`,'string'  | 	Yes     |
+| 1 |   Find Criterea     |   `{}`,`[{}]`, 'string'  | 	Yes     |
 | 2 |   Updated Records   |   `{}`,`[{}]`       | 	Yes     |
 | 3 |     Callback        | `function`          | Yes        |
 
@@ -88,7 +88,7 @@ Destroys all record in your database that matches the given criterea.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -123,7 +123,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |  Records to Create  | `{}`,`[{}]`          | 	Yes  |
 | 2 |     Callback        | `function`          | Yes        |
 
@@ -160,7 +160,7 @@ This finds and returns a single record that meets the criterea.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -196,7 +196,7 @@ Finds and returns all records that meet the criterea object(s) that you pass it.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -233,7 +233,7 @@ This is shorthand for a .find() query that uses the startsWith query modifier.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -267,7 +267,7 @@ This method performs a query on the model and returns those ...
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -303,7 +303,7 @@ This method ensures that the current attributes on your model instance meet the 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes        |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes        |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -346,7 +346,7 @@ This method returns the number of records in your database that meet the given s
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -381,7 +381,7 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string' | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string' | Yes |
 | 2 | Custom Write/End Methods | `{}`          | No        |
 
 #### Callback Parameters
@@ -453,7 +453,7 @@ Find and return records by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -489,7 +489,7 @@ Find and return one record by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -522,7 +522,7 @@ Count the number of records in a model with a particular model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -553,7 +553,7 @@ Find records based on the starting letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes      |
 
 #### Callback Parameters
@@ -589,7 +589,7 @@ Find records based on the last letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -710,7 +710,7 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Updated Record|   'int','string'    |   Yes      |
+| 1 | ID of Updated Record|   'int', 'string'    |   Yes      |
 | 1 | Data to Send        |   `{}`              |   No      |
 
 
@@ -798,7 +798,7 @@ Publish the destruction of a model
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Destroyed Record |'int','string'  |   Yes  |
+| 1 | ID of Destroyed Record |'int', 'string'  |   Yes  |
 
 
 #### Callback Parameters
@@ -912,7 +912,7 @@ This one will subscribe clients to model instances (records).  They allows clien
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
-| 2 | Record IDs          | `[]`,'string','int' | No        |
+| 2 | Record IDs          | `[]`, 'string', 'int' | No        |
 
 #### Callback Parameters
 
@@ -959,13 +959,14 @@ Controller Code
 Controller Code
 ```javascript
 
-User.unsubscribe(req.socket);
+User.unsubscribe(`{}`, '[]' );
 
 ```
 
 ### Notes
 > Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
 > Any string arguments passed must be the ID of the record.
+
 # .unsubscribe({},[])
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
@@ -973,7 +974,7 @@ This method will unsubscribe a socket from the model instances (records) who's I
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
-| 2 | Record IDs          | `[]`,'string','int' | No         |
+| 2 | Record IDs          | `[]`, 'string', 'int' | No         |
 
 #### Callback Parameters
 
