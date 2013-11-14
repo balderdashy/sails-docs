@@ -29,7 +29,7 @@ Creates a new instance of this model in the database.
 
 // create a new record with name 'Walter Jr'
 
-Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
+User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 	console.log('Created user with name '+created.name);
 	});
 
@@ -64,7 +64,7 @@ Updates existing record in the database that match the given criterea.
 ### Example Usage
 
 ```javascript 
-Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
+User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
 	console.log('Updated user to have name '+updated[0].name);
 	});
 	
@@ -101,7 +101,7 @@ Destroys all record in your database that matches the given criterea.
 ### Example Usage
 
 ```javascript 
-Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
+User.destroy({name:'Flynn'}).exec(function deleteCB(err){
 	console.log('The record has been deleted');
 	});
 	
@@ -138,7 +138,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 ```javascript 
 
-Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
+User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
 	console.log('What\'s cookin\' '+record.name+'?');
 	});
 	
@@ -174,7 +174,7 @@ This finds and returns a single record that meets the criterea.
 ### Example Usage
 
 ```javascript 
-Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
+User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 	console.log('We found '+found.name);
 	});
 	
@@ -209,7 +209,7 @@ Finds and returns all records that meet the criterea object(s) that you pass it.
 ### Example Usage
 
 ```javascript 
-Users.find({}).exec(function findCB(err,found){
+User.find({}).exec(function findCB(err,found){
 	while (found.length)
 		console.log('Found User with name '+found.pop().name)
 	});
@@ -246,7 +246,7 @@ This is shorthand for a .find() query that uses the startsWith query modifier.
 ### Example Usage
 
 ```javascript 
-Users.startsWith({name:'Fl'},function swCB(err,found){
+User.startsWith({name:'Fl'},function swCB(err,found){
 	console.log('User  '+found[0].name+' starts with \'Fl\'');
 	});
 	
@@ -280,7 +280,7 @@ This method performs a query on the model and returns those ...
 ### Example Usage
 
 ```javascript 
-Users.endsWith({name:'ie'},function ewCB(err,found){
+User.endsWith({name:'ie'},function ewCB(err,found){
 	console.log('User '+found[0].name+' ends with \'ie\'');
 	});
 	
@@ -303,7 +303,7 @@ This method ensures that the current attributes on your model instance meet the 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes        |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -317,13 +317,13 @@ This method ensures that the current attributes on your model instance meet the 
 
 ```javascript 
 
-Users.findOne(1).exec(function(err,mI){
+User.findOne(1).exec(function(err,myRecord){
 
 	// petName is defined as a 'string'.  Let's give it an array and see what happens.
 
-	mI.petName = [1,2];
+	myRecord.petName = [1,2];
 	
-	Users.validate(mI,function(err){
+	User.validate(myRecord,function(err){
 		sails.log('Error:'+JSON.stringify(err));
 	});
 });
@@ -359,7 +359,7 @@ This method returns the number of records in your database that meet the given s
 ### Example Usage
 
 ```javascript 
-Users.count({name:'Flynn'}).exec(function countCB(err,found){
+User.count({name:'Flynn'}).exec(function countCB(err,found){
 	console.log('There are '+found+' users called \'Flynn\'');
 	});
 	
@@ -404,7 +404,7 @@ module.exports = {
         var getSocket = req.socket;
         
         // Start the stream.  Pipe it to sockets.
-        Users.stream({name:'Walter'}).pipe(getSocket.emit);
+        User.stream({name:'Walter'}).pipe(getSocket.emit);
         
     } else {
 
@@ -466,7 +466,7 @@ Find and return records by a specific model attribute.
 ### Example Usage
 
 ```javascript 
-Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
+User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 	while (found.length)
 		console.log('Found User with name '+found.pop().name);
 	});
@@ -502,7 +502,7 @@ Find and return one record by a specific model attribute.
 ### Example Usage
 
 ```javascript 
-Users.findOneByName('Walter').exec(function findCB(err,found){
+User.findOneByName('Walter').exec(function findCB(err,found){
 	console.log('Found User with name '+found.name);
 	});
 	
@@ -535,7 +535,7 @@ Count the number of records in a model with a particular model attribute.
 ### Example Usage
 
 ```javascript 
-Users.countByName('Walter').exec(function countCB(err,found){
+User.countByName('Walter').exec(function countCB(err,found){
 	console.log('There are '+found+' users called \'Walter\'');
 	});
 	
@@ -567,7 +567,7 @@ Find records based on the starting letters of one of its attributes value.
 ### Example Usage
 
 ```javascript 
-Users.nameStartsWith('W', function startsWithCB(err,found){
+User.nameStartsWith('W', function startsWithCB(err,found){
 	while (found.length)
 		console.log('User '+found.pop().name+' has name that starts with \'W\'');
 	});
@@ -603,7 +603,7 @@ Find records based on the last letters of one of its attributes value.
 ### Example Usage
 
 ```javascript 
-Users.nameEndsWith('sie', function endsWithCB(err,found){
+User.nameEndsWith('sie', function endsWithCB(err,found){
 	console.log('User '+found[0].name+' has name that ends with \'sie\'');
 	});
 	
@@ -648,14 +648,14 @@ module.exports = {
     
         if (nameSent && req.isSocket){
     
-          Users.create({name:nameSent}).exec(function created(err,newGuy){
-            Users.publishCreate({id:newGuy.id,name:newGuy.name});
+          User.create({name:nameSent}).exec(function created(err,newGuy){
+            User.publishCreate({id:newGuy.id,name:newGuy.name});
             console.log('A new user called '+newGuy.name+' has been created');
           });
     
         } else if (req.isSocket){
     
-          Users.subscribe(req.socket);
+          User.subscribe(req.socket);
           console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
         
         } else {
@@ -734,14 +734,14 @@ module.exports = {
     
         if (nameSent && req.isSocket){
     
-          Users.update({name:nameSent},{name:'Heisenberg'}).exec(function update(err,updated){
-            Users.publishUpdate(updated[0].id,{ name:updated[0].name });
+          User.update({name:nameSent},{name:'Heisenberg'}).exec(function update(err,updated){
+            User.publishUpdate(updated[0].id,{ name:updated[0].name });
           });
     
         } else if (req.isSocket){
     
-        Users.find({}).exec(function(e,listOfUsers){
-          Users.subscribe(req.socket,listOfUsers);
+        User.find({}).exec(function(e,listOfUsers){
+          User.subscribe(req.socket,listOfUsers);
         console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
         });
         
@@ -818,16 +818,16 @@ module.exports = {
     
         if (nameSent && req.isSocket){
     
-          Users.findOne({name:nameSent}).exec(function findIt(err,foundHim){
-            Users.destroy({id:foundHim.id}).exec(function destroy(err){
-              Users.publishDestroy(foundHim.id);
+          User.findOne({name:nameSent}).exec(function findIt(err,foundHim){
+            User.destroy({id:foundHim.id}).exec(function destroy(err){
+              User.publishDestroy(foundHim.id);
             });
           });
     
         } else if (req.isSocket){
     
-        Users.find({}).exec(function(e,listOfUsers){
-          Users.subscribe(req.socket,listOfUsers);
+        User.find({}).exec(function(e,listOfUsers){
+          User.subscribe(req.socket,listOfUsers);
         console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
         });
     
@@ -896,7 +896,7 @@ Click Me to destroy user 'Walter' ! </div>
 ### Example Usage
 Controller Code
 ```javascript
-    Users.subscribe(req.socket);
+    User.subscribe(req.socket);
     console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
   
 ```
@@ -924,8 +924,8 @@ This one will subscribe clients to model instances (records).  They allows clien
 Controller Code
 ```javascript
 
-    Users.find({}).exec(function(e,listOfUsers){
-        Users.subscribe(req.socket,listOfUsers);
+    User.find({}).exec(function(e,listOfUsers){
+        User.subscribe(req.socket,listOfUsers);
         console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
     });
     
@@ -959,7 +959,7 @@ Controller Code
 Controller Code
 ```javascript
 
-Users.unsubscribe(req.socket);
+User.unsubscribe(req.socket);
 
 ```
 
@@ -985,7 +985,7 @@ This method will unsubscribe a socket from the model instances (records) who's I
 Controller Code
 ```javascript
 
-Users.unsubscribe(req.socket,[1,2,3,4,5,6]);
+User.unsubscribe(req.socket,[1,2,3,4,5,6]);
 
 ```
 
