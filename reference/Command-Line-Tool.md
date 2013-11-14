@@ -1,9 +1,11 @@
 Command Line Tool
 =====================
 
-### sails new
+# sails new
+### Purpose
 The new argument is used for creating a new sails app.
-#####Example usage
+
+### Example Usage
 ````
 catGuy@catGuy:~/node/sails$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
@@ -13,14 +15,21 @@ info: New app created!
 Also available is the \-\-linker flag.
 This will create your app using automatic asset linking (and we all know what that means)
 
-### sails generate
+# sails generate
+### Purpose
 Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
-##### Generate new controller
+
+### Example Usage
+
+Generate new controller
+
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
 info: Generated controller for newmodel!
 ```
-##### Generate new model
+
+Generate new model
+
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate model newmodel
 warn: For the record :: to serve the blueprint API for this model,
@@ -28,14 +37,18 @@ warn: you'll also need to have an empty controller.
 info: Generated model for newmodel!
 
 ```
-##### Generate both!
+
+Generate both!
+
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
 info: Generating model and controller for newmodel...
 ```
+### Notes
+> 
 
-
-### sails lift
+# sails lift
+### Purpose
 The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
 
 - \-\-verbose                                   This displays extra information in console relevent to your app
@@ -45,7 +58,7 @@ The lift argument launches your app.  You can also add the folowing flags behind
 - \-\-dev                                       This is shorthand for environment=development
 - \-\-prod                                      This is shorthand for environment=production
 
-##### Example Usage
+### Example Usage
 
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails lift --port=1338 --verbose --environment=production
@@ -93,7 +106,6 @@ info:
 info: Server lifted in `node/sails/myApp`
 info: To see your app, visit http://localhost:1338
 info: To shut down Sails, press <CTRL> + C at any time.
-
 debug: --------------------------------------------------------
 debug: :: Wed Oct 30 2013 14:02:53 GMT-0500 (CDT)
 debug: 
@@ -119,13 +131,16 @@ verbose: Grunt :: Done, without errors.
 
 ```
 
+### Notes
+> 
 
-### sails console
+
+# sails console
+### Purpose
+
 This command will quietly lift your sails app, web server and all.  At this point, it sends the <link>global sails object</link> to the node.js shell.  This means you can access all of your model instances, their methods, and much more, all by using javascript commands.
 
-This might come in handy when you want to quickly add a record to a model and can't be bothered installing PostMAN.  It's also a good tool for diagnosing problems in your app.  If you can't access something over console, neither can your app.  
-
-#####Example Usage
+### Example Usage
 ```sh
 catGuy@catGuy:~/node/sails/blogApp$ sails console
 
@@ -143,14 +158,19 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
     seenBy: 'everyone' }]
 ```
 
-Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell.
 
-For more information, see node REPL docs @ http://nodejs.org/api/repl.html
+### Notes
+> This might come in handy when you want to quickly add a record to a model and can't be bothered installing PostMAN.  It's also a good tool for diagnosing problems in your app.  If you can't access something over console, neither can your app.  
+> Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell.
+> For more information, see node REPL docs @ http://nodejs.org/api/repl.html
 
 
-### sails version
-#####Example Usage
-````
+# sails version
+### Purpose
+Returns the sails version of the app in the current directory.
+
+### Example Usage
+```sh
 catGuy@catGuy:~/node/sails/myApp$ sails version
 info: v0.9.7
-````
+```
