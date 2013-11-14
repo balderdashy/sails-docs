@@ -21,28 +21,28 @@ For every class method, the callback parameter is optional.  If one is not suppl
 
 # .create()
 ### Purpose
-Creates a new record.
+Creates a new instance of this model in the database.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |  Records to Create  |      `{}`, `[{}]`   | Yes	     |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
+| 1 |  Error              | `Error`             |
 | 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
 
 ```javascript 
 
-// create a new record with no attributes
+// create a new record with name 'Walter Jr'
 
 Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 	console.log('Created user with name '+created.name);
@@ -58,22 +58,23 @@ Users.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 # .update()
 ### Purpose
-Updates an existing record.
+Updates existing record in the database that match the given criterea.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |   Find Criterea     |   `{}`,`[{}]`,'string'  | 	Yes     |
+| 2 |   Updated Records   |   `{}`,`[{}]`       | 	Yes     |
+| 3 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Sucessfully Updated Records    | `[{}]`        |
 
 ### Example Usage
 
@@ -87,30 +88,30 @@ Users.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updat
 
 ```
 ### Notes
->Although you may pass .update() an object or an array of objects, it will always return an array.
-
+> Although you may pass .update() an object or an array of objects, it will always return an array of objects.
+> Any string arguments passed must be the ID of the record.
 
 
 
 
 # .destroy()
 ### Purpose
-Destroys a record that may or may not exist.
+Destroys all record in your database that matches the given criterea.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+
 
 ### Example Usage
 
@@ -119,32 +120,33 @@ Users.destroy({name:'Flynn'}).exec(function deleteCB(err){
 	console.log('The record has been deleted');
 	});
 	
-// The record has been deleted
+// If the record existed, then it has been deleted
 // Don't forget to handle your errors
 
 ```
 ### Notes
->
-
+> If you want to confirm the record exists before you delete it, you must first perform a find()
+> Any string arguments passed must be the ID of the record.
 
 
 # .findOrCreate()
 ### Purpose
-This checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
+Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 2 |  Records to Create  | `{}`,`[{}]`          | 	Yes  |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
+| 1 |  Error              | `Error`             |
 | 2 |  Records Created    | `{}`, `[{}]`        |
 
 ### Example Usage
@@ -160,7 +162,7 @@ Users.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(e
 
 ```
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 
@@ -173,15 +175,15 @@ This finds and returns a single record that meets the criterea.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Record       | `{}`                |
 
 
 ### Example Usage
@@ -191,12 +193,12 @@ Users.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 	console.log('We found '+found.name);
 	});
 	
-//We found Jessie
+// We found Jessie
 // Don't forget to handle your errors
 
 ```
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 
@@ -209,15 +211,15 @@ Finds and returns all records that meet the criterea object(s) that you pass it.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records      | `{}`, `[{}]`        |
 
 ### Example Usage
 
@@ -229,11 +231,12 @@ Users.find({}).exec(function findCB(err,found){
 
 // Found User with name Flynn
 // Found User with name Jessie
+
 // Don't forget to handle your errors
 
 ```
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 # .startsWith()
@@ -245,15 +248,15 @@ This is shorthand for a .find() query that uses the startsWith query modifier.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records      | `[{}]`              |
 
 ### Example Usage
 
@@ -267,9 +270,9 @@ Users.startsWith({name:'Fl'},function swCB(err,found){
 
 ```
 ### Notes
->Although you may pass .startsWith an object or an array of objects, it will always return an array.
->Warning! This method does not support .exec() !  You MUST supply a callback.  
-
+> Although you may pass .startsWith an object or an array of objects, it will always return an array.
+> Warning! This method does not support .exec() !  You MUST supply a callback.  
+> Any string arguments passed must be the ID of the record.
 
 # .endsWith()
 ### Purpose
@@ -279,15 +282,15 @@ This method performs a query on the model and returns those ...
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records      | `[{}]`              |
 
 ### Example Usage
 
@@ -301,9 +304,9 @@ Users.endsWith({name:'ie'},function ewCB(err,found){
 
 ```
 ### Notes
-> Although you may pass .endsWith an object or an array of objects, it will always return an array.
+> Although you may pass .endsWith an object or an array of objects, it will always return an array of objects.
 > Warning! This method does not support .exec() !  You MUST supply a callback.  
-
+> Any string arguments passed must be the ID of the record.
 
 
 # .validate()
@@ -315,15 +318,15 @@ This method ensures that the current attributes on your model instance meet the 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+
 
 ### Example Usage
 
@@ -345,27 +348,27 @@ Users.findOne(1).exec(function(err,mI){
 ```
 
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 
 # .count()
 ### Purpose
-
+This method returns the number of records in your database that meet the given search criterea
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Number of Records  | 'int'               |
 
 ### Example Usage
 
@@ -379,28 +382,28 @@ Users.count({name:'Flynn'}).exec(function countCB(err,found){
 
 ```
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 
 # .stream()
 ### Purpose
-This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer the entire thing to memory.  
+This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.  
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string' | Yes |
+| 2 | Custom Write/End Methods | `{}`          | No        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Stream of Records  | `stream`  |
 
 ### Example Usage
 
@@ -447,9 +450,9 @@ Stream all the Users ! </div>
 ```
 
 ### Notes
->This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
->Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
-
+> This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
+> Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
+> Any string arguments passed must be the ID of the record.
 
 
 # Dynamic Finders
@@ -477,15 +480,15 @@ Find and return records by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records      | `[{}]`              |
 
 ### Example Usage
 
@@ -501,7 +504,7 @@ Users.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 
 ```
 ### Notes
->
+> Any string arguments passed must be the ID of the record.
 
 
 # .findOneBy`<attribute>`()
@@ -513,15 +516,15 @@ Find and return one record by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Record    | `{}`        |
 
 ### Example Usage
 
@@ -535,8 +538,8 @@ Users.findOneByName('Walter').exec(function findCB(err,found){
 
 ```
 ### Notes
->This will always return a single object.
-
+> This will always return a single object.
+> Any string arguments passed must be the ID of the record.
 
 
 
@@ -546,15 +549,15 @@ Count the number of records in a model with a particular model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Number of Records  | `int`        |
 
 ### Example Usage
 
@@ -567,26 +570,25 @@ Users.countByName('Walter').exec(function countCB(err,found){
 // Don't forget to handle your errors
 ```
 ### Notes
->The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
-
-SUM [ matchedObjects * RecordsMatchedByObject ]
-
-// how the hell do I say this?
+> The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
+> SUM [ matchedObjects * RecordsMatchedByObject ]
+> Any string arguments passed must be the ID of the record.
 
 # .`<attribute>`StartsWith()
 ### Purpose
+Find records based on the starting letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
+| 2 |     Callback        | `function`          | Yes      |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records      | `{}`, `[{}]`        |
 
 
 ### Example Usage
@@ -602,26 +604,27 @@ Users.nameStartsWith('W', function startsWithCB(err,found){
 
 ```
 ### Notes
->Warning! Your attribute in the method name must be lowerCase!
->Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
-
+> Warning! Your attribute in the method name must be lowerCase!
+> Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
+> Any string arguments passed must be the ID of the record.
 
 
 
 # .`<attribute>`EndsWith
 ### Purpose
+Find records based on the last letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
+| 1 |    Find Criterea    | `{}`,`[{}]`,'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  Error              | `Error`             |
+| 2 |  Found Records    | `{}`, `[{}]`        |
 
 
 ### Example Usage
@@ -636,9 +639,9 @@ Users.nameEndsWith('sie', function endsWithCB(err,found){
 
 ```
 ### Notes
->Warning! Your attribute in the method name must be lowerCase!
->Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
-
+> Warning! Your attribute in the method name must be lowerCase!
+> Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
+> Any string arguments passed must be the ID of the record.
 
 
 Pub-Sub Methods
@@ -662,15 +665,15 @@ PublishCreate doesn't actually create anything.  It simply publishes information
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | Data to Send        |   {}                |   No  |
+
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+|   |  NO CALLBACK        |                     |
+
 
 ### Example Usage
 UsersController.js
@@ -736,7 +739,7 @@ Click Me to add a new 'Walter' ! </div>
 ```
 
 ### Notes
-The client's socket must have first been subscribed using the .subscribe({}) method. 
+> The client's socket must have first been subscribed using the .subscribe({}) method. 
 
 
 # .publishUpdate()
@@ -745,15 +748,17 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | ID of Updated Record|   'int','string'    |   Yes      |
+| 1 | Data to Send        |   `{}`              |   No      |
+
+
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+|   |  NO CALLBACK        |                     |
+
 
 ### Example Usage
 
@@ -816,14 +821,14 @@ function doEdit(){
 
 </script>
 <center>
-<div id="newGuy" class="addButton" onClick="doEdit()">
+<div class="addButton" onClick="doEdit()">
 Click Me to add a new User! </div>
 
 ```
 
 ### Notes
-The client's socket must have first been subscribed using the .subscribe({},[]) method. 
-
+> The client's socket must have first been subscribed using the .subscribe({},[]) method. 
+> Any string arguments passed must be the ID of the record.
 
 # .publishDestroy()
 ### Purpose
@@ -831,16 +836,14 @@ Publish the destruction of a model
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | ID of Destroyed Record |'int','string'  |   Yes  |
+
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
-
+|   |  NO CALLBACK        |                     |
 ### Example Usage
 
 UsersController.js
@@ -904,30 +907,29 @@ function destroy(){
 
 </script>
 <center>
-<div id="newGuy" class="addButton" onClick="destroy()">
+<div class="addButton" onClick="destroy()">
 Click Me to destroy user 'Walter' ! </div>
 
 
 ```
 
 ### Notes
+> Any string arguments passed must be the ID of the record.
 
-
-# .subscribe({})
+# .subscribe(`{}`)
 ### Purpose
 1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -940,23 +942,21 @@ Controller Code
 ### Notes
 - This is equivelent to blah blah in socket.io
 
-# .subscribe({},[])
+# .subscribe(`{}`,`[]`)
 
 ### Purpose
 This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 2 | Record IDs          | `[]`,'string','int' | No        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
-
+|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -973,25 +973,25 @@ Controller Code
 
 
 ### Notes
-- This is equivelent to blah blah in socket.io 
-- This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
+> The record IDs are not required but do not pass an empty array or the method will fail.
+> This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
+> Any string arguments passed must be the ID of the record.
 
-
-# .unsubscribe({})
+# .unsubscribe(`{}`)
 ### Purpose
 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+|   |  NO CALLBACK        |                     |
+
 
 ### Example Usage
 Controller Code
@@ -1002,23 +1002,22 @@ Users.unsubscribe(req.socket);
 ```
 
 ### Notes
-Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
-
+> Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
+> Any string arguments passed must be the ID of the record.
 # .unsubscribe({},[])
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    |         | 	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 2 | Record IDs          | `[]`,'string','int' | No         |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | Error               |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -1029,4 +1028,6 @@ Users.unsubscribe(req.socket,[1,2,3,4,5,6]);
 ```
 
 ### Notes
-Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
+> Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
+> The record IDs are not required but do not pass an empty array or the method will fail.
+> Any string arguments passed must be the ID of the record.
