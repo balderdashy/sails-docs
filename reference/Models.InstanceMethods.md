@@ -25,16 +25,18 @@ The `save` method updates your record in the database using the current attribut
 
 ```javascript
 
-User.find().limit(1).exec(
-	function(err,mI){
-		mI[0].petName = 'BooBoo';
-		mI[0].save(
+User.find().exec(
+	function(err,myRecord){
+
+		// Grab a record off the top of the returned array and save a new attribute to it
+		myRecord.pop().name = 'Hank';
+		myRecord.pop().save(
 			function(err,s){
-				console.log('User with ID '+s.id+' now has name '+s.petName);
+				console.log('User with ID '+s.id+' now has name '+s.name);
 			});
 	});
 
-// User with ID 1 now has name BooBoo
+// User with ID 1 now has name Hank
 
 // Don't forget to handle your errors.
 // Don't forget to abide by the rules you set in your model
@@ -66,11 +68,13 @@ Destroys the your record in the database. It returns an error in the callback if
 
 ```javascript
 
-User.find().limit(1).exec(
-	function(err,mI){
-		mI[0].destroy(
+User.find().exec(
+	function(err,myRecord){
+
+		// Grab a record off the top of the returned array then destroy it
+		myRecord.pop().destroy(
 			function(err){
-				console.log('User with ID '+mI[0].id+' was destroyed');
+				console.log('User with ID '+myRecord.pop().id+' was destroyed');
 			});
 	});
 
@@ -108,17 +112,19 @@ There will be no parameters in the callback unless there is an error.  No news i
 
 ```javascript
 
-User.find().limit(1).exec(
-	function(err,mI){
-		mI[0].petName = ['pookie','BooBoo'];
-		mI[0].validate(
+User.find().exec(
+	function(err,myRecord){
+
+		// Grab a record off the top, change it to the wrong data type, then try to validate
+		myRecord.pop().name = ['Marie','Hank'];
+		myRecord.pop().validate(
 			function(err){
 				if (err)
 					console.log(JSON.stringify(err));
 			});
 	});
 	
-// {"ValidationError":{"petName":[{"data":["pookie","BooBoo"],"message":"Validation error: \"pookie,BooBoo\" is not of type \"string\"","rule":"string"}]}}
+// {"ValidationError":{"name":[{"data":["Marie","Hank"],"message":"Validation error: \"Marie,Hank\" is not of type \"string\"","rule":"string"}]}}
 
 ```
 
@@ -128,7 +134,7 @@ For model
 module.exports = {
 
   attributes: {
-  	petName: 'string'
+  	name: 'string'
 
   }
 
@@ -136,6 +142,9 @@ module.exports = {
 ```
 
 ### Notes
+> If you .save() without first validating, waterline tries to convert.  If it cant, it will throw an error.
+> In this case, it would have converted the array to the string 'Marie,Hank'
+
 > Note, This method is not asynchronous
 
 
@@ -209,28 +218,28 @@ This method also returns a cloned model instance.  This one however includes all
 
 ```javascript
 
-User.find().limit(1).exec(
-	function(err,mI){
-		var datUser = mI[0].toObject();
+User.find().exec(
+	function(err,myRecord){
+		var datUser = myRecord.pop().toObject();
 		console.log(datUser);
 	});
 
 /* { id: 2,
   createdAt: '2013-10-31T22:42:25.459Z',
   updatedAt: '2013-11-01T20:12:55.534Z',
-  petName: 'BooBoo',
+  name: 'Hank',
   phoneNumber: '101-150-1337' } */
 
-User.find().limit(1).exec(
-	function(err,mI){
-		var datUser = mI[0].toJSON();
+User.find().exec(
+	function(err,myRecord){
+		var datUser = myRecord.pop().toJSON();
 		console.log(datUser);
 	});
 
 /* { id: 2,
   createdAt: '2013-10-31T22:42:25.459Z',
   updatedAt: '2013-11-01T20:12:55.534Z',
-  petName: 'BooBoo' } */
+  name: 'Hank' } */
 
 
 
@@ -244,7 +253,7 @@ For model
 
 module.exports = {
   attributes: {
-    petName: 'string',
+    name: 'string',
     phoneNumber: 'string',
 
     // Override the default toJSON method
