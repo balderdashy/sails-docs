@@ -22,9 +22,11 @@ Modified pairs also have model attributes for keys but they also use <a href="">
 		
 like this
 ```javascript
-		/*`Model Attribute Name` : {
+		/*
+		`Model Attribute Name` : {
 			' `Query Modifier` ' : 'Some Value'}
-		}*/
+		}
+		*/
 
 		name : {
 			'contains' : 'alt' }
