@@ -1,63 +1,95 @@
 CRUD Filtration Methods
 -----------------------
-The .find() method returns a chainable object if you don't supply a callback.  The methods below can be attached behind the .find() to further filter your results.
+The .find() method returns a chainable object if you don't supply a callback.  The methods below can be chained to .find() to further filter your results.
+
+
 
 
 # .where()
+### Purpose
 
-# .limit()
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Criterea Object    |      `{}`           | Yes	       |
 
-# .skip()
 
-# .sort()
+### Example Usage
 
-
-### Chaining Example with .update()
-
-```javascript
-
-  // Users found before the Update
-
-sails> Users.find().exec(console.log)
-
-  null [
-  { name: 'Bill',
-    createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    updatedAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000007' },
-  { name: 'Cat',
-    createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    updatedAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000008' },
-  { name: 'Katherine',
-    createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    updatedAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000009' } ]
-    
-sails> Users.update({name:['Bill','Katherine']},{name:'VonGreggory'}).where({name:'Bill'}).exec(console.log)
-
-    // Although, .update() found 2 records, .where() only let 'Bill' get updated.
-
-    [{ createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    name: 'VonGreggory',
-    updatedAt: Thu Nov 14 2013 19:07:38 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000007' }]
-
-sails> Users.find().exec(console.log)
-
-  // Only 'Bill' was updated.
-
-  [{ createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    name: 'VonGreggory',
-    updatedAt: Thu Nov 14 2013 19:07:38 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000007' },
-  { name: 'Cat',
-    createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    updatedAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000008' },
-  { name: 'Katherine',
-    createdAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    updatedAt: Thu Nov 14 2013 18:58:01 GMT-0600 (CST),
-    id: '5285719941d1fb2b15000009' }]
+```javascript 
 
 ```
+### Notes
+>
+
+# .limit()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Criterea Object    |      `{}`           | Yes	       |
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+>
+
+# .skip()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Criterea Object    |      `{}`           | Yes	       |
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+>
+
+# .sort()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Criterea Object    |      `{}`           | Yes	       |
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+>
+
+
+# .exec()
+### Purpose
+This indicates the end of the chain and signals the adapter to run the query that it has been building. 
+
+### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Callback           |      `function`     | Yes	       |
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+>
+
+
+
+### Notes
+> These chainable methods technically work with .destroy() and .update() as well.
