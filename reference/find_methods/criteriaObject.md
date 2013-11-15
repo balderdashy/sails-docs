@@ -20,8 +20,7 @@ like this
 #### Modified Pair
 Modified pairs also have model attributes for keys but they also use <a href=""> Query Modifiers </a> to perform additional useful operations.
 		
-like this
-```javascript
+like this ```javascript
 		/*`Model Attribute Name` : {
 			' `Query Modifier` ' : 'Some Value'}
 		}*/
@@ -100,7 +99,9 @@ var myCriterea = {
 ```
 
 I want records where either the 'name' is 'walter' or 'jessie', their 'profession' is 'cook', and they are at least 35
-	or
+
+or
+
 I want records where the 'name' is 'skyler' and their 'profession' is 'accountant' or 'car wash professional'. 
 ```javascript 
 var myCriterea = {
