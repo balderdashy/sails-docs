@@ -7,17 +7,14 @@ Criterea Objects are passed as parameters in the methods that perform CRUD opera
 
 ### Structure
 Criterea objects are composed of Query Pairs.  This is what they look like.
-
 #### Normal Pair
 The key is a model attribute and the value is what you want to search for.
 
-They take the form
-```javascript
-	`Model Attribute Name` : 'Some Value'
-```
-
 like this
 ```javascript
+
+	// `Model Attribute Name` : 'Some Value'
+
 	name : 'Walter'
 ```
 
