@@ -1,29 +1,37 @@
 # Criterea Object
 ### Purpose
-A criterea object contains the information used to retrieve desired search results.  
+A Criterea Object contains the information used to retrieve your desired query results.  
 
-They are passed as parameters in the methods that perform CRUD operations, like .find() and .destroy() .
+Criterea Objects are passed as parameters in the methods that perform CRUD operations, like .find() and .destroy() .
 
 
 ### Structure
-Criterea objects are composed of `query pair`s.  This is what they look like.
+Criterea objects are composed of Query Pairs.  This is what they look like.
 
 #### Normal Pair
 The key is a model attribute and the value is what you want to search for.
 
-		`Model Attribute Name` : 'Some Value'
-
+They take the form
 ```javascript
-		name : 'Walter'
+	`Model Attribute Name` : 'Some Value'
+```
+
+like this
+```javascript
+	name : 'Walter'
 ```
 
 #### Modified Pair
 Modified pairs also have model attributes for keys but they also use <a href=""> Query Modifiers </a> to perform additional useful operations.
 
+They take the form
+```javascript
 		`Model Attribute Name` : {
 			' `Query Modifier` ' : 'Some Value'}
 		}
-
+```
+		
+like this
 ```javascript
 		name : {
 			'contains' : 'alt' }
@@ -32,9 +40,12 @@ Modified pairs also have model attributes for keys but they also use <a href="">
 #### 'In' Pair
 These work similarly to mysql 'in queries'.  Each element in the array is treated as 'or'.
 
+They take the form
+```javascript
 		`Model Attribute Name` : ['Some Value', 'Some Value']
+```
 
-
+like this
 ```javascript
 		name : ['Walter','Skyler']
 ```
@@ -42,9 +53,12 @@ These work similarly to mysql 'in queries'.  Each element in the array is treate
 #### 'Or' Pair
 These can contain any number of normal or modified 'query pair's returning records when any of them are matched.
  
+They take the form
+```javascript
 		or : [`normalPair`, `modifiedPair', `normalPair`]
+```
 
-
+like this
 ```javascript
 		or : ['Skyler',{ name : {
 						'contains' : 'alt'} },'Flynn']
@@ -52,7 +66,7 @@ These can contain any number of normal or modified 'query pair's returning recor
 
 ### Forming Criterea Objects
 #### Rules
-- Criterea Objects can contain any number of 'Normal', 'Modified', or 'in' `query pair`s but only 1 'or' 'query pair'.
+- Criterea Objects can contain any number of 'Normal', 'Modified', or 'In' Query Pairs but only 1 'Or' Query Pair.
 - Each pair must match a record otherwise that record isn't returned.  Pairs are treated as 'and' in your query.
 - All attribute values searched for are case INsensitive.  You can't find Mike without also getting mikE.
 
@@ -117,4 +131,4 @@ var myCriterea = {
 
 ### Notes
 > The query modifiers may not work on the 'id' attribute with certain adapters (like mongo) because of the way they are treated by their respective databases.
-> You cannot use more than one query modifier in a 'modified' `query pair` .  This restriction might be lifted in future versions.
+> You cannot use more than one query modifier in a 'modified' Query Pair .  This restriction might be lifted in future versions.
