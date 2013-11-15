@@ -13,21 +13,19 @@ The key is a model attribute and the value is what you want to search for.
 like this
 ```javascript
 	// `Model Attribute Name` : 'Some Value'
-	name : 'Walter'
+	
+	name : 'walter'
 ```
 
 #### Modified Pair
 Modified pairs also have model attributes for keys but they also use <a href=""> Query Modifiers </a> to perform additional useful operations.
-
-They take the form
-```javascript
-		`Model Attribute Name` : {
-			' `Query Modifier` ' : 'Some Value'}
-		}
-```
 		
 like this
 ```javascript
+		/*`Model Attribute Name` : {
+			' `Query Modifier` ' : 'Some Value'}
+		}*/
+
 		name : {
 			'contains' : 'alt' }
 ```
@@ -35,26 +33,19 @@ like this
 #### 'In' Pair
 These work similarly to mysql 'in queries'.  Each element in the array is treated as 'or'.
 
-They take the form
-```javascript
-		`Model Attribute Name` : ['Some Value', 'Some Value']
-```
-
 like this
 ```javascript
+		// `Model Attribute Name` : ['Some Value', 'Some Value']
+
 		name : ['Walter','Skyler']
 ```
 
 #### 'Or' Pair
 These can contain any number of normal or modified 'query pair's returning records when any of them are matched.
- 
-They take the form
-```javascript
-		or : [`normalPair`, `modifiedPair', `normalPair`]
-```
 
 like this
 ```javascript
+		// or : [`normalPair`, `modifiedPair', `normalPair`]
 		or : ['Skyler',{ name : {
 						'contains' : 'alt'} },'Flynn']
 ```
