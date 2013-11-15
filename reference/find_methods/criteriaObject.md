@@ -7,7 +7,7 @@ Criterea Objects are passed as parameters in the methods that perform CRUD opera
 
 ### Structure
 Criterea objects are composed of Query Pairs.  This is what they look like.
-#### Normal Pair
+##### Normal Pair
 The key is a model attribute and the value is what you want to search for.
 
 like this
@@ -17,7 +17,7 @@ like this
 	name : 'walter'
 ```
 
-#### Modified Pair
+##### Modified Pair
 Modified pairs also have model attributes for keys but they also use <a href=""> Query Modifiers </a> to perform additional useful operations.
 		
 like this
@@ -30,7 +30,7 @@ like this
 			'contains' : 'alt' }
 ```
 
-#### 'In' Pair
+##### 'In' Pair
 These work similarly to mysql 'in queries'.  Each element in the array is treated as 'or'.
 
 like this
@@ -40,7 +40,7 @@ like this
 		name : ['Walter','Skyler']
 ```
 
-#### 'Or' Pair
+##### 'Or' Pair
 These can contain any number of normal or modified 'query pair's returning records when any of them are matched.
 
 like this
