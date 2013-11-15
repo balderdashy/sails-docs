@@ -12,9 +12,7 @@ The key is a model attribute and the value is what you want to search for.
 
 like this
 ```javascript
-
 	// `Model Attribute Name` : 'Some Value'
-
 	name : 'Walter'
 ```
 
