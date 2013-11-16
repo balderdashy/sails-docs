@@ -126,9 +126,10 @@ This indicates the end of the chain and signals the adapter to run the query tha
 ### Example Usage
 
 ```javascript 
+
 // refer to any of the examples above
 
 ```
 ### Notes
-> If you dont run this, your query will not execute.
+> If you dont run .exec() , your query will not execute.
 
