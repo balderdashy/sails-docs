@@ -1,9 +1,7 @@
 # myApp
 ## myApp
-
-
 ### Purpose
-This is your project's root directory.  It and most of the files and folders that are in it were generated upon running `sails new` .
+This is your Sails project's root directory.  It and most of the files and folders that are in it were generated upon running `sails new` .
 
 ### More Info
 
@@ -12,10 +10,10 @@ This is your project's root directory.  It and most of the files and folders tha
 
 # UserController.js
 ## myApp/api/controllers/UserController.js
-
-
 ### Purpose
+This file was created when you ran 'sails generate User'.  It contains all of the controller logic for the model called 'User'. 
 
+This is where you will put "controller actions" that sends app data to your clients and render the views which display that data.
 
 ### More Info
 
@@ -24,21 +22,20 @@ This is your project's root directory.  It and most of the files and folders tha
 
 # api
 ## myApp/api
-
-
 ### Purpose
-
+This folder contains the vast majority of your app's back-end logic.  It houses the 'M' and 'C' in <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"> MVC Framework </a>
 
 ### More Info
-
+If you're new to MVC, check out <a href="http://omfgdogs.com"> This Link </a>
 
 
 
 # User.js
 ## myApp/api/models/User.js
-
-
 ### Purpose
+This file was created when you ran 'sails generate User'.  It contains the structure for the model called 'User'.
+
+In this file you will specify what attributes each model instance should have.  You can also add custom model instance methods, specify 'policies', and even specify which storage adapter should be used for storing/retreiving these records.  
 
 
 ### More Info
@@ -48,10 +45,10 @@ This is your project's root directory.  It and most of the files and folders tha
 
 # policies
 ## myApp/api/policies
-
-
 ### Purpose
+This is the folder you will store your 'policy' files in.  A policy file is a .js file that contains what is essentially express middleware.  
 
+In your model, you can specify policies located in this folder.  Before the model is accessed, clients will be authenticated by these policies. 
 
 ### More Info
 
@@ -60,10 +57,14 @@ This is your project's root directory.  It and most of the files and folders tha
 
 # services
 ## myApp/api/services
-
-
 ### Purpose
+This folder contains your services.  'Services' are similar to controller actions but are typically used for things like
 
+- 
+- 
+- 
+
+Each service is specified as its own .js file within this folder.  They can be called inside of a controller action by using EEEEPPPP!!! 
 
 ### More Info
 
@@ -72,8 +73,6 @@ This is your project's root directory.  It and most of the files and folders tha
 
 # app.js
 ## myApp/app.js
-
-
 ### Purpose
 I DON'T KNOW!!!
 
@@ -83,10 +82,9 @@ I DON'T KNOW!!!
 
 
 # favicon.ico
-## myApp/assets/favicon/ico
-
-
+## myApp/assets/favicon.ico
 ### Purpose
+This file is the <a href="http://en.wikipedia.org/wiki/Favicon"> Favicon </a> for your app.  
 
 
 ### More Info
@@ -96,10 +94,11 @@ I DON'T KNOW!!!
 
 # images
 ## myApp/assets/images
-
-
 ### Purpose
 
+This is where you should put image files that need to be statically hosted by your app.  
+
+Upon lifting your app, an image called 'omgCat.jpg' could be found at http://localhost:1337/images/omgCat.jpg
 
 ### More Info
 
@@ -108,9 +107,12 @@ I DON'T KNOW!!!
 
 # app.js
 ## myApp/assets/js/app.js
-
-
 ### Purpose
+
+Every time you view a page on your Sails app, a connection between your browser and Sails is made via socket.io .  This file is the reason that connection is made. It contains some conventional defaults for working with Socket.io + Sails.
+
+Furthermore, it's a great place to put additional socket.io code in order to keep it clean and seperate from your other client-side javascript.
+
 
 
 ### More Info
@@ -120,9 +122,10 @@ I DON'T KNOW!!!
 
 # sails.io.js
 ## myApp/assets/js/sails.io.js
-
-
 ### Purpose
+This file adds a few custom methods to socket.io which provide the "built-in" websockets functionality for Sails.
+
+Specifically, those methods allow you to send and receive socket.io messages to & from Sails by simulating a REST client interface on top of socket.io. It models its API after the $.ajax pattern from jQuery you might be familiar with.
 
 
 ### More Info
@@ -132,10 +135,8 @@ I DON'T KNOW!!!
 
 # js
 ## myApp/assets/js
-
-
 ### Purpose
-
+This is where you put client-side javascript files that you want to be statically hosted by your app.  Sails puts a few in there for making communication via socket.io easier.  
 ### More Info
 
 
@@ -152,9 +153,7 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 
 # robots.txt
-## myApp/assets/robots/txt
-
-
+## myApp/assets/robots.txt
 ### Purpose
 
 
@@ -165,8 +164,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # styles
 ## myApp/assets/styles
-
-
 ### Purpose
 
 
@@ -180,8 +177,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 404.js
 ## myApp/config/404.js
-
-
 ### Purpose
 
 
@@ -192,8 +187,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 500.js
 ## myApp/config/500.js
-
-
 ### Purpose
 
 
@@ -204,8 +197,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # bootstrap.js
 ## myApp/config/bootstrap.js
-
-
 ### Purpose
 
 
@@ -216,8 +207,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # controllers.js
 ## myApp/config/controllers.js
-
-
 ### Purpose
 
 
@@ -228,8 +217,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # cors.js
 ## myApp/config/cors.js
-
-
 ### Purpose
 
 
@@ -240,8 +227,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # csrf.js
 ## myApp/config/csrf.js
-
-
 ### Purpose
 
 
@@ -252,8 +237,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # i18n.js
 ## myApp/config/i18n.js
-
-
 ### Purpose
 
 
@@ -264,8 +247,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # locales
 ## myApp/config/locales
-
-
 ### Purpose
 
 
@@ -276,8 +257,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # local.js
 ## myApp/config/local.js
-
-
 ### Purpose
 
 
@@ -288,8 +267,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # log.js
 ## myApp/config/log.js
-
-
 ### Purpose
 
 
@@ -300,8 +277,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # config
 ## myApp/config
-
-
 ### Purpose
 
 
@@ -312,8 +287,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # session.js
 ## myApp/config/session.js
-
-
 ### Purpose
 
 
@@ -324,8 +297,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # views.js
 ## myApp/config/views.js
-
-
 ### Purpose
 
 
@@ -336,8 +307,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # Gruntfile.js
 ## myApp/Gruntfile.js
-
-
 ### Purpose
 
 
@@ -348,8 +317,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # package.json
 ## myApp/package.json
-
-
 ### Purpose
 
 
@@ -360,8 +327,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # README.md
 ## myApp/README.md
-
-
 ### Purpose
 
 
@@ -372,8 +337,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # home
 ## myApp/views/home
-
-
 ### Purpose
 
 
@@ -384,8 +347,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 500.ejs
 ## myApp/views/500.ejs
-
-
 ### Purpose
 
 
@@ -396,8 +357,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # index.ejs
 ## myApp/views/home/index.ejs
-
-
 ### Purpose
 
 
@@ -408,8 +367,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # layout.ejs
 ## myApp/views/layout/ejs
-
-
 ### Purpose
 
 
@@ -420,8 +377,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # views
 ## myApp/views
-
-
 ### Purpose
 
 
@@ -432,8 +387,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # adapters
 ## myApp/api/adapters
-
-
 ### Purpose
 
 
@@ -444,8 +397,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # controllers
 ## myApp/api/controllers
-
-
 ### Purpose
 
 
@@ -456,8 +407,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # models
 ## myApp/api/models
-
-
 ### Purpose
 
 
@@ -468,8 +417,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # isAuthenticated.js
 ## myApp/api/policies/isAuthenticated.js
-
-
 ### Purpose
 
 
@@ -480,8 +427,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # assets/js/socket.io.js
 ## myApp/assets/js/socket.io.js
-
-
 ### Purpose
 
 
@@ -492,8 +437,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 400.js
 ## myApp/config/400.js
-
-
 ### Purpose
 
 
@@ -504,8 +447,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 403.js
 ## myApp/config/403.js
-
-
 ### Purpose
 
 
@@ -516,8 +457,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # adapters.js
 ## myApp/config/adapters.js
-
-
 ### Purpose
 
 
@@ -528,8 +467,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # policies.js
 ## myApp/config/policies.js
-
-
 ### Purpose
 
 
@@ -540,8 +477,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # routes.js
 ## myApp/config/routes.js
-
-
 ### Purpose
 
 
@@ -552,8 +487,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # sockets.js
 ## myApp/config/sockets.js
-
-
 ### Purpose
 
 
@@ -564,8 +497,6 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 403.ejs
 ## myApp/views/403.ejs
-
-
 ### Purpose
 
 
@@ -576,12 +507,11 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 # 404.ejs
 ## myApp/views/404.ejs
-
-
 ### Purpose
 
 
 ### More Info
+
 
 
 
