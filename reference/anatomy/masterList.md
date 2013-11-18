@@ -3,7 +3,7 @@
 
 
 ### Purpose
-
+This is your project's root directory.  It and most of the files and folders that are in it were generated upon running `sails new` .
 
 ### More Info
 
@@ -136,7 +136,6 @@ I DON'T KNOW!!!
 
 ### Purpose
 
-
 ### More Info
 
 
@@ -144,10 +143,8 @@ I DON'T KNOW!!!
 
 # assets
 ## myApp/assets
-
-
 ### Purpose
-
+This is your assets folder.  It houses all of the static files that your app will need to host.  Furthermore, the files in this folder are compressed and minified when you lift your app in production mode.
 
 ### More Info
 
@@ -585,7 +582,6 @@ I DON'T KNOW!!!
 
 
 ### More Info
-
 
 
 
