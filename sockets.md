@@ -208,7 +208,7 @@ Client-side sockets who were subscribed to the class room and are listening to t
 ```
 
 
-
+<!--
 ## Using low-level pubsub/socket methods
 
 ### `Model.unsubscribe( req.socket, model[s] )`
@@ -244,9 +244,11 @@ e.g. `req.listen('off the wall chats')`
 Broadcast to a room
 e.g. `res.broadcast('off the wall chats', {chatterer: 'Joe Blow', message: 'This chat is off the wall!})`
 
+-->
 
 ## Still need more control?
-If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out. You can read more here: http://socket.io/#how-to-use
+If you need more precise functionality, the raw Socket.io API is pretty straightforward to figure out. 
+To get access to the socket in a request, use `req.socket`. You can read more here: http://socket.io/#how-to-use
 
 The root Socket.io object is available globally in Sails via `sails.io`.  You can also access the currently connected socket in the request object, via `req.socket` in your controllers.
 
