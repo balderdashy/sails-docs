@@ -32,7 +32,7 @@ like this
 			'contains' : 'alt' }
 ```
 
-##### 'In' Pair
+#### in
 These work similarly to mysql 'in queries'.  Each element in the array is treated as 'or'.
 
 like this
