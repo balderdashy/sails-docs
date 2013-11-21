@@ -8,7 +8,7 @@ Creates a new Sails app in the current directory.
 
 ### Example Usage
 
-```sh
+```javascript
 catGuy@catGuy:~/nodeProjects$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
 
@@ -28,40 +28,50 @@ Generates a model and/or controller for the app in the current directory.
 
 ######Generate new controller
 
-```sh
-catGuy@catGuy:~/nodeProjects/blogApp$ sails generate controller newmodel
-info: Generated controller for newmodel!
+```javascript
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate controller pet
+info: Generated controller for pet !
 ```
+
+This will create the file 'api/controllers/PetController.js'
 
 ######Generate new model
 
-```sh
-catGuy@catGuy:~/nodeProjects/blogApp$ sails generate model newmodel
+```javascript
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate model pet
 warn: For the record :: to serve the blueprint API for this model,
 warn: you'll also need to have an empty controller.
-info: Generated model for newmodel!
+info: Generated model for pet!
 
 ```
+This will create the file 'api/models/Pet.js'
 
 ######Generate both!
 
-```sh
-catGuy@catGuy:~/nodeProjects/blogApp$ sails generate newmodel
-info: Generating model and controller for newmodel...
+```javascript
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate pet
+info: Generating model and controller for pet...
 ```
+
+This will create the files 'api/controllers/PetController.js' and 'api/models/Pet.js'
+
 ### Notes
 
 > 
 
 # sails lift
 ### Purpose
-The lift argument launches your app.  You can also add the folowing flags behind lift for more control.
+The lift argument launches the sails app in the current directory.  You can also add the folowing flags behind lift for more control.
 
-- \-\-verbose                                   This displays extra information in console relevent to your app
-- \-\-silly                                     This flag displays ALL of the information.  All of it.
-- \-\-port=<integer>                            Use this for changing the port on lift.
-- \-\-dev                                       This is shorthand for environment=development
-- \-\-prod                                      This is shorthand for environment=production
+| `--flag` |  Description  |
+|----------|---------------|
+| `--linker`| Lifts app with the <a href="http://sailsjs.org/#!documentation/assets"> asset linker </a>|
+| `--verbose`| This displays extra information in console relevent to your app |
+| `--silly`| This flag displays ALL of the information.  All of it. |
+| `--port=<integer>`| Lifts your app on the specified port eliminating the need to change config. |
+| `--dev`| Lifts your app in development mode eliminating the need to change config. |
+| `--prod`| Lifts your app in production mode eliminating the need to change config |
+
 
 ### Example Usage
 
@@ -146,7 +156,7 @@ verbose: Grunt :: Done, without errors.
 This command will quietly lift your sails app, web server and all.  At this point, it sends the <link>global sails object</link> to the node.js shell.  This means you can access all of your model instances, their methods, and much more, all by using javascript commands.
 
 ### Example Usage
-```sh
+```javascript
 catGuy@catGuy:~/nodeProjects/blogApp$ sails console
 
 debug: Welcome to the Sails console (v0.9.7)
@@ -175,7 +185,7 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
 Returns the version of Sails which will run the app in the current directory.
 
 ### Example Usage
-```sh
+```javascript
 catGuy@catGuy:~/nodeProjects/myApp$ sails version
 info: v0.9.7
 ```
