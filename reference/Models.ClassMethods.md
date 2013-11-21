@@ -53,14 +53,14 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 # .update( criteria, values )
 ### Purpose
-Updates existing record in the database that match the given criterea.
+Updates existing record in the database that match the given criteria.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |   Find Criterea     |   `{}`,`[{}]`, 'string'  | 	Yes     |
+| 1 |   Find Criteria     |   `{}`,`[{}]`, 'string'  | 	Yes     |
 | 2 |   Updated Records   |   `{}`,`[{}]`       | 	Yes     |
 | 3 |     Callback        | `function`          | Yes        |
 
@@ -91,14 +91,14 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,update
 
 # .destroy()
 ### Purpose
-Destroys all record in your database that matches the given criterea.
+Destroys all record in your database that matches the given criteria.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -133,7 +133,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |  Records to Create  | `{}`,`[{}]`          | 	Yes  |
 | 2 |     Callback        | `function`          | Yes        |
 
@@ -163,14 +163,14 @@ User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(er
 
 # .findOne()
 ### Purpose
-This finds and returns a single record that meets the criterea.
+This finds and returns a single record that meets the criteria.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -199,14 +199,14 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 
 # .find()
 ### Purpose
-Finds and returns all records that meet the criterea object(s) that you pass it.
+Finds and returns all records that meet the criteria object(s) that you pass it.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -244,7 +244,7 @@ This method ensures that the current attributes on your model instance meet the 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes        |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -280,14 +280,14 @@ User.findOne(1).exec(function(err,myRecord){
 
 # .count()
 ### Purpose
-This method returns the number of records in your database that meet the given search criterea
+This method returns the number of records in your database that meet the given search criteria
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -322,7 +322,7 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string' | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string' | Yes |
 | 2 | Custom Write/End Methods | `{}`          | No        |
 
 #### Callback Parameters
@@ -394,7 +394,7 @@ Find and return records by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -430,7 +430,7 @@ Find and return one record by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -463,7 +463,7 @@ Count the number of records in a model with a particular model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -484,7 +484,7 @@ User.countByName('Walter').exec(function countCB(err,found){
 // Don't forget to handle your errors
 ```
 ### Notes
-> The value returned will be equal to the sum of the products of all matched criterea objects and the number of records that particular object matched. 
+> The value returned will be equal to the sum of the products of all matched criteria objects and the number of records that particular object matched. 
 > SUM [ matchedObjects * RecordsMatchedByObject ]
 > Any string arguments passed must be the ID of the record.
 
@@ -494,7 +494,7 @@ Find records based on the starting letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes      |
 
 #### Callback Parameters
@@ -530,7 +530,7 @@ Find records based on the last letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters

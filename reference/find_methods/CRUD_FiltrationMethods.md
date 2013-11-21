@@ -11,7 +11,7 @@ These chainable methods technically work with .destroy() and .update() as well.
 ### Parameters
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Criterea Object    |      `{}`           | Yes	       |
+| 1 |  Criteria Object    |      `{}`           | Yes	       |
 
 
 ### Example Usage

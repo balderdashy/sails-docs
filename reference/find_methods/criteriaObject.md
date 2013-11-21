@@ -1,12 +1,12 @@
-# Criterea Object
+# Criteria Object
 ### Purpose
-A Criterea Object contains the information used to retrieve your desired query results.  
+A Criteria Object contains the information used to retrieve your desired query results.  
 
-Criterea Objects are passed as parameters in the methods that perform CRUD operations, like .find() and .destroy() .
+Criteria Objects are passed as parameters in the methods that perform CRUD operations, like .find() and .destroy() .
 
 
 ### Structure
-Criterea objects are composed of Query Pairs.  This is what they look like.
+Criteria objects are composed of Query Pairs.  This is what they look like.
 ##### Normal Pair
 The key is a model attribute and the value is what you want to search for.
 
@@ -52,18 +52,18 @@ like this
 						'contains' : 'alt'} },'Flynn']
 ```
 
-### Forming Criterea Objects
+### Forming Criteria Objects
 #### Rules
-- Criterea Objects can contain any number of 'Normal', 'Modified', or 'In' Query Pairs but only 1 'Or' Query Pair.
+- Criteria Objects can contain any number of 'Normal', 'Modified', or 'In' Query Pairs but only 1 'Or' Query Pair.
 - Each pair must match a record otherwise that record isn't returned.  Pairs are treated as 'and' in your query.
 - All attribute values searched for are case INsensitive.  You can't find Mike without also getting mikE.
 
-### Criterea Object Examples.
+### Criteria Object Examples.
 
 I want records where 'name' is 'Walter' and 'age' is 45.
 ```javascript
 
-var myCriterea = {
+var myCriteria = {
 		name: 'walter',
 		age: 45
 	}
@@ -72,7 +72,7 @@ var myCriterea = {
 I want records where 'name' contains 'yle' if they have 'age' 40.
 ```javascript
 
-var myCriterea = {
+var myCriteria = {
 		name : { 'contains' : 'yle' },
 		age: 40
 	}
@@ -82,7 +82,7 @@ var myCriterea = {
 I want records where 'name' is 'Walter' or 'profession' is 'cook' but only if their 'age' is at least 45.
 ```javascript
 
-var myCriterea = {
+var myCriteria = {
 		or : [{'name':'walter'},{'profession':'cook'}],
 		age: {'>=':45}
 	}
@@ -93,7 +93,7 @@ var myCriterea = {
 I want records where 'name' is 'Walter' or 'jessie'.  They must be a 'cook' and their 'age' must be either 45 or 28.
 ```javascript
 
-var myCriterea = {
+var myCriteria = {
 		name: ['walter','jessie'],
 		profession: 'cook',
 		age: {'>=':45}
@@ -107,7 +107,7 @@ or
 
 I want records where the 'name' is 'skyler' and their 'profession' is 'accountant' or 'car wash professional'. 
 ```javascript 
-var myCriterea = {
+var myCriteria = {
 		or: [{
 			name:['walter','jessie'],
 			profession:'cook',

@@ -32,7 +32,7 @@ This is shorthand for a .find() query that uses the startsWith query modifier.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -66,7 +66,7 @@ This method performs a query on the model and returns those ...
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criterea    | `{}`,`[{}]`, 'string'| Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
