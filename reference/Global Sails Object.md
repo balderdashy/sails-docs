@@ -52,19 +52,20 @@ if (sails.config.environment && !sails.config.csrf)
 ```
 
 ### Notes
-
+> These settings are only read upon lifting your app.  Changing them will do nothing.
 
 # sails.models
 
 ### Purpose
-This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User.< modelName > . 
+If you disable globals, you can use sails.models.`<model name>` to access your models.  This is useful when you need to access models from inside '/config/bootstrap.js' which is run before your app lifts.
 
 ### Example Usage
 
 ```javascript
 
-// lolwut
-
+sails.models.pet.find().limit(1).exec(function(err,record){
+	console.log('My Pet is called '+record[0].name);
+});
 ```
 ### Notes
 
