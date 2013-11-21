@@ -8,7 +8,7 @@ The new argument is used for creating a new sails app.
 ### Example Usage
 
 ```sh
-catGuy@catGuy:~/node/sails$ sails new myApp
+catGuy@catGuy:~/nodeProjects$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
 
 info: New app created!
@@ -26,14 +26,14 @@ Once inside your app's root directory, the generate argument can be used to crea
 Generate new controller
 
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate controller newmodel
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate controller newmodel
 info: Generated controller for newmodel!
 ```
 
 Generate new model
 
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate model newmodel
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate model newmodel
 warn: For the record :: to serve the blueprint API for this model,
 warn: you'll also need to have an empty controller.
 info: Generated model for newmodel!
@@ -43,7 +43,7 @@ info: Generated model for newmodel!
 Generate both!
 
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails generate newmodel
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate newmodel
 info: Generating model and controller for newmodel...
 ```
 ### Notes
@@ -63,7 +63,7 @@ The lift argument launches your app.  You can also add the folowing flags behind
 ### Example Usage
 
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails lift --port=1338 --verbose --environment=production
+catGuy@catGuy:~/nodeProjects/blogApp$ sails lift --port=1338 --verbose --environment=production
 
 verbose: Enabling CoffeeScript...
 verbose: Using Express router...
@@ -144,7 +144,7 @@ This command will quietly lift your sails app, web server and all.  At this poin
 
 ### Example Usage
 ```sh
-catGuy@catGuy:~/node/sails/blogApp$ sails console
+catGuy@catGuy:~/nodeProjects/blogApp$ sails console
 
 debug: Welcome to the Sails console (v0.9.7)
 debug: ( to exit, type <CTRL>+<C> )
@@ -173,6 +173,6 @@ Returns the sails version of the app in the current directory.
 
 ### Example Usage
 ```sh
-catGuy@catGuy:~/node/sails/myApp$ sails version
+catGuy@catGuy:~/nodeProjects/myApp$ sails version
 info: v0.9.7
 ```
