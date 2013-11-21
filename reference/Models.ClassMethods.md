@@ -234,6 +234,7 @@ User.find({}).exec(function findCB(err,found){
 > Any string arguments passed must be the ID of the record.
 
 
+<!--
 # .validate()
 ### Purpose
 This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
@@ -274,7 +275,7 @@ User.findOne(1).exec(function(err,myRecord){
 
 ### Notes
 > Any string arguments passed must be the ID of the record.
-
+-->
 
 
 # .count()
