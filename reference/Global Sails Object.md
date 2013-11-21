@@ -54,7 +54,7 @@ if (sails.config.environment && !sails.config.csrf)
 ### Notes
 
 
-# sails.model.user()
+# `sails.models`
 
 ### Purpose
 This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User.< modelName > . 
