@@ -197,7 +197,9 @@ Join 'Beyonce' ! </div>
 Send a message to everyone in the specified room.
 
 ### Example Usage
-UsersController.js
+
+`UsersController.js`
+
 ```javascript
 
 module.exports{
@@ -223,7 +225,8 @@ module.exports{
 
 ```
 
-views/Users/index.ejs
+`views/Users/index.ejs`
+
 ```html
 <style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
 
