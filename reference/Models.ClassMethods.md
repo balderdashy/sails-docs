@@ -4,7 +4,7 @@ The methods below are the basic crud methods availebl in sails.  Here is a very 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
 
-# .create( `{createme`,`callback` )
+# .create( `{createme}`,`callback` )
 ### Purpose
 Creates a new instance of this model in the database.
 
