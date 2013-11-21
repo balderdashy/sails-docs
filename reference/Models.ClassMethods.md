@@ -51,7 +51,7 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 
 
-# .update( <criteria>, <values> )
+# .update( criteria, values )
 ### Purpose
 Updates existing record in the database that match the given criterea.
 
