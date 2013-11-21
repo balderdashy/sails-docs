@@ -7,12 +7,13 @@ The new argument is used for creating a new sails app.
 
 ### Example Usage
 
-````sh
+```sh
 catGuy@catGuy:~/node/sails$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
 
 info: New app created!
-````
+```
+
 Also available is the \-\-linker flag.
 This will create your app using automatic asset linking (and we all know what that means)
 
