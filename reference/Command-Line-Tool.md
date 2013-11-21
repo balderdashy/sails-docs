@@ -3,7 +3,8 @@ Command Line Tool
 
 # sails new
 ### Purpose
-The new argument is used for creating a new sails app.
+
+Creates a new Sails app in the current directory.
 
 ### Example Usage
 
@@ -19,18 +20,20 @@ This will create your app using automatic asset linking (and we all know what th
 
 # sails generate
 ### Purpose
-Once inside your app's root directory, the generate argument can be used to create models and controllers for the app.  There are three ways to do this.
+
+Generates a model and/or controller for the app in the current directory.
+
 
 ### Example Usage
 
-Generate new controller
+######Generate new controller
 
 ```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate controller newmodel
 info: Generated controller for newmodel!
 ```
 
-Generate new model
+######Generate new model
 
 ```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate model newmodel
@@ -40,13 +43,14 @@ info: Generated model for newmodel!
 
 ```
 
-Generate both!
+######Generate both!
 
 ```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate newmodel
 info: Generating model and controller for newmodel...
 ```
 ### Notes
+
 > 
 
 # sails lift
