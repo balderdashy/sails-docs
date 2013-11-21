@@ -4,7 +4,7 @@ The methods below are the basic crud methods availebl in sails.  Here is a very 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
 
-# .create( `{createme}`,`callback` )
+# .create( `{create}`,`callback` )
 ### Purpose
 Creates a new instance of this model in the database.
 
@@ -51,7 +51,7 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 
 
-# .update( criteria, values )
+# .update( `{find}` , `{save}` , `callback` )
 ### Purpose
 Updates existing record in the database that match the given criteria.
 
@@ -60,9 +60,9 @@ Updates existing record in the database that match the given criteria.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |   Find Criteria     |   `{}`,`[{}]`, 'string'  | 	Yes     |
+| 1 |   Find Criteria     |   `{}`,`[{}]`, `string`, `int`  | 	Yes     |
 | 2 |   Updated Records   |   `{}`,`[{}]`       | 	Yes     |
-| 3 |     Callback        | `function`          | Yes        |
+| 3 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
@@ -89,7 +89,7 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,update
 > If you specify a primary key (e.g. `7` or `50c9b254b07e040200000028`) instead of a criteria object, any `.where()` filters will be ignored.
 
 
-# .destroy()
+# .destroy( `{destroy}` , `callback` )
 ### Purpose
 Destroys all record in your database that matches the given criteria.
 
@@ -98,8 +98,8 @@ Destroys all record in your database that matches the given criteria.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
@@ -124,7 +124,7 @@ User.destroy({name:'Flynn'}).exec(function deleteCB(err){
 > Any string arguments passed must be the ID of the record.
 
 
-# .findOrCreate()
+# .findOrCreate( `{find}` , `{create}` , `callback` )
 ### Purpose
 Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
@@ -133,9 +133,9 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |  Records to Create  | `{}`,`[{}]`          | 	Yes  |
-| 2 |     Callback        | `function`          | Yes        |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
@@ -161,7 +161,7 @@ User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(er
 
 
 
-# .findOne()
+# .findOne( `{find}` , `callback` )
 ### Purpose
 This finds and returns a single record that meets the criteria.
 
@@ -170,7 +170,7 @@ This finds and returns a single record that meets the criteria.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`, `string`  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -197,7 +197,7 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 
 
 
-# .find()
+# .find(`{find}` , `callback`)
 ### Purpose
 Finds and returns all records that meet the criteria object(s) that you pass it.
 
@@ -206,7 +206,7 @@ Finds and returns all records that meet the criteria object(s) that you pass it.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -214,7 +214,7 @@ Finds and returns all records that meet the criteria object(s) that you pass it.
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Found Records      | `{}`, `[{}]`        |
+| 2 |  Found Records      | `[{}]`              |
 
 ### Example Usage
 
@@ -232,7 +232,7 @@ User.find({}).exec(function findCB(err,found){
 ```
 ### Notes
 > Any string arguments passed must be the ID of the record.
-
+> This method will ALWAYS return records in an array.
 
 <!--
 # .validate()
@@ -244,7 +244,7 @@ This method ensures that the current attributes on your model instance meet the 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes        |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -260,7 +260,7 @@ This method ensures that the current attributes on your model instance meet the 
 
 User.findOne(1).exec(function(err,myRecord){
 
-	// petName is defined as a 'string'.  Let's give it an array and see what happens.
+	// petName is defined as a `string`.  Let's give it an array and see what happens.
 
 	myRecord.petName = [1,2];
 	
@@ -278,24 +278,24 @@ User.findOne(1).exec(function(err,myRecord){
 -->
 
 
-# .count()
+# .count( `{find}` , `{create}` , `callback` )
 ### Purpose
-This method returns the number of records in your database that meet the given search criteria
+Returns the number of records in your database that meet the given search criteria.
 
 ### Overview
 #### Parameters
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Number of Records  | 'int'               |
+| 2 |  Number of Records  | `int`               |
 
 ### Example Usage
 
@@ -313,7 +313,7 @@ User.count({name:'Flynn'}).exec(function countCB(err,found){
 
 
 
-# .stream()
+# .stream( `{find}` )
 ### Purpose
 This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.  
 
@@ -322,10 +322,10 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string' | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int` | Yes |
 | 2 | Custom Write/End Methods | `{}`          | No        |
 
-#### Callback Parameters
+#### Returned
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
@@ -385,7 +385,7 @@ Stream all the Users ! </div>
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
 
-# .findBy`<attribute>`()
+# .findBy`<attribute>`( `{find}` , `callback` )
 ### Purpose
 Find and return records by a specific model attribute.
 
@@ -394,8 +394,8 @@ Find and return records by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
@@ -421,7 +421,7 @@ User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 > Any string arguments passed must be the ID of the record.
 
 
-# .findOneBy`<attribute>`()
+# .findOneBy`<attribute>`( `{find}` , `callback` )
 ### Purpose
 Find and return one record by a specific model attribute.
 
@@ -430,15 +430,15 @@ Find and return one record by a specific model attribute.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Found Record    | `{}`        |
+| 2 |  Found Record       | `{}`                |
 
 ### Example Usage
 
@@ -457,14 +457,14 @@ User.findOneByName('Walter').exec(function findCB(err,found){
 
 
 
-# .countBy`<attribute>`()
+# .countBy`<attribute>`( `{find}` , `callback` )
 ### Purpose
 Count the number of records in a model with a particular model attribute. 
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
@@ -488,13 +488,13 @@ User.countByName('Walter').exec(function countCB(err,found){
 > SUM [ matchedObjects * RecordsMatchedByObject ]
 > Any string arguments passed must be the ID of the record.
 
-# .`<attribute>`StartsWith()
+# .`<attribute>`StartsWith( `{find}` , `callback` )
 ### Purpose
 Find records based on the starting letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | Yes      |
 
 #### Callback Parameters
@@ -524,13 +524,13 @@ User.nameStartsWith('W', function startsWithCB(err,found){
 
 
 
-# .`<attribute>`EndsWith
+# .`<attribute>`EndsWith( `{find}` , `callback` )
 ### Purpose
 Find records based on the last letters of one of its attributes value.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, 'string'  | Yes |
+| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
@@ -538,7 +538,7 @@ Find records based on the last letters of one of its attributes value.
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Found Records    | `{}`, `[{}]`        |
+| 2 |  Found Records      | `{}`, `[{}]`        |
 
 
 ### Example Usage
@@ -562,14 +562,14 @@ Pub-Sub Methods
 ----------------
 
 
-# .publishCreate()
+# .publishCreate( `{publish}` )
 ### Purpose
 PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Data to Send        |   {}                |   No  |
-
+| 1 | Data to Send        |   `{}`              |   No       |
+| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 #### Callback Parameters
 
@@ -642,17 +642,19 @@ Click Me to add a new 'Walter' ! </div>
 ```
 
 ### Notes
-> The client's socket must have first been subscribed using the .subscribe({}) method. 
+> The client's socket must have first been subscribed using the .subscribe({}) method.
+> Published objects can be accessed via the data key on the socket callback parameter. 
 
 
-# .publishUpdate()
+# .publishUpdate( `{publish}` )
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Updated Record|   'int', 'string'    |   Yes      |
-| 1 | Data to Send        |   `{}`              |   No      |
+| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
+| 2 | Data to Send        |   `{}`              |   No      |
+| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
 
@@ -733,13 +735,14 @@ Click Me to add a new User! </div>
 > The client's socket must have first been subscribed using the .subscribe({},[]) method. 
 > Any string arguments passed must be the ID of the record.
 
-# .publishDestroy()
+# .publishDestroy( `{publish}` )
 ### Purpose
 Publish the destruction of a model
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Destroyed Record |'int', 'string'  |   Yes  |
+| 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
+| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
 #### Callback Parameters
@@ -819,13 +822,14 @@ Click Me to destroy user 'Walter' ! </div>
 ### Notes
 > Any string arguments passed must be the ID of the record.
 
-# .subscribe(`{}`)
+# .subscribe(`{req.socket}`)
 ### Purpose
 1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
+| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
 #### Callback Parameters
@@ -853,7 +857,8 @@ This one will subscribe clients to model instances (records).  They allows clien
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
-| 2 | Record IDs          | `[]`, 'string', 'int' | No        |
+| 2 | Record IDs          | `[]`, `string`, `int` | No        |
+| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 #### Callback Parameters
 
@@ -880,13 +885,14 @@ Controller Code
 > This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
 > Any string arguments passed must be the ID of the record.
 
-# .unsubscribe(`{}`)
+# .unsubscribe(`{req.socket}`)
 ### Purpose
 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
+| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
 #### Callback Parameters
@@ -900,7 +906,7 @@ Controller Code
 Controller Code
 ```javascript
 
-User.unsubscribe(`{}`, '[]' );
+User.unsubscribe(req.socket, [] );
 
 ```
 
@@ -908,14 +914,15 @@ User.unsubscribe(`{}`, '[]' );
 > Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
 > Any string arguments passed must be the ID of the record.
 
-# .unsubscribe({},[])
+# .unsubscribe(`{req.socket}`,`[recordIDs]`)
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
 
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
-| 2 | Record IDs          | `[]`, 'string', 'int' | No         |
+| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
+| 2 | Record IDs          | `[]`, `string`, `int` | No         |
+| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 #### Callback Parameters
 
@@ -935,3 +942,6 @@ User.unsubscribe(req.socket,[1,2,3,4,5,6]);
 > Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
 > The record IDs are not required but do not pass an empty array or the method will fail.
 > Any string arguments passed must be the ID of the record.
+
+
+
