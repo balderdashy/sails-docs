@@ -138,7 +138,7 @@ Join 'Beyonce' ! </div>
 
 ```
 
-#### sails.io.sockets.emit('eventName')
+#### sails.io.sockets.emit(`<eventName>`)
 
 Emit a message to every client, regardless of what room they are in.  
 
@@ -190,7 +190,7 @@ Join 'Beyonce' ! </div>
 ```
 
 
-#### sails.io.sockets.in('roomname').emit('msg',{})
+#### sails.io.sockets.in(`<roomname>`).emit('msg',{})
 
 Send a message to everyone in the specified room.
 
