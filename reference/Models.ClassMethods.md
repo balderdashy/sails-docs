@@ -33,7 +33,7 @@ Creates a new instance of this model in the database.
 
 
 
-### Examples
+### Example Usage
 
 ```javascript 
 
@@ -51,7 +51,7 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 
 
-# .update()
+# .update( <criteria>, <values> )
 ### Purpose
 Updates existing record in the database that match the given criterea.
 
