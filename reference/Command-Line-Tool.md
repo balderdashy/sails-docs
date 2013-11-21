@@ -6,7 +6,8 @@ Command Line Tool
 The new argument is used for creating a new sails app.
 
 ### Example Usage
-````
+
+````sh
 catGuy@catGuy:~/node/sails$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
 
