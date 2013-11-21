@@ -91,7 +91,7 @@ For more information, see the socket.io docs <a href="https://github.com/LearnBo
 #### sails.io.sockets.clients(`<roomName>`)
 Gives an array containing the sockets currently connected to the supplied room name (string).
 
-### Example Usage
+#### Example Usage
 
 UsersController.js
 ```javascript
@@ -142,7 +142,7 @@ Join 'Beyonce' ! </div>
 
 Emit a message to every client, regardless of what room they are in.  
 
-### Example Usage
+#### Example Usage
 
 UsersController.js
 ```javascript
@@ -194,7 +194,7 @@ Join 'Beyonce' ! </div>
 
 Send a message to everyone in the specified room.
 
-### Example Usage
+#### Example Usage
 
 `UsersController.js`
 
