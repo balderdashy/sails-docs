@@ -26,7 +26,7 @@ sails.log('There',{sure:'are'},['a','lot'],'of',[{log:'levels'}, 'huh'],'?',true
 > These will accept an infinite number of arguments of any data type, seperated by commas.
 
 
-# sails.config()
+# sails.config
 ### Purpose
 The config object allows you to see your apps configuration settings. 
 
@@ -54,7 +54,7 @@ if (sails.config.environment && !sails.config.csrf)
 ### Notes
 
 
-# `sails.models`
+# sails.models
 
 ### Purpose
 This is the same as User.<modelName>().  If you disable globals, you can use sails.model.user in place of User.< modelName > . 
@@ -72,8 +72,18 @@ This is the same as User.<modelName>().  If you disable globals, you can use sai
 
 
 
-# sails.io.sockets()
+# sails.io
 
+### Purpose
+
+Provides raw access to socket.io.
+
+Here are some examples:
+
+> Re discussion:
+
+#### sails.io.sockets
+`sails.io.sockets()`
 
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io .  If you are new to sockets, you should use the <a href=""> sails pubsub class methods </a> for socket.io .  
 
