@@ -383,6 +383,7 @@ Stream all the Users ! </div>
 
 # native()
 ### Purpose
+Returns an instance of the specified collection for performing raw Mongo queries.
 
 ### Overview
 #### Parameters
@@ -404,11 +405,12 @@ Stream all the Users ! </div>
 
 ```
 ### Notes
-> This method only works with Mongo! use .query() for postgresql and mysql
+> This method only works with Mongo! use .query() for PostgreSQL and mySQL.
 
 
 # .query()
 ### Purpose
+Performs raw SQL queries for PostgreSQL and mySQL.
 
 ### Overview
 #### Parameters
@@ -430,7 +432,7 @@ Stream all the Users ! </div>
 
 ```
 ### Notes
-> This method only works with postgresql and mysql! use .native() for mongo!
+> This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
 
 # Dynamic Finders
