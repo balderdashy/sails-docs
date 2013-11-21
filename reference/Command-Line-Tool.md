@@ -8,7 +8,7 @@ Creates a new Sails app in the current directory.
 
 ### Example Usage
 
-```javascript
+```sh
 catGuy@catGuy:~/nodeProjects$ sails new myApp
 debug: Building new Sails.js app in ./myApp...
 
@@ -28,7 +28,7 @@ Generates a model and/or controller for the app in the current directory.
 
 ######Generate new controller
 
-```javascript
+```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate controller pet
 info: Generated controller for pet !
 ```
@@ -37,7 +37,7 @@ This will create the file 'api/controllers/PetController.js'
 
 ######Generate new model
 
-```javascript
+```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate model pet
 warn: For the record :: to serve the blueprint API for this model,
 warn: you'll also need to have an empty controller.
@@ -48,7 +48,7 @@ This will create the file 'api/models/Pet.js'
 
 ######Generate both!
 
-```javascript
+```sh
 catGuy@catGuy:~/nodeProjects/blogApp$ sails generate pet
 info: Generating model and controller for pet...
 ```
