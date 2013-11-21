@@ -56,7 +56,6 @@ The lift argument launches your app.  You can also add the folowing flags behind
 - \-\-verbose                                   This displays extra information in console relevent to your app
 - \-\-silly                                     This flag displays ALL of the information.  All of it.
 - \-\-port=<integer>                            Use this for changing the port on lift.
-- \-\-environment=<development|production>      Be careful with this one.  It won't throw an error if you slip up and type ninjaMode.  
 - \-\-dev                                       This is shorthand for environment=development
 - \-\-prod                                      This is shorthand for environment=production
 
