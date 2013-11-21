@@ -86,7 +86,7 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,update
 > Although you may pass .update() an object or an array of objects, it will always return an array of objects.
 > Any string arguments passed must be the ID of the record.
 
-
+> If you specify a primary key (e.g. `7` or `50c9b254b07e040200000028`) instead of a criteria object, any `.where()` filters will be ignored.
 
 
 # .destroy()
