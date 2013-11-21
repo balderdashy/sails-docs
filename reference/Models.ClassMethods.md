@@ -381,6 +381,57 @@ Stream all the Users ! </div>
 > Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
 > Any string arguments passed must be the ID of the record.
 
+# native()
+### Purpose
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+||||
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+||||
+
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+> This method only works with Mongo! use .query() for postgresql and mysql
+
+
+# .query()
+### Purpose
+
+### Overview
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+||||
+
+#### Callback Parameters
+
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+||||
+
+
+### Example Usage
+
+```javascript 
+
+```
+### Notes
+> This method only works with postgresql and mysql! use .native() for mongo!
+
 
 # Dynamic Finders
 These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
