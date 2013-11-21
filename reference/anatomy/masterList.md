@@ -60,6 +60,8 @@ In your model, you can specify policies located in this folder.  Before the mode
 ### Purpose
 This folder contains your services.  'Services' are similar to controller actions but are typically used for things like
 
+For any logic that doesnt rely on req and res
+
 - 
 - 
 - 
