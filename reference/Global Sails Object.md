@@ -81,8 +81,6 @@ Provides raw access to socket.io.
 
 Here are some examples:
 
-> Re discussion:
-
 #### sails.io.sockets
 `sails.io.sockets()`
 
@@ -90,9 +88,8 @@ This is the raw reference to socket.io .  Use it when you want low level access 
 
 For more information, see the socket.io docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> right here </a>.
 
-# sails.io.sockets.clients('roomname')
-### Purpose
-Gives an array containing the sockets currently connected to the supplied room name.
+#### sails.io.sockets.clients(`<roomName>`)
+Gives an array containing the sockets currently connected to the supplied room name (string).
 
 ### Example Usage
 
@@ -141,14 +138,8 @@ Join 'Beyonce' ! </div>
 
 ```
 
+#### sails.io.sockets.emit('eventName')
 
-### Notes
-> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
-
-
-# sails.io.sockets.emit('eventName')
-
-### Purpose
 Emit a message to every client, regardless of what room they are in.  
 
 ### Example Usage
@@ -198,13 +189,9 @@ Join 'Beyonce' ! </div>
 
 ```
 
-### Notes
-> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
 
+#### sails.io.sockets.in('roomname').emit('msg',{})
 
-# sails.io.sockets.in('roomname').emit('msg',{})
-
-### Purpose
 Send a message to everyone in the specified room.
 
 ### Example Usage
@@ -257,6 +244,6 @@ Join 'Beyonce' ! </div>
 ```
 
 ### Notes
-> This is a low level socket method.  Sails has improved upon this.  See the <a href=""> pubsub class methods </a> !
+> These are low level socket methods.  Sails has improved upon them.  See the <a href=""> pubsub class methods </a> !
 
 
