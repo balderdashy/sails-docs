@@ -14,7 +14,7 @@ debug: Building new Sails.js app in ./myApp...
 info: New app created!
 ```
 
-Also available is the \-\-linker flag.
+Also available is the `--linker` flag.
 This will create your app using automatic asset linking (and we all know what that means)
 
 # sails generate
@@ -168,10 +168,15 @@ sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
 
 # sails version
 ### Purpose
-Returns the sails version of the app in the current directory.
+Returns the version of Sails which will run the app in the current directory.
 
 ### Example Usage
 ```sh
 catGuy@catGuy:~/nodeProjects/myApp$ sails version
 info: v0.9.7
 ```
+
+
+### Notes
+If you have Sails installed locally (i.e. `npm install sails`), its version will be returned.
+Otherwise, the global version of Sails will be used.
