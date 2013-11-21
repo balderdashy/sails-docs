@@ -4,17 +4,25 @@ The methods below are the basic crud methods availebl in sails.  Here is a very 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
 
-# .create()
+# .create( <values> )
 ### Purpose
 Creates a new instance of this model in the database.
 
-### Overview
-#### Parameters
 
+<!--
+| Parameters |     Description     | Accepted Data Types | Required ? |
+|----------|---------------------|---------------------|------------|
+| values   |  Records to Create  |      `{}`, `[{}]`   | Yes	     |
+
+-->
+
+### Overview
+
+#### Parameters
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |  Records to Create  |      `{}`, `[{}]`   | Yes	     |
-| 2 |     Callback        | `function`          | Yes        |
+| 2 |     Callback        | `function`          | No         |
 
 #### Callback Parameters
 
@@ -23,7 +31,9 @@ Creates a new instance of this model in the database.
 | 1 |  Error              | `Error`             |
 | 2 |  Records Created    | `{}`, `[{}]`        |
 
-### Example Usage
+
+
+### Examples
 
 ```javascript 
 
