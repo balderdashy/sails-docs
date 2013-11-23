@@ -1,5 +1,5 @@
 # sails new
-### Purpose yall
+### Purpose
 
 Creates a new Sails app in the current directory.
 
