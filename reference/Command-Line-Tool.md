@@ -1,8 +1,5 @@
-Command Line Tool
-=====================
-
 # sails new
-### Purpose
+### Purpose yall
 
 Creates a new Sails app in the current directory.
 
