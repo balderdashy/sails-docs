@@ -335,7 +335,7 @@ res.attachment('path/to/logo.png');
 ### Notes
 >
 
-# res.sendfile(path, [options], [fn]])
+# res.sendfile(path, [options], [fn])
 ### Purpose
 Transfer the file at the given path.
 
