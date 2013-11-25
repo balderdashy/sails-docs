@@ -62,7 +62,7 @@ The lift argument launches the sails app in the current directory.  You can also
 
 | `--flag` |  Description  |
 |----------|---------------|
-| `--linker`| Lifts app with the <a href="http://sailsjs.org/#!documentation/assets"> asset linker </a>|
+| `--linker`| Lifts app with the <a href="http://sailsjs.org"> asset linker </a>|
 | `--verbose`| This displays extra information in console relevent to your app |
 | `--silly`| This flag displays ALL of the information.  All of it. |
 | `--port=<integer>`| Lifts your app on the specified port eliminating the need to change config. |
