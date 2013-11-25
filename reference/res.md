@@ -10,7 +10,7 @@ res.status(404).sendfile('path/to/404.png');
 ### Notes
 >
 
-# res.set(`field`, [value])
+# res.set(`field`, `[value]`)
 ### Purpose
 Set header `field` to `value`, or pass an object to set multiple fields at once.
 
@@ -45,7 +45,7 @@ res.get('Content-Type');
 ### Notes
 >
 
-# res.cookie(name, value, [options])
+# res.cookie(name, value, `[options]`)
 ### Purpose
 Set cookie name to value, where which may be a string or object converted to JSON. The path option defaults to "/".
 
@@ -78,7 +78,7 @@ res.cookie('name', 'tobi', { signed: true });
 ### Notes
 >Later you may access this value through the req.signedCookie object.
 
-# res.clearCookie(name, [options])
+# res.clearCookie(name, `[options]`)
 ### Purpose
 Clear cookie name. The path option defaults to "/".
 ### Example Usage
@@ -167,7 +167,7 @@ res.send('some html');
 ### Notes
 >
 
-# res.send([body|status], [body])
+# res.send(`[body|status]` , `[body]`)
 ### Purpose
 Send a response.
 
@@ -211,7 +211,7 @@ res.send(500)
 ### Notes
 >
 
-# res.json([status|body], [body])
+# res.json(`[status|body]` , `[body]`)
 ### Purpose
 Send a JSON response. This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
 
@@ -225,7 +225,7 @@ res.json(500, { error: 'message' })
 ### Notes
 > Don't forget this method name is all lower case.  I always forget that.
 
-# res.jsonp([status|body], [body])
+# res.jsonp(`[status|body]` , `[body]`)
 ### Purpose
 Send a JSON response with JSONP support. This method is identical to res.json() however opts-in to JSONP callback support.
 
@@ -273,7 +273,7 @@ res.type('png');
 ### Notes
 >
 
-# res.format(object)
+# res.format(`object`)
 ### Purpose
 Performs content-negotiation on the request Accept header field when present. This method uses req.accepted, an array of acceptable types ordered by their quality values, otherwise the first callback is invoked. When no match is performed the server responds with 406 "Not Acceptable", or invokes the default callback.
 
@@ -318,7 +318,7 @@ res.format({
 ### Notes
 >
 
-# res.attachment([filename])
+# res.attachment(`[filename]`)
 ### Purpose
 Sets the Content-Disposition header field to "attachment". If a filename is given then the Content-Type will be automatically set based on the extname via res.type(), and the Content-Disposition's "filename=" parameter will be set.
 
@@ -335,7 +335,7 @@ res.attachment('path/to/logo.png');
 ### Notes
 >
 
-# res.sendfile(path, [options], [fn])
+# res.sendfile(path, `[options]` , `[fn]`)
 ### Purpose
 Transfer the file at the given path.
 
@@ -366,7 +366,7 @@ app.get('/user/:uid/photos/:file', function(req, res){
 ### Notes
 >
 
-# res.download(path, [filename], [fn])
+# res.download(path, `[filename]` , `[fn]`)
 ### Purpose
 Transfer the file at path as an "attachment", typically browsers will prompt the user for download. The Content-Disposition "filename=" parameter, aka the one that will appear in the brower dialog is set to path by default, however you may provide an override filename.
 
@@ -429,7 +429,7 @@ app.use(function(req, res, next){
 ### Notes
 >
 
-# res.render(view, [locals], callback)
+# res.render(view, `[locals]` , callback)
 ### Purpose
 Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
 
