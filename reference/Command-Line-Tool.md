@@ -1,5 +1,3 @@
-
-
 # sails new
 ### Purpose
 
