@@ -45,7 +45,7 @@ res.get('Content-Type');
 ### Notes
 >
 
-# res.cookie(name, value, `[options]`)
+# res.cookie(`name`, `value`, `[options]`)
 ### Purpose
 Set cookie name to value, where which may be a string or object converted to JSON. The path option defaults to "/".
 
@@ -78,7 +78,7 @@ res.cookie('name', 'tobi', { signed: true });
 ### Notes
 >Later you may access this value through the req.signedCookie object.
 
-# res.clearCookie(name, `[options]`)
+# res.clearCookie(`name`, `[options]`)
 ### Purpose
 Clear cookie name. The path option defaults to "/".
 ### Example Usage
@@ -257,7 +257,7 @@ res.jsonp(500, { error: 'message' })
 ### Notes
 >
 
-# res.type(type)
+# res.type(`type`)
 ### Purpose
 Sets the Content-Type to the mime lookup of type, or when "/" is present the Content-Type is simply set to this literal value.
 
@@ -335,7 +335,7 @@ res.attachment('path/to/logo.png');
 ### Notes
 >
 
-# res.sendfile(path, `[options]` , `[fn]`)
+# res.sendfile(`path`, `[options]` , `[fn]`)
 ### Purpose
 Transfer the file at the given path.
 
@@ -366,7 +366,7 @@ app.get('/user/:uid/photos/:file', function(req, res){
 ### Notes
 >
 
-# res.download(path, `[filename]` , `[fn]`)
+# res.download(`path`, `[filename]` , `[fn]`)
 ### Purpose
 Transfer the file at path as an "attachment", typically browsers will prompt the user for download. The Content-Disposition "filename=" parameter, aka the one that will appear in the brower dialog is set to path by default, however you may provide an override filename.
 
@@ -429,7 +429,7 @@ app.use(function(req, res, next){
 ### Notes
 >
 
-# res.render(view, `[locals]` , callback)
+# res.render(`view`, `[locals]` , callback)
 ### Purpose
 Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
 
@@ -447,7 +447,7 @@ res.render('user', { name: 'Tobi' }, function(err, html){
 ### Notes
 >
 
-# res.view({})
+# res.view(`{}`)
 ### Purpose
 This is a Sails method that loads the appropriate view.  
 
