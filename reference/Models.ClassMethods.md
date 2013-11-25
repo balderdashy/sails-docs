@@ -381,7 +381,7 @@ Stream all the Users ! </div>
 > Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
 > Any string arguments passed must be the ID of the record.
 
-# native()
+# .native()
 ### Purpose
 Returns an instance of the specified collection for performing raw Mongo queries.
 
