@@ -9,13 +9,13 @@ The `save` method updates your record in the database using the current attribut
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Saved Record       | `{ }`               |
@@ -53,13 +53,13 @@ Destroys the your record in the database. It returns an error in the callback if
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 
@@ -96,13 +96,13 @@ Checks the current keys/values on the record against the validations specified i
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 
@@ -158,21 +158,21 @@ The toObject method returns a cloned model instance (record) but stripped of all
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 |   |    NO PARAMS        |                     |            |
 
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |    NO CALLBACK      |                     |
 
 
 #### Return Value
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |   Cloned Record     |        `{ }`        |
 
@@ -197,21 +197,21 @@ This method also returns a cloned model instance.  This one however includes all
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 |   |    NO PARAMS        |                     |            |
 
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |    NO CALLBACK      |                     |
 
 
 #### Return Value
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |   Cloned Record     |        `{ }`        |
 
