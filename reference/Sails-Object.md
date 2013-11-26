@@ -1,5 +1,6 @@
-The Sails Object
-================
+# Sails-Object
+### Overview
+Here is an overview of the sails object.  
 
 # sails.log
 ### Purpose
