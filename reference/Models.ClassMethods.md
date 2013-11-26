@@ -315,7 +315,7 @@ User.count({name:'Flynn'}).exec(function countCB(err,found){
 
 # .stream( `{find}` )
 ### Purpose
-This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_stream_writable">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.  
+This method uses a <a href="http://nodejs.org/api/stream.html">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.  
 
 ### Overview
 #### Parameters
