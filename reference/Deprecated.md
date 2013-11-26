@@ -1,7 +1,8 @@
-# Deprecated Features
+# Deprecated
+
 The following features are considered deprecated and should at some point be removed from the codebase
 
-## Class Methods
+# Class Methods
 
 ### Dynamic Finder Methods
 
