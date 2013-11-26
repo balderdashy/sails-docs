@@ -30,14 +30,14 @@ This is shorthand for a .find() query that uses the startsWith query modifier.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `[{}]`              |
@@ -64,14 +64,14 @@ This method performs a query on the model and returns those ...
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, 'string'| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `[{}]`              |
