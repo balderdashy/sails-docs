@@ -19,14 +19,14 @@ Creates a new instance of this model in the database.
 ### Overview
 
 #### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |  Records to Create  |      `{}`, `[{}]`   | Yes	     |
 | 2 |     Callback        | `function`          | No         |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Records Created    | `{}`, `[{}]`        |
@@ -58,7 +58,7 @@ Updates existing record in the database that match the given criteria.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |   Find Criteria     |   `{}`,`[{}]`, `string`, `int`  | 	Yes     |
 | 2 |   Updated Records   |   `{}`,`[{}]`       | 	Yes     |
@@ -66,7 +66,7 @@ Updates existing record in the database that match the given criteria.
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Sucessfully Updated Records    | `[{}]`        |
@@ -96,14 +96,14 @@ Destroys all record in your database that matches the given criteria.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 
@@ -131,7 +131,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |  Records to Create  | `{}`,`[{}]`          | 	Yes  |
@@ -139,7 +139,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Records Created    | `{}`, `[{}]`        |
@@ -168,14 +168,14 @@ This finds and returns a single record that meets the criteria.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`, `string`  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Record       | `{}`                |
@@ -204,14 +204,14 @@ Finds and returns all records that meet the criteria object(s) that you pass it.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `[{}]`              |
@@ -242,14 +242,14 @@ This method ensures that the current attributes on your model instance meet the 
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes        |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 
@@ -285,14 +285,14 @@ Returns the number of records in your database that meet the given search criter
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Number of Records  | `int`               |
@@ -320,14 +320,14 @@ This method uses a <a href="http://nodejs.org/api/stream.html#stream_class_strea
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int` | Yes |
 | 2 | Custom Write/End Methods | `{}`          | No        |
 
 #### Returned
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Stream of Records  | `stream`  |
@@ -388,13 +388,13 @@ Returns an instance of the specified collection for performing raw Mongo queries
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 ||||
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 ||||
 
@@ -415,13 +415,13 @@ Performs raw SQL queries for PostgreSQL and mySQL.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 ||||
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 ||||
 
@@ -445,14 +445,14 @@ Find and return records by a specific model attribute.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `[{}]`              |
@@ -481,14 +481,14 @@ Find and return one record by a specific model attribute.
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Record       | `{}`                |
@@ -514,14 +514,14 @@ User.findOneByName('Walter').exec(function findCB(err,found){
 ### Purpose
 Count the number of records in a model with a particular model attribute. 
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Number of Records  | `int`        |
@@ -545,14 +545,14 @@ User.countByName('Walter').exec(function countCB(err,found){
 ### Purpose
 Find records based on the starting letters of one of its attributes value.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | Yes      |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `{}`, `[{}]`        |
@@ -581,14 +581,14 @@ User.nameStartsWith('W', function startsWithCB(err,found){
 ### Purpose
 Find records based on the last letters of one of its attributes value.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |     Callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Found Records      | `{}`, `[{}]`        |
@@ -619,14 +619,14 @@ Pub-Sub Methods
 ### Purpose
 PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Data to Send        |   `{}`              |   No       |
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
@@ -703,7 +703,7 @@ Click Me to add a new 'Walter' ! </div>
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
 | 2 | Data to Send        |   `{}`              |   No      |
@@ -713,7 +713,7 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
@@ -792,7 +792,7 @@ Click Me to add a new User! </div>
 ### Purpose
 Publish the destruction of a model
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
@@ -800,7 +800,7 @@ Publish the destruction of a model
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 ### Example Usage
@@ -879,7 +879,7 @@ Click Me to destroy user 'Walter' ! </div>
 ### Purpose
 1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
@@ -887,7 +887,7 @@ Click Me to destroy user 'Walter' ! </div>
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
@@ -907,7 +907,7 @@ Controller Code
 ### Purpose
 This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
 | 2 | Record IDs          | `[]`, `string`, `int` | No        |
@@ -915,7 +915,7 @@ This one will subscribe clients to model instances (records).  They allows clien
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
@@ -942,7 +942,7 @@ Controller Code
 ### Purpose
 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
@@ -950,7 +950,7 @@ Controller Code
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
@@ -971,7 +971,7 @@ User.unsubscribe(req.socket, [] );
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
 
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
 | 2 | Record IDs          | `[]`, `string`, `int` | No         |
@@ -979,7 +979,7 @@ This method will unsubscribe a socket from the model instances (records) who's I
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 |   |  NO CALLBACK        |                     |
 
