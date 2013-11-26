@@ -1,5 +1,6 @@
-Instance Methods
------------------
+# Instance Methods
+
+Instance methods brooowwww
 
 # .save()
 
