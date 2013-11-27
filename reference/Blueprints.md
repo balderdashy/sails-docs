@@ -1,11 +1,6 @@
 # Blueprints
 ### Overview
-The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
-
-
-		// 'post /:controller'
-		// 'put /:controller/:id'
-		// 'delete /:controller/:id'
+The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js' .
 
 # Find Records
 ### Purpose
