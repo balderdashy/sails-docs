@@ -28,7 +28,7 @@ Below is a chart describing Sails.js support of the .res() methods.
 | res.view | Sails | :-) | :-( |
 
 
-#res.status()
+# res.status()
 ### Purpose
 Chainable alias of node's '`res.statusCode=`.
 
