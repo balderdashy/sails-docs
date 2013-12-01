@@ -124,6 +124,11 @@ Now, lets include it from our home page (we'll use the relative path to our part
 ```
 
 
+## FAQ
+> __How can I define custom view path from controller (not from router)?__
+> ```res.view('path/relative/to/views/folder', localsObject);```
+
+
 
 
 
