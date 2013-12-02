@@ -209,7 +209,7 @@ When enabled, all non-GET requests to the Sails server must be accompanied by a 
 
 
 
- When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
+When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
 
 This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
 
@@ -217,7 +217,7 @@ This allows you to have certainty that your users' requests haven't been hijacke
   
 This token has a short-lived expiration timeline, and must be acquired by either:
 
-###*For traditional view-driven web apps:*
+####For traditional view-driven web apps:*
 Fetching it from one of your views, where it may be accessed as a local variable, i.e.: `<%= _csrf %>`
 e.g.:
 ```html
@@ -225,13 +225,9 @@ e.g.:
  <input type='hidden' name='_csrf' value='<%= _csrf %>'>
 </form>
 ```
-#####*or*
 
-###*For AJAX/Socket-heavy and/or single-page apps:*
+####For AJAX/Socket-heavy and/or single-page apps:*
 Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
-
-
-
 
 Enabling this option requires managing the token in your front-end app. For traditional web apps, it's as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
 
@@ -398,7 +394,7 @@ This is a folder that contains the Language files for different locales.
 
 More about this implementation: https://github.com/mashpie/i18n-node
 
-####locales.de.js
+#####locales.de.js
 This file is provided in the folder as an example:
 Note that this is part of a campaign to rebrand our app for the German market as Bleistift Buben (or "Pencil Boys")
 
@@ -466,7 +462,7 @@ Your app's ACL (access control list) is located in **config/policies.js**.
 
 #### Applying a Policy
 
-### To a Specific Action
+##### To a Specific Action
 
 To apply a policy to a specific action in particular, you should specify it on the right-hand side of that action:
 
@@ -479,7 +475,7 @@ To apply a policy to a specific action in particular, you should specify it on t
 ```
 
 
-### To an Entire Controller
+##### To an Entire Controller
 
 To set the default policy mapping for a controller, use the `*` notation:
 > **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.  In this example, `isLoggedIn` is overriding `false`.
@@ -493,7 +489,7 @@ To set the default policy mapping for a controller, use the `*` notation:
 }
 ```
 
-### Globally
+##### Globally
 > **Note:** Global policy mappings do not "cascade" or "trickle down" either.  Specified mappings, whether they're default controller mappings or for specific actions, will **ALWAYS** override the global mapping.  In this example, `isLoggedIn` is overriding `false`.
 
 ```javascript
@@ -510,9 +506,9 @@ To set the default policy mapping for a controller, use the `*` notation:
 ```
 
 
-#### Built-in policies
+##### Built-in policies
 
-### true
+###### true
 
 > This is the default policy mapped to all controllers and actions in a new project.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
@@ -530,7 +526,7 @@ module.exports = {
 ```
 
 
-### false
+###### false
 
 **NO** access to the mapped controller/action.  No requests get through.  Period.
 
@@ -547,7 +543,7 @@ module.exports = {
 ```
 
 
-#### Custom policies
+##### Custom policies
 
 You can apply one or more policies to a given controller or action.  Any file in your `/policies` folder (e.g. `authenticated.js`) is referable in your ACL (`config/policies.js`) by its filename minus the extension, (e.g.  `'authenticated'`).
 
@@ -560,7 +556,7 @@ module.exports = {
 }
 ```
 
-#### Multiple Policies
+##### Multiple Policies
 
 To apply two or more policies to a given action, (order matters!) you can specify an array, each referring to a specific policy. 
 
@@ -801,7 +797,7 @@ db: 'sails',
 pass: '<redis auth password>'
 ```
 
-###origins
+####origins
 `origins: '*:*'`
 
 Match string representing the origins that are allowed to connect to the Socket.IO server
@@ -974,7 +970,7 @@ If you&rsquo;d like to use more than one `layout` file, you can!
 See the [full documentation on views](https://github.com/balderdashy/sails-wiki/blob/0.9/views.md) for more information.
 
 
-###Using Layouts With Other View Engines
+####Using Layouts With Other View Engines
 In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
 
 Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
