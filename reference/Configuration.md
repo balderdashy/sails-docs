@@ -10,6 +10,29 @@ The default 404 handler.
 ### Moar
 
 
+If a request is made that has no matching [routes](https://github.com/balderdashy/sails-wiki/blob/0.9/routes.md), Sails will respond using this handler:
+
+
+
+```javascript
+module.exports[404] = function pageNotFound(req, res, defaultNotFoundBehavior) {
+
+  // If the user-agent wants a JSON response,
+  // the views hook is disabled,
+  // or the 404 view doesn't exist,
+  // send JSON
+  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[404]) {
+    return res.json({
+      status: 404
+    }, 404);
+  }
+
+  // Otherwise, serve the `views/404.*` page
+  res.view('404');
+  
+};
+```
+For more information on 404/notfound handling in Sails/Express, check out: http://expressjs.com/faq.html#404-handling
 
 
 
@@ -24,7 +47,61 @@ The default 500 error handler.
 ### Moar
 
 
+If an error is thrown, Sails will respond using this default error handler:
 
+
+```javascript
+
+module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErrorBehavior) {
+
+  // Ensure that `errors` is a list
+  var displayedErrors = (typeof errors !== 'object' || !errors.length) ? [errors] : errors;
+
+  // Ensure that each error is formatted correctly
+  // Then log them
+  for (var i in displayedErrors) {
+    if (!(displayedErrors[i] instanceof Error)) {
+      displayedErrors[i] = new Error(displayedErrors[i]);
+    }
+    sails.log.error(displayedErrors[i]);
+  }
+
+  // In production, don't display any identifying information about the error(s)
+  var response = {};
+  if (sails.config.environment === 'development') {
+    response = {
+      status: 500,
+      errors: displayedErrors
+    };
+  }
+
+  // If the user-agent wants a JSON response,
+  // the views hook is disabled,
+  // or the 500 view doesn't exist,
+  // send JSON
+  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[500]) {
+
+    // Create JSON-readable version of errors
+    for (var j in response.errors) {
+      response.errors[j] = {
+        error: response.errors[j].message
+      };
+    }
+
+    return res.json(response, 500);
+  }
+
+
+  // Otherwise
+  // create HTML-readable stacks for errors
+  for (var k in response.errors) {
+    response.errors[k] = response.errors[k].stack;
+  }
+  // and send the `views/500.*` page
+  res.view('500', response);
+
+};
+```
 
 
 
@@ -37,6 +114,28 @@ The adapters configuration object lets you create different global “saved sett
 
 
 
+The `adapters` configuration object lets you create different global &ldquo;saved settings&rdquo; that you can mix and match in your models.  The `default` option indicates which saved setting should be used if a model doesn't have an adapter specified.
+
+Keep in mind that options you define directly in your model definitions will override these settings.
+
+For example, to use the in-memory adapter (for DEVELOPMENT ONLY), first install the module with `npm install sails-memory`, then define it in `adapters.js`:
+```javascript
+  memory: {
+    module: 'sails-memory'
+  },
+```
+then in your model definition, add `adapter: 'memory'`:
+
+```javascript
+  module.exports = {
+     adapter: 'memory',
+     attributes: {
+       // some attributes
+     }
+  }
+```
+
+Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md">here</a>.
 
 
 
@@ -54,6 +153,17 @@ This is an asynchronous boostrap function that runs before your Sails app gets l
 
 
 
+# Bootstrap
+This is an asynchronous boostrap function that runs before your Sails app gets lifted (i.e. starts up). This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
+
+```javascript
+module.exports.bootstrap = function (cb) {
+
+  // It's very important to trigger this callback method when you are finished 
+  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  cb();
+};
+```
 
 
 
@@ -68,7 +178,29 @@ By default, Sails controllers automatically bind routes for each of their functi
 
 
 
+By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
+## Blueprints
+####`prefix` (string)
+Optional mount path prefix for blueprints (the automatically bound routes in your controllers) e.g. '/api/v2'
+
+####`actions` (boolean)
+Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
+
+####`shortcuts` (boolean)
+These CRUD shortcuts exist for your convenience during development, but you'll want to disable them in production.: `'/:controller/find/:id?'`, `'/:controller/create'`, `'/:controller/update/:id'`, and `'/:controller/destroy/:id'`
+
+####`rest` (boolean)
+Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
+
+####`expectIntegerId` (boolean)
+If a blueprint route catches a request, only match :id param if it's an integer.  e.g. only trigger route handler if requests look like: `get /user/8` instead of: `get /user/a8j4g9jsd9ga4ghjasdha`.  You&rsquo;ll usually want to change this to `false` when using a database that uses strings for unique IDs, such as Mongo.
+
+####`jsonp` (boolean)
+Optionally wrap blueprint JSON responses in a JSONP callback using `res.jsonp()` from Express 3. (default: `false`)
+
+####`pluralize` (boolean)
+Optionally use plural controller names in blueprint routes, e.g. `/users` for `api/controllers/UserController.js`. (default: `false`)
 
 
 
@@ -82,6 +214,33 @@ When enabled, all non-GET requests to the Sails server must be accompanied by a 
 
 
 
+ When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
+
+This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
+
+This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
+  
+This token has a short-lived expiration timeline, and must be acquired by either:
+
+###*For traditional view-driven web apps:*
+Fetching it from one of your views, where it may be accessed as a local variable, i.e.: `<%= _csrf %>`
+e.g.:
+```html
+<form>
+ <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+</form>
+```
+####*or*
+
+###*For AJAX/Socket-heavy and/or single-page apps:*
+Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
+
+
+
+
+Enabling this option requires managing the token in your front-end app. For traditional web apps, it's as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
+
+#####For more information on CSRF, check out: [this](http://en.wikipedia.org/wiki/Cross-site_request_forgery) article.
 
 
 
@@ -97,6 +256,82 @@ If you want to use custom middleware or add local variables and helpers to templ
 ### Moar
 
 
+This configuration file lets you easily add [Express](http://expressjs.com/) middleware, local variables and helpers for templates and directly access the application instance before it starts. 
+
+```javascript
+module.exports.express = {
+
+  // customMiddleware allows you to inject a piece of middleware before each requeset
+  // Worth noting that this **only applies to HTTP requests**-- while most parts of Sails work for both
+  // HTTP and sockets, and most Express/Connect middleware should work without a problem for both using
+  // Sails' built-in interpreter, this configuration exists mainly to allow direct access to the Express 
+  // middleware chain.
+  //
+  // For example, if  you want to use the `connect-flash` middleware:
+  /*
+  customMiddleware: function (app) {
+    var flash = require('connect-flash');
+    app.use(flash());
+  }
+  */
+  //
+  // Defaults to `false`
+  // Disable by setting to `false`
+  //
+  // customMiddleware: false
+  
+  
+  // Configures the middleware function used for parsing the HTTP request body
+	// Defaults to the Formidable-based version built-in to Express/Connect
+	//
+	// To enable streaming file uploads (to disk or somewhere else)
+	// you'll want to set this to `false` to disable it.
+	// Alternatively, if you're comfortable with the bleeding edge,
+	// check out: https://github.com/mikermcneil/stream-debug
+	//
+  // Defaults to `false`
+  // Disable by seting to `false`
+  //
+	// bodyParser: false,
+
+
+
+	// If bodyParser doesn't understand the HTTP body request data, 
+	// run it again with an artificial header, forcing it to try and parse
+	// the request body as JSON
+	// (this allows you to use JSON as your request body and have it parsed as parameters
+	// without the need to specify a 'Content-type: application/json' header)
+	//
+  // Defaults to `true`
+  // Disable by seting to `false`
+  //
+	// retryBodyParserWithJSON: true,
+
+
+
+	// Cookie parser middleware
+  //
+  // Defaults to Connect/Express standard
+  // Disable by seting to `false`
+	//
+	// cookieParser: false,
+
+
+
+	// HTTP method override middleware
+	//
+	// This option allows artificial query params to be passed to trick 
+	// Express into thinking a different HTTP verb was used.
+	// Useful when supporting an API for user-agents which don't allow 
+	// PUT or DELETE requests
+	// 
+  // Defaults to Connect/Express standard
+  // Disable by seting to `false`
+  //
+	// methodOverride: false
+  
+};
+```
 
 
 
@@ -111,8 +346,32 @@ While you’re developing your app, this config file should include any settings
 
 ### Moar
 
+While you&rsquo;re developing your app, this config file should include any settings specifically for your development computer (db passwords, etc.)
+When you&rsquo;re ready to deploy your app in production, you can use this file for configuration options on the server where it will be deployed.
+
+> **Note:** This file is included in your .gitignore, so if you&rsquo;re using git as a version control solution for your Sails app, keep in mind that this file won&rsquo;t be committed to your repository!
+
+> Good news is, that means you can specify configuration for your local machine in this file without inadvertently committing personal information (like database passwords) to the repo.  Plus, this prevents other members of your team from commiting their local configuration changes on top of yours.
 
 
+##Port
+The `port` setting determines which TCP port your app will be deployed on.
+Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
+
+By default, if it&rsquo;s set, Sails uses the `PORT` environment variable. Otherwise it falls back to port 1337. In production, you&rsquo;ll probably want to change this setting to 80 (http://) or 443 (https://) if you have an SSL certificate.
+
+More about ports: http://en.wikipedia.org/wiki/Port_(computer_networking)
+
+
+##Environment
+The runtime &ldquo;environment&rdquo; of your Sails app is either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
+
+In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
+
+In production, Sails configures itself (and its dependencies) to optimize performance.
+You should always put your app in production mode before you deploy it to a server -- this helps ensure that your Sails app remains stable, performant, and scalable.
+
+By default, Sails sets its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will run in the &lsquo;development&rsquo; environment.
 
 
 
@@ -131,11 +390,49 @@ This is a folder that contains the Language files for different locales.
 ### Moar
 
 
+##Default stringfile
 
+ If you're building an internationalized application that needs support for multiple languages, you'll want to pull all of the static strings out of your application, then provide a translation file for each of your target languages.
 
+####Example i18n usage: e.g. `/views/about.ejs`
 
+```ejs
+<h2><%= __('whatIsApp?') %></h2>
+<p>	<%=	__('appDescription') %></p>
+```
 
+More about this implementation: https://github.com/mashpie/i18n-node
 
+##locales.de.js
+This file is provided in the folder as an example:
+Note that this is part of a campaign to rebrand our app for the German market as Bleistift Buben (or "Pencil Boys")
+
+```javascript
+module.exports = {
+  
+	// Key				: Value
+	// e.g.
+
+	'whatIsApp?'		:	'Was ist Bleistift Buben?',
+
+	appDescription		:	'Bleistift Buben ist eine App für den Aufbau und die Aufrechterhaltung ' +
+							'Freunde, mit denen Sie Darlehen Bleistifte. Mit Funktionen wie Bleistift '+
+							'Ledger, In-App-Zahlungen, und Vintage-Foto-Filter ermöglicht PP eine schöne ' +
+							'neue Welt der Rechenschaftspflicht für die #1, #2 UND #3 Bleistifte. ' +
+							'Du wirst nie verlieren einen Freund über eine verlorene Bleistift nie wieder!'
+};
+```
+
+##What About i18n on the client?
+The above technique works great out of the box for server-side views. But what about rich client apps?  HTML 5, SPAs, PhoneGap, Chrome Extensions and stuff? What if your HTML templates are being served from a CDN? If you are using **client-side** templates, you can reuse Sails' i18n support to help you get your translated templates to the browser.  
+
+If you want to use Sails to internationalize your client-side templates, just put your front-end templates in a subdirectory of your app's `/views` folder.
++ In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
++ In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
+
+Alternatively, if you're writing a native Objective C or Android application, you may find the following resources helpful:
++ Apple's Official i18n Docs for iOS: https://developer.apple.com/library/ios/#documentation/MacOSX/Conceptual/BPInternational/BPInternational.html
++ Google's Official i18n Docs for Android: http://developer.android.com/guide/topics/resources/localization.html
 
 
 
@@ -147,11 +444,20 @@ The logger file configures the log level for your app, as well as the transport.
 
 ### Moar
 
+The logger file configures the log level for your app, as well as the transport.
+
+*(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
+
+##There are 5 different levels to the log:
+
++ **'error'** : Display calls to `.error()`
++ **'warn'**    : Display calls from `.error()` to `.warn()`
++ **'debug'**	: Display calls from `.error()`, `.warn()` to `.debug()`
++ **'info'**	: Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
++ **'verbose'**: Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
 
 
-
-
-
+By default, the level is set to `info`.
 
 
 
