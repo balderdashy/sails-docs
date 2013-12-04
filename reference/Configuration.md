@@ -409,7 +409,7 @@ module.exports = {
 	appDescription		:	'Bleistift Buben ist eine App für den Aufbau und die Aufrechterhaltung ' +
 							'Freunde, mit denen Sie Darlehen Bleistifte. Mit Funktionen wie Bleistift '+
 							'Ledger, In-App-Zahlungen, und Vintage-Foto-Filter ermöglicht PP eine schöne ' +
-							'neue Welt der Rechenschaftspflicht für die #1, #2 UND #3 Bleistifte. ' +
+							'neue Welt der Rechenschaftspflicht für die 1, 2 UND 3 Bleistifte. ' +
 							'Du wirst nie verlieren einen Freund über eine verlorene Bleistift nie wieder!'
 };
 ```
