@@ -3,7 +3,7 @@
 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
 
-# create( `{create}`,`callback` )
+# .create( `{create}`,`callback` )
 ### Purpose
 Creates a new instance of this model in the database.
 
