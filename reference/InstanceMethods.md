@@ -1,4 +1,4 @@
-# Instance Methods
+# Model Instance Methods
 
 Instance methods brooowwww
 
