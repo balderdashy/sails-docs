@@ -32,7 +32,7 @@ module.exports[404] = function pageNotFound(req, res, defaultNotFoundBehavior) {
   
 };
 ```
-For more information on 404/notfound handling in Sails/Express, check out: http://expressjs.com/faq.html#404-handling
+For more information on 404/notfound handling in Sails/Express, check out: http://expressjs.com/faq.html
 
 
 
@@ -421,11 +421,6 @@ If you want to use Sails to internationalize your client-side templates, just pu
 + In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
 + In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
 
-Alternatively, if you're writing a native Objective C or Android application, you may find the following resources helpful:
-+ Apple's Official i18n Docs for iOS: https://developer.apple.com/library/ios/#documentation/MacOSX/Conceptual/BPInternational/BPInternational.html
-+ Google's Official i18n Docs for Android: http://developer.android.com/guide/topics/resources/localization.html
-
-
 
 
 
@@ -733,7 +728,7 @@ Uncomment the following lines to use your Mongo adapter as a session store
 ```
 Optional Values:
 ```javascript
-        // # Note: url will override other connection settings
+        // Note: url will override other connection settings
         // url: 'mongodb://user:pass@host:port/database/collection',
 
         username: '',
@@ -810,17 +805,17 @@ Sets whether we should use heartbeats to check the health of Socket.IO connectio
 ####close timeout
 `'close timeout': 60`
 
-When client closes connection, the # of seconds to wait before attempting a reconnect. This value is sent to the client after a successful handshake.
+When client closes connection, the number of seconds to wait before attempting a reconnect. This value is sent to the client after a successful handshake.
 
 ####heartbeat timeout
 `'heartbeat timeout': 60`
 
-The # of seconds between heartbeats sent from the client to the server. This value is sent to the client after a successful handshake.
+The max number of seconds between heartbeats sent from the client to the server. This value is sent to the client after a successful handshake.
 
 ####heartbeat interval
 `'heartbeat interval': 25`
 
-The max # of seconds to wait for an expcted heartbeat before declaring the pipe broken. This number should be less than the `heartbeat timeout`
+The max number of seconds to wait for an expcted heartbeat before declaring the pipe broken. This number should be less than the `heartbeat timeout`
 
 ####polling duration
 `'polling duration': 20`
@@ -976,4 +971,3 @@ In Express 3, built-in support for layouts/partials was deprecated. Instead, dev
 Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
 
 If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. Jade, handlebars, haml, dust) you&rsquo;ll need to set this option to: `layout:false` and then rely on your view engine&rsquo;s built-in layout/partial support.
-
