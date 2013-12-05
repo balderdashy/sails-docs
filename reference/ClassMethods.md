@@ -1,9 +1,7 @@
-# CRUD Methods
+# Model Class Methods
 ### Overview
-The methods below are the basic crud methods availebl in sails.  Here is a very quick reference for each method. More detailed information can be found below.  All Methods are asyncronous.
 
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
-
 
 # .create( `{create}`,`callback` )
 ### Purpose
