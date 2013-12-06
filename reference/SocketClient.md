@@ -1,8 +1,8 @@
 # Socket Client
 ### Overview
-Not only does Sails have Socket.IO built right into the framework, it also adds a few extra methods that makes using SocketIO with Sails very powerful.  The file '/assets/js/sails.io.js' is where those methods live.  
+Not only does Sails have Socket.IO built right into the framework, it also adds a few extra methods that makes using Socket.io with Sails very powerful.  The file '/assets/js/sails.io.js' is where those methods can be found.
 
-They basically allow you to emit custom socketIO messages that when interpreted by Sails, mimic Express HTTP request. This means you can use `socket.post('/user/')` in your client side javascript to effectively create an HTTP Post Request.  Check out the methods and their examples below.
+They basically allow you to emit custom socket.io messages that when interpreted by Sails, mimic Express HTTP request. This means you can use `socket.post('/user/')` in your client side javascript to effectively create an HTTP Post Request.  Check out the methods and their examples below.
 
 # socket.get()
 ### Purpose
@@ -12,7 +12,7 @@ They basically allow you to emit custom socketIO messages that when interpreted 
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |  Path to Controller Action  |      `string`       | Yes	       |
+| 1 | /path/to/controller/action/ |      `string`       | Yes	       |
 | 2 |            Callback         | `function`          | No         |
 
 #### Callback Parameters
