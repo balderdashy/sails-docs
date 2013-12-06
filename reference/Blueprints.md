@@ -1,10 +1,14 @@
 # Blueprints
+
 ### Overview
+
+By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
+
 The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js' .
 
 # Find Records
 ### Purpose
-Find and return model instances.
+Find and return model instances from the database.
 
 ### Example Usage
 From a web browser
@@ -16,7 +20,23 @@ GET 'http://localhost:1337/pony/1'
 
 ```
 
-will yield
+### Query Parameters
+
+Any attributes that you defined on your model can all be used to filter results.
+
+For instance, if our `Pony` model has a `name` attribute, `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
+
+
+
+You can also paginate and sort results using the `limit`, `skip`, and `sort` parameters.
+
++ limit
++ skip
++ sort
+
+
+
+### Example Response
 
 ```json
  {
@@ -28,19 +48,23 @@ will yield
 
 ```
 
+
+
 ### Notes
-> Assumes the existance of both a controller and model called 'pony'
+> Assumes the existance of both `PonyController` and a model called 'Pony'.
 
-> JSON keys and values must be wrapped in double quotes.  Singles won't work.
+> JSON keys and values must be wrapped in double quotes.  Single quotes won't work.
 
+> For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
 
 
 # Create Records
 ### Purpose
-Create new model instances.
+Create new model instances in the database.
 
 ### Example Usage
 via Postman `POST` `'http://localhost:1337/pony'`
+
 ```javascript
 
 I CANT GET THIS SHIT TO WORK
@@ -125,16 +149,4 @@ will yield
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
 
-
-# Query Params
-### Overview
-
-Any attributes that you defined on your model as well as a few special attributes supplied by Sails can all be used to filter query results.
-
-For instance, if our ponies have names, `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
-
-+ where
-+ limit
-+ skip
-+ sort
 
