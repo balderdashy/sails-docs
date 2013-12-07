@@ -459,7 +459,7 @@ app.use(function(req, res, next){
 ### Notes
 >
 
-# res.render(`view`, `[locals]` , callback)
+# res.render(`view`, `[locals]` , `[callback]`)
 ### Purpose
 Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
 
