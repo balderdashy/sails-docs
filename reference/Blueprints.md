@@ -125,8 +125,7 @@ Responds with a JSON object representing the newly created instance.  If a valid
 Additionally, a `create` event will be published to all listening sockets.
 (this is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller)
 
-
-If the request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room).
+If the request is sent using socket.io, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room).
 (this is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller)
 
 
@@ -242,6 +241,7 @@ Deletes the model instance which matches the **id** parameter.  Responds with a 
 
 Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
 (this is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller)
+Consequently, all sockets currently subscribed to the instance room will be unsubscribed from it.
 
 
 ### Example Usage
