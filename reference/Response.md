@@ -459,7 +459,7 @@ app.use(function(req, res, next){
 ### Notes
 >
 
-# res.render(`view`, `[locals]` , `[callback]`)
+# res.render(`pathToView`, `[locals]` , `[callback]`)
 ### Purpose
 Render a view with a callback responding with the rendered string. When an error occurs next(err) is invoked internally. When a callback is provided both the possible error and rendered string are passed, and no automated response is performed.
 
@@ -477,25 +477,24 @@ res.render('user', { name: 'Tobi' }, function(err, html){
 ### Notes
 >
 
-# res.view(`{}`)
+# res.view(`[pathToView]`,`[locals]`)
 ### Purpose
 This is a Sails method that loads the appropriate view.  
+
+##### Arguments
++ **pathToView** - the relative path to a view file from [your app's views directory]().  File extension suffix (e.g. `.ejs` should be omitted.
 
 ### Example Usage
 
 Assuming the example below is an action in UsersController.js .
 
 ```javascript
-
+// ...
 riceNoodles: function(req,res){
-
-    res.view();
-
+  // This would render the view /views/users/riceNoodles.ejs
+  return res.view();
 }
-
-// This would render the view /views/users/riceNoodles.ejs
-
-
+// ...
 ```
 
 ### Notes
