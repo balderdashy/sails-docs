@@ -38,7 +38,7 @@ They basically allow you to emit custom socket.io messages that when interpreted
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |  Path to Controller Action  |      `string`       | Yes	       |
+| 1 | /path/to/controller/action/ |      `string`       | Yes	       |
 | 2 |            Callback         | `function`          | No         |
 
 #### Callback Parameters
@@ -64,7 +64,7 @@ They basically allow you to emit custom socket.io messages that when interpreted
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |  Path to Controller Action  |      `string`       | Yes	       |
+| 1 | /path/to/controller/action/ |      `string`       | Yes	       |
 | 2 |            Callback         | `function`          | No         |
 
 #### Callback Parameters
@@ -90,7 +90,7 @@ They basically allow you to emit custom socket.io messages that when interpreted
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |  Path to Controller Action  |      `string`       | Yes	       |
+| 1 | /path/to/controller/action/ |      `string`       | Yes	       |
 | 2 |            Callback         | `function`          | No         |
 
 #### Callback Parameters
@@ -116,7 +116,7 @@ They basically allow you to emit custom socket.io messages that when interpreted
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |  Path to Controller Action  |      `string`       | Yes	       |
+| 1 | /path/to/controller/action/ |      `string`       | Yes	       |
 | 2 |            Callback         | `function`          | No         |
 
 #### Callback Parameters
