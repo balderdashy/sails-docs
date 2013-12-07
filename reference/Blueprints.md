@@ -11,7 +11,7 @@ While the following documentation focuses on HTTP, you can also use Sails' built
 
 # Find Records
 
-`GET http://localhost:1337/modelName`
+`GET http://localhost:1337/:model`
 
 ### Purpose
 Find and return model instances from the database.
@@ -75,7 +75,7 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
 
 # Find One Record
 
-`GET http://localhost:1337/modelName/id`
+`GET http://localhost:1337/:model/:id`
 
 ### Purpose
 Find and return a single model instance from the database.
@@ -113,91 +113,159 @@ _N/A_
 
 # Create Records
 
+`POST http://localhost:1337/:model`
+
 ### Purpose
-Create a new model instance in the database.  Attributes can be sent in the HTTP body as form values or JSON.
+Create a new model instance in the database.
+Attributes can be sent in the HTTP body as form-encoded values or JSON.
+
+### Description
+Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
+
+Additionally, a `create` event will be published to all listening sockets.
+(this is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller)
+
+
+If the request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room).
+(this is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller)
+
 
 ### Example Usage
 
-Send a JSON object
+Create a new pony named "Pinkie Pie", a "snowboarding" hobby, and a pet named "Gummy".
 
 _via Postman_
 `POST` `'http://localhost:1337/pony'`
 
-```javascript
 
-I CANT GET THIS SHIT TO WORK
-
-```
-
-will yield
-
+### JSON Request Body
 ```json
-
+{
+  "name": "Pinkie Pie",
+  "hobby": "snowboarding",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  }
+}
 ```
+
+
+### Example Response
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "snowboarding",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+```
+
+
 
 ### Notes
-> Assumes the existance of both a controller and model called 'pony'
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
 
+
+
+
 # Update Records
+
+`PUT http://localhost:1337/:model/:id`
+
+
 ### Purpose
-Update existing model instances.
+Update an existing model instance.
+Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
+
+### Description
+Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+
+Additionally, an `update` event will be published to all sockets subscribed to the instance room.
+(this is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller)
+
 
 ### Example Usage
-via Postman `PUT` `'http://localhost:1337/pony/1'`
-```javascript
 
-// RAW JSON
-{"name":"Pinkie Pie"}
+Change Pinkie Pie's hobby to "running".
 
+_via Postman_
+`PUT` `'http://localhost:1337/pony/4'`
+
+### JSON Request Body
+```json
+{
+  "hobby": "running"
+}
 ```
 
-will yield
-
+### Example Response
 ```json
-
- {
-   "name": "Pinkie Pie",
-   "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-11-26T22:54:19.951Z"
- }
-
-
+{
+  "name": "Pinkie Pie",
+  "hobby": "running",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
 ```
 
 ### Notes
-> Assumes the existance of both a controller and model called 'pony'
+> Assumes the existence of both a controller and model called 'pony'
 
 > JSON keys and values must be wrapped in double quotes.  Single quotes won't work.
 
+
+
+
+
 # Delete Records
+`DELETE http://localhost:1337/:model/:id`
+
 ### Purpose
-Delete existing model instances.
+Delete an existing model instance from the database.
+
+### Description
+Deletes the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
+
+Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
+(this is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller)
+
 
 ### Example Usage
-via Postman `DELETE` `'http://localhost:1337/pony/1'`
 
-```javascript
+Delete Pinkie Pie.
 
-// HTTP Method and Action
-DELETE http://localhost:1337/pony
+_via Postman_
+`DELETE http://localhost:1337/pony/4`
 
-```
 
-will yield
+### Example Response
 
 ```json
-
- {
-   "name": "Pinkie Pie",
-   "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-11-26T22:54:19.951Z"
- }
-
+{
+  "name": "Pinkie Pie",
+  "hobby": "running",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
 ```
 
 ### Notes
