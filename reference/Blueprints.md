@@ -4,7 +4,9 @@
 
 By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
 
-The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js' .
+The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
+
+While the following documentation focuses on HTTP, you can also use Sails' built-in socket.io emulation layer to talk to the blueprint API (or any of your Sails routes / custom controllers) via Socket.io.
 
 
 # Find Records
@@ -14,12 +16,19 @@ The blueprint API is accessible when you have both an empty controller and model
 ### Purpose
 Find and return model instances from the database.
 
+### Description
+Responds with a JSON array of objects.
+
+If request is sent using socket.io, the socket will be subscribed to both "creates" of new models (class room) and "updates"+"destroys" for all model instances returned (instance rooms).
+
+(this is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(req.socket, anArrayOfPonies)` in a custom controller)
+
 ### Example Usage
 
-From a web browser
-```javascript
-GET 'http://localhost:1337/pony/1'
-```
+Get all ponies in the database:
+
+_via the URL bar in your web browser_
+`http://localhost:1337/pony/1`
 
 ### Query Parameters
 
@@ -48,15 +57,14 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
    "id": 47,
    "createdAt": "2013-10-14T01:22:00.000Z",
    "updatedAt": "2013-10-15T01:20:54.000Z"
- }
- ]
+ }]
 
 ```
 
 
 ### Notes
 
-> Assumes the existance of both `PonyController` and a model called 'Pony'.
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
 
@@ -72,6 +80,18 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
 ### Purpose
 Find and return a single model instance from the database.
 
+
+### Description
+Responds with a JSON object (or `404`) if no matching record was found.
+
+If request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" for the model instance returned (instance room).
+
+(this is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom controller)
+
+
+### Query parameters
+_N/A_
+
 ### Example Response
 
 ```json
@@ -86,7 +106,7 @@ Find and return a single model instance from the database.
 
 ### Notes
 
-> Assumes the existance of both `PonyController` and a model called 'Pony'.
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 
 
@@ -94,10 +114,14 @@ Find and return a single model instance from the database.
 # Create Records
 
 ### Purpose
-Create new model instances in the database.
+Create a new model instance in the database.  Attributes can be sent in the HTTP body as form values or JSON.
 
 ### Example Usage
-via Postman `POST` `'http://localhost:1337/pony'`
+
+Send a JSON object
+
+_via Postman_
+`POST` `'http://localhost:1337/pony'`
 
 ```javascript
 
