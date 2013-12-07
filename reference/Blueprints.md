@@ -111,7 +111,7 @@ _N/A_
 
 
 
-# Create Records
+# Create A Record
 
 `POST http://localhost:1337/:model`
 
@@ -176,7 +176,7 @@ _via Postman_
 
 
 
-# Update Records
+# Update A Record
 
 `PUT http://localhost:1337/:model/:id`
 
@@ -230,7 +230,7 @@ _via Postman_
 
 
 
-# Delete Records
+# Delete A Record
 `DELETE http://localhost:1337/:model/:id`
 
 ### Purpose
