@@ -226,7 +226,8 @@ console.log(req.accepted);
 
 # req.is()
 ### Purpose
-Check if the incoming request contains the "Content-Type" header field, and it matches the given mime type.
+Checks if the incoming request contains the "Content-Type" header field, and it matches the given mime type.
+
 ### Example Usage
 ```javascript
 
@@ -251,7 +252,10 @@ req.is('html');
 
 # req.ip
 ### Purpose
+Get the client's IP address.
+
 This property contains the IP address of the client initiating the request.
+
 ### Example Usage
 ```javascript
 
