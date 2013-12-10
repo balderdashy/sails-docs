@@ -1,7 +1,13 @@
 # Model Class Methods
 ### Overview
 
+Talk about the different types of Class Methods and how to identify them in this list
+
+
 For every class method, the callback parameter is optional.  If one is not supplied, it will return a chainable object.
+
+
+
 
 # .create( `{create}`,`callback` )
 ### Purpose
