@@ -434,9 +434,6 @@ Performs raw SQL queries for PostgreSQL and mySQL.
 > This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
 
-# Dynamic Finders
-These methods are automatically generated for each attribute in each model of your sails app.  This includes the id, CreatedAt, and UpdatedAt attributes that exist in every record.
-
 # .findBy`<attribute>`( `{find}` , `callback` )
 ### Purpose
 Find and return records by a specific model attribute.
@@ -608,10 +605,6 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! Your attribute in the method name must be lowerCase!
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
-
-
-Pub-Sub Methods
-----------------
 
 
 # .publishCreate( `{publish}` )
