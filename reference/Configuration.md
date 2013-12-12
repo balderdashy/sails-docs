@@ -7,11 +7,9 @@ This is an overview of all of the configuration
 ### What is this?
 The default 404 handler.
 
-### Moar
-
+### Description
 
 If a request is made that has no matching [routes](https://github.com/balderdashy/sails-wiki/blob/0.9/routes.md), Sails will respond using this handler:
-
 
 
 ```javascript
@@ -36,16 +34,11 @@ For more information on 404/notfound handling in Sails/Express, check out: http:
 
 
 
-
-
-
-
 # 500
 ### What is this?
 The default 500 error handler.
 
-### Moar
-
+### Description
 
 If an error is thrown, Sails will respond using this default error handler:
 
@@ -110,9 +103,7 @@ module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErro
 ### What is this?
 The adapters configuration object lets you create different global “saved settings” that you can mix and match in your models.
 
-### Moar
-
-
+### Description
 
 The `adapters` configuration object lets you create different global &ldquo;saved settings&rdquo; that you can mix and match in your models.  The `default` option indicates which saved setting should be used if a model doesn't have an adapter specified.
 
@@ -139,17 +130,11 @@ Sails adapters have been written for a variety of popular databases such as MySQ
 
 
 
-
-
-
-
-
-
 # Bootstrap
 ### What is this?
 This is an asynchronous boostrap function that runs before your Sails app gets lifted (i.e. starts up). This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
 
-### Moar
+### Description
 
 ```javascript
 module.exports.bootstrap = function (cb) {
@@ -169,35 +154,31 @@ module.exports.bootstrap = function (cb) {
 ### What is this?
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
-### Moar
-
-
+### Description
 
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
 #### Blueprints
-#####`prefix` (string)
+##### `prefix` (string)
 Optional mount path prefix for blueprints (the automatically bound routes in your controllers) e.g. '/api/v2'
 
-#####`actions` (boolean)
+##### `actions` (boolean)
 Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
 
-#####`shortcuts` (boolean)
+##### `shortcuts` (boolean)
 These CRUD shortcuts exist for your convenience during development, but you'll want to disable them in production.: `'/:controller/find/:id?'`, `'/:controller/create'`, `'/:controller/update/:id'`, and `'/:controller/destroy/:id'`
 
-#####`rest` (boolean)
+##### `rest` (boolean)
 Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
 
-#####`expectIntegerId` (boolean)
+##### `expectIntegerId` (boolean)
 If a blueprint route catches a request, only match :id param if it's an integer.  e.g. only trigger route handler if requests look like: `get /user/8` instead of: `get /user/a8j4g9jsd9ga4ghjasdha`.  You&rsquo;ll usually want to change this to `false` when using a database that uses strings for unique IDs, such as Mongo.
 
-#####`jsonp` (boolean)
+##### `jsonp` (boolean)
 Optionally wrap blueprint JSON responses in a JSONP callback using `res.jsonp()` from Express 3. (default: `false`)
 
-#####`pluralize` (boolean)
+##### `pluralize` (boolean)
 Optionally use plural controller names in blueprint routes, e.g. `/users` for `api/controllers/UserController.js`. (default: `false`)
-
-
 
 
 
@@ -205,7 +186,7 @@ Optionally use plural controller names in blueprint routes, e.g. `/users` for `a
 ### What is this?
 When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
 
-### Moar
+### Description
 
 
 
@@ -217,7 +198,7 @@ This allows you to have certainty that your users' requests haven't been hijacke
   
 This token has a short-lived expiration timeline, and must be acquired by either:
 
-####For traditional view-driven web apps:*
+#### For traditional view-driven web apps:*
 Fetching it from one of your views, where it may be accessed as a local variable, i.e.: `<%= _csrf %>`
 e.g.:
 ```html
@@ -226,7 +207,7 @@ e.g.:
 </form>
 ```
 
-####For AJAX/Socket-heavy and/or single-page apps:*
+#### For AJAX/Socket-heavy and/or single-page apps:*
 Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
 
 Enabling this option requires managing the token in your front-end app. For traditional web apps, it's as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
@@ -234,17 +215,11 @@ Enabling this option requires managing the token in your front-end app. For trad
 > For more information on CSRF, check out: [this](http://en.wikipedia.org/wiki/Cross-site_request_forgery) article.
 
 
-
-
-
-
-
-
 # Express
 ### What is this?
 If you want to use custom middleware or add local variables and helpers to templates you can do so by configuring express in this config file.
 
-### Moar
+### Description
 
 
 This configuration file lets you easily add [Express](http://expressjs.com/) middleware, local variables and helpers for templates and directly access the application instance before it starts. 
@@ -273,53 +248,53 @@ module.exports.express = {
   
   
   // Configures the middleware function used for parsing the HTTP request body
-	// Defaults to the Formidable-based version built-in to Express/Connect
-	//
-	// To enable streaming file uploads (to disk or somewhere else)
-	// you'll want to set this to `false` to disable it.
-	// Alternatively, if you're comfortable with the bleeding edge,
-	// check out: https://github.com/mikermcneil/stream-debug
-	//
+  // Defaults to the Formidable-based version built-in to Express/Connect
+  //
+  // To enable streaming file uploads (to disk or somewhere else)
+  // you'll want to set this to `false` to disable it.
+  // Alternatively, if you're comfortable with the bleeding edge,
+  // check out: https://github.com/mikermcneil/stream-debug
+  //
   // Defaults to `false`
   // Disable by seting to `false`
   //
-	// bodyParser: false,
+  // bodyParser: false,
 
 
 
-	// If bodyParser doesn't understand the HTTP body request data, 
-	// run it again with an artificial header, forcing it to try and parse
-	// the request body as JSON
-	// (this allows you to use JSON as your request body and have it parsed as parameters
-	// without the need to specify a 'Content-type: application/json' header)
-	//
+  // If bodyParser doesn't understand the HTTP body request data, 
+  // run it again with an artificial header, forcing it to try and parse
+  // the request body as JSON
+  // (this allows you to use JSON as your request body and have it parsed as parameters
+  // without the need to specify a 'Content-type: application/json' header)
+  //
   // Defaults to `true`
   // Disable by seting to `false`
   //
-	// retryBodyParserWithJSON: true,
+  // retryBodyParserWithJSON: true,
 
 
 
-	// Cookie parser middleware
+  // Cookie parser middleware
   //
   // Defaults to Connect/Express standard
   // Disable by seting to `false`
-	//
-	// cookieParser: false,
+  //
+  // cookieParser: false,
 
 
 
-	// HTTP method override middleware
-	//
-	// This option allows artificial query params to be passed to trick 
-	// Express into thinking a different HTTP verb was used.
-	// Useful when supporting an API for user-agents which don't allow 
-	// PUT or DELETE requests
-	// 
+  // HTTP method override middleware
+  //
+  // This option allows artificial query params to be passed to trick 
+  // Express into thinking a different HTTP verb was used.
+  // Useful when supporting an API for user-agents which don't allow 
+  // PUT or DELETE requests
+  // 
   // Defaults to Connect/Express standard
   // Disable by seting to `false`
   //
-	// methodOverride: false
+  // methodOverride: false
   
 };
 ```
@@ -335,7 +310,7 @@ module.exports.express = {
 ### What is this?
 While you’re developing your app, this config file should include any settings specifically for your development computer (db passwords, etc.)
 
-### Moar
+### Description
 
 While you&rsquo;re developing your app, this config file should include any settings specifically for your development computer (db passwords, etc.)
 When you&rsquo;re ready to deploy your app in production, you can use this file for configuration options on the server where it will be deployed.
@@ -345,7 +320,7 @@ When you&rsquo;re ready to deploy your app in production, you can use this file 
 > Good news is, that means you can specify configuration for your local machine in this file without inadvertently committing personal information (like database passwords) to the repo.  Plus, this prevents other members of your team from commiting their local configuration changes on top of yours.
 
 
-####Port
+#### Port
 The `port` setting determines which TCP port your app will be deployed on.
 Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
 
@@ -354,7 +329,7 @@ By default, if it&rsquo;s set, Sails uses the `PORT` environment variable. Other
 More about ports: http://en.wikipedia.org/wiki/Port_(computer_networking)
 
 
-####Environment
+#### Environment
 The runtime &ldquo;environment&rdquo; of your Sails app is either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
 
 In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
@@ -366,55 +341,47 @@ By default, Sails sets its environment using the `NODE_ENV` environment variable
 
 
 
-
-
-
-
-
-
-
-
 # Locales
 ### What is this?
 This is a folder that contains the Language files for different locales.
 
-### Moar
+### Description
 
 
-####Default stringfile
+#### Default stringfile
 
  If you're building an internationalized application that needs support for multiple languages, you'll want to pull all of the static strings out of your application, then provide a translation file for each of your target languages.
 
-#####Example i18n usage: e.g. `/views/about.ejs`
+##### Example i18n usage: e.g. `/views/about.ejs`
 
 ```ejs
 <h2><%= __('whatIsApp?') %></h2>
-<p>	<%=	__('appDescription') %></p>
+<p> <%= __('appDescription') %></p>
 ```
 
 More about this implementation: https://github.com/mashpie/i18n-node
 
-#####locales.de.js
+##### locales.de.js
 This file is provided in the folder as an example:
 Note that this is part of a campaign to rebrand our app for the German market as Bleistift Buben (or "Pencil Boys")
 
 ```javascript
 module.exports = {
   
-	// Key				: Value
-	// e.g.
+  // Key        : Value
+  // e.g.
 
-	'whatIsApp?'		:	'Was ist Bleistift Buben?',
+  'whatIsApp?'    : 'Was ist Bleistift Buben?',
 
-	appDescription		:	'Bleistift Buben ist eine App für den Aufbau und die Aufrechterhaltung ' +
-							'Freunde, mit denen Sie Darlehen Bleistifte. Mit Funktionen wie Bleistift '+
-							'Ledger, In-App-Zahlungen, und Vintage-Foto-Filter ermöglicht PP eine schöne ' +
-							'neue Welt der Rechenschaftspflicht für die 1, 2 UND 3 Bleistifte. ' +
-							'Du wirst nie verlieren einen Freund über eine verlorene Bleistift nie wieder!'
+  appDescription    : 'Bleistift Buben ist eine App für den Aufbau und die Aufrechterhaltung ' +
+              'Freunde, mit denen Sie Darlehen Bleistifte. Mit Funktionen wie Bleistift '+
+              'Ledger, In-App-Zahlungen, und Vintage-Foto-Filter ermöglicht PP eine schöne ' +
+              'neue Welt der Rechenschaftspflicht für die 1, 2 UND 3 Bleistifte. ' +
+              'Du wirst nie verlieren einen Freund über eine verlorene Bleistift nie wieder!'
 };
 ```
 
-####What About i18n on the client?
+#### What About i18n on the client?
 The above technique works great out of the box for server-side views. But what about rich client apps?  HTML 5, SPAs, PhoneGap, Chrome Extensions and stuff? What if your HTML templates are being served from a CDN? If you are using **client-side** templates, you can reuse Sails' i18n support to help you get your translated templates to the browser.  
 
 If you want to use Sails to internationalize your client-side templates, just put your front-end templates in a subdirectory of your app's `/views` folder.
@@ -428,18 +395,18 @@ If you want to use Sails to internationalize your client-side templates, just pu
 ### What is this?
 The logger file configures the log level for your app, as well as the transport.
 
-### Moar
+### Description
 
 The logger file configures the log level for your app, as well as the transport.
 
 *(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
 
-####There are 5 different levels to the log:
+#### There are 5 different levels to the log:
 
 + **'error'** : Display calls to `.error()`
 + **'warn'**    : Display calls from `.error()` to `.warn()`
-+ **'debug'**	: Display calls from `.error()`, `.warn()` to `.debug()`
-+ **'info'**	: Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
++ **'debug'** : Display calls from `.error()`, `.warn()` to `.debug()`
++ **'info'**  : Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
 + **'verbose'**: Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
 
 
@@ -451,7 +418,7 @@ By default, the level is set to `info`.
 ### What is this?
 Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
 
-### Moar
+### Description
 
 Your app's ACL (access control list) is located in **config/policies.js**.
 
@@ -569,18 +536,18 @@ In each of the policies, the next policy in the chain will only be run if `next(
 ### What is this?
 Sails uses a number of different strategies to route requests. This section lists them top-to-bottom, in order of precedence.
 
-### Moar
+### Description
 
 
 Sails uses a number of different strategies to route requests. Here they are top-to-bottom, in order of precedence:
 
-####1. Static Assets
+#### 1. Static Assets
 Flat files in your `assets` directory- (these are sometimes referred to as &lsquo;public&rsquo;)
 
 If you have an image file at `/assets/images/foo.jpg`, it will be made available automatically via the route:  `/images/foo.jpg`
 
 
-####2. Static Routes
+#### 2. Static Routes
 This object routes static URLs to handler functions-- In most cases, these functions are actions inside of your controllers. For convenience, you can also connect routes directly to views or external URLs.
 
 By default, your root route (aka home page) points to a view located at `views/home/index.ejs`. (This would also work if you had a file at: `/views/home.ejs`)
@@ -589,7 +556,7 @@ By default, your root route (aka home page) points to a view located at `views/h
 But what if you want your home page to display a signup form located at `views/user/signup.ejs`?
 ```javascript
 '/' : {
-	view : 'user/signup'
+  view : 'user/signup'
 }
 ```
 
@@ -598,13 +565,12 @@ Let&rsquo;s say you&rsquo;re building an email client, like Gmail. You might wan
 Alternatively, you can use the more verbose syntax:
 ```javascript
 '/': {
-	controller	: 'message',
-	action		: 'inbox'
+  controller  : 'message',
+  action    : 'inbox'
 }
 ```
 
 If you decided to call your action `index` instead of `inbox`, since the `index` action is the default, you can shortcut even further to: `'/': 'MessageController'`
-
 
 
 Up until now, we haven&rsquo;t specified a specific HTTP method/verb. The routes above will apply to ALL verbs! If you want to set up a route only for one in particular (GET, POST, PUT, DELETE, etc.), just specify the verb before the path. 
@@ -612,21 +578,21 @@ Up until now, we haven&rsquo;t specified a specific HTTP method/verb. The routes
 For example, if you have a `UserController` with a `signup` action, and somewhere else, you&rsquo;re serving a signup form that looks like:
 ```html
 <form action="/signup">
-	<input name="username" type="text"/>
-	<input name="password" type="password"/>
+  <input name="username" type="text"/>
+  <input name="password" type="password"/>
 </form>
 ```
-You could define the following route: `'post /signup'	: 'user.signup'`.
+You could define the following route: `'post /signup' : 'user.signup'`.
 
-Finally, here&rsquo;s an example of how you would route all GET requests to the `/google` route to Google&rsquo;s website: `'get /google'	: 'http://google.com'`
+Finally, here&rsquo;s an example of how you would route all GET requests to the `/google` route to Google&rsquo;s website: `'get /google' : 'http://google.com'`
 
 #### 3. Advanced Route config
 ##### Upload Limit
 By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
 ```javascript
 '/': {
-	...,
-	uploadLimit: '100mb'
+  ...,
+  uploadLimit: '100mb'
 }
 ```
 The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
@@ -634,13 +600,13 @@ The limit setting uses `express.limit()` internally, and supports any valid [con
 Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
 ```javascript
 '/': {
-	...,
-	cors: true
-	// cors: 'http://sailsjs.org, http://sailsjs.com'
+  ...,
+  cors: true
+  // cors: 'http://sailsjs.org, http://sailsjs.com'
 }
 ```
 If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
-####4. Action Blueprints
+#### 4. Action Blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.actions = false`
  
 
@@ -649,32 +615,32 @@ All of your controllers' actions are automatically bound to a route.  For exampl
 + its action `index` is accessible at `/foo/index`, and also `/foo`
 
 
-####5. View Blueprints
+#### 5. View Blueprints
 
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.views.routes = false`
 
 If you have a view file at `/views/foo/bar.ejs`, it will be rendered and served automatically via the route:  `/foo/bar`
 
 
-####6. Shortcut CRUD blueprints
+#### 6. Shortcut CRUD blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.shortcuts = false`
 
 If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
-+ `/foo/find/:id?`	->	search lampshades using specified criteria or with id=:id
-+ `/foo/create`	->	create a lampshade using specified values		
-+ `/foo/update/:id`	->	update the lampshade with id=:id		
-+ `/foo/destroy/:id`	->	delete lampshade with id=:id
++ `/foo/find/:id?`  ->  search lampshades using specified criteria or with id=:id
++ `/foo/create` ->  create a lampshade using specified values   
++ `/foo/update/:id` ->  update the lampshade with id=:id    
++ `/foo/destroy/:id`  ->  delete lampshade with id=:id
 
-####7. REST blueprints
+#### 7. REST blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.rest = false`
  
 If you have a model, `Foo`, and a controller, `FooController`, you can access CRUD operations for that model at:
-+ `get /foo/:id?`	->	search lampshades using specified criteria or with id=:id
-+ `post /foo`		-> create a lampshade using specified values
-+ `put /foo/:id`	->	update the lampshade with id=:id
-+ `delete /foo/:id`	->	delete lampshade with id=:id
++ `get /foo/:id?` ->  search lampshades using specified criteria or with id=:id
++ `post /foo`   -> create a lampshade using specified values
++ `put /foo/:id`  ->  update the lampshade with id=:id
++ `delete /foo/:id` ->  delete lampshade with id=:id
 
-####8. Default 404 (not found) handler
+#### 8. Default 404 (not found) handler
 Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app&rsquo;s 404 logic.
 
 
@@ -682,8 +648,7 @@ Finally, if nothing else matched, the default 404 handler is triggered. See `con
 ### What is this?
 Sails session integration leans heavily on the great work already done by Express, but also unifies Socket.io with the Connect session store.
 
-### Moar
-
+### Description
 
 
 Sails session integration leans heavily on the great work already done by Express, but also unifies 
@@ -694,11 +659,11 @@ to access and auto-save to `req.session` with Socket.io the same way you would w
 For more information on configuring the session, check out:
 http://sailsjs.org/#!documentation
 
-####`secret`
+#### `secret`
 Session secret is automatically generated when your new app is created.
 Replace at your own risk in production-- you will invalidate the cookies of your users, forcing them to log in again. 
 
-####Shared Redis session store
+#### Shared Redis session store
 In production, uncomment the following line to set up a shared redis session store
 that can be shared across multiple Sails.js servers.
 ```javascript
@@ -742,20 +707,17 @@ Optional Values:
 
 
 
-
-
-
 # Sockets
 ### What is this?
 These configuration options provide transparent access to Sails’ encapsulated pubsub/socket server for complete customizability.
 
-### Moar
+### Description
 
 
 
 These configuration options provide transparent access to Sails&rsquo; encapsulated pubsub/socket server for complete customizability.
 
-####transports
+#### transports
 Here is an array of allowed transport methods which the clients will try to use. The flashsocket transport is disabled by default; you can enable flashsockets by adding &lsquo;flashsocket&rsquo; to this list:
 ```javascript   
     transports: [
@@ -766,13 +728,13 @@ Here is an array of allowed transport methods which the clients will try to use.
    ],
 ```
 
-####adapter
+#### adapter
 `adapter: 'memory'`
 
 The data store where socket.io will store its message queue and answer pubsub logic
 
 
-####MQ Support for Redis
+#### MQ Support for Redis
 Node.js (and consequently Sails.js) apps scale horizontally. It&rsquo;s a powerful, efficient approach, but it involves a tiny bit of planning. At scale, you&rsquo;ll want to be able to copy your app onto multiple Sails.js servers and throw them behind a load balancer.
 
 One of the big challenges of scaling an application is that these sorts of clustered deployments cannot share memory, since they are on physically different machines. On top of that, there is no guarantee that a user will &ldquo;stick&rdquo; with the same server between requests, since the load balancer will route each request to the server with the least impact on load. All pubsub processing and shared memory has to be offloaded to a shared, remote messaging queue (usually Redis).
@@ -792,100 +754,100 @@ db: 'sails',
 pass: '<redis auth password>'
 ```
 
-####origins
+#### origins
 `origins: '*:*'`
 
 Match string representing the origins that are allowed to connect to the Socket.IO server
 
-####heartbeats
+#### heartbeats
 `heartbeats: true`
 
 Sets whether we should use heartbeats to check the health of Socket.IO connections
 
-####close timeout
+#### close timeout
 `'close timeout': 60`
 
 When client closes connection, the number of seconds to wait before attempting a reconnect. This value is sent to the client after a successful handshake.
 
-####heartbeat timeout
+#### heartbeat timeout
 `'heartbeat timeout': 60`
 
 The max number of seconds between heartbeats sent from the client to the server. This value is sent to the client after a successful handshake.
 
-####heartbeat interval
+#### heartbeat interval
 `'heartbeat interval': 25`
 
 The max number of seconds to wait for an expcted heartbeat before declaring the pipe broken. This number should be less than the `heartbeat timeout`
 
-####polling duration
+#### polling duration
 `'polling duration': 20`
 
 The maximum duration of one HTTP poll; if it exceeds this limit it will be closed.
 
-####flash policy server
+#### flash policy server
 `'flash policy server': true`
 
 Enables the flash policy server if the flashsocket transport is enabled. 
 
-####flash policy port
+#### flash policy port
 `'flash policy port': 10843`
 
 By default the Socket.io client will check port 10843 on your server to see if flashsocket connections are allowed. The Adobe Flash Player normally uses 843 as default port but Socket.io defaults to a non root port (10843) by default.
 
 If you are using a hosting provider that doesn&rsquo;t allow you to start servers other than on port 80 or the provided port, and you still want to support flashsockets  you can set the `flash policy port` to -1
 
-####destroy buffer size
+#### destroy buffer size
 `'destroy buffer size': '10E7'`
 
 Used by the HTTP transports. The Socket.io server buffers HTTP request bodies up to this limit. This limit is not applied to websocket or flashsockets.
 
-####destroy upgrade
+#### destroy upgrade
 `'destroy upgrade': true`
 
 Do we need to destroy non-socket.io upgrade requests?
 
-####browser client
+#### browser client
 `'browser client': true`
 
 Should Sails/Socket.io serve the `socket.io.js` client? (as well as WebSocketMain.swf for Flash sockets, etc.)
 
-####browser client cache
+#### browser client cache
 `'browser client cache': true`
 
 Cache the Socket.io file generation in the memory of the process to speed up the serving of the static files.
 
-####browser client minification
+#### browser client minification
 `'browser client minification': false`
 
 Does Socket.io need to send a minified build of the static client script?
 
-####browser client etag
+#### browser client etag
 `'browser client etag': false`
 
 Does Socket.io need to send an ETag header for the static requests?
 
-####browser client expires
+#### browser client expires
 `'browser client expires': 315360000`
 
 Adds a Cache-Control: private, x-gzip-ok=&ldquo;&rdquo;, max-age=31536000 header to static requests, but only if the file is requested with a version number like /socket.io/socket.io.v0.9.9.js.
 
-####browser client gzip
+#### browser client gzip
 `'browser client gzip': false`
 
 Does Socket.io need to GZIP the static files? This process is only done once and the computed output is stored in memory so we don&rsquo;t have to spawn a gzip process for each request.
 
-####browser client handler
+#### browser client handler
 `'browser client handler': false`
 
 Optional override function to serve all static files, including socket.io.js et al. Of the form :: `function (req, res) { /* serve files */ }`
 
-####match origin protocol
+#### match origin protocol
 `'match origin protocol': false`
 
 Meant to be used when running socket.io behind a proxy. Should be set to true when you want the location handshake to match the protocol of the origin. This fixes issues with terminating the SSL in front of Node and forcing location to think it&rsquo;s wss instead of ws.
 
 
-####authorization
+#### authorization
 `authorization: true`
 
 Global authorization for Socket.io access. This is called when the initial handshake is performed with the server. By default, Sails verifies that a valid cookie was sent with the upgrade request However, in the case of cross-domain requests, no cookies are sent for some transports, so sockets will fail to connect.  You might also just want to allow anyone to connect w/o a cookie!
@@ -896,41 +858,35 @@ To bypass this cookie check, you can set `authorization: false`, which will sile
 
 You can also use your own custom logic with: `authorization: function (data, accept) { ... }`
 
-####store
+#### store
 `store: undefined`
 
 Direct access to the Socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)
 
-####logger
+#### logger
 `logger: undefined`
 
 A logger instance that is used to output log information. (`undefined` indicates deferment to the main Sails log config)
 
-####log level
+#### log level
 `'log level': undefined`
 
 The amount of detail that the server should output to the logger. (`undefined` indicates deferment to the main Sails log config)
 
-####log colors
+#### log colors
 `'log colors': undefined`
 
 Whether to color the log type when output to the logger. (`undefined` indicates deferment to the main Sails log config)
 
-####static
+#### static
 `'static': undefined`
 
 A Static instance that is used to serve the Socket.io client and its dependencies.
 
-####resource
+#### resource
 `resource: '/socket.io'`
 
 The entry point where Socket.io starts looking for incoming connections. This should be the same between the client and the server.
-
-
-
-
-
-
 
 
 
@@ -938,34 +894,34 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 ### What is this?
 Server-sent views are a classic and effective way to get your app up and running. Views are normally served from controllers, but by default, Sails also exposes routes to allow you to preview your viewsn in a browser.
 
-### Moar
+### Description
 
 
-####Routes
+#### Routes
 If enabled, views are automatically served at logical routes, based on their paths. This comes in handy any time you just want to serve some static HTML. (i.e. a brochure site)
 
 For example, the static view files below are available at the specified routes:
 
-+ `views/catalog.ejs`  		: `get /catalog`
-+ `views/catalog/index.ejs`	: both `get /catalog` & `get /catalog/index`
-+ `views/catalog/story.ejs`	: `get /catalog/story`
++ `views/catalog.ejs`     : `get /catalog`
++ `views/catalog/index.ejs` : both `get /catalog` & `get /catalog/index`
++ `views/catalog/story.ejs` : `get /catalog/story`
 
 
-####Layouts
+#### Layouts
 Layouts are simply top-level HTML templates you can use as wrappers for your server-side views.  If you&rsquo;re using ejs, you can take advantage of Sails&rsquo; built-in `layout` support.
 
 With using a layout, when one of your views is served, it is injected into the `<%- body %>` partial defined in the layout.  This lets you reuse header and footer logic between views.
 
 The `layout` setting may be set to one of:
 
-+ false		::	don&rsquo;t use a layout (just render the view by itself)
-+ &ldquo;string&rdquo;		::	the relative path to your layout from your views folder (`views/`)
++ false   ::  don&rsquo;t use a layout (just render the view by itself)
++ &ldquo;string&rdquo;    ::  the relative path to your layout from your views folder (`views/`)
 
 If you&rsquo;d like to use more than one `layout` file, you can! 
 See the [full documentation on views](https://github.com/balderdashy/sails-wiki/blob/0.9/views.md) for more information.
 
 
-####Using Layouts With Other View Engines
+#### Using Layouts With Other View Engines
 In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
 
 Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
