@@ -11,8 +11,6 @@ While the following documentation focuses on HTTP, you can also use Sails' built
 
 # Find Records
 
-`GET http://localhost:1337/:model`
-
 ### Purpose
 Find and return model instances from the database.
 
@@ -25,12 +23,14 @@ If request is sent using socket.io, the socket will be subscribed to both "creat
 
 ### Example Usage
 
+`GET http://localhost:1337/:model`
+
 Get all ponies in the database:
 
 _via the URL bar in your web browser_
 `http://localhost:1337/pony/1`
 
-#### Example Response
+#### Expected Response
 
 ```json
  [{
@@ -69,12 +69,7 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
 
 
 
-
-
-
 # Find One Record
-
-`GET http://localhost:1337/:model/:id`
 
 ### Purpose
 Find and return a single model instance from the database.
@@ -85,9 +80,13 @@ Responds with a JSON object (or `404`) if no matching record was found.
 If request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" for the model instance returned (instance room).
 
 (this is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom controller)
+
 ### Example Usage
 
-### Example Response
+`GET http://localhost:1337/:model/:id`
+
+
+#### Expected Response
 
 ```json
  {
@@ -112,8 +111,6 @@ _N/A_
 
 # Create A Record
 
-`POST http://localhost:1337/:model`
-
 ### Purpose
 Create a new model instance in the database.
 Attributes can be sent in the HTTP body as form-encoded values or JSON.
@@ -130,13 +127,15 @@ If the request is sent using socket.io, the requesting socket will ALSO be subsc
 
 ### Example Usage
 
+`POST http://localhost:1337/:model`
+
 Create a new pony named "Pinkie Pie", a "snowboarding" hobby, and a pet named "Gummy".
 
 _via Postman_
 `POST` `'http://localhost:1337/pony'`
 
 
-### JSON Request Body
+#### JSON Request Body
 ```json
 {
   "name": "Pinkie Pie",
@@ -178,9 +177,6 @@ _via Postman_
 
 # Update A Record
 
-`PUT http://localhost:1337/:model/:id`
-
-
 ### Purpose
 Update an existing model instance.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
@@ -194,19 +190,21 @@ Additionally, an `update` event will be published to all sockets subscribed to t
 
 ### Example Usage
 
+`PUT http://localhost:1337/:model/:id`
+
 Change Pinkie Pie's hobby to "running".
 
 _via Postman_
 `PUT` `'http://localhost:1337/pony/4'`
 
-### JSON Request Body
+#### JSON Request Body
 ```json
 {
   "hobby": "running"
 }
 ```
 
-### Example Response
+#### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -233,8 +231,6 @@ _via Postman_
 
 # Delete A Record
 
-`DELETE http://localhost:1337/:model/:id`
-
 ### Purpose
 Delete an existing model instance from the database.
 
@@ -245,8 +241,9 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 (this is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller)
 Consequently, all sockets currently subscribed to the instance room will be unsubscribed from it.
 
-
 ### Example Usage
+
+`DELETE http://localhost:1337/:model/:id`
 
 Delete Pinkie Pie.
 
@@ -254,7 +251,7 @@ _via Postman_
 `DELETE http://localhost:1337/pony/4`
 
 
-### Example Response
+#### Expected Response
 
 ```json
 {
