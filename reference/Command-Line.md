@@ -1,4 +1,4 @@
-# Command-Line
+# Command Line Tool
 ### Overview
 
 Here is some stuff about the command line
@@ -11,14 +11,14 @@ Creates a new Sails app in the current directory.
 ### Example Usage
 
 ```sh
-catGuy@catGuy:~/nodeProjects$ sails new myApp
+catGuy@catGuy:~/nodeProjects$ sails new myApp --linker
 debug: Building new Sails.js app in ./myApp...
 
 info: New app created!
 ```
 
-Also available is the `--linker` flag.
-This will create your app using automatic asset linking (and we all know what that means)
+This will create your app using <a href="http://omfgdogs.com> Automatic Asset Linking </a>
+
 
 # sails generate
 ### Purpose
@@ -67,7 +67,6 @@ The lift argument launches the sails app in the current directory.  You can also
 
 | `--flag` |  Description  |
 |----------|---------------|
-| `--linker`| Lifts app with the <a href="http://sailsjs.org"> asset linker </a>|
 | `--verbose`| This displays extra information in console relevent to your app |
 | `--silly`| This flag displays ALL of the information.  All of it. |
 | `--port=<integer>`| Lifts your app on the specified port eliminating the need to change config. |
@@ -164,7 +163,7 @@ catGuy@catGuy:~/nodeProjects/blogApp$ sails console
 debug: Welcome to the Sails console (v0.9.7)
 debug: ( to exit, type <CTRL>+<C> )
 
-sails> Blog.find( { } ).done(function(err,myRecord){console.log(myRecord)});
+sails> Blog.find( { } ).exec(function found(err,myRecord){console.log(myRecord)});
 
 [ { blogName: 'First Blog',
     description: 'Hey, my first blog entry.',
