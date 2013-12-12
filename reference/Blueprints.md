@@ -32,7 +32,7 @@ _via the URL bar in your web browser_
 
 ### Query Parameters
 
-Any attributes that you defined on your model can all be used to filter results.
+Any and all attributes that you defined on your model can be used to filter results.
 
 For instance, if our `Pony` model has a **name** attribute: `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
 
@@ -168,6 +168,7 @@ _via Postman_
 
 
 ### Notes
+
 > Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
@@ -222,7 +223,8 @@ _via Postman_
 ```
 
 ### Notes
-> Assumes the existence of both a controller and model called 'pony'
+
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Single quotes won't work.
 
@@ -231,6 +233,7 @@ _via Postman_
 
 
 # Delete A Record
+
 `DELETE http://localhost:1337/:model/:id`
 
 ### Purpose
@@ -269,7 +272,8 @@ _via Postman_
 ```
 
 ### Notes
-> Assumes the existance of both a controller and model called 'pony'
+
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
