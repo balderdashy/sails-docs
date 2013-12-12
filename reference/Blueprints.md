@@ -17,9 +17,7 @@ Find and return model instances from the database.
 ### Description
 Responds with a JSON array of objects.
 
-If request is sent using Socket.IO, the socket will be subscribed to both "creates" of new models (class room) and "updates"+"destroys" for all model instances returned (instance rooms).
-
-This is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(req.socket, anArrayOfPonies)` in a custom controller.
+If request is sent using Socket.IO, the socket will be subscribed to both "creates" of new models (class room) and "updates"+"destroys" for all model instances returned (instance rooms). This is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(req.socket, anArrayOfPonies)` in a custom controller.
 
 ### Example Usage
 
@@ -79,7 +77,7 @@ Responds with a JSON object (or `404`) if no matching record was found.
 
 If request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" for the model instance returned (instance room).
 
-(this is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom controller)
+This is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom controller.
 
 ### Example Usage
 
@@ -98,14 +96,10 @@ If request is sent using socket.io, the socket will be subscribed to "updates"+"
 
 ```
 
-### Query parameters
-_N/A_
-
-
 ### Notes
 
 > Assumes the existence of both `PonyController` and a model called 'Pony'.
-
+> This method does not accept query parameters. 
 
 
 
@@ -118,11 +112,9 @@ Attributes can be sent in the HTTP body as form-encoded values or JSON.
 ### Description
 Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
 
-Additionally, a `create` event will be published to all listening sockets.
-(this is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller)
+Additionally, a `create` event will be published to all listening sockets. This is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller.
 
-If the request is sent using socket.io, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room).
-(this is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller)
+If the request is sent using socket.io, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room). This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller.
 
 
 ### Example Usage
@@ -184,8 +176,7 @@ Attributes to change should be sent in the HTTP body as form-encoded values or J
 ### Description
 Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, an `update` event will be published to all sockets subscribed to the instance room.
-(this is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller)
+Additionally, an `update` event will be published to all sockets subscribed to the instance room. This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller.
 
 
 ### Example Usage
@@ -237,8 +228,8 @@ Delete an existing model instance from the database.
 ### Description
 Deletes the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
-(this is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller)
+Additionally, a `destroy` event will be published to all sockets subscribed to the instance room. This is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller.
+
 Consequently, all sockets currently subscribed to the instance room will be unsubscribed from it.
 
 ### Example Usage
