@@ -270,11 +270,8 @@ If you've ever had the browser console open when a view is rendered for your Sai
 
 In addition to this, it begins listening for subscription messages that might be emitted by the server if any pubSub class methods were used in the controller code. 
 
+While this is a great place to store Socket.IO related code in order to keep your main .js files clean, this file only really exists as an example to get you up and running with Socket.IO via Sails.
 
-### Example Usage
-```javascript
-
-```
 
 ### Notes
 > Do not get this file, '/assets/js/App.js' confused with 'App.js' in your projects root directory.  Yeah, I know.  We need to rename a file.  
