@@ -2,30 +2,158 @@
 ### Overview
 Below is a chart describing Sails.js support of the .res() methods.
 
-|Name| Author  | HTTP ?  | socket.io |
-|----|-------------|---------|---------|
-| res.status() | Express | :-) | :-) |
-| res.set() | Express | :-) | :-( |
-| res.get() | Express | :-) | :-( |
-| res.cookie() | Express | :-) | :-( |
-| res.clearCookie() | Express | :-) | :-( |
-| res.redirect() | Express | :-) | :-) |
-| res.location() | Express | :-) | :-( |
-| res.charset | Express | :-) | :-) |
-| res.send() | Express | :-) | :-) |
-| res.json() | Express | :-) | :-) |
-| res.jsonp() | Express | :-) | :-) |
-| res.type() | Express | :-) | :-( |
-| res.format() | Express | :-) | :-( |
-| res.attachment() | Express | :-) | :-( |
-| res.sendfile() | Express | :-) | :-( |
-| res.download() | Express | :-) | :-( |
-| res.links() | Express | :-) | :-( |
-| res.locals | Express | :-) | :-) |
-| res.render() | Express | :-) | :-( |
-|||||
+|Name|  HTTP ?  | socket.io |
+|----|---------|---------|
+| res.status() | :-) | :-) |
+| res.set() | :-) | :-( |
+| res.get() | :-) | :-( |
+| res.cookie() | :-) | :-( |
+| res.clearCookie() | :-) | :-( |
+| res.redirect() | :-) | :-) |
+| res.location() | :-) | :-( |
+| res.charset | :-) | :-) |
+| res.send() | :-) | :-) |
+| res.json() | :-) | :-) |
+| res.jsonp() | :-) | :-) |
+| res.type() | :-) | :-( |
+| res.format() | :-) | :-( |
+| res.attachment() | :-) | :-( |
+| res.sendfile() | :-) | :-( |
+| res.download() | :-) | :-( |
+| res.links() | :-) | :-( |
+| res.locals | :-) | :-) |
+| res.render() | :-) | :-( |
 |||||
 | res.view | Sails | :-) | :-( |
+
+
+# res.view(`[pathToView]`,`[locals]`)
+### Purpose
+This is a Sails method that loads the appropriate view.  
+
+##### Arguments
++ **pathToView** - the relative path to a view file from [your app's views directory]().  File extension suffix (e.g. `.ejs` should be omitted.
+
+### Example Usage
+
+Assuming the example below is an action in UsersController.js .
+
+```javascript
+// ...
+riceNoodles: function(req,res){
+  // This would render the view /views/users/riceNoodles.ejs
+  return res.view();
+}
+// ...
+```
+
+### Notes
+>
+
+
+
+# res.redirect()
+### Purpose
+Redirect to the given url with optional status code defaulting to 302 "Found".
+### Example Usage
+
+```javascript
+res.redirect('/foo/bar');
+res.redirect('http://example.com');
+res.redirect(301, 'http://example.com');
+res.redirect('../login');
+```
+Express supports a few forms of redirection, first being a fully qualified URI for redirecting to a different site:
+
+```javascript
+res.redirect('http://google.com');
+```
+The second form is the pathname-relative redirect, for example if you were on http://example.com/admin/post/new, the following redirect to /admin would land you at http://example.com/admin:
+
+```javascript
+res.redirect('/admin');
+```
+This next redirect is relative to the mount point of the application. For example if you have a blog application mounted at /blog, ideally it has no knowledge of where it was mounted, so where a redirect of /admin/post/new would simply give you http://example.com/admin/post/new, the following mount-relative redirect would give you http://example.com/blog/admin/post/new:
+
+```javascript
+res.redirect('admin/post/new');
+```
+Pathname relative redirects are also possible. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
+
+```javascript
+res.redirect('..');
+```
+The final special-case is a back redirect, redirecting back to the Referer (or Referrer), defaulting to / when missing.
+
+```javascript
+res.redirect('back');
+```
+
+### Notes
+>
+
+
+# res.forbidden()
+### Purpose
+Do whatever is in config/403.js
+
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+
+# res.notFound()
+### Purpose
+Do whatever is in config/404.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+
+
+
+# res.badRequest()
+### Purpose
+do whatever is in config/400.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
+
+
+# res.serverError()
+### Purpose
+Do whatever is in config/500.js
+### Example Usage
+
+
+```javascript
+
+
+```
+
+### Notes
+>
 
 
 # res.status()
@@ -120,45 +248,6 @@ res.clearCookie('name', { path: '/admin' });
 ### Notes
 >
 
-# res.redirect()
-### Purpose
-Redirect to the given url with optional status code defaulting to 302 "Found".
-### Example Usage
-
-```javascript
-res.redirect('/foo/bar');
-res.redirect('http://example.com');
-res.redirect(301, 'http://example.com');
-res.redirect('../login');
-```
-Express supports a few forms of redirection, first being a fully qualified URI for redirecting to a different site:
-
-```javascript
-res.redirect('http://google.com');
-```
-The second form is the pathname-relative redirect, for example if you were on http://example.com/admin/post/new, the following redirect to /admin would land you at http://example.com/admin:
-
-```javascript
-res.redirect('/admin');
-```
-This next redirect is relative to the mount point of the application. For example if you have a blog application mounted at /blog, ideally it has no knowledge of where it was mounted, so where a redirect of /admin/post/new would simply give you http://example.com/admin/post/new, the following mount-relative redirect would give you http://example.com/blog/admin/post/new:
-
-```javascript
-res.redirect('admin/post/new');
-```
-Pathname relative redirects are also possible. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
-
-```javascript
-res.redirect('..');
-```
-The final special-case is a back redirect, redirecting back to the Referer (or Referrer), defaulting to / when missing.
-
-```javascript
-res.redirect('back');
-```
-
-### Notes
->
 
 # res.location()
 ### Purpose
@@ -477,84 +566,3 @@ res.render('user', { name: 'Tobi' }, function(err, html){
 ### Notes
 >
 
-# res.view(`[pathToView]`,`[locals]`)
-### Purpose
-This is a Sails method that loads the appropriate view.  
-
-##### Arguments
-+ **pathToView** - the relative path to a view file from [your app's views directory]().  File extension suffix (e.g. `.ejs` should be omitted.
-
-### Example Usage
-
-Assuming the example below is an action in UsersController.js .
-
-```javascript
-// ...
-riceNoodles: function(req,res){
-  // This would render the view /views/users/riceNoodles.ejs
-  return res.view();
-}
-// ...
-```
-
-### Notes
->
-
-# res.badRequest()
-### Purpose
-do whatever is in config/400.js
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
-
-# res.forbidden()
-### Purpose
-Do whatever is in config/403.js
-
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
-
-
-# res.notFound()
-### Purpose
-Do whatever is in config/404.js
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
-
-
-# res.serverError()
-### Purpose
-Do whatever is in config/500.js
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
