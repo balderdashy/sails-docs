@@ -9,6 +9,10 @@ The blueprint API is accessible when you have both an empty controller and model
 While the following documentation focuses on HTTP, you can also use Sails' built-in socket.io emulation layer to talk to the blueprint API (or any of your Sails routes / custom controllers) via Socket.io.
 
 
+### Notes
+
+> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the <a href="http://omfgdogs.com"> Socket-Client </a> section of reference for example usage.
+
 # Find Records
 
 ### Purpose
@@ -84,7 +88,6 @@ This is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom 
 ### Example Usage
 
 `GET http://localhost:1337/:model/:id`
-
 
 #### Expected Response
 
