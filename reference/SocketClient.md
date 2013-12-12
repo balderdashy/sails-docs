@@ -5,7 +5,7 @@ Not only does Sails have Socket.IO built right into the framework, it also adds 
 They basically allow you to emit custom socket.io messages that when interpreted by Sails, mimic Express HTTP request. This means you can use `socket.post('/user/')` in your client side javascript to effectively create an HTTP Post Request.  Check out the methods and their examples below.
 
 
-# socket.post( `url`, [`params'], [`callback`] )
+# socket.post( `url`, [`params`], [`callback`] )
 ### Purpose
 Create a new record using the REST Blueprints via Socket.IO
 
