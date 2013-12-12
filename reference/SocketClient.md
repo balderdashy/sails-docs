@@ -57,7 +57,7 @@ HTML BODY
 > This example assumes you have rest blueprints enabled in `config/controllers.js`
 
 
-# socket.get( `url`, [`params'], [`callback`] )
+# socket.get( `url`, [`params`], [`callback`] )
 ### Purpose
 Get a record from the database using the REST Blueprints via Socket.IO
 
@@ -108,7 +108,7 @@ HTML BODY
 
 
 
-# socket.put( `url`, [`params'], [`callback`] )
+# socket.put( `url`, [`params`], [`callback`] )
 ### Purpose
 Update a record from in database using the REST Blueprints via Socket.IO
 
@@ -164,7 +164,7 @@ HTML BODY
 > This example assumes you have rest blueprints enabled in `config/controllers.js`
 
 
-# socket.delete( `url`, [`params'], [`callback`] )
+# socket.delete( `url`, [`params`], [`callback`] )
 ### Purpose
 Delete a record from the database using the REST Blueprints via Socket.IO
 
@@ -211,7 +211,7 @@ HTML BODY
 
 
 
-# socket.request( `url`, [`params'], [`callback'], [`method`] )
+# socket.request( `url`, [`params`], [`callback'], [`method`] )
 ### Purpose
 Simulate an HTTP request to a Sails App over Socket.IO.  
 
