@@ -1,8 +1,6 @@
 # Model Methods
 ### Overview
 
-In this section, you will find 3 different types of model methods.
-
 #### Model Class Methods
 
 Model class methods are functions built into the model itself that performs a particular task its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like .create, .update, ,destroy, .find, etc.
@@ -17,7 +15,9 @@ This is another special type of class method.  It stands for 'Publish, Subscribe
 
 #### Instance Methods
 
-Instance methods are functions built into model instances (records).  They perform tasks on their parent record. Imagine you have a small monkey named Timothy that rides on your shoulders and styles your hair ONLY when you are scheduled to speak at a conference.  In this scenario, you are an instance of the model 'Javascript Expert', Timothy is your personal instance method and the function he performs is making sure your hair looks good for conferences.  
+Instance methods are functions built into model instances (records).  
+
+They perform tasks on their parent record. Imagine you have a small monkey named Timothy that rides on your shoulders and styles your hair ONLY when you are scheduled to speak at a conference.  In this scenario, you are an instance of the model 'Javascript Expert', Timothy is your personal instance method and the function he performs is making sure your hair looks good for conferences.  
 
 In addition to useful ones like .save(), .destroy(), and .validate() , you can also define your own custom ones inside of your model.   
 
@@ -29,14 +29,6 @@ In addition to useful ones like .save(), .destroy(), and .validate() , you can a
 # .create( `criteria`,[`callback`] )
 ### Purpose
 Creates a new instance of this model in the database.
-
-
-<!--
-| Parameters |     Description     | Accepted Data Types | Required ? |
-|----------|---------------------|---------------------|------------|
-| values   |  Records to Create  |      `{}`, `[{}]`   | Yes       |
-
--->
 
 ### Overview
 
