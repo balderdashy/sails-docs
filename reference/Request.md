@@ -5,45 +5,91 @@ Sails is built on Express. Because of this, you can access all of the express me
 
 Below is a chart describing Sails.js support of the .req() methods.
 
-|Name| Author  | HTTP ?  | socket.io |
-|----|-------------|---------|---------|
-| req.files | Express | :-) | :-( |
-| req.param() | Express | :-) | :-) |
-| req.route | Express | :-) | :-) |
-| req.cookies | Express | :-) | :-( |
-| req.signedCookies | Express | :-) | :-( |
-| req.get() | Express | :-) | :-( |
-| req.accepts() | Express | :-) | :-( |
-| req.accepted | Express | :-) | :-( |
-| req.is() | Express | :-) | :-( |
-| req.ip | Express | :-) | :-) |
-| req.ips | Express | :-) | :-( |
-| req.path | Express | :-) | :-( |
-| req.host | Express | :-) | :-( |
-| req.fresh | Express | :-) | :-( |
-| req.stale | Express | :-) | :-( |
-| req.xhr | Express | :-) | :-( |
-| req.protocol | Express | :-) | :-) |
-| req.secure | Express | :-) | :-( |
-| req.session | Express | :-) | :-) |
-| req.subdomains | Express | :-) | :-( |
-| req.method | Express | :-) | :-) |
-| req.originalUrl | Express | :-) | :-( |
-| req.acceptedLanguages | Express | :-) | :-( |
-| req.acceptedCharsets | Express | :-) | :-( |
-| req.acceptsCharset() | Express | :-) | :-( |
-| req.acceptsLanguage() | Express | :-) | :-( |
+|Name| HTTP ?  | socket.io |
+|----|---------|---------|
+| req.files | :-) | :-( |
+| req.param() | :-) | :-) |
+| req.route | :-) | :-) |
+| req.cookies | :-) | :-( |
+| req.signedCookies | :-) | :-( |
+| req.get() | :-) | :-( |
+| req.accepts() | :-) | :-( |
+| req.accepted | :-) | :-( |
+| req.is() | :-) | :-( |
+| req.ip | :-) | :-) |
+| req.ips | :-) | :-( |
+| req.path | :-) | :-( |
+| req.host | :-) | :-( |
+| req.fresh | :-) | :-( |
+| req.stale | :-) | :-( |
+| req.xhr | :-) | :-( |
+| req.protocol | :-) | :-) |
+| req.secure | :-) | :-( |
+| req.session | :-) | :-) |
+| req.subdomains | :-) | :-( |
+| req.method | :-) | :-) |
+| req.originalUrl | :-) | :-( |
+| req.acceptedLanguages | :-) | :-( |
+| req.acceptedCharsets | :-) | :-( |
+| req.acceptsCharset() | :-) | :-( |
+| req.acceptsLanguage() | :-) | :-( |
 |||||
 |||||
-| req.isSocket | Sails | :-) | :-) |
-| req.params.all() | Sails | :-) | :-) |
-| req.socket.id | Sails | :-( | :-) |
-| req.socket.join | Sails | :-( | :-) |
-| req.socket.leave | Sails | :-( | :-) |
-| req.socket.broadcast  | Sails | :-( | :-) |
-| req.transport  | Sails | :-( | :-) |
-| req.url | Sails | :-) | :-) |
-| req.wantsJSON | Sails | :-) | :-) |
+| req.isSocket | :-) | :-) |
+| req.params.all() | :-) | :-) |
+| req.socket.id | :-( | :-) |
+| req.socket.join | :-( | :-) |
+| req.socket.leave | :-( | :-) |
+| req.socket.broadcast  | :-( | :-) |
+| req.transport  | :-( | :-) |
+| req.url | :-) | :-) |
+| req.wantsJSON | :-) | :-) |
+
+# req.wantsJSON
+### Purpose
+This property is to check whether JSON is in the list of acceptable Content-Types provided by the user-agent
+
+### Example Usage
+```javascript
+
+convertToXML = function(someRecord){
+
+    // pretend there is code in here
+    // that parses JSON into XML
+}
+
+Users.findOne({name:'Walter'}).exec(function foundHim(err,record){
+    var myRecord = record;
+});
+
+// Check to see if the client can handle JSON.  If not, give XML.
+
+if (req.wantsJSON)
+  res.send(myRecord)
+else
+  res.send(convertToXML(myRecord));
+
+
+```
+
+### Notes
+
+# req.param (string)
+### Purpose
+This method searches the http request body , header, and query string for a parameter with name equal to the supplied parameter.  
+
+### Example Usage
+```javascript
+
+var myParam = req.param('blueStuff');
+
+// myParam would contain the value of 'blueStuff' 
+
+```
+
+### Notes
+> This is nice.  Sails makes it nicer by making ALL params available through req.params.all().  See this method somewhere below.
+
 
 # req.files
 ### Purpose
@@ -76,22 +122,6 @@ If a file field was named "image" and as a value contained a sucessfully uploade
 ```
 
 ### Notes
-
-# req.param(string)
-### Purpose
-This method searches the http request body , header, and query string for a parameter with name equal to the supplied parameter.  
-
-### Example Usage
-```javascript
-
-var myParam = req.param('blueStuff');
-
-// myParam would contain the value of 'blueStuff' 
-
-```
-
-### Notes
-> This is nice.  Sails makes it nicer by making ALL params available through req.params.all().  See this method somewhere below.
 
 # req.route
 ### Purpose
@@ -170,8 +200,9 @@ console.log(req.get('myField'));
 
 ### Notes
 
-# req.accepts(```string```)
+# req.accepts(`string`)
 ### Purpose
+
 Checks if the supplied argument is found in the list of acceptable <a href="http://omfgdogs.com">Content-Type</a>s specified by the user-agent who sent the request.
 ### Example Usage
 ```javascript
@@ -487,7 +518,7 @@ if (req.isSocket){
 
 ### Notes
 
-# req.params.all(```string```)
+# req.params.all(`string`)
 ### Purpose
 This gathers all parameters found in both http AND sockets requests.  It returns the value of the parameter supplied, assuming it exists.  
 
@@ -571,7 +602,6 @@ This is a low level socket.io method.  Check their docs <a href="https://github.
 
 ```
 
-
 ### Notes
 
 # req.transport
@@ -591,35 +621,6 @@ This property contains the original URL string requested by the user-agent.
 
 ### Example Usage
 ```javascript
-
-```
-
-### Notes
-
-# req.wantsJSON
-### Purpose
-This property is to check whether JSON is in the list of acceptable Content-Types provided by the user-agent
-
-### Example Usage
-```javascript
-
-convertToXML = function(someRecord){
-
-    // pretend there is code in here
-    // that parses JSON into XML
-}
-
-Users.findOne({name:'Walter'}).exec(function foundHim(err,record){
-    var myRecord = record;
-});
-
-// Check to see if the client can handle JSON.  If not, give XML.
-
-if (req.wantsJSON)
-  res.send(myRecord)
-else
-  res.send(convertToXML(myRecord));
-
 
 ```
 
