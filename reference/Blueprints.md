@@ -30,20 +30,7 @@ Get all ponies in the database:
 _via the URL bar in your web browser_
 `http://localhost:1337/pony/1`
 
-### Query Parameters
-
-Any and all attributes that you defined on your model can be used to filter results.
-
-For instance, if our `Pony` model has a **name** attribute: `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
-
-You can also paginate and sort results using the `limit`, `skip`, and `sort` parameters.
-
-+ **limit** - the maximum number of records to send back-- useful for pagination.
-+ **skip** - the number of records to skip-- useful for pagination. e.g. the following would return the second page of 30 results `http://localhost:1337/pony?skip=30&limit=30`
-+ **sort** - the order in which to sort results, e.g. `http://localhost:1337/pony?sort=name DESC` or `http://localhost:1337/pony?sort=createdAt ASC`
-
-
-### Example Response
+#### Example Response
 
 ```json
  [{
@@ -60,6 +47,18 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
  }]
 
 ```
+
+### Query Parameters
+
+Any and all attributes that you defined on your model can be used to filter results.
+
+For instance, if our `Pony` model has a **name** attribute: `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
+
+You can also paginate and sort results using the `limit`, `skip`, and `sort` parameters.
+
++ **limit** - the maximum number of records to send back-- useful for pagination.
++ **skip** - the number of records to skip-- useful for pagination. e.g. the following would return the second page of 30 results `http://localhost:1337/pony?skip=30&limit=30`
++ **sort** - the order in which to sort results, e.g. `http://localhost:1337/pony?sort=name DESC` or `http://localhost:1337/pony?sort=createdAt ASC`
 
 
 ### Notes
@@ -80,17 +79,13 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
 ### Purpose
 Find and return a single model instance from the database.
 
-
 ### Description
 Responds with a JSON object (or `404`) if no matching record was found.
 
 If request is sent using socket.io, the socket will be subscribed to "updates"+"destroys" for the model instance returned (instance room).
 
 (this is equivalent to running `Pony.subscribe(req.socket, onePony)` in a custom controller)
-
-
-### Query parameters
-_N/A_
+### Example Usage
 
 ### Example Response
 
@@ -103,6 +98,10 @@ _N/A_
  }
 
 ```
+
+### Query parameters
+_N/A_
+
 
 ### Notes
 
