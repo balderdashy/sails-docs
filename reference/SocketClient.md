@@ -211,7 +211,7 @@ HTML BODY
 
 
 
-# socket.request( `url`, [`params`], [`callback'], [`method`] )
+# socket.request( `url`, [`params`], [`callback`], [`method`] )
 ### Purpose
 Simulate an HTTP request to a Sails App over Socket.IO.  
 
