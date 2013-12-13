@@ -2,6 +2,36 @@
 
 Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.  For real.
 
+
+<!--
+-->
+---------------------------------------------------------------
+###### `<DRAFT>`
+
+
+## Getting Started
+Whether you're an advanced user or a Sails n00b, there are many different ways to contribute to the Sails ecosystem.
+
+1) Build an adapter.
+
+2) Submit a pull request to an adapter (e.g. add streaming support to `sails-yelp`)
+
+3) Submit a pull request to a generator (e.g. CoffeeScript support for `sails-generate-controller`, or better syncing in the Gruntfile in `sails-generate-gruntfile`)
+
+4) Build a hook (e.g. custom migration support in Waterline)
+
+5) Write unit tests for the build-in sails hooks.
+
+6) Finally, bug fixes + patches for the Sails core are also greatly appreciated, please just read the style guide below first!
+
+
+
+
+###### `</DRAFT>`
+---------------------------------------------------------------
+
+
+
 ## Guidelines
 Like any OSS project, we must have guidelines for contributions.  It helps protect the quality of the code, and gives all of us confidence that our framework will be robust and dependable.
 Whether it's a bug fix, or a huge new feature set, it's important that we consistently apply these checks and balances for *all* contributions to Sails.
@@ -62,5 +92,7 @@ In your project repo:
 npm link sails
 
 Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit us up ([@sailsjs](https://twitter.com/sailsjs)). 
+
+
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/contributing)
