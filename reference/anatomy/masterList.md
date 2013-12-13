@@ -1,7 +1,7 @@
 # myApp
 ## myApp
 ### Purpose
-This is your Sails project's root directory.  It and most of the files and folders that are in it were generated upon running `sails new` .
+This is your Sails project's root directory.  With the exception of your model and controller, all the files and folders that are in it were generated upon running `sails new` .
 
 ### More Info
 
@@ -13,17 +13,23 @@ This is your Sails project's root directory.  It and most of the files and folde
 ### Purpose
 This file was created when you ran 'sails generate User'.  It contains all of the controller logic for the model called 'User'. 
 
-This is where you will put "controller actions" that sends app data to your clients and render the views which display that data.
+This is where you will put "controller actions" that send data to your clients and render the views which display that data.
 
 ### More Info
-
-
 
 
 # api
 ## myApp/api
 ### Purpose
-This folder contains the vast majority of your app's back-end logic.  It houses the 'M' and 'C' in <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"> MVC Framework </a>
+This folder contains the vast majority of your app's back-end logic.  It is home to the 'M' and 'C' in <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"> MVC Framework </a>
+
+In it you will find the following.
+
+- Adapters: Adapters are the middle man between your Sails app and the database.  
+- Controllers: Controllers contain most of the back-end logic for your app.
+- Models: Models are the structures that contain data for your Sails App.
+- Policies: Policies are typically used to authenticate clients and restrict access to certain parts of your app.
+- Services: Services are similar to controller actions.  They contain logic that used by your app that doesn't necessarily rely on .req() and .res() .  
 
 ### More Info
 If you're new to MVC, check out <a href="http://omfgdogs.com"> This Link </a>
@@ -35,8 +41,9 @@ If you're new to MVC, check out <a href="http://omfgdogs.com"> This Link </a>
 ### Purpose
 This file was created when you ran 'sails generate User'.  It contains the structure for the model called 'User'.
 
-In this file you will specify what attributes each model instance should have.  You can also add custom model instance methods, specify 'policies', and even specify which storage adapter should be used for storing/retreiving these records.  
+In this file you will specify what attributes each model instance (record) should have.  You can also add custom model instance methods, specify 'policies' which can be defined in `/myApp/api/policies/` , and even specify which storage adapter should be used for storing/retreiving these records.  
 
+One of the best parts about Sails is it uses <a href="http://omfgdogs.com"> Waterline </a>.  This means you can start developing your data models long before you commit to a particular database. 
 
 ### More Info
 
@@ -46,9 +53,11 @@ In this file you will specify what attributes each model instance should have.  
 # policies
 ## myApp/api/policies
 ### Purpose
-This is the folder you will store your 'policy' files in.  A policy file is a .js file that contains what is essentially express middleware.  
+This is the folder you will store your 'policy' files in.  A policy file is a .js file that contains what is essentially express middleware for authenticating access to routes in your app.  
 
-In your model, you can specify policies located in this folder.  Before the model is accessed, clients will be authenticated by these policies. 
+If you want to make sure only the user 'rick1983' can access 'http://prism.gov/rick1983' , this is the folder you would put that policy in. 
+
+Flash Messgages to the client
 
 ### More Info
 
@@ -58,15 +67,15 @@ In your model, you can specify policies located in this folder.  Before the mode
 # services
 ## myApp/api/services
 ### Purpose
-This folder contains your services.  'Services' are similar to controller actions but are typically used for things like
+This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't nessecarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on .req() and .res() can be turned into a service if for no other reason than to keep your controllers clean and managable.  
 
-For any logic that doesnt rely on req and res
+Hypothetically, one could create a service for
 
-- 
-- 
-- 
+- Sending emails
+- Automating tweets to celebrities
+- Retreiving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
 
-Each service is specified as its own .js file within this folder.  They can be called inside of a controller action by using EEEEPPPP!!! 
+Each service is specified as its own .js file within this folder.  They can be called inside of a controller action by using Services.<serviceName>.<functionName>() . 
 
 ### More Info
 
@@ -76,7 +85,7 @@ Each service is specified as its own .js file within this folder.  They can be c
 # app.js
 ## myApp/app.js
 ### Purpose
-I DON'T KNOW!!!
+This file exists only to tell Node how to start your app.  It is used once and only when you lift your app from the command line.  You should just ignore this file.
 
 ### More Info
 
@@ -111,9 +120,9 @@ Upon lifting your app, an image called 'omgCat.jpg' could be found at http://loc
 ## myApp/assets/js/app.js
 ### Purpose
 
-Every time you view a page on your Sails app, a connection between your browser and Sails is made via socket.io .  This file is the reason that connection is made. It contains some conventional defaults for working with Socket.io + Sails.
+Every time you view a page on your Sails app, a connection between your browser and Sails is made via socket.io .  This file is the reason that connection is made. It should be treated as an example for working with socket.io + Sails.
 
-Furthermore, it's a great place to put additional socket.io code in order to keep it clean and seperate from your other client-side javascript.
+Furthermore, it's a great file to keep and add additional socket.io code in order to keep your socket.io code clean and seperate from your other client-side javascript.
 
 
 
@@ -127,7 +136,7 @@ Furthermore, it's a great place to put additional socket.io code in order to kee
 ### Purpose
 This file adds a few custom methods to socket.io which provide the "built-in" websockets functionality for Sails.
 
-Specifically, those methods allow you to send and receive socket.io messages to & from Sails by simulating a REST client interface on top of socket.io. It models its API after the $.ajax pattern from jQuery you might be familiar with.
+Specifically, those methods allow you to send and receive socket.io messages to & from Sails by simulating a REST client interface on top of socket.io. It models it's API after the $.ajax pattern from jQuery which you might be familiar with.
 
 
 ### More Info
@@ -147,9 +156,7 @@ This is where you put client-side javascript files that you want to be staticall
 # assets
 ## myApp/assets
 ### Purpose
-This is your assets folder.  It houses all of the static files that your app will need to host.   Feel free to create your own files and folders in here.  Upon lifting, a file called 'newFolder.txt' could be accessed at http://localhost:1337/newFolder.txt .
-
-The style,js, and images subdirectories are compressed and minified when you lift your app in production mode. Also, when you create your sails app with the --linker flag, these subdirectories and their contents are not only minified but injected into the DOM for each view that you render.  
+This is your assets folder.  It houses all of the static files that your app will need to host.   Feel free to create your own files and folders in here.  Upon lifting, a file called 'myApp/assets/newFolder/data.txt' could be accessed at 'http://localhost:1337/newFolder/data.txt' .
 
 ### More Info
 
@@ -179,7 +186,31 @@ This is where you will put all of the .css files that you would like to be stati
 
 
 
+# 400.js
+## myApp/config/404.js
+### Purpose
+This file contains customizable Sails middleware used to assist with delivering the '400' status code for an http request.  
 
+If no route matches are found for a request, Sails will respond using this handler.
+
+This middleware can also be invoked manually from a controller or policy with `res.badRequest([Error Message])`
+
+NOTE: This function is Sails middleware. This means that not only do `req` and `res` work just like their Express equivalents to handle HTTP requests, they also simulate the same interface for receiving socket messages.
+
+### More Info
+
+# 403.js
+## myApp/config/404.js
+### Purpose
+This file contains customizable Sails middleware used to assist with delivering the '403' status code for an http request.  
+
+If no route matches are found for a request, Sails will respond using this handler.
+
+This middleware can also be invoked manually from a controller or policy with `res.forbidden([Error Message])`
+
+NOTE: This function is Sails middleware. This means that not only do `req` and `res` work just like their Express equivalents to handle HTTP requests, they also simulate the same interface for receiving socket messages.
+
+### More Info
 
 # 404.js
 ## myApp/config/404.js
@@ -188,7 +219,7 @@ This file contains customizable Sails middleware used to assist with delivering 
 
 If no route matches are found for a request, Sails will respond using this handler.
 
-This middleware can also be invoked manually from a controller or policy with `res.notFound()`
+This middleware can also be invoked manually from a controller or policy with `res.notFound([Error Message])`
 
 NOTE: This function is Sails middleware. This means that not only do `req` and `res` work just like their Express equivalents to handle HTTP requests, they also simulate the same interface for receiving socket messages.
 
@@ -206,7 +237,7 @@ Default 500 (Server Error) middleware
 
 If an error is thrown in a policy or controller, Sails will respond using this default error handler
 
-This middleware can also be invoked manually from a controller or policy with `res.serverError( [errors] )`
+This middleware can also be invoked manually from a controller or policy with `res.serverError([Error Message])`
 
 NOTE: This function is Sails middleware. This means that not only do `req` and `res` work just like their Express equivalents to handle HTTP requests, they also simulate the same interface for receiving socket messages.
 
@@ -223,6 +254,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 This is a server-side javascript file that is executed by Sails just before your app is lifted.
 
 This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
+
 
 
 ### More Info
@@ -292,7 +324,6 @@ This can be changed on a per-route basis by adding a "cors" object to the route 
 ### Purpose
 This file defines how your Sails app handles CSRF and contains settings for configuring it.
 
-
 Cross-Site Request Forgery Protection tokens are like a tracking chip.  While a session tells the server that a user "is who they say they are", a csrf token tells the server "you are where you say you are".
 
 When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
@@ -321,10 +352,10 @@ Enabling this option requires managing the token in your front-end app. For trad
 
 In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
 
-For more information on CSRF, check out <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery"> this hyperlink </a>
+
 
 ### More Info
-
+> For more information on CSRF, check out <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery"> this hyperlink </a>
 
 
 
@@ -341,7 +372,7 @@ This file contains your Sails app's <a href="http://en.wikipedia.org/wiki/Locale
 # locales
 ## myApp/config/locales
 ### Purpose
-This folder contains the information that is used by your app in supporting different <a href="http://en.wikipedia.org/wiki/Locale"> locales </a>. 
+This folder contains the information that is used by your app in supporting visiting client's different <a href="http://en.wikipedia.org/wiki/Locale"> locales </a>. 
 
 ### More Info
 
