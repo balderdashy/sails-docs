@@ -19,7 +19,10 @@ Instance methods are functions built into model instances (records).
 
 They perform tasks on their parent record. Imagine you have a small monkey named Timothy that rides on your shoulders and styles your hair ONLY when you are scheduled to speak at a conference.  In this scenario, you are an instance of the model 'Javascript Expert', Timothy is your personal instance method and the function he performs is making sure your hair looks good for conferences.  
 
-In addition to useful ones like .save(), .destroy(), and .validate() , you can also define your own custom ones inside of your model.   
+In addition to useful ones like .save(), .destroy(), and .validate() , you can also define your own custom ones inside of your model.
+
+If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the guide on models at http://omfgdogs.com
+
 
 ### Notes
 
@@ -1279,8 +1282,138 @@ module.exports = {
 
 > Note, This method is not asynchronous
 
-# Custom Instance Methods
 
-If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the guide on models at http://omfgdogs.com
+# .where()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Criteria Object    |      `{}`           | Yes	       |
+
+
+### Example Usage
+
+```javascript 
+
+var myQuery = User.find();
+myQuery.where({'name':{startsWith:'W'}});
+
+myQuery.exec(function callBack(err,results){
+    console.log(results)
+    });
+
+```
+### Notes
+> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+
+
+
+# .limit()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Number to Return   |      `int`         | Yes	       |
+
+### Example Usage
+
+```javascript 
+
+var myQuery = User.find();
+myQuery.limit(12);
+
+myQuery.exec(function callBack(err,results){
+    console.log(results)
+    });
+
+```
+### Notes
+> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+
+# .skip()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Number to Skip     |      `int`          | Yes	       |
+
+### Example Usage
+
+```javascript 
+var myQuery = User.find();
+myQuery.skip(12);
+
+myQuery.exec(function callBack(err,results){
+    console.log(results)
+    });
+
+```
+### Notes
+> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+
+# .sort()
+### Purpose
+
+### Parameters
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Sort String        |      `string`       | Yes	       |
+
+### Example Usage
+
+```javascript 
+var myQuery = User.find();
+
+var sortString= 'name ASC';
+
+// Sort strings look like this
+
+// '<Model Attribute> <sort type>' 
+
+myQuery.sort('name ASC');
+
+myQuery.exec(function callBack(err,results){
+    console.log(results)
+    });
+
+```
+### Notes
+> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+
+> Other Sort Types include
+  - ASC
+  - DES
+
+# .exec()
+### Purpose
+This indicates the end of the chain and signals the adapter to run the query that it has been building. 
+
+#### Parameters
+
+| # |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |  Callback           |      `function`     | Yes	       |
+
+#### Callback Parameters
+| # |     Description     | Possible Data Types |
+|---|---------------------|---------------------|
+| 1 |  Error              | `Error`             |
+| 2 |  Data Returned      | `{}`, `[{}]`, `int` |
+
+### Example Usage
+
+```javascript 
+
+// refer to any of the examples above
+
+```
+### Notes
+> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+
+> If you dont run .exec() , your query will not execute.
+
 
 
