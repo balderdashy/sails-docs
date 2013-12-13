@@ -34,7 +34,6 @@ Below is a chart describing Sails.js support of the .req() methods.
 | req.acceptsCharset() | :-) | :-( |
 | req.acceptsLanguage() | :-) | :-( |
 |||||
-|||||
 | req.isSocket | :-) | :-) |
 | req.params.all() | :-) | :-) |
 | req.socket.id | :-( | :-) |
@@ -47,7 +46,7 @@ Below is a chart describing Sails.js support of the .req() methods.
 
 # req.wantsJSON
 ### Purpose
-This property is to check whether JSON is in the list of acceptable Content-Types provided by the user-agent
+This property is used to check whether JSON is in the list of acceptable `Content-Type`s provided by the user-agent in the HTTP request header.
 
 ### Example Usage
 ```javascript
@@ -62,7 +61,7 @@ Users.findOne({name:'Walter'}).exec(function foundHim(err,record){
     var myRecord = record;
 });
 
-// Check to see if the client can handle JSON.  If not, give XML.
+// Check to see if the client can handle JSON.  If not, give them XML.
 
 if (req.wantsJSON)
   res.send(myRecord)
@@ -74,7 +73,7 @@ else
 
 ### Notes
 
-# req.param (string)
+# req.param (`string`)
 ### Purpose
 This method searches the http request body , header, and query string for a parameter with name equal to the supplied parameter.  
 
@@ -467,7 +466,7 @@ This property is an array that contains the acceptable charsets specified by the
 ### Notes
 > This often isnt specified by the user agent
 
-# req.acceptsCharset(```string```)
+# req.acceptsCharset(`string`)
 ### Purpose
 This method checks to see if the paramater supplied is found in req.acceptedCharsets.
 
