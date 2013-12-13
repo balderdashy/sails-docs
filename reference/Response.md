@@ -52,7 +52,7 @@ riceNoodles: function(req,res){
 
 
 
-# res.redirect()
+# res.redirect(`url`)
 ### Purpose
 Redirect to the given url with optional status code defaulting to 302 "Found".
 ### Example Usage
@@ -93,9 +93,34 @@ res.redirect('back');
 >
 
 
-# res.forbidden()
+# res.forbidden([`error message`])
 ### Purpose
-Do whatever is in config/403.js
+Calls `/config/403.js` which renders the default view for an HTTP 403 error along with an optional error message.
+
+### Example Usage
+
+In a controller,
+
+```javascript
+
+login: function(req,res){
+
+    // Use appropriate authentication method
+
+    if (!isAuthenticated)
+      res.forbidden('YOU SHALL NOT PASS!');  
+}
+
+
+```
+
+### Notes
+>
+
+
+# res.notFound([`error message`])
+### Purpose
+Calls `/config/404.js` which renders the default view for an HTTP 404 error along with an optional error message.
 
 ### Example Usage
 
@@ -109,9 +134,12 @@ Do whatever is in config/403.js
 >
 
 
-# res.notFound()
+
+
+# res.badRequest([`error message`])
 ### Purpose
-Do whatever is in config/404.js
+Calls `/config/400.js` which renders the default view for an HTTP 400 error along with an optional error message.
+
 ### Example Usage
 
 
@@ -124,26 +152,10 @@ Do whatever is in config/404.js
 >
 
 
-
-
-# res.badRequest()
+# res.serverError([`error message`])
 ### Purpose
-do whatever is in config/400.js
-### Example Usage
+Calls `/config/500.js` which renders the default view for an HTTP 500 error along with an optional error message.
 
-
-```javascript
-
-
-```
-
-### Notes
->
-
-
-# res.serverError()
-### Purpose
-Do whatever is in config/500.js
 ### Example Usage
 
 
