@@ -7,11 +7,11 @@ Like any OSS project, we must have guidelines for contributions.  It helps prote
 Whether it's a bug fix, or a huge new feature set, it's important that we consistently apply these checks and balances for *all* contributions to Sails.
 
 Please check over the following requirements before submitting a pull request:
- - Pull requests should be submitted to the Development Branch.
- - Bug fixes should have accompanying tests.
+ - Pull requests should be submitted to the `v0.10` branch.
+ - Bug fixes should have accompanying tests where possible.
  - Should follow Sails.js JShint Guidelines (See .jshint file in repo)
 
-Any pull request to `master` (our production branch) will be closed, with an invitation to resubmit to `development`.  
+Any pull request to `master` (our production branch) will be closed, with an invitation to resubmit to `v0.10`.  
 I know this stuff sounds kind of brutal, but we want to keep `master`'s tests passing at all times, since it reflects what is in `npm`.
 If you have a high priority hot-fix for the currently deployed version, please let us know with an issue, and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.  That'll text me (Mike).  Sounds a little insane probably, but if there's a big problem, I want to know about it!
 
