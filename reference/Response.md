@@ -27,7 +27,7 @@ Below is a chart describing Sails.js support of the .res() methods.
 | res.view | Sails | :-) | :-( |
 
 
-# res.view(`[pathToView]`,`[locals]`)
+# res.view([`pathToView`],[`locals`])
 ### Purpose
 This is a Sails method that loads the appropriate view.  
 
