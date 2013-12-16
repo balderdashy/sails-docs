@@ -29,19 +29,19 @@ To log the levels during during runtime, use the appropriate methods during runt
 
 Sails supports logging to multiple transports. Beneath the covers, Sails uses Winston (https://github.com/flatiron/winston) and all the available transport goodness Winston has to offer, is also available to Sails.
 
-####Example: Set up a transport to log to a file
+####Example: Set up Sails to log to a file
 
 Having Sails log to a file is easy-peasy. In your Sails application, edit file `config/log.js`: 
 
 Find the object: 
 
-`
+```
 log: {
-  level: 'info',
+  level: 'info'
 }
-`
+```
 
-and modify it accordingly: 
+and add `filePath`:
 
 ```
 log: {
@@ -50,6 +50,6 @@ log: {
 }
 ```
 
-Restart Sails and now Sails will log methods `sails.log.info('My Message')` messages to both the console and to the file. 
+Once you restart the server, Sails will log messages to both the console and to the file. In the example `sails.log.info('Sails is dast kuhlest')` the message would be logged to both the console and to file `application.log`.
 
-**Note**: Take note of the different log levels. In `config/log.js` we set our `level` to `info`. So `sails.log.info` would log to the console and the file. `sails.log.warn` would also work becuase `.warn` is below `.info` as described above under __There are 5 different levels ot the log__. But `sails.log.verbose` wouldn't log to the file, because it is above the log.level we set in `config/log.js`.
+**Note**: Take note of the different log levels and how they are working here. In `config/log.js` we set our `level` to `info`. So `sails.log.info` would log to the console and the file. Additionally `sails.log.warn` would also work becuase `.warn` is below `.info` as described above under __There are 5 different levels ot the log__. But `sails.log.verbose` would not log to the file, because it is above the log.level we set in `config/log.js`.
