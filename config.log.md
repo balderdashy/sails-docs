@@ -50,6 +50,6 @@ log: {
 }
 ```
 
-Once you restart the server, Sails will log messages to both the console and to the file. In the example `sails.log.info('Sails is dast kuhlest')` the message would be logged to both the console and to file `application.log`.
+Once you restart the server, Sails will log messages to both the console and to the file. In the example `sails.log.info('Sails ist wunderbar')` the string `Sails ist wunderbar` would be logged to the console and to the file `application.log`.
 
-**Note**: Take note of the different log levels and how they are working here. In `config/log.js` we set our `level` to `info`. So `sails.log.info` would log to the console and the file. Additionally `sails.log.warn` would also work becuase `.warn` is below `.info` as described above under __There are 5 different levels ot the log__. But `sails.log.verbose` would not log to the file, because it is above the log.level we set in `config/log.js`.
+**Note**: Take note of the different log levels and how they are working together. In `config/log.js` we set our `level` to `info`. Meaning logs level `info` or below, will bel logged to the file and to the console. The only method above level `info`, is `verbose`. So in this example `sails.log.verbose('...')` would not log to the console or file, because its log level is above the `level` we set in `config/log.js`.
