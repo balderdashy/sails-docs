@@ -18,8 +18,7 @@ When building a Sails app, the sending or receiving of any asynchronous communic
 
 > **From Wikipedia:**
 > *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
->
->
+
 > Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.
 
 In other words, Waterline is not just an ORM for your database.  It is a purpose-agnostic, open standard and toolset for integrating with all kinds of RESTful services, datasources, and devices, whether it's LDAP, Neo4J, or [a lamp](https://www.youtube.com/watch?v=OmcQZD_LIAE).
@@ -185,11 +184,15 @@ Adapters which implement one-way messages should do so using `send()` or a suffi
 
 
 ## Pubsub (interface)
-Adapters implementing the pubsub interface use a MQ to report changes from the service/database back up to the app.
+Adapters implementing the pubsub interface report changes from the service/database back up to the app.
 
+They should emit an event on the `sails` object.
+
+<!--
 They should call Sails' `Model.publishUpdate()`, `Model.publishCreate()`, and `Model.publishDestroy()` to publish changes and take advantage of automatic room management functionality.
 `Model.subscribe()` should still be called at the app layer, not in our adapter.
 We don't want to force users to handle realtime events-- we don't know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.
+-->
 
 Examples:
 + Twitter streaming API (see new tweets as they come in)
