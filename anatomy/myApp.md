@@ -6,8 +6,7 @@ This is your Sails project's root directory.  With the exception of your model a
 
 
 
-
-# myApp/api/controllers/UserController.js
+# api/controllers/UserController.js
 ### Purpose
 This file was created when you ran 'sails generate User'.  It contains all of the controller logic for the model called 'User'. 
 
@@ -15,8 +14,7 @@ This is where you will put "controller actions" that send data to your clients a
 
 ### More Info
 
-
-# myApp/api
+# api
 ### Purpose
 This folder contains the vast majority of your app's back-end logic.  It is home to the 'M' and 'C' in <a href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller"> MVC Framework </a>
 
@@ -32,8 +30,7 @@ In it you will find the following.
 If you're new to MVC, check out <a href="http://omfgdogs.com"> This Link </a>
 
 
-
-# myApp/api/models/User.js
+# api/models/User.js
 ### Purpose
 This file was created when you ran 'sails generate User'.  It contains the structure for the model called 'User'.
 
@@ -45,8 +42,7 @@ One of the best parts about Sails is it uses <a href="http://omfgdogs.com"> Wate
 
 
 
-
-# myApp/api/policies
+# api/policies
 ### Purpose
 This is the folder you will store your 'policy' files in.  A policy file is a .js file that contains what is essentially express middleware for authenticating access to routes in your app.  
 
@@ -58,8 +54,7 @@ Flash Messgages to the client
 
 
 
-
-# myApp/api/services
+# api/services
 ### Purpose
 This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't nessecarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on .req() and .res() can be turned into a service if for no other reason than to keep your controllers clean and managable.  
 
@@ -75,8 +70,7 @@ Each service is specified as its own .js file within this folder.  They can be c
 
 
 
-
-# myApp/app.js
+# app.js
 ### Purpose
 This file exists only to tell Node how to start your app.  It is used once and only when you lift your app from the command line.  You should just ignore this file.
 
@@ -84,8 +78,7 @@ This file exists only to tell Node how to start your app.  It is used once and o
 
 
 
-
-# myApp/assets/favicon.ico
+# assets/favicon.ico
 ### Purpose
 This file is the <a href="http://en.wikipedia.org/wiki/Favicon"> Favicon </a> for your app.  
 
@@ -94,8 +87,7 @@ This file is the <a href="http://en.wikipedia.org/wiki/Favicon"> Favicon </a> fo
 
 
 
-
-# myApp/assets/images
+# assets/images
 ### Purpose
 
 This is where you should put image files that need to be statically hosted by your app.  
@@ -106,8 +98,7 @@ Upon lifting your app, an image called 'omgCat.jpg' could be found at http://loc
 
 
 
-
-# myApp/assets/js/app.js
+# assets/js/app.js
 ### Purpose
 
 Every time you view a page on your Sails app, a connection between your browser and Sails is made via socket.io .  This file is the reason that connection is made. It should be treated as an example for working with socket.io + Sails.
@@ -120,8 +111,7 @@ Furthermore, it's a great file to keep and add additional socket.io code in orde
 
 
 
-
-# myApp/assets/js/sails.io.js
+# assets/js/sails.io.js
 ### Purpose
 This file adds a few custom methods to socket.io which provide the "built-in" websockets functionality for Sails.
 
@@ -132,16 +122,14 @@ Specifically, those methods allow you to send and receive socket.io messages to 
 
 
 
-
-# myApp/assets/js
+# assets/js
 ### Purpose
 This is where you put client-side javascript files that you want to be statically hosted by your app.  Sails puts a few in there for making communication via socket.io easier.  
 ### More Info
 
 
 
-
-# myApp/assets
+# assets
 ### Purpose
 This is your assets folder.  It houses all of the static files that your app will need to host.   Feel free to create your own files and folders in here.  Upon lifting, a file called 'myApp/assets/newFolder/data.txt' could be accessed at 'http://localhost:1337/newFolder/data.txt' .
 
@@ -149,8 +137,7 @@ This is your assets folder.  It houses all of the static files that your app wil
 
 
 
-
-# myApp/assets/robots.txt
+# assets/robots.txt
 ### Purpose
 This file tells web crawlers and search bots about your app.  It tells them what kind of content to expect as well as how to index it.
 
@@ -160,8 +147,7 @@ Learn all about robots.txt <a href="http://www.robotstxt.org/robotstxt.html"> ri
 
 
 
-
-# myApp/assets/styles
+# assets/styles
 ### Purpose
 This is where you will put all of the .css files that you would like to be statically hosted by your app. 
 
@@ -170,8 +156,7 @@ This is where you will put all of the .css files that you would like to be stati
 
 
 
-
-# myApp/config/404.js
+# config/404.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '400' status code for an http request.  
 
@@ -184,8 +169,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 ### More Info
 
 
-
-# myApp/config/404.js
+# config/404.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '403' status code for an http request.  
 
@@ -197,8 +181,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 
 ### More Info
 
-
-# myApp/config/404.js
+# config/404.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '404' status code for an http request.  
 
@@ -212,8 +195,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 
 
 
-
-# myApp/config/500.js
+# config/500.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '500' status code for an http request.  
 
@@ -231,8 +213,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 
 
 
-
-# myApp/config/bootstrap.js
+# config/bootstrap.js
 ### Purpose
 This is a server-side javascript file that is executed by Sails just before your app is lifted.
 
@@ -244,8 +225,7 @@ This gives you an opportunity to set up your data model, run jobs, or perform so
 
 
 
-
-# myApp/config/controllers.js
+# config/controllers.js
 ### Purpose
 
 This file contains the global configuration settings for your app's controller & blueprint routes.
@@ -268,8 +248,7 @@ You may also override these settings on a per-controller basis by defining a '_c
 
 
 
-
-# myApp/config/cors.js
+# config/cors.js
 ### Purpose
 This file defines how your Sails app handles CORS and contains settings for configuring it.
 
@@ -299,8 +278,7 @@ This can be changed on a per-route basis by adding a "cors" object to the route 
 
 
 
-
-# myApp/config/csrf.js
+# config/csrf.js
 ### Purpose
 This file defines how your Sails app handles CSRF and contains settings for configuring it.
 
@@ -338,8 +316,7 @@ In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to ge
 > For more information on CSRF, check out <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery"> this hyperlink </a>
 
 
-
-# myApp/config/i18n.js
+# config/i18n.js
 ### Purpose
 This file contains your Sails app's <a href="http://en.wikipedia.org/wiki/Locale"> supported locales </a>. 
 
@@ -347,8 +324,7 @@ This file contains your Sails app's <a href="http://en.wikipedia.org/wiki/Locale
 
 
 
-
-# myApp/config/locales
+# config/locales
 ### Purpose
 This folder contains the information that is used by your app in supporting visiting client's different <a href="http://en.wikipedia.org/wiki/Locale"> locales </a>. 
 
@@ -356,8 +332,7 @@ This folder contains the information that is used by your app in supporting visi
 
 
 
-
-# myApp/config/local.js
+# config/local.js
 ### Purpose
 
 This file contains your Sails app's local environment settings.  Modify this when you need to change the port or production environment of your app.  
@@ -395,8 +370,7 @@ By default, Sails sets its environment using the `NODE_ENV` environment variable
 
 
 
-
-# myApp/config/log.js
+# config/log.js
 ### Purpose
 
 This file contains the logger configuration for your Sails app. 
@@ -409,16 +383,14 @@ Underneath the covers, Sails uses Winston for logging, which allows for some pre
 
 
 
-
-# myApp/config
+# config
 ### Purpose
 This folder contains various files that will allow you to customize and configure your Sails app.
 
 ### More Info
 
 
-
-# myApp/config/session.js
+# config/session.js
 ### Purpose
 This file contains information that tells Sails where to store your sessions.  
 
@@ -432,8 +404,7 @@ This file also contains your 'Session Secret' that is generated by Sails when yo
 
 
 
-
-# myApp/config/views.js
+# config/views.js
 ### Purpose
 This file is where Sails looks to find out which templating engine to use when rendering server side HTML templates.  By default Sails uses ejs but it supports all view engines which implement TJ Holowaychuk's `consolidate.js`, including, but not limited to:
 
@@ -464,8 +435,7 @@ This file is where Sails looks to find out which templating engine to use when r
 
 
 
-
-# myApp/Gruntfile.js
+# Gruntfile.js
 ### Purpose
 
 Sails uses <a href="http://gruntjs.com"> GRUNT </a> for asset management. This file contains configuration information for the GRUNT tasks that Sails for this purpose. 
@@ -478,16 +448,14 @@ At the top part of this file, you'll find a few of the most commonly configured 
 > More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
 
 
-
-# myApp/package.json
+# package.json
 ### Purpose
 This is a standard configuration file for <a href="https://npmjs.org/doc/json.html"> NPM (node package manager) </a>.  Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.
 
 ### More Info
 > Check out <a href="http://package.json.nodejitsu.com"> this awesome interactive guide by NodeJitsu </a> explaining package.json 
 
-
-# myApp/README.md
+# README.md
 ### Purpose
 If you want to create a <a href="http://en.wikipedia.org/wiki/README"> README file </a> for your app, this is a good place to put it.  If you host your app on Github, the contents of this file will be displayed at the bottom of the Github repo page.
 
@@ -495,8 +463,7 @@ If you want to create a <a href="http://en.wikipedia.org/wiki/README"> README fi
 
 
 
-
-# myApp/views/home
+# views/home
 ### Purpose
 This folder contains the default view that is loaded when you visit the base URL of your app.  If you're curious how this happens, go look inside `myApp/config/routes.js` .  Spoiler alert, it's an explicitely defined route we setup by default.
 
@@ -506,8 +473,7 @@ This folder contains the default view that is loaded when you visit the base URL
 
 
 
-
-# myApp/views/home/index.ejs
+# views/home/index.ejs
 ### Purpose
 This is the actual template that is rendered by default when a user visits the base URL of your lifted app.  Notice the file extension?  It stands for <a href="http://embeddedjs.com/"> embedded javascript </a>.  EJS is what Sails uses by default to render server side HTML views.  This can be changed in `myApp/config/views.js` .
 
@@ -519,8 +485,7 @@ If you're used to putting all your HTML in a single file, this might look funny.
 
 
 
-
-# myApp/views/layout.ejs
+# views/layout.ejs
 ### Purpose
 This <a href="http://embeddedjs.com/"> embedded javascript file </a> acts as the default layout for all server side views rendered by your app.  
 
@@ -532,8 +497,7 @@ Feel free to change this as you see fit.  Its also a great place to include java
 
 
 
-
-# myApp/views
+# views
 ### Purpose
 This is the directory that holds all of your custom views.  
 
@@ -543,8 +507,7 @@ To create a custom view, create a new directory inside of this then create a new
 
 
 
-
-# myApp/api/adapters
+# api/adapters
 ### Purpose
 This is the directory that holds custom adapters.  If you arent writing any custom adapters, don't worry about this folder.  
 
@@ -552,8 +515,7 @@ This is the directory that holds custom adapters.  If you arent writing any cust
 > Check out the guide to writing custom adapters
 
 
-
-# myApp/api/controllers
+# api/controllers
 ### Purpose
 This is the directory that holds your controllers.  In Sails, controllers are javascript files that contain logic for interacting with models and rendering appropriate views to the client.
 
@@ -562,8 +524,7 @@ When you call `sails generate controller cats` via the command line from inside 
 ### More Info
 > Check out the guide to controllers
 
-
-# myApp/api/models
+# api/models
 ### Purpose
 This is the directory that holds your models.  In Sails, models are the structures that contain data for your Sails App.
 
@@ -573,8 +534,7 @@ When you call `sails generate model cats` via the command line from inside your 
 > For more information about working with models, check out our guides on them.
 
 
-
-# myApp/api/policies/isAuthenticated.js
+# api/policies/isAuthenticated.js
 ### Purpose
 This is an example policy file against which all routes are checked before allowing a client access to any part of your app.  By default, it allows everyone to access everything but this can (and probably should) be changed before you switch into production mode.     
 
@@ -585,8 +545,7 @@ In Sails, a policy is simply express middleware that does something to authentic
 
 
 
-
-# myApp/assets/js/socket.io.js
+# assets/js/socket.io.js
 ### Purpose
 This is a client side javascript file that was created by Sails to make communication between your Sails app and Socket.IO easier and more useful.  This file contains the extra Socket.IO methods that allow you to mimic http requests over Socket.IO .  You probably won't ever have to touch this file.
 
@@ -595,8 +554,7 @@ This is a client side javascript file that was created by Sails to make communic
 
 
 
-
-# myApp/config/adapters.js
+# config/adapters.js
 ### Purpose
 This file contains the settings for all of your adapters.
 
@@ -609,8 +567,7 @@ This file lets you create different global "saved settings" that you can mix and
 
 
 
-
-# myApp/config/policies.js
+# config/policies.js
 ### Purpose
 This file contains the default policies for your app.
 
@@ -620,8 +577,7 @@ Policies are simply Express middleware functions which run before your controlle
 > Check out our guide on custom policies.
 
 
-
-# myApp/config/routes.js
+# config/routes.js
 ### Purpose
 This file is where you can define explicit routes to connect clients with the resources that they request.
 
@@ -635,8 +591,7 @@ You can even define routes in a way such that part of the requested URL is treat
 
 
 
-
-# myApp/config/sockets.js
+# config/sockets.js
 ### Purpose
 This is a configuration file that allows you to customize the way your app talks to clients over Socket.io . 
 
@@ -651,8 +606,7 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
 > Socket.io configuration options <a href="https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO"> can be found here </a>.
 
 
-
-# myApp/views/403.ejs
+# views/403.ejs
 ### Purpose
 This is the default "403: Forbidden" page.  User agents that don't "Accept" HTML will see a JSON version instead.  You can customize the control logic for your needs in `myApp/config/403.js`
 
@@ -662,8 +616,7 @@ Furthermore, you can change the appearance of this page by editing it directly.
 
 
 
-
-# myApp/views/404.ejs
+# views/404.ejs
 ### Purpose
 This is the default "404: Not Found" page.  User agents that don't "Accept" HTML will see a JSON version instead.  You can customize the control logic for your needs in `myApp/config/404.js`
 
@@ -672,8 +625,7 @@ Furthermore, you can change the appearance of this page by editing it directly.
 ### More Info
 
 
-
-# myApp/views/500.ejs
+# views/500.ejs
 ### Purpose
 This is the default "500: Server Error" page.  User agents that don't "Accept" HTML will see a JSON version instead.  You can customize the control logic for your needs in `myApp/config/500.js`
 
