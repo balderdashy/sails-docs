@@ -209,7 +209,7 @@ Atomic, consistent, isolated, and durable.
 
 ## Offcially supported adapters
 
-Mike and the team behind Sails.js at Balderdash support a handful of commonly used adapters.
+Cody, Mike, and the team behind Sails.js at Balderdash support a handful of commonly used adapters.
 
 ### Disk
 
