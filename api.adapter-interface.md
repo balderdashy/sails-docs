@@ -276,13 +276,11 @@ Community adapters are crucial to the success and central to the philosophy of a
 ### [Mandrill (email-sending service by MailChimp)](https://github.com/mikermcneil/sails-mandrill)
 + One-Way
 
-### [Heroku](https://github.com/chadn/heroku-sails)
-None
+### Heroku
+> Not currently available as open-source.
 
 ### Git
->Not currently available.
-
-None
+> Not currently available.
 
 ### [CouchDB](https://github.com/craveprogramminginc/sails-couchdb)
 + Semantic
@@ -300,12 +298,10 @@ None
 + Pubsub
 
 ### [Twitter](https://github.com/balderdashy/sails-twitter)
-None
 
 ### [ElasticSearch](https://github.com/UsabilityDynamics/waterline-elasticsearch)
 + Semantic
 
 ### [JSDom](https://github.com/mikermcneil/sails-jsdom)
-None
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
