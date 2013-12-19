@@ -354,7 +354,11 @@ This folder contains the information that is used by your app in supporting visi
 
 ### More Info
 
+# myApp/config/locales/fr.json
+### Purpose
+This tells French browsers sexy things in JSON. 
 
+### More Info
 
 
 # myApp/config/local.js
