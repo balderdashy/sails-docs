@@ -1035,11 +1035,12 @@ The `save` method updates your record in the database using the current attribut
 ```javascript
 
 User.find().exec(
-  function(err,myRecord){
+  function(err,myRecords){
 
     // Grab a record off the top of the returned array and save a new attribute to it
-    myRecord.pop().name = 'Hank';
-    myRecord.pop().save(
+    var getOneRecord = myRecords.pop();
+    getOneRecord.name = 'Hank';
+    getOneRecord.save(
       function(err,s){
         console.log('User with ID '+s.id+' now has name '+s.name);
       });
@@ -1078,12 +1079,13 @@ Destroys the your record in the database. It returns an error in the callback if
 ```javascript
 
 User.find().exec(
-  function(err,myRecord){
+  function(err,myRecords){
 
     // Grab a record off the top of the returned array then destroy it
-    myRecord.pop().destroy(
+    var getOneRecord = myRecords.pop();
+    getOneRecord.destroy(
       function(err){
-        console.log('User with ID '+myRecord.pop().id+' was destroyed');
+        console.log('User with ID '+getOneRecord.id+' was destroyed');
       });
   });
 
@@ -1121,11 +1123,12 @@ Checks the current keys/values on the record against the validations specified i
 ```javascript
 
 User.find().exec(
-  function(err,myRecord){
+  function(err,myRecords){
 
     // Grab a record off the top, change it to the wrong data type, then try to validate
-    myRecord.pop().name = ['Marie','Hank'];
-    myRecord.pop().validate(
+    var getOneRecord = myRecords.pop();
+    getOneRecord.name = ['Marie','Hank'];
+    getOneRecord.name.validate(
       function(err){
         if (err)
           console.log(JSON.stringify(err));
