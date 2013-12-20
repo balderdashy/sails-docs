@@ -175,7 +175,7 @@ User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(er
 ```
 ### Notes
 > Any string arguments passed must be the ID of the record.
-
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
 
 # .findOne( `criteria` , [`callback`] )
@@ -211,6 +211,7 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 ```
 ### Notes
 > Any string arguments passed must be the ID of the record.
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
 
 
@@ -250,6 +251,7 @@ User.find({}).exec(function findCB(err,found){
 ### Notes
 > Any string arguments passed must be the ID of the record.
 > This method will ALWAYS return records in an array.
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
 <!--
 # .validate()
@@ -486,6 +488,7 @@ User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 ```
 ### Notes
 > Any string arguments passed must be the ID of the record.
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
 
 # .findOneBy`<attribute>`( `criteria` , [`callback`] )
