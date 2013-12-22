@@ -32,7 +32,7 @@ This is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(r
 Get all ponies in the database:
 
 _via the URL bar in your web browser_
-`http://localhost:1337/pony/1`
+`http://localhost:1337/pony`
 
 #### Expected Response
 
