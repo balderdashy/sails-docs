@@ -4,7 +4,7 @@ Thank you for your interest in supporting Sails!  It makes us feel warm and fuzz
 
 
 <!--
--->
+
 ---------------------------------------------------------------
 ###### `<DRAFT>`
 
@@ -30,7 +30,7 @@ Whether you're an advanced user or a Sails n00b, there are many different ways t
 ###### `</DRAFT>`
 ---------------------------------------------------------------
 
-
+-->
 
 ## Guidelines
 Like any OSS project, we must have guidelines for contributions.  It helps protect the quality of the code, and gives all of us confidence that our framework will be robust and dependable.
