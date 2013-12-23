@@ -5,6 +5,10 @@ To install the latest stable release with the command-line tool:
 
 	sudo npm -g install sails
 
+On Windows, you don't need sudo:
+
+	npm -g install sails
+
 ## Creating a New Sails Project
 Create a new app:
 
