@@ -171,7 +171,7 @@ This is where you will put all of the .css files that you would like to be stati
 
 
 
-# myApp/config/404.js
+# myApp/config/400.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '400' status code for an http request.  
 
@@ -185,7 +185,7 @@ NOTE: This function is Sails middleware. This means that not only do `req` and `
 
 
 
-# myApp/config/404.js
+# myApp/config/403.js
 ### Purpose
 This file contains customizable Sails middleware used to assist with delivering the '403' status code for an http request.  
 
