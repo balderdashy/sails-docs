@@ -111,7 +111,7 @@ with json, strings for html, Buffer instances, or numbers representing the statu
 following are all valid uses:
 
 ```javascript
-	res.send(); // 204
+	res.send(); // 200
 	res.send(new Buffer('wahoo'));
 	res.send({ some: 'json' });
 	res.send('<p>some html</p>');
