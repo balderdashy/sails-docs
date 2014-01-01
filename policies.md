@@ -113,7 +113,7 @@ module.exports = function isNiceToAnimals (req, res, next) {
 
 ## What about me?  I'm using Passport?!
 
-Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
+Passport [works great](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html) with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
 There are a few good examples of this floating around.  Here's a good one (hasn't been tested in v0.9.x yet):
 https://gist.github.com/theangryangel/5060446
