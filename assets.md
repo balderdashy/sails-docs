@@ -5,7 +5,7 @@ Assets refer to anything (js, css, html, images, etc) that needs to be accessibl
 The `assets` folder is where all of your assets will go, and will be served as static assets. 
 If you have experience with [Express](http://www.expressjs.com), it is equivalent to the `public` folder (the same as in Sails 0.8.x).  
 
-However, Sails does do a few extra things to help you out:
+However, Sails does do a few extra things to help you out:  
  - Automatic LESS compilation
  - Automatic JST compilation
  - Optional automatic asset injection, minification, and concatenation
