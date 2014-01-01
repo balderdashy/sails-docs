@@ -48,6 +48,7 @@ As of Sails v0.9, all new projects come with a Gruntfile. Grunt is to Node.js as
 
 ### Asset bundling
 Sails bundles support for LESS and JST templates
+
   + If you use the `--linker` option when creating your new project, your assets will be automatically bundled up and included in your layout HTML
   + Front-end support for SASS, Handlebars, CoffeeScript, Stylus, TypeScript, etc. is as easy as modifying your app's Gruntfile
   + In production mode, Sails will also minify and concatenate your assets
