@@ -1096,7 +1096,6 @@ User.find().exec(
 
 ```
 
-### Notes
 
 
 # * .validate()
