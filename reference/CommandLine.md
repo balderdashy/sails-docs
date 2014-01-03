@@ -3,7 +3,7 @@
 
 Here is some stuff about the command line
 
-# sails new
+#sails new
 ### Purpose
 
 Creates a new Sails app in the current directory.
@@ -20,7 +20,7 @@ info: New app created!
 This will create your app using <a href="http://omfgdogs.com> Automatic Asset Linking </a>
 
 
-# sails generate
+#sails generate
 ### Purpose
 
 Generates a model and/or controller for the app in the current directory.
@@ -61,7 +61,7 @@ This will create the files 'api/controllers/PetController.js' and 'api/models/Pe
 
 > 
 
-# sails lift
+#sails lift
 ### Purpose
 The lift argument launches the sails app in the current directory.  You can also add the folowing flags behind lift for more control.
 
