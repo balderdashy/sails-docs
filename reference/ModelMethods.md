@@ -1077,7 +1077,6 @@ Destroys the your record in the database. It returns an error in the callback if
 ### Example Usage
 
 ```javascript
-
 User.find().exec(
   function(err,myRecords){
 
@@ -1092,9 +1091,8 @@ User.find().exec(
 // User with ID 1 was destroyed
 
 // Don't forget to handle your errors.
-
-
 ```
+
 
 
 
