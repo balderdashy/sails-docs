@@ -11,7 +11,7 @@ While the following documentation focuses on HTTP, you can also use Sails' built
 
 ### Notes
 
-> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the [Socket-Client](a href="http://omfgdogs.com") section of reference for example usage.
+> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the [Socket-Client](http://omfgdogs.com) section of reference for example usage.
 
 # Find Records
 
