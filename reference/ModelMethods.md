@@ -404,12 +404,12 @@ Stream all the Users ! </div>
 ### Purpose
 Returns an instance of the specified collection for performing raw Mongo queries.
 
-### Overview
+<!--### Overview
 #### Parameters
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-||||
+|||||
 
 #### Callback Parameters
 
@@ -422,7 +422,7 @@ Returns an instance of the specified collection for performing raw Mongo queries
 
 ```javascript 
 
-```
+```-->
 ### Notes
 > This method only works with Mongo! use .query() for PostgreSQL and mySQL.
 
@@ -431,18 +431,18 @@ Returns an instance of the specified collection for performing raw Mongo queries
 ### Purpose
 Performs raw SQL queries for PostgreSQL and mySQL.
 
-### Overview
+<!-- ### Overview
 #### Parameters
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-||||
+|||||
 
 #### Callback Parameters
 
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-||||
+|||| -->
 
 
 ### Example Usage
