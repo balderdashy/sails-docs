@@ -4,8 +4,9 @@ The logger file configures the log level for your app, as well as the transport.
 
 *(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
 
-##There are 5 different levels to the log:
+##There are 6 different levels to the log:
 
++ **'silent'** : Don't log anything.
 + **'error'** : Display calls to `.error()`
 + **'warn'**    : Display calls from `.error()` to `.warn()`
 + **'debug'**	: Display calls from `.error()`, `.warn()` to `.debug()`
@@ -17,7 +18,7 @@ By default, the level is set to `info`.
 
 ##Logging at Runtime
 
-To log the levels during during runtime, use the appropriate methods during runtime
+To log at each levels during during runtime, use the appropriate methods during runtime
 
 + **error**: sails.log.error('');
 + **warn**: sails.log.warn('');
