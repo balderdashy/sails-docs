@@ -670,7 +670,6 @@ module.exports = {
 }
 
     // Don't forget to handle your errors
- 
 ```
 
 views/users/testSocket.ejs
@@ -823,7 +822,6 @@ This one will subscribe clients to model instances (records).  They allows clien
 ### Example Usage
 Controller Code
 ```javascript
-
     User.find({}).exec(function(e,listOfUsers){
         User.subscribe(req.socket,listOfUsers);
         console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
@@ -852,9 +850,7 @@ Controller Code
 ### Example Usage
 Controller Code
 ```javascript
-
 User.unsubscribe(req.socket, [] );
-
 ```
 
 ### Notes
@@ -875,9 +871,7 @@ This method will unsubscribe a socket from the model instances (records) who's I
 ### Example Usage
 Controller Code
 ```javascript
-
 User.unsubscribe(req.socket,[1,2,3,4,5,6]);
-
 ```
 
 ### Notes
