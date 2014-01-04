@@ -53,7 +53,6 @@ Creates a new instance of this model in the database.
 ### Example Usage
 
 ```javascript 
-
 // create a new record with name 'Walter Jr'
 
 User.create({name:'Walter Jr'}).exec(function createCB(err,created){
@@ -164,7 +163,6 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 ### Example Usage
 
 ```javascript 
-
 User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
   console.log('What\'s cookin\' '+record.name+'?');
   });
@@ -442,14 +440,14 @@ Performs raw SQL queries for PostgreSQL and mySQL.
 
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-|||| -->
+||||
 
 
 ### Example Usage
 
 ```javascript 
 
-```
+```-->
 ### Notes
 > This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
@@ -1150,8 +1148,8 @@ module.exports = {
 ```
 
 ### Notes
-> This is shorthand for Model.validate({ attributes }, cb)
-> If you .save() without first validating, waterline tries to convert.  If it cant, it will throw an error.
+> This is shorthand for `Model.validate({ attributes }, cb)`
+> If you `.save()` without first validating, waterline tries to convert.  If it cant, it will throw an error.
 > In this case, it would have converted the array to the string 'Marie,Hank'
 
 > There will be no parameters in the callback unless there is an error.  No news is good news.
