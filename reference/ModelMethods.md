@@ -1391,9 +1391,7 @@ myQuery.exec(function callBack(err,results){
 # .exec()
 ### Purpose
 This indicates the end of the chain and signals the adapter to run the query that it has been building. 
-
 #### Parameters
-
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |  Callback           |      `function`     | Yes	       |
@@ -1403,13 +1401,10 @@ This indicates the end of the chain and signals the adapter to run the query tha
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Data Returned      | `{}`, `[{}]`, `int` |
-
 ### Example Usage
 
 ```javascript 
-
 // refer to any of the examples above
-
 ```
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
