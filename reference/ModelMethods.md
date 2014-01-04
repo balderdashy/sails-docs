@@ -254,52 +254,6 @@ User.find({}).exec(function findCB(err,found){
 
 
 
-
-
-<!--
-# .validate()
-### Purpose
-This method ensures that the current attributes on your model instance meet the criteria you defined in your model.
-
-### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes        |
-| 2 |     Callback        | `function`          | Yes        |
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-
-
-### Example Usage
-
-```javascript 
-
-User.findOne(1).exec(function(err,myRecord){
-
-  // petName is defined as a `string`.  Let's give it an array and see what happens.
-
-  myRecord.petName = [1,2];
-  
-  User.validate(myRecord,function(err){
-    sails.log('Error:'+JSON.stringify(err));
-  });
-});
-
-// Error:{"ValidationError":{"petName":[{"data":[1,2],"message":"Validation error: \"1,2\" is not of type \"string\"","rule":"string"}]}}
-
-```
-
-### Notes
-> Any string arguments passed must be the ID of the record.
--->
-
-
 # .count( `criteria` , `criteria` , [`callback`] )
 ### Purpose
 Returns the number of records in your database that meet the given search criteria.
@@ -407,25 +361,7 @@ Stream all the Users ! </div>
 ### Purpose
 Returns an instance of the specified collection for performing raw Mongo queries.
 
-<!--### Overview
-#### Parameters
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-|||||
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-||||
-
-
-### Example Usage
-
-```javascript 
-
-```-->
 ### Notes
 > This method only works with Mongo! use .query() for PostgreSQL and mySQL.
 
@@ -434,25 +370,7 @@ Returns an instance of the specified collection for performing raw Mongo queries
 ### Purpose
 Performs raw SQL queries for PostgreSQL and mySQL.
 
-<!-- ### Overview
-#### Parameters
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-|||||
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-||||
-
-
-### Example Usage
-
-```javascript 
-
-```-->
 ### Notes
 > This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
