@@ -17,7 +17,7 @@ debug: Building new Sails.js app in ./myApp...
 info: New app created!
 ```
 
-This will create your app using <a href="http://omfgdogs.com> Automatic Asset Linking </a>
+This will create your app using [Automatic Asset Linking](http://omfgdogs.com).
 
 
 # sails generate
@@ -57,9 +57,6 @@ info: Generating model and controller for pet...
 
 This will create the files 'api/controllers/PetController.js' and 'api/models/Pet.js'
 
-### Notes
-
-> 
 
 # sails lift
 ### Purpose
@@ -147,9 +144,6 @@ verbose: Grunt :: Done, without errors.
 
 ```
 
-### Notes
-> 
-
 
 # sails console
 ### Purpose
@@ -193,5 +187,5 @@ info: v0.9.7
 
 
 ### Notes
-If you have Sails installed locally (i.e. `npm install sails`), its version will be returned.
-Otherwise, the global version of Sails will be used.
+> If you have Sails installed locally (i.e. `npm install sails`), its version will be returned.
+> Otherwise, the global version of Sails will be used.
