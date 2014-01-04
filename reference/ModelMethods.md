@@ -1392,9 +1392,9 @@ myQuery.exec(function callBack(err,results){
 ### Purpose
 This indicates the end of the chain and signals the adapter to run the query that it has been building. 
 #### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Callback           |      `function`     | Yes	       |
+|  #  |     Description     | Accepted Data Types | Required ? |
+|-----|---------------------|---------------------|------------|
+| 1   |  Callback           |      `function`     | Yes	       |
 #### Callback Parameters
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
