@@ -126,7 +126,7 @@ then in your model definition, add `adapter: 'memory'`:
   }
 ```
 
-Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters <a href="https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md">here</a>.
+Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters [here](https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md).
 
 
 
@@ -655,9 +655,6 @@ Sails session integration leans heavily on the great work already done by Expres
 Socket.io with the Connect session store. It uses Connect&rsquo;s cookie parser to normalize configuration
 differences between Express and Socket.io and hooks into Sails&rsquo; middleware interpreter to allow you
 to access and auto-save to `req.session` with Socket.io the same way you would with Express.
-
-For more information on configuring the session, check out:
-http://sailsjs.org/#!documentation
 
 #### `secret`
 Session secret is automatically generated when your new app is created.
