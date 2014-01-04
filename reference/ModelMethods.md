@@ -806,13 +806,9 @@ Controller Code
 ```javascript
     User.subscribe(req.socket);
     console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
-  
 ```
 
-### Notes
-- This is equivelent to blah blah in socket.io
-
-# .subscribe(`{}`,`[]`)
+#.subscribe(`{}`,`[]`)
 
 ### Purpose
 This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
