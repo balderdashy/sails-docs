@@ -558,12 +558,6 @@ PublishCreate doesn't actually create anything.  It simply publishes information
 | 1 | Data to Send        |   `{}`              |   No       |
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
-
 
 ### Example Usage
 UsersController.js
@@ -642,14 +636,6 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 | 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
 | 2 | Data to Send        |   `{}`              |   No      |
 | 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
-
-
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
 
 
 ### Example Usage
@@ -732,11 +718,6 @@ Publish the destruction of a model
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
 ### Example Usage
 
 UsersController.js
@@ -819,11 +800,6 @@ Click Me to destroy user 'Walter' ! </div>
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -847,11 +823,6 @@ This one will subscribe clients to model instances (records).  They allows clien
 | 2 | Record IDs          | `[]`, `string`, `int` | No        |
 | 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -882,13 +853,6 @@ Controller Code
 | 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
-
-
 ### Example Usage
 Controller Code
 ```javascript
@@ -911,11 +875,6 @@ This method will unsubscribe a socket from the model instances (records) who's I
 | 2 | Record IDs          | `[]`, `string`, `int` | No         |
 | 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |  NO CALLBACK        |                     |
 
 ### Example Usage
 Controller Code
@@ -1086,19 +1045,6 @@ module.exports = {
 The toObject method returns a cloned model instance (record) but stripped of all instance methods.
 
 ### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-|   |    NO PARAMS        |                     |            |
-
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |    NO CALLBACK      |                     |
-
 
 #### Return Value
 
@@ -1125,18 +1071,6 @@ The toObject method returns a cloned model instance (record) but stripped of all
 This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.
 
 ### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-|   |    NO PARAMS        |                     |            |
-
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |    NO CALLBACK      |                     |
 
 
 #### Return Value
