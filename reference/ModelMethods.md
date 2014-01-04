@@ -251,6 +251,11 @@ User.find({}).exec(function findCB(err,found){
 > This method will ALWAYS return records in an array.
 > If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
+
+
+
+
+
 <!--
 # .validate()
 ### Purpose
