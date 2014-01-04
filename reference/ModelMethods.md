@@ -1395,14 +1395,12 @@ This indicates the end of the chain and signals the adapter to run the query tha
 | # |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |  Callback           |      `function`     | Yes	       |
-
 #### Callback Parameters
 | # |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Data Returned      | `{}`, `[{}]`, `int` |
 ### Example Usage
-
 ```javascript 
 // refer to any of the examples above
 ```
