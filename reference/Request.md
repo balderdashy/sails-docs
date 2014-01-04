@@ -33,7 +33,6 @@ Below is a chart describing Sails.js support of the .req() methods.
 | req.acceptedCharsets | :-) | :-( |
 | req.acceptsCharset() | :-) | :-( |
 | req.acceptsLanguage() | :-) | :-( |
-|||||
 | req.isSocket | :-) | :-) |
 | req.params.all() | :-) | :-) |
 | req.socket.id | :-( | :-) |
