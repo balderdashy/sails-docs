@@ -1,5 +1,6 @@
 # Changelog
 
+<!--
 ## 0.10.0
 *Some time in December, 2013*
 
@@ -41,7 +42,23 @@
   + `res.notFound()`
   + `res.forbidden( msgOrObj )`
   + `res.badRequest( msgOrObj )`
+-->
 
+
+# Changelog
+
+## 0.9.8 (latest stable)
+*December 16, 2013*
+
++ @sgress454	Hotfix for CORS issue when no Origin header is present. …	  f42da3c
++ @mikermcneil	Update README.md	 1bf1d15
++ @bicherele	Update es.json …	 ddb9a07
++ @andyzhau	Fix the join room variable reference error.	 57783a3
++ @mikermcneil	Use npm version of linker	 5459119
++ @mikermcneil	Update CHANGELOG.md	 aae737f
++ @devel-pa	lodash library updated to last version available (2.4.1)	 c71ce81
++ @mikermcneil	Hot fix to protect connect cookie parsing.	 e181656
++ @mikermcneil	Rebased from #1012 as hotfix for windows view issue.	 031ebe1
 
 
 ## 0.9.7  (latest stable)
@@ -241,3 +258,7 @@ _Sunday, February 24, 2013_
 ## < 0.8.77
 + I wasn't keeping good notes, sorry :(
 + Check out https://github.com/balderdashy/sails/commits/master if you want to dive in.
+
+
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/changelog)
