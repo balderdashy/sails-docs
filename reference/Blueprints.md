@@ -10,7 +10,7 @@ While the following documentation focuses on HTTP, you can also use Sails' built
 
 ### Notes
 
-> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the [Socket-Client](./SocketClient/SocketClient.html) section of reference for example usage.
+> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the [Socket-Client](./#!documentation/reference/SocketClient/SocketClient.html) section of reference for example usage.
 
 # Find Records
 
