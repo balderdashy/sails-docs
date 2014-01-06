@@ -18,7 +18,7 @@ debug: Building new Sails.js app in ./myApp...
 info: New app created!
 ```
 
-This will create your app using [Automatic Asset Linking](http://omfgdogs.com).
+This will create your app using [Automatic Asset Linking](./#!documentation/guides/assets).
 
 
 # sails generate
