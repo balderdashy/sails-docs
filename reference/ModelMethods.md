@@ -1135,9 +1135,9 @@ module.exports = {
 ### Purpose
 
 ### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Criteria Object    |      `{}`           | Yes	       |
+| 1 |  Criteria Object    |      `{}`           | Yes        |
 
 
 ### Example Usage
@@ -1161,9 +1161,9 @@ myQuery.exec(function callBack(err,results){
 ### Purpose
 
 ### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Number to Return   |      `int`         | Yes	       |
+| 1 |  Number to Return   |      `int`         | Yes         |
 
 ### Example Usage
 
@@ -1184,9 +1184,9 @@ myQuery.exec(function callBack(err,results){
 ### Purpose
 
 ### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Number to Skip     |      `int`          | Yes	       |
+| 1 |  Number to Skip     |      `int`          | Yes        |
 
 ### Example Usage
 
@@ -1206,9 +1206,9 @@ myQuery.exec(function callBack(err,results){
 ### Purpose
 
 ### Parameters
-| # |     Description     | Accepted Data Types | Required ? |
+|   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Sort String        |      `string`       | Yes	       |
+| 1 |  Sort String        |      `string`       | Yes        |
 
 ### Example Usage
 
@@ -1239,11 +1239,11 @@ myQuery.exec(function callBack(err,results){
 ### Purpose
 This indicates the end of the chain and signals the adapter to run the query that it has been building. 
 #### Parameters
-|  #  |     Description     | Accepted Data Types | Required ? |
+|     |     Description     | Accepted Data Types | Required ? |
 |-----|---------------------|---------------------|------------|
-| 1   |  Callback           |      `function`     | Yes	       |
+| 1   |  Callback           |      `function`     | Yes        |
 #### Callback Parameters
-| # |     Description     | Possible Data Types |
+|   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
 | 2 |  Data Returned      | `{}`, `[{}]`, `int` |
