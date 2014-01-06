@@ -1,5 +1,4 @@
 # Blueprints
-
 ### Overview
 
 By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
