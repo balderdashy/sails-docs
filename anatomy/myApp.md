@@ -24,7 +24,7 @@ In it you will find the following.
 - Services: Services are similar to controller actions.  They contain logic that used by your app that doesn't necessarily rely on `.req()` and `.res()`.  
 
 ### More Info
-If you're new to MVC, check out [This link](http://omfgdogs.com).
+If you're new to MVC, check out [this link](http://omfgdogs.com).
 
 
 
