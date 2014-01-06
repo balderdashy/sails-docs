@@ -791,7 +791,7 @@ Click Me to destroy user 'Walter' ! </div>
 
 # .subscribe(`{req.socket}`)
 ### Purpose
-1 of 2 subscribe methods.  This one will subscribe clients to the model class.  They allows clients to see message emitted by .publishCreate() only.
+This is 1 of the 2 subscribe methods.  It will subscribe clients to the model class.  This allows clients to see message emitted by .publishCreate() only.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
