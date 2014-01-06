@@ -214,7 +214,7 @@ Cross-Origin Resource Sharing is like a more modern version of JSONP. It allows 
 
 Unlike JSONP, it works with POST, PUT, and DELETE requests
 
-For more information on CORS, check out [this here hyperlink](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)".
+For more information on CORS, check out [this here hyperlink](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
 
 This can be changed on a per-route basis by adding a "cors" object to the route configuration like this
 
