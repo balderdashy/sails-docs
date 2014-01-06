@@ -390,7 +390,7 @@ This file is where Sails looks to find out which templating engine to use when r
 # myApp/Gruntfile.js
 ### Purpose
 
-Sails uses [GRUNT](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails for this purpose. 
+Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails for this purpose. 
 
 If you created your Sails app with `sails new foo --linker`, this is also where you can define the location of files that are automatically minified and injected (in order) into the views rendered by your app.
 
@@ -403,7 +403,7 @@ At the top part of this file, you'll find a few of the most commonly configured 
 
 # myApp/package.json
 ### Purpose
-This is a standard configuration file for [NPM](https://npmjs.org/doc/json.html). Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.
+This is a standard configuration file for [npm](https://npmjs.org/doc/json.html). Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.
 
 ### More Info
 > Check out [this awesome interactive guide by Nodejitsu](http://package.json.nodejitsu.com) explaining package.json 
