@@ -21,7 +21,7 @@ They perform tasks on their parent record. Imagine you have a small monkey named
 
 In addition to useful ones like .save(), .destroy(), and .validate() , you can also define your own custom ones inside of your model.
 
-If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the guide on models at http://omfgdogs.com
+If you would like to write your own instance methods, you will declare them inside of your model.  For more information, see the [guide on models](#!documentation/guides/models)
 
 
 ### Notes
