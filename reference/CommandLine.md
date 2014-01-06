@@ -1,7 +1,8 @@
 # Command Line
 ### Overview
 
-Here is some stuff about the command line
+The Sails command line tool is used to create new projects, launch existing ones, add new models and controllers, and a few other things.  
+
 
 # sails new
 ### Purpose
