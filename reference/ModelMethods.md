@@ -549,7 +549,7 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Any string arguments passed must be the ID of the record.
 
 
-# .publishCreate( `{publish}` )
+# .publishCreate( [`data`],[`socket`] )
 ### Purpose
 PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
 
@@ -627,7 +627,7 @@ Click Me to add a new 'Walter' ! </div>
 > Published objects can be accessed via the data key on the socket callback parameter. 
 
 
-# .publishUpdate( `{publish}` )
+# .publishUpdate( `{publish}`,[`data`],[`socket`] )
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
@@ -807,10 +807,10 @@ Controller Code
     console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
 ```
 
-#.subscribe(`{}`,`[]`)
+#.subscribe(`socket`,[`recordIDs`],[`socket`])
 
 ### Purpose
-This one will subscribe clients to model instances (records).  They allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
+This subscribes clients to existing model instances (records).  It allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
@@ -837,9 +837,9 @@ Controller Code
 > This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
 > Any string arguments passed must be the ID of the record.
 
-# .unsubscribe(`{req.socket}`)
+# .unsubscribe(`socket`,[`socket`])
 ### Purpose
-1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
+This is 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
@@ -857,7 +857,7 @@ User.unsubscribe(req.socket, [] );
 > Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
 > Any string arguments passed must be the ID of the record.
 
-# .unsubscribe(`{req.socket}`,`[recordIDs]`)
+# .unsubscribe(`socket`,[`recordIDs`],[`socket`])
 ### Purpose
 This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
 
@@ -880,7 +880,7 @@ User.unsubscribe(req.socket,[1,2,3,4,5,6]);
 > Any string arguments passed must be the ID of the record.
 
 
-# * .save()
+# * .save(`callback`)
 
 ### Purpose
 The `save` method updates your record in the database using the current attributes.  It then returns the newly saved object in the callback. 
@@ -923,9 +923,9 @@ User.find().exec(
 
 ```
 ### Notes
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
-
-# .destroy()
+# .destroy(`callback`)
 
 ### Purpose
 Destroys the your record in the database. It returns an error in the callback if it has trouble. 
@@ -962,11 +962,12 @@ User.find().exec(
 
 // Don't forget to handle your errors.
 ```
+### Notes
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
 
 
-
-# * .validate()
+# * .validate(`callback`)
 
 ### Purpose
 Checks the current keys/values on the record against the validations specified in the attributes object of your model. 
@@ -1131,8 +1132,9 @@ module.exports = {
 > Note, This method is not asynchronous
 
 
-# .where()
+# .where(`criteria`)
 ### Purpose
+
 
 ### Parameters
 |   |     Description     | Accepted Data Types | Required ? |
@@ -1157,7 +1159,7 @@ myQuery.exec(function callBack(err,results){
 
 
 
-# .limit()
+# .limit(`integer`)
 ### Purpose
 
 ### Parameters
@@ -1180,7 +1182,7 @@ myQuery.exec(function callBack(err,results){
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
-# .skip()
+# .skip(`integer`)
 ### Purpose
 
 ### Parameters
@@ -1202,7 +1204,7 @@ myQuery.exec(function callBack(err,results){
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
-# .sort()
+# .sort(`string`)
 ### Purpose
 
 ### Parameters
@@ -1235,9 +1237,9 @@ myQuery.exec(function callBack(err,results){
   - ASC
   - DES
 
-# .exec()
+# .exec(`callback`)
 ### Purpose
-This indicates the end of the chain and signals the adapter to run the query that it has been building. 
+This is run at the end of a chain of stringable methods.  It signals the adapter to run the query. 
 #### Parameters
 |     |     Description     | Accepted Data Types | Required ? |
 |-----|---------------------|---------------------|------------|
