@@ -14,8 +14,6 @@ These methods provide different levels of logging functionality in sails.
 
 ### Example Usage
 ```
-
-
 // Logs using the log level currently set in config.
 sails.log('There',{sure:'are'},['a','lot'],'of',[{log:'levels'}, 'huh'],'?',true);
 
@@ -44,7 +42,6 @@ The config object allows you to see your apps configuration settings.
 
 ### Example Usage
 ```javascript
-
 // Make sure csrf is enabled if we are in production mode.  Throw an error otherwise.
 
 if (sails.config.environment && !sails.config.csrf)
@@ -63,7 +60,6 @@ If you disable globals, you can use sails.models.`<model name>` to access your m
 ### Example Usage
 
 ```javascript
-
 sails.models.pet.find().limit(1).exec(function(err,record){
 	console.log('My Pet is called '+record[0].name);
 });
@@ -87,7 +83,7 @@ Here are some examples:
 
 This is the raw reference to socket.io .  Use it when you want low level access to socket.io .  If you are new to sockets, you should use the <a href=""> sails pubsub class methods </a> for socket.io .  
 
-For more information, see the socket.io docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> right here </a>.
+For more information, see the socket.io docs [right here](https://github.com/LearnBoost/socket.io/wiki/Rooms).
 
 #### sails.io.sockets.clients(`<roomName>`)
 Gives an array containing the sockets currently connected to the supplied room name (string).
@@ -96,7 +92,6 @@ Gives an array containing the sockets currently connected to the supplied room n
 
 UsersController.js
 ```javascript
-
 module.exports{
 
   index: function(req,res){
@@ -147,7 +142,6 @@ Emit a message to every client, regardless of what room they are in.
 
 UsersController.js
 ```javascript
-
 module.exports{
 
   index: function(req,res){
@@ -200,7 +194,6 @@ Send a message to everyone in the specified room.
 `UsersController.js`
 
 ```javascript
-
 module.exports{
 
   index: function(req,res){
