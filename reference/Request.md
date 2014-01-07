@@ -70,15 +70,13 @@ else
 
 ```
 
-### Notes
 
-# req.param (`string`)
+# req.param(`string`)
 ### Purpose
 This method searches the http request body , header, and query string for a parameter with name equal to the supplied parameter.  
 
 ### Example Usage
 ```javascript
-
 var myParam = req.param('blueStuff');
 
 // myParam would contain the value of 'blueStuff' 
@@ -119,14 +117,13 @@ If a file field was named "image" and as a value contained a sucessfully uploade
   mime: [Getter] }
 ```
 
-### Notes
+
 
 # req.route
 ### Purpose
-This is an object containing information about the <a href=http://omfgdogs.com>route</a> by which request traveled.
+This is an object containing information about the [route](http://omfgdogs.com) by which request traveled.
 ### Example Usage
 ```javascript
-
 console.log(req.route);
 
 /*
@@ -141,7 +138,6 @@ console.log(req.route);
 
 ```
 
-### Notes
 
 # req.cookies
 
@@ -150,7 +146,6 @@ This contains the unsigned cookies sent by the user-agent.
 
 ### Example Usage
 ```javascript
-
 // Assuming the browser sends a cookie named 'Yummy'
 console.log(req.cookies.name);
 
@@ -168,7 +163,6 @@ This contains the signed cookies sent by the user-agent.
 
 ### Example Usage
 ```javascript
-
 // Assuming the browser sends a SIGNED cookie named 'Yummy'
 console.log(req.signedCookies.user);
 
@@ -187,7 +181,6 @@ Get the value of a field within the http request header with name equal to the s
 
 ### Example Usage
 ```javascript
-
 // assuming a header field named 'myField' with value 'cat'
 
 console.log(req.get('myField'));
@@ -196,12 +189,11 @@ console.log(req.get('myField'));
 
 ```
 
-### Notes
 
 # req.accepts(`string`)
 ### Purpose
 
-Checks if the supplied argument is found in the list of acceptable <a href="http://omfgdogs.com">Content-Type</a>s specified by the user-agent who sent the request.
+Checks if the supplied argument is found in the list of acceptable [Content-Type](http://omfgdogs.com)s specified by the user-agent who sent the request.
 ### Example Usage
 ```javascript
 // Accept: text/html
@@ -229,7 +221,6 @@ req.accepts('html, json');
 //  "json"
 ```
 
-### Notes
 
 # req.accepted
 ### Purpose
@@ -251,7 +242,6 @@ console.log(req.accepted);
 */
 ```
 
-### Notes
 
 # req.is()
 ### Purpose
@@ -259,7 +249,6 @@ Checks if the incoming request contains the "Content-Type" header field, and it 
 
 ### Example Usage
 ```javascript
-
 // With Content-Type: text/html; charset=utf-8
 req.is('html');
 req.is('text/html');
@@ -277,7 +266,7 @@ req.is('html');
 
 ```
 
-### Notes
+
 
 # req.ip
 ### Purpose
@@ -287,25 +276,17 @@ This property contains the IP address of the client initiating the request.
 
 ### Example Usage
 ```javascript
-
 console.log(req.ip);
 
 //  "127.0.0.1"
-
 ```
 
-### Notes
 
 # req.ips
 ### Purpose
-When "trust proxy" is `true`, parse the "X-Forwarded-For" ip address list and return an array, otherwise an empty array is returned. For example if the value were "client, proxy1, proxy2" you would receive the array ["client", "proxy1", "proxy2"] where "proxy2" is the furthest down-stream.
+When "trust proxy" is `true`, parse the "X-Forwarded-For" ip address list and return an array, otherwise an empty array is returned. For example if the value were "client, proxy1, proxy2" you would receive the array `["client", "proxy1", "proxy2"]` where "proxy2" is the furthest down-stream.
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.path
 ### Purpose
@@ -321,7 +302,6 @@ console.log(req.path);
 // '/users'
 ```
 
-### Notes
 
 # req.host
 ### Purpose
@@ -335,7 +315,6 @@ console.log(req.host);
 
 ```
 
-### Notes
 
 # req.fresh
 ### Purpose
@@ -349,17 +328,6 @@ console.log(req.fresh)
 //  true
 ```
 
-### Notes
-
-# req.stale
-### Purpose
-
-### Example Usage
-```javascript
-
-```
-
-### Notes
 
 # req.xhr
 ### Purpose
@@ -367,13 +335,11 @@ Check if the request was issued with the "X-Requested-With" header field set to 
 
 ### Example Usage
 ```javascript
-
 console.log(req.xhr);
 //  true
 
 ```
 
-### Notes
 
 # req.protocol
 ### Purpose
@@ -385,47 +351,28 @@ console.log(req.protocol)
 //  "http"
 ```
 
-### Notes
+
 
 # req.secure
 ### Purpose
-Is a <a href="">TLS</a> connection established?
+Is a [TLS](http://omfgdogs.com) connection established?
 
 ### Example Usage
 ```javascript
 'https' == req.protocol;
 ```
 
-### Notes
 
-# req.session
-### Purpose
-
-### Example Usage
-```javascript
-
-```
-
-### Notes
 
 # req.subdomains
 ### Purpose
 This property is an array that contains all of the subdomains found in the URL
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.method
 ### Purpose
 This property contains the 'method' specified in the http request?
-### Example Usage
-```javascript
-
-```
 
 ### Notes
 > GET,POST,PUT,etc
@@ -434,21 +381,12 @@ This property contains the 'method' specified in the http request?
 ### Purpose
 This property contains the original URL
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.acceptedLanguages
 ### Purpose
 This property is an array that contains the acceptable languages specified by the user agent in the http request.
 
-### Example Usage
-```javascript
-
-```
 
 ### Notes
 > This often isnt specified by the user agent
@@ -457,10 +395,6 @@ This property is an array that contains the acceptable languages specified by th
 ### Purpose
 This property is an array that contains the acceptable charsets specified by the user agent in the http request.
 
-### Example Usage
-```javascript
-
-```
 
 ### Notes
 > This often isnt specified by the user agent
@@ -469,11 +403,6 @@ This property is an array that contains the acceptable charsets specified by the
 ### Purpose
 This method checks to see if the paramater supplied is found in req.acceptedCharsets.
 
-### Example Usage
-```javascript
-
-```
-
 ### Notes
 > Yo dawg.  I heard you like to iterate.  
 
@@ -481,12 +410,7 @@ This method checks to see if the paramater supplied is found in req.acceptedChar
 ### Purpose
 This method checks to see if the paramater supplied is found in req.acceptedLanguages.
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.isSocket
 ### Purpose
@@ -494,7 +418,6 @@ Returns whether or not the request was delivered via socket.io
 
 ### Example Usage
 ```javascript
-
 // This would allow you to do different things with the same controller action
 // based on whether the request is coming via sockets or http
 
@@ -514,7 +437,7 @@ if (req.isSocket){
 
 ```
 
-### Notes
+
 
 # req.params.all(`string`)
 ### Purpose
@@ -522,7 +445,6 @@ This gathers all parameters found in both http AND sockets requests.  It returns
 
 ### Example Usage
 ```javascript
-
 if (req.isSocket){
 
   // Assuming you passed a parameter called 'socketParam' with value 'true' via socket.get()
@@ -551,12 +473,11 @@ if (req.isSocket){
 
 # req.socket.id
 ### Purpose
-This is used to obtain the id of the socket.io socket.
+This is used to obtain the id of the Socket.IO socket.
 
 ### Example Usage
 ```javascript
-
-// You might use this if you ever had to debug connectivity issues with socket.io
+// You might use this if you ever had to debug connectivity issues with Socket.IO
 
 console.log(socket.id);
 
@@ -570,58 +491,31 @@ console.log(socket.id);
 
 # req.socket.join
 ### Purpose
-This is a low level socket.io method.  Check their docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> here </a>.
-
-### Example Usage
-```javascript
-
-```
+This is a low level Socket.IO method.  Check their docs [here](https://github.com/LearnBoost/socket.io/wiki/Rooms).
 
 ### Notes
-> Sails provides it's own methods for this and we think they are better.  Learn about them <a href=""> right here </a>
+> Sails provides its own methods for this and we think they are better.  Learn about them [right here](http://omfgdogs.com).
 
 # req.socket.leave
 ### Purpose
-This is a low level socket.io method.  Check their docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> here </a>.
+This is a low level socket.io method.  Check their docs [here](https://github.com/LearnBoost/socket.io/wiki/Rooms).
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.socket.broadcast
 ### Purpose
-This is a low level socket.io method.  Check their docs <a href="https://github.com/LearnBoost/socket.io/wiki/Rooms"> here </a>.
+This is a low level socket.io method.  Check their docs [here](https://github.com/LearnBoost/socket.io/wiki/Rooms).
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.transport
 ### Purpose
-Check the value of this property to see which <a href=""> transport mechanism </a> was used by socket.io for the request 
+Check the value of this property to see which [transport mechanism](http://omfgdogs.com) was used by socket.io for the request 
 
-### Example Usage
-```javascript
 
-```
-
-### Notes
 
 # req.url
 ### Purpose
 This property contains the original URL string requested by the user-agent. 
-
-### Example Usage
-```javascript
-
-```
-
-### Notes
 
 
