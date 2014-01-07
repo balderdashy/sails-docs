@@ -22,6 +22,9 @@
 + [Tweet @sailsjs](http://twitter.com/sailsjs)
 
 
+## Angular!  Help!
++ [WOAAAH!!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
+
 ## Tutorials
 
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC. 
