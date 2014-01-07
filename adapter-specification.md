@@ -100,10 +100,12 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 + `Adaper.define()`
 + `Adaper.describe()`
++ `Adaper.drop()`
 + `Adaper.addAttribute()`
 + `Adaper.removeAttribute()`
 + `Adaper.alterAttribute()`
-+ `Adaper.drop()`
++ `Adaper.addIndex()`
++ `Adaper.removeIndex()`
 
 ###### Auto-migration strategies
 + `"safe"` (default in production env)
