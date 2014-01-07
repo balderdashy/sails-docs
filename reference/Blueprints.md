@@ -152,7 +152,7 @@ _via Postman_
 ```json
 {
   "name": "Pinkie Pie",
-  "hobby": "snowboarding",
+  "hobby": "ice skating",
   "pet": {
     "name": "Gummy",
     "species": "crocodile"
