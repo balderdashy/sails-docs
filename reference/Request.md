@@ -466,7 +466,6 @@ if (req.isSocket){
 
 ```
 
-### Notes
 
 # req.socket.id
 ### Purpose
