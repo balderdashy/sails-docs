@@ -101,9 +101,10 @@ Adapters which implement the Migratable interface are usually interacting with S
 + `Adaper.define()`
 + `Adaper.describe()`
 + `Adaper.drop()`
-+ `Adaper.addAttribute()`
-+ `Adaper.removeAttribute()`
-+ `Adaper.alterAttribute()`
++ `Adapter.alter()` (change table name, other table metadata)
++ `Adaper.addAttribute()` (add column)
++ `Adaper.removeAttribute()` (remove column)
++ `Adaper.alterAttribute()` (rename column, add or remove uniquness constraint to column)
 + `Adaper.addIndex()`
 + `Adaper.removeIndex()`
 
