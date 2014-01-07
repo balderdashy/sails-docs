@@ -81,7 +81,7 @@ Here are some examples:
 #### sails.io.sockets
 `sails.io.sockets()`
 
-This is the raw reference to socket.io .  Use it when you want low level access to socket.io .  If you are new to sockets, you should use the <a href=""> sails pubsub class methods </a> for socket.io .  
+This is the raw reference to socket.io .  Use it when you want low level access to socket.io .  If you are new to sockets, you should use the [sails pubsub class methods](http://omfgdogs.com) for socket.io .  
 
 For more information, see the socket.io docs [right here](https://github.com/LearnBoost/socket.io/wiki/Rooms).
 
