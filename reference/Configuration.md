@@ -1,7 +1,5 @@
 # Configuration
-### Overview
-This is an overview of all of the configuration
-
+Below you will find information about configuring your Sails app.  This is by no means a complete list of the ways you can do this.  In fact, most of this has been pulled over from the old documentation.  Expect this section to get much better.  
 
 # 404
 ### What is this?
