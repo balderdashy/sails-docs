@@ -90,20 +90,25 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 
 ## Migratable (interface)
 
-> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
 Adapters which implement the Migratable interface are usually interacting with SQL databases.  This interface enables the `migrate` configuration option on a per-model or adapter-global basis, as well as access to the prototypal/class-level CRUD operations for working with tables.
 
 ###### Adapter methods
 + `Adaper.define()`
 + `Adaper.describe()`
-+ `Adaper.alter()`
++ `Adaper.addColumn()`
++ `Adaper.removeColumn()`
++ `Adaper.modifyColumn()`
 + `Adaper.drop()`
 
 ###### Auto-migration strategies
-+ `"alter"` (default)
++ `"safe"` (default)
+  + do nothing
 + `"drop"`
-+ `"safe"`
+  + drop all tables and recreate them each time the server starts-- useful for development
++ `"alter"`
+  + experimental automigrations
 
 
 
