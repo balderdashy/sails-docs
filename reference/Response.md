@@ -47,9 +47,6 @@ riceNoodles: function(req,res){
 // ...
 ```
 
-### Notes
->
-
 
 
 # res.redirect(`url`)
@@ -89,10 +86,6 @@ The final special-case is a back redirect, redirecting back to the Referer (or R
 res.redirect('back');
 ```
 
-### Notes
->
-
-
 # res.forbidden([`error message`])
 ### Purpose
 Calls `/config/403.js` which renders the default view for an HTTP 403 error along with an optional error message.
@@ -102,7 +95,6 @@ Calls `/config/403.js` which renders the default view for an HTTP 403 error alon
 In a controller,
 
 ```javascript
-
 login: function(req,res){
 
     // Use appropriate authentication method
@@ -114,25 +106,10 @@ login: function(req,res){
 
 ```
 
-### Notes
->
-
 
 # res.notFound([`error message`])
 ### Purpose
 Calls `/config/404.js` which renders the default view for an HTTP 404 error along with an optional error message.
-
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
-
 
 
 
@@ -140,32 +117,12 @@ Calls `/config/404.js` which renders the default view for an HTTP 404 error alon
 ### Purpose
 Calls `/config/400.js` which renders the default view for an HTTP 400 error along with an optional error message.
 
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
 
 
 # res.serverError([`error message`])
 ### Purpose
 Calls `/config/500.js` which renders the default view for an HTTP 500 error along with an optional error message.
 
-### Example Usage
-
-
-```javascript
-
-
-```
-
-### Notes
->
 
 
 # res.status()
@@ -177,8 +134,6 @@ Chainable alias of node's '`res.statusCode=`.
 res.status(404).sendfile('path/to/404.png');
 ```
 
-### Notes
->
 
 # res.set(`field`, `[value]`)
 ### Purpose
@@ -197,8 +152,6 @@ res.set({
 
 ```
 
-### Notes
->
 
 # res.get(`string`)
 ### Purpose
@@ -206,14 +159,11 @@ Get the case-insensitive response header `field`
 
 ### Example Usage
 ```javascript
-
 res.get('Content-Type');
 // "text/plain"
 
 ```
 
-### Notes
->
 
 # res.cookie(`name`, `value`, `[options]`)
 ### Purpose
@@ -246,7 +196,7 @@ res.cookie('name', 'tobi', { signed: true });
 
 
 ### Notes
->Later you may access this value through the req.signedCookie object.
+> Later you may access this value through the req.signedCookie object.
 
 # res.clearCookie(`name`, `[options]`)
 ### Purpose
@@ -256,9 +206,6 @@ Clear cookie name. The path option defaults to "/".
 res.cookie('name', 'tobi', { path: '/admin' });
 res.clearCookie('name', { path: '/admin' });
 ```
-
-### Notes
->
 
 
 # res.location()
@@ -281,9 +228,6 @@ For example, if your application is mounted at /blog, the following would set th
 res.location('admin')
 ```
 
-### Notes
->
-
 # res.charset
 ### Purpose
 Assign the charset. Defaults to "utf-8".
@@ -294,9 +238,6 @@ res.charset = 'value';
 res.send('some html');
 // Content-Type: text/html; charset=value
 ```
-
-### Notes
->
 
 # res.send(`[body|status]` , `[body]`)
 ### Purpose
@@ -339,8 +280,7 @@ res.send(404)
 res.send(500)
 ```
 
-### Notes
->
+
 
 # res.json(`[status|body]` , `[body]`)
 ### Purpose
@@ -385,8 +325,7 @@ res.jsonp(500, { error: 'message' })
 // foo({ "error": "message" })
 ```
 
-### Notes
->
+
 
 # res.type(`type`)
 ### Purpose
@@ -401,8 +340,7 @@ res.type('application/json');
 res.type('png');
 ```
 
-### Notes
->
+
 
 # res.format(`object`)
 ### Purpose
@@ -446,8 +384,6 @@ res.format({
 });
 ```
 
-### Notes
->
 
 # res.attachment(`[filename]`)
 ### Purpose
@@ -463,8 +399,7 @@ res.attachment('path/to/logo.png');
 // Content-Type: image/png
 ```
 
-### Notes
->
+
 
 # res.sendfile(`path`, `[options]` , `[fn]`)
 ### Purpose
@@ -494,8 +429,6 @@ app.get('/user/:uid/photos/:file', function(req, res){
 });
 ```
 
-### Notes
->
 
 # res.download(`path`, `[filename]` , `[fn]`)
 ### Purpose
@@ -519,8 +452,6 @@ res.download('/report-12345.pdf', 'report.pdf', function(err){
 });
 ```
 
-### Notes
->
 
 # res.links()
 ### Purpose
@@ -539,8 +470,6 @@ yields:
 Link: <http://api.example.com/users?page=2>; rel="next", 
       <http://api.example.com/users?page=5>; rel="last"
 ```
-### Notes
->
 
 # res.locals
 ### Purpose
@@ -557,8 +486,6 @@ app.use(function(req, res, next){
 });
 ```
 
-### Notes
->
 
 # res.render(`pathToView`, `[locals]` , `[callback]`)
 ### Purpose
@@ -574,7 +501,3 @@ res.render('user', { name: 'Tobi' }, function(err, html){
   // ...
 });
 ```
-
-### Notes
->
-
