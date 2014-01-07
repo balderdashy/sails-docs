@@ -91,7 +91,7 @@ Deprecated-- should be moved to the pubsub hook docs:
 
 ## Queryable (interface)
 
-> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+> ##### Stability: [3](http://nodejs.org/api/documentation.html#documentation_stability_index) - Stable
 
 Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don't always apply.
 
