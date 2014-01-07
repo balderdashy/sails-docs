@@ -50,6 +50,7 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 ## Semantic (interface)
 > e.g. `RestAPI`
 
+> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
 
 Implementing the basic semantic interface (CRUD) is really a step towards a complete implementation of the Queryable interface, but with some services/datasources, about as far as you'll be able to get using native methods.
 
@@ -77,6 +78,8 @@ By supporting the Semantic interface, you also get the following:
 
 
 ## Queryable (interface)
+
+> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
 
 Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don't always apply.
 
@@ -121,6 +124,8 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 
 ## Migratable (interface)
 
+> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+
 Adapters which implement the Migratable interface are usually interacting with SQL databases.  This interface enables the `migrate` configuration option on a per-model or adapter-global basis, as well as access to the prototypal/class-level CRUD operations for working with tables.
 
 ###### Adapter methods
@@ -137,6 +142,10 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 
 ## Semantic-Streamable (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+#### Background
 
 > Communicating with another server via messages/packets is the gold standard of performance-- 
 > network latency is the slowest I/O operation computers deal with, yet ironically, the standard methodology
@@ -158,13 +167,17 @@ A huge advantage of using Node.js is the ease with which you can parse and manip
 
 The most common use case is taking advantage of the available HTTP response stream to pipe the output byte stream from the database directly back to the user.  i.e. to generate a dynamic sitemap, you might need to respond with a huge set of data (far too large to fit in memory on a commodity server) and simultaneously transform it into XML.
 
+#### Implementation 
+
 Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don't have all the data at once.  
 
 
 
 ## Blob (interface)
 
-> e.g. `sails-local-fs`, `sails-s3`
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+e.g. `sails-local-fs`, `sails-s3`
 
 Implementing the Blob interface allows you to upload and download binary data (aka files) to the service/database.  These "blobs" might be MP3 music files (~5MB) but they could also be data-center backups (~50TB).  Because of this, it's crucial that adapters which implement this interface use streams for uploads (incoming, into data source from Sails) and downloads (outgoing, from data source to Sails).
 
@@ -176,6 +189,8 @@ Implementing the Blob interface allows you to upload and download binary data (a
 
 ## One-Way (interface)
 
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
 Adapters which implement one-way messages should do so using `send()` or a suffixed `send*()` method.  This lets developers know that it's not safe to assume that these operations are reversible.  An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.
 
 ###### Class methods
@@ -184,6 +199,9 @@ Adapters which implement one-way messages should do so using `send()` or a suffi
 
 
 ## Pubsub (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
 Adapters implementing the pubsub interface report changes from the service/database back up to the app.
 
 They should emit an event on the `sails` object.
@@ -201,10 +219,6 @@ Examples:
 + Hardware scanners (see new data as it comes in)
 
 
-## Transactional (interface)
-Atomic, consistent, isolated, and durable.
-###### TODO
-
 
 
 ## Offcially supported adapters
@@ -219,7 +233,6 @@ Write to your computer's hard disk, or a mounted network drive.  Not suitable fo
 + Semantic
 + Queryable
 + Streaming
-+ Blob
 
 
 ### Memory
@@ -258,9 +271,11 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 + Streaming
 
 
-> Coming soon...
-> + S3 (Blob, Streaming)
-> + OpenStack Swift / Rackspace CloudFiles (Blob, Streaming)
+> Under active development:
+>
+> + sails-redis
+> + sails-s3
+> + sails-local-fs
 
 
 
@@ -269,9 +284,13 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 
 ## Notable Community Adapters
 
+> ##### Stability: Varies
+
+
 Community adapters are crucial to the success and central to the philosophy of an open ecosystem for API integrations.  The more high-quality adapters you release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.  We welcome your support!
 
 > in various states of completion
+
 
 ### [Mandrill (email-sending service by MailChimp)](https://github.com/mikermcneil/sails-mandrill)
 + One-Way
@@ -305,3 +324,8 @@ Community adapters are crucial to the success and central to the philosophy of a
 ### [JSDom](https://github.com/mikermcneil/sails-jsdom)
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
+
+> Search google and NPM for more-- there are new adapters being written all the time.
+>
+> Check out the docs to learn how to write your own custom adapter (whether it's a private, internal project for a proprietary API or something you can share as open-source)
+
