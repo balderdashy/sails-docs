@@ -103,9 +103,9 @@ Adapters which implement the Migratable interface are usually interacting with S
 + `Adaper.drop()`
 
 ###### Auto-migration strategies
-+ `"safe"` (default)
++ `"safe"` (default in production env)
   + do nothing
-+ `"drop"`
++ `"drop"` (default in development env)
   + drop all tables and recreate them each time the server starts-- useful for development
 + `"alter"`
   + experimental automigrations
