@@ -26,7 +26,6 @@ Create a new record using the REST Blueprints via Socket.IO
 
 ### Example Usage
 ```javascript
-
 <script>
 
 window.onload=function loading(){
@@ -82,7 +81,6 @@ Get a record from the database using the REST Blueprints via Socket.IO
 View code
 
 ```javascript
-
 <script>
 window.onload=function loading(){
     socket.get('/users/9',function serverSays(err,users){
@@ -131,7 +129,6 @@ Update a record from in database using the REST Blueprints via Socket.IO
 
 ### Example Usage
 ```javascript
-
 <script>
 
 window.onload=function loading(){
@@ -186,7 +183,6 @@ Delete a record from the database using the REST Blueprints via Socket.IO
 
 ### Example Usage
 ```javascript
-
 <script>
 
 window.onload=function deleteUser(){
