@@ -95,11 +95,14 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 Adapters which implement the Migratable interface are usually interacting with SQL databases.  This interface enables the `migrate` configuration option on a per-model or adapter-global basis, as well as access to the prototypal/class-level CRUD operations for working with tables.
 
 ###### Adapter methods
+
+> This is not how it actually works, but how it could work soon:
+
 + `Adaper.define()`
 + `Adaper.describe()`
-+ `Adaper.addColumn()`
-+ `Adaper.removeColumn()`
-+ `Adaper.modifyColumn()`
++ `Adaper.addAttribute()`
++ `Adaper.removeAttribute()`
++ `Adaper.alterAttribute()`
 + `Adaper.drop()`
 
 ###### Auto-migration strategies
