@@ -1,5 +1,4 @@
-# Sails.js Adapter Interface
-#### A reference and support document for developers creating adapters for Sails/Waterline
+# Introduction to Custom Adapters for Sails / Waterline
 
 > ##### Stability: Varies
 
