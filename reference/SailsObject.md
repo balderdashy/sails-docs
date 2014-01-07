@@ -1,7 +1,7 @@
 # Sails Object
 ### Overview
 
-The global Sails object is used internally by your app.  Most of it's methods and attributes shouldn't be referenced directly but there are a few things that you might find useful.  
+The global Sails object is used internally by your app.  Most of it's methods and attributes shouldn't be referenced directly but here are a few things that you might find useful.  
 
 # sails.log
 ### Purpose
