@@ -1,6 +1,8 @@
 # Sails.js Adapter Interface
 #### A reference and support document for developers creating adapters for Sails/Waterline
 
+> ##### Stability: Varies
+
 ---------------------------------------------------------------------------
 
 > ### A quick personal note:
@@ -48,19 +50,27 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 
 
 ## Semantic (interface)
-> e.g. `RestAPI`
+> e.g. `RestAPI` or `MySQL`
 
-> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+> ##### Stability: [3](http://nodejs.org/api/documentation.html#documentation_stability_index) - Stable
 
 Implementing the basic semantic interface (CRUD) is really a step towards a complete implementation of the Queryable interface, but with some services/datasources, about as far as you'll be able to get using native methods.
 
 By supporting the Semantic interface, you also get the following:
 + if you write a `find()` function, developers can also use all of its synonyms, including dynamic finders and `findOne()`.  When they're called, they'll automatically be converted into the appropriate criteria object for the basic `find()` definition in your adapter.
 + as long as you implement basic `where` functionality (see `Queryable` below), Waterline can derive a simplistic version of associations support for you.  To optimize the default assumptions with native methods, override the appropriate methods in your adapter.
+
+<!--
+
+Deprecated-- should be moved to the pubsub hook docs:
+
++ When a socket subscribes to one or more "instance room(s)" (e.g. `Foo.subscribe(req, [3,2]`), it will receive `Foo.publishUpdate()` and `Foo.publishDestroy()` notifications for the relevant instances.
++ If a socket is subscribed to an "instance room", it will also be subscribed for "updates" and "destroys" to all instances of other models with a 1:* association with `Foo`.  The socket will also be notified of and subscribed to new matching instances of the associated model.
+
 + automatic socket.io pubsub support is provided by Sails-- it manages "rooms" for every class (collection) and each instance (model)
   + As soon as a socket subscribes to the "class room" using `Foo.subscribe()`, it starts receiving `Foo.publishCreate()` notifications any time they're fired for `Foo`.
-  + When a socket subscribes to one or more "instance room(s)" (e.g. `Foo.subscribe(req, [3,2]`), it will receive `Foo.publishUpdate()` and `Foo.publishDestroy()` notifications for the relevant instances.
-  + If a socket is subscribed to an "instance room", it will also be subscribed for "updates" and "destroys" to all instances of other models with a 1:* association with `Foo`.  The socket will also be notified of and subscribed to new matching instances of the associated model.
+-->
+  
 
 > All officially supported Sails.js database adapters implement the `Semantic` interface.
 
@@ -73,8 +83,10 @@ By supporting the Semantic interface, you also get the following:
 
 ###### Instance methods
 + `henry.save()`
-+ `henry.destroy()`
 
+<!--
++ `henry.destroy()`
+-->
 
 
 ## Queryable (interface)
