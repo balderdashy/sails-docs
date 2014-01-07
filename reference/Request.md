@@ -49,7 +49,6 @@ This property is used to check whether JSON is in the list of acceptable `Conten
 
 ### Example Usage
 ```javascript
-
 convertToXML = function(someRecord){
 
     // pretend there is code in here
@@ -294,7 +293,6 @@ Returns the request URL pathname.
 
 ### Example Usage
 ```javascript
-
 // example.com/users?sort=desc
 
 console.log(req.path);
@@ -322,7 +320,6 @@ Check if the request is fresh - aka Last-Modified and/or the ETag still match, i
 
 ### Example Usage
 ```javascript
-
 console.log(req.fresh)
 
 //  true
