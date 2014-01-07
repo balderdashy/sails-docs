@@ -62,8 +62,6 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 // Created user with name Walter Jr
 // Don't forget to handle your errors and abide by the rules you defined in your model
 ```
-### Notes
->
 
 
 
@@ -757,7 +755,6 @@ module.exports = {
 
 views/users/testSocket.ejs
 ```html
-
 <style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
 
 <script>
@@ -903,7 +900,6 @@ The `save` method updates your record in the database using the current attribut
 ### Example Usage
 
 ```javascript
-
 User.find().exec(
   function(err,myRecords){
 
@@ -989,7 +985,6 @@ Checks the current keys/values on the record against the validations specified i
 ### Example Usage
 
 ```javascript
-
 User.find().exec(
   function(err,myRecords){
 
@@ -1044,12 +1039,8 @@ The toObject method returns a cloned model instance (record) but stripped of all
 |   |   Cloned Record     |        `{ }`        |
 
 ### Example Usage
+_See usage in .toJSON()_
 
-```javascript
-
-// See usage in .toJSON()
-
-```
 
 ### Notes
 > You will only want to use .toObject when overriding the default .toJSON instance method.
@@ -1074,7 +1065,6 @@ This method also returns a cloned model instance.  This one however includes all
 ### Example Usage
 
 ```javascript
-
 User.find().exec(
   function(err,myRecord){
     var datUser = myRecord.pop().toObject();
@@ -1107,7 +1097,6 @@ User.find().exec(
 For model
 
 ```javascript
-
 module.exports = {
   attributes: {
     name: 'string',
@@ -1145,7 +1134,6 @@ module.exports = {
 ### Example Usage
 
 ```javascript 
-
 var myQuery = User.find();
 myQuery.where({'name':{startsWith:'W'}});
 
@@ -1170,7 +1158,6 @@ myQuery.exec(function callBack(err,results){
 ### Example Usage
 
 ```javascript 
-
 var myQuery = User.find();
 myQuery.limit(12);
 
