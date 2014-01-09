@@ -1,34 +1,54 @@
 ## FAQ
 
 ### Where is the documentation?
-+ [Docs for the latest stable npm release of Sails v0.9.x on the website](http://sailsjs.org/#!documentation)
-+ This is mirrored by the [0.9 branch on github](https://github.com/balderdashy/sails-docs)
-  + The content in the Github repo is eventually pushed to the website
++ [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/#!documentation)
++ This is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs)
+  + The content in the Github repo is eventually pushed to the website.
   + It is usually a several commits ahead, and is the go-to place for the most up-to-date information.
+  + This will become more automated as we're able to get more time to automate our tools (will open-source these asap post v0.10 release)
 
 ### How do I get involved?
 + [Help us improve the documentation](https://github.com/balderdashy/sails-docs)
-+ [Contribute to the Sails core](https://github.com/balderdashy/sails-wiki/blob/0.9/Contributing-to-Sails.md)
++ [Contribute to the Sails core](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#contributing-to-core)
++ [Create/contribute to a plugin](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#writing-code)
 + [Contribute to the sailsjs.org website](http://twitter.com/mikermcneil)
 
 ### Where do I submit ideas?  Report issues?
-+ [Report suspected bug](https://github.com/balderdashy/sails/issues) with the Sails core itself
++ [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
 + [Got ideas?](http://twitter.com/mikermcneil)
 
 ### Where do I get help?
++ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
 + Get help from the [Google Group](https://groups.google.com/forum/#!forum/sailsjs)
 + Get help on IRC ([#sailsjs on freenode](http://irc.netsplit.de/channels/details.php?room=%23sailsjs&net=freenode))
-+ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
 + [Tweet @sailsjs](http://twitter.com/sailsjs)
 
 
-## Angular!  Help!
-+ [WOAAAH!!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 
-## Tutorials
+## Are there professional support options?
+> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
+
++ [Tell us about your project](http://balderdash.co#contact)
++ [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
++ [@balderdashy](http://twitter.com/balderdashy)
++ [AngelList](https://angel.co/balderdash)
++ [LinkedIn](http://www.linkedin.com/company/balderdash)
++ [Dribbble](http://dribbble.com/balderdash)
++ [Facebook](http://facebook.com/balderdashy)
++ More about Balderdash
+  + [Austin startup finds success in responsive design](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html?ana=twt)
+  + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
+  + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
+
+
+
+
+## Community Tutorials
+
+> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC. 
-
++ [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 + [Intro to Sails.js](https://www.youtube.com/watch?v=GK-tFvpIR7c) screencast
 + Intro to Sails.js - talk @ NodePDX
   + [Recording](http://video.nodepdx.org/video/14/intro-to-sailsjs)
@@ -40,6 +60,9 @@
 
 
 ## Articles / Interviews / Press
+
+> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
+
 + [Sails.js - Awesome MVC for Node.js] (http://sethetter.com/sails-js/)
 + Interview w/ Tim Heckel [on InfoQ](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [Case Technical Blog](http://casestaffingsolutions.com/wordpress/?tag=sails-js)
@@ -62,22 +85,6 @@
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [AMAG Moments](http://moments.amag.ch/) - Share your best moments in the car
 + [PonyCaptcha](http://pc.ponypages.net/) - Stop Spam! Watch Ponies!
-
-## Are there professional support options?
-> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
-
-+ [Tell us about your project](http://balderdash.co#contact)
-+ [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
-+ [@balderdashy](http://twitter.com/balderdashy)
-+ [AngelList](https://angel.co/balderdash)
-+ [LinkedIn](http://www.linkedin.com/company/balderdash)
-+ [Dribbble](http://dribbble.com/balderdash)
-+ [Facebook](http://facebook.com/balderdashy)
-+ More about Balderdash
-  + [Austin startup finds success in responsive design](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html?ana=twt)
-  + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
-  + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
-
 
 ## Latest Stable Version and Dependencies
 [![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
