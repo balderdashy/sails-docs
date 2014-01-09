@@ -66,9 +66,10 @@
 
 
 
-##Projects made with Sails.js
+## Who else is using Sails.js?
 
-> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
+> This list is definitely not authoratative-- we haven't been able to keep up with individual requests to be added.
+> But if you're using Sails in your company/product/service, we'd love to hear about it!  Please send a pull request to edit this file.
 
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
