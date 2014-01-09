@@ -1,4 +1,4 @@
-## FAQ
+# FAQ
 
 ### Where is the documentation?
 + [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/#!documentation)
@@ -15,26 +15,8 @@
 
 ### Where do I submit ideas?  Report issues?
 + [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
-+ [Got ideas?](http://twitter.com/mikermcneil)
++ [Got a feature request or idea?](https://trello.com/b/cGzNVE0b/sails-js-feature-requests)
 
-
-### What version of Sails should I use?
-
-The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
-
-```sh
-$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
-```
-
-##### Latest Stable Version
-
-[![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
-
-##### Dependencies
-
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
-
-[![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
 
 ### Where do I get help?
 + [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
@@ -109,6 +91,26 @@ Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and 
   + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
 
 
+
+
+
+### What version of Sails should I use?
+
+The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
+
+```sh
+$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
+```
+
+##### Latest Stable Version
+
+[![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
+
+##### Dependencies
+
+Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
+
+[![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
 
 
 
