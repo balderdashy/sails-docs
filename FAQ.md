@@ -17,17 +17,32 @@
 + [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
 + [Got ideas?](http://twitter.com/mikermcneil)
 
+
+### What version of Sails should I use?
+
+The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
+
+```sh
+$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
+```
+
+##### Latest Stable Version
+
+[![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
+
+##### Dependencies
+
+Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
+
+[![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
+
 ### Where do I get help?
 + [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
 + Get help from the [Google Group](https://groups.google.com/forum/#!forum/sailsjs)
 + Get help on IRC ([#sailsjs on freenode](http://irc.netsplit.de/channels/details.php?room=%23sailsjs&net=freenode))
 + [Tweet @sailsjs](http://twitter.com/sailsjs)
 
-
-
-
-
-## Community Tutorials
+##### Community Tutorials
 
 > If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
@@ -43,7 +58,7 @@
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)
 
 
-## Articles / Interviews / Press
+##### Articles / Interviews / Press
 
 > If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
@@ -66,7 +81,7 @@
 
 
 
-## Who else is using Sails.js?
+### Who else is using Sails.js?
 
 > This list is definitely not authoratative-- we haven't been able to keep up with individual requests to be added.
 > But if you're using Sails in your company/product/service, we'd love to hear about it!  Please send a pull request to edit this file.
@@ -78,7 +93,7 @@
 
 
 
-## Are there professional support options?
+### Are there professional support options?
 > Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
 
 + [Tell us about your project](http://balderdash.co#contact)
@@ -95,23 +110,6 @@
 
 
 
-## What version of Sails should I use?
-
-The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
-
-```sh
-$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
-```
-
-#### Latest Stable Version
-
-[![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
-
-#### Dependencies
-
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
-
-[![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
 
 
 
