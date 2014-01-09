@@ -94,8 +94,19 @@
 
 
 
-## Latest Stable Version and Dependencies
+## What version of Sails should I use?
+
+The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
+
+```sh
+$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
+```
+
+#### Latest Stable Version
+
 [![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
+
+#### Dependencies
 
 Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
 
