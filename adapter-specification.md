@@ -31,12 +31,17 @@ Deprecated-- should be moved to the pubsub hook docs:
 ###### Class methods
 + `Model.create()`
 + `Model.find()`
-+ `Model.findOne()`
 + `Model.update()`
 + `Model.destroy()`
-
-###### Instance methods
-+ `henry.save()`
++ Optimizations:
+  + `findOrCreate()`
+  + `createEach()`
+  + Not yet available:
+    + `destroyEach()`
+    + `updateEach()`
+    + `findOrCreateEach()`
+    + `findAndUpdateOrCreate()`
+    + `findAndUpdateOrCreateEach()`
 
 <!--
 + `henry.destroy()`
@@ -118,7 +123,7 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 
 
-## Semantic-Streamable (interface)
+## Iterable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
@@ -150,7 +155,7 @@ Implementing the Streaming CRUD interface is actually pretty simple-- you just n
 
 
 
-## Blob (interface)
+## Blob / Readable / Writable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
@@ -159,31 +164,48 @@ e.g. `sails-local-fs`, `sails-s3`
 Implementing the Blob interface allows you to upload and download binary data (aka files) to the service/database.  These "blobs" might be MP3 music files (~5MB) but they could also be data-center backups (~50TB).  Because of this, it's crucial that adapters which implement this interface use streams for uploads (incoming, into data source from Sails) and downloads (outgoing, from data source to Sails).
 
 ###### Class methods
-+ `write()`
-+ `read()`
++ `write( id, options )` or `upload()`
++ `read( id, options )` or `download()`
 
 
 
-## One-Way (interface)
+## Mesageable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
-Adapters which implement one-way messages should do so using `send()` or a suffixed `send*()` method.  This lets developers know that it's not safe to assume that these operations are reversible.  An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.
+Adapters which implement one-way messages.  This lets user know two important facts about your adapter:
+
+1. that it's not safe to assume that its operations are reversible or atomic.
+2. that it has a `send` or one or more `send*()` methods with a custom suffix.
+
+An example of one such adapter is SMTP, for sending email, or APNS for sending Apple push notifications.
+
+If `send` is passed an array of target ids, it will broadcast its data to each of them.
 
 ###### Class methods
-+ `send()`
++ `send( targetId, data, onComplete )`
++ Optimizations:
+  + `broadcast( targetIds, data, onComplete )`
 
 
 
-## Pubsub (interface)
+## Subscribable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
 Adapters implementing the pubsub interface report changes from the service/database back up to the app.
 
-They should emit an event on the `sails` object.
+When a subscriber needs to be informed of an incoming notifiation, the subscribable adapters currently do one of the following:
+
+1. emit a declaratively configurable event on the `sails` object.
+2. send an HTTP request to a declaratively configurable endpoint.
+3. call a function which is part of their declarative config, leveraging the generic `req/res` interpreter in Sails
+
+(#3 is where I'd like this head in the future, since it provides the most normalized, extensible interface)
 
 <!--
+deprecated:
+
 They should call Sails' `Model.publishUpdate()`, `Model.publishCreate()`, and `Model.publishDestroy()` to publish changes and take advantage of automatic room management functionality.
 `Model.subscribe()` should still be called at the app layer, not in our adapter.
 We don't want to force users to handle realtime events-- we don't know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.
