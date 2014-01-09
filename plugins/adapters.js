@@ -90,7 +90,7 @@ module.exports = {
 	// Messaging
 	// 
 	'sails-mandrill': {
-		repo: 'https://github.com/balderdashy/sails-redis',
+		repo: 'https://github.com/mikermcneil/sails-mandrill',
 		status: 'experimental'
 	},
 
@@ -100,11 +100,11 @@ module.exports = {
 	//
 	
 	'sails-s3': {
-		repo: 'https://github.com/balderdashy/sails-redis',
+		repo: 'https://github.com/mikermcneil/sails-s3',
 		status: 'experimental'
 	},
 	'sails-local-fs': {
-		repo: 'https://github.com/balderdashy/sails-redis',
+		repo: 'https://github.com/balderdashy/sails-local-fs',
 		status: 'experimental'
 	},
 
@@ -115,8 +115,8 @@ module.exports = {
 	
 	'sails-irc': {
 		repo: 'https://github.com/balderdashy/sails-irc',
-		comments: 'See https://github.com/mikermcneil/sails-example-ircbot/blob/master/api/adapters/IRCAdapter.js',
-		status: 'needs_update'
+		comments: 'See updated version here (needs to be tested): https://github.com/mikermcneil/sails-example-ircbot/blob/master/api/adapters/IRCAdapter.js',
+		status: 'broken'
 	},
 
 
