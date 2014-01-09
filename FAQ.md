@@ -25,22 +25,6 @@
 
 
 
-## Are there professional support options?
-> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
-
-+ [Tell us about your project](http://balderdash.co#contact)
-+ [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
-+ [@balderdashy](http://twitter.com/balderdashy)
-+ [AngelList](https://angel.co/balderdash)
-+ [LinkedIn](http://www.linkedin.com/company/balderdash)
-+ [Dribbble](http://dribbble.com/balderdash)
-+ [Facebook](http://facebook.com/balderdashy)
-+ More about Balderdash
-  + [Austin startup finds success in responsive design](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html?ana=twt)
-  + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
-  + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
-
-
 
 
 ## Community Tutorials
@@ -80,11 +64,35 @@
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
 + [Backend фреймворк SailsJS + BackboneJS + MySQL](http://habrahabr.ru/post/184896/)
 
+
+
 ##Projects made with Sails.js
+
+> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
+
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [AMAG Moments](http://moments.amag.ch/) - Share your best moments in the car
 + [PonyCaptcha](http://pc.ponypages.net/) - Stop Spam! Watch Ponies!
+
+
+
+## Are there professional support options?
+> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
+
++ [Tell us about your project](http://balderdash.co#contact)
++ [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
++ [@balderdashy](http://twitter.com/balderdashy)
++ [AngelList](https://angel.co/balderdash)
++ [LinkedIn](http://www.linkedin.com/company/balderdash)
++ [Dribbble](http://dribbble.com/balderdash)
++ [Facebook](http://facebook.com/balderdashy)
++ More about Balderdash
+  + [Austin startup finds success in responsive design](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html?ana=twt)
+  + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
+  + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
+
+
 
 ## Latest Stable Version and Dependencies
 [![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
@@ -92,6 +100,7 @@
 Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
 
 [![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
+
 
 
 --------------------------------------------------------------------------------
