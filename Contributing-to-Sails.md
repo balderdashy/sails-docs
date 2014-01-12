@@ -1,4 +1,4 @@
-# Contributing to this project
+# Guide: Contributing to Sails
 
 Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.  For real.
 
