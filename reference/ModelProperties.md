@@ -14,7 +14,7 @@ might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `bir
 
 ### Attribute Types
 
-The following attribute types are currently supported by Sails via [Waterline](https://github.com/balderdashy/waterline) :
+The following attribute types are currently supported by Sails via [Waterline](https://github.com/balderdashy/waterline)
 
 - string
 - text
@@ -49,12 +49,12 @@ var Person = {
 
 ```
 
-Sails can also validate your data before it is saved.  To be fair, our ORM Waterline does all the heavy lifting. Below is the same example with some validations applied.    
+Sails can also validate your data before it is saved.  To be fair, our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
 
 
 ```javascript
 
-// Person.js
+
 var Person = {
   attributes: {
     firstName: 'STRING',
@@ -100,7 +100,7 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 
 #### Example
 
-
+Sometimes you want to 
 
 ```javascript
 
@@ -129,7 +129,25 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 
 #### Example
 
+Let's pretend you're Myspace and your last user has just deleted their account.  You are now irrelevant.  You can use the afterDestroy lifecycle callback to help close up shop.
+
 ```javascript
+
+module.exports = {
+
+	attributes: {
+		name: 'STRING',
+		top_8_friends: 'ARRAY',
+		favorites_things: 'JSON'
+	},
+	afterDestroy: function(cb){
+
+		process.exit(1);
+
+	}
+
+};
+
 
 
 ```
@@ -140,8 +158,7 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 
 # Validation
 
-Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which is based off of [Node Validate](https://github.com/chriso/node-validator) and supports most of the properties in node-validate. For a full list of validations see: [Anchor Validations](https://github.com/balderdashy/anchor/blob/master/lib/rules.js).
-
+Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which is based off of [Node Validate](https://github.com/chriso/node-validator) and supports most of the properties in node-validate. 
 
 ### Validation Rules
 
