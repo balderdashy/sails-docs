@@ -8,6 +8,21 @@ Please see the [adapter interface specification](https://github.com/balderdashy/
 
 
 
+### What is an adapter?
+
+ Adapters expose **interfaces**, which imply a conract to implemnt certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.
+
+
+### What kind of things can I do in an adapter?
+
+Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods `create()`, `find()`, `update()`, and `destroy()`.
+
+For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection informtion and runs an `INSERT ...` SQL query.
+
+In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.
+
+
+
 
 ## Why would I need a custom adapter?
 
