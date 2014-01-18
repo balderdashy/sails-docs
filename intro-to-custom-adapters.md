@@ -61,7 +61,8 @@ Cody, Mike, and the team behind Sails.js at Balderdash support a handful of comm
 
 ### Disk
 
-Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project.  Most importantly, this adapter is bundled with Sails and works out of the box.
+
+Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project, and essential for developing in environments where you may not always have a database set up. This adapter is bundled with Sails and works out of the box with zero configuration.
 
 ###### Interfaces implemented:
 + Semantic
@@ -71,7 +72,7 @@ Write to your computer's hard disk, or a mounted network drive.  Not suitable fo
 
 ### Memory
 
-Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.
+Pretty much like Disk, but doesn't actually write to disk, so it's not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.
 
 ###### Interfaces implemented:
 + Semantic
@@ -80,6 +81,9 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 
 
 ### MySQL
+
+MySQL is the world's most popular relational database.
+http://en.wikipedia.org/wiki/MySQL
 
 ###### Interfaces implemented:
 + Semantic
@@ -90,6 +94,8 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 
 ### PostgreSQL
 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+
 ###### Interfaces implemented:
 + Semantic
 + Queryable
@@ -99,15 +105,25 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 
 ### MongoDB
 
+[MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
+  
 ###### Interfaces implemented:
 + Semantic
 + Queryable
 + Streaming
 
+### Redis
+
+[Redis](http://redis.io/) is an open source, BSD licensed, advanced key-value store.
+
+###### Interfaces implemented:
++ Semantic
++ Queryable
+
+
 
 > Under active development:
 >
-> + sails-redis
 > + sails-s3
 > + sails-local-fs
 
@@ -119,11 +135,10 @@ Just like Disk, but doesn't actually write to disk, so it's not persistent.  Not
 ## Notable Community Adapters
 
 > ##### Stability: Varies
+> in various states of completion
 
 
 Community adapters are crucial to the success and central to the philosophy of an open ecosystem for API integrations.  The more high-quality adapters you release as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  My vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter at a time.  We welcome your support!
-
-> in various states of completion
 
 
 ### [Mandrill (email-sending service by MailChimp)](https://github.com/mikermcneil/sails-mandrill)
@@ -159,7 +174,12 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
 
+
 > Search google and NPM for more-- there are new adapters being written all the time.
->
+
+
+
 > Check out the docs to learn how to write your own custom adapter (whether it's a private, internal project for a proprietary API or something you can share as open-source)
 
+
+> Want to see your adapter listed here?  Send a pull request with a link and we'll merge it!
