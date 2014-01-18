@@ -36,7 +36,7 @@ The model definition for `Person` might look like this:
 ```javascript
 
 // Person.js
-var Person = {
+module.exports = {
   attributes: {
     firstName: 'STRING',
     lastName: 'STRING',
@@ -55,7 +55,7 @@ Sails can also validate your data before it is saved.  To be fair, our ORM [Wate
 ```javascript
 
 
-var Person = {
+module.exports = {
   attributes: {
     firstName: 'STRING',
     lastName: 'STRING',
