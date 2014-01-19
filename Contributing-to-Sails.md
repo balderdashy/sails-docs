@@ -1,55 +1,22 @@
-# Contributing to this project
+# Contributing to Sails
 
-Thank you for your interest in supporting Sails!  It makes us feel warm and fuzzy inside.  For real.
-
-
-<!--
-
----------------------------------------------------------------
-###### `<DRAFT>`
+This guide is designed to get you started contributing to the Sails framework.  It assumes you know how to use Github, but should be applicable whether this will be your first pull request or you're an active contributor to hundreds of projects.
 
 
-## Getting Started
-Whether you're an advanced user or a Sails n00b, there are many different ways to contribute to the Sails ecosystem.
-
-1) Build an adapter.
-
-2) Submit a pull request to an adapter (e.g. add streaming support to `sails-yelp`)
-
-3) Submit a pull request to a generator (e.g. CoffeeScript support for `sails-generate-controller`, or better syncing in the Gruntfile in `sails-generate-gruntfile`)
-
-4) Build a hook (e.g. custom migration support in Waterline)
-
-5) Write unit tests for the build-in sails hooks.
-
-6) Finally, bug fixes + patches for the Sails core are also greatly appreciated, please just read the style guide below first!
-
-
-
-
-###### `</DRAFT>`
----------------------------------------------------------------
-
--->
-
-## Guidelines
-Like any OSS project, we must have guidelines for contributions.  It helps protect the quality of the code, and gives all of us confidence that our framework will be robust and dependable.
+## Contribution Guidelines
+Like any open-source project, we must have guidelines for contributions.  It helps protect the quality of the code, and gives all of us confidence that our framework will stay robust and dependable.
 Whether it's a bug fix, or a huge new feature set, it's important that we consistently apply these checks and balances for *all* contributions to Sails.
 
 Please check over the following requirements before submitting a pull request:
- - Pull requests should be submitted to the `v0.10` branch.
  - Bug fixes should have accompanying tests where possible.
- - Should follow Sails.js JShint Guidelines (See .jshint file in repo)
+ - Should follow our style guide to maintain code consistency (see `.jshint` file in repo)
 
-Any pull request to `master` (our production branch) will be closed, with an invitation to resubmit to `v0.10`.  
-I know this stuff sounds kind of brutal, but we want to keep `master`'s tests passing at all times, since it reflects what is in `npm`.
-If you have a high priority hot-fix for the currently deployed version, please let us know with an issue, and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.  That'll text me (Mike).  Sounds a little insane probably, but if there's a big problem, I want to know about it!
-
+If you have a high priority hot-fix for the currently deployed version, please let us know with an issue, and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.
 
 Now that we are all on the same page, lets get to coding some awesomeness of our own :D
 
 ## Fork
-Start by forking [this repository](https://github.com/balderdashy/sails/tree/development):
+Start by forking the repository:
 
 ![Screen Shot 2013-02-12 at 2.37.04 PM.png](http://i.imgur.com/h0CCcAu.png)
 
@@ -82,16 +49,19 @@ When you're done, you can commit your fix, push up your code, and then go into g
 ![Screen Shot 2013-02-12 at 2.55.40 PM.png](http://i.imgur.com/GBg0AOi.png) 
 
 
-## Trying out your fork with your application
-If you have a project using Sails, and you want to test your new version, please do the following:
+## Running your fork with your application
+If you forked Sails, and you want to test your Sails app against your fork, here's how you do it:
 
-In your Sails repo:
-sudo npm link
+In your local copy of your fork of Sails:
+`npm link`
 
-In your project repo:
-npm link sails
+In your Sails app's repo:
+`npm link sails`
 
-Tada!  Your project will now be using your forked version.  If you're not sure it worked, put some crazy `console.log()` in the core to make sure.  Again, if you've got any issues, hit us up ([@sailsjs](https://twitter.com/sailsjs)). 
+This creates a symbolic link as a local dependency (in your app's `node_modules` folder).  This has the effect of letting you run your app with the version Sails you `linked`.
+```bash
+$ node app.js
+```
 
 
 

@@ -5,7 +5,7 @@ This is your Sails project's root directory.  With the exception of your model a
 
 
 # myApp/api/controllers/UserController.js
-### Purpose
+### Purposeser
 This file was created when you ran 'sails generate User'.  It contains all of the controller logic for the model called 'User'. 
 
 This is where you will put "controller actions" that send data to your clients and render the views which display that data.
@@ -55,9 +55,24 @@ Hypothetically, one could create a service for
 - Automating tweets to celebrities
 - Retreiving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
 
-Each service is specified as its own .js file within this folder.  They can be called inside of a controller action by using `Services.<serviceName>.<functionName>()`. 
+Services are written in one or more .js file within this directory. 
 
 
+### Example Email.js
+
+```
+module.exports = {
+	send: function(to,from,body){
+		// fancy code that sends an email
+	}
+}
+
+```
+
+You would call this service with ` Email.send('rick','bill','lol') `
+
+
+> Mind your case.  Email.send !== email.send
 
 # myApp/app.js
 ### Purpose

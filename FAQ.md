@@ -1,34 +1,35 @@
-## FAQ
+# FAQ
 
 ### Where is the documentation?
-+ [Docs for the latest stable npm release of Sails v0.9.x on the website](http://sailsjs.org/#!documentation)
-+ This is mirrored by the [0.9 branch on github](https://github.com/balderdashy/sails-docs)
-  + The content in the Github repo is eventually pushed to the website
++ [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/#!documentation)
++ This is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs)
+  + The content in the Github repo is eventually pushed to the website.
   + It is usually a several commits ahead, and is the go-to place for the most up-to-date information.
+  + This will become more automated as we're able to get more time to automate our tools (will open-source these asap post v0.10 release)
 
 ### How do I get involved?
 + [Help us improve the documentation](https://github.com/balderdashy/sails-docs)
-+ [Contribute to the Sails core](https://github.com/balderdashy/sails-wiki/blob/0.9/Contributing-to-Sails.md)
++ [Contribute to the Sails core](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#contributing-to-core)
++ [Create/contribute to a plugin](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#writing-code)
 + [Contribute to the sailsjs.org website](http://twitter.com/mikermcneil)
 
 ### Where do I submit ideas?  Report issues?
-+ [Report suspected bug](https://github.com/balderdashy/sails/issues) with the Sails core itself
-+ [Got ideas?](http://twitter.com/mikermcneil)
++ [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
++ [Got a feature request or idea?](https://trello.com/b/cGzNVE0b/sails-js-feature-requests)
+
 
 ### Where do I get help?
++ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
 + Get help from the [Google Group](https://groups.google.com/forum/#!forum/sailsjs)
 + Get help on IRC ([#sailsjs on freenode](http://irc.netsplit.de/channels/details.php?room=%23sailsjs&net=freenode))
-+ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
 + [Tweet @sailsjs](http://twitter.com/sailsjs)
 
+##### Community Tutorials
 
-## Angular!  Help!
-+ [WOAAAH!!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
-
-## Tutorials
+> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC. 
-
++ [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 + [Intro to Sails.js](https://www.youtube.com/watch?v=GK-tFvpIR7c) screencast
 + Intro to Sails.js - talk @ NodePDX
   + [Recording](http://video.nodepdx.org/video/14/intro-to-sailsjs)
@@ -39,7 +40,10 @@
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)
 
 
-## Articles / Interviews / Press
+##### Articles / Interviews / Press
+
+> If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
+
 + [Sails.js - Awesome MVC for Node.js] (http://sethetter.com/sails-js/)
 + Interview w/ Tim Heckel [on InfoQ](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [Case Technical Blog](http://casestaffingsolutions.com/wordpress/?tag=sails-js)
@@ -57,14 +61,23 @@
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
 + [Backend фреймворк SailsJS + BackboneJS + MySQL](http://habrahabr.ru/post/184896/)
 
-##Projects made with Sails.js
+
+
+### Who else is using Sails.js?
+
+> This list is definitely not authoratative-- we haven't been able to keep up with individual requests to be added.
+> But if you're using Sails in your company/product/service, we'd love to hear about it!  Please send a pull request to edit this file.
+
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [AMAG Moments](http://moments.amag.ch/) - Share your best moments in the car
 + [PonyCaptcha](http://pc.ponypages.net/) - Stop Spam! Watch Ponies!
++ [Insight Replay](http://insightreplay.com) - Instant replay for athletes and coaches
 
-## Are there professional support options?
-> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
+
+
+### Are there professional support options?
+> Sails.js is maintained by [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.
 
 + [Tell us about your project](http://balderdash.co#contact)
 + [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
@@ -79,12 +92,28 @@
   + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
 
 
-## Latest Stable Version and Dependencies
+
+
+
+### What version of Sails should I use?
+
+The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
+
+```sh
+$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
+```
+
+##### Latest Stable Version
+
 [![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
+
+##### Dependencies
 
 Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
 
 [![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
+
+
 
 
 --------------------------------------------------------------------------------
