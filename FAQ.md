@@ -77,7 +77,7 @@
 
 
 ### Are there professional support options?
-> Sails.js is maintained by my company, [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.  If you need some professional help, let me know-- it's what we do.
+> Sails.js is maintained by [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.
 
 + [Tell us about your project](http://balderdash.co#contact)
 + [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
