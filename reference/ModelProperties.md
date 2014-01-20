@@ -93,39 +93,67 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 
 ### Callbacks on `create`
 
-  - beforeValidation / *fn(values, cb)*
-  - afterValidation / *fn(values, cb)*
-  - beforeCreate / *fn(values, cb)*
-  - afterCreate / *fn(newlyInsertedRecord, cb)*
+  - beforeValidation: fn(values, cb)
+  - afterValidation: fn(values, cb)
+  - beforeCreate: fn(values, cb)
+  - afterCreate: fn(newlyInsertedRecord, cb)
 
 #### Example
 
-Sometimes you want to 
+Sometimes you want to remove fields from a newly created record before they get published and sent back to the client.  You can use the afterCreate lifecycle callback.
 
 ```javascript
 
+module.exports = {
+
+	attributes: {
+		name: 'STRING',
+		profession: 'STRING',
+		gps_location_of_buried_drug_money: 'JSON'
+	},
+	afterCreate: function(newlyInsertedRecord, cb){
+		delete newlyInsertedRecord.gps_location_of_buried_drug_money;
+		cb();
+	}
+
+};
 
 ```
 
 
 ### Callbacks on `update`
 
-  - beforeValidation / *fn(valuesToUpdate, cb)*
-  - afterValidation / *fn(valuesToUpdate, cb)*
-  - beforeUpdate / *fn(valuesToUpdate, cb)*
-  - afterUpdate / *fn(updatedRecord, cb)*
+  - beforeValidation: fn(valuesToUpdate, cb)
+  - afterValidation: fn(valuesToUpdate, cb)
+  - beforeUpdate: fn(valuesToUpdate, cb)
+  - afterUpdate: fn(updatedRecord, cb)
 
 #### Example
 
+
 ```javascript
+
+module.exports = {
+
+	attributes: {
+		name: 'STRING',
+		top_8_friends: 'ARRAY',
+		favorites_things: 'JSON'
+	},
+	afterDestroy: function(cb){
+
+		process.exit(1);
+
+	}
+};
 
 
 ```
 
 ### Callbacks on `destroy`
 
-  - beforeDestroy / *fn(criteria, cb)*
-  - afterDestroy / *fn(cb)*
+  - beforeDestroy: fn(criteria, cb)
+  - afterDestroy: fn(cb)
 
 #### Example
 
