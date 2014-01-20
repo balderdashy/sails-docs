@@ -36,6 +36,7 @@ The model definition for `Person` might look like this:
 ```javascript
 
 // Person.js
+
 module.exports = {
   attributes: {
     firstName: 'STRING',
@@ -49,11 +50,12 @@ module.exports = {
 
 ```
 
-Sails can also validate your data before it is saved.  To be fair, our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
+Sails can also validate your data before it is saved!  Actually our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
 
 
 ```javascript
 
+// Person.js
 
 module.exports = {
   attributes: {
@@ -104,6 +106,8 @@ Sometimes you want to remove fields from a newly created record before they get 
 
 ```javascript
 
+// User.js
+
 module.exports = {
 
 	attributes: {
@@ -130,10 +134,12 @@ module.exports = {
 
 #### Example
 
-Let's say you are the NSA and you need to update the record of a person who might try to hurt America.  First though, you need to make sure that the record concerns a person of interest.  You might want to use the `beforeValidation` lifecycle callback to see if the record's `citizen_id` exists in your `Probable_terrorist` model.  
+Youre the NSA and you need to update the record of a person who might try to hurt America!  First though, you need to make sure that the record concerns a person of interest.  You might want to use the `beforeValidation` lifecycle callback to see if the record's `citizen_id` exists in your `Probable_terrorist` model.  
 
 
 ```javascript
+
+// Record.js
 
 module.exports = {
 
