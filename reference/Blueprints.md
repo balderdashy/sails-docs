@@ -1,4 +1,9 @@
 # Blueprints
+
+> **WARNING**
+> Association blueprints (v0.10) are currently experimental!
+> This API is likely to change.
+
 ### Overview
 
 By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
@@ -184,7 +189,80 @@ Attributes to change should be sent in the HTTP body as form-encoded values or J
 ### Description
 Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, an `update` event will be published to all sockets subscribed to the instance room. 
+Additionally, a comet message will be published to all sockets subscribed to the instance room, e.g.:
+```javascript
+
+//
+// New usage:
+//
+
+// On the client
+
+// You can still do `message`, but you'll get the 0.9-style comet messages (see below).
+
+// New comet events you can subscribe to (for each model):
+socket.on('user', console.log);
+socket.on('pet', console.log);
+socket.on('chair', console.log);
+
+// -> Later, one of these might log something like:
+/*
+{
+ verb: 'created',
+ data: { name: 'Scott' },
+ id: 15
+}
+
+{
+ verb: 'updated'
+ data: { name: 'Ricky' },
+ id: 15
+}
+
+{
+ verb: 'destroyed'
+ data: { },
+ id: 15
+}
+
+{
+ verb: 'removedFrom',
+ association: { alias: 'petHorses', model: 'Horse' },
+ message: 'Removed a Horse from User\'s `petHorses`',
+ data: { id: 'b728a8efcd2941313043' },
+ id: 7
+}
+
+{
+ verb: 'addedTo',
+ association: { alias: 'petHorses', model: 'Horse' },
+ message: 'Added a Horse to User\'s `petHorses`',
+ data: { id: 'b728a8efcd2941313043;, name: 'Sea Biscuit' },
+ id: 7
+}
+*/
+
+
+
+//
+// 0.9-style usage:
+//
+
+// On the client
+socket.on('message', console.log);
+
+// -> Later, this might log something like:
+/*
+{
+ model: 'user',
+ verb: 'update',
+ data: { name: 'Scott' },
+ id: 8
+}
+*/
+
+```
+
 
 This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller.
 
