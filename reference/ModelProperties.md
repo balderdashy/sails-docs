@@ -130,19 +130,37 @@ module.exports = {
 
 #### Example
 
+Let's say you are the NSA and you need to update the record of a person who might try to hurt America.  First though, you need to make sure that the record concerns a person of interest.  You might want to use the `beforeValidation` lifecycle callback to see if the record's `citizen_id` exists in your `Probable_terrorist` model.  
+
 
 ```javascript
 
 module.exports = {
 
 	attributes: {
-		name: 'STRING',
-		top_8_friends: 'ARRAY',
-		favorites_things: 'JSON'
+		citizen_name: 'STRING',
+		phone_records: 'ARRAY',
+		text_messages: 'ARRAY',
+		friends_and_family: 'ARRAY',
+		geo_location: 'JSON',
+		loveint_rating: 'INTEGER',
+		citizen_id: 'INTEGER'
 	},
-	afterDestroy: function(cb){
+	beforeValidation: function(citizen_record, cb){
+		var terroristLookupCB = function(err,terroristRecord){
+		
+			var runCallback = cb;
 
-		process.exit(1);
+			if (err) return err;
+			
+			if (terroristRecord)
+				runCallback();
+			else
+				return;
+		};
+		
+
+		Probable_terrorist.findOneById(citizen_record.citizen_id).exec(terroristLookupCB);
 
 	}
 };
