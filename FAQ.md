@@ -38,6 +38,11 @@
 + [User Authentication with Sails.js](http://sethetter.com/user-authentication-with-sails-js/)
 + [How to Create a Node.js App using Sails.js on an Ubuntu VPS](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)
++ Desarrollar Webapps Realtime:
+  + [Creación](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-creacion/)
+  + [Usuarios](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-usuarios/)
+  + [Auth](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth/)
+  + [Auth con Passport](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth-con-passport/)
 
 
 ##### Articles / Interviews / Press
