@@ -79,7 +79,7 @@ For traditional (not-AJAX) web forms, this middleware follows best-practices for
 
 ##### Example
 
-Lets say you have the route `GET /profile/:profileID':'ProfileController.showProfile'` in your app and a client sends a GET request to `/profile/`
+Lets say you have the route `'GET /profile/:profileID':'ProfileController.showProfile'` in your app and a client sends a GET request to `/profile/`
 
 Normally, express would convert whatever is after the `/profile/` portion of the URL into a parameter that Sails gives you access to via `req.param('profileID')`.  In this case since there is nothing after `/profile/`, the parameter will be blank.
 
@@ -106,13 +106,13 @@ module.exports = {
 
 #### res.notFound(msgOrData)
 
-This is the simplest by default of customizable server responses.  If the requester is expecting JSON, they get a JSON response with the 404 status code.  
+This is the simplest by default of the customizable server responses.  If the requester is expecting JSON, they get a JSON response with the 404 status code.  
 
 Otherwise the view located in `myApp/views/404.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
 
 ##### Example
 
-Lets say you have the route `GET /profile/:profileID':'ProfileController.showProfile'` in your app and a client sends a GET request to `/profile/15`
+Lets say you have the route `'GET /profile/:profileID':'ProfileController.showProfile'` in your app and a client sends a GET request to `/profile/15`
 
 
 ```javascript
@@ -195,7 +195,7 @@ The easiest way to create a custom response is by using the ('serverResponse-gen
 
 From your app's root directory in terminal
 
-```javascript
+```sh
 
 catGuy@catGuy:~/nodeProjects/myApp$ sails generate serverResponse myCustomResponse
 info: Generating custom server response called myCustomResponse
@@ -209,15 +209,40 @@ You can also just manually add the .js file to your `myApp/api/responses` direct
 The file will be initialized when you lift your app and a method called `res.myCustomResponse()` will be dynamically generated.  At this point, your error can be easily served within a controller or policy by calling `res.myCustomResponse()`
 
 
-
-#### res.respond(data)
-
-
-
 ##### Example
 
 ```javascript
 
-return res.respond(data);
+// myApp/api/responses/myCustomResponse.js
+
+module.exports = function notFound() {
+
+  // Get access to `req` and `res`
+  var req = this.req;
+  var res = this.res;
+
+  var viewFilePath = '404';
+  var statusCode = 404;
+  var result = {
+    status: statusCode
+  };
+
+  // If the user-agent wants a JSON response, send json
+  if (req.wantsJSON) {
+    return res.json(result, result.status);
+  }
+
+  res.status(result.status);
+  res.render(viewFilePath, function(err) {
+    // If the view doesn't exist, or an error occured, send json
+    if (err) {
+      return res.json(result, result.status);
+    }
+
+    // Otherwise, serve the `views/404.*` page
+    res.render(viewFilePath);
+  });
+};
+
 
 ```
