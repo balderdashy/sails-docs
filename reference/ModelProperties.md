@@ -230,7 +230,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which
 |date| check if `string` in this record is a date | takes both strings and javascript |
 |datetime| check if `string` in this record looks like a javascript `datetime`| |
 |decimal| | contains a decimal or is less than 1?|
-|email| check if `string` in this record likes like an email address | |
+|email| check if `string` in this record looks like an email address | |
 |empty| Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered "empty" | lo-dash _.isEmpty() |
 |equals| check if `string` in this record is equal to the specified value | `===` ! They must match in both value and type |
 |falsey| Would a Javascript engine register a value of `false` on this? | |
