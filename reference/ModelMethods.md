@@ -636,6 +636,19 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 | 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
 
 
+
+`publishUpdate()` emits a socket message using the model identity as the event name.  For instance, `User.publishUpdate(...)` on the server could be listened to on the client using `socket.on('user', function (msg) { ... })`.
+
+`msg` is an object with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"updated"` (a string)
++ **data** - an object-- the attributes that were updated
+
+
++ **attribute**  - the name of the model attribute (i.e. association) that was addedTo
+
+
 ### Example Usage
 
 UsersController.js
