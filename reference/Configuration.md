@@ -585,6 +585,39 @@ You could define the following route: `'post /signup' : 'user.signup'`.
 Finally, here&rsquo;s an example of how you would route all GET requests to the `/google` route to Google&rsquo;s website: `'get /google' : 'http://google.com'`
 
 #### 3. Advanced Route config
+
+##### Setting Locals (variables accessible in your view) in Sails v0.10
+
+Just like you can set variables to be available in your view scope like `res.locals.foo = 'bar'` in a controller or action, you can now also pass locals down to your views via route configuration.  Note, this is only relevant for declared routes. It won't work on implicit blueprint routes.
+
+Here's an example of what can be done!
+
+
+
+```
+// myApp/config/routes.js
+
+module.exports.routes = {
+
+  '/'" {
+    view: 'static/index'
+  },
+  
+  '/fiddlesticks': {
+    view: 'session/new',
+
+    locals: {
+      foo: 'asdg',
+      bar: 'sadgasgd',
+    }
+  }
+}
+
+```
+
+
+
+
 ##### Upload Limit
 By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
 ```javascript
