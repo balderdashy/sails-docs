@@ -72,7 +72,7 @@ Additionally, thanks to blueprints, you also get these methods by default:
 `/:controller/destroy/:id`  
 
 To turn off the CRUD routes, simply set the &lsquo;shortcuts&rsquo; flag to false in `config/controllers.js`,  
-and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in `config/conttrollers.js`
+and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in `config/controllers.js`
 
 ## The Request Object
 
