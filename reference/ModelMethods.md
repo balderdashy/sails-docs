@@ -1245,5 +1245,10 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 
 > If you dont run .exec() , your query will not execute.
 
+# .testing(`lol`)
+### Purpose
 
-
+### Parameters
+none
+### Huh
+Do you even test bro?
