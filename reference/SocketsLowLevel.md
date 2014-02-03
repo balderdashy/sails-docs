@@ -72,7 +72,7 @@ Broadcast a message to a room.
 ```javascript
 // Controller action
 
-sayHiToFunRoom: functtion(req, res) {
+sayHiToFunRoom: function(req, res) {
     var room = req.param('roomName');
     sails.sockets.broadcast(room, 'chat', {msg: 'Hi there!', from: req.session.userId, room: room}, req.socket);
     res.send('Message sent!');
