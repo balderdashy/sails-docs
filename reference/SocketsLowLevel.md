@@ -45,7 +45,7 @@ Unsubscribe a socket from a generic room.
 leaveFunRoom: function(req, res) {
     var roomName = req.param('roomName');
     sails.sockets.leave(req.socket, roomName);
-    res.send('Left to a fun room called '+roomName+'!');
+    res.send('Left a fun room called '+roomName+'!');
 }
 ```
 
@@ -66,13 +66,13 @@ Broadcast a message to a room.
 
  If the event name is omitted, `"message"` will be used by default.  Thus, `sails.sockets.broadcast(roomName, data)` is also a valid usage.
  
- If `socketToOmit` is provided, that socket will *not* receive the message.  This is useful is you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
+ If `socketToOmit` is provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
 
 ### Example Usage
 ```javascript
 // Controller action
 
-sayHiToFunRoom: function(req, res) {
+sayHiToFunRoom: functtion(req, res) {
     var room = req.param('roomName');
     sails.sockets.broadcast(room, 'chat', {msg: 'Hi there!', from: req.session.userId, room: room}, req.socket);
     res.send('Message sent!');
@@ -125,7 +125,7 @@ Get the ID of a socket object.
 |---|-----------------------------|---------------------|------------|
 | 1 |           Socket        | `object`            | Yes         |
 
-A socket object's ID can be used to send direct messages to that socket (see `sails.sockets.emit`) or get information about the rooms that socket is subscribed to (see `sails.sockets.socketRooms`).
+A socket object's ID can be used to send direct messages to that socket (see `sails.sockets.emit`) or get information about the rooms that the socket is subscribed to (see `sails.sockets.socketRooms`).
 
 
 ### Example Usage
@@ -137,7 +137,7 @@ socketId: function(req, res) {
 }
 ```
 
-# sails.sockets.emit( `socketIds`, [`event`], `data` )
+# sails.sockets.emit( `socketIds`, [`event`], `data`)
 ### Purpose
 Send a message to one or more sockets by ID.
 
