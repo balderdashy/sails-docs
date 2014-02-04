@@ -233,7 +233,6 @@ None.
 
 getRoomsList: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.rooms());
-    res.send('I am subscribed to: '+roomNames);
     res.json({
       message: 'A list of all the rooms: '+roomNames
     });
