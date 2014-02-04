@@ -546,16 +546,58 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
 
+#.subscribe(`socket`,`records`)
 
-# .publishCreate( [`data`],[`socket`] )
 ### Purpose
-PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.
+This subscribes clients to one or more existing model instances (records).  It allows clients to see message emitted by .publishUpdate(), .publishDestroy(), .publishAdd() and .publishRemove().
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Data to Send        |   `{}`              |   No       |
-| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
+| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 2 | Records          | `[]`, `object` | Yes        |
 
+
+### Example Usage
+Controller Code
+```javascript
+    User.find({}).exec(function(e,listOfUsers){
+        User.subscribe(req.socket,listOfUsers);
+        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
+    });
+    
+    // Don't forget to handle your errors
+    
+```
+
+# .unsubscribe(`socket`,`records`)
+### Purpose
+This method will unsubscribe a socket from one or more model instances.
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
+| 2 | Records          | `[]`, `object` | Yes         |
+
+### Example Usage
+Controller Code
+```javascript
+User.findOne({id: 123}).exec(function(err, userInstance) {
+    User.unsubscribe(req.socket, userInstance);
+});
+```
+
+# .publishCreate( `data`,[`request`] )
+### Purpose
+PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.  PublishCreate is called automatically by the [blueprint `create` action](https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record).
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Data to Send        |   `object`              |   Yes       |
+| 2 | Request      |   `Request object` |   No       |
+
+The default implementation of publishCreate blasts a `debug` message to all connected sockets, and only operates while your app is running in the `development` environment.  To use publishCreate in production, you can create a custom implementation and add it to your model class.
+
+If the `request` argument is included then the socket attached to that request will `not` receive the notification.
 
 ### Example Usage
 UsersController.js
@@ -600,8 +642,8 @@ window.onload = function subscribeAndListen(){
     // The controller code will subscribe you to the model 'users'
     socket.get('/users/testSocket/');
 
-    // Listen for the event called 'message' emited by the publishCreate() method.
-    socket.on('message',function(obj){
+    // Listen for the event called 'debug' emited by the publishCreate() method.
+    socket.on('debug',function(obj){
       data = obj.data;
       console.log('User '+data.name+' has been created.');
     });
@@ -620,12 +662,9 @@ function makeNew(){
 Click Me to add a new 'Walter' ! </div>
 ```
 
-### Notes
-> The client's socket must have first been subscribed using the .subscribe({}) method.
-> Published objects can be accessed via the data key on the socket callback parameter. 
 
 
-# .publishUpdate( `{publish}`,[`data`],[`socket`] )
+# .publishUpdate( `{id}`,[`data`],[`request`] )
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
@@ -633,11 +672,9 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 |---|---------------------|---------------------|------------|
 | 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
 | 2 | Data to Send        |   `{}`              |   No      |
-| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
+| 3 | Request      |   `request object` |   No       |
 
-
-
-`publishUpdate()` emits a socket message using the model identity as the event name.  For instance, `User.publishUpdate(...)` on the server could be listened to on the client using `socket.on('user', function (msg) { ... })`.
+`publishUpdate()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
 `msg` is an object with the following properties:
 
@@ -645,8 +682,14 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 + **verb**  - `"updated"` (a string)
 + **data** - an object-- the attributes that were updated
 
+When your app is running in the `development` environment, the default implementation of publishUpdate will also broadcast a `debug` event to all connected sockets with the following properties:
 
-+ **attribute**  - the name of the model attribute (i.e. association) that was addedTo
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"update"` (a string)
++ **data** - an object-- the attributes that were updated
++ **model** - the name of the model class (a string)
+
+If the `request` argument is included then the socket attached to that request will `not` receive the notification.
 
 
 ### Example Usage
@@ -693,10 +736,10 @@ window.onload = function subscribeAndListen(){
     // The controller code will subscribe you to all of the 'users' model instances (records)
     socket.get('/users/testSocket/');
 
-    // Listen for the event called 'message' emited by the publishUpdate() method.
-    socket.on('message',function(obj){
+    // Listen for the event called 'user'
+    socket.on('user',function(obj){
       data = obj.data;
-      console.log('User '+data.name+' has been '+obj.verb+'ed .');
+      console.log('User '+data.name+' has been '+obj.verb);
     });
 };
 
@@ -714,19 +757,89 @@ Click Me to add a new User! </div>
 
 ```
 
-### Notes
-> The client's socket must have first been subscribed using the .subscribe({},[]) method. 
-> Any string arguments passed must be the ID of the record.
+# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`] )
+### Purpose
+Publishes a notification when an associated record is added to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a new pet is associated with a user `publishAdd` may be called.
 
-# .publishDestroy( `{publish}` )
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
+| 2 | Attribute of associated collection       |   `string`              |   Yes      |
+| 3 | ID of associated record that was added      |   `int`, `string` |   Yes       |
+| 4 | Request      |   `request object` |   No       |
+
+`publishAdd()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+
+`msg` is an object with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"addedTo"` (a string)
++ **attribute** - the name of the model attribute that was added to
++ **addedId** - the ID of the record that was added
+
+When your app is running in the `development` environment, the default implementation of publishAdd will also broadcast a `debug` event to all connected sockets with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"addedTo"` (a string)
++ **model** - the name of the model class (a string)
++ **attribute** - the name of the model attribute that was added to
++ **addedId** - the ID of the record that was added
+
+If the `request` argument is included then the socket attached to that request will `not` receive the notification.
+
+# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`] )
+### Purpose
+Publishes a notification when an associated record is removed to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a pet is removed from a user's `pets` collection, `publishRemove` may be called.
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
+| 2 | Attribute of associated collection       |   `string`              |   Yes      |
+| 3 | ID of associated record that was removed      |   `int`, `string` |   Yes       |
+| 4 | Request      |   `request object` |   No       |
+
+`publishRemove()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+
+`msg` is an object with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"removedFrom"` (a string)
++ **attribute** - the name of the model attribute that was removed from
++ **removedId** - the ID of the record that was removed
+
+When your app is running in the `development` environment, the default implementation of publishRemove will also broadcast a `debug` event to all connected sockets with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"removedFrom"` (a string)
++ **model** - the name of the model class (a string)
++ **attribute** - the name of the model attribute that was removed from
++ **removedId** - the ID of the record that was removed
+
+If the `request` argument is included then the socket attached to that request will `not` receive the notification.
+
+# .publishDestroy( `{id}`, [`request`] )
 ### Purpose
 Publish the destruction of a model
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
-| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
+| 2 | Request      |   `request object` |   No       |
 
+`publishDestroy()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+
+`msg` is an object with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"destroyed"` (a string)
+
+When your app is running in the `development` environment, the default implementation of publishDestroy will also broadcast a `debug` event to all connected sockets with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"destroy"` (a string)
++ **model** - the name of the model class (a string)
+
+If the `request` argument is included then the socket attached to that request will `not` receive the notification.
 
 ### Example Usage
 
@@ -799,95 +912,6 @@ Click Me to destroy user 'Walter' ! </div>
 ### Notes
 > Any string arguments passed must be the ID of the record.
 
-# .subscribe(`{req.socket}`)
-### Purpose
-This is 1 of the 2 subscribe methods.  It will subscribe clients to the model class.  This allows clients to see message emitted by .publishCreate() only.
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
-| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
-
-
-
-### Example Usage
-Controller Code
-```javascript
-    User.subscribe(req.socket);
-    console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
-```
-
-#.subscribe(`socket`,[`recordIDs`],[`socket`])
-
-### Purpose
-This subscribes clients to existing model instances (records).  It allows clients to see message emitted by .publishUpdate() and .publishDestroy() only.
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
-| 2 | Record IDs          | `[]`, `string`, `int` | No        |
-| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
-
-
-### Example Usage
-Controller Code
-```javascript
-    User.find({}).exec(function(e,listOfUsers){
-        User.subscribe(req.socket,listOfUsers);
-        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
-    });
-    
-    // Don't forget to handle your errors
-    
-```
-
-
-### Notes
-> The record IDs are not required but do not pass an empty array or the method will fail.
-> This method will be deprecated in an upcoming release. Subscriptions should be called from the request object or socket themselves, not from the model.
-> Any string arguments passed must be the ID of the record.
-
-# .unsubscribe(`socket`,[`socket`])
-### Purpose
-This is 1 of 2 unsubscribe methods. This will ONLY unsubscribe a socket from a particular model class.
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
-| 2 | Socket to Omit      |   `SocketIO Socket` |   No       |
-
-
-### Example Usage
-Controller Code
-```javascript
-User.unsubscribe(req.socket, [] );
-```
-
-### Notes
-> Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
-> Any string arguments passed must be the ID of the record.
-
-# .unsubscribe(`socket`,[`recordIDs`],[`socket`])
-### Purpose
-This method will unsubscribe a socket from the model instances (records) who's IDs are supplied in the array.
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
-| 2 | Record IDs          | `[]`, `string`, `int` | No         |
-| 3 | Socket to Omit      |   `SocketIO Socket` |   No       |
-
-
-### Example Usage
-Controller Code
-```javascript
-User.unsubscribe(req.socket,[1,2,3,4,5,6]);
-```
-
-### Notes
-> Most of the time you shouldn't use this since sessions are destroyed when the client closes their tab
-> The record IDs are not required but do not pass an empty array or the method will fail.
-> Any string arguments passed must be the ID of the record.
 
 
 # * .save(`callback`)
