@@ -21,7 +21,9 @@ Subscribe a socket to a generic room.
 subscribeToFunRoom: function(req, res) {
     var roomName = req.param('roomName');
     sails.sockets.join(req.socket, roomName);
-    res.send('Subscribed to a fun room called '+roomName+'!');
+    res.json({
+      message: 'Subscribed to a fun room called '+roomName+'!'
+    });
 }
 ```
 
@@ -45,7 +47,9 @@ Unsubscribe a socket from a generic room.
 leaveFunRoom: function(req, res) {
     var roomName = req.param('roomName');
     sails.sockets.leave(req.socket, roomName);
-    res.send('Left a fun room called '+roomName+'!');
+    res.json({
+      message: 'Left a fun room called '+roomName+'!'
+    });
 }
 ```
 
@@ -75,7 +79,9 @@ Broadcast a message to a room.
 sayHiToFunRoom: function(req, res) {
     var room = req.param('roomName');
     sails.sockets.broadcast(room, 'chat', {msg: 'Hi there!', from: req.session.userId, room: room}, req.socket);
-    res.send('Message sent!');
+    res.json({
+      message: 'Message sent!'
+    });
 }
 ```
 
@@ -106,7 +112,9 @@ Broadcast a message to all connected sockets.
 
 sayHiToEverybody: function(req, res) {
     sails.sockets.blast({msg: "User #"+req.session.userId+" logged on."}, req.socket);
-    res.send('Message sent!');
+    res.json({
+      message: 'Message sent!'
+    });
 }
 ```
 
@@ -133,7 +141,9 @@ A socket object's ID can be used to send direct messages to that socket (see `sa
 // Controller action
 
 socketId: function(req, res) {
-    res.send('My socket ID is: '+sails.sockets.id(req.socket));
+    res.json({
+      message: 'My socket ID is: '+sails.sockets.id(req.socket)
+    });
 }
 ```
 
@@ -156,7 +166,9 @@ Send a message to one or more sockets by ID.
 sayHiToFriend: function(req, res) {
     var friendId = req.param('friendId');
     sails.sockets.emit(friendId, 'privateMessage', {from: req.session.userId, msg: 'Hi!'});
-    res.send('Message sent!');
+    res.json({
+      message: 'Message sent!'
+    });
 }
 ```
 
@@ -177,7 +189,9 @@ Get the IDs of all sockets subscribed to a room.
 getRoomSubscribers: function(req, res) {
     var roomName = req.param('roomName');
     var subscribers = JSON.stringify(sails.sockets.subscribers());
-    res.send('The subscribers are: '+subscribers);
+    res.json({
+      message: 'The subscribers are: '+subscribers
+    });
 }
 ```
 
@@ -198,7 +212,9 @@ Get the list of rooms a socket is subscribed to
 
 getMyRooms: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.socketRooms(req.socket));
-    res.send('I am subscribed to: '+roomNames);
+    res.json({
+      message: 'I am subscribed to: '+roomNames
+    });
 }
 ```
 
@@ -218,6 +234,9 @@ None.
 getRoomsList: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.rooms());
     res.send('I am subscribed to: '+roomNames);
+    res.json({
+      message: 'A list of all the rooms: '+roomNames
+    });
 }
 ```
 
