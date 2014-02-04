@@ -1257,6 +1257,3 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
 > If you dont run .exec() , your query will not execute.
-
-
-

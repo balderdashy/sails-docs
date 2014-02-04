@@ -36,6 +36,7 @@ The model definition for `Person` might look like this:
 ```javascript
 
 // Person.js
+
 module.exports = {
   attributes: {
     firstName: 'STRING',
@@ -49,11 +50,12 @@ module.exports = {
 
 ```
 
-Sails can also validate your data before it is saved.  To be fair, our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
+Sails can also validate your data before it is saved!  Actually our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
 
 
 ```javascript
 
+// Person.js
 
 module.exports = {
   attributes: {
@@ -93,39 +95,89 @@ Lifecycle callbacks are functions you can define to run at certain times in a qu
 
 ### Callbacks on `create`
 
-  - beforeValidation / *fn(values, cb)*
-  - afterValidation / *fn(values, cb)*
-  - beforeCreate / *fn(values, cb)*
-  - afterCreate / *fn(newlyInsertedRecord, cb)*
+  - beforeValidation: fn(values, cb)
+  - afterValidation: fn(values, cb)
+  - beforeCreate: fn(values, cb)
+  - afterCreate: fn(newlyInsertedRecord, cb)
 
 #### Example
 
-Sometimes you want to 
+Sometimes you want to remove fields from a newly created record before they get published and sent back to the client.  You can use the afterCreate lifecycle callback.
 
 ```javascript
 
+// User.js
+
+module.exports = {
+
+	attributes: {
+		name: 'STRING',
+		profession: 'STRING',
+		gps_location_of_buried_drug_money: 'JSON'
+	},
+	afterCreate: function(newlyInsertedRecord, cb){
+		delete newlyInsertedRecord.gps_location_of_buried_drug_money;
+		cb();
+	}
+
+};
 
 ```
 
 
 ### Callbacks on `update`
 
-  - beforeValidation / *fn(valuesToUpdate, cb)*
-  - afterValidation / *fn(valuesToUpdate, cb)*
-  - beforeUpdate / *fn(valuesToUpdate, cb)*
-  - afterUpdate / *fn(updatedRecord, cb)*
+  - beforeValidation: fn(valuesToUpdate, cb)
+  - afterValidation: fn(valuesToUpdate, cb)
+  - beforeUpdate: fn(valuesToUpdate, cb)
+  - afterUpdate: fn(updatedRecord, cb)
 
 #### Example
 
+Youre the NSA and you need to update the record of a person who might try to hurt America!  First though, you need to make sure that the record concerns a person of interest.  You might want to use the `beforeValidation` lifecycle callback to see if the record's `citizen_id` exists in your `Probable_terrorist` model.  
+
+
 ```javascript
+
+// Record.js
+
+module.exports = {
+
+	attributes: {
+		citizen_name: 'STRING',
+		phone_records: 'ARRAY',
+		text_messages: 'ARRAY',
+		friends_and_family: 'ARRAY',
+		geo_location: 'JSON',
+		loveint_rating: 'INTEGER',
+		citizen_id: 'INTEGER'
+	},
+	beforeValidation: function(citizen_record, cb){
+		var terroristLookupCB = function(err,terroristRecord){
+		
+			var runCallback = cb;
+
+			if (err) return err;
+			
+			if (terroristRecord)
+				runCallback();
+			else
+				return;
+		};
+		
+
+		Probable_terrorist.findOneById(citizen_record.citizen_id).exec(terroristLookupCB);
+
+	}
+};
 
 
 ```
 
 ### Callbacks on `destroy`
 
-  - beforeDestroy / *fn(criteria, cb)*
-  - afterDestroy / *fn(cb)*
+  - beforeDestroy: fn(criteria, cb)
+  - afterDestroy: fn(cb)
 
 #### Example
 
@@ -178,7 +230,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which
 |date| check if `string` in this record is a date | takes both strings and javascript |
 |datetime| check if `string` in this record looks like a javascript `datetime`| |
 |decimal| | contains a decimal or is less than 1?|
-|email| check if `string` in this record likes like an email address | |
+|email| check if `string` in this record looks like an email address | |
 |empty| Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered "empty" | lo-dash _.isEmpty() |
 |equals| check if `string` in this record is equal to the specified value | `===` ! They must match in both value and type |
 |falsey| Would a Javascript engine register a value of `false` on this? | |

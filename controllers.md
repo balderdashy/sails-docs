@@ -72,7 +72,7 @@ Additionally, thanks to blueprints, you also get these methods by default:
 `/:controller/destroy/:id`  
 
 To turn off the CRUD routes, simply set the &lsquo;shortcuts&rsquo; flag to false in `config/controllers.js`,  
-and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in `config/conttrollers.js`
+and to turn off REST routes, simply set the &lsquo;rest&rsquo; flag to false in `config/controllers.js`
 
 ## The Request Object
 
@@ -83,7 +83,7 @@ Whether it was sent as POSTed JSON, to look up the value of a request parameter,
 var foo = req.param('foo');
 ```
 
-If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/2x/guide.html#req.param()">express guide</a>.
+If you need to dive deeper into request parameters, check out the <a href="http://expressjs.com/api.html#req.param">express guide</a>.
 
 
 ### `req.isSocket`
@@ -105,7 +105,7 @@ automatically renders the appropriate view based on the controller and action. T
 is still accessible via `res.render()`.
 
 ### `res.send(body|status[, headers|status[, status]])`
-From the <a href="http://expressjs.com/2x/guide.html#res.send()">express guide</a>.
+From the <a href="http://expressjs.com/api.html#res.send"> guide</a>.
 The `res.send()` method is a high level response utility allowing you to pass objects to respond
 with json, strings for html, Buffer instances, or numbers representing the status code. The
 following are all valid uses:
@@ -128,7 +128,7 @@ Note that this method ends the response, so you will want to use node’s `res.w
 writes or streaming.
 
 ### `res.json(obj[, headers|status[, status]])`
-From the <a href="http://expressjs.com/2x/guide.html#res.json()">express guide</a>.
+From the <a href="http://expressjs.com/api.html#res.json">express guide</a>.
 Send a JSON response with optional headers and status. This method is ideal for JSON-only APIs,
 however `res.send(obj)` will send JSON as well, though not ideal for cases when you want to send
 for example a string as JSON, since the default for `res.send(string)` is text/html.
@@ -141,7 +141,7 @@ for example a string as JSON, since the default for `res.send(string)` is text/h
 ```
 
 ### `res.redirect(url[, status])`
-From the <a href="http://expressjs.com/2x/guide.html#res.redirect()">express guide</a>.
+From the <a href="http://expressjs.com/api.html#res.redirect">express guide</a>.
 Redirect to the given url with a default response status of 302.
 
 ```javascript
