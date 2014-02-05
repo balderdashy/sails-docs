@@ -664,19 +664,20 @@ Click Me to add a new 'Walter' ! </div>
 
 
 
-# .publishUpdate( `{id}`,[`data`],[`request`] )
+# .publishUpdate( `{id}`,[`changes`],[`request`],[`noReverse`] )
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
-| 2 | Data to Send        |   `{}`              |   No      |
+| 2 | Updated values        |   `{}`              |   No      |
 | 3 | Request      |   `request object` |   No       |
+| 4 | Reverse flag | `boolean` | No |
 
 `publishUpdate()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
-`msg` is an object with the following properties:
+The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"updated"` (a string)
@@ -689,7 +690,13 @@ When your app is running in the `development` environment, the default implement
 + **data** - an object-- the attributes that were updated
 + **model** - the name of the model class (a string)
 
+`changes` should be an object containing any changed attributes and their new values.  `changes` may also contain a `__previous__` property containing an object with the original values of the attributes.  This is used by the default `publishUpdate` implementation to determine whether to send out notifications to associated models (see the discussion of `noReverse` below).
+
 If the `request` argument is included then the socket attached to that request will `not` receive the notification.
+
+#### The `noReverse` flag
+
+The default implementation of `publishUpdate` will check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a `Pet` model has an `owner` attribute that is associated with the `User` model so that a user may own several pets, and the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` changed, then an additional `publishAdd` or `publishRemove` call may be made.  To suppress these notifications, set the `noReverse` flag to `true`.  In general, you should not have to set this flag unless you are writing your own implementation of `publishUpdate` for a model.
 
 
 ### Example Usage
@@ -757,7 +764,7 @@ Click Me to add a new User! </div>
 
 ```
 
-# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`] )
+# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`noReverse`] )
 ### Purpose
 Publishes a notification when an associated record is added to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a new pet is associated with a user `publishAdd` may be called.
 
@@ -767,10 +774,11 @@ Publishes a notification when an associated record is added to a model's collect
 | 2 | Attribute of associated collection       |   `string`              |   Yes      |
 | 3 | ID of associated record that was added      |   `int`, `string` |   Yes       |
 | 4 | Request      |   `request object` |   No       |
+| 5 | Reverse flag |   `boolean` | No |
 
 `publishAdd()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
-`msg` is an object with the following properties:
+The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"addedTo"` (a string)
@@ -787,7 +795,9 @@ When your app is running in the `development` environment, the default implement
 
 If the `request` argument is included then the socket attached to that request will `not` receive the notification.
 
-# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`] )
+See the documentation for `publishUpdate` for information about the `noReverse` argument.  In general, you should not have to set this argument unless you are writing your own implementation of `publishAdd` for a model.
+
+# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`noReverse`] )
 ### Purpose
 Publishes a notification when an associated record is removed to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a pet is removed from a user's `pets` collection, `publishRemove` may be called.
 
@@ -797,10 +807,11 @@ Publishes a notification when an associated record is removed to a model's colle
 | 2 | Attribute of associated collection       |   `string`              |   Yes      |
 | 3 | ID of associated record that was removed      |   `int`, `string` |   Yes       |
 | 4 | Request      |   `request object` |   No       |
+| 5 | Reverse flag |   `boolean` | No |
 
 `publishRemove()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
-`msg` is an object with the following properties:
+The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"removedFrom"` (a string)
@@ -817,6 +828,9 @@ When your app is running in the `development` environment, the default implement
 
 If the `request` argument is included then the socket attached to that request will `not` receive the notification.
 
+See the documentation for `publishUpdate` for information about the `noReverse` argument.  In general, you should not have to set this argument unless you are writing your own implementation of `publishRemove` for a model.
+
+
 # .publishDestroy( `{id}`, [`request`] )
 ### Purpose
 Publish the destruction of a model
@@ -828,7 +842,7 @@ Publish the destruction of a model
 
 `publishDestroy()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
-`msg` is an object with the following properties:
+The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"destroyed"` (a string)
