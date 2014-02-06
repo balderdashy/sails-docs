@@ -334,9 +334,7 @@ module.exports = {
 
 views/users/testSocket.ejs
 ```javascript
-<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
-
-<script>
+<script type="text/javascript">
 window.onload = function startListening(){
     socket.on('gotUser',function(data){
       console.log(data.name+' number '+data.id+' has joined the party');
@@ -344,9 +342,7 @@ window.onload = function startListening(){
 };
 
 </script>
-<center>
-<div class="addButton" onClick="socket.get('/users/testStream/',{startStream:true})">
-Stream all the Users ! </div>
+<div class="addButton" onClick="socket.get('/users/testStream/',{startStream:true})">Stream all the Users !</div>
 
 ```
 
@@ -595,9 +591,17 @@ PublishCreate doesn't actually create anything.  It simply publishes information
 | 1 | Data to Send        |   `object`              |   Yes       |
 | 2 | Request      |   `Request object` |   No       |
 
-The default implementation of publishCreate blasts a `debug` message to all connected sockets, and only operates while your app is running in the `development` environment.  To use publishCreate in production, you can create a custom implementation and add it to your model class.
+The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the `watch` method.  The socket message to subscribers will include the following properties:
 
-If the `request` argument is included then the socket attached to that request will `not` receive the notification.
++ **id** - the `id` attribute of the new model instance
++ **verb**  - `"created"` (a string)
++ **data** - an object-- the attributes and values of the new model instance
+
+#### `data`
+An object containing the attributes and values of the new model instance.
+
+#### `request`
+If this argument is included then the socket attached to that request will *not* receive the notification.
 
 ### Example Usage
 UsersController.js
@@ -617,7 +621,7 @@ module.exports = {
     
         } else if (req.isSocket){
     
-          User.subscribe(req.socket);
+          User.watch(req.socket);
           console.log('User with socket id '+req.socket.id+' is now subscribed to the model class \'users\'.');
         
         } else {
@@ -634,18 +638,19 @@ module.exports = {
 
 views/users/testSocket.ejs
 ```html
-<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
 
-<script>
+<script type="text/javascript">
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to the model 'users'
     socket.get('/users/testSocket/');
 
-    // Listen for the event called 'debug' emited by the publishCreate() method.
-    socket.on('debug',function(obj){
-      data = obj.data;
-      console.log('User '+data.name+' has been created.');
+    // Listen for the event called 'user' emited by the publishCreate() method.
+    socket.on('user',function(obj){
+      if (obj.verb == 'created') {
+         var data = obj.data;
+         console.log('User '+data.name+' has been created.');
+      }
     });
 };
 
@@ -657,14 +662,12 @@ function makeNew(){
 }
 
 </script>
-<center>
-<div class="addButton" onClick="makeNew()">
-Click Me to add a new 'Walter' ! </div>
+<div class="addButton" onClick="makeNew()">Click Me to add a new 'Walter' ! </div>
 ```
 
 
 
-# .publishUpdate( `{id}`,[`changes`],[`request`],[`noReverse`] )
+# .publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )
 ### Purpose
 PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
 
@@ -673,7 +676,7 @@ PublishUpdate updates nothing.  It publishes information about the update of a m
 | 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
 | 2 | Updated values        |   `{}`              |   No      |
 | 3 | Request      |   `request object` |   No       |
-| 4 | Reverse flag | `boolean` | No |
+| 4 | Additional Options | `object` | No |
 
 `publishUpdate()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
@@ -682,21 +685,20 @@ The socket message is an object with the following properties:
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"updated"` (a string)
 + **data** - an object-- the attributes that were updated
++ **previous** - an object--if present, the previous values of the updated attributes
 
-When your app is running in the `development` environment, the default implementation of publishUpdate will also broadcast a `debug` event to all connected sockets with the following properties:
+#### `changes`
+This should be an object containing any changed attributes and their new values.  
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"update"` (a string)
-+ **data** - an object-- the attributes that were updated
-+ **model** - the name of the model class (a string)
+#### `request`
+If this argument is included then the socket attached to that request will *not* receive the notification.
 
-`changes` should be an object containing any changed attributes and their new values.  `changes` may also contain a `__previous__` property containing an object with the original values of the attributes.  This is used by the default `publishUpdate` implementation to determine whether to send out notifications to associated models (see the discussion of `noReverse` below).
+#### `options.previous`
+If the `options` object contains a `previous` property, it is expected to be a representation of the model instance's attributes *before* they were updated.  This may be used to determine whether or not to publish additional messages (see the `options.noReverse` flag below for more info).
 
-If the `request` argument is included then the socket attached to that request will `not` receive the notification.
+#### `options.noReverse`
 
-#### The `noReverse` flag
-
-The default implementation of `publishUpdate` will check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a `Pet` model has an `owner` attribute that is associated with the `User` model so that a user may own several pets, and the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` changed, then an additional `publishAdd` or `publishRemove` call may be made.  To suppress these notifications, set the `noReverse` flag to `true`.  In general, you should not have to set this flag unless you are writing your own implementation of `publishUpdate` for a model.
+The default implementation of `publishUpdate` will, if `options.previous` is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a `Pet` model has an `owner` attribute that is associated with the `User` model so that a user may own several pets, and the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` changed, then an additional `publishAdd` or `publishRemove` call may be made.  To suppress these notifications, set the `options.noReverse` flag to `true`.  In general, you should not have to set this flag unless you are writing your own implementation of `publishUpdate` for a model.
 
 
 ### Example Usage
@@ -735,9 +737,7 @@ module.exports = {
 
 views/users/testSocket.ejs
 ```html
-<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
-
-<script>
+<script type="text/javascript">
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to all of the 'users' model instances (records)
@@ -745,8 +745,11 @@ window.onload = function subscribeAndListen(){
 
     // Listen for the event called 'user'
     socket.on('user',function(obj){
-      data = obj.data;
-      console.log('User '+data.name+' has been '+obj.verb);
+      if (obj.verb == 'updated') {
+        var previous = obj.previous;
+        var data = obj.data;
+        console.log('User '+previous.name+' has been updated to '+data.name);
+      }
     });
 };
 
@@ -758,13 +761,11 @@ function doEdit(){
 }
 
 </script>
-<center>
-<div class="addButton" onClick="doEdit()">
-Click Me to add a new User! </div>
+<div class="addButton" onClick="doEdit()">Click Me to add a new User! </div>
 
 ```
 
-# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`noReverse`] )
+# .publishAdd( `{id}`,`attribute`, `idAdded`, [`request`], [`options`] )
 ### Purpose
 Publishes a notification when an associated record is added to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a new pet is associated with a user `publishAdd` may be called.
 
@@ -774,7 +775,7 @@ Publishes a notification when an associated record is added to a model's collect
 | 2 | Attribute of associated collection       |   `string`              |   Yes      |
 | 3 | ID of associated record that was added      |   `int`, `string` |   Yes       |
 | 4 | Request      |   `request object` |   No       |
-| 5 | Reverse flag |   `boolean` | No |
+| 5 | Additional Options |   `object` | No |
 
 `publishAdd()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
@@ -785,19 +786,13 @@ The socket message is an object with the following properties:
 + **attribute** - the name of the model attribute that was added to
 + **addedId** - the ID of the record that was added
 
-When your app is running in the `development` environment, the default implementation of publishAdd will also broadcast a `debug` event to all connected sockets with the following properties:
+#### `request`
+If the this argument is included then the socket attached to that request will *not* receive the notification.
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"addedTo"` (a string)
-+ **model** - the name of the model class (a string)
-+ **attribute** - the name of the model attribute that was added to
-+ **addedId** - the ID of the record that was added
+#### `options.noReverse`
+See the documentation for `publishUpdate` for information about `options.noReverse`.  In general, you should not have to set this argument unless you are writing your own implementation of `publishAdd` for a model.
 
-If the `request` argument is included then the socket attached to that request will `not` receive the notification.
-
-See the documentation for `publishUpdate` for information about the `noReverse` argument.  In general, you should not have to set this argument unless you are writing your own implementation of `publishAdd` for a model.
-
-# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`noReverse`] )
+# .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )
 ### Purpose
 Publishes a notification when an associated record is removed to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a pet is removed from a user's `pets` collection, `publishRemove` may be called.
 
@@ -807,7 +802,7 @@ Publishes a notification when an associated record is removed to a model's colle
 | 2 | Attribute of associated collection       |   `string`              |   Yes      |
 | 3 | ID of associated record that was removed      |   `int`, `string` |   Yes       |
 | 4 | Request      |   `request object` |   No       |
-| 5 | Reverse flag |   `boolean` | No |
+| 5 | Additional Options |   `object` | No |
 
 `publishRemove()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
@@ -818,20 +813,14 @@ The socket message is an object with the following properties:
 + **attribute** - the name of the model attribute that was removed from
 + **removedId** - the ID of the record that was removed
 
-When your app is running in the `development` environment, the default implementation of publishRemove will also broadcast a `debug` event to all connected sockets with the following properties:
+#### `request`
+If the this argument is included then the socket attached to that request will *not* receive the notification.
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"removedFrom"` (a string)
-+ **model** - the name of the model class (a string)
-+ **attribute** - the name of the model attribute that was removed from
-+ **removedId** - the ID of the record that was removed
-
-If the `request` argument is included then the socket attached to that request will `not` receive the notification.
-
-See the documentation for `publishUpdate` for information about the `noReverse` argument.  In general, you should not have to set this argument unless you are writing your own implementation of `publishRemove` for a model.
+#### `options.noReverse`
+See the documentation for `publishUpdate` for information about `options.noReverse`.  In general, you should not have to set this argument unless you are writing your own implementation of `publishRemove` for a model.
 
 
-# .publishDestroy( `{id}`, [`request`] )
+# .publishDestroy( `{id}`, [`request`], [`options`] )
 ### Purpose
 Publish the destruction of a model
 
@@ -839,6 +828,7 @@ Publish the destruction of a model
 |---|---------------------|---------------------|------------|
 | 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
 | 2 | Request      |   `request object` |   No       |
+| 3 | Additional options | `object` | No |
 
 `publishDestroy()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
 
@@ -846,14 +836,13 @@ The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"destroyed"` (a string)
++ **previous** - an object--if present, contains the attributes and values of the object that was destroyed.
 
-When your app is running in the `development` environment, the default implementation of publishDestroy will also broadcast a `debug` event to all connected sockets with the following properties:
+#### `request`
+If the this argument is included then the socket attached to that request will *not* receive the notification.
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"destroy"` (a string)
-+ **model** - the name of the model class (a string)
-
-If the `request` argument is included then the socket attached to that request will `not` receive the notification.
+#### `options.previous` 
+If this is set, it is expected to be a representation of the model before it was destroyed.  This may be used to send out additional notifications to associated records.
 
 ### Example Usage
 
@@ -895,9 +884,8 @@ module.exports = {
 
 views/users/testSocket.ejs
 ```html
-<style>.addButton{display:inline-block;line-height:100px;width:400px;height:100px;border:1px solid black;cursor:pointer;}</style>
 
-<script>
+<script type="text/javascript">
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to all of the 'users' model instances (records)
@@ -905,7 +893,9 @@ window.onload = function subscribeAndListen(){
 
     // Listen for the event called 'message' emited by the publishDestroy() method.
     socket.on('message',function(obj){
-      console.log('User with ID '+obj.id+' has been '+obj.verb+'ed .');
+      if (obj.verb == 'destroyed') {
+        console.log('User '+obj.previous.name+' has been destroyed .');
+      }
     });
 };
 
@@ -916,9 +906,7 @@ function destroy(){
 }
 
 </script>
-<center>
-<div class="addButton" onClick="destroy()">
-Click Me to destroy user 'Walter' ! </div>
+<div class="addButton" onClick="destroy()">Click Me to destroy user 'Walter' ! </div>
 
 
 ```
