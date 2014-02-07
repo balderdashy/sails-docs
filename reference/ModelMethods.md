@@ -542,7 +542,7 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
 
-#.subscribe(`socket`,`records`)
+#.subscribe(`socket`,`records`,[`contexts`])
 
 ### Purpose
 This subscribes clients to one or more existing model instances (records).  It allows clients to see message emitted by .publishUpdate(), .publishDestroy(), .publishAdd() and .publishRemove().
@@ -551,7 +551,11 @@ This subscribes clients to one or more existing model instances (records).  It a
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
 | 2 | Records          | `[]`, `object` | Yes        |
+| 3 | Contexts to subscribe to | `string`, `array` |  No |
 
+#### `context`
+
+If you specify a specific context (or array of contexts) to subscribe to, you will only get messages sent in that context.  For example, `User.subscribe(socket, user, 'update')` will cause the socket to receive messages only when `publishUpdate` is called for `user`.  Subsequent calls to `subscribe` are cumulative, so if you called `User.subscribe(socket, user, 'destroy')` later with the same socket, that socket would then be subscribed to messages from both `publishUpdate` and `publishDestroy`.  Omit `context` to subscribe a socket to the default contexts for that model class.  The default contexts are defined by the `autosubscribe` property of the model class.  If `autosubscribe` is not present, then the default contexts are `update`, `destroy`, `message` (for custom messages), `add:*` and `remove:*` (publishAdd and publishRemove messages for associated models).
 
 ### Example Usage
 Controller Code
@@ -565,7 +569,7 @@ Controller Code
     
 ```
 
-# .unsubscribe(`socket`,`records`)
+# .unsubscribe(`socket`,`records`,[`contexts`])
 ### Purpose
 This method will unsubscribe a socket from one or more model instances.
 
@@ -573,6 +577,11 @@ This method will unsubscribe a socket from one or more model instances.
 |---|---------------------|---------------------|------------|
 | 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
 | 2 | Records          | `[]`, `object` | Yes         |
+| 3 | Contexts to unsubscribe from | `string`, `array` |  No |
+
+#### `context`
+
+See `.subscribe()` for a discussion of pubsub contexts.  Omit this argument to unsubscribe a socket from all contexts.
 
 ### Example Usage
 Controller Code
@@ -914,7 +923,29 @@ function destroy(){
 ### Notes
 > Any string arguments passed must be the ID of the record.
 
+# .message( `models`,`message`, [`request`] )
+### Purpose
+Publishes a custom message to a model&rsquo;s subscribers.
 
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Record (or ID of record) to send message to |   `int`, `string`, `object`    |   Yes      |
+| 2 | Message data       |   `object`              |   Yes      |
+| 3 | Request      |   `request object` |   No       |
+
+`message()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+
+The socket message is an object with the following properties:
+
++ **id** - the `id` attribute of the model instance
++ **verb**  - `"message"` (a string)
++ **message** - the message payload (i.e. the `message` argument to `.message()`)
+
+#### `message`
+Arbitrary data to send to the subscribed sockets.
+
+#### `request`
+If the this argument is included then the socket attached to that request will *not* receive the notification.
 
 # * .save(`callback`)
 
