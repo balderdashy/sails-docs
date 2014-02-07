@@ -938,7 +938,7 @@ Publishes a custom message to a model&rsquo;s subscribers.
 The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
-+ **verb**  - `"message"` (a string)
++ **verb**  - `"messaged"` (a string)
 + **message** - the message payload (i.e. the `message` argument to `.message()`)
 
 #### `message`
