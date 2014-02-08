@@ -542,16 +542,18 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
 
-#.subscribe(`socket`,`records`,[`contexts`])
+#.subscribe(`request`,`records`,[`contexts`])
 
 ### Purpose
 This subscribes clients to one or more existing model instances (records).  It allows clients to see message emitted by .publishUpdate(), .publishDestroy(), .publishAdd() and .publishRemove().
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO socket`  | Yes        |
+| 1 | Request   | `Request object`  | Yes        |
 | 2 | Records          | `[]`, `object` | Yes        |
 | 3 | Contexts to subscribe to | `string`, `array` |  No |
+
+*Note*: `subscribe` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
 
 #### `context`
 
@@ -569,15 +571,17 @@ Controller Code
     
 ```
 
-# .unsubscribe(`socket`,`records`,[`contexts`])
+# .unsubscribe(`request`,`records`,[`contexts`])
 ### Purpose
 This method will unsubscribe a socket from one or more model instances.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Requesting Socket   | `Socket.IO Socket`  | Yes        |
+| 1 | Request   | `Request object`  | Yes        |
 | 2 | Records          | `[]`, `object` | Yes         |
 | 3 | Contexts to unsubscribe from | `string`, `array` |  No |
+
+*Note*: `unsubscribe` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
 
 #### `context`
 
@@ -591,6 +595,29 @@ User.findOne({id: 123}).exec(function(err, userInstance) {
 });
 ```
 
+#.watch(`request`)
+
+### Purpose
+This subscribes a client to publishCreate events for the model.  Any connections that are "watching" the model class will be automatically subscribed to new model instances that are created using the blueprint `create` method.
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Request   | `request object`  | Yes        |
+
+*Note*: `watch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
+
+#.unwatch(`request`)
+
+### Purpose
+This unsubscribes a client from publishCreate events for the model.
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 | Request   | `request object`  | Yes        |
+
+*Note*: `unwatch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
+
+
 # .publishCreate( `data`,[`request`] )
 ### Purpose
 PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.  PublishCreate is called automatically by the [blueprint `create` action](https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record).
@@ -600,7 +627,7 @@ PublishCreate doesn't actually create anything.  It simply publishes information
 | 1 | Data to Send        |   `object`              |   Yes       |
 | 2 | Request      |   `Request object` |   No       |
 
-The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the `watch` method.  The socket message to subscribers will include the following properties:
+The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the `watch` method.  It also subscribes all sockets "watching" the model class to the new instance.  The socket message to subscribers will include the following properties:
 
 + **id** - the `id` attribute of the new model instance
 + **verb**  - `"created"` (a string)
@@ -923,14 +950,14 @@ function destroy(){
 ### Notes
 > Any string arguments passed must be the ID of the record.
 
-# .message( `models`,`message`, [`request`] )
+# .message( `models`,`data`, [`request`] )
 ### Purpose
 Publishes a custom message to a model&rsquo;s subscribers.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 | Record (or ID of record) to send message to |   `int`, `string`, `object`    |   Yes      |
-| 2 | Message data       |   `object`              |   Yes      |
+| 2 | Message payload       |   `object`              |   Yes      |
 | 3 | Request      |   `request object` |   No       |
 
 `message()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
@@ -939,9 +966,9 @@ The socket message is an object with the following properties:
 
 + **id** - the `id` attribute of the model instance
 + **verb**  - `"messaged"` (a string)
-+ **message** - the message payload (i.e. the `message` argument to `.message()`)
++ **data** - the message payload
 
-#### `message`
+#### `data`
 Arbitrary data to send to the subscribed sockets.
 
 #### `request`
