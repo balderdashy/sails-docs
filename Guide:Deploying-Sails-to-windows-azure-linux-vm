@@ -11,9 +11,7 @@ For windows user please make sure you added the Cygwin bin directory to your env
 This section will talks about how to create and set up virtual machine inside Azure if you want to deploy to an existing virtual machine Please move to next section. 
 
 ## Creating virtual machine ##
-When creating virtual machine please make sure you create Ubuntu 12.04 LTS inside Azure. Azure has a image of that inside their gallery. When create the machine please consider following
-
-*  You will see SSH endpoint will already be created for you, create three additional endpoint HTTP with port 80, HTTPS with port 443 and SAILS with port 1337, also it is possible a good idea to keep both incoming and outgoing port same. At this moment please do not use any loadbalancer. 
+When creating virtual machine please make sure you create Ubuntu 12.04 LTS inside Azure. Azure has a image of that inside their gallery. When creating the machine you will notice that SSH endpoint will already be created for you, create three additional endpoint HTTP with port 80, HTTPS with port 443 and SAILS with port 1337, also it is possible a good idea to keep both incoming and outgoing port same. At this moment please do not use any loadbalancer. 
 
 Now you are ready to setup you machine for deploying your code to virtual machine. Please relax, have a break while Azure prepare the server for you. 
 
