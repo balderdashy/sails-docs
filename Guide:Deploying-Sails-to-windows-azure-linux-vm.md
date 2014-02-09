@@ -109,7 +109,8 @@ sudo npm install -g forever
 ### Running the server
 
 Before continue makes sure you server is already running smoothly with sails lift in prod environment and using a port below 1000, 
-**The following command should be run in a super user mode otherwise you will not be allowed to lift your sails in a port below 1000.
+
+* The following command should be run in a super user mode otherwise you will not be allowed to lift your sails in a port below 1000. 
 
 Run the following command to start your server. 
 
@@ -144,5 +145,5 @@ And now you are up and running.
 
 
 
-*Note: According to sails [deployment guide](http://sailsjs.org/#!documentation/deployment) Using forever is a quick start. The proper way to deploy is with upstart and nginx and takes a lot more work to set up.
+* Note: According to sails [deployment guide](http://sailsjs.org/#!documentation/deployment) Using forever is a quick start. The proper way to deploy is with upstart and nginx and takes a lot more work to set up.
 
