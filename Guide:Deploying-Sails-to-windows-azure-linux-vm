@@ -3,7 +3,7 @@ You need the following tools to proceed with this tutorial.
 
 * SSH Client, Open SSH is preferable in windows you can use that by installing Cygwin.
 
-* RSync, If you dont have it built in you can use install it with Cygwin as well. 
+* RSync, If you dont have it built in you can install it with Cygwin as well. 
 
 For windows user please make sure you added the Cygwin bin directory to your environment variable path. 
 
