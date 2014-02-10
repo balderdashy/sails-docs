@@ -81,9 +81,19 @@ Node.js is available in official gentoo portage tree. You have to unmask it.
     # emerge -aqv nodejs
 
 ### Debian, LMDE
-[Node.js is available in official repo for Debian Sid(unstable)](http://packages.debian.org/search?searchon=names&keywords=nodejs).
 
-For Debian Squeeze, your best bet is to compile node by yourself (as `root`):
+For *Debian sid (unstable)*, [Node.js is available in the official repo](http://packages.debian.org/search?searchon=names&keywords=nodejs).
+
+For *Debian Wheezy (stable)*, [Node.js is available in wheezy-backports](http://packages.debian.org/wheezy-backports/nodejs). To install [backports](http://backports.debian.org/Instructions/), add this to your sources.list (`/etc/apt/sources.list`):
+
+    deb http://YOURMIRROR.debian.org/debian wheezy-backports main
+    
+Then run:
+
+    apt-get update
+    apt-get install nodejs
+
+For *Debian Squeeze (oldstable)*, your best bet is to compile node by yourself (as `root`):
 
     apt-get install python g++ make
     mkdir ~/nodejs && cd $_
