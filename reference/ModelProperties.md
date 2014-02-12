@@ -2,7 +2,21 @@
 
 ### Overview
 
-Models have properties.  Here's some info about them.
+#### Model Attributes
+
+Here you will find information about defining models in your Sails project as well as the data types supported by those models.
+
+#### Lifecycle Callbacks
+
+Sails exposes a number of functions that can be called at various times during your query.  Look here for information on how to use custom logic at a specific time relative to your query. 
+
+#### Validations
+
+Look here for information on validating data.  It describes what types of validations are available and gives some examples on how to use them.
+
+#### Associations Between Models
+
+This is where you will look in order to learn how to make associations between models.  If you have a model named `User` and a model named `Pet`, you can do things like finding a `Pet` based on the the `User` that owns it. Look here to find out how it all works. 
 
 
 # Model Attributes
@@ -11,6 +25,8 @@ Models have properties.  Here's some info about them.
 
 Model attributes are basic pieces of information about a model. A model called `Person`
 might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
+
+> Note, this section applies only if you are using [Waterline](https://github.com/balderdashy/waterline) as your ORM.  If you're not sure what this means, ignore this message.
 
 ### Attribute Types
 
@@ -50,7 +66,7 @@ module.exports = {
 
 ```
 
-Sails can also validate your data before it is saved!  Actually our ORM [Waterline](https://github.com/balderdashy/waterline) does all the heavy lifting. Below is the same example with some validations applied.    
+Sails can also validate your data before it is saved!  Below is the same example with some validations applied.    
 
 
 ```javascript
