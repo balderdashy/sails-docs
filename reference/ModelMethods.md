@@ -921,7 +921,7 @@ User.find().exec(
 ### Notes
 > This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
-# .destroy(`callback`)
+# * .destroy(`callback`)
 
 ### Purpose
 Destroys the your record in the database. It returns an error in the callback if it has trouble. 
