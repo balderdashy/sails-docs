@@ -1119,8 +1119,7 @@ module.exports = {
 
 > There will be no parameters in the callback unless there is an error.  No news is good news.
 
-> Note, This method is not asynchronous
-
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
 # * .toObject()
 
@@ -1215,7 +1214,7 @@ module.exports = {
 > Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
 > You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
-> Note, This method is not asynchronous
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
 
 # .where(`criteria`)
