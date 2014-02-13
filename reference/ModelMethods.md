@@ -1018,7 +1018,7 @@ User.find().exec(
 ### Notes
 > This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
-# .destroy(`callback`)
+# * .destroy(`callback`)
 
 ### Purpose
 Destroys the your record in the database. It returns an error in the callback if it has trouble. 
@@ -1119,8 +1119,7 @@ module.exports = {
 
 > There will be no parameters in the callback unless there is an error.  No news is good news.
 
-> Note, This method is not asynchronous
-
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
 # * .toObject()
 
@@ -1215,7 +1214,7 @@ module.exports = {
 > Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
 > You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
-> Note, This method is not asynchronous
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
 
 # .where(`criteria`)
@@ -1341,3 +1340,16 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
 > If you dont run .exec() , your query will not execute.
+
+
+# .populate()
+### Overview
+The information you seek [lies here](./#!documentation/reference/ModelAssociations/.populate.html)
+
+# .add()
+### Overview
+The information you seek [lies here](./#!documentation/reference/ModelAssociations/.add.html)
+
+# .remove()
+### Overview
+The information you seek [lies here](./#!documentation/reference/ModelAssociations/.remove.html)
