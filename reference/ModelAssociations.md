@@ -6,7 +6,7 @@ your users can live in PostgreSQL and their photos can live in MongoDB and you c
 the data as if they lived together on the same database. You can also have associations that
 live on seperate connections or in different databases within the same adapter.
 
-# One-to-One Associations
+# One-to-One
 ### Overview
 
 A one-to-one association states that a model may only be associated with one other model. In order
@@ -92,7 +92,7 @@ null [ { name: 'Mike',
 
 > Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
 
-# One-to-Many Associations
+# One-to-Many
 ### Overview
 
 A one-to-many association states that a model can be associated with many other models. To build this
@@ -537,14 +537,16 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 ### Notes
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
 
-# Many-to-Many Through Associations
+# Through Associations
 ### Overview
 
 Many-to-Many through associations behave the same way as many-to-many associations with the exception
 of the join table being automatically created for you. This allows you to attach additional attributes
 onto the relationship inside of the join table.
 
-Unfortunately, they are not ready yet.  Stay tuned.
+Unfortunately, they are not supported yet.  Don't worry though, there's an easy workaround.
+
+You can accomplish this by using an additional model as an intermediary.  Instead of a many-to-many association between two models, you can use multiple one-to-many associations through the intermediary model.
 
 # .add( `primary key` )
 ### Purpose
