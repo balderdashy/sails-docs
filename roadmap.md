@@ -3,6 +3,8 @@
 
 Wondering how you can help?  Here's what's next.
 
+> The notes below are a broad summary-- to get details, and the most up-to-date information, subscribe to the [sails-js-roadmap Trello board](https://trello.com/b/cGzNVE0b/sails-js-feature-requests).
+
 ## Sails Core
 
 #### Streaming File Uploads/Downloads (v0.10.x)
@@ -96,8 +98,11 @@ See the adapters section below for information on targeted blob store adapters.
 
 ## Adapters
 
-+ Semantic interfcace:
-  + Redis (there are a couple of implementations of this that exist-- just needs to be finalized)
+> ###### Also see:
+> + [Mike's thoughts on usage for upcoming features](https://gist.github.com/mikermcneil/8328832) (please feel free to comment!)
+> + [Interface specification](http://links.sailsjs.org/docs/plugins/adapters)
+
++ Semantic interface:
   + Riak (exists, needs to be updated)
   + ElasticSearch (exists, needs testers)
   + CouchDB (exists, needs testers)
@@ -142,9 +147,9 @@ See the adapters section below for information on targeted blob store adapters.
 
 ## Community
 + Examples / articles / answering Google Group discussions / answering stack overflow questions
-+ Better documentation for database support (matrix for Disk, MySQL, PostgreSQL, Mongo, and Redis)
 + Backbone works with Sails out of the box with Sails blueprints (no code required), but let's create a Backbone.sync override for taking advantage of comet messaging (based on the existing Backbone -> Socket.io SDK)
+  + Check out [backbone-to-sails](https://github.com/mikermcneil/backbone-to-sails)
 + Improve the Angular -> Socket.io SDK
 + Create an example of a TemplateController which allows you to load your templates asynchronously from the client.
 + Sublime Text 2 snippets
-+ Chrome Sniffer detector
++ Chrome Sniffer detector (@uncletammy is workingon this)
