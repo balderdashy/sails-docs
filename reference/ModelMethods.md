@@ -29,7 +29,7 @@ If you would like to write your own instance methods, you will declare them insi
 > For most class methods, the callback parameter is optional and if one is not supplied, it will return a chainable object.
 
 
-# .create( `criteria`,[`callback`] )
+# .create( `values`, [`callback`] )
 ### Purpose
 Creates a new instance of this model in the database.
 
@@ -38,7 +38,7 @@ Creates a new instance of this model in the database.
 #### Parameters
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Records to Create  |      `{}`, `[{}]`   | Yes      |
+| 1 |  Record(s) to Create  |      `{}`, `[{}]`   | Yes      |
 | 2 |     Callback        | `function`          | No         |
 
 #### Callback Parameters
