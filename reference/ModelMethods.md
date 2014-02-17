@@ -557,14 +557,18 @@ This subscribes clients to one or more existing model instances (records).  It a
 
 #### `context`
 
-If you specify a specific context (or array of contexts) to subscribe to, you will only get messages sent in that context.  For example, `User.subscribe(socket, user, 'update')` will cause the socket to receive messages only when `publishUpdate` is called for `user`.  Subsequent calls to `subscribe` are cumulative, so if you called `User.subscribe(socket, user, 'destroy')` later with the same socket, that socket would then be subscribed to messages from both `publishUpdate` and `publishDestroy`.  Omit `context` to subscribe a socket to the default contexts for that model class.  The default contexts are defined by the `autosubscribe` property of the model class.  If `autosubscribe` is not present, then the default contexts are `update`, `destroy`, `message` (for custom messages), `add:*` and `remove:*` (publishAdd and publishRemove messages for associated models).
+If you specify a specific context (or array of contexts) to subscribe to, you will only get messages sent in that context.  For example, `User.subscribe(socket, user, 'update')` will cause the socket to receive messages only when `publishUpdate` is called for `user`.  Subsequent calls to `subscribe` are cumulative, so if you called `User.subscribe(socket, user, 'destroy')` later with the same socket, that socket would then be subscribed to messages from both `publishUpdate` and `publishDestroy`.  
+
+You can omit `context` to subscribe a socket to the default contexts for that model class.  The default contexts are defined by the `autosubscribe` property of the model class.  If `autosubscribe` is not present, then the default contexts are `update`, `destroy`, `message` (for custom messages), `add:*` and `remove:*` (publishAdd and publishRemove messages for associated models).
 
 ### Example Usage
 Controller Code
 ```javascript
+
+    // Subscribes client to ONLY the create and destroy events for every `User` record.
+
     User.find({}).exec(function(e,listOfUsers){
-        User.subscribe(req.socket,listOfUsers);
-        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
+        User.subscribe(req.socket,listOfUsers,['create','destroy']);
     });
     
     // Don't forget to handle your errors
