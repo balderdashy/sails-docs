@@ -3,7 +3,7 @@
 
 #### Model Class Methods
 
-Model class methods are functions built into the model itself that performs a particular task its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like .create, .update, ,destroy, .find, etc.
+Model class methods are functions built into the model itself that performs a particular task its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like .create, .update, ,destroy, .find, etc. Yay.
 
 #### Dynamic Finders
 
