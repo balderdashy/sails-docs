@@ -1025,20 +1025,20 @@ User.find().exec(
 # * .destroy(`callback`)
 
 ### Purpose
-Destroys the your record in the database. It returns an error in the callback if it has trouble. 
+Destroys the record in the database.
 
 ### Overview
 #### Parameters
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |     Callback        | `function`          | Yes        |
+|   |     callback        | `function`          | Yes        |
 
 #### Callback Parameters
 
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
+|   |  err                | `Error`             |
 
 
 ### Example Usage
