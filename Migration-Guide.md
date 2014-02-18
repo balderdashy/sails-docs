@@ -47,23 +47,36 @@ Like before, there are a few that we automatically create for you.  Instead of g
 To migrate, you will need to create a new v0.10 project then copy the `myApp/api/responses` directory into your app.  You will then modify the appropriate .js file to reflect any customization you made in your response logic files (500.js,etc).
 
 
-##### Adapter Configuration
+##### Legacy data stored in the temporary `sails-disk` database
 
-`myApp/config/adapters.js` has been moved to `myApp/config/connections.js`
+`sails-disk`, used by default in new Sails projects, now stores data a bit differently.  If you have some temporary data stored in a 0.9.x project, you'll want to wipe it out and start fresh.  To do this:
 
-Also, when configuring models to use specific adapters you must now put them in the `connections` key instead of `adapters`.  
+```
+# From your project's root directory:
+$ rm .tmp/disk.db
+```
+
+
+##### Adapter/Database Configuration
+
+`config.adapters` (in `myApp/config/adapters.js`) is now `config.connections` (in new projects, this is generated in `myApp/config/connections.js`).
+
+Your app's default `connection` (i.e. database) should now be configured as a string `config.models.connection`. used by default for model
+....
+
+Also, in your models,  configuring models to use specific adapters you must now put them in the `connection` key instead of `adapters`.
 
 ####### For example
 ```javascript
 
 module.exports = {
 
-	connections: ['mongo','disk'],
+	connection: ['someMongoDatabase'],
 
 	attributes: {
 		name:{
-			type:'STRING',
-			required:true
+			type     : 'string',
+			required : true
 		}
 	}
 };
