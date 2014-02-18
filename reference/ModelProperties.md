@@ -43,6 +43,18 @@ This is where you will look in order to learn how to make associations between m
 # *.columnName
 
 
+### Overview
+
+Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured connection (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
+
+While the `columnName` property is primarily designed for working with existing/legacy databases, it can also be useful in situations where your database is being shared by other applications, or you don't have access permissions to change the schema.
+
+
+
+
+### Usage
+
+To store/fetch your model's `numberOfWheels` attribute into/from the `number_of_round_rotating_things` column:
 ```javascript
   // An attribute in one of your models:
   // ...
@@ -54,15 +66,11 @@ This is where you will look in order to learn how to make associations between m
 ```
 
 
-### Overview
-
-Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column.  Useful for working with existing/legacy databases.
-
-
-
 ### Example
 
-For example, let's say you have a `User` model in your Sails app that looks like this:
+Now for a more thorough/realistic example.
+
+Let's say you have a `User` model in your Sails app that looks like this:
 
 ```javascript
 // api/models/User.js
