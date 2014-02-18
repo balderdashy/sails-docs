@@ -5,7 +5,7 @@ This is your Sails project's root directory.  With the exception of your model a
 
 
 # myApp/api/controllers/UserController.js
-### Purposeser
+### Purpose
 This file was created when you ran 'sails generate User'.  It contains all of the controller logic for the model called 'User'. 
 
 This is where you will put "controller actions" that send data to your clients and render the views which display that data.
