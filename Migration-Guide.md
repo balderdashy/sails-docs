@@ -5,21 +5,21 @@ Sails v0.10 comes with some big changes.
 
 ##### Pub Sub
 
-The biggest change to pub-sub is that Socket.io events are emmited under the name of the model emmiting them.  Before, your client listened for the 'message' event then had to determine which model it came from based on the included data.
+The biggest change to pub-sub is that Socket.io events are emmited under the name of the model emmiting them.  Before, your client listened for the `message` event then had to determine which model it came from based on the included data.
 
-Now, instead of everything being emmited on 'message', you subscribe to the identity of the model. 
+Now, instead of everything being emmited on `message`, you subscribe to the identity of the model. 
 
 For example, the client will call `socket.on('user',functio...` to see the messages emmited by the server with `User.publishUpdate()`
 
-Finally, the way you subscribe clients on the server side has changed.  Before, you specified whether you were subscribing the client to either the Model Class or model instances (class rooms) based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
+Finally, the way you subscribe clients has changed.  Before, you specified whether you were subscribing the client to either the Model Class or model instances (class rooms) based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
 
-Now, you can use `Model.subscribe()` to subscribe only to model instances (records).  You can also tell it the CRUD methods for which an event should be emitted.  For example, if you only wanted to get messages about deletes, you can do that!
+Now, you can use `Model.subscribe()` to subscribe only to model instances (records).  You can also tell it the CRUD methods for which an event should be emitted.  For example, if you only wanted to get messages about `delete`s, you can do that!
 
 To replace the second `.subscribe()`, `Model.watch()` has been created.  Use this to subscribe to the model class.  Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes.  Furthermore, those new models are `.subscribe()`'d to any event `context`s specified via the new [autosubscribe model property](./#!documentation/reference/ModelProperties).
 
 Remember, when working with blueprints, clients are no longer auto subscribed to the class room.  This must be done manually.
 
-Also, if you want to see all pub-sub messages from all models, you can use the .firehose() pubsub method.  Note, this only works in development mode. Here is Scott to tell you all about it!
+Also, if you want to see all pub-sub messages from all models, you can access the `firehose` located on `sails global`.  Note, this only works in development mode. Here is Scott to tell you all about it!
 
 ##### Associations
 
@@ -27,17 +27,14 @@ Since associations are brand new to Sails, this may not belong in the "migration
 
 ##### Generators
 
-Talk about sails rc (/.sailsrc)
 
-Now seperate modules that anyone can write.  
+Sails has used `generators` for a while now but for v0.10, we restructured them to be more open and accessible.   
 
-New Generators
-Custom Generators
-Sails-generate-generator
+For a complete guide to what generators are and how they work,[Look here!](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md)
 
 ##### Command Line Tool
 
-The big change here is how you create a new api.  In the past you called `sails generate new_api`.  This would generate a new controller and model called `new_api` in the appropriate places.  You can still do this but now you use `sails generate api new_api`
+The big change here is how you create a new api.  In the past you called `sails generate new_api`.  This would generate a new controller and model called `new_api` in the appropriate places.  This is now done using `sails generate api new_api`
 
 You can still generate models and controllers seperately using the same [CLI Commands](./#!documentation/reference/CommandLine/)
 
@@ -52,10 +49,26 @@ To migrate, you will need to create a new v0.10 project then copy the `myApp/api
 
 ##### Adapter Configuration
 
-When configuring models to use specific adapters or referencing those adapters in `myApp/config/adapters.js`, you should replace the word `adapter
-Adapters.js
-Connections instead of adapters
+`myApp/config/adapters.js` has been moved to `myApp/config/connections.js`
 
+Also, when configuring models to use specific adapters you must now put them in the `connections` key instead of `adapters`.  
+
+####### For example
+```javascript
+
+module.exports = {
+
+	connections: ['mongo','disk'],
+
+	attributes: {
+		name:{
+			type:'STRING',
+			required:true
+		}
+	}
+};
+
+```
 
 
 
