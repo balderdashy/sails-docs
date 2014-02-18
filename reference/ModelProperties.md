@@ -19,7 +19,117 @@ Look here for information on validating data.  It describes what types of valida
 This is where you will look in order to learn how to make associations between models.  If you have a model named `User` and a model named `Pet`, you can do things like finding a `Pet` based on the the `User` that owns it. Look here to find out how it all works. 
 
 
-# Model Attributes
+# tableName
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
+
+# *.primaryKey
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
+
+
+# *.columnName
+
+### Overview
+
+Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column.  Useful for working with existing/legacy databases.
+
+
+### Example
+
+For example, let's say you have a `User` model in your Sails app that looks like this:
+
+```javascript
+// api/models/User.js
+module.exports = {
+  connection: 'shinyNewMySQLDatabase',
+  attributes: {
+    name: 'string',
+    password: 'string',
+    email: {
+      type: 'email',
+      unique: true
+    }
+  }
+};
+```
+
+
+Everything works great, but instead of using an existing MySQL database sitting on a server somewhere that happens to house your app's intended users:
+
+```javascript
+// config/connections.js
+module.exports = {
+  // ...
+  
+  // Existing users are in here!
+  rustyOldMySQLDatabase: {
+    adapter: 'sails-mysql',
+    user: 'bofh',
+    host: 'db.eleven.sameness.foo',
+    password: 'Gh19R!?had9gzQ#Q#Q#%AdsghaDABAMR>##G<ADMBOVRH@)$(HTOADG!GNADSGADSGNBI@(',
+    database: 'jonas'
+  },
+  // ...
+};
+```
+
+Let's say there's a table called `our_users` in the old MySQL database that looks like this:
+
+| the_primary_key | email_address | full_name | seriously_encrypted_password |
+|------|---|----|---|
+7 | mike@sameness.foo | Mike McNeil | ranchdressing |
+14 | nick@sameness.foo | Nick Crumrine | thousandisland |
+
+
+In order to use this from Sails, you'd change your `User` model to look like this:
+
+```javascript
+// api/models/User.js
+module.exports = {
+  connection: 'rustyOldMySQLDatabase',
+  tableName: 'our_users',
+  attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true,
+      columnName: 'the_primary_key'
+    },
+    name: {
+      type: 'string',
+      columnName: 'full_name'
+    },
+    password: {
+      type: 'string',
+      columnName: 'seriously_encrypted_password'
+    },
+    email: {
+      type: 'email',
+      unique: true,
+      columnName: 'email_address'
+    }
+  }
+};
+```
+
+> You might have noticed that we also used the `tableName` property in this example.  This allows us to control the name of the table that will be used to house our data.  More on that [here](http://beta.sailsjs.org/#!documentation/reference/ModelProperties/tableName.html).
+
+
+
+# attributes
 
 ### Overview
 
