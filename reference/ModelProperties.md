@@ -42,9 +42,22 @@ This is where you will look in order to learn how to make associations between m
 
 # *.columnName
 
+
+```javascript
+  // An attribute in one of your models:
+  // ...
+  numberOfWheels: {
+    type: 'integer',
+    columnName: 'number_of_round_rotating_things'
+  }
+  // ...
+```
+
+
 ### Overview
 
 Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column.  Useful for working with existing/legacy databases.
+
 
 
 ### Example
