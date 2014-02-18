@@ -355,9 +355,11 @@ module.exports = {
 ### Overview
 
 
-# Validation
+# Validations
 
-Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which is based off of [Node Validate](https://github.com/chriso/node-validator) and supports most of the properties in node-validate. 
+Sails bundles support for automatic validations for your models' attributes.  Any time a record is updated, or a new record is created, the data will be validated first.  This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
+
+Validations are handled by [Anchor](https://github.com/balderdashy/anchor) a thin layer on top of [Node Validator](https://github.com/chriso/node-validator), one of the most popular validation libraries for Node.js.  That means that Sails models support most of the validations available in `node-validator`, as well as a few extras that require a bit more knowledge about the datastore, like `unique`.
 
 ### Validation Rules
 
