@@ -542,7 +542,7 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
 
-#.subscribe(`request`,`records`,[`contexts`])
+# .subscribe(`request`,`records`,[`contexts`])
 
 ### Purpose
 This subscribes clients to one or more existing model instances (records).  It allows clients to see message emitted by .publishUpdate(), .publishDestroy(), .publishAdd() and .publishRemove().
@@ -599,7 +599,7 @@ User.findOne({id: 123}).exec(function(err, userInstance) {
 });
 ```
 
-#.watch(`request`)
+# .watch(`request`)
 
 ### Purpose
 This subscribes a client to publishCreate events for the model.  Any connections that are "watching" the model class will be automatically subscribed to new model instances that are created using the blueprint `create` method.
@@ -610,7 +610,7 @@ This subscribes a client to publishCreate events for the model.  Any connections
 
 *Note*: `watch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
 
-#.unwatch(`request`)
+# .unwatch(`request`)
 
 ### Purpose
 This unsubscribes a client from publishCreate events for the model.
