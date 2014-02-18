@@ -87,22 +87,7 @@ module.exports = {
 
 ### Did we miss something?
 
-Of course we did.  We are glad you're here to help though.  If you're having migration issues that we havn't mentioned here, please open an issue on the sails-docs repo.  If you've already figured out the issue, give us a hand by submitting a PR to this file describing the problem and how you fixed it.
+If you notice something we've missed, please visit the `sails-docs` repo on GitHub and [edit the page](https://github.com/balderdashy/sails-docs/blob/master/Migration-Guide.md) to submit a pull request.
 
+If you're having migration issues that we havn't mentioned here, please open an issue on the `sails-docs` repo.  If you've already figured out how to resolve the issue, give us a hand by submitting a PR to this file describing the problem and how you fixed it. Thanks!
 
-
-[-] sails.config[500] (i.e. `config/500.js`) has been superceded in Sails v0.10.
-[-] Please define a "response" instead. (i.e. api/responses/serverError.js)
-[-] Your old handler is being ignored. (the format has been upgraded in v0.10)
-[-] Please define a "response" instead. (i.e. api/responses/notFound.js)
-[-] Your old handler is being ignored. (the format has been upgraded in v0.10)
-
-
-
-
-> _**Note:** You are viewing the Sails.js v0.10.x documentation.  If you're looking for information on v0.8.x or v.0.9.x, you'll be asked to leave._
-
-
-
-
-## You&rsquo;re done!
