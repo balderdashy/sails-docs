@@ -1,9 +1,9 @@
 # Migration Guide
-### What has changed
+### How to upgrade your v0.9.x Sails app to v0.10
 
 Sails v0.10 comes with some big changes.
 
-##### Pub Sub
+##### Pubsub
 
 The biggest change to pub-sub is that Socket.io events are emmited under the name of the model emmiting them.  Before, your client listened for the `message` event then had to determine which model it came from based on the included data.
 
@@ -21,18 +21,30 @@ Remember, when working with blueprints, clients are no longer auto subscribed to
 
 Also, if you want to see all pub-sub messages from all models, you can access the `firehose` located on `sails global`.  Note, this only works in development mode. Here is Scott to tell you all about it!
 
+
+
 ##### Associations
 
-Since associations are brand new to Sails, this may not belong in the "migration guide" but go [check out the docs](./#!documentation/reference/ModelAssociations).  We think it's kind of a big deal.
+Sails v0.10 introduces associations between data models.  Since the work we've done on associations is largely additive, your existing models should still just work.  That said, this is a pretty powerful feature that allows you to write less code and makes your app more maintainable, so I suggest taking advantage of it.  To learn about how to use associations in Sails, [check out the docs](./#!documentation/reference/ModelAssociations).
+
+Associations (or "relations") are really just special attributes.  Instead of `string` or `integer` values, you can specify an instance of a model or a collection of model instances.  You can think about this kind of like an object (`{...}`) or an array (`[{...}, {...}]`) you might store as JSON in a NoSQL database.  The difference is, in Sails, this works with any of the supported databases, and even allows you to `populate` (i.e. join) across different databases and types of databases.
+
+
 
 ##### Generators
 
 
-Sails has used `generators` for a while now but for v0.10, we restructured them to be more open and accessible.   
+Sails has had support for generating code for a while now (e.g. `sails generate controller foo`) but in v0.10, we wanted to make this feature more extensible, open, and accessible to everybody in the Sails community.  Not that it was ever intended to be shrouded in mystery or whatever, but the core team hadn't had the time to refactor things and elucidate the details of how it all works.
 
-For a complete guide to what generators are and how they work,[Look here!](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md)
+v0.10 comes with a complete rewrite of the command-line tool, and pluggable generators.  Want to be able to run `sails generate blog foo` to make a new blog built on Sails?  Create a `blog` generator (run `sails generate generator blog`), add your templates, and configure the generator to copy the new templates over.  Then you can release it to the community by publishing an npm module called `sails-generate-blog`.  Compatibility with Yeoman generators is also in our roadmap.
 
-##### Command Line Tool
+
+For a complete guide to what generators are and how they work, [check out the in-progress docs on the subject.](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md)
+
+
+
+
+##### Command-Line Tool
 
 The big change here is how you create a new api.  In the past you called `sails generate new_api`.  This would generate a new controller and model called `new_api` in the appropriate places.  This is now done using `sails generate api new_api`
 
