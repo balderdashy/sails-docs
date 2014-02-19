@@ -1,5 +1,5 @@
 #Services
-> _**Note:** You are viewing the Sails.js v0.9.x documentation.  If you're looking for information on v0.8.x, please visit [here](http://08x.sailsjs.org)._
+> _**Note:** You are viewing the Sails.js v0.10.x documentation.  If you're looking for information on v0.9.x, please visit [here](http://09x.sailsjs.org)._
 
 Alright. Close your eyes, and take a deep breath. You are on a beautiful tropical island, in the middle of the ocean.
 The sun bathes you in its warm glow as you stare out at the horizon. The waves splash calmly on the shore, just inches
