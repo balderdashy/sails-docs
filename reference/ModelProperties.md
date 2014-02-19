@@ -19,7 +19,138 @@ Look here for information on validating data.  It describes what types of valida
 This is where you will look in order to learn how to make associations between models.  If you have a model named `User` and a model named `Pet`, you can do things like finding a `Pet` based on the the `User` that owns it. Look here to find out how it all works. 
 
 
-# Model Attributes
+# tableName
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
+
+# *.primaryKey
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
+
+
+# *.columnName
+
+
+### Overview
+
+Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured connection (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
+
+While the `columnName` property is primarily designed for working with existing/legacy databases, it can also be useful in situations where your database is being shared by other applications, or you don't have access permissions to change the schema.
+
+
+
+
+### Usage
+
+To store/fetch your model's `numberOfWheels` attribute into/from the `number_of_round_rotating_things` column:
+```javascript
+  // An attribute in one of your models:
+  // ...
+  numberOfWheels: {
+    type: 'integer',
+    columnName: 'number_of_round_rotating_things'
+  }
+  // ...
+```
+
+
+### Example
+
+Now for a more thorough/realistic example.
+
+Let's say you have a `User` model in your Sails app that looks like this:
+
+```javascript
+// api/models/User.js
+module.exports = {
+  connection: 'shinyNewMySQLDatabase',
+  attributes: {
+    name: 'string',
+    password: 'string',
+    email: {
+      type: 'email',
+      unique: true
+    }
+  }
+};
+```
+
+
+Everything works great, but instead of using an existing MySQL database sitting on a server somewhere that happens to house your app's intended users:
+
+```javascript
+// config/connections.js
+module.exports = {
+  // ...
+  
+  // Existing users are in here!
+  rustyOldMySQLDatabase: {
+    adapter: 'sails-mysql',
+    user: 'bofh',
+    host: 'db.eleven.sameness.foo',
+    password: 'Gh19R!?had9gzQ#Q#Q#%AdsghaDABAMR>##G<ADMBOVRH@)$(HTOADG!GNADSGADSGNBI@(',
+    database: 'jonas'
+  },
+  // ...
+};
+```
+
+Let's say there's a table called `our_users` in the old MySQL database that looks like this:
+
+| the_primary_key | email_address | full_name | seriously_encrypted_password |
+|------|---|----|---|
+7 | mike@sameness.foo | Mike McNeil | ranchdressing |
+14 | nick@sameness.foo | Nick Crumrine | thousandisland |
+
+
+In order to use this from Sails, you'd change your `User` model to look like this:
+
+```javascript
+// api/models/User.js
+module.exports = {
+  connection: 'rustyOldMySQLDatabase',
+  tableName: 'our_users',
+  attributes: {
+    id: {
+      type: 'integer',
+      unique: true,
+      primaryKey: true,
+      columnName: 'the_primary_key'
+    },
+    name: {
+      type: 'string',
+      columnName: 'full_name'
+    },
+    password: {
+      type: 'string',
+      columnName: 'seriously_encrypted_password'
+    },
+    email: {
+      type: 'email',
+      unique: true,
+      columnName: 'email_address'
+    }
+  }
+};
+```
+
+> You might have noticed that we also used the `tableName` property in this example.  This allows us to control the name of the table that will be used to house our data.  More on that [here](http://beta.sailsjs.org/#!documentation/reference/ModelProperties/tableName.html).
+
+
+
+# attributes
 
 ### Overview
 
@@ -224,9 +355,11 @@ module.exports = {
 ### Overview
 
 
-# Validation
+# Validations
 
-Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which is based off of [Node Validate](https://github.com/chriso/node-validator) and supports most of the properties in node-validate. 
+Sails bundles support for automatic validations for your models' attributes.  Any time a record is updated, or a new record is created, the data will be validated first.  This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
+
+Validations are handled by [Anchor](https://github.com/balderdashy/anchor) a thin layer on top of [Node Validator](https://github.com/chriso/node-validator), one of the most popular validation libraries for Node.js.  That means that Sails models support most of the validations available in `node-validator`, as well as a few extras that require a bit more knowledge about the datastore, like `unique`.
 
 ### Validation Rules
 

@@ -75,9 +75,8 @@
 
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
-+ [AMAG Moments](http://moments.amag.ch/) - Share your best moments in the car
-+ [PonyCaptcha](http://pc.ponypages.net/) - Stop Spam! Watch Ponies!
 + [Insight Replay](http://insightreplay.com) - Instant replay for athletes and coaches
++ [Taskboard](http://tarlepp.github.io/Taskboard/) - a Sails application to mimic "scrum-ban" taskboard
 
 
 

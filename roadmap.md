@@ -3,40 +3,34 @@
 
 Wondering how you can help?  Here's what's next.
 
+> The notes below are a broad summary-- to get details, and the most up-to-date information, subscribe to the [sails-js-roadmap Trello board](https://trello.com/b/cGzNVE0b/sails-js-feature-requests).
+
 ## Sails Core
 
-#### Streaming File Uploads/Downloads (v0.11.0)
+#### Streaming File Uploads/Downloads (v0.10.x)
 
 > Update: This is [mostly finished](https://github.com/mikermcneil/file-parser), just needs some testers, It shouldn't go into core until Connect v3 is released.
 >         (tweet @mikermcneil for more info on that)
 
-Connect's default support for file uploads via bodyParser is not suitable for production apps with large file uploads.
+Connect's current default support for file uploads via bodyParser is fantastically easy to use, but is not suitable for production apps with large file uploads.
 
 Goals:
   + Built-in, friendly support for streaming file uploads using Waterline's adapters which implements the binary-stream interface
   + (i.e. you can't buffer 100GB uploads to disk)
   + Use formidable's onPart event to process file uploads
   + Everything else should be handled by formidable's built-in parser
+  + Make it just as easy to use as the current Connect bodyParser.  You shouldn't have to understand node streams to do a basic file upload.  (everyone should learn about streams though.  streams2 ftw!)
 
 See the adapters section below for information on targeted blob store adapters.
 
-
-#### Logging (v0.?.0)
-+ Pull out "CaptainsLog" (i.e. `sails.log`) as a separate module so it can be used by waterline (this is mostly done- it's really just a partially applied function around winston)
 
 #### Sessions  (v0.?.0)
 + Create generic connect session adapter to allow any sails/waterline CRUD adapter to be used as a session store. Requires changes to config.
 
 #### Plugins  (v0.?.0)
-+ Document the plugin (hook) system.
-
-## CLI / Generators (v0.?.0)
-+ Pull out CLI as a separate module so that it can develop in parallel- investigate `yo` integration for generators.
-+ Figure out a good way to make the CLI tool stateful (store configured settings for `sails new`, `sails generate`, etc.)
-
-## Gruntfile (v0.?.0)
-+ Pull out Gruntfile as a separate module so that it can develop in parallel- investigate integration with CLI so that the proper generators `yo` integration for generators
-+ Provide public access to templates for async loading by default (it's totally possible to do this now, but let's make it easier)
++ Document how to override core hooks and add new custom hooks.
++ Document how to override core generators and add new custom generators.
++ Document how to override adapters and add new custom adapters.
 
 
 
@@ -45,13 +39,14 @@ See the adapters section below for information on targeted blob store adapters.
 
 + Associations
   + v0.10.0
-    + multiple associations to the same model (e.g. `to`, `cc`, `bcc`)
-    + Pull NoSQL join behavior into core- allow it to be overriden in adapters as an optimization.
+    + See trello
 
 + Aggregations/GROUP BY (~v0.11.0)
   + Support for most aggregations and the `GROUP BY` operator has existed since v0.9
   + Needs to be documented and more thoroughly tested.
   + Needs better usage errors.
+  + Needs to exist as a shim implementation in waterline core when it's not implemented at the adapter level.
+  + Need a way for adapters to conditionally implement aggregations/groupBy/having.
 
 + Error Messages
   + ~v0.10.0
@@ -67,18 +62,25 @@ See the adapters section below for information on targeted blob store adapters.
 + Auto-migrations
   + v0.10.0
     + Docs on auto-migration strategies (alter, drop, safe)
-    + Refuse to run `drop` and `alter` strategies when `NODE_ENV="production"`.
   + ~v0.11.0
     + Make `alter` strategy work w/ associations-- probably should be pushed down to the adapter level in the `alter` method.
   + ~v0.12.0
     + Manual migration feature.
+  + ~v2.0.0?
+    + Cross-adapter migrations.
 
 
-+ Transactions (~v0.12.0)
-  + Transactions are currently supported by using the native/query API
-  + However we want to make this easier to work with.
++ Transactions
+  + ~v0.11.0
+    + Transactions are currently supported by using the native/query API
+    + However we want to make this easier to work with.
+  + v0.12.0
+    + Transaction shim in waterline core for adapters w/o native transaction support
+    + Cross-adapter transactions
 
-+ Everything is a Stream (~v0.13.0)
+
+
++ Everything is a Stream (~v2.0.0?)
   + Internally, everything is a stream by default.
   + Datastores which support the semantic streaming interface (e.g. `User.stream()`) should replace the deferred object with a compatible stream, i.e.
     ```javascript
@@ -96,8 +98,11 @@ See the adapters section below for information on targeted blob store adapters.
 
 ## Adapters
 
-+ Semantic interfcace:
-  + Redis (there are a couple of implementations of this that exist-- just needs to be finalized)
+> ###### Also see:
+> + [Mike's thoughts on usage for upcoming features](https://gist.github.com/mikermcneil/8328832) (please feel free to comment!)
+> + [Interface specification](http://links.sailsjs.org/docs/plugins/adapters)
+
++ Semantic interface:
   + Riak (exists, needs to be updated)
   + ElasticSearch (exists, needs testers)
   + CouchDB (exists, needs testers)
@@ -142,9 +147,9 @@ See the adapters section below for information on targeted blob store adapters.
 
 ## Community
 + Examples / articles / answering Google Group discussions / answering stack overflow questions
-+ Better documentation for database support (matrix for Disk, MySQL, PostgreSQL, Mongo, and Redis)
 + Backbone works with Sails out of the box with Sails blueprints (no code required), but let's create a Backbone.sync override for taking advantage of comet messaging (based on the existing Backbone -> Socket.io SDK)
+  + Check out [backbone-to-sails](https://github.com/mikermcneil/backbone-to-sails)
 + Improve the Angular -> Socket.io SDK
 + Create an example of a TemplateController which allows you to load your templates asynchronously from the client.
 + Sublime Text 2 snippets
-+ Chrome Sniffer detector
++ Chrome Sniffer detector (@uncletammy is workingon this)

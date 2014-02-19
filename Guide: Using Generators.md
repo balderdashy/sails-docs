@@ -1,5 +1,6 @@
 # Using Generators
-
+ Warning, this is incomplete and will be cleaned up and finalized soon!
+ 
 ### What do they do?
 		They create new files and folders within your app based on the options and templates you provide the generator
 
@@ -34,6 +35,10 @@ Our generators look like this
 ### How do you make them?
 
 The first step is to clone the sails-generate-generator repo.  Sails-generate-generator is a tool created to make the process of making generators easier.  Run it as a node script with your new generatorName as a param.
+
+### Sails RC File
+
+`myApp/.sailsrc`
 
 
 
