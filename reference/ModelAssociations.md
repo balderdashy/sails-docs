@@ -243,9 +243,9 @@ module.exports = {
 
 		// Add a reference to User
 		owners: {
-		collection: 'user',
-    via: 'pets',
-    dominant:true
+			collection: 'user',
+			via: 'pets',
+    			dominant:true
 		}
 	}
 }
