@@ -101,11 +101,7 @@ module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErro
 ### What is this?
 Adapters are the middle man between your Sails app and some kind of storage (typically a database)
 
-The adapters configuration object lets you create different global “saved settings” that you can mix and match in your models.
-
-### Description
-
-The `adapters` configuration object lets you create different global "saved settings" that you can mix and match in your models.  The `default` option indicates which saved setting should be used if a model doesn't have an adapter specified.
+Adapters are configured in the `connections.js` file located in your project's `config` directory.  Here you can create different global “saved settings” that you can mix and match in your models.
 
 Sails adapters have been written for a variety of popular databases such as MySQL, Postgres and Mongo.  You can find a list of supported adapters [here](https://github.com/balderdashy/sails-wiki/blob/0.9/Database-Support.md).
 
