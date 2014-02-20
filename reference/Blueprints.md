@@ -8,10 +8,11 @@
 
 By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
 
-The blueprint API is accessible when you have both an empty controller and model in Sails.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
+The blueprint API is accessible when you have both an empty controller and model in Sails.  This can be done easily using the command line tool.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
 
 While the following documentation focuses on HTTP, you can also use Sails' built-in socket.io emulation layer to talk to the blueprint API (or any of your Sails routes / custom controllers) via Socket.io.
 
+For a ridiculously in-depth look into how blueprints work and why they are so useful, [check out this awesome video](http://www.youtube.com/watch?v=EnKRrdTi_gk)
 
 ### Notes
 
