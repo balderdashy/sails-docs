@@ -134,7 +134,7 @@ module.exports = {
 	attributes: {
 		name:'STRING',
 		age:'INTEGER',
-		pet:{
+		pets:{
 			collection: 'pet',
 			via: 'owner'
 			
