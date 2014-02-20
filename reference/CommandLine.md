@@ -174,6 +174,7 @@ sails> Blog.find( { } ).exec(function found(err,myRecord){console.log(myRecord)}
 > This might come in handy when you want to quickly add a record to a model and can't be bothered installing PostMAN.  It's also a good tool for diagnosing problems in your app.  If you can't access something over console, neither can your app.  
 > Once inside sails console, two consecutive CTRL+C will close the app and exit back to shell.
 > For more information, see node REPL docs @ http://nodejs.org/api/repl.html
+> An alternative to this is using 'node debug app.js', which will allow you to place debugger in your code which acts as a breakpoint allows you to step through the code. http://nodejs.org/api/debugger.html
 
 
 # sails version
