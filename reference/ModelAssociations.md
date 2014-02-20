@@ -245,7 +245,7 @@ module.exports = {
 		owners: {
 			collection: 'user',
 			via: 'pets',
-    			dominant:true
+			dominant:true
 		}
 	}
 }
