@@ -114,8 +114,12 @@ module.exports = {
 
 	attributes: {
 		name:'STRING',
-		color:'STRING'
+		color:'STRING',
+		owner: {
+			model: 'user'
+		}
 	}
+	
 
 }
 
@@ -130,8 +134,10 @@ module.exports = {
 	attributes: {
 		name:'STRING',
 		age:'INTEGER',
-		pet:{
-			model: 'pet'
+		pets:{
+			collection: 'pet',
+			via: 'owner'
+			
 		}
 	}
 
