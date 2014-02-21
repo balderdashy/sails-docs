@@ -6,7 +6,7 @@ your users can live in PostgreSQL and their photos can live in MongoDB and you c
 the data as if they lived together on the same database. You can also have associations that
 live on seperate connections or in different databases within the same adapter.
 
-# One Way
+# One Way Association
 ### Overview
 
 A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can't however query the associated model and populate to get the associatING model.
@@ -322,7 +322,7 @@ null [ { name: 'Applejack',
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
 
 
-# Many-to-Many Associations
+# Many-to-Many
 ### Overview
 
 A many-to-many association states that a model can be associated with many other models and vice-versa.
