@@ -6,7 +6,7 @@ your users can live in PostgreSQL and their photos can live in MongoDB and you c
 the data as if they lived together on the same database. You can also have associations that
 live on seperate connections or in different databases within the same adapter.
 
-# One Way Association
+# One Way
 ### Overview
 
 A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can't however query the associated model and populate to get the associatING model.
