@@ -67,7 +67,6 @@ null { name: 'Mike',
   updatedAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
   id: 1 }
 
-
 sails> User.find({name:'Mike'}).populate('pony').exec(console.log);
 null [ { name: 'Mike',
     age: 21,
@@ -148,7 +147,7 @@ null { name: 'Mike',
   updatedAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
   id: 1 }
   
-sails> Pet.create([ { name: 'Pinkie Pie', color: 'pink', owner: 1}).exec(console.log)
+sails> Pet.create({ name: 'Pinkie Pie', color: 'pink', owner: 1}).exec(console.log)
 null { name: 'Pinkie Pie',
     color: 'pink',
     owner: 1,
@@ -168,7 +167,15 @@ null [ { name: 'Pinkie Pie',
     createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
     updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
     id: 2 } ]
-    
+
+sails> User.find().populate('pony').exec(console.log)
+null [ { name: 'Mike',
+    age: 21,
+    createdAt: Thu Feb 20 2014 18:11:15 GMT-0600 (CST),
+    updatedAt: Thu Feb 20 2014 18:11:15 GMT-0600 (CST),
+    id: 2,
+    pony: undefined } ]
+
 sails> User.update({name:'Mike'},{pony:2}).exec(console.log)
 null [ { name: 'Mike',
     age: 21,
