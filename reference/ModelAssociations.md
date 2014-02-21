@@ -6,18 +6,14 @@ your users can live in PostgreSQL and their photos can live in MongoDB and you c
 the data as if they lived together on the same database. You can also have associations that
 live on seperate connections or in different databases within the same adapter.
 
-# One-to-One
+# One Way Association
 ### Overview
 
-A one-to-one association states that a model may only be associated with one other model. In order
-for the model to know which other model it is associated with a, foreign key must be included in the
-record.
+A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can't however query the associated model and populate to get the associatING model.
 
-### One-to-One Example
+### One Way Example
 
-In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` in
-this case but a `Pet` is not limited to a single `User`.
-
+In this example, we are associating a `User` with a `Pet` but not a `Pet` with a `User`.
 
 `myApp/api/models/pet.js`
 
@@ -43,7 +39,7 @@ module.exports = {
 	attributes: {
 		name:'STRING',
 		age:'INTEGER',
-		pet:{
+		pony:{
 			model: 'pet'
 		}
 	}
@@ -63,19 +59,19 @@ null { name: 'Pinkie Pie',
   updatedAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST),
   id: 5 }
 
-sails> User.create({name:'Mike',age:21,pet:5}).exec(console.log);
+sails> User.create({name:'Mike',age:21,pony:5}).exec(console.log);
 null { name: 'Mike',
   age: 21,
-  pet: 5,
+  pony: 5,
   createdAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
   updatedAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
   id: 1 }
 
 
-sails> User.find({name:'Mike'}).populate('pet').exec(console.log);
+sails> User.find({name:'Mike'}).populate('pony').exec(console.log);
 null [ { name: 'Mike',
     age: 21,
-    pet: 
+    pony: 
      { name: 'Pinkie Pie',
        color: 'pink',
        id: 5,
@@ -91,6 +87,114 @@ null [ { name: 'Mike',
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
 
 > Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
+
+# One-to-One
+### Overview
+
+A one-to-one association states that a model may only be associated with one other model. In order
+for the model to know which other model it is associated with a, foreign key must be included in the
+record.
+
+### One-to-One Example
+
+In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` in
+this case but a `Pet` is not limited to a single `User`.
+
+
+`myApp/api/models/pet.js`
+
+```javascript
+
+module.exports = {
+
+	attributes: {
+		name:'STRING',
+		color:'STRING',
+		owner:{
+			model:'user'
+		}
+	}
+
+}
+
+
+```
+
+`myApp/api/models/user.js`
+
+```javascript
+
+module.exports = {
+
+	attributes: {
+		name:'STRING',
+		age:'INTEGER',
+		pony:{
+			model: 'pet'
+		}
+	}
+
+}
+```
+
+Using `sails console`
+
+```sh
+
+sails> User.create({ name: 'Mike', age: 21}).exec(console.log);
+null { name: 'Mike',
+  age: 21,
+  createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
+  updatedAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
+  id: 1 }
+  
+sails> Pet.create([ { name: 'Pinkie Pie', color: 'pink', owner: 1}).exec(console.log)
+null { name: 'Pinkie Pie',
+    color: 'pink',
+    owner: 1,
+    createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+    updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+    id: 2 }
+    
+sails> Pet.find().populate('owner').exec(console.log)
+null [ { name: 'Pinkie Pie',
+    color: 'pink',
+    owner: 
+     { name: 'Mike',
+       age: 21,
+       id: 1,
+       createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
+       updatedAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST) },
+    createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+    updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+    id: 2 } ]
+    
+sails> User.update({name:'Mike'},{pony:2}).exec(console.log)
+null [ { name: 'Mike',
+    age: 21,
+    createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
+    updatedAt: Thu Feb 20 2014 17:30:58 GMT-0600 (CST),
+    id: 1,
+    pony: 2 } ]
+
+sails> User.findOne(1).populate('pony').exec(console.log)
+null { name: 'Mike',
+  age: 21,
+  createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
+  updatedAt: Thu Feb 20 2014 17:30:58 GMT-0600 (CST),
+  id: 1,
+  pony: 
+   { name: 'Pinkie Pie',
+     color: 'pink',
+     id: 2,
+     createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+     updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
+     owner: 1 } }
+
+```
+### Notes
+> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+
 
 # One-to-Many
 ### Overview
