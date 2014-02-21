@@ -1,12 +1,15 @@
 # Blueprints
 
+> **Associations and Blueprints**
+>Sails v0.10 introduced model associations!  We've also extended the functionality of blueprint routing so you can make associations between models as painlessly as you created them!
+
 > **WARNING**
 > Association blueprints (v0.10) are currently experimental!
 > This API is likely to change.
 
 ### Overview
 
-By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints, and allow you to access a JSON API for your models without writing any code.
+By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints and they allow you to access a JSON API for your models without writing any code.
 
 The blueprint API is accessible when you have both an empty controller and model in Sails.  This can be done easily using the command line tool.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
 
@@ -356,4 +359,88 @@ _via Postman_
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
 
+# Associations Create
 
+### Purpose
+Use these automatically generated routes in order to create associations between models.  This assumes you've [configured them for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
+
+### Description
+You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
+
+### Examples
+
+These examples assume the existence of `Pet` and `User` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html)
+
+#### w/ an existing record 
+
+`DELETE http://localhost:1337/:model/:id`
+
+Delete Pinkie Pie.
+
+_via Postman_
+`DELETE http://localhost:1337/pony/4`
+
+
+#### Expected Response
+
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "running",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+```
+#### w/ new associated record 
+
+`DELETE http://localhost:1337/:model/:id`
+
+Delete Pinkie Pie.
+
+_via Postman_
+`DELETE http://localhost:1337/pony/4`
+
+
+#### Expected Response
+
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "running",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+
+
+### Notes
+
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
+
+# Associations Remove
+
+### Purpose
+
+
+### Description
+
+
+### Example Usage
+
+```javascript
+
+
+```
+
+### Notes
+
+> Assumes the existence of both `PonyController` and a model called 'Pony'.
