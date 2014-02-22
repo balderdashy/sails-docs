@@ -52,6 +52,30 @@ will create the directory, **api/controllers/comment/** with three files
 
 -->
 
+
+## Controller Configuration
+
+Controllers are configured globally in `config/blueprints.js`. You can override any global
+controller configuration options by adding a `_config` key to your controller configuration.
+
+For example, if you wanted to disable REST blueprints on a controller, your controller might look
+like this:
+
+```javascript
+// api/controllers/SampleController.js
+module.exports = {
+  _config: {
+    rest: false
+  },
+
+  index: function(req, res) {
+    // ...
+  }
+};
+```
+
+For a list of configuration options, see [controller configuration](config.controllers.md).
+
 ## How do I use the controller once I&rsquo;ve created it?
 After a controller has been defined, Sails will automatically map out routes to give you easy access.  
 For the controller above, the routes would be the following:  
