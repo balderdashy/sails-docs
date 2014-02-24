@@ -16,7 +16,7 @@ Check out https://github.com/balderdashy/sails/wiki/custom-adapters to learn mor
 
 ## In-Progress Community Adapters
 
-  - [Redis](https://github.com/vanetix/sails-redis)
+  - [Redis](https://github.com/balderdashy/sails-redis)
   - [Riak](https://github.com/balderdashy/sails-riak)
   - [Couch](https://github.com/craveprogramminginc/sails-couchdb)
   - [ElasticSearch](https://github.com/UsabilityDynamics/waterline-elasticsearch)
