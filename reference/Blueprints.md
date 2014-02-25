@@ -214,6 +214,97 @@ via web browser
 
 ```
 
+
+### Examples with One Way Associations
+
+Use these automatically generated routes in order to create associations between models.  This assumes you've [configured those models for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
+
+You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
+
+
+These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
+
+#### w/ an existing record (REST)
+
+`POST http://localhost:1337/:model`
+
+Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
+
+via Postman
+
+`POST http://localhost:1337/pony`
+
+#### JSON Request Body
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": 10
+}
+```
+
+#### Example Response
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile",
+    "id": 10
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+```
+
+
+#### w/ new associated record (REST)
+
+`POST http://localhost:1337/:model`
+
+Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
+
+via Postman
+
+`POST http://localhost:1337/pony`
+
+
+#### JSON Request Body
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+  }
+}
+```
+
+#### Expected Response
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pet": {
+    "name": "Gummy",
+    "species": "crocodile"
+    "id": 10
+  },
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+```
+
+### Examples with Many-To-Many Associations
+
+Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
+
+
+
 ### Notes
 
 > Assumes the existence of both `PonyController` and a model called 'Pony'.
@@ -424,95 +515,6 @@ via web browser
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
 
-# Associations Create
-
-### Purpose
-Use these automatically generated routes in order to create associations between models.  This assumes you've [configured those models for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
-
-You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
-
-### One-To-* Examples
-
-These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
-
-#### w/ an existing record (REST)
-
-`POST http://localhost:1337/:model`
-
-Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
-
-_via Postman_
-`POST` `'http://localhost:1337/pony'`
-
-#### JSON Request Body
-```json
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pet": 10
-}
-```
-
-#### Example Response
-```json
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pet": {
-    "name": "Gummy",
-    "species": "crocodile",
-    "id": 10
-  },
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-```
-
-
-#### w/ new associated record (REST)
-
-`POST http://localhost:1337/:model`
-
-Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
-
-_via Postman_
-`POST` `'http://localhost:1337/pony'`
-
-
-#### JSON Request Body
-```json
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pet": {
-    "name": "Gummy",
-    "species": "crocodile"
-  }
-}
-```
-
-#### Expected Response
-```json
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pet": {
-    "name": "Gummy",
-    "species": "crocodile"
-    "id": 10
-  },
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-```
-
-### Many-To-Many Examples
-
-Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
-
-
 # Remove Association
 
 ### Purpose
@@ -532,7 +534,8 @@ These examples assume the existence of `Pet` and `Pony` APIs which can be create
 
 Remove Pinkie Pie's only pet, Gummy (ID 12)
 
-_via Postman_
+via Postman
+
 `DELETE http://localhost:1337/pony/4/pets?id=12`
 
 #### Expected Response
