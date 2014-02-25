@@ -434,7 +434,7 @@ You can create associations between models in 2 different ways.  You can either 
 
 ### One-To-* Examples
 
-These examples assume the existence of `Pet` and `User` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
+These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
 
 #### w/ an existing record (REST)
 
@@ -475,7 +475,7 @@ _via Postman_
 
 `POST http://localhost:1337/:model`
 
-Create a new pony named "Pinkie Pie", a "snowboarding" hobby, and a pet named "Gummy".
+Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
 
 _via Postman_
 `POST` `'http://localhost:1337/pony'`
@@ -493,7 +493,7 @@ _via Postman_
 }
 ```
 
-#### Example Response
+#### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -501,6 +501,7 @@ _via Postman_
   "pet": {
     "name": "Gummy",
     "species": "crocodile"
+    "id": 10
   },
   "id": 4,
   "createdAt": "2013-10-18T01:22:56.000Z",
@@ -510,78 +511,172 @@ _via Postman_
 
 ### Many-To-Many Examples
 
-These examples assume the existence of `Pet` and `User` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  Also, a Many-To-Many association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
-
-#### w/ pre existing record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
-
-#### JSON Request Body
-```json
-
-```
-
-#### w/ new associated record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
-
-#### JSON Request Body
-```json
-
-```
+Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
 
 
-
-### Notes
-
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
-
-# Associations Remove
+# Remove Association
 
 ### Purpose
-
+Remove an association between two model instances using the automatically generated "Blueprint Routes".
 
 ### Description
 
 
 ### One-To-* Examples
 
-#### w/ pre existing record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
+Associations of these types are made by adding a primary key value to the model attribute by which you are associating for a particular record (setting the `pet` attribute on a `Pony`'s record to the `id` of your favorite pet).  Removing those associations is just as easy.  Just change or remove the `id` of the associated record using the [update blueprint route](http://omfgdogs.com)
 
-#### JSON Request Body
+### Many-To-Many Examples
+
+These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A Many-To-Many association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
+
+
+#### Remove Associated Record (REST)
+`DELETE http://localhost:1337/:model/:recordID/:collectionName?`
+
+Remove Pinkie Pie's only pet, Gummy (ID 12)
+
+_via Postman_
+`DELETE http://localhost:1337/pony/4/pets?id=12`
+
+#### Expected Response
 ```json
+
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets": [],
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
 
 ```
 
-#### w/ new associated record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
+#### Remove Associated Record (Shortcuts)
 
-#### JSON Request Body
+`http://localhost:1337/:model/:recordID/:collectionName/remove?`
+
+Remove Pinkie Pie's only pet, Gummy (ID 12).
+
+via Postman
+`http://localhost:1337/pony/4/pets/remove?id=7`
+
+#### Expected Response
 ```json
 
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets": [],
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+
 ```
+
+# Populating Associations
+
+### Purpose
+Return associated records upon hitting a particular blueprint route.
+
+### Description
+Sails v.10 adds a new "blueprint method" called [populate](http://omfgdogs.com) to all of models that are configured for associations. Here's how to use it.
+
+### Example using REST
+
+`GET http://localhost:1337/:model/:recordID/:associatedAttribute`
+
+Get all `Pet`s associated with the 'Pony' who has an ID of 4. 
+
+via Web Browser
+
+`GET http://localhost:1337/pony/4/pets`
+
+#### Expected Response
+```json
+[{
+    "name": "Gummy",
+    "species": "crocodile"
+    "id": 10,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  },{
+    "name": "Bubbles",
+    "species": "crackhead"
+    "id": 15,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  }]
+
+```
+
+### Example using Shortcuts
+
+HALP!
+
+#### Expected Response
+```json
+[{
+    "name": "Gummy",
+    "species": "crocodile"
+    "id": 10,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  },{
+    "name": "Bubbles",
+    "species": "crackhead"
+    "id": 15,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  }]
+
+```
+
+### Notes
+> While the routes in the examples above work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
+
+
+# Update Association
+
+### Purpose
+Associate or disassociate two existing records.
+
+### Description
+
+### One-To-* Examples
+
+Associations of these types are made by adding a primary key value to the model attribute by which you are associating for a particular record (setting the `pet` attribute on a `Pony`s record to the `id` of your favorite pony).  Updating those associations is just as easy.  Just change or remove the `id` of the associated record using the [update blueprint route](http://omfgdogs.com)
 
 ### Many-To-Many Examples
 
 #### w/ pre existing record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
+`POST http://localhost:1337/:model/`HALP!
 
-#### JSON Request Body
+asdasdasdas sdasas 
+
+via Web Browser
+
+`GET http://localhost:1337/pony/4/`HALP
+
+#### Expected Response
 ```json
 
 ```
 
 #### w/ new associated record (REST)
-_via Postman_
-`POST http://localhost:1337/pony`
+`POST http://localhost:1337/:model/:recordID/:associatedAttribute`
 
-#### JSON Request Body
+asdasd sadasd sdsd
+
+via Web Browser
+
+`GET http://localhost:1337/pony/4/pets`
+
+#### Expected Response
 ```json
-Uncle T is the man!
+
 ```
 
 
