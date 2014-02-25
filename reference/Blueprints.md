@@ -124,6 +124,57 @@ via web browser 'http://localhost:1337/pony/find/47'
 
 ```
 
+Sails v.10 adds a new "blueprint method" called [populate](http://omfgdogs.com) to all of models that are configured for associations. Here's how to use it.
+
+#### Find Records w/ Associations (REST)
+
+`GET http://localhost:1337/:model/:recordID/:associatedAttribute`
+
+Get all `Pet`s associated with the 'Pony' who has an ID of 4. 
+
+via Web Browser
+
+`GET http://localhost:1337/pony/4/pets`
+
+#### Expected Response
+```json
+[{
+    "name": "Gummy",
+    "species": "crocodile"
+    "id": 10,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  },{
+    "name": "Bubbles",
+    "species": "crackhead"
+    "id": 15,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  }]
+
+```
+
+#### Find Records w/ Associations (Shortcuts)
+
+HALP!
+
+#### Expected Response
+```json
+[{
+    "name": "Gummy",
+    "species": "crocodile"
+    "id": 10,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  },{
+    "name": "Bubbles",
+    "species": "crackhead"
+    "id": 15,
+    "createdAt": "2014-02-13T00:06:50.603Z",
+    "updatedAt": "2014-02-13T00:06:50.603Z"
+  }]
+
+```
 
 ### Query Parameters
 
@@ -140,9 +191,11 @@ You can also paginate and sort results using the `limit`, `skip`, and `sort` par
 
 ### Notes
 
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
 > The 'Find One' method does not accept query parameters. 
+
 > For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
+
+> For the associations examples, while the blueprint routes work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
 
 
 # Create A Record
@@ -441,6 +494,54 @@ via web browser
 ```
 
 
+#### Remove Association (Many-To-Many) (REST)
+`DELETE http://localhost:1337/:model/:recordID/:collectionName?`
+
+
+Remove Pinkie Pie's only pet, Gummy (ID 12)
+
+via Postman
+
+`DELETE http://localhost:1337/pony/4/pets?id=12`
+
+#### Expected Response
+```json
+
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets": [],
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+
+```
+
+#### Remove Association (Many-To-Many) (Shortcuts)
+
+`http://localhost:1337/:model/:recordID/:collectionName/remove?`
+
+Remove Pinkie Pie's only pet, Gummy (ID 12).
+
+via Postman
+`http://localhost:1337/pony/4/pets/remove?id=7`
+
+#### Expected Response
+```json
+
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets": [],
+  "id": 4,
+  "createdAt": "2013-10-18T01:22:56.000Z",
+  "updatedAt": "2013-11-26T22:54:19.951Z"
+}
+
+```
+
+
 
 ### Notes
 
@@ -513,169 +614,3 @@ via web browser
 > Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
-
-
-# Remove Association
-
-### Purpose
-Remove an association between two model instances using the automatically generated "Blueprint Routes".
-
-### One-To-* Examples
-
-Associations of these types are made by adding a primary key value to the model attribute by which you are associating for a particular record (setting the `pet` attribute on a `Pony`'s record to the `id` of your favorite pet).  Removing those associations is just as easy.  Just change or remove the `id` of the associated record using the [update blueprint route](http://omfgdogs.com)
-
-### Many-To-Many Examples
-
-These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A Many-To-Many association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
-
-
-#### Remove Associated Record (REST)
-`DELETE http://localhost:1337/:model/:recordID/:collectionName?`
-
-Remove Pinkie Pie's only pet, Gummy (ID 12)
-
-via Postman
-
-`DELETE http://localhost:1337/pony/4/pets?id=12`
-
-#### Expected Response
-```json
-
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pets": [],
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-
-```
-
-#### Remove Associated Record (Shortcuts)
-
-`http://localhost:1337/:model/:recordID/:collectionName/remove?`
-
-Remove Pinkie Pie's only pet, Gummy (ID 12).
-
-via Postman
-`http://localhost:1337/pony/4/pets/remove?id=7`
-
-#### Expected Response
-```json
-
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pets": [],
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-
-```
-
-# Populating Associations
-
-### Purpose
-Return associated records upon hitting a particular blueprint route.
-
-Sails v.10 adds a new "blueprint method" called [populate](http://omfgdogs.com) to all of models that are configured for associations. Here's how to use it.
-
-### Example using REST
-
-`GET http://localhost:1337/:model/:recordID/:associatedAttribute`
-
-Get all `Pet`s associated with the 'Pony' who has an ID of 4. 
-
-via Web Browser
-
-`GET http://localhost:1337/pony/4/pets`
-
-#### Expected Response
-```json
-[{
-    "name": "Gummy",
-    "species": "crocodile"
-    "id": 10,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  },{
-    "name": "Bubbles",
-    "species": "crackhead"
-    "id": 15,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  }]
-
-```
-
-### Example using Shortcuts
-
-HALP!
-
-#### Expected Response
-```json
-[{
-    "name": "Gummy",
-    "species": "crocodile"
-    "id": 10,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  },{
-    "name": "Bubbles",
-    "species": "crackhead"
-    "id": 15,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  }]
-
-```
-
-### Notes
-> While the routes in the examples above work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
-
-
-# Update Association
-
-### Purpose
-Associate or disassociate two existing records.
-
-### One-To-* Examples
-
-Associations of these types are made by adding a primary key value to the model attribute by which you are associating for a particular record (setting the `pet` attribute on a `Pony`s record to the `id` of your favorite pony).  Updating those associations is just as easy.  Just change or remove the `id` of the associated record using the [update blueprint route](http://omfgdogs.com)
-
-### Many-To-Many Examples
-
-#### w/ pre existing record (REST)
-`POST http://localhost:1337/:model/`HALP!
-
-asdasdasdas sdasas 
-
-via Web Browser
-
-`GET http://localhost:1337/pony/4/`HALP
-
-#### Expected Response
-```json
-
-```
-
-#### w/ new associated record (REST)
-`POST http://localhost:1337/:model/:recordID/:associatedAttribute`
-
-asdasd sadasd sdsd
-
-via Web Browser
-
-`GET http://localhost:1337/pony/4/pets`
-
-#### Expected Response
-```json
-
-```
-
-
-### Notes
-
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
