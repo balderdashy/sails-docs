@@ -427,9 +427,8 @@ via web browser
 # Associations Create
 
 ### Purpose
-Use these automatically generated routes in order to create associations between models.  This assumes you've [configured them for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
+Use these automatically generated routes in order to create associations between models.  This assumes you've [configured those models for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
 
-### Description
 You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
 
 ### One-To-* Examples
@@ -519,9 +518,6 @@ Waterline does not currently support creating new records that are configured fo
 ### Purpose
 Remove an association between two model instances using the automatically generated "Blueprint Routes".
 
-### Description
-
-
 ### One-To-* Examples
 
 Associations of these types are made by adding a primary key value to the model attribute by which you are associating for a particular record (setting the `pet` attribute on a `Pony`'s record to the `id` of your favorite pet).  Removing those associations is just as easy.  Just change or remove the `id` of the associated record using the [update blueprint route](http://omfgdogs.com)
@@ -581,7 +577,6 @@ via Postman
 ### Purpose
 Return associated records upon hitting a particular blueprint route.
 
-### Description
 Sails v.10 adds a new "blueprint method" called [populate](http://omfgdogs.com) to all of models that are configured for associations. Here's how to use it.
 
 ### Example using REST
@@ -642,8 +637,6 @@ HALP!
 
 ### Purpose
 Associate or disassociate two existing records.
-
-### Description
 
 ### One-To-* Examples
 
