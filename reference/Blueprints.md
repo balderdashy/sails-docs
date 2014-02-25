@@ -24,7 +24,7 @@ For a ridiculously in-depth look into how blueprints work and why they are so us
 # Find Records
 
 ### Purpose
-Find and return model instances from the database.
+Find and return records from the database.
 
 ### Description
 Responds with a JSON array of objects.
@@ -35,7 +35,7 @@ This is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(r
 
 ### Examples
 
-#### Find All (REST)
+### Find All (REST)
 
 `GET http://localhost:1337/:model`
 
@@ -62,7 +62,7 @@ _via the URL bar in your web browser_
 
 ```
 
-#### Find One (REST)
+### Find One (REST)
 
 `GET http://localhost:1337/:model/:id`
 
@@ -78,7 +78,7 @@ _via the URL bar in your web browser_
 
 ```
 
-#### Find All (Shortcuts)
+### Find All (Shortcuts)
 
 `http://localhost:1337/:model/find/`
 
@@ -104,7 +104,7 @@ via web browser 'http://localhost:1337/pony/find/'
 
 ```
 
-#### Find One (Shortcuts)
+### Find One (Shortcuts)
 
 `http://localhost:1337/:model/find/:recordID`
 
@@ -124,9 +124,7 @@ via web browser 'http://localhost:1337/pony/find/47'
 
 ```
 
-Sails v.10 adds a new "blueprint method" called [populate](http://omfgdogs.com) to all of models that are configured for associations. Here's how to use it.
-
-#### Find Records w/ Associations (REST)
+### Find Model/Collection associated with a particular record (REST)
 
 `GET http://localhost:1337/:model/:recordID/:associatedAttribute`
 
@@ -154,8 +152,7 @@ via Web Browser
 
 ```
 
-#### Find Records w/ Associations (Shortcuts)
-
+### Find Model/Collection associated with a particular record (Shortcuts)
 HALP!
 
 #### Expected Response
@@ -217,7 +214,7 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
 
 ### Examples
 
-#### Create (REST)
+#### Create a record (REST)
 
 `POST http://localhost:1337/:model`
 
@@ -246,7 +243,7 @@ _via Postman_
 }
 ```
 
-#### Create (shortcuts)
+#### Create a record (shortcuts)
 
 `http://localhost:1337/:model/create?`
 
@@ -270,14 +267,11 @@ via web browser
 
 ### Examples with One Way Associations
 
-Use these automatically generated routes in order to create associations between models.  This assumes you've [configured those models for associations](/#!documentation/reference/ModelAssociations/ModelAssociations.html).  
-
 You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
-
 
 These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](http://omfgdogs.com) for info on how to do this.
 
-#### w/ an existing record (REST)
+### Create record while associating w/ existing record (REST)
 
 `POST http://localhost:1337/:model`
 
@@ -313,7 +307,7 @@ via Postman
 ```
 
 
-#### w/ new associated record (REST)
+### Create new record while associating w/ another new record (REST)
 
 `POST http://localhost:1337/:model`
 
@@ -357,10 +351,7 @@ via Postman
 Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
 
 
-
 ### Notes
-
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Singles won't work.
 
@@ -453,7 +444,7 @@ This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.
 
 ### Examples
 
-#### Update (REST)
+### Update Record (REST)
 
 `PUT http://localhost:1337/:model/:id`
 
@@ -462,7 +453,7 @@ Change AppleJack's hobby to "kickin".
 _via Postman_
 `PUT http://localhost:1337/pony/47?hobby=kickin`
 
-#### Expected Response
+### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -473,7 +464,7 @@ _via Postman_
 }
 ```
 
-#### Update (shortcuts)
+### Update Record (Shortcuts)
 
 `http://localhost:1337/:model/update?`
 
@@ -493,12 +484,54 @@ via web browser
 }
 ```
 
+### Add association between two existing records (REST)
+`POST http://localhost:1337/:model/:recordID/:collectionName?`
 
-#### Remove Association (Many-To-Many) (REST)
+
+Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
+
+via Postman
+
+`POST http://localhost:1337/pony/4/pets?id=12`
+
+
+#### Expected Response
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "kickin",
+  "id": 47,
+  "pets": [{
+      "name": "Gummy",
+      "species": "crocodile"
+      "id": 10,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
+    },{
+      "name": "Bubbles",
+      "species": "crackhead"
+      "id": 15,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
+    }],
+  "createdAt": "2013-10-18T01:23:56.000Z",
+  "updatedAt": "2013-11-26T22:55:19.951Z"
+}
+```
+
+### Add association between two existing records (Shortcuts)
+`http://localhost:1337/:model/update?`
+
+#### Expected Response
+```json
+
+```
+
+### Remove Association (Many-To-Many) (REST)
 `DELETE http://localhost:1337/:model/:recordID/:collectionName?`
 
 
-Remove Pinkie Pie's only pet, Gummy (ID 12)
+Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 via Postman
 
@@ -510,7 +543,13 @@ via Postman
 {
   "name": "Pinkie Pie",
   "hobby": "ice skating",
-  "pets": [],
+  "pets": [{
+      "name": "Bubbles",
+      "species": "crackhead"
+      "id": 15,
+      "createdAt": "2014-02-13T00:06:50.603Z",
+      "updatedAt": "2014-02-13T00:06:50.603Z"
+    }],
   "id": 4,
   "createdAt": "2013-10-18T01:22:56.000Z",
   "updatedAt": "2013-11-26T22:54:19.951Z"
@@ -522,30 +561,13 @@ via Postman
 
 `http://localhost:1337/:model/:recordID/:collectionName/remove?`
 
-Remove Pinkie Pie's only pet, Gummy (ID 12).
-
-via Postman
-`http://localhost:1337/pony/4/pets/remove?id=7`
 
 #### Expected Response
 ```json
 
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pets": [],
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-
 ```
 
-
-
 ### Notes
-
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
 
 > JSON keys and values must be wrapped in double quotes.  Single quotes won't work.
 
