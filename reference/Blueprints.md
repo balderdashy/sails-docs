@@ -5,7 +5,7 @@
 
 > **WARNING**
 > Association blueprints (v0.10) are currently experimental!
-> This API is likely to change.
+> This API is likely to change!
 
 ### Overview
 
