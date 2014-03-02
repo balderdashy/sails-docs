@@ -96,7 +96,7 @@ See the adapters section below for information on targeted blob store adapters.
 
 ## Adapters
 
-+ Semantic interfcace:
++ Semantic interfaces:
   + Redis (there are a couple of implementations of this that exist-- just needs to be finalized)
   + Riak (exists, needs to be updated)
   + ElasticSearch (exists, needs testers)
@@ -127,7 +127,7 @@ See the adapters section below for information on targeted blob store adapters.
   + Box.net
   + Barracuda
 
-+ Misc
++ Miscellaneous
   + Twitter (exists, needs testers)
   + Yelp (exists, needs testers)
   + JSDom (exists, needs testers)
