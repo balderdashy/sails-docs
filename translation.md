@@ -28,3 +28,40 @@ locales: ['en', 'es'],
 // Where are your locale translations located?
 localesDirectory: '/config/locales'
 ```
+
+You can change the locale in a controller action by setting ```req.locale``` like so:
+
+```
+// config/routes.js
+
+module.export.routes = {
+
+  '/:lang/': 'MyController.index',
+  '/:lang/help': 'MyController.help',
+  '/:lang/contact': 'MyController.contact',
+  ...etc...
+
+}
+```
+
+```
+// config/policies.js
+
+module.exports.policies = {
+
+   '*' : 'localize'
+
+}
+```
+
+```
+// api/policies/localize.js
+
+module.exports = function(req, res, next) {
+
+   req.locale=req.param('lang');
+   next();
+
+};
+```
+
