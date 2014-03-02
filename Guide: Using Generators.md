@@ -40,11 +40,12 @@ The first step is to clone the sails-generate-generator repo.  Sails-generate-ge
 
 `myApp/.sailsrc`
 
+> TODO
 
 
-### reh reh reh
+### Output targets syntax
 
-Output targets syntax:
+> This is a stub:
 
 You can use params in your target paths:
 {
@@ -53,6 +54,8 @@ You can use params in your target paths:
 
 
 Other directives:
+
+> This is a stub:
 
 Generate a folder: (`folder`)
 './controllers': { folder: {} }
