@@ -49,6 +49,7 @@
 
 > If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
++ [Sails.js featured in 5 Minutes of JavaScript](http://five-js.envylabs.com/episodes/8-episode-8-december-19th-2013/stories/52-sails-js)
 + [Sails.js - Awesome MVC for Node.js] (http://sethetter.com/sails-js/)
 + Interview w/ Tim Heckel [on InfoQ](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [Case Technical Blog](http://casestaffingsolutions.com/wordpress/?tag=sails-js)
