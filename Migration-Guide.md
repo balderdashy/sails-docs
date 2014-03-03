@@ -19,7 +19,7 @@ To replace the second `.subscribe()`, `Model.watch()` has been created.  Use thi
 
 Remember, when working with blueprints, clients are no longer auto subscribed to the class room.  This must be done manually.
 
-Also, if you want to see all pub-sub messages from all models, you can access the `firehose` located on `sails global`.  Note, this only works in development mode. Here is Scott to tell you all about it!
+Also, if you want to see all pub-sub messages from all models, you can access the `firehose`, a development-only tool that broadcasts messages about *everything* that happens to your models.  You can subscribe to the firehose using `sails.sockets.subscribeToFirehose(socket)`, or on the front end by making a socket request to `/firehose`.  The firehose will broadcast a `firehose` event whenever a model is created, updated, destroyed, added to, removed from or messaged.
 
 
 
