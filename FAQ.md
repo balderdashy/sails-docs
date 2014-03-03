@@ -29,6 +29,7 @@
 > If you'd like a link to be added to this list, contact @mikermcneil on Twitter (and remind him if necessary, please!)
 
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC. 
++ [Sails.js Development channel on Medium](https://medium.com/sails-js-development/)
 + [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 + [Intro to Sails.js](https://www.youtube.com/watch?v=GK-tFvpIR7c) screencast
 + Intro to Sails.js - talk @ NodePDX
