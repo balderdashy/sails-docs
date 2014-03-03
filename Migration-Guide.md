@@ -42,7 +42,25 @@ v0.10 comes with a complete rewrite of the command-line tool, and pluggable gene
 
 For a complete guide to what generators are and how they work, [check out the in-progress docs on the subject.](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md)
 
-
+##### Controller configuration
+The object literal describing controller configuration overrides for controller blueprints should change from
+```javascript
+...
+_config: {
+  blueprints: {
+    rest: true,
+    ...
+  }
+}
+```
+to
+```javascript
+...
+_config: {
+    rest: true,
+    ...
+}
+```
 
 
 ##### Command-Line Tool
