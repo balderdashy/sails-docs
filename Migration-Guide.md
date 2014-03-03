@@ -5,15 +5,15 @@ Sails v0.10 comes with some big changes.
 
 ##### Pubsub
 
-The biggest change to pub-sub is that Socket.io events are emmited under the name of the model emmiting them.  Before, your client listened for the `message` event then had to determine which model it came from based on the included data.
+The biggest change to pub-sub is that Socket.io events are emitted under the name of the model emitting them.  Before, your client listened for the `message` event and then had to determine which model it came from based on the included data.
 
-Now, instead of everything being emmited on `message`, you subscribe to the identity of the model. 
+Now, instead of everything being emitted on `message`, you subscribe to the identity of the model. 
 
 For example, the client will call `socket.on('user',functio...` to see the messages emmited by the server with `User.publishUpdate()`
 
-Finally, the way you subscribe clients has changed.  Before, you specified whether you were subscribing the client to either the Model Class or model instances (class rooms) based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
+Finally, the way you subscribe clients has changed.  Before, you specified whether you were subscribing the client to  the Model Class (class rooms) or model instances based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
 
-Now, you can use `Model.subscribe()` to subscribe only to model instances (records).  You can also tell it the CRUD methods for which an event should be emitted.  For example, if you only wanted to get messages about `delete`s, you can do that!
+Now, you can use `Model.subscribe()` to subscribe only to model instances (records).  You can also tell it the CRUD methods for which an event should be emitted.  For example, if you only wanted to get messages about `delete`s, you can do `User.subscribe(req, myUser, 'destroy')`!
 
 To replace the second `.subscribe()`, `Model.watch()` has been created.  Use this to subscribe to the model class.  Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes.  Furthermore, those new models are `.subscribe()`'d to any event `context`s specified via the new [autosubscribe model property](./#!documentation/reference/ModelProperties).
 
