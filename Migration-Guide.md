@@ -5,21 +5,33 @@ Sails v0.10 comes with some big changes.
 
 ##### Pubsub
 
-The biggest change to pub-sub is that Socket.io events are emitted under the name of the model emitting them.  Before, your client listened for the `message` event and then had to determine which model it came from based on the included data.
+The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them.  Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
 
-Now, instead of everything being emitted on `message`, you subscribe to the identity of the model. 
+```
+socket.on('message', function(data) {
+   if (data.model == 'user') ...
+}
+```
 
-For example, the client will call `socket.on('user',functio...` to see the messages emmited by the server with `User.publishUpdate()`
+Now, you subscribe to the identity of the model:
 
-Finally, the way you subscribe clients has changed.  Before, you specified whether you were subscribing the client to  the Model Class (class rooms) or model instances based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
+```
+socket.on('user', function(data) {...}
+```
 
-Now, you can use `Model.subscribe()` to subscribe only to model instances (records).  You can also tell it the CRUD methods for which an event should be emitted.  For example, if you only wanted to get messages about `delete`s, you can do `User.subscribe(req, myUser, 'destroy')`!
+This helps to structure your front end code.
 
-To replace the second `.subscribe()`, `Model.watch()` has been created.  Use this to subscribe to the model class.  Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes.  Furthermore, those new models are `.subscribe()`'d to any event `context`s specified via the new [autosubscribe model property](./#!documentation/reference/ModelProperties).
+The way you subscribe clients to models has also changed.  Previously, you specified whether you were subscribing to the model class (class room) or one or more model instances based on the parameters that you passed to `Model.subscribe`.  It was effectively one method to do two very different things.
+
+Now, you use `Model.subscribe()` to subscribe only to model instances (records).  You can also specify event "contexts", or types, that you'd like to hear about.  For example, if you only wanted to get messages about updates to an instance, you would call `User.subscribe(req, myUser, 'update')`.  If no context is given in a call to `.subscribe()`, then all contexts specified by the model class's [autosubscribe property](./#!documentation/reference/ModelProperties) will be used.
+
+To subscribe to model creation events, you can now use `Model.watch()`.  Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes, and will automatically be subscribed to the new instance as well.
 
 Remember, when working with blueprints, clients are no longer auto subscribed to the class room.  This must be done manually.
 
-Also, if you want to see all pub-sub messages from all models, you can access the `firehose`, a development-only tool that broadcasts messages about *everything* that happens to your models.  You can subscribe to the firehose using `sails.sockets.subscribeToFirehose(socket)`, or on the front end by making a socket request to `/firehose`.  The firehose will broadcast a `firehose` event whenever a model is created, updated, destroyed, added to, removed from or messaged.
+Finally, if you want to see all pubsub messages from all models, you can access the `firehose`, a development-only tool that broadcasts messages about *everything* that happens to your models.  You can subscribe to the firehose using `sails.sockets.subscribeToFirehose(socket)`, or on the front end by making a socket request to `/firehose`.  The firehose will broadcast a `firehose` event whenever a model is created, updated, destroyed, added to, removed from or messaged.  This effectively replaces the `message` event used in previous Sails versions.
+
+To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
 
@@ -84,7 +96,7 @@ Also, in your models,  configuring models to use specific adapters you must now 
 
 module.exports = {
 
-	connection: ['someMongoDatabase'],
+    connection: ['someMongoDatabase'],
 
 	attributes: {
 		name:{
