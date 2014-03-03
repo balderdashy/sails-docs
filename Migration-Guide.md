@@ -31,6 +31,7 @@ Associations (or "relations") are really just special attributes.  Instead of `s
 
 
 
+
 ##### Generators
 
 
@@ -95,6 +96,11 @@ module.exports = {
 
 ```
 
+
+
+##### Validations: Upgrade to validator 3.x
+
+Validator 3.x removed support for the `regex` validation, and consequently it no longer works in Sails/Waterline models.  There is an [open feature request](https://github.com/balderdashy/anchor/issues/41) awaiting a PR to bring it back.
 
 
 ### Did we miss something?
