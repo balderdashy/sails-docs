@@ -100,6 +100,7 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err,upda
 
 ```
 ### Notes
+> + Currently, any value passed to `.update()` for a collection attribute will be ignored.  This will be supported in future versions of Waterline/Sails.
 > + Although you may pass .update() an object or an array of objects, it will always return an array of objects.
 > + If you specify a primary key (e.g. `7` or `"50c9b254b07e040200000028"`) instead of a criteria object, any `.where()` filters will be ignored.
 > + Currently, calling `.populate()` on an `.update()` query has no effect.  To populate attributes on the results, you should follow up your update with a `find().populate()` query.
