@@ -29,6 +29,8 @@ This is where you will look in order to learn how to make associations between m
 
 > TODO
 
+
+
 # *.primaryKey
 
 ### Overview
@@ -148,6 +150,28 @@ module.exports = {
 
 > You might have noticed that we also used the `tableName` property in this example.  This allows us to control the name of the table that will be used to house our data.  More on that [here](http://beta.sailsjs.org/#!documentation/reference/ModelProperties/tableName.html).
 
+
+# migrate
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
+
+
+
+# schema
+
+### Overview
+
+> TODO
+
+### Example
+
+> TODO
 
 
 # attributes
