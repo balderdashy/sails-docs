@@ -88,19 +88,21 @@ Updates existing record in the database that match the given criteria.
 ### Example Usage
 
 ```javascript 
-User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function updateCB(err,updated){
-  console.log('Updated user to have name '+updated[0].name);
-  });
+User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err,updated){
   
-// Updated user to have name Flynn
-// Don't forget to handle your errors and abide by the rules you defined in your model
+  if (err) {
+    // handle error here- e.g. `res.serverError(err);`
+    return;
+  }
+  
+  console.log('Updated user to have name '+updated[0].name);
+});
 
 ```
 ### Notes
-> Although you may pass .update() an object or an array of objects, it will always return an array of objects.
-> Any string arguments passed must be the ID of the record.
-
-> If you specify a primary key (e.g. `7` or `50c9b254b07e040200000028`) instead of a criteria object, any `.where()` filters will be ignored.
+> + Although you may pass .update() an object or an array of objects, it will always return an array of objects.
+> + If you specify a primary key (e.g. `7` or `"50c9b254b07e040200000028"`) instead of a criteria object, any `.where()` filters will be ignored.
+> + Currently, calling `.populate()` on an `.update()` query has no effect.  To populate attributes on the results, you should follow up your update with a `find().populate()` query.
 
 
 # .destroy( `criteria` , [`callback`] )
@@ -537,6 +539,7 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 // Don't forget to handle your errors
 
 ```
+
 ### Notes
 > Warning! Your attribute in the method name must be lowerCase!
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
