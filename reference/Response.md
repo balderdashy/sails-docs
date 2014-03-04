@@ -23,8 +23,7 @@ Below is a chart describing Sails.js support of the .res() methods.
 | res.links() | :-) | :-( |
 | res.locals | :-) | :-) |
 | res.render() | :-) | :-( |
-|||||
-| res.view | Sails | :-) | :-( |
+| res.view() | :-) | :-( |
 
 
 # res.view([`pathToView`],[`locals`])
