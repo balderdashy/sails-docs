@@ -105,11 +105,11 @@
 
 [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
 
-The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.
+The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.  Installing is easy- just follow the instructions in the README or on the Sails website (e.g. `npm install sails`.)
 
 To install the beta/ pre-release version of Sails, install from the `beta` tag on npm (e.g. `npm install sails@beta`).  This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  Except for extreme situations, the API in the release candidate should be consistent with the upcoming stable release it corresponds with.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
 
-Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on npm, since it's constantly under development, but you can still use npm to install it (see the link below for more information.)
+Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
 
 For more instructions on installing the stable, beta, and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
 
