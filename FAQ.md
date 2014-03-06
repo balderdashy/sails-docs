@@ -103,21 +103,22 @@
 
 ### What version of Sails should I use?
 
-The latest stable version in npm is always a safe bet.  If you like living on the edge, check out the `v0.10` branch on github with:
-
-```sh
-$ sudo npm install -g sails@git://github.com/balderdashy/sails.git#v0.10
-```
-
-##### Latest Stable Version
-
 [![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
 
-##### Dependencies
+The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.
 
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).
+To install the beta/ pre-release version of Sails, install from the `beta` tag on npm (e.g. `npm install sails@beta`).  This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  Except for extreme situations, the API in the release candidate should be consistent with the upcoming stable release it corresponds with.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
 
-[![NPM](https://nodei.co/npm/express.png?compact=true)](https://nodei.co/npm/express/)  [![NPM](https://nodei.co/npm/socket.io.png?compact=true)](https://nodei.co/npm/socket.io/)
+Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on npm, since it's constantly under development, but you can still use npm to install it (see the link below for more information.)
+
+For more instructions on installing the stable, beta, and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+
+
+### What are the dependencies of Sails?
+
+[![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
+
+Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
 
 
 
