@@ -171,9 +171,6 @@ Community adapters are crucial to the success and central to the philosophy of a
 ### [Riak](https://npmjs.org/package/sails-riak)
 + Semantic
 
-### [Redis](https://github.com/balderdashy/sails-redis)
-+ Semantic
-
 ### [REST](https://github.com/zohararad/sails-rest)
 + Semantic
 
