@@ -103,7 +103,7 @@
 
 ### What version of Sails should I use?
 
-[![NPM](https://nodei.co/npm/sails.png?downloads=true&stars=true)](https://nodei.co/npm/sails/)
+[![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
 
 The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.
 
