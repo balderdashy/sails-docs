@@ -85,7 +85,7 @@
 ### Are there professional support options?
 > Sails.js is maintained by [Balderdash](http://balderdash.co/), a web and mobile studio in Austin, TX.  We earn our living by providing responsive UX design, rapid prototyping, and enterprise-class support for startups, SMBs, and the Fortune 500.
 
-#### Balderdash
+*Balderdash*
 + [Tell us about your project](http://balderdash.co#contact)
 + [Educate yourself about our process and best practices](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
 + [@balderdashy](http://twitter.com/balderdashy)
@@ -98,13 +98,13 @@
   + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
   + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
 
-#### appendTo
+*appendTo*
 appendTo is a leader in front-end software solutions, specializing in JavaScript, jQuery, HTML5 and Mobile Development. We offer a variety of solutions for everyone from small businesses to enterprise clientele.
 
 + [JavaScript, HTML5, Responsive Web, and Full Stack JavaScript for the Enterprise](http://appendto.com)
-+ [@appendto](http://twitter.com/appendto)
-+ [LinkedIn](http://www.linkedin.com/company/appendto)
-+ [Facebook](http://facebook.com/appendto)
++ [Follow us on Twitter: @appendto](http://twitter.com/appendto)
++ [Visit us on Facebook](http://facebook.com/appendto)
++ Subscribe to our Newsletter - [The Modern Web Observer](http://appendto.com/mwo)
 
 
 
