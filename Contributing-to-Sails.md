@@ -1,5 +1,11 @@
 # Contributing to Sails
 
+> **NOTE**
+> This is really just a support document for the official contribution guide [here](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) and is mainly focused on helping guide you through the mechanics of submiting a pull request.  If this document contradicts the official contribution guide in any way, particularly re: rules/guidelines, or if you're otherwise in doubt, go w/ the offical guide :)
+>
+> Thanks!
+> ~mm
+
 This guide is designed to get you started contributing to the Sails framework.  It assumes you know how to use Github, but should be applicable whether this will be your first pull request or you're an active contributor to hundreds of projects.
 
 
