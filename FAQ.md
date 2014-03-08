@@ -65,7 +65,7 @@ The companies below provide custom development, services, training, and/or suppo
 
 ================================================================================
 
-###### <img height="25" src="http://balderdash.co/img/logo.png" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
+###### <img height="30" src="http://balderdash.co/img/logo.png" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
 
 <!-- Social media links -->
 <a target="_blank" href="https://www.facebook.com/balderdashy">
@@ -91,7 +91,7 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
 ================================================================================
 
 
-###### <img height="35" title="appendTo: Full Stack JavaScript on Sails" alt="appendTo logo" src="http://appendto.com/wp-content/uploads/2013/10/appendTo-logo.png"/>
+###### <img height="30" title="appendTo: Full Stack JavaScript on Sails" alt="appendTo logo" src="http://appendto.com/wp-content/uploads/2013/10/appendTo-logo.png"/>
 
 <!-- Social media links - I'll leave these here for you guys to fill in later -->
 <!--
