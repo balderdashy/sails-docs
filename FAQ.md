@@ -54,7 +54,7 @@ Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and 
 
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
-+ [Insight Replay](http://insightreplay.com) - Instant replay for athletes and coaches
++ [Insight Replay](http://insightreplay.com) - Instant replay for [athletes](http://insightreplay.com/insight-replay-at-sochi-winter-olympics/) and coaches
 + [Taskboard](http://tarlepp.github.io/Taskboard/) - a Sails application to mimic "scrum-ban" taskboard
 
 
