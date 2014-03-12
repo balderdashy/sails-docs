@@ -123,7 +123,7 @@ Destroys all record in your database that matches the given criteria.
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-
+| 2 |  Deleted Records    | `[{}]`              |
 
 ### Example Usage
 
