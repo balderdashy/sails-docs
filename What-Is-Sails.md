@@ -10,7 +10,7 @@ On the other hand, sometimes when we talk about "web frameworks", we mean the "b
 
 ## Convention over Configuration
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybdoy involved.  
+Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.  
 
 Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, Rails, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes youmore productive.  In many cases, you'll even be able to recycle some of your backend code.
 
