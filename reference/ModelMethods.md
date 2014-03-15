@@ -1350,14 +1350,170 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 > If you don't run .exec(), your query will not execute.
 
 
-# .populate()
-### Overview
-The information you seek [lies here](./#!documentation/reference/ModelAssociations/.populate.html)
 
-# .add()
-### Overview
-The information you seek [lies here](./#!documentation/reference/ModelAssociations/.add.html)
+# *.*.add( `primary key` )
+### Purpose
+Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.  
 
-# .remove()
 ### Overview
-The information you seek [lies here](./#!documentation/reference/ModelAssociations/.remove.html)
+#### Parameters
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    Records    | `{}`,`[{}]`, `string`, `int`  | Yes |
+
+
+### Example Usage
+
+```javascript 
+User.find({name:'Mike'}).populate('pets').exec(function(e,r){
+  r[0].pets.add(7);
+  r[0].save(console.log)
+});
+
+/*
+
+{ pets: 
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: 'Rainbow Dash',
+       color: 'blue',
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: 'Applejack',
+       color: 'orange',
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: 'Mike',
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 19:30:54 GMT-0600 (CST),
+  id: 7 }
+
+*/
+
+
+
+```
+
+
+
+### Notes
+> + Any string arguments passed must be the primary key of the record.
+> + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
+
+
+# # *.*.remove( `primary key` )
+### Purpose
+Used to remove records from the join table that is automatically generated during a many-to-many association. Unlike .add(), it only accepts the primary key of the model instance (defaults to record ID).
+
+
+
+### Overview
+#### Parameters
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |    Primary Key      | `string`, `int`     |     Yes    |
+
+### Example Usage
+
+```javascript 
+
+User.find({name:'Mike'}).populate('pets').exec(function(e,r){
+  r[0].pets.remove(7);
+  r[0].save(console.log)
+});
+
+  /*
+
+{ pets: 
+   [ { name: 'Rainbow Dash',
+       color: 'blue',
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: 'Applejack',
+       color: 'orange',
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: 'Mike',
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 19:30:54 GMT-0600 (CST),
+  id: 7 }
+
+  */
+
+
+```
+
+### Notes
+> + Any string arguments passed must be the primary key of the record.
+> + `.remove()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
+
+# .populate( `foreignKey` )
+### Purpose
+This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.  
+
+### Overview
+#### Parameters
+
+|   |     Description     | Accepted Data Types | Required ? |
+|---|---------------------|---------------------|------------|
+| 1 |     Foreign Key     |      `string`       |     Yes    |
+
+### Example Usage
+
+```javascript 
+
+User.find({name:'Mike'}).exec(function(e,r){
+  console.log(r[0].toJSON())
+})
+
+/* 
+{ name: 'Mike',
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+*/
+
+User.find({name:'Mike'}).populate('pets').exec(function(e,r){
+  console.log(r[0].toJSON())
+});
+
+/*
+{ pets: 
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: 'Rainbow Dash',
+       color: 'blue',
+       id: 8,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
+     { name: 'Applejack',
+       color: 'orange',
+       id: 9,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: 'Mike',
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+*/
+
+```
+
+### Notes
+> Any string arguments passed must be the primary key of the record.
