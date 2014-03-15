@@ -372,6 +372,7 @@ Performs raw SQL queries for PostgreSQL and mySQL.
 > This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
 
+<!--
 # .findBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Find and return records by a specific model attribute.
@@ -442,9 +443,9 @@ User.findOneByName('Walter').exec(function findCB(err,found){
 ### Notes
 > This will always return a single object.
 > Any string arguments passed must be the ID of the record.
+-->
 
-
-
+<!--
 # .countBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Count the number of records in a model with a particular model attribute. 
@@ -475,6 +476,10 @@ User.countByName('Walter').exec(function countCB(err,found){
 > The value returned will be equal to the sum of the products of all matched criteria objects and the number of records that particular object matched. 
 > SUM [ matchedObjects * RecordsMatchedByObject ]
 > Any string arguments passed must be the ID of the record.
+
+-->
+
+<!--
 
 # .`<attribute>`StartsWith( `criteria` , [`callback`] )
 ### Purpose
@@ -512,6 +517,8 @@ User.nameStartsWith('W', function startsWithCB(err,found){
 
 
 
+
+
 # .`<attribute>`EndsWith( `criteria` , [`callback`] )
 ### Purpose
 Find records based on the last letters of one of its attributes value.
@@ -545,6 +552,8 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 > Warning! Your attribute in the method name must be lowerCase!
 > Warning! .exec() DOES NOT work on this method.  You MUST supply a callback.
 > Any string arguments passed must be the ID of the record.
+
+-->
 
 # .subscribe(`request`,`records`,[`contexts`])
 
