@@ -373,7 +373,7 @@ Performs raw SQL queries for PostgreSQL and mySQL.
 
 
 <!--
-# .findBy`<attribute>`( `criteria` , [`callback`] )
+###### .findBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Find and return records by a specific model attribute.
 
@@ -410,7 +410,7 @@ User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
 > If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
 
-# .findOneBy`<attribute>`( `criteria` , [`callback`] )
+###### .findOneBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Find and return one record by a specific model attribute.
 
@@ -446,7 +446,7 @@ User.findOneByName('Walter').exec(function findCB(err,found){
 -->
 
 <!--
-# .countBy`<attribute>`( `criteria` , [`callback`] )
+###### .countBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Count the number of records in a model with a particular model attribute. 
 
@@ -481,7 +481,7 @@ User.countByName('Walter').exec(function countCB(err,found){
 
 <!--
 
-# .`<attribute>`StartsWith( `criteria` , [`callback`] )
+###### .`<attribute>`StartsWith( `criteria` , [`callback`] )
 ### Purpose
 Find records based on the starting letters of one of its attributes value.
 
@@ -519,7 +519,7 @@ User.nameStartsWith('W', function startsWithCB(err,found){
 
 
 
-# .`<attribute>`EndsWith( `criteria` , [`callback`] )
+###### .`<attribute>`EndsWith( `criteria` , [`callback`] )
 ### Purpose
 Find records based on the last letters of one of its attributes value.
 
