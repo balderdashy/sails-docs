@@ -1351,7 +1351,7 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 
 
 
-# *.*.add( `primary key` )
+# * . * .add( `primary key` )
 ### Purpose
 Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.  
 
@@ -1408,7 +1408,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 > + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
 
 
-# # *.*.remove( `primary key` )
+# * . *.remove( `primary key` )
 ### Purpose
 Used to remove records from the join table that is automatically generated during a many-to-many association. Unlike .add(), it only accepts the primary key of the model instance (defaults to record ID).
 
