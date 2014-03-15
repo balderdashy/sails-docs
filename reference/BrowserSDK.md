@@ -1,4 +1,4 @@
-# Socket Client
+# Browser SDK
 ### Overview
 Not only does Sails have Socket.IO built right into the framework, it also adds a few extra methods that makes using Socket.io with Sails very powerful.  The file '/assets/js/sails.io.js' is where those methods can be found.
 

@@ -31,7 +31,7 @@ This is where you will look in order to learn how to make associations between m
 
 
 
-# *.primaryKey
+# :attribute.primaryKey
 
 ### Overview
 
@@ -42,7 +42,7 @@ This is where you will look in order to learn how to make associations between m
 > TODO
 
 
-# *.columnName
+# :attribute.columnName
 
 
 ### Overview
