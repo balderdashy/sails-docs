@@ -240,3 +240,27 @@ getRoomsList: function(req, res) {
 ```
 
 *Note: In Socket.io, all sockets are automatically subscribed to a global room with an empty name ('').  This room is not returned as part of the array in `sails.sockets.rooms`* 
+
+
+# sails.sockets.subscribeToFirehose(socket)
+### Purpose
+Subscribe to the "firehose", which (while running in the development environment) broadcasts messages about *all* model events.
+
+### Overview
+#### Parameters
+|   |          Description        | Accepted Data Types | Required ? |
+|---|-----------------------------|---------------------|------------|
+| 1 |           Socket        | `object` | Yes         |
+
+The firehose publish messages using the "firehose" event. By default, messages will be published when a model instance is created, destroyed, or updated, or when an associated collection is added to or removed from.  The message content is similar to that for the [PubSub methods](#!documentation/reference/ModelMethods/ModelMethods.html) like PublishUpdate, PublishCreate, etc.
+
+# sails.sockets.unsubscribeFromFirehose(socket)
+### Purpose
+Unsubscribe from the firehose.
+
+### Overview
+#### Parameters
+|   |          Description        | Accepted Data Types | Required ? |
+|---|-----------------------------|---------------------|------------|
+| 1 |           Socket        | `object` | Yes         |
+
