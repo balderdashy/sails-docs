@@ -1,5 +1,4 @@
 # Views
-
 ### Overview
 
 In Sails, views are markup templates that are compiled _on the server_ into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.
@@ -57,9 +56,9 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 ##### Swapping out the view engine
 
-To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in `config/views.js`.)
+To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in [`config/views.js`]().)
 
-For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in `config/views.js`.
+For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`]().
 
 
 
@@ -92,7 +91,7 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
 
 
 
-##### Registering a custom view engine
+##### Adding new custom view engines
 
 For instructions on adding support for a view engine not listed above, check out the [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api) repository.
 
@@ -105,14 +104,15 @@ In Sails and Express, layouts are implemented by the view engines themselves.  F
 
 For convenience, Sails bundles special support for layouts, but only for the default view engine, EJS. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
 
-Sails EJS layouts are special files in your `views/` folder you can use to "wrap" your other views.  Layouts usually contain the preamble (e.g. `!DOCTYPE html<html><head>....</head><body>`) and conclusion (`</body></html`) for your HTML views, and include the sandwiched view using `<%- body %>`.
+Sails EJS layouts are special files in your `views/` folder you can use to "wrap" or "sandwich" other views. 
+Layouts usually contain the preamble (e.g. `!DOCTYPE html<html><head>....</head><body>`) and conclusion (`</body></html`).  Then the original view file is included using `<%- body %>`.  Layouts are never used without a view- that would be like serving someone a bread sandwich.
 
-Layout support for your app can be configured or disabled in [`config/views.js`](), and can be overridden for a particular route or action by setting a view local, `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
+Layout support for your app can be configured or disabled in [`config/views.js`](), and can be overridden for a particular route or action by setting a special [local](./#!documentation/reference/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
 
 
 # Locals
 
-In Sails (and other MVC frameworks), views have access to variables called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
+The variables accessible in a particular view are called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
 
 ```ejs
 <div>Logged in as <a><%= name %></a>.</div>
@@ -120,17 +120,16 @@ In Sails (and other MVC frameworks), views have access to variables called `loca
 
 ##### Using locals in your views
 
-The notation for accessing locals in your views varies between view engines.  In EJS, you use special template markup (e.g. `<%= someValue %>`) to access locals from your view.
+The notation for accessing locals varies between view engines.  In EJS, you use special template markup (e.g. `<%= someValue %>`) to include locals in your views.
 
 There are three kinds of template tags in EJS:
 + `<%= someValue %>`
-  + Most of the time, you'll want to use this kind of tag.
-  + Escape, then inject a non-HTML string.
-+ `<%- someRawHTML %>
-  + Inject an HTML string verbatim.
+  + HTML-escapes the `someValue` local, and then includes it as a string.
++ `<%- someRawHTML %>`
+  + Includes the `someRawHTML` local verbatim, without escaping it.
   + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
-+ `<% if (!loggedIn) { %><a>Logout</a><% } %>`
-  + Run the javascript inside the `<% ... %>` when the view is compiled
++ `<% if (!loggedIn) { %>  <a>Logout</a>  <% } %>`
+  + Runs the javascript inside the `<% ... %>` when the view is compiled.
   + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
 
 
@@ -148,7 +147,7 @@ Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `
 </div>
 ```
 
-> You might have noticed another local, `_`.  By default, Sails passes down a few locals to your views automatically, including `lodash` (`_`).
+> You might have noticed another local, `_`.  By default, Sails passes down a few locals to your views automatically, including lodash (`_`).
 
 If the data you wanted to pass down to this view was completely static, you don't necessarily need a controller- you could just hard-code the view and its locals in your `config/routes.js` file, i.e:
 
@@ -173,23 +172,19 @@ If the data you wanted to pass down to this view was completely static, you don'
 
 On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()]() method.
 
-Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might define the action something like this:
+Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might send down our view like this:
 
 ```javascript
+// in api/controllers/UserController.js...
 
-User.findOne({
-  id: req.param('id')
-})
-.populate('corndogCollection')
-.exec(function whenReady (err, theUser) {
-  if (err) return res.serverError(err);
-  if (!theUser) return res.badRequest('Unknown user with id: ', theUser.id);
-
-  return res.view('backOffice/profile', {
-    user: theUser,
-    corndogs: theUser.corndogCollection
-  });
-});
+  profile: function (req, res) {
+    // ...
+    return res.view('backOffice/profile', {
+      user: theUser,
+      corndogs: theUser.corndogCollection
+    });
+  },
+  // ...
 ```
 
 
