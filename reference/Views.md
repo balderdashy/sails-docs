@@ -2,9 +2,9 @@
 
 ### Overview
 
-In Sails, views are markup templates that are rendered _on the server_ into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.
+In Sails, views are markup templates that are compiled _on the server_ into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.
 
-Alternatively, a view can be rendered directly into an HTML string for use in your backend code (see [`sails.renderView()`]().)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.
+Alternatively, a view can be compiled directly into an HTML string for use in your backend code (see [`sails.renderView()`]().)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.
 
 
 ##### Creating a view
@@ -16,9 +16,9 @@ If you prefer to use a different view engine, there are a multitude of options. 
 Views are defined in your app's `views/` folder by default, but like all of the default paths in Sails, they are [configurable]().
 
 
-##### Rendering a view
+##### Compiling a view
 
-Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`]() to send one of your views down to the requesting user.
+Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`]() to compile one of your views, then send the resulting HTML down to the user.
 
 You can also hook up a view directly to a route in your `routes.js` file.  Just indicate the relative path to the view from your app's `views/` directory.  For example:
 
@@ -39,7 +39,7 @@ You can also hook up a view directly to a route in your `routes.js` file.  Just 
 
 ##### What about single-page apps?
 
-If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered without needing to hit the server again directly.
+If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered in the user's browser without needing to hit the server again directly.
 
 In this case, you have a couple of options for bootstrapping the single-page app:
 
@@ -99,13 +99,20 @@ For instructions on adding support for a view engine not listed above, check out
 
 # Layouts
 
-Layouts are special files in your `views/` folder you can use to wrap your other views.  For an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout.  This [reduces the total amount of code](http://en.wikipedia.org/wiki/Don't_repeat_yourself) in your project and helps you avoid making the same changes in multiple files down the road.
+When building an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout.  This [reduces the total amount of code](http://en.wikipedia.org/wiki/Don't_repeat_yourself) in your project and helps you avoid making the same changes in multiple files down the road.
 
+In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
+
+For convenience, Sails bundles special support for layouts, but only for the default view engine, EJS. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
+
+Sails EJS layouts are special files in your `views/` folder you can use to "wrap" your other views.  Layouts usually contain the preamble (e.g. `!DOCTYPE html<html><head>....</head><body>`) and conclusion (`</body></html`) for your HTML views, and include the sandwiched view using `<%- body %>`.
+
+Layout support for your app can be configured or disabled in [`config/views.js`](), and can be overridden for a particular route or action by setting a view local, `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
 
 
 # Locals
 
-In Sails (and other MVC frameworks), views have access to variables called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the rendered HTML unless you explicitly reference them using special syntax provided by your view engine.
+In Sails (and other MVC frameworks), views have access to variables called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
 
 ```ejs
 <div>Logged in as <a><%= name %></a>.</div>
@@ -123,7 +130,7 @@ There are three kinds of template tags in EJS:
   + Inject an HTML string verbatim.
   + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
 + `<% if (!loggedIn) { %><a>Logout</a><% } %>`
-  + Run the javascript inside the `<% ... %>` (on the server at render-time)
+  + Run the javascript inside the `<% ... %>` when the view is compiled
   + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
 
 
