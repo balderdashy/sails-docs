@@ -52,7 +52,11 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 ##### Swapping out the view engine
 
-> TODO
+To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in `config/views.js`.)
+
+For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in `config/views.js`.
+
+
 
 ##### Supported view engines
 
@@ -81,8 +85,11 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
   - [walrus](https://github.com/jeremyruppel/walrus) [(website)](http://documentup.com/jeremyruppel/walrus/)
   - [whiskers](https://github.com/gsf/whiskers.js)
 
-__NOTE__: you must still install the engines you wish to use, add them to your package.json dependencies.
 
 
-> TODO: add the rest
+##### Registering a custom view engine
+
+For instructions on adding support for a view engine not listed above, check out the [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api) repository.
+
+
 
