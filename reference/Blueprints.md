@@ -28,11 +28,11 @@ See the [blueprints subsection of the configuration reference](./#!documentation
 
 ##### Blueprint Actions
 
-Blueprint actions, on the other hand, are generic controller actions designed to work with any of your models.  Blueprint actions are only available to controllers with a model of the same name (e.g. `ParrotController` would need a `Parrot` model), and you can think about them like the default behavior for your application.
+Blueprint actions, on the other hand, are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model), and you can think about them like the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 
-For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Like any of your explicit controller actions, blueprint actions cannot be accessed unless they are targeted by one of your app's explicit routes or route blueprints.
 
-Any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating a module that exports a generic action (e.g. `api/blueprints/create.js`).  In most cases, this kind of global override is unnecessary, but for more on that, check out the section on [custom blueprint actions](./#!documentation/guides/customBlueprints).
+Any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own [custom blueprint action](./#!documentation/guides/customBlueprints). (e.g. `api/blueprints/create.js`).
 
 The current version of Sails ships with the following blueprint actions:
 
