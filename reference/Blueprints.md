@@ -9,17 +9,52 @@
 
 ### Overview
 
-By default, Sails inspects your controllers, models, and configuration and binds certain routes automatically. These dynamically generated routes are called blueprints and they allow you to access a JSON API for your models without writing any code.
 
-The blueprint API is accessible when you have both an empty controller and model in Sails.  This can be done easily using the command line tool.  Behind the scenes, the various HTTP 'request methods' are being mapped to dynamically generated controller actions that perform CRUD operations on the model of the same name.  The default setting is on but can be disabled in '/config/controllers.js'.
+Together, blueprint routes and blueprint actions constitute the **blueprint API**, the secret sauce that powers the RESTful JSON API you get every time you generate an empty model and controller.  The real power of blueprints is your ability as an app architect to disable, override, protect, and extend them to fit your needs.
 
-While the following documentation focuses on HTTP, you can also use Sails' built-in socket.io emulation layer to talk to the blueprint API (or any of your Sails routes / custom controllers) via Socket.io.
 
-For a ridiculously in-depth look into how blueprints work and why they are so useful, [check out this awesome video](http://www.youtube.com/watch?v=EnKRrdTi_gk)
+##### Blueprint Routes
+
+Behind the scenes, when you run `sails lift`, the framework inspects your controllers, models, and configuration in order to [bind certain routes](./#!documentation/guides/routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to requests to certain URLs without you having to bind those routes manually in your `config/routes.js` file.  By themselves, blueprint routes don't actually "know" how to _do_ anything.  They are completely dependent on how you define the relevant actions in your app's controllers.
+
+There are three types of blueprint routing in Sails:
+
++ rest
++ shortcuts
++ actions
+
+See the [blueprints subsection of the configuration reference](./#!documentation/reference/Configuration/blueprints.html) for more on how each type of blueprint routing works, and how you can disable it on a global, per-controller, or per-route basis.
+
+
+##### Blueprint Actions
+
+Blueprint actions, on the other hand, are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model), and you can think about them like the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+
+Like any of your explicit controller actions, blueprint actions cannot be accessed unless they are targeted by one of your app's explicit routes or route blueprints.
+
+Any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own [custom blueprint action](./#!documentation/guides/customBlueprints). (e.g. `api/blueprints/create.js`).
+
+The current version of Sails ships with the following blueprint actions:
+
++ [find](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [create](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [update](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [destroy](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [populate](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [add](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [remove](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
+
+Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
+
+
+
+
 
 ### Notes
 
-> Absolutely all of these Blueprint Methods can be used with Socket.IO. Check out the [Socket-Client](./#!documentation/reference/SocketClient/SocketClient.html) section of reference for example usage.
+> While the following documentation focuses on HTTP, the blueprint API is also compatible with WebSockets, thanks to the request interpreter (just like any of your custom actions and policies.)  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
+
+
 
 # Find Records
 
