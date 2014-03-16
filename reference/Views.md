@@ -2,12 +2,12 @@
 
 ### Overview
 
-In Sails, views are markup templates that are rendered _on the server_ into HTML pages.  In most cases, views are rendered and then used as the response to an incoming HTTP request, e.g. to serve your home page.
+In Sails, views are markup templates that are rendered _on the server_ into HTML pages.  In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.
 
 Alternatively, a view can be rendered directly into an HTML string for use in your backend code (see [`sails.renderView()`]().)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.
 
 
-###### Creating a view
+##### Creating a view
 
 By default, Sails is configured to use EJS ([Embedded Javascript](http://embeddedjs.com/)) as its view engine.  The syntax for EJS is highly conventional- if you've worked with php, asp, erb, gsp, jsp, etc., you'll immediately know what you're doing.
 
@@ -16,7 +16,7 @@ If you prefer to use a different view engine, there are a multitude of options. 
 Views are defined in your app's `views/` folder by default, but like all of the default paths in Sails, they are [configurable]().
 
 
-###### Rendering a view
+##### Rendering a view
 
 Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`]() to send one of your views down to the requesting user.
 
@@ -37,7 +37,7 @@ You can also hook up a view directly to a route in your `routes.js` file.  Just 
 }
 ```
 
-###### What about single-page apps?
+##### What about single-page apps?
 
 If you are building a web application for the browser, part (or all) of your navigation may take place on the client; i.e. instead of the browser fetching a new HTML page each time the user navigates around, the client-side code preloads some markup templates which are then rendered without needing to hit the server again directly.
 
@@ -111,7 +111,7 @@ In Sails (and other MVC frameworks), views have access to variables called `loca
 <div>Logged in as <a><%= name %></a>.</div>
 ```
 
-###### Using locals in your views
+##### Using locals in your views
 
 The notation for accessing locals in your views varies between view engines.  In EJS, you use special template markup (e.g. `<%= someValue %>`) to access locals from your view.
 
