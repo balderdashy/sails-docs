@@ -2,9 +2,9 @@
 
 ### Overview
 
-In Sails, views are HTML templates that are rendered _on the server_.  In most cases, views are used as a response to an incoming HTTP request, e.g. to serve your home page.
+In Sails, views are markup templates that are rendered _on the server_ into HTML pages.  In most cases, views are rendered and then used as the response to an incoming HTTP request, e.g. to serve your home page.
 
-A notable alternative use case is sending HTML emails, in which case you'd want to use [`sails.renderView()`]() to render a view into a string you can use in your backend code.
+Alternatively, a view can be rendered directly into an HTML string for use in your backend code (see [`sails.renderView()`]().)  For instance, you might use this approach to send HTML emails, or to build big XML strings for use with a legacy API.
 
 
 By default, Sails is configured to use EJS ([Embedded Javascript](http://embeddedjs.com/)) as its view engine.  The syntax for EJS is highly conventional- if you've worked with php, asp, erb, gsp, jsp, etc., you'll immediately know what you're doing.
