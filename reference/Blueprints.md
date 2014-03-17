@@ -101,6 +101,11 @@ _via the URL bar in your web browser_
 
 `GET http://localhost:1337/:model/:id`
 
+Get one pony in the database:
+
+_via the URL bar in your web browser_
+`http://localhost:1337/pony/1`
+
 #### Expected Response
 
 ```json
