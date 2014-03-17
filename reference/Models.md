@@ -16,7 +16,7 @@ module.exports = {
 }
 ```
 
-##### Using models
+### Using models
 
 Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](), [create](), [update](), and [destroy]().  These methods are [asynchronous]() - under the covers, Waterline has to send a query to the database and wait for a response.
 
@@ -147,7 +147,7 @@ In your Sails app, a **model** is like one of the file cabinets.  It contains **
 
 
 
-# attributes
+# Attributes
 ### Overview
 
 Model attributes are basic pieces of information about a model. A model called `Person` might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
