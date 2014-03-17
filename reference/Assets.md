@@ -62,21 +62,21 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 
 Sails registers Grunt tasks located in the [`tasks/register/`]() folder.
 
-###### `sails lift`
+##### `sails lift`
 
-Runs the `default` task (`tasks/register/default.js`).
+Runs the **default** task (`tasks/register/default.js`).
 
-###### `sails lift --prod`
+##### `sails lift --prod`
 
-Runs the `prod` task (`tasks/register/prod.js`).
+Runs the **prod** task (`tasks/register/prod.js`).
 
-###### `sails www`
+##### `sails www`
 
-Runs the `build` task (`tasks/register/build.js`).
+Runs the **build** task (`tasks/register/build.js`).
 
-###### `sails www --prod` (production)
+##### `sails www --prod` (production)
 
-Runs the `buildProd` task (`tasks/register/buildProd.js`).
+Runs the **buildProd** task (`tasks/register/buildProd.js`).
 
 
 ### Can I customize this for SASS, Angular, client-side Jade templates, etc?
