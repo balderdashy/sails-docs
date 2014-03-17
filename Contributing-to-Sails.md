@@ -6,18 +6,18 @@
 > Thanks!
 > ~mm
 
-This guide is designed to get you started contributing to the Sails framework.  It assumes you know how to use Github, but should be applicable whether this will be your first pull request or you're an active contributor to hundreds of projects.
+This guide is designed to get you started contributing to the Sails framework.  It assumes you know how to use Github, but should be applicable for contributors of all levels.
 
 
 ## Contribution Guidelines
 Like any open-source project, we must have guidelines for contributions.  It helps protect the quality of the code, and gives all of us confidence that our framework will stay robust and dependable.
-Whether it's a bug fix, or a huge new feature set, it's important that we consistently apply these checks and balances for *all* contributions to Sails.
+Whether it's a bug fix or a huge new feature set, it's important that we consistently apply these checks and balances for *all* contributions to Sails.
 
 Please check over the following requirements before submitting a pull request:
- - Bug fixes should have accompanying tests where possible.
- - Should follow our style guide to maintain code consistency (see `.jshint` file in repo)
+ - Bug fixes should have accompanying tests where possible.  We use [Mocha](http://visionmedia.github.io/mocha/) for testing.
+ - Code should follow our style guide to maintain consistency (see `.jshint` file in repo)
 
-If you have a high priority hot-fix for the currently deployed version, please let us know with an issue, and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.
+If you have a high priority hot-fix for the currently deployed version, please [post an issue on Github](https://github.com/balderdashy/sails/issues?milestone=none&state=open), and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.
 
 Now that we are all on the same page, lets get to coding some awesomeness of our own :D
 
@@ -59,16 +59,17 @@ When you're done, you can commit your fix, push up your code, and then go into g
 If you forked Sails, and you want to test your Sails app against your fork, here's how you do it:
 
 In your local copy of your fork of Sails:
-`npm link`
+`sudo npm link`
 
 In your Sails app's repo:
 `npm link sails`
 
 This creates a symbolic link as a local dependency (in your app's `node_modules` folder).  This has the effect of letting you run your app with the version Sails you `linked`.
 ```bash
-$ node app.js
+$ sails lift
 ```
 
+### *Thanks for your contributions!*
 
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/contributing)

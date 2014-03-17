@@ -101,6 +101,11 @@ _via the URL bar in your web browser_
 
 `GET http://localhost:1337/:model/:id`
 
+Get one pony in the database:
+
+_via the URL bar in your web browser_
+`http://localhost:1337/pony/1`
+
 #### Expected Response
 
 ```json
@@ -143,7 +148,7 @@ via web browser 'http://localhost:1337/pony/find/'
 
 `http://localhost:1337/:model/find/:recordID`
 
-Like before, we will just one Pony.  This time, using the `Blueprint Shortcut` routes.
+Like before, we will get just one Pony.  This time, using the `Blueprint Shortcut` routes.
 
 via web browser 'http://localhost:1337/pony/find/47'
 
@@ -263,7 +268,7 @@ _via Postman_
 ```json
 {
   "name": "AppleJack",
-  "hobby": "pickin",
+  "hobby": "pickin"
 }
 ```
 
