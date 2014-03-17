@@ -148,7 +148,7 @@ via web browser 'http://localhost:1337/pony/find/'
 
 `http://localhost:1337/:model/find/:recordID`
 
-Like before, we will just one Pony.  This time, using the `Blueprint Shortcut` routes.
+Like before, we will get just one Pony.  This time, using the `Blueprint Shortcut` routes.
 
 via web browser 'http://localhost:1337/pony/find/47'
 
