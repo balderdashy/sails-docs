@@ -5,26 +5,26 @@ The chart below describes support for the methods and properties on the Sails [R
 
 |                |  HTTP   | WebSockets |
 |----------------|---------|------------|
-| `res.status()` | :white_check_mark: | :white_check_mark: |
-| `res.set()`    | :white_check_mark: | :white_large_square: |
-| `res.get()`    | :white_check_mark: | :white_large_square: |
-| `res.cookie()` | :white_check_mark: | :white_large_square: |
-| `res.clearCookie()` | :white_check_mark: | :white_large_square: |
-| `res.redirect()` | :white_check_mark: | :white_check_mark: |
-| `res.location()` | :white_check_mark: | :white_large_square: |
-| `res.charset`  | :white_check_mark: | :white_check_mark: |
-| `res.send()`   | :white_check_mark: | :white_check_mark: |
-| `res.json()`   | :white_check_mark: | :white_check_mark: |
-| `res.jsonp()`  | :white_check_mark: | :white_check_mark: |
-| `res.type()`   | :white_check_mark: | :white_large_square: |
-| `res.format()` | :white_check_mark: | :white_large_square: |
-| `res.attachment()` | :white_check_mark: | :white_large_square: |
-| `res.sendfile()` | :white_check_mark: | :white_large_square: |
-| `res.download()` | :white_check_mark: | :white_large_square: |
-| `res.links()`  | :white_check_mark: | :white_large_square: |
-| `res.locals    | :white_check_mark: | :white_check_mark: |
-| `res.render()` | :white_check_mark: | :white_large_square: |
-| `res.view()`   | :white_check_mark: | :white_large_square: |
+| res.status() | :white_check_mark: | :white_check_mark: |
+| res.set()    | :white_check_mark: | :white_large_square: |
+| res.get()    | :white_check_mark: | :white_large_square: |
+| res.cookie() | :white_check_mark: | :white_large_square: |
+| res.clearCookie() | :white_check_mark: | :white_large_square: |
+| res.redirect() | :white_check_mark: | :white_check_mark: |
+| res.location() | :white_check_mark: | :white_large_square: |
+| res.charset  | :white_check_mark: | :white_check_mark: |
+| res.send()   | :white_check_mark: | :white_check_mark: |
+| res.json()   | :white_check_mark: | :white_check_mark: |
+| res.jsonp()  | :white_check_mark: | :white_check_mark: |
+| res.type()   | :white_check_mark: | :white_large_square: |
+| res.format() | :white_check_mark: | :white_large_square: |
+| res.attachment() | :white_check_mark: | :white_large_square: |
+| res.sendfile() | :white_check_mark: | :white_large_square: |
+| res.download() | :white_check_mark: | :white_large_square: |
+| res.links()  | :white_check_mark: | :white_large_square: |
+| res.locals    | :white_check_mark: | :white_check_mark: |
+| res.render() | :white_check_mark: | :white_large_square: |
+| res.view()   | :white_check_mark: | :white_large_square: |
 
 
 ### Legend
