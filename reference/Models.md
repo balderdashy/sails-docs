@@ -337,10 +337,10 @@ module.exports = {
 
 Let's say there's a table called `our_users` in the old MySQL database that looks like this:
 
-| the_primary_key | email_address | full_name | seriously_encrypted_password |
+| the_primary_key | email_address | full_name | seriously_encrypted_password|
 |------|---|----|---|
-7 | mike@sameness.foo | Mike McNeil | ranchdressing |
-14 | nick@sameness.foo | Nick Crumrine | thousandisland |
+| 7 | mike@sameness.foo | Mike McNeil | ranchdressing |
+| 14 | nick@sameness.foo | Nick Crumrine | thousandisland |
 
 
 In order to use this from Sails, you'd change your `User` model to look like this:
