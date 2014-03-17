@@ -52,7 +52,7 @@ This will create the file 'api/models/Pet.js'
 ######Generate both!
 
 ```sh
-catGuy@catGuy:~/nodeProjects/blogApp$ sails generate pet
+catGuy@catGuy:~/nodeProjects/blogApp$ sails generate api pet
 info: Generating model and controller for pet...
 ```
 
