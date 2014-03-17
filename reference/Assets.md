@@ -1,15 +1,15 @@
 # Assets
 ### Overview
 
-Assets refer to any [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) that you need to be accessible to the outside world.
+Assets refer to any [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) that you need to be accessible to the outside world. In your Sails project, your assets will go into the [`assets/`]() directory. When placed in this directory, there are a series of automated tasks run that help you manage your assets. The task automation is handled by a task runner called [Grunt](http://gruntjs.com/). Grunt allows you to manage assets very easily, and most of the code to do this is already written and accessable through grunt plugins. Just find a plugin you need, configure the task, and Grunt takes care of the rest.
 
-TODO: expand on where assets are located, and basic overview of the workflow in Sails for someone who has used grunt (i.e. put your files in assets, stuff gets synced to [`.tmp/public/`](), gets served when you run [`sails lift`]() )
-
-TODO: explain that this uses Express static middleware, and that it comes AFTER the sails router (meaning if you have `assets/images/foo.jpg`, you can create a route for that and it will override the static file)
-
-> The `assets` directory in Sails is roughly equivalent to the `public` folder in an [Express](http://www.expressjs.com) app.
+In a Sails project there is a default process to help manage your assets. Giving a basic overview, it starts with you placing asset directories and files under the `assets/` folder. Grunt is then configuered to take these assets and perform various manipulations to them (e.g. concatenating, compiling, linking) and then copy them over to a `./tmp/public/` directory. The `.tmp/public/` directory is your project's public folder that is publically acessable over the web. In fact, this public folder is roughly equivalent to the `public/` folder in an [express](http://www.expressjs.com) app. All of this occures whenever you run the `sails lift` command.
 
 
+### Express Static Middleware
+Behind the scenes, Sails is using express [static middleware](http://www.senchalabs.org/connect/static.html) to serve your static asset files. You can configure this middleware in [`/config/express.js](). It is important to note that this static middleware is run **after** the sails router (meaning if you have a route named `/assets/index.html` and an asset with the same path, the route will override the serving of this file.) Normally you wouldnt have to worry about this feature, but it is good to know none the less.
+
+>If you are unfamiliar with the concept of middleware, check out [this](http://stephensugden.com/middleware_guide/) helpful article.
 
 # Default Tasks
 
@@ -84,5 +84,3 @@ Runs the `buildProd` task (`tasks/register/buildProd.js`).
 ### Can I customize this for SASS, Angular, client-side Jade templates, etc?
 
 You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in the `grunt/config` directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`).
-
-
