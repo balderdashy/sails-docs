@@ -7,45 +7,8 @@ A nice side effect of this compatibility is that, in many cases, you can paste e
 
 > Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`]() and [`req.params.all()`]().  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
 
-The chart below summarizes which methods and properties are available for each transport.
+The chart in the [Supported Features]() section summarizes which methods and properties are available for each transport.
 
-|    | HTTP    | socket.io |
-|----|---------|---------|
-| req.files | :-) | :-( |
-| req.param() | :-) | :-) |
-| req.route | :-) | :-) |
-| req.cookies | :-) | :-( |
-| req.signedCookies | :-) | :-( |
-| req.get() | :-) | :-( |
-| req.accepts() | :-) | :-( |
-| req.accepted | :-) | :-( |
-| req.is() | :-) | :-( |
-| req.ip | :-) | :-) |
-| req.ips | :-) | :-( |
-| req.path | :-) | :-( |
-| req.host | :-) | :-( |
-| req.fresh | :-) | :-( |
-| req.stale | :-) | :-( |
-| req.xhr | :-) | :-( |
-| req.protocol | :-) | :-) |
-| req.secure | :-) | :-( |
-| req.session | :-) | :-) |
-| req.subdomains | :-) | :-( |
-| req.method | :-) | :-) |
-| req.originalUrl | :-) | :-( |
-| req.acceptedLanguages | :-) | :-( |
-| req.acceptedCharsets | :-) | :-( |
-| req.acceptsCharset() | :-) | :-( |
-| req.acceptsLanguage() | :-) | :-( |
-| req.isSocket | :-) | :-) |
-| req.params.all() | :-) | :-) |
-| req.socket.id | :-( | :-) |
-| req.socket.join | :-( | :-) |
-| req.socket.leave | :-( | :-) |
-| req.socket.broadcast  | :-( | :-) |
-| req.transport  | :-( | :-) |
-| req.url | :-) | :-) |
-| req.wantsJSON | :-) | :-) |
 
 # req.wantsJSON
 ### Purpose
