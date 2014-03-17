@@ -1,29 +1,47 @@
 # Response
 ### Overview
-Below is a chart describing Sails.js support of the .res() methods.
 
-|Name|  HTTP ?  | socket.io |
-|----|---------|---------|
-| res.status() | :-) | :-) |
-| res.set() | :-) | :-( |
-| res.get() | :-) | :-( |
-| res.cookie() | :-) | :-( |
-| res.clearCookie() | :-) | :-( |
-| res.redirect() | :-) | :-) |
-| res.location() | :-) | :-( |
-| res.charset | :-) | :-) |
-| res.send() | :-) | :-) |
-| res.json() | :-) | :-) |
-| res.jsonp() | :-) | :-) |
-| res.type() | :-) | :-( |
-| res.format() | :-) | :-( |
-| res.attachment() | :-) | :-( |
-| res.sendfile() | :-) | :-( |
-| res.download() | :-) | :-( |
-| res.links() | :-) | :-( |
-| res.locals | :-) | :-) |
-| res.render() | :-) | :-( |
-| res.view() | :-) | :-( |
+Sails is built on [Express](), and uses [Node's HTTP server]() conventions.  Because of this, you can access all of the Node and Express methods and properties on the `res` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
+
+A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
+
+Sails adds a few methods of its own to the `res` object, like [`res.view()`]().  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
+
+The [Supported Features]() section includes a chart summarizes which methods and properties are available for each transport.
+
+(included here for now so it can be styled:)
+
+
+|                |  HTTP   | WebSockets |
+|----------------|---------|------------|
+| `res.status()` | :white_check_mark: | :white_check_mark: |
+| `res.set()`    | :white_check_mark: | :white_large_square: |
+| `res.get()`    | :white_check_mark: | :white_large_square: |
+| `res.cookie()` | :white_check_mark: | :white_large_square: |
+| `res.clearCookie()` | :white_check_mark: | :white_large_square: |
+| `res.redirect()` | :white_check_mark: | :white_check_mark: |
+| `res.location()` | :white_check_mark: | :white_large_square: |
+| `res.charset`  | :white_check_mark: | :white_check_mark: |
+| `res.send()`   | :white_check_mark: | :white_check_mark: |
+| `res.json()`   | :white_check_mark: | :white_check_mark: |
+| `res.jsonp()`  | :white_check_mark: | :white_check_mark: |
+| `res.type()`   | :white_check_mark: | :white_large_square: |
+| `res.format()` | :white_check_mark: | :white_large_square: |
+| `res.attachment()` | :white_check_mark: | :white_large_square: |
+| `res.sendfile()` | :white_check_mark: | :white_large_square: |
+| `res.download()` | :white_check_mark: | :white_large_square: |
+| `res.links()`  | :white_check_mark: | :white_large_square: |
+| `res.locals    | :white_check_mark: | :white_check_mark: |
+| `res.render()` | :white_check_mark: | :white_large_square: |
+| `res.view()`   | :white_check_mark: | :white_large_square: |
+
+
+### Legend
+
+  - :white_check_mark: - supported feature
+  - :white_large_square: - feature not yet implemented for this transport
+  - :heavy_multiplication_x: - unsupported feature due to protocol restrictions
+
 
 
 # res.view([`pathToView`],[`locals`])
