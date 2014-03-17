@@ -268,7 +268,7 @@ _via Postman_
 ```json
 {
   "name": "AppleJack",
-  "hobby": "pickin",
+  "hobby": "pickin"
 }
 ```
 
