@@ -15,18 +15,15 @@ Behind the scenes, Sails is using express [static middleware](http://www.senchal
 
 ### Overview
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive.
+The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks]() to fit your needs.
 
-The entire front-end asset workflow is completely customizable-- while it provides some default tasks out of the box, Sails makes it easy to [configure new tasks]() to fit your needs.
-
-
-TODO:
-Explain what's possible with the default tasks in the sails asset pipeline, i.e.
 However, Sails does do a few extra things to help you out:  
-- Automatic [LESS compilation]()
-- Automatic [JST compilation]()
+- Automatic LESS compilation
+- Automatic JST compilation
+- Automatic Coffescript compilation
 - Optional automatic asset injection, minification, and concatenation
-
+- Tasks to create public web directories
+- File watching and syncing
 
 ### Default Grunt Task Behavior.
 
@@ -80,7 +77,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### sails-linker
 
-> Automatically inject <script> tags for javascript files and <link> tags for css files.  Also automatically links an output file containing precompiled templates using a <script> tag.
+> Automatically inject <script> tags for javascript files and <link> tags for css files.  Also automatically links an output file containing precompiled templates using a <script> tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
