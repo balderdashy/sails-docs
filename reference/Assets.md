@@ -93,7 +93,7 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - Optional automatic asset injection, minification, and concatenation
 - Create a web ready public directory.
 - File watching and syncing
-- Optimization of assets in production.
+- Optimization of assets in production
 
 ### Default Grunt Task Behavior.
 
