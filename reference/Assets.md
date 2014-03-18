@@ -31,9 +31,18 @@ Sails bundles some [conventional tasks]() for convenience, but with [literally h
 
 ### Asset pipeline
 
-> TODO: explain how to configure the pipeline.js file to change target files
-> TODO: also explain how some of the things are in the actually `tasks/config/foobar.js` files themselves.
+The asset pipeline is the place where you will organize your assets that will be injected with sails-linker, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat expressions](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
 
+##### CSS Files to Inject
+This is an array of css files that gets injected into `<!--STYLES--><!--STYLES END-->` comments in your html.
+
+##### Javascript Files to Inject
+This is an array of Javascript files that gets injected into `<!--SCRIPTS--><!--SCRIPTS END-->` comments in your html. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
+
+##### Template Files to Inject
+This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected into the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+
+> The same grunt wildcard/glob/splat expressions and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
 
 ### Task configuration
 
@@ -150,7 +159,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### uglify
 
-> Minifies client-side javascript `assets`.
+> Minifies client-side javascript assets.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
 
