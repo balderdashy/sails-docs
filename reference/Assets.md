@@ -34,26 +34,26 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### clean
 
-> This grunt task is configured to clean out the contents in the `.tmp/public` of your sails project.
+> This grunt task is configured to clean out the contents in the `.tmp/public/` of your sails project.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-clean)
 
 ##### coffee
 
-> Compiles coffeeScript files from `assest/js` into Javascript and places them into `.tmp/public/js` directory.
+> Compiles coffeeScript files from `assest/js/` into Javascript and places them into `.tmp/public/js/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
 
 ##### concact
 
-> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/contact` directory.
+> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/concat/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
 
 ##### copy
 
 > **dev task config**
-> Copies all directories and files, exept coffescript and less fiels, from the sails assets folder into the `.tmp/public` directory.
+> Copies all directories and files, exept coffescript and less fiels, from the sails assets folder into the `.tmp/public/` directory.
 
 > **build task config**
 > Copies all directories nd files from the .tmp/public directory into a www directory.
@@ -62,7 +62,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### cssmin
 
-> Minifies css files and places them into `.tmp/public/min directory`.
+> Minifies css files and places them into `.tmp/public/min/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-cssmin)
 
@@ -86,19 +86,19 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### sync
 
-> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that has actually changed. Synchronize files from the `assets` folder to `.tmp/public`, smashing anything that's already there.
+> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that has actually changed. It specifically synchronize files from the `assets/` folder to `.tmp/public/`, smashing anything that's already there.
 
 > [usage docs](https://github.com/tomusdrw/grunt-sync)
 
 ##### uglify
 
-> Minify files with UglifyJS.
+> Minifies client-side javascript `assets`.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
 
 ##### watch
 
-> Run predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets` folder, and re-run the appropriate tasks.
+> Run predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets/` folder, and re-run the appropriate tasks.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
