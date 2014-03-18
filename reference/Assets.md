@@ -28,53 +28,79 @@ However, Sails does do a few extra things to help you out:
 - Optional automatic asset injection, minification, and concatenation
 
 
+### Default Grunt Task Behavior.
+
+Below are the Grunt tasks that are included in your Sails project as well as a small description of exactly what each does in your project. Also included are a link to the usage docs for each task.
+
 ##### clean
 
 > This grunt task is configured to clean out the contents in the `.tmp/public` of your sails project.
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-clean)
 
 ##### coffee
 
 > Compiles coffeeScript files from `assest/js` into Javascript and places them into `.tmp/public/js` directory.
 
+> [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
+
 ##### concact
 
-> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/contact` directory
+> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/contact` directory.
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
 
 ##### copy
 
-> dev task config
+> **dev task config**
 > Copies all directories and files, exept coffescript and less fiels, from the sails assets folder into the `.tmp/public` directory.
 
-> build task config
+> **build task config**
 > Copies all directories nd files from the .tmp/public directory into a www directory.
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-copy)
 
 ##### cssmin
 
 > Minifies css files and places them into `.tmp/public/min directory`.
 
+> [usage docs](https://github.com/gruntjs/grunt-contrib-cssmin)
+
 ##### jst
 
 > Precompiles Underscore templates to a `.jst` file. (i.e. basically it takes HTML files and turns them into tiny little javascript functions that you pass data to and return HTML. This can speed up template rendering on the client, and reduce bandwidth usage.
 
+> [usage docs](https://github.com/gruntjs/grunt-contrib-jast)
+
 ##### less
 
-> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets)
+> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets).
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-less)
 
 ##### sails-linker
 
 > Automatically inject <script> tags for javascript files and <link> tags for css files.  Also automatically links an output file containing precompiled templates using a <script> tag.
 
+> [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
+
 ##### sync
 
 > A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that has actually changed. Synchronize files from the `assets` folder to `.tmp/public`, smashing anything that's already there.
 
+> [usage docs](https://github.com/tomusdrw/grunt-sync)
+
 ##### uglify
 
-> Minify files with UglifyJS. 
+> Minify files with UglifyJS.
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
 
 ##### watch
 
 > Run predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets` folder, and re-run the appropriate tasks.
+
+> [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
 
 # Disabling Grunt
