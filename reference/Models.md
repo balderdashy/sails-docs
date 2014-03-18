@@ -264,6 +264,20 @@ attributes: {
 }
 ```
 
+<!--
+These are not ready for prime-time yet, but listing them here so they're easy to reference and add to official docs later:
+
+###### example
+
+An example value for this attribute, e.g. "Albus Dumbledore".
+
+
+###### validationMessage
+
+A custom validation message to use when any validations fail for this attribute.
+
+-->
+
 ###### size
 
 If supported in the adapter, can be used to define the size of the attribute. For example in MySQL, `size` can be specified as a number (`n`) to create a column with the SQL data type: `varchar(n)`.
