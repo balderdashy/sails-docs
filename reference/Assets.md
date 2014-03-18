@@ -58,12 +58,13 @@ npm install grunt-contrib-handlebars --save-dev
 ```
 
 2. Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
+
 ```javascript
-/**
- * tasks/config/handlebars.js
- * --------------------------------
- * handlebar task configuration.
- */
+
+// tasks/config/handlebars.js
+// --------------------------------
+// handlebar task configuration.
+
 module.exports = function(grunt) {
 
     // We use the grunt.config api's set method to configure an object to the defined string.
@@ -87,12 +88,13 @@ module.exports = function(grunt) {
 ```
 
 3. Replace path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+
 ```javascript
-/**
- * tasks/pipeline.js
- * --------------------------------
- * asset pipeline
- */
+
+// tasks/pipeline.js
+// --------------------------------
+// asset pipeline
+
 var cssFilesToInject = [
   'styles/**/*.css'
 ];
@@ -125,11 +127,11 @@ module.exports = {
 4. Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
 
 ```javascript
-/**
- * tasks/register/compileAssets.js
- * --------------------------------
- * compile assets registered grunt task
- */
+
+// tasks/register/compileAssets.js
+// --------------------------------
+// compile assets registered grunt task
+
 module.exports = function (grunt) {
     grunt.registerTask('compileAssets', [
         'clean:dev',
@@ -140,11 +142,10 @@ module.exports = function (grunt) {
     ]);
 };
 
-/**
- * tasks/register/syncAssets.js
- * --------------------------------
- * synce assets registered grunt task
- */
+// tasks/register/syncAssets.js
+// --------------------------------
+// synce assets registered grunt task
+
 module.exports = function (grunt) {
     grunt.registerTask('syncAssets', [
         'handlebars:dev',      // changed jst task to handlebars task
@@ -159,7 +160,9 @@ module.exports = function (grunt) {
 
 > Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
 ```bash
+
 npm uninstall grunt-contrib-jst --save-dev
+
 ```
 
 ### Task triggers
