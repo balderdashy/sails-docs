@@ -52,9 +52,9 @@ Configured tasks are the set of rules your Gruntfile will follow when run. They 
 
 Configuring a custom task into your project is very simple and uses grunts api to allow your to make yur task modular.Lets go through a quick examples of createing a new task to replacing an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
 
-1. The first step is to install the handlebars grunt plugin.
+1. The first step is to install the handlebars grunt plugin using this command in your terminal.
 ```bash
-npm install grunt-ocntrib-handlebars --save-dev
+npm install grunt-contrib-handlebars --save-dev
 ```
 
 2. Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
@@ -123,6 +123,7 @@ module.exports = {
 ```
 
 4. Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+
 ```javascript
 /**
  * tasks/register/compileAssets.js
@@ -156,7 +157,7 @@ module.exports = function (grunt) {
 
 5. Remove jst task config file. We are no longer using it anymore so we can get rid of it `tasks/config/jst.js`. Simply delete it from your project.
 
-> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command.
+> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
 ```bash
 npm uninstall grunt-contrib-jst --save-dev
 ```
