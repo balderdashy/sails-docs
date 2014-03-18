@@ -67,25 +67,25 @@ npm install grunt-contrib-handlebars --save-dev
 
 module.exports = function(grunt) {
 
-    // We use the grunt.config api's set method to configure an
-    // object to the defined string.In this case the task
-    // 'handlebars' will be configured based on the object below.
-    grunt.config.set('handlebars', {
-        dev: {
-            options: {
-                namespace: 'MyApp.Templates'
-            },
+  // We use the grunt.config api's set method to configure an
+  // object to the defined string.In this case the task
+  // 'handlebars' will be configured based on the object below.
+  grunt.config.set('handlebars', {
+    dev: {
+      options: {
+        namespace: 'MyApp.Templates'
+      },
 
-            // We will define which template files to inject
-            // in tasks/pipeline.js 
-            files: {
-                '.tmp/public/templadtes.js': require('../pipeline').templateFilesToInject
-            }
-        }
-    });
+      // We will define which template files to inject
+      // in tasks/pipeline.js 
+      files: {
+        '.tmp/public/templadtes.js': require('../pipeline').templateFilesToInject
+      }
+    }
+  });
 
-    // load npm module for handlebars.
-    grunt.loadNpmTasks('grunt-contrib-handlebars');
+  // load npm module for handlebars.
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 };
 ```
 
@@ -134,13 +134,13 @@ module.exports = {
 // compile assets registered grunt task
 
 module.exports = function (grunt) {
-    grunt.registerTask('compileAssets', [
-        'clean:dev',
-        'handlebars:dev',       // changed jst task to handlebars task
-        'less:dev',
-        'copy:dev',
-        'coffee:dev'
-    ]);
+  grunt.registerTask('compileAssets', [
+    'clean:dev',
+    'handlebars:dev',       // changed jst task to handlebars task
+    'less:dev',
+    'copy:dev',
+    'coffee:dev'
+  ]);
 };
 
 // tasks/register/syncAssets.js
@@ -148,12 +148,12 @@ module.exports = function (grunt) {
 // synce assets registered grunt task
 
 module.exports = function (grunt) {
-    grunt.registerTask('syncAssets', [
-        'handlebars:dev',      // changed jst task to handlebars task
-        'less:dev',
-        'sync:dev',
-        'coffee:dev'
-    ]);
+  grunt.registerTask('syncAssets', [
+    'handlebars:dev',      // changed jst task to handlebars task
+    'less:dev',
+    'sync:dev',
+    'coffee:dev'
+  ]);
 };
 ```
 
