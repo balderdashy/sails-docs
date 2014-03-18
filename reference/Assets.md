@@ -31,7 +31,7 @@ Sails bundles some [conventional tasks]() for convenience, but with [literally h
 
 ### Asset pipeline
 
-The asset pipeline is the place where you will organize your assets that will be injected with sails-linker, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat expressions](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
+The asset pipeline is the place where you will organize your assets that will be injected with sails-linker, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
 
 ##### CSS Files to Inject
 This is an array of css files that gets injected into `<!--STYLES--><!--STYLES END-->` comments in your html.
@@ -42,7 +42,7 @@ This is an array of Javascript files that gets injected into `<!--SCRIPTS--><!--
 ##### Template Files to Inject
 This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected into the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
 
-> The same grunt wildcard/glob/splat expressions and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
+> The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
 
 ### Task configuration
 
