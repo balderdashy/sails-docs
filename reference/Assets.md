@@ -17,13 +17,14 @@ Behind the scenes, Sails is using express [static middleware](http://www.senchal
 
 The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks]() to fit your needs.
 
-However, Sails does do a few extra things to help you out:  
+Here are a few things that the default Grunt configuration in Sails does to help you out:  
 - Automatic LESS compilation
 - Automatic JST compilation
 - Automatic Coffescript compilation
 - Optional automatic asset injection, minification, and concatenation
-- Tasks to create public web directories
+- Create of web ready public directories.
 - File watching and syncing
+- Optimization of assets in production.
 
 ### Default Grunt Task Behavior.
 
