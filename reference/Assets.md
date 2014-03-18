@@ -67,15 +67,17 @@ npm install grunt-contrib-handlebars --save-dev
 
 module.exports = function(grunt) {
 
-    // We use the grunt.config api's set method to configure an object to the defined string.
-    // In this case the task 'handlebars' will be configured based on the object below.
+    // We use the grunt.config api's set method to configure an
+    // object to the defined string.In this case the task
+    // 'handlebars' will be configured based on the object below.
     grunt.config.set('handlebars', {
         dev: {
             options: {
                 namespace: 'MyApp.Templates'
             },
 
-            // We will define which template files to inject in tasks/pipeline.js 
+            // We will define which template files to inject
+            // in tasks/pipeline.js 
             files: {
                 '.tmp/public/templadtes.js': require('../pipeline').templateFilesToInject
             }
@@ -105,7 +107,8 @@ var jsFilesToInject = [
   'js/**/*.js'
 ];
 
-// -- We change this glob pattern to include all files in the templates/ direcotry that end in the extension .hbs-- 
+// We change this glob pattern to include all files in
+// the templates/ direcotry that end in the extension .hbs
 var templateFilesToInject = [
   'templates/**/*.hbs'
 ];
