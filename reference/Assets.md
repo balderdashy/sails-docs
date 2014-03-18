@@ -46,15 +46,120 @@ This is an array of html files that will compiled to a jst function and placed i
 
 ### Task configuration
 
-Configured tasks are...
+Configured tasks are the set of rules your Gruntfile will follow when run. They make completely customizable and located in the [`tasks/config/`]() directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). To just get up and running, you can just stick with the [default grunt task configurations]() that Sails provides.
 
-> TODO: explain what configured tasks are
+##### Configuring a custom task.
 
-You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in the `grunt/config` directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`).
+Configuring a custom task into your project is very simple and uses grunts api to allow your to make yur task modular.Lets go through a quick examples of createing a new task to replacing an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
 
-> TODO: explain how to configure and install a new grunt task, especially mentioning `npm install grunt-contrib-foobar --save-dev`.  Add a caveat about the npm version issue with `^` vs `~`.
+1. The first step is to install the handlebars grunt plugin.
+```sh
+npm install grunt-ocntrib-handlebars --save-dev
+```
 
+2. Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
+```javascript
+/**
+ * tasks/config/handlebars.js
+ * --------------------------------
+ * handlebar task configuration.
+ */
+module.exports = function(grunt) {
 
+    // We use the grunt.config api's set method to configure an object to the defined string.
+    // In this case the task 'handlebars' will be configured based on the object below.
+    grunt.config.set('handlebars', {
+        dev: {
+            options: {
+                namespace: 'MyApp.Templates'
+            },
+
+            // We will define which template files to inject in tasks/pipeline.js 
+            files: {
+                '.tmp/public/templadtes.js': require('../pipeline').templateFilesToInject
+            }
+        }
+    });
+
+    // load npm module for handlebars.
+    grunt.loadNpmTasks('grunt-contrib-handlebars');
+};
+```
+
+3. Replace path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+```javascript
+/**
+ * tasks/pipeline.js
+ * --------------------------------
+ * asset pipeline
+ */
+var cssFilesToInject = [
+  'styles/**/*.css'
+];
+
+var jsFilesToInject = [
+  'js/socket.io.js',
+  'js/sails.io.js',
+  'js/connection.example.js',
+  'js/**/*.js'
+];
+
+// -- We change this glob pattern to include all files in the templates/ direcotry that end in the extension .hbs-- 
+var templateFilesToInject = [
+  'templates/**/*.hbs'
+];
+
+module.exports = {
+  cssFilesToInject: cssFilesToInject.map(function(path) {
+    return '.tmp/public/' + path;
+  }),
+  jsFilesToInject: jsFilesToInject.map(function(path) {
+    return '.tmp/public/' + path;
+  }),
+  templateFilesToInject: templateFilesToInject.map(function(path) {
+    return 'assets/' + path;
+  })
+};
+```
+
+4. Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+```javascript
+/**
+ * tasks/register/compileAssets.js
+ * --------------------------------
+ * compile assets registered grunt task
+ */
+module.exports = function (grunt) {
+    grunt.registerTask('compileAssets', [
+        'clean:dev',
+        'handlebars:dev',       // changed jst task to handlebars task
+        'less:dev',
+        'copy:dev',
+        'coffee:dev'
+    ]);
+};
+
+/**
+ * tasks/register/syncAssets.js
+ * --------------------------------
+ * synce assets registered grunt task
+ */
+module.exports = function (grunt) {
+    grunt.registerTask('syncAssets', [
+        'handlebars:dev',      // changed jst task to handlebars task
+        'less:dev',
+        'sync:dev',
+        'coffee:dev'
+    ]);
+};
+```
+
+5. Remove jst task config file. We are no longer using it anymore so we can get rid of it `tasks/config/jst.js`. Simply delete it from your project.
+
+> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command.
+```sh
+npm uninstall grunt-contrib-jst --save-dev
+```
 
 ### Task triggers
 
