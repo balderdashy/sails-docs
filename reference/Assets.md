@@ -52,15 +52,14 @@ Configured tasks are the set of rules your Gruntfile will follow when run. They 
 
 Configuring a custom task into your project is very simple and uses grunts api to allow your to make yur task modular.Lets go through a quick examples of createing a new task to replacing an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
 
-1. The first step is to install the handlebars grunt plugin using this command in your terminal.
+* The first step is to install the handlebars grunt plugin using this command in your terminal.
 ```bash
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-2. Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
+* Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
 
 ```javascript
-
 // tasks/config/handlebars.js
 // --------------------------------
 // handlebar task configuration.
@@ -87,10 +86,9 @@ module.exports = function(grunt) {
 };
 ```
 
-3. Replace path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* Replace path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
 
 ```javascript
-
 // tasks/pipeline.js
 // --------------------------------
 // asset pipeline
@@ -124,10 +122,9 @@ module.exports = {
 };
 ```
 
-4. Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+* Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
 
 ```javascript
-
 // tasks/register/compileAssets.js
 // --------------------------------
 // compile assets registered grunt task
@@ -160,9 +157,7 @@ module.exports = function (grunt) {
 
 > Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
 ```bash
-
 npm uninstall grunt-contrib-jst --save-dev
-
 ```
 
 ### Task triggers
