@@ -30,17 +30,51 @@ However, Sails does do a few extra things to help you out:
 
 ##### clean
 
->TODO: short description, link to contrib module
+> This grunt task is configured to clean out the contents in the `.tmp/public` of your sails project.
+
+##### coffee
+
+> Compiles coffeeScript files from `assest/js` into Javascript and places them into `.tmp/public/js` directory.
+
+##### concact
+
+> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/contact` directory
+
+##### copy
+
+> dev task config
+> Copies all directories and files, exept coffescript and less fiels, from the sails assets folder into the `.tmp/public` directory.
+
+> build task config
+> Copies all directories nd files from the .tmp/public directory into a www directory.
+
+##### cssmin
+
+> Minifies css files and places them into `.tmp/public/min directory`.
 
 ##### jst
 
-> todo same thing
+> Precompiles Underscore templates to a `.jst` file. (i.e. basically it takes HTML files and turns them into tiny little javascript functions that you pass data to and return HTML. This can speed up template rendering on the client, and reduce bandwidth usage.
 
-etc.
+##### less
 
+> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets)
 
+##### sails-linker
 
+> Automatically inject <script> tags for javascript files and <link> tags for css files.  Also automatically links an output file containing precompiled templates using a <script> tag.
 
+##### sync
+
+> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that has actually changed. Synchronize files from the `assets` folder to `.tmp/public`, smashing anything that's already there.
+
+##### uglify
+
+> Minify files with UglifyJS. 
+
+##### watch
+
+> Run predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets` folder, and re-run the appropriate tasks.
 
 
 # Disabling Grunt
