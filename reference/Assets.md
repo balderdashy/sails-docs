@@ -157,7 +157,7 @@ module.exports = function (grunt) {
 };
 ```
 
-* Remove jst task config file. We are no longer using it anymore so we can get rid of it `tasks/config/jst.js`. Simply delete it from your project.
+* Remove jst task config file. We are no longer using it so we can get rid of `tasks/config/jst.js`. Simply delete it from your project.
 
 > Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
 ```bash
