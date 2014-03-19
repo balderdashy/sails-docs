@@ -102,7 +102,7 @@ For instance, in schemaful databases like Postgres, Oracle, and MySQL, models ar
 
 But in each case, the code you write to create new records, fetch/search for existing records, update records, or destroy records is _exactly the same_.  Waterline allows you to query and join (or `.populate()`) records between models, _even if_ the data for each model lives in a different database.
 
-This means that you can switch some or all of our app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code. For the times we still need database-specific functionality, luckily Waterline provides a query interface that allows us to talk directly to our models' underlying database driver (see [.query()]() and [.native()]().)
+This means that you can switch some or all of your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code. For the times we still need database-specific functionality, Waterline provides a query interface that allows us to talk directly to our models' underlying database driver (see [.query()]() and [.native()]().)
 
 
 ### Analogy
@@ -453,7 +453,7 @@ Sails bundles support for automatic validations of your models' attributes. Any 
 
 ### Validation Rules
 
-Validations are handled by [Anchor](https://github.com/balderdashy/anchor) a thin layer on top of [Validator](https://github.com/chriso/validator.js), one of the most robust validation libraries for Node.js.  Sails supports most of the validations available in Validator, as well as a few extras that require database integration, like `unique`.
+Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a thin layer on top of [Validator](https://github.com/chriso/validator.js), one of the most robust validation libraries for Node.js.  Sails supports most of the validations available in Validator, as well as a few extras that require database integration, like `unique`.
 
 
 | Name of validator | What does it check? | Notes on usage |
