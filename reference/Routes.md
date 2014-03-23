@@ -53,6 +53,18 @@ You could define the following route: `'post /signup' : 'user.signup'`.
 
 Finally, here&rsquo;s an example of how you would route all GET requests to the `/google` route to Google&rsquo;s website: `'get /google' : 'http://google.com'`
 
+##### Regular Expressions in Routes
+
+Sails v0.10 allows you to use regular expressions to define the URLs that your route matches.  The syntax for a regular expression route is:
+
+`"r|<regular expression string>|<comma-delimited list of param names>"`
+
+That's the letter "**r**", followed by a pipe, a regular expression string *without delimiters*, another pipe, and a list of parameter names that should be mapped to parenthesized groups in the regular expression.  For example:
+
+`"r|^/\d+/(\w+)/(\w+)$|foo,bar": "MessageController.myaction"`
+
+Will match `/123/abc/def`, running the `myaction` action of `MessageController` and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
+
 #### 3. Advanced Route config
 
 ##### Setting Locals (variables accessible in your view) in Sails v0.10
@@ -106,6 +118,25 @@ Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-orig
 }
 ```
 If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
+
+##### skipAssets
+
+If you're using a wildcard route like `/*`, or trying to implement vanity URLs like `/:user/:project`, you'll often want to bypass your route handler when the request is for an asset (e.g. `/images/logo.png`).  You can do this by adding `skipAssets:true` to your route configuration.  This will skip your handler for any URLs that contain a dot character, so that the static handler can fetch them (so long as another route without `skipAssets` doesn't also match the URL!).
+
+##### skipRegex
+
+If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This options allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual RegExp objects*, not strings.  For example:
+
+```
+'/*': {
+   controller: 'MyController',
+   action: 'myAction',
+   skipRegex: [/^\/\d+$/, /^.*foo$/]
+}
+```   
+
+would run MyController.myAction for every URL except ones containing only numbers, and ones ending in "foo".
+
 #### 4. Action Blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.actions = false`
  
@@ -142,5 +173,3 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 
 #### 8. Default 404 (not found) handler
 Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app&rsquo;s 404 logic.
-
-
