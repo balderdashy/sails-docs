@@ -100,7 +100,7 @@ $ rm .tmp/disk.db
 
 ##### Adapter/Database Configuration
 
-`config.adapters` (in `myApp/config/adapters.js`) is now `config.connections` (in new projects, this is generated in `myApp/config/connections.js`).
+`config.adapters` (in `myApp/config/adapters.js`) is now `config.connections` (in new projects, this is generated in `myApp/config/connections.js`). Also, `config.model` is now `config.models`.
 
 Your app's default `connection` (i.e. database) should now be configured as a string `config.models.connection` used by default for model.  New projects are generated with a `/config/models.js` file that includes the default connection.
 
