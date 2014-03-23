@@ -520,10 +520,10 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 
 <!--
 
-  This needs to be reworked - we shouldn't name the property for defining custom validations `types` if the resulting custom validations can't actually be used in the `type` field!
-
-
 ### Custom Validation Rules
+
+> This needs to be reworked - we shouldn't name the property for defining custom validations `types` if the resulting custom validations can't actually be used in the `type` field!
+
 
 You can define your own types and their validation by defining a `types` property. A `type` It's possible to access and compare values to other attributes.
 
