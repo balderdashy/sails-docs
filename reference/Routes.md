@@ -1,8 +1,137 @@
 # Routes
+### Overview
+
+The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
+
+Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to controllers and views.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
+
+
+### Custom Routes
+
+Sails lets you design your app's URLs however you want.  Every Sails project comes with `config/routes.js`, a simple [Node.js module]() that exports an object of custom **routes**.  These custom **routes** tell Sails what to do with an incoming request.  Each **route** consists of an **address** (on the left) and a **target** (on the right):
+
+```javascript
+'get /me': 'UserController.profile'
+```
+
+A route's **address** is a URL path, and optionally the [HTTP method/verb](). When Sails checks each incoming request to see if it matches any of your routes, it refers to this address.
+
+A route's **target** can be defined a [number of different ways]().  It tells Sails what to do when the route is matched against an incoming request.
+
+For example, this `routes.js` file defines five routes; some of them point to a controller's action, while others route directly to a view.
+
+```javascript
+// config/routes.js
+module.exports = {
+  'get /signup': { view: 'conversion/signup' },
+  'post /signup': 'AuthController.processSignup',
+  'get /login': { view: 'portal/login' },
+  'post /login': 'AuthController.processLogin',
+  '/logout': 'AuthController.logout',
+}
+```
+
+> **Note:**
+> Just because a request matches a route doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware]() first.  And if the route points to a controller, the request will need to pass through any configured [policies]() before making it there.
+
+
+
+### Automatic Routes
+
+When Sails can't match a request to one of your custom routes, it tries matching it against your app's automatic routes.  Automatic routes are URLs which Sails listens to automatically, based on your app's files and configuration.
+
+TODO:talk about
++ Blueprint routes (shadows)
++ Assets
+
+
+
+
+### WebSocket Support
+
+The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP requests]() and messages sent via [WebSockets]().  But in order to accomplish this, Sails needs incoming WebSocket messages to be sent in a specific format.  Thankfully, this is taken care of automatically by the [client-side SDK]().  Sails also allows WebSocket messages to circumvent the router entirely by exposing direct, low-level access to the underlying Socket.io server.
+
+
+
+
+
+
+
+
+# Route Target Syntax
+### Overview
+TODO: talk about the different kinds of custom routes you can define
+
+
+
+
+
+
+
+
+
+
+
+--
+
+
+
+<!-- This is implemented by the request interpreter, a thin normalization layer. -->
+
+<!-- This normalization layer is called the request interpreter. -->
+
+<!-- > Future: put in a note about how you might write a hook to add support for a new transport to the Sails router. Maybe just link to the README in core
+"In fact, the router is designed to support...."" -->
+
+listens for HTTP requests, but it also supports WebSockets.
+(e.g. URLs typed into the browser, AJAX, cURL, etc.) 
+The Sails router listens for HTTP requests
+
+
+
+
+You can design your app's URLs however you like
+
+
+Sails lets you design your URL scheme however you like, but it also provides some convenient helpers for resourceful routing.
+
+
+1. "explicit routing" (config/routes.js)
+2. "resourceful routing" (blueprint routes aka shadows)
+3. "asset routing" (drop a file `foo.bar` in `assets` and it's accessible at http://localhost:1337/foo.bar)  er rlike cgi, like static middleware, like apache, like www
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 > This section is actively under construction for v0.10.
 
-### Overview
+
+
+
+
+Sails uses three different strategies to route incoming requests.
+
 Sails uses a number of different strategies to route requests. This section lists them top-to-bottom, in order of precedence.
 
 ### Description
@@ -116,12 +245,6 @@ All of your controllers' actions are automatically bound to a route.  For exampl
 + its action `bar` is accessible at `/foo/bar`
 + its action `index` is accessible at `/foo/index`, and also `/foo`
 
-
-#### 5. View Blueprints
-
-These routes can be disabled in `config/controllers.js` by setting: `module.exports.views.routes = false`
-
-If you have a view file at `/views/foo/bar.ejs`, it will be rendered and served automatically via the route:  `/foo/bar`
 
 
 #### 6. Shortcut CRUD blueprints
