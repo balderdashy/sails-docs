@@ -79,6 +79,8 @@ The big change here is how you create a new api.  In the past you called `sails 
 
 You can still generate models and controllers seperately using the same [CLI Commands](./#!documentation/reference/CommandLine/)
 
+Also, --linker switch is no longer available. In previos version, if --linker switch was provided, it created a `linker` folder inside the `assets` folder, with `js`, `styles` and `templates`, and everything inside there got compiled/processed. In this new version, the `linker` folder is not created. Compiling CoffeeScript and Less is the default behavior now, right from the `/assets/js` and `/assets/scripts` folders.
+
 ##### Custom Server Responses
 
 In v0.10, you can now generate your own custom server responses.  [See here to learn how](https://github.com/uncletammy/sails-generate-serverResponse).
