@@ -5,8 +5,6 @@
 ### Overview
 Sails uses a number of different strategies to route requests. This section lists them top-to-bottom, in order of precedence.
 
-### Description
-
 
 Sails uses a number of different strategies to route requests. Here they are top-to-bottom, in order of precedence:
 
@@ -144,3 +142,5 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 
 #### 8. Default 404 (not found) handler
 Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app&rsquo;s 404 logic.
+
+
