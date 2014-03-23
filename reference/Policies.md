@@ -1,9 +1,6 @@
-
 # Policies
-### What is this?
+### Overview
 Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
-
-### Description
 
 Your app's ACL (access control list) is located in **config/policies.js**.
 
@@ -114,3 +111,5 @@ UserController: {
 ```
 
 In each of the policies, the next policy in the chain will only be run if `next()`, the third argument, is called.  When and if the last policy calls `next()`, the requested controller action is run.
+
+
