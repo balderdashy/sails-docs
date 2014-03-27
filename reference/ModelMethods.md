@@ -212,7 +212,7 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
 > Any string arguments passed must be the ID of the record.
 > If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
 
-
+> If no matching record is found, the value of `found` will be `undefined`.  Not finding a record does *not* constitute an error for `findOne`.
 
 # .find(`criteria` , [`callback`])
 ### Purpose
