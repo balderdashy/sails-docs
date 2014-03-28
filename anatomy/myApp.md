@@ -533,7 +533,7 @@ When a user tries to access a resource on your app, Sails uses this file (and a 
 
 By default, there is only one explicitely defined route.  Its purpose is to point users that try to access the base URL `http://localhost:1337/` to the view located in `myApp/views/home/index.ejs`. Feel free to add as many routes as you'd like to this file.  
 
-You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, `http://localhost:1337/ponies/PinkiePie` would request the resource with the 'id' parameter equal to 'PinkiePie'.
+You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, if a resource was defined as `/ponies/:id`, the route `http://localhost:1337/ponies/PinkiePie` would request the 'pony' resource with the 'id' parameter equal to 'PinkiePie'.
 
 
 
