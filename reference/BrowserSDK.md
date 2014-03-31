@@ -257,21 +257,6 @@ HTML BODY
 > Unlike the other custom Socket.IO methods supplied by Sails, socket.request DOES NOT always return 2 parameters in the callback.  You will get EITHER the data or an error object.
 
 
-# App.js
-### Purpose
-Client side javascript file generated with every new project.  It serves as an example demonstrating the interoperability between Sails and Socket.IO
-
-### Overview
-If you've ever had the browser console open when a view is rendered for your Sails project, you might have noticed that a Socket.IO connection is made to the server.  This happens because of the code in 'assets/js/App.js'.  
-
-In addition to this, it begins listening for subscription messages that might be emitted by the server if any pubSub class methods were used in the controller code. 
-
-While this is a great place to store Socket.IO related code in order to keep your main .js files clean, this file only really exists as an example to get you up and running with Socket.IO via Sails.
-
-
-### Notes
-> Do not get this file, '/assets/js/App.js' confused with 'App.js' in your projects root directory.  Yeah, I know.  We need to rename a file.  
-
 
 
 
