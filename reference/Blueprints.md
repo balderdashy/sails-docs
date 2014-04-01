@@ -64,9 +64,9 @@ Find and return records from the database.
 ### Description
 Responds with a JSON array of objects.
 
-If request is sent using Socket.IO, the socket will be subscribed to both "creates" of new models (class room) and "updates"+"destroys" for all model instances returned (instance rooms). 
+If request is sent using Socket.IO, the socket will be "subscribed" to all model instances returned, meaning that any time one of those instances is subsequently updated or deleted, a message will be sent to the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
-This is equivalent to running `Pony.subscribe(req.socket)` and `Pony.subscribe(req.socket, anArrayOfPonies)` in a custom controller.
+> Note: unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
 
 ### Examples
 
