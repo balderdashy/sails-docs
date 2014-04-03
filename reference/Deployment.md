@@ -2,7 +2,9 @@
 > _**Note:** You are viewing the Sails.js v0.10.x documentation.  If you're looking for information on v0.9.x, please visit [here](http://09x.sailsjs.org)._
 
 
-## Before You Deploy
+### Overview
+
+#### Before You Deploy
 
 Before you launch any web application, you should ask yourself a few questions:
 
@@ -25,7 +27,7 @@ Before you launch any web application, you should ask yourself a few questions:
 
 
 
-## Deploying On a Single Server
+#### Deploying On a Single Server
 
 Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
 
@@ -50,7 +52,7 @@ In production, instead of `sails lift`, you'll want to use forever to make sure 
  
 
 
-## Scaling
+### Scaling
 
 If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
 you'll want to set up a scalable architecture that your app can scale as more and more people use it.
@@ -67,7 +69,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 ```
 
 
-##### Configuring your app for a clustered deployment
+#### Configuring your app for a clustered deployment
 
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) is scalable (e.g. sharding/cluster) 
 + Configure your app to use a shared session store
@@ -78,7 +80,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
     + Note: If you'd rather not set up a socket store, a workable solution for your use case may be enabling sticky sessions at your load balancer.
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 
-##### Deploying a Sails cluster on multiple servers
+#### Deploying a Sails cluster on multiple servers
 
 + Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
   + Start up Sails on each instance using `forever`
@@ -87,7 +89,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
   + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
 
 
-## FAQ
+### FAQ
 
 
 ##### Can I use environment variables?
@@ -128,14 +130,16 @@ Is your Node.js instance already spun up?  When you have the ip address, you can
 Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
 
 
-## Performance Benchmarks
+### Performance Benchmarks
 
 Performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.
 
 + http://serdardogruyol.com/?p=111
 
 
-## Sails.js Hosting Providers
+### Hosting
+
+Here is a non-comprehensive list of Sails.js hosting providers.
 
 ##### Deploying to Modulus?
 
@@ -190,7 +194,7 @@ The `host:` is new to the file and is not created by default.  You will need to 
 
 
 
-## Getting professional help
+##### Getting professional help
 
 These days, it's getting easier and easier to deploy powerful applications at scale.  That said, there isn't always time to do these things yourself.
 Sails.js is maintained by my company, [Balderdash](http://balderdash.co), a Node.js consultancy in Austin, TX. If your company needs professional support, reach out and we're happy to help.  The deployment part really isn't that hard, and in most cases, it shouldn't take more than a couple of hours tops.

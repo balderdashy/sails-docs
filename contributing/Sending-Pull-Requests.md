@@ -1,4 +1,4 @@
-# Contributing to Sails
+# Sending Pull Requests
 
 > **NOTE**
 > This is really just a support document for the official contribution guide [here](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) and is mainly focused on helping guide you through the mechanics of submiting a pull request.  If this document contradicts the official contribution guide in any way, particularly re: rules/guidelines, or if you're otherwise in doubt, go w/ the offical guide :)
