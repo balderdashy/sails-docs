@@ -1,4 +1,5 @@
-# Deploying your Sails.js application
+# Deployment
+
 > _**Note:** You are viewing the Sails.js v0.10.x documentation.  If you're looking for information on v0.9.x, please visit [here](http://09x.sailsjs.org)._
 
 
