@@ -1,8 +1,5 @@
 # Deployment
 
-> _**Note:** You are viewing the Sails.js v0.10.x documentation.  If you're looking for information on v0.9.x, please visit [here](http://09x.sailsjs.org)._
-
-
 ### Overview
 
 #### Before You Deploy
@@ -53,7 +50,9 @@ In production, instead of `sails lift`, you'll want to use forever to make sure 
  
 
 
-### Scaling
+# Scaling
+
+### Overview
 
 If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
 you'll want to set up a scalable architecture that your app can scale as more and more people use it.
@@ -90,7 +89,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
   + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
 
 
-### FAQ
+# FAQ
 
 
 ##### Can I use environment variables?
@@ -138,7 +137,7 @@ Performance in Sails is comparable to what you'd expect from a standard Node.js/
 + http://serdardogruyol.com/?p=111
 
 
-### Hosting
+# Hosting
 
 Here is a non-comprehensive list of Sails.js hosting providers.
 
