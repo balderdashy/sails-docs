@@ -1,4 +1,5 @@
-# Migration Guide
+# Upgrading
+
 ### How to upgrade your v0.9.x Sails app to v0.10
 
 Sails v0.10 comes with some big changes.
