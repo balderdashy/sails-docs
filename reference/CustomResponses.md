@@ -1,4 +1,4 @@
-# Server Responses
+# Custom Responses
 
 ### Overview
 
