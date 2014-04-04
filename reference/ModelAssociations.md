@@ -91,7 +91,7 @@ null [ { name: 'Mike',
 ### Overview
 
 A one-to-one association states that a model may only be associated with one other model. In order
-for the model to know which other model it is associated with a, foreign key must be included in the
+for the model to know which other model it is associated with, a foreign key must be included in the
 record.
 
 ### One-to-One Example
