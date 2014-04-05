@@ -51,10 +51,24 @@ The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP reque
 
 
 ### Notes
-+ Just because a request matches a route doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware]() first.  And if the route points to a controller, the request will need to pass through any configured [policies]() before making it there.
-+ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware (i.e. `function (req, res, next) {}`).  However, you should always use the conventional approach when possible- it streamlines development, simplifies training, and makes your app more maintainable.
-+ You may also opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.
++ Just because a request matches a route doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware]() first.  And if the route points to a controller [action](), the request will need to pass through any configured [policies]() first.
++ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax]() when possible- it streamlines development, simplifies training, and makes your app more maintainable.
++ Advanced users may opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.  You can bind socket events directly in your app's [`onConnect`]() function (located in [`config/sockets.js`]().)
 
+
+
+# URL Slugs
+A common use case for explicit routes is the design of slugs or [vanity URLs](http://en.wikipedia.org/wiki/Clean_URL#Slug)).  Consider the URL of a github repository, e.g. [`http://www.github.com/balderdashy/sailsjs`](http://www.github.com/balderdashy/sailsjs).  In Sails, we might define this route like so:
+
+```javascript
+  'get /:account/:repo': {
+    controller: 'RepoController',
+    action: 'show',
+    skipAssets: true
+  }
+```
+
+In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view]() as [locals]().  The [`skipAssets` option]() ensures that the vanity route doesn't match any of our [assets]() (e.g. `/images/logo.png`), so they are still accessible.
 
 
 
@@ -63,6 +77,43 @@ The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP reque
 TODO: talk about the different kinds of custom routes you can define
 
 
+##### Upload Limit
+By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
+```javascript
+'/': {
+  ...,
+  uploadLimit: '100mb'
+}
+```
+The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
+##### CORS (Cross origin resource sharing)
+Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
+```javascript
+'/': {
+  ...,
+  cors: true
+  // cors: 'http://sailsjs.org, http://sailsjs.com'
+}
+```
+If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
+
+##### skipAssets
+
+If you're using a wildcard route like `/*`, or trying to implement vanity URLs like `/:user/:project`, you'll often want to bypass your route handler when the request is for an asset (e.g. `/images/logo.png`).  You can do this by adding `skipAssets: true` to your route configuration.  This will skip your handler for any URLs that contain a dot character, so that the static handler can fetch them (so long as another route without `skipAssets` doesn't also match the URL!).
+
+##### skipRegex
+
+If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual RegExp objects*, not strings.  For example:
+
+```
+'/*': {
+   controller: 'MyController',
+   action: 'myAction',
+   skipRegex: [/^\/\d+$/, /^.*foo$/]
+}
+```   
+
+This would run `MyController.myAction` for every URL _except_ those which contain only numbers, and those ending in the string "foo".
 
 
 
@@ -228,43 +279,6 @@ module.exports.routes = {
 
 
 
-##### Upload Limit
-By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
-```javascript
-'/': {
-  ...,
-  uploadLimit: '100mb'
-}
-```
-The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
-##### CORS (Cross origin resource sharing)
-Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
-```javascript
-'/': {
-  ...,
-  cors: true
-  // cors: 'http://sailsjs.org, http://sailsjs.com'
-}
-```
-If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
-
-##### skipAssets
-
-If you're using a wildcard route like `/*`, or trying to implement vanity URLs like `/:user/:project`, you'll often want to bypass your route handler when the request is for an asset (e.g. `/images/logo.png`).  You can do this by adding `skipAssets:true` to your route configuration.  This will skip your handler for any URLs that contain a dot character, so that the static handler can fetch them (so long as another route without `skipAssets` doesn't also match the URL!).
-
-##### skipRegex
-
-If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This options allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual RegExp objects*, not strings.  For example:
-
-```
-'/*': {
-   controller: 'MyController',
-   action: 'myAction',
-   skipRegex: [/^\/\d+$/, /^.*foo$/]
-}
-```   
-
-would run MyController.myAction for every URL except ones containing only numbers, and ones ending in "foo".
 
 #### 4. Action Blueprints
 These routes can be disabled in `config/controllers.js` by setting: `module.exports.controllers.routes.actions = false`
