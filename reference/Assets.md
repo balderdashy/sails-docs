@@ -50,9 +50,9 @@ Configured tasks are the set of rules your Gruntfile will follow when run. They 
 
 ##### Configuring a custom task.
 
-Configuring a custom task into your project is very simple and uses grunts [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) apis to allow your to make your task modular. Lets go through a quick examples of createing a new task to replacing an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
+Configuring a custom task into your project is very simple and uses grunts [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) apis to allow you to make your task modular. Lets go through a quick example of creating a new task that replaces an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
 
-* The first step is to install the handlebars grunt plugin using this command in your terminal.
+* The first step is to install the handlebars grunt plugin using the following command in your terminal:
 
 ```bash
 npm install grunt-contrib-handlebars --save-dev
@@ -68,7 +68,7 @@ npm install grunt-contrib-handlebars --save-dev
 module.exports = function(grunt) {
 
   // We use the grunt.config api's set method to configure an
-  // object to the defined string.In this case the task
+  // object to the defined string. In this case the task
   // 'handlebars' will be configured based on the object below.
   grunt.config.set('handlebars', {
     dev: {
@@ -79,7 +79,7 @@ module.exports = function(grunt) {
       // We will define which template files to inject
       // in tasks/pipeline.js 
       files: {
-        '.tmp/public/templadtes.js': require('../pipeline').templateFilesToInject
+        '.tmp/public/templates.js': require('../pipeline').templateFilesToInject
       }
     }
   });
@@ -255,7 +255,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### sails-linker
 
-> Automatically inject <script> tags for javascript files and <link> tags for css files.  Also automatically links an output file containing precompiled templates using a <script> tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
+> Automatically inject \<script> tags for javascript files and \<link> tags for css files.  Also automatically links an output file containing precompiled templates using a \<script> tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
