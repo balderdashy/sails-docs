@@ -1,7 +1,21 @@
 # Globals
 ### Overview
 
-The global Sails object is used internally by your app.  Most of it's methods and attributes shouldn't be referenced directly but here are a few things that you might find useful.  
+Sails exposes a handful of global variables by default.  Nothing in Sails core relies on this fact - these variables are exposed for your convenience during development.  Each and every global variable exposed in Sails may be disabled in [`config/globals.js`]().
+
+### App
+Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  In most cases, you will want to keep the `sails` object globally accessible- it makes your app code much cleaner.  However, if you _do_ need to disable _all_ globals, including `sails`, you can get access to `sails` on the request object (`req`).
+
+### Models and Services
+Your app's [models]() and [services]() are exposed as globals using their `globalId`.  For instance, the model defined in the file `api/models/Foo.js` will be globally accessible as `Foo`, and the service defined in `api/services/Baz.js` will be available as `Baz`.
+
+### Async and Lodash
+Sails also exposes an instance of [lodash]() as `_`, and an instance of [async]() as `async`.  These commonly-used utilities are provided by default so that you don't have to `npm install` them in every new project.  Like any of the other globals in sails, they can be disabled.
+
+
+> Bear in mind that none of the globals, including `sails`, are accessible until _after_ sails has lifted.  In other words, you won't be able to use `sails.models.user` or `User` outside of a function (since `sails` will not have finished loading yet.)
+
+
 
 # sails.log
 ### Purpose
@@ -28,55 +42,47 @@ sails.log('There',{sure:'are'},['a','lot'],'of',[{log:'levels'}, 'huh'],'?',true
 
 # sails.config
 ### Purpose
-The config object allows you to see your apps configuration settings. 
+The `sails.config` object is built automatically from the settings exported from the modules in your app's `config/` directory.  Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`), but you can also use `sails.config` for your own custom app-level configuration (e.g. `sails.config.someProprietaryAPI.secret`).
 
-- sails.config.log.level
-- sails.config.port
-- sails.config.environment
-- sails.config.host
-- sails.config.adapters.default
-- sails.config.controllers.blueprints.actions
-- sails.config.controllers.blueprints.shortcuts
-- sails.config.controllers.blueprints.rest
-- sails.config.views.engine.ext
-- sails.config.csrf
+For a complete reference of the configuration settings understood by Sails, check out the [configuration reference](), as well as the [anatomy pages]() on the relevant configuration modules which are included in new Sails apps by default.
 
-### Example Usage
+
+### Example
 ```javascript
-// Make sure csrf is enabled if we are in production mode.  Throw an error otherwise.
-
-if (sails.config.environment && !sails.config.csrf)
-    throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in production mode!');
-
+// Make sure csrf is enabled if we are in production mode.
+// Throw an error and crash the app otherwise.
+if (sails.config.environment === 'production' && !sails.config.csrf) {
+  throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
+}
 ```
 
 ### Notes
-> These settings are only read upon lifting your app.  Changing them will do nothing.
+> The built-in meaning of the settings in `sails.config` are, for the most part, only interpreted by Sails during lift.  In most cases, changing them at runtime will have no effect.  For example, to change the port your app is running on, you'll need to change or override the setting in a configuration file, then restart the server.
+
 
 # sails.models
 
 ### Purpose
-If you disable globals, you can use sails.models.`<model name>` to access your models.  This is useful when you need to access models from inside '/config/bootstrap.js' which is run before your app lifts.
+If you need to disable the "globalization" of models, you can still use `sails.models.<model_identity>` to access your models.
 
-### Example Usage
+A model's `identity` is different than its `globalId`.  The `globalId` is determined automatically from the name of the model, whereas the `identity` is the all-lowercased version.  For instance, you the model defined in `api/models/Kitten.js` has a globalId of `Kitten`, but its identity is `kitten`.
+
+### Example
 
 ```javascript
-sails.models.pet.find().limit(1).exec(function(err,record){
-	console.log('My Pet is called '+record[0].name);
-});
+// Kitten === sails.models.kitten
+sails.models.kitten.find().exec(function (err, allTheKittens) {
+  // We also could have just used `Kitten.find().exec(...)`
+  // if we'd left the global variable exposed.
+})
 ```
-### Notes
 
-> Keep in mind that this method will convert your entire model name to lowercase.
 
 # sails.sockets
 
 ### Purpose
 
-Provide low-level access to socket methods for real-time client communications.  See the [full reference](https://github.com/balderdashy/sails-docs/blob/0.10/reference/SocketsLowLevel.md) for more info, and use [PubSub methods of models](https://github.com/balderdashy/sails-docs/blob/0.10/reference/ModelMethods.md#publishcreate-datasocket-) whenever low-level access is not needed.
+Provides low-level access to socket methods for real-time client communications.  See the [full reference]() for more info. Unless you know what you're doing, you should avoid resorting to low-level socket access and use the [resourceful pubsub methods]() whenever possible.
 
-# sails.io
+> For raw access to the underlying [socket.io](http://socket.io/) singleton, you can still access `sails.io`.  But starting with v0.10, you should use `sails.sockets` for most low-level use-cases involving sockets.
 
-### Purpose
-
-Provides raw access to [socket.io](http://socket.io/).  Starting with v0.10, you should use [`sails.sockets`](https://github.com/balderdashy/sails-docs/blob/0.10/reference/SocketsLowLevel.md) instead when low-level socket access is needed, and use the [PubSub methods of models](https://github.com/balderdashy/sails-docs/blob/0.10/reference/ModelMethods.md#publishcreate-datasocket-) for everything else.
