@@ -1,4 +1,4 @@
-# Sails CLI
+# CommandLine
 
 ### Overview
 Sails comes with a convenient tool to quickly get your app scaffolded and running.
@@ -55,7 +55,7 @@ debug: --------------------------------------------------------
 
 
 
-# `sails debug`
+# sails debug
 
 Attach the node debugger and lift the sails app; similar to running `node --debug app.js`.  Takes the same options as `sails lift`.  You can then use [node-inspector](https://github.com/node-inspector/node-inspector) to debug your app as it runs.
 
@@ -72,7 +72,7 @@ $ sails version
 
 > To use the standard (command-line) node debugger with sails, you can always just run `node debug app.js`.
 
-# `sails console`
+# sails console
 
 Quietly lift your sails app (i.e. with logging silenced), and enter the [node shell](http://nodejs.org/api/repl.html) in the context of the app's global scope.  This means you can access all of your model instances, their methods, and much more, all by using javascript commands.  
 
@@ -93,7 +93,7 @@ sails>
 
 
 
-# `sails version`
+# sails version
 
 Get the current globally installed Sails version.
 
