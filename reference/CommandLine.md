@@ -105,22 +105,26 @@ $ sails version
 ```
 
 
+# sails new
 
+`sails new <appName>` creates a new Sails project in a folder called **appName**.
+
+##### Options:
+
+  * `--no-linker` Disable automatic asset linking in your view and static HTML files (the relevant grunt tasks will not be created)
+  * `--template=[template language]` Use a different template language than the default (e.g. `jade`).  Requires that a views generator for that language (e.g. `sails-generate-views-jade`) be installed in your global node path (e.g. `~/node_modules/` works).
+
+> `sails new` is really just a special [generator]() which runs [`sails-generate-new`](http://github.com/balderdsahy/sails-generate-new).  In other words, running `sails new foo` is an alias for running `sails generate new foo`, and like any Sails generator, the actual generator module which gets run can be overridden in your global `~/.sailsrc` file.
 
 
 # sails generate
 
-Sails ships with several *generators* to help you scaffold new projects.  You can also [create your own generators](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md) to handle frequent tasks, or extend functionality (for example, by creating a generator that outputs view files for your [favorite templating language](https://github.com/balderdashy/sails-generate-views-jade)).
+Sails ships with several *generators* to help you scaffold new projects.  You can also [create your own generators]() to handle frequent tasks, or extend functionality (for example, by creating a generator that outputs view files for your [favorite templating language](https://github.com/balderdashy/sails-generate-views-jade)).
 
-The following generator commands are bundled with Sails:
+The following generators are bundled with Sails:
 
-#### `sails new <appName>`
-Create a new Sails project in a folder called **appName**.
-
-##### Options:
-
-  * `--no-linker` Turn off automatic asset linking in your view files
-  * `--template=[template language]` Use a different template language than the default (e.g. `jade`).  Requires that a views generator for that language (e.g. `sails-generate-views-jade`) be installed in an accessible location (e.g. your home directory).
+#### `sails generate new <appName>`
+Create a new Sails project in a folder called **appName**.  See [`sails new`]() for usage options.
 
 #### `sails generate api <foo>`
 Generate **api/models/Foo.js** and **api/controllers/FooController.js**
