@@ -2,7 +2,7 @@
 
 ### Overview
 
-Assets refer to any [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) that you want to serve from your app. In Sails, these files are placed in the [`assets/`]() directory, where they are processed and synced to a hidden, temporary directory ([`./tmp/public/`]()) when you lift your app.  The contents of this folder are what Sails actually serves. (This public folder is roughly equivalent to the "public" folder in [express](http://www.expressjs.com), or the "static" or "www" folder you might be familiar with from other web servers.)
+Assets refer to any [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) that you want to serve from your app. In Sails, these files are placed in the [`assets/`]() directory, where they are processed and synced to a hidden, temporary directory ([`.tmp/public/`]()) when you lift your app.  The contents of this folder are what Sails actually serves. (This public folder is roughly equivalent to the "public" folder in [express](http://www.expressjs.com), or the "static" or "www" folder you might be familiar with from other web servers.)
 
 ### Static middleware
 
