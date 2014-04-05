@@ -78,7 +78,7 @@ In your `RepoController`'s `show` action, we'd use `req.param('account')` and `r
 ### Overview
 TODO: talk about the different kinds of custom routes you can define
 
-
+<!--
 ##### Upload Limit
 By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
 ```javascript
@@ -88,7 +88,10 @@ By default routes are limited to `10mb` uploads, to change the upload limit set 
 }
 ```
 The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
-##### CORS (Cross origin resource sharing)
+
+-->
+
+### CORS (Cross origin resource sharing)
 Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
 ```javascript
 '/': {
@@ -97,13 +100,15 @@ Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-orig
   // cors: 'http://sailsjs.org, http://sailsjs.com'
 }
 ```
-If CORS is enabled on a route, the _csrf token is set to `null` to prevent accidental _csrf token exposure.
 
-##### skipAssets
+#### CORS Support vs. CSRF Protection
++ If CORS is enabled on a route, `req.csrfToken()` and `res.locals._csrf` are set to `null` to prevent cross-site request forgery attacks via accidental exposure of the [CSRF token]().
+
+### skipAssets
 
 If you're using a wildcard route like `/*`, or trying to implement vanity URLs like `/:user/:project`, you'll often want to bypass your route handler when the request is for an asset (e.g. `/images/logo.png`).  You can do this by adding `skipAssets: true` to your route configuration.  This will skip your handler for any URLs that contain a dot character, so that the static handler can fetch them (so long as another route without `skipAssets` doesn't also match the URL!).
 
-##### skipRegex
+### skipRegex
 
 If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual RegExp objects*, not strings.  For example:
 
