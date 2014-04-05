@@ -24,10 +24,19 @@ At the API layer, there isn't much that can be done in the way of prevention.  H
 
 Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) is a type of attack which forces an end user to execute unwanted actions on a web application in which he/she is currently authenticated.
 
-Like most Node applications, Sails and Express use Connect's [CSRF protection middleware](http://www.senchalabs.org/connect/csrf.html) for guarding against such attacks.  When CSRF protection is enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.  You can prepare your Sails app against CSRF attacks in [`config/csrf.js`]().
+Like most Node applications, Sails and Express use Connect's [CSRF protection middleware](http://www.senchalabs.org/connect/csrf.html) for guarding against such attacks.  This middleware implements the [Synchronizer Token Pattern](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)_Prevention_Cheat_Sheet#General_Recommendation:_Synchronizer_Token_Pattern).  When CSRF protection is enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified by either a header or a parameter in the query string or HTTP body.
+
+You can prepare your Sails app against CSRF attacks by enabling the built-in protection in [`config/csrf.js`]() and ensuring that a `_csrf` token is sent with all relevant incoming requests.
 
 #### Notes
 + CSRF prevention is only a concern in scenarios where people use the same client application to send requests to multiple web services (e.g. a browser like Google Chrome can be used to access both Chase.com and Horrible-Hacker-Site.com.)
+
+### Socket Hijacking
+
+Unfortunately, cross-site request forgery attacks are not limited to the HTTP protocol.  WebSocket hijacking (sometimes known as [CSWSH](http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html)) is a commonly overlooked vulnerability in most realtime applications.  Fortunately, since Sails treats both HTTP and WebSocket requests as first-class citizens, its built-in [CSRF protection]() and [configurable CORS rulesets]() apply to both protocols.
+
+You can prepare your Sails app against CSWSH attacks by enabling the built-in protection in [`config/csrf.js`]() and ensuring that a `_csrf` token is sent with all relevant incoming socket requests.  Additionally, if you're planning on allowing sockets to connect to your Sails app cross-origin (i.e. from a different domain, subdomain, or port) you'll want to configure your CORS settings accordingly.  You can also define the `authorization` setting in [`config/sockets.js`]() as a custom function which allows or denies the initial socket connection based on your needs.
+
 
 ### Content Security Policy
 
