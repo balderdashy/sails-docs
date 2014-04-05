@@ -34,18 +34,41 @@ You can prepare your Sails app against CSWSH attacks by enabling the built-in pr
 #### Notes
 + CSWSH prevention is only a concern in scenarios where people use the same client application to connect sockets to multiple web services (e.g. cookies in a browser like Google Chrome can be used to connect a socket to Chase.com from both Chase.com and Horrible-Hacker-Site.com.)
 
-#Content Security Policy
+
+
+
+# Content Security Policy
 
 > TODO: flesh this section out
 > https://www.owasp.org/index.php/Content_Security_Policy
 
-#Clickjacking
+stuff
+stuff
+stuff
+
+
+
+
+
+# Clickjacking
 
 > TODO: flesh this section out
 > https://www.owasp.org/index.php/Clickjacking
 
-#P3P
+stuff
+stuff
+stuff
+
+
+
+
+# P3P
 
 > TODO: flesh this section out
 > http://support.microsoft.com/kb/290333
+
+
+stuff
+stuff
+stuff
 
