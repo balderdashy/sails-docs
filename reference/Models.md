@@ -2,7 +2,7 @@
 
 ### Overview
 
-A model represents a collection of structured data, usually corresponding to a single table in a database.  Models are defined by creating a file in an app's `api/models/` folder.
+A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are defined by creating a file in an app's `api/models/` folder.
 
 ```javascript
 // api/models/Product.js
