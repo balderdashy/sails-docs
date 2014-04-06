@@ -40,7 +40,7 @@ module.exports = {
       type: 'string'
     },
     enrolledIn: {
-      collection: 'Course.students', via: 'students'
+      collection: 'Course', via: 'students'
     }
   },
 
