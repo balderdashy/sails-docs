@@ -1,133 +1,11 @@
-# Policies
-### Overview
-Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
-
-Your app's ACL (access control list) is located in **config/policies.js**.
-
-#### Applying a Policy
-
-##### To a Specific Action
-
-To apply a policy to a specific action in particular, you should specify it on the right-hand side of that action:
-
-```javascript
-{
-  ProfileController: {
-      edit: 'isLoggedIn'
-  }
-}
-```
-
-
-##### To an Entire Controller
-
-To set the default policy mapping for a controller, use the `*` notation:
-> **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.  In this example, `isLoggedIn` is overriding `false`.
-
-```javascript
-{
-  ProfileController: {
-    '*': false,
-    edit: 'isLoggedIn'
-  }
-}
-```
-
-##### Globally
-> **Note:** Global policy mappings do not "cascade" or "trickle down" either.  Specified mappings, whether they're default controller mappings or for specific actions, will **ALWAYS** override the global mapping.  In this example, `isLoggedIn` is overriding `false`.
-
-```javascript
-{
-
-  // Anything you don't see here (the unmapped stuff) is publicly accessible
-  '*': true,
-
-  ProfileController: {
-    '*': false,
-    edit: 'isLoggedIn'
-  }
-}
-```
-
-
-##### Built-in policies
-
-###### true
-
-> This is the default policy mapped to all controllers and actions in a new project.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
-
-Allow public access to the mapped controller/action.  This will allow any request to get through, no matter what.
-
-```javascript
-module.exports = {
-  UserController: {
-
-    // login should always be accessible
-    login: true
-
-  }
-}
-```
-
-
-###### false
-
-**NO** access to the mapped controller/action.  No requests get through.  Period.
-
-```javascript
-module.exports = {
-  MathController: {
-
-    // This fancy algorithm we're working on isn't done yet
-    // so we set it to false to disable it
-    someFancyAlgorithm: false
-
-  }
-}
-```
-
-
-##### Custom policies
-
-You can apply one or more policies to a given controller or action.  Any file in your `/policies` folder (e.g. `authenticated.js`) is referable in your ACL (`config/policies.js`) by its filename minus the extension, (e.g.  `'authenticated'`).
-
-
-```javascript
-module.exports = {
-  FileController: {
-    upload: ['isAuthenticated', 'canWrite', 'hasEnoughSpace']
-  }
-}
-```
-
-##### Multiple Policies
-
-To apply two or more policies to a given action, (order matters!) you can specify an array, each referring to a specific policy. 
-
-```javascript
-UserController: {
-    lock: ['isLoggedIn', 'isAdmin']
-}
-```
-
-In each of the policies, the next policy in the chain will only be run if `next()`, the third argument, is called.  When and if the last policy calls `next()`, the requested controller action is run.
-
-
-
-
-
-
-
-So, you don&rsquo;t want your mom to access your secret stash of ... code?  Here's how you can make that happen. 
-
-## What Are Policies?
+# What Are Policies?
 
 Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
 
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
 
-## Writing Your First Policy
+# Writing Your First Policy
 
 Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
 
@@ -161,21 +39,67 @@ module.exports = function canWrite (req, res, next) {
 ```
 
 
-## How do I protect my controllers with policies?
+# Protecting Controllers with Policies
 
 Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
 
-This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  Declarative programming has many benefits, but in particular, it is both conventional and adaptable.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
+This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
-You can apply one or more policies to a given controller or action.  Any file in your `/policies` folder (e.g. `authenticated.js`) is referable in your ACL (`config/policies.js`) by its filename minus the extension, (e.g.  `'authenticated'`).  
+Your `config/policies.js` file should export a Javascript object whose keys are controller names (or `'*'` for  global policies), and whose values are objects mapping action names to one or more policies.  See below for more details and examples.
 
-Additionally, there are a few special, built-in policy mappings:
+##### To apply a policy to a specific controller action:
+
+```js
+{
+  ProfileController: {
+      // Apply the 'isLoggedIn' policy to the 'edit' action of 'PolicyController'
+      edit: 'isLoggedIn'
+      // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'create' action
+      create: ['isAdmin', 'isLoggedIn']
+  }
+}
+```
+
+##### To apply a policy to an entire controller:
+
+```js
+{
+  ProfileController: {
+    // Apply 'isLogged' in by default to all actions that are NOT specified below
+    '*': 'isLoggedIn',
+    // If an action is explicitly listed, its policy list will override the default list.
+    // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
+    edit: ['isAdmin', 'isLoggedIn']
+  }
+}
+```
+
+> **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.
+
+##### To apply a policy to all actions that are not explicitly mapped:
+
+```js
+{
+  // Apply 'isLoggedIn' to all actions by default
+  '*': 'isLoggedIn',
+  ProfileController: {
+      // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
+      'foo': 'isAdmin'
+  }
+}
+```
+
+> Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
+
+
+#### Built-in policies
+Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
   + `true`: public access  (allows anyone to get to the mapped controller/action)
   +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
 
  `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
-### Here&rsquo;s an example of adding some policies to a controller:
+### Full example of adding some policies to a controller:
 ```javascript
   RabbitController: {
 
@@ -193,9 +117,8 @@ Additionally, there are a few special, built-in policy mappings:
   }
 ```
 
-Here&rsquo;s what the `isNiceToAnimals` policy from above might look like: (this file would be located at `policies/isNiceToAnimals.js`)
+Here&rsquo;s what the `isNiceToAnimals` policy from above might look like (this file would be located at `policies/isNiceToAnimals.js`):
 
-We&rsquo;ll make some educated guesses about whether our system will consider this user someone who is nice to animals.
 ```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
   
@@ -228,12 +151,8 @@ module.exports = function isNiceToAnimals (req, res, next) {
 + any other kind of authentication scheme you can imagine
 
 
-## What about me?  I'm using Passport?!
+## I'm using Passport--what about me?!
 
 Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
-There are a few good examples of this floating around.  
-
-[Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html)
-
-Here's a good one (hasn't been tested in v0.9.x yet): https://gist.github.com/theangryangel/5060446
+There are a few good examples of this floating around, such as [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
