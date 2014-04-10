@@ -112,7 +112,7 @@ modules.exports.routes = {
 
   // Wildcard (404) handler
   '/:unknownRoute': {
-    controller: 'notfound'
+    controller: 'notfound',
     action: 'index'
   }
 };
