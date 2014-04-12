@@ -1,8 +1,9 @@
-# Localization
+# i18n
 
 ### Overview
 
-....
+Internationalization and localization in Sails takes place in the i18n hook.  Under the covers, it uses [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n))
+
 
 
 ### Locales
