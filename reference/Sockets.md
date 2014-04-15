@@ -121,7 +121,7 @@ sayHiToEverybody: function(req, res) {
 
 ```javascript
 // Client-side -- subscribe to all "message" events
-socket.on('message', function(data) {console.log("Global message: ", data.msg});
+socket.on('message', function(data) {console.log("Global message: ", data.msg)});
 ```
 
 # sails.sockets.id( `socket` )
