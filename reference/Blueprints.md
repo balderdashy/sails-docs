@@ -2,7 +2,7 @@
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the RESTful JSON API you get every time you generate an empty model and controller.  Blueprints are great for prototyping, but they are also a powerful tool in production, giving you the ability as an app architect to disable, override, protect, and extend them to fit your needs.
+Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you generate an empty model and controller.  Blueprints are great for prototyping, but they are also a powerful tool in production, giving you the ability as an app architect to disable, override, protect, and extend them to fit your needs.
 
 
 ##### Blueprint Routes
@@ -44,21 +44,36 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 ### Notes
 
-> While the following documentation focuses on HTTP, the blueprint API is also compatible with WebSockets, thanks to the request interpreter (just like any of your custom actions and policies.)  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
-
+> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
+>
+> + The examples URLs below assume you are running your Sails app locally on the default port (1337).  If your app is deployed on a server someplace, a different port, or with an SSL certificate, you'll need to adjust your usage accordingly.
 
 
 # Find Records
 
-### Purpose
-Find and return records from the database.
+Returns a list of records from the given `model` in the database.  By default, records are sorted by primary key.  
+
+### Blueprint Routes
+| REST    | Shortcut |
+|------------|-------------|
+| `GET http://localhost:1337/:modelIdentity` | `GET http://localhost:1337/:modelIdentity/find` |
+
+### Optional Parameters
+
+| Parameter  | Type  | Details |
+|----------------|----------|-----------|
+| `where` | object | a Waterline criteria object (will be passed directly to the ORM) |
+| `limit` | numeric | the maximum number of records to send back (useful for pagination) |
+| skip | numeric | the number of records to skip (useful for pagination) |
+| sort | string | the order of returned records, e.g. `name ASC` or `age DESC` |
+| callback | string | for JSONP - the name of the client-side javascript function to call with results |
 
 ### Description
 Responds with a JSON array of objects.
 
 If request is sent using Socket.IO, the socket will be "subscribed" to all model instances returned, meaning that any time one of those instances is subsequently updated or deleted, a message will be sent to the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
-> Note: unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
+> Note: Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
 
 ### Examples
 
