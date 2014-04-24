@@ -1,6 +1,50 @@
 # Configuration
-Below you will find information about configuring your Sails app.  This is by no means a complete list of the ways you can do this.  In fact, most of this has been pulled over from the old documentation.  Expect this section to get much better.  
 
+### Overview
+
+While Sails dutifully adheres to the philosophy of [convention-over-configuration](), it is important to understand how to customize those defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration settings understood by Sails.
+
+
+### sails.config
+The `sails.config` object contains the runtime values of your app's configuration. It is assembled automatically when Sails loads your app; merging together command-line arguments, environment variables, your `.sailsrc` file, and the configuration objects exported from any and all modules in your app's `config/` directory.  
+
+Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`), but you can also use `sails.config` for your own custom app-level configuration (e.g. `sails.config.someProprietaryAPI.secret`).  In most cases, the top-level keys on the `sails.config` object (e.g. `sails.config.views`) correspond to a particular configuration file (e.g. `config/views.js`) in your app; however configuration settings may be arranged however you like.  The important factor is the name (i.e. key) of the setting- not the method you used to import it.
+
+For instance, let's say you add a new file, `config/foo.js`:
+
+```js
+// config/foo.js
+
+module.exports.blueprints = {
+  shortcuts: false
+};
+```
+
+This object will be recursively merged into `sails.config.blueprints`, along with any other configuration modules which export a top-level `blueprints` object.
+
+
+### Configuration files (`config/*`)
+
+A number of configuration files are included in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.  For an authorative/exhaustive reference on individual configuration options, check out the reference pages in this section, or take a look at ["`config/`"](./#!documentation/anatomy/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) for a higher-level overview.
+
+
+### Accessing `sails.config` in your app
+
+The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope]() during lift, and therefore available from anywhere in your app.
+
+### Example
+```javascript
+// This example checks that, if we are in production mode, csrf is enabled.
+// It throws an error and crashes the app otherwise.
+if (sails.config.environment === 'production' && !sails.config.csrf) {
+  throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
+}
+```
+
+### Notes
+> The built-in meaning of the settings in `sails.config` are, in some cases, only interpreted by Sails during the "lift" process.  In other words, changing some options at runtime will have no effect.  To change the port your app is running on, for instance, you can't just change `sails.config.port`-- you'll need to change or override the setting in a configuration file or as a command-line argument, etc., then restart the server.
+
+<!--
 # 404
 ### What is this?
 The default 404 handler.
@@ -93,11 +137,11 @@ module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErro
 
 };
 ```
+-->
 
 
 
-
-# Adapters
+# Connections
 ### What is this?
 Adapters are the middle man between your Sails app and some kind of storage (typically a database)
 
@@ -162,7 +206,7 @@ module.exports.bootstrap = function (cb) {
 
 
 
-# Controllers
+# Blueprints
 ### What is this?
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
@@ -170,7 +214,6 @@ By default, Sails controllers automatically bind routes for each of their functi
 
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
-#### Blueprints
 ##### `prefix` (string)
 Optional mount path prefix for blueprints (the automatically bound routes in your controllers) e.g. '/api/v2'
 
@@ -183,8 +226,10 @@ These CRUD shortcuts exist for your convenience during development, but you'll w
 ##### `rest` (boolean)
 Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
 
+<!--
 ##### `expectIntegerId` (boolean)
 If a blueprint route catches a request, only match :id param if it's an integer.  e.g. only trigger route handler if requests look like: `get /user/8` instead of: `get /user/a8j4g9jsd9ga4ghjasdha`.  You&rsquo;ll usually want to change this to `false` when using a database that uses strings for unique IDs, such as Mongo.
+-->
 
 ##### `jsonp` (boolean)
 Optionally wrap blueprint JSON responses in a JSONP callback using `res.jsonp()` from Express 3. (default: `false`)
@@ -219,7 +264,7 @@ e.g.:
 </form>
 ```
 
-#### For AJAX/Socket-heavy and/or single-page apps:*
+#### For AJAX/WebSockets
 Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
 
 Enabling this option requires managing the token in your front-end app. For traditional web apps, it's as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
@@ -320,7 +365,7 @@ module.exports.express = {
 
 # Local
 ### What is this?
-While you’re developing your app, this config file should include any settings specifically for your development computer (db passwords, etc.)
+While you’re developing your app, this config file should include any settings specifically for your development computer or server (db passwords, etc.)  If you're using git, note that `config/local.js` is included in the `.gitignore` in new Sails apps by default, and so it won't be checked into your repository when you commit.
 
 ### Description
 
@@ -631,7 +676,7 @@ module.exports.routes = {
 
 
 
-
+<!--
 ##### Upload Limit
 By default routes are limited to `10mb` uploads, to change the upload limit set the `uploadLimit` config on your route:
 ```javascript
@@ -641,6 +686,9 @@ By default routes are limited to `10mb` uploads, to change the upload limit set 
 }
 ```
 The limit setting uses `express.limit()` internally, and supports any valid [connect.limit()](http://www.senchalabs.org/connect/limit.html) values 
+
+-->
+
 ##### CORS (Cross origin resource sharing)
 Additionally, you can also enable [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) on a route:
 ```javascript
