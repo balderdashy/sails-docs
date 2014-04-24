@@ -152,8 +152,9 @@ module.exports = function isNiceToAnimals (req, res, next) {
 + any other kind of authentication scheme you can imagine
 
 
-## I'm using Passport--what about me?!
+### I'm using Passport--what about me?!
 
 Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
 There are a few good examples of this floating around, such as [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
+
