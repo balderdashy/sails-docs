@@ -167,7 +167,7 @@ Specifies the type of data that will be stored in this attribute.  One of:
 
 - string
 - text
-- integer
+- int
 - float
 - date
 - time
