@@ -1,13 +1,16 @@
 # Globals
 ### Overview
 
-Sails exposes a handful of global variables by default.  Nothing in Sails core relies on this fact - these variables are exposed for your convenience during development.  Each and every global variable exposed in Sails may be disabled in [`config/globals.js`]().
+For convenience, Sails exposes a handful of global variables.  By default, your app's [models](), [services](), and the global `sails` object are all available on the global scope; meaning you can refer to them by name anywhere in your backend code (as long as Sails [has been lifted](https://github.com/balderdashy/sails/tree/master/lib/app)).
 
-### App
+Nothing in Sails core relies on these global variables - each and every global exposed in Sails may be disabled in `sails.config.globals` (conventionally configured in `config/globals.js`.)
+
+
+### The `sails` Object
 Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  In most cases, you will want to keep the `sails` object globally accessible- it makes your app code much cleaner.  However, if you _do_ need to disable _all_ globals, including `sails`, you can get access to `sails` on the request object (`req`).
 
 ### Models and Services
-Your app's [models]() and [services]() are exposed as globals using their `globalId`.  For instance, the model defined in the file `api/models/Foo.js` will be globally accessible as `Foo`, and the service defined in `api/services/Baz.js` will be available as `Baz`.
+Your app's [models]() and [services]() are exposed as global variables using their `globalId`.  For instance, the model defined in the file `api/models/Foo.js` will be globally accessible as `Foo`, and the service defined in `api/services/Baz.js` will be available as `Baz`.
 
 ### Async and Lodash
 Sails also exposes an instance of [lodash]() as `_`, and an instance of [async]() as `async`.  These commonly-used utilities are provided by default so that you don't have to `npm install` them in every new project.  Like any of the other globals in sails, they can be disabled.
@@ -39,25 +42,6 @@ sails.log('There',{sure:'are'},['a','lot'],'of',[{log:'levels'}, 'huh'],'?',true
 ### Notes
 > These will accept an infinite number of arguments of any data type, seperated by commas.
 
-
-# sails.config
-### Purpose
-The `sails.config` object is built automatically from the settings exported from the modules in your app's `config/` directory.  Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`), but you can also use `sails.config` for your own custom app-level configuration (e.g. `sails.config.someProprietaryAPI.secret`).
-
-For a complete reference of the configuration settings understood by Sails, check out the [configuration reference](), as well as the [anatomy pages]() on the relevant configuration modules which are included in new Sails apps by default.
-
-
-### Example
-```javascript
-// Make sure csrf is enabled if we are in production mode.
-// Throw an error and crash the app otherwise.
-if (sails.config.environment === 'production' && !sails.config.csrf) {
-  throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
-}
-```
-
-### Notes
-> The built-in meaning of the settings in `sails.config` are, for the most part, only interpreted by Sails during lift.  In most cases, changing them at runtime will have no effect.  For example, to change the port your app is running on, you'll need to change or override the setting in a configuration file, then restart the server.
 
 
 # sails.models
