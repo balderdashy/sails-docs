@@ -1,14 +1,6 @@
 # Blueprints
 
-> **Associations and Blueprints**
->Sails v0.10 introduced model associations!  We've also extended the functionality of blueprint routing so you can make associations between models as painlessly as you created them!
-
-> **WARNING**
-> Association blueprints (v0.10) are currently experimental!
-> This API is likely to change!
-
 ### Overview
-
 
 Together, blueprint routes and blueprint actions constitute the **blueprint API**, the secret sauce that powers the RESTful JSON API you get every time you generate an empty model and controller.  The real power of blueprints is your ability as an app architect to disable, override, protect, and extend them to fit your needs.
 
