@@ -6,7 +6,7 @@ Sails comes with a simple, built-in logger called [`captains-log`](https://githu
 ### Configuration
 The Sails logger's configuration is located in [`sails.config.log`](), for which a conventional configuration file ([`config/log.js`]()) is bundled in new Sails projects out of the box.
 
-When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level. The hierarchy is defined by the chart below:
+When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level. This log level is normalized and also applied to the generated output from socket.io, Waterline, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
 
 | Priority | level     | Log fns visible   |
 |----------|-----------|-------------------|
