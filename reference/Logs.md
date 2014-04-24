@@ -1,4 +1,4 @@
-# Log
+# Logs
 
 ### Overview
 Sails comes with a simple logger called [`captains-log`](https://github.com/balderdashy/captains-log).
