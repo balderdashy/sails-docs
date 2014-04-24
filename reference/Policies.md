@@ -1,4 +1,6 @@
+
 # Policies
+
 ### Overview
 
 Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
@@ -93,15 +95,18 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 > Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
 
 
-#### Built-in policies
+### Built-in policies
 Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
   + `true`: public access  (allows anyone to get to the mapped controller/action)
   +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
 
  `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
-### Full example of adding some policies to a controller:
+##### Adding some policies to a controller:
 ```javascript
+  // in config/policies.js
+  
+  // ...
   RabbitController: {
 
     // Apply the `false` policy as the default for all of RabbitController's actions
@@ -116,6 +121,7 @@ Sails provides two built-in policies that can be applied globally, or to a speci
     // before letting any users feed our rabbits
     feed : ['isNiceToAnimals', 'hasRabbitFood']
   }
+  // ...
 ```
 
 Here&rsquo;s what the `isNiceToAnimals` policy from above might look like (this file would be located at `policies/isNiceToAnimals.js`):
@@ -145,7 +151,7 @@ module.exports = function isNiceToAnimals (req, res, next) {
 };
 ```
 
-#### Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:
+Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:
 + cookie-based authentication
 + role-based access control
 + limiting file uploads based on MB quotas
