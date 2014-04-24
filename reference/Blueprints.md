@@ -2,7 +2,7 @@
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the secret sauce that powers the RESTful JSON API you get every time you generate an empty model and controller.  The real power of blueprints is your ability as an app architect to disable, override, protect, and extend them to fit your needs.
+Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the RESTful JSON API you get every time you generate an empty model and controller.  Blueprints are great for prototyping, but they are also a powerful tool in production, giving you the ability as an app architect to disable, override, protect, and extend them to fit your needs.
 
 
 ##### Blueprint Routes
