@@ -1,16 +1,12 @@
 # Logs
 
 ### Overview
-Sails comes with a simple logger called [`captains-log`](https://github.com/balderdashy/captains-log).
-Its usage is purposely similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra
-features; namely support for multiple log levels with colorized, prefixed console output.
+Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
 ### Configuration
-The Sails logger's configuration is located in [`sails.config.log`](), for which a conventional configuration file ([`config/log.js`]())
-is bundled in new Sails projects out of the box.
+The Sails logger's configuration is located in [`sails.config.log`](), for which a conventional configuration file ([`config/log.js`]()) is bundled in new Sails projects out of the box.
 
-When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level.
-The hierarchy is defined by the chart below:
+When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level. The hierarchy is defined by the chart below:
 
 | Priority | level     | Log fns visible   |
 |----------|-----------|-------------------|
@@ -23,13 +19,14 @@ The hierarchy is defined by the chart below:
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
+#### Notes
++ The default log level is "info".  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
++ When the log level is set to "silly", Sails outputs internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
++ When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
 
 
 ### Usage
-Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options).
-Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically,
-and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are
-pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
+Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
 
 
 #### `sails.log()`
@@ -95,7 +92,3 @@ sails.log.silly('A user probably clicked on something..?');
 
 
 
-### Notes
-+ The default log level is "info".  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
-+ When the log level is set to "silly", Sails outputs internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
-+ When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. taht were loaded.
