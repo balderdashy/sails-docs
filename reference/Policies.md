@@ -6,7 +6,7 @@ Policies in Sails are versatile tools for authorization and access control-- the
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
 
-## Writing Your First Policy
+### Writing Your First Policy
 
 Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
 
@@ -40,7 +40,7 @@ module.exports = function canWrite (req, res, next) {
 ```
 
 
-## Protecting Controllers with Policies
+### Protecting Controllers with Policies
 
 Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
 
