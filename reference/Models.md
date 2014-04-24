@@ -105,6 +105,21 @@ But in each case, the code you write to create new records, fetch/search for exi
 This means that you can switch some or all of your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code. For the times we still need database-specific functionality, Waterline provides a query interface that allows us to talk directly to our models' underlying database driver (see [.query()]() and [.native()]().)
 
 
+
+### `sails.models`
+
+If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models.
+
+A model's `identity` is different than its `globalId`.  The `globalId` is determined automatically from the name of the model, whereas the `identity` is the all-lowercased version.  For instance, you the model defined in `api/models/Kitten.js` has a globalId of `Kitten`, but its identity is `kitten`. For example:
+
+```javascript
+// Kitten === sails.models.kitten
+sails.models.kitten.find().exec(function (err, allTheKittens) {
+  // We also could have just used `Kitten.find().exec(...)`
+  // if we'd left the global variable exposed.
+})
+```
+
 ### Analogy
 
 Imagine a file cabinet full of completed pen-and-ink forms. All of the forms have the same fields (e.g. "name", "birthdate", "maritalStatus"), but for each form, the _values_ written in the fields vary.  For example, one form might contain "Lara", "2000-03-16T21:16:15.127Z", "single", while another form contains "Larry", "1974-01-16T21:16:15.127Z", "married".
