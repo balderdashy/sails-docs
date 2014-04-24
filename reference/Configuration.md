@@ -2,10 +2,10 @@
 
 ### Overview
 
-While Sails dutifully adheres to the philosophy of [convention-over-configuration](), it is important to understand how to customize those defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration settings understood by Sails.
+While Sails dutifully adheres to the philosophy of [convention-over-configuration](), it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration options available in Sails.
 
 
-### sails.config
+### `sails.config`
 The `sails.config` object contains the runtime values of your app's configuration. It is assembled automatically when Sails loads your app; merging together command-line arguments, environment variables, your `.sailsrc` file, and the configuration objects exported from any and all modules in your app's `config/` directory.  
 
 Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`), but you can also use `sails.config` for your own custom app-level configuration (e.g. `sails.config.someProprietaryAPI.secret`).  In most cases, the top-level keys on the `sails.config` object (e.g. `sails.config.views`) correspond to a particular configuration file (e.g. `config/views.js`) in your app; however configuration settings may be arranged however you like.  The important factor is the name (i.e. key) of the setting- not the method you used to import it.
@@ -30,7 +30,7 @@ A number of configuration files are included in new Sails apps by default.  Thes
 
 ### Accessing `sails.config` in your app
 
-The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope]() during lift, and therefore available from anywhere in your app.
+The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](./#!documentation/reference/Globals.md) during lift, and therefore available from anywhere in your app.
 
 ### Example
 ```javascript
