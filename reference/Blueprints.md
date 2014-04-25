@@ -53,10 +53,11 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 Returns a list of records from the given `model` in the database.  By default, records are sorted by primary key.  
 
-### Blueprint Routes
-| REST    | Shortcut |
-|------------|-------------|
-| `GET http://localhost:1337/:modelIdentity` | `GET http://localhost:1337/:modelIdentity/find` |
+| Blueprint Type   | Example Request                                    |
+|------------------|----------------------------------------------------|
+| RESTful Route    | `GET http://localhost:1337/foo` |
+| Shortcut Route   | `GET http://localhost:1337/foo/find` |
+
 
 ### Optional Parameters
 
