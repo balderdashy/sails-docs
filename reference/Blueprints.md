@@ -55,8 +55,8 @@ Returns a list of records from the given `model` in the database.  By default, r
 
 | Blueprint Type   | Example Request                                    |
 |------------------|----------------------------------------------------|
-| RESTful Route    | `GET http://localhost:1337/foo` |
-| Shortcut Route   | `GET http://localhost:1337/foo/find` |
+| REST       | `GET http://localhost:1337/foo` |
+| Shortcut   | `GET http://localhost:1337/foo/find` |
 
 
 ### Optional Parameters
