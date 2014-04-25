@@ -97,8 +97,8 @@ To migrate, you will need to create a new v0.10 project and copy the `myApp/api/
 
 `sails-disk`, used by default in new Sails projects, now stores data a bit differently.  If you have some temporary data stored in a 0.9.x project, you'll want to wipe it out and start fresh.  To do this:
 
+From your project's root directory:
 ```
-# From your project's root directory:
 $ rm .tmp/disk.db
 ```
 
