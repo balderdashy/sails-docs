@@ -63,11 +63,11 @@ Returns a list of records from the given `model` in the database.  By default, r
 
 | Parameter  | Type  | Details |
 |----------------|----------|-----------|
-| `where` | object | a Waterline criteria object (will be passed directly to the ORM) |
-| `limit` | numeric | the maximum number of records to send back (useful for pagination) |
-| skip | numeric | the number of records to skip (useful for pagination) |
-| sort | string | the order of returned records, e.g. `name ASC` or `age DESC` |
-| callback | string | for JSONP - the name of the client-side javascript function to call with results |
+| `where` | <bubble>object</bubble> | a Waterline criteria object, _encoded as JSON_.  Will be passed directly to the `.where(criteria)` modifier |
+| `limit` | <bubble>numeric</bubble> | the maximum number of records to send back (useful for pagination) |
+| `skip` | <bubble>numeric</bubble> | the number of records to skip (useful for pagination) |
+| `sort` | <bubble>string</bubble> | the order of returned records, e.g. `name ASC` or `age DESC` |
+| `callback` | <bubble>string</bubble> | for JSONP - the name of the client-side javascript function to call with results |
 
 ### Description
 Responds with a JSON array of objects.
