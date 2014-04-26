@@ -502,6 +502,8 @@ HALP!
 
 # Create A Record
 
+### `POST /:modelIdentity`
+
 ### Purpose
 Create a new model instance in the database.
 Attributes can be sent in the HTTP body as form-encoded values or JSON.
@@ -716,29 +718,122 @@ via Postman
   "updatedAt": "2013-11-26T22:54:19.951Z"
 }
 ```
-
+<!--
 ### Examples with Many-To-Many Associations
 
 Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
-
+-->
 
 ### Notes
 
-> JSON keys and values must be wrapped in double quotes.  Singles won't work.
+> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
+
+
+
+
+
+
 
 
 # Update A Record
 
-### Purpose
-Update an existing model instance.
+### `PUT /:modelIdentity/:id`
+
+Update an existing record.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
 
 ### Description
 Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a comet message will be published to all sockets subscribed to the instance room, e.g.:
-```javascript
+### Parameters
 
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>
+        <code>id</code>
+        <em>(required)</em>
+      </td>
+      <td>
+        <bubble>number</bubble>
+        <br/>
+        <em>-or-</em>
+        <br/>
+        <bubble>string</bubble>
+      </td>
+      <td>
+        
+        The primary key value of the record to update.
+
+        <br/><strong>Example:</strong>
+        <code>
+          PUT http://localhost:1337/product/<strong>5</strong>
+        </code>
+
+        <br/>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td><code>*</code></td>
+      <td>
+        <bubble>string</bubble>
+        <br/>
+        <bubble>number</bubble>
+        <br/>
+        <bubble>object</bubble>
+        <br/>
+        <bubble>array</bubble>
+      </td>
+      <td>
+        
+        Pass in body parameter(s) with the same name as the attribute(s) defined on your model to set those values on the desired record.
+        <br/>
+        For instance, if our `Product` model has **price** and **sku** attributes, we could send `PUT http://localhost:1337/product/5?price=99.99&amp;sku=f3291481da13bc` to change the price and sku of the product with id 5.
+        <br/>
+        Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
+
+        <br/><strong>Example:</strong>
+        <code>
+          ?price=99.99&amp;sku=f3291481da13bc
+        </code>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>callback</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?callback=myJSONPHandlerFn
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>''</code>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+Additionally, a comet message will be published to all sockets subscribed to the instance room, e.g.:
+
+```javascript
 //
 // New usage:
 //
@@ -940,13 +1035,25 @@ via Postman
 
 ### Notes
 
-> JSON keys and values must be wrapped in double quotes.  Single quotes won't work.
+> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Destroy A Record
 
-### Purpose
-Destroys an existing model instance from the database.
+### `DELETE /:modelIdentity/:id`
+
+Delete an existing record specified by `id` from the database forever.
 
 ### Description
 Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
@@ -956,6 +1063,68 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 This is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller.
 
 Consequently, all sockets currently subscribed to the instance room will be unsubscribed from it.
+
+
+### Parameters
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td>
+        <code>id</code>
+        <em>(required)</em>
+      </td>
+      <td>
+        <bubble>number</bubble>
+        <br/>
+        <em>-or-</em>
+        <br/>
+        <bubble>string</bubble>
+      </td>
+      <td>
+        
+        The primary key value of the record to destroy.
+
+        <br/><strong>Example:</strong>
+        <code>
+          DELETE http://localhost:1337/product/<strong>7</strong>
+        </code>
+
+        <br/>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>callback</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?callback=myJSONPHandlerFn
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>''</code>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
 
 ### Examples
 
@@ -1006,4 +1175,4 @@ via web browser
 
 > Assumes the existence of both `PonyController` and a model called 'Pony'.
 
-> JSON keys and values must be wrapped in double quotes.  Singles won't work.
+> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
