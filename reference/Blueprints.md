@@ -87,9 +87,6 @@ If the request was sent via a connected socket (via socket.io), the socket will 
 
 ### Parameters
 
-Query parameters are used to filter results.  To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model.
-
-For instance, if our `Purchase` model has an **amount** attribute, we could send `GET http://localhost:1337/purchase?amount=99.99` to return a list of $99.99 purchases.
 
 <table>
   <thead>
@@ -102,11 +99,34 @@ For instance, if our `Purchase` model has an **amount** attribute, we could send
   <tbody>
 
     <tr>
+      <td><code>*</code></td>
+      <td>
+        <bubble>string</bubble>
+        <br/>
+        <em>-or-</em>
+        <br/>
+        <bubble>number</bubble>
+      </td>
+      <td>
+        
+        To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model.
+        <br/>
+        For instance, if our `Purchase` model has an **amount** attribute, we could send `GET http://localhost:1337/purchase?amount=99.99` to return a list of $99.99 purchases.
+
+        <br/><strong>Example:</strong>
+        <code>
+          ?amount=99.99
+        </code>
+
+      </td>
+    </tr>
+
+    <tr>
       <td><code>where</code></td>
       <td><bubble>object</bubble></td>
       <td>
         
-        a Waterline WHERE criteria object, <em>encoded as a JSON string</em>
+        Instead of filtering based on a specific attribute, you may instead choose to provide a <code>where</code> parameter with a Waterline WHERE criteria object, <em>encoded as a JSON string</em>.  This allows you to take advantage of <code>contains</code>, <code>lessThan</code> and other sub-attribute modifiers for more powerful queries.
 
         <br/><strong>Example:</strong>
         <code>
@@ -123,9 +143,9 @@ For instance, if our `Purchase` model has an **amount** attribute, we could send
       <td>
         <code>limit</code>
       </td>
-      <td><bubble>numeric</bubble></td>
+      <td><bubble>number</bubble></td>
       <td>
-        the maximum number of records to send back (useful for pagination)
+        The maximum number of records to send back (useful for pagination)
 
         <br/><strong>Example:</strong>
         <code>
@@ -141,9 +161,9 @@ For instance, if our `Purchase` model has an **amount** attribute, we could send
       <td>
         <code>skip</code>
       </td>
-      <td><bubble>numeric</bubble></td>
+      <td><bubble>number</bubble></td>
       <td>
-        the number of records to skip (useful for pagination)
+        The number of records to skip (useful for pagination)
         
         <br/><strong>Example:</strong>
         <code>
@@ -161,7 +181,7 @@ For instance, if our `Purchase` model has an **amount** attribute, we could send
       </td>
       <td><bubble>string</bubble></td>
       <td>
-        the order of returned records- by default, records are returned sorted by primary key
+        The order of returned records- by default, records are returned sorted by primary key
         
         <br/><strong>Example:</strong>
         <code>?sort=name%20ASC</code>
@@ -179,7 +199,7 @@ For instance, if our `Purchase` model has an **amount** attribute, we could send
       </td>
       <td><bubble>string</bubble></td>
       <td>
-        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
+        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
         
         <br/><strong>Example:</strong>
         <code>
@@ -288,15 +308,20 @@ If the request was sent via a connected socket (via socket.io), the socket will 
   <tbody>
 
     <tr>
-      <td><code>id</code></td>
       <td>
-        <bubble>numeric</bubble>
+        <code>id</code>
+        <em>(required)</em>
+      </td>
+      <td>
+        <bubble>number</bubble>
+        <br/>
+        <em>-or-</em>
         <br/>
         <bubble>string</bubble>
       </td>
       <td>
         
-        the desired record's primary key
+        The desired record's primary key value
 
         <br/><strong>Example:</strong>
         <code>
@@ -304,7 +329,6 @@ If the request was sent via a connected socket (via socket.io), the socket will 
         </code>
 
         <br/>
-        <strong>Required.</strong>
 
       </td>
     </tr>
@@ -492,6 +516,72 @@ This is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() 
 If the request is sent using socket.io, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room). 
 
 This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller.
+
+
+### Parameters
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><code>*</code></td>
+      <td>
+        <bubble>string</bubble>
+        <br/>
+        <bubble>number</bubble>
+        <br/>
+        <bubble>object</bubble>
+        <br/>
+        <bubble>array</bubble>
+      </td>
+      <td>
+        
+        Pass in body parameter(s) with the same name as the attribute(s) defined on your model to set those values on your new record.
+        <br/>
+        For instance, if our `Product` model has **price** and **sku** attributes, we could send `POST http://localhost:1337/product?price=99.99&sku=f3291481da13bc` to create a $99.99 product with the specified sku.
+        <br/>
+        Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
+
+        <br/><strong>Example:</strong>
+        <code>
+          ?price=99.99&amp;sku=f3291481da13bc
+        </code>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>callback</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?callback=myJSONPHandlerFn
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>''</code>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
 
 ### Examples
 
