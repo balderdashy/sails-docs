@@ -53,33 +53,38 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 ### `GET /:modelIdentity`
 
-Returns a list of records from the given model (`:modelIdentity`) as a JSON array of objects.  Unless otherwise specified, records are returned sorted by primary key (e.g. the model's `id` attribute.)
-
-If the request was sent over a conneted socket (via socket.io), the socket will be "subscribed" to all records returned.  That means that when one of the returned records is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
-
-> Note: Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
-
-
 | Blueprint Type   | Endpoint URL                                       |
 |------------------|----------------------------------------------------|
 | REST       | `GET http://localhost:1337/:modelIdentity` |
 | Shortcut   | `GET http://localhost:1337/:modelIdentity/find` |
 
 
-### Optional Parameters
+The **find()** blueprint action returns a list of records from the model (given by `:modelIdentity`) as a JSON array of objects.  Records are filtered, paginated, and sorted based on parameters parsed from the request.
 
-The **find blueprint** returns results based on the criteria 
+If the request was sent via a connected socket (via socket.io), the socket will be "subscribed" to all records returned.  That means that when one of the returned records is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+
+> Note: Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
+
+
+
+### Parameters
+
+
+> <table>
+>   <tr>
+>     <td></td>
+>     <td></td>
+>     <td></td>
+>   </tr>  
+> </table>
 
 | Parameter  | Type  | Details |
 |----------------|----------|-----------|
-| `where` | <bubble>object</bubble> | a Waterline WHERE criteria object, _encoded as a JSON string_<br/>e.g.: `?where={"name":{"contains":"theodore"}}` |
+| `where` | <object</bubble> | a Waterline WHERE criteria object, _encoded as a JSON string_<br/>e.g.: `?where={"name":{"contains":"theodore"}}` |
 | `limit` | <bubble>numeric</bubble> | the maximum number of records to send back (useful for pagination) <br/> e.g.: `?limit=30` |
 | `skip` | <bubble>numeric</bubble> | the number of records to skip (useful for pagination) <br/> e.g.: `?skip=30` |
-| `sort` | <bubble>string</bubble> | the order of returned records <br/> e.g.: `?sort=name%20ASC` or `?sort=age%20DESC` |
+| `sort` | <bubble>string</bubble> | the order of returned records- by default, records are returned sorted by primary key <br/> e.g.: `?sort=name%20ASC` or `?sort=age%20DESC` |
 | `callback` | <bubble>string</bubble> | for JSONP - the name of the client-side javascript function to call, passing results as the first argument<br/>e.g.: `?callback=myJSONPHandlerFn` |
-
-
-### Configuring the Blueprint Action
 
 
 ### Example
@@ -105,7 +110,6 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find and subsc
  }]
 
 ```
-
 
 
 
