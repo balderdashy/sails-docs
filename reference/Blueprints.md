@@ -53,49 +53,167 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 ### `GET /:modelIdentity`
 
-| Blueprint Type   | Endpoint URL                                       |
-|------------------|----------------------------------------------------|
-| REST       | `GET http://localhost:1337/:modelIdentity` |
-| Shortcut   | `GET http://localhost:1337/:modelIdentity/find` |
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Blueprint Routes</th>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>REST</td>
+      <td>
+        <code>GET http://localhost:1337/:modelIdentity</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Shortcut</td>
+      <td>
+        <code>GET http://localhost:1337/:modelIdentity/find</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 
 The **find()** blueprint action returns a list of records from the model (given by `:modelIdentity`) as a JSON array of objects.  Records are filtered, paginated, and sorted based on parameters parsed from the request.
 
 If the request was sent via a connected socket (via socket.io), the socket will be "subscribed" to all records returned.  That means that when one of the returned records is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
-> Note: Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
-
-
 
 ### Parameters
 
+Query parameters are used to filter results.  To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model.
 
-> <table>
->   <tr>
->     <td></td>
->     <td></td>
->     <td></td>
->   </tr>  
-> </table>
+For instance, if our `Purchase` model has an **amount** attribute, we could send `GET http://localhost:1337/purchase?amount=99.99` to return a list of $99.99 purchases.
 
-| Parameter  | Type  | Details |
-|----------------|----------|-----------|
-| `where` | <object</bubble> | a Waterline WHERE criteria object, _encoded as a JSON string_<br/>e.g.: `?where={"name":{"contains":"theodore"}}` |
-| `limit` | <bubble>numeric</bubble> | the maximum number of records to send back (useful for pagination) <br/> e.g.: `?limit=30` |
-| `skip` | <bubble>numeric</bubble> | the number of records to skip (useful for pagination) <br/> e.g.: `?skip=30` |
-| `sort` | <bubble>string</bubble> | the order of returned records- by default, records are returned sorted by primary key <br/> e.g.: `?sort=name%20ASC` or `?sort=age%20DESC` |
-| `callback` | <bubble>string</bubble> | for JSONP - the name of the client-side javascript function to call, passing results as the first argument<br/>e.g.: `?callback=myJSONPHandlerFn` |
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><code>where</code></td>
+      <td><bubble>object</bubble></td>
+      <td>
+        
+        a Waterline WHERE criteria object, <em>encoded as a JSON string</em>
+
+        <br/><strong>Example:</strong>
+        <code>
+          ?where={"name":{"contains":"theodore"}}
+        </code>
+
+        <br/>
+        <strong>Default:</strong> <code>{}</code>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>limit</code>
+      </td>
+      <td><bubble>numeric</bubble></td>
+      <td>
+        the maximum number of records to send back (useful for pagination)
+
+        <br/><strong>Example:</strong>
+        <code>
+          ?limit=30
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>30</code>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>skip</code>
+      </td>
+      <td><bubble>numeric</bubble></td>
+      <td>
+        the number of records to skip (useful for pagination)
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?skip=0
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>0</code>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>sort</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        the order of returned records- by default, records are returned sorted by primary key
+        
+        <br/><strong>Example:</strong>
+        <code>?sort=name%20ASC</code>
+        or
+        <code>?sort=name%20DESC</code>
+
+        <br/><strong>Default:</strong>
+        <em>by default, returned records are sorted by primary key, ascending</em>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>callback</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?callback=myJSONPHandlerFn
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>''</code>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
 
 
 ### Example
+
+<!--
+<iframe style="border: 1px solid #999;width: 100%; height: 300px"
+        src="http://plnkr.co/as0NyD?t=readme" frameborder="0"
+        allowfullscreen="allowfullscreen">
+  Loading plunk...
+  <em>Example not loading?  View it <a href="http://plnkr.co/as0NyD">on Plunker</a></em>
+</iframe>
+-->
 
 Assuming a `Purchase` model and an empty `PurchaseController`, to find and subscribe to the first 30 purchases from the database, enter the following into the URL bar in your web browser:
 
 `GET http://localhost:1337/purchase`
 
+
 #### Expected Response
 
-```json
+ ```json
  [{
    "amount": 49.99,
    "id": 1,
@@ -108,19 +226,120 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find and subsc
    "createdAt": "2013-10-14T01:22:00.000Z",
    "updatedAt": "2013-10-15T01:20:54.000Z"
  }]
+ ```
 
-```
+
+### Notes
+
+> Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
+
+> For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
 
 
 
 # Find One
 
 
-### Find One (REST)
+
+### `GET /:modelIdentity/:id`
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Blueprint Routes</th>
+    </tr>
+    <tr>
+      <th>Type</th>
+      <th>URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>REST</td>
+      <td>
+        <code>GET http://localhost:1337/:modelIdentity/:id</code>
+      </td>
+    </tr>
+    <tr>
+      <td>Shortcut</td>
+      <td>
+        <code>GET http://localhost:1337/:modelIdentity/findOne/:id</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key]() of the desired record.
+
+If the request was sent via a connected socket (via socket.io), the socket will be "subscribed" to the resulting record.  That means that when the returned record is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+
+
+### Parameters
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><code>id</code></td>
+      <td>
+        <bubble>numeric</bubble>
+        <br/>
+        <bubble>string</bubble>
+      </td>
+      <td>
+        
+        the desired record's primary key
+
+        <br/><strong>Example:</strong>
+        <code>
+          http://localhost:1337/product/7
+        </code>
+
+        <br/>
+        <strong>Required.</strong>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <code>callback</code>
+      </td>
+      <td><bubble>string</bubble></td>
+      <td>
+        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
+        
+        <br/><strong>Example:</strong>
+        <code>
+          ?callback=myJSONPHandlerFn
+        </code>
+
+        <br/><strong>Default:</strong>
+        <code>''</code>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+### Example
+
+... 
+
+<!--
 
 `GET http://localhost:1337/:model/:id`
 
-Get one pony in the database:
+To look up a particular Product from the database:
 
 _via the URL bar in your web browser_
 `http://localhost:1337/pony/1`
@@ -183,6 +402,7 @@ via web browser 'http://localhost:1337/pony/find/47'
 
 ```
 
+
 ### Find Model/Collection associated with a particular record (REST)
 
 `GET http://localhost:1337/:model/:recordID/:associatedAttribute`
@@ -231,27 +451,29 @@ HALP!
   }]
 
 ```
+-->
 
-### Query Parameters
-
-Any and all attributes that you defined on your model can be used to filter results.
-
-For instance, if our `Pony` model has a **name** attribute: `GET http://localhost:1337/pony?name=Rainbow Dash` would return an array of ponies with the name "Rainbow Dash".
-
-You can also paginate and sort results using the `limit`, `skip`, and `sort` parameters.
-
+<!--
 + **limit** - the maximum number of records to send back-- useful for pagination.
 + **skip** - the number of records to skip-- useful for pagination. e.g. the following would return the second page of 30 results `http://localhost:1337/pony?skip=30&limit=30`
 + **sort** - the order in which to sort results, e.g. `http://localhost:1337/pony?sort=name DESC` or `http://localhost:1337/pony?sort=createdAt ASC`
 
+-->
+
 
 ### Notes
 
-> The 'Find One' method does not accept query parameters. 
-
-> For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
+> The 'Find One' method does not accept filtering/pagination/sorting query parameters (they wouldn't make a whole lot of sense)
 
 > For the associations examples, while the blueprint routes work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
+
+
+
+
+
+
+
+
 
 
 # Create A Record
