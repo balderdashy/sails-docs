@@ -49,7 +49,7 @@ Consequently, the blueprint API methods covered in this section of the documenta
 > + The examples URLs below assume you are running your Sails app locally on the default port (1337).  If your app is deployed on a server someplace, a different port, or with an SSL certificate, you'll need to adjust your usage accordingly.
 
 
-# Find Records
+# Find
 
 ### `GET /:modelIdentity`
 
@@ -99,7 +99,9 @@ If the request was sent via a connected socket (via socket.io), the socket will 
   <tbody>
 
     <tr>
-      <td><code>*</code></td>
+      <td>
+      <code>*</code>
+      </td>
       <td>
         <bubble>string</bubble>
         <br/>
