@@ -1,10 +1,9 @@
 # Upgrading
+Sails v0.10 comes with some big changes.  The sections below provide a high level overview of what's changed, as well as a basic tutorial on how to upgrade your v0.9.x Sails app to v0.10.
 
-### Overview
-
-Sails v0.10 comes with some big changes.
-
-### How to upgrade your v0.9.x Sails app to v0.10
+> If you run across any upgrade issues that are not addressed here, please let us know and send a pull request to [this file on Github](https://github.com/balderdashy/sails-docs/edit/master/reference/Upgrading.md).  Thanks!
+>
+> ~Mike
 
 ##### Blueprints
 
