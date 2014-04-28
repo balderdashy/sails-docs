@@ -100,7 +100,7 @@ If the request was sent via a connected socket (via socket.io), the socket will 
 
     <tr>
       <td>
-      <code>*</code>
+      <code>&#42;</code>
       </td>
       <td>
         <bubble>string</bubble>
