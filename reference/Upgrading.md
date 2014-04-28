@@ -1,9 +1,29 @@
 # Upgrading
-Sails v0.10 comes with some big changes.  The sections below provide a high level overview of what's changed, as well as a basic tutorial on how to upgrade your v0.9.x Sails app to v0.10.
+Sails v0.10 comes with some big changes.  The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.9.x Sails app to v0.10.
 
 > If you run across any upgrade issues that are not addressed here, please let us know and send a pull request to [this file on Github](https://github.com/balderdashy/sails-docs/edit/master/reference/Upgrading.md).  Thanks!
 >
 > ~Mike
+
+========================================
+
+### Contents
+
+|     | Jump to...        |
+|-----|-------------------------|
+| I   | [Blueprints]() |
+| II  | [Policies]() |
+| III | [Associations]() |
+| IV  | [Pubsub]() |
+| V   | [Generators]() |
+| VI  | [Command-Line Tool]() |
+| VII | [Custom Server Responses]() |
+| VIII| [Legacy Data in `sails-disk`]() |
+| IX  | [Validations]() |
+| X   | [Adapter/Connections Configuration]() |
+
+========================================
+
 
 ##### Blueprints
 
