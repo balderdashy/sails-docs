@@ -56,7 +56,7 @@ For an exhaustive reference of individual configuration options, and the file th
 
 The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](./#!documentation/reference/Globals.md) during lift, and therefore available from anywhere in your app.
 
-#### Example
+##### Example
 ```javascript
 // This example checks that, if we are in production mode, csrf is enabled.
 // It throws an error and crashes the app otherwise.
