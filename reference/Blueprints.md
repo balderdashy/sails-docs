@@ -97,7 +97,6 @@ If the request was sent via a connected socket (via socket.io), the socket will 
     </tr>
   </thead>
   <tbody>
-
     <tr>
       <td>
       <code>&#42;</code>
@@ -105,42 +104,33 @@ If the request was sent via a connected socket (via socket.io), the socket will 
       <td>
         <bubble>string</bubble>
         <br/>
-        <em>-or-</em>
+        <em>-or- </em>
         <br/>
         <bubble>number</bubble>
       </td>
       <td>
-        
         To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model.
         <br/>
         For instance, if our `Purchase` model has an **amount** attribute, we could send `GET http://localhost:1337/purchase?amount=99.99` to return a list of $99.99 purchases.
-
         <br/><strong>Example:</strong>
         <code>
           ?amount=99.99
         </code>
-
       </td>
     </tr>
-
     <tr>
       <td><code>where</code></td>
       <td><bubble>object</bubble></td>
       <td>
-        
         Instead of filtering based on a specific attribute, you may instead choose to provide a <code>where</code> parameter with a Waterline WHERE criteria object, <em>encoded as a JSON string</em>.  This allows you to take advantage of <code>contains</code>, <code>lessThan</code> and other sub-attribute modifiers for more powerful queries.
-
         <br/><strong>Example:</strong>
         <code>
           ?where={"name":{"contains":"theodore"}}
         </code>
-
         <br/>
         <strong>Default:</strong> <code>{}</code>
-
       </td>
     </tr>
-
     <tr>
       <td>
         <code>limit</code>
@@ -148,17 +138,14 @@ If the request was sent via a connected socket (via socket.io), the socket will 
       <td><bubble>number</bubble></td>
       <td>
         The maximum number of records to send back (useful for pagination)
-
         <br/><strong>Example:</strong>
         <code>
           ?limit=30
         </code>
-
         <br/><strong>Default:</strong>
         <code>30</code>
       </td>
     </tr>
-
     <tr>
       <td>
         <code>skip</code>
@@ -166,17 +153,14 @@ If the request was sent via a connected socket (via socket.io), the socket will 
       <td><bubble>number</bubble></td>
       <td>
         The number of records to skip (useful for pagination)
-        
         <br/><strong>Example:</strong>
         <code>
           ?skip=0
         </code>
-
         <br/><strong>Default:</strong>
         <code>0</code>
       </td>
     </tr>
-
     <tr>
       <td>
         <code>sort</code>
@@ -189,12 +173,10 @@ If the request was sent via a connected socket (via socket.io), the socket will 
         <code>?sort=name%20ASC</code>
         or
         <code>?sort=name%20DESC</code>
-
         <br/><strong>Default:</strong>
         <em>by default, returned records are sorted by primary key, ascending</em>
       </td>
     </tr>
-
     <tr>
       <td>
         <code>callback</code>
@@ -207,7 +189,6 @@ If the request was sent via a connected socket (via socket.io), the socket will 
         <code>
           ?callback=myJSONPHandlerFn
         </code>
-
         <br/><strong>Default:</strong>
         <code>''</code>
       </td>
