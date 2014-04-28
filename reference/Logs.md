@@ -10,13 +10,13 @@ When configured at a given log level, Sails will output log messages that are ou
 
 | Priority | level     | Log fns visible   |
 |----------|-----------|-------------------|
-| 7        | silent    | N/A
-| 6        | error     | `.error()`            |
-| 5        | warn      | `.warn()`, `.error()` |
-| 4        | debug     | `.debug()`, `.warn()`, `.error()` |
-| 3        | info      | `.info()`, `.debug()`, `.warn()`, `.error()` |
-| 2        | verbose   | `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
-| 1        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
+| 0        | silent    | N/A
+| 1        | error     | `.error()`            |
+| 2        | warn      | `.warn()`, `.error()` |
+| 3        | debug     | `.debug()`, `.warn()`, `.error()` |
+| 4        | info      | `.info()`, `.debug()`, `.warn()`, `.error()` |
+| 5        | verbose   | `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
+| 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
 #### Notes
