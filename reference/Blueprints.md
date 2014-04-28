@@ -52,7 +52,6 @@ Consequently, the blueprint API methods covered in this section of the documenta
 # Find
 
 ### `GET /:modelIdentity`
-### `GET /:modelIdentity/find` (shortcut)
 
 <!--
 <table>
@@ -88,7 +87,6 @@ If the request was sent via a connected socket (via socket.io), the socket will 
 
 
 ### Parameters
-
 
 <table>
   <thead>
@@ -248,6 +246,7 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find and subsc
 
 ### `GET /:modelIdentity/:id`
 
+<!--
 <table>
   <thead>
     <tr>
@@ -273,7 +272,7 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find and subsc
     </tr>
   </tbody>
 </table>
-
+-->
 
 The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key]() of the desired record.
 
