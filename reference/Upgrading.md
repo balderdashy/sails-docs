@@ -11,21 +11,21 @@ Sails v0.10 comes with some big changes.  The sections below provide a high leve
 
 |     | Jump to...        |
 |-----|-------------------------|
-| I   | [Blueprints]() |
-| II  | [Policies]() |
-| III | [Associations]() |
-| IV  | [Pubsub]() |
-| V   | [Generators]() |
-| VI  | [Command-Line Tool]() |
-| VII | [Custom Server Responses]() |
-| VIII| [Legacy Data in `sails-disk`]() |
-| IX  | [Validations]() |
-| X   | [Adapter/Connections Configuration]() |
-
+| I   | [Blueprints](#blueprints) |
+| II  | [Policies](#policies) |
+| III | [Associations](#associations) |
+| IV  | [Pubsub](#pubsub) |
+| V   | [Generators](#generators) |
+| VI  | [Command-Line Tool](#command-line-tool) |
+| VII | [Custom Server Responses](#custom-server-responses) |
+| VIII| [Legacy Data in `sails-disk`](#legacy-data-stored-in-the-temporary-sails-disk-database) |
+| IX  | [Validations](#validations-upgrade-to-validator-3x) |
+| X   | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
+| XI  | [Blueprints/Controllers Configuration](#controller-configuration) |
 ========================================
 
 
-##### Blueprints
+## Blueprints
 
 A new blueprint action (`findOne`) has been added.  For instance, if you have a `FooController` and `Foo` model, then send a request to `/foo/5`, the `findOne` action in your `FooController` will run.  If you don't have a `findOne` action, the `findOne` blueprint action will be used in its stead.  Requests sent to `/foo` will still run the `find` controller/blueprint action.
 
@@ -56,7 +56,7 @@ module.exports.policies = {
 ```
 
 
-##### Pubsub
+## Pubsub
 
 The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them.  Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
 
@@ -88,7 +88,7 @@ To see examples of the new pubsub methods in action, see [SailsChat](https://git
 
 
 
-##### Associations
+## Associations
 
 Sails v0.10 introduces associations between data models.  Since the work we've done on associations is largely additive, your existing models should still just work.  That said, this is a powerful new feature that allows you to write less code and makes your app more maintainable, so we suggest taking advantage of it!  To learn about how to use associations in Sails, [check out the docs](./#!documentation/reference/ModelAssociations).
 
@@ -97,7 +97,7 @@ Associations (or "relations") are really just special attributes.  Instead of `s
 
 
 
-##### Generators
+## Generators
 
 
 Sails has had support for generating code for a while now (e.g. `sails generate controller foo`) but in v0.10, we wanted to make this feature more extensible, open, and accessible to everybody in the Sails community.  With that in mind, v0.10 comes with a complete rewrite of the command-line tool, and pluggable generators.  Want to be able to run `sails generate blog foo` to make a new blog built on Sails?  Create a `blog` generator (run `sails generate generator blog`), add your templates, and configure the generator to copy the new templates over.  Then you can release it to the community by publishing an npm module called `sails-generate-blog`.  Compatibility with Yeoman generators is also in our roadmap.
@@ -105,28 +105,11 @@ Sails has had support for generating code for a while now (e.g. `sails generate 
 
 For a complete guide to what generators are and how they work, [check out the in-progress docs on the subject.](https://github.com/balderdashy/sails-docs/blob/master/Guide:%20Using%20Generators.md)
 
-##### Controller configuration
-The object literal describing controller configuration overrides for controller blueprints should change from
-```javascript
-...
-_config: {
-  blueprints: {
-    rest: true,
-    ...
-  }
-}
-```
-to
-```javascript
-...
-_config: {
-    rest: true,
-    ...
-}
-```
 
 
-##### Command-Line Tool
+
+
+## Command-Line Tool
 
 The big change here is how you create a new api.  In the past you called `sails generate new_api`.  This would generate a new controller and model called `new_api` in the appropriate places.  This is now done using `sails generate api new_api`
 
@@ -134,7 +117,10 @@ You can still generate models and controllers seperately using the same [CLI Com
 
 Also, `--linker` switch is no longer available. In previos version, if `--linker` switch was provided, it created a `myApp/assets/linker` folder, with `js`, `styles` and `templates` folders inside. In this new version, the `myApp/assets/linker` folder is not created. Compiling CoffeeScript and Less is the default behavior now, right from the `myApp/assets/js` and `myApp/assets/scripts` folders.
 
-##### Custom Server Responses
+
+
+
+## Custom Server Responses
 
 In v0.10, you can now generate your own custom server responses.  [See here to learn how](https://github.com/uncletammy/sails-generate-serverResponse).
 
@@ -143,7 +129,8 @@ Like before, there are a few that we automatically create for you.  Instead of g
 To migrate, you will need to create a new v0.10 project and copy the `myApp/api/responses` directory into your existing app.  You will then modify the appropriate .js file to reflect any customization you made in your response logic files (500.js,etc).
 
 
-##### Legacy data stored in the temporary `sails-disk` database
+
+## Legacy data stored in the temporary `sails-disk` database
 
 `sails-disk`, used by default in new Sails projects, now stores data a bit differently.  If you have some temporary data stored in a 0.9.x project, you'll want to wipe it out and start fresh.  To do this:
 
@@ -153,7 +140,13 @@ $ rm .tmp/disk.db
 ```
 
 
-##### Adapter/Database Configuration
+## Validations: Upgrade to validator 3.x
+
+Validator 3.x removed support for the `regex` validation, and consequently it no longer works in Sails/Waterline models.  There is an [open feature request](https://github.com/balderdashy/anchor/issues/41) awaiting a PR to bring it back.
+
+
+
+## Adapter/Database Configuration
 
 `config.adapters` (in `myApp/config/adapters.js`) is now `config.connections` (in new projects, this is generated in `myApp/config/connections.js`). Also, `config.model` is now `config.models`.
 
@@ -180,9 +173,27 @@ module.exports = {
 
 
 
-##### Validations: Upgrade to validator 3.x
+## Controller configuration
+The object literal describing controller configuration overrides for controller blueprints should change from
+```javascript
+...
+_config: {
+  blueprints: {
+    rest: true,
+    ...
+  }
+}
+```
+to
+```javascript
+...
+_config: {
+    rest: true,
+    ...
+}
+```
 
-Validator 3.x removed support for the `regex` validation, and consequently it no longer works in Sails/Waterline models.  There is an [open feature request](https://github.com/balderdashy/anchor/issues/41) awaiting a PR to bring it back.
+
 
 
 ### Did we miss something?
