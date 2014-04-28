@@ -29,7 +29,11 @@ Sails v0.10 comes with some big changes.  The sections below provide a high leve
 
 A new blueprint action (`findOne`) has been added.  For instance, if you have a `FooController` and `Foo` model, then send a request to `/foo/5`, the `findOne` action in your `FooController` will run.  If you don't have a `findOne` action, the `findOne` blueprint action will be used in its stead.  Requests sent to `/foo` will still run the `find` controller/blueprint action.
 
-##### Policies
+
+
+
+
+### Policies
 Policies work exactly as they did in v0.9- however there is a new consideration you should take into account:  Due to the introduction of the more specific `findOne()` blueprint action mentioned above, you will want to make sure you're handling it explicitly in your policy mapping configuration.
 
 For example, let's say you have a v0.9 app whose `policies.js` configuration prevents access to the `find` action in your `DoveController`:
