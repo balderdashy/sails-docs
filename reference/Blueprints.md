@@ -52,7 +52,9 @@ Consequently, the blueprint API methods covered in this section of the documenta
 # Find
 
 ### `GET /:modelIdentity`
+### `GET /:modelIdentity/find` (shortcut)
 
+<!--
 <table>
   <thead>
     <tr>
@@ -78,7 +80,7 @@ Consequently, the blueprint API methods covered in this section of the documenta
     </tr>
   </tbody>
 </table>
-
+-->
 
 The **find()** blueprint action returns a list of records from the model (given by `:modelIdentity`) as a JSON array of objects.  Records are filtered, paginated, and sorted based on parameters parsed from the request.
 
@@ -517,7 +519,7 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
   <tbody>
 
     <tr>
-      <td><code>*</code></td>
+      <td><code>&#42;</code></td>
       <td>
         <bubble>string</bubble>
         <br/>
@@ -767,7 +769,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
     </tr>
 
     <tr>
-      <td><code>*</code></td>
+      <td><code>&#42;</code></td>
       <td>
         <bubble>string</bubble>
         <br/>
