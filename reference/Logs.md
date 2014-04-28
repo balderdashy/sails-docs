@@ -41,7 +41,7 @@ sails.log('hello');
 // -> debug: hello.
 ```
 
-#### `sails.log.error()`
+### `sails.log.error()`
 
 Writes log output to `stderr` at the "error" log level.
 
@@ -50,7 +50,7 @@ sails.log.error('Unexpected error occurred.');
 // -> error: Unexpected error occurred.
 ```
 
-#### `sails.log.warn()`
+### `sails.log.warn()`
 
 Writes log output to `stderr` at the "warn" log level.
 
@@ -59,10 +59,10 @@ sails.log.warn('File upload quota exceeded for user','request aborted.');
 // -> warn: File upload quota exceeded for user- request aborted.
 ```
 
-#### `sails.log.debug()`
+### `sails.log.debug()`
 _Alias for `sails.log()`_
 
-#### `sails.log.info()`
+### `sails.log.info()`
 
 Writes log output to `stdout` at the "info" log level.
 
@@ -72,7 +72,7 @@ sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
 ```
 
 
-#### `sails.log.verbose()`
+### `sails.log.verbose()`
 
 Writes log output to `stdout` at the "verbose" log level.
 Useful for capturing detailed information about your app that you might only want to enable on rare occasions.
@@ -83,7 +83,7 @@ sails.log.verbose('A user initiated an account transfer...')
 ```
 
 
-#### `sails.log.silly()`
+### `sails.log.silly()`
 
 Writes log output to `stdout` at the "silly" log level.
 Useful for capturing utterly ridiculous information about your app you only need on rare occasions.
