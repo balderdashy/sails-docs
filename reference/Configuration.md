@@ -5,34 +5,58 @@
 While Sails dutifully adheres to the philosophy of [convention-over-configuration](), it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration options available in Sails.
 
 
-### `sails.config`
-The `sails.config` object contains the runtime values of your app's configuration. It is assembled automatically when Sails loads your app; merging together command-line arguments, environment variables, your `.sailsrc` file, and the configuration objects exported from any and all modules in your app's `config/` directory.  
 
-Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`), but you can also use `sails.config` for your own custom app-level configuration (e.g. `sails.config.someProprietaryAPI.secret`).  In most cases, the top-level keys on the `sails.config` object (e.g. `sails.config.views`) correspond to a particular configuration file (e.g. `config/views.js`) in your app; however configuration settings may be arranged however you like.  The important factor is the name (i.e. key) of the setting- not the method you used to import it.
+
+### `sails.config`
+The `sails.config` object contains the runtime values of your app's configuration. It is assembled automatically when Sails loads your app; merging together command-line arguments, environment variables, your `.sailsrc` file, and the configuration objects exported from any and all modules in your app's `config/` directory.
+
+More specifically, when you load your app, whether that's via `node app`, [programmatic usage](), or using [`sails lift`](), Sails will look in a [few different places](https://github.com/dominictarr/rc#standards) for configuration (in order of descending priority):
+
++ an optional object of configuration overrides passed-in programmatically
++ a local `.sailsrc` file in your app's directory, or the first found looking in `../`, `../../`, `../../../`, etc.
++ command-line arguments (parsed by minimist)
++ environment variables (prefixed with `SAILS_`, e.g. `SAILS_PORT=1492`)
++ files in your app's `config/` directory
+
+
+
+### .sailsrc File
+
+In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.  
+
+When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in either JSON or [.ini]() format) in the current directory and in your home folder (i.e. `~/.sailsrc`) (every newly generated Sails app comes with a boilerplate `.sailsrc` file).  Then it merges them in to its existing configuration.
+
+> Actually, Sails looks for `.sailsrc` files in a few other places (following [rc conventions](https://github.com/dominictarr/rc#standards)).  You can put a `.sailsrc` file at any of those paths.  That said, stick to convention when you can- the best place to put a global `.sailsrc` file is in your home directory (i.e. `~/.sailsrc`).
+
+
+### Custom Configuration
+Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`).  However you can also use `sails.config` for your own custom configuration (e.g. `sails.config.someProprietaryAPI.secret`).
+
+
+### Configuration files (`config/*`)
+
+A number of configuration files are included in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.
+
+In most cases, the top-level keys on the `sails.config` object (e.g. `sails.config.views`) correspond to a particular configuration file (e.g. `config/views.js`) in your app; however configuration settings may be arranged however you like across the files in your `config/` directory.  The important part is the name (i.e. key) of the setting- not the file it came from.
 
 For instance, let's say you add a new file, `config/foo.js`:
 
 ```js
 // config/foo.js
-
+// The object below will be merged into `sails.config.blueprints`:
 module.exports.blueprints = {
   shortcuts: false
 };
 ```
 
-This object will be recursively merged into `sails.config.blueprints`, along with any other configuration modules which export a top-level `blueprints` object.
-
-
-### Configuration files (`config/*`)
-
-A number of configuration files are included in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.  For an authorative/exhaustive reference on individual configuration options, check out the reference pages in this section, or take a look at ["`config/`"](./#!documentation/anatomy/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) for a higher-level overview.
+For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](./#!documentation/anatomy/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) for a higher-level overview.
 
 
 ### Accessing `sails.config` in your app
 
 The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](./#!documentation/reference/Globals.md) during lift, and therefore available from anywhere in your app.
 
-### Example
+#### Example
 ```javascript
 // This example checks that, if we are in production mode, csrf is enabled.
 // It throws an error and crashes the app otherwise.
@@ -44,101 +68,12 @@ if (sails.config.environment === 'production' && !sails.config.csrf) {
 ### Notes
 > The built-in meaning of the settings in `sails.config` are, in some cases, only interpreted by Sails during the "lift" process.  In other words, changing some options at runtime will have no effect.  To change the port your app is running on, for instance, you can't just change `sails.config.port`-- you'll need to change or override the setting in a configuration file or as a command-line argument, etc., then restart the server.
 
-<!--
-# 404
-### What is this?
-The default 404 handler.
-
-### Description
-
-If a request is made that has no matching [routes](https://github.com/balderdashy/sails-wiki/blob/0.9/routes.md), Sails will respond using this handler:
 
 
-```javascript
-module.exports[404] = function pageNotFound(req, res, defaultNotFoundBehavior) {
+# Configuring the CLI
+When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  But in Sails, there are also a handful of powerful options available for configuring the global Sails CLI itself.
 
-  // If the user-agent wants a JSON response,
-  // the views hook is disabled,
-  // or the 404 view doesn't exist,
-  // send JSON
-  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[404]) {
-    return res.json({
-      status: 404
-    }, 404);
-  }
-
-  // Otherwise, serve the `views/404.*` page
-  res.view('404');
-  
-};
-```
-For more information on 404/notfound handling in Sails/Express, check out: http://expressjs.com/faq.html
-
-
-
-# 500
-### What is this?
-The default 500 error handler.
-
-### Description
-
-If an error is thrown, Sails will respond using this default error handler:
-
-
-```javascript
-
-module.exports[500] = function serverErrorOccurred(errors, req, res, defaultErrorBehavior) {
-
-  // Ensure that `errors` is a list
-  var displayedErrors = (typeof errors !== 'object' || !errors.length) ? [errors] : errors;
-
-  // Ensure that each error is formatted correctly
-  // Then log them
-  for (var i in displayedErrors) {
-    if (!(displayedErrors[i] instanceof Error)) {
-      displayedErrors[i] = new Error(displayedErrors[i]);
-    }
-    sails.log.error(displayedErrors[i]);
-  }
-
-  // In production, don't display any identifying information about the error(s)
-  var response = {};
-  if (sails.config.environment === 'development') {
-    response = {
-      status: 500,
-      errors: displayedErrors
-    };
-  }
-
-  // If the user-agent wants a JSON response,
-  // the views hook is disabled,
-  // or the 500 view doesn't exist,
-  // send JSON
-  if (req.wantsJSON || !sails.config.hooks.views || !res.view || !sails.hooks.views.middleware[500]) {
-
-    // Create JSON-readable version of errors
-    for (var j in response.errors) {
-      response.errors[j] = {
-        error: response.errors[j].message
-      };
-    }
-
-    return res.json(response, 500);
-  }
-
-
-  // Otherwise
-  // create HTML-readable stacks for errors
-  for (var k in response.errors) {
-    response.errors[k] = response.errors[k].stack;
-  }
-  // and send the `views/500.*` page
-  res.view('500', response);
-
-};
-```
--->
-
+The `.sailsrc` file is unique from other configuration sources in Sails in that it may also be used to configure the global Sails (i.e. command-line tool).  The main reason to configure the command-line is to customize the [generators]() that are used when `sails generate` and `sails new` are run.
 
 
 # Connections
