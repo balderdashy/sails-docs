@@ -340,137 +340,19 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
 ### Example
 
-... 
+`GET http://localhost:1337/purchase/1`
 
-<!--
-
-`GET http://localhost:1337/:model/:id`
-
-To look up a particular Product from the database:
-
-_via the URL bar in your web browser_
-`http://localhost:1337/pony/1`
 
 #### Expected Response
 
-```json
+ ```json
  {
-   "name": "Rainbow Dash",
+   "amount": 49.99,
    "id": 1,
    "createdAt": "2013-10-18T01:22:56.000Z",
    "updatedAt": "2013-10-18T01:22:56.000Z"
  }
-
-```
-
-### Find All (Shortcuts)
-
-`http://localhost:1337/:model/find/`
-
-Like before, we will get all the ponies in the database.  This time, using the `Blueprint Shortcut` routes.
-
-via web browser 'http://localhost:1337/pony/find/'
-
-#### Expected Response
-
-```json
- [{
-   "name": "Rainbow Dash",
-   "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-10-18T01:22:56.000Z"
- },
- {
-   "name": "Twilight Sparkle",
-   "id": 47,
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }]
-
-```
-
-### Find One (Shortcuts)
-
-`http://localhost:1337/:model/find/:recordID`
-
-Like before, we will get just one Pony.  This time, using the `Blueprint Shortcut` routes.
-
-via web browser 'http://localhost:1337/pony/find/47'
-
-#### Expected Response
-
-```json
- {
-   "name": "Twilight Sparkle",
-   "id": 47,
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }
-
-```
-
-
-### Find Model/Collection associated with a particular record (REST)
-
-`GET http://localhost:1337/:model/:recordID/:associatedAttribute`
-
-Get all `Pet`s associated with the 'Pony' who has an ID of 4. 
-
-via Web Browser
-
-`GET http://localhost:1337/pony/4/pets`
-
-#### Expected Response
-```json
-[{
-    "name": "Gummy",
-    "species": "crocodile"
-    "id": 10,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  },{
-    "name": "Bubbles",
-    "species": "crackhead"
-    "id": 15,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  }]
-
-```
-
-### Find Model/Collection associated with a particular record (Shortcuts)
-HALP!
-
-#### Expected Response
-```json
-[{
-    "name": "Gummy",
-    "species": "crocodile"
-    "id": 10,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  },{
-    "name": "Bubbles",
-    "species": "crackhead"
-    "id": 15,
-    "createdAt": "2014-02-13T00:06:50.603Z",
-    "updatedAt": "2014-02-13T00:06:50.603Z"
-  }]
-
-```
--->
-
-<!--
-+ **limit** - the maximum number of records to send back-- useful for pagination.
-+ **skip** - the number of records to skip-- useful for pagination. e.g. the following would return the second page of 30 results `http://localhost:1337/pony?skip=30&limit=30`
-+ **sort** - the order in which to sort results, e.g. `http://localhost:1337/pony?sort=name DESC` or `http://localhost:1337/pony?sort=createdAt ASC`
-
--->
-
-
-### Notes
-
-> For the associations examples, while the blueprint routes work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
+ ```
 
 # Create A Record
 
@@ -561,12 +443,10 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
 
 #### Create a record (REST)
 
-`POST http://localhost:1337/:model`
-
 Create a new pony named "AppleJack" with a hobby of "pickin".
 
-_via Postman_
-`POST` `'http://localhost:1337/pony'`
+`POST http://localhost:1337/pony`
+
 
 
 #### JSON Request Body
@@ -590,11 +470,7 @@ _via Postman_
 
 #### Create a record (shortcuts)
 
-`http://localhost:1337/:model/create?`
-
-via web browser
-
-`http://localhost:1337/pony/create?name=Shutterfly&&best_pony=yep`
+`http://localhost:1337/pony/create?name=Shutterfly&best_pony=yep`
 
 #### Expected Response
 
@@ -612,17 +488,13 @@ via web browser
 
 ### Examples with One Way Associations
 
-You can create associations between models in 2 different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
+You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
 
 These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
 ### Create record while associating w/ existing record (REST)
 
-`POST http://localhost:1337/:model`
-
 Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
-
-via Postman
 
 `POST http://localhost:1337/pony`
 
@@ -654,11 +526,7 @@ via Postman
 
 ### Create new record while associating w/ another new record (REST)
 
-`POST http://localhost:1337/:model`
-
 Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
-
-via Postman
 
 `POST http://localhost:1337/pony`
 
