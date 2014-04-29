@@ -9,27 +9,33 @@ Sails exposes several low-level methods for realtime communication with the clie
 For raw access to the underlying [socket.io](http://socket.io/) singleton, you can still access `sails.io`.  But starting with Sails v0.10, you should use `sails.sockets` for most low-level use-cases involving sockets, since `sails.io` may be deprecated in an upcoming release to allow for more flexibility/extensibility in the underlying socket implementation.
 
 
-# sails.sockets.join( `socket`, `roomName` )
+# sails.sockets.join()
+
 ### Purpose
 Subscribe a socket to a generic room.
 
 ### Usage
+
+```js
+sails.sockets.join(socket, roomName);
+```
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|---------|
 | 1 | `socket`   | ((string)) -or- ((Request)) | The socket to be subscribed.  May be specified by the socket's id or a Request (`req`) which originated from it.
 | 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
 
-### Example Usage
-```javascript
-// Controller action
+### Example
 
+In a controller action:
+
+```javascript
 subscribeToFunRoom: function(req, res) {
-    var roomName = req.param('roomName');
-    sails.sockets.join(req.socket, roomName);
-    res.json({
-      message: 'Subscribed to a fun room called '+roomName+'!'
-    });
+  var roomName = req.param('roomName');
+  sails.sockets.join(req, roomName);
+  res.json({
+    message: 'Subscribed to a fun room called '+roomName+'!'
+  });
 }
 ```
 
