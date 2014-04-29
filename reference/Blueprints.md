@@ -45,8 +45,6 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
 >
-> + The examples URLs below assume you are running your Sails app locally on the default port (1337).  If your app is deployed on a server someplace, a different port, or with an SSL certificate, you'll need to adjust your usage accordingly.
-
 
 # Find
 
@@ -67,13 +65,13 @@ Consequently, the blueprint API methods covered in this section of the documenta
     <tr>
       <td>REST</td>
       <td>
-        <code>GET http://localhost:1337/:modelIdentity</code>
+        <code>GET /:modelIdentity</code>
       </td>
     </tr>
     <tr>
       <td>Shortcut</td>
       <td>
-        <code>GET http://localhost:1337/:modelIdentity/find</code>
+        <code>GET /:modelIdentity/find</code>
       </td>
     </tr>
   </tbody>
@@ -110,7 +108,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
       <td>
         To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model.
         <br/>
-        For instance, if our `Purchase` model has an **amount** attribute, we could send `GET http://localhost:1337/purchase?amount=99.99` to return a list of $99.99 purchases.
+        For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
         <br/><strong>Example:</strong>
         <code>
           ?amount=99.99
@@ -210,7 +208,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
 Assuming a `Purchase` model and an empty `PurchaseController`, to find the first 30 purchases from the database, enter the following into the URL bar in your web browser:
 
-`GET http://localhost:1337/purchase`
+`GET /purchase`
 
 
 #### Expected Response
@@ -260,13 +258,13 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find the first
     <tr>
       <td>REST</td>
       <td>
-        <code>GET http://localhost:1337/:modelIdentity/:id</code>
+        <code>GET /:modelIdentity/:id</code>
       </td>
     </tr>
     <tr>
       <td>Shortcut</td>
       <td>
-        <code>GET http://localhost:1337/:modelIdentity/findOne/:id</code>
+        <code>GET /:modelIdentity/findOne/:id</code>
       </td>
     </tr>
   </tbody>
@@ -308,7 +306,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
         <br/><strong>Example:</strong>
         <code>
-          http://localhost:1337/product/7
+          /product/7
         </code>
 
         <br/>
@@ -340,7 +338,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
 ### Example
 
-`GET http://localhost:1337/purchase/1`
+`GET /purchase/1`
 
 
 #### Expected Response
@@ -356,7 +354,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
 # Create A Record
 
-### `POST /:modelIdentity`
+### `POST /:modelIdentity` or `GET /:modelIdentity/create`
 
 ### Purpose
 Create a new model instance in the database.
@@ -400,17 +398,8 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
       </td>
       <td>
         
-        Pass in body parameter(s) with the same name as the attribute(s) defined on your model to set those values on your new record.
-        <br/>
-        For instance, if our `Product` model has **price** and **sku** attributes, we could send `POST http://localhost:1337/product?price=99.99&sku=f3291481da13bc` to create a $99.99 product with the specified sku.
-        <br/>
+        For <code>POST</code> (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
         Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?price=99.99&amp;sku=f3291481da13bc
-        </code>
-
       </td>
     </tr>
 
@@ -445,7 +434,7 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
 
 Create a new pony named "AppleJack" with a hobby of "pickin".
 
-`POST http://localhost:1337/pony`
+`POST /pony`
 
 
 
@@ -470,7 +459,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 #### Create a record (shortcuts)
 
-`http://localhost:1337/pony/create?name=Shutterfly&best_pony=yep`
+`GET /pony/create?name=Shutterfly&best_pony=yep`
 
 #### Expected Response
 
@@ -496,7 +485,7 @@ These examples assume the existence of `Pet` and `Pony` APIs which can be create
 
 Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
 
-`POST http://localhost:1337/pony`
+`POST /pony`
 
 #### JSON Request Body
 ```json
@@ -528,7 +517,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 
 Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
 
-`POST http://localhost:1337/pony`
+`POST /pony`
 
 
 #### JSON Request Body
@@ -577,7 +566,7 @@ Waterline does not currently support creating new records that are configured fo
 
 # Update A Record
 
-### `PUT /:modelIdentity/:id`
+### `PUT /:modelIdentity/:id` or `GET /:modelIdentity/update/:id`
 
 Update an existing record.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
@@ -615,7 +604,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
 
         <br/><strong>Example:</strong>
         <code>
-          PUT http://localhost:1337/product/<strong>5</strong>
+          PUT /product/<strong>5</strong>
         </code>
 
         <br/>
@@ -636,17 +625,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
       </td>
       <td>
         
-        Pass in body parameter(s) with the same name as the attribute(s) defined on your model to set those values on the desired record.
-        <br/>
-        For instance, if our `Product` model has **price** and **sku** attributes, we could send `PUT http://localhost:1337/product/5?price=99.99&amp;sku=f3291481da13bc` to change the price and sku of the product with id 5.
-        <br/>
-        Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?price=99.99&amp;sku=f3291481da13bc
-        </code>
-
+        For <code>POST</code> (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
       </td>
     </tr>
 
@@ -671,80 +650,6 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
   </tbody>
 </table>
 
-Additionally, a comet message will be published to all sockets subscribed to the instance room, e.g.:
-
-```javascript
-//
-// New usage:
-//
-
-// On the client
-
-// You can still do `message`, but you'll get the 0.9-style comet messages (see below).
-
-// New comet events you can subscribe to (for each model):
-socket.on('user', console.log);
-socket.on('pet', console.log);
-socket.on('chair', console.log);
-
-// -> Later, one of these might log something like:
-/*
-{
- verb: 'created',
- data: { name: 'Scott' },
- id: 15
-}
-
-{
- verb: 'updated'
- data: { name: 'Ricky' },
- id: 15
-}
-
-{
- verb: 'destroyed'
- data: { },
- id: 15
-}
-
-{
- verb: 'removedFrom',
- association: { alias: 'petHorses', model: 'Horse' },
- message: 'Removed a Horse from User\'s `petHorses`',
- data: { id: 'b728a8efcd2941313043' },
- id: 7
-}
-
-{
- verb: 'addedTo',
- association: { alias: 'petHorses', model: 'Horse' },
- message: 'Added a Horse to User\'s `petHorses`',
- data: { id: 'b728a8efcd2941313043;, name: 'Sea Biscuit' },
- id: 7
-}
-*/
-
-
-
-//
-// 0.9-style usage:
-//
-
-// On the client
-socket.on('message', console.log);
-
-// -> Later, this might log something like:
-/*
-{
- model: 'user',
- verb: 'update',
- data: { name: 'Scott' },
- id: 8
-}
-*/
-
-```
-
 
 This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller.
 
@@ -752,12 +657,16 @@ This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.
 
 ### Update Record (REST)
 
-`PUT http://localhost:1337/:model/:id`
-
 Change AppleJack's hobby to "kickin".
 
-_via Postman_
-`PUT http://localhost:1337/pony/47?hobby=kickin`
+`PUT /pony/47`
+
+#### JSON Request Body
+```json
+{
+  "hobby": "kickin"
+}
+```
 
 ### Expected Response
 ```json
@@ -772,11 +681,7 @@ _via Postman_
 
 ### Update Record (Shortcuts)
 
-`http://localhost:1337/:model/update?`
-
-via web browser
-
-`http://localhost:1337/pony/update/5?name=Shutterfly_myLove`
+`GET /pony/update/5?name=Shutterfly_myLove`
 
 #### Expected Response
 
@@ -791,15 +696,17 @@ via web browser
 ```
 
 ### Add association between two existing records (REST)
-`POST http://localhost:1337/:model/:recordID/:collectionName?`
-
 
 Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 
-via Postman
+`POST /pony/4/pets`
 
-`POST http://localhost:1337/pony/4/pets?id=12`
-
+#### JSON Request Body
+```json
+{
+  "id": 15
+}
+```
 
 #### Expected Response
 ```json
@@ -826,22 +733,20 @@ via Postman
 ```
 
 ### Add association between two existing records (Shortcuts)
-`http://localhost:1337/:model/update?`
-
-#### Expected Response
-```json
-
-```
+`GET /pony/4/pets/add/15`
 
 ### Remove Association (Many-To-Many) (REST)
-`DELETE http://localhost:1337/:model/:recordID/:collectionName?`
-
 
 Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
-via Postman
+`DELETE /pony/4/pets`
 
-`DELETE http://localhost:1337/pony/4/pets?id=12`
+#### JSON Request Body
+```json
+{
+  "id": 12
+}
+```
 
 #### Expected Response
 ```json
@@ -865,33 +770,11 @@ via Postman
 
 #### Remove Association (Many-To-Many) (Shortcuts)
 
-`http://localhost:1337/:model/:recordID/:collectionName/remove?`
-
-
-#### Expected Response
-```json
-
-```
-
-### Notes
-
-> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
-
-
-
-
-
-
-
-
-
-
-
-
+`GET /pony/4/pets/remove/12`
 
 # Destroy A Record
 
-### `DELETE /:modelIdentity/:id`
+### `DELETE /:modelIdentity/:id` or `GET /:modelIdentity/:id/destroy`
 
 Delete an existing record specified by `id` from the database forever.
 
@@ -935,7 +818,7 @@ Consequently, all sockets currently subscribed to the instance room will be unsu
 
         <br/><strong>Example:</strong>
         <code>
-          DELETE http://localhost:1337/product/<strong>7</strong>
+          DELETE /product/<strong>7</strong>
         </code>
 
         <br/>
@@ -970,13 +853,16 @@ Consequently, all sockets currently subscribed to the instance room will be unsu
 
 #### Destroy (REST)
 
-`DELETE http://localhost:1337/:model/:id`
-
 Delete Pinkie Pie.
 
-via web browser
+`DELETE /pony`
 
-`DELETE http://localhost:1337/pony/47`
+#### JSON Request Body
+```json
+{
+  "id": 4
+}
+```
 
 #### Expected Response
 
@@ -984,7 +870,7 @@ via web browser
 {
   "name": "Pinkie Pie",
   "hobby": "kickin",
-  "id": 47,
+  "id": 4,
   "createdAt": "2013-10-18T01:23:56.000Z",
   "updatedAt": "2013-11-26T22:55:19.951Z"
 }
@@ -992,11 +878,7 @@ via web browser
 
 #### Destroy (Shortcuts)
 
-`http://localhost:1337/:model/destroy/:recordID`
-
-via web browser
-
-`http://localhost:1337/pony/destroy/5`
+`GET /pony/destroy/5`
 
 #### Expected Response
 
@@ -1009,10 +891,3 @@ via web browser
   "id": 5
 }
 ```
-
-
-### Notes
-
-> Assumes the existence of both `PonyController` and a model called 'Pony'.
-
-> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
