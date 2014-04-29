@@ -13,12 +13,12 @@ For raw access to the underlying [socket.io](http://socket.io/) singleton, you c
 ### Purpose
 Subscribe a socket to a generic room.
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
-|---|-----------------------------|---------------------|------------|
-| 1 | Socket object |      `object`       | Yes        |
-| 2 |           Room Name        | `string`            | Yes         |
+### Usage
+
+|   | Argument   | Type        | Details |
+|---|------------|:-----------:|---------|
+| 1 | `socket`   | ((string)) -or- ((Request)) | The socket to be subscribed.  May be specified by the socket's id or a Request (`req`) which originated from it.
+| 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
 
 ### Example Usage
 ```javascript
@@ -137,7 +137,7 @@ Get the ID of a socket object.
 #### Parameters
 |   |          Description        | Accepted Data Types | Required ? |
 |---|-----------------------------|---------------------|------------|
-| 1 |           Socket        | `object`            | Yes         |
+| 1 |           Socket            | ((Socket))          | Yes        |
 
 A socket object's ID can be used to send direct messages to that socket (see `sails.sockets.emit`) or get information about the rooms that the socket is subscribed to (see `sails.sockets.socketRooms`).
 

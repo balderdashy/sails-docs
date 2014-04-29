@@ -942,7 +942,8 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 
 # sails.config.views
 
-Configuration for your app's server-side [views](./#!documentation/reference/Views/Views.html).  The options are conventionally specified in the `config/views.js` configuration file.
+Configuration for your app's server-side [views](./#!documentation/reference/Views).  The options are conventionally specified in the [`config/views.js`]() configuration file.
+
 
 
 ### Options
@@ -955,5 +956,5 @@ Configuration for your app's server-side [views](./#!documentation/reference/Vie
 
 ### Notes
 
-> + If your app is NOT using `ejs`, the default view engine, Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts with a custom view engine like Jade or Handlebars, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
+> + If your app is NOT using `ejs` (the default view engine) Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts when using a custom view engine like Jade or Handlebars, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
 

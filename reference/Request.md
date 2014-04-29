@@ -434,18 +434,14 @@ if (req.isSocket){
 
 # req.params.all()
 
+Returns the value of _all_ parameters sent in the request merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](./#!documentation/reference/req.param) for details.
+
 ### Usage
-`req.params.all();`
 
+```js
+req.params.all();
+```
 
-This 
-+ route parameters ([`req.params`]())
-  + e.g. a request "/foo/4" to route `/foo/:id` has route params `{ id: 4 }`
-+ query string parameters ([`req.query`]())
-  + e.g. a request "/foo?email=5" has query params `{ email: 5 }`
-+ body parameters ([`req.body`]())
-  + e.g. a request with a parseable body (e.g. JSON, url-encoded, or XML) has body parameters equal to its parsed value
-  
 
 ### Example
 
@@ -466,8 +462,16 @@ Product.update({sku: sku})
 .then(function (newProduct) {
   // ...
 });
+```
 
 
+# req.socket
+
+### Usage
+
+```js
+req.socket;
+```
 
 # req.socket.id
 ### Purpose
