@@ -208,7 +208,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
 </iframe>
 -->
 
-Assuming a `Purchase` model and an empty `PurchaseController`, to find and subscribe to the first 30 purchases from the database, enter the following into the URL bar in your web browser:
+Assuming a `Purchase` model and an empty `PurchaseController`, to find the first 30 purchases from the database, enter the following into the URL bar in your web browser:
 
 `GET http://localhost:1337/purchase`
 
@@ -275,7 +275,7 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find and subsc
 
 The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key]() of the desired record.
 
-If the request was sent via a connected socket (via socket.io), the socket will be "subscribed" to the resulting record.  That means that when the returned record is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+If the request was sent via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
 
 ### Parameters
@@ -470,18 +470,7 @@ HALP!
 
 ### Notes
 
-> The 'Find One' method does not accept filtering/pagination/sorting query parameters (they wouldn't make a whole lot of sense)
-
 > For the associations examples, while the blueprint routes work for all types of associations, keep in mind that the `associatedAttribute` will be the key name specified in your associatING model config for the associatED model or collection.  
-
-
-
-
-
-
-
-
-
 
 # Create A Record
 
@@ -494,11 +483,11 @@ Attributes can be sent in the HTTP body as form-encoded values or JSON.
 ### Description
 Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
 
-Additionally, a `create` event will be published to all listening sockets. 
+Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest) for more info).
 
 This is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller.
 
-If the request is sent using socket.io, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room). 
+If the request is sent via a socket, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room). 
 
 This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller.
 
