@@ -945,10 +945,9 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 Configuration for your app's server-side [views](./#!documentation/reference/Views).  The options are conventionally specified in the [`config/views.js`]() configuration file.
 
 
+### Properties
 
-### Options
-
-| Option    | Type       | Default   | Details |
+| Property    | Type       | Default   | Details |
 |-----------|:----------:|-----------|---------|
 | `layout`  | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](./#!documentation/reference/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.
 | `engine`  | ((string)) | `"ejs"` | The [view engine](./#!documentation/reference/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.

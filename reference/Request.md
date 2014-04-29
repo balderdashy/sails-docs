@@ -502,7 +502,7 @@ else {
 
 # req.url
 
-The URL path from the current Request (`req`).
+The path of the current Request (`req`), as requested by the user-agent (i.e. client.)
 
 ### Usage
 
@@ -511,3 +511,17 @@ req.url;
 // -> "/donor/37"
 ```
 
+
+
+### Example
+
+Assuming a client sends the following request:
+
+> [http://localhost:1337/donor/37]()
+
+`req.url` will be defined as follows:
+
+```js
+req.url;
+// -> "/donor/37"
+```
