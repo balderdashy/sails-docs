@@ -37,51 +37,80 @@ else
 ```
 
 
-# req.param(`string`)
-### Purpose
-This method searches the http request body , header, and query string for a parameter with name equal to the supplied parameter.  
+# req.param()
+Returns the value of the parameter with the specified name.
 
-### Example Usage
+### Usage
+
 ```javascript
-var myParam = req.param('blueStuff');
-
-// myParam would contain the value of 'blueStuff' 
-
+req.param(nameOfParam);
 ```
+
+### Details
+
+`req.param()` searches the url path, query string, and body of the request for the specified parameter.  If no parameter value exists anywhere in the request with the given `name`, it returns `undefined`.
+
++ url path parameters ([`req.params`]())
+  + e.g. a request "/foo/4" to route `/foo/:id` has url path params `{ id: 4 }`
++ query string parameters ([`req.query`]())
+  + e.g. a request "/foo?email=5" has query params `{ email: 5 }`
++ body parameters ([`req.body`]())
+  + e.g. a request with a parseable body (e.g. JSON, url-encoded, or XML) has body parameters equal to its parsed value
+
+
+### Example
+
+Consider a route (`POST /product/:sku`) which points to a blueprint, controller, or policy with the following code:
+
+```javascript
+req.param('sku');
+// -> 123
+```
+
+We can get the expected result by sending the `sku` parameter any of the following ways:
+
++ `POST /product/123`
++ `POST /product?sku=123`
++ `POST /product`
+    + with a JSON request body: `{ "sku": 123 }`
+
+
 
 ### Notes
-> This is nice.  Sails makes it nicer by making ALL params available through req.params.all().  See this method somewhere below.
+> + If you'd like to get ALL parameters from ALL sources (including the URL path, query string, and parsed request body) you can use [`req.params.all()`]().
 
 
-# req.files
-### Purpose
-This is an object containing information about files uploaded through the Express bodyParser.  
 
-### Example Usage
-If a file field was named "image" and as a value contained a sucessfully uploaded file, req.files.image would contain the following File object:
+
+
+# req.file()
+
+Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart uploads (aka [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified field (`fieldName`).
+
+### Usage
+`req.file(fieldName);`
+
+
+### Example
+
+In a controller action or policy:
+
 ```javascript
-{ size: 74643,
-  path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
-  name: 'edge.png',
-  type: 'image/png',
-  hash: false,
-  lastModifiedDate: Thu Aug 09 2012 20:07:51 GMT-0700 (PDT),
-  _writeStream: 
-   { path: '/tmp/8ef9c52abe857867fd0a4e9a819d1876',
-     fd: 13,
-     writable: false,
-     flags: 'w',
-     encoding: 'binary',
-     mode: 438,
-     bytesWritten: 74643,
-     busy: false,
-     _queue: [],
-     _open: [Function],
-     drainable: true },
-  length: [Getter],
-  filename: [Getter],
-  mime: [Getter] }
+var SomeReceiver = require('../services/SomeReceiver');
+req.file('avatar').upload( SomeReceiver(), function (err, files) {
+    if (err) return res.serverError(err);
+    return res.json({
+      message: files.length + ' file(s) uploaded successfully!',
+      files: files
+    });
+  });
+});
 ```
+
+
+### Notes
+> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance.
+
 
 
 
@@ -403,35 +432,41 @@ if (req.isSocket){
 
 
 
-# req.params.all(`string`)
-### Purpose
-This gathers all parameters found in both http AND sockets requests.  It returns the value of the parameter supplied, assuming it exists.  
+# req.params.all()
 
-### Example Usage
+### Usage
+`req.params.all();`
+
+
+This 
++ route parameters ([`req.params`]())
+  + e.g. a request "/foo/4" to route `/foo/:id` has route params `{ id: 4 }`
++ query string parameters ([`req.query`]())
+  + e.g. a request "/foo?email=5" has query params `{ email: 5 }`
++ body parameters ([`req.body`]())
+  + e.g. a request with a parseable body (e.g. JSON, url-encoded, or XML) has body parameters equal to its parsed value
+  
+
+### Example
+
+Update the product with the specified `sku`, setting new values using the parameters which were passed in:
+
 ```javascript
-if (req.isSocket){
+var values = req.params.all();
 
-  // Assuming you passed a parameter called 'socketParam' with value 'true' via socket.get()
+// Don't allow `price` or `isAvailable` to be edited.
+delete values.price;
+delete values.isAvailable;
 
-  console.log(req.params.all('socketParam'));
+// At this point, `values` might look something like this:
+// values ==> { displayName: 'Bubble Trouble Bubble Bath' }
 
-  // true
+Product.update({sku: sku})
+.set(values)
+.then(function (newProduct) {
+  // ...
+});
 
-} else {
-
-  // Assuming you passed a parameter called 'httpParam' with value 'true' in the query string
-
-  console.log(req.params.all('httpParam'));
-
-  // true
-
-  res.view();
-
-}
-
-// They Both Work !
-
-```
 
 
 # req.socket.id
