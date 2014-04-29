@@ -588,6 +588,9 @@ Controller Code
     
 ```
 
+### Blueprints and .subscribe()
+> By default, the blueprint `find` and `findOne` actions will call `.subscribe()` to subscribe a requesting socket to all returned records.  However, the blueprint `update` and `delete` actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
+
 # .unsubscribe(`request`,`records`,[`contexts`])
 ### Purpose
 This method will unsubscribe a socket from one or more model instances.
@@ -622,6 +625,10 @@ This subscribes a client to publishCreate events for the model.  Any connections
 | 1 | Request   | `request object`  | Yes        |
 
 *Note*: `watch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
+
+### Blueprints and .watch()
+> By default, the blueprint `find` and `findOne` actions will *not* call `.watch()` on the model class.  This behavior can be changed for all models by setting the `sails.config.blueprints.autoWatch` to `true`, or for a specific model by setting `autoWatch` to true in the model's class file.
+
 
 # .unwatch(`request`)
 
