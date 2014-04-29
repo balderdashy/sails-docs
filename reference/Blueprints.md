@@ -82,7 +82,7 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 The **find()** blueprint action returns a list of records from the model (given by `:modelIdentity`) as a JSON array of objects.  Records are filtered, paginated, and sorted based on parameters parsed from the request.
 
-If the request was sent via a connected socket (via socket.io), the socket will be "subscribed" to all records returned.  That means that when one of the returned records is updated or deleted, a comet message will be sent over the socket.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+If the request was sent via a socket request, the requesting socket will be "subscribed" to all records returned.  If any of the returned records is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
 
 ### Parameters
