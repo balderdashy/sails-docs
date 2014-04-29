@@ -940,40 +940,13 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 
 
 
-# Views
-### What is this?
-Server-sent views are a classic and effective way to get your app up and running. Views are normally served from controllers, but by default, Sails also exposes routes to allow you to preview your viewsn in a browser.
+# sails.config.views
 
-### Description
+Configuration for your app's server-side [views](./#!documentation/reference/Views/Views.html).
 
+| Option    | Type       | Default   | Details |
+|-----------|:----------:|-----------|---------|
+| `layout`  | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](./#!documentation/reference/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`. <br/><br/> **Note:** If your app is not using the default EJS view engine, this option will always be `false`.
+| `engine`  | ((string)) | `"ejs"` | The [view engine](./#!documentation/reference/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
+| `locals` | ((object)) | `{}` | Default data to be included as [view locals](./#!documentation/reference/Views/Locals.html) every time a server-side view is compiled anywhere in this app. |
 
-#### Routes
-If enabled, views are automatically served at logical routes, based on their paths. This comes in handy any time you just want to serve some static HTML. (i.e. a brochure site)
-
-For example, the static view files below are available at the specified routes:
-
-+ `views/catalog.ejs`     : `get /catalog`
-+ `views/catalog/index.ejs` : both `get /catalog` & `get /catalog/index`
-+ `views/catalog/story.ejs` : `get /catalog/story`
-
-
-#### Layouts
-Layouts are simply top-level HTML templates you can use as wrappers for your server-side views.  If you&rsquo;re using ejs, you can take advantage of Sails&rsquo; built-in `layout` support.
-
-With using a layout, when one of your views is served, it is injected into the `<%- body %>` partial defined in the layout.  This lets you reuse header and footer logic between views.
-
-The `layout` setting may be set to one of:
-
-+ false   ::  don&rsquo;t use a layout (just render the view by itself)
-+ &ldquo;string&rdquo;    ::  the relative path to your layout from your views folder (`views/`)
-
-If you&rsquo;d like to use more than one `layout` file, you can! 
-See the [full documentation on views](https://github.com/balderdashy/sails-wiki/blob/0.9/views.md) for more information.
-
-
-#### Using Layouts With Other View Engines
-In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
-
-Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
-
-If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. Jade, handlebars, haml, dust) you&rsquo;ll need to set this option to: `layout:false` and then rely on your view engine&rsquo;s built-in layout/partial support.
