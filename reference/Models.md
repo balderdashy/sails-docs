@@ -598,7 +598,7 @@ Sails exposes a handful of lifecycle callbacks on models that are called automat
 ##### Callbacks on `destroy`
 
   - beforeDestroy: fn(criteria, cb)
-  - afterDestroy: fn(cb)
+  - afterDestroy: fn(destroyedRecords, cb)
 
 
 ### Example
