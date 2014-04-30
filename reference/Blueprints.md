@@ -744,7 +744,13 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 #### Remove Association (Many-To-Many) (Shortcuts)
 
+#### Route 
+
 `GET /pony/4/pets/remove/12`
+
+#### Expected Response
+
+Same as above.
 
 # Destroy A Record
 
@@ -846,6 +852,7 @@ Delete Pinkie Pie.
 
 #### Destroy (Shortcuts)
 
+#### Route 
 `GET /pony/destroy/4`
 
 #### Expected Response
