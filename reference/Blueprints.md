@@ -16,7 +16,7 @@ There are three types of blueprint routes in Sails:
 
 + **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](./#!documentation/reference/Policies) to avoid unauthorized access.
 + **Shortcut routes**, where the action to take is encoded in the path.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.  Shortcut routes are very handy for development, but generally should be disabled in a production environment.
-+ **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` action, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
++ **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
 
 
 See the [blueprints subsection of the configuration reference](./#!documentation/reference/Configuration/blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
@@ -80,7 +80,7 @@ Consequently, the blueprint API methods covered in this section of the documenta
 
 The **find()** blueprint action returns a list of records from the model (given by `:modelIdentity`) as a JSON array of objects.  Records are filtered, paginated, and sorted based on parameters parsed from the request.
 
-If the request was sent via a socket request, the requesting socket will be "subscribed" to all records returned.  If any of the returned records is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned.  If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
 
 ### Parameters
@@ -164,7 +164,7 @@ If the request was sent via a socket request, the requesting socket will be "sub
       </td>
       <td><bubble>string</bubble></td>
       <td>
-        The order of returned records- by default, records are returned sorted by primary key
+        The order of returned records
         
         <br/><strong>Example:</strong>
         <code>?sort=name%20ASC</code>
@@ -206,8 +206,9 @@ If the request was sent via a socket request, the requesting socket will be "sub
 </iframe>
 -->
 
-Assuming a `Purchase` model and an empty `PurchaseController`, to find the first 30 purchases from the database, enter the following into the URL bar in your web browser:
+Assuming a `Purchase` model and a `PurchaseController` without a custom `find` method, find the first 30 purchases from the database:
 
+#### Route 
 `GET /purchase`
 
 
@@ -232,10 +233,6 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find the first
 ### Notes
 
 > Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
-
-> For advanced filtering, you can send a `where` query parameter with a stringified JSON object.  This object will be passed directly to Waterline as a criteria for a find, i.e. `Pony.find().where(req.param('where'))`  This allows you to use `contains`, `>`, `<`, `!`, `startsWith`, `endsWith`, and more.  For more on query operators, check out [the Model documentation](https://github.com/balderdashy/sails-docs/edit/0.9/reference/Blueprints.md)
-
-
 
 # Find One
 
@@ -273,7 +270,7 @@ Assuming a `Purchase` model and an empty `PurchaseController`, to find the first
 
 The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key]() of the desired record.
 
-If the request was sent via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 
 
 ### Parameters
@@ -337,7 +334,9 @@ If the request was sent via a socket request, the requesting socket will be "sub
 
 
 ### Example
+Find the purchase with ID #1
 
+#### Route
 `GET /purchase/1`
 
 
@@ -365,12 +364,7 @@ Responds with a JSON object representing the newly created instance.  If a valid
 
 Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest) for more info).
 
-This is equivalent to running `Pony.publishCreate( theNewlyCreatedPony.toJSON() )` in a custom controller.
-
-If the request is sent via a socket, the requesting socket will ALSO be subscribed to "updates"+"destroys" on the newly created model instance returned (instance room). 
-
-This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` in a custom controller.
-
+If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for .subscribe() for more info.
 
 ### Parameters
 
@@ -434,6 +428,7 @@ This is equivalent to running `Pony.subscribe(req.socket, theNewlyCreatedPony)` 
 
 Create a new pony named "AppleJack" with a hobby of "pickin".
 
+#### Route
 `POST /pony`
 
 
@@ -459,6 +454,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 #### Create a record (shortcuts)
 
+#### Route
 `GET /pony/create?name=Shutterfly&best_pony=yep`
 
 #### Expected Response
@@ -477,14 +473,15 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 ### Examples with One Way Associations
 
-You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create the associated record as you associate.  Check out the examples to see how. 
+You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how. 
 
-These examples assume the existence of `Pet` and `Pony` APIs which can be created using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  A One-To-One or a One Way association must have been configured for your models.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
+These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
 ### Create record while associating w/ existing record (REST)
 
 Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
 
+#### Route
 `POST /pony`
 
 #### JSON Request Body
@@ -517,6 +514,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 
 Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
 
+#### Route
 `POST /pony`
 
 
@@ -547,22 +545,6 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
   "updatedAt": "2013-11-26T22:54:19.951Z"
 }
 ```
-<!--
-### Examples with Many-To-Many Associations
-
-Waterline does not currently support creating new records that are configured for a Many-To-Many association while simoultaniously making that association with another record.  Because of this, it cannot be done using blueprints.  Instead, you will have to do a create followed by an update.
--->
-
-### Notes
-
-> Don't forget to use double quotes for the keys in your JSON request body - single quotes won't work!
-
-
-
-
-
-
-
 
 # Update A Record
 
@@ -650,15 +632,13 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
   </tbody>
 </table>
 
-
-This is equivalent to running `Pony.publishUpdate( pinkiesId, changedAttributes.toJSON() )` in a custom controller.
-
 ### Examples
 
 ### Update Record (REST)
 
 Change AppleJack's hobby to "kickin".
 
+#### Route
 `PUT /pony/47`
 
 #### JSON Request Body
@@ -671,7 +651,7 @@ Change AppleJack's hobby to "kickin".
 ### Expected Response
 ```json
 {
-  "name": "Pinkie Pie",
+  "name": "AppleJack",
   "hobby": "kickin",
   "id": 47,
   "createdAt": "2013-10-18T01:23:56.000Z",
@@ -681,24 +661,17 @@ Change AppleJack's hobby to "kickin".
 
 ### Update Record (Shortcuts)
 
-`GET /pony/update/5?name=Shutterfly_myLove`
+`GET /pony/update/47?hobby=kickin`
 
 #### Expected Response
 
-```javascript
-{
-  "name": "Shutterfly_myLove",
-  "best_pony": "yep",
-  "createdAt": "2014-02-24T21:02:16.068Z",
-  "updatedAt": "2014-02-24T21:07:41.695Z",
-  "id": 5
-}
-```
+Same as above.
 
 ### Add association between two existing records (REST)
 
 Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 
+#### Route
 `POST /pony/4/pets`
 
 #### JSON Request Body
@@ -713,7 +686,7 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 {
   "name": "Pinkie Pie",
   "hobby": "kickin",
-  "id": 47,
+  "id": 4,
   "pets": [{
       "name": "Gummy",
       "species": "crocodile"
@@ -722,7 +695,7 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
       "updatedAt": "2014-02-13T00:06:50.603Z"
     },{
       "name": "Bubbles",
-      "species": "crackhead"
+      "species": "wiggleworm"
       "id": 15,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
@@ -739,6 +712,7 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 
 Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
+#### Route
 `DELETE /pony/4/pets`
 
 #### JSON Request Body
@@ -783,9 +757,7 @@ Destroys the model instance which matches the **id** parameter.  Responds with a
 
 Additionally, a `destroy` event will be published to all sockets subscribed to the instance room. 
 
-This is equivalent to running `Pony.publishDestroy( pinkiesId )` in a custom controller.
-
-Consequently, all sockets currently subscribed to the instance room will be unsubscribed from it.
+Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
 
 
 ### Parameters
@@ -814,12 +786,7 @@ Consequently, all sockets currently subscribed to the instance room will be unsu
       </td>
       <td>
         
-        The primary key value of the record to destroy.
-
-        <br/><strong>Example:</strong>
-        <code>
-          DELETE /product/<strong>7</strong>
-        </code>
+        The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
 
         <br/>
 
@@ -855,6 +822,7 @@ Consequently, all sockets currently subscribed to the instance room will be unsu
 
 Delete Pinkie Pie.
 
+#### Route
 `DELETE /pony`
 
 #### JSON Request Body
@@ -878,16 +846,8 @@ Delete Pinkie Pie.
 
 #### Destroy (Shortcuts)
 
-`GET /pony/destroy/5`
+`GET /pony/destroy/4`
 
 #### Expected Response
 
-```json
-{
-  "name": "Shutterfly_myLove",
-  "best_pony": "yep",
-  "createdAt": "2014-02-24T21:02:16.068Z",
-  "updatedAt": "2014-02-24T21:07:41.695Z",
-  "id": 5
-}
-```
+Same as above.
