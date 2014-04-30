@@ -83,6 +83,21 @@ return res.view('oven/cook');
 
 
 
+# res.locals
+### Purpose
+Response local variables are scoped to the request, thus only available to the view(s) rendered during that request / response cycle, if any. Otherwise this API is identical to app.locals.
+
+This object is useful for exposing request-level information such as the request pathname, authenticated user, user settings etcetera.
+
+### Example Usage
+```javascript
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+  res.locals.authenticated = ! req.user.anonymous;
+  next();
+});
+```
+
 
 
 
@@ -160,36 +175,6 @@ return res.redirect('back');
 
 
 
-# res.serverError()
-
-This method is used to send a [500]() response back down to the client indicating that some kind of server error occurred.
-
-
-### Usage
-
-```js
-return res.serverError(err);
-```
-
--or-
-
-```js
-return res.serverError();
-```
-
-### Details
-
-By default, `res.serverError()` checks if the request "wants JSON", then either serves a default error page ("views/500.js") or sends a JSON error response.  In both cases, it sends the response with a 500 "Server Error" status code.  Sails will include the specified error (`err`) in its response unless the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production';`.
-
-
-### Notes
->+ `res.serverError()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/serverError.js`, which is bundled automatically in newly generated Sails apps.  If a `serverError.js` response method does not exist in your app, Sails will implicitly use the default behavior.
-
-
-
-
-
-
 # res.negotiate()
 
 Given an error (`err`), send an appropriate error response back down to the client.
@@ -213,8 +198,14 @@ If a more specific diagnosis cannot be determined, Sails will default to [`res.s
 
 
 ### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 >+ `res.negotiate()` (like other userland response methods) can be overridden - just define a response module (`/responses/negotiate.js`) and export a function definition.
 >+ This method is used as the default handler for uncaught errors in Sails.  That means it is called automatically if an error is thrown in _any_ request handling code, _but only within the initial step of the event loop_.  You should always specifically handle errors that might arise in callbacks/promises from asynchronous code.
+
+
+
+
+
 
 
 # res.ok()
@@ -227,13 +218,6 @@ Send a 200 ("OK") response back down to the client.
 ```js
 return res.ok(data);
 ```
-
--or-
-
-```js
-return res.ok(data);
-```
-
 -or-
 
 ```js
@@ -246,13 +230,19 @@ return res.ok(data, pathToView);
 return res.ok(data, url);
 ```
 
+-or-
+
+```js
+return res.ok();
+```
+
 ### Details
 
-By default, `res.ok()` performs content-negotiation.
+By default, `res.ok()` performs content-negotiation based its arguments, your app's environment, and the type of request.
 
-If a view (`pathToView`) is provided, Sails serves that view.  If a url expression (`url`) is provided, Sails redirects to that URL.  If some data (`data`) is provided, Sails either uses it to form the JSON response, or sends it to the specified view as [locals]().
+If a view (`pathToView`) is provided, Sails serves that view.  If a url expression (`url`) is provided, Sails redirects to that URL.  If some data (`data`) is provided, Sails either uses it to form the JSON response or sends it to the specified view as [locals]().
 
-If the request "wants JSON", Sails will always send JSON.  If no data is provided a default response body will be sent:
+If the request "wants JSON", Sails will always send JSON.  If no `data` is provided a default response body will be sent:
 
 ```json
 {
@@ -260,10 +250,21 @@ If the request "wants JSON", Sails will always send JSON.  If no data is provide
 }
 ```
 
+If the request "wants JSON" and the `data` is a string, `data` will be wrapped in an object and included under the "message" key:
+
+```json
+{
+  "status": 200,
+  "message": "..."
+}
+```
+
 
 ### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 >+ `res.ok()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/ok.js`, which is bundled automatically in newly generated Sails apps.  If an `ok.js` response method does not exist in your app, Sails will implicitly use the default behavior.
 >+ This method is used by [blueprint actions]() to send a success response.  Therefore as you might expect, it is a great place to marshal response data for clients which expect data in a specific format, i.e. to convert data to XML, or it wrap in an additional object (for Ember clients).
+>+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
 
 
 
@@ -274,116 +275,253 @@ If the request "wants JSON", Sails will always send JSON.  If no data is provide
 
 
 
+# res.serverError()
 
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
+This method is used to send a [500]() ("Server Error") response back down to the client indicating that some kind of server error occurred.
 
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-========================================================================================
-TODO: go over the rest of these methods/properties below and flesh them out
-
-       || 
-       \/
-========================================================================================
-
-
-
-
-
-
-# res.forbidden([`error message`])
-
-Calls `/config/403.js` which renders the default view for an HTTP 403 error along with an optional error message.
 
 ### Usage
+
 ```js
-res.forbidden(err);
+return res.serverError(err);
 ```
 
-### Example Usage
+-or-
 
-In a controller,
+```js
+return res.serverError();
+```
+
+### Details
+
+By default, `res.serverError()` performs content-negotiation based its arguments, your app's environment, and the type of request.
+
+If the request "wants JSON", Sails will serve a default error page ("views/500.js") or send a JSON error response.  In both cases, it sends the response with a 500 "Server Error" status code.
+
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+>+ `res.serverError()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/serverError.js`, which is bundled automatically in newly generated Sails apps.  If a `serverError.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
+>+By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
+
+
+
+# res.forbidden()
+
+This method is used to send a [403]() ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
+
+
+### Usage
+
+```js
+return res.forbidden(err, pathToView);
+```
+
+-or-
+
+
+```js
+return res.forbidden(err, url);
+```
+
+-or-
+
+```js
+return res.forbidden(err);
+```
+
+-or-
+
+```js
+return res.forbidden();
+```
+
+### Details
+
+
+By default, `res.forbidden()` performs content-negotiation based on its arguments, your app's environment, and the type of request.
+
+If the request "wants JSON", Sails will send a JSON response.  Otherwise it calls `res.redirect()` using the specified `url`.  If a view (`pathToView`) is specified, Sails will serve the view.  In any case, a 403 ("Forbidden") status code will be sent.
+
+If a request "wants JSON", but no `err` argument is provided, a default response body will be sent:
+
+```json
+{
+  "status": 403
+}
+```
+
+If a request "wants JSON" and a string `err` argument is provided, the error message will be wrapped in an object under the "error" key:
+
+```json
+{
+  "status": 403,
+  "error": "..."
+}
+```
+
+### Example
 
 ```javascript
-login: function(req,res){
-
-    // Use appropriate authentication method
-
-    if (!isAuthenticated)
-      res.forbidden('YOU SHALL NOT PASS!');  
+if ( !req.session.authorized ) {
+  return res.forbidden('YOU SHALL NOT PASS!');
 }
-
-
 ```
 
 
-# res.notFound([`error message`])
-### Purpose
-Calls `/config/404.js` which renders the default view for an HTTP 404 error along with an optional error message.
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+>+ `res.forbidden()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/forbidden.js`, which is bundled automatically in newly generated Sails apps.  If a `forbidden.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
+>+By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
 
 
 
-# res.badRequest([`error message`])
-### Purpose
-Calls `/config/400.js` which renders the default view for an HTTP 400 error along with an optional error message.
+
+
+
+# res.notFound()
+
+This method is used to send a [404]() ("Not Found") response back down to the client.  This is normally used to indicate that the user-agent tried to get, update, or delete something that doesn't exist.
+
+
+### Usage
+
+```js
+return res.notFound(err, pathToView);
+```
+
+-or-
+
+
+```js
+return res.notFound(err, url);
+```
+
+-or-
+
+```js
+return res.notFound(err);
+```
+
+-or-
+
+```js
+return res.notFound();
+```
+
+### Details
+
+
+By default, `res.notFound()` performs content-negotiation based on its arguments, your app's environment, and the type of request.
+
+If the request "wants JSON", Sails will send a JSON response.  Otherwise it calls `res.redirect()` using the specified `url`.  If a view (`pathToView`) is specified, Sails will serve the view.  In any case, a 404 ("Not Found") status code will be sent.
+
+`res.notFound()` includes the specified error (`err`) in its JSON response unless the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`.
+
+If a request "wants JSON", but no `err` argument is provided, a default response body will be sent:
+
+```json
+{
+  "status": 403
+}
+```
+
+If a request "wants JSON" and a string `err` argument is provided, the error message will be wrapped in an object under the "error" key:
+
+```json
+{
+  "status": 403,
+  "error": "..."
+}
+```
+
+### Example
+
+```javascript
+if ( !req.session.authorized ) {
+  return res.notFound('YOU SHALL NOT PASS!');
+}
+```
+
+
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+>+ `res.notFound()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/notFound.js`, which is bundled automatically in newly generated Sails apps.  If a `notFound.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
+>+By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
+
+
+
+
+
+
+
+
+
+
+
+# res.badRequest()
+
+This method is used to send a [400]() ("Bad Request") response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.
+
+
+### Usage
+
+```js
+return res.badRequest(err, url);
+```
+
+-or-
+
+```js
+return res.badRequest(err);
+```
+
+-or-
+
+```js
+return res.badRequest();
+```
+
+### Details
+
+By default, `res.badRequest()` performs content-negotiation based on its arguments, your app's environment, and the type of request.
+
+If the request "wants JSON", Sails will send a JSON response.  Otherwise it calls `res.redirect()` using the specified `url`.  If a view (`pathToView`) is specified, Sails will serve the view.  In any case, a 400 ("Bad Request") status code will be sent.
+
+If a request "wants JSON", but no `err` argument is provided, a default response body will be sent:
+
+```json
+{
+  "status": 400
+}
+```
+
+If a request "wants JSON" and a string `err` argument is provided, the error message will be wrapped in an object under the "error" key:
+
+```json
+{
+  "status": 400,
+  "error": "..."
+}
+```
+
+
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+>+ `res.badRequest()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/badRequest.js`, which is bundled automatically in newly generated Sails apps.  If a `badRequest.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
+>+ By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
+
+
+
+
+
+
+
+
+
 
 
 
@@ -415,29 +553,53 @@ res.set({
 ```
 
 
-# res.get(`string`)
-### Purpose
-Get the case-insensitive response header `field`
+# res.get()
 
-### Example Usage
+Returns the current value of the specified response header (`header`).
+
+### Usage
+```js
+res.get();
+```
+
+### Example
 ```javascript
 res.get('Content-Type');
-// "text/plain"
+// -> "text/plain"
+```
 
+### Notes
+>+ The `header` argument is case-insensitive.
+>+Response headers can be changed up until the response is sent - see [`res.set()`]().
+
+
+
+
+
+
+
+
+
+
+
+
+
+# res.cookie()
+
+Sets a cookie with name (`name`) and value (`value`) to be sent along with the response.
+
+
+### Usage
+```js
+res.cookie(name, value [,options]);
 ```
 
 
-# res.cookie(`name`, `value`, `[options]`)
-### Purpose
-Set cookie name to value, where which may be a string or object converted to JSON. The path option defaults to "/".
+### Details
 
-### Example Usage
-```javascript
-res.cookie('name', 'tobi', { domain: '.example.com', path: '/admin', secure: true });
-res.cookie('rememberme', '1', { expires: new Date(Date.now() + 900000), httpOnly: true });
-```
+The "path" option defaults to "/".
 
-The maxAge option is a convenience option for setting "expires" relative to the current time in milliseconds. The following is equivalent to the previous example.
+The "maxAge" option is a convenience option for setting "expires" relative to the current time in milliseconds. The following is equivalent to the previous example.
 
 ```javascript
 res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true })
@@ -457,24 +619,57 @@ res.cookie('name', 'tobi', { signed: true });
 ```
 
 
-### Notes
-> Later you may access this value through the req.signedCookie object.
+### Example
+```javascript
+res.cookie('name', 'tobi', {
+  domain: '.example.com',
+  path: '/admin',
+  secure: true
+});
 
-# res.clearCookie(`name`, `[options]`)
-### Purpose
-Clear cookie name. The path option defaults to "/".
-### Example Usage
+res.cookie('rememberme', '1', {
+  expires: new Date(Date.now() + 900000),
+  httpOnly: true
+});
+```
+
+
+
+
+# res.clearCookie()
+
+Clears cookie (`name`) in the response.
+
+### Usage
+
+```js
+res.clearCookie(name [,options]);
+```
+
+### Details
+
+The path option defaults to "/".
+
+
+### Example
 ```javascript
 res.cookie('name', 'tobi', { path: '/admin' });
 res.clearCookie('name', { path: '/admin' });
 ```
 
 
-# res.location()
-### Purpose
-Set the location header.
 
-### Example Usage
+
+
+
+
+# res.location()
+Sets the "Location" response header to the specified URL expression (`url`).
+
+### Usage
+res.location(url);
+
+### Example
 ```javascript
 res.location('/foo/bar');
 res.location('foo/bar');
@@ -482,39 +677,32 @@ res.location('http://example.com');
 res.location('../login');
 res.location('back');
 ```
-You can use the same kind of urls as in res.redirect().
 
-For example, if your application is mounted at /blog, the following would set the location header to /blog/admin:
+### Notes
+>+ You can use the same kind of URL expressions as in res.redirect().
 
+
+
+
+
+
+
+
+
+
+# res.send()
+
+Send a simple response.  `statusCode` defaults to 200 ("OK").
+
+This method is used in the underlying implementation of most of the other terminal response methods.
+
+### Usage
 ```javascript
-res.location('admin')
+return res.send([statusCode,] body);
 ```
 
-# res.charset
-### Purpose
-Assign the charset. Defaults to "utf-8".
 
-### Example Usage
-```javascript
-res.charset = 'value';
-res.send('some html');
-// Content-Type: text/html; charset=value
-```
-
-# res.send(`[body|status]` , `[body]`)
-### Purpose
-Send a response.
-
-### Example Usage
-```javascript
-res.send(new Buffer('whoop'));
-res.send({ some: 'json' });
-res.send('some html');
-res.send(404, 'Sorry, we cannot find that!');
-res.send(500, { error: 'something blew up' });
-res.send(200);
-```
-
+### Details
 This method performs a myriad of useful tasks for simple non-streaming responses such as automatically assigning the Content-Length unless previously defined and providing automatic HEAD and HTTP cache freshness support.
 
 When a Buffer is given the Content-Type is set to "application/octet-stream" unless previously defined as shown below:
@@ -543,12 +731,36 @@ res.send(500)
 ```
 
 
+### Example
+```javascript
+res.send(new Buffer('whoop'));
+res.send({ some: 'json' });
+res.send('some html');
+res.send(404, 'Sorry, we cannot find that!');
+res.send(500, { error: 'something blew up' });
+res.send(200);
+```
 
-# res.json(`[status|body]` , `[body]`)
-### Purpose
-Send a JSON response. This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
 
-### Example Usage
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+
+
+
+# res.json()
+
+Sends a JSON response composed of a stringified version of the specified `data`.
+
+### Usage
+```js
+return res.json([statusCode, ] data);
+```
+
+### Details
+
+This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
+
+### Example
 ```javascript
 res.json(null)
 res.json({ user: 'tobi' })
@@ -556,23 +768,40 @@ res.json(500, { error: 'message' })
 ```
 
 ### Notes
-> Don't forget this method name is all lower case.  I always forget that.
+> + Don't forget this method's name is all lowercase.
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 
-# res.jsonp(`[status|body]` , `[body]`)
-### Purpose
-Send a JSON response with JSONP support. This method is identical to res.json() however opts-in to JSONP callback support.
 
-### Example Usage
-```javascript
-res.jsonp(null)
-// null
 
-res.jsonp({ user: 'tobi' })
-// { "user": "tobi" }
+# res.jsonp()
 
-res.jsonp(500, { error: 'message' })
-// { "error": "message" }
+Send a JSON or JSONP response.
+
+Identical to [`res.json()`](), except if a "callback" parameter exists, a [JSONP]() response will be sent instead, using the value of the "callback" parameter as the name of the function wrapper.
+
+### Usage
+```js
+return res.jsonp([statusCode, ] data);
 ```
+
+### Example
+
+```js
+return res.jsonp({
+  users: [{
+    name: 'Thelma',
+    id: 1
+  }, {
+    name: 'Leonardo'
+    id: 2
+  }]
+});
+```
+
+<!--
+
+Need to make this better:
+
 By default the JSONP callback name is simply callback, however you may alter this with the jsonp callback name setting. The following are some examples of JSONP responses using the same code:
 
 ```javascript
@@ -586,14 +815,30 @@ app.set('jsonp callback name', 'cb');
 res.jsonp(500, { error: 'message' })
 // foo({ "error": "message" })
 ```
+-->
+
+### Notes
+> + Don't forget this method's name is all lowercase.
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 
 
 
-# res.type(`type`)
-### Purpose
-Sets the Content-Type to the mime lookup of type, or when "/" is present the Content-Type is simply set to this literal value.
 
-### Example Usage
+
+
+
+# res.type()
+
+Sets the "Content-Type" response header to the specified `type`.
+
+This method is pretty forgiving (see examples below), but note that if `type` contains a `"/"`, `res.type()` assumes it is a MIME type and interprets it literally.
+
+### Usage
+```javascript
+res.type(type);
+```
+
+### Example
 ```javascript
 res.type('.html');
 res.type('html');
@@ -604,64 +849,76 @@ res.type('png');
 
 
 
-# res.format(`object`)
-### Purpose
-Performs content-negotiation on the request Accept header field when present. This method uses req.accepted, an array of acceptable types ordered by their quality values, otherwise the first callback is invoked. When no match is performed the server responds with 406 "Not Acceptable", or invokes the default callback.
 
-The Content-Type is set for you when a callback is selected, however you may alter this within the callback using res.set() or res.type() etcetera.
 
-The following example would respond with { "message": "hey" } when the Accept header field is set to "application/json" or "*/json", however if "*/*" is given then "hey" will be the response.
+# res.attachment()
 
-### Example Usage
+Sets the "Content-Disposition" header of the current response to "attachment". If a `filename` is given, then the "Content-Type" will be automatically set based on the extension of the file (e.g. `.jpg` or `.html`), and the "Content-Disposition" header will be set to "filename=`filename`".
+
+### Usage
 ```javascript
-res.format({
-  'text/plain': function(){
-    res.send('hey');
-  },
-  
-  'text/html': function(){
-    res.send('hey');
-  },
-  
-  'application/json': function(){
-    res.send({ message: 'hey' });
-  }
-});
-```
-In addition to canonicalized MIME types you may also use extnames mapped to these types, providing a slightly less verbose implementation:
-
-```javascript
-res.format({
-  text: function(){
-    res.send('hey');
-  },
-  
-  html: function(){
-    res.send('hey');
-  },
-  
-  json: function(){
-    res.send({ message: 'hey' });
-  }
-});
+res.attachment([filename]);
 ```
 
-
-# res.attachment(`[filename]`)
-### Purpose
-Sets the Content-Disposition header field to "attachment". If a filename is given then the Content-Type will be automatically set based on the extname via res.type(), and the Content-Disposition's "filename=" parameter will be set.
-
-### Example Usage
+### Example
 ```javascript
 res.attachment();
-// Content-Disposition: attachment
+// -> response header will contain:
+//   Content-Disposition: attachment
 
 res.attachment('path/to/logo.png');
-// Content-Disposition: attachment; filename="logo.png"
-// Content-Type: image/png
+// -> response header will contain:
+//   Content-Disposition: attachment; filename="logo.png"
+//   Content-Type: image/png
 ```
 
 
+
+
+
+
+
+
+
+
+
+
+<!--
+ res.links()
+Sets the "Link" header of the response using the given `links`.
+
+### Usage
+```js
+res.links(links);
+```
+
+### Example
+
+```javascript
+res.links({
+  next: 'http://api.example.com/users?page=2',
+  last: 'http://api.example.com/users?page=5'
+});
+res.send(200);
+```
+
+yields the following response header:
+
+```http
+Link: <http://api.example.com/users?page=2>; rel="next", 
+      <http://api.example.com/users?page=5>; rel="last"
+```
+
+
+
+-->
+
+
+
+
+
+
+<!--
 
 # res.sendfile(`path`, `[options]` , `[fn]`)
 ### Purpose
@@ -714,40 +971,21 @@ res.download('/report-12345.pdf', 'report.pdf', function(err){
 });
 ```
 
+-->
 
-# res.links()
-### Purpose
-Join the given links to populate the "Link" response header field.
 
-### Example Usage
-```javascript
-res.links({
-  next: 'http://api.example.com/users?page=2',
-  last: 'http://api.example.com/users?page=5'
-});
-```
-yields:
 
-```html
-Link: <http://api.example.com/users?page=2>; rel="next", 
-      <http://api.example.com/users?page=5>; rel="last"
-```
 
-# res.locals
-### Purpose
-Response local variables are scoped to the request, thus only available to the view(s) rendered during that request / response cycle, if any. Otherwise this API is identical to app.locals.
 
-This object is useful for exposing request-level information such as the request pathname, authenticated user, user settings etcetera.
 
-### Example Usage
-```javascript
-app.use(function(req, res, next){
-  res.locals.user = req.user;
-  res.locals.authenticated = ! req.user.anonymous;
-  next();
-});
-```
 
+
+
+
+
+
+
+<!--
 
 # res.render(`pathToView`, `[locals]` , `[callback]`)
 ### Purpose
@@ -763,3 +1001,80 @@ res.render('user', { name: 'Tobi' }, function(err, html){
   // ...
 });
 ```
+
+-->
+
+
+
+<!-- 
+
+
+
+res.format(`object`)
+### Purpose
+Performs content-negotiation on the request Accept header field when present. This method uses req.accepted, an array of acceptable types ordered by their quality values, otherwise the first callback is invoked. When no match is performed the server responds with 406 "Not Acceptable", or invokes the default callback.
+
+The Content-Type is set for you when a callback is selected, however you may alter this within the callback using res.set() or res.type() etcetera.
+
+The following example would respond with { "message": "hey" } when the Accept header field is set to "application/json" or "*/json", however if "*/*" is given then "hey" will be the response.
+
+### Example Usage
+```javascript
+res.format({
+  'text/plain': function(){
+    res.send('hey');
+  },
+  
+  'text/html': function(){
+    res.send('hey');
+  },
+  
+  'application/json': function(){
+    res.send({ message: 'hey' });
+  }
+});
+```
+In addition to canonicalized MIME types you may also use extnames mapped to these types, providing a slightly less verbose implementation:
+
+```javascript
+res.format({
+  text: function(){
+    res.send('hey');
+  },
+  
+  html: function(){
+    res.send('hey');
+  },
+  
+  json: function(){
+    res.send({ message: 'hey' });
+  }
+});
+```
+-->
+
+<!--
+res.charset
+
+Use [res.set()](https://github.com/visionmedia/express/wiki/Migrating%20from%203.x%20to%204.x#rescharset)
+
+Sets the "Charset" response header.
+
+Defaults to "utf-8".
+
+### Usage
+
+```js
+res.charset('utf-16');
+```
+
+
+### Example Usage
+```javascript
+res.charset = 'value';
+res.send('some html');
+// Content-Type: text/html; charset=value
+```
+-->
+
+

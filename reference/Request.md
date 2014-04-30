@@ -253,9 +253,13 @@ req.cookies.chocolatechip;
 
 # req.get()
 
-### Purpose
+Returns the value of the specified `header` field in this request (`req`).  Note that header names are case-_insensitive_.
 
-Returns the value of the specified header of this request (`req`).  Note that header names are case-_insensitive_.
+### Usage
+
+```js
+req.get(header);
+```
 
 ### Example
 Assuming `req` contains a header named 'myField' with value 'cat':
@@ -264,6 +268,13 @@ Assuming `req` contains a header named 'myField' with value 'cat':
 req.get('myField');
 // -> cat
 ```
+
+### Notes
+>+ The `header` argument is case-insensitive.
+>+ The `header` argument treats both "referrer" and "referer" as synonyms, because sp3ll1n6.
+
+
+
 
 
 # req.is()
