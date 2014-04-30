@@ -1,7 +1,7 @@
 # Logs
 
 ### Overview
-Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
+Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  It's usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
 ### Configuration
 The Sails logger's configuration is located in [`sails.config.log`](), for which a conventional configuration file ([`config/log.js`]()) is bundled in new Sails projects out of the box.
