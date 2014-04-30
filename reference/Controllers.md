@@ -9,7 +9,7 @@ Controllers are comprised of a collection of methods called *actions*.  Action m
 
 ```javascript
 function (req, res) {
-    return res.send(""Hi there!"");
+    return res.send("Hi there!");
 }
 ```
 
