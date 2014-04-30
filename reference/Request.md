@@ -7,34 +7,44 @@ A nice side effect of this compatibility is that, in many cases, you can paste e
 
 Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`]() and [`req.params.all()`]().  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
 
-The [Supported Features]() section includes a chart summarizes which methods and properties are available for each transport.
+The [Features](./features) overview at [www.sailsjs.org](http://www.sailsjs.org) includes a chart summarizes which methods and properties are available for each transport.
 
 
 # req.wantsJSON
-### Purpose
-This property is used to check whether JSON is in the list of acceptable `Content-Type`s provided by the user-agent in the HTTP request header.
 
-### Example Usage
-```javascript
-convertToXML = function(someRecord){
+A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)
 
-    // pretend there is code in here
-    // that parses JSON into XML
-}
-
-Users.findOne({name:'Walter'}).exec(function foundHim(err,record){
-    var myRecord = record;
-});
-
-// Check to see if the client can handle JSON.  If not, give them XML.
-
-if (req.wantsJSON)
-  res.send(myRecord)
-else
-  res.send(convertToXML(myRecord));
+`req.wantsJSON` is used by all of the [built-in custom responses]() in Sails.
 
 
+### Usage
+```js
+req.wantsJSON;
 ```
+
+### Details
+
+The intended purpose of `req.wantsJSON` is to provide a clean, reusable indication of whether the server should respond with JSON, or send back something else (like an HTML page or a 302 redirect.) It is not the right answer for _every_ content negotiation problem, but it is a simple, go-to solution for most use cases.
+
+For instance, for requests typed into the URL bar, all major browsers set an "Accept: text/plain;" request header.  In that case, `req.wantsJSON` is false.  But for many other cases, the distinction is not quite as clear.  In those scenarios, Sails uses heuristics to determine the best value for `req.wantsJSON`.
+
+Technically, `req.wantsJSON` inspects the request's `"Content-type"`, `"Accepts"`, and `"X-Requested-With"` headers to make an inference as to whether the request is expecting a JSON response.  If the request did not provide enough information to know for sure, Sails errs on the side of JSON (i.e. `req.wantsJSON` will be set to `true`.)
+
+This all makes your app more future-proof and less brittle: as best-practices for content negotiation change over time (e.g. a new type of consumer device or enterprise user-agent introduces a new header) Sails can patch `req.wantsJSON` at the framework level and modify the heuristics accordingly. Not to mention that it reduces code duplication and saves you the annoyance of manually inspecting headers in each of your routes.
+
+### Example
+```javascript
+if (req.wantsJSON) {
+  return res.json(data);
+}
+else {
+  return res.view(data);
+}
+```
+
+### Notes
+> + Lower-level content negotiation is, of course, still possible using `req.is()`, `req.accepts()`, `req.xhr`, and `req.get()`.
+> + As of Sails v0.10, requests originating from a WebSocket client always "want JSON".
 
 
 # req.param()
@@ -43,7 +53,7 @@ Returns the value of the parameter with the specified name.
 ### Usage
 
 ```javascript
-req.param(nameOfParam);
+req.param(name);
 ```
 
 ### Details
@@ -85,11 +95,23 @@ We can get the expected result by sending the `sku` parameter any of the followi
 
 # req.file()
 
-Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart uploads (aka [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified field (`fieldName`).
+Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart file uploads (an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified `field`.
 
 ### Usage
-`req.file(fieldName);`
+```js
+req.file(field);
+```
 
+### Details
+
+`req.file()` comes from [Skipper](https://github.com/balderdashy/skipper), an opinionated variant of the original Connect body parser that allows you to take advantage of high-performance, streaming file uploads without any dramatic changes in your application logic.
+
+
+### How It Works
+
+Skipper treats _all_ file uploads as streams.  This allows users to upload monolithic files with minimal performance impact and no disk footprint, all the while protecting your app against nasty denial-of-service attacks involving tmp files.
+
+When a multipart request hits your server, instead of writing temporary files to disk, Skipper buffers the request just long enough to run your app code, giving you an opportunity to "plug in" to a compatible blob receiver.  If you don't "plug in" the data from a particular field, the Upstream hits its "high water mark", the buffer is flushed, and subsequent incoming bytes on that field are ignored.
 
 ### Example
 
@@ -97,6 +119,7 @@ In a controller action or policy:
 
 ```javascript
 var SomeReceiver = require('../services/SomeReceiver');
+
 req.file('avatar').upload( SomeReceiver(), function (err, files) {
     if (err) return res.serverError(err);
     return res.json({
@@ -109,29 +132,10 @@ req.file('avatar').upload( SomeReceiver(), function (err, files) {
 
 
 ### Notes
-> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance.
+> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
 
 
 
-
-# req.route
-### Purpose
-This is an object containing information about the [route](http://omfgdogs.com) by which request traveled.
-### Example Usage
-```javascript
-console.log(req.route);
-
-/*
-
-{ path: '/user/:id?',
-  method: 'get',
-  callbacks: [ [Function] ],
-  keys: [ { name: 'id', optional: true } ],
-  regexp: /^\/user(?:\/([^\/]+?))?\/?$/i,
-  params: [ id: '12' ] }
-*/
-
-```
 
 
 # req.cookies
@@ -283,20 +287,6 @@ When "trust proxy" is `true`, parse the "X-Forwarded-For" ip address list and re
 
 
 
-# req.path
-### Purpose
-Returns the request URL pathname.
-
-### Example Usage
-```javascript
-// example.com/users?sort=desc
-
-console.log(req.path);
-
-// '/users'
-```
-
-
 # req.host
 ### Purpose
 Returns the hostname from the "Host" header field (without the port number)
@@ -311,130 +301,306 @@ console.log(req.host);
 
 
 # req.fresh
-### Purpose
-Check if the request is fresh - aka Last-Modified and/or the ETag still match, indicating that the resource is "fresh".
 
-### Example Usage
-```javascript
-console.log(req.fresh)
+A flag indicating the user-agent sending this request (`req`) wants "fresh" data (as indicated by the "[if-none-match](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)", "[cache-control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)", and/or "[if-modified-since](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25)" request headers.)
 
-//  true
+If the request wants "fresh" data, usually you'll want to `.find()` fresh data from your models and send it back to the client.
+
+### Usage
+```js
+req.fresh;
 ```
+
+### Example
+```js
+if (req.fresh) {
+  // The user-agent is asking for a more up-to-date version of the requested resource.
+  // Let's hit the database to get some stuff and send it back.
+}
+```
+
+### Notes
+> + See the [`node-fresh`](https://github.com/visionmedia/node-fresh) module for details specific to the implementation in Sails/Express/Koa/Connect.
 
 
 # req.xhr
-### Purpose
-Check if the request was issued with the "X-Requested-With" header field set to "XMLHttpRequest" (AJAX)
+A flag indicating whether the current request (`req`) appears to be an AJAX request (i.e. it was issued with its "X-Requested-With" header set to "XMLHttpRequest".)
 
-### Example Usage
+### Usage
+```js
+req.xhr;
+```
+
+### Example
 ```javascript
-console.log(req.xhr);
-//  true
-
+if (req.xhr) {
+  // Yup, it's AJAX alright.
+}
 ```
 
 
 # req.protocol
-### Purpose
-This property contains the transport protocol of the request
+The protocol used to send this request (`req`.)
 
-### Example Usage
+### Usage
 ```javascript
-console.log(req.protocol)
-//  "http"
+req.protocol;
+```
+
+### Example
+
+```js
+switch (req.protocol) {
+  case 'http':
+    // this is an HTTP request
+    break;
+  case 'https':
+    // this is a secure HTTPS request
+    break;
+}
 ```
 
 
 
 # req.secure
-### Purpose
-Is a [TLS](http://omfgdogs.com) connection established?
 
-### Example Usage
+Indicates whether or not the request was sent over a secure [TLS](http://omfgdogs.com) connection.
+
+### Usage
 ```javascript
-'https' == req.protocol;
+req.secure;
 ```
 
 
 
 # req.subdomains
-### Purpose
-This property is an array that contains all of the subdomains found in the URL
+An array containing all of the subdomains found in the request URL.
+
+
 
 
 
 # req.method
-### Purpose
-This property contains the 'method' specified in the http request?
+The request method (aka "verb".)
+
+### Usage
+```js
+req.method;
+```
+
+### Example
+
+If a client sends a POST request to `/product`:
+
+```js
+req.method;
+// -> "POST"
+```
 
 ### Notes
-> GET,POST,PUT,etc
 
-# req.originalUrl
-### Purpose
-This property contains the original URL
+> + All requests to a Sails server have a "method", even via WebSockets (this is thanks to the request interpreter)
+
+
+
+
+
+
 
 
 
 # req.acceptedLanguages
-### Purpose
-This property is an array that contains the acceptable languages specified by the user agent in the http request.
+An array containing the "acceptable" response languages specified by the user agent in the "[Accept-Language](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)" header of this request (`req`).
 
+### Usage
+```js
+req.acceptedLanguages;
+```
+
+### Details
+
+`req.acceptedLanguages` contains all the languages specified by the request's `Accept-Language` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).)
+
+This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n]() hook automatically serves different content to different locales, based on the request.
+
+
+### Example
+
+```js
+req.acceptedLanguages;
+// -> ['en-US', 'en']
+```
 
 ### Notes
-> This often isnt specified by the user agent
-
-# req.acceptedCharsets
-### Purpose
-This property is an array that contains the acceptable charsets specified by the user agent in the http request.
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+> + Browsers send the "Accept-Language" header automatically based on the user's language settings.
+> + You can expect the "Accept-Language" header to exist in most requests which originate from web browsers.
 
 
-### Notes
-> This often isnt specified by the user agent
 
-# req.acceptsCharset(`string`)
-### Purpose
-This method checks to see if the paramater supplied is found in req.acceptedCharsets.
-
-### Notes
-> Yo dawg.  I heard you like to iterate.  
 
 # req.acceptsLanguage()
-### Purpose
-This method checks to see if the paramater supplied is found in req.acceptedLanguages.
+
+Returns whether this request (`req`) considers a certain `language` "acceptable".
+
+
+### Usage
+
+```js
+req.acceptsLanguage(language);
+```
+
+### Details
+
+`req.acceptsLanguage()` returns true if a request has specified the given `language` as "acceptable" its `Accept-Language` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).)
+
+This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n]() hook automatically serves different content to different locales, based on the request.
+
+
+### Example
+
+If a request is sent with a `"Accept-Charset: utf-8"` header:
+
+```js
+req.acceptsCharset('utf-8');
+// -> true
+```
+
+### Notes
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+> + Browsers send the "Accept-Language" header automatically based on the user's language settings.
+> + You can expect the "Accept-Language" header to exist in most requests which originate from web browsers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# req.acceptedCharsets
+This property is an array that contains the acceptable charsets specified by the user agent in the request.
+
+
+
+### Usage
+
+```js
+req.acceptedCharsets;
+```
+
+### Details
+
+Useful for advanced content negotiation where a client may or may not support certain character sets, such as unicode (utf-8.)  This returns all of the "acceptable" charsets specified in this request's `Accept-Charset` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2).)
+
+
+
+### Example
+
+```js
+req.acceptedCharsets;
+// -> ['utf-8', 'utf-16']
+```
+
+### Notes
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+
+
+
+
+
+
+
+
+
+
+
+
+# req.acceptsCharset()
+
+Returns whether this request (`req`) is able to handle a specified `characterSet`.
+
+
+### Usage
+
+```js
+req.acceptsCharset(characterSet);
+```
+
+### Details
+
+Useful for advanced content negotiation where a client may or may not support certain character sets, such as unicode (utf-8.)  This method determines whether or not a request has specified the given `characterSet` as "acceptable" its `Accept-Charset` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2).)
+
+
+
+### Example
+
+If a request is sent with a `"Accept-Charset: utf-8"` header:
+
+```js
+req.acceptsCharset('utf-8');
+// -> true
+```
+
+### Notes
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 # req.isSocket
-### Purpose
-Returns whether or not the request was delivered via socket.io 
 
-### Example Usage
-```javascript
-// This would allow you to do different things with the same controller action
-// based on whether the request is coming via sockets or http
+A flag indicating whether or not this request (`req`) originated from a Socket.io connection.
 
 
-if (req.isSocket){
-
-  // You're a socket.  Do socket stuff.
-
-} else {
-
-  // Just an http request?  Have some HTML.
-
-  res.view();
-
-}
-
-
+### Usage
+```js
+req.isSocket;
 ```
+
+### Example
+```javascript
+if (req.isSocket){
+  // You're a socket.  Do cool socket stuff.
+}
+else {
+  // Just another HTTP request.
+}
+```
+
+### Notes
+
+> + Useful for allowing HTTP requests to skip calls to pubsub or WebSocket-centric methods like `subscribe()` or `watch()`  that depend on an actual Socket.io request.  This allows you to reuse backend code, using it for both WebSocket and HTTP clients.
+> + As you might expect, `req.isSocket` doesn't need to be checked before running methods which **publish to other** connected sockets.  Those methods don't depend on the request, so they work either way.
+
+
+
+
+
+
+
 
 
 
 # req.params.all()
 
-Returns the value of _all_ parameters sent in the request merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](./#!documentation/reference/req.param) for details.
+Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](./#!documentation/reference/req.param) for details.
 
 ### Usage
 
@@ -467,17 +633,37 @@ Product.update({sku: sku})
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 # req.socket
 
-If the current Request (`req`) originated from a connected Socket.io client, `req.socket` refers to _that_ connected application-layer socket.
+If the current Request (`req`) originated from a connected Socket.io client, `req.socket` refers to the raw Socket.io socket instance.
 
-On the other hand, if the current Request (`req`) did NOT originate from a Socket.io client, `req.socket` is not guaranteed to exist.  In the most common scenario, HTTP requests, `req.socket` actually _does exist_, but it refers instead to the underlying TCP socket. Before using `req.socket`, you should check the [`req.isSocket`]() flag to ensure the request arrived via a connected Socket.io client.
+### Usage
+
+```js
+req.socket;
+```
+
+
+### Details
 
 > **Warning:**
 > 
 > `req.socket` may be deprecated in a future release of Sails.  You should use the [`sails.sockets.*`](./#!documentation/reference/Sockets) methods instead.
 
-### Usage
+If the current request (`req`) did NOT originate from a Socket.io client, `req.socket` does not have the same meaning.  In the most common scenario, HTTP requests, `req.socket` actually _does exist_, but it refers instead to the underlying TCP socket. Before using `req.socket`, you should check the [`req.isSocket`]() flag to ensure the request arrived via a connected Socket.io client.
 
 `req.socket.id` is a unique identifier representing the current socket.  This is generated by the Socket.io server when a client first connects, and is a valid unique identifier until the socket is disconnected (e.g. if the client is a web browser, until the user closes her browser tab.)
 
@@ -500,28 +686,80 @@ else {
 ```
 
 
-# req.url
 
-The path of the current Request (`req`), as requested by the user-agent (i.e. client.)
+
+
+# req.path
+
+The URL pathname from the [request URL string](http://nodejs.org/api/http.html#http_message_url) of the current request (`req`). Note that this is the part of the URL after and including the leading slash (e.g. `/foo/bar`), but without the query string (e.g. `?name=foo`) or fragment (e.g. `#foobar`.)
+
 
 ### Usage
 
 ```js
-req.url;
-// -> "/donor/37"
+req.path;
 ```
-
 
 
 ### Example
 
 Assuming a client sends the following request:
 
-> [http://localhost:1337/donor/37]()
+> [http://localhost:1337/donor/37?name=foo#foobar]()
 
-`req.url` will be defined as follows:
+`req.path` will be defined as follows:
 
 ```js
-req.url;
+req.path;
 // -> "/donor/37"
 ```
+
+
+
+
+
+
+
+
+# req.url
+
+The querystring parser in Express/Connect removes the query string from the standard `req.url` in Node, so in Sails/Express/Koa/Connect, `req.url` is effectively a synonym for `req.path`.  Please see `req.path` for example usage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+# req.route
+### Purpose
+This is an object containing information about the [route](http://omfgdogs.com) by which request traveled.
+### Example Usage
+```javascript
+console.log(req.route);
+
+/*
+
+{ path: '/user/:id?',
+  method: 'get',
+  callbacks: [ [Function] ],
+  keys: [ { name: 'id', optional: true } ],
+  regexp: /^\/user(?:\/([^\/]+?))?\/?$/i,
+  params: [ id: '12' ] }
+*/
+```
+
+
+
+
+# req.originalUrl
+### Purpose
+This property contains the original URL
+-->
