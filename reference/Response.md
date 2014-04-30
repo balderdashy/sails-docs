@@ -83,26 +83,6 @@ return res.view('oven/cook');
 
 
 
-# res.locals
-### Purpose
-Response local variables are scoped to the request, thus only available to the view(s) rendered during that request / response cycle, if any. Otherwise this API is identical to app.locals.
-
-This object is useful for exposing request-level information such as the request pathname, authenticated user, user settings etcetera.
-
-### Example Usage
-```javascript
-app.use(function(req, res, next){
-  res.locals.user = req.user;
-  res.locals.authenticated = ! req.user.anonymous;
-  next();
-});
-```
-
-
-
-
-
-
 
 # res.redirect()
 

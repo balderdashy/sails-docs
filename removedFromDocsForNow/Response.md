@@ -1,4 +1,24 @@
 
+
+<!--
+# res.locals
+
+> Probably best to not go over res.locals in the mainline docs- it confuses the issue, and brings the number of sources for local variables up to 5, which is really too many places, don't you think?  Anything you can do with res.locals you can do with res.view(locals).
+
+The living  local variables are scoped to the request, thus only available to the view(s) rendered during that request / response cycle, if any. Otherwise this API is identical to app.locals.
+
+This object is useful for exposing request-level information such as the request pathname, authenticated user, user settings etcetera.
+
+### Example Usage
+```javascript
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+  res.locals.authenticated = ! req.user.anonymous;
+  next();
+});
+```
+-->
+
 <!--
  res.links()
 Sets the "Link" header of the response using the given `links`.
