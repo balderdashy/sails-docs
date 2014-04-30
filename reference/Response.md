@@ -506,20 +506,49 @@ If a request "wants JSON" and a string `err` argument is provided, the error mes
 
 
 # res.status()
-### Purpose
-Chainable alias of node's '`res.statusCode=`.
 
-### Example Usage
-```javascript
-res.status(404).sendfile('path/to/404.png');
+Set the status code of this response.
+
+### Usage
+```js
+res.status(200);
 ```
 
+### Example
+```javascript
+res.status(404);
+res.send('oops');
+```
 
-# res.set(`field`, `[value]`)
-### Purpose
-Set header `field` to `value`, or pass an object to set multiple fields at once.
+### Notes
+>+ The status code may be set up until the response is sent.
+>+ `res.status()` is effectively just a chainable alias of node's '`res.statusCode=`.
 
-### Example Usage
+
+
+
+
+
+
+
+
+# res.set()
+Sets specified response header (`header`) to the specified value (`value`).  
+
+Alternatively, you can pass in a single object argument (`headers`) to set multiple header fields at once, where the keys are the header field names, and the corresponding values are the desired values.
+
+### Usage
+```js
+res.set(header, value);
+```
+
+-or-
+
+```js
+res.set(headers);
+```
+
+### Example
 ```javascript
 
 res.set('Content-Type', 'text/plain');
@@ -539,7 +568,7 @@ Returns the current value of the specified response header (`header`).
 
 ### Usage
 ```js
-res.get();
+res.get(header);
 ```
 
 ### Example
