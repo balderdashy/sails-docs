@@ -9,103 +9,354 @@ Sails adds a few methods of its own to the `res` object, like [`res.view()`](). 
 
 The [Supported Features]() section includes a chart summarizes which methods and properties are available for each transport.
 
-(included here for now so it can be styled:)
-
-
-|                |  HTTP   | WebSockets |
-|----------------|---------|------------|
-| res.status() | :white_check_mark: | :white_check_mark: |
-| res.set()    | :white_check_mark: | :white_large_square: |
-| res.get()    | :white_check_mark: | :white_large_square: |
-| res.cookie() | :white_check_mark: | :white_large_square: |
-| res.clearCookie() | :white_check_mark: | :white_large_square: |
-| res.redirect() | :white_check_mark: | :white_check_mark: |
-| res.location() | :white_check_mark: | :white_large_square: |
-| res.charset  | :white_check_mark: | :white_check_mark: |
-| res.send()   | :white_check_mark: | :white_check_mark: |
-| res.json()   | :white_check_mark: | :white_check_mark: |
-| res.jsonp()  | :white_check_mark: | :white_check_mark: |
-| res.type()   | :white_check_mark: | :white_large_square: |
-| res.format() | :white_check_mark: | :white_large_square: |
-| res.attachment() | :white_check_mark: | :white_large_square: |
-| res.sendfile() | :white_check_mark: | :white_large_square: |
-| res.download() | :white_check_mark: | :white_large_square: |
-| res.links()  | :white_check_mark: | :white_large_square: |
-| res.locals    | :white_check_mark: | :white_check_mark: |
-| res.render() | :white_check_mark: | :white_large_square: |
-| res.view()   | :white_check_mark: | :white_large_square: |
-
-
-### Legend
-
-  - :white_check_mark: - supported feature
-  - :white_large_square: - feature not yet implemented for this transport
-  - :heavy_multiplication_x: - unsupported feature due to protocol restrictions
 
 
 
-# res.view([`pathToView`],[`locals`])
-### Purpose
-This is a Sails method that loads the appropriate view.  
+# res.view()
 
-##### Arguments
-+ **pathToView** - the relative path to a view file from [your app's views directory]().  File extension suffix (e.g. `.ejs` should be omitted.
+Respond to this request with an HTML page.
 
-### Example Usage
+Uses the [configured view engine]() to compile the [view template]() at `pathToView` into HTML.
 
-Assuming the example below is an action in UsersController.js .
+The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
 
-```javascript
-// ...
-riceNoodles: function(req,res){
-  // This would render the view /views/users/riceNoodles.ejs
-  return res.view();
-}
-// ...
+
+### Usage
+
+```js
+return res.view(pathToView, locals);
+```
+-or-
+
+```js
+return res.view(pathToView);
+```
+
+-or-
+
+```js
+return res.view(locals);
+```
+
+-or-
+
+```js
+return res.view();
+```
+
+### Arguments
+
+|   | Argument       | Type        | Details |
+|---|----------------|:-----------:|---------|
+| 1 | `pathToView`   | ((string))  | The path to the desired view file relative to your app's [`views` folder]() (usually [`views/`]()), without the file extension (e.g. `.ejs`), and with no trailing slash.<br/>Defaults to "identityOfController/nameOfAction".
+| 2 | `locals`       | ((object))  | Data to pass to the view template.  These explicitly specified locals will be merged in to Sails' [built-in locals]() and your [configured app-wide locals]().<br/>Defaults to `{}`.
+
+
+
+### Example
+
+Consider a conventionally configured Sails app with a call to `res.view()` in the `cook()` action of its `OvenController.js`.
+
+With no `pathToView` argument, `res.view()` will decide the path by combining the identity of the controller (`oven`) and the name of the action (`cook`):
+
+```js
+return res.view();
+// -> responds with `views/oven/cook.ejs`
+```
+
+Here's how you would load the same view using an explicit `pathToView`:
+
+```js
+return res.view('oven/cook');
+// -> responds with `views/oven/cook.ejs`
 ```
 
 
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+> + `res.view()` reads a view file from disk, compiles it into HTML, then streams it back to the client.  If you already have the view in memory, or don't want to stream the compiled HTML directly back to the client, use [`sails.hooks.views.render()`]() instead.
 
-# res.redirect(`url`)
-### Purpose
-Redirect to the given url with optional status code defaulting to 302 "Found".
-### Example Usage
+
+
+
+
+
+
+
+
+
+
+
+
+
+# res.redirect()
+
+Redirect the requesting user-agent to the given absolute or relative url.
+
+
+### Usage
+```js
+return res.redirect(url);
+```
+
+### Arguments
+
+|   | Argument       | Type        | Details |
+|---|----------------|:-----------:|---------|
+| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+
+
+
+### Details
+
+Sails/Express/Koa/Connect support a few forms of redirection, first being a fully qualified URI for redirecting to a different domain:
 
 ```javascript
-res.redirect('/foo/bar');
-res.redirect('http://example.com');
-res.redirect(301, 'http://example.com');
-res.redirect('../login');
+return res.redirect('http://google.com');
 ```
-Express supports a few forms of redirection, first being a fully qualified URI for redirecting to a different site:
+
+The second form is the domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/admin` would land you at http://example.com/admin:
 
 ```javascript
-res.redirect('http://google.com');
+return res.redirect('/checkout');
 ```
-The second form is the pathname-relative redirect, for example if you were on http://example.com/admin/post/new, the following redirect to /admin would land you at http://example.com/admin:
 
-```javascript
-res.redirect('/admin');
-```
+<!--
+Probably more confusing than helpful:
+
 This next redirect is relative to the mount point of the application. For example if you have a blog application mounted at /blog, ideally it has no knowledge of where it was mounted, so where a redirect of /admin/post/new would simply give you http://example.com/admin/post/new, the following mount-relative redirect would give you http://example.com/blog/admin/post/new:
 
 ```javascript
-res.redirect('admin/post/new');
+return res.redirect('admin/post/new');
 ```
+-->
+
+
 Pathname relative redirects are also possible. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
 
 ```javascript
-res.redirect('..');
+return res.redirect('..');
 ```
-The final special-case is a back redirect, redirecting back to the Referer (or Referrer), defaulting to / when missing.
+The final special-case is a back redirect, which allows you to redirect a request back where it came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default)
 
 ```javascript
-res.redirect('back');
+return res.redirect('back');
 ```
 
+### Notes
+> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+> + When your app calls `res.redirect()`, Sails sends a response with status code [302]().  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
+> + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`]()).
+> + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect()` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
+>  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
+>  + This behavior may change to more closely reflect HTTP in future versions of Sails.
+
+
+
+
+
+
+
+
+
+
+# res.serverError()
+
+This method is used to send a [500]() response back down to the client indicating that some kind of server error occurred.
+
+
+### Usage
+
+```js
+return res.serverError(err);
+```
+
+-or-
+
+```js
+return res.serverError();
+```
+
+### Details
+
+By default, `res.serverError()` checks if the request "wants JSON", then either serves a default error page ("views/500.js") or sends a JSON error response.  In both cases, it sends the response with a 500 "Server Error" status code.  Sails will include the specified error (`err`) in its response unless the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production';`.
+
+
+### Notes
+>+ `res.serverError()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/serverError.js`, which is bundled automatically in newly generated Sails apps.  If a `serverError.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+
+
+
+
+
+
+# res.negotiate()
+
+Given an error (`err`), send an appropriate error response back down to the client.
+
+### Usage
+
+```js
+return res.negotiate(err);
+```
+
+### Details
+
+`res.negotiate()` chooses the appropriate error-handling behavior from one of the following methods:
+
++ [`res.badRequest()`]()   (400)
++ [`res.forbidden()`]()    (403)
++ [`res.notFound()`]()     (404)
++ [`res.serverError()`]()  (500)
+
+If a more specific diagnosis cannot be determined, Sails will default to [`res.serverError()`]().
+
+
+### Notes
+>+ `res.negotiate()` (like other userland response methods) can be overridden - just define a response module (`/responses/negotiate.js`) and export a function definition.
+>+ This method is used as the default handler for uncaught errors in Sails.  That means it is called automatically if an error is thrown in _any_ request handling code, _but only within the initial step of the event loop_.  You should always specifically handle errors that might arise in callbacks/promises from asynchronous code.
+
+
+# res.ok()
+
+Send a 200 ("OK") response back down to the client.
+
+
+### Usage
+
+```js
+return res.ok(data);
+```
+
+-or-
+
+```js
+return res.ok(data);
+```
+
+-or-
+
+```js
+return res.ok(data, pathToView);
+```
+
+-or-
+
+```js
+return res.ok(data, url);
+```
+
+### Details
+
+By default, `res.ok()` performs content-negotiation.
+
+If a view (`pathToView`) is provided, Sails serves that view.  If a url expression (`url`) is provided, Sails redirects to that URL.  If some data (`data`) is provided, Sails either uses it to form the JSON response, or sends it to the specified view as [locals]().
+
+If the request "wants JSON", Sails will always send JSON.  If no data is provided a default response body will be sent:
+
+```json
+{
+  "status": 200
+}
+```
+
+
+### Notes
+>+ `res.ok()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/ok.js`, which is bundled automatically in newly generated Sails apps.  If an `ok.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ This method is used by [blueprint actions]() to send a success response.  Therefore as you might expect, it is a great place to marshal response data for clients which expect data in a specific format, i.e. to convert data to XML, or it wrap in an additional object (for Ember clients).
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+========================================================================================
+TODO: go over the rest of these methods/properties below and flesh them out
+
+       || 
+       \/
+========================================================================================
+
+
+
+
+
+
 # res.forbidden([`error message`])
-### Purpose
+
 Calls `/config/403.js` which renders the default view for an HTTP 403 error along with an optional error message.
+
+### Usage
+```js
+res.forbidden(err);
+```
 
 ### Example Usage
 
@@ -133,12 +384,6 @@ Calls `/config/404.js` which renders the default view for an HTTP 404 error alon
 # res.badRequest([`error message`])
 ### Purpose
 Calls `/config/400.js` which renders the default view for an HTTP 400 error along with an optional error message.
-
-
-
-# res.serverError([`error message`])
-### Purpose
-Calls `/config/500.js` which renders the default view for an HTTP 500 error along with an optional error message.
 
 
 
