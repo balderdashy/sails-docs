@@ -720,14 +720,14 @@ else {
 
 
 
-# req.params.all()
+# req.allParams()
 
 Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](./#!documentation/reference/req.param) for details.
 
 ### Usage
 
 ```js
-req.params.all();
+req.allParams();
 ```
 
 
@@ -736,7 +736,7 @@ req.params.all();
 Update the product with the specified `sku`, setting new values using the parameters which were passed in:
 
 ```javascript
-var values = req.params.all();
+var values = req.allParams();
 
 // Don't allow `price` or `isAvailable` to be edited.
 delete values.price;
@@ -752,7 +752,9 @@ Product.update({sku: sku})
 });
 ```
 
+### Notes
 
+>+ This method can also be called as `req.params.all()` - they are synonyms.
 
 
 
