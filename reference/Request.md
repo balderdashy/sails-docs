@@ -1,7 +1,7 @@
 # Request
 ### Overview
 
-Sails is built on [Express](), as well as many modules used in [Koa]() and [Connect]().  It also uses [Node's HTTP server]() conventions.  Because of this, you can access all of the Node and Express methods and properties on the `req` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
+Sails is built on [Express](), and uses [Node's HTTP server]() conventions.  Because of this, you can access all of the Node and Express methods and properties on the `req` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
 
 A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
 
@@ -97,6 +97,7 @@ We can get the expected result by sending the `sku` parameter any of the followi
 
 Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart file uploads (an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified `field`.
 
+
 ### Usage
 ```js
 req.file(field);
@@ -105,6 +106,10 @@ req.file(field);
 ### Details
 
 `req.file()` comes from [Skipper](https://github.com/balderdashy/skipper), an opinionated variant of the original Connect body parser that allows you to take advantage of high-performance, streaming file uploads without any dramatic changes in your application logic.
+
+This is a great simplification, but comes with a minor caveat:  **Text parameters must be included before files in the request body.**  Typically, these text parameters contain string metadata which provides additional information about the file upload.
+
+Multipart requests to Sails should send all of their **text parameters**. before sending _any_ **file parameters**.  For instance, if you're building a web frontend that communicates with Sails, you should include text parameters _first_ in any form upload or AJAX file upload requests.  The term "text parameters" refers to the metadata parameters you might along with the file(s) providing some additional information about this upload.
 
 
 ### How It Works
@@ -132,6 +137,8 @@ req.file('avatar').upload( SomeReceiver(), function (err, files) {
 
 
 ### Notes
+> + Remember that the client request's **text parameters must be sent first**, before the file parameters.
+> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files).
 > + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
 
 
