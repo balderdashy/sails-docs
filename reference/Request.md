@@ -139,165 +139,138 @@ req.file('avatar').upload( SomeReceiver(), function (err, files) {
 
 
 # req.cookies
+An object containing all of the [**unsigned cookies**]() from this request (`req`).
 
-### Purpose
-This contains the unsigned cookies sent by the user-agent.
 
-### Example Usage
+### Usage
 ```javascript
-// Assuming the browser sends a cookie named 'Yummy'
-console.log(req.cookies.name);
-
-// "Yummy"
-
+req.cookies;
 ```
 
-### Notes
-> You should never have to use this method.  While it can be overridden, by default Sails uses the express cookieParser middleware which blanks req.cookies 
+
+### Example
+Assuming the request contained a cookie named "chocolatechip" with value "Yummy:
+
+```javascript
+req.cookies.chocolatechip;
+// "Yummy"
+```
+
+
+
+
+
+
 
 # req.signedCookies
 
 ### Purpose
-This contains the signed cookies sent by the user-agent.
+An object containing all of the [**signed cookies**]() from this request (`req`).
 
-### Example Usage
+
+### Usage
 ```javascript
-// Assuming the browser sends a SIGNED cookie named 'Yummy'
-console.log(req.signedCookies.user);
-
-// "Yummy"
-
+req.signedCookies;
 ```
 
-### Notes
-> You should never have to use this method.  While it can be overridden, by default Sails uses the express cookieParser middleware which blanks req.signedCookies 
+
+
+### Example
+Assuming the request contained a signed cookie named "chocolatechip" with value "Yummy:
+
+```javascript
+req.cookies.chocolatechip;
+// "Yummy"
+```
+
+
+
+
+
+
 
 # req.get()
 
 ### Purpose
 
-Get the value of a field within the http request header with name equal to the supplied parameter.
+Returns the value of the specified header of this request (`req`).  Note that header names are case-_insensitive_.
 
-### Example Usage
+### Example
+Assuming `req` contains a header named 'myField' with value 'cat':
+
 ```javascript
-// assuming a header field named 'myField' with value 'cat'
-
-console.log(req.get('myField'));
-
-// cat
-
-```
-
-
-# req.accepts(`string`)
-### Purpose
-
-Checks if the supplied argument is found in the list of acceptable [Content-Type](http://omfgdogs.com)s specified by the user-agent who sent the request.
-### Example Usage
-```javascript
-// Accept: text/html
-req.accepts('html');
-//  "html"
-
-// Accept: text/*, application/json
-req.accepts('html');
-//  "html"
-req.accepts('text/html');
-//  "text/html"
-req.accepts('json, text');
-//  "json"
-req.accepts('application/json');
-//  "application/json"
-
-// Accept: text/*, application/json
-req.accepts('image/png');
-req.accepts('png');
-//  undefined
-
-// Accept: text/*;q=.5, application/json
-req.accepts(['html', 'json']);
-req.accepts('html, json');
-//  "json"
-```
-
-
-# req.accepted
-### Purpose
-Return an array of Accepted media types ordered from highest quality to lowest.
-
-### Example Usage
-```javascript
-console.log(req.accepted);
-
-/*
-  [ { value: 'application/json',
-      quality: 1,
-      type: 'application',
-      subtype: 'json' },
-  { value: 'text/html',
-       quality: 0.5,
-       type: 'text',
-       subtype: 'html' } ]
-*/
+req.get('myField');
+// -> cat
 ```
 
 
 # req.is()
-### Purpose
-Checks if the incoming request contains the "Content-Type" header field, and it matches the given mime type.
+Returns true if this request's declared "Content-Type" matches the specified media/mime `type`.  
 
-### Example Usage
+Specifically, this method matches the given `type` against this request's "Content-Type" header.
+
+### Usage
+```js
+req.is(type);
+```
+
+
+### Example
+Assuming the request contains a "Content-Type" header, "text/html; charset=utf-8":
 ```javascript
-// With Content-Type: text/html; charset=utf-8
 req.is('html');
+// -> true
 req.is('text/html');
+// -> true
 req.is('text/*');
-//  true
-
-// When Content-Type is application/json
-req.is('json');
-req.is('application/json');
-req.is('application/*');
-//  true
-
-req.is('html');
-//  false
-
+// -> true
 ```
 
 
 
 # req.ip
 ### Purpose
-Get the client's IP address.
+The IP address of the client who sent this request (`req`).
 
-This property contains the IP address of the client initiating the request.
+If the `trust proxy` option is disabled, this is the "remote address".  Otherwise, if `trust proxy` is enabled, this is the "upstream address".
 
-### Example Usage
+
+### Usage
 ```javascript
-console.log(req.ip);
+req.ip;
+```
 
-//  "127.0.0.1"
+### Example
+```javascript
+req.ip;
+// -> "127.0.0.1"
 ```
 
 
 # req.ips
-### Purpose
-When "trust proxy" is `true`, parse the "X-Forwarded-For" ip address list and return an array, otherwise an empty array is returned. For example if the value were "client, proxy1, proxy2" you would receive the array `["client", "proxy1", "proxy2"]` where "proxy2" is the furthest down-stream.
+If "trust proxy" is enabled, this variable contains the IP addresses in this request's "X-Forwarded-For" header as an array of the IP address strings. Otherwise an empty array is returned.
 
-
-
-# req.host
-### Purpose
-Returns the hostname from the "Host" header field (without the port number)
-
-### Example Usage
-```javascript
-// Host: "example.com:3000"
-console.log(req.host);
-//  "example.com"
-
+### Usage
+```js
+req.ips;
 ```
+
+### Example
+If a request contains a header: "X-Forwarded-For: client, proxy1, proxy2":
+
+```js
+req.ips;
+// -> ["client", "proxy1", "proxy2"]`
+
+// ("proxy2" is the furthest "down-stream" IP address)
+```
+
+
+
+
+
+
+
 
 
 # req.fresh
@@ -323,24 +296,14 @@ if (req.fresh) {
 > + See the [`node-fresh`](https://github.com/visionmedia/node-fresh) module for details specific to the implementation in Sails/Express/Koa/Connect.
 
 
-# req.xhr
-A flag indicating whether the current request (`req`) appears to be an AJAX request (i.e. it was issued with its "X-Requested-With" header set to "XMLHttpRequest".)
 
-### Usage
-```js
-req.xhr;
-```
 
-### Example
-```javascript
-if (req.xhr) {
-  // Yup, it's AJAX alright.
-}
-```
+
+
 
 
 # req.protocol
-The protocol used to send this request (`req`.)
+The protocol used to send this request (`req`).
 
 ### Usage
 ```javascript
@@ -364,7 +327,7 @@ switch (req.protocol) {
 
 # req.secure
 
-Indicates whether or not the request was sent over a secure [TLS](http://omfgdogs.com) connection.
+Indicates whether or not the request was sent over a secure [TLS]() connection (i.e. `https://` or `wss://`).
 
 ### Usage
 ```javascript
@@ -373,8 +336,50 @@ req.secure;
 
 
 
+
+
+# req.host
+The hostname of this request, without the port number, as specified by its "Host" header.
+
+
+### Usage
+```javascript
+req.host;
+```
+
+### Example
+
+If this request's "Host" header was: "ww3.staging.ibm.com:1492":
+
+```javascript
+req.host;
+// -> "ibm.com"
+```
+
+
+
+
+
+
+
+
 # req.subdomains
-An array containing all of the subdomains found in the request URL.
+An array of all the subdomains in this request's URL.
+
+### Usage
+```javascript
+req.subdomains;
+```
+
+### Example
+
+If the requested URL was "https://ww3.staging.ibm.com":
+
+```javascript
+req.subdomains;
+// -> ['ww3', 'staging']
+```
+
 
 
 
@@ -405,6 +410,61 @@ req.method;
 
 
 
+
+
+
+# req.accepts()
+
+Checks whether this request's stated list of "accepted" [media types](http://www.iana.org/assignments/media-types/media-types.xhtml) includes the specified `type`. Returns true or false.
+
+
+### Usage
+```javascript
+req.accepts(type);
+```
+
+### Example
+
+```javascript
+req.accepts('application/json');
+// -> true
+req.accepts('json');
+// -> true
+```
+
+### Notes
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+
+
+
+# req.accepted
+
+Contains an array of the "media types" this request (`req`) can accept (e.g. `text/html` or `application/json`), ordered from highest to lowest quality.
+
+### Usage
+```javascript
+req.accepted;
+```
+
+### Example
+
+```javascript
+req.accepted;
+
+/*
+  [ { value: 'application/json',
+      quality: 1,
+      type: 'application',
+      subtype: 'json' },
+  { value: 'text/html',
+       quality: 0.5,
+       type: 'text',
+       subtype: 'html' } ]
+*/
+```
+
+### Notes
+> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
 
 
 
@@ -729,7 +789,25 @@ The querystring parser in Express/Connect removes the query string from the stan
 
 
 
+# req.xhr
+A flag indicating whether the current request (`req`) appears to be an AJAX request (i.e. it was issued with its "X-Requested-With" header set to "XMLHttpRequest".)
 
+
+### Usage
+```js
+req.xhr;
+```
+
+### Example
+```javascript
+if (req.xhr) {
+  // Yup, it's AJAX alright.
+}
+```
+
+
+### Notes
+> + Whenever possible, you should prefer the `req.wantsJSON` flag.  Avoid writing custom content-negotiation negotiation logic into your app  - it makes your code more brittle and more verbose.
 
 
 
@@ -738,6 +816,14 @@ The querystring parser in Express/Connect removes the query string from the stan
 
 
 <!--
+
+
+
+
+
+
+
+
 # req.route
 ### Purpose
 This is an object containing information about the [route](http://omfgdogs.com) by which request traveled.
