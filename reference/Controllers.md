@@ -2,7 +2,7 @@
 
 ### Overview
 
-Controllers (the **C** in **MVC**) are the objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](./#!documentation/reference/models) and [views](./#!documentation/reference/views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+Controllers (the **C** in **MVC**) are the principle objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](./#!documentation/reference/models) and [views](./#!documentation/reference/views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
 
 ### Actions
 Controllers are comprised of a collection of methods called *actions*.  Action methods can be bound to [routes](./#!documentation/reference/routes) in your application so that when a client requests the route, the bound method is executed to perform some business logic and (in most cases) generate a response.  For example, the `GET /hello` route in your application could be bound to a method like:
@@ -16,7 +16,7 @@ function (req, res) {
 so that any time a web browser is pointed to the `/hello` URL on your app's server, the page displays the message &ldquo;Hi there&rdquo;.
 
 ### Where are Controllers defined?
-Controllers are defined in the `api/controllers/` folder. You can put any files you like in that folder, but in order for them to be loaded by Sails as controllers, a file must *end* in `Controller.js`.  Additionally, by convention Sails controllers are usually *Pascal-cased*, so that every word in the filename (including the first word) is capitilized: for example, `UserController.js`, `MyController.js` and `SomeGreatBigController.js` are all valid, Pascal-cased names.  
+Controllers are defined in the `api/controllers/` folder. You can put any files you like in that folder, but in order for them to be loaded by Sails as controllers, a file must *end* in `Controller.js`.  By convention, Sails controllers are usually [*Pascal-cased*](http://c2.com/cgi/wiki?PascalCase), so that every word in the filename (including the first word) is capitilized: for example, `UserController.js`, `MyController.js` and `SomeGreatBigController.js` are all valid, Pascal-cased names.
 
 You may organize your controllers into groups by saving them in subfolders of `api/controllers`, however note that the subfolder name *will become part of the Controller&rsquo;s identity* when used for routing (more on that in the "Routing" section below).
 
@@ -38,59 +38,97 @@ This controller defines two actions: the &ldquo;hi&rdquo; responds to a request 
 
 ### Routing
 
-By default, Sails will create a [blueprint action route](./#!documentation/reference/blueprints) for each action in a controller, so that a `GET` request to `/:controller/:actionName` will trigger the route.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](./#!documentation/reference/blueprints) for more information about Sails&rsquo; automatic route binding, including RESTful routes for your models.
+By default, Sails will create a [blueprint action route](./#!documentation/reference/blueprints) for each action in a controller, so that a `GET` request to `/:controllerIdentity/:nameOfAction` will trigger the action.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](./#!documentation/reference/blueprints) for more information about Sails&rsquo; automatic route binding.
 
-Besides the default routing, Sails allows you to manually bind routes to controller actions using the `config/routes.js` file.  Some examples of when you will want to manually bind routes are:
+Besides the default routing, Sails allows you to manually bind routes to controller actions using the [`config/routes.js`]() file.  Some examples of when you might want to use explicit routes are:
 
-+ When you want to use separate actions to handle the same route path, based on the HTTP verb.  The default routes bind *all* requests for a path to an action, whether they be `GET`, `POST`, `PUT`, `DELETE` or something else.
-+ When you want to use a different path for the route.
-+ When you want to set up additional options for how the route should be handled.
++ When you want to use separate actions to handle the same route path, based on the [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verb).  The aforementioned **action blueprint** routes bind *all* request methods for a path to a given action, including `GET`, `POST`, `PUT`, `DELETE`, etc.
++ When you want an action to be available at a custom URL (e.g. `PUT /login`, `POST /signup`, or a "vanity URL" like `GET /:username`)
++ When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)
 
-To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path as the key and the controller *identity* + `.` + action name as the value.  For example:
+To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the controller name + `.` + action name as the value (i.e. the **route target**).
 
-```
-"POST /make/a/sandwich": "SandwichController.makeSandwich"
-```
+For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives POST a request to `/make/a/sandwich`:
 
-will cause the `makeSandwich` action in `api/controllers/SandwichController.js` to be triggered whenever `/make/a/sandwich` is requested with `POST`.  Note that for controller files saved in subfolders, the subfolder is part of the controller identity:
-
-```
-"/do/homework": "stuff/things/HomeworkController.do"
+```js
+  'POST /make/a/sandwich': 'SandwichController.makeIt'
 ```
 
-will cause the `do` action in `api/controllers/stuff/things/HomeworkController.js` to be triggered whenever `/do/homework` is requested.
 
-A full discussion of manual routing is out of the scope of this doc--please see the [routes documentation](./#!documentation/reference/routes) for a full overview of the available options.  
+> **Note:**
+>
+> For controller files saved in subfolders, the subfolder is part of the controller identity:
+>
+> ```js
+>   '/do/homework': 'stuff/things/HomeworkController.do'
+> ```
+>
+> This will cause the `do()` action in `api/controllers/stuff/things/HomeworkController.js` to be triggered whenever `/do/homework` is requested.
+
+A full discussion of manual routing is out of the scope of this doc--please see the [routes documentation](./#!documentation/reference/routes) for a full overview of the available options.
+
+
 
 ### Generating controllers
 
 You can use the [Sails command line tool](./#!documentation/reference/CommandLine) to quickly generate a controller, by typing:
+
+```sh
+$ sails generate controller <controller name> [action names separated by spaces...]
 ```
-sails generate controller <controller name> [action names...]
+
+For example, if you run the following command:
+
+```sh
+$ sails generate controller comment create destroy tag like
+info: Generated a new controller `comment` at api/controllers/CommentController.js!
 ```
-For example:
-```
-sails generate controller comment create destroy tag like
-```
-generates:
+
+Sails will generate `api/controllers/CommentController.js`:
+
 ```javascript
-var CommentController = {
-	create: function(req, res) {
+/**
+ * CommentController.js 
+ *
+ * @description
+ *   Server-side logic for managing comments.
+ */
 
-	},
+module.exports = {
+	
+  /**
+   * CommentController.create()
+   */
+  create: function (req, res) {
+    return res.json({
+      todo: 'Not implemented yet!'
+    });
+  },
 
-	destroy: function(req, res) {
+  /**
+   * CommentController.destroy()
+   */
+  destroy: function (req, res) {
+    return res.json({
+      todo: 'Not implemented yet!'
+    });
+  },
 
-	},
+  /**
+   * CommentController.tag()
+   */
+  tag: function (req, res) {
+    return res.json({
+      todo: 'Not implemented yet!'
+    });
+  },
 
-	tag: function(req, res) {
-
-	},
-
-	like: function(req, res) {
-
-	}
-}
-
-module.exports = CommentController;
+  /**
+   * CommentController.like()
+   */
+  like: function (req, res) {
+    return res.json({
+      todo: 'Not implemented yet!'
+    });
+  }
 ```
