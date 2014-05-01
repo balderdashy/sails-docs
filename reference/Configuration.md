@@ -337,7 +337,7 @@ When you&rsquo;re ready to deploy your app in production, you can use this file 
 > Good news is, that means you can specify configuration for your local machine in this file without inadvertently committing personal information (like database passwords) to the repo.  Plus, this prevents other members of your team from commiting their local configuration changes on top of yours.
 
 
-#### `Port`
+#### `port`
 
 The `port` setting determines which TCP port your app will be deployed on.
 Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
