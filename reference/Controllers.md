@@ -9,7 +9,7 @@ Controllers are comprised of a collection of methods called *actions*.  Action m
 
 ```javascript
 function (req, res) {
-    return res.send("Hi there!");
+  return res.send("Hi there!");
 }
 ```
 
@@ -25,13 +25,13 @@ A controller file defines a Javascript object whose keys are action names, and w
 
 ```javascript
 module.exports = {
-   hi: function (req, res) {
-       return res.send("Hi there!");
-   },
-   bye: function (req, res) {
-       return res.redirect("http://www.sayonara.com");
-   }
-}
+  hi: function (req, res) {
+    return res.send("Hi there!");
+  },
+  bye: function (req, res) {
+    return res.redirect("http://www.sayonara.com");
+  }
+};
 ```
 
 This controller defines two actions: the &ldquo;hi&rdquo; responds to a request with a string message, while the &ldquo;bye&rdquo; action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](http://expressjs.com) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use `next` in an action method, you are strongly encouraged to use [policies](./#!documentation/reference/policies) instead wherever possible.
@@ -90,8 +90,7 @@ Sails will generate `api/controllers/CommentController.js`:
 /**
  * CommentController.js 
  *
- * @description
- *   Server-side logic for managing comments.
+ * @description :: Server-side logic for managing comments.
  */
 
 module.exports = {
@@ -131,4 +130,5 @@ module.exports = {
       todo: 'Not implemented yet!'
     });
   }
+};
 ```
