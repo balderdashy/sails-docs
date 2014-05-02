@@ -200,7 +200,7 @@ Get the IDs of all sockets subscribed to a room.
 
 getRoomSubscribers: function(req, res) {
     var roomName = req.param('roomName');
-    var subscribers = JSON.stringify(sails.sockets.subscribers());
+    var subscribers = JSON.stringify(sails.sockets.subscribers(roomName));
     res.json({
       message: 'The subscribers are: '+subscribers
     });
