@@ -91,7 +91,9 @@ Finally, if you want to see all pubsub messages from all models, you can access 
 To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
-##### The old (/confusing?) meaning of `.done()` has been deprecated
+### `.done()` vs. `.exec()`
+
+**The old (/confusing?) meaning of `.done()` has been deprecated.**
 
 In Sails <= v0.8, the syntax for executing an ORM query was `Model. [ … ] .done( cb )`.  In v0.9, when promise support was added, the  `Model. [ … ] .exec( cb )` became the recommended replacement, since `.done()` has a special meaning in the promise spec.  However, the original usage of `.done()` was left untouched to make upgrading from v0.8 to v0.9 easier.
 
