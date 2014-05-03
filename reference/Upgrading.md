@@ -11,17 +11,18 @@ Sails v0.10 comes with some big changes.  The sections below provide a high leve
 
 |     | Jump to...        |
 |-----|-------------------------|
-| I   | [Blueprints](#blueprints) |
-| II  | [Policies](#policies) |
-| III | [Associations](#associations) |
-| IV  | [Pubsub](#pubsub) |
-| V   | [Generators](#generators) |
-| VI  | [Command-Line Tool](#command-line-tool) |
-| VII | [Custom Server Responses](#custom-server-responses) |
-| VIII| [Legacy Data in `sails-disk`](#legacy-data-stored-in-the-temporary-sails-disk-database) |
-| IX  | [Validations](#validations-upgrade-to-validator-3x) |
-| X   | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
-| XI  | [Blueprints/Controllers Configuration](#controller-configuration) |
+|     | [Blueprints](#blueprints) |
+|     | [Policies](#policies) |
+|     | [Associations](#associations) |
+|     | [Pubsub](#pubsub) |
+|     | [`.done() vs. `.exec()``](https://github.com/balderdashy/sails-docs/blob/master/reference/Upgrading.md#done-vs-exec)
+|     | [Generators](#generators) |
+|     | [Command-Line Tool](#command-line-tool) |
+|     | [Custom Server Responses](#custom-server-responses) |
+|     | [Legacy Data in `sails-disk`](#legacy-data-stored-in-the-temporary-sails-disk-database) |
+|     | [Validations](#validations-upgrade-to-validator-3x) |
+|     | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
+|     | [Blueprints/Controllers Configuration](#controller-configuration) |
 ========================================
 
 
