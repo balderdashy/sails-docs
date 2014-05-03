@@ -15,7 +15,7 @@ Sails v0.10 comes with some big changes.  The sections below provide a high leve
 |     | [Policies](#policies) |
 |     | [Associations](#associations) |
 |     | [Pubsub](#pubsub) |
-|     | [`.done() vs. `.exec()``](https://github.com/balderdashy/sails-docs/blob/master/reference/Upgrading.md#done-vs-exec)
+|     | [`.done()` vs. `.exec()`](https://github.com/balderdashy/sails-docs/blob/master/reference/Upgrading.md#done-vs-exec)
 |     | [Generators](#generators) |
 |     | [Command-Line Tool](#command-line-tool) |
 |     | [Custom Server Responses](#custom-server-responses) |
