@@ -33,7 +33,7 @@ A new blueprint action (`findOne`) has been added.  For instance, if you have a 
 
 
 
-### Policies
+### Policies.
 Policies work exactly as they did in v0.9- however there is a new consideration you should take into account:  Due to the introduction of the more specific `findOne()` blueprint action mentioned above, you will want to make sure you're handling it explicitly in your policy mapping configuration.
 
 For example, let's say you have a v0.9 app whose `policies.js` configuration prevents access to the `find` action in your `DoveController`:
@@ -91,10 +91,11 @@ Finally, if you want to see all pubsub messages from all models, you can access 
 To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
-##### Waterline Queries
+##### The old (/confusing?) meaning of `.done()` has been deprecated
 
-In Sails v0.9 the syntax for querying the database used to be `Model. [ … ] .done( fn )`. 
-In Sails v0.10 and Waterline v0.10 that changed to `Model. [ … ] .exec( fn )`.
+In Sails <= v0.8, the syntax for executing an ORM query was `Model. [ … ] .done( cb )`.  In v0.9, when promise support was added, the  `Model. [ … ] .exec( cb )` became the recommended replacement, since `.done()` has a special meaning in the promise spec.  However, the original usage of `.done()` was left untouched to make upgrading from v0.8 to v0.9 easier.
+
+But as of Sails/Weterline v0.10, the original meaning of `.done()` has been officially deprecated to allow for a more robust promise implementation going forward, and pluggable promise library support (e.g. choose `Q` or `Bluebird` etc.).
 
 
 ### Associations
