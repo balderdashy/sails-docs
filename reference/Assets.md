@@ -23,33 +23,33 @@ The [`tasks/`](./#!documentation/anatomy/tasks) directory contains a suite of [G
 
 Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, & client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from [browserify]() compilation to [database migrations]().
 
-Sails bundles some [conventional tasks]() for convenience, but with [literally hundreds of plugins](http://gruntjs.com/plugins) to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn't already built what you need, [authoring](http://gruntjs.com/creating-tasks) and [publishing your own Grunt plugin](http://gruntjs.com/creating-plugins) to [npm](http://npmjs.org) is a breeze.
+Sails bundles some [default tasks](./#!documentation/grunt/default-tasks) for convenience, but with [literally hundreds of plugins](http://gruntjs.com/plugins) to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn't already built what you need, you can always [author](http://gruntjs.com/creating-tasks) and [publish your own Grunt plugin](http://gruntjs.com/creating-plugins) to [npm](http://npmjs.org)!
 
 > If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
 
 
 ### Asset pipeline
 
-The asset pipeline is the place where you will organize your assets that will be injected with sails-linker, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
+The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
 
 ##### CSS Files to Inject
-This is an array of css files that gets injected into `<!--STYLES--><!--STYLES END-->` comments in your html.
+This is an array of css files to be injected into your html as `<link>` tags.  These tags replace the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
 
 ##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into `<!--SCRIPTS--><!--SCRIPTS END-->` comments in your html. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
+This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags replace the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
 
 ##### Template Files to Inject
-This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected into the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in place of the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
 
 > The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
 
 ### Task configuration
 
-Configured tasks are the set of rules your Gruntfile will follow when run. They make completely customizable and located in the [`tasks/config/`]() directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). To just get up and running, you can just stick with the [default grunt task configurations]() that Sails provides.
+Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`]() directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
 
 ##### Configuring a custom task.
 
-Configuring a custom task into your project is very simple and uses grunts [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) apis to allow you to make your task modular. Lets go through a quick example of creating a new task that replaces an existing task. Lets say we want to use the handlebars templating engine instead of the underscore templating engine that comes configured by default:
+Configuring a custom task into your project is very simple and uses grunts [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) apis to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
 
 * The first step is to install the handlebars grunt plugin using the following command in your terminal:
 
@@ -57,7 +57,7 @@ Configuring a custom task into your project is very simple and uses grunts [conf
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-* Create a configuration file at `tasks/config/handlebars.js`. In this file we put out handlebars configuration.
+* Create a configuration file at `tasks/config/handlebars.js`. This is where we&rsquo;ll put our handlebars configuration.
 
 ```javascript
 // tasks/config/handlebars.js
@@ -71,10 +71,6 @@ module.exports = function(grunt) {
   // 'handlebars' will be configured based on the object below.
   grunt.config.set('handlebars', {
     dev: {
-      options: {
-        namespace: 'MyApp.Templates'
-      },
-
       // We will define which template files to inject
       // in tasks/pipeline.js 
       files: {
@@ -88,7 +84,7 @@ module.exports = function(grunt) {
 };
 ```
 
-* Replace path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
 
 ```javascript
 // tasks/pipeline.js
@@ -198,7 +194,7 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - Automatic JST compilation
 - Automatic Coffescript compilation
 - Optional automatic asset injection, minification, and concatenation
-- Create a web ready public directory.
+- Creation of a web ready public directory
 - File watching and syncing
 - Optimization of assets in production
 
@@ -220,14 +216,14 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### concat
 
-> Concatenates files javascript and css from a defined array. Creates concatenated files in `.tmp/public/concat/` directory.
+> Concatenates javascript and css files, and saves concatenated files in `.tmp/public/concat/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
 
 ##### copy
 
 > **dev task config**
-> Copies all directories and files, exept coffescript and less fiels, from the sails assets folder into the `.tmp/public/` directory.
+> Copies all directories and files, exept coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
 
 > **build task config**
 > Copies all directories nd files from the .tmp/public directory into a www directory.
@@ -242,25 +238,25 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### jst
 
-> Precompiles Underscore templates to a `.jst` file. (i.e. basically it takes HTML files and turns them into tiny little javascript functions that you pass data to and return HTML. This can speed up template rendering on the client, and reduce bandwidth usage.
+> Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny javascript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-jast)
 
 ##### less
 
-> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets).
+> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-less)
 
 ##### sails-linker
 
-> Automatically inject \<script> tags for javascript files and \<link> tags for css files.  Also automatically links an output file containing precompiled templates using a \<script> tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
+> Automatically inject `<script>` tags for javascript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
 ##### sync
 
-> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that has actually changed. It specifically synchronize files from the `assets/` folder to `.tmp/public/`, smashing anything that's already there.
+> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that have actually changed. It specifically synchronizes files from the `assets/` folder to `.tmp/public/`, overwriting anything that's already there.
 
 > [usage docs](https://github.com/tomusdrw/grunt-sync)
 
@@ -272,7 +268,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### watch
 
-> Run predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets/` folder, and re-run the appropriate tasks.
+> Runs predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. less and jst compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
