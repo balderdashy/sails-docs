@@ -12,7 +12,8 @@ If you run into problems, please reach out for help in IRC, the Google Group and
 If you believe you've encountered an upgrade issue not addressed in this document, please let the core team know by sending a pull request to [this file on Github](https://github.com/balderdashy/sails-docs/edit/master/reference/Upgrading.md).  If you don't know the answer to a question, explain the upgrade issue you've having in the appropriate section (or a new one), and someone will do their best to answer it/provide a migration strategy.
 
 Thanks!
-~Mike
+
+@mikermcneil
 
 ========================================
 
