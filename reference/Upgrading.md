@@ -91,6 +91,11 @@ Finally, if you want to see all pubsub messages from all models, you can access 
 To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
+##### Waterline Queries
+
+In Sails v0.9 the syntax for querying the database used to be `Model. [ … ] .done( fn )`. 
+In Sails v0.10 and Waterline v0.10 that changed to `Model. [ … ] .exec( fn )`.
+
 
 ### Associations
 
