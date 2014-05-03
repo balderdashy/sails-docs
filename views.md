@@ -102,7 +102,7 @@ Partials are just as they sound; a View Partial is only a small part of the over
 		<div class="clearfix">
 		</div>
 	</span>
-<footer>
+</footer>
 ```
 As you can see, this is nothing more than a simple EJS file: nothing special, nothing magical.
 
