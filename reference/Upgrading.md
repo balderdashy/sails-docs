@@ -78,19 +78,32 @@ module.exports.policies = {
 + `message` socket (i.e. "comment") event on client is now `modelIdentity` (where "modelIdentity" is different depending on the model that the `publish*()` method was called from.
 + The events that were formerly `create`, `update`, and `destroy` are now `created`, `updated`, and `destroyed`.
 
+#### Details
 
 The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them.  Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
 
-```
-socket.on('message', function(data) {
-   if (data.model == 'user') ...
+```js
+socket.on('message', function(cometEvent) {
+   if (cometEvent.model == 'user') {
+     // Handle inbound messages related to a user record
+   }
+   else if (cometEvent.model === 'product') {
+     // Handle inbound messages related to a product record
+   }
+   // ...
 }
 ```
 
 Now, you subscribe to the identity of the model:
 
-```
-socket.on('user', function(data) {...}
+```js
+socket.on('user', function(cometEvent) {
+  // Handle inbound messages related to a user record
+});
+
+socket.on('product', function (cometEvent) {
+  // Handle inbound messages related to a product record
+});
 ```
 
 This helps to structure your front end code.
