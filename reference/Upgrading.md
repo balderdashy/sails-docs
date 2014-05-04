@@ -121,6 +121,11 @@ Finally, if you want to see all pubsub messages from all models, you can access 
 To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
+### `beforeValidation()` is now `beforeValidate()`
+
+If you were using the `beforeValidation` or `afterValidation` model lifecycle callbacks in any of your models, you should change them to `beforeValidate` or `afterValidate`.  This change was made in Waterline to match the style of the other lifecycle callbacks (e.g. `beforeCreate`, `afterUpdate`, etc.).
+
+
 ### `.done()` vs. `.exec()`
 
 **The old (/confusing?) meaning of `.done()` has been deprecated.**
