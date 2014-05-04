@@ -125,7 +125,7 @@ To see examples of the new pubsub methods in action, see [SailsChat](https://git
 
 Previously, with `schema: true`, if you sent an attribute value to a `.create()` or `.update()` that did not match the expected type declared in the model's attributes, the value you passed in would still be accessible in your model's lifecycle callbaks.
 
-In Sails/Waterline v0.10, this is no longer the case.  Values passed to `.create()` and `.update()` are type-casted _before_ your lifecycle callbacks run.
+In Sails/Waterline v0.10, this is no longer the case.  Values passed to `.create()` and `.update()` are type-casted _before_ your lifecycle callbacks run.  Affected lifecycle callbacks include `beforeUpdate()`, `beforeCreate()`, and `beforeValidate()`.
 
 
 ### `beforeValidation()` is now `beforeValidate()`
