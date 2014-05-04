@@ -73,6 +73,12 @@ module.exports.policies = {
 
 ### Pubsub
 
+
+#### Summary
++ `message` socket (i.e. "comment") event on client is now `modelIdentity` (where "modelIdentity" is different depending on the model that the `publish*()` method was called from.
++ The events that were formerly `create`, `update`, and `destroy` are now `created`, `updated`, and `destroyed`.
+
+
 The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them.  Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
 
 ```
