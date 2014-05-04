@@ -121,6 +121,13 @@ Finally, if you want to see all pubsub messages from all models, you can access 
 To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
 
 
+### Arguments to lifecycle callbacks are now typecasted
+
+Previously, with `schema: true`, if you sent an attribute value to a `.create()` or `.update()` that did not match the expected type declared in the model's attributes, the value you passed in would still be accessible in your model's lifecycle callbaks.
+
+In Sails/Waterline v0.10, this is no longer the case.  Values passed to `.create()` and `.update()` are type-casted _before_ your lifecycle callbacks run.
+
+
 ### `beforeValidation()` is now `beforeValidate()`
 
 If you were using the `beforeValidation` or `afterValidation` model lifecycle callbacks in any of your models, you should change them to `beforeValidate` or `afterValidate`.  This change was made in Waterline to match the style of the other lifecycle callbacks (e.g. `beforeCreate`, `afterUpdate`, etc.).
