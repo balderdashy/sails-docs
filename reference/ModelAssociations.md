@@ -114,7 +114,12 @@ module.exports = {
 
 	attributes: {
 		name:'STRING',
-		color:'STRING'
+		color:'STRING',
+		
+		// Add a reference to User
+    		owner: {
+      			model: 'user'
+    		}
 	}
 
 }
@@ -130,9 +135,12 @@ module.exports = {
 	attributes: {
 		name:'STRING',
 		age:'INTEGER',
-		pet:{
-			model: 'pet'
-		}
+		
+		// Add a reference to Pets
+    		pets: {
+      			collection: 'pet',
+      			via: 'owner'
+    		}
 	}
 
 }
