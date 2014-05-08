@@ -360,7 +360,10 @@ window.onload = function startListening(){
 
 Returns a raw Mongo collection instance representing the specified model, allowing you to perform raw Mongo queries.
 
-For full documentation and usage examples, check out the [native Node Mongo driver](https://github.com/mongodb/node-mongodb-native#introduction).  Note that you don't need to close or open the connection- `.native()` takes care of that part.
+For full documentation and usage examples, check out the [native Node Mongo driver](https://github.com/mongodb/node-mongodb-native#introduction).
+
+
+Note that `sails-mongo` maintains a single Mongo connection for each of your configured connections/datastores.  Consequently, when using `.native()`, you don't need to close or open `db` manually.  For lower-level usage, you can `require('mongodb')` directly.
 
 ### Example
 
