@@ -388,8 +388,19 @@ Source: https://gist.github.com/mikermcneil/483987369d54512b6104
 
 
 # .query()
-### Purpose
-Performs raw SQL queries for PostgreSQL and mySQL.
+
+`.query()` is only available on Sails/Waterline models using a SQL database (PostgreSQL and mySQL) adapter.  Its purpose is to perform raw SQL queries.
+
+
+### Example
+
+```js
+Pet.query('SELECT pet.name FROM pet', function(err, results) {
+  if (err) return res.serverError(err);
+  return res.ok(results);
+});
+```
+
 
 
 ### Notes
