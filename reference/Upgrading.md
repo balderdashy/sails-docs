@@ -21,6 +21,7 @@ Thanks!
 
 |     | Jump to...        |
 |-----|-------------------------|
+|     | [File Uploads](#file-uploads) |
 |     | [Blueprints](#blueprints) |
 |     | [Policies](#policies) |
 |     | [Associations](#associations) |
@@ -34,6 +35,18 @@ Thanks!
 |     | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
 |     | [Blueprints/Controllers Configuration](#controller-configuration) |
 ========================================
+
+
+### File Uploads
+
+The Connect multipart middleware [will soon be officially deprecated](http://www.senchalabs.org/connect/multipart.html). But since this module was used as the built-in HTTP body parser in Sails v0.9 and Express v3, this is a breaking change for v0.9 Sails projects relying on `req.files`.
+
+As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like.  By default, in v0.10, we now include [`skipper`](http://github.com/balderdashy/skipper), a wrapper module which allows for streaming file uploads without buffering tmp files to disk.  For run-of-the-mill file upload use cases, Skipper comes with bundled support for uploads to local disk (via [skipper-disk](https://github.com/balderdashy/skipper-disk)), but streaming uploads can be plugged in to any of its supported adapters.
+
+For examples/documentation, please see the Skipper repository as well as the Sails documentation on `req.file()`.
+
+To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's [`http` configuration]().
+
 
 
 ### Blueprints
