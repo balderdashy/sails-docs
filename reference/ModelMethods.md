@@ -374,6 +374,7 @@ Pet.native(function(err, collection) {
     if (err) return res.serverError(err);
     return res.ok(results);
   });
+});
 ```
 
 Source: https://gist.github.com/mikermcneil/483987369d54512b6104
