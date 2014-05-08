@@ -41,12 +41,24 @@ Thanks!
 
 The Connect multipart middleware [will soon be officially deprecated](http://www.senchalabs.org/connect/multipart.html). But since this module was used as the built-in HTTP body parser in Sails v0.9 and Express v3, this is a breaking change for v0.9 Sails projects relying on `req.files`.
 
-As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like.  By default, in v0.10, we now include [`skipper`](http://github.com/balderdashy/skipper), a wrapper module which allows for streaming file uploads without buffering tmp files to disk.  For run-of-the-mill file upload use cases, Skipper comes with bundled support for uploads to local disk (via [skipper-disk](https://github.com/balderdashy/skipper-disk)), but streaming uploads can be plugged in to any of its supported adapters.
+By default in v0.10, Sails includes [`skipper`](http://github.com/balderdashy/skipper), a body parser which allows for streaming file uploads without buffering tmp files to disk.  For run-of-the-mill file upload use cases, Skipper comes with bundled support for uploads to local disk (via [skipper-disk](https://github.com/balderdashy/skipper-disk)), but streaming uploads can be plugged in to any of its supported adapters.
 
 For examples/documentation, please see the Skipper repository as well as the Sails documentation on `req.file()`.
 
-To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's [`http` configuration]().
+#### Why?
+A body parser's job is to parse the "body" of incoming multipart HTTP requests.  Sometimes, that "body" includes text parameters, but sometimes, it includes file uploads.
 
+Connect multipart is great code, and it supports both file uploads AND text parameters in multipart requests. But like most modules of its kind, it accomplishes this by buffering file uploads to disk.  This can quickly overwhelm a server's available disk space, and in many cases exposes a serious DoS attack vulnerability.
+
+Skipper is unique in that it supports **streaming** file uploads, but also maintains support for metadata in the request body (i.e. JSON/XML/urlencoded request body parameters).  It uses a handful of heuristics to make sure only the files you're expecting get plugged in and received by the blob adapter, and other (potentially malicous) file fields are ignored.
+
+> **Important!**
+>
+> For Skipper to work, you _must include all text parameters BEFORE file parameters_ in file upload requests to the server.  Once Skipper sees the first file field, it stops waiting for text parameters (this is to avoid unnecessary/unsafe buffering of file data).
+
+
+#### Configuring a different body parser
+As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's [`http` configuration]().
 
 
 ### Blueprints
