@@ -355,12 +355,32 @@ window.onload = function startListening(){
 > Any string arguments passed must be the ID of the record.
 
 # .native()
-### Purpose
-Returns an instance of the specified collection for performing raw Mongo queries.
 
+`.native()` is only available when using Sails/Waterline with MongoDB.
+
+Returns a raw Mongo collection instance representing the specified model, allowing you to perform raw Mongo queries.
+
+For full documentation and usage examples, check out the [native Node Mongo driver](https://github.com/mongodb/node-mongodb-native#introduction).  Note that you don't need to close or open the connection- `.native()` takes care of that part.
+
+### Example
+
+```js
+Pet.native(function(err, collection) {
+  if (err) return res.serverError(err);
+ 
+  collection.find({}, {
+    name: true
+  }).toArray(function (err, results) {
+    if (err) return res.serverError(err);
+    return res.ok(results);
+  });
+```
+
+Source: https://gist.github.com/mikermcneil/483987369d54512b6104
 
 ### Notes
-> This method only works with Mongo! use .query() for PostgreSQL and mySQL.
+
+> + This method only works with Mongo! For raw functionality in SQL databases, use [`.query()`]().
 
 
 # .query()
