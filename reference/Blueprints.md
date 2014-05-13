@@ -30,11 +30,11 @@ By default, the blueprint RESTful routes and shortcut routes are bound to their 
 
 The current version of Sails ships with the following blueprint actions:
 
-+ [find](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [findOne](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [create](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [update](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [destroy](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
++ [find](./#!documentation/reference/Blueprints/Find.html)
++ [findOne](./#!documentation/reference/Blueprints/FindOne.html)
++ [create](./#!documentation/reference/Blueprints/CreateARecord.html)
++ [update](./#!documentation/reference/Blueprints/UpdateARecord.html)
++ [destroy](./#!documentation/reference/Blueprints/DestroyARecord.html)
 + [populate](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
 + [add](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
 + [remove](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
