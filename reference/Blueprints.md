@@ -19,7 +19,7 @@ There are three types of blueprint routes in Sails:
 + **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
 
 
-See the [blueprints subsection of the configuration reference](./#!documentation/reference/Configuration/blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+See the [blueprints subsection of the configuration reference](./#!documentation/reference/Configuration/Blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
 
 
 ##### Blueprint Actions
