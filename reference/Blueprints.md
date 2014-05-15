@@ -706,7 +706,7 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 ```
 
 ### Add association between two existing records (Shortcuts)
-`GET /pony/4/pets/add/15`
+`POST /pony/4/pets/add/15`
 
 ### Remove Association (Many-To-Many) (REST)
 
