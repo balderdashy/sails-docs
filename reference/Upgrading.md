@@ -6,8 +6,7 @@ For the most part, running `sails lift` in an existing v0.9 project should **jus
 
 Sails v0.10 comes with some big changes.  The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.9.x Sails app to v0.10.
 
-The Sails/Watelrine communities have been extremely supportive to newer users throughout the beta.  If you 
-If you run into problems, please reach out for help in IRC, the Google Group and on Stack Overflow.
+The Sails/Watelrine communities have been extremely supportive to newer users throughout the beta.  If you run into problems, please reach out for help in IRC, the Google Group and on Stack Overflow.
 
 If you believe you've encountered an upgrade issue not addressed in this document, please let the core team know by sending a pull request to [this file on Github](https://github.com/balderdashy/sails-docs/edit/master/reference/Upgrading.md).  If you don't know the answer to a question, explain the upgrade issue you've having in the appropriate section (or a new one), and someone will do their best to answer it/provide a migration strategy.
 
