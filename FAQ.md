@@ -65,7 +65,7 @@ The companies below provide custom development, services, training, and/or suppo
 
 ================================================================================
 
-###### <img height="30" src="http://balderdash.co/img/logo.png" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
+###### <img height="30" src="http://balderdash.co/img/logo.jpg" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
 
 <!-- Social media links -->
 <a target="_blank" href="https://www.facebook.com/balderdashy">
