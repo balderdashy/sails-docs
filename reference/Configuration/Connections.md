@@ -1,4 +1,5 @@
 # Connections
+
 ### What is this?
 Adapters are the middle man between your Sails app and some kind of storage (typically a database)
 
@@ -40,8 +41,39 @@ module.exports.models = {
 
 ```
 
+
 > Keep in mind that options you define directly in your model definitions will override these settings.
 > Prior to v0.10, adapters were defined in `myApp/config/Adapters.js`.  See v0.9 docs for more info.
+
+
+### Multiple connections for an adapter
+
+You can set up more than one connection using the same adapter.  For example, if you
+had two mysql databases, you could configure them as:
+
+```javascript
+
+module.exports.connections = {
+  // sails-disk is installed by default.
+  localMysql: {
+    adapter: 'sails-mysql',
+    user: 'root',
+    host: 'localhost',
+    database: 'someDbase'
+  },
+  remoteMysql: {
+    adapter: 'sails-mysql',
+    user: 'remoteUser',
+    password: 'remotePassword',
+    host: 'http://remote-mysql-host.com',
+    database: 'remoteDbase'
+  }
+};
+
+```
+
+> **Note** If *any* connection to an adapter is used by a model, then *all* connections to that adapter will be loaded on `sails.lift`, whether or not models are actually using them.  In the example above, if a model was configured to use the `localMysql` connection, then both `localMysql` and `remoteMysql` would attempt to connect at run time.  It is therefore good practice to comment out any connection configurations that you aren't using!
+
 
 <docmeta name="uniqueID" value="Connections100765">
 <docmeta name="displayName" value="Connections">
