@@ -54,7 +54,6 @@ had two mysql databases, you could configure them as:
 ```javascript
 
 module.exports.connections = {
-  // sails-disk is installed by default.
   localMysql: {
     adapter: 'sails-mysql',
     user: 'root',
