@@ -1,6 +1,6 @@
 # .update()
 ### Purpose
-Updates existing record in the database that match the given criteria.
+Updates existing records in the database that match the specified criteria.
 
 ### Overview
 #### Parameters
