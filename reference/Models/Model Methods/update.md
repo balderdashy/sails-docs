@@ -1,4 +1,4 @@
-# .update( `criteria` , `criteria` , [`callback`] )
+# .update()
 ### Purpose
 Updates existing record in the database that match the given criteria.
 
@@ -40,5 +40,5 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err,upda
 
 
 <docmeta name="uniqueID" value="update727440">
-<docmeta name="displayName" value=".update( `criteria` , `criteria` , [`callback`] )">
+<docmeta name="displayName" value=".update()">
 
