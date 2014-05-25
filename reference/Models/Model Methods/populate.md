@@ -8,6 +8,7 @@ This chainable method is used between .find()/.update() and .exec() in order to 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
 | 1 |     Foreign Key     |      `string`       |     Yes    |
+| 2 |     Query           |      `object`       |     No     |
 
 ### Example Usage
 
@@ -46,6 +47,24 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
        id: 9,
        createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
        updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
+  name: 'Mike',
+  age: 16,
+  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+  id: 7 }
+*/
+
+User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
+  console.log(r[0].toJSON())
+});
+
+/*
+{ pets: 
+   [ { name: 'Pinkie Pie',
+       color: 'pink',
+       id: 7,
+       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
+       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) }],
   name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
