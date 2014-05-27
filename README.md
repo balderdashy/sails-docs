@@ -14,5 +14,5 @@ Guide and reference documentation for the 0.10.x release of Sails.  Content for 
 ### New docs are coming!
 
 We're currently working on a complete rewrite of the reference documentation.
-Check out the [reference](https://github.com/balderdashy/sails-docs/tree/0.9/reference) folder for a preview.
+Check out the [reference](https://github.com/balderdashy/sails-docs/tree/master/reference) folder for a preview.
 
