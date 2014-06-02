@@ -1,4 +1,4 @@
-# * . *.remove( `primary key` )
+# *.remove( `primary key` )
 ### Purpose
 Used to remove records from the join table that is automatically generated during a many-to-many association. Unlike .add(), it only accepts the primary key of the model instance (defaults to record ID).
 
@@ -49,5 +49,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 > + `.remove()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
 
 <docmeta name="uniqueID" value="remove790682">
-<docmeta name="displayName" value="* . *.remove( `primary key` )">
+<docmeta name="methodType" value="association">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".remove()">
 

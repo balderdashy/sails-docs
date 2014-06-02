@@ -93,5 +93,7 @@ function destroy(){
 > Any string arguments passed must be the ID of the record.
 
 <docmeta name="uniqueID" value="publishDestroy732227">
-<docmeta name="displayName" value=".publishDestroy( `{id}`, [`request`], [`options`] )">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".publishDestroy()">
 

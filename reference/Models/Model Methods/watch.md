@@ -14,5 +14,7 @@ This subscribes a client to publishCreate events for the model.  Any connections
 
 
 <docmeta name="uniqueID" value="watch67265">
-<docmeta name="displayName" value=".watch(`request`)">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".watch()">
 

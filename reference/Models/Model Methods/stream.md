@@ -63,5 +63,7 @@ window.onload = function startListening(){
 > Any string arguments passed must be the ID of the record.
 
 <docmeta name="uniqueID" value="stream427721">
-<docmeta name="displayName" value=".stream( `criteria` )">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".stream()">
 

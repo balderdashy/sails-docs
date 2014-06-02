@@ -23,5 +23,7 @@ User.findOne({id: 123}).exec(function(err, userInstance) {
 ```
 
 <docmeta name="uniqueID" value="unsubscribe354769">
-<docmeta name="displayName" value=".unsubscribe(`request`,`records`,[`contexts`])">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".unsubscribe()">
 

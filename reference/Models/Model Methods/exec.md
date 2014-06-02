@@ -22,5 +22,7 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 
 
 <docmeta name="uniqueID" value="exec550068">
-<docmeta name="displayName" value=".exec(`callback`)">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".exec()">
 

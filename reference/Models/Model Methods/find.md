@@ -40,5 +40,7 @@ User.find({}).exec(function findCB(err,found){
 
 
 <docmeta name="uniqueID" value="find816978">
-<docmeta name="displayName" value=".find(`criteria` , [`callback`])">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="10">
+<docmeta name="displayName" value=".find()">
 

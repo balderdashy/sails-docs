@@ -34,5 +34,7 @@ User.destroy({name:'Flynn'}).exec(function deleteCB(err){
 
 
 <docmeta name="uniqueID" value="destroy398816">
-<docmeta name="displayName" value=".destroy( `criteria` , [`callback`] )">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".destroy()">
 

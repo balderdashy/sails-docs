@@ -60,5 +60,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 
 
 <docmeta name="uniqueID" value="populate245634">
-<docmeta name="displayName" value=".populate( `foreignKey` )">
+<docmeta name="methodType" value="association">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".populate()">
 

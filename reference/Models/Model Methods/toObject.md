@@ -1,4 +1,4 @@
-# * .toObject()
+# .toObject()
 
 ### Purpose
 The toObject method returns a cloned model instance (record) but stripped of all instance methods.
@@ -21,5 +21,7 @@ _See usage in .toJSON()_
 
 
 <docmeta name="uniqueID" value="toObject330342">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value="* .toObject()">
 

@@ -11,5 +11,7 @@ This unsubscribes a client from publishCreate events for the model.
 
 
 <docmeta name="uniqueID" value="unwatch872661">
-<docmeta name="displayName" value=".unwatch(`request`)">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".unwatch()">
 

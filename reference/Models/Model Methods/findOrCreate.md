@@ -35,5 +35,7 @@ User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(er
 
 
 <docmeta name="uniqueID" value="findOrCreate760631">
-<docmeta name="displayName" value=".findOrCreate( `criteria` , `criteria` , [`callback`] )">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".findOrCreate()">
 

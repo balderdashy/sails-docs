@@ -84,5 +84,7 @@ function makeNew(){
 
 
 <docmeta name="uniqueID" value="publishCreate671839">
-<docmeta name="displayName" value=".publishCreate( `data`,[`request`] )">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".publishCreate()">
 

@@ -40,5 +40,7 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err,upda
 
 
 <docmeta name="uniqueID" value="update727440">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".update()">
 

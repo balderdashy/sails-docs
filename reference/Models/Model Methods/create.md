@@ -35,5 +35,7 @@ User.create({name:'Walter Jr'}).exec(function createCB(err,created){
 
 
 <docmeta name="uniqueID" value="create312605">
-<docmeta name="displayName" value=".create( `values`, [`callback`] )">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".create()">
 

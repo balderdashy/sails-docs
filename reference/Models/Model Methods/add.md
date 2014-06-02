@@ -1,4 +1,4 @@
-# * . * .add( `primary key` )
+# * .add( `primary key` )
 ### Purpose
 Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.  
 
@@ -56,5 +56,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 
 
 <docmeta name="uniqueID" value="add574043">
-<docmeta name="displayName" value="* . * .add( `primary key` )">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".add()">
 

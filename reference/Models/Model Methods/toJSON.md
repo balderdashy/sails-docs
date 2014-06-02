@@ -1,4 +1,4 @@
-# * .toJSON()
+# .toJSON()
 
 ### Purpose
 This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.
@@ -73,5 +73,7 @@ module.exports = {
 
 
 <docmeta name="uniqueID" value="toJSON161307">
-<docmeta name="displayName" value="* .toJSON()">
+<docmeta name="methodType" value="instance">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".toJSON()">
 

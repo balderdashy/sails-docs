@@ -27,5 +27,7 @@ See the documentation for `publishUpdate` for information about `options.noRever
 
 
 <docmeta name="uniqueID" value="publishRemove468150">
-<docmeta name="displayName" value=".publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )">
+<docmeta name="methodType" value="pubsub">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".publishRemove()">
 

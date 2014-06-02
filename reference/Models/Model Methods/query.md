@@ -202,5 +202,7 @@ User.nameEndsWith('sie', function endsWithCB(err,found){
 -->
 
 <docmeta name="uniqueID" value="query546204">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".query()">
 

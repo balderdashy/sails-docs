@@ -21,5 +21,7 @@ myQuery.exec(function callBack(err,results){
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
 <docmeta name="uniqueID" value="limit203606">
-<docmeta name="displayName" value=".limit(`integer`)">
+<docmeta name="methodType" value="mcm">
+<docmeta name="importance" value="undefined">
+<docmeta name="displayName" value=".limit()">
 
