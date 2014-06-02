@@ -45,5 +45,5 @@ User.find().exec(
 <docmeta name="uniqueID" value="save581656">
 <docmeta name="methodType" value="association">
 <docmeta name="importance" value="undefined">
-<docmeta name="displayName" value="* .save()">
+<docmeta name="displayName" value=".save()">
 
