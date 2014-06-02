@@ -41,6 +41,19 @@ The current version of Sails ships with the following blueprint actions:
 
 Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
 
+### Overriding Blueprints
+
+( taken from https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs )
+
+To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.
+
+**Note:** Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)
+
+Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
+
+    GET /myRoute': {blueprint: 'foo'}
+
+
 ### Notes
 
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
