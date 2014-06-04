@@ -29,7 +29,7 @@ myQuery.exec(function callBack(err,results){
 
 > Other Sort Types include
   - ASC
-  - DES
+  - DESC
 
 <docmeta name="uniqueID" value="sort822396">
 <docmeta name="methodType" value="mcm">
