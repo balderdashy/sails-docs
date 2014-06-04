@@ -1,4 +1,4 @@
-# Sails.js Documentation (v0.10.x Angular!)
+# Sails.js Documentation (v0.10.x)
 
 
 Guide and reference documentation for the 0.10.x release of Sails.  Content for the documentation on the Sails website (sailsjs.org) is deployed from here.  The markdown files are split, relinked, converted to HTML, and formatted to fit within the skin of sailsjs.org.
