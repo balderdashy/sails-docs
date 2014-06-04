@@ -1,5 +1,14 @@
-# Custom Hooks
-### Overview
+# Understanding Hooks
+### Why 
+
+
+
+### What
+
+### Where
+
+### How
+
 
 
 ```javascript
@@ -19,7 +28,7 @@ module.exports = function (sails) {
     // First thing- anything you put in here, methods, state, whatever, is accessible (just like in a service), but on `sails.hooks.foo`
     isTooMuch: function (someNumber, cb) {
       if (someNumber > 100) {
-        return cb(new Error('fuck you'));
+        return cb(new Error('You suck!'));
       }
       else return cb();
     },
@@ -111,5 +120,5 @@ module.exports = function (sails) {
 // };
 ```
 
-<docmeta name="uniqueID" value="customhooks65532">
-<docmeta name="displayName" value="Make Your Own!">
+<docmeta name="uniqueID" value="howtheywork65532">
+<docmeta name="displayName" value="How they work">
