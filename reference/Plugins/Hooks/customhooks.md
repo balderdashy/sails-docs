@@ -112,5 +112,4 @@ module.exports = function (sails) {
 ```
 
 <docmeta name="uniqueID" value="customhooks65532">
-<docmeta name="displayName" value="Custom Hooks">
-  
+<docmeta name="displayName" value="Make Your Own!">
