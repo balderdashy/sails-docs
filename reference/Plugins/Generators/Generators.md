@@ -1,4 +1,17 @@
 # Generators
+## Status
+
+##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+
+The API is in the process of settling, but has not yet had sufficient real-world testing to be considered stable.  
+
+Backwards-compatibility will be maintained if reasonable.
+
+
+### Purpose
+
+What is my purpose in this world?
+
 ### old partial content from when spec was an itty bitty baby
 
 Generators are designed to make it easier to customize the `sails new` and `sails generate` command-line tools, and provide better for support for different Gruntfiles, configuration options, view engines, coffeescript, etc.
