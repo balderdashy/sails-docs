@@ -7,7 +7,7 @@ Used to add records to the join table that is automatically generated during a M
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |    Records    | `{}`,`[{}]`, `string`, `int`  | Yes |
+| 1 |    Records    | `{}`, `string`, `int`  | Yes |
 
 
 ### Example Usage
@@ -51,6 +51,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 
 
 ### Notes
+> + .add() does not accept arrays of any kind.  Don't try it.
 > + Any string arguments passed must be the primary key of the record.
 > + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
 
