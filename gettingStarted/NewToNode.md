@@ -1,4 +1,4 @@
-#New to [Node.js](https://soundcloud.com/marak/marak-the-node-js-rap)?
+# New to [Node.js](https://soundcloud.com/marak/marak-the-node-js-rap)?
 Thats okay!  We'll get you pointed in the right direction.
 
 
@@ -7,7 +7,7 @@ Per [nodejs.org](http://nodejs.org):
 
 More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
 
-##What OS do I need?
+## What OS do I need?
 
 Node.js will install on most major Operating systems.  MacOSX, many flavors of Linux, and Windows are supported.  
 
@@ -150,3 +150,7 @@ Click [here](https://github.com/balderdashy/sails-wiki/blob/0.9/getting-started.
 
 ## Further help!
 We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
+
+
+<docmeta name="uniqueID" value="NewToNode748472">
+<docmeta name="displayName" value="New To Node">
