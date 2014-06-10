@@ -101,6 +101,7 @@ module.exports.policies = {
 
 #### Summary
 + `message` socket (i.e. "comment") event on client is now `modelIdentity` (where "modelIdentity" is different depending on the model that the `publish*()` method was called from.
++ Clients are no longer subscribed to model-creation events by the blueprint routes.  To listen for creation events, use [`Model.watch()`](/#/documentation/reference/Models/Model-Methods/watch.html).
 + The events that were formerly `create`, `update`, and `destroy` are now `created`, `updated`, and `destroyed`.
 
 #### Details
