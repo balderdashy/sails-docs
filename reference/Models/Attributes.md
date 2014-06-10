@@ -21,7 +21,6 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - int
 - float
 - date
-- time
 - datetime
 - boolean
 - binary
