@@ -17,7 +17,12 @@ sails>
 
 > Note that `sails console` still lifts the server, so routes will be accessible using a browser.
 
-
+### Lo-Dash in sails console
+You can use Lo-Dash (integrated in sails) at sails console like this:
+```sh
+sails> var lodash = require("sails/node_modules/lodash")
+sails> lodash.keys(sails.config);
+```
 
 <docmeta name="uniqueID" value="sailsconsole198558">
 <docmeta name="displayName" value="sails console">
