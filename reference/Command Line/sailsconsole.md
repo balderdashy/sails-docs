@@ -21,7 +21,7 @@ sails>
 For convenience, Sails exposes a handful of [global variables](http://beta.sailsjs.org/#/documentation/reference/Globals).
 By default, you can use the `sails` object, app's models, services, Lo-Dash and async:
 ```sh
-sails> var lodash = _
+sails> var lodash = _;
 sails> lodash.keys(sails.config);
 ```
 
