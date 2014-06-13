@@ -70,27 +70,28 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 |uuidv4| checks if `string` in this record is a UUID (v4) | |
 
 
-<!--
+
 
 ### Custom Validation Rules
 
-> This needs to be reworked - we shouldn't name the property for defining custom validations `types` if the resulting custom validations can't actually be used in the `type` field!
+You can define your own types and their validation with the types object. It's possible to access and compare values to other attributes (with "this"). This allows you to move validation business logic into your models and out of your controller logic.
 
-
-You can define your own types and their validation by defining a `types` property. A `type` It's possible to access and compare values to other attributes.
+> Note that you own type always have to be a variante of the basic data-types ("string", "int", "json", ...)
 
 #### Example Model
-
 
 ```javascript
 // api/models/foo
 module.exports = {
 
   types: {
-    point: function(geoLocation){
-        return geoLocation.x && geoLocation.y
-      }
+    is_point: function(geoLocation){
+      return geoLocation.x && geoLocation.y
     },
+    password: function(password) {
+      return password === this.passwordConfirmation;
+    }
+  },
   attributes: {
     firstName: {
       type: 'string',
@@ -101,14 +102,20 @@ module.exports = {
     location: {
       //note, that the base type (json) still has to be defined
       type: 'json',
-      point: true
+      is_point: true
+    },
+    password: {
+      type: 'string',
+      password: true
+    },
+    passwordConfirmation: {
+      type: 'string'
     }
+    
   }
 }
-
  ```
--->
-
+ 
 
 
 
