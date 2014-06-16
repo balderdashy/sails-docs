@@ -8,7 +8,6 @@ Here is a non-comprehensive list of Sails.js hosting providers.
 
 ##### Deploying to NodeJitsu?
 To deploy to NodeJitsu, you'll need to make some minor modifications to your configuration:
-
 Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
 
 ```
@@ -22,6 +21,16 @@ The `host:` is new to the file and is not created by default.  You will need to 
 + https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
 + https://github.com/balderdashy/sails/issues/455
 
+##### Deploying to OpenShift?
+To deploy to OpenShift, you'll need to make some minor modifications to your configuration:
+Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
+
+```
+	port: process.env.OPENSHIFT_NODEJS_PORT,
+	host: process.env.OPENSHIFT_NODEJS_IP,
+```
+
+> Attention: At the moment OpenShift runs a old version of npm - this may make you trouble installing sails (and dependencies). To handle this just use a custom node version (with build in npm): https://github.com/openshift-quickstart/nodejs-custom-version-openshift
 
 ##### Using DigitalOcean?
 
