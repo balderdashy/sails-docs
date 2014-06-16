@@ -76,7 +76,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 
 You can define your own types and their validation with the types object. It's possible to access and compare values to other attributes (with "this"). This allows you to move validation business logic into your models and out of your controller logic.
 
-> Note that you own type always have to be a variante of the basic data-types ("string", "int", "json", ...)
+> Note that your own type always have to be a variant of the basic data-types ("string", "int", "json", ...)
 
 #### Example Model
 
