@@ -16,7 +16,7 @@ Think about how you have used Sails for your project then write a guide about it
 
 #### Okay, I'll do it! Now what? 
 
-Thanks.  You're awesome!  Now, before you write anything, see the very first user guide in this folder under [contributing.md]("https://github.com/balderdashy/sails-docs/blob/master/userguides/contributing.md")
+Thanks.  You're awesome!  Now, before you write anything, see the very first user guide in this folder under [contributing.md](https://github.com/balderdashy/sails-docs/blob/master/userguides/contributing.md)
 
 #### Legal Disclaimer
 
