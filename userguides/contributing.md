@@ -44,14 +44,13 @@ Feel free to copy and change the file `guideStub.md`
 
 ### Contributed By
 ##### Nicholas Crumrine
-##### Bio
 A real West Texas cowboy with an affinity for cats
 
 ##### Link
-http://beta.sailsjs.org
+https://twitter.com/ncrumrine
 
 ##### Organizations
-Sails, Balderdash
+Sails, Balderdash,cluckus
 
 <docmeta name="uniqueID" value="sailsUserGuidesContributing80998">
 <docmeta name="displayName" value="Submit A Guide">
