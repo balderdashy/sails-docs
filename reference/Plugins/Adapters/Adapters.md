@@ -7,7 +7,7 @@ The API has proven satisfactory, but cleanup in the underlying code may cause mi
 
 ### Purpose
 
-What is my purpose in this world?
+What is my purpose in this world?!?
 
 
 <docmeta name="uniqueID" value="Adapters83669">
