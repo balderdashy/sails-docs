@@ -260,5 +260,5 @@ module.exports = function mySimpleHook(sails) {
 
 ```
 
-<docmeta name="uniqueID" value="howtheywork65532">
-<docmeta name="displayName" value="How they work">
+<docmeta name="uniqueID" value="customhooks65532">
+<docmeta name="displayName" value="Custom Hooks">
