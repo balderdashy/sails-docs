@@ -1,17 +1,17 @@
 # Understanding Hooks
 ### Why Should I Use Hooks? 
-Hooks exist to provide structure and reusability to your custom code.  We hope you'll use to keep your controllers and models nice and skinny.  Fat controllers are cool too...until you're waist deep in `UserController.js`, trying to find all the pieces of that thing you made that one time.
+Hooks exist to provide a way for you to execute custom code as your app is lifted.  This is one of the better places to build lower level functionality that might need direct interaction with sails core. 
 
 ### What Are They?
-On a base level, a hook is just a function that gets imported and immediately executed when you lift your app.  This function is called with the `sails global` object as an argument and returns a `definition` object with various methods and properties that provide the structure.
+On a base level, a hook is just a function that gets imported and immediately executed when you lift your app.  This function is called with the `sails global` object as an argument and returns a `definition` object with various methods and properties that provide structure.
 
 ### How Do They Work?
 Sails uses hooks to provide most of it's core functionality.  Sails has a hook for it's http server, pubsub functionality, interfacing with an ORM (waterline by default), managing Grunt tasks, etc.  Sails even uses a hook for loading your custom hooks.  It's called `userhooks` and it runs after the http server but before the logger.  It's one of the last things that happens as you lift your app.
 
 ### Where Are They?
-Like we said before, Sails relies on hooks internally.  If you want to take a look at them, they can be found in `myApp/node_modules/sails/lib/hooks`.  While these are a great resource when writing your own custom hooks, I would be careful not to change them unless you know what you're doing.  Eventually the api will move towards making it easier to use drop-in replacements to the hooks in sails-core.
+Like we said before, Sails relies on hooks internally.  If you want to take a look at them, they can be found in `myApp/node_modules/sails/lib/hooks`.  While these are a great resource when writing your own custom hooks, I would be careful not to change them unless you know what you're doing.  Eventually it will become easier to use drop-in replacements to the hooks in sails-core.
 
-User defined hooks are located in `myApp/api/hooks`.  This folder isn't created when you create a new project.  Should it be?  Who knows.  Either way, if youre making your own hook, youll start off by creating a folder called `hooks` in `myApp/api`.
+User defined hooks are located in `myApp/api/hooks`.  This folder isn't created when you create a new project.  Should it be?  Who knows.  Either way, if you're making your own hook, you'll start off by creating a folder called `hooks` in `myApp/api`.
 
 
 ## The Simplest User Hook
@@ -27,7 +27,7 @@ module.exports = function mySimpleHook(sails) {
             console.log('Cats are',adjective,'!')
         },
 
-        // Run automatically when the hook initializes
+        // Runs automatically when the hook initializes
         initialize: function (cb) {
 
             var hook = this;
@@ -51,205 +51,213 @@ While this isnt a very useful hook, it demonstrates how simple hooks really are.
 
 ## What Else Can I Do?
 
+To answer that, let's look at one of the hooks that `sails core` uses internally.  Below is the CSRF hook.  Sails uses it to validate CSRF tokens.
+
 myApp/api/hooks/cathook/index.js
 
 ```javascript
+module.exports = function(sails) {
 
-module.exports = function myHookAboutCats(sails) {
+  // This hooks dependencies
 
-    return {
-        talkAboutCats: function(adjective){
-            var hook = this;
-            console.log('Cats are',adjective.toUpperCase(),'!')
-        },
-        initialize: function (cb) {
+  var _ = require('lodash'),
+  util = require('sails-util'),
+  Hook = require('../../index');
 
-            var hook = this;
+  // Returning the hooks definition object
+
+  return {
+
+    defaults: {
+      csrf: false
+    },
 
 
-            return cb();
-        },
-        defaults: {
-            // These properties will be overridden by the properties in myApp/config/cathook.js
-            cathook: {
-                volume: 'loud',
-                catFunctions: {
-                    loud: function(){
+    // See `configure` notes below
 
-                  },
-                    quiet: function(){
+    configure: function () {
+      if (sails.config.csrf === true) {
+        sails.config.csrf = {
+          grantTokenViaAjax: true,
+          protectionEnabled: true,
+          origin: ''
+        };
+      }
+      else if (sails.config.csrf === false) {
+        sails.config.csrf = {
+          grantTokenViaAjax: false,
+          protectionEnabled: false,
+          origin: ''
+        };
+      }
+      else {
+        _.defaults(typeof sails.config.csrf === 'object' ? sails.config.csrf : {}, {
+          grantTokenViaAjax: true,
+          protectionEnabled: true,
+          origin: ''
+        });
+      }
+    },
 
-                  },
-                }
-            },
-        },
-        routes: {        
-            // Functions to bind BEFORE the app's explicit routes are bound (i.e.. config/routes.js)
-            before: {
-                '/*': function (req, res, next) {
-                    next();
-                }
-            },
-            // Functions to bind AFTER the app's explicit routes are bound (i.e. config/routes.js)
-            after: {
-                '/*': function (req, res, next) {
-                  next();
-                }
-            }
+    // See `defaults` notes below
+
+    defaults: {
+
+    },
+
+    // See `routes` notes below
+
+    routes: {
+
+      // In this hook, both the `before` and `after` objects
+      // use a wildcard to match EVERY request sent to your app.
+
+      before: {
+        '/*': function(req, res, next) {
+          var allowCrossOriginCSRF = sails.config.csrf.origin.split(',').indexOf(req.headers.origin) > -1;
+
+          if (sails.config.csrf.protectionEnabled && (!req.headers.origin || util.isSameOrigin(req) || allowCrossOriginCSRF)) {
+            var connect = require('express/node_modules/connect');
+
+            return connect.csrf()(req, res, function(err) {
+              res.locals._csrf = req.csrfToken();
+              if (err) {
+                return res.forbidden();
+              } else {
+                return next();
+              }
+            });
+          }
+
+          // Always ok
+          res.locals._csrf = null;
+
+          next();
         }
+      },
+
+      after: {
+        'get /csrfToken': function(req, res, next) {
+
+          // Allow this endpoint to be disabled by setting:
+          // sails.config.csrf = { grantTokenViaAjax: false }
+          if (!sails.config.csrf.grantTokenViaAjax) {
+            return next();
+          }
+
+          return res.json({
+            _csrf: res.locals._csrf
+          });
+        }
+      }
     }
+
+  };
 };
 
 
 ```
 
-### Initialize
+### Definition Object
 
-### Defaults
+The definition object may contain as many key/values as you want as long as it also includes the initialize function on the top level.  If if does not include this function, the hook will fail to load and your app will throw an error.
+
+### Configure
+
+The configure function is a special function in `hooks` that runs before `initialize()`.  It is most often used to read the values of the config settings for the files in `myApp/config/`
+
+See the section called 'Defaults' to learn more about hook configuration.
+
+### Initialize
+If you include the `initialize()` function on your definition object, the callback MUST be returned.
+
+This function is most often used to register `listeners` on event emitters and prepare the hook for success.
+
+See the `timing` section below for more info about `initialize()`
 
 ### Routes
+`Routes` is a special object with keys `before` and `after`. It is used to bind custom functions to routes. Behind the scenes, the functions defined here are added to the stack of Express style middleware functions that an http request goes through before it makes it to your controller logic.
 
+### Defaults
+While the `Defaults` object isn't used in this hook, its purpose is to set implicit default config values. Those values will be automatically merged with `sails.config`.
 
-
-
-
-<!--             var eventsToWaitFor = [];
-            eventsToWaitFor.push('router:after');
-            if (sails.hooks.policies) {
-                eventsToWaitFor.push('hook:policies:bound');
-            }
-            if (sails.hooks.orm) {
-                eventsToWaitFor.push('hook:orm:loaded');
-            }
-            if (sails.hooks.http) {
-                eventsToWaitFor.push('hook:http:loaded');
-            }
-            if (sails.hooks.sockets) {
-                eventsToWaitFor.push('hook:sockets:loaded');
-            }
-            if (sails.hooks.pubsub) {
-                eventsToWaitFor.push('hook:pubsub:loaded');
-            }
-            if (sails.hooks.controllers) {
-                eventsToWaitFor.push('hook:controllers:loaded');
-            }
-            sails.after(['hook:orm:loaded'], function(){
-                Image.destroy().exec(function(){
-                    Guest.destroy().exec(function(){
-                        console.log('Images and Guests Destroyed')
-                    })
-                })
-            });
- -->
-
+There is a convention of hooks namespacing config options under their hook identity. If our hook was called `simpleHook`, we would set our defaults like you see below.
 
 ```javascript
 
-// api/hooks/Foo.js
+  defaults: {
 
+    simpleHook:{
 
-// So you start by exporting a function.
-// This gives you access to the `sails` object (normally it's global anyways but hooks are a reflectin of how core works, and this is how core works so you can disable sails if you want  anyways)
-module.exports = function (sails) {
-  
-  // This is the important bit.
-  // You return a definition object.
-  return {
-    
-    listed
-    // First thing- anything you put in here, methods, state, whatever, is accessible (just like in a service), but on `sails.hooks.foo`
-    isTooMuch: function (someNumber, cb) {
-      if (someNumber > 100) {
-        return cb(new Error('You suck!'));
-      }
-      else return cb();
-    },
-    
-    
-    
-    // Now the special things
+      defaultOptionOne: true,
+      defaultOptionTwo: 'foo',
+      anotherOption: {
+        evenMore: 'options'
+      } 
 
+    }
 
-    // Run automatically when the hook initializes
-    initialize: function (cb) {
-      
-      
-      
-      // You must trigger `cb` so sails can continue loading.  If you pass in an error, sails will fail to load, and display your error on the console.
-      cb();
-    },
-    
-    
-    
-    // Implicit default config values which
-    // will be automatically merged with
-    // `sails.config`.  There is a convention
-    // of hooks namespacing config options under
-    // their hook identity.  So we'd do:
-    defaults: {
-      foo: {
-        something: true,
-        // Keep in mind any stuff in the app-level config files overrides this- these are just implicit defaults
-        heylook: {
-          you_can_do_these_things: {
-            recursivelydeep: true
-          }
-        }
-      },
-      
-      // but if we wanted to get naughty, we might
-      // do something like this:
-      // (note: don't do things like this-- dont' show them how- bad idea)
-      port: 1393,
-      blueprints: {
-        shortcuts: false
-      }
-    },
-    
-    
-    // Ok so thre's also this (but I woudln't even mention it in docs yet)
-    configure: function () {
-      // i don't remember how it works, it's used in core in certain hooks I guess- it's to get stuff in your config before running initialize.  Most important 
-    },
-    
-    // Last thing:
-      routes: {
-        
-        // Functions to bind BEFORE the app's explicit routes are bound (i.e.. config/routes.js)
-        before: {
-          // For example- this is how CSRF and stuff works (things that run beforehand)
-          
-          // Example: every route
-          '/*': function (req, res, next) {
-            // do stuff
-            next();
-          }
+  }
+
+```
+
+The defaults are merged recursively so you can have complex config if you need it.
+
+> Remember, these are only defaults.  Any app-level configuration in the `myApp/config/` files will override this.
+
+### Timing
+Sometimes it's important that your custom hook loads at a particular time.  The sails object which is passed as an argument to the `initialize()` function is a [node event emitter](http://nodejs.org/api/events.html#events_class_events_eventemitter).
+
+While your app is lifting, it emits events that give information about what stage of the loading process it is in.  You can use this to make sure your hook loads at the correct time by registering a `listener` in the `initialize()` function.  Check out the example below.
+
+```javascript
+
+// definition object
+module.exports = function mySimpleHook(sails) {
+
+    return {
+        talkAboutCats: function(adjective){
+            console.log('Cats are',adjective,'!')
         },
+        initialize: function(callback){
 
-        // Functions to bind AFTER the app's explicit routes are bound (i.e. config/routes.js)
-        after: {
-          // For example- this is where blueprint routes live
-          
-          // Example: every route
-          '/*': function (req, res, next) {
-            // Do stuff (this will only be run if no other routes or hooks pick up the request and stop it)
-            // Calling next carries on to other hooks and things, and eventually will end up at the 404 handler
-            next();
-          }
-          
+          // Lets wait on some of the sails core hooks to
+          // finish loading before we load our hook
+          // that talks about cats. 
+
+            var eventsToWaitFor = [];
+
+            if (sails.hooks.policies)
+                eventsToWaitFor.push('hook:policies:bound');
+
+            if (sails.hooks.orm)
+                eventsToWaitFor.push('hook:orm:loaded');
+
+            if (sails.hooks.http)
+                eventsToWaitFor.push('hook:http:loaded');
+
+            if (sails.hooks.sockets)
+                eventsToWaitFor.push('hook:sockets:loaded');
+
+            if (sails.hooks.pubsub)
+                eventsToWaitFor.push('hook:pubsub:loaded');
+
+            if (sails.hooks.controllers)
+                eventsToWaitFor.push('hook:controllers:loaded');
+
+            sails.after(eventsToWaitFor, function(){
+                // Now we will return the callback and our hook
+                // will be usable.
+
+                return callback();
+
+            });
+
+
+
         }
-      }
-    
-    
-  };
-}
+  }
 
-
-
-// Usage:
-// sails.hooks.foo.isTooMuch(2, function (err) {
-// 
-// };
 ```
 
 <docmeta name="uniqueID" value="howtheywork65532">
