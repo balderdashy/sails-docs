@@ -38,7 +38,7 @@ Thanks!
 
 
 ### File Uploads
-
+<a name="file-uploads"></a>
 The Connect multipart middleware [will soon be officially deprecated](http://www.senchalabs.org/connect/multipart.html). But since this module was used as the built-in HTTP body parser in Sails v0.9 and Express v3, this is a breaking change for v0.9 Sails projects relying on `req.files`.
 
 By default in v0.10, Sails includes [`skipper`](http://github.com/balderdashy/skipper), a body parser which allows for streaming file uploads without buffering tmp files to disk.  For run-of-the-mill file upload use cases, Skipper comes with bundled support for uploads to local disk (via [skipper-disk](https://github.com/balderdashy/skipper-disk)), but streaming uploads can be plugged in to any of its supported adapters.
@@ -62,7 +62,7 @@ As with most things in Sails, you can use any Connect/Express/Sails-compatible b
 
 
 ### Blueprints
-
+<a name="blueprints"></a>
 A new blueprint action (`findOne`) has been added.  For instance, if you have a `FooController` and `Foo` model, then send a request to `/foo/5`, the `findOne` action in your `FooController` will run.  If you don't have a `findOne` action, the `findOne` blueprint action will be used in its stead.  Requests sent to `/foo` will still run the `find` controller/blueprint action.
 
 
@@ -70,6 +70,7 @@ A new blueprint action (`findOne`) has been added.  For instance, if you have a 
 
 
 ### Policies.
+<a name="policies"></a>
 Policies work exactly as they did in v0.9- however there is a new consideration you should take into account:  Due to the introduction of the more specific `findOne()` blueprint action mentioned above, you will want to make sure you're handling it explicitly in your policy mapping configuration.
 
 For example, let's say you have a v0.9 app whose `policies.js` configuration prevents access to the `find` action in your `DoveController`:
@@ -97,7 +98,7 @@ module.exports.policies = {
 
 
 ### Pubsub
-
+<a name="pubsub"></a>
 
 #### Summary
 + `message` socket (i.e. "comment") event on client is now `modelIdentity` (where "modelIdentity" is different depending on the model that the `publish*()` method was called from.
@@ -169,7 +170,7 @@ But as of Sails/Weterline v0.10, the original meaning of `.done()` has been offi
 
 
 ### Associations
-
+<a name="associations"></a>
 Sails v0.10 introduces associations between data models.  Since the work we've done on associations is largely additive, your existing models should still just work.  That said, this is a powerful new feature that allows you to write less code and makes your app more maintainable, so we suggest taking advantage of it!  To learn about how to use associations in Sails, [check out the docs](./#!documentation/reference/ModelAssociations).
 
 Associations (or "relations") are really just special attributes.  Instead of `string` or `integer` values, you can specify an instance of a model or a collection of model instances.  You can think about this kind of like an object (`{...}`) or an array (`[{...}, {...}]`) you might store as JSON in a NoSQL database.  The difference is, in Sails, this works with any of the supported databases, and even allows you to `populate` (i.e. join) across different databases and types of databases.
@@ -178,7 +179,7 @@ Associations (or "relations") are really just special attributes.  Instead of `s
 
 
 ### Generators
-
+<a name="generators"></a>
 
 Sails has had support for generating code for a while now (e.g. `sails generate controller foo`) but in v0.10, we wanted to make this feature more extensible, open, and accessible to everybody in the Sails community.  With that in mind, v0.10 comes with a complete rewrite of the command-line tool, and pluggable generators.  Want to be able to run `sails generate blog foo` to make a new blog built on Sails?  Create a `blog` generator (run `sails generate generator blog`), add your templates, and configure the generator to copy the new templates over.  Then you can release it to the community by publishing an npm module called `sails-generate-blog`.  Compatibility with Yeoman generators is also in our roadmap.
 
@@ -190,7 +191,7 @@ For a complete guide to what generators are and how they work, [check out the in
 
 
 ### Command-Line Tool
-
+<a name="command-line-tool"></a>
 The big change here is how you create a new api.  In the past you called `sails generate new_api`.  This would generate a new controller and model called `new_api` in the appropriate places.  This is now done using `sails generate api new_api`
 
 You can still generate models and controllers seperately using the same [CLI Commands](./#!documentation/reference/CommandLine/)
@@ -201,7 +202,7 @@ Also, `--linker` switch is no longer available. In previos version, if `--linker
 
 
 ### Custom Server Responses
-
+<a name="custom-server-responses"></a>
 In v0.10, you can now generate your own custom server responses.  [See here to learn how](https://github.com/uncletammy/sails-generate-serverResponse).
 
 Like before, there are a few that we automatically create for you.  Instead of generating `myApp/config/500.js` and other .js responses in the config directory, they are now generated in `myApp/api/responses/`.
