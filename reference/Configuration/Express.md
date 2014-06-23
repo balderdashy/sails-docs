@@ -82,7 +82,35 @@ module.exports.express = {
 };
 ```
 
+### Middleware order 
+Some middlewares for express should be loaded in a strict order (for example: Passport.js should be loaded after Static). If you want to define a specific order you can overwrite the sails "loadMiddleware"-function like this:
 
+
+```javascript
+module.exports.express = {
+
+    loadMiddleware: function(app, defaultMiddleware, sails) {
+
+        app.use(defaultMiddleware.startRequestTimer);
+        app.use(defaultMiddleware.cookieParser);
+        app.use(defaultMiddleware.session);
+        app.use(defaultMiddleware.bodyParser);
+        app.use(defaultMiddleware.handleBodyParserError);
+        app.use(defaultMiddleware.methodOverride);
+        app.use(defaultMiddleware.poweredBy);
+        app.use(defaultMiddleware.router);
+        app.use(defaultMiddleware.www);
+        
+        // For example your middleware at this position:
+        app.use(yourmiddleware());
+        
+        app.use(defaultMiddleware.favicon);
+        app.use(defaultMiddleware[404]);
+        app.use(defaultMiddleware[500]);
+    }
+
+}
+```
 
 
 
