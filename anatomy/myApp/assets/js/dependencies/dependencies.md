@@ -1,4 +1,4 @@
-# dependencies
+# myApp/assets/js/dependencies
 ### Purpose
 This directory allows grunt to load javascript files in index.ejs before the rest of the javascript files in the js directory.
 
