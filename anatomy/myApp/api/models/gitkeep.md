@@ -1,7 +1,7 @@
 # myApp/api/models/.gitkeep
 ### Purpose
 
-See [.gitkeep](http://beta.sailsjs.org/#!documentation/anatomy/myApp/api/controllers/.gitkeep)
+Ignore this file.  It only exists because `git` refuses to push empty directories to a remote server.  `.gitkeep` is an unofficial convention that has emerged as a workaround for people who don't discriminate against empty directories.
 
 
 <docmeta name="uniqueID" value="gitkeep437760">
