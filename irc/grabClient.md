@@ -13,7 +13,8 @@ sudo apt-get install weechat
 ```
 
 ## OSX
- - http://irssi.org/download
+- [irssi](http://irssi.org)
+
 ```
 sudo steveJobsPM --prettyPlease install -m 'is this okay?' irssi
 
