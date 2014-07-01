@@ -59,8 +59,6 @@ Once you have prepared your directory you can start writing your unit tests.
 
 ./test/unit/models/Users.test.js
 ```js
-require('../bootstrap.js');
-
 describe.only('UsersModel', function() {
 
   describe('#find()', function() {
@@ -81,7 +79,6 @@ To test controller responses you can use [Supertest](https://github.com/visionme
 
 ./test/unit/controllers/UsersController.test.js
 ```js
-require('../bootstrap.js');
 var request = require('supertest');
 
 describe.only('UsersController', function() {
@@ -110,3 +107,6 @@ To test your code and prepare a simple HTML report run the following commands:
 istanbul cover -x "**/config/**" _mocha -- --timeout 5000
 istanbul report html
 ```
+
+<docmeta name="uniqueID" value="Testing765149">
+<docmeta name="displayName" value="Testing">
