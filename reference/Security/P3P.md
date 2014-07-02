@@ -55,7 +55,7 @@ Check out the examples below for more guidance - and be sure and follow the link
 
 ##### Using [node-p3p](https://github.com/troygoode/node-p3p)
 
-> `node-p3p` is open-source under the [MIT license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt).
+> `node-p3p` is open-source under the [MIT license](https://github.com/troygoode/node-p3p/blob/master/LICENSE).
 
 ```sh
 # In your sails app
