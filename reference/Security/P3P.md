@@ -55,6 +55,8 @@ Check out the examples below for more guidance - and be sure and follow the link
 
 ##### Using [node-p3p](https://github.com/troygoode/node-p3p)
 
+> `node-p3p` is open-source under the [MIT license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt).
+
 ```sh
 # In your sails app
 npm install p3p --save
@@ -71,6 +73,8 @@ Then in the `middleware` config object in `config/http.js`:
 
 
 ##### Using [lusca](https://github.com/krakenjs/lusca#luscap3pvalue)
+
+> `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
 
 ```sh
 # In your sails app
