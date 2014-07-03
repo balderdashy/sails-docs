@@ -7,50 +7,18 @@ Configuration for your app's underlying HTTP server.  These properties are conve
 
   Property          | Type       | Default   | Details
  ------------------ |:----------:| --------- | -------
- `middleware`       | ((object)) | See [conventional defaults for HTTP middleware]() | A configuration object of all HTTP middleware functions your app will run on every incoming HTTP request.  All [Express](http://expressjs.com/) or Connect middleware is supported.<br/>e.g.<br/>
-```js
-  middleware: {
-    // Define a custom HTTP middleware fn with the key `foobar`:
-    foobar: function (req,res,next) { /*...*/ next(); },
-
-    // Define another custom HTTP middleware fn with key `passport`,
-    // but this time use an existing middleware library from npm
-    passport: require('passport')(),
-
-    // Override the conventional cookie parser:
-    cookieParser: function (req, res, next) { /*...*/ next(); },
-  }
-```
-
- `middleware.order` | ((array))  |
- ```js
- [
-  'startRequestTimer',
-  'cookieParser',
-  'session',
-  'bodyParser',
-  'handleBodyParserError',
-  'compress',
-  'methodOverride',
-  'poweredBy',
-  '$custom',
-  'router',
-  'www',
-  'favicon',
-  '404',
-  '500'
-]
- ```      | The order in which middleware should be run for HTTP request (the Sails router, which runs the appropriate explicit routes, policies, controllers, etc. from your app is invoked by the "router" middleware). 
- `middleware.order` | ((array))  | `{}`      | 
- `cache`
-
+ `middleware`       | ((object)) | See [conventional defaults for HTTP middleware]() | A configuration object of all HTTP middleware functions your app will run on every incoming HTTP request.  All [Express](http://expressjs.com/) or Connect middleware is supported.<br/>[Example](https://gist.github.com/mikermcneil/9cbd68c95839da480e97)
+ `middleware.order` | ((array))  | See [conventional defaults for HTTP middleware]() | The order in which middleware should be run for HTTP request (the Sails router, which runs the appropriate explicit routes, policies, controllers, etc. from your app is invoked by the "router" middleware). 
+ `middleware.order` | ((array))  | `{}`      | TODO
+ `cache`            | ((number)) | TODO      | TODO
+ `serverOptions`    | ((object)) | TODO      | TODO
 
 
 ### Notes
 
 > + Note that this HTTP middleware stack configured in `sails.config.http.middleware` is only applied to true HTTP requests-- it is ignored when handling virtual requests (e.g. sockets)
 >
-> + You cannot define a custom middleware function with the key `order`.
+> + You cannot define a custom middleware function with the key `order` (since `sails.config.http.middleware.order` has special meaning)
 
 
 ===========================================================================
@@ -81,14 +49,25 @@ Sails also utilizes an additional [configurable middleware stack]() just for han
 
 #### Conventional Defaults
 
-Sails comes bundled with the following HTTP middleware already installed (listed in the order they are run by default):
-
-##### ...
-
-#### Custom HTTP Middleware
+Sails comes bundled with a suite of conventional HTTP middleware.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  The default HTTP middleware stack is run every time Sails receives an incoming HTTP request; in the order listed below:
 
 
-
+ HTTP Middleware Key       | Purpose
+ ------------------------- | ------------
+ startRequestTimer         | todo
+ cookieParser              | todo
+ session                   | todo
+ bodyParser                | todo
+ handleBodyParserError     | todo
+ compress                  | todo
+ methodOverride            | todo
+ poweredBy                 | todo
+ $custom                   | todo
+ router                    | todo
+ www                       | todo
+ favicon                   | todo
+ 404                       | todo
+ 500                       | Error-handling middleware <!-- todo: expand this -->
 
 
 
@@ -101,8 +80,7 @@ Sails comes bundled with the following HTTP middleware already installed (listed
 
 You can actually do this in a few different ways, depending on your needs.
 
-app.use(passport.initialize());
-      app.use(passport.session());
+
 
 Generally, the following best-practices apply:
 
@@ -121,6 +99,9 @@ If you want a middleware function to run for all you should include it at the to
 
 
 
+
+
+
 <!-- 
 # Express
 ### What is this?
@@ -135,7 +116,7 @@ This configuration file lets you easily add [Express](http://expressjs.com/) mid
 module.exports.express = {
 
   // customMiddleware allows you to inject a piece of middleware before each requeset
-  // Worth noting that this **only applies to HTTP requests**-- while most parts of Sails work for both
+  // Worth noting that this **only applies to HTTP requests**- while most parts of Sails work for both
   // HTTP and sockets, and most Express/Connect middleware should work without a problem for both using
   // Sails' built-in interpreter, this configuration exists mainly to allow direct access to the Express 
   // middleware chain.
