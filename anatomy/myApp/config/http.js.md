@@ -1,5 +1,9 @@
 # myApp/config/http.js
 
+This file is conventionally used for configuring the underlying HTTP server (the `sails.config.http` object.)
+
+This includes all HTTP-specific middleware, including the serving/caching of flat files.
+
 <docmeta name="uniqueID" value="httpjs768553">
 <docmeta name="displayName" value="http.js">
 
