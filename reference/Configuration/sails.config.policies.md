@@ -1,4 +1,4 @@
-# Policies
+# sails.config.policies
 ### What is this?
 Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
 
@@ -116,6 +116,6 @@ In each of the policies, the next policy in the chain will only be run if `next(
 
 
 
-<docmeta name="uniqueID" value="Policies753862">
-<docmeta name="displayName" value="Policies">
+<docmeta name="uniqueID" value="sailsconfigpolicies753862">
+<docmeta name="displayName" value="sails.config.policies">
 

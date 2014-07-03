@@ -1,4 +1,24 @@
-# Log
+# sails.config.log
+
+
+Configuration for the instance of the [Sails logger](http://beta.sailsjs.org/#/documentation/reference/Logs) (`sails.log`) used in your Sails app. The options are conventionally specified in the [config/log.js]() configuration file.
+
+
+### Properties
+
+
+| Property  | Type       | Default   | Details |
+|-----------|:----------:|-----------|---------|
+| `level`   | ((string)) | `'info'`  | Set the level of detail to be shown in your app's log |
+
+<!--
+### Notes
+
+> +. ...
+
+-->
+
+<!--
 ### What is this?
 The logger file configures the log level for your app, as well as the transport.
 
@@ -21,6 +41,10 @@ By default, the level is set to `info`.
 
 
 
-<docmeta name="uniqueID" value="Log812909">
-<docmeta name="displayName" value="Log">
+
+-->
+
+
+<docmeta name="uniqueID" value="sailsconfiglog812909">
+<docmeta name="displayName" value="sails.config.log">
 
