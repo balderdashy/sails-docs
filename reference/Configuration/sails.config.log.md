@@ -9,7 +9,7 @@ Configuration for the instance of the [Sails logger](http://beta.sailsjs.org/#/d
 
 | Property  | Type       | Default   | Details |
 |-----------|:----------:|-----------|---------|
-| `level`   | ((string)) | `'info'`  | ......
+| `level`   | ((string)) | `'info'`  | Set the level of detail to be shown in your app's log |
 
 <!--
 ### Notes
