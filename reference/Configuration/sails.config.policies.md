@@ -1,4 +1,4 @@
-# Policies
+# sails.config.policies
 ### What is this?
 Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
 
