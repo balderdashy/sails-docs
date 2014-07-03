@@ -13,7 +13,7 @@ Most of this section of the docs focuses on the methods and properties of `sails
 Your app's [models]() and [services]() are exposed as global variables using their `globalId`.  For instance, the model defined in the file `api/models/Foo.js` will be globally accessible as `Foo`, and the service defined in `api/services/Baz.js` will be available as `Baz`.
 
 ### Async and Lodash
-Sails also exposes an instance of [lodash]() as `_`, and an instance of [async]() as `async`.  These commonly-used utilities are provided by default so that you don't have to `npm install` them in every new project.  Like any of the other globals in sails, they can be disabled.
+Sails also exposes an instance of [lodash](http://lodash.com) as `_`, and an instance of [async](https://github.com/caolan/async) as `async`.  These commonly-used utilities are provided by default so that you don't have to `npm install` them in every new project.  Like any of the other globals in sails, they can be disabled.
 
 
 > Bear in mind that none of the globals, including `sails`, are accessible until _after_ sails has lifted.  In other words, you won't be able to use `sails.models.user` or `User` outside of a function (since `sails` will not have finished loading yet.)
