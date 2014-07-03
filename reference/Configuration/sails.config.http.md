@@ -1,3 +1,36 @@
+# sails.config.http
+
+Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the [`config/http.js`]() configuration file.
+
+
+### Properties
+
+  Property    | Type       | Default   | Details
+ ------------ |:----------:| --------- | -------
+ `middleware` | ((object)) | `{}`      | See **[sails.config.http.middleware]()** below for a complete description of all sub-properties of this configuration object.
+ `middleware` | ((object)) | `{}`      | 
+ `cache`
+
+##### `sails.config.http.middleware`
+
+
+
+
+
+| `layout`  | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](./#!documentation/reference/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.
+| `engine`  | ((string)) | `"ejs"` | The [view engine](./#!documentation/reference/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
+| `locals` | ((object)) | `{}` | Default data to be included as [view locals](./#!documentation/reference/Views/Locals.html) every time a server-side view is compiled anywhere in this app. |
+
+### Notes
+
+
+
+<docmeta name="uniqueID" value="sailsconfighttp178274">
+<docmeta name="displayName" value="sails.config.http">
+
+
+
+
 # Express
 ### What is this?
 If you want to use custom middleware or add local variables and helpers to templates you can do so by configuring express in this config file.
