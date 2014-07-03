@@ -1,4 +1,4 @@
-# Sockets
+# sails.config.sockets
 ### What is this?
 These configuration options provide transparent access to Sails’ encapsulated pubsub/socket server for complete customizability.
 
@@ -181,6 +181,6 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 
 
 
-<docmeta name="uniqueID" value="Sockets959426">
-<docmeta name="displayName" value="Sockets">
+<docmeta name="uniqueID" value="sailsconfigsockets959426">
+<docmeta name="displayName" value="sails.config.sockets">
 
