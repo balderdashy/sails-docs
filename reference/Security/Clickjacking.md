@@ -25,6 +25,11 @@ Then in the `middleware` config object in `config/http.js`:
   // maxAge ==> Number of seconds strict transport security will stay in effect.
   strictTransportSecurity: require('lusca').hsts({ maxAge: 31536000 })
   // ...
+  order: [
+    // ...
+    'strictTransportSecurity'
+    // ...
+  ]
 ```
 
 
