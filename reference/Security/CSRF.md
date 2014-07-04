@@ -2,10 +2,6 @@
 
 Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))) is a type of attack which forces an end user to execute unwanted actions on a web application backend with which he/she is currently authenticated.  In other words, without protection, cookies stored in a browser like Google Chrome can be used to send requests to Chase.com from a user's computer whether that user is currently visiting Chase.com or Horrible-Hacker-Site.com.
 
-> Note:
->
-> CSRF attacks need only be a concern in scenarios where people use the _same client application_ to send requests to multiple different web services - most notably the browser.  If your Sails application does not respond to requests from a browser client, you may not need to enable CSRF protection.
-
 
 ### CSRF Tokens
 
@@ -39,6 +35,10 @@ $.post('/checkout', {
 
 See the docs on [CSRF configuration](/#/documentation/reference/Configuration/CSRF.html) for examples of accessing the CSRF token within both a traditional multi-page web application and a single-page-application.
 
+
+### Notes
+
+> + For most developers and organizations, CSRF attacks need only be a concern if you allow users to log into/securely access your Sails backend from the browser. If you _don't_ (e.g. users only access the secured sections from your native iOS or Android app), it is possible you don't need to enable CSRF protection.  Why?  Because technically, the common CSRF attack discussed on this page is only _possible_ in scenarios where users use the _same client application_ (e.g. Chrome) to access different web services (e.g. Chase.com, Horrible-Hacker-Site.com.)
 
 
 <docmeta name="uniqueID" value="CSRF300312">
