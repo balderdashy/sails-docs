@@ -31,8 +31,6 @@ These configuration options provide transparent access to Sails&rsquo; encapsula
 |`browser client handler`|((boolean))|`false`| Optional override function to serve all static files, including socket.io.js et al. Of the form :: `function (req, res) { /* serve files */ }`|
 |`match origin protocol`|((boolean))|`false`|Meant to be used when running socket.io behind a proxy. Should be set to true when you want the location handshake to match the protocol of the origin. This fixes issues with terminating the SSL in front of Node and forcing location to think it&rsquo;s wss instead of ws.
 |`authorization`|((boolean))|`true`|Global authorization for Socket.io access. This is called when the initial handshake is performed with the server. By default, Sails verifies that a valid cookie was sent with the upgrade request However, in the case of cross-domain requests, no cookies are sent for some transports, so sockets will fail to connect.  You might also just want to allow anyone to connect w/o a cookie! To bypass this cookie check, you can set `authorization: false`, which will silently create an anonymous cookie+session for the user. `authorization: true` indicates that Sails should use the built-in logic. You can also use your own custom logic with: `authorization: function (data, accept) { ... }`|
-|`store`|TODO|`undefined`|Direct access to the Socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)|
-|`static`|TODO|`undefined`| A Static instance that is used to serve the Socket.io client and its dependencies.|
 |`resource`|((string))|`'/socket.io'`|The entry point where Socket.io starts looking for incoming connections. This should be the same between the client and the server.|
 
 <!--#### transports
@@ -176,16 +174,6 @@ To bypass this cookie check, you can set `authorization: false`, which will sile
 
 You can also use your own custom logic with: `authorization: function (data, accept) { ... }`
 
-#### store
-`store: undefined`
-
-Direct access to the Socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)
-
-
-#### static
-`'static': undefined`
-
-A Static instance that is used to serve the Socket.io client and its dependencies.
 
 #### resource
 `resource: '/socket.io'`
@@ -197,6 +185,17 @@ The entry point where Socket.io starts looking for incoming connections. This sh
 ### advanced?
 
 
+
+#### store
+`store: undefined`
+
+Direct access to the Socket.io MQ store config. The &lsquo;adapter&rsquo; property is the preferred method (`undefined` indicates that Sails should defer to the &lsquo;adapter&rsquo; config)
+
+
+#### static
+`'static': undefined`
+
+A Static instance that is used to serve the Socket.io client and its dependencies.
 
 
 
