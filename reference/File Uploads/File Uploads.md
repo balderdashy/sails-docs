@@ -1,4 +1,7 @@
-# File Uploads with Skipper
+# File Uploads
+
+> TODO: Normalize/expand this section
+
 ### Example
 
 #### Generate an `api` 
@@ -62,5 +65,5 @@ When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` 
 
 
 
-<docmeta name="uniqueID" value="Skipper72947">
+<docmeta name="uniqueID" value="fileuploads72947">
 <docmeta name="displayName" value="File Uploads">
