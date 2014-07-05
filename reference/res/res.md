@@ -1,4 +1,4 @@
-# res
+# Response (`res`)
 
 
 ### Overview
@@ -15,5 +15,5 @@ The [Supported Features]() section includes a chart summarizes which methods and
 
 
 <docmeta name="uniqueID" value="res550242">
-<docmeta name="displayName" value="res">
+<docmeta name="displayName" value="Response (`res`)">
 

@@ -1,4 +1,4 @@
-# req
+# Request (`req`)
 
 ### Overview
 
@@ -12,5 +12,5 @@ The [Features](./features) overview at [www.sailsjs.org](http://www.sailsjs.org)
 
 
 <docmeta name="uniqueID" value="req35837">
-<docmeta name="displayName" value="req">
+<docmeta name="displayName" value="Request (`req`)">
 
