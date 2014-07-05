@@ -1,4 +1,5 @@
-# Request
+# req
+
 ### Overview
 
 Sails is built on [Express](), and uses [Node's HTTP server]() conventions.  Because of this, you can access all of the Node and Express methods and properties on the `req` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
@@ -10,6 +11,6 @@ Sails adds a few methods and properties of its own to the `req` object, like [`r
 The [Features](./features) overview at [www.sailsjs.org](http://www.sailsjs.org) includes a chart summarizes which methods and properties are available for each transport.
 
 
-<docmeta name="uniqueID" value="Request35837">
-<docmeta name="displayName" value="Request">
+<docmeta name="uniqueID" value="req35837">
+<docmeta name="displayName" value="req">
 

@@ -1,4 +1,6 @@
-# Response
+# res
+
+
 ### Overview
 
 Sails is built on [Express](), and uses [Node's HTTP server]() conventions.  Because of this, you can access all of the Node and Express methods and properties on the `res` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
@@ -12,6 +14,6 @@ The [Supported Features]() section includes a chart summarizes which methods and
 
 
 
-<docmeta name="uniqueID" value="Response550242">
-<docmeta name="displayName" value="Response">
+<docmeta name="uniqueID" value="res550242">
+<docmeta name="displayName" value="res">
 
