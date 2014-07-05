@@ -1,6 +1,12 @@
 # Locales
+
+> TODO:
+>
+> Move some of the basic information from this section to the relevant page in **Anatomy**, then merge the rest in with the reference page on internationalization.
+
+
 ### What is this?
-This is a folder that contains the Language files for different locales.
+This is a folder that contains the language files for different locales.
 
 ### Description
 

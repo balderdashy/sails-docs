@@ -4,19 +4,10 @@
 
 While Sails dutifully adheres to the philosophy of [convention-over-configuration](), it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration options available in Sails.
 
+Sails apps can be configured [programmatically](), by specifying [environment variables]() or command-line arguments, by changing the local or global [`.sailsrc` files](), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`]() folder of new projects. The authoratative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
 
 
-### .sailsrc
-
-In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.  
-
-When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in either JSON or [.ini]() format) in the current directory and in your home folder (i.e. `~/.sailsrc`) (every newly generated Sails app comes with a boilerplate `.sailsrc` file).  Then it merges them in to its existing configuration.
-
-> Actually, Sails looks for `.sailsrc` files in a few other places (following [rc conventions](https://github.com/dominictarr/rc#standards)).  You can put a `.sailsrc` file at any of those paths.  That said, stick to convention when you can- the best place to put a global `.sailsrc` file is in your home directory (i.e. `~/.sailsrc`).
-
-
-
-### Configuration files (`config/*`)
+### Standard configuration files (`config/*`)
 
 A number of configuration files are included in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.
 
@@ -33,6 +24,7 @@ module.exports.blueprints = {
 ```
 
 For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](./#!documentation/anatomy/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) for a higher-level overview.
+
 
 
 
@@ -72,6 +64,16 @@ var apiKey = sails.config.linkedin.apiKey;
 var apiSecret = sails.config.linkedin.apiSecret;
 // ...
 ```
+
+
+
+
+### Configuring the global `sails` command-line tool
+
+When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  But in Sails, there are also a handful of powerful options available for configuring the global Sails CLI itself.
+
+The `.sailsrc` file is unique from other configuration sources in Sails in that it may also be used to configure the global Sails (i.e. command-line tool).  The main reason to configure the command-line is to customize the [generators]() that are used when `sails generate` and `sails new` are run.
+
 
 
 

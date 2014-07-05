@@ -42,6 +42,52 @@ Sails comes bundled with a suite of conventional HTTP middleware.  You can, of c
 
 
 
+### Configuring HTTP Middleware
+
+To configure a custom HTTP middleware function, define a new HTTP key `sails.config.http.middleware.FOO` and set it to the configured middleware function, then add the string name ("FOO") to your `sails.config.http.middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before "cookieParser"):
+
+E.g. in `config/http.js`:
+
+```js
+  // ...
+  middleware: {
+    
+    // Define a custom HTTP middleware fn with the key `foobar`:
+    foobar: function (req,res,next) { /*...*/ next(); },
+
+    // Define another couple of custom HTTP middleware fns with keys `passportInit` and `passportSession`
+    // (notice that this time we're using an existing middleware library from npm)
+    passportInit    : require('passport').initialize(),
+    passportSession : require('passport').session(),
+
+    // Override the conventional cookie parser:
+    cookieParser: function (req, res, next) { /*...*/ next(); },
+
+
+    // Now configure the order/arrangement of our HTTP middleware
+    order: [
+      'startRequestTimer',
+      'cookieParser',
+      'session',
+      'passportInit',            // <==== passport HTTP middleware should run after "session"
+      'passportSession',         // <==== (see https://github.com/jaredhanson/passport#middleware)
+      'bodyParser',
+      'handleBodyParserError',
+      'compress',
+      'foobar',                  // <==== we can put this stuff wherever we want
+      'methodOverride',
+      'poweredBy',
+      '$custom',
+      'router',
+      'www',
+      'favicon',
+      '404',
+      '500'
+    ]
+  }
+  // ...
+```
+
 
 <!--
 
