@@ -1,4 +1,11 @@
-# Routes
+# sails.config.routes
+
+> TODO:
+>
+> Merge most of the contents of this file into the main reference section on policies.
+> Include a simple config reference table (with only one row with property: `*`) explaining how
+> this particular config module is read.  But don't worry about trying to explain what policies are here-- instead, link to the full docs on the subject (again, to reduce duplicate content and make this all more maintainable)
+
 ### What is this?
 Sails uses a number of different strategies to route requests. This section lists them top-to-bottom, in order of precedence.
 
@@ -146,6 +153,6 @@ If you have a model, `Foo`, and a controller, `FooController`, you can access CR
 Finally, if nothing else matched, the default 404 handler is triggered. See `config/404.js` to adjust your app&rsquo;s 404 logic.
 
 
-<docmeta name="uniqueID" value="Routes141736">
-<docmeta name="displayName" value="Routes">
+<docmeta name="uniqueID" value="sailsconfigroutes141736">
+<docmeta name="displayName" value="sails.config.routes">
 

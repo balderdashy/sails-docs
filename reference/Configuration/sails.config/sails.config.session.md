@@ -1,4 +1,5 @@
-# Session
+# sails.config.session
+
 ### What is this?
 Sails session integration leans heavily on the great work already done by Express, but also unifies Socket.io with the Connect session store.
 
@@ -58,6 +59,6 @@ Optional Values:
 
 
 
-<docmeta name="uniqueID" value="Session786744">
-<docmeta name="displayName" value="Session">
+<docmeta name="uniqueID" value="sailsconfigsession786744">
+<docmeta name="displayName" value="sails.config.session">
 
