@@ -2,46 +2,48 @@
 
 ### Overview
 
-Sails provides built-in internationalization and localization support in the [i18n hook](), using [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n)).
-
-Additional options for localization/internationalization may be configured in [`sails.config.i18n`](), including the list of your app's supported locales.
+If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n)).
 
 
-### Translating
 
-strings
+<!--
+  Potentially cover this:
+  *(but it might be obvious and not useful/necessary to include, not sure- could also be more confusing than helpful)*
+Note that this built-in support is for **dynamically-rendered** (but otherwise **static**) content.  You can only use it in responses which are pre-processed on the server.  In other words, you can use these translations in your views, controller actions, and policies, but stuff in your assets folder.)
 
-in controllers, policies (`res.i18n()` , or in views through the `i18n()` function.
+we do not recommend translating strings in the front-end of your application (e.g. the browser or an iOS app) for a variety of reasons, the most obvious being SEO, but also fragmentation. You can of course still do so- just don't use this built-in support from the i18n hook.
+-->
 
 
-e.g.:
+### Usage
+
+
+In a view:
 ```ejs
-<h1> <%= i18n('Hello!') %> </h1>
-<h1> <%= i18n('Hello %s, how are you today?', 'Mike') %> </h1>
+<h1> <%= __('Hello') %> </h1>
+<h1> <%= __('Hello %s, how are you today?', 'Mike') %> </h1>
 <p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
 ```
 
-In your views:
 
-```ejs
-<h1> <%= __('Welcome to PencilPals!') %> </h1>
-<h2> <%= i18n('Hello %s, how are you today?', 'Pencil Maven') %> </h2>
-<p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
+In a controller or policy:
+```javascript
+req.__('Hello'); // => Hola
+req.__('Hello %s', 'Marcus'); // => Hola Marcus
+req.__('Hello {{name}}', { name: 'Marcus' }); // => Hola Marcus
 ```
 
-In an action or policy:
-```js
 
+Or if you already know the locale id, you can translate from anywhere in your application using `sails.__`:
+
+```javascript
+sails.__({
+  phrase: 'Hello',
+  locale: 'es'
+});
+// => 'Hola!'
 ```
 
-Locales may be accessed from anywhere in your application.
-
-Locales can be accessed in controllers/policies through `res.i18n()`, or in views through the `__(key)` or `i18n(key)` functions.
-Remember that the keys are case sensitive and require exact key matches, e.g.
-
-```ejs
-
-```
 
 
 ### Locales
@@ -57,7 +59,7 @@ Here is an example locale file (`config/locales/es.json`):
 }
 ```
 
-Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names are often preferable for maintainability.
+Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
 
 For example, here's another pass at `config/locales/es.json`:
 
@@ -130,23 +132,34 @@ module.exports = function(req, res, next) {
 
 
 
-<!--
-  TODO: add section explaining this is really only for **backend** translations of **static** content!
+### Translating Dynamic Content
 
-  **backend**
-  we do not recommend translating strings in the front-end of your application (e.g. the browser or an iOS app) for a variety of reasons, the most obvious being SEO, but also fragmentation. You can of course still do so- just don't use this built-in support from the i18n hook.
+If your backend is storing interlingual data (e.g. product data is entered in multiple languages via a CMS), you shouldn't rely on simple JSON locale files unless you're somehow planning on editing your locale translations dynamically.  One option is to edit the locale translations programatically, either with a custom implementation or through a translation service.  Sails/node-i18n JSON stringfiles are compatible with the format used by [webtranslateit.com](https://webtranslateit.com/en).
 
-  **static**
-  if your backend is storing interlingual data (e.g. product data is entered in multiple languages via a CMS, then stored in a database), you obviously can't use the locales files  to support that use case, since you don't even know what the content will be until it's in your database.  Instead, build your data model accordingly so you can store and retrieve relevant data by language.
-  You *CAN* however leverage this built-in support
+On the other hand you might opt to store these types of dynamic translated strings in a database.  If so, just make sure and build your data model accordingly so you can store and retrieve the relevant dynamic data by locale id (e.g. "en", "es", "de", etc)  That way, you can leverage the [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) method to help you figure out which translated content to use in any given response, and keep consistent with the conventions used elsewhere in your app.
 
 
 
--->
+### Additional Options
+
+Settings for localization/internationalization may be configured in [`sails.config.i18n`]().  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+
+```javascript
+// Which locales are supported?
+locales: ['en', 'es'],
+
+// Where are your locale translations located?
+localesDirectory: '/config/locales'
+```
+
+
+
 
 ### Disabling or customizating Sails' default internationalization support
 
-Your app can replace or extend this baseline implementation as needed.  You can always `require()` any Node modules you like, anywhere in your project.  And like any hook, you can completely disable or override the i18n hook in Sails using the [`loadHooks`]() and/or [`hooks`]() configuration options.
+Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
+
+But worth noting is that since Sails implements [node-i18n]() integration in the [i18n hook](), you can completely disable or override it using the [`loadHooks`]() and/or [`hooks`]() configuration options.
 
 
 
