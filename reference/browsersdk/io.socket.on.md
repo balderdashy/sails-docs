@@ -2,7 +2,7 @@
 
 Starts listening for server-sent events from Sails with the specified `eventIdentity`.  Will trigger the provided callback function when a matching event is received.
 
-Note that a socket will NEVER receive any events unless the server sends a message.  Typically that happens one of the following ways:
+Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 + server emits a message to all known sockets (see [sails.sockets.blast()]())
 + server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()]())

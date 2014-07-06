@@ -1,4 +1,9 @@
-# Browser SDK (`sails.io.js`)
+# Socket Client (`sails.io.js`)
+
+> This section of the docs is about the Sails socket client SDK for the browser.  It is written in JavaScript and is also usable on the server.
+>
+> There are also a handful of community projects implementing Sails/Socket.io clients for native iOS, Android, and Windows Phone.
+
 
 ### Overview
 
@@ -29,5 +34,5 @@ Under the covers, sails.io.js emits Socket.io messages with reserved names that,
 
 
 <docmeta name="uniqueID" value="BrowserSDK293544">
-<docmeta name="displayName" value="Browser Socket (`sails.io.js`)">
+<docmeta name="displayName" value="Socket Client (`sails.io.js`)">
 

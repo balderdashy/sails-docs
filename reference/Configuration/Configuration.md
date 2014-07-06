@@ -68,11 +68,13 @@ var apiSecret = sails.config.linkedin.apiSecret;
 
 
 
-### Configuring the global `sails` command-line tool
+### Configuring the `sails` Command-Line Interface
 
-When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  But in Sails, there are also a handful of powerful options available for configuring the global Sails CLI itself.
+When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetetive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.
 
-The `.sailsrc` file is unique from other configuration sources in Sails in that it may also be used to configure the global Sails (i.e. command-line tool).  The main reason to configure the command-line is to customize the [generators]() that are used when `sails generate` and `sails new` are run.
+The [`.sailsrc` file]() is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators]() that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
+
+And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`]() files for more information.
 
 
 
