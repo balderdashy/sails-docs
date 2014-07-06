@@ -25,6 +25,26 @@ Configuration for Sails' [built-in support for Cross-Origin Resource Sharing]().
 
 TODO: move the rest of these into the formatted table above:
 
+
+### Things Pt. 1
+
+
+**allRoutes**: Allow CORS on all routes by default?  If not, you must enable CORS on a per-route basis by either adding a "cors" configuration object to the route config, or setting "cors:true" in the route config to use the default settings below.  *Default: false*
+
+**origin**: Which domains are allowed CORS access? This can be a comma-delimited list of hosts (beginning with http:// or https://) or "\*" to allow all domains CORS access. *Default: **
+
+**credentials**: Allow cookies to be shared for CORS requests? *Default: true*
+
+**methods**: Which methods should be allowed for CORS requests?  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests). *Default: GET, POST, PUT, DELETE, OPTIONS, HEAD*
+
+**headers**: Which headers should be allowed for CORS requests?  This is only used
+in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests). *Default: content-type*
+
+See [this article](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS) for a more in-depth discussion of how CORS works, and what preflight requests are for.
+
+
+### Things Pt. 2
+
 ```js
 
 module.exports.cors = {
