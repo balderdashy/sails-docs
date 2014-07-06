@@ -1,5 +1,4 @@
-# Find One
-
+# Find One Record
 
 
 ### `GET /:modelIdentity/:id`
@@ -62,7 +61,7 @@ If the action was triggered via a socket request, the requesting socket will be 
         <bubble>string</bubble>
       </td>
       <td>
-        
+
         The desired record's primary key value
 
         <br/><strong>Example:</strong>
@@ -82,7 +81,7 @@ If the action was triggered via a socket request, the requesting socket will be 
       <td><bubble>string</bubble></td>
       <td>
         if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-        
+
         <br/><strong>Example:</strong>
         <code>
           ?callback=myJSONPHandlerFn
@@ -116,5 +115,5 @@ Find the purchase with ID #1
  ```
 
 <docmeta name="uniqueID" value="FindOne259267">
-<docmeta name="displayName" value="Find One">
+<docmeta name="displayName" value="Find One Record">
 

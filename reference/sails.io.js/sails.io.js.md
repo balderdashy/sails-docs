@@ -34,5 +34,5 @@ Under the covers, sails.io.js emits Socket.io messages with reserved names that,
 
 
 <docmeta name="uniqueID" value="BrowserSDK293544">
-<docmeta name="displayName" value="Socket Client (`sails.io.js`)">
+<docmeta name="displayName" value="Socket Client">
 

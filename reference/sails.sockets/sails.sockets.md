@@ -1,4 +1,4 @@
-# Sockets
+# Sockets (sails.sockets)
 
 ### Overview
 
@@ -10,5 +10,5 @@ For raw access to the underlying [socket.io](http://socket.io/) singleton, you c
 
 
 <docmeta name="uniqueID" value="Sockets505826">
-<docmeta name="displayName" value="Sockets">
+<docmeta name="displayName" value="sails.sockets">
 

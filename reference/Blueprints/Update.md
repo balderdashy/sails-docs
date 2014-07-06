@@ -1,4 +1,4 @@
-# Update A Record
+# Update a Record
 
 ### `PUT /:modelIdentity/:id` or `GET /:modelIdentity/update/:id`
 
@@ -33,7 +33,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
         <bubble>string</bubble>
       </td>
       <td>
-        
+
         The primary key value of the record to update.
 
         <br/><strong>Example:</strong>
@@ -58,7 +58,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
         <bubble>array</bubble>
       </td>
       <td>
-        
+
         For <code>POST</code> (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
       </td>
     </tr>
@@ -70,7 +70,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
       <td><bubble>string</bubble></td>
       <td>
         If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-        
+
         <br/><strong>Example:</strong>
         <code>
           ?callback=myJSONPHandlerFn
@@ -196,7 +196,7 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 #### Remove Association (Many-To-Many) (Shortcuts)
 
-#### Route 
+#### Route
 
 `GET /pony/4/pets/remove/12`
 
@@ -205,5 +205,5 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 Same as above.
 
 <docmeta name="uniqueID" value="UpdateARecord421031">
-<docmeta name="displayName" value="Update A Record">
+<docmeta name="displayName" value="Update a Record">
 

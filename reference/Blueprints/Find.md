@@ -1,4 +1,4 @@
-# Find
+# Find Records
 
 ### `GET /:modelIdentity`
 
@@ -117,7 +117,7 @@ If the action was triggered via a socket request, the requesting socket will be 
       <td><bubble>string</bubble></td>
       <td>
         The order of returned records
-        
+
         <br/><strong>Example:</strong>
         <code>?sort=name%20ASC</code>
         or
@@ -133,7 +133,7 @@ If the action was triggered via a socket request, the requesting socket will be 
       <td><bubble>string</bubble></td>
       <td>
         If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-        
+
         <br/><strong>Example:</strong>
         <code>
           ?callback=myJSONPHandlerFn
@@ -160,7 +160,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 Assuming a `Purchase` model and a `PurchaseController` without a custom `find` method, find the first 30 purchases from the database:
 
-#### Route 
+#### Route
 `GET /purchase`
 
 
@@ -187,5 +187,5 @@ Assuming a `Purchase` model and a `PurchaseController` without a custom `find` m
 > Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
 
 <docmeta name="uniqueID" value="Find290807">
-<docmeta name="displayName" value="Find">
+<docmeta name="displayName" value="Find Records">
 

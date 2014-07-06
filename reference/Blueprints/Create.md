@@ -1,4 +1,4 @@
-# Create A Record
+# Create a Record
 
 ### `POST /:modelIdentity` or `GET /:modelIdentity/create`
 
@@ -38,7 +38,7 @@ If the action is triggered via a socket request, the requesting socket will ALSO
         <bubble>array</bubble>
       </td>
       <td>
-        
+
         For <code>POST</code> (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
         Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
       </td>
@@ -51,7 +51,7 @@ If the action is triggered via a socket request, the requesting socket will ALSO
       <td><bubble>string</bubble></td>
       <td>
         If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-        
+
         <br/><strong>Example:</strong>
         <code>
           ?callback=myJSONPHandlerFn
@@ -120,13 +120,13 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 ### Examples with One Way Associations
 
-You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how. 
+You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how.
 
 These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
 ### Create record while associating w/ existing record (REST)
 
-Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.  
+Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.
 
 #### Route
 `POST /pony`
@@ -194,5 +194,5 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 ```
 
 <docmeta name="uniqueID" value="CreateARecord744986">
-<docmeta name="displayName" value="Create A Record">
+<docmeta name="displayName" value="Create a Record">
 

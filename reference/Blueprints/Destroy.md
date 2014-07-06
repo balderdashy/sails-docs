@@ -1,4 +1,4 @@
-# Destroy A Record
+# Destroy a Record
 
 ### `DELETE /:modelIdentity/:id` or `GET /:modelIdentity/:id/destroy`
 
@@ -7,7 +7,7 @@ Delete an existing record specified by `id` from the database forever.
 ### Description
 Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room. 
+Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
 
 Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
 
@@ -37,7 +37,7 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
         <bubble>string</bubble>
       </td>
       <td>
-        
+
         The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
 
         <br/>
@@ -52,7 +52,7 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
       <td><bubble>string</bubble></td>
       <td>
         if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-        
+
         <br/><strong>Example:</strong>
         <code>
           ?callback=myJSONPHandlerFn
@@ -98,7 +98,7 @@ Delete Pinkie Pie.
 
 #### Destroy (Shortcuts)
 
-#### Route 
+#### Route
 `GET /pony/destroy/4`
 
 #### Expected Response
@@ -107,5 +107,5 @@ Same as above.
 
 
 <docmeta name="uniqueID" value="DestroyARecord867513">
-<docmeta name="displayName" value="Destroy A Record">
+<docmeta name="displayName" value="Destroy a Record">
 

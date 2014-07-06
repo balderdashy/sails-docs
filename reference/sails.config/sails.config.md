@@ -12,5 +12,5 @@ More specifically, when you load your app, whether that's using `node app`, [pro
 + files in your app's `config/` directory
 
 <docmeta name="uniqueID" value="sailsconfig238825">
-<docmeta name="displayName" value="Configuration (`sails.config`)">
+<docmeta name="displayName" value="Configuration">
 
