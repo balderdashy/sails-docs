@@ -1,6 +1,23 @@
-# socket.request( `url`, [`params`], [`callback`], [`method`] )
+# io.socket.request()
+
+Sends a virtual request to a Sails server using Socket.io.
+
+This method is wrapped by the other `io.socket.*`() request methods, which should be used instead.
+
++ [io.socket.get()]()
++ [io.socket.post()]()
++ [io.socket.put()]()
++ [io.socket.delete()]()
+
+
+Please do not use `io.socket.request()` directly unless you know what you're doing.
+
+
+
+<!--
+
 ### Purpose
-Simulate an HTTP request to a Sails App over Socket.IO.  
+Simulate an HTTP request to a Sails App over Socket.IO.
 
 ### Overview
 
@@ -35,7 +52,7 @@ window.onload=function sendRequest(){
     socket.request('/users/',myParams,callback,'post');
 }
 
-// logs Here is either an error OR the data:Object {param1: "lol", param2: "bbl", createdAt: "2013-12-12T22:15:07.089Z", updatedAt: "2013-12-12T22:15:07.089Z", id: 10} 
+// logs Here is either an error OR the data:Object {param1: "lol", param2: "bbl", createdAt: "2013-12-12T22:15:07.089Z", updatedAt: "2013-12-12T22:15:07.089Z", id: 10}
 
 </script>
 HTML BODY
@@ -52,8 +69,8 @@ HTML BODY
 
 
 
-
+-->
 
 <docmeta name="uniqueID" value="socketrequest682488">
-<docmeta name="displayName" value="socket.request( `url`, [`params`], [`callback`], [`method`] )">
+<docmeta name="displayName" value="io.socket.request()">
 

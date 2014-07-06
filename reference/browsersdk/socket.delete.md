@@ -1,6 +1,6 @@
-# socket.put( `url`, [`params`], [`callback`] )
+# socket.delete( `url`, [`params`], [`callback`] )
 ### Purpose
-Update a record from in database using the REST Blueprints via Socket.IO
+Delete a record from the database using the REST Blueprints via Socket.IO
 
 ### Overview
 
@@ -16,24 +16,15 @@ Update a record from in database using the REST Blueprints via Socket.IO
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Attributes Changed |   `[{}]`            |
-
+| 2 |  Records Deleted    | `{}`, `[{}]`        |
 
 ### Example Usage
 ```javascript
 <script>
 
-window.onload=function loading(){
-    var paramObj = {
-      "name": "Dinky Guy",
-      "hobby": "snowBROing",
-      "pet": {
-        "name": "Gummy",
-        "species": "crocodile"
-      }
-    };
+window.onload=function deleteUser(){
 
-    socket.put('/users/8',paramObj,function serverSays(err,users){
+    socket.delete('/users/8',function serverSays(err,users){
         if (err)
             console.log(err)
 
@@ -46,13 +37,13 @@ window.onload=function loading(){
 </script>
 HTML BODY
 
-
 ```
 
 ### Notes
 > This example assumes you have rest blueprints enabled in `config/controllers.js`
 
 
-<docmeta name="uniqueID" value="socketput168503">
-<docmeta name="displayName" value="socket.put( `url`, [`params`], [`callback`] )">
+
+<docmeta name="uniqueID" value="socketdelete671580">
+<docmeta name="displayName" value="io.socket.delete()">
 

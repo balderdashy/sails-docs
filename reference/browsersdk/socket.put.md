@@ -1,6 +1,7 @@
-# socket.delete( `url`, [`params`], [`callback`] )
+# socket.put( `url`, [`params`], [`callback`] )
+
 ### Purpose
-Delete a record from the database using the REST Blueprints via Socket.IO
+Simulate an HTTP PUT request to your Sails server.
 
 ### Overview
 
@@ -16,15 +17,24 @@ Delete a record from the database using the REST Blueprints via Socket.IO
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Records Deleted    | `{}`, `[{}]`        |
+| 2 |  Attributes Changed |   `[{}]`            |
+
 
 ### Example Usage
 ```javascript
 <script>
 
-window.onload=function deleteUser(){
+window.onload=function loading(){
+    var paramObj = {
+      "name": "Dinky Guy",
+      "hobby": "snowBROing",
+      "pet": {
+        "name": "Gummy",
+        "species": "crocodile"
+      }
+    };
 
-    socket.delete('/users/8',function serverSays(err,users){
+    socket.put('/users/8',paramObj,function serverSays(err,users){
         if (err)
             console.log(err)
 
@@ -37,13 +47,13 @@ window.onload=function deleteUser(){
 </script>
 HTML BODY
 
+
 ```
 
 ### Notes
 > This example assumes you have rest blueprints enabled in `config/controllers.js`
 
 
-
-<docmeta name="uniqueID" value="socketdelete671580">
-<docmeta name="displayName" value="socket.delete( `url`, [`params`], [`callback`] )">
+<docmeta name="uniqueID" value="socketput168503">
+<docmeta name="displayName" value="io.socket.put()">
 
