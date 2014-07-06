@@ -12,7 +12,7 @@ Broadcast a message to a room.
 | 4 |           Socket to skip        | `object`            | No         |
 
  If the event name is omitted, `"message"` will be used by default.  Thus, `sails.sockets.broadcast(roomName, data)` is also a valid usage.
- 
+
  If `socketToOmit` is provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
 
 ### Example Usage
@@ -34,5 +34,5 @@ socket.on('chat', function(data) {console.log("Chat from user #", data.from, " i
 ```
 
 <docmeta name="uniqueID" value="sailssocketsbroadcast253997">
-<docmeta name="displayName" value="sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )">
+<docmeta name="displayName" value="sails.sockets.broadcast()">
 

@@ -14,5 +14,5 @@ The firehose publish messages using the "firehose" event. By default, messages w
 
 
 <docmeta name="uniqueID" value="sailssocketssubscribeToFirehose954078">
-<docmeta name="displayName" value="sails.sockets.subscribeToFirehose(socket)">
+<docmeta name="displayName" value="sails.sockets.subscribeToFirehose()">
 

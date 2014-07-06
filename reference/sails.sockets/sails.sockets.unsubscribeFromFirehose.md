@@ -11,5 +11,5 @@ Unsubscribe from the firehose.
 
 
 <docmeta name="uniqueID" value="sailssocketsunsubscribeFromFirehose999488">
-<docmeta name="displayName" value="sails.sockets.unsubscribeFromFirehose(socket)">
+<docmeta name="displayName" value="sails.sockets.unsubscribeFromFirehose()">
 

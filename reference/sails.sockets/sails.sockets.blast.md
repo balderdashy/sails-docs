@@ -11,7 +11,7 @@ Broadcast a message to all connected sockets.
 | 3 |           Socket to skip        | `object`            | No         |
 
  If the event name is omitted, `"message"` will be used by default.  Thus, `sails.sockets.broadcast(roomName, data)` is also a valid usage.
- 
+
  If `socketToOmit` is provided, that socket will *not* receive the message.
 
 ### Example Usage
@@ -32,5 +32,5 @@ socket.on('message', function(data) {console.log("Global message: ", data.msg)})
 ```
 
 <docmeta name="uniqueID" value="sailssocketsblast345475">
-<docmeta name="displayName" value="sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )">
+<docmeta name="displayName" value="sails.sockets.blast()">
 

@@ -25,5 +25,5 @@ leaveFunRoom: function(req, res) {
 *Note: `req.socket` is only valid if the action is triggered via a socket request, e.g. `socket.get('/leaveFunRoom/someRoomName')`*
 
 <docmeta name="uniqueID" value="sailssocketsleave425459">
-<docmeta name="displayName" value="sails.sockets.leave( `socket`, `roomName` )">
+<docmeta name="displayName" value="sails.sockets.leave()">
 
