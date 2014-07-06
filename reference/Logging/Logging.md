@@ -1,4 +1,4 @@
-# Logs
+# Logging
 
 ### Overview
 Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  It's usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
@@ -25,6 +25,6 @@ When configured at a given log level, Sails will output log messages that are ou
 + When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
 
 
-<docmeta name="uniqueID" value="Logs277763">
-<docmeta name="displayName" value="Logs">
+<docmeta name="uniqueID" value="Logging277763">
+<docmeta name="displayName" value="Logging">
 
