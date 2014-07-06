@@ -53,7 +53,7 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```js
 {
   ProfileController: {
-      // Apply the 'isLoggedIn' policy to the 'edit' action of 'PolicyController'
+      // Apply the 'isLoggedIn' policy to the 'edit' action of 'ProfileController'
       edit: 'isLoggedIn'
       // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'create' action
       create: ['isAdmin', 'isLoggedIn']
