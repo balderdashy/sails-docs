@@ -9,3 +9,6 @@ module.exports.bootstrap = function (cb) {
   cb();
 };
 ```
+
+> **Note:** Sails will warn you if the bootstrapping takes too long, in case you forgot to call `cb()`.
+> You can change the default timeout of 2000ms by setting `sails.config.bootstrapTimeout`.
