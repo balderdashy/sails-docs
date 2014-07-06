@@ -29,3 +29,7 @@ Then in the `middleware` config object in `config/http.js`:
 
 ### Additional Resources
 + [HTTP Strict Transport Security (OWasp)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
+
+
+<docmeta name="uniqueID" value="HSTSecurity397141">
+<docmeta name="displayName" value="Strict Transport Security">
