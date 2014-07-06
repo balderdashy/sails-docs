@@ -1,7 +1,7 @@
-# .sailsrc
+# Using .sailsrc Files
 
 
-In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.  
+In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.
 
 When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in either JSON or [.ini]() format) in the current directory and in your home folder (i.e. `~/.sailsrc`) (every newly generated Sails app comes with a boilerplate `.sailsrc` file).  Then it merges them in to its existing configuration.
 
@@ -11,5 +11,5 @@ When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in eith
 
 
 <docmeta name="uniqueID" value="sailsrc374211">
-<docmeta name="displayName" value=".sailsrc">
+<docmeta name="displayName" value="Using `.sailsrc` Files">
 

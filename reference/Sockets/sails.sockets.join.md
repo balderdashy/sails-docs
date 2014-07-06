@@ -1,13 +1,13 @@
 # sails.sockets.join()
 
-### Purpose
-Subscribe a socket to a generic room.
+Subscribes a socket to a generic room.
 
 ### Usage
 
 ```js
 sails.sockets.join(socket, roomName);
 ```
+
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|---------|

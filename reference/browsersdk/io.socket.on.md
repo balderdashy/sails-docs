@@ -22,15 +22,40 @@ io.socket.on(eventIdentity, function onServerSentEvent (msg) {
 
 ### Example
 
-
 Listen for new orders and updates to existing orders:
 
 ```javascript
 io.socket.on('order', function onServerSentEvent (msg) {
-  // msg => {...}
+  // msg => {...whatever the server published/emitted...}
 });
+```
 
+##### Another example, this time using Angular:
 
+> Note that this Angular example assumes the backend calls `publishCreate()` at some point.
+
+```javascript
+angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
+
+  $scope.orders = $scope.orders || [];
+
+  if (!io.socket.alreadyListeningToOrders) {
+    io.socket.alreadyListeningToOrders = true;
+    io.socket.on('order', function onServerSentEvent (msg) {
+
+      // Let's see what the server has to say...
+      switch(msg.verb) {
+
+        case 'created':
+          $scope.orders.push(msg.data); // (add the new order to the DOM)
+          $scope.$apply();              // (re-render)
+          break;
+
+        default: return; // ignore any unrecognized messages
+      }
+    });
+  }
+});
 ```
 
 ### Notes

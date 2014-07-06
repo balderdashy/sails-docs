@@ -1,52 +1,39 @@
-# socket.post( `url`, [`params`], [`callback`] )
-### Purpose
-Create a new record using the REST Blueprints via Socket.IO
+# socket.post()
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
-|---|-----------------------------|---------------------|------------|
-| 1 | /path/to/controller/action/ |      `string`       | Yes        |
-| 2 |           Parameters        | `object`            | No         |
-| 3 |            Callback         | `function`          | No         |
+Sends a virtual POST request to a Sails server using Socket.io.
 
-#### Callback Parameters
 
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Created    | `[{}]`        |
+### Usage
 
-### Example Usage
-```javascript
-<script>
-
-window.onload=function loading(){
-    var paramObj = {
-      "name": "Pinkie Pie",
-      "hobby": "snowboarding",
-      "pet": {
-        "name": "Gummy",
-        "species": "crocodile"
-      }
-    };
-    socket.post('/users/',paramObj,function serverSays(err,users){
-        if (err)
-            console.log(err)
-
-        console.log(JSON.stringify(users));
-    });
-}
-
-// logs: Object {name: "Pinkie Pie", hobby: "snowboarding", pet: Object, createdAt: "2013-12-12T21:54:13.390Z", updatedAt: "2013-12-12T21:54:13.390Z"…}
-
-</script>
-HTML BODY
-
+```js
+io.socket.post(url, [data], function (data, jwres){
+  // ...
+});
 ```
 
-### Notes
-> This example assumes you have rest blueprints enabled in `config/controllers.js`
+|   | Argument   | Type         | Details |
+|---|------------|:------------:|---------|
+| 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
+| 2 | `data`     | ((*))        | Optional request data- if provided, will be JSON-encoded and included as the virtual HTTP body
+| 3 | `callback` | ((Function)) | Optional callback- if provided, will be called when the server responds.
+
+##### Callback
+
+|   | Argument  | Type         | Details |
+|---|-----------|:------------:|---------|
+| 1 | `data`    | ((*))        | Data received in the response from the Sails server (=== `jwres.body` === the body of an HTTP response.)
+| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response]() object.  Has `headers`, a `body`, and a `statusCode`.
+
+
+### Example
+
+```html
+<script>
+io.socket.post('/users', { name: 'Timmy Mendez' }, function (data) {
+  data; // => {id:9, name: 'Timmy Mendez'}
+});
+</script>
+```
 
 
 <docmeta name="uniqueID" value="socketpost175407">

@@ -1,46 +1,39 @@
-# socket.delete( `url`, [`params`], [`callback`] )
-### Purpose
-Delete a record from the database using the REST Blueprints via Socket.IO
+# socket.delete()
 
-### Overview
+Sends a virtual DELETE request to a Sails server using Socket.io.
 
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
-|---|-----------------------------|---------------------|------------|
-| 1 | /path/to/controller/action/ |      `string`       | Yes        |
-| 2 |           Parameters        | `object`            | No         |
-| 3 |            Callback         | `function`          | No         |
 
-#### Callback Parameters
+### Usage
 
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Deleted    | `{}`, `[{}]`        |
-
-### Example Usage
-```javascript
-<script>
-
-window.onload=function deleteUser(){
-
-    socket.delete('/users/8',function serverSays(err,users){
-        if (err)
-            console.log(err)
-
-        console.log(JSON.stringify(users));
-    });
-}
-
-// logs: Object {name: "Dinky Guy", hobby: "snowBROing", pet: Object, createdAt: "2013-12-12T19:43:49.284Z", updatedAt: "2013-12-12T21:59:58.735Z"…}
-
-</script>
-HTML BODY
-
+```js
+io.socket.delete(url, [data], function (data, jwres){
+  // ...
+});
 ```
 
-### Notes
-> This example assumes you have rest blueprints enabled in `config/controllers.js`
+|   | Argument   | Type         | Details |
+|---|------------|:------------:|---------|
+| 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
+| 2 | `data`     | ((*))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
+| 3 | `callback` | ((Function)) | Optional callback- if provided, will be called when the server responds.
+
+##### Callback
+
+|   | Argument  | Type         | Details |
+|---|-----------|:------------:|---------|
+| 1 | `data`    | ((*))        | Data received in the response from the Sails server (=== `jwres.body` === the body of an HTTP response.)
+| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response]() object.  Has `headers`, a `body`, and a `statusCode`.
+
+
+### Example
+
+```html
+<script>
+io.socket.delete('/users/9', function (data) {
+  data; // => {id:9, name: 'Timmy Mendez', occupation: 'psychic'}
+});
+</script>
+```
 
 
 
