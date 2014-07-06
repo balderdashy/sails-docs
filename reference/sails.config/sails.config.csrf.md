@@ -1,36 +1,20 @@
-# CSRF
-### What is this?
-When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
+# sails.config.csrf
 
-### Description
-
-
-
-When enabled, all non-GET requests to the Sails server must be accompanied by a special token, identified as the '_csrf' parameter.
+Configuration for Sails' built-in [CSRF]() protection middleware.  These options are conventionally set in the [`config/csrf.js`]() configuration file.  See the docs on [Cross-Site Request Forgery]() in the security section for detailed usage instructions.
 
 This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
 
 This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
-  
-This token has a short-lived expiration timeline, and must be acquired by either:
 
-#### For traditional view-driven web apps:*
-Fetching it from one of your views, where it may be accessed as a local variable, i.e.: `<%= _csrf %>`
-e.g.:
-```html
-<form>
- <input type='hidden' name='_csrf' value='<%= _csrf %>'>
-</form>
-```
 
-#### For AJAX/WebSockets
-Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.: `{ _csrf: 'ajg4JD(JGdajhLJALHDa' }`
+### Properties
 
-Enabling this option requires managing the token in your front-end app. For traditional web apps, it's as easy as passing the data from a view into a form action. In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to get a valid token.
+| Property    | Type       | Default   | Details |
+|-------------|:----------:|-----------|---------|
+| `csrf`      | ((boolean))| false     | CSRF protection is disabled by default to facilitate development.  To turn it on, just set `sails.config.csrf` to true.
 
-> For more information on CSRF, check out: [this](http://en.wikipedia.org/wiki/Cross-site_request_forgery) article.
 
 
 <docmeta name="uniqueID" value="CSRF353281">
-<docmeta name="displayName" value="CSRF">
+<docmeta name="displayName" value="sails.config.csrf">
 

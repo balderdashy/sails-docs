@@ -1,4 +1,4 @@
-# Connections
+# sails.config.connections
 
 ### What is this?
 Adapters are the middle man between your Sails app and some kind of storage (typically a database)
@@ -30,7 +30,7 @@ module.exports.connections = {
 
 ```
 
-If you wanted to set `memory` as the default adapter for your models, you would do this. 
+If you wanted to set `memory` as the default adapter for your models, you would do this.
 `myApp/config/models.js`
 
 ```javascript
@@ -75,5 +75,5 @@ module.exports.connections = {
 
 
 <docmeta name="uniqueID" value="Connections100765">
-<docmeta name="displayName" value="Connections">
+<docmeta name="displayName" value="sails.config.connections">
 

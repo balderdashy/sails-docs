@@ -22,7 +22,34 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF Tokens
 
-See the docs on [CSRF configuration](/#/documentation/reference/Configuration/CSRF.html) for examples of how to get a CSRF token- both from within a traditional multi-page web application and a single-page-application (SPA).
+To get a CSRF token, you should either bootstrap it in your view using [locals]() (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+
+
+##### Using View Locals:
+
+For old-school form submissions, it's as easy as passing the data from a view into a form action.  You can grab hold of the token in your view, where it may be accessed as a view local: `<%= _csrf %>`
+
+e.g.:
+```html
+<form action="/signup" method="POST">
+ <input type="text" name="emailaddress"/>
+ <input type='hidden' name='_csrf' value='<%= _csrf %>'>
+ <input type='submit'>
+</form>
+```
+
+##### Using AJAX/WebSockets
+
+In AJAX/Socket-heavy apps, you might prefer to send a GET request to the built-in `/csrfToken` route, where it will be returned as JSON, e.g.:
+
+```json
+{
+  "_csrf": "ajg4JD(JGdajhLJALHDa"
+}
+```
+
+
+
 
 ### Spending CSRF Tokens
 
@@ -38,10 +65,13 @@ $.post('/checkout', {
 ```
 
 
+
 ### Notes
 
 > + For most developers and organizations, CSRF attacks need only be a concern if you allow users to log into/securely access your Sails backend from the browser. If you _don't_ (e.g. users only access the secured sections from your native iOS or Android app), it is possible you don't need to enable CSRF protection.  Why?  Because technically, the common CSRF attack discussed on this page is only _possible_ in scenarios where users use the _same client application_ (e.g. Chrome) to access different web services (e.g. Chase.com, Horrible-Hacker-Site.com.)
-
+> + For more information on CSRF, check out [Wikipedia](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+> + For "spending" CSRF tokens in a traditional form submission, refer to the example above (under "Using View Locals".)
+> + You can choose to send the CSRF token as a header instead of a parameter- refer to the [Connect documentation](http://www.senchalabs.org/connect/csrf.html) for the most up-to-date information.  The next (post v0.10) minor release of Sails will likely upgrade to Express 4, at which point the new Express csrf middleware will be included instead, but backwards compatibility will be maintained.
 
 <docmeta name="uniqueID" value="CSRF300312">
 <docmeta name="displayName" value="CSRF">

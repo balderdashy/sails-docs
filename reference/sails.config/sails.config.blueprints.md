@@ -1,4 +1,5 @@
-# Blueprints
+# sails.config.blueprints
+
 ### What is this?
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
@@ -32,5 +33,5 @@ Optionally use plural controller names in blueprint routes, e.g. `/users` for `a
 
 
 <docmeta name="uniqueID" value="Blueprints187690">
-<docmeta name="displayName" value="Blueprints">
+<docmeta name="displayName" value="sails.config.blueprints">
 

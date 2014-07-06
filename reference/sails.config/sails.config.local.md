@@ -1,4 +1,6 @@
-# Local
+# sails.config.local
+
+
 ### What is this?
 While you’re developing your app, this config file should include any settings specifically for your development computer or server (db passwords, etc.)  If you're using git, note that `config/local.js` is included in the `.gitignore` in new Sails apps by default, and so it won't be checked into your repository when you commit.
 
@@ -44,5 +46,5 @@ If your site will ultimately be served by a proxy, you may want to set `proxyHos
 
 
 <docmeta name="uniqueID" value="Local760410">
-<docmeta name="displayName" value="Local">
+<docmeta name="displayName" value="sails.config.local">
 
