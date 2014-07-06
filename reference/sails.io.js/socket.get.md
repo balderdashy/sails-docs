@@ -6,7 +6,7 @@ Sends a virtual GET request to a Sails server using Socket.io.
 ### Usage
 
 ```js
-io.socket.get(url, [data], function (data, jwres){
+io.socket.get(url, data, function (data, jwres){
   // ...
 });
 ```
@@ -15,7 +15,7 @@ io.socket.get(url, [data], function (data, jwres){
 |---|------------|:------------:|---------|
 | 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
 | 2 | `data`     | ((*))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
-| 3 | `callback` | ((Function)) | Optional callback- if provided, will be called when the server responds.
+| 3 | `callback` | ((function)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 

@@ -6,7 +6,7 @@ Sends a virtual PUT request to a Sails server using Socket.io.
 ### Usage
 
 ```js
-io.socket.put(url, [data], function (data, jwres){
+io.socket.put(url, data, function (data, jwres){
   // ...
 });
 ```
@@ -15,7 +15,7 @@ io.socket.put(url, [data], function (data, jwres){
 |---|------------|:------------:|---------|
 | 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
 | 2 | `data`     | ((*))        | Optional request data- if provided, will be JSON-encoded and included as the virtual HTTP body
-| 3 | `callback` | ((Function)) | Optional callback- if provided, will be called when the server responds.
+| 3 | `callback` | ((function)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 

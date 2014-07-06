@@ -2,6 +2,27 @@
 
 Starts listening for server-sent events from Sails with the specified `eventIdentity`.  Will trigger the provided callback function when a matching event is received.
 
+
+### Usage
+
+```js
+io.socket.on(eventIdentity, function (msg) {
+  // ...
+});
+```
+
+|   | Argument   | Type         | Details |
+|---|------------|:------------:|---------|
+| 1 | `eventIdentity`      | ((string))   | The unique identity of a server-sent event, e.g. "recipe"
+| 2 | `callback` | ((function)) | Will be called when the server emits a message to this socket.
+
+##### Callback
+
+|   | Argument  | Type         | Details |
+|---|-----------|:------------:|---------|
+| 1 | `msg`     | ((object))        | Message sent from the Sails server
+
+
 Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 + server emits a message to all known sockets (see [sails.sockets.blast()]())
@@ -12,13 +33,6 @@ Note that the callback will NEVER trigger until one of your back-end controllers
 
 
 
-### Usage
-
-```js
-io.socket.on(eventIdentity, function onServerSentEvent (msg) {
-  // ...
-});
-```
 
 ### Example
 
