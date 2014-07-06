@@ -8,9 +8,8 @@ Configuration for your app's underlying HTTP server.  These properties are conve
   Property          | Type       | Default   | Details
  ------------------ |:----------:| --------- | -------
  `middleware`       | ((object)) | See [conventional defaults for HTTP middleware]() | A configuration object of all HTTP middleware functions your app will run on every incoming HTTP request.  All [Express](http://expressjs.com/) or Connect middleware is supported.<br/>[Example](https://gist.github.com/mikermcneil/9cbd68c95839da480e97)
- `middleware.order` | ((array))  | See [conventional defaults for HTTP middleware]() | The order in which middleware should be run for HTTP request (the Sails router, which runs the appropriate explicit routes, policies, controllers, etc. from your app is invoked by the "router" middleware). 
- `middleware.order` | ((array))  | `{}`      | TODO
- `cache`            | ((number)) | TODO      | TODO
+ `middleware.order` | ((array))  | See [conventional defaults for HTTP middleware order](https://github.com/balderdashy/sails/blob/master/lib/hooks/http/index.js#l51-66) | The order in which middleware should be run for HTTP request (the Sails router, which runs the appropriate explicit routes, policies, controllers, etc. from your app is invoked by the "router" middleware). 
+ `cache`            | ((number)) | `cache: 31557600000` | The number of seconds to cache flat files on disk being served by Express static middleware (by default, these files are in `.tmp/public`)<br/>The HTTP static cache is only active in a 'production' environment (default 1 year), since that's the only time Express will cache flat-files.
  `serverOptions`    | ((object)) | TODO      | TODO
 
 
