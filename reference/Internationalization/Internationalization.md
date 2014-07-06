@@ -162,21 +162,15 @@ Of course you can always `require()` any Node modules you like, anywhere in your
 But worth noting is that since Sails implements [node-i18n]() integration in the [i18n hook](), you can completely disable or override it using the [`loadHooks`]() and/or [`hooks`]() configuration options.
 
 
+### What About i18n on the client?
+
+The above technique works great out of the box for server-side views. But what about rich client apps that serve static HTML templates from a CDN or static host? (e.g. performance-obsessed SPAs or PhoneGap apps/Chrome extensions)
+
+You can actually reuse Sails' i18n support to help you get your translated templates to the browser.  If you want to use Sails to internationalize your _client-side templates_, put your front-end templates in a subdirectory of your app's `/views` folder.
++ In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
++ In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
 
 
-
-<!--
-  TODO: add more sections here to summarize the contents of the node-i18n repo.
-
-Sails decides which language to use by
- + detect users' language preferences on a per-request basis using HTTP headers
- + conventional locales per-request
--->
-
-
-<!--
-#### Notes
-+  -->
 
 <docmeta name="uniqueID" value="internationalization245343">
 <docmeta name="displayName" value="Internationalization">
