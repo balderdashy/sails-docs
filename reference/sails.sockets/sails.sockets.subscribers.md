@@ -10,7 +10,7 @@ sails.sockets.subscribers(roomName);
 
 |   |          Argument           | Type                | Details
 | - | --------------------------- | ------------------- | -----------
-| 1 |        roomName             | ((string))            | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
+| 1 |        roomName             | ((string))          | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
 
 ### Example
 
