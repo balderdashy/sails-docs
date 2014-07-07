@@ -3,7 +3,7 @@
 Returns a list of records from the model as a JSON array of objects.
 
 ```http
-GET /:modelIdentity
+GET /:model
 ```
 
 Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.
