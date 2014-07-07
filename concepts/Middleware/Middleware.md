@@ -38,9 +38,9 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
  _404_ *                   | Handles requests which do not match any routes - triggers `res.notFound()`  <!-- technically, this emits the `router:request:404` event)  -->
  _500_ *                   | Handles requests which trigger an internal error (i.e. call Express's `next(err)`)  - triggers `res.serverError()` <!-- technically, this emits the `router:request:500` event)  -->
 
-> **Legend:**
->
-> + `*` - An unbolded, italicized item above with an asterisk (*) means that this middleware should _almost never_ be modified or removed unless you really know what you're doing!!
+###### Legend:
+
++ `*` - The middleware with an asterisk (*) above should _almost never_ need to be modified or removed. Please only do so if you really understand what you're doing.
 
 
 
