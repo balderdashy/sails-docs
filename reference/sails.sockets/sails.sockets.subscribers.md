@@ -3,14 +3,14 @@
 Get the IDs of all sockets subscribed to a room.
 
 ```javascript
-sails.sockets.id(socket);
+sails.sockets.subscribers(roomName);
 ```
 
-### Overview
+### Usage
 
 |   |          Argument           | Type                | Details
 | - | --------------------------- | ------------------- | -----------
-| 1 |        room name            | `string`            | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
+| 1 |        roomName             | `string`            | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
 
 ### Example
 ```javascript
