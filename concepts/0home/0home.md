@@ -36,7 +36,7 @@
     5. One-to-One
     6. Through Associations
     7. Accessing Join Tables
-  7.Model Methods
+  7. Model Methods
     1. .publishUpdate()
     2. .add()
     3. .create()
