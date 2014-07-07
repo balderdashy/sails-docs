@@ -3,11 +3,10 @@
 
 ### Table of Contents
 
-I. Assets
-  A. Default Tasks
-  B. Disabling Grunt
-II. CORS
-III. ...
+1. **Assets**
+  1. Default Tasks
+  2. Disabling Grunt
+  3. CORS
 
 <docmeta name="uniqueID" value="home198259">
 <docmeta name="displayName" value="--">
