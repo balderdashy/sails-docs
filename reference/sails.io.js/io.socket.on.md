@@ -25,12 +25,14 @@ io.socket.on(eventIdentity, function (msg) {
 
 Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
+###### Resourceful Pubsub Methods
++ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](), [Model.publishDestroy()](), and [Model.subscribe()]())
++ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate()]() and [Model.watch()]())
+
+###### Low-Level Socket Methods
 + server emits a message to all known sockets (see [sails.sockets.blast()]())
 + server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()]())
 + server [broadcasts]() to a room in which this socket (`io.socket`) has been allowed to [join]() (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
-+ server publishes a message about a record to which this socket is subscribed (see [publishUpdate()](), [publishDestroy()](), and [subscribe()]())
-+ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [publishCreate()]() and [watch()]())
-
 
 
 
