@@ -13,6 +13,18 @@ sails.sockets.subscribers(roomName);
 | 1 |        roomName             | `string`            | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
 
 ### Example
+
+```javascript
+sails.sockets.subscribers('supportchat');
+// => ['BetX2G-2889Bg22xi-jy', 'BTA4G-8126Kr32bi-za']
+```
+
+<!--
+
+  Wrote this, then took this out because it's needlessly complex.
+  See sails101/low-level-sockets for more like it.
+  ~mike
+
 ```javascript
 // Controller action
 
@@ -29,6 +41,7 @@ getRoomSubscribers: function(req, res) {
   ));
 }
 ```
+-->
 
 
 
