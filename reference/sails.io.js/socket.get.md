@@ -21,7 +21,7 @@ io.socket.get(url, data, function (data, jwres){
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `data`    | ((*))        | Data received in the response from the Sails server (=== `jwres.body` === the body of an HTTP response.)
+| 1 | `resData` | ((*))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
 | 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response]() object.  Has `headers`, a `body`, and a `statusCode`.
 
 
@@ -29,8 +29,8 @@ io.socket.get(url, data, function (data, jwres){
 
 ```html
 <script>
-io.socket.get('/users/9', function (data) {
-  data; // => {id:9, name: 'Timmy Mendez'}
+io.socket.get('/users/9', function (resData) {
+  resData; // => {id:9, name: 'Timmy Mendez'}
 });
 </script>
 ```
