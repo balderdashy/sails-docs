@@ -1,6 +1,6 @@
 # sails.sockets.blast()
 
-Send a message to all sockets connected to the server.
+Broadcast a message to all sockets connected to the server.
 
 ```javascript
 sails.sockets.blast(data);
@@ -19,12 +19,14 @@ _Or:_
 | - | --------------------------- | ------------------- | -----------
 | 1 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
 | 2 |        data                 | ((*))               | The data to send in the message.
-| 3 |        socketToOmit         | ((Socket))          | Optional. If provided, that socket will **not** receive the message blasted out to everyone else.
+| 3 |        socketToOmit         | ((Socket))          | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
 
 
 
 
 ### Example
+
+In a controller action...
 
 ```javascript
 sails.sockets.blast('user_logged_in', {
@@ -49,7 +51,7 @@ sayHiToEverybody: function(req, res) {
 ```
 
 ```javascript
-// Client-side -- subscribe to all "message" events
+// Client-side - subscribe to all "message" events
 socket.on('message', function(data) {console.log("Global message: ", data.msg)});
 ```
 -->
