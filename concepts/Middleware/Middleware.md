@@ -3,13 +3,6 @@
 Sails is fully compatible with Express/ Connect middleware-- in fact, it's all over the place.  Much of the code you'll write in Sails is effectively middleware; most notably [controller actions]() and [policies]().
 
 
-### Installing Express Middleware In Sails
-
-One of the really nice things about Sails apps is that they can take advantage of the wealth of already-existing Express/Connect middleware out there.  But a common question that arises when people actually try to do this is: _"Where do I `app.use()` it?"_.
-
-In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`]().  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
-
-
 ### HTTP Middleware
 
 Sails also utilizes an additional [configurable middleware stack]() just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
@@ -88,6 +81,38 @@ E.g. in `config/http.js`:
   }
   // ...
 ```
+
+
+### Express Middleware In Sails
+
+One of the really nice things about Sails apps is that they can take advantage of the wealth of already-existing Express/Connect middleware out there.  But a common question that arises when people _actually_ try to do this is:
+
+> _"Where do I `app.use()` this thing?"_.
+
+In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`]().  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
+
+You can also include Express middleware as a policy- just configure it in [`config/policies.js`]().  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
+
+```js
+{
+  '*': true,
+  
+  ProductController: {
+  
+    // Prevent end users from doing CRUD operations on products reserved for admins
+    // (uses HTTP basic auth)
+    '*': require('http-auth')({
+      realm: 'admin area'
+    }, function customAuthMethod (username, password, onwards) {
+      return onwards(username === "Tina" && password === "Bullock");
+    }),
+    
+    // Everyone can view product pages
+    show: true
+  }
+}
+```
+
 
 
 <!--
