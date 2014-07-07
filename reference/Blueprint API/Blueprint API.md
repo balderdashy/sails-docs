@@ -1,8 +1,8 @@
-# Blueprints
+# Blueprint API
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.  
+Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
 
 For example, if you create a `User.js` model and `UserController.js` controller file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
 
@@ -59,6 +59,6 @@ Adding custom blueprints is also supported, but they currently do not get bound 
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
 >
 
-<docmeta name="uniqueID" value="Blueprints170785">
-<docmeta name="displayName" value="Blueprints">
+<docmeta name="uniqueID" value="blueprintapi170785">
+<docmeta name="displayName" value="Blueprint API">
 
