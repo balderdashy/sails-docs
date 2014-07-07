@@ -1,18 +1,25 @@
-# sails.sockets.blast( [`event`], `data`, [`socketToOmit`] )
-### Purpose
-Broadcast a message to all connected sockets.
+# sails.sockets.blast()
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
-|---|-----------------------------|---------------------|------------|
-| 1 |           Event Name        | `string`            | No         |
-| 2 |           Message Data        | `object`            | Yes         |
-| 3 |           Socket to skip        | `object`            | No         |
+Send a message to all sockets connected to the server.
 
- If the event name is omitted, `"message"` will be used by default.  Thus, `sails.sockets.broadcast(roomName, data)` is also a valid usage.
+```javascript
+sails.sockets.blast(data);
+```
 
- If `socketToOmit` is provided, that socket will *not* receive the message.
+Or:
++ `sails.sockets.blast(eventName, data);`
++ `sails.sockets.blast(eventName, data, socketToOmit);`
+
+### Usage
+
+|   |          Argument           | Type                | Details
+| - | --------------------------- | ------------------- | -----------
+| 1 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
+| 2 |        data                 | ((*))               | The data to send
+| 3 |        socket to omit       | ((Socket))          | Optional. If provided, this socket will **not** receive the message blasted out to everyone else.
+
+
+
 
 ### Example
 ```javascript
