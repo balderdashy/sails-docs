@@ -55,14 +55,15 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
 });
 ```
 
-**Using [cURL]():**
+**Using [Angular]():**
 
-```bash
-# todo
+```javascript
+$http.get('/purchase?sort=createdAt DESC').then(function (purchases) {
+  console.log(purchases);
+});
 ```
 
-
-**Using [sails.io.js]()**
+**Using [sails.io.js]():**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -70,13 +71,13 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 });
 ```
 
-**Using [Angular]()**
+**Using [cURL]():**
 
-```javascript
-$http.get('/purchase?sort=createdAt DESC').then(function (purchases) {
-  console.log(purchases);
-});
+```bash
+# todo
 ```
+
+
 
 
 
