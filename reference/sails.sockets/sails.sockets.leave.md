@@ -24,6 +24,9 @@ leaveFunRoom: function(req, res) {
 
 *Note: `req.socket` is only valid if the action is triggered via a socket request, e.g. `socket.get('/leaveFunRoom/someRoomName')`*
 
+### Notes
+> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+
 <docmeta name="uniqueID" value="sailssocketsleave425459">
 <docmeta name="displayName" value="sails.sockets.leave()">
 

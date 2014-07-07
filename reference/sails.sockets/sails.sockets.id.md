@@ -1,26 +1,34 @@
-# sails.sockets.id( `socket` )
-### Purpose
-Get the ID of a socket object.
+# sails.sockets.id()
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
-|---|-----------------------------|---------------------|------------|
-| 1 |           Socket            | ((Socket))          | Yes        |
+Gets the ID of a request socket object.
 
-A socket object's ID can be used to send direct messages to that socket (see `sails.sockets.emit`) or get information about the rooms that the socket is subscribed to (see `sails.sockets.socketRooms`).
+```javascript
+sails.sockets.id(socket);
+```
+
+### Usage
+
+|   |          Argument           | Type                | Details
+| - | --------------------------- | ------------------- | -----------
+| 1 |           socket            | ((Socket))          | A request socket (WebSocket/Socket.io) object <br/> e.g. `req.socket`.
 
 
-### Example Usage
+Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.emit]()) or get information about the rooms that the socket is subscribed to (see [sails.sockets.socketRooms]()).
+
+
+### Example
 ```javascript
 // Controller action
 
-socketId: function(req, res) {
-    res.json({
-      message: 'My socket ID is: '+sails.sockets.id(req.socket)
-    });
+getSocketID: function(req, res) {
+  if (!req.isSocket) return res.badRequest();
+  return res.ok('My socket ID is: ' + sails.sockets.id(req.socket));
 }
 ```
+
+
+### Notes
+> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
 <docmeta name="uniqueID" value="sailssocketsid240053">
 <docmeta name="displayName" value="sails.sockets.id()">

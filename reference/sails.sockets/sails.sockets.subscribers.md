@@ -1,6 +1,8 @@
-# sails.sockets.subscribers( `roomName` )
-### Purpose
+# sails.sockets.subscribers()
+
 Get the IDs of all sockets subscribed to a room.
+
+
 
 ### Overview
 #### Parameters
@@ -20,6 +22,7 @@ getRoomSubscribers: function(req, res) {
     });
 }
 ```
+
 
 
 <docmeta name="uniqueID" value="sailssocketssubscribers65666">

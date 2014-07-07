@@ -23,6 +23,8 @@ sayHiToFriend: function(req, res) {
 }
 ```
 
+
+
 <docmeta name="uniqueID" value="sailssocketsemit963182">
 <docmeta name="displayName" value="sails.sockets.emit()">
 

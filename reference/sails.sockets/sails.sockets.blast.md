@@ -14,7 +14,7 @@ Broadcast a message to all connected sockets.
 
  If `socketToOmit` is provided, that socket will *not* receive the message.
 
-### Example Usage
+### Example
 ```javascript
 // Controller action
 
@@ -30,6 +30,9 @@ sayHiToEverybody: function(req, res) {
 // Client-side -- subscribe to all "message" events
 socket.on('message', function(data) {console.log("Global message: ", data.msg)});
 ```
+
+### Notes
+> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
 <docmeta name="uniqueID" value="sailssocketsblast345475">
 <docmeta name="displayName" value="sails.sockets.blast()">
