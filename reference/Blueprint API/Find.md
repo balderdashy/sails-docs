@@ -30,31 +30,28 @@ _All parameters are optional._
 
 Find the 30 newest purchases in our database.
 
+```json
+[
+ {
+   "amount": 49.99,
+   "id": 1,
+   "createdAt": "2013-10-18T01:22:56.000Z",
+   "updatedAt": "2013-10-18T01:22:56.000Z"
+ },
+ {
+   "amount": 99.99,
+   "id": 47,
+   "createdAt": "2013-10-14T01:22:00.000Z",
+   "updatedAt": "2013-10-15T01:20:54.000Z"
+ }
+]
+```
 
 **Using [jQuery]():**
 
 ```javascript
 $.get('/purchase?sort=createdAt DESC', function (purchases) {
-
   console.log(purchases);
-
-  // =>
-  //
-  // [
-  //  {
-  //    "amount": 49.99,
-  //    "id": 1,
-  //    "createdAt": "2013-10-18T01:22:56.000Z",
-  //    "updatedAt": "2013-10-18T01:22:56.000Z"
-  //  },
-  //  {
-  //    "amount": 99.99,
-  //    "id": 47,
-  //    "createdAt": "2013-10-14T01:22:00.000Z",
-  //    "updatedAt": "2013-10-15T01:20:54.000Z"
-  //  }
-  // ]
-
 });
 ```
 
