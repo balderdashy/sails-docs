@@ -2,64 +2,56 @@
 
 This method is used to send a [404]() ("Not Found") response back down to the client.  This is normally used to indicate that the user-agent tried to get, update, or delete something that doesn't exist.
 
+This method is called if Sails receives a route which doesn't match any of its explicit routes or route blueprints.  In other words, this module is what serves the 404 page.
+
 
 ### Usage
-
-```js
-return res.notFound(err, pathToView);
-```
-
--or-
-
-
-```js
-return res.notFound(err, url);
-```
-
--or-
-
-```js
-return res.notFound(err);
-```
-
--or-
 
 ```js
 return res.notFound();
 ```
 
+_Or:_
++ `return res.notFound(data);`
++ `return res.notFound(data, pathToView);`
+
+
+
+
+
+
 ### Details
 
+Like the other built-in custom response modules, the behavior of this method is customizable.
 
-By default, `res.notFound()` performs content-negotiation based on its arguments, your app's environment, and the type of request.
+By default, it works as follows:
 
-If the request "wants JSON", Sails will send a JSON response.  Otherwise it calls `res.redirect()` using the specified `url`.  If a view (`pathToView`) is specified, Sails will serve the view.  In any case, a 404 ("Not Found") status code will be sent.
++ If the request "[wants JSON]()" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Not Found"`).
++ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
+  + If a specific `pathToView` was provided, Sails will attempt to use that view.
+  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`]() for details).  If Sails cannot guess a workable view, it will just send JSON.
+  + If Sails serves a view, the `data` argument will be accessible as a [view local](): `data`.
 
-`res.notFound()` includes the specified error (`err`) in its JSON response unless the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`.
 
-If a request "wants JSON", but no `err` argument is provided, a default response body will be sent:
-
-```json
-{
-  "status": 403
-}
-```
-
-If a request "wants JSON" and a string `err` argument is provided, the error message will be wrapped in an object under the "error" key:
-
-```json
-{
-  "status": 403,
-  "error": "..."
-}
-```
 
 ### Example
 
+Using the default view:
+
 ```javascript
-if ( !req.session.authorized ) {
-  return res.notFound('YOU SHALL NOT PASS!');
-}
+return res.notFound();
+```
+
+With a custom view:
+
+```javascript
+Pet.findOne()
+.where(name: 'fido')
+.exec(function(err, fido) {
+  if (err) return res.serverError(err);
+  if (!fido) return res.notFound(undefined,'pet/sorry-that-pet-has-moved');
+  // ...
+})
 ```
 
 

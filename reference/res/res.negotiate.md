@@ -1,6 +1,6 @@
 # res.negotiate()
 
-Given an error (`err`), send an appropriate error response back down to the client.
+Given an error (`err`), send an appropriate error response back down to the client.  Especially handy for handling potential validation errors from [Model.create()]() or [Model.update()]().
 
 ### Usage
 
@@ -10,14 +10,31 @@ return res.negotiate(err);
 
 ### Details
 
-`res.negotiate()` chooses the appropriate error-handling behavior from one of the following methods:
+Like the other built-in custom response modules, the behavior of this method is customizable.
+
+`res.negotiate()` examines the provided error (`err`) and determines the appropriate error-handling behavior from one of the following methods:
 
 + [`res.badRequest()`]()   (400)
 + [`res.forbidden()`]()    (403)
 + [`res.notFound()`]()     (404)
 + [`res.serverError()`]()  (500)
 
-If a more specific diagnosis cannot be determined, Sails will default to [`res.serverError()`]().
+The determination is made based on `err`'s "status" property.  If a more specific diagnosis cannot be determined (e.g. `err` doesn't have a "status" property, or it's a string), Sails will default to [`res.serverError()`]().
+
+
+
+### Example
+
+
+```javascript
+// Add Fido's birthday to the database:
+Pet.update({name: 'fido'})
+  .set({birthday: new Date('01/01/2010')})
+  .exec(function (err, fido) {
+    if (err) return res.negotiate(err);
+    return res.ok(fido);
+   });
+```
 
 
 ### Notes

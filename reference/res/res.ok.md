@@ -6,17 +6,17 @@ Send a 200 ("OK") response back down to the client with the provided data.  Perf
 ### Usage
 
 ```js
-return res.ok(data);
+return res.ok();
 ```
 
 _Or:_
-+ `res.ok(data, pathToView);`
-+ `res.ok();`
++ `return res.ok(data);`
++ `return res.ok(data, pathToView);`
 
 
 ### Details
 
-Like the other built-in custom response modules, the behavior of this method is completely customizable/overridable on an app-by-app basis.
+Like the other built-in custom response modules, the behavior of this method is customizable.
 
 By default, it works as follows:
 
