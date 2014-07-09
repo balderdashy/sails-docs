@@ -1,6 +1,6 @@
 # res.ok()
 
-Send a 200 ("OK") response back down to the client.
+Send a 200 ("OK") response back down to the client with the provided data.  Performs content-negotiation on the request and calls either [`res.json()`]() or [`res.view()`]().
 
 
 ### Usage
@@ -20,10 +20,53 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ `res.ok()` performs content-negotiation based its arguments, as well as the request headers and transport in use.  It always sends a 200 (OK) status code.
 + If the request "[wants JSON]()" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"OK"`).
-+ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.  If a specific `pathToView` was provided, Sails will attempt to use that view. Alternatively if a view is _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`]() for details on how that works). If the `data` argument was provided, Sails sends it to the specified view as a [view local]() variable named `data`.
++ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
+  + If a specific `pathToView` was provided, Sails will attempt to use that view.
+  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`]() for details).  If Sails cannot guess a workable view, it will fall back to JSON.
+  + If Sails serves a view, the `data` argument will be accessible as a [view local](): `data`.
 
+
+
+### Example
+
+```javascript
+return res.ok({
+  name: 'Loïc',
+  occupation: 'developer'
+});
+```
+
+
+If the request originated from a socket or AJAX request, the response sent from the usage above would contain the following JSON:
+
+```json
+{
+  "name": "Loïc",
+  "occupation": "developer"
+}
+```
+
+
+Alternatively, if the code that calls `res.ok()` was located somewhere where a view file could be guessed, that view would be served, with with Loïc available as the `data` local, e.g.:
+
+```html
+<input type="text" placeholder="Name" value="<%= data.name %>"/>
+<input type="text" placeholder="Occupation" value="<%= data.occupation %>"/>
+```
+
+
+If the code that calls `res.ok()` is in a policy, or somewhere an appropriate view cannot be guessed, Sails will just send back JSON instead.
+
+
+Finally, if a custom view file can be provided as the second argument, Sails will use that view instead of guessing:
+
+```javascript
+return res.ok({
+  name: 'Loïc',
+  occupation: 'developer'
+}, 'user/detail');
+```
 
 
 
