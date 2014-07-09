@@ -1,8 +1,8 @@
 # res.notFound()
 
-This method is used to send a [404]() ("Not Found") response back down to the client.  This is normally used to indicate that the user-agent tried to get, update, or delete something that doesn't exist.
+Sends a [404]() ("Not Found") response using either [res.json()]() or [res.view()](). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
 
-This method is called if Sails receives a route which doesn't match any of its explicit routes or route blueprints.  In other words, this module is what serves the 404 page.
+When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn't exist.
 
 
 ### Usage
@@ -14,8 +14,6 @@ return res.notFound();
 _Or:_
 + `return res.notFound(data);`
 + `return res.notFound(data, pathToView);`
-
-
 
 
 
