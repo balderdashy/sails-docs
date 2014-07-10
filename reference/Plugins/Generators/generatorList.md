@@ -5,7 +5,7 @@ This file is meant to be an up to date, comprehensive list of all of the generat
 
 #### sails-generate-generator
 ###### Github Repo
-https://github.com/balderdashy/sails-disk/
+https://github.com/balderdashy/sails-generate-generator/
 
 ###### On NPM
 'npm install sails-generate-generator`
