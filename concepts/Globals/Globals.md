@@ -1,7 +1,7 @@
 # Globals
 ### Overview
 
-For convenience, Sails exposes a handful of global variables.  By default, your app's [models](http://beta.sailsjs.org/#/documentation/reference/Models), [services](http://beta.sailsjs.org/#/documentation/reference/Services), and the global `sails` object are all available on the global scope; meaning you can refer to them by name anywhere in your backend code (as long as Sails [has been lifted](https://github.com/balderdashy/sails/tree/master/lib/app)).
+For convenience, Sails exposes a handful of global variables.  By default, your app's [models](http://beta.sailsjs.org/#/documentation/reference/Models), [services](http://beta.sailsjs.org/#/documentation/reference/Services), and the global `sails` object are all available on the global scope; meaning you can refer to them by name anywhere in your backend code (as long as Sails [has been loaded](https://github.com/balderdashy/sails/tree/master/lib/app)).
 
 Nothing in Sails core relies on these global variables - each and every global exposed in Sails may be disabled in `sails.config.globals` (conventionally configured in `config/globals.js`.)
 
