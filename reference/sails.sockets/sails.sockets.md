@@ -11,4 +11,4 @@ For raw access to the underlying [socket.io](http://socket.io/) singleton, you c
 
 <docmeta name="uniqueID" value="Sockets505826">
 <docmeta name="displayName" value="sails.sockets">
-
+<docmeta name="stabilityIndex" value="3">
