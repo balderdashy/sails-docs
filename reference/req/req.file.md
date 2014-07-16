@@ -14,7 +14,7 @@ req.file(field);
 
 This is a great simplification, but comes with a minor caveat:  **Text parameters must be included before files in the request body.**  Typically, these text parameters contain string metadata which provides additional information about the file upload.
 
-Multipart requests to Sails should send all of their **text parameters**. before sending _any_ **file parameters**.  For instance, if you're building a web frontend that communicates with Sails, you should include text parameters _first_ in any form upload or AJAX file upload requests.  The term "text parameters" refers to the metadata parameters you might along with the file(s) providing some additional information about this upload.
+Multipart requests to Sails should send all of their **text parameters**. before sending _any_ **file parameters**.  For instance, if you're building a web frontend that communicates with Sails, you should include text parameters _first_ in any form upload or AJAX file upload requests.  The term "text parameters" refers to the metadata parameters you might send along with the file(s) providing some additional information about this upload.
 
 
 ### How It Works
