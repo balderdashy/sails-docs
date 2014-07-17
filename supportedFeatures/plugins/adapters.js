@@ -83,6 +83,10 @@ module.exports = {
 		repo: 'https://github.com/ktkaushik/sails-mongoose',
 		status: 'unknown'
 	},
+	'sails-mssql': {
+		repo: 'https://github.com/jaredfromsubway/sails-mssql',
+		status: 'unknown'
+	}
 
 
 
