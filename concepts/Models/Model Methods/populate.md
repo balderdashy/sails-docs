@@ -75,7 +75,8 @@ User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
 ```
 
 ### Notes
-> Any string arguments passed must be the primary key of the record.
+> * Any string arguments passed must be the primary key of the record.
+> * To populate all attributes associated with a model use `populateAll()`
 
 
 <docmeta name="uniqueID" value="populate245634">
