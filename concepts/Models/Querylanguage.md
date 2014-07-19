@@ -1,23 +1,17 @@
-## Query Language
+# Query Language
 
-Sails comes installed with its default ORM called Waterline. The Waterline Query language is an object
-based criteria used to retrive the records from any of the supported database adapters. This means that
-you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your
-database without changing your codebase.
+Sails comes installed with its default ORM called Waterline. The Waterline Query language is an object-based criteria used to retrive the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.
 
-All queries inside of Waterline are case insensitive. This allows for easier querying but makes
-indexing strings tough. This is something to be aware of if you are indexing and searching on string
-fields.
+> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
+>
+> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`]() or [`.query()`]() method.
 
 ### Query Language Basics
 
 The criteria objects are formed using one of four types of object keys. These are the top level
-keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight
-variations.
+keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also
-use query options such as `limit` and `skip` or if `where` is excluded the entire object will be
-treated as a `where` criteria.
+Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or if `where` is excluded the entire object will be treated as a `where` criteria.
 
 ```javascript
 Model.find({ where: { name: 'foo' }, skip: 20, limit: 10, sort: 'name DESC' });
@@ -29,9 +23,7 @@ Model.find({ name: 'foo' })
 
 #### Key Pairs
 
-A key pair can be used to search records for values matching exactly what is specified. This is the
-base of a criteria object where the key represents an attribute on a model and the value is a strict
-equality check of the records for matching values.
+A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
 
 ```javascript
 Model.find({ name: 'walter' })
@@ -45,8 +37,7 @@ Model.find({ name: 'walter', state: 'new mexico' })
 
 #### Modified Pairs
 
-Modified pairs also have model attributes for keys but they also use any of the supported criteria
-modifiers to perform queries where a strict equality check wouldn't work.
+Modified pairs also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
 
 ```javascript
 Model.find({
