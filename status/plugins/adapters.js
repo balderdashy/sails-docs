@@ -10,14 +10,14 @@
  * for visualizations and tracking the status of the currently-available
  * Saisl community projects, and provide better visibility for
  * versioning and updates of core modules.
- * 
+ *
  * @type {Object}
  */
 module.exports = {
-	
+
 	//
 	// Core adapters
-	// 
+	//
 
 	'sails-disk': {
 		repo: 'https://github.com/balderdashy/sails-disk',
@@ -53,13 +53,15 @@ module.exports = {
 
 
 
+
 	//
 	// Community adapters
-	// 
+	// ------------------------------------
+
 
 	//
 	// 3rd Party APIs
-	// 
+	//
 	'sails-rest': {
 		repo: 'https://github.com/zohararad/sails-rest',
 		status: 'stable'
@@ -69,7 +71,7 @@ module.exports = {
 
 	//
 	// Databases
-	// 
+	//
 
 	'sails-riak': {
 		repo: '',
@@ -83,12 +85,16 @@ module.exports = {
 		repo: 'https://github.com/ktkaushik/sails-mongoose',
 		status: 'unknown'
 	},
+  'sails-mssql': {
+    repo: 'https://github.com/jaredfromsubway/sails-mssql',
+    status: 'unknown'
+  },
 
 
 
 	//
 	// Messaging
-	// 
+	//
 	'sails-mandrill': {
 		repo: 'https://github.com/mikermcneil/sails-mandrill',
 		status: 'experimental'
@@ -98,7 +104,7 @@ module.exports = {
 	//
 	// Filesystem
 	//
-	
+
 	'sails-s3': {
 		repo: 'https://github.com/mikermcneil/sails-s3',
 		status: 'experimental'
@@ -112,7 +118,7 @@ module.exports = {
 	//
 	// IRC
 	//
-	
+
 	'sails-irc': {
 		repo: 'https://github.com/balderdashy/sails-irc',
 		comments: 'See updated version here (needs to be tested): https://github.com/mikermcneil/sails-example-ircbot/blob/master/api/adapters/IRCAdapter.js',
@@ -122,7 +128,7 @@ module.exports = {
 
 	//
 	// Misc
-	// 
+	//
 
 	'sails-parse': {
 		repo: 'https://github.com/murilopolese/sails-parse',
@@ -144,8 +150,8 @@ module.exports = {
 	//
 	// and here:
 	// https://npmjs.org/search?q=sails
-	// 
+	//
 	// (we welcome your help getting them updated and tracked here!)
-	// 
+	//
 	// ...
 };
