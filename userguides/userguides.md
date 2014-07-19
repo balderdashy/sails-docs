@@ -11,10 +11,10 @@ Think about how you have used Sails for your project then write a guide about it
 #### What should I write about?
 - If you have a less than common use case, write a guide about it.
 - If you had a hard time finding a solution to a particular problem while using Sails, write a guide describing your workaround.
-- Are you doing something unconventional with Sails?  Write a guide.  
+- Are you doing something unconventional with Sails?  Write a guide.
 - Are you using Sails for your embedded hardware project?  Please, for the love of God, write a guide!
 
-#### Okay, I'll do it! Now what? 
+#### Okay, I'll do it! Now what?
 
 Thanks.  You're awesome!  Now, before you write anything, see the very first user guide in this folder under [contributing.md](https://github.com/balderdashy/sails-docs/blob/master/userguides/contributing.md)
 
@@ -23,7 +23,7 @@ Thanks.  You're awesome!  Now, before you write anything, see the very first use
 Just kidding about the legal disclaimer.  Seriously though, thank you for contibuting.  If it weren't for the help of folks like you, this project wouldn't be half of what it is today.  You guys rock.
 
 #### Sincerely and Truly
-##### Balderdash and the Sails.js team.
+Nick (@uncletammy)
 
 <docmeta name="uniqueID" value="sailsUserGuides83838">
 <docmeta name="displayName" value="User Submitted Guides">
