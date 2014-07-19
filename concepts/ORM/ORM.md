@@ -36,7 +36,7 @@ module.exports = {
 
   attributes: {
 
-    name: { 
+    name: {
       type: 'string'
     },
     enrolledIn: {
@@ -162,6 +162,6 @@ In your Sails app, a **model** is like one of the file cabinets.  It contains **
 
 
 
-<docmeta name="uniqueID" value="Models416997">
-<docmeta name="displayName" value="Models">
+<docmeta name="uniqueID" value="ORM416997">
+<docmeta name="displayName" value="ORM">
 
