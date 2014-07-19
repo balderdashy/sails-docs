@@ -49,3 +49,4 @@ That said, you _can_ write and distribute a custom hook today.  If you're intere
 
 <docmeta name="uniqueID" value="Hooks74998">
 <docmeta name="displayName" value="Hooks">
+<docmeta name="stabilityIndex" value="2">

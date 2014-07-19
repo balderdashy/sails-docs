@@ -38,6 +38,7 @@ Thanks!
 |     | [Validations](#validations-upgrade-to-validator-3x) |
 |     | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
 |     | [Blueprints/Controllers Configuration](#controller-configuration) |
+|     | [Layout Paths](#layouts) |
 ========================================
 
 
@@ -279,6 +280,24 @@ _config: {
 }
 ```
 
+
+### Layout Paths
+
+In Sails v0.9, you could use the following syntax to specify `auth/someLayout.ejs` as a custom layout when rendering a view:
+
+```js
+return res.view('auth/login',{
+  layout: 'someLayout'
+});
+```
+
+However in Sails v0.10, all layout paths are relative to your app's views path.  In other words, the relative path of the layout is no longer resolved from the view's own path-- it is now always resolved from the views path.  This makes it easier to understand which file is being used, particularly when layout files have similar names:
+
+```js
+return res.view('auth/login', {
+  layout: 'auth/someLayout'
+});
+```
 
 
 

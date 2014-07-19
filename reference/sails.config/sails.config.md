@@ -13,4 +13,4 @@ More specifically, when you load your app, whether that's using `node app`, [pro
 
 <docmeta name="uniqueID" value="sailsconfig238825">
 <docmeta name="displayName" value="Configuration">
-
+<docmeta name="stabilityIndex" value="3">

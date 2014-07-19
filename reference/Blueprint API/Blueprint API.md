@@ -61,4 +61,4 @@ Adding custom blueprints is also supported, but they currently do not get bound 
 
 <docmeta name="uniqueID" value="blueprintapi170785">
 <docmeta name="displayName" value="Blueprint API">
-
+<docmeta name="stabilityIndex" value="2">

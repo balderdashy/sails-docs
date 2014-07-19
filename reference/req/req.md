@@ -13,4 +13,5 @@ The [Features](./features) overview at [www.sailsjs.org](http://www.sailsjs.org)
 
 <docmeta name="uniqueID" value="req35837">
 <docmeta name="displayName" value="Request (`req`)">
+<docmeta name="stabilityIndex" value="3">
 

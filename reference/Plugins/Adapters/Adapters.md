@@ -31,3 +31,4 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 
 <docmeta name="uniqueID" value="Adapters83669">
 <docmeta name="displayName" value="Adapters">
+<docmeta name="stabilityIndex" value="3">
