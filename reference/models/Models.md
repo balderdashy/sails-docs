@@ -29,7 +29,7 @@ If you would like to write your own instance methods, you will declare them insi
 > For most class methods, the callback parameter is optional and if one is not supplied, it will return a chainable object.
 
 
-<docmeta name="uniqueID" value="ModelMethods528291">
+<docmeta name="uniqueID" value="ModelMethods537291">
 <docmeta name="methodType" value="undefined">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value="Models">
