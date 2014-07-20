@@ -1,6 +1,6 @@
 # Middleware
 
-Sails is fully compatible with Express/ Connect middleware-- in fact, it's all over the place.  Much of the code you'll write in Sails is effectively middleware; most notably [controller actions]() and [policies]().
+Sails is fully compatible with Express / Connect middleware - in fact, it's all over the place!  Much of the code you'll write in Sails is effectively middleware; most notably [controller actions]() and [policies]().
 
 
 ### HTTP Middleware
@@ -24,7 +24,7 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
  **compress**              | Compresses response data using gzip/deflate.
  **methodOverride**        | Provides faux HTTP method support, letting you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it (e.g. legacy versions of Internet Explorer.)  If a request has a `_method` parameter set to `"PUT"`, the request will be routed as if it was a proper PUT request.  See [Connect's methodOverride docs](http://www.senchalabs.org/connect/methodOverride.html) for more information if you need it.
  **poweredBy**             | Attaches an `X-Powered-By` header to outgoing responses.
- **$custom**               | Provides backwards compatbility for a configuration option from Sails v0.9.x.  Since Sails v0.10 offers much more configuration flexibility for HTTP middleware, as long as you are not using `sails.config.express.customMiddleware`, you can confidentally remove this item from the list.
+ **$custom**               | Provides backwards compatibility for a configuration option from Sails v0.9.x.  Since Sails v0.10 offers much more configuration flexibility for HTTP middleware, as long as you are not using `sails.config.express.customMiddleware`, you can confidently remove this item from the list.
  _router_ *                | This is where the bulk of your app logic gets applied to any given request.  In addition to running `"before"` handlers in hooks (e.g. csrf token enforcement) and some internal Sails logic, this routes requests using your app's explicit routes (in [`sails.config.routes`]()) and/or route blueprints.
  _www_ *                   | Serves static files- usually images, stylesheets, scripts- in your app's "public" folder (configured in [`sails.config.paths`](), conventionally [`.tmp/public/`]()) using Connect's [static middleware](http://www.senchalabs.org/connect/static.html).
  **favicon**               | Serves the [browser favicon](http://en.wikipedia.org/wiki/Favicon) for your app if one is provided as `/assets/favicon.ico`.
@@ -78,6 +78,11 @@ E.g. in `config/http.js`:
       '404',
       '500'
     ]
+  },
+  
+  customMiddleware: function(app){
+     //Intended for other middleware that doesn't follow 'app.use(middleware)' convention
+     require('other-middleware').initialize(app);
   }
   // ...
 ```
@@ -90,6 +95,8 @@ One of the really nice things about Sails apps is that they can take advantage o
 > _"Where do I `app.use()` this thing?"_.
 
 In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`]().  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
+
+### Express Routing Middleware In Sails 
 
 You can also include Express middleware as a policy- just configure it in [`config/policies.js`]().  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
 
