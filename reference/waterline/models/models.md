@@ -1,7 +1,7 @@
-# Model Methods
-### Overview
+# Models
 
-#### Model Class Methods
+
+### Model Class Methods
 
 Model class methods are functions built into the model itself that perform a particular task on its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
 
@@ -29,6 +29,6 @@ If you would like to write your own instance methods, you will declare them insi
 > For most class methods, the callback parameter is optional and if one is not supplied, it will return a chainable object.
 
 
-<docmeta name="uniqueID" value="ModelMethods537291">
+<docmeta name="uniqueID" value="Models537291">
 <docmeta name="displayName" value="Models">
 

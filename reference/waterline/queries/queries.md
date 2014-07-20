@@ -1,6 +1,6 @@
 # Queries
 
-Chainable objects returned from Waterline model methods like `.find()` and `.create()`.
+Chainable deferred objects returned from Waterline model methods like `.find()` and `.create()`.
 
 ```js
 var query = Stuff.find();
@@ -8,12 +8,12 @@ var query = Stuff.find();
 
 You have likely already interacted with query objects in your Sails app. Most of the time, you probably won't think about them as objects _per se_, rather just another part of the syntax for communicating with your app's data store(s).
 
-The primary purpose of the Waterline query class is to provide a convenient, chainable syntax for working with deferred objects.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, the query instance you've been working with also provides a chainable syntax to do that.
+The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, you can just call [`.exec()`]().
 
 
 ### Promises
 
-In addition to the `.exec()` method, Waterline queries implement a partial integration with the [q]() promise library, exposing the `.then()` and `.catch()` promise methods.
+In addition to the `.exec()` method, Waterline queries implement a partial integration with the [q]() promise library, exposing `.then()` and `.catch()` methods.
 
 ```js
 Stuff.find()
@@ -50,6 +50,6 @@ When the adapter receives a response, it is marshalled to the Waterline interfac
 > + Waterline model methods will **NOT** return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.
 
 
-<docmeta name="uniqueID" value="queries820682">
+<docmeta name="uniqueID" value="query820682">
 <docmeta name="displayName" value="Queries">
 
