@@ -30,7 +30,5 @@ If you would like to write your own instance methods, you will declare them insi
 
 
 <docmeta name="uniqueID" value="ModelMethods537291">
-<docmeta name="methodType" value="undefined">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value="Models">
 
