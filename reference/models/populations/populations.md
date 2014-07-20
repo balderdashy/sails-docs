@@ -45,6 +45,7 @@ Order.find()
     // and associated him as one of the "buyers" on `order[0]`
     // in our result set (we happen to know it was for puppies)
   });
+
 });
 ```
 
