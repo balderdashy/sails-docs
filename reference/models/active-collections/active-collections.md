@@ -1,6 +1,6 @@
-# Population
+# Active Collection
 
-A special array-like value attached to a key in a [record]() and representing the contents of a [plural, or "collection" association]().
+An array of objects representing the contents of a [plural, or "collection" association]().  Attached to a key in a populated [record]() corresponding with the attribute name of the relevant collection association.
 
 
 ```js
@@ -11,7 +11,17 @@ Order.find()
 });
 ```
 
-Basically, a population is just an array of associated records.  It may or may not be sorted, depending on how [`.populate()`]() was used.  For example, assuming the order in the code snippet above was for an adorable box of dire wolf puppies, `orders[0].buyers` might look something like this:
+##### api/models/Order.js
+
+```js
+{
+  attributes: {
+    buyer: { collection: 'Customer' }
+  }
+}
+```
+
+Basically, a population is just an array of associated records.  It may or may not be in sorted order, depending on how [`.populate()`]() was used.  For example, assuming the order in the code snippet above was for an adorable box of dire wolf puppies, `orders[0].buyers` might look something like this:
 
 ```json
 [
@@ -53,6 +63,6 @@ Order.find()
 
 
 
-<docmeta name="uniqueID" value="populations790682">
-<docmeta name="displayName" value="Populations">
+<docmeta name="uniqueID" value="associatedcollection790682">
+<docmeta name="displayName" value="Active Collection">
 
