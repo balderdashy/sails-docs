@@ -42,7 +42,7 @@ Basically, a population is just an array of associated records.  It may or may n
 
 ### Modifying populations
 
-For the most part, populations are just normal JavaScript arrays.  However they do have a few prototypal, non-enumerable (i.e. protected) methods for adding (associating) and removing (dissociating) referenced records.  Changes to populations are persisted (i.e. saved to the database) by calling `.save()` on the record where the population came from.  To extend our previous example:
+For the most part, populations are just normal JavaScript arrays.  However they do have a few prototypal, non-enumerable (i.e. protected) methods for adding (associating) and removing (dissociating) referenced records.  Changes to a population set are persisted (i.e. saved to the database) by calling `.save()` on the record from whence it came.  To extend our previous example:
 
 ```js
 Order.find()
