@@ -1,6 +1,6 @@
 # Queries
 
-Chainable objects returned from Waterline model  methods like `.find()` and `.create()`.
+Chainable objects returned from Waterline model methods like `.find()` and `.create()`.
 
 ```js
 var query = Stuff.find();
@@ -47,7 +47,7 @@ When the adapter receives a response, it is marshalled to the Waterline interfac
 
 ### Notes
 
-> + Waterline model methods will **NOT** return a query instance if the optional callback argument is provided.  Instead, that callback will be triggered when the query is complete.
+> + Waterline model methods will **NOT** return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.
 
 
 <docmeta name="uniqueID" value="queries820682">
