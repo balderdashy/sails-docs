@@ -5,12 +5,12 @@ Model attributes are basic pieces of information about a model. A model called `
 
 > TODO: address sql vs. no sql and stuff like:
 > """
-> In most cases, this data is _homogenous_, meaning each record has the same attributes, 
+> In most cases, this data is _homogenous_, meaning each record has the same attributes,
 > """
 
 ### Attribute Options
 
-These options can be used to enforce various constraints and add special enhancements to our model attributes. 
+These options can be used to enforce various constraints and add special enhancements to our model attributes.
 
 ###### type
 
@@ -186,7 +186,7 @@ Everything works great, but instead of using an existing MySQL database sitting 
 // config/connections.js
 module.exports = {
   // ...
-  
+
   // Existing users are in here!
   rustyOldMySQLDatabase: {
     adapter: 'sails-mysql',

@@ -1,5 +1,4 @@
 # Validations
-### Overview
 
 Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
 
@@ -111,11 +110,11 @@ module.exports = {
     passwordConfirmation: {
       type: 'string'
     }
-    
+
   }
 }
  ```
- 
+
 
 
 

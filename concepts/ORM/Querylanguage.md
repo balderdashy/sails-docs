@@ -1,10 +1,6 @@
-# Query Language
+# Waterline Query Language
 
-Sails comes installed with its default ORM called Waterline. The Waterline Query language is an object-based criteria used to retrive the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.
-
-> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
->
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`]() or [`.query()`]() method.
+The Waterline Query language is an object-based criteria used to retrieve the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.
 
 ### Query Language Basics
 
@@ -245,5 +241,12 @@ Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
 // Sort by multiple attributes
 Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 ```
+
+> **Case-sensitivity**
+>
+> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
+>
+> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`]() or [`.query()`]() method.
+
 
 <docmeta name="displayName" value="Query Language">

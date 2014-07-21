@@ -1,4 +1,4 @@
-# Model configuration
+# Model Settings
 
 The following properties can be specified at the top level of your model definition to override the defaults for that particular model.  To override the configuration of all models, edit [`config/models.js`]().
 
@@ -18,7 +18,7 @@ The lowercase unique key for this model, e.g. `user`.  By default, a model's `id
 > TODO
 
 ##### autoPK
->TODO 
+>TODO
 
 ##### autoCreatedAt
 > TODO
@@ -49,5 +49,5 @@ module.exports = {
 
 
 <docmeta name="uniqueID" value="Modelconfiguration960213">
-<docmeta name="displayName" value="Model configuration">
+<docmeta name="displayName" value="Model Settings">
 

@@ -1,5 +1,4 @@
-# Plugins
-### Overview
+# Extending Sails
 
 There are currently three types of plugins in Sails:
 
@@ -8,5 +7,5 @@ There are currently three types of plugins in Sails:
 + **Hooks** - for overriding or injecting new low-level functionality in the Sails runtime
 
 
-<docmeta name="uniqueID" value="Plugins78468">
-<docmeta name="displayName" value="Plugins">
+<docmeta name="uniqueID" value="extendingsails78468">
+<docmeta name="displayName" value="Extending Sails">
