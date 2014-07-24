@@ -5,17 +5,17 @@ Returns the number of records in your database that meet the given search criter
 ### Overview
 #### Parameters
 
-| # |     Description     | Accepted Data Types          | Required ? |
-|---|---------------------|------------------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int` | Yes        |
-| 2 |     Callback        | `function`                   | No         |
+| # | Description   | Accepted Data Types          | Required ? |
+|---|---------------|------------------------------|------------|
+| 1 | Find Criteria | `{}`,`[{}]`, `string`, `int` | Yes        |
+| 2 | Callback      | `function`                   | No         |
 
 #### Callback Parameters
 
-| # |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Number of Records  | `int`               |
+| # | Description       | Possible Data Types |
+|---|-------------------|---------------------|
+| 1 | Error             | `Error`             |
+| 2 | Number of Records | `int`               |
 
 ### Example Usage
 
