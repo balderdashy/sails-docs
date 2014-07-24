@@ -1,4 +1,4 @@
-# .count( `criteria` , [`callback`] )
+# .count( [`criteria`, ] `callback` )
 ### Purpose
 Returns the number of records in your database that meet the given search criteria.
 
@@ -7,7 +7,7 @@ Returns the number of records in your database that meet the given search criter
 
 | # | Description   | Accepted Data Types          | Required ? |
 |---|---------------|------------------------------|------------|
-| 1 | Find Criteria | `{}`,`[{}]`, `string`, `int` | Yes        |
+| 1 | Find Criteria | `{}`,`[{}]`, `string`, `int` | No         |
 | 2 | Callback      | `function`                   | No         |
 
 #### Callback Parameters
@@ -20,7 +20,7 @@ Returns the number of records in your database that meet the given search criter
 ### Example Usage
 
 ```javascript 
-User.count({name:'Flynn'}).exec(function countCB(err, found) {
+User.count({name:'Flynn'}).exec(function countCB(error, found) {
   console.log('There are ' + found + ' users called "Flynn"');
 
   // There are 1 users called 'Flynn'
