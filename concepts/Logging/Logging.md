@@ -19,6 +19,26 @@ When configured at a given log level, Sails will output log messages that are ou
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
+### Externalize a log file
+The Sails logging system provide the possibility to externalize the log messages according to the settings located
+in the Sails logger's configuration file [`sails.config.log`]().
+
+So there is an Example of settings located in the log.js:
+
+log: {
+
+level: 'info',   // here you specify your logging level
+
+maxSize: 2500,   // max size that a log-file can reach until to switch to another file
+
+maxFiles: 2,     // max number of file 
+
+filePath: 'c://serverlogs/server.txt',  
+
+timestamp:  'YYYY-MM-DD HH:MM:SS'  // format of the timestamp that precede each log-messages (if not specified the timestamp will not appear)
+
+}
+
 #### Notes
 + The default log level is "info".  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
 + When the log level is set to "silly", Sails outputs internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
