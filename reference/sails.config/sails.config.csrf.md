@@ -11,7 +11,7 @@ This allows you to have certainty that your users' requests haven't been hijacke
 
 | Property    | Type       | Default   | Details |
 |-------------|:----------:|-----------|---------|
-| `csrf`      | ((boolean|object))| false     | CSRF protection is disabled by default to facilitate development.  To turn it on, just set `sails.config.csrf` to true, or to an object as described below.
+| `csrf`      | ((boolean/object))| false     | CSRF protection is disabled by default to facilitate development.  To turn it on, just set `sails.config.csrf` to true, or to an object as described below.
 
 ### csrf object settings
 Besides `true` and `false`, you can set `sails.config.csrf` to an object with the following properties:
