@@ -1,13 +1,6 @@
 # res.view()
 
-Respond to this request with an HTML page.
-
-Uses the [configured view engine]() to compile the [view template]() at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
-
-The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
-
-
-### Usage
+Respond with an HTML page.
 
 ```js
 return res.view(pathToView, locals);
@@ -19,8 +12,12 @@ _Or:_
 + `return res.view();`
 
 
+### Usage
 
-### Arguments
+Uses the [configured view engine]() to compile the [view template]() at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
+
+The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
+
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
