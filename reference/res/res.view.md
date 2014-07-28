@@ -2,7 +2,7 @@
 
 Respond to this request with an HTML page.
 
-Uses the [configured view engine]() to compile the [view template]() at `pathToView` into HTML.
+Uses the [configured view engine]() to compile the [view template]() at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
 
 The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
 
@@ -12,23 +12,13 @@ The specified [`locals`](./#documentation/reference/Views/Locals.html) are merge
 ```js
 return res.view(pathToView, locals);
 ```
--or-
 
-```js
-return res.view(pathToView);
-```
+_Or:_
++ `return res.view(pathToView);`
++ `return res.view(locals);`
++ `return res.view();`
 
--or-
 
-```js
-return res.view(locals);
-```
-
--or-
-
-```js
-return res.view();
-```
 
 ### Arguments
 
