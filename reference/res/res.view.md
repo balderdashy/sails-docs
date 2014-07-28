@@ -47,6 +47,29 @@ return res.view('oven/cook');
 // -> responds with `views/oven/cook.ejs`
 ```
 
+Finally, here's a more involved example demonstrating how `res.view` can be combined with Waterline queries:
+
+```js
+// Find the 5 hottest oven brands on the market
+Oven.find().sort('heat ASC').exec(function (err, ovens){
+  if (err) return res.serverError(err);
+  
+  return res.view('oven/top5', {
+    top5: ovens
+  });
+  // -> responds using the view at `views/oven/top5.ejs`,
+  // and with the oven data we looked up as view locals.
+  //
+  // e.g. in the view, we might have something like:
+  // ...
+  // <% _.each(top5, function (someOvenRecord) { %>
+  //  <li><%= someOvenRecord.name %></li>
+  // <% }) %>
+  // ...
+});
+
+```
+
 
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
