@@ -2,6 +2,8 @@
 
 By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
 
+### Properties
+
 | Property    | Type       | Default   | Details |
 |-------------|:----------:|-----------|---------|
 | `actions`| ((boolean))|true|Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
