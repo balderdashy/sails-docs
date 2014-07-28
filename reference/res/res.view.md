@@ -55,15 +55,15 @@ Oven.find().sort('heat ASC').exec(function (err, ovens){
   if (err) return res.serverError(err);
   
   return res.view('oven/top5', {
-    top5: ovens
+    hottestOvens: ovens
   });
   // -> responds using the view at `views/oven/top5.ejs`,
   // and with the oven data we looked up as view locals.
   //
   // e.g. in the view, we might have something like:
   // ...
-  // <% _.each(top5, function (someOvenRecord) { %>
-  //  <li><%= someOvenRecord.name %></li>
+  // <% _.each(hottestOvens, function (aHotOven) { %>
+  //  <li><%= aHotOven.name %></li>
   // <% }) %>
   // ...
 });
