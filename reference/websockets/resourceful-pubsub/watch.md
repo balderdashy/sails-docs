@@ -10,7 +10,7 @@ This subscribes a client to publishCreate events for the model.  Any connections
 *Note*: `watch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
 
 ### Blueprints and .watch()
-> By default, the blueprint `find` and `findOne` actions will *not* call `.watch()` on the model class.  This behavior can be changed for all models by setting the `sails.config.blueprints.autoWatch` to `true`, or for a specific model by setting `autoWatch` to true in the model's class file.
+> By default, the blueprint `find` and `findOne` actions will call `.watch()` on the model class.  This behavior can be changed for all models by setting the `sails.config.blueprints.autoWatch` to `false`, or for a specific model by setting `autoWatch` to `false` in the model's class file.
 
 
 <docmeta name="uniqueID" value="watch67265">
