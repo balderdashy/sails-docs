@@ -101,6 +101,7 @@ Another common target is one that binds a route to a [view](http://beta.sailsjs.
 This maps the `GET /home` to the view stored in **views/home/index.ejs** (assuming the default EJS [template engine](http://beta.sailsjs.org/#/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it.
 
 #### Blueprint target syntax
+
 In some cases you may want to map a non-standard address to one of the Sails [blueprint actions](http://beta.sailsjs.org/#/documentation/reference/blueprint-api?q=blueprint-actions).  For example, if you have a controller and model named **UserController** and **User** respectively, then Sails will automatically map **GET /user** to the "find" blueprint action which returns a list of User records.  If you'd like to map a different address to that action, you can use the blueprint target syntax:
 
 ```
@@ -141,7 +142,7 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 #### Policy target syntax
 
-In most cases, you will want to apply [policies](http://beta.sailsjs.org/#/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the view or blueprint target syntax.  The policy target syntax is:
+In most cases, you will want to apply [policies](http://beta.sailsjs.org/#/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) or [blueprint]((http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) target syntax.  The policy target syntax is:
 
 ```
 '/foo': {policy: 'myPolicy'}
@@ -158,9 +159,14 @@ This will apply the **myPolicy** policy to the route and, if it passes, continue
 
 In addition to the options discussed in the various route target syntaxes above, any other property you add to a route target object will be passed through to the route handler in the `req.options` object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.
 
-| Property    | Applicable Target Types       | Details |
+| Property    | Applicable Target Types       | Data Type | Details |
 |-------------|:----------:|-----------|
-|`locals`|controller, view, blueprint, response|
+|`skipAssets`|all|((boolean))|Set to `true` if you *don't* want the route to match URLs with dots in them (e.g. **myImage.jpg**).  This will keep your routes with [wildcard notation](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters) from matching URLs of static assets.|
+|`skipRegex`|all|((boolean))|If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual [RegExp objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*, not strings.|
+|`locals`|[controller](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((object))|Sets default [local variables](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments) to pass to any view that is rendered while handling the request.|
+|`cors`|all|((object)) or ((boolean)) or ((string))|Specifies how to handle requests for this route from a different origin.  See the [main CORS documentation](http://beta.sailsjs.org/#/documentation/concepts/CORS) for more info.|
+|`populate`|[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((boolean))|Indicates whether the results in a "find" or "findOne" blueprint action should have associated model fields [populated](http://beta.sailsjs.org/#/documentation/reference/waterline/populated-values).  Defaults to the value set in [**config/blueprints.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.blueprints.html).
+|`skip`, `limit`, `sort`, `where`|[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((object))|Set criteria for "find" blueprint.  See the [queries reference](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md) for more info.
 
 <docmeta name="uniqueID" value="RouteTargetSyntax278177">
 <docmeta name="displayName" value="Custom Routes">
