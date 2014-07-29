@@ -98,6 +98,7 @@ Another common target is one that binds a route to a [view](http://beta.sailsjs.
 ```
 'GET /home': 'home/index'
 ```
+
 This maps the `GET /home` to the view stored in **views/home/index.ejs** (assuming the default EJS [template engine](http://beta.sailsjs.org/#/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it.
 
 #### Blueprint target syntax
@@ -160,7 +161,7 @@ This will apply the **myPolicy** policy to the route and, if it passes, continue
 In addition to the options discussed in the various route target syntaxes above, any other property you add to a route target object will be passed through to the route handler in the `req.options` object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.
 
 | Property    | Applicable Target Types       | Data Type | Details |
-|-------------|:----------:|-----------|
+|-------------|:----------:|-----------|-----------|
 |`skipAssets`|all|((boolean))|Set to `true` if you *don't* want the route to match URLs with dots in them (e.g. **myImage.jpg**).  This will keep your routes with [wildcard notation](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters) from matching URLs of static assets.|
 |`skipRegex`|all|((boolean))|If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual [RegExp objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*, not strings.|
 |`locals`|[controller](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((object))|Sets default [local variables](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments) to pass to any view that is rendered while handling the request.|
