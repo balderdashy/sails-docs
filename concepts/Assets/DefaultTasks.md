@@ -2,7 +2,7 @@
 
 ### Overview
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks]() to fit your needs.
+The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
 
 Here are a few things that the default Grunt configuration in Sails does to help you out:  
 - Automatic LESS compilation
@@ -41,7 +41,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 > Copies all directories and files, exept coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
 
 > **build task config**
-> Copies all directories nd files from the .tmp/public directory into a www directory.
+> Copies all directories and files from the .tmp/public directory into a www directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-copy)
 
@@ -55,7 +55,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 > Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny javascript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-jast)
+> [usage docs](https://github.com/gruntjs/grunt-contrib-jst)
 
 ##### less
 
@@ -65,7 +65,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### sails-linker
 
-> Automatically inject `<script>` tags for javascript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking). 
+> Automatically inject `<script>` tags for javascript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), but the big takeaway is that script and stylesheet injection is *only* done in files containing `<!--SCRIPTS--><!--SCRIPTS END-->` and/or `<!--STYLES--><!--STYLES END-->` tags.  These are included in the default **views/layout.ejs** file in a new Sails project.  If you don't want to use the linker for your project, you can simply remove those tags.
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
@@ -83,7 +83,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### watch
 
-> Runs predefined tasks whenever watched file patterns are added, changed or deleted. Watch for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. less and jst compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
+> Runs predefined tasks whenever watched file patterns are added, changed or deleted. Watches for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. less and jst compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
