@@ -16,23 +16,23 @@ Sails bundles some [default tasks](./#!documentation/grunt/default-tasks) for co
 The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
 
 ##### CSS Files to Inject
-This is an array of css files to be injected into your html as `<link>` tags.  These tags replace the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
+This is an array of css files to be injected into your html as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
 
 ##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags replace the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
+This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
 
 ##### Template Files to Inject
-This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in place of the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
 
 > The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
 
 ### Task configuration
 
-Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`]() directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
+Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
 
 ##### Configuring a custom task.
 
-Configuring a custom task into your project is very simple and uses grunts [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) apis to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
+Configuring a custom task into your project is very simple and uses Grunt&rsquo;s [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) APIs to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
 
 * The first step is to install the handlebars grunt plugin using the following command in your terminal:
 
