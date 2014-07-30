@@ -91,6 +91,15 @@ Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **ap
 
 The controller and action names in this syntax are case-insensitive.
 
+Note that the [blueprints API](/#/documentation/reference/blueprint-api) adds several actions to your controllers by default (like "find", "create", "update" and "delete"), all of which are available for routing:
+
+```
+'GET /foo/go': 'UserController.find'
+```
+
+Assuming that your have a **api/controllers/UserController/js** file and a **api/models/User.js** file, browsing to **/foo/go** in a browser will, using the above config, run the default "find* blueprint action which displays a list of all `User` models.  If you have a [custom action](/#/documentation/concepts/Controllers?q=actions) named `find` in UserController, that action will be run instead.
+
+
 #### View target syntax
 
 Another common target is one that binds a route to a [view](http://beta.sailsjs.org/#/documentation/concepts/Views).  The syntax for this is simple: it's the path to the view file relative to the **views** folder, without the file extension:
@@ -119,6 +128,8 @@ Note that in the configuration, both the `model` and `blueprint` properties are 
 although you will rarely if ever want to do this, as it makes for a messy and confusing API for your app.
 
 If you specify a non-existent model or blueprint in your configuration, Sails will output an error and ignore the route.
+
+You can also use this syntax to map a route to one of the default blueprint actions even if you've overridden that action in a controller.
 
 #### Redirect target syntax
 You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
