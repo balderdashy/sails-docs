@@ -2,11 +2,11 @@
 
 ### Overview
 
-For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of Resourceful PubSub ([Publish / Subscribe](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)).  Every model (AKA *resource*) in your app is automatically equipped with class methods for subscribing sockets to notifications about instance creations, updates and deletions.  If you&rsquo;re using the [Blueprint API](http://localhost:1337/#/documentation/reference/blueprint-api), socket messages are automatically broadcast to subscribed sockets when a model event occurs.  If not, you can use the methods described in this section to manually communicate model events to clients.
+For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of Resourceful PubSub ([Publish / Subscribe](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)).  Every model (AKA *resource*) in your app is automatically equipped with class methods for subscribing sockets to notifications about instance creations, updates and deletions.  If you&rsquo;re using the [Blueprint API](/#/documentation/reference/blueprint-api), socket messages are automatically broadcast to subscribed sockets when a model event occurs.  If not, you can use the methods described in this section to manually communicate model events to clients.
 
 ### Listening for events on the client
 
-While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own [Socket Client](http://localhost:1337/#/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
+While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own [Socket Client](/#/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
 ```
 io.socket.on("<model name>", listenerFunction)
