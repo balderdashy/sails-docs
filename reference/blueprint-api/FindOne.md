@@ -31,7 +31,7 @@
 </table>
 -->
 
-The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key]() of the desired record.
+The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key](http://en.wikipedia.org/wiki/Unique_key) of the desired record.
 
 If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
 

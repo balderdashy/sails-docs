@@ -13,7 +13,7 @@ req.acceptsLanguage(language);
 
 `req.acceptsLanguage()` returns true if a request has specified the given `language` as "acceptable" its `Accept-Language` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).)
 
-This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n]() hook automatically serves different content to different locales, based on the request.
+This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n](http://beta.sailsjs.org/#/documentation/concepts/Internationalization) hook automatically serves different content to different locales, based on the request.
 
 
 ### Example
