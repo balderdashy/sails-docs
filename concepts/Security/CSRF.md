@@ -4,7 +4,7 @@ Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Re
 
 ### Enabling CSRF Protection
 
-Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.csrf](/#/documentation/reference/Configuration/CSRF.html) (conventionally located in your project's [`config/csrf.js`]() file):
+Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.csrf](/#/documentation/reference/Configuration/CSRF.html) (conventionally located in your project's [`config/csrf.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html) file):
 
 ```js
 csrf: true
@@ -22,7 +22,7 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF Tokens
 
-To get a CSRF token, you should either bootstrap it in your view using [locals]() (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+To get a CSRF token, you should either bootstrap it in your view using [locals](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments) (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
 
 
 ##### Using View Locals:

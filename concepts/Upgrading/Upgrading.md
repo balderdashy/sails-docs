@@ -63,7 +63,7 @@ Skipper is unique in that it supports **streaming** file uploads, but also maint
 
 
 #### Configuring a different body parser
-As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's [`http` configuration]().
+As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's [`http` configuration](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html).
 
 
 ### Blueprints

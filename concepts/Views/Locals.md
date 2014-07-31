@@ -58,7 +58,7 @@ If the data you wanted to pass down to this view was completely static, you don'
   // ...
 ```
 
-On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()]() method.
+On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html) method.
 
 Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might send down our view like this:
 
