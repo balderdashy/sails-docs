@@ -38,24 +38,6 @@ sails.sockets.blast('user_logged_in', {
 }, req.socket);
 ```
 
-<!--
-```javascript
-// Controller action
-
-sayHiToEverybody: function(req, res) {
-    sails.sockets.blast({msg: "User #"+req.session.userId+" logged on."}, req.socket);
-    res.json({
-      message: 'Message sent!'
-    });
-}
-```
-
-```javascript
-// Client-side - subscribe to all "message" events
-socket.on('message', function(data) {console.log("Global message: ", data.msg)});
-```
--->
-
 ### Notes
 > + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
