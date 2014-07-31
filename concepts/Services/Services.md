@@ -32,12 +32,13 @@ module.exports = {
     }
 };
 ```
+
 You can then use `EmailService` anywhere in your app:
+
 ```javascript
 // Somewhere in a controller
   EmailService.sendInviteEmail({email: 'test@test.com', name: 'test'});
 ```
-
 
 <docmeta name="uniqueID" value="Services157331">
 <docmeta name="displayName" value="Services">
