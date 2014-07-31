@@ -11,11 +11,11 @@ req.param(name);
 
 `req.param()` searches the url path, query string, and body of the request for the specified parameter.  If no parameter value exists anywhere in the request with the given `name`, it returns `undefined`.
 
-+ url path parameters ([`req.params`]())
++ url path parameters ([`req.params`](http://beta.sailsjs.org/#/documentation/reference/req/req.params.html))
   + e.g. a request "/foo/4" to route `/foo/:id` has url path params `{ id: 4 }`
-+ query string parameters ([`req.query`]())
++ query string parameters ([`req.query`](http://beta.sailsjs.org/#/documentation/reference/req/req.query.html))
   + e.g. a request "/foo?email=5" has query params `{ email: 5 }`
-+ body parameters ([`req.body`]())
++ body parameters ([`req.body`](http://beta.sailsjs.org/#/documentation/reference/req/req.body.html))
   + e.g. a request with a parseable body (e.g. JSON, url-encoded, or XML) has body parameters equal to its parsed value
 
 
@@ -38,7 +38,7 @@ We can get the expected result by sending the `sku` parameter any of the followi
 
 
 ### Notes
-> + If you'd like to get ALL parameters from ALL sources (including the URL path, query string, and parsed request body) you can use [`req.params.all()`]().
+> + If you'd like to get ALL parameters from ALL sources (including the URL path, query string, and parsed request body) you can use [`req.allParams()`](http://beta.sailsjs.org/#/documentation/reference/req/req.allParams.html).
 
 
 
