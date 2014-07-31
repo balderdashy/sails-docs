@@ -13,13 +13,13 @@ Sails can be configured to allow cross-origin requests from a list of domains yo
 
 For security reasons, CORS is disabled by default in Sails.  But enabling it is dead-simple.
 
-To allow cross-origin requests from _any_ domain to _any_ route in your app, simply enable `allRoutes` in [`config/cors.js`]():
+To allow cross-origin requests from _any_ domain to _any_ route in your app, simply enable `allRoutes` in [`config/cors.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html):
 
 ```js
 allRoutes: true
 ```
 
-See [`sails.config.cors`]() for a comprehensive reference of all available options.
+See [`sails.config.cors`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html) for a comprehensive reference of all available options.
 
 
 ### Configuring CORS For Individual Routes
