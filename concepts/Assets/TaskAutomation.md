@@ -4,7 +4,7 @@
 
 The [`tasks/`](./#!documentation/anatomy/tasks) directory contains a suite of [Grunt tasks](http://gruntjs.com/creating-tasks) and their [configurations](http://gruntjs.com/configuring-tasks). 
 
-Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, & client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from [browserify]() compilation to [database migrations]().
+Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, & client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from [browserify](https://github.com/jmreidy/grunt-browserify) compilation to [database migrations](https://www.npmjs.org/package/grunt-db-migrate).
 
 Sails bundles some [default tasks](./#!documentation/grunt/default-tasks) for convenience, but with [literally hundreds of plugins](http://gruntjs.com/plugins) to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn't already built what you need, you can always [author](http://gruntjs.com/creating-tasks) and [publish your own Grunt plugin](http://gruntjs.com/creating-plugins) to [npm](http://npmjs.org)!
 
@@ -144,11 +144,11 @@ npm uninstall grunt-contrib-jst --save-dev
 
 ### Task triggers
 
-In [development mode](), Sails runs the [`default`]() task ([`tasks/register/default.js`]()).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
+In [development mode](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
 
-In production, Sails runs the [`prod`]() task ([`tasks/register/prod.js`]()) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
+In production, Sails runs the `prod` task ([`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
 
-These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`]() folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
+These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
 
 ##### `sails lift`
 

@@ -159,7 +159,7 @@ localesDirectory: '/config/locales'
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
-But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](), you can completely disable or override it using the [`loadHooks`]() and/or [`hooks`]() configuration options.
+But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://beta.sailsjs.org/#/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
 
 
 ### What About i18n on the client?
