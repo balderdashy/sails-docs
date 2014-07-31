@@ -75,7 +75,7 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 **Using [cURL]():**
 
 ```bash
-# todo
+curl http://localhost:1337/purchase?sort=createdAt%20DESC
 ```
 
 
