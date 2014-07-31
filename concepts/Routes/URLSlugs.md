@@ -9,7 +9,7 @@ A common use case for explicit routes is the design of slugs or [vanity URLs](ht
   }
 ```
 
-In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view]() as [locals]().  The [`skipAssets` option]() ensures that the vanity route doesn't accidentally match any of our [assets]() (e.g. `/images/logo.png`), so they are still accessible.
+In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view](http://beta.sailsjs.org/#/documentation/concepts/Views) as [locals](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments).  The [`skipAssets` option](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) ensures that the vanity route doesn't accidentally match any of our [assets](http://beta.sailsjs.org/#/documentation/concepts/Assets) (e.g. `/images/logo.png`), so they are still accessible.
 
 
 
