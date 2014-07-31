@@ -6,7 +6,7 @@ This file is meant to be an up to date, comprehensive list of all of the `hooks`
 
 #### IRC Bot Hook
 ##### Github Repo
-https://github.com/balderdashy/sails-disk/
+https://github.com/uncletammy/sails-hooks-irc
 
 ##### On NPM
 'npm install sails-userhooks-ircbot`
