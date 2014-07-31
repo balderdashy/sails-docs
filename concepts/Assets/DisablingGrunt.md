@@ -1,6 +1,6 @@
 # Disabling Grunt
 
-To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](/#/documentation/anatomy/myApp/tasks) folder). You can also [disable the Grunt hook]().
+To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](/#/documentation/anatomy/myApp/tasks) folder). You can also [disable the Grunt hook](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).
 
 ### Can I customize this for SASS, Angular, client-side Jade templates, etc?
 

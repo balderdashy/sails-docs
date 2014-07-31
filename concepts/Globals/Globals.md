@@ -17,7 +17,7 @@ Sails also exposes an instance of [lodash](http://lodash.com) as `_`, and an ins
 
 ### Disabling Globals
 
-Sails determines which globals to expose by looking at [`sails.config.globals`](), which is conventionallly configured in [`config/globals.js`]().
+Sails determines which globals to expose by looking at [`sails.config.globals`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.globals.html), which is conventionallly configured in [`config/globals.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/globals.js.html).
 
 To disable all global variables, just set the setting to `false`:
 
