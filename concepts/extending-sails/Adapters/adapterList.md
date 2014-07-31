@@ -78,7 +78,7 @@ https://github.com/balderdashy/sails-redis/
 
 
 ### Community Supported Adapters
-
+Have you written a Sails adapter?  Submit a PR to this file and add it here!
 
 <docmeta name="uniqueID" value="adapterList22829">
 <docmeta name="displayName" value="Available Adapters">
