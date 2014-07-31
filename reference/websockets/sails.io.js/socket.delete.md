@@ -22,7 +22,7 @@ io.socket.delete(url, data, function (data, jwres){
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
 | 1 | `resData` | ((*))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response]() object.  Has `headers`, a `body`, and a `statusCode`.
+| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
 
 
 ### Example

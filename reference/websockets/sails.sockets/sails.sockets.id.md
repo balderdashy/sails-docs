@@ -13,7 +13,7 @@ sails.sockets.id(socket);
 | 1 |           socket            | ((Socket))          | A request socket (WebSocket/Socket.io) object <br/> e.g. `req.socket`.
 
 
-Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.emit]()) or get information about the rooms that the socket is subscribed to (see [sails.sockets.socketRooms]()).
+Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.emit](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html)) or get information about the rooms that the socket is subscribed to (see [sails.sockets.socketRooms](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.sockets/sails.sockets.rooms.html)).
 
 
 ### Example
