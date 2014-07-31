@@ -14,7 +14,7 @@ req.path;
 
 Assuming a client sends the following request:
 
-> [http://localhost:1337/donor/37?name=foo#foobar]()
+> http://localhost:1337/donor/37?name=foo#foobar
 
 `req.path` will be defined as follows:
 

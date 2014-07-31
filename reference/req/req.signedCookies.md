@@ -1,7 +1,7 @@
 # req.signedCookies
 
 ### Purpose
-An object containing all of the [**signed cookies**]() from this request (`req`).
+An object containing all of the [**signed cookies**](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) from this request (`req`).
 
 
 ### Usage
