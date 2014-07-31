@@ -21,7 +21,7 @@ These configuration options provide lower-level access to the underlying Socket.
 
 | Property   | Type      | Default  | Details |
 |------------|-----------|----------|---------|
-|`transports`|((array))  | TODO     | TODO    |
+|`transports`|((array))  | `['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']`     | A array of allowed transport methods which the clients will try to use. The flashsocket transport is disabled by default You can enable flashsockets by adding 'flashsocket' to this list. |
 |`origins  ` |((string)) |`'*:*'`   |Match string representing the origins that are allowed to connect to the Socket.IO server|
 |`heartbeats`         |((boolean))|`true`    |Sets whether we should use heartbeats to check the health of Socket.IO connections|
 |`close timeout`      |((integer))|`60`   |When client closes connection, the number of seconds to wait before attempting a reconnect. This value is sent to the client after a successful handshake.|
