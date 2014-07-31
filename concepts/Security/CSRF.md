@@ -22,7 +22,7 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF Tokens
 
-To get a CSRF token, you should either bootstrap it in your view using [locals](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments) (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+To get a CSRF token, you should either bootstrap it in your view using [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html) (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
 
 
 ##### Using View Locals:
