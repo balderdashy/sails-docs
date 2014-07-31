@@ -1,6 +1,6 @@
 # sails.config.views
 
-Configuration for your app's server-side [views](./#!documentation/reference/Views).  The options are conventionally specified in the [`config/views.js`]() configuration file.
+Configuration for your app's server-side [views](./#!documentation/reference/Views).  The options are conventionally specified in the [`config/views.js`](/#/documentation/anatomy/myApp/config/views.js.html) configuration file.
 
 
 ### Properties
