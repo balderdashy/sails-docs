@@ -92,7 +92,7 @@ req.setLocale('de');
 
 By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.
 
-For instance, if your app allows users to pick their preferred language, you might create a [policy]() which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
+For instance, if your app allows users to pick their preferred language, you might create a [policy](http://beta.sailsjs.org/#/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
 
 ```js
 // api/policies/localize.js
@@ -142,7 +142,7 @@ On the other hand you might opt to store these types of dynamic translated strin
 
 ### Additional Options
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`]().  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
 
 ```javascript
 // Which locales are supported?
@@ -159,7 +159,7 @@ localesDirectory: '/config/locales'
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
-But worth noting is that since Sails implements [node-i18n]() integration in the [i18n hook](), you can completely disable or override it using the [`loadHooks`]() and/or [`hooks`]() configuration options.
+But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](), you can completely disable or override it using the [`loadHooks`]() and/or [`hooks`]() configuration options.
 
 
 ### What About i18n on the client?
