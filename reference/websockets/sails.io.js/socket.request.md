@@ -4,10 +4,10 @@ Sends a virtual request to a Sails server using Socket.io.
 
 This method is wrapped by the other `io.socket.*`() request methods, which should be used instead.
 
-+ [io.socket.get()]()
-+ [io.socket.post()]()
-+ [io.socket.put()]()
-+ [io.socket.delete()]()
++ [io.socket.get()](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js/socket.get.html)
++ [io.socket.post()](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js/socket.post.html)
++ [io.socket.put()](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js/socket.put.html)
++ [io.socket.delete()](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js/socket.delete.html)
 
 
 Please do not use `io.socket.request()` directly unless you know what you're doing.

@@ -21,7 +21,7 @@ Yes.  The Sails socket client can be used to great effect with any front-end fra
 
 No. The Sails socket client is extremely helpful when building realtime/chat features in a browser-based UI, but like the rest of the `assets/` directory, it is probably not particularly useful if you are building a native Android app, or an API with no user interface.
 
-Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete [`assets/js/depencencies/sails.io.js`]().
+Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete `assets/js/depencencies/sails.io.js`.
 
 <!--
 

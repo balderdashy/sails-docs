@@ -26,7 +26,7 @@ io.socket.on(eventIdentity, function (msg) {
 Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 ###### Resourceful Pubsub Methods
-+ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](), [Model.publishDestroy()](), and [Model.subscribe()]())
++ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](/#/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](), and [Model.subscribe()]())
 + server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate()]() and [Model.watch()]())
 
 ###### Low-Level Socket Methods
