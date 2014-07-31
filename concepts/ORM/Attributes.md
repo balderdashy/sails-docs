@@ -89,7 +89,7 @@ attributes: {
 
 ###### primaryKey
 
-Use this attribute as the the primary key for the record. Only one attribute per model can be the `primaryKey`.  Note: This should never be used unless [autoPK]() is set to false.
+Use this attribute as the the primary key for the record. Only one attribute per model can be the `primaryKey`.  Note: This should never be used unless [autoPK](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=autopk) is set to false.
 
 ```javascript
 attributes: {
@@ -238,7 +238,7 @@ module.exports = {
 };
 ```
 
-> You might have noticed that we also used the [`tableName`]() property in this example.  This allows us to control the name of the table that will be used to house our data.
+> You might have noticed that we also used the [`tableName`](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
 
 
 

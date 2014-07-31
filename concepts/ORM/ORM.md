@@ -6,7 +6,7 @@ For instance, in schemaful databases like Postgres, Oracle, and MySQL, models ar
 
 But in each case, the code you write to create new records, fetch/search for existing records, update records, or destroy records is _exactly the same_.  Waterline allows you to query and join (or `.populate()`) records between models, _even if_ the data for each model lives in a different database.
 
-This means that you can switch some or all of your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code. For the times we still need database-specific functionality, Waterline provides a query interface that allows us to talk directly to our models' underlying database driver (see [.query()]() and [.native()]().)
+This means that you can switch some or all of your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code. For the times we still need database-specific functionality, Waterline provides a query interface that allows us to talk directly to our models' underlying database driver (see [.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) and [.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html).)
 
 
 
@@ -28,16 +28,16 @@ sails.models.kitten.find().exec(function (err, allTheKittens) {
 
 ### Adapters
 
-Like most MVC frameworks, Sails supports [multiple databases]().  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
+Like most MVC frameworks, Sails supports [multiple databases](http://beta.sailsjs.org/#/features).  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
 
-Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](), and a wealth of [community adapters]() are also available.
+Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](http://beta.sailsjs.org/#/features), and a wealth of [community adapters](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) are also available.
 
-Custom Waterline adapters are actually [pretty simple to build](), and can make for more maintainable integrations; anything from a proprietary enterprise system, to an open API like LinkedIn, to a cache or traditional database.
+Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations; anything from a proprietary enterprise system, to an open API like LinkedIn, to a cache or traditional database.
 
 
 ### Connections
 
-A **connection** represents a particular database configuration.  It includes an adapter, as well as information like the host, port, username, password, and so forth.  Connections are defined in [`config/connections.js`]().
+A **connection** represents a particular database configuration.  It includes an adapter, as well as information like the host, port, username, password, and so forth.  Connections are defined in [`config/connections.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
 
 ```javascript
 // in config/connections.js
@@ -52,7 +52,7 @@ A **connection** represents a particular database configuration.  It includes an
 // ...
 ```
 
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`]().
+The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
 
 
 ### Analogy
