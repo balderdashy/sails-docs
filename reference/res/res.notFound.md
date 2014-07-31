@@ -1,6 +1,6 @@
 # res.notFound()
 
-Sends a [404]() ("Not Found") response using either [res.json()]() or [res.view()](). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
+Sends a [404](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Not Found") response using either [res.json()](/#/documentation/reference/res/res.json.html) or [res.view()](/#/documentation/reference/res/res.view.html). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
 
 When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn't exist.
 
@@ -24,11 +24,11 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ If the request "[wants JSON]()" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Not Found"`).
++ If the request "[wants JSON](/#/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Not Found"`).
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
   + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`]() for details).  If Sails cannot guess a workable view, it will just send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](): `data`.
+  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](/#/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will just send JSON.
+  + If Sails serves a view, the `data` argument will be accessible as a [view local](/#/documentation/concepts/Views/Locals.html): `data`.
 
 
 

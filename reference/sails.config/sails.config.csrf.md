@@ -1,6 +1,6 @@
 # sails.config.csrf
 
-Configuration for Sails' built-in [CSRF]() protection middleware.  These options are conventionally set in the [`config/csrf.js`]() configuration file.  See the docs on [Cross-Site Request Forgery]() in the security section for detailed usage instructions.
+Configuration for Sails' built-in [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) protection middleware.  These options are conventionally set in the [`config/csrf.js`](/#/documentation/anatomy/myApp/config/csrf.js.html) configuration file.  See the docs on [Cross-Site Request Forgery](/#/documentation/concepts/Security/CSRF.html) in the security section for detailed usage instructions.
 
 This option protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.
 
