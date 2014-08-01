@@ -72,6 +72,8 @@ Find and return one record by a specific model attribute.
 
 ### Example Usage
 
+<!---
+
 ```javascript 
 User.findOneByName('Walter').exec(function findCB(err,found){
   console.log('Found User with name '+found.name);
