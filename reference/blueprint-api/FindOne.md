@@ -1,7 +1,10 @@
 # Find One Record
 
+Returns a single record from the model as a JSON Object. 
 
-### `GET /:modelIdentity/:id`
+```http
+GET /:modelIdentity/:id
+```
 
 <!--
 <table>

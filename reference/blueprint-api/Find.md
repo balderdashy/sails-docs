@@ -26,7 +26,7 @@ _All parameters are optional._
 
 
 
-### Example
+### `find` Example
 
 Find the 30 newest purchases in our database.
 
@@ -78,10 +78,6 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 curl http://localhost:1337/purchase?sort=createdAt%20DESC
 ```
 
-
-
-
-
 ### Notes
 
 > + The example above assumes "rest" blueprints are enabled, and that your project contains a `Purchase` model and an empty `PurchaseController`.  You can quickly achieve this by running:
@@ -91,14 +87,6 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 >   $ cd foo
 >   $ sails generate api purchase
 >   ```
-
-<!--
-
-  Actually it is now
-  ~mike
-
-> Unlike earlier versions of Sails, a socket is *not* automatically subscribed to the "class room" for a model as a result of running the "find" blueprint.  Therefore, it will not be alerted when a new instance of that model is created.  This behavior can be changed by setting the `autoWatch` property to `true` in `/config/blueprints.js`.
--->
 
 <docmeta name="uniqueID" value="Find290807">
 <docmeta name="displayName" value="Find Records">

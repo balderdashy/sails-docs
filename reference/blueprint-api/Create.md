@@ -1,12 +1,17 @@
 # Create a Record
 
-### `POST /:modelIdentity` or `GET /:modelIdentity/create`
+Creates a new model instance in your database then returns it's values.
 
-### Purpose
-Create a new model instance in the database.
+```http
+POST /:modelIdentity
+```
+or
+```http
+GET /:modelIdentity/create
+```
+
 Attributes can be sent in the HTTP body as form-encoded values or JSON.
 
-### Description
 Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
 
 Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#watchrequest) for more info).

@@ -1,10 +1,16 @@
 # Destroy a Record
 
-### `DELETE /:modelIdentity/:id` or `GET /:modelIdentity/:id/destroy`
+Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
 
-Delete an existing record specified by `id` from the database forever.
+```http
+DELETE /:modelIdentity/:id
+```
+or
 
-### Description
+```http
+GET /:modelIdentity/:id/destroy
+```
+
 Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
 
 Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
