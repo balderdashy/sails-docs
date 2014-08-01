@@ -12,6 +12,11 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 });
 ```
 
+
+<!-- yahoo
+-->
+
+
 <!---
 ###### .findBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
