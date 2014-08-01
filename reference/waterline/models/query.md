@@ -13,8 +13,7 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 ```
 
 
-<!-- yahoo
--->
+
 
 
 <!---
@@ -39,6 +38,9 @@ Find and return records by a specific model attribute.
 
 ### Example Usage
 
+<!-- yahoo
+-->
+<!--
 
 ```javascript 
 User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
