@@ -18,6 +18,7 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 > This method only works with PostgreSQL and mySQL! use .native() for Mongo.
 
 
+
 <!--
 ###### .findBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
