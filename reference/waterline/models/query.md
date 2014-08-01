@@ -11,7 +11,8 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
   return res.ok(results);
 });
 ```
-<!--
+
+<!---
 ###### .findBy`<attribute>`( `criteria` , [`callback`] )
 ### Purpose
 Find and return records by a specific model attribute.
