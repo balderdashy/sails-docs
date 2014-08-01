@@ -1,6 +1,6 @@
 # res.forbidden()
 
-This method is used to send a [403]() ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
+This method is used to send a [403](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
 
 
 ### Usage
@@ -19,11 +19,11 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ If the request "[wants JSON]()" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Forbidden"`).
++ If the request "[wants JSON](/#/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Forbidden"`).
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
   + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will serve a default error page (the view located at [`views/403.ejs`]()).  If that view does not exist, Sails will just send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](): `data`.
+  + Alternatively if `pathToView` was _not_ provided, Sails will serve a default error page (the view located at [`views/403.ejs`](/#/documentation/anatomy/myApp/views/403.ejs.html)).  If that view does not exist, Sails will just send JSON.
+  + If Sails serves a view, the `data` argument will be accessible as a [view local](/#/documentation/concepts/Views/Locals.html): `data`.
 
 
 
