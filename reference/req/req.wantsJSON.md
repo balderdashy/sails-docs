@@ -2,7 +2,7 @@
 
 A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)
 
-`req.wantsJSON` is used by all of the [built-in custom responses]() in Sails.
+`req.wantsJSON` is used by all of the [built-in custom responses](/#/documentation/anatomy/myApp/api/responses) in Sails.
 
 
 ### Usage

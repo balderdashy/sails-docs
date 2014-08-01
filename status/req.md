@@ -1,6 +1,6 @@
 # req
 
-The chart below describes support for the methods and properties on the Sails [Request]() object (`req`) across multiple transports:
+The chart below describes support for the methods and properties on the Sails [Request](/#/documentation/reference/req) object (`req`) across multiple transports:
 
 <!-- TODO: add SPDY -->
 
