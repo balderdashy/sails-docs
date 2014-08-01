@@ -6,8 +6,8 @@ The following properties can be specified at the top level of your model definit
 When your sails app lifts, waterline validates your all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to ` 
 
 
-----------------------------
 | Flag Value | Description |
+|-------------|--------------|
 |`safe` | Ignores bad data and continues to lift |
 |`alter` |Attempts to repair the corrupted data |
 |`drop` | Drops the collection and continues to lift |
