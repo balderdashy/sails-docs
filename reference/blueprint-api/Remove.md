@@ -3,7 +3,7 @@
 Removes an association between two model instances using the blueprint actions
 
 ```http
-delete /:model/:modelId/:attributeId/:associatedModelId
+DELETE /:model/:modelId/:attributeId/:associatedModelId
 ```
 
 ### Example
