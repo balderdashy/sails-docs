@@ -41,6 +41,7 @@ Find and return records by a specific model attribute.
 
 ### Example Usage
 
+<!--
 ```javascript 
 User.findByName(['Flynn','Walter','craig']).exec(function findCB(err,found){
   while (found.length)
