@@ -8,6 +8,7 @@ This method is used to send a [403](http://en.wikipedia.org/wiki/List_of_HTTP_st
 ```js
 return res.forbidden();
 ```
+
 _Or:_
 + `return res.forbidden(data);`
 + `return res.forbidden(data, pathToView);`
