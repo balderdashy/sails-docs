@@ -1,7 +1,7 @@
 # myApp/Gruntfile.js
 ### Purpose
 
-Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails uses for this purpose. 
+Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails uses for this purpose.
 
 Sails' integration with Grunt is fully customizable but for most use cases, this file should remain unchanged.  Instead, put your custom logic in `myApp/tasks/`.
 
@@ -14,7 +14,7 @@ Sails' integration with Grunt is fully customizable but for most use cases, this
 
 <div www-sjs-anatomy-boilerplate>
 
-```
+```javascript
 /**
  * Gruntfile
  *
@@ -98,4 +98,3 @@ module.exports = function(grunt) {
 };
 
 ```
-</div>
