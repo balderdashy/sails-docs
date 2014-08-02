@@ -1,6 +1,6 @@
 # Populated Values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When `.populate(/#/documentation/reference/waterline/queries/populate.html)` is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
+In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](/#/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
 
 The type of a populated value is either:
 
@@ -39,7 +39,7 @@ Order.find()
 
 ### Modifying populated values
 
-Changes to populated values are are persisted (i.e. saved to the database) by calling `.save()` on the record they are attached to.  You cannot call `.save()` directly on a populated value.
+Changes to populated values are persisted (i.e. saved to the database) by calling `.save()` on the record they are attached to.  You cannot call `.save()` directly on a populated value.
 
 Changing or remove the linked record of a "model" association can be accomplished by simply setting the property directly on the original record:
 
