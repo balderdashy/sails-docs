@@ -2,7 +2,7 @@
 
 Creates a new model instance in your database then returns it's values.
 
-```http
+```
 POST /:model
 ```
 
@@ -196,5 +196,5 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 ```
 
 <docmeta name="uniqueID" value="CreateARecord744986">
-<docmeta name="displayName" value="Create a Record">
+<docmeta name="displayName" value="create">
 

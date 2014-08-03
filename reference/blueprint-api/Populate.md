@@ -1,14 +1,14 @@
-# Populate Association
+# Find Within...
 
 If the specified association is plural ("collection"), this action returns the list of associated records as a JSON array of objects.  If the specified association is singular ("model"), this action returns the associated record as a JSON object.
 
-```http
+```
 GET /:model/:record/:association
 ```
 
 ### Example
 
-Find which `cashier` conducted purchase '47'.
+Populate the `cashier` who conducted purchase #47.
 
 **Using [jQuery](http://jquery.com/):**
 
@@ -75,4 +75,4 @@ Should return
 > ...then editing `api/models/Purchase.js`.
 
 <docmeta name="uniqueID" value="Populate838372">
-<docmeta name="displayName" value="Populate Association">
+<docmeta name="displayName" value="populate where">

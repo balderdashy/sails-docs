@@ -2,7 +2,7 @@
 
 Removes an association between two records.
 
-```http
+```
 DELETE /:model/:record/:association/:record_to_remove
 ```
 
@@ -78,4 +78,4 @@ Should return store #16, the primary record:
 > ...then editing `api/models/Store.js`.
 
 <docmeta name="uniqueID" value="Remove2294521">
-<docmeta name="displayName" value="Remove from Collection">
+<docmeta name="displayName" value="remove from">

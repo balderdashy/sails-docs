@@ -2,7 +2,7 @@
 
 Adds an association between two records.
 
-```http
+```
 PUT /:model/:record/:association/:record_to_add
 ```
 
@@ -85,4 +85,4 @@ Should return "Dolly", the primary record:
 > ...then editing `api/models/Purchase.js` and `api/models/Employee.js`.
 
 <docmeta name="uniqueID" value="Add262514">
-<docmeta name="displayName" value="Add to Collection">
+<docmeta name="displayName" value="add to">

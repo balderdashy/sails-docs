@@ -2,7 +2,7 @@
 
 Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
 
-```http
+```
 DELETE /:model/:record
 ```
 
@@ -108,5 +108,5 @@ Same as above.
 
 
 <docmeta name="uniqueID" value="DestroyARecord867513">
-<docmeta name="displayName" value="Destroy a Record">
+<docmeta name="displayName" value="destroy">
 

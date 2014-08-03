@@ -1,8 +1,8 @@
-# Find One Record
+# Find One
 
 Returns a single record from the model as a JSON Object.
 
-```http
+```
 GET /:model/:record
 ```
 
@@ -118,5 +118,5 @@ Find the purchase with ID #1
  ```
 
 <docmeta name="uniqueID" value="FindOne259267">
-<docmeta name="displayName" value="Find One Record">
+<docmeta name="displayName" value="find one">
 

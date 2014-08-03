@@ -2,7 +2,7 @@
 
 Returns a list of records from the model as a JSON array of objects.
 
-```http
+```
 GET /:model
 ```
 
@@ -89,5 +89,5 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 >   ```
 
 <docmeta name="uniqueID" value="Find290807">
-<docmeta name="displayName" value="Find Records">
+<docmeta name="displayName" value="find where">
 
