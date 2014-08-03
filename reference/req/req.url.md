@@ -1,6 +1,12 @@
 # req.url
 
-Like [`req.path`](http://sailsjs.org/#/documentation/reference/req/req.path.html), but includes the query string suffix, e.g. `/search?q=worlds%20largest%20dogs`.
+Like [`req.path`](http://sailsjs.org/#/documentation/reference/req/req.path.html), but also includes the query string suffix.
+
+```js
+req.url;
+
+// => "/search?q=worlds%20largest%20dogs"
+```
 
 
 ### Notes
