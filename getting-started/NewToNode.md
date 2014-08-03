@@ -13,14 +13,14 @@ Node.js will install on most major Operating systems.  MacOSX, many flavors of L
 
 Now, lets take a look at what OS you have.  Please choose from the following for instructions on setting up Node.js:
 
-I have [Mac OSX](#install-on-osx)
+I have [Mac OSX](#/getStarted?q=--install-on-osx-)
 
-I have [Linux](#install-on-linux)
+I have [Linux](#/getStarted?q=--install-on-linux-)
 
-I have [Windows](#install-on-windows)
+I have [Windows](#/getStarted?q=--install-on-windows-)
 
 <h2>
-<a id="install-on-osx" name="install-on-osx" class="anchor" href="#install-on-osx"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="#/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
 Install on OSX
 </h2>
 
@@ -37,7 +37,7 @@ Using [macports](http://www.macports.org/):
     port install nodejs  
 
 <h2>
-<a id="install-on-linux" name="install-on-linux" class="anchor" href="#install-on-linux"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="#/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Linux
 </h2>
 
@@ -126,7 +126,7 @@ or packages on FreeBSD
     pkg_add -r node-devel
 
 <h2>
-<a id="install-on-windows" name="install-on-windows" class="anchor" href="#install-on-windows"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="#/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Windows
 </h2>
 
