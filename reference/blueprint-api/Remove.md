@@ -1,42 +1,26 @@
-# Remove Model Association
+# Remove from Collection
 
-Removes an association between two model instances using the blueprint actions
+Removes an association between two records.
 
 ```http
-DELETE /:model/:modelId/:attributeId/:associatedModelId
+DELETE /:model/:record/:association/:record_to_remove
 ```
+
+This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).
+
++ If the foreign record does not exist, it is created first.
++ If the collection doesn't contain a reference to the foreign record, this action will be ignored.
++ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
+
 
 ### Example
 
-Remove association between `purchase` 47 and 'cashier' 7 (Dolly).
-
-```json
-[
- {
-   "amount": 49.99,
-   "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-10-18T01:22:56.000Z"
- },
- {
-   "amount": 99.99,
-   "id": 47,
-   "cashier":  {
-      "name": "Dolly",
-      "id": 7,
-      "createdAt": "2012-05-14T01:21:05.000Z",
-      "updatedAt": "2013-01-15T01:18:40.000Z"
-    },
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }
-]
-```
+Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16.
 
 **Using [jQuery](http://jquery.com/):**
 
 ```javascript
-$.delete('/purchase/47/cashier/7', function (purchases) {
+$.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -44,7 +28,7 @@ $.delete('/purchase/47/cashier/7', function (purchases) {
 **Using [Angular](https://angularjs.org/):**
 
 ```javascript
-$http.delete('/purchase/47/cashier/7')
+$http.delete('/store/16/employeesOfTheMonth/7')
 .then(function (purchases) {
   console.log(purchases);
 });
@@ -53,7 +37,7 @@ $http.delete('/purchase/47/cashier/7')
 **Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
-io.socket.delete('/purchase/47/cashier/7', function (purchases) {
+io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -61,35 +45,37 @@ io.socket.delete('/purchase/47/cashier/7', function (purchases) {
 **Using [cURL](http://en.wikipedia.org/wiki/CURL):**
 
 ```bash
-curl http://localhost:1337/purchase/47/cashier/7 -X "DELETE"
+curl http://localhost:1337/store/16/employeesOfTheMonth/7 -X "DELETE"
 ```
 
 
-Should return 
+Should return store #16, the primary record:
 
 ```json
-[
- {
-   "amount": 99.99,
-   "id": 47,
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }
-]
-
+{
+  "employeesOfTheMonth": [],
+  "name": "Dolly",
+  "createdAt": "2014-08-03T01:16:35.440Z",
+  "updatedAt": "2014-08-03T01:51:41.567Z",
+  "id": 16
+}
 ```
+
 
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains `Purchase` and 'Cashier' models and empty `PurchaseController` and `CashierController`.  You can quickly achieve this by running:
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html).
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
 >
->   ```bash
+>   ```shell
 >   $ sails new foo
 >   $ cd foo
 >   $ sails generate api purchase
->   $ sails generate api cashier
+>   $ sails generate api employee
 >   ```
+>
+> ...then editing `api/models/Store.js`.
 
 <docmeta name="uniqueID" value="Remove2294521">
-<docmeta name="displayName" value="Remove Association">
+<docmeta name="displayName" value="Remove from Collection">

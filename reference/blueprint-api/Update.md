@@ -1,6 +1,6 @@
 # Update a Record
 
-### `PUT /:modelIdentity/:id` or `GET /:modelIdentity/update/:id`
+### `PUT /:model/:record`
 
 Update an existing record.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.

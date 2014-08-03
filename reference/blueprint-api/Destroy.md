@@ -3,12 +3,7 @@
 Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
 
 ```http
-DELETE /:modelIdentity/:id
-```
-or
-
-```http
-GET /:modelIdentity/:id/destroy
+DELETE /:model/:record
 ```
 
 Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.

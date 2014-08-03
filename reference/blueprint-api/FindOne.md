@@ -1,9 +1,9 @@
 # Find One Record
 
-Returns a single record from the model as a JSON Object. 
+Returns a single record from the model as a JSON Object.
 
 ```http
-GET /:modelIdentity/:id
+GET /:model/:record
 ```
 
 <!--

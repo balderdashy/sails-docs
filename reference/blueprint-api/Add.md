@@ -1,36 +1,26 @@
-# Create Model Association
+# Add to Collection
 
-Creates an association between two model instances using the blueprint actions
+Adds an association between two records.
 
 ```http
-PUT /:model/:modelId/:attributeId/:associatedModelId
+PUT /:model/:record/:association/:record_to_add
 ```
+
+This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
+
++ If the foreign record does not exist, it is created first.
++ If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.
++ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
+
 
 ### Example
 
-Associate `purchase` 47 with 'cashier' 7 (Dolly).
-
-```json
-[
- {
-   "amount": 49.99,
-   "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-10-18T01:22:56.000Z"
- },
- {
-   "amount": 99.99,
-   "id": 47,
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }
-]
-```
+Add purchase 47 to the list of purchases that Dolly (employee #7) has been involved in.
 
 **Using [jQuery](http://jquery.com/):**
 
 ```javascript
-$.put('/purchase/47/cashier/7', function (purchases) {
+$.post('/employee/7/involvedInPurchases/47', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -38,7 +28,7 @@ $.put('/purchase/47/cashier/7', function (purchases) {
 **Using [Angular](https://angularjs.org/):**
 
 ```javascript
-$http.put('/purchase/47/cashier/7')
+$http.post('/employee/7/involvedInPurchases/47')
 .then(function (purchases) {
   console.log(purchases);
 });
@@ -47,7 +37,7 @@ $http.put('/purchase/47/cashier/7')
 **Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
-io.socket.put('/purchase/47/cashier/7', function (purchases) {
+io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -55,43 +45,44 @@ io.socket.put('/purchase/47/cashier/7', function (purchases) {
 **Using [cURL](http://en.wikipedia.org/wiki/CURL):**
 
 ```bash
-curl http://localhost:1337/purchase/47/cashier/7 -X "PUT"
+curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
 ```
 
 
-Should return 
+Should return "Dolly", the primary record:
 
 ```json
-[
- {
-   "amount": 99.99,
-   "id": 47,
-   "cashier":  {
-      "name": "Dolly",
-      "id": 7,
-      "createdAt": "2012-05-14T01:21:05.000Z",
-      "updatedAt": "2013-01-15T01:18:40.000Z"
-    },
-   "createdAt": "2013-10-14T01:22:00.000Z",
-   "updatedAt": "2013-10-15T01:20:54.000Z"
- }
-]
-
+{
+  "involvedInPurchases": [
+    {
+      "amount": 10000,
+      "createdAt": "2014-08-03T01:50:33.898Z",
+      "updatedAt": "2014-08-03T01:51:08.227Z",
+      "id": 47,
+      "cashier": 7
+    }
+  ],
+  "name": "Dolly",
+  "createdAt": "2014-08-03T01:16:35.440Z",
+  "updatedAt": "2014-08-03T01:51:41.567Z",
+  "id": 7
+}
 ```
 
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains `Purchase` and 'Cashier' models and empty `PurchaseController` and `CashierController`.  You can quickly achieve this by running:
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html).
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
 >
->   ```bash
+>   ```shell
 >   $ sails new foo
 >   $ cd foo
 >   $ sails generate api purchase
->   $ sails generate api cashier
+>   $ sails generate api employee
 >   ```
-
-> When making associations via blueprint actions, the records being associated must already exist.
+>
+> ...then editing `api/models/Purchase.js` and `api/models/Employee.js`.
 
 <docmeta name="uniqueID" value="Add262514">
-<docmeta name="displayName" value="Create Association">
+<docmeta name="displayName" value="Add to Collection">

@@ -3,12 +3,9 @@
 Creates a new model instance in your database then returns it's values.
 
 ```http
-POST /:modelIdentity
+POST /:model
 ```
-or
-```http
-GET /:modelIdentity/create
-```
+
 
 Attributes can be sent in the HTTP body as form-encoded values or JSON.
 
