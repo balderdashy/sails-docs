@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-This controller defines two actions: the &ldquo;hi&rdquo; responds to a request with a string message, while the &ldquo;bye&rdquo; action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](http://https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use `next` in an action method, you are strongly encouraged to use [policies](/#/documentation/concepts/Policies) instead wherever possible.
+This controller defines two actions: the &ldquo;hi&rdquo; responds to a request with a string message, while the &ldquo;bye&rdquo; action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use `next` in an action method, you are strongly encouraged to use [policies](/#/documentation/concepts/Policies) instead wherever possible.
 
 ### Routing
 

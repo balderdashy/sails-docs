@@ -36,7 +36,7 @@ For more instructions on installing the stable, beta, and edge versions of Sails
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://https://github.com/expressjs/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
+Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
 
 
 ### Where do I get help?
