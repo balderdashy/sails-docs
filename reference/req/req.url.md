@@ -7,6 +7,10 @@ The querystring parser in Express/Connect removes the query string from the stan
 Like [`req.path`](), but includes the query string suffix, e.g. `/search?q=worlds%20largest%20dogs`.
 
 
+### Notes
+> + It is worth mentioning that the URL fragment/hash (e.g. "#some/clientside/route") pat of the url is [not available on the server](https://github.com/strongloop/express/issues/1083#issuecomment-5179035). This is an [open issue with the current HTTP specification](http://stackoverflow.com/a/2305927/486547).
+
+
 
 
 <docmeta name="uniqueID" value="requrl810500">
