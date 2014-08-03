@@ -69,6 +69,19 @@ A full discussion of manual routing is out of the scope of this doc--please see 
 
 
 
+### "Thin" Controllers
+
+Most MVC frameworks recommend writing "thin" controllers, and while Sails is no exception (it is a good idea to keep your Sails controllers as simple as possible) it is also helpful to understand "why?"
+
+Controller code is inherently dependent on some sort of trigger or event.  In a backend framework like Sails, this event is almost always an incoming request.  So if you write a bunch of code in one of your controller actions, it is not uncommon for that code's scope to be dependent on the "request context" (the `req` and `res` objects).  Which is fine...until you want to use that code from a slightly different action, or from the command line.
+
+So the goal of the "thin controller" philosophy is to encourage decoupling of reusable code from any related scope entanglements.  In Sails, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:
+
++ Write a custom model method to encapsulate some code that performs a particular task relating to a particular model
++ Write a service as a function to encapsulate some code that performs a particular application-specific task
++ If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm]() under a permissive open-source license for other developers to use and help maintain.
+
+
 ### Generating controllers
 
 You can use the [Sails command line tool](/#/documentation/reference/cli) to quickly generate a controller, by typing:
@@ -88,13 +101,13 @@ Sails will generate `api/controllers/CommentController.js`:
 
 ```javascript
 /**
- * CommentController.js 
+ * CommentController.js
  *
  * @description :: Server-side logic for managing comments.
  */
 
 module.exports = {
-	
+
   /**
    * CommentController.create()
    */
