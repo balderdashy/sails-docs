@@ -1,11 +1,15 @@
 # Scaling
 
-### Overview
-
 If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
 you'll want to set up a scalable architecture that your app can scale as more and more people use it.
 
-##### Example architecture
+### Benchmarks
+
+For the most part, Sails benchmarks exactly like any Connect, Express or Socket.io app.  This has been validated on a few different occasions, most [recently here](http://serdardogruyol.com/?p=111).  If you have your own benchmark you'd like to share, please send a pull request to this page on Github.
+
+
+### Example architecture
+
 ```
                        Sails.js server
                              ....                 
@@ -17,7 +21,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 ```
 
 
-#### Configuring your app for a clustered deployment
+### Configuring your app for a clustered deployment
 
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) is scalable (e.g. sharding/cluster) 
 + Configure your app to use a shared session store
@@ -28,7 +32,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
     + Note: If you'd rather not set up a socket store, a workable solution for your use case may be enabling sticky sessions at your load balancer.
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 
-#### Deploying a Sails cluster on multiple servers
+### Deploying a Sails cluster on multiple servers
 
 + Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
   + Start up Sails on each instance using `forever`
