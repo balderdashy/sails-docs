@@ -6,7 +6,7 @@ To work their magic, frameworks like Backbone, Angular, Ember, and Knockout requ
 that you load these templates client-side.
 
 By default, your Gruntfile is configured to automatically load and precompile
-client-side JST templates in your `assets/linker/templates` folder, then
+client-side JST templates in your `assets/templates` folder, then
 include them here automatically (between TEMPLATES and TEMPLATES END).
 
     <!--TEMPLATES-->
