@@ -9,7 +9,7 @@ On the other hand, sometimes when we talk about "web frameworks", we mean the "b
 
 ## Convention over Configuration
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.  
+Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
 
 Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes you more productive.  In many cases, you'll even be able to recycle some of your backend code.
 
@@ -77,7 +77,7 @@ Node has fantastic performance. Specifically, we've had some great results using
 Node.js is the fastest-growing, all-javascript solution to <a href="https://www.youtube.com/watch?v=jo_B4LTHi3I">server-side development</a>. Writing your code in one language on the front-end and back-end means less context-shifting, faster development, and better apps.
 
 ### Express
-Sails's controllers and policies are really just [Express](http://expressjs.com/) middleware. This means your Sails app logic is interoperable with existing Express apps, and vice versa
+Sails's controllers and policies are really just [Express](http://https://github.com/expressjs/) middleware. This means your Sails app logic is interoperable with existing Express apps, and vice versa
 
 + Supports the existing ecosystem of Express middleware
 
@@ -103,7 +103,7 @@ Sails bundles support for LESS and JST templates
   + If you use the `--linker` option when creating your new project, your assets will be automatically bundled up and included in your layout HTML
   + Front-end support for SASS, Handlebars, CoffeeScript, Stylus, TypeScript, etc. is as easy as modifying your app's Gruntfile
   + In production mode, Sails will also minify and concatenate your assets
-  + If you need to take web performance even further (this comes up for mobile web apps in particular), you can run `sails build` to output a CDN-ready snapshot of your apps assets    
+  + If you need to take web performance even further (this comes up for mobile web apps in particular), you can run `sails build` to output a CDN-ready snapshot of your apps assets
 
 ### PhoneGap, Chrome extensions, and SPA-friendliness
   + `sails build` spits out a ready-to-deploy `www` directory for use in all of the sorts of places where you need indepenedent, API-driven front-end code

@@ -36,7 +36,7 @@ For more instructions on installing the stable, beta, and edge versions of Sails
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://expressjs.com/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
+Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](http://https://github.com/expressjs/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
 
 
 ### Where do I get help?
@@ -49,7 +49,7 @@ Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and 
 
 ### Who else is using Sails.js?
 
-> Sails is used by services companies small and large, all over the world.  
+> Sails is used by services companies small and large, all over the world.
 > This small list is definitely not authoratative-- we haven't had the opportunity to collect that information yet. In the mean time, if you're using Sails in your company/product/service, we'd love to hear about it!  Please click `edit` to submit a pull request updating this list.
 
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
@@ -122,7 +122,7 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
 
 > + If you are the author of a tutorial or guide about Sails, please send us a pull request editing this file.  We'll check it out!
 
-+ [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC. 
++ [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC.
 + [Sails.js Development channel on Medium](https://medium.com/sails-js-development/)
 + [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 + [Intro to Sails.js](https://www.youtube.com/watch?v=GK-tFvpIR7c) screencast
@@ -212,7 +212,7 @@ See https://github.com/balderdashy/sails/wiki/_pages for more pages.
 
 # Getting Started With Sails
 
-![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png) 
+![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png)
 
 # Installation
 
@@ -235,7 +235,7 @@ sails new testProject
 # cd into the new project
 cd testProject
 
-# Fire up the server	
+# Fire up the server
 # (you have to run this from the root of your project)
 sails lift
 ```
@@ -261,7 +261,7 @@ module.exports = {
 
 # What's Better Than Scaffolding?  How About a JSON API?
 
-Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for 
+Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for
 modern web apps! Instead, Sails automatically builds a RESTful JSON API for your models. Best of
 all, it supports HTTP _and_ WebSockets! By default for every controller you create, you get the
 basic CRUD operations created automatically.
