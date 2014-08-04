@@ -25,7 +25,7 @@ Thanks!
 
 |     | Jump to...        |
 |-----|-------------------------|
-|     | [File Uploads](#file-uploads) |
+|     | [File Uploads](###file-uploads) |
 |     | [Blueprints](#blueprints) |
 |     | [Policies](#policies) |
 |     | [Associations](#associations) |
