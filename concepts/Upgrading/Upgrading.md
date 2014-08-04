@@ -26,19 +26,19 @@ Thanks!
 |     | Jump to...        |
 |-----|-------------------------|
 |     | [File Uploads](#documentation/concepts/Upgrading?q=file-uploads) |
-|     | [Blueprints](#blueprints) |
-|     | [Policies](#policies) |
-|     | [Associations](#associations) |
-|     | [Pubsub](#pubsub) |
-|     | [`.done()` vs. `.exec()`](https://github.com/balderdashy/sails-docs/blob/master/reference/Upgrading.md#done-vs-exec)
-|     | [Generators](#generators) |
-|     | [Command-Line Tool](#command-line-tool) |
-|     | [Custom Server Responses](#custom-server-responses) |
-|     | [Legacy Data in `sails-disk`](#legacy-data-stored-in-the-temporary-sails-disk-database) |
-|     | [Validations](#validations-upgrade-to-validator-3x) |
-|     | [Adapter/Connections Configuration](#adapterdatabase-configuration) |
-|     | [Blueprints/Controllers Configuration](#controller-configuration) |
-|     | [Layout Paths](#layouts) |
+|     | [Blueprints](#/documentation/concepts/Upgrading?q=blueprints) |
+|     | [Policies](#/documentation/concepts/Upgrading?q=policies) |
+|     | [Associations](#/documentation/concepts/Upgrading?q=associations) |
+|     | [Pubsub](#/documentation/concepts/Upgrading?q=pubsub) |
+|     | [`.done()` vs. `.exec()`](#/documentation/concepts/Upgrading?q=done()-vs-exec())
+|     | [Generators](#/documentation/concepts/Upgrading?q=generators) |
+|     | [Command-Line Tool](#/documentation/concepts/Upgrading?q=commandline-tool) |
+|     | [Custom Server Responses](#/documentation/concepts/Upgrading?q=custom-server-responses) |
+|     | [Legacy Data in `sails-disk`](#/documentation/concepts/Upgrading?q=legacy-data-stored-in-the-temporary-sailsdisk-database) |
+|     | [Validations](#/documentation/concepts/Upgrading?q=validations-upgrade-to-validator-3x) |
+|     | [Adapter/Connections Configuration](#/documentation/concepts/Upgrading?q=adapter%2Fdatabase-configuration) |
+|     | [Blueprints/Controllers Configuration](#/documentation/concepts/Upgrading?q=controller-configuration) |
+|     | [Layout Paths](#/documentation/concepts/Upgrading?q=layout-paths) |
 ========================================
 
 
@@ -259,7 +259,7 @@ module.exports = {
 
 
 
-### Controller configuration
+### Blueprints/Controller configuration
 
 The object literal describing controller configuration overrides for controller blueprints should change from
 ```javascript
