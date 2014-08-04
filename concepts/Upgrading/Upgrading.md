@@ -25,7 +25,7 @@ Thanks!
 
 |     | Jump to...        |
 |-----|-------------------------|
-|     | [File Uploads](documentation/concepts/Upgrading?q=file-uploads) |
+|     | [File Uploads](#documentation/concepts/Upgrading?q=file-uploads) |
 |     | [Blueprints](#blueprints) |
 |     | [Policies](#policies) |
 |     | [Associations](#associations) |
