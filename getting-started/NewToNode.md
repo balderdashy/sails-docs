@@ -1,5 +1,4 @@
 # New to [Node.js](https://soundcloud.com/marak/marak-the-node-js-rap)?
-##TEST
 Thats okay!  We'll get you pointed in the right direction.
 
 
