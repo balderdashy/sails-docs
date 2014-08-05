@@ -23,9 +23,7 @@ See the Response section of Reference Documentation for more info.
  * return res.notFound(err, redirectTo);
  *
  * e.g.:
- * ```
  * return res.notFound();
- * ```
  *
  * NOTE:
  * If a request doesn't match any explicit routes (i.e. `config/routes.js`)

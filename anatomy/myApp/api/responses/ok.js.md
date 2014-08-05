@@ -90,7 +90,4 @@ module.exports = function sendOK (data, viewOrRedirect) {
 
 };
 
-
-
-
 ```

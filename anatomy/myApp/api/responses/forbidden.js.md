@@ -23,9 +23,8 @@ See the Response section of Reference Documentation for more info.
  * return res.forbidden(err, redirectTo);
  *
  * e.g.:
- * ```
  * return res.forbidden('Access denied.');
- * ```
+ *
  */
 
 module.exports = function forbidden (err, viewOrRedirect) {
