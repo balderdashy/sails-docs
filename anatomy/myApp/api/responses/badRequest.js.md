@@ -24,12 +24,11 @@ See the Response section of Reference Documentation for more info.
  * return res.badRequest(err, redirectTo);
  *
  * e.g.:
- * ```
  * return res.badRequest(
  *   'Please choose a valid `password` (6-12 characters)',
  *   '/trial/signup'
  * );
- * ```
+ *
  */
 
 module.exports = function badRequest(err, viewOrRedirect) {
