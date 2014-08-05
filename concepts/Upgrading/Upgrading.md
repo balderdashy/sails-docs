@@ -29,7 +29,7 @@ Thanks!
 |     | [Policies](#/documentation/concepts/Upgrading?q=policies) |
 |     | [Associations](#/documentation/concepts/Upgrading?q=associations) |
 |     | [Pubsub](#/documentation/concepts/Upgrading?q=pubsub) |
-|     | [`.done()` vs. `.exec()`](#/documentation/concepts/Upgrading?q=done&28%29-vs-exec&28%29)
+|     | [`.done()` vs. `.exec()`](#/documentation/concepts/Upgrading?q=done%28%29-vs-exec%28%29)
 |     | [Generators](#/documentation/concepts/Upgrading?q=generators) |
 |     | [Command-Line Tool](#/documentation/concepts/Upgrading?q=commandline-tool) |
 |     | [Custom Server Responses](#/documentation/concepts/Upgrading?q=custom-server-responses) |
