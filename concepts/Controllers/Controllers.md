@@ -48,7 +48,7 @@ Besides the default routing, Sails allows you to manually bind routes to control
 
 To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the controller name + `.` + action name as the value (i.e. the **route target**).
 
-For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives POST a request to `/make/a/sandwich`:
+For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
 
 ```js
   'POST /make/a/sandwich': 'SandwichController.makeIt'
