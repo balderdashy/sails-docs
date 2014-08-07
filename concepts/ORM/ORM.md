@@ -19,7 +19,7 @@ Let's imagine you're building an e-commerce website, with an accompanying mobile
 
 _You ask the business what database they would like to use:_
 
-> "Datab... what?  Let's not be hasty, wouldn't want to make thwe wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
+> "Datab... what?  Let's not be hasty, wouldn't want to make the wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
 
 The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
 
