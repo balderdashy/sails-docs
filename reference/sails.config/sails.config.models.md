@@ -1,8 +1,11 @@
 # sails.config.models
 
-The base settings in your Sails app used as defaults by all of your models.  These options are conventionally specified in the [config/models.js](/#/documentation/anatomy/myApp/config/models.js.html) configuration file.
+Your default project-wide **model settings**. Can also be overridden on a per-model basis by providing a top-level property with the same name in that model definition.  For more details, see the conceptual docs on [Model Settings]().  These options are conventionally specified in the [config/models.js](/#/documentation/anatomy/myApp/config/models.js.html) configuration file.
 
-For more details on each of these options, see the conceptual docs on [Model Settings]().
+```js
+sails.config.models;
+```
+
 
 ### Properties
 
