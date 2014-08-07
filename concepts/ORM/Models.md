@@ -2,7 +2,11 @@
 
 A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
 
-```javascript
+![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
+
+
+<!--
+
 // api/models/Product.js
 module.exports = {
   attributes: {
@@ -12,7 +16,8 @@ module.exports = {
     numCalories: { type: 'integer' }
   }
 }
-```
+-->
+
 
 ### Using models
 
