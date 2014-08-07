@@ -197,7 +197,7 @@ module.exports = {
 };
 ```
 
-> Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_.
+> Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_ by convention.
 
 
 ###### When to write a custom attribute method
