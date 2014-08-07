@@ -61,6 +61,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 |text| okay, well is <i>this</i> a `string` ?| |
 |truthy| Would a Javascript engine register a value of `false` on this? | |
 |undefined| Would a javascript engine register this thing as have the value 'undefined' ? | |
+|unique| Checks to see if a new record model attribute is unique.  | |
 |uppercase| checks if `string` in this record is uppercase | |
 |url| checks if `string` in this record is a URL | |
 |urlish| Does the `string` in this record contain something that looks like a route, ending with a file extension? | /^\s([^\/]+\.)+.+\s*$/g |
