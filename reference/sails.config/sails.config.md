@@ -9,7 +9,7 @@ More specifically, when you load your app, whether that's using `node app`, [pro
 + a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`)
 + command-line arguments (parsed by minimist)
 + environment variables (prefixed with `SAILS_`, e.g. `SAILS_PORT=1492`)
-+ files in your app's `config/` directory
++ files in your app's `config/` directory (if one exists)
 
 <docmeta name="uniqueID" value="sailsconfig238825">
 <docmeta name="displayName" value="Configuration">
