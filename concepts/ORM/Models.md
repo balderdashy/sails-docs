@@ -158,13 +158,7 @@ Every Waterline model includes some attribute methods automatically, including:
 
 ###### Custom attribute methods
 
-Waterline models also allow you to define your own custom attribute methods.  Define them like any other attribute, but instead of an attribute definition object, write a function on the right-hand-side.  Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_.
-
-rick.isMarkried
-
-###### When to write a custom attribute method
-
-They are particularly useful for extracting some information out of a record
+Waterline models also allow you to define your own custom attribute methods.  Define them like any other attribute, but instead of an attribute definition object, write a function on the right-hand-side.
 
 
 ```js
@@ -202,6 +196,20 @@ module.exports = {
   }
 };
 ```
+
+> Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_.
+
+
+###### When to write a custom attribute method
+
+Custom attribute methods are particularly useful for extracting some information out of a record.  I.e. you might want to reduce some information from one or more attributes (i.e. "is this person married?"")
+
+```js
+if ( rick.isMarried() ) {
+  // ...
+}
+```
+
 
 
 ###### When NOT to write a custom attribute method

@@ -1,4 +1,4 @@
-# Queries
+# Working with Queries
 
 Chainable deferred objects returned from Waterline model methods like `.find()` and `.create()`.
 
@@ -6,7 +6,7 @@ Chainable deferred objects returned from Waterline model methods like `.find()` 
 var query = Stuff.find();
 ```
 
-You have likely already interacted with query objects in your Sails app. Most of the time, you probably won't think about them as objects _per se_, rather just another part of the syntax for communicating with your app's data store(s).
+You have likely already interacted with query objects in your Sails app. Most of the time, you probably won't think about them as objects _per se_, rather just another part of the syntax for communicating with the database.
 
 The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, you can just call [`.exec()`](/#/documentation/reference/waterline/queries/exec.html).
 
