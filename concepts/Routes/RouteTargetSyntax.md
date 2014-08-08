@@ -105,8 +105,11 @@ Assuming that your have a **api/controllers/UserController/js** file and a **api
 Another common target is one that binds a route to a [view](http://beta.sailsjs.org/#/documentation/concepts/Views).  The syntax for this is simple: it's the path to the view file relative to the **views** folder, without the file extension:
 
 ```
-'GET /home': 'home/index'
+'GET /home': {view: 'home/index'}
 ```
+> Note that with this syntax the route is binded directly to a view, no policies will be checked in this case.
+> See this StackOverflow [question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more information.
+
 
 This maps the `GET /home` to the view stored in **views/home/index.ejs** (assuming the default EJS [template engine](http://beta.sailsjs.org/#/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it.
 
