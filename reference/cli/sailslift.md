@@ -4,7 +4,7 @@ Run the Sails app in the current dir (if `node_modules/sails` exists, it will be
 
 ##### Options:
 
-  * `--dev` - in development environment (the default)
+  * `--dev` - in development environment (the default). In the development environment Sails use *grunt-watch* to keep a eye on your files in `/assets`. If you change something (for example in one of our css-files) and reload your browser Sails will automatically show your changes. Also you views won't be cached so you can change your view-files without restarting Sails like the assets.
   * `--prod` - in production environment
   * `--port <portNum>` - on the port specified by `portNum` instead of the default (1337)
   * `--verbose` - with verbose logging enabled
@@ -21,7 +21,7 @@ info: Starting app...
 info: 
 info: 
 info:    Sails              <|
-info:    v0.10.0-rc5         |\
+info:    v0.10.3             |\
 info:                       /|.\
 info:                      / || \
 info:                    ,'  |'  \
