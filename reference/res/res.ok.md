@@ -78,19 +78,6 @@ return res.ok({
 
 
 
-<!-- legacy: -->
-<!--If a url expression (`url`) is provided, Sails redirects to that URL.-->
-<!--
-If no `data` is provided a default response body will be sent:
-
-```json
-{
-  "status": 200
-}
-```
--->
-
-
 
 
 
