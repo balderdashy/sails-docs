@@ -89,18 +89,7 @@ If no `data` is provided a default response body will be sent:
 }
 ```
 -->
-<!--
 
-If the request "wants JSON" and the `data` is a string, `data` will be wrapped in an object and included under the "message" key:
-
-```json
-{
-  "status": 200,
-  "message": "..."
-}
-```
-
--->
 
 
 
