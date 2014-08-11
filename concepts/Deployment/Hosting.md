@@ -30,8 +30,6 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
-> Attention: At the moment OpenShift runs a old version of npm - this may make you trouble installing sails (and dependencies). To handle this just use a custom node version (with build in npm): https://github.com/openshift-quickstart/nodejs-custom-version-openshift
-
 ##### Using DigitalOcean?
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
