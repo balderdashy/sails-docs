@@ -10,7 +10,7 @@ Guide and reference documentation for the 0.10.x release of Sails.  Content for 
 > Secondly, we are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @ncrumrine, @loicsaintroch, or @mikermcneil on Twitter.
 
 ##### How often are these files compiled and pushed to the website?
-> Currently, these docs are pushed almost instantaneously to beta.sailsjs.org.  That will likely continue to happen for the forseeable future.
+> Currently, these docs are pushed almost instantaneously to www.sailsjs.org.  That will likely continue to happen for the forseeable future.
 > 
 > However, when v0.10.0 is released as "stable", docs will **also** be compiled and pushed to http://sailsjs.org every time a new stable release of Sails is published to npm.  In general, this repo should follow the same versioning strategy as Sails (using tags).
 
