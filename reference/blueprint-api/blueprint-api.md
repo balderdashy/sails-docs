@@ -26,14 +26,14 @@ Sails에는 3가지 종류의 blueprint routes가 있다:
 
 현재 버전의 세일즈에서는 아래의 blueprint actions이 탑재되어있다.
 
-+ [find](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [findOne](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [create](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [update](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [destroy](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [populate](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [add](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
-+ [remove](./#!documentation/reference/Blueprints/TODO_MAKE_THESE_URL_SLUGS_BETTER)
+-+ [find](./#/documentation/reference/blueprint-api/Find.html)
+-+ [findOne](./#/documentation/reference/blueprint-api/FindOne.html)
+-+ [create](./#/documentation/reference/blueprint-api/Create.html)
+-+ [update](./#/documentation/reference/blueprint-api/Update.html)
+-+ [destroy](./#/documentation/reference/blueprint-api/Destroy.html)
+-+ [populate](./#/documentation/reference/blueprint-api/Populate.html)
+-+ [add](./#/documentation/reference/blueprint-api/Add.html)
+-+ [remove](./#/documentation/reference/blueprint-api/Remove.html)
 
 결과적으로,  blueprint API 매서드들는 각각의 위에 있는 일대일 블루프린트 액션을 커버한다.
 
