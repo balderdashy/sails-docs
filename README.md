@@ -1,16 +1,14 @@
 # Sails.js Documentation (v0.10.x)
 
+이 문서는 Sails의 0.10.x 버전의 가이드와 레퍼런스 문서입니다. Sails의 홈페이지(beta.sailsjs.org)의 대부분의 내용은 여기로부터 컴파일 됩니다. 가끔 마크다운 파일들이 쪼개지고, 링크되고, HTML로 변환되거나 sailsjs.org에서만 제대로 보여지게 되나. 대부분의 경우는 하나의 `.md` 파일이 하나의 웹사이트 경로로 설정이됩니다. (예. `/#/documentation/reference/Blueprints/Create.html`)
 
-Guide and reference documentation for the 0.10.x release of Sails.  Content for most sections on the Sails website (beta.sailsjs.org) is compiled from here.  In some cases, the markdown files are split, relinked, converted to HTML, or formatted to fit within the skin of sailsjs.org- but most of the time, a `.md` file in this repo corresponds one-to-one with a client-side route on the website (e.g. `/#/documentation/reference/Blueprints/Create.html`).
-
-
-##### Contributing to the docs
-> We welcome your help!  Please send a pull request to **master** with corrections/additions and they'll be double-checked and merged as soon as possible.
+##### 문서제작에 기여하기
+> 당신의 손길이 필요합니다. 틀린 내용을 교정하거나 추가적인 내용을 **master**로 pull request를 보내주세요. 그러면 그것들은 빠른 시일내로 합쳐지게 될것입니다.
 >
-> Secondly, we are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @ncrumrine, @loicsaintroch, or @mikermcneil on Twitter.
+> 두번째로, 우리는 문서를 관리하는 프로세스에 대한 제안을 환영하며, 커뮤니티와 함께 일하는것을 환영합니다. 구글 그룹에 여러분의 생각을 남겨주세요. 우리는 돕는데 관심이 있으시면  @ncrumrine, @loicsaintroch, 또는 @mikermcneil에게 트위터를 남겨주세요.
 
-##### How often are these files compiled and pushed to the website?
-> Currently, these docs are pushed almost instantaneously to www.sailsjs.org.  That will likely continue to happen for the forseeable future.
+##### 이 문서들이 웹사이트에 얼마나 자주 컴파일되고 푸시되나요?
+> 현재 대부분은 www.sailsjs.org에 바로 푸시됩니다. 그리고 이것은 앞으로도 계속 될 것입니다.
 > 
-> However, when v0.10.0 is released as "stable", docs will **also** be compiled and pushed to http://sailsjs.org every time a new stable release of Sails is published to npm.  In general, this repo should follow the same versioning strategy as Sails (using tags).
+> 그러나, v0.10.0이 "stable"로 배포되면, 문서 **또한** 안정된 새로운 릴리즈 버전이 npm으로 배포될때마다 http://sailsjs.org에 푸시되며 컴파일 될것입니다.  일반적으로, 이 저장소는 Sails와 같은 버전을 따르게 될 것입니다.
 
