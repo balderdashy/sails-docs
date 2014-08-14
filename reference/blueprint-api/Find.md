@@ -59,7 +59,8 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
 
 ```javascript
 $http.get('/purchase?sort=createdAt DESC')
-.then(function (purchases) {
+.then(function (res) {
+  var purchases = res.data;
   console.log(purchases);
 });
 ```
