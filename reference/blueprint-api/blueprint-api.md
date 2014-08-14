@@ -10,15 +10,15 @@ Blueprints는 프로토 타이핑하는데 좋을뿐만 아니라 상속이나, 
 
 ##### Blueprint Routes
 
-blueprints를 활성화하고 'sails lift'로 실행할때, 자동으로 [특정한 라우트를 바인드](./#!documentation/guides/routes)하기 위해 프레임워크는 컨트롤러와 모델, 그리고 설정을 살펴보게 된다. 가끔 암시적인 blueprint routes(가끔 “shadows”라고도 불리운다.)는 어플리케이션이 수동으로 config/routes.js파일을 바인드 하지 않고도 특정한 요청에 응답하게 한다. 기본적으로 blueprint routes는 상응하는 blueprint *actions*(아래의 “Blueprint Actions”을 봐라)를 가리키고, 이들 전부는 custom code로 상속 할 수 있다.
+blueprints를 활성화하고 'sails lift'로 실행할때, 자동으로 [특정한 라우트를 바인드](./#/documentation/concepts/Routes)하기 위해 프레임워크는 컨트롤러와 모델, 그리고 설정을 살펴보게 된다. 가끔 암시적인 blueprint routes(가끔 “shadows”라고도 불리운다.)는 어플리케이션이 수동으로 config/routes.js파일을 바인드 하지 않고도 특정한 요청에 응답하게 한다. 기본적으로 blueprint routes는 상응하는 blueprint *actions*(아래의 “Blueprint Actions”을 봐라)를 가리키고, 이들 전부는 custom code로 상속 할 수 있다.
 
 Sails에는 3가지 종류의 blueprint routes가 있다:
 
-+ **RESTful routes**, 경로는 항상 /:modelIdentity 또는 /:modelIdentity/:id를 가진다. 이러한 routes들은 취할 액션을 결정하는데 HTTP “동사”를 이용한다;예를들어 /user에 POST요청을 하면, user를 생성하고, /user/123에 DELETE요청을 하면, 123 primary키를 가지고 있는 user를 지운다. 실제 릴리즈 환경에서는, 허용되지 않은 접근을 막기위해 RESTful routes는 일반적으로 [policies](./#!documentation/reference/Policies)를 통해 보호해야한다.
++ **RESTful routes**, 경로는 항상 /:modelIdentity 또는 /:modelIdentity/:id를 가진다. 이러한 routes들은 취할 액션을 결정하는데 HTTP “동사”를 이용한다;예를들어 /user에 POST요청을 하면, user를 생성하고, /user/123에 DELETE요청을 하면, 123 primary키를 가지고 있는 user를 지운다. 실제 릴리즈 환경에서는, 허용되지 않은 접근을 막기위해 RESTful routes는 일반적으로 [policies](./#/documentation/concepts/Policies)를 통해 보호해야한다.
 + **Shortcut routes**, 인코딩된 경로를 action으로 취한다. 예를들어 /user/create?name=joe는 user를 생성하는 shortcut이다, 반면 /user/update/1?name=mike는 user #1을 업데이트 한다. 이러한 routes는 오직 GET요청에만 반응한다. Shortcut routes는 개발시에는 유용하나, 일반적으로 배포 환경에서는 비활성화 해야한다.
 + **Action routes**는 자동적으로 custom 컨트롤러 액션들의 라우트를 만들어준다. 예를들어, blueprint action route가 활성화 되어있고 만약 FooController.js파일에 bar 매서드가 있으면, /foo/bar 라우트가 자동적으로 생성이된다. RESTful과 shortcut 라우트와 다르게, 액션 라우트는 컨트롤러에 상응하는 모델파일이 *존재하지 않아도* 동작한다.
 
-어떻게 각각의 blueprint route 타입을 활성/비활성화하는지를 포함한 blueprint 설정 옵션에 대해 더 알고 싶으면 [blueprints subsection of the configuration reference](./#!documentation/reference/Configuration/blueprints.html)를 살펴봐라.
+어떻게 각각의 blueprint route 타입을 활성/비활성화하는지를 포함한 blueprint 설정 옵션에 대해 더 알고 싶으면 [blueprints subsection of the configuration reference](./#/documentation/reference/sails.config/sails.config.blueprints.html)를 살펴봐라.
 
 ##### Blueprint Actions
 
@@ -52,7 +52,6 @@ Sails v0.10에서 blueprints를 상속 하기위해서는, api/blueprints 폴더
 
 ### 주의사항
 
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
 > + 현재 이 문서는 HTTP에 초점이 맞추어져 있지만, 블루프린트 API(커스텀 액션과 정책들과같은)는 요청 해석자 덕분에 웹소켓에서도 호환이된다. [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html)에 있는 reference section에서 사용법을 참고해라.
 >
 
