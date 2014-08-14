@@ -10,7 +10,6 @@ Sails에서 Grunt 통합을 비활성화 하기 위해서는, Gurntfile (혹은 
 }
 ```
 
-### Can I customize this for SASS, Angular, client-side Jade templates, etc?
 ### SASS, Angular, client-side Jade template, 기타 등등을 위해 커스터마이즈 할 수 있나요?
 
 넵! `tasks/` 디렉토리 안에 관련 grunt 테스크를 치환하거나, 새로운 것을 추가하시면 됩니다. [SASS](https://github.com/sails101/using-sass)의 예입니다.
