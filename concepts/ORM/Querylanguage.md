@@ -220,6 +220,21 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
+`paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
+
+``` javascript                                                                  
+Model.find().paginate({page: 2, limit: 10});                                     
+```
+
+> **Waterline**
+>
+> You can find out more about the Waterline API below:
+> * [Sails.js Documentation](http://sailsjs.org/#/documentation/reference/waterline/queries)
+> * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
+> * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
+> * [Waterline Github Repository](https://github.com/balderdashy/waterline)
+
+
 #### Sort
 
 Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
