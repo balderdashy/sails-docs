@@ -170,7 +170,7 @@ If you were using the `beforeValidation` or `afterValidation` model lifecycle ca
 
 In Sails <= v0.8, the syntax for executing an ORM query was `Model. [ … ] .done( cb )`.  In v0.9, when promise support was added, the  `Model. [ … ] .exec( cb )` became the recommended replacement, since `.done()` has a special meaning in the promise spec.  However, the original usage of `.done()` was left untouched to make upgrading from v0.8 to v0.9 easier.
 
-But as of Sails/Weterline v0.10, the original meaning of `.done()` has been officially deprecated to allow for a more robust promise implementation going forward, and pluggable promise library support (e.g. choose `Q` or `Bluebird` etc.).
+But as of Sails/Waterline v0.10, the original meaning of `.done()` has been officially deprecated to allow for a more robust promise implementation going forward, and pluggable promise library support (e.g. choose `Q` or `Bluebird` etc.).
 
 
 ### Associations
