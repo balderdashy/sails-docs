@@ -3,7 +3,7 @@
 ## Preparation
 
 For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).
-Before start building your test cases, you should first prepare your `./test` directory, for example in the following way:
+Before you start building your test cases, you should first prepare your `./test` directory, for example in the following way:
 ```batch
 ./myApp
 ├── api
