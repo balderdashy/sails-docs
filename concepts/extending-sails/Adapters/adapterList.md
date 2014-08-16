@@ -1,5 +1,5 @@
 # List of Available Adapters
-This file is meant to be an up to date, comprehensive list of all of the adapter available for the Sails.js framework.  If we missed one or you would like to add an adapter you made, just submit a Pull Request to this file, adding to the list.
+This file is meant to be an up to date, comprehensive list of all of the adapters available for the Sails.js framework.  If we missed one or you would like to add an adapter you made, just submit a Pull Request to this file, adding to the list.
 
 ### Officially Supported Adapters
 
