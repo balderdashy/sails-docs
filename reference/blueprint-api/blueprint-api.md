@@ -56,7 +56,7 @@ Adding custom blueprints is also supported, but they currently do not get bound 
 
 ### Notes
 
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html) for example usage.
+> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](./#!documentation/reference/websockets/sails.io.js) for example usage.
 >
 
 <docmeta name="uniqueID" value="blueprintapi170785">
