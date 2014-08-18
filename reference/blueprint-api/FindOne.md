@@ -100,7 +100,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 
 ### Example
-Find the purchase with ID #1, `http://localhost:1337/purchase/1`
+Find the purchase with ID #1, E.g. `http://localhost:1337/purchase/1`
 
 #### Route
 `GET /purchase/1`
