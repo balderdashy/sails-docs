@@ -31,11 +31,11 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
         <em>(required)</em>
       </td>
       <td>
-        <bubble>number</bubble>
+        <bubble type="number" colors="bubble.color"></bubble>
         <br/>
         <em>-or-</em>
         <br/>
-        <bubble>string</bubble>
+        <bubble type="string" colors="bubble.color"></bubble>
       </td>
       <td>
 
@@ -50,7 +50,7 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
       <td>
         <code>callback</code>
       </td>
-      <td><bubble>string</bubble></td>
+      <td><bubble type="string" colors="bubble.color"></bubble></td>
       <td>
         if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
 

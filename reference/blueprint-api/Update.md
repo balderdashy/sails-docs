@@ -26,11 +26,11 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
         <em>(required)</em>
       </td>
       <td>
-        <bubble>number</bubble>
+        <bubble type="number" colors="bubble.color"></bubble>
         <br/>
         <em>-or-</em>
         <br/>
-        <bubble>string</bubble>
+        <bubble type="string" colors="bubble.color"></bubble>
       </td>
       <td>
 
@@ -49,13 +49,13 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
     <tr>
       <td><code>&#42;</code></td>
       <td>
-        <bubble>string</bubble>
+        <bubble type="string" colors="bubble.color"></bubble>
         <br/>
-        <bubble>number</bubble>
+        <bubble type="number" colors="bubble.color"></bubble>
         <br/>
-        <bubble>object</bubble>
+        <bubble type="object" colors="bubble.color"></bubble>
         <br/>
-        <bubble>array</bubble>
+        <bubble type="array" colors="bubble.color"></bubble>
       </td>
       <td>
 
@@ -67,7 +67,7 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
       <td>
         <code>callback</code>
       </td>
-      <td><bubble>string</bubble></td>
+      <td><bubble type="string" colors="bubble.color"></bubble></td>
       <td>
         If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
 
