@@ -41,63 +41,10 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
-
-        The desired record's primary key value
-
-        <br/><strong>Example:</strong>
-        <code>
-          /product/7
-        </code>
-
-        <br/>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. `/product/7`
+ callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Example
 Find the purchase with ID #1, E.g. `http://localhost:1337/purchase/1`
