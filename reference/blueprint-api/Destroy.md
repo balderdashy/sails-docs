@@ -15,59 +15,10 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
-
-        The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
-
-        <br/>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-
-
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
+ callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Examples
 
