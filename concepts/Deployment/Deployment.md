@@ -1,56 +1,56 @@
-# Deployment
+# 배포
 
-### Overview
+### 개요
 
-#### Before You Deploy
+#### 배포 전에
 
-Before you launch any web application, you should ask yourself a few questions:
+웹 어플리케이션을 배포하기전에, 스스로 몇가지 질문에 대해서 답해야한다:
 
-+ What is your expected traffic?
-+ Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
-+ What sorts of front-end apps will be "hitting" your infrastructure?
-  + Android apps
-  + iOS apps
-  + desktop web browers
-  + mobile web browsers (tablets, phones, iPad minis?)
-  + tvs, watches, toasters..?
-+ And what kinds of things will they be requesting?
++ 기대되는 트래픽은 어느정도인가?
++ 계약 내용에 가동시간을 충족 시킬수 있는가? 예. a Service Level Agreement (SLA)
+* 서버와 직접적으로 "맞닿아있는" 인프라가 어떤것이 될것인가?
+  + 안드로이드 어플리케이션
+  + iOS 어플리케이션
+  + 데스크탑 브라우저
+  + 모바일 웹 브라우저 (타블랫, 폰, 아이패드 미니?)
+  + 텔레비젼, 시계, 토스터 등등..?
++ 서버에 어떤식으로 요청하는가?
   + JSON?
   + HTML?
   + XML?
-+ Will you be taking advantage of realtime pubsub features with Socket.io?
-  + e.g. chat, realtime analytics, in-app notifications/messages
-+ How are you tracking crashes and errors?
-  + Take a look at Sails' log config
++ 실시간 통신에 Socket.io기능을 사용할것인가?
+  + 예. 채팅, 실시간 분석, 어플리케이션 알림/메시지
++ 어떻게 크래쉬와 에러를 추적할것인가?
+  + Sails log 장을 살펴볼것
 
 
 
-#### Deploying On a Single Server
+#### 한 서버에 배포하기
 
-Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
+Node.js는 꽤나 빠르다. 많은 어플리케이션에서, 하나의 서버는 기대되는 트래픽을 감당하기에 충분하다-- 적어도 처음에는말이다.
 
-##### Configure
+##### 설정
 
-+ Configure your app to run on port 80 (if not behind a proxy like nginx)
-+ Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
-+ Make sure your database is set-up on the production server. This is especially important if you are using a relational database such as MySQL, because sails sets all your models to `migrate:safe` when run in production, which means no auto-migrations are run on starting up the app. You can set your database up the following way:
-  + Create the database on the server and then run your sails app with `migrate:alter` locally, but configured to use the production server as your db. This will automatically set things up. 
-  +  In case you can't connect to the server remotely, you'll simply dump your local schema and import it into the database server.
-+ Enable CSRF protection for your POST, PUT, and DELETE requests
-+ Enable SSL
-+ IF YOU'RE USING SOCKETS: 
-  + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
-    + e.g. enable the `flashsocket` transport
++ 80포트로 설정할것 (nginx롸 같은 프록시 서버가 존재하지 않는다면)
++ '배포' 환경으로 설정해서, 모든 css/js파일들이 정리되게 하고, 내부 서버가 적합한 환경으로 변환될 수 있도록 할것 ([linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)가 필요하다.)
++ 데이터베이스가 배포 서버에 설정이 되어있는지 확인할것. 이것은 특히 MySQL과 같은 관계형 데이터베이스를 사용할때 중요한데, 이유는 sails는 배포 환경으로 실행할때 모든 모델을 `migrate:safe`로 설정하기 때문이다. 이것의 으미는 더이상 자동적인 마이그래이션이 서버를 시작할때 되지 않는다는 의미이다. 데이터 베이스를 다음과 같은 방법으로 설정할 수 있다:
+  + 서버에 데이터베이스를 만들고 로컬에서 sails 어플리케이션을 `migrate:alter`로 실행시키되, db서버를 배포서버 설정해라. 자동적으로 db가 설정될것이다.
+  + 원격으로 서버를 접속할 수 없는경우, 로컬의 스키마를 덤프하고, 데이터 베이스서버로 임포트시키면된다.  
++ POST, PUT, 그리고 DELETE 요청을 보호하기 위한 CSRF를 활성화해라.
++ SSL 활성화
++ 만약 소켓을 사용한다면:
+  + `config/socket.js`를 socket.io의 배포 설정 [추천값](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)들로 설정해라.
+    + 예. `flashsocket` 전송 활성화
 
-##### Deploy
+##### 배표
 
-In production, instead of `sails lift`, you'll want to use forever to make sure your app will keep running, even if it crashes.
+실제 배포시에는, `sails lift`대신에, 심지어 크래쉬가 나더라도 어플리케이션이 계속 동작하는것 필요로 할 것이다.
 
-+ Install forever: `sudo npm install -g forever`
-  + More about forever: https://github.com/nodejitsu/forever
-+ From your app directory, start the server with forever: `forever start app.js --prod`
-  + This is the same thing as using `sails lift --prod`, but if the server crashes, it will be automatically restarted.
- 
++ 영구 설치법: `sudo npm install -g forever`
+  + 영구 설치법에 대한 자세한 정보: https://github.com/nodejitsu/forever
++ 어플리케이션 디렉토리에서, forever명령어와 함께 시작한다: `forever start app.js --prod`
+  + 이것은 `sails lift --prod`와 똑같은 역할을 하지만, 서버 크래시가 발생했을때, 자동적으로 재시작하게 해준다.
+  
 
 
 <docmeta name="uniqueID" value="Deployment402941">
