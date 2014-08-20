@@ -7,7 +7,7 @@ The API has proven satisfactory, but cleanup in the underlying code may cause mi
 
 ### What is an adapter?
 
- Adapters expose **interfaces**, which imply a conract to implemnt certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.
+ Adapters expose **interfaces**, which imply a contract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.
 
 
 ### What kind of things can I do in an adapter?
