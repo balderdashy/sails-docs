@@ -10,79 +10,11 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
-
-        The primary key value of the record to update.
-
-        <br/><strong>Example:</strong>
-        <code>
-          PUT /product/<strong>5</strong>
-        </code>
-
-        <br/>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td><code>&#42;</code></td>
-      <td>
-        <bubble>string</bubble>
-        <br/>
-        <bubble>number</bubble>
-        <br/>
-        <bubble>object</bubble>
-        <br/>
-        <bubble>array</bubble>
-      </td>
-      <td>
-
-        For <code>POST</code> (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
+ Parameter                          | Type                                                    | Details
+ ---------------------------------- | ------------------------------------------------------- |:---------------------------------
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | The primary key value of the record to update.<br/><br/>e.g. `PUT /product/5`
+ *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For `GET` (shortcut) requests, add the parameters to the query string.
+ callback                           | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Examples
 

@@ -17,59 +17,10 @@ If the action is triggered via a socket request, the requesting socket will ALSO
 
 ### Parameters
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td><code>&#42;</code></td>
-      <td>
-        <bubble>string</bubble>
-        <br/>
-        <bubble>number</bubble>
-        <br/>
-        <bubble>object</bubble>
-        <br/>
-        <bubble>array</bubble>
-      </td>
-      <td>
-
-        For <code>POST</code> (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
-        Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-
-
-
-
+ Parameter      | Type                                                      | Details
+ -------------- | --------------------------------------------------------- |:---------------------------------
+ *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | For `POST` (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For `GET` (shortcut) requests, add the parameters to the query string. <br/> <br/> Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
+ callback       | ((string))                                                | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Examples
 
