@@ -1,13 +1,13 @@
 # sails.log()
-### Overview
+### 개요
 
-Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
-
+아래의 각각의 매소드들의 형식은, 인자의 형식이나, 콤마로 분리된 인자의 갯수에 제한이 없다. `console.log`와 같이, 매개변수를 통해 Sails 로거로 전달된 데이터는, 자동으로 노드의 [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options)를 통해 시각화 된다. 결과적으로, 정규 Node.js의 관례가 적용이 된다- 예를들면, `inspenct()` 메서드가 있는 객체를 로그에 전달하면, 자동으로 메서드가 실행되고, 리턴되는 문자열이 콘솔에 찍힌다. 비슷하게, 객체, 날짜, 배열 및 대부분의 다른 데이터 타입들도 `util.inspect()`에 내장된 로직을 통해 시각화 된다 (예. `[object Object]` 대신에 `{ pet: { name: 'Hamlet' } }`을 보게 될것이다. )
 
 
 ### `sails.log()`
 
-The default log function, which writes console output to `stderr` at the "debug" log level.
+기본 로그 함수로, 콘솔의 `stderr`으로 "debug" 로그레벨로 출력된다.
+
 
 ```js
 sails.log('hello');
@@ -16,7 +16,7 @@ sails.log('hello');
 
 ### `sails.log.error()`
 
-Writes log output to `stderr` at the "error" log level.
+콘솔의 `stderr`으로 "error" 로그레벨로 출력된다.
 
 ```js
 sails.log.error('Unexpected error occurred.');
@@ -25,7 +25,7 @@ sails.log.error('Unexpected error occurred.');
 
 ### `sails.log.warn()`
 
-Writes log output to `stderr` at the "warn" log level.
+콘솔의 `stderr`으로 "warn" 로그레벨로 출력된다.
 
 ```js
 sails.log.warn('File upload quota exceeded for user','request aborted.');
@@ -33,11 +33,11 @@ sails.log.warn('File upload quota exceeded for user','request aborted.');
 ```
 
 ### `sails.log.debug()`
-_Alias for `sails.log()`_
+_`sails.log()`와 동일함_
 
 ### `sails.log.info()`
 
-Writes log output to `stdout` at the "info" log level.
+콘솔의 `stdout`으로 "info" 로그레벨로 출력된다.
 
 ```js
 sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
@@ -47,8 +47,8 @@ sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
 
 ### `sails.log.verbose()`
 
-Writes log output to `stdout` at the "verbose" log level.
-Useful for capturing detailed information about your app that you might only want to enable on rare occasions.
+콘솔의 `stdout`으로 "verbose" 로그레벨로 출력된다. 
+어플리케이션에서 드물게 일어나는 일에 대한 자세한 정보를 추적하는데 유용하다.
 
 ```js
 sails.log.verbose('A user initiated an account transfer...')
@@ -58,8 +58,8 @@ sails.log.verbose('A user initiated an account transfer...')
 
 ### `sails.log.silly()`
 
-Writes log output to `stdout` at the "silly" log level.
-Useful for capturing utterly ridiculous information about your app you only need on rare occasions.
+콘솔의 `stdout`으로 "silly" 로그레벨로 출력된다.
+어플리케이션에서 거의 발생하지 않는 완전히 말도 안되는 정보를 추적하는데 유용하다.
 
 ```js
 sails.log.silly('A user probably clicked on something..?');

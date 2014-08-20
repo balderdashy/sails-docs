@@ -14,7 +14,7 @@ What is my purpose in this world?
 
 ### old partial content from when spec was an itty bitty baby
 
-Generators are designed to make it easier to customize the `sails new` and `sails generate` command-line tools, and provide better for support for different Gruntfiles, configuration options, view engines, coffeescript, etc.
+Generators are designed to make it easier to customize the `sails new` and `sails generate` command-line tools, and provide better support for different Gruntfiles, configuration options, view engines, coffeescript, etc.
 
 
 #### Structure
