@@ -1,16 +1,15 @@
 # View Engines
 
-The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
+A view engine padrão no Sails é [EJS](https://github.com/visionmedia/ejs).
 
-##### Swapping out the view engine
+##### Trocando a view engine
 
-To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).)
+Para usar uma view engine diferente, você deve usar npm para instalar a mesma no seu projeto, então você deve setar `sails.config.views.engine` (no [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)).
 
-For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).
+Por exemplo, para trocar por jade, rode `npm install jade --save-dev`, depois sete `engine: 'jade'` no [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).
 
 
-
-##### Supported view engines
+##### View Engines Suportadas
 
   - [atpl](https://github.com/soywiz/atpl.js)
   - [dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) (.dust)
@@ -39,10 +38,9 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
 
 
 
-##### Adding new custom view engines
+##### Adicionando novas view engines personalizadas
 
-For instructions on adding support for a view engine not listed above, check out the [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api) repository.
-
+Para instrução para adicionar suporte a uma view engine não listada acima, leia mais sobre o projeto [consolidate](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api).
 
 <docmeta name="uniqueID" value="ViewEngines339501">
 <docmeta name="displayName" value="View Engines">
