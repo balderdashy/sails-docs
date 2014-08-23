@@ -1,65 +1,66 @@
-# Waterline: SQL/noSQL Data Mapper (ORM/ODM)
+# 워터라인: SQL/noSQL 데이터 매퍼 (ORM/ODM)
 
 
-Sails comes installed with a powerful [ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm) called [Waterline](http://waterlinejs.org), a datastore-agnostic tool that dramatically simplifies interaction with one or more [databases](http://www.cs.umb.edu/cs630/hd1.pdf).  It provides an abstraction layer on top of the underlying database, allowing you to easily query and manipulate your data _without_ writing vendor-specific integration code.
+Sails에는 [워터라인](http://waterlinejs.org)라 불리는 강력한 [ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm)이 내장되어 있다. 이것은 하나나 그 이상의 [데이터베이스](http://www.cs.umb.edu/cs630/hd1.pdf)와의 상호작용을 단순화 시켜주는 툴이다. 데이터베이스 상단에 위치한 추상 레이어로, 쿼리 및 데이터 조작을 특정 DB에 의존적인 코드 _없이_ 쉽게 처리하게 해준다.
 
-### Database Agnosticism
-
-In schemaful databases like [Postgres](), [Oracle](), and [MySQL](), models are represented by tables.  In [MongoDB](), they're represented by Mongo "collections".  In [Redis](), they're represented using key/value pairs.  Each database has its own distinct query dialect, and in some cases even requires installing and compiling a specific native module to connect to the server.  This involves a fair amount of overhead, and garners an unsettling level of [vendor lock-in](http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack) to a specific database; e.g. if your app uses a bunch of SQL queries, it will be very hard to switch to Mongo later, or Redis, and vice versa.
-
-Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`]() associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) and [.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html).)
+### 데이터베이스 불가지론
 
 
+[Postgres](), [Oracle](), and [MySQL]()와 같은 스키마 지향적인 데이터 베이스의 모델은 테이블에 의해 표현된다. [MongoDB]()에서는, Mongo "콜랙션"에 의해 표현된다. [Redis]()에서는, 키/벨류 쌍에 의해 표현이 된다. 각각의 데이터 베이스는 각자 자신만의 쿼리 용어가 존재하고, 심지어는 서버에 접속하는 특정 네이티브 모듈의 설치와 컴파일이 필요하다. 이러한 과정은 많은 오버헤드를 동반하고, 특정 데이터베이스에 [vendor lock-in](http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack) 수준의 불안 함을 동반하기도 한다; 예를 들면, 만약 어플리케이션에서 SQL 쿼리들을 사용하였다면, 이후에 Mongo, Redis, 혹은 다른 데이터베이스로 바꾸는 것은 매우 어려운 작업이 될 것이다.  
 
-### Scenario
-
-Let's imagine you're building an e-commerce website, with an accompanying mobile app.  Users browse products by category or search for products by keyword, then they buy them.  That's it!  Some parts of your app are quite ordinary; you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
-
-##### Flexibility
-
-_You ask the business what database they would like to use:_
-
-> "Datab... what?  Let's not be hasty, wouldn't want to make the wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
-
-The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
-
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration]().
+워터라인 쿼리 문법은 이러한 문제에 자유롭기 때문에, 새로운 레코드를 만들거나, 존재하는 레코드를 검색하고 가져오고, 갱신 하거나 삭제시키는것과 같은 비지니스 로직에 집중 할 수 있다. 어떠한 데이터 베이스에 접속했는지 상관 없이, 사용방법은 _완벽히 동일하다_. 게다가, 워터라인은 [`.populate()`]()를 사용해서, _심지어_ 각각의 모델들이 다른 데이터 베이스상에 존재한다고 해도, 모델간의 관계 설정을 가능케한다. 이것의 의미는 어플리케이션의 모델을 Mongo에서 Postgres로, MySql으로, Redis로 전환 할 수 있다는 것이고 다시 Mongo로 돌아갈 수도 있다 - 한줄의 코드 변경 없이. 저수준의 데이터베이스 종류에 의존적인 기능이 필요할때에는, 쿼리 인터페이스를 통해서 모델 아래의 데이터베이스 드라이버와 소통 할 수 있다. ([.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html)와 [.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html)를 참고.)
 
 
+### 시나리오
 
-##### Compatibility
+모바일 어플리케이션과 함께 상업용 웹사이트를 만들고 있다고 가정하자. 사용자는 카테고리별로 제품을 보게되거나 키워드를 통해 제품을 검색하고, 그것들을 구매 한다. 이것이 전부이다! 어플리케이션의 일부분은 지극히 평범하다; 당신은 로그인, 가입, 주문/결제 과정, 암호 재설정, 등등을 API 지향적으로 처리했다. 그러나, 거기에는 로드맵안에 당신이 좀더 집중해야할 숨어있는 몇몇의 일상기능이 있다는 점을 알것이다. 당연히 그렇다:
+
+##### 유연성
+
+_비지니스에게 내가 어떻게 데이터베이스를 사용하면 될지 물어보았다:_
+
+> "데이터..." 뭐라고? 너무 성급하게 생각하지마, 잘못된 선택을 하고싶진 않잖아? 곧 알게되겠지. 일단 시작해보자구.
+
+웹 어플리케이션이나 API를 위한 하나의 데이터베이스를 선택하는 전통적인 방법론은 실제로 대부분의 경우 금기시 한다. 종종 어플리케이션은 하나 혹은 그 이상의 존재하는 데이터 집합들과의 호환성을 필요로 하거나, 성능상의 이유로 다른 여러 타입의 데이터베이스를 사용하는게 필요하다.
+
+Sails는 `sails-disk`라는 기본 옵션을 사용하기때문에, 저장소로 임시 파일을 사용하여 아무런 설정없이 어플리케이션을 만드는것을 시작할 수 있다.진짜로의 전환이 준비가 되었을때 (그리고 모든사람이 실제 현재 존재하는것이 뭔지 알게 되었을때), 그냥 어플리케이션의 [connection configuration]()을 변경하면된다. 
+
+
+
+##### 호환성
 
 _The product owner/stakeholder walks up to you and says:_
+_ 프로젝트의 소유자 혹은 이해관계자가 당신에게 다가와서 말했다:_
 
-> "Oh hey by the way, the products actually already live in our point of sale system. It's some ERP thing I guess, something like "DB2"?  Anyways, I'm sure you'll figure it out- sounds easy right?"
+> "그런데 말이야, 이 제품은 사실 우리의 판매 시스템에 존재해. 그리고 생각해보니깐 "DB2"와 같은 ERP 비스무리한거 같은데 말이야. 어쨋든 뭐 어떻게든 당신은 잘 해낼거라고 생각해 참 쉽지! 안그래?"
 
-Many enterprise applications must integrate with an existing database.  If you're lucky, a one-time data migration may be all that's necessary, but more commonly, the existing dataset is still being modified by other applications.  In order to build your app, you might need to marry data from multiple legacy systems, or with a separate dataset stored elsewhere.  These datasets could live on 5 different servers scattered across the world! One colocated database server might house a SQL database with relational data, while another cloud server might hold a handful of Mongo or Redis collections.  
+많은 기업용 어플리케이션은 현존하는 데이터베이스에 통합 되어야 한다. 당신이 운이 좋다면, 한번의 마이그래이션으로도 충분할지도 모른다. 그러나 대부분은 존재하는 데이터집합들은 다른 어플리케이션에 의해 변경이 된다. 어플리케이션을 제작하기 위해서, 다양한 시스템으로부터 오는 데이터에 대해서 바싹해야한다, 아니면 어딘가에 저장될 데이터와 분리를 해야한다. 이러한 데이터셋은 전세계 곳곳에 흩어져있는 5가지의 다른 서버들 위에 존재 할 수도 있다. 하나의 서버는 관계형 데이터구조를 사용하는 SQL 데이터베이스를 , 반면 다른 클라우드 서버는 Mongo혹은 Redis 컬랙션을 사용할수도 있다.
+  
 
-Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually)
+Sails/워터라인은 다른 데이터 저장소에서(내부에서 혹은 인터넷 어디에서) 오는 모델을 연결시켜준다. 기존 데이터베이스안에 있는 커스텀 MySQL 테이블(아주 이상한 컬럼네임과 함께)에 연결되어있는 User 모델을 만들수 있다. DB2안에 있는 테이블에 연결된 Product모델, 혹은 MongoDB 컬렉션에 연결된 Order모델 실제 모델에 같은것을 적용할수 있다. 가장 좋은것은, 이러한 다른 데이터 저장소와 아답터들에 상관없이 `.populate()` 할 수 있다는것이다. 이렇게 함으로써 모델이 데이터베이스 종류와 상관없이 존재 할수 있으며, 컨트롤러와 모델 코드는 변경할 필요도 없다. (프로덕션 데이터를 수동으로 이전할 필요도 없을 것이다.)
 
-##### Performance
+##### 성능
 
-_You're sitting in front of your laptop late at night, and you realize:_
-> "How can I do keyword search?  The product data doesn't have any keywords, and the business wants search results ranked based on n-gram word sequences.  Also I have no idea how this recommendation engine is going to work.  Also if I hear the words `big data` one more time tonight I'm quitting and going back to work at the coffee shop."
+_ 당신은 밤늦게까지 컴퓨터 앞에 앉아있다. 그리고는 깨닳았다:_
+> "키워드 서치를 어떻게 하지? 지금 현재 데이터는 키워드가 없는데, n-gram word requences기반 검색 결과를 보여주길 원한다. 아 그리고 또 추천 엔진이 어떻게 동작하는지도 모른다. 그리고 한번만 `빅데이터` 소리를 더 들려주면, 오늘 난 그냥 그만 하고 커피숍으로 일하러 갈거야!"
 
-So what about the "big data"?  Normally when you hear bloggers and analyst use that buzzword, you think of data mining and business intelligence.  You might imagine a process that pulls data from multiple sources, processes/indexes/analyzes it, then writes that extracted information somewhere else and either keeps the original data or throws it away.
+그놈의 "빅데이터"가 무엇인가? 일반적으로 블로거나 분석가들이 이러한 인기어를 사용할때, 당신은 데이터 마이닝이나, 비지니스 자동화에 대해서 생각하였을 것이다. 여러군데에서 데이터를 뽑아와서 처리하는고 분석한이후 어디엔가 추출된 정보를 기록하고, 어디론가 원본데이터를 보관하거나 날려버리던가 했을것이라고 상상했을수도 있다.
 
-However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases (for instance MongoDB provides geospatial indexing, and ElasticSearch provides excellent support for indexing data for full-text search).
+그러나, "친밀도-우선" 검색이나 관련 제품 추천 엔진의 특성 처럼 색인과 분석과 같은 도전이 있을수도 있다. 다행이도, 몇몇의 데이터 베이스는 이러한 특정 빅데이터 사용 사례를 단순화 한다. (예를들면, MongoDB는 지리적 색인과 전체 문장 검색을 위한 데이터 색을을 제공하는 탄력 검색을 제공한다.)
 
-Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with optimizations/trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales. 
+제공된 방식으로 데이터 베이스를 사용하면, 성능이익에 지대한 영향을 준다, 특히 복잡한 보고서 쿼리, 검색(정말로 커스터마이즈된 정렬), NLP/기계 학습등을 사용할때 특히 그렇다. 어떤 데이터베이스는 전통적인 관계 비지니스 쿼리를 처리하는데 좋은반면, 다른것들은 정말 빠른 읽고 쓰기를 위한 최적화와 트레이드 오프를 통한 map/reduce-styple 데이터 처리에 적합하다. 이러현 고려사항은 특히 당신의 어플리케이션의 사용자 수에 따라 중요하다.
 
-### Adapters
+### 아답터
 
-Like most MVC frameworks, Sails supports [multiple databases](http://beta.sailsjs.org/#/features).  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
+대부분의 MVC 프레임워크처럼, Sails는 [다중 데이터베이스](http://beta.sailsjs.org/#/features)를 지원한다. 이는, MongoDB를 쓰던, MySQL을 쓰던 혹은 다른 지원되는 데이터베이스를 쓰던간에 데이터 쿼리와 조작의 문법이 항상 같음을 의미한다.
 
-Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](http://beta.sailsjs.org/#/features), and a wealth of [community adapters](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) are also available.
+워터라인은 어답터의 컨셉을 활용하여 이러한 탄력성을 구축했다. 어답터는 `SELECT * FROM`과 `INSERT INTO`와 같은 저수준 문법을 `find()`와 `create()`와 같은 메서드로 매핑한 코드이다. Sails 코어 팀은 [가장 인기있는 데이터베이스](http://beta.sailsjs.org/#/features)와 풍부한 [커뮤니티 어답터](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md)를 유지보수하고 있다.
 
-Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations; anything from a proprietary enterprise system, to an open API like LinkedIn, to a cache or traditional database.
+커스텀 워터라인 어답터는 실제로 [만들기 매우 쉽다](https://github.com/balderdashy/sails-generate-adapter), 그리고 좀더 유지보수하거나, 통합하는데 적합하다; 독점 기업 시스템에서 부터, 링크드인 같은 오픈 API까지 그리고 캐시나 전통적인 데이터베이스 등등 어떤것이든 가능하다.
 
+### 접속설정
 
-### Connections
-
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Connections are defined in [`config/connections.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
+접속설정은 어떤 특정한 데이터 베이스 설정을 나타낸다. 이 설정 객체는 host 주소나, 포트, 사용자 이름, 암호와 기타 등등과 같은 정보 뿐만 아니라 사용할 어답터를 포함한다. 접속설정 [`config/connections.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)에 정의 되어 있다. 
 
 ```javascript
 // in config/connections.js
@@ -74,49 +75,45 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
+Sails 어플리케이션의 기본 데이터베이스은 기본 모델 설정 (`config/models.js`)에 위치하지만, [`connection`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)을 표기함으로써 이것 또한 모델 단위 재정의가 가능하다.
+
+### 유추
+
+펜과 잉크로 가득 채워진 양식 캐비넷 파일을 상상해보자. 모든 양식들은 같은 필드를 가지고 있다. (예 "이름", "생일", "결혼여부"), 그러나 각각의 양식은, 필드안에 다양한 형태로 _값이_ 씌여져 있다. 예를들면, 하나의 양식은 "Lara", "2000-03-16T21:16:15.127Z", "single" 인 반면 다른 양식은 "Larry", "1974-01-16T21:16:15.127Z", "married"이다.
+
+이제 핫도그 장사를 하고 있다고 가정하다. 당신은 _매우_ 정리를 잘하는 사람이기때문에, 캐비냇 파일을 아래처럼 정리할 것이다.
+
++ **알바생** (contains your employee records)
+  + `이름`
+  + `지급`
+  + `전화번호`
++ **주소** (contains a record for each location you operate)
+  + `길이름`
+  + `구`
+  + `시/도`
+  + `우편번호`
+  + `구매`
+    + 이 위치에서 만든 모든 구매 목록
+  + `매니저`
+    + 이곳에서 일하는 알바생
++ **구매** (고객 한명의 각각 구매애 대한 기록을 포함)
+  + `구매점`
+  + `구매한 제품`
+  + `구입처 `
++ **제품** (contains a record for each of your various product offerings)
+  + `메뉴 이름`
+  + `가격`
+  + `칼로리`
+  + `고기함량`
+  + `판매점`
+    + 이것을 판매하는 가계 목록.
 
 
-### Analogy
-
-Imagine a file cabinet full of completed pen-and-ink forms. All of the forms have the same fields (e.g. "name", "birthdate", "maritalStatus"), but for each form, the _values_ written in the fields vary.  For example, one form might contain "Lara", "2000-03-16T21:16:15.127Z", "single", while another form contains "Larry", "1974-01-16T21:16:15.127Z", "married".
-
-Now imagine you're running a hotdog business.  If you were _very_ organized, you might set up your file cabinets as follows:
-
-+ **Employee** (contains your employee records)
-  + `fullName`
-  + `hourlyWage`
-  + `phoneNumber`
-+ **Location** (contains a record for each location you operate)
-  + `streetAddress`
-  + `city`
-  + `state`
-  + `zipcode`
-  + `purchases`
-    + a list of all the purchases made at this location
-  + `manager`
-    + the employee who manages this location
-+ **Purchase** (contains a record for each purchase made by one of your customers)
-  + `madeAtLocation`
-  + `productsPurchased`
-  + `createdAt`
-+ **Product** (contains a record for each of your various product offerings)
-  + `nameOnMenu`
-  + `price`
-  + `numCalories`
-  + `percentRealMeat`
-  + `availableAt`
-    + a list of the locations where this product offering is available.
+Sails어플리케이션에서, **모델**은 하나의 파일 케비넷 같은것이다. 이것은 양식과 같은 **레코드**가 들어있다. `속성`은 각각의 양식안에 있는 필드와 같은 것이다.
 
 
-In your Sails app, a **model** is like one of the file cabinets.  It contains **records**, which are like the forms.  `Attributes` are like the fields in each form.
-
-
-
-### Notes
-+ This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose.)
-
-
+### 주의
++ 이 모델에 대한 문서는 내장된 ORM인 [Waterline](https://github.com/balderdashy/waterline)을 재정의시에는 적용이 불가능하다. 이경우 모델은 어떻게 설정했느냐에 따라 다를것이며, 사용하는 ORM library(Nongoose와 같은)에 따라 달라질 것이다.
 
 
 <docmeta name="uniqueID" value="ORM416997">
