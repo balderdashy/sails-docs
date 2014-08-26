@@ -3,14 +3,12 @@
 ## Preparation
 
 For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).
-Before you start building your test cases, you should first prepare your `./test` directory, for example in the following way:
+Before you start building your test cases, you should first organise your `./test` directory structure, for example in the following way:
 ```batch
 ./myApp
 ├── api
 ├── assets
-├── batch
-├── config
-├── node_modules
+├── ...
 ├── test
 │  ├── unit
 │  │  ├── controllers
@@ -63,10 +61,12 @@ describe.only('UsersModel', function() {
 
   describe('#find()', function() {
     it('should check find function', function (done) {
-      Users.find().then(function(results) {
-        // some tests
-        done();
-      }).fail(done);
+      Users.find()
+        .then(function(results) {
+          // some tests
+          done();
+        })
+        .catch(done);
     });
   });
 
@@ -81,7 +81,7 @@ To test controller responses you can use [Supertest](https://github.com/visionme
 ```js
 var request = require('supertest');
 
-describe.only('UsersController', function() {
+describe('UsersController', function() {
 
   describe('#login()', function() {
     it('should redirect to /mypage', function (done) {
