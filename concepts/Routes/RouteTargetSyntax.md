@@ -61,7 +61,7 @@ That's the letter "**r**", followed by a pipe character `|`, a regular expressio
 
 Will match `/123/abc/def`, running the `myaction` action of `MessageController` and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
 
-Note the double-backslash in `\\d` and `\\w`; this is escaping is necessary for the regular expression to work correctly!
+Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the regular expression to work correctly!
 
 #### About route ordering
 
