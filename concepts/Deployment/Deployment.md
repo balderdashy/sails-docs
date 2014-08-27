@@ -31,6 +31,7 @@ Node.js is pretty dern fast.  For many apps, one server is enough to handle the 
 
 ##### Configure
 
++ All yout production environment settings are stored in `config/env/production.js`
 + Configure your app to run on port 80 (if not behind a proxy like nginx)
 + Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
 + Make sure your database is set-up on the production server. This is especially important if you are using a relational database such as MySQL, because sails sets all your models to `migrate:safe` when run in production, which means no auto-migrations are run on starting up the app. You can set your database up the following way:
@@ -44,11 +45,13 @@ Node.js is pretty dern fast.  For many apps, one server is enough to handle the 
 
 ##### Deploy
 
-In production, instead of `sails lift`, you'll want to use forever to make sure your app will keep running, even if it crashes.
+In production, instead of `sails lift`, you'll want to use forever or PM2 to make sure your app will keep running, even if it crashes.
 
 + Install forever: `sudo npm install -g forever`
   + More about forever: https://github.com/nodejitsu/forever
-+ From your app directory, start the server with forever: `forever start app.js --prod`
++ Or install PM2: `sudp npm install pm2 -g --unsafe-perm`
+  + More information about that: https://github.com/Unitech/pm2 
++ From your app directory, start the server either with `forever start app.js --prod` or `pm2 start app.js -x -- --prod`
   + This is the same thing as using `sails lift --prod`, but if the server crashes, it will be automatically restarted.
  
 
