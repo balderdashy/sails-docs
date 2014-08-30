@@ -54,6 +54,21 @@ Adding custom blueprints is also supported, but they currently do not get bound 
     GET /myRoute': {blueprint: 'foo'}
 
 
+### Disabling blueprints on a per-controller basis
+
+You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller defintion, and assigning it a configuration object with overrides for the settings in this file.
+
+```
+module.exports = {
+  _config: {
+    actions: false,
+    shortcuts: false,
+    rest: false
+  }
+}
+
+```
+
 ### Notes
 
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](/#/documentation/reference/websockets/sails.io.js) for example usage.
