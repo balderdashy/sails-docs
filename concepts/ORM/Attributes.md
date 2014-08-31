@@ -19,6 +19,7 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - string
 - text
 - int
+- integer
 - float
 - date
 - datetime
@@ -26,7 +27,6 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - binary
 - array
 - json
-
 
 ###### defaultsTo
 
