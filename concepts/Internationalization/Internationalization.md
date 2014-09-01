@@ -66,7 +66,7 @@ For example, here's another pass at `config/locales/es.json`:
 ```json
 {
     "hello": "Hola!",
-    "hello-how-are-you-today": "¿Hola %s, como estas?",
+    "hello-how-are-you-today": "Hola %s, ¿cómo estás?",
 }
 ```
 
