@@ -57,10 +57,11 @@ In addition to the wildcard address syntax, you may also use Regular Expressions
 
 That's the letter "**r**", followed by a pipe character `|`, a regular expression string *without delimiters*, another pipe, and a list of parameter names that should be mapped to parenthesized groups in the regular expression.  For example:
 
-`"r|^/\d+/(\w+)/(\w+)$|foo,bar": "MessageController.myaction"`
+`"r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "MessageController.myaction"`
 
 Will match `/123/abc/def`, running the `myaction` action of `MessageController` and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
 
+Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the regular expression to work correctly!
 
 #### About route ordering
 
