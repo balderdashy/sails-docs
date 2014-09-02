@@ -1,27 +1,25 @@
-# Layouts
+# 레이아웃
 
-When building an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout.  This [reduces the total amount of code](http://en.wikipedia.org/wiki/Don't_repeat_yourself) in your project and helps you avoid making the same changes in multiple files down the road.
+어플리케이션을 제작할때 많은 다른 페이지들이 존재한다, 여러 HTML에 들어갈 것이라고 예상되는 마크업들은 레이아웃으로 만들면 도움이된다. 이렇게 하게되면, 프로젝트 [코드의 총량을 줄일](http://en.wikipedia.org/wiki/Don't_repeat_yourself) 수 있으며, 같은 내용이담긴 여러개 파일을 만드는것을 막을 수 있게된다,
 
-In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
+Sails와 Express에서는, 레이아웃은 뷰엔진 그 자체에서 구현이 된다. 예를들면, `jade`는 그들만의 문법으로, 자신만의 레이아웃 시스템을 가지고 있다.
 
-For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
+편의성을 위해, ** EJS라는 기본 뷰 엔진**을 사용할 경우 레이아웃을 지원 하게 된다. 만약 다른 뷰 엔진으로 레이아웃을 사용하고 싶다면, [뷰 엔진 문서](./#!documentation/reference/Views/ViewEngines.html)에서 적합한 문법을 찾아봐라.
 
+### 레이아웃 제작
 
-### Creating Layouts
+Sails 레이아웃은 다른 뷰와 조합 할 수 있게 `views/`폴더안에 `.ejs`라는 특별한 파일로 존재한다. 레이아웃은 주로 전문과 (e.g. `!DOCTYPE html<html><head>....</head><body>`) 후문 (`</body></html`)을 포함한다. 그리고 원래의 뷰 파일은 `<%- body %>`를 통해 삽입이 된다. 레이아웃은 뷰 없이는 절대 사용되지 않으며, 이것은 마치 센드위치 빵과 비슷한 방식으로 제공된다.
 
-Sails layouts are special `.ejs` files in your app's `views/` folder you can use to "wrap" or "sandwich" other views. Layouts usually contain the preamble (e.g. `!DOCTYPE html<html><head>....</head><body>`) and conclusion (`</body></html`).  Then the original view file is included using `<%- body %>`.  Layouts are never used without a view- that would be like serving someone a bread sandwich.
+레이아웃은 [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)에서 설정하거나 혹은 비활성화 할 수 있으며, [local](./#!documentation/reference/Views/Locals.html)을 통해 특별한 route나 액션을 재정의 할 수 있다. 기본적으로, Sails는 `views/layout.ejs`에 위치한 레이아웃을 통해 모든 뷰를 컴파일 한다.
 
-Layout support for your app can be configured or disabled in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html), and can be overridden for a particular route or action by setting a special [local](./#!documentation/reference/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
+### 주의
 
-
-### Notes
-
-> #### Why do layouts only work for EJS?
-> In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
+> #### 왜 EJS에서만 레이아웃이 동작하나?
+> Express 3에서, layout과 partials의 기본지원이 중단되었다. 대신, 개발자에게 이러한 기능을 뷰엔진에 의존하도록 하였다. (더 자세한 내용은 https://github.com/balderdashy/sails/issues/494 참고.)
 > 
-> Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
+> Sails에 Express 3을 적용함에따라, 기존의 Express 2.x와 Sails 0.8.x 어플리케이션과의 호환성을 위해 `레이아웃` 기능을 제공하기로 결정했고, 다른 MVC 프레임워크 커뮤니티에서 온 사람들의 친숙함을 고려하였다. 그 결과 기본 뷰엔진인 ejs에 테스트된게 현재의 레이아웃이다.
 >
-> If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. Jade, handlebars, haml, dust) you&rsquo;ll want to set `layout:false` in [`sails.config.views`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.views.html), then rely on your view engine&rsquo;s custom layout/partial support.
+> 만약 레이아웃 기능이 마음에 들지 않거나, (현재) ejs보다는 다른 서버사이드 뷰 엔진을 사용하고 싶으면 [`sails.config.views`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.views.html)에서 `layout:false`를 설정하면된다. 그리고는 자신의 뷰엔진에 맞는 커스텀 레이아웃/partial을 사용해라.
 
 
 
