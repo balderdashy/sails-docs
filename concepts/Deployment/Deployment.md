@@ -49,7 +49,7 @@ In production, instead of `sails lift`, you'll want to use forever or PM2 to mak
 
 + Install forever: `sudo npm install -g forever`
   + More about forever: https://github.com/nodejitsu/forever
-+ Or install PM2: `sudp npm install pm2 -g --unsafe-perm`
++ Or install PM2: `sudo npm install pm2 -g --unsafe-perm`
   + More information about that: https://github.com/Unitech/pm2 
 + From your app directory, start the server either with `forever start app.js --prod` or `pm2 start app.js -x -- --prod`
   + This is the same thing as using `sails lift --prod`, but if the server crashes, it will be automatically restarted.
