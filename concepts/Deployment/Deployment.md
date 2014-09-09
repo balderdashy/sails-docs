@@ -31,7 +31,7 @@ Node.js is pretty dern fast.  For many apps, one server is enough to handle the 
 
 ##### Configure
 
-+ All yout production environment settings are stored in `config/env/production.js`
++ All your production environment settings are stored in `config/env/production.js`
 + Configure your app to run on port 80 (if not behind a proxy like nginx). If you're using nginx, be sure to configure it to relay websockets to your app. You can find guidance here in nginx docs [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html).
 + Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
 + Make sure your database is set-up on the production server. This is especially important if you are using a relational database such as MySQL, because sails sets all your models to `migrate:safe` when run in production, which means no auto-migrations are run on starting up the app. You can set your database up the following way:
