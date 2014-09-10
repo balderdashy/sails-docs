@@ -38,7 +38,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 ##### copy
 
 > **dev task config**
-> Copies all directories and files, exept coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
+> Copies all directories and files, except coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
 
 > **build task config**
 > Copies all directories and files from the .tmp/public directory into a www directory.
