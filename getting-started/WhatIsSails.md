@@ -1,13 +1,11 @@
-# What is Sails?
+# O que é Sails?
+
+Sails é, claro, um web framework. Mas vamos voltar um pouco. O que isso significa? As vezes quando nos referimos a "web", nós queremos dizer "front-end web". Nós pensamos nos conceitos como padrões web, ou HTML 5, ou CSS 3; e frameworks tal como Backbone, ou Angular, ou jQuery. Sails não é "este tipo" de web framework. Sails funciona bem com Angular e Backbone, mas você nunca usará Sails _no lugar_ de alguma destas bibliotecas.
+
+Por outro lado, as vezes quando nós falamos de "web frameworks", nós queremos dizer "back-end web". Isso invoca conceitos como REST, ou HTTP, ou WebSockets; e tecnologias como Java, ou Ruby, ou Node.js. Um framework "back-end" ajuda você a fazer coisas como APIs, servir arquivos HTML, tratar centenas de milhares de usuários simultâneos. Sails é "este tipo" de web framework.
 
 
-Sails is, of course, a web framework.  But take a step back.  What does that mean?  Sometimes, when we refer to the "web", we mean the "front-end web."  We think of concepts like web standards, or HTML 5, or CSS 3; and frameworks like Backbone, or Angular, or jQuery.  Sails is not "that kind" of a web framework.  Sails works great with Angular and Backbone, but you would never use Sails _instead_ of those libraries.
-
-On the other hand, sometimes when we talk about "web frameworks", we mean the "back-end web."  This evokes concepts like REST, or HTTP, or WebSockets; and technogies like Java, or Ruby, or Node.js.  A "back-end web" framework helps you do things like build APIs, serve HTML files, and handle hundreds of thousands of simultaneous users.  Sails is "that kind" of web framework.
-
-
-
-## Convention over Configuration
+## Convenção sobre Configuração
 
 Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
 

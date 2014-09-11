@@ -1,6 +1,6 @@
-# Disabling Grunt
+# Desabilitando Grunt
 
-To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](/#/documentation/anatomy/myApp/tasks) folder). You can also disable the Grunt hook. Just set the `grunt` property to `false` in `.sailsrc` hooks like this:
+Para desabilitar integração do Grunt com Sails, simplesmente delete o arquivo do Grunt (e/ou delete a pasta [`tasks/`](/#/documentation/anatomy/myApp/tasks))). Você também pode desabilitar o Grunt hook. Simplesmente sete a propriedade `grunt` para `false` no hooks do arquivo `.sailsrc` , vai ser algo assim:
 
 ```json
 {
@@ -10,13 +10,16 @@ To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`ta
 }
 ```
 
-### Can I customize this for SASS, Angular, client-side Jade templates, etc?
+### Posso customizar isso para SASS, Angular, Client-side Jade Templates, etc?
 
-Yep! Just replace the relevant grunt task in your `tasks/` directory, or add a new one.  Like [SASS](https://github.com/sails101/using-sass) for example.
+Sim! Substitua a tarefa no diretório `tasks/`, ou adiciona uma nova. Como [SASS](https://github.com/sails101/using-sass) por exemplo.
 
-If you still want to use Grunt for other purposes, but don't want any of the default web front-end stuff, just delete your project's assets folder and remove the front-end oriented tasks from the `grunt/register/` and `grunt/config/` folders.  You can also run `sails new myCoolApi --no-frontend` to omit the assets folder and front-end-oriented Grunt tasks for future projects.  You can also replace your `sails-generate-frontend` module with alternative community generators, or [create your own](https://github.com/balderdashy/sails-generate-generator).  This allows `sails new` to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.
+Se você ainda precisa usar Grunt para outros propósitor, mas não quer nada da parte front-end, somente delete os assets da pasta assets do projeto e remova as tarefas de front-end das pastas `grunt/register/` e `grunt/config/`.
 
+Você pode também rodar para futuros projetos `sails new myCoolApi --no-frontend` para omitir a pasta de assets e as tarefas de front-end do Grunt.
+Você também pode substituir seu modulo `sails-generate-frontend` com geradores alternativos, ou [criar seu proprio](https://github.com/balderdashy/sails-generate-generator).  Isso faz com que `sails new` crie o boilerplate para aplicativos iOS, Android, Cordova, SteroidsJS, etc.
 
 <docmeta name="uniqueID" value="DisablingGrunt970874">
 <docmeta name="displayName" value="Disabling Grunt">
+
 
