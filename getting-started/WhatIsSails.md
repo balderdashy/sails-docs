@@ -3,7 +3,7 @@
 
 Sails is, of course, a web framework.  But take a step back.  What does that mean?  Sometimes, when we refer to the "web", we mean the "front-end web."  We think of concepts like web standards, or HTML 5, or CSS 3; and frameworks like Backbone, or Angular, or jQuery.  Sails is not "that kind" of a web framework.  Sails works great with Angular and Backbone, but you would never use Sails _instead_ of those libraries.
 
-On the other hand, sometimes when we talk about "web frameworks", we mean the "back-end web."  This evokes concepts like REST, or HTTP, or WebSockets; and technogies like Java, or Ruby, or Node.js.  A "back-end web" framework helps you do things like build APIs, serve HTML files, and handle hundreds of thousands of simultaneous users.  Sails is "that kind" of web framework.
+On the other hand, sometimes when we talk about "web frameworks", we mean the "back-end web."  This evokes concepts like REST, or HTTP, or WebSockets; and technologies like Java, or Ruby, or Node.js.  A "back-end web" framework helps you do things like build APIs, serve HTML files, and handle hundreds of thousands of simultaneous users.  Sails is "that kind" of web framework.
 
 
 

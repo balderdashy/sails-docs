@@ -19,7 +19,7 @@ The asset pipeline is the place where you will organize the assets that will be 
 This is an array of css files to be injected into your html as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
 
 ##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
+This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependencies before the file that depends on them.)
 
 ##### Template Files to Inject
 This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
