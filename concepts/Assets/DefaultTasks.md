@@ -6,8 +6,6 @@ Sailsにバンドルされているアセットパイプラインはあなたの
 Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
 
 例えば以下の様な機能がSailsのデフォルトのGrunt設定として使うことが出来ます。:
-
-
 - LESSの自動コンパイル
 - JITの自動コンパイル
 - Coffescriptの自動コンパイル
