@@ -1,24 +1,25 @@
-# What is Sails?
+# Sailsって何？
 
 
-Sails is, of course, a web framework.  But take a step back.  What does that mean?  Sometimes, when we refer to the "web", we mean the "front-end web."  We think of concepts like web standards, or HTML 5, or CSS 3; and frameworks like Backbone, or Angular, or jQuery.  Sails is not "that kind" of a web framework.  Sails works great with Angular and Backbone, but you would never use Sails _instead_ of those libraries.
+SailsはもちろんWebフレームワークです。しかしちょっと立ち返って考えみましょう。これってどういう意味でしょうか。時に我々がWebと行った時は「フロントエンドのWeb」を意味します。つまりWeb標準とか、HTML5とかCSS3のような感じにだったり、またフレームワークではBackboneやAngular、jQueryといった感じにです。Sailsは「その手のWebフレームワーク」ではありません。SailsはAngularはBackboneとうまく組み合わせて使うことが出来ますがSailsをそれらのフレームワークの_代わりに_使うことは出来ません。
 
-On the other hand, sometimes when we talk about "web frameworks", we mean the "back-end web."  This evokes concepts like REST, or HTTP, or WebSockets; and technogies like Java, or Ruby, or Node.js.  A "back-end web" framework helps you do things like build APIs, serve HTML files, and handle hundreds of thousands of simultaneous users.  Sails is "that kind" of web framework.
+その一方で「Webフレームワーク」というと「Webバックエンド」を指すことも有ります。これはRESTやHTTP,WebSocketなどを想起させるものであり、JavaやRuby、Node.jsのような技術分野に関するものです。「バックエンドWeb」のフレームワークを使うことでAPIを作ったりHTMLファイルを提供したり非常に多くのユーザからの同時アクセスを処理したりといったことを楽に行うことが出来ます。Sailsはそういう種類にフレームワークです。
 
 
 
-## Convention over Configuration
+## 設定より慣習
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
+Sailsは他のMVCWebフレームワークと同様の目的を、多くの同様な方法を使って成し遂げます。これはあえてそうしています。アプリケーション開発に関する一貫したアプローチはアプロケーション開発をより予測可能に、そして関わる全ての人々に対して効率的にすることができるからです。
 
-Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes you more productive.  In many cases, you'll even be able to recycle some of your backend code.
+会社でSailsアプリケーションを開発する仕事を始める(あるいはそれを行う会社を作ること)
+ことを想像してください。もしチームの中にZendやLaravel,、CodeIgniter、Cake、Grails、Django、ASP.NET MVC、Railsで仕事をした人がいるとすれは、Sailsは彼らにとって馴染みあるものです。それだけでなく通常は(バックグラウンドがPHPであるかRubyかJavaかC#かNode.jsにかかわらず)Sailsプロジェクトを見た途端に今までいくつもいくつも書き上げてきた基本的なコードの書き方と同じだと思うでしょう。２つ目や３つ目のプロジェクトはどうでしょうか。Sailsの新規アプリケーションを作るときはいつでも見慣れた、きちんとしたboilerplateを使って開発を始められますのでより生産的に開発を行えます。多くの場合においてはある程度のバックエンドコードを再利用することだって出来ます。
 
-> **History**
+> **歴史**
 >
-> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenant of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
+> Sailsがこういうコンセプトを発明したのではありません。もう[ずっと前からあった](https://en.wikipedia.org/wiki/Convention_over_configuration)のです。設定より慣習(CoCとも言います)という言葉がRuby on Railsで有名になりましたがそれより前にも、（90年代後半や2000年代初頭の伝統的なJavaWebフレームワークで一般的に見られた、恐ろしく冗長なXML設定に対する自然な反発として）JavaBeansのコアテナントのスペックその他で多く使われていたのです。
 
 
-## Loose Coupling
+## ゆるい結合
 
 > TODO: explain why pushing towards an open standard for programming apps is important.
 >
@@ -40,7 +41,7 @@ Imagine starting a new job at a company building a Sails app (or imagine startin
 > + [Node culture](https://blog.nodejitsu.com/the-nodejs-philosophy/)
 
 
-## Pragmatism
+## 現実主義
 
 > TODO: set the stage- the purpose of any practical web framework should be to solve real-world use cases.  Node, being built on JavaScript, is the most intensely pragmatic thing to hit the scene since the introduction of Java.  It [will replace Java](http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise) [in the enterprise](http://blog.appfog.com/node-js-is-taking-over-the-enterprise-whether-you-like-it-or-not/).
 

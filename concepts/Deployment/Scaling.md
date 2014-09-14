@@ -1,14 +1,13 @@
-# Scaling
+# スケーリング
 
-If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
-you'll want to set up a scalable architecture that your app can scale as more and more people use it.
+直近の予定としてトラフィックの増大を想定しているなら（あるいはすでに多くのトラフィックがあるなら）多くの人のアクセスを受け入れられるようなスケーラブルなアーキテクチャでのセットアップを行いましょう。
 
-### Benchmarks
+### ベンチマーク
 
-For the most part, Sails benchmarks exactly like any Connect, Express or Socket.io app.  This has been validated on a few different occasions, most [recently here](http://serdardogruyol.com/?p=111).  If you have your own benchmark you'd like to share, please send a pull request to this page on Github.
+ほとんどの部分に関してSailsのベンチマークは他のConnectやExpress、Socket.ioのアプリケーションと全く同じです。このことはいくつ管異なる環境下で確認されており、直近のものは[これ](http://serdardogruyol.com/?p=111)です。もしあなた自身でおこなったベンチマークの結果をシェアしてもいいならgithubひプルリクエストを送ってください。
 
 
-### Example architecture
+### アーキテクチャ例
 
 ```
                        Sails.js server
@@ -23,22 +22,23 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 
 ### Configuring your app for a clustered deployment
 
-+ Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) is scalable (e.g. sharding/cluster) 
-+ Configure your app to use a shared session store
-  + Support for redis is built in (see the `adapter` options in `config/session.js`)
-+ IF YOU'RE USING SOCKETS: 
-  + Configure your app to use a shared socket store
-    + Support for redis is built in (see the `adapter` options in `config/sockets.js`)
-    + Note: If you'd rather not set up a socket store, a workable solution for your use case may be enabling sticky sessions at your load balancer.
-+ Ensure none of the other dependencies you might be using in your app rely on shared memory.
++ モデルに使われているデータベース（MySQLやPostgres、Mongoなど）がスケーラブルなこと（シェーディングやクラスタリングがなされている）を確認して下さい。
++ 共有のセッションストアを利用する設定をしてください。
+  + Radisを使った実装がサポートされています。(`config/session.js`の`adapter`オプションをご確認ください)
++ もしもSocketを使ってるなら:
+  + 共有のソケットストアを利用する設定をしてください。
+    + Radisを使った実装がサポートされています。(config/sockets.jsの`adapter`オプションをご確認ください
+    + 備考:もしソケットストアを利用する実装をしていない場合ロードバランサーでsticky sessionsを設定することが解決策になりえます。
++ その他の依存関係にある部分が共有メモリに依存していないことを確認してください。
 
-### Deploying a Sails cluster on multiple servers
 
-+ Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
-  + Start up Sails on each instance using `forever`
-  + More on load balancers: http://en.wikipedia.org/wiki/Load_balancing_(computing)
-+ Configure your load balancer to terminate SSL requests
-  + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
+### Sailsのクラスタを複数台のサーバにアップロードする
+
++ ロードバランサの後ろに複数個のインスタンス（つまりプロジェクトが動いているサーバ）をセットアップする。
+  + それぞれのインスタンスで`forever`を使ってSailsを起動する。
+  + ロードバランサーに関してのさらなる詳細は: http://en.wikipedia.org/wiki/Load_balancing_(computing)
++ ロードバランサーがSSLを終端するように設定する
+  + そのためSails側でSSLを設定する必要はありません。（通信はすでに復号されています。）
 
 
 <docmeta name="uniqueID" value="Scaling291270">

@@ -1,32 +1,33 @@
-# Lifecycle callbacks
+# ライフサイクルコールバック
 
-### Overview
+### 概要
 
-Sails exposes a handful of lifecycle callbacks on models that are called automatically before or after certain actions.  For example, we sometimes use lifecycle callbacks for automatically encrypting a password before creating or updating an Account model.  Another example use case is automatically regenerating a URL slug when a Project's `name` attribute is updated.
+Sailsは特定の処理の前後に呼び出される便利なコールバックを用意しています。例えば我々はAccuntモデルに追加したり更新したりする前にパスワードの暗号化を自動で行ったりします。その他の例としてはもでるProjectの`name`アトリビュートが更新された時に自動でURLのスラグを再生成するということが挙げられます。
 
-##### Callbacks on `create`
+
+##### `create`時のコールバック
 
   - beforeValidate: fn(values, cb)
   - afterValidate: fn(values, cb)
   - beforeCreate: fn(values, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
-##### Callbacks on `update`
+##### `update`時のコールバック
 
   - beforeValidate: fn(valuesToUpdate, cb)
   - afterValidate: fn(valuesToUpdate, cb)
   - beforeUpdate: fn(valuesToUpdate, cb)
   - afterUpdate: fn(updatedRecord, cb)
 
-##### Callbacks on `destroy`
+##### `destroy`時のコールバック
 
   - beforeDestroy: fn(criteria, cb)
   - afterDestroy: fn(destroyedRecords, cb)
 
 
-### Example
+### 例
 
-If you want to encrypt a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
+もしパスワードを保存前に暗号化したいときは`beforeCreate`コールバックを使います。
 
 ```javascript
 var bcrypt = require('bcrypt');
@@ -50,14 +51,14 @@ module.exports = {
   },
 
 
-  // Lifecycle Callbacks
+  // コールバック
   beforeCreate: function (values, cb) {
 
-    // Encrypt password
+    // パスワードを暗号化
     bcrypt.hash(values.password, 10, function(err, hash) {
       if(err) return cb(err);
       values.password = hash;
-      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
+      //エラーを返す引数でcd()をコールします。これはいくつかの条件がFailした時に処理全体をキャンセルすることが出来、便利です。
       cb();
     });
   }

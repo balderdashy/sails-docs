@@ -1,6 +1,7 @@
-# Models
+# モデル
 
-A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
+モデルは構造化されたデータの集合を表し、通常はデータベースの中のひとつのテーブルまたはコレクションを含みます。モデルは通常`api/models/`フォルダの中にファイルを作成することで定義します。
+
 
 ![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
 
@@ -19,44 +20,44 @@ module.exports = {
 -->
 
 
-### Using models
+### モデルを使う
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://beta.sailsjs.org/#/documentation/reference/waterline/models/find.html), [create](http://beta.sailsjs.org/#/documentation/reference/waterline/models/create.html), [update](http://beta.sailsjs.org/#/documentation/reference/waterline/models/update.html), and [destroy](http://beta.sailsjs.org/#/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+モデルはコントローラ、ポリシー、サービス、レスポンス、テスト及びカスタムモデルからアクセス可能です。モデルにはいくつものメソッドが自動で用意されておりそのうち最も大切なのは[find](http://beta.sailsjs.org/#/documentation/reference/waterline/models/find.html)、[create](http://beta.sailsjs.org/#/documentation/reference/waterline/models/create.html)、[update](http://beta.sailsjs.org/#/documentation/reference/waterline/models/update.html)、[destroy](http://beta.sailsjs.org/#/documentation/reference/waterline/models/destroy.html)です。これらのメソッドは[非同期](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)で処理されます。（裏側ではWaterlineがクエリーをデータベースに投げ、レスポンスを待ちます。）
 
-Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
+最終的にはクエリメソッドはクエリオブジェクトを返します。実際にクエリを実行するには`.exec(cb)`をこのクエリオブジェクト上でコールしなければなりません。（`cb`はクエリが完了後に呼び出されるコールバックです。）
 
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.fail()`, which will return a [Q promise](https://github.com/kriskowal/q).
-
-
+Waterlineはpromiseのためのオプトインサポートも用意しています。クエリオブジェクトで`.exec()`を呼び出す代わりに[Q promise](https://github.com/kriskowal/q)を返す`.then()`、`.spread()`や `.fail()`をコールすることも出来ます。
 
 
 
-### Model Methods (aka "static" or "class" methods)
-
-Model class methods are functions built into the model itself that perform a particular task on its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
 
 
-###### Custom model methods
 
-Waterline allows you to define custom methods on your models.  This feature takes advantage of the fact that Waterline models ignore unrecognized keys, so you do need to be careful about inadvertently overriding built-in methods and dynamic finders (don't define methods named "create", etc.)  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
+### モデルメソッド（Static/classメソッド）
 
-Model methods are generally asynchronous functions.  By convention, asynchronous model methods should be 2-ary functions, which accept an object of inputs as their first argument (usually called `opts` or `options`) and a Node callback as the second argument.  Alternatively, you might opt to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
+モデルのクラスメソッドはモデルのインスタンス（つまりレコード）に対して特定のタスクを実行するためにモデル内に書かれるものです。これは`.create()`, `.update()`, `.destroy()`,や`.find()`などのおなじみの、データペース操作のためのCRUDメソッドが記述されているところです。
 
-A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model records that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
 
-For example:
+###### カスタムのモデルメソッド
+
+Waterlineではモデル内にカスタムのモデルメソッドを作成することが出来ます。この機能はWaterlineが認識できないキーを無視するという特性を利用して作られているので最初から用意されているメソッドやダイナミックメソッドをうっかり書き換えてしまわないように注意が必要です。（つまりcreateというメソッドを定義したりしてはいけません）カスタムモデルメソッドは特定のモデルに関連したコントローラコードを切り分けるのに便利です。つまりこれはコントローラコードを取り出し、再利用可能なコードにすることが出来ます。（更に言うと`req`と`res`に依存しなくなります）
+
+モデルメソッドは通常、非同期動作です。慣例に従って非同期のモデルメソッドでは最初の引数にオブジェクトインプット（`opts`または`options`呼ばれる）を、2つ目の引数にNodeのコールバックを入れたファンクションを実行し、最初のファンクションとコールバックファンクションの2段階での実行を行う必要があります。代わりにpromiseを返すということも選択できます。（両方の方法ともうまく動きますので、これは好みによるものです。もし特定の好みがなければNodeのコールバックを選んでください。）
+
+カスタムのスタティックモデルメソッドを作成する上でのベストプラクティスはメソッドがレコードとそのプライマリキーの両方を受け入れられるようにすることです。 _複数_ のレコードを処理可能なメソッドにおいてはレコードの配列または主キーの配列を受け入れられるようにします。このコードを書くには少し時間がかかりますがメソッドをよりパワフルなものにします。それにもともとの作業はよく使われる作業を切り出す目的で行っているものですので、通常これをやる価値はあります。
+
+例えば:
 
 ```js
 // in api/models/Monkey.js...
 
-// Find monkeys with the same name as the specified person
+// 特定の人と同じ名前の猿を探す
 findWithSameNameAsPerson: function (opts, cb) {
 
   var person = opts.person;
 
-  // Before doing anything else, check if a primary key value
-  // was passed in instead of a record, and if so, lookup which
-  // person we're even talking about:
+  //すべての作業を行う前にレコードが渡されたのか主キーが渡されたのかを確認する。
+  //  もし主キーが渡された場合はその人の情報をLookupする。:
   (function _lookupPersonIfNecessary(afterLookup){
     // (this self-calling function is just for concise-ness)
     if (typeof person === 'object')) return afterLookup(null, person);
@@ -80,7 +81,7 @@ findWithSameNameAsPerson: function (opts, cb) {
 }
 ```
 
-Then you can do:
+そして、以下のように実行できます。:
 
 ```js
 Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
@@ -88,9 +89,9 @@ Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
 Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
 ```
 
-> For more tips, read about the incident involving [Timothy the Monkey]().
+> さらなるTipsに関しては[Timothy the Monkey]()に関してのincidentを御覧ください。
 
-Another example:
+その他の例:
 
 ```javascript
 // api/models/User.js
@@ -107,7 +108,7 @@ module.exports = {
   },
 
   /**
-   * Enrolls a user in one or more courses.
+   * ユーザは一つまたは複数のコースに加入する
    * @param  {Object}   options
    *            => courses {Array} list of course ids
    *            => id {Integer} id of the enrolling user
@@ -126,9 +127,9 @@ module.exports = {
 ```
 
 
-#### Dynamic Finders
+#### ダイナミックファインダー
 
-These are special static methods that are dynamically generated by Sails when you lift your app.  For instance, if your Person model has a "firstName", you might run:
+Sailsの起動時に自動的に動的に作成される特別なクラスメソッドです。たとえばPersonもでるに"firstName"があるとすると以下のメソッドが生成されます。:
 
 ```js
 Person.findByFirstName('emma').exec(function(err,people){ ... });
@@ -137,19 +138,19 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 #### Resourceful Pubsub Methods
 
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub).
-
+pubsubのhookに接続された特別なクラスメソッドです。詳細は[resourceful pubsubの項目](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub)をご覧ください。
 
 <!--
 another special type of class method.  It stands for 'Publish, Subscribe' and that's just what they do. These methods play a big role in how Sails integrates and utilizes Socket.IO.  They are used to subscribe clients to and publish messages about the creation, update, and destruction of models.  If you want to build real-time functionality in Sails, these will come in handy.
 -->
 
-#### Attribute Methods (i.e. record/instance methods)
+#### アトリビュートメソッド（レコード/インスタンスメソッド）
 
-Attribute methods are functions available on records (i.e. model instances) returned from Waterline queries.  For example, if you find the ten students with the highest GPA from the Student model, each of those student records will have access to all the built-in attribute methods, as well as any custom attribute methods defined on the Student model.
+アトリビュートメソッドはWaterlineクエリーから帰ってきたレコード（つまりモデルインスタンス）で利用可能なファンクションです。
+例えばStudentモデルからGPAの高い10人の生徒を探してきた場合、それぞれ生徒のレコードはカスタムアトリビュートメソッドや既存のアトリビュートメソッドにアクセスできます。
 
-###### Built-in attribute methods
-Every Waterline model includes some attribute methods automatically, including:
+###### ビルトインのアトリビュートメソッド
+すべてのWaterlineモデルにはいくつかのアトリビュートメソッドが自動的に含まれています。例えば:
 
 + [`.toJSON()`]()
 + [`.save()`]()
@@ -160,13 +161,13 @@ Every Waterline model includes some attribute methods automatically, including:
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->
 
 
-###### Custom attribute methods
+###### カスタムアトリビュートメソッド
 
-Waterline models also allow you to define your own custom attribute methods.  Define them like any other attribute, but instead of an attribute definition object, write a function on the right-hand-side.
+Waterlineではカスタムのアトリビュートメソッドを定義することも出来ます。他のアトリビュートと同じように定義しますが、右辺にはオブジェクトを代入する代わりにファンクションを代入します。
 
 
 ```js
-// From api/models/Person.js...
+// api/models/Person.jsより
 
 module.exports = {
   attributes: {
@@ -201,12 +202,12 @@ module.exports = {
 };
 ```
 
-> Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_ by convention.
+> 備考　ビルトインの`.save()`と`.destroy()`を除いて（これらは特筆すべき例外です）慣例上、アトリビュートメソッドはほとんど _同期動作_ です。
 
 
-###### When to write a custom attribute method
+###### どんな時にアトリビュートメソッドを書いたらいいですか
 
-Custom attribute methods are particularly useful for extracting some information out of a record.  I.e. you might want to reduce some information from one or more attributes (i.e. "is this person married?"")
+カスタムアトリビュートは一部の情報をレコードから除外する場合にとくに便利です。すなわち取得した一つまたは複数のレコードの情報を削減する時です。（つまり、「婚姻状況」を抜き出したいときなど）
 
 ```js
 if ( rick.isMarried() ) {
@@ -216,11 +217,11 @@ if ( rick.isMarried() ) {
 
 
 
-###### When NOT to write a custom attribute method
+###### アトリビュートメソッドを書くべきではない時
 
-You should **avoid writing your own _asynchronous_ attribute methods**.  While built-in asynchronous attribute methods like `.save()` and `.destroy()` can be convenient from your app code, writing your _own_ asynchronous attribute methods can sometimes have unintended consequences, and is not the most efficient way to build your app.
+** _非同期の_ アトリビュートメソッドを書くべきではありません**。`.save()`や`.destroy()`のようなビルトインの非同期のアトリビュートメソッドは便利ですが、 _オリジナルの_ 非同期のアトリビュートメソッドは予期せぬ結果をもたらすことが有ります。また、その方法はアプリケーションの開発上効率のいい方法ではありません。
 
-For instance, consider an app that manages wedding records.  You might think to write an attribute method on the Person model that updates the `spouse` attribute on both individuals in the database.  This would allow you to write controller code like:
+例えば、婚姻状況を管理するアプリケーションを挙げます。Personモデルにおいてそれぞれの人の`spouse`アトリビュートを更新するアトリビュートメソッドを書くかもしれえません。そうすればこのようなコントローラコードを書くことが出来ます。:
 
 ```js
 personA.marry(personB, function (err) {
@@ -229,9 +230,9 @@ personA.marry(personB, function (err) {
 })
 ```
 
-Which looks great...until you need to write a different action where you don't have an actual record for "personA".
+これは一見大丈夫に見えます。もっとも、personAに実際のレコードがないときに実行する別のアクションを作る必要が出るまでの間ですが。。。
 
-A better strategy is to write a custom (static) model method instead.  This makes your function more reusable/versatile, since it will be accessible whether or not you have an actual record instance on hand.  You might refactor the code from the previous example to look like:
+もっと良いストラテジーはカスタムのモデルメソッドを書くことです。こうすることで実際のレコードインスタンスがない場合にでも隠せす可能になるのでファンクションをもっと再利用可能にし、もっと有用なものにすることが出来ます。上記のコードを以下のようにリファクタしましょう。 :
 
 ```js
 Person.marry([joe,raquel], function (err) {
@@ -242,8 +243,9 @@ Person.marry([joe,raquel], function (err) {
 
 
 
-###### Naming your attribute methods
-Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" (e.g. `getFullName()`) prefix and avoid writing attribute methods that change records in-place.
+###### アトリビュートメソッドに命名する
+アトリビュートメソッドに命名するときにはあなたの作業中のモデルに最初からある**アトリビュートバリュー**とあなたが作った _アトリビュートメソッド_ との間で競合を起こさないために一定の命名規則で行ってください。良いプラクティスとしては"get*" (例えば`getFullName()`)の形式でプレフィックスを付けるということとレコードそのものを改編するアトリビュートメソッドを書くのを避けるということです。
+
 
 <!--
 

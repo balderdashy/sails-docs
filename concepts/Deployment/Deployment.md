@@ -1,58 +1,58 @@
-# Deployment
+#デプロイ
 
-### Overview
+###概要
 
-#### Before You Deploy
+####デプロイする前に
 
-Before you launch any web application, you should ask yourself a few questions:
+アプリケーションをデプロイする前に以下のことを自問してみてください。
 
-+ What is your expected traffic?
-+ Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
-+ What sorts of front-end apps will be "hitting" your infrastructure?
-  + Android apps
-  + iOS apps
-  + desktop web browers
-  + mobile web browsers (tablets, phones, iPad minis?)
-  + tvs, watches, toasters..?
-+ And what kinds of things will they be requesting?
++ あなたが予期している通信は何ですか。
++ 契約上（SLAなど）、稼働時間の補償に適合する必要がありますか。
++ どんな種類のフロントエンドアプリかあなたのインフラを「叩いて」きますか。
+  + Androidアプリケーション
+  + iOSアプリケーション
+  + デスクトップWebブラウザ
+  + モバイルWebブラウザ (タブレットや携帯、iPadminiなど)
+  + テレビ？時計？トースター？。。。
++ それらはどんなものをリクエストしてきますか。
   + JSON?
   + HTML?
   + XML?
-+ Will you be taking advantage of realtime pubsub features with Socket.io?
-  + e.g. chat, realtime analytics, in-app notifications/messages
-+ How are you tracking crashes and errors?
-  + Take a look at Sails' log config
++ Socket.ioを利用してリアルタイムのPublish/Subscribeデザインパターンに対応する必要がありますか。
+  + 例：チャット、リアルタイム分析、アプリ内通知・メッセージ
++ クラッシュした時やエラーが起こった時どうやって監視しますか。
+  + Sailsのログ設定を見てみてください。
+    
+#### 1台のサーバにデプロイする
+
+Node.jsはものすごく速いです。そのため来るべきトラフィックをハンドルするためには1台のサーバーで十分です（少なくとも最初のうちは）
+
+##### 設定
 
 
++ すべてのプロダクション環境の設定は`config/env/production.js`に保存されています。
++ アプリケーションが80番ポートで動作するように設定してください（Nginxのようなプロキシを使わない時は）もしNginxを使っているときはアプリケーションにWebSocketをリレーするように設定してください。Nginxの[WebSocket proxying](http://nginx.org/en/docs/http/websocket.html)ドキュメントでこれに関する手順を見ることが出来ます。
++ すべてのcssとjsがバンドルされるようにプロダクション環境を設定し、内部サーバが適切な環境に切り替わるようにしてください。（[linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)が必要です）
++ データベース設定がプロダクション環境に設定されていることを確認して下さい。これはあなたがMySQLのようなリレーショナルデータベースを利用しているときは特に重要です。なぜならSailsはプロダクション環境で実行された時にはすべてのモデルを`migrate:safe`に設定します。つまり自動マイグレーションは行われません。データベースの作成は以下の手順でできます。
+  + データベースをサーバ上に作成しローカル上でそのデータベースへの接続をするように設定し、更に`migrate:alter`の設定をしたうえでSailsを起動します。こレにより自動的にセットアップできます。
+  + データベースサーバにリモートから接続できない場合は単純にローカルのスキーマをダンプしてデータベースサーバでインポートしてください。
++ POST, PUT, DELETEのリクエストに対してCSRF防御を適用します。
++ SSLを有効化します。
++ もしSocketを使ってる時は:
+  + `config/sockets.js`を適切に設定し、[ここ](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)に書いているsocket.ioが推奨するプロダクション環境での設定に適合するようにします。
+    + 例：`flashsocket` transportを有効化する
 
-#### Deploying On a Single Server
-
-Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
-
-##### Configure
-
-+ All your production environment settings are stored in `config/env/production.js`
-+ Configure your app to run on port 80 (if not behind a proxy like nginx). If you're using nginx, be sure to configure it to relay websockets to your app. You can find guidance here in nginx docs [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html).
-+ Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
-+ Make sure your database is set-up on the production server. This is especially important if you are using a relational database such as MySQL, because sails sets all your models to `migrate:safe` when run in production, which means no auto-migrations are run on starting up the app. You can set your database up the following way:
-  + Create the database on the server and then run your sails app with `migrate:alter` locally, but configured to use the production server as your db. This will automatically set things up. 
-  +  In case you can't connect to the server remotely, you'll simply dump your local schema and import it into the database server.
-+ Enable CSRF protection for your POST, PUT, and DELETE requests
-+ Enable SSL
-+ IF YOU'RE USING SOCKETS: 
-  + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
-    + e.g. enable the `flashsocket` transport
 
 ##### Deploy
 
-In production, instead of `sails lift`, you'll want to use forever or PM2 to make sure your app will keep running, even if it crashes.
+プロダクション環境ではSailsがクラッシュしてもデーモンが走り続けられるように、`sails lift`を直接使う代わりにforeverかPM2を使います。
 
-+ Install forever: `sudo npm install -g forever`
-  + More about forever: https://github.com/nodejitsu/forever
-+ Or install PM2: `sudo npm install pm2 -g --unsafe-perm`
-  + More information about that: https://github.com/Unitech/pm2 
-+ From your app directory, start the server either with `forever start app.js --prod` or `pm2 start app.js -x -- --prod`
-  + This is the same thing as using `sails lift --prod`, but if the server crashes, it will be automatically restarted.
++ foreverをインストールする: `sudo npm install -g forever`
+  + foreverについての詳細: https://github.com/nodejitsu/forever
++ あるいはPM2をインストールする: `sudo npm install pm2 -g --unsafe-perm`
+  + PM2についての詳細: https://github.com/Unitech/pm2 
++ アプリケーションディレクトリーから`forever start app.js --prod`また` pm2 start app.js -x -- --prod`を実行してサーバを起動する。
+  + これは`sails lift --prod`と同じです。しかしこのようにすることでSailsがクラッシュしても自動的に復旧します。
  
 
 

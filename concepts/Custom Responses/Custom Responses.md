@@ -1,10 +1,11 @@
-# Custom Responses
+# カスタムレスポンス
 
-### Overview
 
-Sails v.10 allows for customizable server responses.  Sails comes with a handful of the most common response types by default.  They can be found in the `/api/responses` directory of your project.  To customize these, simply edit the appropriate .js file. 
+### 概要
 
-As a quick example, consider the following controller action:
+Sails 0.10はカスタムレスポンスをサポートしています。また、Sailsは一般的なレスポンスタイプに関して便利なデフォルトのレスポンスを用意しています。これらのレスポンスはプロジェクトファイルの`/api/responses`ディレクトリーに有ります。 これらをカスタマイズするためには適切な.jsファイルを編集してください。
+
+簡単な例として以下のコントローラアクションに関して考えてみましょう。:
 
 ```
 foo: function(req, res) {
@@ -16,13 +17,14 @@ foo: function(req, res) {
 }
 ```
 
-This code handles a bad request by sending a 400 error status and a short message describing the problem.  However, this code has several drawbacks, primarily:
+このコードではBad requestを処理してエラー原因を記述したエラーメッセージを返信しています。しかし、このコードには以下の様な問題が有ります。:
 
-*  It isn't *normalized*; the code is specific to this instance, and we'd have to work hard to keep the same format everywhere
-*  It isn't *abstracted*; if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
-*  The response isn't *content-negotiated*; if the client is expecting a JSON response, they're out of luck
 
-Now, consider this replacement:
+* *一般化されていない*：このコードはこのインスタンス特有のものですので、他の場所でもフォーマットが同じようになるために気を付けなければなりません。
+* *抽象化されていない*：他の場所で同じことをやらなければならない場合、コピーペーストしなければなりません。
+* レスポンスが*content-negotiated*でない： クライアントがJSONをリクエストしていた場合は残念なことになります。
+
+それではこれを解決することを考えてみましょう。:
 
 ```
 foo: function(req, res) {
@@ -32,60 +34,66 @@ foo: function(req, res) {
    ...
 }
 ```
+この方法は多くの利点があります:
+
+ - エラーのペイロードが一般化されている
+ - プロダクション環境と開発環境の間でエラーログの管理ができる。
+ - エラーコードが一貫している。
+ - JSONとHTMLなどのコンテンツネゴシエーションが処理されている。
+ - APIの微調整が適切な１箇所のファイルを簡単に編集するだけでできる。
+
+### レスポンスメソッドとファイル
+
+`/api/respons`フォルダに保存されたすべての`.js`スクリプトはコントローラ内で`res.[responseName]`の形式で呼び出すことで実行が出来ます。例えば`/api/responses/serverError.js`は`res.serverError(errors)`で呼び出すことが出来ます。
+リクエストとレスポンスはレスポンススクリプトの中ではt`his.req`と`this.res`で呼び出すことが出来ます。これにより任意のパラメータ（`serverError`の
+`errors`パラメータのように）を実際のレスポンスファンクションに引き渡すことが出来ます。
 
 
-This approach has many advantages:
+### デフォルトのレスポンス
 
- - Error payloads are normalized
- - Production vs. Development logging is taken into account
- - Error codes are consistent
- - Content negotiation (JSON vs HTML) is taken care of
- - API tweaks can be done in one quick edit to the appropriate generic response file
+新しいSailsのアプリケーションを作成した時に以下のレスポンスが`/api/responses`フォルダに生成されます。それぞれのレスポンスはクライアントがJSONを要求した時は`status`キーをエラーに関するその他の情報とHTTPステータスとともに標準化されたJSONにして送ります。
 
-### Responses methods and files
-
-Any `.js` script saved in the `/api/responses` folder will be executed by calling `res.[responseName]` in your controller.  For example, `/api/responses/serverError.js` can be executed with a call to `res.serverError(errors)`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (like `serverError`'s `errors` parameter).
-
-### Default responses
-
-The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
 
 #### res.serverError(errors)
 
-This response normalizes the error/errors of {errors} into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
+このレスポンスは{errors} 引数に渡されたエラーを解読可能かつ適切なエラーの配列を含み`Error`オブジェクトにして引き渡します。`errors`は一つまたは複数の文字列か`Error`オブジェクトである必要があります。そしてSailsのロガー（たいていはコンソールに）にエラー出力し、リクエストがHTMLの時は`views/500.*`のビューファイルを、リクエストがJSONの時はJSONオブジェクトを返します。Developmentモードではエラーのリストがレスポンスに含まれますがProductionモードでは実際のエラーは抑制されます。
+
 
 #### res.badRequest(validationErrors, redirectTo)
 
-For requesters expecting JSON, this response includes the 400 status code and any relevant data sent as `validationErrors`.
+このレスポンスはJSONを要求された時には`validationErrors`と400のステータスコードを含むレスポンスを返ます。
 
-For traditional (not-AJAX) web forms, this middleware follows best-practices for when a user submits invalid form data:
+トラディショナルな（Ajaxでない）Webフォームの場合はユーザが不正なデータをフォームで送信した時に行う出来ベストプラクティスを以下の手順で行います。:
 
- - First, a one-time-use flash variable is populated, probably a string message or an array of semantic validation error objects.
- - Then the  user is redirected back to `redirectTo`, i.e. the URL where the bad request originated.
- - There, the controller and/or view might use the flash `errors` to either display a message or highlight the invalid HTML form fields.
+ - 初めに１回限り利用可能はFlash変数がセットされます。セットされる内容はおそらく文字列化バリデーションエラーオブジェクトの配列です。
+ - その後、ユーザがredirectToで指定する場所（すなわち不正なFormデータが生成された箇所）にリダイレクトで戻します。
+ - その後コントローラかビュー（あるいはその両方）はFlash変数に入っているエラーを処理し不正な項目をハイライトしたりエラーメッセージを表示したりします。
 
 
 #### res.notFound()
 
-If the requester is expecting JSON, this response simply sends a 404 status code and a `{status: 404}` object. 
+このレスポンスはJSONが要求された時には単純に404ステータスコードと`{status: 404}`のエラーオブジェクトを返します。
 
-Otherwise the view located in `myApp/views/404.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+それ以外の時には`myApp/views/404.*`が返され、もしビューファイルが存在しない場合はJSONレスポンスを返します。
 
 #### res.forbidden(message)
 
-If the requester is expecting JSON, this response sends the 403 status code along with the contents of `message`.
+このレスポンスはJSONが要求された時には単純に403ステータスコードと`message`の内容返されます。
 
-Otherwise the view located in `myApp/views/403.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+それ以外の時には`myApp/views/403.*`が返され、もしビューファイルが存在しない場合はJSONレスポンスを返します。
 
-### Custom Response
 
-To add your own custom response method, simply add a file to `/api/responses` with the same name as the method you would like to create.  The file should export a function, which can take any parameters you like.
+### カスタムのレスポンス
+
+あなたのカスタムのレスポンスメソッドを作成するには単に`/api/responses`につくろうとしているメソッド名と同じファイルを追加するだけで大丈夫です。
+ファイルはあなたが利用したいと考えているすべてのパラメータをexportしなければなりません。
+
 
 ```
 /** 
  * api/responses/myResponse.js
  *
- * This will be available in controllers as res.myResponse('foo');
+ * これはコントローラではres.myResponse('foo')で呼び出せます;
  */
 
 module.exports = function(message) {
@@ -100,29 +108,29 @@ module.exports = function(message) {
     status: statusCode
   };
 
-  // Optional message
+  // 追加のメッセージ
   if (message) {
     result.message = message;
   }
 
-  // If the user-agent wants a JSON response, send json
+  // ユーザがJSONを要求した時はJSONを返します。
   if (req.wantsJSON) {
     return res.json(result, result.status);
   }
 
-  // Set status code and view locals
+  // ステータスコードとビューのローカルを追加します
   res.status(result.status);
   for (var key in result) {
     res.locals[key] = result[key];
   }
-  // And render view
+  // そして、ビューをレンダリングします。
   res.render(viewFilePath, result, function(err) {
     // If the view doesn't exist, or an error occured, send json
     if (err) {
       return res.json(result, result.status);
     }
 
-    // Otherwise, serve the `views/mySpecialView.*` page
+    // あるいは`views/mySpecialView.*` ページを返します。
     res.render(viewFilePath);
   });   
 ```

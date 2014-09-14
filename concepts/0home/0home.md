@@ -1,28 +1,28 @@
 # Sails.js Documentation > Core Concepts
 
 
-### Table of Contents
+### 目次
 
-1. **Assets**
-  1. Default Tasks
-  2. Disabling Grunt
-  3. Task Automation
+1. **アセット**
+  1. 既定のタスク
+  2. Gruntを無効化する
+  3. タスクの自動化
 2. **CORS**
-3. **Configuration**
-  1. Using `.sailsrc` Files
-4. **Controllers**
-5. **Custom Responses**
-6. **Deployment**
+3. **設定**
+  1. `.sailsrc`ファイルを使う
+4. **コントローラ**
+5. **カスタムレスポンス**
+6. **デプロイ**
   1. FAQ
-  2. Hosting
-  3. Scaling
+  2. ホスティング
+  3. スケーリング
 7. **File Uploads**
-8. **Globals**
-9. **Internationalization**
-10. **Logging**
+8. **グローバル**
+9. **国際化（i18n）**
+10. **ロギング**
   1. sails.log
-11. **Middleware**
-12. **Models**
+11. **ミドルウエア**
+12. **モデル**
   1. Attributes
   2. Lifecycle callbacks
   3. Model configuration
@@ -60,20 +60,20 @@
     21. .skip()
     22. .sort()
     23. .stream()
+    26. .toObject()
     24. .subscribe()
     25. .toJSON()
-    26. .toObject()
     27. .unsubscribe()
     28. .unwatch()
     29. .update()
     30. .validate()
     31. .watch()
     32. .where()
-13. **Policies**
-14. **Routes**
-  1. Route Target Syntax
-  2. URL Slugs
-15. **Security**
+13. **ポリシー**
+14. **ルート**
+  1. ルートターゲットの記法
+  2. URLスラグ
+15. **セキュリティ**
   1. CSRF
   2. Clickjacking
   3. Content Security Policy
@@ -82,10 +82,10 @@
   6. Socket Hijacking
   7. Strict Transport Security
   8. XSS
-16. **Services**
-17. **Testing**
-18. **Upgrading**
-19. **Views**
+16. **サービス**
+17. **テスト**
+18. **アップグレード**
+19. **ビュー**
   1. Layouts
   2. Locals
   3. Partials

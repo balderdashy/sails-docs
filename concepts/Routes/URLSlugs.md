@@ -1,5 +1,7 @@
-# URL Slugs
-A common use case for explicit routes is the design of slugs or [vanity URLs](http://en.wikipedia.org/wiki/Clean_URL#Slug).  For example, consider the URL of a repository on Github, [`http://www.github.com/balderdashy/sailsjs`](http://www.github.com/balderdashy/sailsjs).  In Sails, we might define this route at the **bottom of our `config/routes.js` file** like so:
+# URLスラグ
+
+明示的なルートを設定する際の一般的な利用方法としてはスラグや[vanity URLs](http://en.wikipedia.org/wiki/Clean_URL#Slug)があります。例えばGithubにある[`http://www.github.com/balderdashy/sailsjs`](http://www.github.com/balderdashy/sailsjs)レポジトリを考えてみましょう。
+Sailsではこのルートを **`config/routes.js`ファイルの最後で**以下のように定義することで実現できます。:
 
 ```javascript
   'get /:account/:repo': {
@@ -9,10 +11,9 @@ A common use case for explicit routes is the design of slugs or [vanity URLs](ht
   }
 ```
 
-In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view](http://beta.sailsjs.org/#/documentation/concepts/Views) as [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html).  The [`skipAssets` option](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) ensures that the vanity route doesn't accidentally match any of our [assets](http://beta.sailsjs.org/#/documentation/concepts/Assets) (e.g. `/images/logo.png`), so they are still accessible.
+`RepoController`の`show`アクションで`req.param('account')`や`req.param('repo')`の形で適切なレポジトリを選択するためのデータを取得でき、それを[ビュー](http://beta.sailsjs.org/#/documentation/concepts/Views) as [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html)に渡すことが出来ます。[`skipAssets`オプション](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) オプションを使うことで予期せず[アセット](http://beta.sailsjs.org/#/documentation/concepts/Assets) (例えば `/images/logo.png`)にルーティングされることを防げますのでその場合にもアクセスが可能です。
 
 
 
 <docmeta name="uniqueID" value="URLSlugs805236">
 <docmeta name="displayName" value="URL Slugs">
-

@@ -1,13 +1,12 @@
 # sails.log()
-### Overview
+### 概要
 
-Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
-
+以下に挙げる各メソッドはカンマで区切られた無限個の引数をタイプにかかわらず受け取ります。`console.log`のように、渡された各引数はSailsのロガーによって[`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options)を利用して読解可能な形に自動的に変換されます。その結果通常のNode.jsとの互換性が維持されています。すなわち、`inspect()`メソッドを使ってオブジェクトをログした時にはそれが自動的に実行され、その戻り値の文字列がコンソールに出力されます。同じようにオブジェクトや日付、配列などほとんどのデータ型がビルトインの`util.inspect()`メソッドにより読みやすく変換されます。(例えば`[object Object]`の代わりに`{ pet: { name: 'Hamlet' } }`と表示されます。
 
 
 ### `sails.log()`
 
-The default log function, which writes console output to `stderr` at the "debug" log level.
+デフォルトのログファンクションです。ログレベルが"debug"の時に`stderr`に対してコンソール出力します。
 
 ```js
 sails.log('hello');
@@ -16,7 +15,7 @@ sails.log('hello');
 
 ### `sails.log.error()`
 
-Writes log output to `stderr` at the "error" log level.
+ログレベルが"error"の時に`stderr`に対してコンソール出力します。
 
 ```js
 sails.log.error('Unexpected error occurred.');
@@ -25,7 +24,7 @@ sails.log.error('Unexpected error occurred.');
 
 ### `sails.log.warn()`
 
-Writes log output to `stderr` at the "warn" log level.
+ログレベルが"warn"の時に`stderr`に対してコンソール出力します。
 
 ```js
 sails.log.warn('File upload quota exceeded for user','request aborted.');
@@ -33,11 +32,11 @@ sails.log.warn('File upload quota exceeded for user','request aborted.');
 ```
 
 ### `sails.log.debug()`
-_Alias for `sails.log()`_
+_`sails.log()`のエイリアスです。_
 
 ### `sails.log.info()`
 
-Writes log output to `stdout` at the "info" log level.
+ログレベルが"info"の時に`stdout`に対してコンソール出力します。
 
 ```js
 sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
@@ -47,8 +46,9 @@ sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
 
 ### `sails.log.verbose()`
 
-Writes log output to `stdout` at the "verbose" log level.
-Useful for capturing detailed information about your app that you might only want to enable on rare occasions.
+
+ログレベルが"verbose"の時に`stdout`に対してコンソール出力します。あまりよく有効化することはないと思いますが、アプリケーションに関する詳細なログを取得したいときに便利です。
+
 
 ```js
 sails.log.verbose('A user initiated an account transfer...')
@@ -58,8 +58,7 @@ sails.log.verbose('A user initiated an account transfer...')
 
 ### `sails.log.silly()`
 
-Writes log output to `stdout` at the "silly" log level.
-Useful for capturing utterly ridiculous information about your app you only need on rare occasions.
+ログレベルが"silly"の時に`stdout`に対してコンソール出力します。アプリケーションに関する、ほとんど利用することのないような全く馬鹿げた情報を取得したいときに便利です。
 
 ```js
 sails.log.silly('A user probably clicked on something..?');

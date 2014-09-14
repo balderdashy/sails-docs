@@ -1,14 +1,16 @@
-# Hosting
+# ホスティング
 
-Here is a non-comprehensive list of Sails.js hosting providers.
+Sails.jsをサポートしているホスティングプロバイダの一部をリストにしました。
 
-##### Deploying to Modulus?
+##### Modulusにデプロイする
 
 + http://blog.modulus.io/sails-js
 
-##### Deploying to NodeJitsu?
-To deploy to NodeJitsu, you'll need to make some minor modifications to your configuration:
-Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
+##### Deploying to NodeJitsu?NodeJitsuにデプロイする
+
+NodeJitsuにデプロイするにはちょっとした設定変更が必要です。:
+
+appフォルダの中の`config/local.js`を開きここに以下の行を加えてください。 
 
 ```
     // Port this Sails application will live on
@@ -16,27 +18,27 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 	host: 'subdomain.jit.su',
 ```
 
-The `host:` is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the `subdomain` when you run `jitsu deploy`
+`host:`は元々記述されていませんのでこれを追加する必要があります。Nodejitsuは`jitsu deploy`を実行するときに`subdomein`サブドメインを聞いてきます。
 
 + https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
 + https://github.com/balderdashy/sails/issues/455
 
-##### Deploying to OpenShift?
-To deploy to OpenShift, you'll need to make some minor modifications to your configuration:
-Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
+##### OpenShiftにデプロイする
+OpenShiftにデプロイするにはちょっとした設定変更が必要です。:
+appフォルダの中の`config/local.js`を開きここに以下の行を加えてください。 
 
 ```
 	port: process.env.OPENSHIFT_NODEJS_PORT,
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
-##### Using DigitalOcean?
+##### DigitalOceanを使う
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
 + https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
 + https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab
 
-##### Deploying to Heroku?
+##### Herokuにデプロイする
 
 + [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
@@ -44,28 +46,29 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 + http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w
 + http://stackoverflow.com/a/20184907/486547
 
-##### Deploying to AWS?
+##### AWSにデプロイする
 
 + http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html
 + http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance
 + http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html
 + http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac
 
-##### Using PM2?
+##### PM2を使う
 
 + http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html
 
 
-##### Deploying to CloudControl?
+##### CloudControlにデプロイする
 
 + https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs
 
 
 
-##### Getting professional help
+##### 専門家の手助けを求める
 
-These days, it's getting easier and easier to deploy powerful applications at scale.  That said, there isn't always time to do these things yourself.
-Sails.js is maintained by my company, [Balderdash](http://balderdash.co), a Node.js consultancy in Austin, TX. If your company needs professional support, reach out and we're happy to help.  The deployment part really isn't that hard, and in most cases, it shouldn't take more than a couple of hours tops.
+
+最近、パワフルなアプリケーションにデプロイするのはだんだんと簡単になってきています。とは言え常にそれを自分でやる時間があるとは限りません。
+Sails.jsは私（訳注：原著者）がテキサス州Austinで経営するNode.jsのコンサルタント会社である[Balderdash](http://balderdash.co)によってメンテナンスされています。もしあなたの会社が専門家の手助けを必要とする時はご連絡いただければ喜んでお手伝いします。デプロイはホントはそんなに難しいものではなく2〜3時間以上をかけるようなものではあえりません。
 
 
 
