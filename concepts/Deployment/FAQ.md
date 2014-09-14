@@ -1,26 +1,26 @@
 # FAQ
 
 
-##### Can I use environment variables?
+##### 環境変数を利用することは出来ますか?
 
-You can also configure the `port` and `environment` settings in Sails using environment variables.
+`port`と`environment`環境の選択を環境変数を用いて設定することも出来ます。
 `NODE_ENV=production sails lift`
 `PORT=443 sails lift`
 
-##### Where do I put my production database credentials?  Other settings?
+##### プロダクション環境のデータベースの認証情報などはどこに置けばいいですか。?
 
-For your other deployment/machine-specific settings, namely any kind of credentials, you should use `config/local.js`.  
-It's included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
+その他のdeployment/machine-specificな設定（様々な認証情報を含む）に関しては`config/local.js`を使うべきです。
+このファイルはデフォルトで`.gitignore`に登録されているのでうっかり認証情報の入ったファイルをレポジトリにアップロードしてしまう心配がありません。
 
 **config/local.js**
 ```javascript
-// Local configuration
+// ローカル設定
 // 
-// Included in the .gitignore by default,
-// this is where you include configuration overrides for your local system
-// or for a production deployment.
+// デフォルトで.gitignoreに入っています。
+// ここはあなたのローカルのシステムやプロダクション環境に合わせた設定のオーバーライドを書くところです。
 //
-// For example, to use port 80 on the local machine, override the `port` config
+//
+// 例えばローカルマシンの80番ポートを利用するためには`port`設定をオーバーライドします。
 module.exports = {
     port: 80,
     environment: 'production',
@@ -33,15 +33,15 @@ module.exports = {
 }
 ```
 
-##### How do I get my Sails app on the server?
-Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
+##### Sailをプロダクション環境のサーバにどうやってアップロードすればいいですか。
+すでにNode.jsのサーバが走っていますか。サーバのIPアドレスが分かるのであればそこにSSHアクセスし、最初に`sudo npm install -g forever`を実行してSailsとforeverをセットアップしてください。
 
-Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
+その後、新規フォルダーを作成しそこにプロジェクトを`git clone`（もしgitレポジトリがないなら`scp`を）してください。さらにそのフォルダにcdし、`forever start app.js`でサーバを起動します。
 
 
-### Performance Benchmarks
+### パフォーマンスのベンチマーク
 
-Performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.
+SailsのパフォーマンスはNode.js/Express相当です。つまり別の言葉で言えば「速い！」SailsとWaterlineにおいて幾らかのチューニングをしていますが、我々の第一の目標は「元々ものすごく速いものを台無しにしない」というものです。いずれにせよ@ry, @visionmedia, @isaacs, #v8, @joyentを始めとしたNode.jsのコアチームに感謝します。
 
 + http://serdardogruyol.com/?p=111
 

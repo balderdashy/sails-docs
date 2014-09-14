@@ -1,20 +1,20 @@
-# Policies
-### Overview
+# ポリシー
+### 概要
 
-Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
+Sailsにおける「ポリシー」は認証とアクセスコントロールを行うための多機能なツールです。つまりポリシーはコントロータへのアクセスを許可したり拒否したりする動作を適切な粒度で定義できるのです。たとえばあなたがDropboxをつくろうとしているとしましょう。するとユーザにファイルをフォルダーにアップロードをさせる前にはユーザが`isAuthenticated`かどうかを確認して次に`canWrite`（フォルダへの書き込み権限を持っているか）を確認します。最後にアップロードしようとしてるフォルダーが`hasEnoughSpace`かどうかも確認するでしょう。
 
-Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
+ポリシーはどんなものでも利用することが出来ます。つまりHTTP BasicAuthでも、サードパーティーのシングルサインオンでも、OAuth2.0でも、あるいはあなたが書いたオリジナルの認証・認可スキーマとでも利用することが出来ます。
 
-> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.
+> 備考：ポリシーはコントローラーアクションに対して**のみ**提供され、ビューには適用されません。もしも[routes.js config file](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html) でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。
 
 
-### Writing Your First Policy
+### 初めてのポリシーを書く
 
-Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
+ポリシーはSailsアプリケーションの`api/policies`で定義されます。それぞれのポリシーは一つのファンクションを持ちます。
 
-When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your controllers.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
+中身を見てみると、ポリシーはまさにコントローラの**手前で**動作するConnect/Expresのミドルウエアなのです。ここでは好きなだけのチェーンを繋げることが出来ます。（そもそも、そういうふうにして使われるべきものなのですが）。理想的には一つのミドルウエアは*一つだけの*ことをチェックすべきです。
 
-For example, the `canWrite` policy mentioned above might look something like this:
+例えば先程述べた`canWrite`ポリシーは以下のようになります。
 
 ```javascript
 // policies/canWrite.js
@@ -42,15 +42,15 @@ module.exports = function canWrite (req, res, next) {
 ```
 
 
-### Protecting Controllers with Policies
+### コントローラをポリシーで保護する
 
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
+SailsではビルドインのACL(アクセスコントロールリスト）が `config/policies.js`に用意されています。このファイルはポリシーとコントローラを紐付けるのに使われます。  
 
-This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
+このファイルは*ディクレラテブ*です。すなわち、ここではアプリケーションにおけるパーミッションが*どのようになっているのか*を記述するのであり、*どのように動作するのか*を記述するものではありません。これは開発を始めたばかりの開発者でも何が起こっているのかを理解しやすくというメリットばかりではなく、必然的に何度も起こるであろうプログラムの変更に柔軟に対応できるようにするという狙いもあるのです
 
-Your `config/policies.js` file should export a Javascript object whose keys are controller names (or `'*'` for  global policies), and whose values are objects mapping action names to one or more policies.  See below for more details and examples.
+`config/policies.js`ファイルはコントローラネーム（あるいはグローバル設定する場合は`'*'`）をキーとマップすべきオブジェクト名を値とするJavascriptオブジェクトをエクスポートしなければなりません。詳しくは以下の例をご覧ください・
 
-##### To apply a policy to a specific controller action:
+##### 特定のコントローラアクションにポリシーを適用する:
 
 ```js
 {
@@ -63,7 +63,7 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 }
 ```
 
-##### To apply a policy to an entire controller:
+##### コントローラ全体にポリシーを適用する:
 
 ```js
 {
@@ -77,9 +77,9 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 }
 ```
 
-> **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.
+> **備考:** デフォルトのポリシーマッピングはカスケードしたりtrickle downしません。コントローラのアクションに指定されたマッピングはデフォルトのマッピングを上書きします。
 
-##### To apply a policy to all actions that are not explicitly mapped:
+##### 明示的にマッピングされたアクション以外に対してポリシーを適用する:
 
 ```js
 {
@@ -92,17 +92,17 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 }
 ```
 
-> Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
+> デフォルトのポリシーは明示的にマッピングされている以外のいかなるコントローラやアクションには適用されません。
 
 
-### Built-in policies
-Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
-  + `true`: public access  (allows anyone to get to the mapped controller/action)
-  +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
+### ビルトインのポリシー
+SailsにはGlobalに割り当てたり、指定したコントローラやアクションに割り当てたりすることができる２つのコントローラがあります。
+  + `true`: パブリックアクセス (マップされたコントローラやアクションにはだれでもアクセスできる。)
+  +  `false`: アクセス**不可**  (マップされたコントローラやアクションには**だれも**アクセスできない)
 
- `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
+ `'*': true` はすべてのコントローラやアクションに対するデフォルトのポリシーです。本番環境では不用意にアクションやコントローラが露出してしまう事を防ぐためにこれを`false` にするといいでしょう。
 
-##### Adding some policies to a controller:
+##### コントローラにいくつかのポリシーを適用する:
 ```javascript
   // in config/policies.js
   
@@ -124,7 +124,7 @@ Sails provides two built-in policies that can be applied globally, or to a speci
   // ...
 ```
 
-Here&rsquo;s what the `isNiceToAnimals` policy from above might look like (this file would be located at `policies/isNiceToAnimals.js`):
+上で挙げた`isNiceToAnimals`はこのようになっているはです。(このファイルは`policies/isNiceToAnimals.js`に設置されます。):
 
 ```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
@@ -151,18 +151,18 @@ module.exports = function isNiceToAnimals (req, res, next) {
 };
 ```
 
-Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:
-+ cookie-based authentication
-+ role-based access control
-+ limiting file uploads based on MB quotas
-+ any other kind of authentication scheme you can imagine
+うさぎを守るということ（とても立派なことだと思います）に加え、ポリシーにはいくつかのユースケースが有ります。:
++ クッキーベースの認証
++ ロールベースのアクセス管理
++ 容量ベースでのファイルアップロード制限。
++ 考えられるその他すべての認証スキーム
 
 
-### I'm using Passport--what about me?!
+### Passportを使っているんだけどどうすればいいですか。
 
-Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
+PassportはSailsとの組み合わせでも見事に動作します。一般的な話として、SailsはConnect/ExpressをコアにしていますのであらゆるConnect/Expressオリエンテッドなものはうまく動作します。実際にSaisはsocket.ioと一緒に動作するほとんどのExpressミドルウエアに関してプログラム解釈に関連するもんだおは起きていません。
 
-There are a few good examples of this floating around, such as [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
+この辺りに関しては以下のものを始めとする良い利用例があります。 [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
 
 
 

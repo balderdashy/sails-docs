@@ -1,91 +1,91 @@
-# Default Tasks
+# 既定のタスク
 
-### Overview
+### 概要
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
+Sailsにバンドルされているアセットパイプラインはあなたのプロジェクトをより矛盾がなくより生産的に設計するために一般的なデフォルトを使って実装されたGruntタスクのセットになっています。フロントエンドのアセットワークフローはすべてデフォルトのタスクの枠にとらわれずにカスタマイズすることが出来ます。Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
 
-Here are a few things that the default Grunt configuration in Sails does to help you out:  
-- Automatic LESS compilation
-- Automatic JST compilation
-- Automatic Coffescript compilation
-- Optional automatic asset injection, minification, and concatenation
-- Creation of a web ready public directory
-- File watching and syncing
-- Optimization of assets in production
+例えば以下の様な機能がSailsのデフォルトのGrunt設定として使うことが出来ます。:
+- LESSの自動コンパイル
+- JITの自動コンパイル
+- Coffescriptの自動コンパイル
+- その他のアセットの自動注入、最小化、連結
+- Web上へアップするためのファイルの作成
+- ファイスの監視や同期化
+- プロダクション環境でのアセットの最適化
 
-### Default Grunt Task Behavior.
+### デフォルトのGruntタスクの振る舞い
 
-Below are the Grunt tasks that are included in your Sails project as well as a small description of exactly what each does in your project. Also included are a link to the usage docs for each task.
+以下にSailsプロジェクトに含まれているGruntタスク関して何をするのかを簡潔に記しました。また、それぞれのタスクの説明に関しての詳細な説明ページヘのリンクも用意しました。
 
 ##### clean
 
-> This grunt task is configured to clean out the contents in the `.tmp/public/` of your sails project.
+> このGruntタスクはプロジェクトの`.tmp/public/`ディレクトリにある内容を消去します。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-clean)
+> [使い方](https://github.com/gruntjs/grunt-contrib-clean)
 
 ##### coffee
 
-> Compiles coffeeScript files from `assest/js/` into Javascript and places them into `.tmp/public/js/` directory.
+> `assest/js/`にあるcoffeeScriptファイルをJavascriptにコンパイルし`.tmp/public/js/`に移動します。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
+> [使い方](https://github.com/gruntjs/grunt-contrib-coffee)
 
 ##### concat
 
-> Concatenates javascript and css files, and saves concatenated files in `.tmp/public/concat/` directory.
+> javascriptとcssをそれぞれ連結し`.tmp/public/concat/`ディレクトリに保存します。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
+> [使い方](https://github.com/gruntjs/grunt-contrib-concat)
 
 ##### copy
 
-> **dev task config**
-> Copies all directories and files, except coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
+> **dev task 設定の時**
+> coffescriptとlessファイル以外のすべてのファイルとディレクトリーをSailsのアセットフォルダーから`.tmp/public/`ディレクトリにコピします。
 
-> **build task config**
-> Copies all directories and files from the .tmp/public directory into a www directory.
+> **build task 設定の時**
+> 全てのファイルとディレクトリを`.tmp/public`ディレクトリからwwwディレクトリにコピーします。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-copy)
+> [使い方](https://github.com/gruntjs/grunt-contrib-copy)
 
 ##### cssmin
 
-> Minifies css files and places them into `.tmp/public/min/` directory.
+> CSSファイルを最小化し`.tmp/public/min/`ディレクトリに保管します。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-cssmin)
+> [使い方](https://github.com/gruntjs/grunt-contrib-cssmin)
 
 ##### jst
 
-> Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny javascript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
+> Underscoreテンプレートをプレコンパイルし`.jst`ファイルにします。(つまり、HTMLテンプレートを小さなJavascriptのFunctionに変換します。）これによってテンプレートレンダリングを高速化させ帯域利用を減少させることが出来ます。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-jst)
+> [使い方](https://github.com/gruntjs/grunt-contrib-jst)
 
 ##### less
 
-> Compiles LESS files into CSS. Only the `assets/styles/importer.less` is compiled. This allows you to control the ordering yourself, i.e. import your dependencies, mixins, variables, resets, etc. before other stylesheets.
+> LESSファイルをCSSにコンパイルします。`assets/styles/importer.less`のみがコンパイルされます。これにより順序を任意に設定することが出来るようになります。（つまり他のスタイルシートの前にdependencies, mixins, variables, resetsなどをインポートすることが出来ます）
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-less)
+> [使い方](https://github.com/gruntjs/grunt-contrib-less)
 
 ##### sails-linker
 
-> Automatically inject `<script>` tags for javascript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), but the big takeaway is that script and stylesheet injection is *only* done in files containing `<!--SCRIPTS--><!--SCRIPTS END-->` and/or `<!--STYLES--><!--STYLES END-->` tags.  These are included in the default **views/layout.ejs** file in a new Sails project.  If you don't want to use the linker for your project, you can simply remove those tags.
+Javascriptのタグには`<script>`を、CSSファイルには`<link>`を自動的に挿入します。また、`<script>`を使ってプレコンパイル済みのテンプレートに対してリンクを行います。これらに対する詳細な説明は[こちら](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking)で確認することが出来ますが、おさえておきたい大切なことはスクリプトとスタイルシートの挿入は`<!--SCRIPTS--><!--SCRIPTS END-->`や`<!--STYLES--><!--STYLES END-->`のタグを含むファイル*のみ*で行われるということです。また、これらは新しく作成したSailsプロジェクトの**views/layout.ejs**にデフォルトで自動的に組み込まれています。もしあなたのプロジェクトでリンカーを使いたくない時は単にこれ他のタグを削除してください
 
-> [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
+> [使い方](https://github.com/Zolmeister/grunt-sails-linker)
 
 ##### sync
 
-> A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that have actually changed. It specifically synchronizes files from the `assets/` folder to `.tmp/public/`, overwriting anything that's already there.
+> ディレクトリを同期済みにするタスクです。このタスクはgrunt-contrib-copyにとても良く似ていますが、本当に変更されたもののみをコピーしようとします。これは`assets/`フォルダーから`.tmp/public/`へのコピーのみを行い、コピー先に既存のすべてのファイルを上書きします。
 
-> [usage docs](https://github.com/tomusdrw/grunt-sync)
+> [使い方](https://github.com/tomusdrw/grunt-sync)
 
 ##### uglify
 
-> Minifies client-side javascript assets.
+> クライントサイドのjavascriptアセットを最小化します。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
+> [使い方](https://github.com/gruntjs/grunt-contrib-uglify)
 
 ##### watch
 
-> Runs predefined tasks whenever watched file patterns are added, changed or deleted. Watches for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. less and jst compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
+> ファイルパターンが追加され、編集され、削除された時に毎回予め設定されたスクリプトを実行します。`assets/`フォルダに配置されたファイルを監視し、（例えばLESSやJSTのコンパイルのような）適切なタスクを再実行します。これにより行った編集の結果をSailsを再起動することなく確認することが出来ます。
 
-> [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
+> [使い方](https://github.com/gruntjs/grunt-contrib-watch)
 
 <docmeta name="uniqueID" value="DefaultTasks764297">
 <docmeta name="displayName" value="Default Tasks">

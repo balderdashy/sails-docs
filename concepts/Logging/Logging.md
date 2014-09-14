@@ -1,14 +1,14 @@
-# Logging
+# ロギング
 
-### Overview
-Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  It's usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
+### 概要
+Sailsは[`captains-log`](https://github.com/balderdashy/captains-log)と呼ばれるシンプルなビルドインのロガーが備わっています。この使い方はあえてNodeの[`console.log`](http://nodejs.org/api/stdio.html)にとても良く似せて作っていますが、「複数のログレベルが色分けされ、前置詞で分けられて表示される」という便利な機能が追加されています。
 
-### Configuration
-The Sails logger's configuration is located in [`sails.config.log`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.log.html), for which a conventional configuration file ([`config/log.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/log.js.html)) is bundled in new Sails projects out of the box.
+### 設定
+Sailsのロガーの設定は通常Sailsプロジェクトが新しく作成された時に[`config/log.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/log.js.html)に生成される[`sails.config.log`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.log.html)で定義されています。
 
-When configured at a given log level, Sails will output log messages that are output at a level at or above the currently configured level. This log level is normalized and also applied to the generated output from socket.io, Waterline, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
+各ログレベルが設定された時、Sailsは現在設定されているレベル以上のログに関して出力をします。このログレベルは標準化されておりsocket.ioやWaterlineその他の依存ファイルからのログを出力する際にも適用されます。ログレベルの上下関係と相対的優先度に関して以下の表にまとめます。:
 
-| Priority | level     | Log fns visible   |
+| 優先度 | レベル     | 見えるログの種類   |
 |----------|-----------|-------------------|
 | 0        | silent    | N/A
 | 1        | error     | `.error()`            |
@@ -19,10 +19,10 @@ When configured at a given log level, Sails will output log messages that are ou
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
-#### Notes
-+ The default log level is "info".  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
-+ When the log level is set to "silly", Sails outputs internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
-+ When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
+#### 備考
++ デフォルトのログレベルは"info"です。アプリケーションのログレベルが"info"の時にはSailsはサーバやアプリケーションのステータスに関して限定的な情報を記録します。
++ ログレベルが"silly"にセットされた時、Sailsはどのルートがルーティングされたかや詳細なフレームワークのライフサイクルに関する情報や診断結果、実装の詳細などの内部的な情報を記録します。
++ ログレベルが"verbose"に設定されている時、Sailsはルートやモデル、hookなどのさらに詳細な情報に加えてGruntの出力を記録します。
 
 
 <docmeta name="uniqueID" value="Logging277763">
