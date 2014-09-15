@@ -7,7 +7,7 @@ Sails 當然是一個網站開發框架。但退一步，這意味著什麼？�
 
 
 
-## 約定優於配置
+## 慣例優於設定
 
 Sails 完成許多與其他 MVC 網站應用程式框架相同的目標，使用許多相同的方法學。這樣做是有目的的。一致的方式使得參與其中的任何人開發應用程式更具可預測性且高效率的。
 
@@ -15,7 +15,7 @@ Sails 完成許多與其他 MVC 網站應用程式框架相同的目標，使用
 
 > **歷史**
 >
-> Sails 沒有發明這個概念-- 它[已經存在多年](https://en.wikipedia.org/wiki/Convention_over_configuration)。即使在 Ruby on Rails 那句「約定優於配置」（或稱 CoC）流行之前，JavaBeans 借用了常見於 90 年代末期到 21 世紀初期，傳統的 Java 網站框架極其冗長的 XML 設定到許多核心規範中。簡單來說就是用簡單的約定（Convention）來取代繁雜的設定（Configuration），簡化開發者的工作。
+> Sails 沒有發明這個概念-- 它[已經存在多年](https://en.wikipedia.org/wiki/Convention_over_configuration)。即使在 Ruby on Rails 那句「慣例優於設定」（或稱 CoC）流行之前，JavaBeans 借用了常見於 90 年代末期到 21 世紀初期，傳統的 Java 網站框架極其冗長的 XML 設定到許多核心規範中。簡單來說就是用簡單的慣例（Convention）來取代繁雜的設定（Configuration），簡化開發者的工作。
 
 
 ## Loose Coupling
