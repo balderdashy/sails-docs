@@ -1,73 +1,71 @@
-# Task Automation
+# 任務自動化（Task Automation）
 
-### Overview
+### 概觀
 
-The [`tasks/`](./#!documentation/anatomy/tasks) directory contains a suite of [Grunt tasks](http://gruntjs.com/creating-tasks) and their [configurations](http://gruntjs.com/configuring-tasks). 
+[`tasks/`](./#!documentation/anatomy/tasks) 目錄包含了一系列 [Grunt 任務](http://gruntjs.com/creating-tasks)和它們的[設定](http://gruntjs.com/configuring-tasks)。
 
-Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, & client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from [browserify](https://github.com/jmreidy/grunt-browserify) compilation to [database migrations](https://www.npmjs.org/package/grunt-db-migrate).
+任務主要是用在打包前端資源（如 stylesheets、scripts 及客戶端標記樣版），但它們也可以用在自動化重複各種開發時的瑣事，從 [browserify](https://github.com/jmreidy/grunt-browserify) 編譯到[資料庫遷移](https://www.npmjs.org/package/grunt-db-migrate)皆可使用。
 
-Sails bundles some [default tasks](./#!documentation/grunt/default-tasks) for convenience, but with [literally hundreds of plugins](http://gruntjs.com/plugins) to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn't already built what you need, you can always [author](http://gruntjs.com/creating-tasks) and [publish your own Grunt plugin](http://gruntjs.com/creating-plugins) to [npm](http://npmjs.org)!
+為了方便起見，Sails 打包了一些[預設任務](./#!documentation/grunt/default-tasks)，但隨著[數以百計](http://gruntjs.com/plugins)的插件可供選擇，你可以幾乎毫不費力的使用任務自動完成任何事情。如果沒有你需要的，你可以[編寫](http://gruntjs.com/creating-tasks)並[發佈自己的 Grunt 插件](http://gruntjs.com/creating-plugins)到 [npm](http://npmjs.org)！
 
-> If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
+> 如果你以前從未使用過 [Grunt](http://gruntjs.com/)，一定要查看[新手上路](http://gruntjs.com/getting-started)指南，因為它解釋了如何建立 [Gruntfile](http://gruntjs.com/sample-gruntfile) 以及安裝和使用 Grunt 插件。
 
 
 ### Asset pipeline
 
-The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
+Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `tasks/pipeline.js` 檔案找到它。設定這些資源很簡單且使用 grunt [任務檔案設定](http://gruntjs.com/configuring-tasks#files)和[匹配模式](http://gruntjs.com/configuring-tasks#globbing-patterns)。它們被分為三個部分。
 
-##### CSS Files to Inject
-This is an array of css files to be injected into your html as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
+##### 要注入的 CSS 檔案
+這是一個 css 檔案陣列，會注入到 html 的 `<link>` 標籤。這些標籤會放在所有檢視的 `<!--STYLES--><!--STYLES END-->` 註解之間。
 
-##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependecies before the file that depends on them.)
+##### 要注入的 Javascript 檔案
+這是一個 Javascript 檔案陣列，會注入到 html 的 `<script>` 標籤。這些標籤會放在所有檢視的 `<!--SCRIPTS--><!--SCRIPTS END-->` 註解之間。檔案會依照在陣列中的順序被注入（也就是你應該按照檔案相依關係來調整注入的順序）。
 
-##### Template Files to Inject
-This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+##### 要注入的樣版檔案
+這是一個 html 檔案陣列，會編譯成 jst 函數並放在一個 jst.js 檔案。這些檔案會注入到 `<script>` 標籤，放在 html 的 `<!--TEMPLATES--><!--TEMPLATES END-->` 註解之間。
 
-> The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
+> 如果你想改變它們的話，相同的 grunt 匹配模式和任務檔案設定也使用在一些任務設定檔本身。
 
-### Task configuration
+### 任務設定
 
-Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `grunt/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
+每個已設定的任務都是一組規則，Gruntfile 會遵循此規則執行。他們位於 [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) 目錄且可完全自訂。你可以修改、忽略或取代任何一個 Grunt 任務，以滿足你的需求。你也可以加入自己的 Grunt 任務，只需在此目錄新增一個 `someTask.js` 檔案來設定新的任務，然後用適當的父任務註冊它（查看 `grunt/register/*.js` 內的檔案）。請記住，Sails 具備一套實用的預設任務，是為了讓你在無需任何設定下執行。
 
-##### Configuring a custom task.
+##### 設定自訂任務
 
-Configuring a custom task into your project is very simple and uses Grunt&rsquo;s [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) APIs to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
+設定一個自訂任務到你的專案非常簡單，使用 Grunt 的[設定](http://gruntjs.com/api/grunt.config)和[任務](http://gruntjs.com/api/grunt.task) APIs 允許你建立自己的任務模組。讓我們實作一個建立新任務取代已存在任務的簡單例子。比方說，我們希望 [Handlebars](http://handlebarsjs.com/) 樣版引擎來取代預設具備的 underscore 樣版引擎：
 
-* The first step is to install the handlebars grunt plugin using the following command in your terminal:
+* 第一步是在終端機使用以下指令安裝 handlebars 的 grunt 插件：
 
 ```bash
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-* Create a configuration file at `tasks/config/handlebars.js`. This is where we&rsquo;ll put our handlebars configuration.
+* 建立設定檔在 `tasks/config/handlebars.js`。這是我們要放 handlebars 設定的地方。
 
 ```javascript
 // tasks/config/handlebars.js
 // --------------------------------
-// handlebar task configuration.
+// handlebar 任務設定。
 
 module.exports = function(grunt) {
 
-  // We use the grunt.config api's set method to configure an
-  // object to the defined string. In this case the task
-  // 'handlebars' will be configured based on the object below.
+  // 我們使用 grunt.config api 的 set 方法來設定一個物件到定義的字串。
+  // 在這個例子中，'handlebars' 任務會根據下面的物件來設定。
   grunt.config.set('handlebars', {
     dev: {
-      // We will define which template files to inject
-      // in tasks/pipeline.js 
+      // 我們將定義在 tasks/pipeline.js 要注入的樣版檔案
       files: {
         '.tmp/public/templates.js': require('../pipeline').templateFilesToInject
       }
     }
   });
 
-  // load npm module for handlebars.
+  // 載入 handlebars 的 npm 模組。
   grunt.loadNpmTasks('grunt-contrib-handlebars');
 };
 ```
 
-* Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* 在 asset pipeline 取代來源檔案路徑。唯一的改變是 handelbars 尋找副檔名為 .hbs 的檔案，而 underscore 樣版可以是單純的 html 檔案。
 
 ```javascript
 // tasks/pipeline.js
@@ -85,8 +83,7 @@ var jsFilesToInject = [
   'js/**/*.js'
 ];
 
-// We change this glob pattern to include all files in
-// the templates/ direcotry that end in the extension .hbs
+// 我們修改此匹配模式來涵蓋所有在 templates/ 目錄下副檔名為 .hbs 的檔案
 var templateFilesToInject = [
   'templates/**/*.hbs'
 ];
@@ -104,17 +101,17 @@ module.exports = {
 };
 ```
 
-* Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+* 將 hanldebars 任務加到 compileAssets 和 syncAssets 註冊任務中。這是目前正在使用的 jst 任務，我們將用新設定的 handlebars 任務來取代它。
 
 ```javascript
 // tasks/register/compileAssets.js
 // --------------------------------
-// compile assets registered grunt task
+// 註冊編譯資源的 grunt 任務
 
 module.exports = function (grunt) {
   grunt.registerTask('compileAssets', [
     'clean:dev',
-    'handlebars:dev',       // changed jst task to handlebars task
+    'handlebars:dev',       // 將 jst 任務改成 handlebars 任務
     'less:dev',
     'copy:dev',
     'coffee:dev'
@@ -123,11 +120,11 @@ module.exports = function (grunt) {
 
 // tasks/register/syncAssets.js
 // --------------------------------
-// synce assets registered grunt task
+// 註冊同步資源的 grunt 任務
 
 module.exports = function (grunt) {
   grunt.registerTask('syncAssets', [
-    'handlebars:dev',      // changed jst task to handlebars task
+    'handlebars:dev',      // 將 jst 任務改成 handlebars 任務
     'less:dev',
     'sync:dev',
     'coffee:dev'
@@ -135,36 +132,36 @@ module.exports = function (grunt) {
 };
 ```
 
-* Remove jst task config file. We are no longer using it so we can get rid of `tasks/config/jst.js`. Simply delete it from your project.
+* 我們不再使用 jst 任務，所以可將任務設定檔案 `tasks/config/jst.js` 從專案刪除。
 
-> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
+> 理想情況下，你應該將它從專案及 node 相依模組中刪除。這可以透過在終端機執行此命令來完成。
 ```bash
 npm uninstall grunt-contrib-jst --save-dev
 ```
 
-### Task triggers
+### 觸發任務
 
-In [development mode](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
+在[開發模式](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment)下，Sails 執行 `default` 任務（[`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)）。這將編譯 LESS、CoffeeScript 及客戶端 JST 樣版，然後自動將他們連接到應用程式的動態檢視和靜態 HTML 頁面。
 
-In production, Sails runs the `prod` task ([`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
+在生產模式下，Sails 執行 `prod` 任務（[`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)）。它與 `default` 有相同的職責，同時壓縮了應用程式的 scripts 和 stylesheets。這減少了應用程式的載入時間和頻寬的使用。
 
-These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
+這些任務觸發器都是[「基本」的 Grunt 任務](http://gruntjs.com/creating-tasks#basic-tasks)，位於 [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) 資料夾內。下面，你會看到 Sails 所有的任務觸發器的完整參考，以及觸發它們的指令：
 
 ##### `sails lift`
 
-Runs the **default** task (`tasks/register/default.js`).
+執行 **default** 任務（`tasks/register/default.js`）。
 
 ##### `sails lift --prod`
 
-Runs the **prod** task (`tasks/register/prod.js`).
+執行 **prod** 任務（`tasks/register/prod.js`）。
 
 ##### `sails www`
 
-Runs the **build** task (`tasks/register/build.js`).
+執行 **build** 任務（`tasks/register/build.js`）。
 
-##### `sails www --prod` (production)
+##### `sails www --prod`（生產模式）
 
-Runs the **buildProd** task (`tasks/register/buildProd.js`).
+執行 **buildProd** 任務（`tasks/register/buildProd.js`）。
 
 <docmeta name="uniqueID" value="TaskAutomation282238">
 <docmeta name="displayName" value="Task Automation">
