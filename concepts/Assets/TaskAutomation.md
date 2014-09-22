@@ -2,7 +2,7 @@
 
 ### 概觀
 
-[`tasks/`](./#!documentation/anatomy/tasks) 目錄包含了一系列 [Grunt 任務](http://gruntjs.com/creating-tasks)和它們的[設定](http://gruntjs.com/configuring-tasks)。
+[`tasks/`](./#!documentation/anatomy/tasks) 目錄包含了一系列 [Grunt 任務](http://gruntjs.com/creating-tasks)和它們的[組態設定](http://gruntjs.com/configuring-tasks)。
 
 任務主要是用在打包前端資源（如 stylesheets、scripts 及客戶端標記樣版），但它們也可以用在自動化重複各種開發時的瑣事，從 [browserify](https://github.com/jmreidy/grunt-browserify) 編譯到[資料庫遷移](https://www.npmjs.org/package/grunt-db-migrate)皆可使用。
 
@@ -13,7 +13,7 @@
 
 ### Asset pipeline
 
-Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `tasks/pipeline.js` 檔案找到它。設定這些資源很簡單且使用 grunt [任務檔案設定](http://gruntjs.com/configuring-tasks#files)和[匹配模式](http://gruntjs.com/configuring-tasks#globbing-patterns)。它們被分為三個部分。
+Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `tasks/pipeline.js` 檔案找到它。設定這些資源很簡單，使用 grunt [任務檔案組態設定](http://gruntjs.com/configuring-tasks#files)和[匹配模式](http://gruntjs.com/configuring-tasks#globbing-patterns)。它們被分為三個部分。
 
 ##### 要注入的 CSS 檔案
 這是一個 css 檔案陣列，會注入到 html 的 `<link>` 標籤。這些標籤會放在所有檢視的 `<!--STYLES--><!--STYLES END-->` 註解之間。
@@ -24,11 +24,11 @@ Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `
 ##### 要注入的樣版檔案
 這是一個 html 檔案陣列，會編譯成 jst 函數並放在一個 jst.js 檔案。這些檔案會注入到 `<script>` 標籤，放在 html 的 `<!--TEMPLATES--><!--TEMPLATES END-->` 註解之間。
 
-> 如果你想改變它們的話，相同的 grunt 匹配模式和任務檔案設定也使用在一些任務設定檔本身。
+> 如果你想改變它們的話，相同的 grunt 匹配模式和任務檔案組態設定也使用在一些任務組態設定檔自身。
 
-### 任務設定
+### 任務組態設定
 
-每個已設定的任務都是一組規則，Gruntfile 會遵循此規則執行。他們位於 [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) 目錄且可完全自訂。你可以修改、忽略或取代任何一個 Grunt 任務，以滿足你的需求。你也可以加入自己的 Grunt 任務，只需在此目錄新增一個 `someTask.js` 檔案來設定新的任務，然後用適當的父任務註冊它（查看 `grunt/register/*.js` 內的檔案）。請記住，Sails 具備一套實用的預設任務，是為了讓你在無需任何設定下執行。
+每個已設定的任務都是一組規則，Gruntfile 會遵循此規則執行。他們位於 [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) 目錄且可完全自訂。你可以修改、忽略或取代任何一個 Grunt 任務，以滿足你的需求。你也可以加入自己的 Grunt 任務，只需在此目錄新增一個 `someTask.js` 檔案來設定新的任務，然後用適當的父任務註冊它（查看 `grunt/register/*.js` 內的檔案）。請記住，Sails 具備一套實用的預設任務，是為了讓你在無需任何組態設定下執行。
 
 ##### 設定自訂任務
 
@@ -40,12 +40,12 @@ Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-* 建立設定檔在 `tasks/config/handlebars.js`。這是我們要放 handlebars 設定的地方。
+* 建立組態設定檔在 `tasks/config/handlebars.js`。這是我們要放 handlebars 設定的地方。
 
 ```javascript
 // tasks/config/handlebars.js
 // --------------------------------
-// handlebar 任務設定。
+// handlebar 任務組態設定。
 
 module.exports = function(grunt) {
 
@@ -145,7 +145,7 @@ npm uninstall grunt-contrib-jst --save-dev
 
 在生產模式下，Sails 執行 `prod` 任務（[`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)）。它與 `default` 有相同的職責，同時壓縮了應用程式的 scripts 和 stylesheets。這減少了應用程式的載入時間和頻寬的使用。
 
-這些任務觸發器都是[「基本」的 Grunt 任務](http://gruntjs.com/creating-tasks#basic-tasks)，位於 [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) 資料夾內。下面，你會看到 Sails 所有的任務觸發器的完整參考，以及觸發它們的指令：
+這些任務觸發器都是[「基本」的 Grunt 任務](http://gruntjs.com/creating-tasks#basic-tasks)，位於 [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) 資料夾內。下面，你會看到 Sails 所有的任務觸發器的完整參考資料，以及觸發它們的指令：
 
 ##### `sails lift`
 

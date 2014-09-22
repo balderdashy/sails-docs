@@ -4,7 +4,7 @@
 
 Sails 內的 asset pipeline 是一組能增加專案一致性和效率的 Grunt 任務設定。整個前端資源工作流程可完全自訂，它提供了一些可立即使用的預設任務。Sails 可以很容易的[設定新任務](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration)，以滿足你的需求。
 
-這些 Sails 預設的 Grunt 任務設定可協助你：
+這些 Sails 預設的 Grunt 組態設定可協助你：
 - 自動編譯 LESS
 - 自動編譯 JST
 - 自動編譯 Coffeescript
