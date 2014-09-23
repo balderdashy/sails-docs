@@ -1,11 +1,11 @@
-# Using .sailsrc Files
+# 使用 .sailsrc 檔案
 
 
-In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.
+除了設定應用程式的其他方法外，從 0.10 版開始，你可以在 `.sailsrc` 檔案裡為指定一個或多個應用程式的設定（感謝 Dominic Tarr 的優秀 [`rc` 模組](https://github.com/dominictarr/rc)）。`rc` 檔案對於設定命令列和/或套用組態設定到所有執行在你電腦上的 Sails 應用程式最有用。
 
-When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in either JSON or [.ini](http://en.wikipedia.org/wiki/INI_file) format) in the current directory and in your home folder (i.e. `~/.sailsrc`) (every newly generated Sails app comes with a boilerplate `.sailsrc` file).  Then it merges them in to its existing configuration.
+當 Sails 命令列介面執行一個指令時，它會先在當前目錄和你的家目錄（即 `~/.sailsrc`）（任何新建立的 Sails 應用程式附帶的樣版 `.sailsrc` 檔案）尋找 `.sailsrc` 檔案（JSON 或 [.ini](http://en.wikipedia.org/wiki/INI_file) 格式）。然後將它們合併到現有的組態設定。
 
-> Actually, Sails looks for `.sailsrc` files in a few other places (following [rc conventions](https://github.com/dominictarr/rc#standards)).  You can put a `.sailsrc` file at any of those paths.  That said, stick to convention when you can- the best place to put a global `.sailsrc` file is in your home directory (i.e. `~/.sailsrc`).
+> 其實，Sails 會從其它幾個地方尋找 `.sailsrc` 檔案（遵循 [rc 慣例](https://github.com/dominictarr/rc#standards)）。你可以放置 `.sailsrc` 檔案到這些路徑。也就是說，你最好能遵循慣例，放置公用 `.sailsrc` 檔案的地方是你的家目錄（即 `~/.sailsrc`）。
 
 
 
