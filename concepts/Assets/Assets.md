@@ -2,9 +2,9 @@
 
 ### 概觀
 
-資源指的是在你的伺服器上想讓外界存取的[靜態檔案](http://en.wikipedia.org/wiki/Static_web_page)（js、css、圖檔等等）。在 Sails，這些檔案都放在 [`assets/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/assets) 目錄，當你啟動應用程式，他們會被處理並同步到一個隱藏的暫存目錄(`.tmp/public/`)。這個 `.tmp/public` 資料夾就是 Sails 實際提供的內容，大致等同於 [express](https://github.com/expressjs) 的「public」資料夾，或是其他你或許熟悉的網站伺服器如 Apache 的「www」資料夾。這中間的過程允許 Sails 準備或預先編譯在客戶端上使用的資源，像是 LESS、CoffeeScript、SASS、spritesheets、Jade 樣版等等。
+資源指的是在你的伺服器上想讓外界存取的[靜態檔案](http://en.wikipedia.org/wiki/Static_web_page)（js、css、圖檔等等）。在 Sails，這些檔案都放在 [`assets/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/assets) 目錄，當你啟動應用程式，他們會被處理並同步到一個隱藏的暫存目錄(`.tmp/public/`)。這個 `.tmp/public` 資料夾就是 Sails 實際提供的內容，大致等同於 [express](https://github.com/expressjs) 的「public」資料夾，或是其他你或許熟悉的網站伺服器如 Apache 的「www」資料夾。這中間的過程允許 Sails 準備或預先編譯在用戶端上使用的資源，像是 LESS、CoffeeScript、SASS、spritesheets、Jade 樣版等等。
 
-### 靜態中介軟體
+### 靜態中介軟體（Static middleware）
 
 在幕後，Sails 使用 Express 的[靜態中介軟體](http://www.senchalabs.org/connect/static.html)來提供你的資源。你可以在 [`/config/http.js`](/#/documentation/reference/sails.config/sails.config.http.html) 設定這個中介軟體（例如 cache 設定）。
 

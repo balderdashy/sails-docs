@@ -53,7 +53,7 @@ Sails 內的 asset pipeline 是一組能增加專案一致性和效率的 Grunt 
 
 ##### jst
 
-> 預先將 Underscore 樣版編譯成 `.jst` 檔案。（也就是說，它需要樣版檔案並將其轉換成微小的 javascript 函數）。這可以加速在客戶端的樣版呈現，及減少頻寬的消耗。
+> 預先將 Underscore 樣版編譯成 `.jst` 檔案。（也就是說，它需要樣版檔案並將其轉換成微小的 javascript 函數）。這可以加速在用戶端的樣版呈現，及減少頻寬的消耗。
 
 > [使用說明](https://github.com/gruntjs/grunt-contrib-jst)
 
@@ -77,13 +77,13 @@ Sails 內的 asset pipeline 是一組能增加專案一致性和效率的 Grunt 
 
 ##### uglify
 
-> 壓縮客戶端 javascript 資源。
+> 壓縮用戶端 javascript 資源。
 
 > [使用說明](https://github.com/gruntjs/grunt-contrib-uglify)
 
 ##### watch
 
-> 當被監視的檔案類型被新增、修改或刪除，執行預先定義的任務。監視 `assets/` 資料夾的檔案異動，並重新執行相應的任務（例如編譯 less 和 jst）。這讓你可以看到應用程式的資源變更，而無需重新啟動 Sails 伺服器。
+> 當被監視的檔案類型被新增、修改或刪除，執行預先定義的任務。監視 `assets/` 資料夾的檔案異動，並重新執行對應的任務（例如編譯 less 和 jst）。這讓你可以看到應用程式的資源變更，而無需重新啟動 Sails 伺服器。
 
 > [使用說明](https://github.com/gruntjs/grunt-contrib-watch)
 

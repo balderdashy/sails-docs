@@ -4,7 +4,7 @@
 
 [`tasks/`](./#!documentation/anatomy/tasks) 目錄包含了一系列 [Grunt 任務](http://gruntjs.com/creating-tasks)和它們的[組態設定](http://gruntjs.com/configuring-tasks)。
 
-任務主要是用在打包前端資源（如 stylesheets、scripts 及客戶端標記樣版），但它們也可以用在自動化重複各種開發時的瑣事，從 [browserify](https://github.com/jmreidy/grunt-browserify) 編譯到[資料庫遷移](https://www.npmjs.org/package/grunt-db-migrate)皆可使用。
+任務主要是用在打包前端資源（如 stylesheets、scripts 及用戶端標記樣版），但它們也可以用在自動化重複各種開發時的瑣事，從 [browserify](https://github.com/jmreidy/grunt-browserify) 編譯到[資料庫遷移](https://www.npmjs.org/package/grunt-db-migrate)皆可使用。
 
 為了方便起見，Sails 打包了一些[預設任務](./#!documentation/grunt/default-tasks)，但隨著[數以百計](http://gruntjs.com/plugins)的插件可供選擇，你可以幾乎毫不費力的使用任務自動完成任何事情。如果沒有你需要的，你可以[編寫](http://gruntjs.com/creating-tasks)並[發佈自己的 Grunt 插件](http://gruntjs.com/creating-plugins)到 [npm](http://npmjs.org)！
 
@@ -26,9 +26,9 @@ Asset pipeline 是讓你組織要注入到檢視的資源的地方，可以在 `
 
 > 如果你想改變它們的話，相同的 grunt 匹配模式和任務檔案組態設定也使用在一些任務組態設定檔自身。
 
-### 任務組態設定
+### 任務組態設定（Task configuration）
 
-每個已設定的任務都是一組規則，Gruntfile 會遵循此規則執行。他們位於 [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) 目錄且可完全自訂。你可以修改、忽略或取代任何一個 Grunt 任務，以滿足你的需求。你也可以加入自己的 Grunt 任務，只需在此目錄新增一個 `someTask.js` 檔案來設定新的任務，然後用適當的父任務註冊它（查看 `grunt/register/*.js` 內的檔案）。請記住，Sails 具備一套實用的預設任務，是為了讓你在無需任何組態設定下執行。
+每個已設定的任務都是一組規則，Gruntfile 會遵循此規則執行。他們位於 [`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config) 目錄且可完全自訂。你可以修改、忽略或取代任何一個 Grunt 任務，以滿足你的需求。你也可以加入自己的 Grunt 任務，只需在此目錄新增一個 `someTask.js` 檔案來設定新的任務，然後用適當的父任務註冊它（請查看 `grunt/register/*.js` 內的檔案）。請記住，Sails 具備一套實用的預設任務，是為了讓你在無需任何組態設定下執行。
 
 ##### 設定自訂任務
 
@@ -139,9 +139,9 @@ module.exports = function (grunt) {
 npm uninstall grunt-contrib-jst --save-dev
 ```
 
-### 觸發任務
+### 任務觸發器（Task triggers）
 
-在[開發模式](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment)下，Sails 執行 `default` 任務（[`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)）。這將編譯 LESS、CoffeeScript 及客戶端 JST 樣版，然後自動將他們連接到應用程式的動態檢視和靜態 HTML 頁面。
+在[開發模式](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment)下，Sails 執行 `default` 任務（[`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)）。這將編譯 LESS、CoffeeScript 及用戶端 JST 樣版，然後自動將他們連接到應用程式的動態檢視和靜態 HTML 頁面。
 
 在生產模式下，Sails 執行 `prod` 任務（[`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)）。它與 `default` 有相同的職責，同時壓縮了應用程式的 scripts 和 stylesheets。這減少了應用程式的載入時間和頻寬的使用。
 

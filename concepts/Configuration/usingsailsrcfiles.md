@@ -1,4 +1,4 @@
-# 使用 .sailsrc 檔案
+# 使用 .sailsrc 檔案（Using .sailsrc Files）
 
 
 除了設定應用程式的其他方法外，從 0.10 版開始，你可以在 `.sailsrc` 檔案裡為指定一個或多個應用程式的設定（感謝 Dominic Tarr 的優秀 [`rc` 模組](https://github.com/dominictarr/rc)）。`rc` 檔案對於設定命令列和/或套用組態設定到所有執行在你電腦上的 Sails 應用程式最有用。
