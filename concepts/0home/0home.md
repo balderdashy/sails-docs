@@ -1,42 +1,42 @@
-# Sails.js Documentation > Core Concepts
+# Sails.js Documentación > Conceptos base
 
 
-### Table of Contents
+### Tabla de contenidos
 
 1. **Assets**
-  1. Default Tasks
-  2. Disabling Grunt
-  3. Task Automation
+  1. Tareas por defecto
+  2. Deshabilitando Grunt
+  3. Automatización de tareas
 2. **CORS**
-3. **Configuration**
-  1. Using `.sailsrc` Files
-4. **Controllers**
-5. **Custom Responses**
+3. **Configuración**
+  1. Uso de los archivos `.sailsrc`
+4. **Controladores**
+5. **Respuestas Personalizadas**
 6. **Deployment**
   1. FAQ
   2. Hosting
-  3. Scaling
-7. **File Uploads**
-8. **Globals**
-9. **Internationalization**
+  3. Escalado
+7. **Subir Archivos**
+8. **Globales**
+9. **Internacionalización**
 10. **Logging**
   1. sails.log
 11. **Middleware**
-12. **Models**
-  1. Attributes
-  2. Lifecycle callbacks
-  3. Model configuration
-  4. Query language
-  5. Validations
-  6. Model Associations
+12. **Modelos**
+  1. Atributos
+  2. Ciclo de vida de los callbacks
+  3. Configuración del modelo
+  4. Queries
+  5. Validaciones
+  6. Asociaciones del modelo
     1. Dominance
-    2. Many-to-Many
-    3. One Way Association
-    4. One-to-Many
-    5. One-to-One
-    6. Through Associations
-    7. Accessing Join Tables
-  7. Model Methods
+    2. Muchos-a-Muchos
+    3. Asociación Unidireccional
+    4. Uno-a-Muchos
+    5. Uno-a-Uno
+    6. A Través De Asociaciones
+    7. Acceso a Tablas Join
+  7. Metodos del modelo
     1. .publishUpdate()
     2. .add()
     3. .create()
@@ -70,25 +70,25 @@
     31. .watch()
     32. .where()
 13. **Policies**
-14. **Routes**
-  1. Route Target Syntax
+14. **Rutas**
+  1. Sintaxis Rutas de Destino
   2. URL Slugs
-15. **Security**
+15. **Seguridad**
   1. CSRF
   2. Clickjacking
-  3. Content Security Policy
+  3. Política del Seguridad del Contenido
   4. DDOS
   5. P3P
   6. Socket Hijacking
   7. Strict Transport Security
   8. XSS
-16. **Services**
-17. **Testing**
-18. **Upgrading**
-19. **Views**
+16. **Servicios**
+17. **Pruebas**
+18. **Actualizar**
+19. **Vistas**
   1. Layouts
-  2. Locals
-  3. Partials
+  2. Locales
+  3. Parciales
   4. View Engines
 
 
