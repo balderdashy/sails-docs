@@ -1,10 +1,10 @@
-# Custom Responses
+# 自訂回應（Custom Responses）
 
-### Overview
+### 概觀
 
-Sails v.10 allows for customizable server responses.  Sails comes with a handful of the most common response types by default.  They can be found in the `/api/responses` directory of your project.  To customize these, simply edit the appropriate .js file. 
+Sails v.10 允許自訂伺服器回應。Sails 預設附帶一些常見的回應類型。可以在專案的 `/api/responses` 目錄找到它們。只需編輯對應的 .js 檔案，就可以自訂。
 
-As a quick example, consider the following controller action:
+作為一個簡單的範例，思考以下的控制器動作：
 
 ```
 foo: function(req, res) {
@@ -16,13 +16,13 @@ foo: function(req, res) {
 }
 ```
 
-This code handles a bad request by sending a 400 error status and a short message describing the problem.  However, this code has several drawbacks, primarily:
+這個程式碼透過發送一個 400 錯誤狀態及簡短問題描述來處理錯誤請求。然而，這個程式碼有幾個缺點，主要是：
 
-*  It isn't *normalized*; the code is specific to this instance, and we'd have to work hard to keep the same format everywhere
-*  It isn't *abstracted*; if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
-*  The response isn't *content-negotiated*; if the client is expecting a JSON response, they're out of luck
+* 它不是*正規化*的：該代碼是特定於此情況，我們必須在任何地方努力保持相同的格式
+* 它不是*被分離*的：當我們想要在其他地方使用類似的方法，就需要複製／貼上程式碼
+* 它不是*內容協商*的：如果用戶端期待一個 JSON 回應，那別指望了
 
-Now, consider this replacement:
+現在，思考一下這個修改：
 
 ```
 foo: function(req, res) {
@@ -34,52 +34,52 @@ foo: function(req, res) {
 ```
 
 
-This approach has many advantages:
+這種方法具有許多優點：
 
- - Error payloads are normalized
- - Production vs. Development logging is taken into account
- - Error codes are consistent
- - Content negotiation (JSON vs HTML) is taken care of
- - API tweaks can be done in one quick edit to the appropriate generic response file
+ - 錯誤被正規化
+ - 有考慮到生產環境與開發環境的日誌記錄
+ - 錯誤代碼是一致的
+ - 有考慮到內容協商（JSON 與 HTML）
+ - 可在適當的共用回應檔案快速的調整 API
 
-### Responses methods and files
+### 回應方法和檔案（Responses methods and files）
 
-Any `.js` script saved in the `/api/responses` folder will be executed by calling `res.[responseName]` in your controller.  For example, `/api/responses/serverError.js` can be executed with a call to `res.serverError(errors)`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (like `serverError`'s `errors` parameter).
+任何儲存在 `/api/responses` 資料夾的 `.js` 腳本可透過在控制器內呼叫 `res.[responseName]` 來執行。例如，可以透過呼叫 `res.serverError(errors)` 來執行 `/api/responses/serverError.js`。在回應腳本內可以透過 `this.req` 和 `this.res` 取得請求及回應物件；這讓實際的回應方法可以取得任意參數。（如 `serverError` 的 `errors` 參數）。
 
-### Default responses
+### 預設回應
 
-The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
+以下的回應已綁定在所有新的 Sails 應用程式的 `/api/responses` 資料夾內。當用戶端期望收到 JSON，會回應一個包含了 HTTP 狀態代碼的 `status` 鍵及任何錯誤相關資訊的正規化 JSON 物件。
 
 #### res.serverError(errors)
 
-This response normalizes the error/errors of {errors} into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
+這個回應會將錯誤正規化為適當、可讀取的 `Error` 物件。 `errors` 可以是一個或多個字串或 `Error` 物件。它會記錄所有錯誤到 Sails 記錄器（通常是終端機），並當用戶端期望收到 HTML 時回應 `views/500.*` 檢視檔案，或當用戶端期望收到 JSON 時回應一個 JSON 物件。在開發模式下，錯誤列表會包含在回應中。在生產模式下，實際的錯誤會受到抑制。
 
 #### res.badRequest(validationErrors, redirectTo)
 
-For requesters expecting JSON, this response includes the 400 status code and any relevant data sent as `validationErrors`.
+對於期望收到 JSON 的請求者，這個回應包含了 400 狀態碼及被作為 `validationErrors` 所傳送的任何相關資料。
 
-For traditional (not-AJAX) web forms, this middleware follows best-practices for when a user submits invalid form data:
+對於傳統的（非 AJAX）網頁表單，當使用者提交無效的表單資料，這個中介軟體遵循了最佳做法：
 
- - First, a one-time-use flash variable is populated, probably a string message or an array of semantic validation error objects.
- - Then the  user is redirected back to `redirectTo`, i.e. the URL where the bad request originated.
- - There, the controller and/or view might use the flash `errors` to either display a message or highlight the invalid HTML form fields.
+ - 首先，一個暫存變數可能被填入了一個字串或語義驗證錯誤物件。
+ - 然後，將使用者重新導向回 `redirectTo`，即發出錯誤請求的來源 URL。
+ - 還有，控制器和／或檢視可能使用暫存變數 `errors` 來顯示訊息或突顯無效的 HTML 表單欄位。
 
 
 #### res.notFound()
 
-If the requester is expecting JSON, this response simply sends a 404 status code and a `{status: 404}` object. 
+當請求者期望收到 JSON，這個回應會發送 404 狀態碼及一個 `{status: 404}` 物件。
 
-Otherwise the view located in `myApp/views/404.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+否則，將發送位於 `myApp/views/404.*` 內的檢視。若找不到檢視，那麼便發送 JSON 回應。
 
 #### res.forbidden(message)
 
-If the requester is expecting JSON, this response sends the 403 status code along with the contents of `message`.
+當請求者期望收到 JSON，這個回應會發送 403 狀態碼及 `message` 的內容。
 
-Otherwise the view located in `myApp/views/403.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+否則，將發送位於 `myApp/views/403.*` 內的檢視。若找不到檢視，那麼便發送 JSON 回應。
 
-### Custom Response
+### 自訂回應
 
-To add your own custom response method, simply add a file to `/api/responses` with the same name as the method you would like to create.  The file should export a function, which can take any parameters you like.
+要加入你自己的自訂回應方法，只需新增與方法名稱相同的檔案到 `/api/responses`。該檔案應該導出函數，可以附帶任何你喜歡的參數。
 
 ```
 /** 
