@@ -1,58 +1,58 @@
-# Deployment
+# 部署（Deployment）
 
-### Overview
+### 概觀
 
-#### Before You Deploy
+#### 在部署之前
 
-Before you launch any web application, you should ask yourself a few questions:
+在你啟動任何網頁應用程式前，你應該問自己幾個問題：
 
-+ What is your expected traffic?
-+ Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
-+ What sorts of front-end apps will be "hitting" your infrastructure?
-  + Android apps
-  + iOS apps
-  + desktop web browers
-  + mobile web browsers (tablets, phones, iPad minis?)
-  + tvs, watches, toasters..?
-+ And what kinds of things will they be requesting?
-  + JSON?
-  + HTML?
-  + XML?
-+ Will you be taking advantage of realtime pubsub features with Socket.io?
-  + e.g. chat, realtime analytics, in-app notifications/messages
-+ How are you tracking crashes and errors?
-  + Take a look at Sails' log config
++ 你預期的流量為何？
++ 你的合約是否要求滿足任何正常執行時間保證，如服務層級協議（SLA）？
++ 哪種前端應用程式會觸及你的網頁應用程式？
+  + Android 應用程式
+  + iOS 應用程式
+  + 桌面版網頁瀏覽器
+  + 行動版網頁瀏覽器（平板電腦、電話、iPad mini？）
+  + 電視、手錶、烤麵包機…？
++ 以及它們會要求什麼東西？
+  + JSON？
+  + HTML？
+  + XML？
++ 你會利用 Socket.io 的即時發布訂閱功能？
+  + 例如聊天、即時分析、應用程式內通知／訊息
++ 你是如何追蹤崩潰與錯誤？
+  + 看看 Sails 的日誌設定
 
 
 
-#### Deploying On a Single Server
+#### 部署在單一伺服器
 
-Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
+Node.js 非常快速。對於許多應用程式，在一開始一台伺服器就足夠處理預期的流量。
 
-##### Configure
+##### 設定
 
-+ All your production environment settings are stored in `config/env/production.js`
-+ Configure your app to run on port 80 (if not behind a proxy like nginx). If you're using nginx, be sure to configure it to relay websockets to your app. You can find guidance here in nginx docs [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html).
-+ Configure the 'production' environment so that all of your css/js gets bundled up, and the internal servers are switched into the appropriate environment (requires [linker](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md))
-+ Make sure your database is set-up on the production server. This is especially important if you are using a relational database such as MySQL, because sails sets all your models to `migrate:safe` when run in production, which means no auto-migrations are run on starting up the app. You can set your database up the following way:
-  + Create the database on the server and then run your sails app with `migrate:alter` locally, but configured to use the production server as your db. This will automatically set things up. 
-  +  In case you can't connect to the server remotely, you'll simply dump your local schema and import it into the database server.
-+ Enable CSRF protection for your POST, PUT, and DELETE requests
-+ Enable SSL
-+ IF YOU'RE USING SOCKETS: 
-  + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
-    + e.g. enable the `flashsocket` transport
++ 所有生產環境設定都儲存在 `config/env/production.js`
++ 設定應用程式執行於連接埠 80（如果不是在如 nginx 之類的代理之後）。如果你使用的是 nginx，一定要對其設定中繼 WebSocket 到應用程式。你可以在 nginx 文件 [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html) 找到指南。
++ 設定「生產」環境，讓所有的 css/js 被打包，且內部伺服器被切換到適當的環境（需要[連接器](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)）。
++ 務必確認資料庫已設定在生產伺服器。更重要的一點是，如果你使用的是關聯式資料庫如 MySQL，當執行於生產環境時， Sails 會設定所有的模型為 `migrate:safe`，這代表啟動應用程式時不會進行自動移轉。你可以用以下方法設定資料庫：
+  + 在伺服器上建立資料庫，使用生產伺服器作為資料庫，然後在本地使用 `migrate:alter` 設定執行 Sails 應用程式。這樣就自動設定好了。
+  +  如果你無法遠端連線伺服器，你可以倒出在本地端的結構，並將其匯入到資料庫伺服器。
++ 啟用 CSRF 來保護 POST、PUT 及 DELETE 請求
++ 啟用 SSL
++ 如果你使用 SOCKETS：
+  + 設定 `config/sockets.js` 並使用 socket.io 的[生產環境建議設定](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
+    + 例如啟用 `flashsocket` 傳輸
 
-##### Deploy
+##### 部署
 
-In production, instead of `sails lift`, you'll want to use forever or PM2 to make sure your app will keep running, even if it crashes.
+在生產環境中，你會想要使用 forever 或 PM2 來取代 `sails lift`，以確保即使應用程式崩潰了也會繼續運作。
 
-+ Install forever: `sudo npm install -g forever`
-  + More about forever: https://github.com/nodejitsu/forever
-+ Or install PM2: `sudo npm install pm2 -g --unsafe-perm`
-  + More information about that: https://github.com/Unitech/pm2 
-+ From your app directory, start the server either with `forever start app.js --prod` or `pm2 start app.js -x -- --prod`
-  + This is the same thing as using `sails lift --prod`, but if the server crashes, it will be automatically restarted.
++ 安裝 forever：`sudo npm install -g forever`
+  + 更多關於 forever 的資訊：https://github.com/nodejitsu/forever
++ 或安裝 PM2：`sudo npm install pm2 -g --unsafe-perm`
+  + 更多關於 PM2 的資訊：https://github.com/Unitech/pm2 
++ 從你的應用程式目錄，使用 `forever start app.js --prod` 或 `pm2 start app.js -x -- --prod` 啟動伺服器
+  + 這和 `sails lift --prod` 所做的事相同，但是當伺服器崩潰時，它會自動重新啟動。
  
 
 
