@@ -24,9 +24,9 @@ I have [Windows](#/getStarted?q=--install-on-windows-)
 Install on OSX
 </h2>
 
-Using [a package](http://nodejs.org/#download):
+Using [a package](http://nodejs.org/download/):
 
-_Simply [download Macintosh Installer](http://nodejs.org/#download)._
+_Simply [download Macintosh Installer](http://nodejs.org/download/)._
 
 Using [homebrew](https://github.com/mxcl/homebrew):
 
@@ -130,9 +130,9 @@ or packages on FreeBSD
 Install on Windows
 </h2>
 
-Using [a package](http://nodejs.org/#download):
+Using [a package](http://nodejs.org/download/):
 
-_Simply [download Windows Installer](http://nodejs.org/#download)._
+_Simply [download Windows Installer](http://nodejs.org/download/)._
 
 Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):  
 

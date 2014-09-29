@@ -11,7 +11,7 @@ Before you launch any web application, you should ask yourself a few questions:
 + What sorts of front-end apps will be "hitting" your infrastructure?
   + Android apps
   + iOS apps
-  + desktop web browers
+  + desktop web browsers
   + mobile web browsers (tablets, phones, iPad minis?)
   + tvs, watches, toasters..?
 + And what kinds of things will they be requesting?

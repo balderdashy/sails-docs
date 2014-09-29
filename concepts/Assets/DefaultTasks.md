@@ -7,7 +7,7 @@ The asset pipeline bundled in Sails is a set of Grunt tasks configured with conv
 Here are a few things that the default Grunt configuration in Sails does to help you out:  
 - Automatic LESS compilation
 - Automatic JST compilation
-- Automatic Coffescript compilation
+- Automatic Coffeescript compilation
 - Optional automatic asset injection, minification, and concatenation
 - Creation of a web ready public directory
 - File watching and syncing
@@ -38,7 +38,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 ##### copy
 
 > **dev task config**
-> Copies all directories and files, except coffescript and less files, from the sails assets folder into the `.tmp/public/` directory.
+> Copies all directories and files, except coffeescript and less files, from the sails assets folder into the `.tmp/public/` directory.
 
 > **build task config**
 > Copies all directories and files from the .tmp/public directory into a www directory.
