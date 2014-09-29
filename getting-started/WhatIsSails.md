@@ -1,21 +1,21 @@
-# What is Sails?
+# 什麼是 Sails？
 
 
-Sails is, of course, a web framework.  But take a step back.  What does that mean?  Sometimes, when we refer to the "web", we mean the "front-end web."  We think of concepts like web standards, or HTML 5, or CSS 3; and frameworks like Backbone, or Angular, or jQuery.  Sails is not "that kind" of a web framework.  Sails works great with Angular and Backbone, but you would never use Sails _instead_ of those libraries.
+Sails 當然是一個網站開發框架。但退一步，這意味著什麼？有時候，當我們提到「網站」，我們指的是「前端網站」。我們認為像是網頁標準、HTML 5 或 CSS 3 的概念，以及像是 Backbone、Angular 或 jQuery 的框架。Sails 不是「那種」網站開發框架。Sails 與 Angular 及 Backbone 運作良好，但你永遠不會使用 Sails _取代_這些類別庫。
 
-On the other hand, sometimes when we talk about "web frameworks", we mean the "back-end web."  This evokes concepts like REST, or HTTP, or WebSockets; and technogies like Java, or Ruby, or Node.js.  A "back-end web" framework helps you do things like build APIs, serve HTML files, and handle hundreds of thousands of simultaneous users.  Sails is "that kind" of web framework.
+在另一方面，有時候當我們談論「網站開發框架」，我們指的是「後端網站」。這喚起了像是 REST、HTTP 或 WebSockets 的概念，以及像是 Java、Ruby 或 Node.js 的技術。一個「後端網站」框架可以幫助你做到一些事情，如建立 API、提供 HTML 檔案及同時處理成千上萬的使用者。Sails 是「那種」網站框架。
 
 
 
-## Convention over Configuration
+## 慣例優於設定
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
+Sails 完成許多與其他 MVC 網站應用程式框架相同的目標，使用許多相同的方法學。這樣做是有目的的。一致的方式使得參與其中的任何人開發應用程式更具可預測性且高效率的。
 
-Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes you more productive.  In many cases, you'll even be able to recycle some of your backend code.
+想像一下，開始一份新的工作，在一家公司建立 Sails 應用程式。如果任何在你團隊中的人曾使用如 Zend、Laravel、CodeIgniter、Cake、Grails、Django、ASP.NET MVC 或 Rails，會覺得很熟悉 Sails。不僅如此，一般來說，他們還可以了解 Sails 專案，如何編寫他們在過去已反覆實作的基本模式；無論他們的背景是 PHP、Ruby、Java、C# 或 Node.js。那麼你的第二個應用程式或第三個？每當你建立新的 Sails 應用程式，你以一個健全、熟悉的樣板開始，讓你更有效率。在許多情況下，你甚至可以回收重複使用一些後端程式碼。
 
-> **History**
+> **歷史**
 >
-> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenant of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
+> Sails 沒有發明這個概念-- 它[已經存在多年](https://en.wikipedia.org/wiki/Convention_over_configuration)。即使在 Ruby on Rails 那句「慣例優於設定」（或稱 CoC）流行之前，JavaBeans 借用了常見於 90 年代末期到 21 世紀初期，傳統的 Java 網站框架極其冗長的 XML 設定到許多核心規範中。簡單來說就是用簡單的慣例（Convention）來取代繁雜的設定（Configuration），簡化開發者的工作。
 
 
 ## Loose Coupling

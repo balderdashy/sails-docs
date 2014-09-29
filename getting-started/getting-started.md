@@ -1,27 +1,36 @@
-# Getting Started
+# 新手上路
 
-## Installation
-To install the latest stable release with the command-line tool:
+## 安裝
+要安裝最新穩定版的命令列工具：
 
-	sudo npm -g install sails
+```
+sudo npm -g install sails
+```
 
-On Windows, you don't need sudo:
+在 Windows 上，你不需要 sudo：
 
-	npm -g install sails
+```
+npm -g install sails
+```
 
-## Creating a New Sails Project
-Create a new app:
+## 建立一個新的 Sails 專案
+建立一個新的應用程式：
 
-	sails new testProject
+```
+sails new testProject
+```
 
-Now lift the server:
+現在，啟動伺服器：
 
-	cd testProject
-	sails lift
+```
+cd testProject
+sails lift
+```
 
-At this point, if you visit (http://localhost:1337/) you will see the default home page.
+此時，如果你訪問（http://localhost:1337/），你會看到預設的首頁。
 
-Now, let's get Sails to do cool stuff.
+現在，讓我們用 Sails 做更酷的東西吧！
 
 <docmeta name="uniqueID" value="GettingStarted99009">
 <docmeta name="displayName" value="Getting Started">
+
