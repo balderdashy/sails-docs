@@ -22,7 +22,7 @@ In a production environment (NODE_ENV==="production") Sails always uses
  2. alter - auto-migrate, but attempt to keep my existing data (experimental)
  3. drop  - wipe/drop ALL my data and rebuild models every time I lift Sails
 
-When your sails app lifts, waterline validates your all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to `
+When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to `
 
 
 | Auto-Migration Strategy  | Description |
@@ -54,7 +54,7 @@ For adapters that don't require a schema, such as Mongo or Redis, the default se
 connection: 'my-local-postgresql'
 ```
 
-The configured database [connection](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
+The configured database [connection](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
 
 
 ### `identity`
@@ -71,7 +71,7 @@ The lowercase unique key for this model, e.g. `user`.  By default, a model's `id
 globalId: 'Purchase'
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models- to disable globals, see [`sails.config.globals`]().
+This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/#/documentation/concepts/Globals?q=disabling-globals).
 
 
 
