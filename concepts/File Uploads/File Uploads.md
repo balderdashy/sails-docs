@@ -1,11 +1,11 @@
-# File Uploads
+# 檔案上傳（File Uploads）
 
 > TODO: Normalize/expand this section
 
-### Example
+### 範例
 
-#### Generate an `api` 
-First we need to generate a new `api` for serving/storing files.  Do this using the sails command line tool.
+#### 產生一個 `api`
+首先，我們需要替 serving/storing 產生一個新的 `api` 檔案。用 sails 命令列工具執行此動作。
 
 ```sh
 
@@ -21,9 +21,9 @@ dude@littleDude:~/node/myApp$
 
 ```
 
-#### Write Controller Actions
+#### 撰寫控制器動作
 
-Lets make an `index` action to initiate the file upload and an `upload` action to receive the file.
+讓我們建立一個 `index` 動作來開始檔案上傳及 `upload` 動作來接收檔案。
 
 ```javascript 
 
@@ -57,11 +57,11 @@ module.exports = {
 };
 ```
 
-#### Where do they go?
-When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can do whatever you want with it in the `upload` action.
+#### 它們去哪了？
+使用預設的 `receiver`，上傳的檔案會在 `myApp/.tmp/uploads/` 目錄。你可以在 `upload` 動作內做你想做的任何事情。
 
 
-> For a much more detailed look at Skipper along with a list of alternative `receivers`, see the [skipper docs](https://github.com/balderdashy/skipper) ! 
+> 請查看 [Skipper 文件](https://github.com/balderdashy/skipper)取得更多資訊及其他可用的 `receivers` 清單！
 
 
 
