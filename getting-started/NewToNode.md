@@ -123,7 +123,7 @@ make install
 ```
 
 ### openSUSE & SLE
-[Node.js 穩定儲存庫列表](https://build.opensuse.org/package/show?package=nodejs&project=devel%3Alanguages%3Anodejs)。另外 openSUSE:Factory 儲存庫也提供 Node.js。
+[Node.js 穩定儲存庫清單](https://build.opensuse.org/package/show?package=nodejs&project=devel%3Alanguages%3Anodejs)。另外 openSUSE:Factory 儲存庫也提供 Node.js。
 
 openSUSE 11.4、12.1、Factory 及 Tumbleweed；SLE 11 (with SP1 and SP2 variations) 提供 RPM 套件。
 

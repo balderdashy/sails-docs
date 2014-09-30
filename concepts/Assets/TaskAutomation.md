@@ -143,7 +143,7 @@ npm uninstall grunt-contrib-jst --save-dev
 
 在[開發模式](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment)下，Sails 執行 `default` 任務（[`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)）。這將編譯 LESS、CoffeeScript 及用戶端 JST 樣版，然後自動將他們連接到應用程式的動態檢視和靜態 HTML 頁面。
 
-在生產模式下，Sails 執行 `prod` 任務（[`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)）。它與 `default` 有相同的職責，同時壓縮了應用程式的 scripts 和 stylesheets。這減少了應用程式的載入時間和頻寬的使用。
+在正式環境下，Sails 執行 `prod` 任務（[`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)）。它與 `default` 有相同的職責，同時壓縮了應用程式的 scripts 和 stylesheets。這減少了應用程式的載入時間和頻寬的使用。
 
 這些任務觸發器都是[「基本」的 Grunt 任務](http://gruntjs.com/creating-tasks#basic-tasks)，位於 [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) 資料夾內。下面，你會看到 Sails 所有的任務觸發器的完整參考資料，以及觸發它們的指令：
 
@@ -159,7 +159,7 @@ npm uninstall grunt-contrib-jst --save-dev
 
 執行 **build** 任務（`tasks/register/build.js`）。
 
-##### `sails www --prod`（生產模式）
+##### `sails www --prod`（正式環境）
 
 執行 **buildProd** 任務（`tasks/register/buildProd.js`）。
 

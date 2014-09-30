@@ -31,21 +31,21 @@ Node.js 非常快速。對於許多應用程式，在一開始一台伺服器就
 
 ##### 設定
 
-+ 所有生產環境設定都儲存在 `config/env/production.js`
++ 所有正式環境設定都儲存在 `config/env/production.js`
 + 設定應用程式執行於連接埠 80（如果不是在如 nginx 之類的代理之後）。如果你使用的是 nginx，一定要對其設定中繼 WebSocket 到應用程式。你可以在 nginx 文件 [WebSocket proxying](http://nginx.org/en/docs/http/websocket.html) 找到指南。
-+ 設定「生產」環境，讓所有的 css/js 被打包，且內部伺服器被切換到適當的環境（需要[連接器](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)）。
-+ 務必確認資料庫已設定在生產伺服器。更重要的一點是，如果你使用的是關聯式資料庫如 MySQL，當執行於生產環境時， Sails 會設定所有的模型為 `migrate:safe`，這代表啟動應用程式時不會進行自動移轉。你可以用以下方法設定資料庫：
-  + 在伺服器上建立資料庫，使用生產伺服器作為資料庫，然後在本地使用 `migrate:alter` 設定執行 Sails 應用程式。這樣就自動設定好了。
++ 設定「正式」環境，讓所有的 css/js 被打包，且內部伺服器被切換到適當的環境（需要[連接器](https://github.com/balderdashy/sails-wiki/blob/0.9/assets.md)）。
++ 務必確認資料庫已設定在正式伺服器。更重要的一點是，如果你使用的是關聯式資料庫如 MySQL，當執行於正式環境時， Sails 會設定所有的模型為 `migrate:safe`，這代表啟動應用程式時不會進行自動移轉。你可以用以下方法設定資料庫：
+  + 在伺服器上建立資料庫，使用正式伺服器作為資料庫，然後在本地使用 `migrate:alter` 設定執行 Sails 應用程式。這樣就自動設定好了。
   +  如果你無法遠端連線伺服器，你可以倒出在本地端的結構，並將其匯入到資料庫伺服器。
 + 啟用 CSRF 來保護 POST、PUT 及 DELETE 請求
 + 啟用 SSL
 + 如果你使用 SOCKETS：
-  + 設定 `config/sockets.js` 並使用 socket.io 的[生產環境建議設定](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
+  + 設定 `config/sockets.js` 並使用 socket.io 的[正式環境建議設定](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
     + 例如啟用 `flashsocket` 傳輸
 
 ##### 部署
 
-在生產環境中，你會想要使用 forever 或 PM2 來取代 `sails lift`，以確保即使應用程式崩潰了也會繼續運作。
+在正式環境中，你會想要使用 forever 或 PM2 來取代 `sails lift`，以確保即使應用程式崩潰了也會繼續運作。
 
 + 安裝 forever：`sudo npm install -g forever`
   + 更多關於 forever 的資訊：https://github.com/nodejitsu/forever

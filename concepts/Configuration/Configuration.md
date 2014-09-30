@@ -35,7 +35,7 @@ module.exports.blueprints = {
 
 ##### 範例
 ```javascript
-// 這個範例在檢查當生產模式時 csrf 必需啟動。
+// 這個範例檢查在正式環境時 csrf 必需啟動。
 // 否則，拋出錯誤並終止應用程式。
 if (sails.config.environment === 'production' && !sails.config.csrf) {
   throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
