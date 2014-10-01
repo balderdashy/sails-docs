@@ -6,7 +6,7 @@
 
 任務主要是用在打包前端資源（如 stylesheets、scripts 及用戶端標記樣版），但它們也可以用在自動化重複各種開發時的瑣事，從 [browserify](https://github.com/jmreidy/grunt-browserify) 編譯到[資料庫遷移](https://www.npmjs.org/package/grunt-db-migrate)皆可使用。
 
-為了方便起見，Sails 打包了一些[預設任務](./#!documentation/grunt/default-tasks)，但隨著[數以百計](http://gruntjs.com/plugins)的插件可供選擇，你可以幾乎毫不費力的使用任務自動完成任何事情。如果沒有你需要的，你可以[編寫](http://gruntjs.com/creating-tasks)並[發佈自己的 Grunt 插件](http://gruntjs.com/creating-plugins)到 [npm](http://npmjs.org)！
+為了方便起見，Sails 打包了一些[預設任務](./#!documentation/grunt/default-tasks)，但隨著[數以百計](http://gruntjs.com/plugins)的插件可供選擇，你可以幾乎毫不費力的使用任務自動完成任何事情。如果沒有你需要的，你可以[撰寫](http://gruntjs.com/creating-tasks)並[發佈自己的 Grunt 插件](http://gruntjs.com/creating-plugins)到 [npm](http://npmjs.org)！
 
 > 如果你以前從未使用過 [Grunt](http://gruntjs.com/)，一定要查看[新手上路](http://gruntjs.com/getting-started)指南，因為它解釋了如何建立 [Gruntfile](http://gruntjs.com/sample-gruntfile) 以及安裝和使用 Grunt 插件。
 

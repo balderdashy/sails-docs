@@ -72,7 +72,7 @@ sudo yum install npm
 
 ### RHEL/CentOS/Scientific Linux 6
 
-[Fedora Enterprise Linux 額外軟體包 (EPEL)](https://fedoraproject.org/wiki/EPEL) _測試_儲存庫提供 Node.js 和 npm。如果你還沒有這樣做，首先[啟用 EPEL](https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F) 然後執行以下指令來安裝node 及 npm：
+[Fedora Enterprise Linux 附加軟體包 (EPEL)](https://fedoraproject.org/wiki/EPEL) _測試_儲存庫提供 Node.js 和 npm。如果你還沒有這樣做，首先[啟用 EPEL](https://fedoraproject.org/wiki/EPEL#How_can_I_use_these_extra_packages.3F) 然後執行以下指令來安裝node 及 npm：
 
 ```
 su -c 'yum --enablerepo=epel-testing install npm'
