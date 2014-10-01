@@ -133,7 +133,7 @@ attributes: {
 tableName: 'some_preexisting_table'
 ```
 
-You can define a custom name for the physical collection in your adapter by adding a `tableName` attribute. __This isn't just for tables__.  In MySQL, PostrgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the colelction, and so forth. If no tableName is specified, Waterline will use the model's `identity` as its `tableName`.
+You can define a custom name for the physical collection in your adapter by adding a `tableName` attribute. __This isn't just for tables__.  In MySQL, PostrgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the collection, and so forth. If no tableName is specified, Waterline will use the model's `identity` as its `tableName`.
 
 This is particularly useful for working with pre-existing/legacy databases.
 
