@@ -25,7 +25,7 @@ Models may be accessed from our controllers, policies, services, responses, test
 
 Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
 
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.fail()`, which will return a [Q promise](https://github.com/kriskowal/q).
+Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 
 
