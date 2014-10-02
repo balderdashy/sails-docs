@@ -1,44 +1,43 @@
-# Scaling
+# 擴充（Scaling）
 
-If you have the immediate expectation of lots of traffic to your application (or better yet, you already have it!), 
-you'll want to set up a scalable architecture that your app can scale as more and more people use it.
+如果你預料到會有大流量到應用程式（或者更好的是，你已經擁有大流量！），你要建立一個可擴充的架構，讓應用程式可以隨著越來越多人使用而進行擴充。
 
-### Benchmarks
+### 效能基準（Benchmarks）
 
-For the most part, Sails benchmarks exactly like any Connect, Express or Socket.io app.  This has been validated on a few different occasions, most [recently here](http://serdardogruyol.com/?p=111).  If you have your own benchmark you'd like to share, please send a pull request to this page on Github.
+在大多數情況下，Sails 效能與任何 Connect、Express 或 Socket.io 應用程式相同。這已在幾個不同的場合下被證實，最近一次是在[這裡](http://serdardogruyol.com/?p=111)。如果你有自己的效能基準想和大家分享，請在 Github 發送 pull request 到本頁面。
 
 
-### Example architecture
+### 範例架構
 
 ```
-                       Sails.js server
-                             ....                 
-                    /  Sails.js server  \      /  Database (e.g. Mongo, Postgres, etc)
-Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
-                    \  Sails.js server  /      \  Session store (Redis)
-                             ....                 
-                       Sails.js server
+　　　　　          Sails.js 伺服器
+　　　　　                ....                 
+　　　　　       /  Sails.js 伺服器  \      /  資料庫（如 Mongo、Postgres 等）
+負載平衡器  <-->    Sails.js 伺服器    <-->    Socket 儲存區（Redis）
+　　　　　       \  Sails.js 伺服器  /      \  會話（Session）儲存區（Redis）
+　　　　　                ....                 
+　　　　　          Sails.js 伺服器
 ```
 
 
-### Configuring your app for a clustered deployment
+### 設定應用程式的叢集部署
 
-+ Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) is scalable (e.g. sharding/cluster) 
-+ Configure your app to use a shared session store
-  + Support for redis is built in (see the `adapter` options in `config/session.js`)
-+ IF YOU'RE USING SOCKETS: 
-  + Configure your app to use a shared socket store
-    + Support for redis is built in (see the `adapter` options in `config/sockets.js`)
-    + Note: If you'd rather not set up a socket store, a workable solution for your use case may be enabling sticky sessions at your load balancer.
-+ Ensure none of the other dependencies you might be using in your app rely on shared memory.
++ 確保模型所使用的資料庫（如 MySQL、Postgres、Mongo）具有可擴充性（如分片叢集）
++ 設定應用程式使用共享的會話（Session）儲存區
+  + 內建支援 redis（查看 `config/session.js` 內的 `adapter` 選項）
++ 如果你使用 SOCKETS：
+  + 設定應用程式使用共享的 socket 儲存區
+  + 內建支援 redis（查看 `config/sockets.js` 內的 `adapter` 選項）
+  + 注意：如果你不想設定 socket 儲存區，這種狀況下可行的解決方案是在負載平衡器使用黏性會話（sticky sessions）。
++ 確保應用程式可能會使用的其他相依功能沒有依賴於共享記憶體。
 
-### Deploying a Sails cluster on multiple servers
+### 部署 Sails 叢集到多台伺服器
 
-+ Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
-  + Start up Sails on each instance using `forever`
-  + More on load balancers: http://en.wikipedia.org/wiki/Load_balancing_(computing)
-+ Configure your load balancer to terminate SSL requests
-  + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
++ 在負載平衡器之後部署多個實例（又稱伺服器執行應用程式的副本）
+  + 在每個實例使用 `forever` 啟動 Sails
+  + 更多關於負載平衡器的資訊：http://en.wikipedia.org/wiki/Load_balancing_(computing)
++ 設定負載平衡器終止 SSL 請求
+  + 因為傳輸已經被解密，你不需要在 Sails 使用 SSL 設定
 
 
 <docmeta name="uniqueID" value="Scaling291270">

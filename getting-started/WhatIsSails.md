@@ -11,11 +11,11 @@ Sails 當然是一個網站開發框架。但退一步，這意味著什麼？�
 
 Sails 完成許多與其他 MVC 網站應用程式框架相同的目標，使用許多相同的方法學。這樣做是有目的的。一致的方式使得參與其中的任何人開發應用程式更具可預測性且高效率的。
 
-想像一下，開始一份新的工作，在一家公司建立 Sails 應用程式。如果任何在你團隊中的人曾使用如 Zend、Laravel、CodeIgniter、Cake、Grails、Django、ASP.NET MVC 或 Rails，會覺得很熟悉 Sails。不僅如此，一般來說，他們還可以了解 Sails 專案，如何編寫他們在過去已反覆實作的基本模式；無論他們的背景是 PHP、Ruby、Java、C# 或 Node.js。那麼你的第二個應用程式或第三個？每當你建立新的 Sails 應用程式，你以一個健全、熟悉的樣板開始，讓你更有效率。在許多情況下，你甚至可以回收重複使用一些後端程式碼。
+想像一下，開始一份新的工作，在一家公司建立 Sails 應用程式。如果任何在你團隊中的人曾使用如 Zend、Laravel、CodeIgniter、Cake、Grails、Django、ASP.NET MVC 或 Rails，會覺得很熟悉 Sails。不僅如此，一般來說，他們還可以了解 Sails 專案，如何撰寫他們在過去已反覆實作的基本模式；無論他們的背景是 PHP、Ruby、Java、C# 或 Node.js。那麼你的第二個應用程式或第三個？每當你建立新的 Sails 應用程式，你以一個健全、熟悉的樣版開始，讓你更有效率。在許多情況下，你甚至可以回收重複使用一些後端程式碼。
 
 > **歷史**
 >
-> Sails 沒有發明這個概念-- 它[已經存在多年](https://en.wikipedia.org/wiki/Convention_over_configuration)。即使在 Ruby on Rails 那句「慣例優於設定」（或稱 CoC）流行之前，JavaBeans 借用了常見於 90 年代末期到 21 世紀初期，傳統的 Java 網站框架極其冗長的 XML 設定到許多核心規範中。簡單來說就是用簡單的慣例（Convention）來取代繁雜的設定（Configuration），簡化開發者的工作。
+> Sails 沒有發明這個概念，它[已經存在多年](https://en.wikipedia.org/wiki/Convention_over_configuration)。即使在 Ruby on Rails 那句「慣例優於設定」（或稱 CoC）流行之前，JavaBeans 借用了常見於 90 年代末期到 21 世紀初期，傳統的 Java 網站框架極其冗長的 XML 設定到許多核心規範中。簡單來說就是用簡單的慣例（Convention）來取代繁雜的設定（Configuration），簡化開發者的工作。
 
 
 ## Loose Coupling

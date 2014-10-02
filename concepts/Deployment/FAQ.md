@@ -1,16 +1,16 @@
-# FAQ
+# 常見問題（FAQ）
 
 
-##### Can I use environment variables?
+##### 我可以使用環境變數嗎？
 
-You can also configure the `port` and `environment` settings in Sails using environment variables.
+你可以在 Sails 使用環境變數設定 `port` 和 `environment`。
 `NODE_ENV=production sails lift`
 `PORT=443 sails lift`
 
-##### Where do I put my production database credentials?  Other settings?
+##### 在哪邊放置我的正式環境資料庫憑證（credentials）或其它設定？
 
-For your other deployment/machine-specific settings, namely any kind of credentials, you should use `config/local.js`.  
-It's included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
+對於其它部署／特定機器的設定，也就是任何形式的憑證，你應該使用 `config/local.js`。
+它預設包含在 `.gitignore` 檔案，這樣你就不會無意中提交憑證到程式碼儲存庫。
 
 **config/local.js**
 ```javascript
@@ -33,15 +33,15 @@ module.exports = {
 }
 ```
 
-##### How do I get my Sails app on the server?
-Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
+##### 如何讓應用程式運作在伺服器上？
+你的 Node.js 實例已正常運作嗎？在第一次的時候，當你有一個 IP 位址，便可以 ssh 連線到它，執行 `sudo npm install -g forever` 來安裝 Sails 和 forever。
 
-Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
+然後，`git clone` 你的專案（或 `scp` 到伺服器，如果它不在 git 儲存庫中）到伺服器並 `cd` 進入，接著 `forever start app.js`。
 
 
-### Performance Benchmarks
+### 效能基準
 
-Performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.
+Sails 的效能可與你所期望的標準 Node.js/Express 應用程式相比。換句話說，就是「快」！我們在 Sails 和 Waterline 做了一些優化，但本質上，我們的重點是不要把已經非常快的東西搞糟了。最重要的，我們要感謝 @ry、@visionmedia、@isaacs、#v8、@joyent 和在 Node.js 核心團隊的其他成員。
 
 + http://serdardogruyol.com/?p=111
 

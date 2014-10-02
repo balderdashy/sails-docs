@@ -1,6 +1,6 @@
-# Disabling Grunt
+# 禁用 Grunt（Disabling Grunt）
 
-To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](/#/documentation/anatomy/myApp/tasks) folder). You can also disable the Grunt hook. Just set the `grunt` property to `false` in `.sailsrc` hooks like this:
+要禁用整合在 Sails 的 Grunt，只需刪除 Gruntfile（和/或 [`tasks/`](/#/documentation/anatomy/myApp/tasks) 資料夾）。你還可以禁用 Grunt hook。只要像這樣在 `.sailsrc` hooks 設定 `grunt` 屬性為 `false`：
 
 ```json
 {
@@ -10,11 +10,11 @@ To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`ta
 }
 ```
 
-### Can I customize this for SASS, Angular, client-side Jade templates, etc?
+### 我可以為 SASS、Angular、用戶端 Jade 樣版等自訂任務嗎？
 
-Yep! Just replace the relevant grunt task in your `tasks/` directory, or add a new one.  Like [SASS](https://github.com/sails101/using-sass) for example.
+是的！只需取代 `tasks/` 目錄中對應的 grunt 任務，或新增一個。如同 [SASS](https://github.com/sails101/using-sass) 範例。
 
-If you still want to use Grunt for other purposes, but don't want any of the default web front-end stuff, just delete your project's assets folder and remove the front-end oriented tasks from the `grunt/register/` and `grunt/config/` folders.  You can also run `sails new myCoolApi --no-frontend` to omit the assets folder and front-end-oriented Grunt tasks for future projects.  You can also replace your `sails-generate-frontend` module with alternative community generators, or [create your own](https://github.com/balderdashy/sails-generate-generator).  This allows `sails new` to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.
+如果你仍然想使用 Grunt 做其他用途，但不想要任何預設的網頁前端工作，只要刪除專案的資源資料夾並從 `grunt/register/` 和 `grunt/config/` 資料夾移除前端相關任務。你還可以在往後的專案執行 `sails new myCoolApi --no-frontend` 來省略資源資料夾和前端相關 Grunt 任務。你也可以用社群的產生器或[建立自己的](https://github.com/balderdashy/sails-generate-generator)產生器來取代 `sails-generate-frontend` 模組。這讓 `sails new` 可以建立原生 iOS 應用程式、Android 應用程式、Cordova 應用程式、SteroidsJS 應用程式等等的樣版。
 
 
 <docmeta name="uniqueID" value="DisablingGrunt970874">
