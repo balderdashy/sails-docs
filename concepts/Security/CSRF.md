@@ -41,6 +41,8 @@ If you are doing a `multipart/form-data` upload with the form, be sure to place 
 
 
 
+
+
 ##### Using AJAX/WebSockets
 
 In AJAX/Socket-heavy apps, you might prefer to send a GET request to the built-in `/csrfToken` route, where it will be returned as JSON, e.g.:
