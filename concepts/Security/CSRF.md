@@ -37,6 +37,11 @@ e.g.:
  <input type='submit'>
 </form>
 ```
+If you are doing a `multipart/form-data` upload with the form, be sure to place the `_csrf` field before the `file` input, otherwise you run the risk of a timeout and a 403 firing before the file finishes uploading.
+
+
+
+
 
 ##### Using AJAX/WebSockets
 
