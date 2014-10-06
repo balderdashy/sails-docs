@@ -2,7 +2,7 @@
 
 ### Background
 
-P3P stands for the "Platform for Privacy Preferences", a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browers, it is only supported by Internet Explorer.  It comes into play most often when dealing with legacy applications.
+P3P stands for the "Platform for Privacy Preferences", a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browsers, it is only supported by Internet Explorer.  It comes into play most often when dealing with legacy applications.
 
 Many modern organizations are willfully ignoring P3P. Here's what whate [Facebook has to say](https://www.facebook.com/help/327993273962160/) on the subject:
 

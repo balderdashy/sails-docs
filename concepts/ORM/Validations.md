@@ -56,6 +56,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 |numeric| checks if `string` in this record contains only numbers | |
 |object| checks if this attribute is the language type of Object | Passes for arrays, functions, objects, regexes, new Number(0), and new String('') ! |
 |regex| | |
+|protected| Should this attribute be removed when `toJSON` is called on a model instance?  | |
 |required| Must this model attribute contain valid data before a new record can be created? | |
 |string| is this a `string` ?| |
 |text| okay, well is <i>this</i> a `string` ?| |

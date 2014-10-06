@@ -130,9 +130,9 @@ Node.js는 ports system을 통해 설치 할 수 있습니다.
 윈도우에서 설치하기
 </h2>
 
-[a package](http://nodejs.org/#download)를 사용할 경우:
+[a package](http://nodejs.org/download)를 사용할 경우:
 
-_간단하게 [윈도우 설치 프로그램 다운로드](http://nodejs.org/#download)._
+_간단하게 [윈도우 설치 프로그램 다운로드](http://nodejs.org/download)._
 
 [Node](http://chocolatey.org/packages/nodejs)를 설치하는데 [chocolatey](http://chocolatey.org)를 사용할 경우:  
 
@@ -146,7 +146,7 @@ _간단하게 [윈도우 설치 프로그램 다운로드](http://nodejs.org/#do
 ## Sails.js로 향하기
 이제 Node.js가 시스템에 설치 되었습니다, 이제 Sails.js로 옮겨보세요.
 
-계속 하기 위해서 [여기](https://github.com/balderdashy/sails-wiki/blob/0.9/getting-started.md)를 클릭해주세요.
+계속 하기 위해서 [여기](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md)를 클릭해주세요.
 
 ## 더 많은 도움!
 때때로 계획한 대로 되지 않을 수도 있다는것을 알고 있습니다. 만약에 설치하는데 여전히 어떠한 문제점이 발생한다면, 편하게 Node.js의 [IRC Channel](irc://irc.freenode.net/node.js) 혹은 우리 자체의[IRC Channel](irc://irc.freenode.net/sailsjs)을 방문해주세요. 

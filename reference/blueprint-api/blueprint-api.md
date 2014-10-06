@@ -58,6 +58,21 @@ Sails v0.10에서 blueprints를 상속 하기위해서는, api/blueprints 폴더
     GET /myRoute': {blueprint: 'foo'}
 
 
+### 컨트롤러마다 blueprint를 비활성화 시키기
+
+컨트롤러 정의에서 `_config` 키를 정의하여 각각의 컨트롤러에서 `config/blueprints.js`의 셋팅을 재정의 할수도 있다. 그리고 이 파일의 셋팅값을 재정의한 설정 객체를 할당 할 수 있다.
+
+```
+module.exports = {
+  _config: {
+    actions: false,
+    shortcuts: false,
+    rest: false
+  }
+}
+
+```
+
 ### 주의사항
 
 > + 현재 이 문서는 HTTP에 초점이 맞추어져 있지만, 블루프린트 API(커스텀 액션과 정책들과같은)는 요청 해석자 덕분에 웹소켓에서도 호환이된다. [browser SDK](./#!documentation/reference/SocketClient/SocketClient.html)에 있는 reference section에서 사용법을 참고해라.

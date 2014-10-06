@@ -15,7 +15,9 @@ Used to add records to the join table that is automatically generated during a M
 ```javascript
 User.find({name:'Mike'}).populate('pets').exec(function(e,r){
   r[0].pets.add(7);
-  r[0].save(console.log)
+  r[0].save(function(err,res){
+    console.log(res);
+  }
 });
 
 /*

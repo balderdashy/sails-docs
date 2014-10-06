@@ -37,6 +37,11 @@ e.g.:
  <input type='submit'>
 </form>
 ```
+If you are doing a `multipart/form-data` upload with the form, be sure to place the `_csrf` field before the `file` input, otherwise you run the risk of a timeout and a 403 firing before the file finishes uploading.
+
+
+
+
 
 ##### Using AJAX/WebSockets
 
@@ -62,6 +67,13 @@ $.post('/checkout', {
   electronicReceiptOK: true,
   _csrf: 'USER_CSRF_TOKEN'
 }, function andThen(){ ... });
+```
+
+With some client-side modules, you may not have access to the AJAX request itself. In this case, you can consider sending the CSRF token directly in the URL of your query. However, if you do so, remember to URL-encode the token before spending it:
+```js
+..., {
+  checkoutAction: '/checkout?_csrf='+encodeURIComponent('USER_CSRF_TOKEN')
+}
 ```
 
 
