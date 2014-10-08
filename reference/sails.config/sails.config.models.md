@@ -15,9 +15,9 @@ sails.config.models;
  `migrate`             | ((string))   | _see [Model Settings](/#/documentation/concepts/ORM/model-settings.html)_        | How & whether Sails will attempt to automatically rebuild the tables/collections/etc. in your schema
  `connection`          | ((string))   | `"localDiskDb"`                 | The default database [connection](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) any given model will use without a configured override
  `autoPK`              | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `autoCreatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `autoUpdatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `tableName`           | ((string))   | _identity_       | Toggle the automatic definition of a primary key in your model
+ `autoCreatedAt`       | ((boolean))  | `true`             | Time of row creation
+ `autoUpdatedAt`       | ((boolean))  | `true`             | Time of some feature was last updated
+ `tableName`           | ((string))   | _identity_         | Name of table to reference in the database
 
 
 <docmeta name="uniqueID" value="sailsconfigmodels258825">
