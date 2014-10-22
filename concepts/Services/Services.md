@@ -2,7 +2,7 @@
 
 ## Overview
 
-Services can be thought of as libraries which contain functions that you might want to use in many places of your application.  For example, you might have an EmailService which wraps some default email message boilerplate code that you would want to use in many parts of your application. The main benefit of using services in Sails is that they are *globalized*--you don't have to use `require()` to access them.
+Services can be thought of as libraries which contain functions that you might want to use in many places of your application.  For example, you might have an EmailService which wraps some default email message boilerplate code that you would want to use in many parts of your application. The main benefit of using services in Sails is that they are can be *globalized*--you don't have to use `require()` to access them.
 
 
 ## How do I create a service?
@@ -39,6 +39,8 @@ You can then use `EmailService` anywhere in your app:
 // Somewhere in a controller
   EmailService.sendInviteEmail({email: 'test@test.com', name: 'test'});
 ```
+### Notes
+> + Services are not globalized by default. To avoid `require()` make sure that services are exposed as global variables. [Globals](http://beta.sailsjs.org/#/documentation/concepts/Globals)
 
 <docmeta name="uniqueID" value="Services157331">
 <docmeta name="displayName" value="Services">
