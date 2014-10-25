@@ -60,6 +60,23 @@ module.exports = {
 #### Where do they go?
 When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can do whatever you want with it in the `upload` action.
 
+#### Uploading to a custom folder
+In the above example we could upload the file to .tmp/uploads . So how do we configure it with a custom folder , say ‘assets/images’. We can achieve this by adding options to upload function as shown below.
+```javascript
+
+  var uploadPath = './assets/images';
+  uploadFile.upload({ dirname: uploadPath },function onUploadComplete (err, files) {             
+                                                                              
+      if (err) 
+        return res.serverError(err);
+
+      return res.json({
+        message: files.length + ' file(s) uploaded successfully!',
+        path:uploadPath
+        file:files
+      });
+  });
+```
 
 > For a much more detailed look at Skipper along with a list of alternative `receivers`, see the [skipper docs](https://github.com/balderdashy/skipper) ! 
 
