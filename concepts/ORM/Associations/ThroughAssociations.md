@@ -1,13 +1,11 @@
-# Through Associations
-### Overview
+# 穿透關聯（Through Associations）
+### 概觀
 
-Many-to-Many through associations behave the same way as many-to-many associations with the exception
-of the join table being automatically created for you. This allows you to attach additional attributes
-onto the relationship inside of the join table.
+多對多穿透關聯的行為和多對多關聯相同，且會自動為你建立例外的連接表。這使你可以附加額外的屬性到連接表內的關聯。
 
-Unfortunately, they are not supported yet.  Don't worry though, there's an easy workaround.
+不幸的是，他們尚未支援。請不要擔心，有一個簡單的解決方法。
 
-You can accomplish this by using an additional model as an intermediary.  Instead of a many-to-many association between two models, you can use multiple one-to-many associations through the intermediary model.
+你可以透過使用一個額外的模型為中介來實現這一目標。你可以使用多個一對多關聯到中介模型，取代兩個模型間的多對多關聯。
 
 
 
