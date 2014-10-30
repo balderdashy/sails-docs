@@ -4,6 +4,7 @@
 
 Sails에서 asset 파이프라인 묶음은 프로젝트를 좀더 견고하고 생선적으로 유지하기 위한 기존에 설정된 Grunt 테스크들의 집합이다. 전체 프론트엔드 asset은 완전히 커스터마이즈가 가능하고, 또한 기본적으로 몇가지 기본 테스크들을 제공합니다. Sails는 필요에 따라서 [새로운 테스크 설정](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration)을 쉽게 할 수 있습니다.
 
+<<<<<<< HEAD
 Sails에서 기본적으로 제공하는 Grunt 설정에는 몇가지가 있습니다:
 - 자동 LESS 컴파일
 - 자동 JST 컴파일
@@ -12,6 +13,16 @@ Sails에서 기본적으로 제공하는 Grunt 설정에는 몇가지가 있습�
 - web에 맞춰진 공용 디렉토리 생성
 - 파일 감시 및 동기 
 - 제품의 asset들의 최적화
+=======
+Here are a few things that the default Grunt configuration in Sails does to help you out:  
+- Automatic LESS compilation
+- Automatic JST compilation
+- Automatic Coffeescript compilation
+- Optional automatic asset injection, minification, and concatenation
+- Creation of a web ready public directory
+- File watching and syncing
+- Optimization of assets in production
+>>>>>>> core/master
 
 ### 기본 Grunt 테스크 동작
 
@@ -38,7 +49,11 @@ Sails에서 기본적으로 제공하는 Grunt 설정에는 몇가지가 있습�
 ##### copy
 
 > **dev task config**
+<<<<<<< HEAD
 > sails asset폴더에서 커피스크립트와 less 파일들을 제외한 모든 디렉토리와 파일들을 `.tmp/public/` 디렉토리로 복사합니다.
+=======
+> Copies all directories and files, except coffeescript and less files, from the sails assets folder into the `.tmp/public/` directory.
+>>>>>>> core/master
 
 > **build task config**
 > .tmp/public 디렉토리에 있는 모든 디렉토리들과 파일들을 www 디렉토리로 복사합니다.

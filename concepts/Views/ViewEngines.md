@@ -1,16 +1,15 @@
 # View Engines
 
-The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
+Sails의 기본 뷰 엔진은 [EJS](https://github.com/visionmedia/ejs)이다.
 
-##### Swapping out the view engine
+##### 뷰 엔진 교체하기
 
-To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).)
+다른 뷰 엔진을 사용하기 위해서는, 프로젝트에서 npm을 통해 설치를 해야하며, `sails.config.views.engine`값을([`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)참고.) 변경해줘야한다.
 
-For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).
+예를들어, jade를 사용하기 위해서는 `npm install jade --save-dev`을 실행후, `engine: 'jade'`를 [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)파일에서 설정해주면 된다.
 
 
-
-##### Supported view engines
+##### 지원하는 뷰 엔진들 
 
   - [atpl](https://github.com/soywiz/atpl.js)
   - [dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) (.dust)
@@ -39,10 +38,9 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
 
 
 
-##### Adding new custom view engines
+##### 새로운 커스텀 뷰 엔진 추가하기 
 
-For instructions on adding support for a view engine not listed above, check out the [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api) repository.
-
+위에 언급되지 않은 뷰엔진 지원을 추가하기 위한 설명서는, [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api)저장소를 체크아웃하길 바란다.
 
 <docmeta name="uniqueID" value="ViewEngines339501">
 <docmeta name="displayName" value="View Engines">

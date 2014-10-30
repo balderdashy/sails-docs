@@ -2,10 +2,11 @@
 
 > TODO: Normalize/expand this section
 
-### Example
+### 예제
 
-#### Generate an `api` 
-First we need to generate a new `api` for serving/storing files.  Do this using the sails command line tool.
+#### `api` 만들기
+
+파일을 저장하고 제공하기 위해 해야할 첫번째 일은 새로운 `api`를 만드는 일이다. sails 커맨드 라인 툴을 이용해서 이것을 해보자.
 
 ```sh
 
@@ -21,9 +22,10 @@ dude@littleDude:~/node/myApp$
 
 ```
 
-#### Write Controller Actions
+#### 컨트롤러 액션 작성
 
-Lets make an `index` action to initiate the file upload and an `upload` action to receive the file.
+
+파일 업로드 초기화를 위한 `index` 액션과 파일은 받기 위한 `upload` 액션을 만들어보자.
 
 ```javascript 
 
@@ -57,11 +59,11 @@ module.exports = {
 };
 ```
 
-#### Where do they go?
-When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can do whatever you want with it in the `upload` action.
+#### 업로드 된 파일은 어디에 저장이 되는가?
+기본 `receiver`를 사용하면, 파일은 `myApp/.tmp/uploads/` 디렉토리로 업로드 된다. `upload` 액션에서 원하는것을 처리하면된다.
 
 
-> For a much more detailed look at Skipper along with a list of alternative `receivers`, see the [skipper docs](https://github.com/balderdashy/skipper) ! 
+> `receivers`를 대체할 수 있는 리스트와 Skipper에 대한 자세한 내용은, [skipper docs](https://github.com/balderdashy/skipper)를 참고하자!
 
 
 

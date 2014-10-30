@@ -3,12 +3,13 @@
 Adds an association between two records.
 
 ```
-PUT /:model/:record/:association/:record_to_add
+POST /:model/:record/:association/:record_to_add?
 ```
 
 This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
 
-+ If the foreign record does not exist, it is created first.
++ If `:record_to_add` of an existing record is supplied, it will be associated with the primary record.
++ If no `:record_to_add` is supplied, and the body of the **POST** contains values for a new record, that record will be created and associated with the primary record.
 + If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.
 + If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
 

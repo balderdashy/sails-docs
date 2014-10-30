@@ -134,6 +134,15 @@ module.exports = {
 		repo: 'https://github.com/murilopolese/sails-parse',
 		status: 'unknown'
 	},
+	
+	//
+	// Tumblr
+	//
+
+	'sails-tumblr': {
+		repo: 'https://github.com/Roberto14/sails-tumblr',
+		status: 'experimental'
+	},
 
 	// known to exist but missing from this list:
 	// jsdom
