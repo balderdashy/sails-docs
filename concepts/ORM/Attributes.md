@@ -77,14 +77,14 @@ Will create a simple index in the underlying datastore for faster queries if ava
 
 There is currently an issue with adding indexes to string fields. Because Waterline performs its queries in a case insensitive manner we are unable to use the index on a string attribute. There are some workarounds being discussed but nothing is implemented so far. This will be updated in the near future to fully support indexes on strings.
 
-```javascript
+javascript
 attributes: {
   email: {
     type: 'string',
     index: true
   }
 }
-```
+
 -->
 
 ###### primaryKey
