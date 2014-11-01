@@ -99,6 +99,24 @@ and then use it in controller:
   });
 ```
 
+#### Uploading to gridfs
+
+Another useful adapter is one for [MongoDB's GridFS](https://github.com/willhuang85/skipper-gridfs). Install it with:
+
+```sh
+$ npm install skipper-gridfs --save
+```
+
+then use it in controller:
+
+```javascript
+req.file('avatar').upload({
+  // ...any other options here...
+  adapter: require('skipper-gridfs'),
+  uri: 'mongodb://[username:password@]host1[:port1][/[database[.bucket]]'
+}, ...);
+```
+
 > For a much more detailed look at Skipper along with a list of alternative `receivers`, see the [skipper docs](https://github.com/balderdashy/skipper) ! 
 
 
