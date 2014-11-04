@@ -60,6 +60,23 @@ module.exports = {
 #### 它們去哪了？
 使用預設的 `receiver`，上傳的檔案會在 `myApp/.tmp/uploads/` 目錄。你可以在 `upload` 動作內做你想做的任何事情。
 
+#### Uploading to a custom folder
+In the above example we could upload the file to .tmp/uploads . So how do we configure it with a custom folder , say ‘assets/images’. We can achieve this by adding options to upload function as shown below.
+```javascript
+
+  var uploadPath = './assets/images';
+  uploadFile.upload({ dirname: uploadPath },function onUploadComplete (err, files) {             
+                                                                              
+      if (err) 
+        return res.serverError(err);
+
+      return res.json({
+        message: files.length + ' file(s) uploaded successfully!',
+        path:uploadPath
+        file:files
+      });
+  });
+```
 
 > 請查看 [Skipper 文件](https://github.com/balderdashy/skipper)取得更多資訊及其他可用的 `receivers` 清單！
 

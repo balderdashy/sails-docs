@@ -13,7 +13,7 @@ At the API layer, there isn't much that can be done in the way of prevention.  H
 
 + [Backpressure and Unbounded Concurrency in Node.js](http://engineering.voxer.com/2013/09/16/backpressure-in-nodejs/) ([Voxer](http://voxer.com/))
 + [Building a Node.js Server That Won't Melt](https://hacks.mozilla.org/2013/01/building-a-node-js-server-that-wont-melt-a-node-js-holiday-season-part-5/) ([Mozilla](https://hacks.mozilla.org/))
-+ [Security in Node.js](http://www.harrytorry.co.uk/website-development/security-in-node-js/) - see the "Denial of Service" section ([Harry Torry](https://twitter.com/HarryTorry))
++ [Security in Node.js](https://www.harrytorry.co.uk/security-in-node-js/) - see the "Denial of Service" section ([Harry Torry](https://www.harrytorry.co.uk))
 + [Slowloris DDoSAttacks](http://www.ddosattacks.biz/attacks/slowloris-ddos-attack-aka-slow-and-low/)
 
 
