@@ -27,7 +27,7 @@ Before you launch any web application, you should ask yourself a few questions:
 
 #### Deploying On a Single Server
 
-Node.js is pretty dern fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
+Node.js is pretty darn fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
 
 ##### Configure
 
