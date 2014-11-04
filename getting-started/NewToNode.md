@@ -1,5 +1,5 @@
 # New to [Node.js](https://soundcloud.com/marak/marak-the-node-js-rap)?
-Thats okay!  We'll get you pointed in the right direction.
+That's okay!  We'll get you pointed in the right direction.
 
 
 Per [nodejs.org](http://nodejs.org):
