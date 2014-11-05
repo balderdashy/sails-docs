@@ -8,17 +8,13 @@
 First we need to generate a new `api` for serving/storing files.  Do this using the sails command line tool.
 
 ```sh
-
-dude@littleDude:~/node/myApp$ sails generate api file
+$ sails generate api file
 
 debug: Generated a new controller `file` at api/controllers/FileController.js!
 debug: Generated a new model `File` at api/models/File.js!
 
 info: REST API generated @ http://localhost:1337/file
 info: and will be available the next time you run `sails lift`.
-
-dude@littleDude:~/node/myApp$ 
-
 ```
 
 #### Write Controller Actions
@@ -76,6 +72,49 @@ In the above example we could upload the file to .tmp/uploads . So how do we con
         file:files
       });
   });
+```
+
+#### Uploading to S3
+Other than saving files on disk you can directly stream them to Amazon S3.
+
+First you have to install [S3 filesystem adapter](https://github.com/balderdashy/skipper-s3) for Skipper (Sails upload helper):
+```sh
+$ npm install skipper-s3 --save
+```
+
+and then use it in controller:
+
+```javascript
+  req.file('avatar').upload({
+    adapter: require('skipper-s3'),
+    key: 'S3 Key'
+    secret: 'S3 Secret'
+    bucket: 'Bucket Name'
+  }, function whenDone(err, uploadedFiles) {
+    if (err) return res.negotiate(err);
+    else return res.ok({
+      files: uploadedFiles,
+      textParams: req.params.all()
+    });
+  });
+```
+
+#### Uploading to gridfs
+
+Another useful adapter is one for [MongoDB's GridFS](https://github.com/willhuang85/skipper-gridfs). Install it with:
+
+```sh
+$ npm install skipper-gridfs --save
+```
+
+then use it in controller:
+
+```javascript
+req.file('avatar').upload({
+  // ...any other options here...
+  adapter: require('skipper-gridfs'),
+  uri: 'mongodb://[username:password@]host1[:port1][/[database[.bucket]]'
+}, ...);
 ```
 
 > For a much more detailed look at Skipper along with a list of alternative `receivers`, see the [skipper docs](https://github.com/balderdashy/skipper) ! 

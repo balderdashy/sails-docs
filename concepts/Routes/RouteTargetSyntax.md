@@ -98,7 +98,7 @@ Note that the [blueprints API](/#/documentation/reference/blueprint-api) adds se
 'GET /foo/go': 'UserController.find'
 ```
 
-Assuming that your have a **api/controllers/UserController/js** file and a **api/models/User.js** file, browsing to **/foo/go** in a browser will, using the above config, run the default "find* blueprint action which displays a list of all `User` models.  If you have a [custom action](/#/documentation/concepts/Controllers?q=actions) named `find` in UserController, that action will be run instead.
+Assuming that your have a **api/controllers/UserController.js** file and a **api/models/User.js** file, browsing to **/foo/go** in a browser will, using the above config, run the default "find* blueprint action which displays a list of all `User` models.  If you have a [custom action](/#/documentation/concepts/Controllers?q=actions) named `find` in UserController, that action will be run instead.
 
 
 #### View target syntax

@@ -2,7 +2,7 @@
 
 ## Preparation
 
-For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).
+For our test suite, we use [mocha](http://mochajs.org/).
 Before you start building your test cases, you should first organise your `./test` directory structure, for example in the following way:
 ```batch
 ./myApp
@@ -49,7 +49,7 @@ after(function(done) {
 
 ### mocha.opts
 
-This file should contain mocha configuration as described here: [mocha.opts] (http://visionmedia.github.io/mocha/#mocha.opts)
+This file should contain mocha configuration as described here: [mocha.opts] (http://mochajs.org/#mocha.opts)
 
 ## Writing tests
 
@@ -100,7 +100,7 @@ describe('UsersController', function() {
 
 Another popular method for testing your code is [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage).
 
-You can use [mocha](http://visionmedia.github.io/mocha/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
+You can use [mocha](http://mochajs.org/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
 
 To test your code and prepare a simple HTML report run the following commands:
 ```bash
