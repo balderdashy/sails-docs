@@ -162,7 +162,7 @@ Besides protecting rabbits (while a noble cause, no doubt), here are a few other
 
 Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
-There are a few good examples of this floating around, such as [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
+There are a few good examples of this floating around, such as [How To Implement Passport.JS Authentication with Sails.JS] (http://www.geektantra.com/2013/08/implement-passport-js-authentication-with-sails-js/).
 
 
 

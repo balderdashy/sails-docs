@@ -1,6 +1,6 @@
-# Model Settings
+# 模型設定（Model Settings）
 
-The following properties can be specified at the top level of your model definition to override the defaults for that particular model.  To override the default settings shared by all of your models, edit [`config/models.js`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).
+以下的屬性可以指定在你的模型定義的上層，來覆寫該模型的預設值。修改 [`config/models.js`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) 來覆寫所有模型共享的預設設定。
 
 
 
@@ -13,26 +13,25 @@ The following properties can be specified at the top level of your model definit
 migrate: 'safe'
 ```
 
-In short, this setting controls whether/how Sails will attempt to automatically rebuild the tables/collections/sets/etc. in your schema.
+總之，此設定控制了 Sails 是否／如何嘗試在你的結構自動重建 tables/collections/sets 等。
 
-In a production environment (NODE_ENV==="production") Sails always uses
-`migrate:"safe"` to protect inadvertent deletion of your data. However during development, you have a few other options for convenience:
+在正式環境中（NODE_ENV === "production"）Sails 總是使用 `migrate:"safe"` 來保護意外刪除你的資料。然而在開發過程中，你有其他幾個方便的選項：
 
- 1. safe  - never auto-migrate my database(s). I will do it myself (by hand)
- 2. alter - auto-migrate, but attempt to keep my existing data (experimental)
- 3. drop  - wipe/drop ALL my data and rebuild models every time I lift Sails
+ 1. safe  - 永遠不要自動遷移我的資料庫。我會自己去做（手動）
+ 2. alter - 自動遷移，但嘗試保留現有資料（實驗性）
+ 3. drop  - 每次啟動 Sails 時清除／刪除所有資料並重建模型
 
-When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to `
+當你啟動 sails 應用程式時，waterline 會驗證你的資料庫的所有資料。這個標記告訴 waterline 資料毀損時該如何處理資料。你可以設定這個標記為 `safe`，將忽略毀損的資料並繼續啟動。你還可以將其設定為
 
 
-| Auto-Migration Strategy  | Description |
+| 自動遷移策略  | 說明 |
 |-------------|----------------------------------------------|
-|`safe`       | never auto-migrate my database(s). I will do it myself, by hand.
-|`alter`      | auto-migrate columns/fields, but attempt to keep my existing data (experimental)
-|`drop`       | wipe/drop ALL my data and rebuild models every time I lift Sails
+|`safe`       | 永遠不要自動遷移我的資料庫。我會自己手動去做
+|`alter`      | 自動遷移，但嘗試保留現有資料（實驗性）
+|`drop`       | 每次啟動 Sails 時清除／刪除所有資料並重建模型
 
 
-> Note, by using `drop`, or even `alter`, you risk losing your data.  Be careful.  Never use `drop` or `alter` with a production dataset.
+> 請注意，使用 `drop` 或 `alter` 可能失去你的資料。當心，永遠不要在正式環境使用 `drop` 或 `alter`。
 
 
 
@@ -42,9 +41,9 @@ When your sails app lifts, waterline validates all of the data in your database.
 schema: true
 ```
 
-A flag to toggle schemaless or schema mode in databases that support schemaless data structures. If turned off, this will allow you to store arbitrary data in a record. If turned on, only attributes defined in the model's `attributes` object will be stored.
+在支援無結構（Schemaless）資料結構資料庫切換無結構（Schemaless）或結構（Schema）模式的標記。如果關閉，將允許你儲存任意資料的記錄。如果開啟，只有定義在模型的 `attributes` 屬性物件會被儲存。
 
-For adapters that don't require a schema, such as Mongo or Redis, the default setting is `schema:false`.
+對於不需要結構的橋接器，如 Mongo 或 Redis，預設設定是 `schema:false`。
 
 
 
@@ -54,7 +53,7 @@ For adapters that don't require a schema, such as Mongo or Redis, the default se
 connection: 'my-local-postgresql'
 ```
 
-The configured database [connection](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
+此模型將從已設定的資料庫[連線](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)取得和儲存資料。預設為 `localDiskDb`，預設的連線使用 `sails-disk` 橋接器。
 
 
 ### `identity`
@@ -63,7 +62,7 @@ The configured database [connection](http://sailsjs.org/#/documentation/referenc
 identity: 'purchase'
 ```
 
-The lowercase unique key for this model, e.g. `user`.  By default, a model's `identity` is inferred automatically by lowercasing its filename.  You should never change this property on your models.
+此模型的小寫唯一鍵（Unique key），例如 `user`。預設情況下，會自動從它的檔案名稱自動推測模型的 `identity`。你永遠不應該在模型改變這個屬性。
 
 ### `globalId`
 
@@ -71,17 +70,17 @@ The lowercase unique key for this model, e.g. `user`.  By default, a model's `id
 globalId: 'Purchase'
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/#/documentation/concepts/Globals?q=disabling-globals).
+這個標記變更了你可以存取模型的全域名稱（如果啟用了模型的全域化）。你永遠不應該在模型改變這個屬性。要停用全域，請參考 [`sails.config.globals`](http://sailsjs.org/#/documentation/concepts/Globals?q=disabling-globals)。
 
 
 
-### autoPK
+### `autoPK`
 
 ```javascript
 autoPK: true
 ```
 
-A flag to toggle the automatic definition of a primary key in your model. The details of this default PK vary between adapters (e.g. MySQL uses an auto-incrementing integer primary key, whereas MongoDB uses a randomized string UUID).  In any case, the primary keys generated by autoPK will be unique. If turned off no primary key will be created by default, and you will need to define one manually, e.g.:
+切換模型中自動定義主鍵的標記。此預設 PK 的細節依橋接器而有所不同（例如 MySQL 使用一個自動遞增的整數主鍵，而 MongoDB 使用亂數字串 UUID）。在任何情況下，由 autoPK 產生的主鍵是唯一的。如果關閉，預設將不會建立主鍵，你將需要手動定義一個，例如：
 
 ```js
 attributes: {
@@ -99,7 +98,7 @@ attributes: {
 autoCreatedAt: true
 ```
 
-A flag to toggle the automatic definition of a `createdAt` attribute in your model.  By default, `createdAt` is an attribute which will be automatically set when a record is created with the current timestamp, e.g.:
+切換模型中自動定義 `createdAt` 屬性的標記。預設情況下，當記錄建立時 `createdAt` 屬性會自動設定為目前時間戳記，例如：
 
 ```js
 attributes: {
@@ -115,7 +114,7 @@ attributes: {
 ```javascript
 autoUpdatedAt: true
 ```
-A flag to toggle the automatic definition of a `updatedAt` attribute in your model.  By default, `updatedAt` is an attribute which will be automatically set with the current timestamp every time a record is updated, e.g.:
+切換模型中自動定義 `updatedAt` 屬性的標記。預設情況下，當記錄被更新時 `updatedAt` 屬性會自動設定為目前時間戳記，例如：
 
 ```js
 attributes: {
@@ -127,15 +126,15 @@ attributes: {
 ```
 
 
-### tableName
+### `tableName`
 
 ```javascript
 tableName: 'some_preexisting_table'
 ```
 
-You can define a custom name for the physical collection in your adapter by adding a `tableName` attribute. __This isn't just for tables__.  In MySQL, PostrgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the collection, and so forth. If no tableName is specified, Waterline will use the model's `identity` as its `tableName`.
+你可以透過增加一個 `tableName` 屬性在橋接器對實體集合定義一個自訂名稱。__這不僅是對資料表__。在 MySQL、PostrgreSQL、Oracle 等資料庫，這個設定是指資料表名稱，但在 MongoDB 或 Redis，它指的是集合等等。如果沒有指定 tableName，Waterline 將使用模型的 `identity` 作為 `tableName`。
 
-This is particularly useful for working with pre-existing/legacy databases.
+這對於工作於現有／老舊的資料庫特別有用。
 
 <!-- in WL2, this is `cid` (but is backwards-compatible) -->
 
@@ -151,7 +150,7 @@ attributes: {
 }
 ```
 
-See [Attributes]().
+請參考 [屬性](http://sailsjs.org/#/documentation/concepts/ORM/Attributes.html)。
 
 
 

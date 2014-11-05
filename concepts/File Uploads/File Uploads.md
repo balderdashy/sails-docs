@@ -60,6 +60,23 @@ module.exports = {
 #### 它們去哪了？
 使用預設的 `receiver`，上傳的檔案會在 `myApp/.tmp/uploads/` 目錄。你可以在 `upload` 動作內做你想做的任何事情。
 
+#### 上傳到自訂資料夾
+在上面的例子中，我們可以將檔案上傳到 .tmp/uploads。那麼我們該如何設定為自訂資料夾，例如 `assets/images`。我們可以透過增加選項到上傳功能來實現這一目標，如下所示：
+```javascript
+
+  var uploadPath = './assets/images';
+  uploadFile.upload({ dirname: uploadPath },function onUploadComplete (err, files) {             
+                                                                              
+      if (err) 
+        return res.serverError(err);
+
+      return res.json({
+        message: files.length + ' file(s) uploaded successfully!',
+        path:uploadPath
+        file:files
+      });
+  });
+```
 
 > 請查看 [Skipper 文件](https://github.com/balderdashy/skipper)取得更多資訊及其他可用的 `receivers` 清單！
 

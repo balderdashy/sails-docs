@@ -1,24 +1,19 @@
-# Many-to-Many
-### Overview
+# 多對多（Many-to-Many）
+### 概觀
 
-A many-to-many association states that a model can be associated with many other models and vice-versa.
-Because both models can have many related models a new join table will need to be created to keep track
-of these relations.
+多對多關聯表示一個模型可以關聯到許多其他模型，反之亦然。
+因為兩個模型都可以有許多關聯模型，將需要建立一個新連接資料表來追蹤這些關聯。
 
-Waterline will look at your models and if it finds that two models both have collection attributes that
-point to each other, it will automatically build up a join table for you.
+Waterline 會看著你的模型，當它找到兩個模型都有 collection 屬性指向彼此時，會自動為你建立連接資料表。
 
-Because you may want a model to have multiple many-to-many associations on another model a `via` key
-is needed on the `collection` attribute. This states which `model` attribute on the one side of the
-association is used to populate the records.
+因為你可能想要一個模型有多個多對多關聯到另一個模型，`collection` 屬性必需要有一個 `via` 鍵。這說明了哪一邊的關聯 `modal` 屬性會用來提供記錄。
 
-Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
-`Pet` records and a `Pet` may have multiple owners.
+使用 `User` 和 `Pet` 範例讓我們來看看如何建立「一個 `User` 可能有很多 `Pet` 記錄，和 `Pet` 可能有多個主人」的架構。
 
 
-### Many-to-Many Example
+### 多對多範例
 
-In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the `Pets` with all of the `Users`.  If everything worked properly, we should be able to query any `User` and see that they 'own' all of the `Pets`.  Furthermore, we should be able to query any `Pet` and see that it is 'owned' by every `User`.
+在這個範例中，我們將由 users 陣列和 pets 陣列開始。我們將建立資料到陣列的每個元素，然後關聯所有的 `Pets` 與所有的 `Users`。如果一切運作正常，我們應該能夠查詢任何 `User`，看到他們「擁有」所有的 `Pets`。此外，我們應該能夠查詢任何 `Pet`，看到它被所有 `User` 擁有。
 
 
 `myApp/api/models/pet.js`
@@ -28,17 +23,17 @@ In this example, we will start with an array of users and an array of pets.  We 
 
 module.exports = {
 
-	attributes: {
-		name:'STRING',
-		color:'STRING',
+  attributes: {
+    name:'STRING',
+    color:'STRING',
 
-		// Add a reference to User
-		owners: {
-			collection: 'user',
-			via: 'pets',
-			dominant:true
-		}
-	}
+    // 加入一個參考到 User
+    owners: {
+      collection: 'user',
+      via: 'pets',
+      dominant:true
+    }
+  }
 }
 
 ```
@@ -49,16 +44,16 @@ module.exports = {
 
 module.exports = {
 
-	attributes: {
-		name:'STRING',
-		age:'INTEGER',
+  attributes: {
+    name:'STRING',
+    age:'INTEGER',
 
-		// Add a reference to Pet
-		pets:{
-			collection: 'pet',
-			via: 'owners'
-		}
-	}
+    // 加入一個參考到 Pet
+    pets:{
+      collection: 'pet',
+      via: 'owners'
+    }
+  }
 
 }
 
@@ -71,15 +66,14 @@ module.exports = {
 
 module.exports.bootstrap = function (cb) {
 
-// After we create our users, we will store them here to associate with our pets
+// 在建立 users 之後，我們會在這儲存他們來關聯 pets
 var storeUsers = []; 
 
 var users = [{name:'Mike',age:'16'},{name:'Cody',age:'25'},{name:'Gabe',age:'107'}];
 var ponys = [{ name: 'Pinkie Pie', color: 'pink'},{ name: 'Rainbow Dash',color: 'blue'},{ name: 'Applejack', color: 'orange'}]
 
-// This does the actual associating.
-// It takes one Pet then iterates through the array of newly created Users, adding each one to it's join table
-var associate = function(onePony,cb){
+// 這邊進行實際的關聯。
+// 它需要一個寵物，然後迭代新建立的 Users 陣列，加入每一個到它的連接資料表var associate = function(onePony,cb){
   var thisPony = onePony;
   var callback = cb;
 
@@ -94,38 +88,38 @@ var associate = function(onePony,cb){
 };
 
 
-// This callback is run after all of the Pets are created.
-// It sends each new pet to 'associate' with our Users  
+// 這個回呼會在所有 Pets 建立後執行。
+// 它送出每個新寵物和我們的 Users 到 'associate'
 var afterPony = function(err,newPonys){
   while (newPonys.length){
     var thisPony = newPonys.pop();
     var callback = function(ponyID){
       console.log('Done with pony ',ponyID)
     }
-    associate(thisPony,callback)
+    associate(thisPony,callback);
   }
   console.log('Everyone belongs to everyone!! Exiting.');
 
-  // This callback lets us leave bootstrap.js and continue lifting our app!
-  return cb()
+  // 這個回呼讓我們離開 bootstrap.js 並繼續啟動應用程式！
+  return cb();
 };
 
-// This callback is run after all of our Users are created.
-// It takes the returned User and stores it in our storeUsers array for later.
+// 這個回呼會在所有 Users 建立後執行。
+// 它需要返回的 User 並儲存到 storeUsers 陣列供稍後使用。
 var afterUser = function(err,newUsers){
   while (newUsers.length)
-    storeUsers.push(newUsers.pop())
+    storeUsers.push(newUsers.pop());
 
-  Pet.create(ponys).exec(afterPony)
+  Pet.create(ponys).exec(afterPony);
 };
 
 
-User.create(users).exec(afterUser)
+User.create(users).exec(afterUser);
 
 };
 ```
 
-Lifting our app with `sails console`
+使用 `sails console` 啟動應用程式
 
 ```sh
 
@@ -325,8 +319,8 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 
 
 ```
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+### 注意事項
+> 請查看 [Waterline 文件](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)取得這種類型的關聯的更多資訊
 
 <docmeta name="uniqueID" value="ManytoMany276455">
 <docmeta name="displayName" value="Many-to-Many">

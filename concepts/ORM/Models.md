@@ -25,7 +25,7 @@ Models may be accessed from our controllers, policies, services, responses, test
 
 Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
 
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.fail()`, which will return a [Q promise](https://github.com/kriskowal/q).
+Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 
 
@@ -151,10 +151,10 @@ Attribute methods are functions available on records (i.e. model instances) retu
 ###### Built-in attribute methods
 Every Waterline model includes some attribute methods automatically, including:
 
-+ [`.toJSON()`]()
-+ [`.save()`]()
-+ [`.destroy()`]()
-+ [`.validate()`]()
++ [`.toJSON()`](http://sailsjs.org/#/documentation/reference/waterline/records/toJSON.html)
++ [`.save()`](http://sailsjs.org/#/documentation/reference/waterline/records/save.html)
++ [`.destroy()`](http://sailsjs.org/#/documentation/reference/waterline/models/destroy.html)
++ [`.validate()`](http://sailsjs.org/#/documentation/reference/waterline/records/validate.html)
 
 
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->
