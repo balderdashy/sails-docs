@@ -11,7 +11,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 |-------------------|---------------------|----------------|
 |after| check if `string` date in this record is after the specified `Date` | must be valid javascript `Date` |
 |alpha| check if `string` in this record contains only letters (a-zA-Z) | |
-|alphadashed|| does this `string` contain only numbers and/or dashes? |
+|alphadashed|| does this `string` contain only letters and/or dashes? |
 |alphanumeric| check if `string` in this record contains only letters and numbers. | |
 |alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | |
 |array| is this a valid javascript `array` object? | strings formatted as arrays won't pass |
