@@ -46,7 +46,7 @@ Anyways, that's all great... but where does the relationship resource live?  "Pr
 
 ## The Solution
 
-Eventually, it may be even be possible to specify a 3rd connection/adapter to use for the join table.  For now, we'll focus on choosing one side or the other.
+Eventually, it may even be possible to specify a 3rd connection/adapter to use for the join table.  For now, we'll focus on choosing one side or the other.
 
 
 We address this through the concept of "dominance."  In any cross-adapter model relationship, one side is assumed to be dominant.  It may be helpful to think about the analogy of a child with multinational parents who must choose one country or the other for her [citizenship](http://en.wikipedia.org/wiki/Japanese_nationality_law)
