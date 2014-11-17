@@ -104,7 +104,7 @@ module.exports = {
 };
 ```
 
-* Include the hanldebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+* Include the handlebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
 
 ```javascript
 // tasks/register/compileAssets.js
