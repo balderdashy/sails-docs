@@ -103,15 +103,15 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 > This is not how it actually works, but how it could work soon:
 
-+ `Adaper.define()`
-+ `Adaper.describe()`
-+ `Adaper.drop()`
++ `Adapter.define()`
++ `Adapter.describe()`
++ `Adapter.drop()`
 + `Adapter.alter()` (change table name, other table metadata)
-+ `Adaper.addAttribute()` (add column)
-+ `Adaper.removeAttribute()` (remove column)
-+ `Adaper.alterAttribute()` (rename column, add or remove uniquness constraint to column)
-+ `Adaper.addIndex()`
-+ `Adaper.removeIndex()`
++ `Adapter.addAttribute()` (add column)
++ `Adapter.removeAttribute()` (remove column)
++ `Adapter.alterAttribute()` (rename column, add or remove uniquness constraint to column)
++ `Adapter.addIndex()`
++ `Adapter.removeIndex()`
 
 ###### Auto-migration strategies
 + `"safe"` (default in production env)
