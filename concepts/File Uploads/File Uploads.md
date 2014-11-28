@@ -60,9 +60,10 @@ When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` 
 In the above example we could upload the file to .tmp/uploads . So how do we configure it with a custom folder , say ‘assets/images’. We can achieve this by adding options to upload function as shown below.
 ```javascript
 
-  var uploadPath = './assets/images';
+  var uploadPath = '../../assets/images';
   uploadFile.upload({ dirname: uploadPath },function onUploadComplete (err, files) {             
-                                                                              
+  // The file will be uploaded to assets/images
+  // Can be accessed as http://localhost:1337/images/filename
       if (err) 
         return res.serverError(err);
 
