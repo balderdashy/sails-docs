@@ -67,9 +67,9 @@ To begin with, let's get some text up on screen quickly. To do this, you need to
 
 You actually have a functional Sails application already. To see it, you need to start a web server on your development machine. You can do this by running the following in the blog directory:
 
-	sails lift
+    sails lift
 
-At this point, if you visit (http://localhost:1337/) you will see the default home page.
+At this point, if you visit ([http://localhost:1337](http://localhost:1337)) you will see the default home page.
 
 *To stop the web server, hit Ctrl+C in the terminal window where it's running. To verify the server has stopped you should see your command prompt cursor again. For most UNIX-like systems including Mac OS X this will be a dollar sign $.*
 
@@ -157,7 +157,7 @@ Replace `'/': { view: 'homepage'}` with `'/': 'WelcomeController.index'`. That t
 
 Launch the web server again if you stopped it to generate the controller and navigate to [http://localhost:1337][http://localhost:1337] in your browser. You'll see the "Hello, Sails!" message you put into app/views/welcome/index.jade, indicating that this new route is indeed going to WelcomeController's index action and is rendering the view correctly.
 
-*We could've also done without a controller and simply used `'/': { view: 'welcome/index' }`. Feel free to do so for testing. We will continue using our controllers in the coming chapters*
+*We could've also done without a controller and simply used `'/': { view: 'welcome/index' }`. Feel free to do so.*
 
 *For more information about routing, refer to ![Sails Routing][Sails_Routing]*
 
@@ -165,20 +165,11 @@ Launch the web server again if you stopped it to generate the controller and nav
 
 Sails uses ![REST][REST] for structuring its resources. That means we will be using *CRUD* (Create, Read, Update, Delete) methods when dealing with resources.
 
-Luckily Sails uses ![Blueprints][Blueprints] that help us avoid writing a lot of boilerplate code to define CRUD actions on our resources. All we need is a model and controller for our resource.
+Luckily Sails uses ![Blueprints][Blueprints] that help us avoid writing a lot of boilerplate code to define CRUD actions on our resources. All we would normally need is a model and controller for our resource. For the purpose of this tutorial, we will implement these CRUD actions ourselves.
 
 In this section we will add the ability to create new articles in our application and be able to view them. This is the "C" and the "R" from CRUD: creation and reading.
 
-## Laying down the ground work
-
-Let's create our resource with a generator
-
-	sails generate api Article
-		info: Created a new api!
-
-That will generate a controller @ `api/controllers/ArticleController.js` and a model @ `api/model/Article.js`.
-
-Before we continue we will need to configure our application to use a local disk database provided by `sails-disk`. A simple modification of `config/models.js` will do. Uncomment `connection: 'localDiskDb',` and `migrate: 'alter'` to make the file look similar to this:
+Before we continue we will need to configure our application to use a local disk database provided by `sails-disk`. A simple modification of `config/models.js` will do. Uncomment `migrate: 'alter'` to make the file look similar to this:
 
 ```javascript
 module.exports.models = {
@@ -189,7 +180,7 @@ module.exports.models = {
   * connections (see `config/connections.js`)                                *
   *                                                                          *
   ***************************************************************************/
-  connection: 'localDiskDb',
+  // connection: 'localDiskDb',
 
   /***************************************************************************
   *                                                                          *
