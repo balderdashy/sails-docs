@@ -195,7 +195,94 @@ module.exports.models = {
 };
 ```
 
+## Laying down the ground work
 
+Firstly, you need a place within the application to create a new article. A great place for that would be at */article/new*. So we need to add a view and route for it.
+
+Where would we put the view? That's right `views/article/new.jade`.
+
+For now it will just contain
+
+```jade
+h1 New article
+```
+
+It should be accessible too so lets add a custom route to `config/routes.js`
+
+```javascript
+'/article/new': {
+    view: 'article/new'
+}
+```
+
+This route will not pass through any controller and just make the view visible at http://localhost:1337/article/new
+
+## Creating articles
+
+Our view isn't too useful at the moment, so let's make it do something - with a form. Replace its contents.
+
+`article/new.jade`:
+```jade
+form(action="/article", method="POST")
+
+    p
+        label(for="text") Title
+        br
+        input(
+            type="text"
+            name="title"
+            placeholder="Please add a title."
+            )
+
+    p
+        label(for="text") Text
+        br
+        textarea(
+            name="text"
+            placeholder="Please add some text to the article."
+            )
+
+    button(type="submit") Submit
+```
+
+Try filling the form and seeing what it does. It should return a JSON object. But how is that possible? We didn't add any other routes or actions. Or did we? Actually ![Blueprints][Blueprints] did.
+
+Blueprints automatically adds REST routes and actions (and some more stuff) to our controllers and models. In this case a simple POST request to */article* with any key-value parameters, will create a new Article. This is great, but we will be overriding that later on to understand what happens underthe hood.
+
+For now let's make */article* output the parameters it received.
+
+We need a controller first.
+
+    sails generate controller Article
+        info: Created a new controller ("Article") at api/controllers/ArticleController.js!
+
+And a route. A slight problem arises here, since we cannot create a route that targets `ArticleController` without an action. We will have to come up with an action name that let's us create new `Article`s... `create` comes to mind, so let's use that.
+
+`config/routes.js`:
+```javascript
+// ...
+// Custom routes here...
+// ...
+
+'/article': 'ArticleController.create',
+
+// ...
+```
+
+`api/controllers/ArticleController.js`:
+```javascript
+// ...
+module.exports = {
+
+    create: function (req, res) {
+        return res.json(req.allParams());
+    }
+};
+```
+
+Try navigating http://localhost:1337/article/new and testing it again to see the output. As expected it should return the POST parameters we passed to it in [`req.allParams()`](http://sailsjs.org/#/documentation/reference/req/req.allParams.html)
+
+## Creating the Article model
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
