@@ -35,11 +35,11 @@ By following along with this guide, you'll create a Sails project called `blog`,
 ## Installing Sails
 To install the latest stable release with the command-line tool:
 
-	sudo npm -g install sails
+    sudo npm -g install sails
 
 On Windows, you don't need sudo:
 
-	npm -g install sails
+    npm -g install sails
 
 # Creating the Blog Application
 
@@ -55,7 +55,7 @@ You can see all of the command line options that the Sails application builder a
 
 After you create the blog application, switch to its folder:
 
-	cd blog
+    cd blog
 
 The `blog` directory has a number of auto-generated files and folders that make up the structure of a Sails application. The anatomy thereof is described ![here][SailsJs_Anatomy].
 
@@ -79,23 +79,23 @@ To get Sails saying "Hello", you need to create at minimum a ![controller][Contr
 
 A controller's purpose is to receive specific requests for the application. Routing decides which controller receives which requests. Often, there is more than one route to each controller, and different routes can be served by different actions. Each action's purpose is to collect information to provide it to a view.
 
-A view's purpose is to display this information in a human readable format. An important distinction to make is that it is the controller, not the view, where information is collected. The view should just display that information. By default, view templates are written in a language called ![EJS][EJS] which is processed by the request cycle in Sails before being sent to the user.
+A view's purpose is to display this information in a human readable format. An important distinction to make is that it is the controller, not the view, where information is collected. The view should just display that information. By default, view templates are written in a templating language called ![Jade][Jade] which is processed by the request cycle in Sails before being sent to the user.
 
 We will have to create a view. This is done manually as a generator for that and a standard folder structure inside of the *views* folders doesn't exist yet. We will be using the Sails way: views/<controller.lowercase>/<action>.<template fileending>
 
-	mkdir views/welcome/
-	touch views/welcome/index.ejs
+    mkdir views/welcome/
+    touch views/welcome/index.jade
 
-Open the `app/views/welcome/index.ejs` file in your text editor. Delete all of the existing code in the file, and replace it with the following single line of code:
+Open the `app/views/welcome/index.jade` file in your text editor. Delete all of the existing code in the file, and replace it with the following single line of code:
 
-```html
-<h1>Hello, Sails!</h1>
+```jade
+h1 Hello, Sails!
 ```
 
 Next we have to create a new controller, to use the view. We will need to run the "controller" generator and tell it you want a controller called "welcome" with an action called "index", just like this:
 
-	sails generate controller welcome index
-		info: Created a new controller ("welcome") at api/controllers/WelcomeController.js!
+    sails generate controller welcome index
+        info: Created a new controller ("welcome") at api/controllers/WelcomeController.js!
 
 The controller will look like so:
 `api/controllers/WelcomeController.js`:
