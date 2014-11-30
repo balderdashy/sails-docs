@@ -161,6 +161,50 @@ Launch the web server again if you stopped it to generate the controller (rails 
 
 *For more information about routing, refer to ![Sails Routing][Sails_Routing]*
 
+# Getting Up and Running
+
+Sails uses ![REST][REST] for structuring its resources. That means we will be using *CRUD* (Create, Read, Update, Delete) methods when dealing with resources.
+
+Luckily Sails uses ![Blueprints][Blueprints] that help us avoid writing a lot of boilerplate code to define CRUD actions on our resources. All we need is a model and controller for our resource.
+
+In this section we will add the ability to create new articles in our application and be able to view them. This is the "C" and the "R" from CRUD: creation and reading.
+
+## Laying down the ground work
+
+Let's create our resource with a generator
+
+	sails generate api Article
+		info: Created a new api!
+
+That will generate a controller @ `api/controllers/ArticleController.js` and a model @ `api/model/Article.js`.
+
+Before we continue we will need to configure our application to use a local disk database provided by `sails-disk`. A simple modification of `config/models.js` will do. Uncomment `connection: 'localDiskDb',` and `migrate: 'alter'` to make the file look similar to this:
+
+```javascript
+module.exports.models = {
+
+  /***************************************************************************
+  *                                                                          *
+  * Your app's default connection. i.e. the name of one of your app's        *
+  * connections (see `config/connections.js`)                                *
+  *                                                                          *
+  ***************************************************************************/
+  connection: 'localDiskDb',
+
+  /***************************************************************************
+  *                                                                          *
+  * How and whether Sails will attempt to automatically rebuild the          *
+  * tables/collections/etc. in your schema.                                  *
+  *                                                                          *
+  * See http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html  *
+  *                                                                          *
+  ***************************************************************************/
+  migrate: 'alter'
+
+};
+```
+
+
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
