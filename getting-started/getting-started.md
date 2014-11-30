@@ -47,7 +47,7 @@ Sails comes with a number of scripts called ![generators][SailsJs_Generators] th
 
 To use this generator, open a terminal, navigate to a directory where you have rights to create files, and type:
 
-	sails new blog
+    sails new --template jade blog
 
 This will create a Sails application called Blog in a blog directory and install the npm dependencies that are already mentioned in `package.json` using `npm install`.
 
@@ -155,7 +155,7 @@ This is your application's routing file which holds entries in a javscript objec
 
 Replace `'/': { view: 'homepage'}` with `'/': 'WelcomeController.index'`. That tells Sails to map requests to the root of the application to the welcome controller's index action.
 
-Launch the web server again if you stopped it to generate the controller (rails server) and navigate to http://localhost:1337 in your browser. You'll see the "Hello, Sails!" message you put into app/views/welcome/index.ejs, indicating that this new route is indeed going to WelcomeController's index action and is rendering the view correctly.
+Launch the web server again if you stopped it to generate the controller and navigate to [http://localhost:1337][http://localhost:1337] in your browser. You'll see the "Hello, Sails!" message you put into app/views/welcome/index.jade, indicating that this new route is indeed going to WelcomeController's index action and is rendering the view correctly.
 
 *We could've also done without a controller and simply used `'/': { view: 'welcome/index' }`. Feel free to do so for testing. We will continue using our controllers in the coming chapters*
 
@@ -215,7 +215,7 @@ module.exports.models = {
 [SailsJs_Anatomy]: http://sailsjs.org/#/documentation/anatomy/myApp "Anatomy of a SailJs app"
 [SailsJs_Generators]: http://sailsjs.org/#/documentation/reference/cli/sailsgenerate.html "SailsJs generators"
 [SailsJS_Generator_New]: http://sailsjs.org/#/documentation/reference/cli/sailsnew.html "'sails new' generator"
-[EJS]: http://embeddedjs.com "Embedded Javascript"
+[Jade]: http://jade-lang.com "jade - Node template engine"
 [Controller_Concept]: http://sailsjs.org/#/documentation/concepts/Controllers/
 [View_Concept]: http://sailsjs.org/#/documentation/concepts/Views
 [Sails_Routing]: http://sailsjs.org/#/documentation/concepts/Routes
