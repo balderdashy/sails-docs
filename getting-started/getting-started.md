@@ -75,18 +75,13 @@ At this point, if you visit (http://localhost:1337/) you will see the default ho
 
 ## Say "Hello", Sails
 
-To get Sails saying "Hello", you need to create at minimum a ![controller][Controller_Concept] and a ![view][ViewConcept].
+To get Sails saying "Hello", you need to create at minimum a ![controller][Controller_Concept] and a ![view][View_Concept].
 
 A controller's purpose is to receive specific requests for the application. Routing decides which controller receives which requests. Often, there is more than one route to each controller, and different routes can be served by different actions. Each action's purpose is to collect information to provide it to a view.
 
 A view's purpose is to display this information in a human readable format. An important distinction to make is that it is the controller, not the view, where information is collected. The view should just display that information. By default, view templates are written in a language called ![EJS][EJS] which is processed by the request cycle in Sails before being sent to the user.
 
-To create a new controller, you will need to run the "controller" generator and tell it you want a controller called "welcome" with an action called "index", just like this:
-
-	sails generate controller welcome index
-		info: Created a new controller ("welcome") at api/controllers/WelcomeController.js!
-
-Next you will have to create a view. This is done manually as a generator for that and a standard folder structure inside of the *views* folders doesn't exist yet. We will be using the Rails way: views/<controller.lowercase>/<action>.<template fileending>
+We will have to create a view. This is done manually as a generator for that and a standard folder structure inside of the *views* folders doesn't exist yet. We will be using the Sails way: views/<controller.lowercase>/<action>.<template fileending>
 
 	mkdir views/welcome/
 	touch views/welcome/index.ejs
@@ -94,8 +89,78 @@ Next you will have to create a view. This is done manually as a generator for th
 Open the `app/views/welcome/index.ejs` file in your text editor. Delete all of the existing code in the file, and replace it with the following single line of code:
 
 ```html
-<h1>Hello, Rails!</h1>
+<h1>Hello, Sails!</h1>
 ```
+
+Next we have to create a new controller, to use the view. We will need to run the "controller" generator and tell it you want a controller called "welcome" with an action called "index", just like this:
+
+	sails generate controller welcome index
+		info: Created a new controller ("welcome") at api/controllers/WelcomeController.js!
+
+The controller will look like so:
+`api/controllers/WelcomeController.js`:
+```javascript
+/**
+ * WelcomeController
+ *
+ * @description :: Server-side logic for managing welcomes
+ * @help        :: See http://links.sailsjs.org/docs/controllers
+ */
+
+module.exports = {
+  /**
+   * `WelcomeController.index()`
+   */
+  index: function (req, res) {
+    return res.json({
+      todo: 'index() is not implemented yet!'
+    });
+  }
+};
+```
+
+As such it won't do much and simply return JSON with a todo. We want to change that. It should render a view and sendthat back to the client. To do so we will replace the `index` function body with a call to [res.view](http://sailsjs.org/#/documentation/reference/res/res.view.html).
+
+```javascript
+return res.view("welcome/index");
+```
+
+## Setting the Application Home Page
+
+Now that we have made the controller and view, we need to tell Sails when we want "Hello, Sails!" to show up. In our case, we want it to show up when we navigate to the root URL of our site, http://localhost:1337.
+
+Next, you have to tell Sails where your actual home page is located.
+
+Open the file config/routes.js in your editor.
+```javascript
+module.exports.routes = {
+
+  /***************************************************************************
+  *                                                                          *
+  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+  * etc. depending on your default view engine) your home page.              *
+  *                                                                          *
+  * (Alternatively, remove this and add an `index.html` file in your         *
+  * `assets` directory)                                                      *
+  *                                                                          *
+  ***************************************************************************/
+
+  '/': {
+    view: 'homepage'
+  }
+  //...
+```
+
+This is your application's routing file which holds entries in a javscript object where the key is the URL path and the value is another object.
+
+Replace `'/': { view: 'homepage'}` with `'/': 'WelcomeController.index'`. That tells Sails to map requests to the root of the application to the welcome controller's index action.
+
+Launch the web server again if you stopped it to generate the controller (rails server) and navigate to http://localhost:1337 in your browser. You'll see the "Hello, Sails!" message you put into app/views/welcome/index.ejs, indicating that this new route is indeed going to WelcomeController's index action and is rendering the view correctly.
+
+*We could've also done without a controller and simply used `'/': { view: 'welcome/index' }`. Feel free to do so for testing. We will continue using our controllers in the coming chapters*
+
+*For more information about routing, refer to ![Sails Routing][Sails_Routing]*
+
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
@@ -109,6 +174,9 @@ Open the `app/views/welcome/index.ejs` file in your text editor. Delete all of t
 [EJS]: http://embeddedjs.com "Embedded Javascript"
 [Controller_Concept]: http://sailsjs.org/#/documentation/concepts/Controllers/
 [View_Concept]: http://sailsjs.org/#/documentation/concepts/Views
+[Sails_Routing]: http://sailsjs.org/#/documentation/concepts/Routes
+[REST]: https://en.wikipedia.org/wiki/Representational_state_transfer "Representation state transfer"
+[Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
 <docmeta name="uniqueID" value="GettingStarted99009">
 <docmeta name="displayName" value="Getting Started">
