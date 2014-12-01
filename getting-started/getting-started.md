@@ -169,7 +169,8 @@ Luckily Sails uses ![Blueprints][Blueprints] that help us avoid writing a lot of
 
 In this section we will add the ability to create new articles in our application and be able to view them. This is the "C" and the "R" from CRUD: creation and reading.
 
-Before we continue we will need to configure our application to use a local disk database provided by `sails-disk`. A simple modification of `config/models.js` will do. Uncomment `migrate: 'alter'` to make the file look similar to this:
+Before we continue we will need to configure our application will us handle changes to our models (which we haven't created yet). Sails will pester us everytime we lift the application.
+A simple modification of `config/models.js` will do. Uncomment `migrate: 'alter'` to make the file look similar to this:
 
 ```javascript
 module.exports.models = {
@@ -282,6 +283,42 @@ module.exports = {
 
 Try navigating http://localhost:1337/article/new and testing it again to see the output. As expected it should return the POST parameters we passed to it in [`req.allParams()`](http://sailsjs.org/#/documentation/reference/req/req.allParams.html)
 
+## Preparing our database
+
+Remember out modification above to make Sails stop pestering us at every lift by changing the way we migrate models? Well, now that will actually come in handy as we will start using a local-disk database in our development environment.
+
+Sails provides an easy to use file database called `sails-disk` that's pretty useful to get an app up and running first, and testing its models.
+
+We will need to install the file database first:
+
+    npm install --save sails-disk
+
+And then use it. Let's uncomment `connection: 'localDiskDb'` in `config/models.js`. Which will make the application use a pre-configured connection of that name. The file should now look like.
+
+```javascript
+module.exports.models = {
+
+  /***************************************************************************
+  *                                                                          *
+  * Your app's default connection. i.e. the name of one of your app's        *
+  * connections (see `config/connections.js`)                                *
+  *                                                                          *
+  ***************************************************************************/
+  connection: 'localDiskDb',
+
+  /***************************************************************************
+  *                                                                          *
+  * How and whether Sails will attempt to automatically rebuild the          *
+  * tables/collections/etc. in your schema.                                  *
+  *                                                                          *
+  * See http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html  *
+  *                                                                          *
+  ***************************************************************************/
+  migrate: 'alter'
+
+};
+```
+
 ## Creating the Article model
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
@@ -299,6 +336,7 @@ Try navigating http://localhost:1337/article/new and testing it again to see the
 [Sails_Routing]: http://sailsjs.org/#/documentation/concepts/Routes
 [REST]: https://en.wikipedia.org/wiki/Representational_state_transfer "Representation state transfer"
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
+[SailsDisk]: https://www.npmjs.org/package/sails-disk "Persistent local-disk adapter for Sails.js / Waterline"
 
 <docmeta name="uniqueID" value="GettingStarted99009">
 <docmeta name="displayName" value="Getting Started">
