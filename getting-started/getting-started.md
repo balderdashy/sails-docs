@@ -334,6 +334,44 @@ We will be able to use our model later on to save the data into the database.
 
 **Blueprints already allow us to do this, but we are learning how it's done*
 
+## Saving data in the controller
+
+Back in `ArticleController`, we need to change the create action to use the new Article model to save the data in the database. Open `api/controllers/ArticleController.js` and change the create action to look like this:
+
+```javascript
+/**
+ * ArticleController
+ *
+ * @description :: Server-side logic for managing Articles
+ * @help        :: See http://links.sailsjs.org/docs/controllers
+ */
+
+module.exports = {
+
+    create: function (req, res) {
+        Article.create(req.allParams(), function (error,created) {
+            if (error) {
+                return res.serverError(err.toString())
+            }else{
+                return res.redirect('/article/' + created.id)
+            }
+        })
+    }
+};
+```
+
+Now we can lift our application again, go to *http://localhost:1337/article/new* and create a new article. We should be greeted once again with a JSON representation of our created article!
+
+So what's going on here?
+
+Models can be used throughout our application and have their own [built-in methods](http://sailsjs.org/#/documentation/reference/waterline/models) of which [create](http://sailsjs.org/#/documentation/reference/waterline/models/create.html) is one, and the one we need too. It has the following signature
+
+    .create( values, [callback] )
+
+Of course things don't always go right so we have to handle errors. We do so in simply returning a `serverError` with the `error.toString()`
+
+In the case of success however, we would like to be redirected to the page showing our splendid, new article. For now Blueprints takes care of that again, but in JSON format. We want an HTML representation, so let's get on with that, shall we?
+
 
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
