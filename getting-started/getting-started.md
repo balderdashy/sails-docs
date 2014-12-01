@@ -321,6 +321,21 @@ module.exports.models = {
 
 ## Creating the Article model
 
+![Models][Model_Concept] in Sails use a singular name. Sails provides a generator for creating models, which most Sails developers tend to use when creating new models. To create the new model, run this command in your terminal:
+
+    sails generate model Article title:string text:text
+      info: Created a new model ("Article") at api/models/Article.js!
+
+With that command we told Sails that we want a Article model, together with a title attribute of type string, and a text attribute of type text. Those attributes are automatically added to the articles table in the database and mapped to the Article model.
+
+Sails responded by creating `api/models/Article.js`.
+
+We will be able to use our model later on to save the data into the database.
+
+**Blueprints already allow us to do this, but we are learning how it's done*
+
+
+
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
 [WhatIsSails]: ./WhatIsSails.md "What is Sails?"
@@ -332,6 +347,7 @@ module.exports.models = {
 [SailsJS_Generator_New]: http://sailsjs.org/#/documentation/reference/cli/sailsnew.html "'sails new' generator"
 [Jade]: http://jade-lang.com "jade - Node template engine"
 [Controller_Concept]: http://sailsjs.org/#/documentation/concepts/Controllers/
+[Model_Concept]: http://sailsjs.org/#/documentation/concepts/ORM/Models.html
 [View_Concept]: http://sailsjs.org/#/documentation/concepts/Views
 [Sails_Routing]: http://sailsjs.org/#/documentation/concepts/Routes
 [REST]: https://en.wikipedia.org/wiki/Representational_state_transfer "Representation state transfer"
