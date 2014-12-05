@@ -71,7 +71,7 @@ Should return store #16, the primary record:
 >   ```shell
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
+>   $ sails generate api store
 >   $ sails generate api employee
 >   ```
 >
