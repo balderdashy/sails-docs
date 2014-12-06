@@ -425,6 +425,55 @@ We can now checkout http://localhost:1337/article/new and create an article, whi
 
 *The `:id` part of the route is a named parameter (a common convention) as described in [Custom Routes](http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html). It is accessible with `req.param("id").*
 
+## Listing all articles
+
+We still need a way to *index* all our articles, so let's do that.
+
+We'll start with the view again, that should contain a table of articles.
+
+`views/article/index.jada`:
+```jade
+extends ../layout
+
+block body
+  table
+    tr
+      th Title
+      th Text
+
+    each article in articles
+      tr
+        td= article.title
+        td= article.text
+```
+
+Next comes the action *index* in the controller again that should pass an array of articles to the view.
+
+Add the function to `api/controllers/ArticleController.js`
+```javascript
+index: function (req, res) {
+    Article.find({}, function (error, articles) {
+        if (error) {
+            res.serverError(error.toString())
+            return
+        }
+        res.view( 'article/index', {
+            'articles': articles
+        })
+    })
+}
+```
+
+Without any criteria [<Mode>.find](http://sailsjs.org/#/documentation/reference/waterline/models/find.html) finds all articles and returns them in an array.
+
+And then finally we add the route to `config/routes.js`
+
+    'GET /articles': 'ArticleController.index',
+
+Now we can take a look at the result by simply visiting http://localhost:1337/articles
+
+*This last step is not exactly necessary if we have Blueprints activated and configured to generate [action routes(actions property in configuration)](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.blueprints.html). http://localhost:1337/article will be automatically bound to `ArticleController.index`*
+
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
 [WhatIsSails]: ./WhatIsSails.md "What is Sails?"
