@@ -265,7 +265,7 @@ And a route. A slight problem arises here, since we cannot create a route that t
 // Custom routes here...
 // ...
 
-'/article': 'ArticleController.create',
+'POST /article': 'ArticleController.create',
 
 // ...
 ```
@@ -372,7 +372,54 @@ Of course things don't always go right so we have to handle errors. We do so in 
 
 In the case of success however, we would like to be redirected to the page showing our splendid, new article. For now Blueprints takes care of that again, but in JSON format. We want an HTML representation, so let's get on with that, shall we?
 
+## Showing Articles
 
+Since we want to *show* articles, we need a view to do so. Create the view `view/articles/show.jade`:
+
+```jade
+extends ../layout
+
+block body
+  p
+    strong Title:
+    = article.title
+  p
+    strong Text:
+    = article.text
+```
+
+Lines starting with *=* in Jade mean we want to display a variable at that spot. We will be getting that variable from the controller, which will be rendering the view.
+
+We need a method in `ArticleController` to do so. To stay uniform we will name it `show`.
+
+```javascript
+show: function (req, res) {
+    id = req.param('id')
+    Article.findOne({ "id": id}, function(error, article){
+        // Model.find doesn't consider attempting to find a non-existent object
+        // a problem and simply returns no error and undefined
+        if (error || article == undefined) {
+            res.notFound('Article with id: ' + id)
+        } else{
+            res.view('article/show', {
+                "article": article
+            })
+        }
+    })
+}
+```
+
+As seen above we pass `article`, which corresponds to our *Article* model, to the view.
+
+This is all nice, but how will a user see our work? Blueprints create a route */:modelIdentity/:id* for seeing articles. We will override that for GET requests as we don't mind the Blueprint for POST requests, which will return a JSON representation of the model with the given *id*.
+
+Our `config/routes.js` gets a new key-value pair
+
+    'GET /article/:id': 'ArticleController.show'
+
+We can now checkout http://localhost:1337/article/new and create an article, which will be returned to us in HTML afterwards.
+
+*The `:id` part of the route is a named parameter (a common convention) as described in [Custom Routes](http://sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html). It is accessible with `req.param("id").*
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
