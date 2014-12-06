@@ -224,24 +224,28 @@ Our view isn't too useful at the moment, so let's make it do something - with a 
 
 `article/new.jade`:
 ```jade
-form(action="/article", method="POST")
+extends ../layout
+
+block body
+
+  form(action="/article", method="POST")
 
     p
-        label(for="text") Title
-        br
-        input(
-            type="text"
-            name="title"
-            placeholder="Please add a title."
-            )
+      label(for="text") Title
+      br
+      input(
+        type="text"
+        name="title"
+        placeholder="Please add a title."
+        )
 
     p
-        label(for="text") Text
-        br
-        textarea(
-            name="text"
-            placeholder="Please add some text to the article."
-            )
+      label(for="text") Text
+      br
+      textarea(
+        name="text"
+        placeholder="Please add some text to the article."
+        )
 
     button(type="submit") Submit
 ```
