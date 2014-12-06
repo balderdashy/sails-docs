@@ -474,6 +474,89 @@ Now we can take a look at the result by simply visiting http://localhost:1337/ar
 
 *This last step is not exactly necessary if we have Blueprints activated and configured to generate [action routes(actions property in configuration)](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.blueprints.html). http://localhost:1337/article will be automatically bound to `ArticleController.index`*
 
+## Adding links
+
+You can now create, show, and list articles. Now let's add some links to navigate through pages. You may go freestyle on this one. All we're going to do is add links to navigate the site.
+
+`views/welcome/index.jade`:
+```jade
+extends ../layout
+
+block body
+    h1 Hello, Sails!
+
+    a(href="/articles") My Blog
+```
+
+`views/article/index.jade`:
+```jade
+extends ../layout
+
+block body
+
+    a(href="/article/new") New article
+
+    table
+        tr
+            th Title
+            th Text
+
+        each article in articles
+            tr
+                td= article.title
+                td= article.text
+
+```
+
+`views/article/new.jade`:
+```jade
+extends ../layout
+
+block body
+
+    form(action="/article", method="POST")
+
+        p
+            label(for="text") Title
+            br
+            input(
+                type="text"
+                name="title"
+                placeholder="Please add a title."
+                )
+
+        p
+            label(for="text") Text
+            br
+            textarea(
+                name="text"
+                placeholder="Please add some text to the article."
+                )
+
+        button(type="submit") Submit
+
+    a(href="/articles") Back
+```
+
+`views/article/show.jade`:
+```jade
+extends ../layout
+
+block body
+    p
+        strong Title:
+        = article.title
+    p
+        strong Text:
+        = article.text
+
+    a(href="/articles") Back
+```
+
+Yay, you'll be able to navigate a little now, without typing directly in the address bar.
+
+
+
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
 [WhatIsSails]: ./WhatIsSails.md "What is Sails?"
