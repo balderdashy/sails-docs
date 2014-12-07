@@ -555,7 +555,62 @@ block body
 
 Yay, you'll be able to navigate a little now, without typing directly in the address bar.
 
+## Adding some validation
 
+So far we can index and create articles. It doesn't look great, but functionality counts right now. Talking about that... we have non-validated input for our articles! Any schmuck can create articles that don't have a title, text or both!
+
+The horror. We have to teach 'em some rules. Luckily that won't be too hard as the possibility to validate input on the server is just a matter of modifying our model - [validation rules](http://sailsjs.org/#/documentation/concepts/ORM/Validations.html).
+
+Let's start with the article's title. Obviously that's `required`. We want them to have a minimal length (`minLength`) as well, can't let people just have empty or 1 character titles. But we don't want title-gore either, so a maximum length would be nice - oh look, `maxLength`.
+
+We could be more lenient with our article's text. Hey, if they want to write about nothing... so be it.
+
+This is how our model @ `api/models/Article.js` would look like with all that applied.
+
+```javascript
+module.exports = {
+
+  attributes: {
+
+    title : {
+        type: 'string',
+        required: true,
+        minLength: 5,
+        maxLength: 100
+    },
+
+    text : { type: 'text' }
+  }
+}
+```
+
+Now when we enter rubbish (or simply nothing at all) into the form http://localhost:1337/article/new  the server will return an error. That ain't nice for the user. To make it more friendly, let's tell them what exactly they did to anger us.
+
+Once the `Article` creation returns an error to our callback, we should pass that on to the view and allow the user to try and appease us.
+
+Our `ArticleController.create` function should look as follows in `api/controllers/ArticleController.js`
+
+```javascript
+create: function (req, res) {
+    Article.create(req.allParams(), function (error,created) {
+        // Error object doc: https://github.com/balderdashy/waterline/blob/master/lib/waterline/error/WLError.js
+        if (error) {
+            res.view( 'article/new', {
+                'error': error
+            })
+        }else{
+            res.redirect('/article/' + created.id)
+        }
+    })
+},
+```
+
+Our 'article/new' view doesn't display errors yet. All we need to add is this conditional in the body block in `view/article/new.jade`:
+
+```jade
+- if( typeof error !== 'undefined' )
+  pre= error.reason + '\n' + error.details
+```
 
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
