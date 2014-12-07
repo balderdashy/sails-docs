@@ -612,6 +612,136 @@ Our 'article/new' view doesn't display errors yet. All we need to add is this co
   pre= error.reason + '\n' + error.details
 ```
 
+## Updating Articles
+
+We've covered the "CR" part of CRUD. Now let's focus on the "U" part, updating articles.
+
+We'll stick to our routine of writing views, controllers and then routes. We should however define what exactly we expect to do. We want to update an article. In order to do so, we'll need an HTML view to make our modifications. Let's call this *edit*, because we'll be editing the article. Once our modifications look alright to us, we want to send it to the server and attempt to *update* the article.
+
+Ok, the view is basically a copy of `views/article/new.jade` which is prefilled with a given article and will send updates to *'article/update/:id'*. So copy it and make the modifications.
+
+*Copying the file seems redundant and another solution may be preferred, but we're learning right now and will be using **partials** later on. Do not fret.*
+
+`views/article/edit.jade`:
+```jade
+extends ../layout
+
+block body
+
+    h1 Editing article
+
+    - if( typeof error !== 'undefined' )
+        pre= error.reason + '\n' + error.details
+
+    form(action="/article/update/" + article.id, method="POST")
+
+        p
+            label(for="text") Title
+            br
+            input(
+                type="text"
+                name="title"
+                placeholder="Please add a title."
+                value=article.title
+                )
+
+        p
+            label(for="text") Text
+            br
+            textarea(
+                name="text"
+                placeholder="Please add some text to the article."
+                value=article.text
+                )
+
+        button(type="submit") Submit
+
+    a(href="/articles") Back
+```
+
+Up next the controller with the *edit* and *update* actions.
+
+*edit* will do a lot of stuff that *show* does. For now we can simply copy *show*, change the name to *edit* and update the view it shows when the article is found in the database.
+
+
+```javascript
+edit: function (req, res) {
+    id = req.param('id')
+    Article.findOne({ "id": id}, function(error, article){
+        // Model.find doesn't consider attempting to find a non-existent object
+        // a problem and simply returns no error and undefined
+        if (error || article == undefined) {
+            res.notFound('Article with id: ' + id)
+        } else{
+            res.view('article/edit', {
+                "article": article
+            })
+        }
+    })
+}
+```
+
+The *update* action will resemble *create*. If an update fails, the user has to see which errors they made on the edit page.
+
+```javascript
+update: function (req, res) {
+    id = req.param('id')
+    params = req.allParams()
+    Article.update(
+        id, // Article to update
+        params , // Update attributes
+        function (error,articles) {
+            // Error object doc: https://github.com/balderdashy/waterline/blob/master/lib/waterline/error/WLError.js
+            if (error) {
+                res.view( 'article/edit/', {
+                    'error': error,
+                    'article': params
+                })
+            }else{
+                article = articles[0]
+                res.redirect('/article/' + article.id)
+            }
+        }
+    )
+}
+```
+
+*We can't redirect in case of errors, so the URL might look weird, but at least user will be able to see what they did wrong.*
+
+Finally, we want to show a link to the edit action in the list of all the articles, so let's add that now to `views/article/index.jade` to make it appear next to a "Show" link
+
+```jade
+extends ../layout
+
+block body
+
+    a(href="/article/new") New article
+
+    table
+        tr
+            th Title
+            th Text
+            th(colspan="2")
+
+        each article in articles
+            tr
+                td= article.title
+                td= article.text
+                td
+                    a(href="/article/"+article.id) Show
+                td
+                    a(href="/article/edit/"+article.id) Edit
+
+```
+
+And we'll also add one to the `views/article/show.jade` template as well, so that there's also an "Edit" link on an article's page. Add this at the bottom of the template:
+
+```jade
+a(href="/articles") Back |
+
+a(href="/article/edit/"+article.id)  Edit
+```
+
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
 [WhatIsSails]: ./WhatIsSails.md "What is Sails?"
