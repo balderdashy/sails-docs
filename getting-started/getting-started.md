@@ -742,6 +742,83 @@ a(href="/articles") Back |
 a(href="/article/edit/"+article.id)  Edit
 ```
 
+## Using mixins to clean up duplication in views
+
+Our edit page looks very similar to the new page; in fact, they both share the same code for displaying the form. Let's remove this duplication by using a [Jade mixin](http://jade-lang.com/reference/mixins/).
+
+Create a new file `views/article/mixins/articleForm.jade`:
+
+```jade
+mixin articleForm(article, actionUrl, error)
+
+    form(action=actionUrl, method="POST")
+        - if( typeof error !== 'undefined' )
+            pre= error.reason + '\n' + error.details
+
+        p
+            label(for="text") Title
+            br
+            input(
+                type="text"
+                name="title"
+                placeholder="Please add a title."
+                value=article.title
+                )
+
+        p
+            label(for="text") Text
+            br
+            textarea(
+                name="text"
+                placeholder="Please add some text to the article."
+                value=article.text
+                )
+
+        button(type="submit") Submit
+
+```
+
+We just moved the form from `views/article/new.jade` and `views/article/edit.jade` into the mixin file. Using it is a simple as including the file in the view we want and using it like a tag by prefixing it with a `+`.
+
+The views will now look like so:
+
+`views/article/new.jade`:
+```jade
+extends ../layout
+include mixins/articleForm.jade
+
+block body
+
+    +articleForm(
+        {},
+        "/article",
+        error)
+
+    a(href="/articles") Back
+
+```
+
+We pass it an empty article for new, because ... well, the article doesn't exist yet.
+
+`views/article/edit.jade`:
+```jade
+extends ../layout
+include mixins/articleForm.jade
+
+block body
+
+    h1 Editing article.title
+
+    +articleForm(
+        article,
+        "/article/update/" + article.id,
+        error)
+
+    a(href="/articles") Back
+```
+
+Much simpler.
+
 [nodejs.org]: http://nodejs.org "Node.js homepage"
 [Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
 [WhatIsSails]: ./WhatIsSails.md "What is Sails?"
