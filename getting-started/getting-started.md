@@ -336,7 +336,7 @@ Sails responded by creating `api/models/Article.js`.
 
 We will be able to use our model later on to save the data into the database.
 
-**Blueprints already allow us to do this, but we are learning how it's done*
+**![Blueprints][Blueprints] already allow us to do this, but we are learning how it's done*
 
 ## Saving data in the controller
 
@@ -706,7 +706,7 @@ update: function (req, res) {
 }
 ```
 
-*We can't redirect in case of errors, so the URL might look weird, but at least user will be able to see what they did wrong.*
+*We can't redirect in case of errors, so the URL might look weird, but at least the user will be able to see what they did wrong.*
 
 Finally, we want to show a link to the edit action in the list of all the articles, so let's add that now to `views/article/index.jade` to make it appear next to a "Show" link
 
@@ -734,7 +734,7 @@ block body
 
 ```
 
-And we'll also add one to the `views/article/show.jade` template as well, so that there's also an "Edit" link on an article's page. Add this at the bottom of the template:
+And we'll also add one to the `views/article/show.jade` template as well, so that there's also an "Edit" link on an article's page. Add this at the bottom of the template in the body block:
 
 ```jade
 a(href="/articles") Back |
