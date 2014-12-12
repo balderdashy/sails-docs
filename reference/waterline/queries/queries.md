@@ -13,7 +13,7 @@ The primary purpose of Waterline query instances is to provide a convenient, cha
 
 ### Promises
 
-In addition to the `.exec()` method, Waterline queries implement a partial integration with the [q](https://github.com/kriskowal/q) promise library, exposing `.then()` and `.catch()` methods.
+In addition to the `.exec()` method, Waterline queries implement a partial integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.then()` and `.catch()` methods.
 
 ```js
 Stuff.find()
