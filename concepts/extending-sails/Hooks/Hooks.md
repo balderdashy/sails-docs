@@ -34,7 +34,7 @@ There are three types of hooks available in Sails:
 * [Using hooks in your app](#/documentation/concepts/extending-sails/Hooks/usinghooks.html)
 * [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec.html)
 * [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
-* [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
+* [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 
 <docmeta name="uniqueID" value="Hooks74998">
