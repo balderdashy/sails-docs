@@ -39,4 +39,4 @@ There are three types of hooks available in Sails:
 
 <docmeta name="uniqueID" value="Hooks74998">
 <docmeta name="displayName" value="Hooks">
-<docmeta name="stabilityIndex" value="2">
+<docmeta name="stabilityIndex" value="3">
