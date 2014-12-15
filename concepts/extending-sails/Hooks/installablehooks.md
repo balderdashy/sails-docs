@@ -96,3 +96,7 @@ Assuming your hook is tested and looks good, and assuming that the hook name isn
 * [Using hooks in your app](#/documentation/concepts/extending-sails/Hooks/usinghooks.html)
 * [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
 * [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
+
+<docmeta name="uniqueID" value="Hooks74999">
+<docmeta name="displayName" value="Installable Hooks">
+<docmeta name="stabilityIndex" value="3">
