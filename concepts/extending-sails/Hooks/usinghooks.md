@@ -29,3 +29,8 @@ module.exports.installedHooks = {
 ```
 
 > Note: you may have to create the `config/installedHooks.js` file yourself.
+
+* [Hooks overview](#/documentation/concepts/extending-sails/Hooks)
+* [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
+* [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
+* [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
