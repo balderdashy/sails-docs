@@ -5,6 +5,7 @@ The `initialize` feature allows a hook to perform startup tasks that may be asyn
 * Logging in to a remote API
 * Reading from a database that will be used by hook methods
 * Loading support files from a user-configured directory
+* Waiting for another hook to load first
 
 Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` takes one argument: a callback function which must be called in order for Sails to finish loading:
 
