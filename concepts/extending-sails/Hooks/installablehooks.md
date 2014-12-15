@@ -1,6 +1,6 @@
 # Creating an Installable Hook
 
-Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a user hook](/#/documentation/concepts/extending-sails/Hooks/hookspec/userhooks.html) instead.
+Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a user hook](/#/documentation/concepts/extending-sails/Hooks/userhooks.html) instead.
 
 To create a new installable hook:
 
@@ -19,7 +19,7 @@ To create a new installable hook:
 }
 ```
 If you use `npm init` to create your `package.json`, be sure to open the file afterwards and manually insert the `sails` key containing `isHook: true`.
-1. Write your hook code in `index.js` in accordance with the [hook specification](/#/documentation/concepts/extending-sails/Hooks/hookspec)
+1. Write your hook code in `index.js` in accordance with the [hook specification](/#/documentation/concepts/extending-sails/Hooks/hookspec).
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.  Use the `dependencies` key of your `package.json` to refer to any dependencies that need to be installed in order for your hook to work (you may also use `npm install <dependency> --save` to easily save dependency information to `package.json`).
 
@@ -34,7 +34,7 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 }
 ```
 1. Install Sails as a dependency of your hook with `npm install sails` or `npm link sails` (if you have Sails installed globally on your system).
-1. Install [Mocha](http://mochajs.org/) on your system with `npm install -g mocha`
+1. Install [Mocha](http://mochajs.org/) on your system with `npm install -g mocha`, if you haven&rsquo;t already.
 1. Add a `test` folder inside your hook&rsquo;s main folder.
 2. Add a `basic.js` file with the following basic test:
 ```
@@ -55,8 +55,8 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 		    Sails().lift({
 		      hooks: {
 		        // Load the hook
-		        "autoreload": require('../'),
-		        // Skip grunt
+		        "your-hook-name": require('../'),
+		        // Skip grunt (unless your hook uses it)
 		        "grunt": false
 		      },
 		      log: {level: "error"}
