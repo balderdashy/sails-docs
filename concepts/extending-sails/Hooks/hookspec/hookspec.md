@@ -56,3 +56,7 @@ module.exports = function myHook(sails) {
 ```
 
 The public var and function above would be available as `sails.config.myhook.abc` and `sails.config.myhook.sayHi`, respectively.
+
+<docmeta name="uniqueID" value="Hooks75002">
+<docmeta name="displayName" value="Hook Specification">
+<docmeta name="stabilityIndex" value="3">
