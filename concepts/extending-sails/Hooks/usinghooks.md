@@ -34,3 +34,7 @@ module.exports.installedHooks = {
 * [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
 * [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
 * [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
+
+<docmeta name="uniqueID" value="Hooks75001">
+<docmeta name="displayName" value="Using Hooks">
+<docmeta name="stabilityIndex" value="3">
