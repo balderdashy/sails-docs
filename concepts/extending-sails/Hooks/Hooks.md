@@ -6,7 +6,7 @@
 
 ## What is a hook?
 
-A hook is a Node module that adds functionality to the Sails core.  The [hook specification]((#/documentation/concepts/extending-sails/Hooks/hookspec.html)) defines the requirements a module must meet for Sails to be able to import its code and make the new functionality available.  Because they can be saved separately from the core, hooks allow Sails code to be shared between apps and developers without having to modify the framework.
+A hook is a Node module that adds functionality to the Sails core.  The [hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec.html) defines the requirements a module must meet for Sails to be able to import its code and make the new functionality available.  Because they can be saved separately from the core, hooks allow Sails code to be shared between apps and developers without having to modify the framework.
 
 ## Hooks vs. Services
 
