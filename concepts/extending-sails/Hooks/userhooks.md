@@ -18,3 +18,8 @@ To test that your hook is being loaded by Sails, lift your app with `sails lift 
 `verbose: your-hook-name hook loaded successfully.`
 
 in the logs.
+
+* [Hooks overview](#/documentation/concepts/extending-sails/Hooks)
+* [Using hooks in your app](#/documentation/concepts/extending-sails/Hooks/usinghooks.html)
+* [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
+* [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
