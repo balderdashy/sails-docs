@@ -91,3 +91,8 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 ### Publishing your hook
 
 Assuming your hook is tested and looks good, and assuming that the hook name isn&rsquo;t already in use by another [NPM](http://npmjs.org) module, you can share it with world by running `npm publish`.  Go you!
+
+* [Hooks overview](#/documentation/concepts/extending-sails/Hooks)
+* [Using hooks in your app](#/documentation/concepts/extending-sails/Hooks/usinghooks.html)
+* [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
+* [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
