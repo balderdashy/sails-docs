@@ -6,8 +6,8 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
   Property      | Type       | Default  | Details |
  ---------------|------------|----------|---------|
- `onConnect`    |((function))| see [config/sockets.js](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket connects to the server.
- `onDisconnect` |((function))| see [config/sockets.js](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket disconnects from the server.
+ `onConnect`    |((function))| _nada_  | A function to run every time a new client-side socket connects to the server, i.e.  `onConnect: function (session, socket){}`  Note that the session argument is read-only-- changes will not be saved (it is made available merely as a convenience for identifying returning users)
+ `onDisconnect` |((function))| _nada_  | A function to run every time a new client-side socket disconnects from the server, i.e.  `onDisconnect: function (session, socket){}`  Note that the session argument is read-only-- changes will not be saved (it is made available merely as a convenience for identifying returning users)
  `adapter`      |((string))  |`'memory'`| The socket.io adapter to use for message routing and delivery.  Can be set to either `'memory'` or `'redis'`
  `grant3rdPartyCookie`|((boolean))  | `true`     | Whether to expose the implicit, CORS-enabled `get /__getcookie` "shadow route" that sets the "sails.sid" as a 3rd party cookie (this is used by the sails.io.js socket client when you attempt a cross-origin socket connection, or if you're using client library as an npm install-ed depenency in a Node.js socket client).  This enables the use of sessions in virtual requests made from the sails.io.js socket client. |
 
@@ -37,7 +37,7 @@ These configuration options are primarily useful for performance tuning.  In add
 | `maxBufferSize` | ((number)) | `10E7` | This is a raw configuration option exposed from Engine.io.  It reflects the maximum number of bytes or characters in a message when polling before automatically closing the socket (to avoid [DoS](http://sailsjs.org/#/documentation/concepts/Security/DDOS.html)). |
 |`transports`|((array))  | `['polling', 'websocket']`     | An array of allowed transport methods which the clients will try to use. |
 | `allowUpgrades` | ((boolean)) | `true` | This is a raw configuration option exposed from Engine.io.  It indicates whether to allow Socket.io clients to upgrade the transport that they are using (e.g. start with polling, then upgrade to a true WebSocket connection).  |
-| `cookie` | ((string)), ((boolean)) | false | This is a raw configuration option exposed from Engine.io.  It indicates the name of the HTTP cookie that contains the connecting socket.io client's socket id.  The cookie will be set when responding to the initial Socket.io "handshake".  Alternatively, may be set to `false` to disable the cookie altogether.  Note that the `sails.io.js` client does not rely on this cookie, so it is disabled (set to `false`) by default for enhanced security.  If you are using socket.io directly and need to re-enable this cookie, keep in mind that the conventional setting is `"io"`.  |
+| `cookie` | ((string)), ((boolean)) | `false` | This is a raw configuration option exposed from Engine.io.  It indicates the name of the HTTP cookie that contains the connecting socket.io client's socket id.  The cookie will be set when responding to the initial Socket.io "handshake".  Alternatively, may be set to `false` to disable the cookie altogether.  Note that the `sails.io.js` client does not rely on this cookie, so it is disabled (set to `false`) by default for enhanced security.  If you are using socket.io directly and need to re-enable this cookie, keep in mind that the conventional setting is `"io"`.  |
 
 
 
