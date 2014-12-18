@@ -29,12 +29,14 @@ Before you start building your test cases, you should first organise your `./tes
 This file is useful when you want to execute some code before and after running your tests (e.g. lifting and lowering your sails application):
 
 ```javascript
-var Sails = require('sails');
+var Sails = require('sails'),
+  sails;
 
 before(function(done) {
   Sails.lift({
     // configuration for testing purposes
-  }, function(err, sails) {
+  }, function(err, server) {
+    sails = server;
     if (err) return done(err);
     // here you can load fixtures, etc.
     done(err, sails);
