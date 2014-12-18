@@ -16,9 +16,9 @@ _Or:_
 
 |   |          Argument           | Type                | Details
 | - | --------------------------- | ------------------- | -----------
-| 1 |        roomName            | ((string))          | The room to broadcast a message in (see [sails.sockets.join](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.sockets/sails.sockets.join.html))
+| 1 |        roomName             | ((string))          | The room to broadcast a message in (see [sails.sockets.join](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.sockets/sails.sockets.join.html))
 | 2 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
-| 3 |        data                 | ((*))               | The data to send in the message.
+| 3 |        data                 | ((any))             | The data to send in the message.
 | 4 |        socketToOmit         | ((Socket))          | Optional. If provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
 
 
