@@ -8,7 +8,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
  ---------------|------------|----------|---------|
  `onConnect`    |((function))| see [config/sockets.js](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket connects to the server.
  `onDisconnect` |((function))| see [config/sockets.js](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket disconnects from the server.
- `adapter`      |((string))  |`'memory'`| The database where socket.io will store its message queue and answer pubsub logic.  Can be set to either `'memory'` or `'redis'`
+ `adapter`      |((string))  |`'memory'`| The socket.io adapter to use for message routing and delivery.  Can be set to either `'memory'` or `'redis'`
  `grant3rdPartyCookie`|((boolean))  | `true`     | Whether to expose the implicit, CORS-enabled `get /__getcookie` "shadow route" that sets the "sails.sid" as a 3rd party cookie (this is used by the sails.io.js socket client when you attempt a cross-origin socket connection, or if you're using client library as an npm install-ed depenency in a Node.js socket client).  This enables the use of sessions in virtual requests made from the sails.io.js socket client. |
 
 
