@@ -1,6 +1,6 @@
 # sails.config.sockets
 ### What is this?
-These configuration options provide transparent access to Socket.io, the WebSocket/pubsub server encapsulated by Sails.
+These configuration options are for the WebSocket/pubsub server encapsulated by Sails (implemented by the [`sockets` hook](https://github.com/balderdashy/sails-hook-sockets) and built on top of [Socket.io](http://socket.io).)
 
 ### Commonly-Used Options
 
