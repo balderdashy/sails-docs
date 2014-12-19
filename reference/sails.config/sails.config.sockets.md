@@ -8,7 +8,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
  ---------------|------------|----------|---------|
  `adapter`      |((string))  |`'memory'`| The socket.io adapter to use for message routing and delivery.  Can be set to either `'memory'` or `'redis'`
  `grant3rdPartyCookie`|((boolean))  | `true`     | Whether to expose the implicit, CORS-enabled `get /__getcookie` "shadow route" that sets the "sails.sid" as a 3rd party cookie (this is used by the sails.io.js socket client when you attempt a cross-origin socket connection, or if you're using client library as an npm install-ed depenency in a Node.js socket client).  This enables the use of sessions in virtual requests made from the sails.io.js socket client.
- `afterDisconnect` |((function))| _nada_  | A function to run every time a new client-side socket disconnects from the server (e.g. a user closes a browser tab or closes your mobile app).  Accepts three arguments, and must trigger the provided callback:  `afterDisconnect: function (session, socket, cb){  return cb(); }`  Note that the provided `socket` can **no longer be used** since it is already disconnected (it is merely made available for convenience in case you need the socket id).
+ `afterDisconnect` |((function))| `undefined`  | A function to run every time a new client-side socket disconnects from the server (e.g. a user closes a browser tab or closes your mobile app).  Accepts three arguments, and must trigger the provided callback:  `afterDisconnect: function (session, socket, cb){  return cb(); }`  Note that the provided `socket` can **no longer be used** since it is already disconnected (it is merely made available for convenience in case you need the socket id).
 
 
 ### Redis Configuration
