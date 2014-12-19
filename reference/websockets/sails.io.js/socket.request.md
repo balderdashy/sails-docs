@@ -2,6 +2,13 @@
 
 Sends a virtual request to a Sails server using Socket.io.
 
+
+### Example
+
+```javascript
+
+```
+
 This method is wrapped by the other `io.socket.*`() request methods, which should be used instead.
 
 + [io.socket.get()](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js/socket.get.html)
