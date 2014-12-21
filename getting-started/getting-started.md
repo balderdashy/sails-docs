@@ -1,7 +1,7 @@
 # Getting Started
 
 
-This guide covers getting up and running with ![Sails][WhatIsSails].
+This guide covers getting up and running with [Sails](./WhatIsSails.md "What is Sails?").
 
 After reading this guide, you will know:
 
@@ -15,13 +15,13 @@ After reading this guide, you will know:
 
 This guide is designed for beginners who want to get started with a Sails application from scratch. It does not assume that you have any prior experience with Sails. However, to get the most out of it, you need to have some prerequisites installed:
 
-* ![Node.js][Node.js] - you can follow our ![guide][Node.js_guide] on what it is and how to install it
+* [Node.js](http://nodejs.org "Node.js homepage") - you can follow our [guide](./WhatIsNodeJs.md "What is Node.js?") on what it is and how to install it
 
 Sails is a web application framework running on the Javascript scripting language. If you have no prior experience with Javascript, you will find a very steep learning curve diving straight into Sails. There are a few places where you can learn Javascript:
 
-* ![Eloquent Javascript][EloquentJavascript]
-* ![Mozilla's Javascript page][MozillaJavascript]
-* ![W3C's Javascript tutorial][W3C_Javascript]
+* [Eloquent Javascript](http://eloquentjavascript.net/ "Eloquent Javascript")
+* [Mozilla's Javascript page](https://developer.mozilla.org/en-US/docs/Web/JavaScript "Mozilla's Javascript page")
+* [W3C's Javascript tutorial](http://www.w3schools.com/js/default.asp "World Wide Web Consortium's Javascript tutorial")
 
 # Creating a New Sails Project
 
@@ -43,7 +43,7 @@ On Windows, you don't need sudo:
 
 # Creating the Blog Application
 
-Sails comes with a number of scripts called ![generators][SailsJs_Generators] that are designed to make your development life easier by creating everything that's necessary to start working on a particular task. One of these is the ![`new`][SailsJS_Generator_New] application generator, which will provide you with the foundation of a fresh Sails application so that you don't have to write it yourself.
+Sails comes with a number of scripts called [generators](http://sailsjs.org/#/documentation/reference/cli/sailsgenerate.html "SailsJs generators") that are designed to make your development life easier by creating everything that's necessary to start working on a particular task. One of these is the [`new`](http://sailsjs.org/#/documentation/reference/cli/sailsnew.html "'sails new' generator") application generator, which will provide you with the foundation of a fresh Sails application so that you don't have to write it yourself.
 
 To use this generator, open a terminal, navigate to a directory where you have rights to create files, and type:
 
@@ -57,7 +57,7 @@ After you create the blog application, switch to its folder:
 
     cd blog
 
-The `blog` directory has a number of auto-generated files and folders that make up the structure of a Sails application. The anatomy thereof is described ![here][SailsJs_Anatomy].
+The `blog` directory has a number of auto-generated files and folders that make up the structure of a Sails application. The anatomy thereof is described [here](http://sailsjs.org/#/documentation/anatomy/myApp "Anatomy of a SailJs app").
 
 # Hello, Sails!
 
@@ -75,11 +75,11 @@ At this point, if you visit ([http://localhost:1337](http://localhost:1337)) you
 
 ## Say "Hello", Sails
 
-To get Sails saying "Hello", you need to create at minimum a ![controller][Controller_Concept] and a ![view][View_Concept].
+To get Sails saying "Hello", you need to create at minimum a [controller](http://sailsjs.org/#/documentation/concepts/Controllers/) and a [view](http://sailsjs.org/#/documentation/concepts/Views).
 
 A controller's purpose is to receive specific requests for the application. Routing decides which controller receives which requests. Often, there is more than one route to each controller, and different routes can be served by different actions. Each action's purpose is to collect information to provide it to a view.
 
-A view's purpose is to display this information in a human readable format. An important distinction to make is that it is the controller, not the view, where information is collected. The view should just display that information. By default, view templates are written in a templating language called ![Jade][Jade] which is processed by the request cycle in Sails before being sent to the user.
+A view's purpose is to display this information in a human readable format. An important distinction to make is that it is the controller, not the view, where information is collected. The view should just display that information. By default, view templates are written in a templating language called [Jade](http://jade-lang.com "jade - Node template engine") which is processed by the request cycle in Sails before being sent to the user.
 
 We will have to create a view. This is done manually as a generator for that and a standard folder structure inside of the *views* folders doesn't exist yet. We will be using the Sails way: views/<controller.lowercase>/<action>.<template fileending>
 
@@ -159,11 +159,11 @@ Launch the web server again if you stopped it to generate the controller and nav
 
 *We could've also done without a controller and simply used `'/': { view: 'welcome/index' }`. Feel free to do so.*
 
-*For more information about routing, refer to ![Sails Routing][Sails_Routing]*
+*For more information about routing, refer to [Sails Routing](http://sailsjs.org/#/documentation/concepts/Routes)*
 
 # Getting Up and Running
 
-Sails uses ![REST][REST] for structuring its resources. That means we will be using *CRUD* (Create, Read, Update, Delete) methods when dealing with resources.
+Sails uses [REST](https://en.wikipedia.org/wiki/Representational_state_transfer "Representation state transfer") for structuring its resources. That means we will be using *CRUD* (Create, Read, Update, Delete) methods when dealing with resources.
 
 Luckily Sails uses ![Blueprints][Blueprints] that help us avoid writing a lot of boilerplate code to define CRUD actions on our resources. All we would normally need is a model and controller for our resource. For the purpose of this tutorial, we will implement these CRUD actions ourselves.
 
@@ -291,7 +291,7 @@ Try navigating http://localhost:1337/article/new and testing it again to see the
 
 Remember out modification above to make Sails stop pestering us at every lift by changing the way we migrate models? Well, now that will actually come in handy as we will start using a local-disk database in our development environment.
 
-Sails provides an easy to use file database called `sails-disk` that's pretty useful to get an app up and running first, and testing its models.
+Sails provides an easy to use file database called [`sails-disk`](https://www.npmjs.org/package/sails-disk "Persistent local-disk adapter for Sails.js / Waterline") that's pretty useful to get an app up and running first, and testing its models.
 
 We will need to install the file database first:
 
@@ -325,7 +325,7 @@ module.exports.models = {
 
 ## Creating the Article model
 
-![Models][Model_Concept] in Sails use a singular name. Sails provides a generator for creating models, which most Sails developers tend to use when creating new models. To create the new model, run this command in your terminal:
+[Models](http://sailsjs.org/#/documentation/concepts/ORM/Models.html) in Sails use a singular name. Sails provides a generator for creating models, which most Sails developers tend to use when creating new models. To create the new model, run this command in your terminal:
 
     sails generate model Article title:string text:text
       info: Created a new model ("Article") at api/models/Article.js!
@@ -819,23 +819,9 @@ block body
 
 Much simpler.
 
-[nodejs.org]: http://nodejs.org "Node.js homepage"
-[Node.js_guide]: ./WhatIsNodeJs.md "What is Node.js?"
-[WhatIsSails]: ./WhatIsSails.md "What is Sails?"
-[EloquentJavascript]: http://eloquentjavascript.net/ "Eloquent Javascript"
-[MozillaJavascript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript "Mozilla's Javascript page"
-[W3C_Javascript]: http://www.w3schools.com/js/default.asp "World Wide Web Consortium's Javascript tutorial"
-[SailsJs_Anatomy]: http://sailsjs.org/#/documentation/anatomy/myApp "Anatomy of a SailJs app"
-[SailsJs_Generators]: http://sailsjs.org/#/documentation/reference/cli/sailsgenerate.html "SailsJs generators"
-[SailsJS_Generator_New]: http://sailsjs.org/#/documentation/reference/cli/sailsnew.html "'sails new' generator"
-[Jade]: http://jade-lang.com "jade - Node template engine"
-[Controller_Concept]: http://sailsjs.org/#/documentation/concepts/Controllers/
-[Model_Concept]: http://sailsjs.org/#/documentation/concepts/ORM/Models.html
-[View_Concept]: http://sailsjs.org/#/documentation/concepts/Views
-[Sails_Routing]: http://sailsjs.org/#/documentation/concepts/Routes
-[REST]: https://en.wikipedia.org/wiki/Representational_state_transfer "Representation state transfer"
+
+
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
-[SailsDisk]: https://www.npmjs.org/package/sails-disk "Persistent local-disk adapter for Sails.js / Waterline"
 
 <docmeta name="uniqueID" value="GettingStarted99009">
 <docmeta name="displayName" value="Getting Started">
