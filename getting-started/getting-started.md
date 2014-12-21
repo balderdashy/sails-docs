@@ -819,6 +819,73 @@ block body
 
 Much simpler.
 
+## Destroying articles
+We're now ready to cover the "D" part of CRUD, destroying articles from the database.
+
+Since we are limitted to using links and no client-side javascript in this tutorial (sticking to the basics and no magic custom code), we will use the route:
+
+`config/routes.js`:
+```javascript
+'/article/destroy/:id': 'ArticleController.destroy'
+```
+
+It isn't the most secure way to delete things as people can craft malicious URLs like
+
+```html
+<a href='http://example.com/article/1/destroy'>6 reasons clickbait articles produce revenue - reason 4 will disgust you!</a>
+```
+
+But we can change that that in more advanced tutorials.
+
+Now that we have a route we can use it in our views. Right our article index view will do just fine. All we need to do is add a column with the destroy URL:
+
+`views/article/index.jade`:
+```jade
+extends ../layout
+
+block body
+
+  a(href="/article/new") New article
+
+  table
+    tr
+      th Title
+      th Text
+      th(colspan="3")
+
+    each article in articles
+      tr
+        td= article.title
+        td= article.text
+        td
+          a(href="/article/"+article.id) Show
+        td
+          a(href="/article/edit/"+article.id) Edit
+        td
+          a(href="/article/destroy/"+article.id) Destroy
+
+```
+
+The controller action `ArticleController.destroy` is very similar to what we implemented in the other actions. We just need the *id* of the article we want to delete and then the model will delete the article with that id.
+
+Once that is done we can look at our destruction by viewing the index of all articles and noticing the missing article.
+
+`api/controllers/ArticleController.js`:
+```javascript
+destroy: function (req, res) {
+    id = req.param('id')
+    params = req.allParams()
+    Article.destroy(
+        id, // Article to destroy
+        function (error,articles) {
+            res.redirect('/articles/')
+        }
+    )
+}
+```
+
+You may now go forth and destroy!
+
 
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
