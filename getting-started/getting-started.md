@@ -887,6 +887,59 @@ destroy: function (req, res) {
 You may now go forth and destroy!
 
 
+# Adding a second model
+
+It's time to add a second model to the application. The second model will handle comments on articles.
+
+## Generating an associated model
+
+The association between articles and comments will have a [one-to-many relationship](http://sailsjs.org/#/documentation/concepts/ORM/Associations/OnetoMany.html) - as in "One article has many comments" and "Many comments belong to one article".
+
+We're going to see the same generator that we used before when creating the Article model. This time we'll create a Comment model to hold reference of article comments.
+Run this command in your terminal:
+
+    >sails generate model Comment commenter:string body:text
+        info: Created a new model ("Comment") at api/models/Comment.js!
+
+The file generated has to be edited however as the generator doesn't handle associations yet. This is how it looks like after being generated.
+
+```javascript
+/**
+* Comment.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
+module.exports = {
+
+  attributes: {
+
+    commenter : { type: 'string' },
+
+    body : { type: 'text' }
+
+  }
+};
+```
+
+To represent a one-to-many relationship we will need to make the comment model aware of that by adding
+
+```javascript
+commentedArticle : { model: 'article' }
+```
+to `api/models/Comment.js`. *commentedArticle* is the name of the attribute to reference the *article*.
+
+Next we will have to make an `Article` aware that it will have a collection of comments by adding
+
+```javascript
+comments: {
+        collection: 'comment',
+        via: 'commentedArticle'
+    }
+```
+to `api/models/Article.js`. *comment* is the name of the model in the collection and *commentedArticle* is the attribute that model uses to reference this one (`Article`).
+
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
