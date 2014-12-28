@@ -982,6 +982,60 @@ If you played around a little, you will notice that collections of associations 
 
 Now the associated records will be retrieved.
 
+## A view for comments
+
+Comments will only be visible when we show articles, so there will a single file to edit `views/article/show.jade`.
+
+A good start would be to simply display comments. That's pretty straight forward in jade:
+
+```jade
+h2 Comments
+
+each comment in article.comments
+  p
+    strong Commenter:
+    = comment.commenter
+  p
+    strong Comment:
+    = comment.body
+```
+
+If you have played around with associated models in `sails console`, now you should be able to see them for the associated articles. Otherwise, let's gath input data from a user. This is just like with an article - we use a form:
+```jade
+h2 Add a comment:
+
+form(action="/comment", method="POST")
+  input(
+    type="hidden"
+    name="commentedArticle"
+    value=article.id
+    )
+  p
+    label(for="commenter") Commenter
+    br
+    input(
+      type="text"
+      name="commenter"
+      placeholder="What is your name?"
+      )
+  p
+    label(for="body") Body
+    br
+    textarea(
+      name="body"
+      placeholder="Enter a comment on this article"
+      )
+  p
+    button(type="submit") Submit
+```
+
+Notice the hidden input field. We need that for the comment to know which article it belongs to once it is sent to the server.
+
+The action URL will need a route to allow creation of comments. It is as straight-forward as with articles:
+
+```javascript
+'POST /comment': 'CommentController.create',
+```
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
