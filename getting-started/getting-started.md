@@ -940,6 +940,48 @@ comments: {
 ```
 to `api/models/Article.js`. *comment* is the name of the model in the collection and *commentedArticle* is the attribute that model uses to reference this one (`Article`).
 
+## Controllers for comments
+
+We want to give the server the ability to create and view comments. To do so we will first need a new controller.
+
+    sails generate controller Comment create
+      info: Created a new controller ("Comment") at api/controllers/CommentController.js!
+
+Not much differs from the way articles are created. The single difference is that once we are done, we go to the article's page, since it has a collection of comments we want to view.
+
+Here's how `api/controllers/CommentController.js` looks like:
+```javascript
+/**
+ * CommentController
+ *
+ * @description :: Server-side logic for managing Comments
+ * @help        :: See http://links.sailsjs.org/docs/controllers
+ */
+
+module.exports = {
+
+  create: function (req, res) {
+    inputComment = req.allParams()
+    Comment.create(inputComment, function (error, created) {
+        res.redirect('/article/' + inputComment.commentedArticle)
+    })
+  }
+};
+```
+
+*You can play around creating comments in `sails console` as described in the sails documentation for [one-to-many associations](http://sailsjs.org/#/documentation/concepts/ORM/Associations/OnetoMany.html)*
+
+If you played around a little, you will notice that collections of associations have to be populated, if they are to be used. Therefore this minor change will have to be applied to `api/controllers/ArticleController.js`:
+
+```diff
+     show: function (req, res) {
+         id = req.param('id')
+-        Article.findOne({ "id": id}, function(error, article){
++        Article.findOne({ "id": id}).populateAll().exec(function(error, article){
+```
+
+Now the associated records will be retrieved.
+
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
