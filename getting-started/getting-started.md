@@ -1184,7 +1184,23 @@ destroy: function (req, res) {
 
 The destruction of specific comments is possible.
 
+## Indirect,cascaded comment destruction
 
+But what will happen when articles are destroyed? Well at the moment the comments stay untouched and fill up our database. Of course that's undesirable and we have to commence a cascade of destruction.
+
+There isn't an option to do so directly in Waterline (yet). We have to do so ourselves and one simple way to do this is hook into the *afterDestroy* event of a model ^[stackoverflow](https://stackoverflow.com/a/23486612) - in this case our Article model.
+
+```javascript
+afterDestroy: function (destroyedRecords, callback) {
+  destroyedRecords.forEach(function (record) {
+    Comment.destroy({ commentedArticle: record.id}, function (error, destroyedComments) {
+      console.log("destroyedComments:", destroyedComments)
+    })
+  })
+  callback()
+}
+```
+The log line is simply for having a trace of the destroyed comments, since we can't see them on the client side.
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
