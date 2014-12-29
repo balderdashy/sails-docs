@@ -1037,6 +1037,118 @@ The action URL will need a route to allow creation of comments. It is as straigh
 'POST /comment': 'CommentController.create',
 ```
 
+# Refactoring
+
+Now that we have articles and comments working, take a look at the `views/articles/show.jade` template. It is getting long and awkward. We can use mixins to clean it up.
+
+There isn't awfully much to do. Move the markup for displaying a collection of comments to `views/article/mixins/commentCollection.jade`
+
+```jade
+mixin commentCollection(comments)
+
+  each comment in comments
+    p
+      strong Commenter:
+      = comment.commenter
+    p
+      strong Comment:
+      = comment.body
+```
+and use it in `views/article/show.jade`
+
+```diff
+ extends ../layout
++include mixins/commentCollection.jade
+
+ block body
+        p
+```
+```diff
+        h2 Comments
+-
+-       each comment in article.comments
+-               p
+-                       strong Commenter:
+-                       = comment.commenter
+-               p
+-                       strong Comment:
+-                       = comment.body
+-
++       +commentCollection(article.comments)
+```
+
+same goes for the comment form `views/article/mixins/commentForm.jade`
+
+```jade
+mixin commentForm(article, actionUrl)
+
+  form(action=actionUrl, method="POST")
+    input(
+      type="hidden"
+      name="commentedArticle"
+      value=article.id
+      )
+    p
+      label(for="commenter") Commenter
+      br
+      input(
+        type="text"
+        name="commenter"
+        placeholder="What is your name?"
+        )
+    p
+      label(for="body") Body
+      br
+      textarea(
+        name="body"
+        placeholder="Enter a comment on this article"
+        )
+    p
+      button(type="submit") Submit
+```
+which also changes `views/article/show.jade`
+```diff
+ extends ../layout
++include mixins/commentForm.jade
+ include mixins/commentCollection.jade
+
+ block body
+```
+```diff
+        +commentCollection(article.comments)
+
+        h2 Add a comment:
+-
+-       form(action="/comment", method="POST")
+-               input(
+-                       type="hidden"
+-                       name="commentedArticle"
+-                       value=article.id
+-                       )
+-               p
+-                       label(for="commenter") Commenter
+-                       br
+-                       input(
+-                               type="text"
+-                               name="commenter"
+-                               placeholder="What is your name?"
+-                               )
+-               p
+-                       label(for="body") Body
+-                       br
+-                       textarea(
+-                               name="body"
+-                               placeholder="Enter a comment on this article"
+-                               )
+-               p
+-                       button(type="submit") Submit
++       +commentForm(article,"/comment")
+```
+
+And thus our refactoring is done!
+
+
+
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
 
 <docmeta name="uniqueID" value="GettingStarted99009">
