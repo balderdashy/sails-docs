@@ -1147,6 +1147,43 @@ which also changes `views/article/show.jade`
 
 And thus our refactoring is done!
 
+# Destroying comments
+
+Of course not all comments are worth keeping. In fact some are downright worthy of destruction. Let's get down to it.
+
+# Direct comment destruction
+
+This is just like when destroying articles. We add a route to destruction in `config/routes.js`
+
+    '/comment/destroy/:id': 'CommentController.destroy',
+
+Then comes the link for each comment in the mixin `views/article/mixins/commentCollection.jade`
+
+```jade
+p
+  a(href="/comment/destroy/"+comment.id) Delete comment
+```
+
+And finally the controller. Basically a copied, refactored ArticleController.destroy that redirects to the commented article.
+
+```javascript
+destroy: function (req, res) {
+  id = req.param('id')
+  params = req.allParams()
+  Comment.destroy(
+    id, // Article to destroy
+    function (error,comments) {
+      if (comments.length > 0) {
+        articleId = comments[0].commentedArticle
+        res.redirect('/article/'+articleId)
+      }
+    }
+  )
+}
+```
+
+The destruction of specific comments is possible.
+
 
 
 [Blueprints]: http://sailsjs.org/#/documentation/reference/blueprint-api
