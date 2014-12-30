@@ -1191,13 +1191,14 @@ But what will happen when articles are destroyed? Well at the moment the comment
 There isn't an option to do so directly in Waterline (yet). We have to do so ourselves and one simple way to do this is hook into the *afterDestroy* event of a model ^[stackoverflow](https://stackoverflow.com/a/23486612) - in this case our Article model.
 
 ```javascript
-afterDestroy: function (destroyedRecords, callback) {
-  destroyedRecords.forEach(function (record) {
-    Comment.destroy({ commentedArticle: record.id}, function (error, destroyedComments) {
-      console.log("destroyedComments:", destroyedComments)
-    })
+afterDestroy: function (destroyedArticles, callback) {
+  ids = destroyedArticles.map(function (article) {
+    return article.id
   })
-  callback()
+  Comment.destroy({ commentedArticle: ids}, function (error, destroyedComments) {
+    console.log(error,destroyedComments)
+    callback()
+  })
 }
 ```
 The log line is simply for having a trace of the destroyed comments, since we can't see them on the client side.
