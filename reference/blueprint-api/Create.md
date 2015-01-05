@@ -137,7 +137,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
   "hobby": "ice skating",
   "pet": {
     "name": "Gummy",
-    "species": "crocodile"
+    "species": "crocodile"，
     "id": 10
   },
   "id": 4,
