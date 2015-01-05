@@ -43,6 +43,7 @@ Uncomment the following lines to use your Mongo adapter as a session store
         db: 'sails',
         collection: 'sessions',
 ```
+
 Optional Values:
 ```javascript
         // Note: url will override other connection settings
