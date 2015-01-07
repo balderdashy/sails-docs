@@ -17,7 +17,7 @@ module.exports = function filterByUser (req, res, next) {
     // Use existing req.options.where, or initialize it to an empty object
     req.options.where = req.options.where || {};
     
-    // Set the default `userId` for "find" blueprints
+    // Set the default `userId` for "find" and "update" blueprints
     req.options.where.userId = req.session.user.id;
     
   }
