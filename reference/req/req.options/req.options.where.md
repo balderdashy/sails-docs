@@ -1,6 +1,6 @@
 # req.options.values.where
 
-Default &ldquo;where&rdquo; criteria for user with blueprints.
+Default &ldquo;where&rdquo; criteria for user with blueprint [`find`](http://sailsjs.org/#/documentation/reference/blueprint-api/Find.html) and [`update`](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html) actions.
 
 > Note: Before using `req.options.where`, confirm that it exists and create it if necessary.
 
