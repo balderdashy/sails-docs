@@ -124,6 +124,14 @@ Development versions are also available using ports
 or packages on FreeBSD
 
     pkg_add -r node-devel
+    
+The Node Package Manager is not installed along with Node.js by default on FreeBSD and will be needed for development and installing dependencies.
+
+    /usr/ports/www/npm
+    
+Also note that FreeBSD 10 using clang will conflict with the occasional build scrpt (which assumes gcc) using node-gyp, and can be resolved by setting an envvar.
+
+    CXX=c++
 
 <h2>
 <a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="#/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
