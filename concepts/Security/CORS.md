@@ -52,6 +52,7 @@ To override specific CORS configuration parameters for a route, add a `cors` pro
    cors: {
      origin: "http://sailsjs.org, http://sailsjs.com",
      credentials: false
+   }
 }
 ```
 
