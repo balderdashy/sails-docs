@@ -25,7 +25,7 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 ##### coffee
 
-> Compiles coffeeScript files from `assest/js/` into Javascript and places them into `.tmp/public/js/` directory.
+> Compiles coffeeScript files from `assets/js/` into Javascript and places them into `.tmp/public/js/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
 
@@ -89,4 +89,3 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 <docmeta name="uniqueID" value="DefaultTasks764297">
 <docmeta name="displayName" value="Default Tasks">
-
