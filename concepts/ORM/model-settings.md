@@ -151,7 +151,7 @@ attributes: {
 }
 ```
 
-See [Attributes]().
+See [Attributes](http://sailsjs.org/#/documentation/concepts/ORM/Attributes.html).
 
 
 
