@@ -4,7 +4,7 @@ User hooks are custom Sails hooks that reside in an application&rsquo;s `api/hoo
 
 To create a new user hook:
 
-1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/defaultHooks.js).
+1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js).
 2. Create a folder with that name in your app&rsquo;s `api/hooks` folder.
 3. Add an `index.js` file to that folder.
 4. Write your hook code in `index.js` in accordance with the [hook specification](/#/documentation/concepts/extending-sails/Hooks/hookspec).
