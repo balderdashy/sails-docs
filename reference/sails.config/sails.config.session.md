@@ -15,6 +15,13 @@ to access and auto-save to `req.session` with Socket.io the same way you would w
 Session secret is automatically generated when your new app is created.
 Replace at your own risk in production-- you will invalidate the cookies of your users, forcing them to log in again. 
 
+### `key`
+Session key is set as `sails.sid` by default.
+This is the name used in the cookie to recover the session.
+
+If you are runing multiple instances of sails, you can lost your session with Websocket.
+Replace key by an unique name, solve this issue.
+
 #### Shared Redis session store
 In production, uncomment the following line to set up a shared redis session store
 that can be shared across multiple Sails.js servers.
