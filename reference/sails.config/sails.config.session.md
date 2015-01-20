@@ -16,7 +16,7 @@ Session secret is automatically generated when your new app is created.
 Replace at your own risk in production-- you will invalidate the cookies of your users, forcing them to log in again. 
 
 ### `key`
-Session key is set as `sails.id` by default.
+Session key is set as `sails.sid` by default.
 This is the name used in the cookie to recover the session.
 
 If you are runing multiple instances of sails, you can lost your session with Websocket.
