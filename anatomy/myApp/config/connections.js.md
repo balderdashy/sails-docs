@@ -21,11 +21,11 @@ This file lets you create different global "saved settings" that you can mix and
  *
  * Each model must have a `connection` property (a string) which is references the name of one
  * of these connections.  If it doesn't, the default `connection` configured in `config/models.js`
- * will be applied.  Of course, a connection can (and usually is) shared by multiple models.
+ * will be applied.  Of course, a connection can be (and usually is) shared by multiple models.
  * .
  * Note: If you're using version control, you should put your passwords/api keys
  * in `config/local.js`, environment variables, or use another strategy.
- * (this is to prevent you inadvertently sensitive credentials up to your repository.)
+ * (this is to prevent you from inadvertently pushing sensitive credentials up to your repository.)
  *
  * For more information on configuration, check out:
  * http://links.sailsjs.org/docs/config/connections
