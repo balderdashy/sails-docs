@@ -2,7 +2,7 @@
 
 For a conceptual overview of configuration in Sails, see http://sailsjs.org/#/documentation/concepts/Configuration.
 
-This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.
+This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.org/#/documentation/anatomy/myApp/config/env), or in your [config/local.js](http://sailsjs.org/#/documentation/concepts/Configuration?q=the-config%2Flocaljs-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
 
 ### `sails.config.port`
 
@@ -19,7 +19,7 @@ More about ports: http://en.wikipedia.org/wiki/Port_(computer_networking)
 
 By default, Sails will assume `localhost` as the host that will be listening for incoming requests.  This will work in the majority of hosting environments you encounter, but in some cases ([OpenShift](http://www.openshift.com) being one example) you'll need to explicitly declare the host name of your Sails app.  Setting `explicitHost` tells Sails to listen for requests on that host instead of `localhost`.
 
-### `proxyHost` and `proxyPort`
+### `sails.config.proxyHost` and `sails.config.proxyPort`
 
 If your site will ultimately be served by a proxy, you may want to set `proxyHost` to ensure that calls to `sails.getBaseurl()` return the expected host.  For example, if you deploy a Sails app on [Modulus.io](http://modulus.io), the ultimate URL for your site will be something like `http://mysite-12345.onmodulus.net`.  If you were to use `sails.getBaseurl()` to construct a URL in your app code, however, it would return something like `http://localhost:8080`.  Using `proxyHost` and `proxyPort` allow you to specify the host name and port of the proxy server that will be serving your app.  This ensure that any links created using `sails.getBaseurl()` are correct.
 
@@ -40,7 +40,9 @@ You should always put your app in production mode before you deploy it to a serv
 
 By default, Sails sets its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will run in the &lsquo;development&rsquo; environment.
 
+### `sails.config.hookTimeout`
 
+Set a global timeout for Sails hooks, in milliseconds.  Sails will give up trying to lift if any hook takes longer than this to load.  Defaults to `20000`.
 
 
 
