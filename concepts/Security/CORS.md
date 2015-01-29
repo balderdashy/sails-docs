@@ -56,6 +56,21 @@ To override specific CORS configuration parameters for a route, add a `cors` pro
 }
 ```
 
+### Security Levels
+
+By default, Sails will still process all the requests that come in regardless of domain, even with CORS enabled: it will simply set the appropriate headers on the response so that the *client* can decide whether or not to show the response.  For example, if you send a `GET` request to `/foo/bar` from a domain that is not in your CORS whitelist, the `bar` action in your `FooController.js` file will still run, but the browser will throw away the result.  This may seem counterintuitive, but it is important because it allows non-browser-based clients (like [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm?hl=en) and [curl](http://curl.haxx.se/)) to work while still blocking the kind of attacks that the [Same-Origin Policy](http://en.wikipedia.org/wiki/Same-origin_policy) is meant to protect against.
+
+If you want to completely prevent Sails from processing requests from disallowed domains, you can use the `securityLevel` setting:
+
+```
+module.exports.cors = {
+  allRoutes: true,
+  origin: "http://sailsjs.org",
+  securityLevel: 1
+}
+```
+
+Security level 1 (high) will respond with a 403 status code to any request from a disallowed origin prefixed with the `http` or `https` protocol.  Security level 2 (very high) will do the same, but extended to *all* protocols (so things like Postman and curl won't work).
 
 <docmeta name="uniqueID" value="cors198259">
 <docmeta name="displayName" value="CORS">
