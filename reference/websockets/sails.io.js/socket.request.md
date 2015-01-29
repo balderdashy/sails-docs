@@ -10,7 +10,30 @@ This function is very similar to `io.socket.get()`, `io.socket.post()`, etc. exc
 ### Usage
 
 ```js
-io.socket.request(options, function (data, jwr)){
+io.socket.request(url, reqData, function (resData, jwr)){
+  // ...
+  // jwr.headers
+  // jwr.statusCode
+  // jwr.body === data
+  // ...
+}, method);
+```
+
+
+### Example
+
+```javascript
+io.socket.request('/user/3/friends', {"friends":"4"}, function (resData, jwr)){
+  // ...
+  // jwr.headers
+  // jwr.statusCode
+  // jwr.body === data
+  // ...
+}, 'post');
+```
+
+```js
+io.socket._request(options, function (data, jwr)){
   // ...
   // jwr.headers
   // jwr.statusCode
@@ -23,10 +46,10 @@ io.socket.request(options, function (data, jwr)){
 ### Example
 
 ```javascript
-io.socket.request({
+io.socket._request({
   method: 'get',
   url: '/user/3/friends',
-  params: {},
+  data: {},
   headers: {}
 })
 ```
