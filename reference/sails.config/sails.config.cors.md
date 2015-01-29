@@ -13,6 +13,7 @@ These options are conventionally set in the **config/cors.js** configuration fil
 | `methods`|((string))|GET, POST, PUT, DELETE, OPTIONS, HEAD|Comma-delimited list of methods that are allowed to be used in CORS requests.  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests), so the inclusion of GET, POST, OPTIONS and HEAD, although customary, is not necessary.
 | `headers`|((string))|content-type|Comma-delimited list of headers that are allowed to be sent with CORS requests.  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests).
 |`credentials`|((boolean))|true|Indicates whether cookies can be shared in CORS requests.
+|`securityLevel`|((integer))|0|Indicates how Sails should respond to requests from disallowed origins.  In normal  mode (0), Sails processes all requests normally, simply setting the appropriate CORS headers and leaving it to the client to determine how to handle the response.  In high mode (1), Sails will send back a 403 response to requests from disallowed origins, if the origin starts with http or https.  In very high mode (2), Sails will send back a 403 response to requests from disallowed origins, regardless of the origin protocol.   See [Security Levels](http://sailsjs.org/#/documentation/concepts/Security/CORS.html?q=security-levels) in the CORS concepts documentation for more info.
 
 ### Custom route config example
 
