@@ -1,7 +1,7 @@
 # Logging
 
 ### Overview
-Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  It's usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
+Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](http://nodejs.org/api/stdio.html), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
 ### Configuration
 The Sails logger's configuration is located in [`sails.config.log`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.log.html), for which a conventional configuration file ([`config/log.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/log.js.html)) is bundled in new Sails projects out of the box.
@@ -27,4 +27,3 @@ When configured at a given log level, Sails will output log messages that are ou
 
 <docmeta name="uniqueID" value="Logging277763">
 <docmeta name="displayName" value="Logging">
-
