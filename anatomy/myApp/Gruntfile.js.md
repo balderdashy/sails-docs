@@ -19,7 +19,7 @@ Sails' integration with Grunt is fully customizable but for most use cases, this
  * Gruntfile
  *
  * This Node script is executed when you run `grunt` or `sails lift`.
- * It's purpose is to load the Grunt tasks in your project's `tasks`
+ * Its purpose is to load the Grunt tasks in your project's `tasks`
  * folder, and allow you to add and remove tasks as you see fit.
  * For more information on how this works, check out the `README.md`
  * file that was generated in your `tasks` folder.
