@@ -55,7 +55,7 @@ Nope! To disable Grunt integration in Sails, just delete your Gruntfile or disab
 
 ### What if I'm not building a web frontend?
 
-That's ok! A core tenant of Sails is client-agnosticism-- it's especially designed for building APIs used by all sorts of clients; native Android/iOS/Cordova, serverside SDKs, etc.
+That's ok! A core tenet of Sails is client-agnosticism-- it's especially designed for building APIs used by all sorts of clients; native Android/iOS/Cordova, serverside SDKs, etc.
 
 You can completely disable Grunt by following the instructions above.
 
