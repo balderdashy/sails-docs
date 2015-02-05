@@ -7,6 +7,15 @@ To use a user hook in your app, first create the `api/hooks` folder if it doesn&
 ## Using an installable hook
 To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](/#/documentation/concepts/extending-sails/Hooks/installablehooks.html) directly into your app&rsquo;s `node_modules` folder.
 
+Steps to use an installable hook:
+* add your hook to package.json: `npm i sails-hook-my-hook --save`
+* create `my-hook-holder` folder in `api/hooks`
+* create `index.js` file in `api/hooks/my-hook-folder/`
+* write in `api/hooks/my-hook-folder/index.js` this: 
+```js
+   module.exports = require('sails-hook-my-hook');
+```
+
 ## Calling hook methods
 Any methods that a hook exposes are available in the `sails.hooks[<hook-name>]` object.  For example, the `sails-hook-email` hook provides a `sails.hooks.email.send()` method (note that the `sails-hook-` prefix is stripped off).  Consult a hook&rsquo;s documentation to determine which methods it provides.
 
