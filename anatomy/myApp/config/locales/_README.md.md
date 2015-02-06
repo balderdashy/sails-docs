@@ -3,7 +3,6 @@
 <docmeta name="uniqueID" value="READMEmd329624">
 <docmeta name="displayName" value="_README">
 
-```
 # Internationalization / Localization Settings
 
 > Also see the official docs on internationalization/localization:
@@ -32,5 +31,3 @@ Remember that the keys are case sensitive and require exact key matches, e.g.
 
 ## Configuration
 Localization/internationalization config can be found in `config/i18n.js`, from where you can set your supported locales.
-
-```
