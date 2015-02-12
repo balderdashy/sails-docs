@@ -4,7 +4,9 @@
 > move this to the appropriate part of the docs (shouldn't show up in reference-- instead it should appear at the top of the other migration guide/changelog stuff in the "Support" section)
 >
 
-Sails v0.10 is finally here.
+Sails v0.11 is finally here. You can find the changelog here: <a href="https://github.com/balderdashy/sails/blob/f1d01e316a30ee2c18e782e345edb6686eb8e4bd/CHANGELOG.md#0110">0.11.0 Changelog</a> as well as the Migration guide here: <a href="https://github.com/balderdashy/sails/blob/f1d01e316a30ee2c18e782e345edb6686eb8e4bd/0.11-migration-guide.md">0.10 -> 0.11 Migration Guide</a>
+
+Below you can find the old Upgrading guide from a v0.9 to a v0.10 app:
 
 For the most part, running `sails lift` in an existing v0.9 project should **just work**.  The core contributors have taken a number of steps to make the upgrade as easy as possible, and if you follow the deprecation messages in the console, you should do just fine.
 
