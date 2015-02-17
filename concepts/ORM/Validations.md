@@ -118,7 +118,37 @@ module.exports = {
  ```
 
 
+### Custom Validation Messages
+Out of the box, Sails.js does not support custom validation messages. However, for Sails v0.11.0+ a [Hook](http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks) is available: [sails-hook-validator](https://github.com/lykmapipo/sails-hook-validation). 
 
+#### Usage
+- Add `validationMessages` static property in your sails model
+```js
+//this is example
+module.exports = {
+    attributes: {
+        username: {
+            type: 'string',
+            required: true
+        },
+        email: {
+            type: 'email',
+            required: true
+        }
+    },
+    //model validation messages definitions
+    validationMessages: { //hand for i18n & l10n
+        email: {
+            required: 'Email is required',
+            email: 'Provide valid email address',
+            unique: 'Email address is already taken'
+        },
+        username: {
+            required: 'Username is required'
+        }
+    }
+};
+```
 
 <docmeta name="uniqueID" value="Validations576587">
 <docmeta name="displayName" value="Validations">
