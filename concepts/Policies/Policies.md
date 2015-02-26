@@ -158,11 +158,14 @@ Besides protecting rabbits (while a noble cause, no doubt), here are a few other
 + any other kind of authentication scheme you can imagine
 
 
-### I'm using Passport--what about me?!
+### Authentication and Permissioning with Sails + Passport
 
 Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
-There are a few good examples of this floating around, such as [How To Implement Passport.JS Authentication with Sails.JS] (http://www.geektantra.com/2013/08/implement-passport-js-authentication-with-sails-js/).
+#### Community-supported Sails extensions using passport.js
++ [sails-auth](https://www.npmjs.com/package/sails-auth): Passport-based Authentication Extension, including Basic Auth
++ [sails-permissions](https://www.npmjs.com/package/sails-permissions): Permissions and Entitlements system for sails.js: supports user authentication with passport.js, role-based permissioning, object ownership, and row-level security.
++ [sails-auth-generator](https://www.npmjs.com/package/sails-generate-auth): Generate a Passport.js authentication layer for your Sails app
 
 
 
