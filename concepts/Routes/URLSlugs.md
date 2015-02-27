@@ -11,6 +11,16 @@ A common use case for explicit routes is the design of slugs or [vanity URLs](ht
 
 In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view](http://beta.sailsjs.org/#/documentation/concepts/Views) as [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html).  The [`skipAssets` option](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) ensures that the vanity route doesn't accidentally match any of our [assets](http://beta.sailsjs.org/#/documentation/concepts/Assets) (e.g. `/images/logo.png`), so they are still accessible.
 
+You can also skip custom paths using 'skipRegex' parameter. This is useful when you are using a wild card redirection for a single page application and expose paths such as "/csrfToken".
+
+```javascript
+  'get /:account/:repo': {
+    controller: 'RepoController',
+    action: 'show',
+    skipAssets: true,
+    skipRegex: '/csrfToken/'
+  }
+```
 
 
 <docmeta name="uniqueID" value="URLSlugs805236">
