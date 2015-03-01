@@ -58,7 +58,7 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
 **Using [Angular](https://angularjs.org/):**
 
 ```javascript
-$http.get('/purchase?sort=createdAt DESC')
+$http.get('/purchase?sort=createdAt DESC&limit=30')
 .then(function (res) {
   var purchases = res.data;
   console.log(purchases);
@@ -68,7 +68,7 @@ $http.get('/purchase?sort=createdAt DESC')
 **Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
-io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
+io.socket.get('/purchase?sort=createdAt DESC&limit=30', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -76,7 +76,7 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 **Using [cURL](http://en.wikipedia.org/wiki/CURL):**
 
 ```bash
-curl http://localhost:1337/purchase?sort=createdAt%20DESC
+curl http://localhost:1337/purchase?sort=createdAt%20DESC&limit=30
 ```
 
 ### Notes
