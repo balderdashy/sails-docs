@@ -23,6 +23,9 @@ sayHiToFriend: function(req, res) {
 }
 ```
 
+### Notes
+> + If the event name is not specified then the "message" event will be used by default. This would allow the target sockets to listen on the "message" event in order to react to the emit.
+
 
 
 <docmeta name="uniqueID" value="sailssocketsemit963182">
