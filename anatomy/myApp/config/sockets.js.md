@@ -125,6 +125,7 @@ module.exports.sockets = {
   * from client-side javascript. Using HTTP-only cookies is crucial for your *
   * app's security.                                                          *
   *                                                                          *
+  * Deprecation notice: this is a replacement for the authorization function *
   ***************************************************************************/
   // beforeConnect: function(handshake, cb) {
   //   // `true` allows the connection
@@ -145,7 +146,7 @@ module.exports.sockets = {
   *                                                                          *
   * This custom afterDisconnect function will be run each time a socket      *
   * disconnects                                                              *
-  * 
+  *                                                                          *
   * Deprecation notice: This is a replacement for old onDisconnect() function.
   ***************************************************************************/
   // afterDisconnect: function(session, socket, cb) {
