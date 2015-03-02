@@ -79,6 +79,15 @@ And here's `config/locales/en.json`:
 }
 ```
 
+You can also nest locale strings. But a better approach would be to use `.` to represent nested strings. For example, here's the list of labels for the index page of a user controller:
+
+``` json
+{
+    "user.index.label.id": "User ID",
+    "user.index.label.name": "User Name"
+}
+```
+
 
 ### Detecting and/or overriding the desired locale for a request
 
