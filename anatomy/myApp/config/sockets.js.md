@@ -31,23 +31,15 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
 
 module.exports.sockets = {
 
-  // This custom onConnect function will be run each time AFTER a new socket connects
-  // (To control whether a socket is allowed to connect, check out `authorization` config.)
-  // Keep in mind that Sails' RESTful simulation for sockets
-  // mixes in socket.io events for your routes and blueprints automatically.
-  onConnect: function(session, socket) {
+//The onConnect() functions have been deprecated as of v0.11.0
+//In order to simulate the behaviour use callbacks on the client when connecting to a socket instead.
 
-    // By default, do nothing.
-
-  },
-
-  // This custom onDisconnect function will be run each time a socket disconnects
-  onDisconnect: function(session, socket) {
-
-    // By default: do nothing.
-  },
-
-
+//onDisconnect() functionality has been slightly changed. You no longer need to call session.save() after running it
+//as the changes will be saved automatically. Also you can now run a callback function by passing it as the third argument.
+afterDisconnect: function (session, socket, cb) {
+  // Be sure to call the callback
+  return cb();
+}
 
   // `transports`
   //
@@ -126,7 +118,7 @@ module.exports.sockets = {
   // use cases, Sails allows you to override the authorization behavior
   // with your own custom logic by specifying a function, e.g:
   /*
-    authorization: function authorizeAttemptedSocketConnection(reqObj, cb) {
+    authorization: function beforeConnect(reqObj, cb) {
 
         // Any data saved in `handshake` is available in subsequent requests
         // from this as `req.socket.handshake.*`
