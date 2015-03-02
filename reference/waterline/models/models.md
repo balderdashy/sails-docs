@@ -10,7 +10,7 @@ This section of the documentation focuses on the model methods provided by Water
 ### Built-In Model Methods
 
 In general, model methods are _asynchronous_, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, or promises.
-Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries]() for more on that.
+Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries](http://sailsjs.org/#/documentation/reference/waterline/queries) for more on that.
 
 
  Method                | Summary

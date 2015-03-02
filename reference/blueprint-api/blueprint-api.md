@@ -10,16 +10,16 @@ Blueprints are great for prototyping, but they are also a powerful tool in produ
 
 ##### Blueprint Routes
 
-When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](./#/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](./#!/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
 
 There are three types of blueprint routes in Sails:
 
-+ **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](./#/documentation/concepts/Policies) to avoid unauthorized access.
++ **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
 + **Shortcut routes**, where the action to take is encoded in the path.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.  Shortcut routes are very handy for development, but generally should be disabled in a production environment.
 + **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
 
 
-See the [blueprints subsection of the configuration reference](./#/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
 
 
 ##### Blueprint Actions
@@ -30,14 +30,14 @@ By default, the blueprint RESTful routes and shortcut routes are bound to their 
 
 The current version of Sails ships with the following blueprint actions:
 
-+ [find](./#/documentation/reference/blueprint-api/Find.html)
-+ [findOne](./#/documentation/reference/blueprint-api/FindOne.html)
-+ [create](./#/documentation/reference/blueprint-api/Create.html)
-+ [update](./#/documentation/reference/blueprint-api/Update.html)
-+ [destroy](./#/documentation/reference/blueprint-api/Destroy.html)
-+ [populate](./#/documentation/reference/blueprint-api/Populate.html)
-+ [add](./#/documentation/reference/blueprint-api/Add.html)
-+ [remove](./#/documentation/reference/blueprint-api/Remove.html)
++ [find](./#!/documentation/reference/blueprint-api/Find.html)
++ [findOne](./#!/documentation/reference/blueprint-api/FindOne.html)
++ [create](./#!/documentation/reference/blueprint-api/Create.html)
++ [update](./#!/documentation/reference/blueprint-api/Update.html)
++ [destroy](./#!/documentation/reference/blueprint-api/Destroy.html)
++ [populate](./#!/documentation/reference/blueprint-api/Populate.html)
++ [add](./#!/documentation/reference/blueprint-api/Add.html)
++ [remove](./#!/documentation/reference/blueprint-api/Remove.html)
 
 Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
 

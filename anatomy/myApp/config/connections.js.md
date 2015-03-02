@@ -2,9 +2,9 @@
 ### Purpose
 This file contains the settings for all of your adapters.
 
-In Sails, adapters act as the middleman (or middlelady) between the app and the database.  To put it another way, they act as plugins for [Waterline](https://github.com/balderdashy/waterline), the fancy [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping) that Sails uses to talk to databases.   
+In Sails, adapters act as the intermediary between the app and the database.  To put it another way, they act as plugins for [Waterline](https://github.com/balderdashy/waterline), the  [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping) that Sails uses to talk to databases.   
 
-This file lets you create different global "saved settings" that you can mix and match in your models. The `default` option indicates which "saved setting" should be used if a model doesn't have an adapter specified.  Keep in mind that options you define directly in your model definitions will override these default settings.
+This file lets you create different global "saved settings" that you can mix and match in your models. The [`sails.models.connection`](http://sailsjs.org/#/documentation/anatomy/myApp/config/models.js.html) option indicates which connection should be used if a model doesn't have one [explicitly specified](http://sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=connection).
 
 <docmeta name="uniqueID" value="connectionsjs160878">
 <docmeta name="displayName" value="connections.js">
@@ -21,11 +21,11 @@ This file lets you create different global "saved settings" that you can mix and
  *
  * Each model must have a `connection` property (a string) which is references the name of one
  * of these connections.  If it doesn't, the default `connection` configured in `config/models.js`
- * will be applied.  Of course, a connection can (and usually is) shared by multiple models.
+ * will be applied.  Of course, a connection can be (and usually is) shared by multiple models.
  * .
  * Note: If you're using version control, you should put your passwords/api keys
  * in `config/local.js`, environment variables, or use another strategy.
- * (this is to prevent you inadvertently sensitive credentials up to your repository.)
+ * (this is to prevent you from inadvertently pushing sensitive credentials up to your repository.)
  *
  * For more information on configuration, check out:
  * http://links.sailsjs.org/docs/config/connections

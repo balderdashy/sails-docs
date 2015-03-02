@@ -32,7 +32,7 @@ When your sails app lifts, waterline validates all of the data in your database.
 |`drop`       | wipe/drop ALL my data and rebuild models every time I lift Sails
 
 
-> Note, by using `drop`, or even `alter`, you risk losing your data.  Be careful.  Never use `drop` or `alter` with a production dataset.
+> Note, by using `drop`, or even `alter`, you risk losing your data.  Be careful.  Never use `drop` or `alter` with a production dataset. Additionally, on large databases `alter` may take a long time to complete at startup. This may cause commands like `sails console` to appear to hang.
 
 
 
@@ -151,7 +151,7 @@ attributes: {
 }
 ```
 
-See [Attributes]().
+See [Attributes](http://sailsjs.org/#/documentation/concepts/ORM/Attributes.html).
 
 
 

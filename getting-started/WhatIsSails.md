@@ -15,40 +15,26 @@ Imagine starting a new job at a company building a Sails app (or imagine startin
 
 > **History**
 >
-> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenant of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
+> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenet of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
 
 
 ## Loose Coupling
 
-> TODO: explain why pushing towards an open standard for programming apps is important.
->
-> TODO: more specifically, give some background why small, loosely coupled modules are good.
->
-> TODO: explain how Sails core is a set of standalone, loosely coupled components (link to MODULES.md).
->
-> TODO: discuss how a Sails app is a set of standalone, loosely coupled components:
->  + how each model, or controller, etc. is a node module.
->  + how policies are designed to be general-purpose and shared between apps and/or developers.
->  + how Sails strives to make adapter development as easy as possible, even for non-database integrations.
->
-> TODO: explain how Sails is designed for any part to be rip-outable, overridden, or extended (hooks, generators, adapters)
->
-> TODO: Explain how Sails can be used without any boilerplate files, just like Express, to fit an imperative programming style, or plug in as part of your existing Node / Node+Express app.
+The days of forcing a one-size-fits-all approach to development are over.  We need tools that allow us to pick and choose the components that fit our requirements.  In fact, it’s just plain lazy to create things any other way.  Sails’s approach is to loosely couple components so that they can be added or subtracted from your app at will.
+
+Node at its core has created a “can do” culture eager to experiment and make things work. Sails embraces this attitude and strives to deliver tools that work around you.  The level of automation or magic you want in Sails is directly tied to the time you have for a project and your experience working with Node. Sails is flexible enough to allow you to explore and create when you have the time but also provides automation when you don’t.
+
+Sails accomplishes this loose coupling using plain-ole require.  No magic, other than the time to craft components that can be part of the whole but don’t need to be present in order for the whole to work.  For example, controllers, models, and configuration files are just Node modules.  Sails uses some convention to help.  Sails picks up on the name UserController.js in the Controllers folder to deduce that this is indeed a user controller.  Another example involves policies.  So policies allow you to have a bit of code that executes on controller or specific controller action.  The cool part is that the configuration file that connects the policy with the controller/action are separate.  That means you can write a bunch of different policies and they are completely portable between Sails apps.  You can decide later which controller/actions you want to apply them to.  
+
+Sails core consists of twenty different hooks: modules that modify the server runtime, adding middleware, binding route listeners, or otherwise attaching additional capabilities to the framework.  This gives you access to override or disable every component and configuration parameter in Sails.  These hooks are loaded at run-time when Sails starts.  You even have the ability to have one-time configuration for your hook itself.  This is actually one of the key differentiators between hooks and services.
+
+Another example of loose coupling is configuration files.  Need some configuration to be available for your project?  No problem.  Create a file in the config folder that uses the common module.exports pattern and everything in that module is available for you from the sails global object.
+
+Almost every component of Sails can either be omitted, overwritten, or extended.  For example, Sails has a group of tools called blueprints.  These blueprints make it really easy to get a project up and running with regard to routes and CRUD operations.  But suppose you want to use the read, update, and delete operations but the create action needs some tender loving care.  No problem, just build a create action and the other CRUD operations keep working.  Your custom action subs in for the blueprint action.  It’s just that simple.
 
 > Links:
 > + [Unix philosophy](http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js)
 > + [Node culture](https://blog.nodejitsu.com/the-nodejs-philosophy/)
-
-
-## Pragmatism
-
-> TODO: set the stage- the purpose of any practical web framework should be to solve real-world use cases.  Node, being built on JavaScript, is the most intensely pragmatic thing to hit the scene since the introduction of Java.  It [will replace Java](http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise) [in the enterprise](http://blog.appfog.com/node-js-is-taking-over-the-enterprise-whether-you-like-it-or-not/).
-
-> TODO: explain where this fits into the Node.js ecosystem, and pay homage to the PHP community (pragmatism is the best thing PHP has going for it)
-
-> TODO: provide some examples of choices we've made w/ Sails that lean away from strict adherance and towards pragmatism (e.g. globals, services, symlinking dependencies on sails new, etc.)
-
-> TODO: explain how it's important to allow for elegant harmony to be restored (ability to disable globals, running a sails app as a standard node module with `npm start`, running sails from a single file)
 
 
 

@@ -7,8 +7,7 @@ record.
 
 ### One-to-One Example
 
-In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` in
-this case but a `Pet` is not limited to a single `User`.
+In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` and viceversa, a `Pet` can only have one `User`. However, in order to query this association from both sides, you will have to create/update both models.
 
 
 `myApp/api/models/pet.js`
