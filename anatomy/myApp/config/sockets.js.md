@@ -147,7 +147,7 @@ module.exports.sockets = {
   * This custom afterDisconnect function will be run each time a socket      *
   * disconnects                                                              *
   *                                                                          *
-  * Deprecation notice: This is a replacement for old onDisconnect() function.
+  * Deprecation notice: This is a replacement for old onDisconnect()         *
   ***************************************************************************/
   // afterDisconnect: function(session, socket, cb) {
   //   // By default: do nothing.
