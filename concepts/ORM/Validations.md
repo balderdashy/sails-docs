@@ -118,6 +118,8 @@ module.exports = {
  ```
 
 
+### Custom Validation Messages
+Out of the box, Sails.js does not support custom validation messages. However, for Sails v0.11.0+ a [Hook](http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks) is available: [sails-hook-validator](https://github.com/lykmapipo/sails-hook-validation). Details regarding its usage can be found in the [sails-hook-validator](https://github.com/lykmapipo/sails-hook-validation) repository.
 
 
 <docmeta name="uniqueID" value="Validations576587">
