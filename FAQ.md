@@ -139,6 +139,7 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
   + [Auth](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth/)
   + [Auth con Passport](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth-con-passport/)
 + [Angular + Sails.js (0.10.0-rc5) with angular-sails socket.io](https://github.com/maartendb/angular-sails-scrum-tutorial/blob/master/README.md)
++ [Sails.js and Heroku](https://pburtchaell.com/2015/sails/)
 
 ### How can I convince the other girls/guys on my team?
 
