@@ -38,6 +38,7 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 
 ##### Deploying to Heroku?
 
++ [Sails.js and Heroku](http://pburtchaell.com/2015/sails/)
 + [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
