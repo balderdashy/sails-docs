@@ -10,7 +10,6 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 
 ### ルートアドレス
 
-
 ルートアドレスはターゲットに指定されたハンドラーやオプションの適用を受けるにはどのようなURLにマッチしていなければならないかを示すものです。ルートは必須事項のパスとオプションのリクエスト種別から成っています。:
 
 ```
@@ -47,9 +46,8 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 ```
 '/user/foo/*/bar/*'
 ```
-
+   
 ただし、ワイルドカードにされた部分に与えられた値はそれぞれ`req.param('name')`と`req.param('age')`で取得出来ます。
-
 
 #### アドレス中の正規表現
 
@@ -74,11 +72,9 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
     
 マッチングが途中で打ち切られてしまうので、リクエスト`/user`は最初の設定のハンドラがコード内で`next()`を呼び出さない限りは2つ目の設定にマッチすることはありません。([policies](http://beta.sailsjs.org/#/documentation/concepts/Policies)のみが`next()`をコールすることが出来ます。)何かとても特殊なことをするという場合以外は、各リクエストは**config/routes.js**中の一つのリクエストにのみマッチするようにしておいたほうが無難です。
 
-
 ### ルートターゲット
 
 カスタムルート中のアドレス部分はどのようなURLにマッチすべきかを示します。一方、*ターゲット*部分はマッチした後にSailsがどのように振る舞えばいいかを示します。ターゲットはいくつかの記法で記述できます。いくつかのケースでは並列で記述することにとっていくつかのターゲットのチェインを一つのアドレスに割り当てることも出来ますが、通常はそれぞれのアドレスは一つのターゲットを持ちます。以下にそれぞれのターゲットの記法を記し、その後提供可能な様々なオプションに関して説明します。
-
 
 #### コントローラ・アクションに対するターゲットの記法
 
@@ -118,7 +114,6 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 > このルートは直接ビューにルーティングされていますのでいかなるポリシーも適用されないことをご留意ください。
 > 詳細に関してはスタックオーバーフローの[質問](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313)をご覧ください。
 
-
 #### Blueprintをターゲットとする記法
 
 場合によってはSailsの[blueprintアクション](http://beta.sailsjs.org/#/documentation/reference/blueprint-api?q=blueprint-actions)に対して通常とは異なるルーティングをマッピングする必要がある時があるでしょう。例えばもしそれぞれ**UserController**と**User**と命名されたコントローラとモデルがあり、Sailsが自動的に**GET /user**をblueprintの全データをリスト表示する"find"アクションにマップしたとします。このアクションに対して別のルーティングを割り当てたい場合はBlueprintをターゲットとする記法を利用できます。:
@@ -127,7 +122,8 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 'GET /findAllUsers': {model: 'user', blueprint: 'find'},
 'GET /user/findAll': {blueprint: 'find'}
 ```
-このせっていにおいて`model`と`blueprint`のプロパティが設定されている一方で2つ目の設定では`blueprint`のみが使われていることにご注目ください。2つ目の設定において`model`の設定が指定されてないためSailsはアドレスを見てモデルが`User`であると推定します。`model`への明示的設定により以下のようにこの推定をオーバーライドすることもできます。:
+
+この設定において`model`と`blueprint`のプロパティが設定されている一方で2つ目の設定では`blueprint`のみが使われていることにご注目ください。2つ目の設定において`model`の設定が指定されてないためSailsはアドレスを見てモデルが`User`であると推定します。`model`への明示的設定により以下のようにこの推定をオーバーライドすることもできます。:
 
 ```
 'GET /user/findAll': {blueprint: 'find', model: 'pet'}
@@ -140,7 +136,6 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 たとえアクションがコントローラでオーバーライドされている場合でもBlueprintをターゲットとする記法を使うことが出来ます。
 
 #### リダイレクトをターゲットとする記法
-
 リダイレクトアドレスを文字列で渡すだけであるアドレスを別のアドレス（アプリ内なのか外部アドレスなのかにかかわらず）にリダイレクトさせることも出来ます。:
 
 ```
@@ -161,7 +156,6 @@ Sailsアプリ内で無限ループを引き起こさないようにご注意く
 
 単に**.js**拡張子を除いた形で**api/responses**にあるレスポンス名を指定するだけです。この記法におけるレスポンス名はケースセンシティブです。もし存在しないレスポンスを指定した場合Sailsはエラーを出力してルーティングを無視します。
 
-
 #### ポリシーをターゲットとした記法
 
 多くの場合において[**config/policies.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html)設定ファイルを使ってコントローラに対して[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies) を設定するでしょう。しかしながら時々（特に [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax)や[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) をターゲットする記法を使いたいときには）、個々ののルートに対してポリシーを直接指定したい時もあるでしょう。ポリシーをターゲットする記法は以下のとおりです。:
@@ -178,6 +172,7 @@ Sailsアプリ内で無限ループを引き起こさないようにご注意く
 この例では**myPolicy**のポリシーを適用し、もしそれがパスした際には**User**モデルの**find**blueprintアクションを実行します。
 
 ### ルートターゲットのオプション
+
 上記で説明した様々なルート記法の他にも、ルートターゲットに付加された各種のオプションに関して、`req.options`オブジェクトの中にあるルートハンドラを通過させることが出来ます。予約されたいくつかのプロパティはルートハンドラの振る舞いに影響をあたえることが出来ます。それらのプロパティは以下の表に挙げられています。
 
 | プロパティ    | 適用可能なターゲット       | データ型 | 詳細 |
@@ -191,3 +186,4 @@ Sailsアプリ内で無限ループを引き起こさないようにご注意く
 
 <docmeta name="uniqueID" value="RouteTargetSyntax278177">
 <docmeta name="displayName" value="Custom Routes">
+

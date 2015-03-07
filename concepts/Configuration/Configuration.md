@@ -2,8 +2,7 @@
 
 ### 概要
 
-Sailsは[「設定より規約」](http://en.wikipedia.org/wiki/Convention_over_configuration)の哲学に忠実に則っているため、便利なデフォルト設定をその時時のカスタムの設定に変更する方法を学ぶことが重要です。
-Sailのほとんどの規約に対してそれを個別のニーズに合わせて上書きしたり調整する事のできる設定が提供されています。ドキュメントのこのセッションではSailで利用可能な設定の完全なリファレンスが掲載されています。
+Sailsは[「設定より規約」](http://en.wikipedia.org/wiki/Convention_over_configuration)の哲学に忠実に則っているため、便利なデフォルト設定をその時時のカスタムの設定に変更する方法を学ぶことが重要です。Sailのほとんどの規約に対してそれを個別のニーズに合わせて上書きしたり調整する事のできる設定が提供されています。ドキュメントのこのセッションではSailで利用可能な設定の完全なリファレンスが掲載されています。
 
 Sailアプリはコマンドラインの引数や[環境変数](http://en.wikipedia.org/wiki/Environment_variable)によって、またグローバルや個別の[`.sailsrc`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/sailsrc.html)ファイルを編集することによって、さらに（これが最もよく使われますが）規約上では[`config/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config)フォルダーに置かれているboilerplateの設定ファイルを書き換えることで[プログラム的に設定](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15)することが出来ます。アプリケーションの中で利用される各種の設定を統合したauthoratativeは実行時に `sails`グローバル変数の`sails.config`として利用することが出来ます。
 
@@ -12,8 +11,7 @@ Sailアプリはコマンドラインの引数や[環境変数](http://en.wikipe
 
 デフォルトで多くの設定ファイルがSailアプリに含まれています。これらのboilerplateファイルは多くのインラインコメントを含んでいます。これにより迅速にその場で設定の意味を確認できるようにしてドキュメントとエディタの間を行ったり来たりしなくてもいいようになっています。
 
-多くのケースでは`sails.config`オブジェクトのトップレベルのキー(例えば `sails.config.views`)は
-設定ファイルの名称 (例えば`config/views.js`)に対応しています。しかしながら設定ファイルは開発者によって`config/`内で横断的に改変されることがあります。重要な部分は設定の名前 (すなわち key) でありファイル名ではありません。
+多くのケースでは`sails.config`オブジェクトのトップレベルのキー(例えば `sails.config.views`)は設定ファイルの名称 (例えば`config/views.js`)に対応しています。しかしながら設定ファイルは開発者によって`config/`内で横断的に改変されることがあります。重要な部分は設定の名前 (すなわち key) でありファイル名ではありません。
 
 例えばあなたたが`config/foo.js`という新しいファイルを作成したとします。:
 
@@ -26,6 +24,8 @@ module.exports.blueprints = {
 ```
 
 個々の設定に関しての完全な設定プションやそれぞれが通常記録されているファイルに関してはこのセクションの各参照ページをご覧ください。まあ、より高度な概要に関しては[The Anatomy of a Sails App](./#!documentation/anatomy)の["`config/`"](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) のセクションに記述されています。
+
+
 
 
 
@@ -66,19 +66,22 @@ var apiSecret = sails.config.linkedin.apiSecret;
 ```
 
 
+
+
 ### `sails`のコマンドライン・インタフェースを設定する
 
-設定に関しては多くのケースでポートやデータベース接続などの利用先固有の実行時設定の管理を強いられます。
-しかしSailsのCLIをカスタマイズすることで繰り返し行う作業を減らしたりワークフローを簡単にしたりその他のオリジナルの自動化ツールを作成したりすることが出来ます。Sails v0.10からこれを実現する機能がサポートされました。
+設定に関しては多くのケースでポートやデータベース接続などの利用先固有の実行時設定の管理を強いられます。しかしSailsのCLIをカスタマイズすることで繰り返し行う作業を減らしたりワークフローを簡単にしたりその他のオリジナルの自動化ツールを作成したりすることが出来ます。Sails v0.10からこれを実現する機能がサポートされました。
 
 [`.sailsrc`ファイル](http://beta.sailsjs.org/#/documentation/anatomy/myApp/sailsrc.html)はその他のコンフィグレーションファイルと異なりSailsのCLIをシステムワイドでもグループディレクトリ単位でも特定のディレクトリに`cd`した時限定で使い分けることが出来ます。これを行うことの第一の目的は`sails generate`と`sails new`が実行された時に動作する[ジェネレータ](http://beta.sailsjs.org/#/documentation/concepts/extending-sails/Generators)とあなたがカスタマイズしたり設定をハードコピーして上書きしたジェネレータを併用するためです。
 
 そしてSailsは現在の作業ディレクトリの最寄りの`.sailsrc`ファイルを参照するため _**データベースパスワード**のような_ クラウドベースのレポジトリに保管することの難しいセンシティブな情報を安全に扱うことが出来ます。これを行うには`.sailsrc`ファイルをあなたの"$HOME"ディレクトリにインクルードするだけで構いません。さらなる詳細は[`.sailsrc`のドキュメンテーション](http://beta.sailsjs.org/#/documentation/anatomy/myApp/sailsrc.html)を御覧ください。
 
 
+
+
 ### Notes
-> `sails.config`にあるいくつかの規定の設定はSailsの起動時にのみ読み込まれます。
-言い換えれば実行中にいくつかのオプションを変えたとしてもそれは有効にならないことが有ります。例えば実行中にアプリケーションのポート設定を変更したい場合には`sails.config.port`を書き換えたりオーバーライドしたり、コマンドラインのオプションを変えたりするだけでなくSailsを再起動する必要がありま
+> `sails.config`にあるいくつかの規定の設定はSailsの起動時にのみ読み込まれます。言い換えれば実行中にいくつかのオプションを変えたとしてもそれは有効にならないことが有ります。例えば実行中にアプリケーションのポート設定を変更したい場合には`sails.config.port`を書き換えたりオーバーライドしたり、コマンドラインのオプションを変えたりするだけでなくSailsを再起動する必要がありま
+
 
 
 <docmeta name="uniqueID" value="Configuration615655">

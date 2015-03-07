@@ -1,7 +1,5 @@
 # URLスラグ
-
-明示的なルートを設定する際の一般的な利用方法としてはスラグや[vanity URLs](http://en.wikipedia.org/wiki/Clean_URL#Slug)があります。例えばGithubにある[`http://www.github.com/balderdashy/sailsjs`](http://www.github.com/balderdashy/sailsjs)レポジトリを考えてみましょう。
-Sailsではこのルートを **`config/routes.js`ファイルの最後で**以下のように定義することで実現できます。:
+明示的なルートを設定する際の一般的な利用方法としてはスラグや[vanity URLs](http://en.wikipedia.org/wiki/Clean_URL#Slug)があります。例えばGithubにある[`http://www.github.com/balderdashy/sailsjs`](http://www.github.com/balderdashy/sailsjs)レポジトリを考えてみましょう。Sailsではこのルートを **`config/routes.js`ファイルの最後で**以下のように定義することで実現できます。:
 
 ```javascript
   'get /:account/:repo': {
@@ -17,3 +15,4 @@ Sailsではこのルートを **`config/routes.js`ファイルの最後で**以�
 
 <docmeta name="uniqueID" value="URLSlugs805236">
 <docmeta name="displayName" value="URL Slugs">
+

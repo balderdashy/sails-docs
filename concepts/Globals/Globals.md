@@ -15,13 +15,11 @@ Sailsのコアはこれらのグローバル変数に全く依存していませ
 ### Async (`async`) とLodash (`_`)
 Sailsは同様に[lodash](http://lodash.com)のインスタンスを`_`で、[async](https://github.com/caolan/async)のインスタンスを`async`でグローバルにアクセス可能にしています。これらのよく使われるユーティリティはデフォルトで用意されていますので、プロジェクトを新規作成する際にも`npm install`しなくてもいいのです。Sailsにおける他のグローバルと同様にこれは無効化が出来ます。
 
-
 ### グローバルを無効化する
 
 Sailsではどのグローバルを有効化するかを通常 [`config/globals.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/globals.js.html)に配置される[`sails.config.globals`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.globals.html)で判断しています。
 
 全てのグローバル変数を無効化するにはこの設定を単に`false`と設定してください:
-
 
 ```js
 // config/globals.js

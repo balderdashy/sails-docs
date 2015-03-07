@@ -3,7 +3,6 @@
 
 モデルアトリビュートはモデルにおける基本的な情報です。例えば`Person`と名付けられたモデルでは`firstName`, `lastName`, `phoneNumber`, `age`, `birthDate`や`emailAddress`のようなアトリビュートがあります。
 
-
 > TODO: address sql vs. no sql and stuff like:
 > """
 > In most cases, this data is _homogenous_, meaning each record has the same attributes,
@@ -44,9 +43,7 @@ attributes: {
 
 ###### autoIncrement
 
-指定したアトリビュートをオートインクリメントに指定します。レコードが作成される時にこの値が指定されていなければ最終のデータにインクリメントする形で値を生成します。
-備考：`autoIncrement`に指定するアトリビュートのデータ型は`type: integer`でなければなりません。また、各データストアによってサポートの度合いは異なります。例えばMySQLで1つのテーブルに複数のオートインクリメントは許可されていません。
-
+指定したアトリビュートをオートインクリメントに指定します。レコードが作成される時にこの値が指定されていなければ最終のデータにインクリメントする形で値を生成します。備考：`autoIncrement`に指定するアトリビュートのデータ型は`type: integer`でなければなりません。また、各データストアによってサポートの度合いは異なります。例えばMySQLで1つのテーブルに複数のオートインクリメントは許可されていません。
 
 ```javascript
 attributes: {
@@ -92,8 +89,7 @@ attributes: {
 
 ###### primaryKey
 
-このキーをレコードの主キーとして利用します。たった一つのアトリビュートのみが`primaryKey`になりえます。
-備考：[autoPK](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=autopk)をfalseにしない限りこのオプションは動作しません。
+このキーをレコードの主キーとして利用します。たった一つのアトリビュートのみが`primaryKey`になりえます。備考：[autoPK](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=autopk)をfalseにしない限りこのオプションは動作しません。
 
 ```javascript
 attributes: {
@@ -136,7 +132,6 @@ A custom validation message to use when any validations fail for this attribute.
 
 アダプタ側でサポートされていればアトリビュートのサイズを指定するために利用できます。`size`は例えばMySQLではMySQLでのデータ型`varchar(n)`を指定する際の`n`で指定することが出来ます。
 
-
 ```javascript
 attributes: {
   name: {
@@ -147,12 +142,13 @@ attributes: {
 ```
 
 ###### columnName
+
+
 アトリビュートの設定の中で`columnName`を指定することでSails（Waterline）が設定された接続先（つまりデータベース）でそのアトリビュートを保存する際に利用するカラム名を指定することが出来ます。これはSQLに限定された話でなくMongoDBのフィールドなどにも利用できることをご留意ください。
 
 `columnName`プロパティは元々、既存のデータベースを利用する際に作られたのですが、いくつかのアプリケーションでテータベースを共有するときやデータスキーマを変更する権限がないときにもこの機能は便利です。
 
 モデルの`numberOfWheels`アトリビュートを`number_of_round_rotating_things`に保管するには:
-
 ```javascript
   // モデルの中のアトリビュートで:
   // ...

@@ -2,8 +2,7 @@
 
 ### 概要
 
-Sailsにバンドルされているアセットパイプラインはあなたのプロジェクトをより矛盾がなくより生産的に設計するために一般的なデフォルトを使って実装されたGruntタスクのセットになっています。フロントエンドのアセットワークフローはすべてデフォルトのタスクの枠にとらわれずにカスタマイズすることが出来ます。
-Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
+Sailsにバンドルされているアセットパイプラインはあなたのプロジェクトをより矛盾がなくより生産的に設計するために一般的なデフォルトを使って実装されたGruntタスクのセットになっています。フロントエンドのアセットワークフローはすべてデフォルトのタスクの枠にとらわれずにカスタマイズすることが出来ます。Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
 
 例えば以下の様な機能がSailsのデフォルトのGrunt設定として使うことが出来ます。:
 - LESSの自動コンパイル
@@ -66,8 +65,6 @@ Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作�
 
 ##### sails-linker
 
-
-
 Javascriptのタグには`<script>`を、CSSファイルには`<link>`を自動的に挿入します。また、`<script>`を使ってプレコンパイル済みのテンプレートに対してリンクを行います。これらに対する詳細な説明は[こちら](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking)で確認することが出来ますが、おさえておきたい大切なことはスクリプトとスタイルシートの挿入は`<!--SCRIPTS--><!--SCRIPTS END-->`や`<!--STYLES--><!--STYLES END-->`のタグを含むファイル*のみ*で行われるということです。また、これらは新しく作成したSailsプロジェクトの**views/layout.ejs**にデフォルトで自動的に組み込まれています。もしあなたのプロジェクトでリンカーを使いたくない時は単にこれ他のタグを削除してください
 
 > [使い方](https://github.com/Zolmeister/grunt-sails-linker)
@@ -87,7 +84,6 @@ Javascriptのタグには`<script>`を、CSSファイルには`<link>`を自動�
 ##### watch
 
 > ファイルパターンが追加され、編集され、削除された時に毎回予め設定されたスクリプトを実行します。`assets/`フォルダに配置されたファイルを監視し、（例えばLESSやJSTのコンパイルのような）適切なタスクを再実行します。これにより行った編集の結果をSailsを再起動することなく確認することが出来ます。
-
 
 > [使い方](https://github.com/gruntjs/grunt-contrib-watch)
 

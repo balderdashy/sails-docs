@@ -1,6 +1,5 @@
 # タスクの自動化
 
-
 ### 概要
 
 [`tasks/`](./#!documentation/anatomy/tasks)ディレクトリには[Gruntタスク](http://gruntjs.com/creating-tasks)とその[設定ファイル](http://gruntjs.com/configuring-tasks)がまとめられて入っています。
@@ -11,11 +10,10 @@ Sailsは簡便のためにいくつかの[デフォルトのタスク](./#!docum
 
 > 今までに[Grunt](http://gruntjs.com/)を使ったことがない方は[Getting Started](http://gruntjs.com/getting-started)ガイドを見てください。そこには[Gruntfile](http://gruntjs.com/sample-gruntfile) の書き方やインストール方法が書かれています。
 
+
 ### アセットパイプライン
 
 アセットパイプラインはビューに挿入されるアセットを整形する部分であり、`tasks/pipeline.js`ファイルに記述されます。これらのアセットを設定するにはGruntに[タスクファイル](http://gruntjs.com/configuring-tasks#files)タスクファイル設定と[wildcard/glob/splaのパターン](http://gruntjs.com/configuring-tasks#globbing-patterns)を使うだけで簡単にできます。これらは3つの部分からなります。
-
-
 
 ##### CSSファイルの挿入
 ここではHTMLに`<link`>タグとして挿入されるCSSファイルを指定します。これらのタグは全てのビューの`<!--STYLES--><!--STYLES END-->`コメントの間に挿入されます。
@@ -33,7 +31,6 @@ Sailsは簡便のためにいくつかの[デフォルトのタスク](./#!docum
 設定済みのタスクはGruntfileが実行されたとき適用されるルールをまとめたものです。これら[`tasks/config/`](/#/documentation/anatomy/myApp/tasks/config)にあり、完全にカスタマイズ可能です。あなたの使いたい用途に合わせてこれたのGruntファイルのうち全てを編集し、省略し、また置き換えることが出来ます。同様に`someTask.js`のようなファイルをこのディレクトリに追加し他の適切なタスクと一緒に登録することで(`grunt/register/*.js`のファイルを参照してください。)あなた自身のGruntファイルを作成することも出来ます。なおSailsは特段の設定なしに起動できるように便利なデフォルトのタスクのセットを持っているということも忘れずにいてください。
 
 ##### カスタムのタスクを設定する
-
 
 プロジェクトにカスタムのタスクを設定するのはとてもシンプルで、Gruntの[設定](http://gruntjs.com/api/grunt.config)と[タスク](http://gruntjs.com/api/grunt.task)APIを使うことでタスクをモジュールにすることが出来ます。既存のタスクを置き換えて新しいタスクを作成する例を見てみましょう。デフォルトで設定されているunderscoreの代わりに[Handlebars](http://handlebarsjs.com/)をテンプレートエンジンとして使いたいとします。:
 
@@ -141,7 +138,6 @@ module.exports = function (grunt) {
 * jstタスクの設定を削除します。我々はすでにtasks/config/jst.jsを必要としないのでこれを削除することが出来ます。単にプロジェクトから削除するだけで構いません。
 
 > 理想的にはこれをプロジェクトとプロジェクトのnode dependenciesから削除します。これは以下のコマンドを実行することで行えます。
-
 ```bash
 npm uninstall grunt-contrib-jst --save-dev
 ```

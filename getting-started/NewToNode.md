@@ -7,7 +7,6 @@
 
 もっと簡単に言うとNode.jsは簡単で効率的に動作するHTTPサーバーで、これによってフロントエンドとバックエンドを同じ言語で書くことが出来るのです。
 
-
 ## どんなOSを使わなければなりませんか?
 
 Node.jsは多くのメジャーなOSにインストールすることが出来ます。MacOSXや多くのLinux、Windowsがサポートされています。  
@@ -56,7 +55,6 @@ Linuxにインストールする
 Node.js v0.10.0からは[Chris Lea](https://chrislea.com/2013/03/15/upgrading-from-node-js-0-8-x-to-0-10-0-from-my-ppa/)レポジトリのnodejsにはnpmとnodejs-devの両方が含まれるようになりました。
 
 nodeパッケージに名前の競合があり (Amateur Packet Radio Node Program)、nodejsのバイナリは `node`から`nodejs`に改名されました。競合を防ぐためにはAmateur Packet Radio Node Programをアンインストールするか`/usr/bin/node`を`/usr/bin/nodejs` にシンボリックリンクをする必要があります。
-
 
 ### Fedora
 

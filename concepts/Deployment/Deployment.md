@@ -22,13 +22,14 @@
   + 例：チャット、リアルタイム分析、アプリ内通知・メッセージ
 + クラッシュした時やエラーが起こった時どうやって監視しますか。
   + Sailsのログ設定を見てみてください。
-    
+
+
+
 #### 1台のサーバにデプロイする
 
 Node.jsはものすごく速いです。そのため来るべきトラフィックをハンドルするためには1台のサーバーで十分です（少なくとも最初のうちは）
 
 ##### 設定
-
 
 + すべてのプロダクション環境の設定は`config/env/production.js`に保存されています。
 + アプリケーションが80番ポートで動作するように設定してください（Nginxのようなプロキシを使わない時は）もしNginxを使っているときはアプリケーションにWebSocketをリレーするように設定してください。Nginxの[WebSocket proxying](http://nginx.org/en/docs/http/websocket.html)ドキュメントでこれに関する手順を見ることが出来ます。
@@ -41,7 +42,6 @@ Node.jsはものすごく速いです。そのため来るべきトラフィッ�
 + もしSocketを使ってる時は:
   + `config/sockets.js`を適切に設定し、[ここ](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)に書いているsocket.ioが推奨するプロダクション環境での設定に適合するようにします。
     + 例：`flashsocket` transportを有効化する
-
 
 ##### Deploy
 

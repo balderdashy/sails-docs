@@ -2,7 +2,6 @@
 
 モデルは構造化されたデータの集合を表し、通常はデータベースの中のひとつのテーブルまたはコレクションを含みます。モデルは通常`api/models/`フォルダの中にファイルを作成することで定義します。
 
-
 ![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
 
 
@@ -32,7 +31,6 @@ Waterlineはpromiseのためのオプトインサポートも用意していま�
 
 
 
-
 ### モデルメソッド（Static/classメソッド）
 
 モデルのクラスメソッドはモデルのインスタンス（つまりレコード）に対して特定のタスクを実行するためにモデル内に書かれるものです。これは`.create()`, `.update()`, `.destroy()`,や`.find()`などのおなじみの、データペース操作のためのCRUDメソッドが記述されているところです。
@@ -56,8 +54,9 @@ findWithSameNameAsPerson: function (opts, cb) {
 
   var person = opts.person;
 
-  //すべての作業を行う前にレコードが渡されたのか主キーが渡されたのかを確認する。
-  //  もし主キーが渡された場合はその人の情報をLookupする。:
+  // すべての作業を行う前にレコードが渡されたのか主キーが渡されたのかを確認する。
+  //
+  // もし主キーが渡された場合はその人の情報をLookupする。:
   (function _lookupPersonIfNecessary(afterLookup){
     // (this self-calling function is just for concise-ness)
     if (typeof person === 'object')) return afterLookup(null, person);
@@ -140,14 +139,14 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 pubsubのhookに接続された特別なクラスメソッドです。詳細は[resourceful pubsubの項目](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub)をご覧ください。
 
+
 <!--
 another special type of class method.  It stands for 'Publish, Subscribe' and that's just what they do. These methods play a big role in how Sails integrates and utilizes Socket.IO.  They are used to subscribe clients to and publish messages about the creation, update, and destruction of models.  If you want to build real-time functionality in Sails, these will come in handy.
 -->
 
 #### アトリビュートメソッド（レコード/インスタンスメソッド）
 
-アトリビュートメソッドはWaterlineクエリーから帰ってきたレコード（つまりモデルインスタンス）で利用可能なファンクションです。
-例えばStudentモデルからGPAの高い10人の生徒を探してきた場合、それぞれ生徒のレコードはカスタムアトリビュートメソッドや既存のアトリビュートメソッドにアクセスできます。
+アトリビュートメソッドはWaterlineクエリーから帰ってきたレコード（つまりモデルインスタンス）で利用可能なファンクションです。例えばStudentモデルからGPAの高い10人の生徒を探してきた場合、それぞれ生徒のレコードはカスタムアトリビュートメソッドや既存のアトリビュートメソッドにアクセスできます。
 
 ###### ビルトインのアトリビュートメソッド
 すべてのWaterlineモデルにはいくつかのアトリビュートメソッドが自動的に含まれています。例えば:
@@ -245,7 +244,6 @@ Person.marry([joe,raquel], function (err) {
 
 ###### アトリビュートメソッドに命名する
 アトリビュートメソッドに命名するときにはあなたの作業中のモデルに最初からある**アトリビュートバリュー**とあなたが作った _アトリビュートメソッド_ との間で競合を起こさないために一定の命名規則で行ってください。良いプラクティスとしては"get*" (例えば`getFullName()`)の形式でプレフィックスを付けるということとレコードそのものを改編するアトリビュートメソッドを書くのを避けるということです。
-
 
 <!--
 
