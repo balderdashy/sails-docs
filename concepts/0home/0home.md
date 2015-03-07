@@ -62,7 +62,7 @@
     23. .stream()
     24. .subscribe()
     25. .toJSON()
-    26. .toObject()
+    26. .toObject() 
     27. .unsubscribe()
     28. .unwatch()
     29. .update()
