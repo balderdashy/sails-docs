@@ -7,7 +7,11 @@ SailsはWaterlineと呼ばれるデータベース非依存の[ORM/ODM](http://s
 
 [Postgres](),[Oracle](), [MySQL]()のようなスキーマ式データベースではモデルはテーブルに置き換えられます。[MongoDB]()ではMongoの「コレクション」に置き換えられます。[Redis]()ではキーと値のペアに置き換えられます。それぞれのデータベースはその「方言」を持ち、時にはデータベースに接続するために個別のネイティブモジュールをインストールする必要があります。これにはかなりのオーバーヘッドが生じ、不安定な[ベンダー依存](http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack)のコードを蓄積させることになります。（例：あなたのアプリケーションがある程度まとまったSQLクエリを利用している場合、MongoやRedis、vice versaへ後で変更することは困難になるでしょう。）
 
+<<<<<<< HEAD
 Waterlineの文法はそれらすべての上層に位置しデータを作成したり検索したり更新したり削除したりというビジネスロジックに焦点を当てたものです。どんなデータベースに接続する場合にも文法は _全く一緒_ です。さらに言えばWaterlineは _異なるデータベース上にある_ 複数のモデル間でデータリレーションを[`.populate()`](http://sailsjs.org/#/documentation/reference/waterline/queries/populate.html)することすら出来ます。つまりこれはアプリケーションのモデルをMongoからPostgresに、MySQLに、Redisに移行し、もとに戻ることすら出来るのです（しかも一切のコード改変なしに）もしも低レイヤーのデータベース依存の関数を使いたいときはWaterlineはモデルの下層にあるそれらのデータベースドライバに直接アクセスすることも出来ます。([.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html)と[.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html)を御覧ください。)
+=======
+Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`](http://sailsjs.org/#/documentation/reference/waterline/queries/populate.html) associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) and [.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html).)
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 
 

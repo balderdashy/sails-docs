@@ -220,7 +220,26 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
+<<<<<<< HEAD
 `paginate`は`skip`と`limit`を一緒に使うのと同じ役割を果たすWaterlineヘルパーメソッドです。
+=======
+`paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
+
+``` javascript                                                                  
+Model.find().paginate({page: 2, limit: 10});                                     
+```
+
+> **Waterline**
+>
+> You can find out more about the Waterline API below:
+> * [Sails.js Documentation](http://sailsjs.org/#/documentation/reference/waterline/queries)
+> * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
+> * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
+> * [Waterline Github Repository](https://github.com/balderdashy/waterline)
+
+
+#### Sort
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 ``` javascript                                                                  
 Model.find().paginate({page: 2, limit: 10});                                     

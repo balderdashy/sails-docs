@@ -146,7 +146,11 @@ Windowsにインストールする
 ## Sails.jsのインストールに進む
 これであなたのシステムにNode.jsがインストールされました。
 
+<<<<<<< HEAD
 [ここ](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md)をクリックして進んでください。
+=======
+Click [here](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md) to continue.
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 ## さらなる手助け
 時々、物事は予定通りに進まないものです。もしそれでも問題があるときはNode.jsの[IRC Channel](irc://irc.freenode.net/node.js)や我々の[IRC Channel](irc://irc.freenode.net/sailsjs)を訪ねてください。

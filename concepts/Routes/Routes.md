@@ -31,7 +31,11 @@ module.exports = {
 
 > "やあ、Sails。もし`http://mydomain.com/me`へのGETリクエストを受け取ったら`UserController`の`profile`を走らせてよ。いいね。"
 
+<<<<<<< HEAD
 もしルート自体の見た目上のレイアウトを変更したいときにはというと、全く問題ありません。こういう風にできます。:
+=======
+What if I want to change the view layout within the route itself?  No problem we could:
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 ```javascript
 'get /privacy': {
@@ -42,9 +46,15 @@ module.exports = {
   },
 ```
 
+<<<<<<< HEAD
 #### 備考
 + リクエストがルートにマッチしたからといってそれが _直接_ ルートのターゲットにパスされるというわけではありません。例えばHTTPリクエストは通常いくつかの[ミドルウエア](http://beta.sailsjs.org/#/documentation/concepts/Middleware)を先に通ります。そしてもしルートがコントローラの[アクション](http://beta.sailsjs.org/#/documentation/concepts/Controllers?q=actions)を指している場合、リクエストは設定済みの[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies) を通過する必要があります。そしていくつかの特殊な[ルートオプション](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) は特定の種類のリクエストを「スキップ」させることも有ります。
 + ルーターはNodeミドルウエアの標準的なファンクション(すなわち`function (req, res, next) {}`のような)も含め、どのような正当なルートターゲットに対する**ルート**でも**バインド**することが出来ます。しかしながら可能な限りSailsの慣例的な[ルートターゲットシンタックス](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html)を利用してください。これにより、開発の効率かやトレーニングの簡易化が図れ、プログラムのメンテナンス性も向上します。
+=======
+#### Notes
++ Just because a request matches a route address doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware](http://beta.sailsjs.org/#/documentation/concepts/Middleware) first.  And if the route points to a controller [action](http://beta.sailsjs.org/#/documentation/concepts/Controllers?q=actions), the request will need to pass through any configured [policies](http://beta.sailsjs.org/#/documentation/concepts/Policies) first.  Finally, there are a few special [route options](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) which allow a route to be "skipped" for certain kinds of requests.
++ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 
 

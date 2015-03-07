@@ -61,7 +61,11 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 
 これは `/123/abc/def`にマッチし、`MessageController`の中の`myaction`アクションを動作させその際には`abc`と`def`が`req.param('foo')`と`req.param('bar')`としてそれぞれ取り出せます。
 
+<<<<<<< HEAD
 2重のバックスラッシュ`\\d`と`\\w`にご留意ください。正規表現を正しく動作させるためにはこの部分のエスケープが必要です。
+=======
+Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the regular expression to work correctly!
+>>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 #### ルートの順番
 
