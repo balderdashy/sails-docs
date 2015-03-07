@@ -51,7 +51,6 @@ Sailsはモデルのアトリビュートに対する自動バリデーション
 |notIn|	モデルアトリビュートの値が定義されたバリデータの値の範囲内（なおかつ同じ型）に存在するか。|文字列と配列を処理できます。|
 |notNull|内容はNULLでないかどうか。| |
 |notRegex| | |
-<<<<<<< HEAD
 |null|内容がNULLかどうか。| |
 |number|数字かどうか。|	NaNは数字とみなされます。|
 |numeric|文字列は数字のみを含むかどうか。| |
@@ -70,26 +69,6 @@ Sailsはモデルのアトリビュートに対する自動バリデーション
 |uuid	|文字列はUUID(v3,v4,もしくはv5)か。| |
 |uuidv3	|文字列はUUID(v3)か。| |
 |uuidv4	|文字列はUUID(v4)か。| |
-=======
-|null| check if `string` in this record is null | |
-|number| is this a number? | NaN is considered a number |
-|numeric| checks if `string` in this record contains only numbers | |
-|object| checks if this attribute is the language type of Object | Passes for arrays, functions, objects, regexes, new Number(0), and new String('') ! |
-|regex| | |
-|protected| Should this attribute be removed when `toJSON` is called on a model instance?  | |
-|required| Must this model attribute contain valid data before a new record can be created? | |
-|string| is this a `string` ?| |
-|text| okay, well is <i>this</i> a `string` ?| |
-|truthy| Would a Javascript engine register a value of `false` on this? | |
-|undefined| Would a javascript engine register this thing as have the value 'undefined' ? | |
-|unique| Checks to see if a new record model attribute is unique.  | |
-|uppercase| checks if `string` in this record is uppercase | |
-|url| checks if `string` in this record is a URL | |
-|urlish| Does the `string` in this record contain something that looks like a route, ending with a file extension? | /^\s([^\/]+\.)+.+\s*$/g |
-|uuid| checks if `string` in this record is a UUID (v3, v4, or v5) | |
-|uuidv3| checks if `string` in this record is a UUID (v3) | |
-|uuidv4| checks if `string` in this record is a UUID (v4) | |
->>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 
 

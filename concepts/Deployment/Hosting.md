@@ -30,11 +30,7 @@ appフォルダの中の`config/local.js`を開きここに以下の行を加え
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
-<<<<<<< HEAD
 ##### DigitalOceanを使う
-=======
-##### Using DigitalOcean?
->>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
 + https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps

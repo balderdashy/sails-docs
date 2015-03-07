@@ -1,6 +1,5 @@
 # Gruntを無効化する
 
-<<<<<<< HEAD
 Gruntタスクの組み込みを無効にするためには、Gruntfile(と場合によっては[`tasks/`](/#/documentation/anatomy/myApp/tasks)フォルダーのこともあります)を削除するだけで大丈夫です。同様にGrunt hookの無効化も出来ます。これをやるには`.sailsrc`のhooksで以下のように`grunt`を`false`にするだけで出来ます:
 
 ```json

@@ -137,11 +137,7 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 #### Resourceful Pubsub Methods
 
-<<<<<<< HEAD
 pubsubのhookに接続された特別なクラスメソッドです。詳細は[resourceful pubsubの項目](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub)をご覧ください。
-=======
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub).
->>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 
 <!--

@@ -31,11 +31,7 @@ module.exports = {
 
 > "やあ、Sails。もし`http://mydomain.com/me`へのGETリクエストを受け取ったら`UserController`の`profile`を走らせてよ。いいね。"
 
-<<<<<<< HEAD
 もしルート自体の見た目上のレイアウトを変更したいときにはというと、全く問題ありません。こういう風にできます。:
-=======
-What if I want to change the view layout within the route itself?  No problem we could:
->>>>>>> 0a69dcc7a2ad18a99e1d1ae0f37ac7ebe6a63677
 
 ```javascript
 'get /privacy': {
