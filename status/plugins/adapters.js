@@ -85,10 +85,14 @@ module.exports = {
 		repo: 'https://github.com/ktkaushik/sails-mongoose',
 		status: 'unknown'
 	},
-  'sails-mssql': {
-    repo: 'https://github.com/jaredfromsubway/sails-mssql',
-    status: 'unknown'
-  },
+	'sails-mssql': {
+		repo: 'https://github.com/jaredfromsubway/sails-mssql',
+		status: 'unknown'
+	},
+	'waterline-orientdb': {
+		repo: 'https://github.com/appscot/waterline-orientdb',
+		status: 'edge'
+	},
 
 
 
