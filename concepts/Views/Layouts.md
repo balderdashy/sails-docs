@@ -13,6 +13,18 @@ Sails layouts are special `.ejs` files in your app's `views/` folder you can use
 
 Layout support for your app can be configured or disabled in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html), and can be overridden for a particular route or action by setting a special [local](/#/documentation/concepts/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
 
+To specify what layout a view uses, see the example below. There is more information in the docs at [routes](http://beta.sailsjs.org/#/documentation/concepts/Routes.html).
+
+The example route below will use the view located as `./views/users/privacy.ejs` within the layout located at `./views/users.ejs`
+
+```javascript
+'get /privacy': {
+    view: 'users/privacy',
+    locals: {
+      layout: 'users'
+    }
+  },
+```
 
 ### Notes
 
