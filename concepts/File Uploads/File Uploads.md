@@ -201,8 +201,8 @@ req.file('avatar').upload({
 ## Read more
 
 + [Skipper docs](https://github.com/balderdashy/skipper)
-+ [Uploading to Amazon S3](./uploading-to-amazon-s3.html)
-+ [Uploading to Mongo GridFS](./uploading-to-mongo-gridfs.html)
++ [Uploading to Amazon S3](#!/documentation/concepts/File-Uploads/uploading-to-amazon-s3.html)
++ [Uploading to Mongo GridFS](#!/documentation/concepts/File-Uploads/uploading-to-mongo-gridfs.html)
 
 
 
