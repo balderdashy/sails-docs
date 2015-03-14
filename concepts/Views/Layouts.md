@@ -15,7 +15,7 @@ Layout support for your app can be configured or disabled in [`config/views.js`]
 
 To specify what layout a view uses, see the example below. There is more information in the docs at [routes](http://beta.sailsjs.org/#/documentation/concepts/Routes.html).
 
-The example route below will use the view located as `./views/users/privacy.ejs` within the layout located at `./views/users.ejs`
+The example route below will use the view located at `./views/users/privacy.ejs` within the layout located at `./views/users.ejs`
 
 ```javascript
 'get /privacy': {
