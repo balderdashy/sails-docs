@@ -4,12 +4,12 @@ Returns the value of the parameter with the specified name.
 ### Usage
 
 ```javascript
-req.param(name);
+req.param(name[, defaultValue]);
 ```
 
 ### Details
 
-`req.param()` searches the url path, query string, and body of the request for the specified parameter.  If no parameter value exists anywhere in the request with the given `name`, it returns `undefined`.
+`req.param()` searches the url path, query string, and body of the request for the specified parameter.  If no parameter value exists anywhere in the request with the given `name`, it returns `undefined`, or the optional `defaultValue` if specified.
 
 + url path parameters ([`req.params`](http://beta.sailsjs.org/#/documentation/reference/req/req.params.html))
   + e.g. a request "/foo/4" to route `/foo/:id` has url path params `{ id: 4 }`
