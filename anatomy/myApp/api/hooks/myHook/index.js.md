@@ -1,6 +1,5 @@
 ```js
-'use strict';
-
+http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks/userhooks.html
 module.exports = function(sails) {
 
   // This var will be private
