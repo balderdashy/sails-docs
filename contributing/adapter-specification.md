@@ -120,6 +120,8 @@ Adapters which implement the Migratable interface are usually interacting with S
   + drop all tables and recreate them each time the server starts-- useful for development
 + `"alter"`
   + experimental automigrations
++ `"create"`
+  + create all missing tables/columns without modifying existing data
 
 
 
