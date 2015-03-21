@@ -29,19 +29,23 @@ module.exports = function(sails) {
 
     // the logic of your hook
     initialize: function(done){
+      // This will be available in app code as sails.hooks.myhook.numRequestsSeen
+      this.numRequestsSeen = 0;
+      // This will be available in app code as sails.hooks.myhook.numUnhandledRequestsSeen
+      this.numUnhandledRequestsSeen = 0;
       return done();
     },
 
     routes: {
       before: {
-        // example of a route
+        // This route will be matched before any routes in config/routes.js
         'GET /*': function (req, res, next) {
            this.numRequestsSeen++;
            return next();
         }
       },
       after: {
-        // example of a route
+        // This route will be matched after any routes in config/routes.js
         'GET /*': function (req, res, next) {
            this.numUnhandledRequestsSeen++;
            return next();
