@@ -1,5 +1,10 @@
+# myApp/api/hooks/myHook/index.js
+### Purpose
+
+This is an example of a [user hook](http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks/userhooks.html), which adds functionality to Sails for `myApp`.  See the [hooks](http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks) concepts section for more details.
+
 ```js
-http://sailsjs.org/#!/documentation/concepts/extending-sails/Hooks/userhooks.html
+
 module.exports = function(sails) {
 
   // This var will be private
@@ -47,3 +52,5 @@ module.exports = function(sails) {
   };
 };
 ```
+
+<docmeta name="displayName" value="index.js">
