@@ -7,9 +7,9 @@ Por outro lado, as vezes quando nós falamos de "web frameworks", nós queremos 
 
 ## Convenção sobre Configuração
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
+Velas realiza muitos dos objetivos como outros frameworks de aplicação web MVC, usando muitas das mesmas metodologias. Isto foi feito de propósito. Uma abordagem consistente torna o desenvolvimento de aplicativos mais previsível e eficiente para todos envolvidos.
 
-Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes you more productive.  In many cases, you'll even be able to recycle some of your backend code.
+Imagine começar um novo emprego em uma empresa de construção de um app Sails (ou imaginar começando a empresa, se isso é coisa sua.) Se alguém em sua equipe tem trabalhado com frameworks como Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, ou Rails, Sails vai se sentir muito familiar. Não só isso, mas eles podem olhar para um projeto Sails e saber, em geral, a forma de codificar com os padrões básicos que eles implementaram uma e outras vezes no passado; Se a sua formação é em PHP, Ruby, Java, C #, ou Node.js. E sobre o seu segundo aplicativo, ou seu terceiro? Cada vez que você criar um novo app Sails, você começa conciente, familiar que faz você mais produtivo. Em muitos casos, você vai mesmo ser capaz de reciclar um pouco do seu código de backend.
 
 > **History**
 >
