@@ -1,16 +1,14 @@
-# Sails.js Documentation (v0.10.x)
+# Documentação Sails.js (v0.10.x)
 
+Guia e referência a versão 0.10.x de Sails. Contém as mais importantes sessões do site de Sails [beta.sailsjs.org](http://beta.sailsjs.org) é compilado daqui. Em alguns casos, Em alguns casos, os arquivos markdown são fatiados, links alterados, convertidos para HTML, ou formatados para caber dentro do layout de sailsjs.org - mas na maioria das vezes, um arquivo de 'md' neste repositório corresponde com uma rota do lado do cliente no site (exemplo: `/#/documentation/reference/Blueprints/Create.html`).
 
-Guide and reference documentation for the 0.10.x release of Sails.  Content for most sections on the Sails website (beta.sailsjs.org) is compiled from here.  In some cases, the markdown files are split, relinked, converted to HTML, or formatted to fit within the skin of sailsjs.org- but most of the time, a `.md` file in this repo corresponds one-to-one with a client-side route on the website (e.g. `/#/documentation/reference/Blueprints/Create.html`).
-
-
-##### Contributing to the docs
-> We welcome your help!  Please send a pull request to **master** with corrections/additions and they'll be double-checked and merged as soon as possible.
+##### Contribuindo para documentação
+> Saudamos a sua ajuda! Por favor, envie seu pull request para **master** com correcções/aditamentos e ele será revisto e adicionado a documentação logo que possível.
 >
-> Secondly, we are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @ncrumrine, @loicsaintroch, or @mikermcneil on Twitter.
+> Segundo, nós estamos aberto a sugestões sobre o processo que estamos usando para gerenciar nossa documentação, e para trabalhar com a comunidade em geral. Por favor, publique no grupo do Grupo suas ideias - ou se você está interessado em ajudar diretamente, contate @ncrumrine, @loicsaintroch, ou @mikermcneil no Twitter.
 
-##### How often are these files compiled and pushed to the website?
-> Currently, these docs are pushed almost instantaneously to www.sailsjs.org.  That will likely continue to happen for the forseeable future.
+##### Como que frequência esses arquivos são compilados e adicionados ao site?
+> Atualmente, essas documentações são enviadas instantaneamente para www.sailsjs.org.  Isso provavelmente vai continuar a acontecer para o futuro previsível.
 > 
-> However, when v0.10.0 is released as "stable", docs will **also** be compiled and pushed to http://sailsjs.org every time a new stable release of Sails is published to npm.  In general, this repo should follow the same versioning strategy as Sails (using tags).
+> No entanto, quando v0.10.0 é lançado como "estável", docs serão **também** ser compilado e adicionados em http://sailsjs.org cada vez que uma nova versão estável é publicada a npm. Em geral, este repositório deve seguir a mesma estratégia de controle de versão (usando tags).
 
