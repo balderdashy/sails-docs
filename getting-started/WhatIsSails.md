@@ -15,7 +15,7 @@ Imagine começar um novo emprego em uma empresa de construção de um app Sails 
 >
 > Sails não inventou esse conceito -- existe [há anos](https://en.wikipedia.org/wiki/Convention_over_configuration). Antes mesmo de a frase "Convensão sobre Configuração" (ou CoC) ser popularizado por Ruby on Rails, era um inquilino de núcleo da especificação JavaBeans e em muitos aspectos, um lashback natural contra a configuração XML extremamente verbosa comum em frameworks para web Java tradicionais do final dos anos 90 e início dos anos 2000.
 
-## Acoplamento Fraco
+## Acoplamento Flexível
 
 Os dias de forçar uma abordagem única para desenvolvimento acabaram. Precisamos de ferramentas que permitem-na escolher os componentes que se ajustam às nossas necessidades. Na verdade, é simplesmente preguiçoso para criar as coisas de outra maneira. A abordagem de Sails está a componentes acoplados livremente, para que possam ser adicionado ou removidos de seu app à vontade.
 
