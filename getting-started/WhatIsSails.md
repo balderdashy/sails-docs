@@ -11,10 +11,9 @@ Velas realiza muitos dos objetivos como outros frameworks de aplicação web MVC
 
 Imagine começar um novo emprego em uma empresa de construção de um app Sails (ou imaginar começando a empresa, se isso é coisa sua.) Se alguém em sua equipe tem trabalhado com frameworks como Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, ou Rails, Sails vai se sentir muito familiar. Não só isso, mas eles podem olhar para um projeto Sails e saber, em geral, a forma de codificar com os padrões básicos que eles implementaram uma e outras vezes no passado; Se a sua formação é em PHP, Ruby, Java, C #, ou Node.js. E sobre o seu segundo aplicativo, ou seu terceiro? Cada vez que você criar um novo app Sails, você começa conciente, familiar que faz você mais produtivo. Em muitos casos, você vai mesmo ser capaz de reciclar um pouco do seu código de backend.
 
-> **History**
+> **História**
 >
-> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenant of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
-
+> Sails não inventou esse conceito -- existe [há anos](https://en.wikipedia.org/wiki/Convention_over_configuration). Antes mesmo de a frase "Convensão sobre Configuração" (ou CoC) ser popularizado por Ruby on Rails, era um inquilino de núcleo da especificação JavaBeans e em muitos aspectos, um lashback natural contra a configuração XML extremamente verbosa comum em frameworks para web Java tradicionais do final dos anos 90 e início dos anos 2000.
 
 ## Loose Coupling
 
