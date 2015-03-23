@@ -3,15 +3,22 @@
 An object containing pre-defined/custom header given in the current request.
 
 ### Usage
-```js
+
+```javascript
 req.headers;
 ```
+
 ### Details
+
 Often we want to check the headers of the current request, so this can be done easily in the sails.
 
 ### Example
-## Sample output of req.headers
+
+Sample output of the `req.headers` object:
+
 ```javascript
+console.log(req.headers);
+
 { host: 'localhost:1337',
   connection: 'keep-alive',
   'cache-control': 'no-cache',
@@ -20,11 +27,19 @@ Often we want to check the headers of the current request, so this can be done e
   'accept-encoding': 'gzip, deflate, sdch',
   'accept-language': 'en-US,en;q=0.8,hi;q=0.6',
   cookie: 'sdfkslddklfk; sails.sid=s%3skdlfjkj1231lsdfnsc,m' }
-  ```
+```
   
-  And if you want to access any custom or pre-defined header, you only need to access it like a hash.
   
-### Accessing a header
-  ```javascript
-  console.log(req.headers['custom-header']
-  ```
+### Example 
+
+And if you want to access any specific, custom or pre-defined header, it can be done with bracket notation:
+
+```javascript
+req.headers['custom-header'];
+```
+
+or dot notation:
+
+```javascript
+req.headers.host;
+```
