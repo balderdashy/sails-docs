@@ -1,3 +1,7 @@
+# req.headers
+
+An object containing pre-defined/custom header given in the current request.
+
 ### Usage
 ```js
 req.headers;
@@ -6,6 +10,7 @@ req.headers;
 Often we want to check the headers of the current request, so this can be done easily in the sails.
 
 ### Example
+## Sample output of req.headers
 ```javascript
 { host: 'localhost:1337',
   connection: 'keep-alive',
