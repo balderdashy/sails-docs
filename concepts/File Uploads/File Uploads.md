@@ -123,10 +123,6 @@ req.file('avatar').upload({
 });
 ```
 
-
-
-<!--
-
 ### Example
 
 #### Generate an `api`
@@ -195,8 +191,6 @@ req.file('avatar').upload({
   });
 });
 ```
-
--->
 
 ## Read more
 
