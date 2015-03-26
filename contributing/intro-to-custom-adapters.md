@@ -186,7 +186,7 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
 
-### [OrientDB](https://github.com/appscot/waterline-orientdb)
+### [OrientDB](https://github.com/appscot/sails-orientdb)
 
 [OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
 
