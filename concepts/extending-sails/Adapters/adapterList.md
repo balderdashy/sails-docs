@@ -79,9 +79,9 @@ https://github.com/balderdashy/sails-redis/
 
 ### Community Supported Adapters
 
-##### waterline-orientdb
+##### sails-orientdb
 
-https://github.com/appscot/waterline-orientdb
+https://github.com/appscot/sails-orientdb
 
 [OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
 
@@ -91,7 +91,7 @@ https://github.com/appscot/waterline-orientdb
 + Associations
 + Migratable
 
-Have you written a Sails adapter?  Submit a PR to this file and add it here!
+Have you written a Sails adapter? Submit a PR to this file and add it here!
 
 <docmeta name="uniqueID" value="adapterList22829">
 <docmeta name="displayName" value="Available Adapters">

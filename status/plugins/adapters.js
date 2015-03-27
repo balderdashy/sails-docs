@@ -89,8 +89,8 @@ module.exports = {
 		repo: 'https://github.com/jaredfromsubway/sails-mssql',
 		status: 'unknown'
 	},
-	'waterline-orientdb': {
-		repo: 'https://github.com/appscot/waterline-orientdb',
+	'sails-orientdb': {
+		repo: 'https://github.com/appscot/sails-orientdb',
 		status: 'edge'
 	},
 
