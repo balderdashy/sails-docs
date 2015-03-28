@@ -1,32 +1,32 @@
-# Sails.js Documentation > API Reference
+# Documentação Sails.js > Referência da API
 
 
-### Table of Contents
+### Tabela de conteúdos
 
 1. **Blueprint API**
-  1. Create a Record
-  2. Destroy a Record
-  3. Find Records
-  4. Find One Record
-  5. Update a Record
+  1. Criar um Registro
+  2. Destruir um Registro
+  3. Encontrar Registro
+  4. Encontrar Um Registro
+  5. Atualizar Registro
 2. **Plugins**
-  1. Adapters
-    1. Available Adapters
-    2. Custom Adapters
-  2. Generators
-    1. Custom Genarators
-    2. Available Generators
+  1. Adaptadores
+    1. Adaptadores Disponíveis
+    2. Adaptadores Personalizados
+  2. Geradores
+    1. Geradores Personalizados
+    2. Geradores Disponíveis
   3. Hooks
-    1. Custom Hooks
-    2. Available Hooks
-3. **Command Line Interface**
+    1. Hooks Personalizados
+    2. Hooks Disponíveis
+3. **Interface por Linha de Comando**
   1. sails console
   2. sails debug
   3. sails generate
   4. sails lift
   5. sails new
   6. sails version
-4. **Request** (`req`)
+4. **Requisição** (`req`)
   1. req.is()
   2. req.accepted()
   3. req.acceptedLanguages()
@@ -57,7 +57,7 @@
   28. req.url
   29. req.wantsJSON
   30. req.xhr
-5. **Response** (`res`)
+5. **Resposta** (`res`)
   1. res.negotiate()
   2. res.attachment()
   3. res.clearCookie()
@@ -77,7 +77,7 @@
   17. res.status()
   18. res.type()
   19. res.view()
-6. **Configuration**
+6. **Configuração**
   1. sails.config.i18n
   2. sails.config.blueprints
   3. sails.config.connections
@@ -93,7 +93,7 @@
   13. sails.config.session
   14. sails.config.sockets
   15. sails.config.views
-7. **Socket Client**
+7. **Cliente Socket**
   1. io.socket.on()
   2. io.socket.delete()
   3. io.socket.get()

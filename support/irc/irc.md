@@ -7,4 +7,4 @@ Se você estiver procurando por uma resposta rápida e não encontra o que procu
 Se você nunca esteve no IRC, agora é a hora perfeita. Começar é fácil.
 
 <docmeta name="uniqueID" value="irc77272">
-<docmeta name="displayName" value="#sailsjs on IRC">
+<docmeta name="displayName" value="#sailsjs no IRC">
