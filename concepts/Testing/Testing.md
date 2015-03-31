@@ -51,7 +51,7 @@ after(function(done) {
 
 ### mocha.opts
 
-This file should contain mocha configuration as described here: [mocha.opts] (http://mochajs.org/#mocha.opts)
+This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha.opts)
 
 ## Writing tests
 
