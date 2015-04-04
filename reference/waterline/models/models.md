@@ -15,6 +15,7 @@ Most built-in model methods accept a callback as an optional final argument. If 
 
  Method                | Summary
  --------------------- | ------------------------------------------------------------------------
+ `.create()`           | Create record consisting of object passed in
  `.find()`             | Lookup an array of records which match the specified criteria
  `.findOne()`          | Lookup a single record which matches the specified criteria, or send back `null` if it doesn't.
  `.update()`           | Update records matching the specified criteria, setting the specified object of `attrName:value` pairs.
