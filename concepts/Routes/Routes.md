@@ -14,7 +14,7 @@ Every Sails project comes with [`config/routes.js`](http://beta.sailsjs.org/#/do
 
 ```javascript
 // config/routes.js
-module.exports = {
+module.exports.routes = {
   'get /signup': { view: 'conversion/signup' },
   'post /signup': 'AuthController.processSignup',
   'get /login': { view: 'portal/login' },
