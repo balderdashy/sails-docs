@@ -160,7 +160,7 @@ Runs the **prod** task (`tasks/register/prod.js`).
 
 ##### `sails www`
 
-Runs the **build** task (`tasks/register/build.js`) that compiles all the assets to `www` subfolder instead of `.tmp/public` with relative paths in references. This allows serving static content with Apache or Nginx instead of relying on ['www middleware'](/#/documentation/concepts/Middleware).
+Runs the **build** task (`tasks/register/build.js`) that compiles all the assets to `www` subfolder instead of `.tmp/public` using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on ['www middleware'](/#/documentation/concepts/Middleware).
 
 ##### `sails www --prod` (production)
 
