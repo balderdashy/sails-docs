@@ -160,11 +160,11 @@ Runs the **prod** task (`tasks/register/prod.js`).
 
 ##### `sails www`
 
-Runs the **build** task (`tasks/register/build.js`).
+Runs the **build** task (`tasks/register/build.js`) that compiles all the assets to `www` subfolder instead of `.tmp/public` with relative paths in references. This allows serving static content with Apache or Nginx instead of relying on ['www middleware'](/#/documentation/concepts/Middleware).
 
 ##### `sails www --prod` (production)
 
-Runs the **buildProd** task (`tasks/register/buildProd.js`).
+Runs the **buildProd** task (`tasks/register/buildProd.js`) that does the same as **build** task but also optimizes assets.
 
 <docmeta name="uniqueID" value="TaskAutomation282238">
 <docmeta name="displayName" value="Task Automation">
