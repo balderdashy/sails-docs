@@ -166,6 +166,8 @@ Runs the **build** task (`tasks/register/build.js`).
 
 Runs the **buildProd** task (`tasks/register/buildProd.js`).
 
+You may run other tasks by specifying setting NODE_ENV and creating a task list in tasks/register/ with the same name.  For example, if NODE_ENV is QA, sails will run tasks/register/QA.js if it exists. 
+
 <docmeta name="uniqueID" value="TaskAutomation282238">
 <docmeta name="displayName" value="Task Automation">
 
