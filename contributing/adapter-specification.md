@@ -125,6 +125,18 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 
 
+## SQL (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+Adapters which implement the SQL interface interact with databases supporting the SQL language. This interface exposes the method `.query()` allowing the user to run *raw* SQL queries against the database.
+
+###### Adapter methods
+
++ `Adapter.query(query,[ data,] cb)`
+
+
+
 ## Iterable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
