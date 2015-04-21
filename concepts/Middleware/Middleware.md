@@ -1,47 +1,47 @@
-# Middleware
+# ミドルウエア
 
-Sails is fully compatible with Express / Connect middleware - in fact, it's all over the place!  Much of the code you'll write in Sails is effectively middleware; most notably [controller actions](http://beta.sailsjs.org/#/documentation/concepts/Controllers?q=actions) and [policies](http://beta.sailsjs.org/#/documentation/concepts/Policies).
-
-
-### HTTP Middleware
-
-Sails also utilizes an additional [configurable middleware stack](http://beta.sailsjs.org/#/documentation/concepts/Middleware?q=adding-or-overriding-http-middleware) just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
-
-> Note that this HTTP middleware stack is only used for "true" HTTP requests-- it is ignored for **virtual requests** (e.g. requests from a live Socket.io connection.)
+SailsはExpress / Connectのミドルウエアと(実は全ての部分が)完全な互換性を持っています。[コントローラアクション](http://beta.sailsjs.org/#/documentation/concepts/Controllers?q=actions)や[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies)を始めとした、あなたがSails上で書くコードの大半は事実上ミドルウエアであると言えます。
 
 
+### HTTPミドルウエア
 
-#### Conventional Defaults
+また、SailsはHTTPリクエストを処理する目的で追加の[設定可能なミドルウエアスタック](http://beta.sailsjs.org/#/documentation/concepts/Middleware?q=adding-or-overriding-http-middleware)を利用しています。アプリケーションがHTTPリクエストを受け取った時は常に、設定されたミドルウエアスタックが順に実行されます。
 
-Sails comes bundled with a suite of conventional HTTP middleware, ready to use.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  Below is a list of the standard HTTP middleware functions that comes bundled in Sails in the order they execute every time the server receives an incoming HTTP request:
+> HTTPミドルウエアスタックは「実際の」HTTPリクエスト時にのみ利用され、**バーチャルなリクエスト**（例えばliveなSocket.ioコネクションからのリクエスト）は無視されるということを覚えておいてください。
 
- HTTP Middleware Key       | Purpose
+
+
+#### コンベンショナルのデフォルト
+
+SailsはにはコンベンショナルななHTTPミドルウエアがバンドルされています。もちろんこれは、無効化したり、上書きしたり、アレンジしなおしたり、追加することも出来ますが、多くのアプリケーションの開発時及び運用時にはプリインストールのスタックは完璧に対応することが出来ます。以下に、外部からのリクエストを受けた時には毎回実行されるに標準的なミドルウエアファンクションの表を実行順に掲載します。:
+
+ HTTP ミドルウエアキー       | 目的
  ------------------------- | ------------
- **startRequestTimer**     | Allocates a variable in memory to hold the timestamp when the request began.  This can be accessed and used by your app to provide diagnostic information about slow requests.
- _cookieParser_ *          | Parses the cookie header into a clean object for use in subsequent middleware and your application code.
- _session_ *               | Sets up a unique session object using your [session configuration](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.session.html).
- **bodyParser**            | Parses parameters and binary upstreams (for streaming file uploads) from the HTTP request body using [Skipper](https://github.com/balderdashy/skipper).
- **compress**              | Compresses response data using gzip/deflate.
- **methodOverride**        | Provides faux HTTP method support, letting you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it (e.g. legacy versions of Internet Explorer.)  If a request has a `_method` parameter set to `"PUT"`, the request will be routed as if it was a proper PUT request.  See [Connect's methodOverride docs](http://www.senchalabs.org/connect/methodOverride.html) for more information if you need it.
- **poweredBy**             | Attaches an `X-Powered-By` header to outgoing responses.
- **$custom**               | Provides backwards compatibility for a configuration option from Sails v0.9.x.  Since Sails v0.10 offers much more configuration flexibility for HTTP middleware, as long as you are not using `sails.config.express.customMiddleware`, you can confidently remove this item from the list.
- _router_ *                | This is where the bulk of your app logic gets applied to any given request.  In addition to running `"before"` handlers in hooks (e.g. csrf token enforcement) and some internal Sails logic, this routes requests using your app's explicit routes (in [`sails.config.routes`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html)) and/or route blueprints.
- _www_ *                   | Serves static files- usually images, stylesheets, scripts- in your app's "public" folder (configured in [`sails.config.paths`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md), conventionally [`.tmp/public/`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)) using Connect's [static middleware](http://www.senchalabs.org/connect/static.html).
- **favicon**               | Serves the [browser favicon](http://en.wikipedia.org/wiki/Favicon) for your app if one is provided as `/assets/favicon.ico`.
- _404_ *                   | Handles requests which do not match any routes - triggers `res.notFound()`  <!-- technically, this emits the `router:request:404` event)  -->
- _500_ *                   | Handles requests which trigger an internal error (i.e. call Express's `next(err)`)  - triggers `res.serverError()` <!-- technically, this emits the `router:request:500` event)  -->
+ **startRequestTimer**     | リクエストの始まった時間を記録するためにメモリ上に変数を配置します。これはスローリクエストの診断データに使います。
+ _cookieParser_ *          | この後のミドルウエアやアプリケーションで使うためにCookieのデータをパースします。
+ _session_ *               | [session設定](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.session.html)を使ってユニークなセッションオブジェクトを準備します。
+ **bodyParser**            | [Skipper](https://github.com/balderdashy/skipper)を使ってHTTPリクエストボディからパラメータとバイナリストリーム(ストリーミングファイルアップロード時に)をパースします。
+ **compress**              | gzip/deflateを使ってレスポンスを圧縮します。
+ **methodOverride**        | faux HTTPメソッドを提供します。これによりクライアントがサポートしない場合(例えばレガシーなInternet Explorerのように)でもPUTやDELETEのようなHTTPリクエストを使えるようにします。もしリクエストが`"PUT"`に設定された`_method`パラメータを持っていればあたかもそのリクエストは適切なPUT リクエストであったかのようにルーティングされます。さらなる情報が欲しい場合は[Connect's methodOverride docs](http://www.senchalabs.org/connect/methodOverride.html) を御覧ください。
+ **poweredBy**             | `X-Powered-By`ヘッダーを外行きのレスポンスに対して付加します。
+ **$custom**               | Sails v0.9.x.における設定プションに対する後方互換性を提供します。Sailsv0.10ではより多くの柔軟な設定をHTTPミドルウエアに対して行えるようにしたため、`sails.config.express.customMiddleware`を使わない限りはこのアイテムを自身を持ってリストから取り除くことも出来ます。
+ _router_ *                | ここでアプリケーションの諸々のロジックがリクエストに対して適用されます。hooksにある(csrf tokenの強制などの)`"before"` ハンドラやいくつかのSailsロジックに加え、([`sails.config.routes`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html)での) 明示的ルーティングやblueprintsルーティングを使ってリクエストをルーティングします。
+ _www_ *                   | [static middleware](http://www.senchalabs.org/connect/static.html)のコネクションを使ってアプリケーションのパブリックフォルダ( [`sails.config.paths`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)で設定することが出来, 通常 [`.tmp/public/`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md))にあるスタティックなファイル(通常は画像やスタイルシート、スクリプト)を提供します。
+ **favicon**               | [browser favicon](http://en.wikipedia.org/wiki/Favicon)がアプリケーション中で`/assets/favicon.ico`として設定されていればこれを提供します。
+ _404_ *                   | どのルーティングにもマッチしないリクエストをハンドルします - `res.notFound()`をトリガーします  <!-- technically, this emits the `router:request:404` event)  -->
+ _500_ *                   | 内部エラーをトリガーしたリクエストをハンドルします。 - `res.serverError()`をトリガーします <!-- technically, this emits the `router:request:500` event)  -->
 
-###### Legend:
+###### 凡例:
 
-+ `*` - The middleware with an asterisk (*) above should _almost never_ need to be modified or removed. Please only do so if you really understand what you're doing.
++ `*` - アスタリスク(*) がついたミドルウエアは _ほぼ絶対に_ 編集したり削除したりする必要はありません。自分で何をやっているのかを本当に理解している時にのみこれらを編集したり削除したりしてください。
 
 
 
-#### Adding or Overriding HTTP Middleware
+#### HTTPミドルウエアを追加または上書きする。
 
-To configure a custom HTTP middleware function, define a new HTTP key `sails.config.http.middleware.FOO` and set it to the configured middleware function, then add the string name ("FOO") to your `sails.config.http.middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before "cookieParser"):
+カスタムのHTTPミドルウエアを設定するには、まず新しいHTTPキー`sails.config.http.middleware.FOO`を定義して設定済みのミドルウエアファンクションとして設定します。そして`sails.config.http.middleware.order`のミドルウエアチェーンの配列の中の好きなところにキー名(“FOO”)を文字列で追加します。("cookieParser”の直前に置くのがいいでしょう。):
 
-E.g. in `config/http.js`:
+`config/http.js`での例:
 
 ```js
   // ...
@@ -88,17 +88,17 @@ E.g. in `config/http.js`:
 ```
 
 
-### Express Middleware In Sails
+### SailsにおけるExpressミドルウエア
 
-One of the really nice things about Sails apps is that they can take advantage of the wealth of already-existing Express/Connect middleware out there.  But a common question that arises when people _actually_ try to do this is:
+Sailsのとても良い所の一つはすでに存在するExpress/Connectの恩恵に預かることが出来るという点です。しかし _実際に_やってみようとした人の共通の疑問は:
 
-> _"Where do I `app.use()` this thing?"_.
+> _”何処で`app.use()`すればいいのか?”_ということです。
 
-In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html).  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
+ほとんどのケースにおいてこの答えはExpressのミドルウエアをHTTPミドルウエアとして[`sails.config.http.middleware`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.http.html)でインストールすることです。これでアプリケーションにおける全てのHTTPリクエストの際にこれらトリガーされることになります。また他のHTTPミドルウエアと関連してどの順番で動作すればいいのかを設定することも出来ます。
 
-### Express Routing Middleware In Sails 
+### SailsにおけるExpress Routingミドルウエア
 
-You can also include Express middleware as a policy- just configure it in [`config/policies.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
+ [`config/policies.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html)で設定することによりポリシーとしてExpressミドルウエアをインクルードすることも出来ます。また、実際のラッパーポリシーの中にmiddlewareをrequireしてセットアップすることも出来ます(通常、そうするのがいいです)し、単にpolicies.jsファイルで直接requireする事もできます。以下の例では簡潔さを優先して後者の手法を取っています。:
 
 ```js
 {

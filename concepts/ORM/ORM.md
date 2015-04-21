@@ -1,65 +1,65 @@
-# Waterline: SQL/noSQL Data Mapper (ORM/ODM)
+# Waterline: SQL/NoSQLのマッパー(ORM/ODM)
 
 
-Sails comes installed with a powerful [ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm) called [Waterline](http://waterlinejs.org), a datastore-agnostic tool that dramatically simplifies interaction with one or more [databases](http://www.cs.umb.edu/cs630/hd1.pdf).  It provides an abstraction layer on top of the underlying database, allowing you to easily query and manipulate your data _without_ writing vendor-specific integration code.
+SailsはWaterlineと呼ばれるデータベース非依存の[ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm) called [Waterline](http://waterlinejs.org)を内蔵しており一つや複数の[データベース](http://www.cs.umb.edu/cs630/hd1.pdf)にアクセスする手順をおどろくほど簡単にすることが出来ます。Waterlineはデータベースの上層に抽象化レイヤーを存在させることでベンダー依存の実装コードを _書くことなく_ 簡単にデータを参照し変更することが出来ます
 
-### Database Agnosticism
+### データベース非依存
 
-In schemaful databases like [Postgres](), [Oracle](), and [MySQL](), models are represented by tables.  In [MongoDB](), they're represented by Mongo "collections".  In [Redis](), they're represented using key/value pairs.  Each database has its own distinct query dialect, and in some cases even requires installing and compiling a specific native module to connect to the server.  This involves a fair amount of overhead, and garners an unsettling level of [vendor lock-in](http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack) to a specific database; e.g. if your app uses a bunch of SQL queries, it will be very hard to switch to Mongo later, or Redis, and vice versa.
+[Postgres](),[Oracle](), [MySQL]()のようなスキーマ式データベースではモデルはテーブルに置き換えられます。[MongoDB]()ではMongoの「コレクション」に置き換えられます。[Redis]()ではキーと値のペアに置き換えられます。それぞれのデータベースはその「方言」を持ち、時にはデータベースに接続するために個別のネイティブモジュールをインストールする必要があります。これにはかなりのオーバーヘッドが生じ、不安定な[ベンダー依存](http://stackoverflow.com/questions/29868/how-important-is-it-to-choose-and-stick-to-a-technology-stack)のコードを蓄積させることになります。（例：あなたのアプリケーションがある程度まとまったSQLクエリを利用している場合、MongoやRedis、vice versaへ後で変更することは困難になるでしょう。）
 
-Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`](http://sailsjs.org/#/documentation/reference/waterline/queries/populate.html) associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) and [.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html).)
-
-
-
-### Scenario
-
-Let's imagine you're building an e-commerce website, with an accompanying mobile app.  Users browse products by category or search for products by keyword, then they buy them.  That's it!  Some parts of your app are quite ordinary; you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
-
-##### Flexibility
-
-_You ask the business what database they would like to use:_
-
-> "Datab... what?  Let's not be hasty, wouldn't want to make the wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
-
-The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
-
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration]().
+Waterlineの文法はそれらすべての上層に位置しデータを作成したり検索したり更新したり削除したりというビジネスロジックに焦点を当てたものです。どんなデータベースに接続する場合にも文法は _全く一緒_ です。さらに言えばWaterlineは _異なるデータベース上にある_ 複数のモデル間でデータリレーションを[`.populate()`](http://sailsjs.org/#/documentation/reference/waterline/queries/populate.html)することすら出来ます。つまりこれはアプリケーションのモデルをMongoからPostgresに、MySQLに、Redisに移行し、もとに戻ることすら出来るのです（しかも一切のコード改変なしに）もしも低レイヤーのデータベース依存の関数を使いたいときはWaterlineはモデルの下層にあるそれらのデータベースドライバに直接アクセスすることも出来ます。([.query()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html)と[.native()](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html)を御覧ください。)
 
 
 
-##### Compatibility
+### シナリオ
 
-_The product owner/stakeholder walks up to you and says:_
+モバイルアプリを持つeコマースアプリケーションを構築することを考えてみましょう。ユーザはカテゴリーや検索で商品を閲覧することが出来、商品を購入することが出来ます。それだけです！アプリケーションのいくつかの部分は非常にシンプルです。アプリケーションはAPIを使ったログイン、サインアップ、購入・決済、パスワードの変更などが出来ます。しかしその他にもいくつかの手間がかかるありふれた機能がロードマップ上に隠れているはずです。おそらく。:
 
-> "Oh hey by the way, the products actually already live in our point of sale system. It's some ERP thing I guess, something like "DB2"?  Anyways, I'm sure you'll figure it out- sounds easy right?"
+##### フレキシビリティ
 
-Many enterprise applications must integrate with an existing database.  If you're lucky, a one-time data migration may be all that's necessary, but more commonly, the existing dataset is still being modified by other applications.  In order to build your app, you might need to marry data from multiple legacy systems, or with a separate dataset stored elsewhere.  These datasets could live on 5 different servers scattered across the world! One colocated database server might house a SQL database with relational data, while another cloud server might hold a handful of Mongo or Redis collections.  
+_あなたはビジネス部門にどのデータベースを使うか聞くでしょう:_
 
-Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually)
+> "データなんとかって、なんだよ。そう焦らせないでくれよ、間違ったのを選びたくないな。情シスに聞くから先に進めていてくれよ。"
 
-##### Performance
+WebアプリケーションやAPIに一つのデータベースを選ぶというやり方は多くの利用例において取ることが出来ません。多くの場合において既存の複数のデータセットとの互換性を持たなければなりませんし、場合によってはパフォーマンス上の原因から複数のデータベースを利用しなければならないことすら有ります。
 
-_You're sitting in front of your laptop late at night, and you realize:_
-> "How can I do keyword search?  The product data doesn't have any keywords, and the business wants search results ranked based on n-gram word sequences.  Also I have no idea how this recommendation engine is going to work.  Also if I hear the words `big data` one more time tonight I'm quitting and going back to work at the coffee shop."
-
-So what about the "big data"?  Normally when you hear bloggers and analyst use that buzzword, you think of data mining and business intelligence.  You might imagine a process that pulls data from multiple sources, processes/indexes/analyzes it, then writes that extracted information somewhere else and either keeps the original data or throws it away.
-
-However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases (for instance MongoDB provides geospatial indexing, and ElasticSearch provides excellent support for indexing data for full-text search).
-
-Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with optimizations/trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales. 
-
-### Adapters
-
-Like most MVC frameworks, Sails supports [multiple databases](http://beta.sailsjs.org/#/features).  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
-
-Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](http://beta.sailsjs.org/#/features), and a wealth of [community adapters](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) are also available.
-
-Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations; anything from a proprietary enterprise system, to an open API like LinkedIn, to a cache or traditional database.
+Sailsはデフォルトで`sails-disk`を利用するので、ローカルの一時ファイルを使ったデータベースを設定なしで利用することが出来ます。実際に使うデータベースに切り替える用意ができた時には（あるいはそれが何なのかみんながわかった時には）アプリケーションの中の[接続設定]()を書き換えるだけですみます。
 
 
-### Connections
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Connections are defined in [`config/connections.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
+##### 互換性
+
+_プロジェクトの管理者があなたのところに来て言いました。_
+
+> "ああ、ところで商品データは実は僕らのPOSシステムの中にすでにあるんだよ。多分何かのERPだと思うんだけど、DB2っていうやつかな。まあ、なんとかなるよね。簡単だろ？"
+
+多くの業務用アプリケーションは既存のデータベースと統合しなければなりません。ラッキーなケースにおいてはデータのマイグレーションを一度行うだけで済むでしょう。しかし、多くの場合においては既存のデータは他のアプリケーションから依然として編集されています。アプリケーションを開発するにあたって複数のレガシーなシステムや別の場所にあるデータセットからのデータを結合させる必要があるかも知れません。このデータベースは世界中の離れた５地点にあることだってあるのです。あるデータベースはMySQLに保管されたリレーショナルデータベースかも知れませんし、またあるほかのものはクラウド上に設置されたMongoやRedisのデータコレクションかも知れません。  
+
+Sails/Woterlineは（それがローカルにあろうと、インタネット上のどこかにあろうと）異なるデータストアにある異なるデータモデルをつなぎ合わせます。これによりレガシーのデータベースにあるテーブルの（とんでもないテーブル名の）データを使ってUserモデルを作成することが出来ます。同じようなことをProductモデルをDB2のデータベースから引っ張ってきたり、OrderモデルをMongoのデータコレクションから引っ張ってくることが出来ます。更に最も良いことはそれらの複数のデータベースを通じてデータを`.populate()`することができるのでコントローラやモデルのコードを変更することなく複数のデータベースにあるデータを移行することができることです。（ただし本番環境のデータは手動でマイグレーションを _しなければなりません_ 。）
+
+##### パフォーマンス
+
+_あなたは夜遅くあなたのパソコンの前に座っていてこんなことに気づきます。:_
+> "どうやってキーワード検索をすればいいっていうんだよ。商品データはキーワードなんて無いじゃないか。しかもビジネス部門はnグラムワードの順番に並び替えて結果表示したいって言ってるじゃないか。それにどうやってレコメンデーションエンジンを動かすかもわからないぞ。しかも今夜また`ビッグデータ`とか聞いたぞ。もうやめちまって珈琲屋での仕事に戻りたいよ。"
+
+ところで、「ビッグデータ」に関してはどうでしょうか。通常この言葉をブロガーやアナリストがバズワードとして使うときにはデータマイニングやビジネスインテリジェンスのようなものを考えるでしょう。つまり、こういうことと考えるかもしれません。データを複数のソースから取ってきて、それを何らかの処理、インデックス化、分析してそれからそれをそのまま使うなり、全く熱の形するなりして何らかの付加価値のついたデータを得ると。
+
+しかしそれ以上に特定のインデックスや検索に対するニーズに適した試みを皆行うことでしょう。そのニーズとはすなわち関連商品を検索したりレコメンドするエンジンに利用される"driving-direction-closeness"と呼ばれる機能のようなものです。幸い、いくつかのデータベースによってそれらの機能を簡単にすることが出来ます。（例えばMongo DBは空間地理学的なインデックス機能や全文検索やインデックスづくりに見事に対応した柔軟性のある検索機能を提供しています。）
+
+データベースを意図されたように使うということはパフォーマンス面で多大なメリットが有ります。特に複雑なレポートクレリを投げるときや検索（ソートを変えるだけでも）の時、機械学習をするときなどはその最たるものです。あるデータベースは昔ながらのビジネスクエリーをとても得意としますが、またあるものは特に速い読み書きの代わりにデータのMAPリデュースを得意とします。このような考慮がユーザベースのスケーリングでは特に重要となるのです。 
+
+### アダプタ
+
+他の多くのMVCフレームワークと同様にSailsは[複数のデータベース](http://beta.sailsjs.org/#/features)複数のデータベースをサポートします。これは我々がMySQLを使う時もMongo DBを使うときにもその他のDBを使う時にもみんな同じ方法でデータの問い合わせや操作を行えるということです。
+
+Waterlineはアダプタに関してもこのようなフレキシビリイティのあるコンセプトで作られています。アダプタは`find()`や`create（）`のようなマッピングメソッドを`SELECT * FROM `や`INSERT INTO`のようなローレベルのメソッドに書き換えることを目的にした小さなコードです。Sailsのコアチームのメンテナーは[ポピュラーなデータベース](http://beta.sailsjs.org/#/features)に対してのアダプタをオープンソースでメンテナンスしますし、[コミュニティの成果](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md)を利用することも出来ます。
+
+カスタムのWaterlineアダプタは実は[とっても簡単に作る](https://github.com/balderdashy/sails-generate-adapter)ことが出来ますし、インテグレーションをもっとメンテナンスしやすくすることが出来ます。（有名な業務用システムやLinked in などのオープンAPI、キャッシュたトラディショナルなデータベースに至るまで。）
+
+
+### コネクション
+
+**コネクション**は個々のデータベースへの接続を意味します。この設定オブジェクトは使用するアダプタやホスト、ポート、ユーザ名、パスワードなどの接続情報を含みます。コネクションは[`config/connections.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)にあります。
 
 ```javascript
 // in config/connections.js
@@ -74,20 +74,20 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html).
+Sailアプリケーションにおけるデフォルトのデータベース接続はベースモデル設定(`config/models.js`)にあります。しかし、モデルごとに[`connection`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)を指定することでオーバーライド出来ます。
 
 
-### Analogy
+### 喩え話
 
-Imagine a file cabinet full of completed pen-and-ink forms. All of the forms have the same fields (e.g. "name", "birthdate", "maritalStatus"), but for each form, the _values_ written in the fields vary.  For example, one form might contain "Lara", "2000-03-16T21:16:15.127Z", "single", while another form contains "Larry", "1974-01-16T21:16:15.127Z", "married".
+紙にペンで書かれている記入済みのフォームでいっぱいになった引き出しを想像してください。すべてのフォームは同じ項目を持っています。（例えば名前とか、誕生日、婚姻状況のように）しかし、それぞれのフォームに書かれている _値_ は様々です。例えばあるフォームは "Lara", "2000-03-16T21:16:15.127Z", "single", と、また別のあるものは "Larry", "1974-01-16T21:16:15.127Z", "married"と。
 
-Now imagine you're running a hotdog business.  If you were _very_ organized, you might set up your file cabinets as follows:
+あなたがホットドッグの商売を経営していると想像してください。もしもあなたがとても几帳面ならこのようなファイルを引き出しに作るでしょう。:
 
-+ **Employee** (contains your employee records)
++ **Employee** (従業員の情報を格納)
   + `fullName`
   + `hourlyWage`
   + `phoneNumber`
-+ **Location** (contains a record for each location you operate)
++ **Location** (営業拠点の情報を格納)
   + `streetAddress`
   + `city`
   + `state`
@@ -96,25 +96,25 @@ Now imagine you're running a hotdog business.  If you were _very_ organized, you
     + a list of all the purchases made at this location
   + `manager`
     + the employee who manages this location
-+ **Purchase** (contains a record for each purchase made by one of your customers)
++ **Purchase** (それぞれの顧客が購入した情報を格納)
   + `madeAtLocation`
   + `productsPurchased`
   + `createdAt`
-+ **Product** (contains a record for each of your various product offerings)
++ **Product** (販売しているものそれぞれの情報を格納)
   + `nameOnMenu`
   + `price`
   + `numCalories`
   + `percentRealMeat`
   + `availableAt`
-    + a list of the locations where this product offering is available.
+    + その商品を買うことが出来る営業拠点。
 
 
-In your Sails app, a **model** is like one of the file cabinets.  It contains **records**, which are like the forms.  `Attributes` are like the fields in each form.
+Sailsのアプリケーションでは**モデル**は引き出しの中の一つのファイルのようなものです。ファイルは**レコード**を含みますがこれはそれぞれのフォームのようなものです。`アトリビュート`はそれぞれのフォームの項目です。
 
 
 
-### Notes
-+ This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose.)
+### 備考
++ このモデルに関してのドキュメントはもしあなたが初期状態のORMである[Waterline](https://github.com/balderdashy/waterline)を上書きしているときは当てはまりません。そのような場合はあなたが設定したモデルの上位レイヤー(例えばMongooseなど)でのやりかたに従ってください。
 
 
 

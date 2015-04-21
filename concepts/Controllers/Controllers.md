@@ -1,11 +1,11 @@
-# Controllers
+# コントローラ
 
-### Overview
+### 概要
 
-Controllers (the **C** in **MVC**) are the principle objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://beta.sailsjs.org/#/documentation/concepts/ORM/Models.html) and [views](/#/documentation/concepts/Views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+コントローラ（**MVC**モデルでいうところの**C**）はSailsアプリケーションがWebブラウザやモバイルアプリケーションなどWebサーバと通信できる各種の端末から受けるリクエストを処理する基礎的なオブジェクトです。コントローラはしばしば[Model](http://beta.sailsjs.org/#/documentation/concepts/ORM/Models.html)と[View](/#/documentation/concepts/Views)の中間に立ちます。また、多くのケースではアプリケーションお大半の[ビジネスロジック](http://en.wikipedia.org/wiki/Business_logic)はコントローラの中に記述されます。
 
-### Actions
-Controllers are comprised of a collection of methods called *actions*.  Action methods can be bound to [routes](/#/documentation/concepts/Routes) in your application so that when a client requests the route, the bound method is executed to perform some business logic and (in most cases) generate a response.  For example, the `GET /hello` route in your application could be bound to a method like:
+### アクション
+コントローラは*アクション*と呼ばれるメソッドの集合から構成されます。アクションはあなたのアプリケーションのルーティングから転送されます。つまりクライアントが特定の[ルート](/#/documentation/concepts/Routes)に対してリクエストを行った時にはアクションに転送されそこで何ら家のビジネスロジックを実行した上で（大抵の場合は）レスポンスを生成します。例えば「`/hello`のルートにGETアクセスがなされた場合以下の様なメソッドが呼び出す」ということが出来ます。:
 
 ```javascript
 function (req, res) {
@@ -13,15 +13,15 @@ function (req, res) {
 }
 ```
 
-so that any time a web browser is pointed to the `/hello` URL on your app's server, the page displays the message &ldquo;Hi there&rdquo;.
+このためブラウザが`/hello`のURLを呼び出した時はいつでも&ldquo;Hi there&rdquo;とメッセージが表示されるようになります。
 
-### Where are Controllers defined?
-Controllers are defined in the `api/controllers/` folder. You can put any files you like in that folder, but in order for them to be loaded by Sails as controllers, a file must *end* in `Controller.js`.  By convention, Sails controllers are usually [*Pascal-cased*](http://c2.com/cgi/wiki?PascalCase), so that every word in the filename (including the first word) is capitilized: for example, `UserController.js`, `MyController.js` and `SomeGreatBigController.js` are all valid, Pascal-cased names.
+### コントローラはどこで定義されますか
+コントローラは`api/controllers`フォルダの中に定義されます。このフォルダにはどんなファイルでも置いていいですがSailsのコントローラとして読み込まれるためにはファイル名は必ず`Controller.js`で*終わらなければ*なりません。慣習に則り、Sailsのコントローラは[*パスカルケース*](http://c2.com/cgi/wiki?PascalCase)で命名されます。そのためすべての単語（最初の単語も含め）は大文字で始まらなければなりません。例えばUserController.js, MyController.js や`SomeGreatBigController.js` はすべて正しいフォーマットのパスカルケース命名です。
 
-You may organize your controllers into groups by saving them in subfolders of `api/controllers`, however note that the subfolder name *will become part of the Controller&rsquo;s identity* when used for routing (more on that in the "Routing" section below).
+もしもコントローラをグループ分けする必要がある場合`api/controllers`の中にサブフォルダーを作成することが出来ます。ただし、サブフォルダー名はルーティングの過程で*コントローラの名前の一部*として取り扱われます。(詳細は下記の"Routing"セクションをご覧ください。)
 
-### What does a Controller file look like?
-A controller file defines a Javascript object whose keys are action names, and whose values are the corresponding action methods.  Here&rsquo;s a simple example of a full controller file:
+### コントローラはどんなファイルですか
+コントローラフォルダはアクション名をキーとしたJavascriptオブジェクトとして定義され、そのオブジェクトのキーの中身にアクションが入ります。以下にコントローラファイルの簡単な例を挙げます。:
 
 ```javascript
 module.exports = {
@@ -34,70 +34,70 @@ module.exports = {
 };
 ```
 
-This controller defines two actions: the &ldquo;hi&rdquo; responds to a request with a string message, while the &ldquo;bye&rdquo; action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is possible to use `next` in an action method, you are strongly encouraged to use [policies](/#/documentation/concepts/Policies) instead wherever possible.
+このコントローラには2つのアクションが定義されいます。アクション&ldquo;hi&rdquo;はテキストのレスポンスを返し、アクション&ldquo;bye&rdquo;は別のWebサイトへのリダイレクトを返します。`req`オブジェクトと`res`オブジェクトは[Express.js](https://github.com/expressjs)でWebアプリケーションを書いたことのある人は誰でも馴染みあるところです。これはSailsはルーティングにあたってExpressを裏方で利用しているという設計上の利用です。Expressのミドルウエアとは違いSailsのコントローラは常にリクエストチェーンの最後になります。つまり、常に何らかのレスポンスないしエラーを返さなければならないということです。アクションメソッドの中で別の方針を使うことは可能ですが、この方針をとって構わない時には[ポリシー](/#/documentation/concepts/Policies)を利用することを強くおすすめします。
 
-### Routing
+### ルーティング
 
-By default, Sails will create a [blueprint action route](/#/documentation/reference/blueprint-api) for each action in a controller, so that a `GET` request to `/:controllerIdentity/:nameOfAction` will trigger the action.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](http://beta.sailsjs.org/#/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
+デフォルトで、Sailsはそれぞれのの中にある各コントローラにコントローラに対して[blueprint](/#/documentation/reference/blueprint-api)(訳注：CSSフレームワークの方ではありません)のルートを設定します。そのため`/:controllerIdentity/:nameOfAction`に対する`GET`アクセスは指定されたコントローラの指定されたアクションを呼び出します。上のセクションのコントローラが`api/controllers/SayController.js`に用意された場合、`/say/hi`と`/say/bye`ルートが起動時にデフォルトで有効になります。もしコントローラが`/we`というサブフォルダーの中に保存されていた場合はルートは`/we/say/hi`と`/we/say/bye`となります。Sailsの提供する自動ルーティング生成機能のさらなる詳細に関しては[blueprintsのドキュメンテーション](http://beta.sailsjs.org/#/documentation/reference/blueprint-api)をご覧ください。
 
-Besides the default routing, Sails allows you to manually bind routes to controller actions using the [`config/routes.js`](/#/documentation/concepts/Routes) file.  Some examples of when you might want to use explicit routes are:
+これらのデフォルトのルーティングに加え、Sailsでは[`config/routes.js`](/#/documentation/concepts/Routes)ファイルを使うことによりユーザーが手動でルートをバインドすることが出来ます。以下の例がそのようなルートファイルを利用すべき時の例です。:
 
-+ When you want to use separate actions to handle the same route path, based on the [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verb).  The aforementioned **action blueprint** routes bind *all* request methods for a path to a given action, including `GET`, `POST`, `PUT`, `DELETE`, etc.
-+ When you want an action to be available at a custom URL (e.g. `PUT /login`, `POST /signup`, or a "vanity URL" like `GET /:username`)
-+ When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)
++ 同一のパスを[HTTPメソッド](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)（verbともいいます）にしたがって複数のアクションに分けて処理したいとき。前述の**Blueprintのルート**は`GET`,`POST`,`PUT`,`DELETE`などを含めすべてのメソッドに対してルートがあっていれば処理します。
++ カスタムのURLでアクションを実行したいとき。(例 `PUT /login`, `POST /signup`や`GET /:username`のようなvanity URL )
++ ルートがどのように処理されるかを記述した追加的設定をしたいとき。（例　特別なCORS設定）
 
-To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the controller name + `.` + action name as the value (i.e. the **route target**).
+`config/routes.js`でコントローラのアクションに対して手動でルートを設定したいときはHTTPメソッドとパス（すなわち**ルーティングアドレス**）をキーに、コントローラ名＋アクション名（すなわち**ルーティングターゲット**）を値にして設定すれば出来ます。
 
-For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
+例えば以下の手動のルーティングは`/make/a/sandwich`にPOSTリクエストを受け取った時に`api/controllers/SandwichController.js`の`makeIt()`アクションを呼び出すものです。:
 
 ```js
   'POST /make/a/sandwich': 'SandwichController.makeIt'
 ```
 
 
-> **Note:**
+> **備考:**
 >
-> For controller files saved in subfolders, the subfolder is part of the controller identity:
+> コントローラファイルがサブディレクトリに保存された場合は以下のようにサブフォルダ名がコントローラ指定の一分になります。:
 >
 > ```js
 >   '/do/homework': 'stuff/things/HomeworkController.do'
 > ```
 >
-> This will cause the `do()` action in `api/controllers/stuff/things/HomeworkController.js` to be triggered whenever `/do/homework` is requested.
+> この設定では/do/homeworkが呼び出された時はいつでもapi/controllers/stuff/things/HomeworkController.js のdo()アクションが呼び出されることになります。
 
-A full discussion of manual routing is out of the scope of this doc--please see the [routes documentation](/#/documentation/concepts/Routes) for a full overview of the available options.
-
-
-
-### "Thin" Controllers
-
-Most MVC frameworks recommend writing "thin" controllers, and while Sails is no exception (it is a good idea to keep your Sails controllers as simple as possible) it is also helpful to understand "why?"
-
-Controller code is inherently dependent on some sort of trigger or event.  In a backend framework like Sails, this event is almost always an incoming request.  So if you write a bunch of code in one of your controller actions, it is not uncommon for that code's scope to be dependent on the "request context" (the `req` and `res` objects).  Which is fine...until you want to use that code from a slightly different action, or from the command line.
-
-So the goal of the "thin controller" philosophy is to encourage decoupling of reusable code from any related scope entanglements.  In Sails, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:
-
-+ Write a custom model method to encapsulate some code that performs a particular task relating to a particular model
-+ Write a service as a function to encapsulate some code that performs a particular application-specific task
-+ If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm]() under a permissive open-source license for other developers to use and help maintain.
+手動ルーティングに関しての完全な記述はこのドキュメントの範疇外になりますのでルーティングのドキュメンテーションを御覧ください。
 
 
-### Generating controllers
 
-You can use the [Sails command line tool](/#/documentation/reference/cli) to quickly generate a controller, by typing:
+### 「軽量な」コントローラ
+
+ほとんどのMVCフレームワークはコントローラを「軽量に」保つことを進めており、Sailsもその例外ではありませんが、（つまりSailsのコントローラ可能な限りシンプルにしておくべきです）ここで「なぜそうなのか」を知っておくのもいいでしょう。
+
+コントローラのコートはトリガーやイベント本質的に独立しています。Sailsのようなバックエンドフレームワークでは、イベントは殆どの場合においてインカミングのリクエストです。そのためもしいくつかのコードを一つのコントローラアクションに書いてしまった場合リクエストのコンテキスト（つまり`req`オブジェクトと`res`オブジェクト）ごとに独立しているべきである各コードのスコープとは別のものになってしまいます。それは一時的には何とかなりますが、あとで「ちょっと違うアクション」やコマンドラインから呼び出したいときに困ったことになります。
+
+そのため「軽量なコントローラ」の目指すものは再利用可能なコードが特定のスコープともつれ合ってしまっている状況を解消することです。Sailsにおいてこれを実現する方法はいろいろありますがコードをコントローラから独立させる最も一般的な方法は以下のとおりです。
+
++ 特定のモデルに対して特定のタスクを実行するためにカプセリングされたカスタムのモデルメソッドを書く。
++ 特定の用途に限定して使われるタスクを実行するためにカプセリングされたファンクションをサービスとして書く。
++ もし複数のアプリケーションを通じて有用であるコードを見つけた場合は（時間があれば）nodeのモジュールにしましょう。そうすればあなたの組織を通じて利用することが出来るようになりますし、更に良いこととしてはもしそれをnpmとしてオープンソースで公開すれば誰かが使ってくれたり、メンテナンスを手伝ってくれたりします。
+
+
+### コントローラの生成
+
+以下のコマンドを入力することで[Sailのコマンドラインツール](/#/documentation/reference/cli)から簡単にコントローラを作成することが出来ます。:
 
 ```sh
 $ sails generate controller <controller name> [action names separated by spaces...]
 ```
 
-For example, if you run the following command:
+例えば以下のコマンドを実行すると:
 
 ```sh
 $ sails generate controller comment create destroy tag like
 info: Generated a new controller `comment` at api/controllers/CommentController.js!
 ```
 
-Sails will generate `api/controllers/CommentController.js`:
+Sailsは以下のコントローラを`api/controllers/CommentController.js`として作成します。:
 
 ```javascript
 /**

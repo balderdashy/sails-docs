@@ -1,13 +1,13 @@
-# Waterline Query Language
+# Waterlineクエリー言語
 
-The Waterline Query language is an object-based criteria used to retrieve the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.
+Waterline Query languageはサポートされているすべてのデータベースコネクタからデータを取り出すことの出来るオブジェクトベースの比較式です。つまり、MySQLで使う時と同じクエリをMongo DBでもRediasでも使うことが出来るということです。これにより、コードの変更なしにデータベースの変更が可能です。
 
-### Query Language Basics
+### クエリー言語の基礎
 
-The criteria objects are formed using one of four types of object keys. These are the top level
-keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.
+Criteriaオブジェクトは４種類のオブジェクトのうち一つから構成されます。これらはクエリオブジェクトのトップレベルオブジェクトです。
+このオブジェクトはMongoDBで使われているクエリオブジェクトに「ゆるく」似ていますがちょっとした違いが有ります。
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or if `where` is excluded the entire object will be treated as a `where` criteria.
+クエリはアトリビュートを指定するために`where`を使い、また`limit`や`skip`などのオプションをオブジェクトのどこの部分を取り出すかを指定するために使うことができ、`where`が含まれない場合は`where`はオブジェクト全体を指しているものとしてみなされます。
 
 ```javascript
 Model.find({ where: { name: 'foo' }, skip: 20, limit: 10, sort: 'name DESC' });
@@ -19,13 +19,13 @@ Model.find({ name: 'foo' })
 
 #### Key Pairs
 
-A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
+キーペアは指定された値に厳密に合致するレコードを探すのに使えます。キーはモデルの中のどのアトリビュートを指し示すかを表し、値はアトリビュートの中の値がどの内容に厳密に合致して欲しいか指定します。これはCriteriaオブジェクトの基礎です。
 
 ```javascript
 Model.find({ name: 'walter' })
 ```
 
-They can be used together to search multiple attributes.
+複数のアトリビュート指定を同時に行うことも出来ます。
 
 ```javascript
 Model.find({ name: 'walter', state: 'new mexico' })
@@ -33,7 +33,7 @@ Model.find({ name: 'walter', state: 'new mexico' })
 
 #### Modified Pairs
 
-Modified pairs also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
+改良型ペアは様々な補助演算子を使い、厳密比較ではうまくいかないケースをサポートします。
 
 ```javascript
 Model.find({
@@ -45,7 +45,7 @@ Model.find({
 
 #### In Pairs
 
-IN queries work similarly to mysql 'in queries'. Each element in the array is treated as 'or'.
+INクエリはMySQLの'in queries'と似ています。配列中のそれぞれのエレメントはorとして処理されます。
 
 ```javascript
 Model.find({
@@ -55,7 +55,7 @@ Model.find({
 
 #### Not-In Pairs
 
-Not-In queries work similar to `in` queries, except for the nested object criteria.
+Not-Inクエリは`in`クエリと似ていますが、比較オブジェクトがネストされているという部分が異なります。
 
 ```javascript
 Model.find({
@@ -65,8 +65,8 @@ Model.find({
 
 #### Or Pairs
 
-Performing `OR` queries is done by using an array of query pairs. Results will be returned that
-match any of the criteria objects inside the array.
+クエリペアの配列を使うことで`OR`クエリが実行できます。
+配列の中のいずれかの条件を満たすレコードが結果として帰ってきます。
 
 ```javascript
 Model.find({
@@ -77,9 +77,9 @@ Model.find({
 })
 ```
 
-### Criteria Modifiers
+### Criteria修飾子
 
-The following modifiers are available to use when building queries.
+クエリを作成する際には以下の修飾子を利用することが出来ます。
 
 * `'<'` / `'lessThan'`
 * `'<='` / `'lessThanOrEqual'`
@@ -94,7 +94,7 @@ The following modifiers are available to use when building queries.
 
 #### '<' / 'lessThan'
 
-Searches for records where the value is less than the value specified.
+指定された値より小さな値を持つレコードを検索します。
 
 ```javascript
 Model.find({ age: { '<': 30 }})
@@ -102,7 +102,7 @@ Model.find({ age: { '<': 30 }})
 
 #### '<=' / 'lessThanOrEqual'
 
-Searches for records where the value is less or equal to the value specified.
+指定された値と同じ値か、より小さな値を持つレコードを検索します。
 
 ```javascript
 Model.find({ age: { '<=': 21 }})
@@ -110,7 +110,7 @@ Model.find({ age: { '<=': 21 }})
 
 #### '>' / 'greaterThan'
 
-Searches for records where the value is more than the value specified.
+指定された値より大きな値を持つレコードを検索します。
 
 ```javascript
 Model.find({ age: { '>': 18 }})
@@ -118,7 +118,7 @@ Model.find({ age: { '>': 18 }})
 
 #### '>=' / 'greaterThanOrEqual'
 
-Searches for records where the value is more or equal to the value specified.
+指定された値と同じ値か、より大きな値を持つレコードを検索します。
 
 ```javascript
 Model.find({ age: { '>=': 21 }})
@@ -126,7 +126,7 @@ Model.find({ age: { '>=': 21 }})
 
 #### '!' / 'not'
 
-Searches for records where the value is not equal to the value specified.
+指定した値と合致しないレコードを検索します。
 
 ```javascript
 Model.find({ name: { '!': 'foo' }})
@@ -134,7 +134,7 @@ Model.find({ name: { '!': 'foo' }})
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign.
+`%`記号を使ってパターンマッチングでレコードを検索します。
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
@@ -142,39 +142,39 @@ Model.find({ food: { 'like': '%beans' }})
 
 #### 'contains'
 
-A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it.
+両端に`%`記号を付けたパターンマッチング検索のショートカットです。
+指定した内容が文字列中のどこかに存在するレコードを返します。
 
 ```javascript
 Model.find({ class: { 'contains': 'history' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
 Model.find({ class: { 'like': '%history%' }})
 ```
 
 #### 'startsWith'
 
-A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value.
+右端に`%`記号を付けたパターンマッチング検索のショートカットです。
+文字列が指定した内容で始まるレコードを返します。
 
 ```javascript
 Model.find({ class: { 'startsWith': 'american' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
 Model.find({ class: { 'like': 'american%' }})
 ```
 
 #### 'endsWith'
 
-A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value.
+左端に`%`記号を付けたパターンマッチング検索のショートカットです。
+文字列が指定した内容で終わるレコードを返します。
 
 ```javascript
 Model.find({ class: { 'endsWith': 'can' }})
 
-// The same as
+// 上記のコードは下記のコードと一緒です。
 
 Model.find({ class: { 'like': '%can' }})
 ```
@@ -189,8 +189,8 @@ Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
 
 ### Query Options
 
-Query options allow you refine the results that are returned from a query. The current options
-available are:
+クエリプションを使うことでクエリに対して帰ってくる結果をさらに改良することが出来ます。
+現在使えるオプションはい次のものです。:
 
 * `limit`
 * `skip`
@@ -198,7 +198,7 @@ available are:
 
 #### Limit
 
-Limits the number of results returned from a query.
+返すレコードの数を制限します。
 
 ```javascript
 Model.find({ where: { name: 'foo' }, limit: 20 })
@@ -206,7 +206,7 @@ Model.find({ where: { name: 'foo' }, limit: 20 })
 
 #### Skip
 
-Returns all the results excluding the number of items to skip.
+最初の指定した個数を除く全てのレコードを受け取ります。
 
 ```javascript
 Model.find({ where: { name: 'foo' }, skip: 10 });
@@ -214,13 +214,13 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 
 ##### Pagination
 
-`skip` and `limit` can be used together to build up a pagination system.
+`skip`と`limit`を一緒に使うことでページネーションが出来ます。
 
 ```javascript
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
-`paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
+`paginate`は`skip`と`limit`を一緒に使うのと同じ役割を果たすWaterlineヘルパーメソッドです。
 
 ``` javascript                                                                  
 Model.find().paginate({page: 2, limit: 10});                                     
@@ -228,40 +228,40 @@ Model.find().paginate({page: 2, limit: 10});
 
 > **Waterline**
 >
-> You can find out more about the Waterline API below:
+> WaterlineAPIに関して更に詳しくは以下のドキュメントで確認できます。:
 > * [Sails.js Documentation](http://sailsjs.org/#/documentation/reference/waterline/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
 > * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
 
 
-#### Sort
+#### ソート
 
-Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
-sort, or specify an `asc` or `desc` flag for ascending or descending orders respectively.
+検索結果をアトリビュートの名前でソートすることが出来ます。
+単にアトリビュートを指定するだけで昇順のソートが出来る他`asc`または`desc`のフラグを指定することでそれぞれのアトリビュートに対して昇順と降順の並べ順を指定できます。
 
 ```javascript
-// Sort by name in ascending order
+// nameの昇順で並び替え。
 Model.find({ where: { name: 'foo' }, sort: 'name' });
 
-// Sort by name in descending order
+// nameの降順で並び替え。
 Model.find({ where: { name: 'foo' }, sort: 'name DESC' });
 
-// Sort by name in ascending order
+// nameの昇順で並び替え。
 Model.find({ where: { name: 'foo' }, sort: 'name ASC' });
 
-// Sort by binary notation
+// バイナリNotationで並び替え。
 Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
 
-// Sort by multiple attributes
+// 複数のアトリビュートで並び替え。
 Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 ```
 
-> **Case-sensitivity**
+> **ケースセンシティブか？**
 >
-> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
+> Waterlineのすべてのクエリは**ケースセンシティブではありません**。このおかげでクエリを簡単に実行できますが、文字列をインデックスするのは難しくなります。このことは文字列を検索したり文字列で並び替えたりするときに念頭に置いておいてください。
 >
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html) or [`.query()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) method.
+> 現在のところ、**ケースセンシティブ**なクエリを発行するもっともよい手段は [`.native()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html)か[`.query()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html)のメソッドを使うことです。
 
 
 <docmeta name="displayName" value="Query Language">

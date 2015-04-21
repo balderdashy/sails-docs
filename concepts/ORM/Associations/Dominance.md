@@ -1,5 +1,5 @@
-# Dominance
-## Example Ontology
+# 「Dominance」
+## エンティティの例
 
 
 ```javascript
@@ -31,28 +31,28 @@ module.exports = {
 };
 ```
 
-### The Problem
+### 問題
 
-It's easy to see what's going on in this cross-adapter relationship.  There's a many-to-many ( `N->...` ) relationship between users and products.  In fact, you can imagine a few other relationships (e.g. purchases) which might exist, but since those are probably better-represented using a middleman model, I went for something simple in this example.
+このアダプタをまたがるデータ間での理レーヨンに何が起こっているのかは簡単にわかります。個々には多対多( `N->...` ) のリレーションが商品とユーザの間にあります。実際はその他のリレーション(購入等)があるとお考えになると思いますが、それらはミドルマンモデルを使ういい例だと思いますのでこの例ではよりシンプルにしました。
 
-Anyways, that's all great... but where does the relationship resource live?  "ProductUser", if you'll pardon with the SQL-oriented nomenclature.  We know it'll end up on one side or the other, but what if we want to control which database it ends up in? 
+これらはすいつも全て素晴らしいですが。。。リレーションリソースは何処にあるのでしょうか。SQL的な命名法によると”ProductUser”ですね。我々はこれがどちらかの一方にあるというのはわかりますが、どっちのデータベースにあるべきなのかをコントロールしたいときはどうしましょうか。
 
-> **IMPORTANT NOTE**
+> **重要な備考**
 >
-> This is _only a problem because both sides of the association have a `via` modifier specified_!!
-> In the absence of `via`, a collection attribute always behaves as `dominant: true`.
-> See the FAQ below for more information.
+> これは _アソシエーションの両方のモデルが`via`モディファイアの指定を持っているゆえに起こる問題です_ !!
+> もし`via`がなければコレクションアトリビュートは常に`dominant: true`として振る舞います。
+> さらなる情報は以下のFAQを御覧ください。
 
 
-## The Solution
+## 解決策
 
-Eventually, it may be even be possible to specify a 3rd connection/adapter to use for the join table.  For now, we'll focus on choosing one side or the other.
-
-
-We address this through the concept of "dominance."  In any cross-adapter model relationship, one side is assumed to be dominant.  It may be helpful to think about the analogy of a child with multinational parents who must choose one country or the other for her [citizenship](http://en.wikipedia.org/wiki/Japanese_nationality_law)
+最終的にはジョインテーブルに使う第3のコネクション・アダプタがあることすらありえますが、とりあえずのところはどちらかの側にあるのかを選ぶことに焦点を当てます。
 
 
-Here's the ontology again, but this time we'll indicate the MySQL database as the "dominant".  This means that the "ProductUser" relationship "table" will be stored as a MySQL table.
+ここではこれをドミナンスのコンセプトを通して説明します。全てのクロスアダプタモードのリレーションにおいてどちらかの側がドミナントとみなされます。これは多国籍な両親から生まれた子供がどちらかの [国籍](http://en.wikipedia.org/wiki/Japanese_nationality_law)を選ばなければならない例に例えれば考えやすいでしょう。
+
+
+再びリレーションの例ですが今回はMySQLデータベースがドミナントであると明確に示しています。これは"ProductUser" リレーション「テーブル」がMySQLテーブルとして保存されるということです。
 
 
 ```javascript
@@ -86,50 +86,50 @@ module.exports = {
 ```
 
 
-## Choosing a "dominant"
+## 「ドミナント」を選ぶ
 
-Several factors may influence your decision:
+この判断にはいくつかの要因が関与します:
 
-+ If one side is a SQL database, placing the relationship table on that side will allow your queries to be more efficient, since the relationship table can be joined before the other side is communicated with.  This reduces the number of total queries required from 3 to 2.
-+ If one connection is much faster than the other, all other things being equal, it probably makes sense to put the connection on that side.
-+ If you know that it is much easier to migrate one of the connections, you may choose to set that side as `dominant`.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between `Patient` and `Medicine`) you want to be sure that all relevant data is saved in one particular database over the other (in this case, `Patient` is likely to be `dominant`).
-+ Along the same lines, if one of your connections is read-only (perhaps `Medicine` in the previous example is connected to a read-only vendor database), you won't be able to write to it, so you'll want to make sure your relationship data can be persisted safely on the other side.
++ 片側がSQLデータベースである場合、もう一方にコミュニケーションする前にリレーションテーブルをジョインすることが出来るため、SQLの側ににリレーションテーブルを置くほうがクエリを効率化出来ます。これは必要な総クエリ数を3から2に減少させます。
++ もしあるコネクションが他のコネクションより速い場合、その他の条件が同様であればそのコネクションに置くほうがいいでしょう。
++ 一方のコネクションにマイグレートするほうが簡単な場合、マイグレート先の方を `dominant`とすべきでしょう。同様に規制やコンプライアンスの問題が判断に影響します。もしリレーションがセンシティブな患者情報を含む場合(例えば`Patient`と`Medicine`のリレーションのように)関係する全てのデータが一つの特定のデータベースに保存されているようにしたいでしょう(このケースではおそらく`Patient`を`dominant`にするでしょう)。
++ これらに加えて、一方のコネクションが読み込み専用(前の例の`Medicine`は製薬会社の読み込み専用データベースかもしれません)で書き込めない場合、そうでない方においてリレーションがきちんと保存されるようにすべきでしょう。
 
 
 ## FAQ
 
 
-##### What if one of the collections doesn't have `via`?
+##### どちらかのコレクションが`via`を持たなければどうなりますか?
 
-> If a `collection` association does not have a `via` property, it is automatically `dominant: true`.
-
-
-##### What if both collections don't have `via`?
-
-> If both `collections` don't have `via`, then they are not related.  Both are `dominant`, because they are separate relationship tables!!
-
-##### What about `model` associations?
-
-> In all other types of associations, the `dominant` property is prohibited.  Setting one side to `dominant` is only necessary for associations between two models which have an attribute like: `{ via: '...', collection: '...' }` on both sides.
+> もし`collection`のアソシエーションが`via`プロパティを満たない時は自動的に`dominant: true`になります。
 
 
-##### Can a model be dominant for one attribute and not another?
-> Keep in mind that a model is "dominant" only in the context of a particular relationship.  A model may be dominant in one or more relationships (attributes) while simultaneously NOT being dominant in other relationships (attributes).
-> e.g. if a `User` has a collection of toys called `favoriteToys` via `favoriteToyOf` on the `Toy` model, and `favoriteToys` on `User` is `dominant: true`, `Toy` can still be dominant in other ways.  So `Toy` might also be associated to `User` by way of its attribute, `designedBy`, for which it is `dominant: true`.
+##### 両方のコレクションが`via`を持たなければどうなりますか?
+
+> もし両方の`collections`が`via`を持たなければリレーションは張られません。両方が`dominant`です。なぜならそれぞれ別別のリレーションテーブルだからです。
+
+##### `model`のアソシエーションはどうですか?
+
+> その他のタイプのアソシエーションにおいて`dominant`プロパティの仕様は禁止されています。片方に`dominant`を設定することは`{ via: '...', collection: '...' }`のようなアトリビュートを両方に持つ2つのモデルのアソシエーションにのみ必要です
 
 
-##### Can both models be dominant?
+##### モデルは一つのアトリビュートのドミナントになって別のもののドミナントにならないことは出来ますか。
+> モデルのドミナントは特定のリレーションについてのみの文脈であることを覚えておいてください。モデルは一つまたは複数のリレーション(アトリビュート)においてドミナントになり、別のリレーション(アトリビュート)に関してドミナントにならないということが出来ます。
+> 例　もし`User`が`Toy`モデル上の`favoriteToyOf`を通じて`favoriteToys`と呼ばれるコレクションを持ち、`User`の`favoriteToys`は`dominant: true`の時`Toy`は依然として別の方面でドミナントになることが出来ます。`Toy` は`User`に `designedBy`アトリビュートを通じてもリレーションしており、そのドミナントが`dominant: true`であるという場合です。
 
-> No. If both models in a cross-adapter/cross-connection, many-to-many association set `dominant: true`, an error is thrown before lift.
+
+##### 両方のモデルがドミナントになれますか?
+
+> いいえ。クロスアダプタ・クロスコネクションの多対多アソシエーションにおいてもし両方のモデルが`dominant: true`に設定されている場合は起動前にエラーが出力されます。
 
 
-##### Can neither model be dominant?
+##### どちらもドミナントにしないことは可能ですか?
 
-> Sort of... If neither model in a cross-adapter/cross-connection, many-to-many association sets `dominant: true`, a warning is displayed before lift, and a guess will be made automatically based on the characteristics of the relationship.  For now, that just means an arbitrary decision based on alphabetical order :)
+> 一応出来ます。。。もしクロスアダプタ・クロスコネクションの多対多アソシエーションに置いてどちらのモデルも`dominant: true`にセットされなかった場合起動前に警告が出ます、そしてリレーションの文字列のアルファベット順に自動的に生成されるはずです。今のところは単にアルファベット順による恣意的な判断です。 :)
 
-##### What about non-cross-adapter associations?
+##### クロスアダプタではないリレーションの場合はどうですか?
 
-> The `dominant` property is silently ignored in non-cross-adapter/cross-connection associations.  We're assuming you might be planning on breaking up the schema across multiple connections eventually, and there's no reason to prevent you from being proactive.  Plus, this reserves additional future utility for the "dominant" option down the road.
+> 非クロスアダプタ・非クロスコネクションのアソシエーションでは`dominant`のプロパティは静かに無視されます。我々は皆さんがいずれスキーマを複数のコネクションに分けることを考えているのではないかと思いますし、その準備を前もって行っておくことを邪魔する理由はありません。それに、これは将来の"dominant"の将来的な利用を予約するものですので。
 
 
 <docmeta name="uniqueID" value="Dominance904539">

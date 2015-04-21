@@ -1,7 +1,7 @@
-# Direct Access to Join Tables
-### DANGER DANGER!!
+# ジョインテーブルに直接アクセスする
+### 危険です危険です!!
 
-You can use waterline for low level access to join tables.  Unless you know what youre doing, DONT DO THIS!
+Waterlineを使ってジョインテーブルに対する低レベルのアクセスを行うことが出来ます。しかしあなたが自分で何をやってるかをわかっている時以外は絶対やってはいけません。
 
 
 TODO

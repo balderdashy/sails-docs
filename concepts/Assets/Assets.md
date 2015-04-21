@@ -1,18 +1,18 @@
-# Assets
+# アセット
 
-### Overview
+### 概要
 
-Assets refer to [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) on your server that you want to make accessible to the outside world. In Sails, these files are placed in the [`assets/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/assets) directory, where they are processed and synced to a hidden temporary directory (`.tmp/public/`) when you lift your app. The contents of this `.tmp/public` folder are what Sails actually serves - roughly equivalent to the "public" folder in [express](https://github.com/expressjs), or the "www" folder you might be familiar with from other web servers like Apache.  This middle step allows Sails to prepare/pre-compile assets for use on the client - things like LESS, CoffeeScript, SASS, spritesheets, Jade templates, etc.
+アセットとはあなたがサーバにおいて公開したい[スタティックファイル](http://en.wikipedia.org/wiki/Static_web_page)(js,css,imagesなど)を指します。Sailsではアセットは[`assets/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/assets)ディレクトリに配置されあなたがアプリケーションをデプロイした時に非表示の一時テクディレクトリ(`.tmp/public/`)に保存され、処理並びに同期がされます。この`.tmp/public`フォルダーの中身はSailsが実際に提供するものです。これはおおまかに言って[express](https://github.com/expressjs)における"public"フォルダーやApacheのようなWebサーバにおける"www"フォルダーと同等です。この中間ステップを踏むことでSailsはアセットがクライアントで実際に使われるための前処理や事前コンパイル（LESSやCoffeeScript、SASS、spritesheets、Jade templatesなどの）を行うことが出来ます。
 
-### Static middleware
+### スタティックミドルウエア
 
-Behind the scenes, Sails uses the [static middleware](http://www.senchalabs.org/connect/static.html) from Express to serve your assets. You can configure this middleware (e.g. cache settings) in [`/config/http.js`](/#/documentation/reference/sails.config/sails.config.http.html).
+舞台裏ではSailsはアセットを提供するためにExpressの[static middleware](http://www.senchalabs.org/connect/static.html)を使っています。このミドルウエアの設定（例えばキャッシュの設定など）は[`/config/http.js`](/#/documentation/reference/sails.config/sails.config.http.html)でできます。
 
 ##### `index.html`
-Like most web servers, Sails honors the `index.html` convention.  For instance, if you create `assets/foo.html` in a new Sails project, it will be accessible at `http://localhost:1337/foo.html`.  But if you create `assets/foo/index.html`, it will be available at both `http://localhost:1337/foo/index.html` and `http://localhost:1337/foo`.
+ほとんどのWebサーバのようにSailsは`index.html`の習慣を採用しています。例えばあなたが新しいSailsプロジェクトの中に`assets/foo.html`を作ったとすると`http://localhost:1337/foo.html`でアクセス可能になります。しかしもしあなたが`assets/foo/index.html`を作ったとすると`http://localhost:1337/foo/index.html`でも`http://localhost:1337/foo`でもアクセスすることが出来るようになります。
 
-##### Precedence
-It is important to note that the static [middleware](http://stephensugden.com/middleware_guide/) is installed **after** the Sails router.  So if you define a [custom route](/#/documentation/concepts/Routes?q=custom-routes), but also have a file in your assets directory with a conflicting path, the custom route will intercept the request before it reaches the static middleware. For example, if you create `assets/index.html`, with no routes defined in your [`config/routes.js`](/#/documentation/reference/sails.config/sails.config.routes.html) file, it will be served as your home page.  But if you define an custom route, `'/': 'FooController.bar'`, that route will take precedence.
+##### ルートの優先
+[スタティックミドルウエア](http://stephensugden.com/middleware_guide/)がSailsのルータの**背後に**インストールされるということを理解することは重要な事です。そのためもしあなたが[カスタムのルート](/#/documentation/concepts/Routes?q=custom-routes)を定義しその一方で競合するパスにアセットを配置した場合、カスタムルートの設定はアクセスがスタティックミドルウエアに到達する前にそのルーティングを妨害してしまいます。例えば、もしあなたが`assets/index.html`を作成し、[`config/routes.js`](/#/documentation/reference/sails.config/sails.config.routes.html)ファイルで何もルートを定義しなかった場合そのファイルはホームページとして提供されます。しかし、もしあなたがカスタムのルート`'/': 'FooController.bar'`,を定義した場合、そのルート設定が優先されます。
 
 
 <docmeta name="uniqueID" value="Assets220313">
