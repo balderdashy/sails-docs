@@ -7,38 +7,34 @@ Por outro lado, as vezes quando nós falamos de "web frameworks", nós queremos 
 
 ## Convenção sobre Configuração
 
-Sails accomplishes many of the same goals as other MVC web application frameworks, using many of the same methodologies.  This was done on purpose.  A consistent approach makes developing apps more predictable and efficient for everybody involved.
+Velas realiza muitos dos objetivos como outros frameworks de aplicação web MVC, usando muitas das mesmas metodologias. Isto foi feito de propósito. Uma abordagem consistente torna o desenvolvimento de aplicativos mais previsível e eficiente para todos envolvidos.
 
-Imagine starting a new job at a company building a Sails app (or imagine starting the company, if that's your thing.)  If anyone on your team has worked with frameworks like Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, or Rails, Sails will feel pretty familiar.  Not only that, but they can look at a Sails project and know, generally, how to code up the basic patterns they've implemented over and over again in the past; whether their background is in PHP, Ruby, Java, C#, or Node.js.  What about your second app, or your third?  Each time you create a new Sails app, you start with a sane, familiar boilerplate that makes you more productive.  In many cases, you'll even be able to recycle some of your backend code.
+Imagine começar um novo emprego em uma empresa de construção de um app Sails (ou imaginar começando a empresa, se isso é coisa sua.) Se alguém em sua equipe tem trabalhado com frameworks como Zend, Laravel, CodeIgniter, Cake, Grails, Django, ASP.NET MVC, ou Rails, Sails vai se sentir muito familiar. Não só isso, mas eles podem olhar para um projeto Sails e saber, em geral, a forma de codificar com os padrões básicos que eles implementaram uma e outras vezes no passado; Se a sua formação é em PHP, Ruby, Java, C #, ou Node.js. E sobre o seu segundo aplicativo, ou seu terceiro? Cada vez que você criar um novo app Sails, você começa conciente, familiar que faz você mais produtivo. Em muitos casos, você vai mesmo ser capaz de reciclar um pouco do seu código de backend.
 
-> **History**
+> **História**
 >
-> Sails didn't invent this concept-- it's [been around for years](https://en.wikipedia.org/wiki/Convention_over_configuration).  Even before the phrase "Convention over Configuration" (or CoC) was popularized by Ruby on Rails, it was a core tenant of the JavaBeans specification and in many ways, a natural lashback against the extremely verbose XML configuration common in traditional Java web frameworks of the late '90s and early 2000s.
+> Sails não inventou esse conceito -- existe [há anos](https://en.wikipedia.org/wiki/Convention_over_configuration). Antes mesmo de a frase "Convensão sobre Configuração" (ou CoC) ser popularizado por Ruby on Rails, era um inquilino de núcleo da especificação JavaBeans e em muitos aspectos, um lashback natural contra a configuração XML extremamente verbosa comum em frameworks para web Java tradicionais do final dos anos 90 e início dos anos 2000.
 
+## Acoplamento Flexível
 
-## Loose Coupling
+Os dias de forçar uma abordagem única para desenvolvimento acabaram. Precisamos de ferramentas que permitem-na escolher os componentes que se ajustam às nossas necessidades. Na verdade, é simplesmente preguiçoso para criar as coisas de outra maneira. A abordagem de Sails está a componentes acoplados livremente, para que possam ser adicionado ou removidos de seu app à vontade.
 
-> TODO: explain why pushing towards an open standard for programming apps is important.
->
-> TODO: more specifically, give some background why small, loosely coupled modules are good.
->
-> TODO: explain how Sails core is a set of standalone, loosely coupled components (link to MODULES.md).
->
-> TODO: discuss how a Sails app is a set of standalone, loosely coupled components:
->  + how each model, or controller, etc. is a node module.
->  + how policies are designed to be general-purpose and shared between apps and/or developers.
->  + how Sails strives to make adapter development as easy as possible, even for non-database integrations.
->
-> TODO: explain how Sails is designed for any part to be rip-outable, overridden, or extended (hooks, generators, adapters)
->
-> TODO: Explain how Sails can be used without any boilerplate files, just like Express, to fit an imperative programming style, or plug in as part of your existing Node / Node+Express app.
+Node em seu núcleo criou um "posso fazer" a cultura ansiosa para experimentar e fazer as coisas funcionarem. Sails abraça essa atitude e se esforça para fornecer ferramentas que funcionam em torno de você. O nível de automação ou magia que quer em Sails está directamente relacionado com o tempo que você tem para um projeto e sua experiência trabalhando com Node. Sails é flexível o suficiente para que você possa explorar e criar quando você tem tempo, mas também fornece automação quando você não.
+
+Sails realiza esse acoplamento flexível usando as tradicionais dependências. Sem mágica, que não seja preciso tempo para criar componentes que podem fazer parte do conjunto, mas que não necessitam de estar presentes para que o conjunto funcione. Por exemplo, controladores, modelos, e arquivos de configuração são apenas módulos Node. Sails usa algumas convenção para ajudar. Sails pega o nome UserController.js na pasta Controllers para deduzir que isso é de fato um controlador de usuários. Outros exemplo involve políticas. Então políticas permitem você tenha um pouco de código que executa no controlador ou em uma ação específica do controlador. A parte legal é que o arquivo de configuração que conecta as políticas com o controlador/ação são separadas. O que significa que você pode escrever punhado de políticas diferentes e eles são completamente portáveis entre aplicações em Sails. Você pode decidir depois qual controlador/ação você que aplicar a eles.
+
+Núcleo do Sails consiste em vinte diferentes hooks: módulos que moficam a tempo de execução no servidor, adcionando middleware, adicionando rotas para serem escutadas, ou senão anexando recursos adicionais ao framework. Isto dá acesso para você substituir ou desativar cada componente ou parâmetros de configuração em Sails. Esses hooks são carregados em tempo de execução quando o Sails inicia. Você mesmo tem a capacidade de ter a única configuração para seu próprio hook. Na verdade é um dos principais diferenciais entre serviços e hooks.
+
+Outro exemplo de acoplagem flexível é os arquivos de configuração. Necessita algumas configurações para disponibilizar para seu projeto? Sem problema. Crie um arquivo dentro da pasta de configurações que usa o comum module.exports padrão e todo no módulo estará disponível para você do objetos globais de sails.
+
+Quase todos os componentes do Sails podem ser omitido, sobrescritos ou estendido. Por exemplo, Sails tem um grupo de ferramentas chamado blueprints. Essas plantas torná-lo realmente fácil de levantar um projeto e execução no que se refere a rotas e operações de CRUD. Mas suponha que você deseja usar operações de leitura, atualizar e exclusão, mas a ação de criar precisa um trato mais amoroso. Não tem problema, basta construir uma ação de criação e outras operações CRUD continuar trabalhando. Suas ações personalizadas substituindo uma ação em blueprint. É tão simples.
 
 > Links:
-> + [Unix philosophy](http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js)
-> + [Node culture](https://blog.nodejitsu.com/the-nodejs-philosophy/)
+> + [Filosofia Unix](http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js)
+> + [Cultura Node](https://blog.nodejitsu.com/the-nodejs-philosophy/)
 
 
-## Pragmatism
+## Pragmatismo
 
 > TODO: set the stage- the purpose of any practical web framework should be to solve real-world use cases.  Node, being built on JavaScript, is the most intensely pragmatic thing to hit the scene since the introduction of Java.  It [will replace Java](http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise) [in the enterprise](http://blog.appfog.com/node-js-is-taking-over-the-enterprise-whether-you-like-it-or-not/).
 
