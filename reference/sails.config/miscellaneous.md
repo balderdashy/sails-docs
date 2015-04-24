@@ -46,4 +46,12 @@ Set a global timeout for Sails hooks, in milliseconds.  Sails will give up tryin
 
 
 
+### `sails.config.keepResponseErrors`
+
+By default, convenience functions `badRequest`, `forbidden`, `notFound`, and `serverError` will clear the response body.  This behavior may be undesirable in certain cases, such as exposing underlying Waterline validation errors to clients while responding through `badRequest`.
+
+Set `keepResponseErrors` to `true` to ensure Sails preserves the response body for these functions.
+
+
+
 <docmeta name="displayName" value="sails.config.*">
