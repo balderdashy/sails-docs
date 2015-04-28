@@ -20,15 +20,15 @@ Updates existing records in the database that match the specified criteria.
 
 ### Example Usage
 
-```javascript 
-User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err,updated){
-  
+```javascript
+User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, updated){
+
   if (err) {
     // handle error here- e.g. `res.serverError(err);`
     return;
   }
-  
-  console.log('Updated user to have name '+updated[0].name);
+
+  console.log('Updated user to have name ' + updated[0].name);
 });
 
 ```

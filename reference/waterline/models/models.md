@@ -44,7 +44,7 @@ A model's `identity` is different than its `globalId`.  The `globalId` is determ
 sails.models.kitten.find().exec(function (err, allTheKittens) {
   // We also could have just used `Kitten.find().exec(...)`
   // if we'd left the global variable exposed.
-})
+});
 ```
 
 

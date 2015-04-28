@@ -20,11 +20,11 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 
 ### Example Usage
 
-```javascript 
-User.findOrCreate({name:'Walter'},{name:'Jessie'}).exec(function createFindCB(err,record){
+```javascript
+User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(err, record){
   console.log('What\'s cookin\' '+record.name+'?');
-  });
-  
+});
+
 // What's cookin' Jessie?
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
