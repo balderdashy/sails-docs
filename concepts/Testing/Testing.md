@@ -53,7 +53,7 @@ after(function(done) {
 
 This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha.opts)
 
-Note: If you are writing your test in coffeescript be sure to add this lines to your mocha.opts
+**Note**: If you are writing your test in CoffeeScript be sure to add this lines to your mocha.opts
 ```
 --require coffee-script/register
 --compilers coffee:coffee-script/register
@@ -109,7 +109,7 @@ In order to run your test using mocha, you'll have to use `mocha` in the command
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json, on the scripts obj, add a `test` key and type this as its value `./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json.On the scripts obj, add a `test` key and type this as its value `./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
 
 ```js
  // Some config....
@@ -120,7 +120,7 @@ To avoid typing the mocha command like stated before (specially when calling boo
   },
  // More config
 ```
-The `*` is a wildcard used to match any file inside the `unit` forlder that ends in `.test.js` so you can perfectly modify it to search for `*.spec.js` if it suits you. In the same way you can use wildcards for your folders by using two `*` instead of one.
+The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
 ## Code coverage
 
