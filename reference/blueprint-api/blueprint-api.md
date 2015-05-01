@@ -2,24 +2,55 @@
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
+Together, blueprint routes and blueprint actions constitute the **blueprint API**, 
+the built-in logic that powers the 
+[RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) 
+you get every time you create a model and controller.
 
-For example, if you create a `User.js` model and `UserController.js` controller file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
+For example, if you create a `User.js` model and `UserController.js` controller 
+file in your project, then with blueprints enabled you will be able to 
+immediately visit `/user/create?name=joe` to create a user, and visit `/user` to 
+see an array of your app's users.  All without writing a single line of code!
 
-Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
+Blueprints are great for prototyping, but they are also a powerful tool in 
+production due to their ability to be overridden, protected, extended or disabled 
+entirely.
 
 ##### Blueprint Routes
 
-When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](./#!/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+When you run `sails lift` with blueprints enabled, the framework inspects your 
+controllers, models, and configuration in order to 
+[bind certain routes](./#!/documentation/concepts/Routes) automatically. These 
+implicit blueprint routes (sometimes called "shadows") allow your app to respond 
+to certain requests without you having to bind those routes manually in your 
+`config/routes.js` file. By default, the blueprint routes point to their 
+corresponding blueprint *actions* (see "Blueprint Actions" below), any of which 
+can be overridden with custom code.
 
 There are three types of blueprint routes in Sails:
 
-+ **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
-+ **Shortcut routes**, where the action to take is encoded in the path.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.  Shortcut routes are very handy for development, but generally should be disabled in a production environment.
-+ **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
++ **RESTful routes**, where the path is always `/:modelIdentity` or 
+`/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action 
+to take; for example a `POST` request to `/user` will create a new user, and a 
+`DELETE` request to `/user/123` will delete the user whose primary key is 123. In 
+a production environment, RESTful routes should generally be protected by 
+[policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
+
++ **Shortcut routes**, where the action to take is encoded in the path.  For 
+example, the `/user/create?name=joe` shortcut creates a new user, while 
+`/user/update/1?name=mike` updates user #1. These routes only respond to `GET` 
+requests. Shortcut routes are very handy for development, but generally should be 
+disabled in a production environment.
+
++ **Action routes**, which automatically create routes for your custom controller 
+actions. For example, if you have a `FooController.js` file with a `bar` method, 
+then a `/foo/bar` route will automatically be created for you as long as 
+blueprint action routes are enabled. Unlike RESTful and shortcut routes, action 
+routes do *not* require that a controller has a corresponding model file.
 
 
-See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how 
+to enable / disable different blueprint route types.
 
 
 ##### Blueprint Actions
