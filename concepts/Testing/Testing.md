@@ -109,18 +109,18 @@ In order to run your test using mocha, you'll have to use `mocha` in the command
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json, on the scripts obj, add a `test` key and type this as its value `./node_modules/.bin/mocha test/bootstrap.test.js test/unit/*.test.js` like this:
+To avoid typing the mocha command like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json, on the scripts obj, add a `test` key and type this as its value `./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
 
 ```js
  // Some config....
  scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "./node_modules/.bin/mocha test/bootstrap.test.js test/unit/*.test.js"
+    "test": "./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js"
   },
  // More config
 ```
-The `*` is a wildcard used to match any file inside the `unit` forlder that ends in `.test.js` so you can perfectly modify it to search for `*.spec.js` if it suits you. In the same way you can use wildcards for your folders, so instead of specifying a folder like `unit` you can use something like `test/**/*.test.js` to run any test inside any folder of your test folder.
+The `*` is a wildcard used to match any file inside the `unit` forlder that ends in `.test.js` so you can perfectly modify it to search for `*.spec.js` if it suits you. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
 ## Code coverage
 
