@@ -55,9 +55,21 @@ to enable / disable different blueprint route types.
 
 ##### Blueprint Actions
 
-Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Blueprint actions (not to be confused with blueprint action *routes*) are 
+generic actions designed to work with any of your controllers that have a model 
+of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of 
+them as the default behavior for your application. For instance, if you have a 
+`User.js` model and an empty `UserController.js` controller, `find`, `create`, 
+`update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, 
+without you having to write them.
 
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own [custom blueprint action](./#!documentation/guides/customBlueprints). (e.g. `api/blueprints/create.js`).
+By default, the blueprint RESTful routes and shortcut routes are bound to their 
+corresponding blueprint actions.  However, any blueprint action can be overridden 
+for a particular controller by creating a custom action in that controller file 
+(e.g. `ParrotController.find`).  Alternatively, you can override the blueprint 
+action _everywhere in your app_ by creating your own 
+[custom blueprint action](./#!documentation/guides/customBlueprints). 
+(e.g. `api/blueprints/create.js`).
 
 The current version of Sails ships with the following blueprint actions:
 
@@ -70,24 +82,34 @@ The current version of Sails ships with the following blueprint actions:
 + [add](./#!/documentation/reference/blueprint-api/Add.html)
 + [remove](./#!/documentation/reference/blueprint-api/Remove.html)
 
-Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
+Consequently, the blueprint API methods covered in this section of the 
+documentation correspond one-to-one with the blueprint actions above.
 
 ### Overriding Blueprints
 
 ( taken from https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs )
 
-To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.
+To override blueprints in Sails v0.10, you create an api/blueprints folder and 
+add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a 
+look at the code for the default actions in the Sails blueprints hook for a head 
+start.
 
-**Note:** Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)
+**Note:** Currently all files must be lowercase! (The default actions contains 
+findOne.js, but in /api/blueprints it needs to be findone.js)
 
-Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
+Adding custom blueprints is also supported, but they currently do not get bound 
+to routes automatically. If you create a /blueprints/foo.js file, you can bind a 
+route to it in your /config/routes.js file with (for example):
 
     GET /myRoute': {blueprint: 'foo'}
 
 
 ### Disabling blueprints on a per-controller basis
 
-You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller defintion, and assigning it a configuration object with overrides for the settings in this file.
+You may also override any of the settings from `config/blueprints.js` on a 
+per-controller basis by defining a '_config' key in your controller defintion, 
+and assigning it a configuration object with overrides for the settings in this 
+file.
 
 ```
 module.exports = {
@@ -102,7 +124,11 @@ module.exports = {
 
 ### Notes
 
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](/#/documentation/reference/websockets/sails.io.js) for example usage.
+> + While the following documentation focuses on HTTP, the blueprint API (just 
+> like any of your custom actions and policies) is also compatible with 
+> WebSockets, thanks to the request interpreter.  Check out the reference section 
+> on the [browser SDK](/#/documentation/reference/websockets/sails.io.js) for 
+> example usage.
 >
 
 <docmeta name="uniqueID" value="blueprintapi170785">
