@@ -10,7 +10,10 @@ you get every time you create a model and controller.
 For example, if you create a `User.js` model and `UserController.js` controller 
 file in your project, then with blueprints enabled you will be able to 
 immediately visit `/user/create?name=joe` to create a user, and visit `/user` to 
-see an array of your app's users.  All without writing a single line of code!
+see an array of your app's users. All without writing a single line of code! More
+simply, with blueprint enabled, you have all of the `GET`, `POST`, `PUT` and 
+`DELETE` API ready for you to use as soon as you create the model and controller 
+with the same name.
 
 Blueprints are great for prototyping, but they are also a powerful tool in 
 production due to their ability to be overridden, protected, extended or disabled 
