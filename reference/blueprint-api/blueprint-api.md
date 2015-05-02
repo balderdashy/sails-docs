@@ -37,9 +37,9 @@ can be overridden with custom code.
 
 There are three types of blueprint routes in Sails:
 
-+ **RESTful routes**, where the path is always `/:model/:id?`. When the User 
-model and controller is defined, blueprint binds RESTful routes implicitly in 
-following way -
++ **RESTful routes**, where the path is always `/:model/:id?`. When the `User` 
+  model and controller is defined, blueprint binds RESTful routes implicitly in 
+  following way -
   ```
   'GET /user/:id?': {
     controller: 'User',
@@ -66,11 +66,30 @@ following way -
   [policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
 
 
-+ **Shortcut routes**, where the action to take is encoded in the path.  For 
-example, the `/user/create?name=joe` shortcut creates a new user, while 
-`/user/update/1?name=mike` updates user #1. These routes only respond to `GET` 
-requests. Shortcut routes are very handy for development, but generally should be 
-disabled in a production environment.
++ **Shortcut routes**, where the action to take is encoded in the path. For our 
+  User model and controller Sails binds following four shortcut routes implicitly.
+  ```
+  'GET /user/find/:id?': {
+    controller: 'User',
+    action: 'find'
+  },
+  'GET /user/create/:id?': {
+    controller: 'User',
+    action: 'create'
+  },
+  'GET /user/update/:id?': {
+    controller: 'User',
+    action: 'update'
+  },
+  'GET /user/destroy/:id?': {
+    controller: 'User',
+    action: 'destroy'
+  }
+  ```
+  As example, the `/user/create?name=joe` shortcut creates a new user, while 
+  `/user/update/1?name=mike` updates the name field of user #1. Note that these 
+  routes only respond to `GET` requests. Shortcut routes are very handy for 
+  development, but generally should be disabled in a production environment.
 
 + **Action routes**, which automatically create routes for your custom controller 
 actions. For example, let `query` be a custom action defined in User controller.
