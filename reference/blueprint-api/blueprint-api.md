@@ -89,7 +89,8 @@ There are three types of blueprint routes in Sails:
   As example, the `/user/create?name=joe` shortcut creates a new user, while 
   `/user/update/1?name=mike` updates the name field of user #1. Note that these 
   routes only respond to `GET` requests. Shortcut routes are very handy for 
-  development, but generally should be disabled in a production environment.
+  development, but generally should be disabled in a production environment. It's
+  not designed to be used in production.
 
 + **Action routes**, which automatically create routes for your custom controller 
 actions. For example, let `query` be a custom action defined in User controller.
@@ -155,6 +156,16 @@ The current version of Sails ships with the following blueprint actions:
 
 Consequently, the blueprint API methods covered in this section of the 
 documentation correspond one-to-one with the blueprint actions above.
+
+### How does Blueprint API works?
+When sails initially starts using `sails lift`, sails looks to see if you have 
+any controller defined. In our example, we have one controller, the User 
+controller. Sails then provides access to blueprint actions for this user 
+controller as if we built them in the controller ourselves. Sails also 
+automatically creates blueprint routes at the time of lifting the server. So even
+if no routes is defined in `/config/routes.js` and no action is defined in
+`/api/controllers/UserController.js` explicitly, after lifting the server all 
+these routes and actions are available to use.
 
 ### Overriding Blueprints
 
