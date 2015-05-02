@@ -121,11 +121,31 @@ Then following routes would be implicitly available to sails -
   shortcut route with `/foo` but there will still be action routes available to 
   use.
 
-See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how 
-to enable / disable different blueprint route types.
+##### Order of routes matching
+So, now we have all these routes - explicitly defined routes, blueprint rest 
+routes, blueprint action routes and blueprint shortcut routes. You can ask in 
+which order are the routes matched when request comes. When a request comes, 
+sails will first match the route against explicitly defined routes. If it matches
+then no further matching is done and corresponding action is executed. But if it
+doesn't match then the route is matched firstly against blueprint action routes,
+if doesn't match then against rest routes and if it doesn't match either then
+shortcut routes. So if your `/config/routes.js` file has some entry like the 
+following-
+```
+  '/user/query/:id?': {
+    controller: 'User',
+    action: 'find'
+  }
+```
+Then you can't expect `query` action routes to work. Because the same route as
+`query` action route would be matched against the explicitly define routes and 
+`find` action of User controller would be executed.
+
+[See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how 
+to enable / disable different blueprint route types.]
 
 
-##### Blueprint Actions
+### Blueprint Actions
 
 Blueprint actions (not to be confused with blueprint action *routes*) are 
 generic actions designed to work with any of your controllers that have a model 
