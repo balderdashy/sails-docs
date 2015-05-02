@@ -19,7 +19,12 @@ Blueprints are great for prototyping, but they are also a powerful tool in
 production due to their ability to be overridden, protected, extended or disabled 
 entirely.
 
-##### Blueprint Routes
+For the sake of example and explanation in rest of the sections of this document 
+let `User` be the model and the controller, defined respectively in 
+`/api/models/User.js` and `/api/controllers/UserController.js` files.
+
+
+### Blueprint Routes
 
 When you run `sails lift` with blueprints enabled, the framework inspects your 
 controllers, models, and configuration in order to 
@@ -32,24 +37,45 @@ can be overridden with custom code.
 
 There are three types of blueprint routes in Sails:
 
-+ **RESTful routes**, where the path is always `/:modelIdentity` or 
-`/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action 
-to take; for example a `POST` request to `/user` will create a new user, and a 
-`DELETE` request to `/user/123` will delete the user whose primary key is 123. In 
-a production environment, RESTful routes should generally be protected by 
-[policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
-
-+ **Shortcut routes**, where the action to take is encoded in the path.  For 
-example, the `/user/create?name=joe` shortcut creates a new user, while 
-`/user/update/1?name=mike` updates user #1. These routes only respond to `GET` 
-requests. Shortcut routes are very handy for development, but generally should be 
-disabled in a production environment.
++ **RESTful routes**, where the path is always `/:model/:id?`. When the User 
+model and controller is defined, blueprint binds RESTful routes implicitly in 
+following way -
+  ```
+  'GET /user/:id?': {
+    controller: 'User',
+    action: 'find'
+  },
+  'POST /user': {
+    controller: 'User',
+    action: 'create'
+  },
+  'PUT /user/:id?': {
+    controller: 'User',
+    action: 'update'
+  },
+  'DELETE /user/:id?': {
+    controller: 'User',
+    action: 'destroy'
+  }
+  ```
+  These routes use the HTTP verb to determine the action to take even if the 
+  route is same. So, a `POST` request to `/user` will create a new user, a
+  `PUT` request to `/user/123` will update the user with primary key 123 and 
+  a `DELETE` request to `/user/123` will delete the user whose primary key is 123. 
+  In a production environment, RESTful routes should generally be protected by 
+  [policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
 
 + **Action routes**, which automatically create routes for your custom controller 
 actions. For example, if you have a `FooController.js` file with a `bar` method, 
 then a `/foo/bar` route will automatically be created for you as long as 
 blueprint action routes are enabled. Unlike RESTful and shortcut routes, action 
 routes do *not* require that a controller has a corresponding model file.
+
++ **Shortcut routes**, where the action to take is encoded in the path.  For 
+example, the `/user/create?name=joe` shortcut creates a new user, while 
+`/user/update/1?name=mike` updates user #1. These routes only respond to `GET` 
+requests. Shortcut routes are very handy for development, but generally should be 
+disabled in a production environment.
 
 
 See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how 
