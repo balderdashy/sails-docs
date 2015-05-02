@@ -65,11 +65,6 @@ following way -
   In a production environment, RESTful routes should generally be protected by 
   [policies](./#!/documentation/concepts/Policies) to avoid unauthorized access.
 
-+ **Action routes**, which automatically create routes for your custom controller 
-actions. For example, if you have a `FooController.js` file with a `bar` method, 
-then a `/foo/bar` route will automatically be created for you as long as 
-blueprint action routes are enabled. Unlike RESTful and shortcut routes, action 
-routes do *not* require that a controller has a corresponding model file.
 
 + **Shortcut routes**, where the action to take is encoded in the path.  For 
 example, the `/user/create?name=joe` shortcut creates a new user, while 
@@ -77,6 +72,34 @@ example, the `/user/create?name=joe` shortcut creates a new user, while
 requests. Shortcut routes are very handy for development, but generally should be 
 disabled in a production environment.
 
++ **Action routes**, which automatically create routes for your custom controller 
+actions. For example, let `query` be a custom action defined in User controller.
+Then following routes would be implicitly available to sails -
+  ```
+  'GET /user/query/:id?': {
+    controller: 'User',
+    action: 'query'
+  },
+  'POST /user/query/:id?': {
+    controller: 'User',
+    action: 'query'
+  },
+  'PUT /user/query/:id?': {
+    controller: 'User',
+    action: 'query'
+  },
+  'DELETE /user/query/:id?': {
+    controller: 'User',
+    action: 'query'
+  }
+  ```
+  If request is made in `/user/query/:id?` route then independent on the HTTP 
+  verb the action would be same. Unlike RESTful and shortcut routes, action 
+  routes do *not* require that a controller has a corresponding model file. Which
+  means, if you define a controller in `/api/controllers/FooController.js` file 
+  but no model in `/api/models/Foo.js` file, there would be no RESTful or 
+  shortcut route with `/foo` but there will still be action routes available to 
+  use.
 
 See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how 
 to enable / disable different blueprint route types.
