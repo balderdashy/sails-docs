@@ -105,22 +105,22 @@ describe('UsersController', function() {
 ```
 ## Running tests
 
-In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments the test your want to run, be sure to call bootstrap.test.js before the rest of your test like this `mocha test/bootstrap.test.js test/unit/**/*.test.js`
+In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/unit/**/*.test.js`
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json.On the scripts obj, add a `test` key and type this as its value `./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
 
 ```js
- // Some config....
+ // package.json
  scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "./node_modules/.bin/mocha test/bootstrap.test.js test/unit/**/*.test.js"
+    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
   },
  // More config
 ```
-The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
+The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
 ## Code coverage
 
