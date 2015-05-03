@@ -26,7 +26,7 @@ Before you start building your test cases, you should first organise your `./tes
 
 ### bootstrap.test.js
 
-This file is useful when you want to execute some code before and after running your tests (e.g. lifting and lowering your sails application):
+This file is useful when you want to execute some code before and after running your tests(e.g. lifting and lowering your sails application). Since your models are converted to waterline collections on lift, it is necessary to lift your sailsApp before trying to test them (This applies similarly to controllers and other parts of your app, so be sure to call this file first).
 
 ```javascript
 var Sails = require('sails'),
@@ -52,6 +52,12 @@ after(function(done) {
 ### mocha.opts
 
 This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha.opts)
+
+**Note**: If you are writing your test in CoffeeScript be sure to add this lines to your mocha.opts
+```
+--require coffee-script/register
+--compilers coffee:coffee-script/register
+```
 
 ## Writing tests
 
@@ -97,6 +103,24 @@ describe('UsersController', function() {
 
 });
 ```
+## Running tests
+
+In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/unit/**/*.test.js`
+
+#### Using `npm test` to run your test
+
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
+
+```js
+ // package.json
+ scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js",
+    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
+  },
+ // More config
+```
+The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
 ## Code coverage
 
