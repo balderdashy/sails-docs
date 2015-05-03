@@ -2,7 +2,7 @@
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, 
+Together, blueprint routes and blueprint actions constitute the **Blueprint API**, 
 the built-in logic that powers the 
 [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) 
 you get every time you create a model and controller.
@@ -206,23 +206,39 @@ route to it in your /config/routes.js file with (for example):
     GET /myRoute': {blueprint: 'foo'}
 
 
-### Disabling blueprints on a per-controller basis
-
-You may also override any of the settings from `config/blueprints.js` on a 
-per-controller basis by defining a '_config' key in your controller defintion, 
-and assigning it a configuration object with overrides for the settings in this 
-file.
-
-```
-module.exports = {
-  _config: {
-    actions: false,
-    shortcuts: false,
-    rest: false
+### Disabling blueprints routes
+You can disable blueprint routes in two ways -
++ **Global basis**:
+  Blueprint API configuration is defined in `/config/blueprint.js` file. You can
+  enable or disable all three types of blueprint routes for all controllers from
+  there. As example, if you want to disable blueprint shortcut routes for all of
+  your controllers but want to keep both action and rest routes enabled, then 
+  your `/config/blueprint.js` should be like this -
+  ```
+  module.exports.blueprints = {
+    action: true,
+    rest: true,
+    shortcut: false
   }
-}
+  ```
 
-```
++ **On per-controller basis**:
+  You may also override any of the settings from `/config/blueprints.js` on a 
+  per-controller basis by defining a '_config' key in your controller defintion, 
+  and assigning it a configuration object with overrides for the settings in this 
+  file. As example if you want to have shortcut routes enabled only for your user 
+  controller but not for any more controllers then with the above blueprint 
+  configuration you have to have following key value pair in user controller.
+  ```
+  module.exports = {
+    _config: {
+      actions: true,
+      shortcuts: true,
+      rest: true
+    }
+  }
+
+  ```
 
 ### Notes
 
