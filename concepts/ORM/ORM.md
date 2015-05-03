@@ -117,6 +117,8 @@ In your Sails app, a **model** is like one of the file cabinets.  It contains **
 + This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose.)
 
 
+Additional Reading that consolidates this information:
+[Sails API development (1/2): Datalayer -models, connections, waterline](http://www.codeproject.com/Articles/898221/Sails-API-development-Datalayer-models-connections)
 
 
 <docmeta name="uniqueID" value="ORM416997">
