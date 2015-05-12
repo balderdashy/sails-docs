@@ -41,18 +41,44 @@ The current version of Sails ships with the following blueprint actions:
 
 Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
 
-### Overriding Blueprints
+### Overriding blueprints
 
-( taken from https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs )
+In Sails v0.10 it is possible to override the core blueprints where they are enabled for controllers.
 
-To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.
+Create a `api/blueprints` directory and add the required blueprint files (e.g. `find.js`, `create.js`, etc.). The code for the default actions in the Sails blueprints hook can be found in the `/node_modules/sails/lib/hooks/blueprints/actions` directory of your project.
 
-**Note:** Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)
+Files can be mixed case (such as `findOne.js`) but the blueprints are case-sensitive.
 
-Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
+### Custom blueprints
 
-    GET /myRoute': {blueprint: 'foo'}
+Adding custom blueprints is also supported, but they are not automatically bound to routes.
 
+You can create a basic blueprint like this and save it as `/blueprints/foo.js`:
+
+```js
+module.exports = function fooBlueprint(req, res) {
+  res.ok('Foo!');
+}
+```
+
+To bind this to a route, edit `/config/routes.js` like this:
+
+```js
+  'GET /myRoute': {
+    blueprint: 'foo',
+    model: 'the-model-for-foo
+  }
+```
+
+Note that blueprints assume that controllers are directly associated with a model. If you don't specify the model, you may get an error on lift like:
+
+```
+Ignoring attempt to bind route (/myRoute) to blueprint action (`foo`),
+but no valid model was specified and we couldn't guess one based on the path.
+```
+
+References:
+* https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs
 
 ### Disabling blueprints on a per-controller basis
 
@@ -68,6 +94,28 @@ module.exports = {
 }
 
 ```
+
+### Disabling blueprints on a per-route basis
+
+Typically as a project evolves and you want to reduce the surface area of the API, you'll start specifying exactly the routes you wish to expose in `config/routes.js`. But you can disable blueprint routes using policies while prototyping.
+
+For example, in `config/policies.js` you can use techniques like this:
+
+```js
+module.exports.policies = {
+	// Default policy for all controllers and actions
+	'*': ['authenticated'],
+
+	// Custom controller
+	LogController: {
+		'*': false,
+		'find': true,
+		'findOne': true,
+	}
+};
+```
+
+The example above white-lists the `find` and `findOne` blueprints (the assumption here is that logs are read-only). This effectively _bans_ the usage of the blueprint actions that are not required.
 
 ### Notes
 
