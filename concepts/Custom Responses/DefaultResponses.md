@@ -1,4 +1,4 @@
-### Default responses
+# Default responses
 
 The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
 
