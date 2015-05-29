@@ -47,3 +47,4 @@ This approach has many advantages:
 Any `.js` script saved in the `/api/responses` folder will be executed by calling `res.[responseName]` in your controller.  For example, `/api/responses/serverError.js` can be executed with a call to `res.serverError(errors)`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (like `serverError`'s `errors` parameter).
 
 
+<docmeta name="displayName" value="Custom Responses">
