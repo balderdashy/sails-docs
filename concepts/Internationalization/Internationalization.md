@@ -46,14 +46,6 @@ sails.__({
 
 
 
-### Translating Dynamic Content
-
-If your backend is storing interlingual data (e.g. product data is entered in multiple languages via a CMS), you shouldn't rely on simple JSON locale files unless you're somehow planning on editing your locale translations dynamically.  One option is to edit the locale translations programatically, either with a custom implementation or through a translation service.  Sails/node-i18n JSON stringfiles are compatible with the format used by [webtranslateit.com](https://webtranslateit.com/en).
-
-On the other hand you might opt to store these types of dynamic translated strings in a database.  If so, just make sure and build your data model accordingly so you can store and retrieve the relevant dynamic data by locale id (e.g. "en", "es", "de", etc)  That way, you can leverage the [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) method to help you figure out which translated content to use in any given response, and keep consistent with the conventions used elsewhere in your app.
-
-
-
 ### Additional Options
 
 Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
@@ -85,7 +77,5 @@ You can actually reuse Sails' i18n support to help you get your translated templ
 + In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
 
 
-
-<docmeta name="uniqueID" value="internationalization245343">
 <docmeta name="displayName" value="Internationalization">
 
