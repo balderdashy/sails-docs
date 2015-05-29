@@ -1,4 +1,4 @@
-### Generating controllers
+# Generating controllers
 
 You can use the [Sails command line tool](http://sailsjs.org/#!/documentation/reference/cli) to quickly generate a controller, by typing:
 
