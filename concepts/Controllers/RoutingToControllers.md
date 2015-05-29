@@ -1,4 +1,4 @@
-### Routing to Controllers
+# Routing to Controllers
 
 By default, Sails will create a [blueprint action route](http://sailsjs.org/#!/documentation/reference/blueprint-api) for each action in a controller, so that a `GET` request to `/:controllerIdentity/:nameOfAction` will trigger the action.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](http://sailsjs.org/#!/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
 
