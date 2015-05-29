@@ -65,25 +65,25 @@ The companies below provide custom development, services, training, and/or suppo
 
 ================================================================================
 
-###### <img height="30" src="http://balderdash.co/img/logo.jpg" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
+###### <img height="30" src="http://balderdash.co/images/logo.jpg" title="Balderdash" alt="Logo of Balderash, the development shop in Austin that created Sails" />
 
 <!-- Social media links -->
 <a target="_blank" href="https://www.facebook.com/balderdashy">
-  <img height="15" alt="Facebook icon" class="facebook" src="http://balderdash.co/img/icon_facebook@2x.png">
+  <img height="15" alt="Facebook icon" class="facebook" src="http://balderdash.co/images/icon_facebook@2x.png">
 </a>
 <a target="_blank" href="https://twitter.com/balderdashy">
-  <img height="15" alt="Twitter icon" src="http://balderdash.co/img/icon_twitter@2x.png">
+  <img height="15" alt="Twitter icon" src="http://balderdash.co/images/icon_twitter@2x.png">
 </a>
 <a target="_blank" href="http://dribbble.com/Balderdash">
-  <img height="15" alt="Dribbble icon" src="http://balderdash.co/img/icon_dribbble@2x.png">
+  <img height="15" alt="Dribbble icon" src="http://balderdash.co/images/icon_dribbble@2x.png">
 </a>
 <a target="_blank" href="http://www.linkedin.com/company/balderdash">
-  <img height="15" alt="Linkedin icon" class="linkedin" src="http://balderdash.co/img/icon_linkedIn@2x.png">
+  <img height="15" alt="Linkedin icon" class="linkedin" src="http://balderdash.co/images/icon_linkedIn@2x.png">
 </a>
 
 Sails is maintained by [Balderdash](http://balderdash.co/), an interactive development studio in Austin, TX.  Heather and I started the company in 2012, on the promise that Node.js could be used to build production back-end applications from start to finish.  We created Sails to support that mission, and over 2 years later, the experiment has been a resounding success.  As you might expect, we do a lot of custom Sails+Node.js development, but our team has experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications,  and building rich user experiences across many different devices and screen resolutions. We also provide training services for teams looking to increase their efficiency w/ Node.js.
 
-+ [Get us involved on a project.](http://balderdash.co/#contact)
++ [Get us involved on a project.](http://balderdash.co/)
 + [Our process.](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
 + [Our](https://speakerdeck.com/mikermcneil/intro-to-sails-dot-js) [s](https://angel.co/balderdash)[to](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)[ry](http://blog.modulus.io/sails-js).
 
@@ -140,6 +140,8 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
   + [Auth con Passport](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth-con-passport/)
 + [Angular + Sails.js (0.10.0-rc5) with angular-sails socket.io](https://github.com/maartendb/angular-sails-scrum-tutorial/blob/master/README.md)
 + [Sails.js and Heroku](https://pburtchaell.com/2015/sails/)
++ [Sails API development (1/2): Datalayer -models, connections, waterline](http://www.codeproject.com/Articles/898221/Sails-API-development-Datalayer-models-connections)
++ [Sails API development (2/2): Custom methods, overriding default actions, and related](http://www.codeproject.com/Articles/985730/Sails-API-development-2-2-Custom-methods-overriding-default)
 
 ### How can I convince the other girls/guys on my team?
 
