@@ -122,17 +122,5 @@ To avoid typing the mocha command, like stated before (specially when calling bo
 ```
 The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
-## Code coverage
 
-Another popular method for testing your code is [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage).
-
-You can use [mocha](http://mochajs.org/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
-
-To test your code and prepare a simple HTML report run the following commands:
-```bash
-istanbul cover -x "**/config/**" _mocha -- --timeout 5000
-istanbul report html
-```
-
-<docmeta name="uniqueID" value="Testing765149">
 <docmeta name="displayName" value="Testing">
