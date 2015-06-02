@@ -51,7 +51,7 @@ To override blueprints in Sails v0.10, you create an api/blueprints folder and a
 
 Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
 
-    GET /myRoute': {blueprint: 'foo'}
+    GET /myRoute: {blueprint: 'foo'}
 
 
 ### Disabling blueprints on a per-controller basis
