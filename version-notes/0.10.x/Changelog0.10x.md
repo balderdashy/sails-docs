@@ -217,3 +217,4 @@ return res.view('auth/login', {
 
 
 <docmeta name="displayName" value="0.10.0 Migration Guide">
+<docmeta name="version" value="0.10.0">
