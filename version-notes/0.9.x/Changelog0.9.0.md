@@ -34,3 +34,4 @@ _July 10, 2013_
 + Validations: Too many added to list, see [Validations](https://github.com/balderdashy/sails-docs/tree/0.9)
 
 <docmeta name="displayName" value="0.9.0 Changelog">
+<docmeta name="version" value="0.9.0">
