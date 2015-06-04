@@ -27,3 +27,4 @@ _April 9, 2013_
 
 
 <docmeta name="displayName" value="0.8.9 Changelog">
+<docmeta name="version" value="0.8.9">
