@@ -69,3 +69,4 @@ The following features are considered deprecated and should at some point be rem
 
 
 <docmeta name="displayName" value="0.10.0-rc9 Changelog">
+<docmeta name="version" value="0.10.0">
