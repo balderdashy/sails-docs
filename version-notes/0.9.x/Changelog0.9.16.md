@@ -12,3 +12,4 @@ _December 16, 2013_
 + [@mikermcneil](https://github.com/mikermcneil) Rebased from #1012 as hotfix for windows view issue. 031ebe1
 
 <docmeta name="displayName" value="0.9.16 Changelog">
+<docmeta name="version" value="0.9.16">
