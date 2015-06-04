@@ -69,3 +69,4 @@ _Monday, March 4, 2013_
 
 
 <docmeta name="displayName" value="0.8.8x Changelog">
+<docmeta name="version" value="0.8.8">
