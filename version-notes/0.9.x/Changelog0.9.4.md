@@ -11,6 +11,8 @@ _September 5, 2013_
 + Sockets: Headers can now be specified in requests (**_This has implications on full compatibility w/ most Express middleware!_**)
 + Routing: Fixed issues with default 404 and 500 responses.
 + Other minor bug fixes/inconsistencies and documentation enhancements
+
 > And thanks a ton to anybody I left out! Send me a message on twitter and I'll add you.
 
 <docmeta name="displayName" value="0.9.4 Changelog">
+<docmeta name="version" value="0.9.4">
