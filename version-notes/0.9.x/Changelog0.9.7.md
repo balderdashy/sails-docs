@@ -18,6 +18,8 @@ _October 10, 2013_
 
 + Properly namespace the io in bundled sails.io.js client in new projects (thanks [@drosen0](https://github.com/drosen0))
 + Better handle crash scenario, particularly in nodemon (thanks [@edy](https://github.com/edy))
+
 > Thanks to everyone else I missed, and to everyone else who helped out with this release!
 
 <docmeta name="displayName" value="0.9.7 Changelog">
+<docmeta name="version" value="0.9.7">
