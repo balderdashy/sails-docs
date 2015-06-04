@@ -204,3 +204,4 @@ Thanks.
 
 
 <docmeta name="displayName" value="0.10 -> 0.11 Migration Guide">
+<docmeta name="version" value="0.11.0">
