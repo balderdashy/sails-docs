@@ -10,9 +10,6 @@
  *
  * Configure which global variables which will be exposed
  * automatically by Sails.
- *
- * For more information on configuration, check out:
- * http://links.sailsjs.org/docs/config/globals
  */
 module.exports.globals = {
 	_: true,
