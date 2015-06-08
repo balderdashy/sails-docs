@@ -26,6 +26,14 @@ The example route below will use the view located at `./views/users/privacy.ejs`
   },
 ```
 
+The example controller action below will use the view located at `./views/users/privacy.ejs` within the layout located at `./views/users.ejs`
+
+```javascript
+privacy: function (req, res) {
+  res.view('users/privacy', {layout: 'users'})
+}
+```
+
 ### Notes
 
 > #### Why do layouts only work for EJS?
