@@ -16,7 +16,7 @@ This file is included in your .gitignore, so if you're using git as a version co
 ##### Port
 The `port` setting determines which TCP port your app will be deployed on. Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
 
-You can read more about ports [right here]( http://en.wikipedia.org/wiki/Port_(computer_networking)#).
+You can read more about ports <a href="http://en.wikipedia.org/wiki/Port_(computer_networking)">right here<a>.
 
 By default, if it's set, Sails uses the `PORT` environment variable. Otherwise it falls back to port 1337.
 
