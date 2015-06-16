@@ -152,13 +152,10 @@ or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):
 
 
 ## On to Sails.js
-Now that Node.js is installed on your system, we can move on to Sails.js.
-
-Click [here](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md) to continue.
+Now that Node is installed on your system, you can install Sails.js.
 
 ## Further help!
 We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
 
 
-<docmeta name="uniqueID" value="NewToNode748472">
-<docmeta name="displayName" value="New To Node">
+<docmeta name="displayName" value="New To Node?">
