@@ -34,7 +34,7 @@ Settings specified in the standard configuration files will generally be availab
 
 ### The `config/local.js` file
 
-You may use the `config/local.js` file to configuration a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.org/#/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.org/#/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
 
 See [http://sailsjs.org/#/documentation/concepts/Configuration/localjsfile.html](http://sailsjs.org/#/documentation/concepts/Configuration/localjsfile.html) for more information.
 
