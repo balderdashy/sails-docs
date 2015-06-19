@@ -59,6 +59,11 @@ After you create the blog application, switch to its folder:
 
 The `blog` directory has a number of auto-generated files and folders that make up the structure of a Sails application. The anatomy thereof is described [here](http://sailsjs.org/#/documentation/anatomy/myApp "Anatomy of a SailJs app").
 
+Before we continue let's make sure sails really did install all dependencies. Since we are using Jade as a templating engine sails should've added it to the dependencies. Let's just make sure it did by installing it explicitly and saving it in the dependency list + installing all dependencies again.
+
+    npm install --save jade
+    npm install
+
 # Hello, Sails!
 
 To begin with, let's get some text up on screen quickly. To do this, you need to get your Sails application server running.
