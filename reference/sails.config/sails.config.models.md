@@ -18,6 +18,7 @@ sails.config.models;
  `autoCreatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a property createdAt in your model
  `autoUpdatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a property updatedAt in your model
  `tableName`           | ((string))   | _identity_       | Used to specify database table name for the model
+ `dynamicFinders`      | ((boolean))  | `true`             | Toggle the automatic creation of Dynamic Finders 
 
 
 <docmeta name="uniqueID" value="sailsconfigmodels258825">
