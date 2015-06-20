@@ -91,6 +91,15 @@ https://github.com/appscot/sails-orientdb
 + Associations
 + Migratable
 
+##### sails-filemaker
+
+https://github.com/geistinteractive/sails-filemaker
+
+[FileMaker](https://en.wikipedia.org/wiki/FileMaker), is cross platform relational database and development platform. It has been owned and published by Apple since 1988.
+
+###### Interfaces implemented:
++ Semantic
+
 Have you written a Sails adapter? Submit a PR to this file and add it here!
 
 <docmeta name="uniqueID" value="adapterList22829">
