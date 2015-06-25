@@ -1,4 +1,4 @@
-### Authentication and Permissioning with Sails + Passport
+# Authentication and Permissioning with Sails + Passport
 
 Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
 
