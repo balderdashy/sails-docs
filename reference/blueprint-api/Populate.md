@@ -71,8 +71,6 @@ Should return
 >   $ sails generate api purchase
 >   $ sails generate api employee
 >   ```
->
->
 > ...then editing `api/models/Purchase.js`.
 
 <docmeta name="uniqueID" value="Populate838372">
