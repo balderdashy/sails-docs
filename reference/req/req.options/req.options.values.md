@@ -29,4 +29,4 @@ module.exports = function createWithUserName (req, res, next) {
 
 Then [apply this policy](http://sailsjs.org/#/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
 
-<docmeta name="displayName" value="req.options.where">
+<docmeta name="displayName" value="req.options.values">
