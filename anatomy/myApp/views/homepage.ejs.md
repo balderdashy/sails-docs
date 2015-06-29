@@ -9,7 +9,7 @@ If you're used to putting all your HTML in a single file, this might look funny.
 <docmeta name="uniqueID" value="homepageejs785450">
 <docmeta name="displayName" value="homepage.ejs">
 
-```
+```html
 <!-- Default home page -->
 <link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
 <style>
