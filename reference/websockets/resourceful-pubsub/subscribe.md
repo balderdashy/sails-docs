@@ -1,10 +1,6 @@
 # .subscribe()
 
-Subscribes the requesting client socket to one or more database records (i.e. model instances).  The client socket will receive relevant messages emitted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()` and `.publishRemove()`.
-
-> **Important**:
->
-> This function does _not actually talk to the database_!  In fact, none of the resourceful pubsub methods do.  These are just a simplified abstraction layer built on top of the lower-level `sails.sockets` methods, designed to make your app cleaner and easier to debug by using conventional names for events/rooms/namespaces etc.
+Subscribes the requesting client socket to one or more database records (i.e. model instances).  
 
 ### Usage
 
@@ -18,6 +14,12 @@ _-or-_
 SomeModel.subscribe(req, ids, contexts);
 ```
 
+By default (if no "contexts" are provided), the client socket will receive relevant messages emitted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()` and `.publishRemove()`.
+
+> **Important**:
+>
+> This function does _not actually talk to the database_!  In fact, none of the resourceful pubsub methods do.  These are just a simplified abstraction layer built on top of the lower-level `sails.sockets` methods, designed to make your app cleaner and easier to debug by using conventional names for events/rooms/namespaces etc.
+
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
@@ -29,7 +31,7 @@ SomeModel.subscribe(req, ids, contexts);
 *Note*: `subscribe` will only work with requests made over a socket.io connection (e.g. using `io.socket.get()`), *not* over an http connection (e.g. using `jQuery.get()`).  See the [sails.io.js socket client documentation](http://sailsjs.org/documentation/reference/web-sockets/socket-client) for information on using client sockets to send WebSockets/Socket.io messages with Sails.
 
 
-### Example Usage
+### Example
 
 ```javascript
   subscribeToJims: function (req, res) {
@@ -51,8 +53,10 @@ SomeModel.subscribe(req, ids, contexts);
   }
 ```
 
+
 ### Blueprints and .subscribe()
-> By default, the blueprint `find` and `findOne` actions will call `.subscribe()` to subscribe a requesting socket to all returned records.  However, the blueprint `update` and `delete` actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
+
+By default, the blueprint `find` and `findOne` actions will call `.subscribe()` to subscribe a requesting socket to all returned records.  However, the blueprint `update` and `delete` actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
 
 ### What is `context`?
 
@@ -62,5 +66,4 @@ You can omit `context` to subscribe a socket to the default contexts for that mo
 
 
 <docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".subscribe()">
