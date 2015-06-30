@@ -1,6 +1,6 @@
 # req.options.values
 
-Default values for blueprint [`create`](http://sailsjs.org/#/documentation/reference/blueprint-api/Create.html) and [`update`](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html) actions.
+Default values for blueprint [`create`](http://sailsjs.org/#!/documentation/reference/blueprint-api/Create.html) and [`update`](http://sailsjs.org/#!/documentation/reference/blueprint-api/Update.html) actions.
 
 > Note: Before using `req.options.value`, confirm that it exists and create it if necessary.
 
@@ -27,6 +27,6 @@ module.exports = function createWithUserName (req, res, next) {
 }
 ```
 
-Then [apply this policy](http://sailsjs.org/#/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
+Then [apply this policy](http://sailsjs.org/#!/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
 
 <docmeta name="displayName" value="req.options.values">
