@@ -34,20 +34,30 @@ By default (if no "contexts" are provided), the client socket will receive relev
 ### Example
 
 ```javascript
-  subscribeToJims: function (req, res) {
+  subscribeToLouies: function (req, res) {
     if (!req.isSocket) {
-      return res.badRequest('Only a client socket can subscribe to Jims.  You, sir, appear to be something... _else_.');
+      return res.badRequest('Only a client socket can subscribe to Louies.  You, sir, appear to be something... _else_.');
     }
     
-    // Subscribe client to ONLY the destroy event of every user named "jim".
-    User.find({ name: 'jim' }).exec(function(err, usersNamedJim){
+    // Let's say our client socket has a problem with people named "louie".
+    
+    // First we'll find all users named "louie" (or "louis" even-- we should be thorough)
+    User.find({ or: [{name: 'louie'},{name: 'louis'}] }).exec(function(err, usersNamedLouie){
       if (err) {
         return res.negotiate(err);
       }
       
-      User.subscribe(req, _.pluck(usersNamedJim, 'id'), ['destroy']);
+      // Now we'll use the ids we found to subscribe our client socket to each of these records'
+      // "destroy" context.
+      User.subscribe(req, _.pluck(usersNamedLouie, 'id'), ['destroy']);
       
-      // All done!  We'll send an empty "OK" response.
+      // Now any time a user named "louie" or "louis" is destroyed, our client socket will receive
+      // a notification (as long as it stays connected anyways).
+      
+      // All done!  We could send down some data, but instead we send an empty response.
+      // (although we're ok telling this vengeful client socket when our users get
+      //  destroyed, it seems ill-advised to send him our Louies' sensitive user data.
+      //  We don't want to help this guy to hunt them down irl.)
       return res.ok();
     });
   }
