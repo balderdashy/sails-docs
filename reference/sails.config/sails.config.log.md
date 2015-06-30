@@ -1,7 +1,7 @@
 # sails.config.log
 
 
-Configuration for the instance of the [Sails logger](http://beta.sailsjs.org/#/documentation/reference/Logs) (`sails.log`) used in your Sails app. The options are conventionally specified in the [config/log.js](/#/documentation/anatomy/myApp/config/log.js.html) configuration file.
+Configuration for the instance of the [Sails logger](http://sailsjs.org/#!/documentation/reference/Logs) (`sails.log`) used in your Sails app. The options are conventionally specified in the [config/log.js](/#/documentation/anatomy/myApp/config/log.js.html) configuration file.
 
 
 ### Properties

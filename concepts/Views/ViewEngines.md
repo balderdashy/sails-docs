@@ -4,9 +4,9 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 ##### Swapping out the view engine
 
-To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).)
+To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` (in [`config/views.js`](http://sailsjs.org/#!/documentation/anatomy/myApp/config/views.js.html).)
 
-For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html).
+For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`](http://sailsjs.org/#!/documentation/anatomy/myApp/config/views.js.html).
 
 
 
@@ -46,4 +46,3 @@ For instructions on adding support for a view engine not listed above, check out
 
 <docmeta name="uniqueID" value="ViewEngines339501">
 <docmeta name="displayName" value="View Engines">
-

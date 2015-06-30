@@ -15,7 +15,7 @@ _Or:_
 + `return res.view();`
 
 
-Uses the [configured view engine](http://beta.sailsjs.org/#/documentation/concepts/Views/ViewEngines.html) to compile the [view template](/#/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
+Uses the [configured view engine](http://sailsjs.org/#!/documentation/concepts/Views/ViewEngines.html) to compile the [view template](/#/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
 
 The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
 

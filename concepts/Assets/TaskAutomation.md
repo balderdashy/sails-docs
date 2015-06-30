@@ -144,11 +144,11 @@ npm uninstall grunt-contrib-jst --save-dev
 
 ### Task triggers
 
-In [development mode](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
+In [development mode](http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](http://sailsjs.org/#!/documentation/anatomy/myApp/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
 
-In production, Sails runs the `prod` task ([`tasks/register/prod.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
+In production, Sails runs the `prod` task ([`tasks/register/prod.js`](http://sailsjs.org/#!/documentation/anatomy/myApp/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
 
-These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/tasks/register) folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
+These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`](http://sailsjs.org/#!/documentation/anatomy/myApp/tasks/register) folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
 
 ##### `sails lift`
 

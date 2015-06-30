@@ -35,7 +35,7 @@ $http.post('/employee/7/involvedInPurchases/47')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/#!/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {

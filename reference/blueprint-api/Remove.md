@@ -34,7 +34,7 @@ $http.delete('/store/16/employeesOfTheMonth/7')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/#!/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
