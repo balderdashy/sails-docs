@@ -11,6 +11,8 @@ To create a new user hook:
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.
 
+As an alternative to a folder, you may create a file in your app&rsquo;s `api/hooks` folder like `api/hooks/myUserHook.js`.
+
 #### Testing that your hook loads properly
 
 To test that your hook is being loaded by Sails, lift your app with `sails lift --verbose`.  If your hook is loaded, you will see a message like:
