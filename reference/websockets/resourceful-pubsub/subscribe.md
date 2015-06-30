@@ -2,7 +2,8 @@
 
 Subscribes the requesting client socket to one or more database records (i.e. model instances).  The client socket will receive relevant messages emitted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()` and `.publishRemove()`.
 
-> **Important**
+> **Important**:
+>
 > This function does _not actually talk to the database_!  In fact, none of the resourceful pubsub methods do.  These are just a simplified abstraction layer built on top of the lower-level `sails.sockets` methods, designed to make your app cleaner and easier to debug by using conventional names for events/rooms/namespaces etc.
 
 ### Usage
