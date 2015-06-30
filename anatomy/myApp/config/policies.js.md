@@ -21,7 +21,7 @@ Policies are simply Express middleware functions which run before your controlle
  * below by its filename, minus the extension, (e.g. "authenticated")
  *
  * For more information on configuring policies, check out:
- * http://sailsjs.org/#!documentation/
+ * http://sailsjs.org/#!/documentation/
  */
 
 
