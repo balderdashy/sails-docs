@@ -13,11 +13,11 @@ Node.js will install on most major Operating systems.  MacOSX, many flavors of L
 
 Now, lets take a look at what OS you have.  Please choose from the following for instructions on setting up Node.js:
 
-I have [Mac OSX](#/getStarted?q=--install-on-osx-)
+I have [Mac OSX](http://sailsjs.org/get-started#?install-on-osx)
 
-I have [Linux](#/getStarted?q=--install-on-linux-)
+I have [Linux](http://sailsjs.org/get-started#?install-on-linux)
 
-I have [Windows](#/getStarted?q=--install-on-windows-)
+I have [Windows](http://sailsjs.org/get-started#?install-on-windows)
 
 <h2>
 <a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="#/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
