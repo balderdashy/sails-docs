@@ -1,4 +1,4 @@
-# .findOrCreate( `criteria` , `record` , [`callback`] )
+# .findOrCreate( `criteria` , [`record`] , [`callback`] )
 ### Purpose
 Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 
