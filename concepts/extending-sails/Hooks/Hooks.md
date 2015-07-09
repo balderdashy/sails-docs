@@ -16,7 +16,7 @@ Hooks share some common features with Sails [services](#/documentation/concepts/
 * Hooks have their own initialization system.  This allows them to be more dynamic and configure themselves when Sails lifts.
 * Hooks can add new [routes](#/documentation/concepts/Routes) to a Sails app before it lifts.
 
-Services are still a good choice for code that is shared between multiple [controllers](#/documentation/concepts/Controllers) or [models](http://sailsjs.org/#/documentation/concepts/ORM) in an app, but
+Services are still a good choice for code that is shared between multiple [controllers](#/documentation/concepts/Controllers) or [models](http://sailsjs.org/#!/documentation/concepts/ORM) in an app, but
 * is unlikely to be reused in another app 
 * won't need to behave differently in different environments (e.g. development vs. production)
 
@@ -26,7 +26,7 @@ For all other reusable code, hooks are the way to go!
 
 There are three types of hooks available in Sails:
 
-1. **Core hooks**.  These hooks provide many of the common features essential to a Sails app, such as request handling, blueprint route creation, and database integration via [Waterline](http://sailsjs.org/#/documentation/concepts/ORM).  Core hooks are bundled with the Sails core and are thus available to every app.  You will rarely have a need to call core hook methods in your code.
+1. **Core hooks**.  These hooks provide many of the common features essential to a Sails app, such as request handling, blueprint route creation, and database integration via [Waterline](http://sailsjs.org/#!/documentation/concepts/ORM).  Core hooks are bundled with the Sails core and are thus available to every app.  You will rarely have a need to call core hook methods in your code.
 2. **User hooks**.  These are hooks that live in the `api/hooks` folder of a Sails app.  User hooks provide a way to take advantage of the features of the hook system for code that doesn&rsquo;t need to be shared between apps.
 3. **Installable hooks**.  These hooks are installed into an app&rsquo;s `node_modules` folder using `npm install`.  Installable hooks allow developers in the Sails community to create and  &ldquo;plug-in&rdquo;-like modules for use in Sails apps.
 

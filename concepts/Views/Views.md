@@ -12,12 +12,12 @@ By default, Sails is configured to use EJS ([Embedded Javascript](http://embedde
 
 If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) via [Consolidate](https://github.com/visionmedia/consolidate.js/).
 
-Views are defined in your app's [`views/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
+Views are defined in your app's [`views/`](http://sailsjs.org/#!/documentation/anatomy/myApp/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
 
 
 ##### Compiling a view
 
-Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html) to compile one of your views, then send the resulting HTML down to the user.
+Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](http://sailsjs.org/#!/documentation/reference/res/res.view.html) to compile one of your views, then send the resulting HTML down to the user.
 
 You can also hook up a view directly to a route in your `routes.js` file.  Just indicate the relative path to the view from your app's `views/` directory.  For example:
 

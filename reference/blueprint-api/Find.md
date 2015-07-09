@@ -65,7 +65,7 @@ $http.get('/purchase?sort=createdAt DESC')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/#!/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {

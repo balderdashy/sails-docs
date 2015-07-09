@@ -1,6 +1,6 @@
 # req.options.values.where
 
-Default &ldquo;where&rdquo; criteria for user with blueprint [`find`](http://sailsjs.org/#/documentation/reference/blueprint-api/Find.html) and [`update`](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html) actions.
+Default &ldquo;where&rdquo; criteria for user with blueprint [`find`](http://sailsjs.org/#!/documentation/reference/blueprint-api/Find.html) and [`update`](http://sailsjs.org/#!/documentation/reference/blueprint-api/Update.html) actions.
 
 > Note: Before using `req.options.where`, confirm that it exists and create it if necessary.
 
@@ -27,6 +27,6 @@ module.exports = function filterByUser (req, res, next) {
 }
 ```
 
-Then [apply this policy](http://sailsjs.org/#/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
+Then [apply this policy](http://sailsjs.org/#!/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
 
 <docmeta name="displayName" value="req.options.where">
