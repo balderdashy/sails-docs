@@ -12,7 +12,7 @@
  * automatically by Sails.
  *
  * For more information on configuration, check out:
- * http://links.sailsjs.org/docs/config/globals
+ * http://sailsjs.org/documentation/concepts/globals
  */
 module.exports.globals = {
 	_: true,
