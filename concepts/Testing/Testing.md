@@ -62,6 +62,10 @@ This file should contain mocha configuration as described here: [mocha.opts](htt
 --require coffee-script/register
 --compilers coffee:coffee-script/register
 ```
+**Note**: The default test-case timeout in Mocha is 2 seconds. Increase the timeout value in mocha.opts to make sure the sails lifting completes before any of the test-cases can be started. For example:
+```
+--timeout 5s
+```
 
 ## Writing tests
 
