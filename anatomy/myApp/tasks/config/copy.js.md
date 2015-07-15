@@ -14,7 +14,7 @@
  * assets folder into the .tmp/public directory.
  *
  * # build task config
- * Copies all directories nd files from the .tmp/public directory into a www directory.
+ * Copies all directories and files from the .tmp/public directory into a www directory.
  *
  * For usage docs see:
  * 		https://github.com/gruntjs/grunt-contrib-copy
