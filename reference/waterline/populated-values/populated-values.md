@@ -5,7 +5,7 @@ In addition to basic attribute data like email addresses, phone numbers, and bir
 The type of a populated value is either:
 
 + `null`, or a plain old JavaScript object (POJO), or  _(if it corresponds to a "model" association)_
-+ an empty array, or an array of plain old JavaScript objects _(if it corresonds to a "collection" association)_
++ an empty array, or an array of plain old JavaScript objects _(if it corresponds to a "collection" association)_
 
 
 
