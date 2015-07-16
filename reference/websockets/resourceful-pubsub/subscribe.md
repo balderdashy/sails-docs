@@ -23,7 +23,7 @@ By default (if no "contexts" are provided), the client socket will receive relev
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
-| 1 | `url`      | ((req))   | The request object (`req`).  You should only use this method from an action.
+| 1 | `req`      | ((req))   | The request object (`req`).  You should only use this method from an action.
 | 2 | `ids`      | ((array))        | An array of record ids (primary keys).
 | 3 | `contexts` | ((array)) | An optional array of change-type strings ("contexts").  If provided, the subscribing client socket will only receive messages involving the specified types of changes (e.g. if a "destroy" context is specified, the socket will receive notifications from `publishDestroy()` calls involving this record).  Otherwise, if left unspecified, the socket will hear about any published events involving this record.
 
