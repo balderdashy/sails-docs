@@ -145,7 +145,7 @@ You can have one address redirect to another--either within your Sails app, or o
 'GET /google': 'http://www.google.com'
 ```
 
-Be careful to avoid infinitely loops when redirecting within your Sails app!
+Be careful to avoid redirect loops when redirecting within your Sails app!
 
 Note that when redirecting, the HTTP method of the original request (and any extra headers / parameters) will likely be lost, and the request will be transformed to a simple **GET** request.  In the above example, a **POST** request to **/alias** will result in a **GET** request to **/some/other/route**.  This is somewhat browser-dependent behavior, but it is recommended that you don't expect request methods and other data to survive a redirect.  
 
