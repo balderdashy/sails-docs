@@ -22,7 +22,7 @@ In a production environment (NODE_ENV==="production") Sails always uses
  2. alter - auto-migrate, but attempt to keep my existing data (experimental)
  3. drop  - wipe/drop ALL my data and rebuild models every time I lift Sails
 
-When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to `
+When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to
 
 
 | Auto-Migration Strategy  | Description |
