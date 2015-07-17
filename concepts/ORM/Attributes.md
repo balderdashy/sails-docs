@@ -2,7 +2,7 @@
 ### Overview
 
 Model attributes are basic pieces of information about a model. A model called `Person` might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
-<!-- 
+<!---
 > TODO: address sql vs. no sql and stuff like:
 > """
 > In most cases, this data is _homogenous_, meaning each record has the same attributes,
