@@ -3,7 +3,7 @@
 
 ##### Can I use environment variables?
 
-You can also configure the `port` and `environment` settings in Sails using environment variables.
+Yes! You can also configure the `port` and `environment` settings in Sails using environment variables.
 `NODE_ENV=production sails lift`
 `PORT=443 sails lift`
 
