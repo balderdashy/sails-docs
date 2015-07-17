@@ -8,7 +8,7 @@ Sails uses `ejs-locals` in its view rendering code, so in your views you can do:
 
 to render a partial located at `/views/foo.ejs`. All of your locals will be sent to the partial automatically.
 
-the paths are relative to the view, that is loading the partial. So if you have a a user view at `/views/users/view.ejs` and want to load `/views/partials/widget.ejs` then you would use:
+The paths are relative to the view that loads the partial. So if you have a a user view at `/views/users/view.ejs` and want to load `/views/partials/widget.ejs` then you would use:
 
 ```
 <%- partial ('../partials/widget.ejs') %> 
