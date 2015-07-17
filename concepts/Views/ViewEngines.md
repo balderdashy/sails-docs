@@ -23,7 +23,7 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
   - [hogan](https://github.com/twitter/hogan.js) [(website)](http://twitter.github.com/hogan.js/)
   - [jade](https://github.com/visionmedia/jade) [(website)](http://jade-lang.com/) (.jade)
   - [jazz](https://github.com/shinetech/jazz)
-  - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](http://api.jquery.com/category/plugins/templates/)
+  - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](https://github.com/kof/jqtpl)
   - [JUST](https://github.com/baryshev/just)
   - [liquor](https://github.com/chjj/liquor)
   - [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
