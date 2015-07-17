@@ -2,9 +2,9 @@
 
 ### Overview
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks for automatically encrypting a password before creating or updating an `Account` model.  Another example use case is automatically regenerating a URL slug when a Project's `name` attribute is updated.
+Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically encrypting a password before creating or updating an `Account` model.
 
-Sails exposes a handful of lifecycle callbacks out of the box.
+Sails exposes a handful of lifecycle callbacks by default.
 
 
 ##### Callbacks on `create`
