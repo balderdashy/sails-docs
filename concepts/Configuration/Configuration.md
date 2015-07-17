@@ -4,7 +4,7 @@
 
 While Sails dutifully adheres to the philosophy of [convention-over-configuration](http://en.wikipedia.org/wiki/Convention_over_configuration), it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.  This section of the docs includes a complete reference of the configuration options available in Sails.
 
-Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](http://sailsjs.org/#!/documentation/anatomy/myApp/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](http://sailsjs.org/#!/documentation/anatomy/myApp/config) folder of new projects. The authoratative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
+Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](http://sailsjs.org/#!/documentation/anatomy/myApp/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](http://sailsjs.org/#!/documentation/anatomy/myApp/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
 
 
 ### Standard configuration files (`config/*`)
@@ -23,7 +23,7 @@ module.exports.blueprints = {
 };
 ```
 
-For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](http://sailsjs.org/#!/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](./#!documentation/anatomy) for a higher-level overview.
+For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](http://sailsjs.org/#!/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](./#!/documentation/anatomy) for a higher-level overview.
 
 ### Environment-specific files (`config/env/*`)
 
