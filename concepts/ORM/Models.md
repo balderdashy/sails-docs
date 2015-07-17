@@ -2,8 +2,36 @@
 
 A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
 
-![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
+```javascript
+// Parrot.js
+// The set of parrots registered in our app.
+module.exports = {
+  attributes: {
+    // e.g., "Polly"
+    name: {
+      type: 'string'
+    },
 
+    // e.g., 3.26
+    wingspan: {
+      type: 'float',
+      required: true
+    },
+
+    // e.g., "cm"
+    wingspanUnits: {
+      type: 'string',
+      enum: ['cm', 'in', 'm', 'mm'],
+      defaultsTo: 'cm'
+    },
+
+    // e.g., [{...}, {...}, ...]
+    knownDialects: {
+      collection: 'Dialect'
+    }
+  }
+}
+```
 
 <!--
 
