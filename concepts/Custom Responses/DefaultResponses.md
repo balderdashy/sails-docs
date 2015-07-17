@@ -4,7 +4,7 @@ The following responses are bundled with all new Sails apps inside the `/api/res
 
 #### res.serverError(errors)
 
-This response normalizes the error/errors of {errors} into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
+This response normalizes the error/errors of `errors` into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
 
 #### res.badRequest(validationErrors, redirectTo)
 
