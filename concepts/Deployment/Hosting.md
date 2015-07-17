@@ -43,7 +43,7 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 + [Sails.js on Heroku](http://vort3x.me/sailsjs-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
-+ http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w
++ http://dennisrongo.com/deploying-sails-js-to-heroku
 + http://stackoverflow.com/a/20184907/486547
 
 ##### Deploying to AWS?
@@ -55,7 +55,7 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 
 ##### Using PM2?
 
-+ http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html
++ http://devo.ps/blog/goodbye-node-forever-hello-pm2/
 
 
 ##### Deploying to CloudControl?
