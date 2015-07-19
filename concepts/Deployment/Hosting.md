@@ -30,6 +30,27 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
+You will also need to install `grunt-cli` with `npm i --save grunt-cli`.
+
+After doing that, create the file `.openshift/action_hooks/pre_start_nodejs` with the following contents. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6))
+
+```
+#!/bin/bash
+export NODE_ENV=production
+
+if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
+    (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
+fi
+```
+
+Then create the file `/supervisor_opts` with the following contents. This tells OpenShift's supervisor to ignore Sails' `.tmp` directory for the hot reload functionality. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
+
+```
+-i .tmp
+```
+
+You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
+
 ##### Using DigitalOcean?
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
