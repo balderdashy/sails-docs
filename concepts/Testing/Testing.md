@@ -57,7 +57,7 @@ after(function(done) {
 
 This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha-opts)
 
-**Note**: If you are writing your test in CoffeeScript be sure to add this lines to your mocha.opts
+**Note**: If you are writing your test in CoffeeScript be sure to add these lines to your `mocha.opts`.
 ```
 --require coffee-script/register
 --compilers coffee:coffee-script/register
