@@ -8,7 +8,7 @@ For example, if you create a `User.js` model and `UserController.js` controller 
 
 Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
 
-##### Blueprint Routes
+#### Blueprint Routes
 
 When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](./#!/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
 
@@ -22,7 +22,7 @@ There are three types of blueprint routes in Sails:
 See the [blueprints subsection of the configuration reference](./#!/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
 
 
-##### Blueprint Actions
+#### Blueprint Actions
 
 Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 

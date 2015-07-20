@@ -28,12 +28,12 @@ If the action is triggered via a socket request, the requesting socket will ALSO
 
 Create a new pony named "AppleJack" with a hobby of "pickin".
 
-#### Route
+##### Route
 `POST /pony`
 
 
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "name": "AppleJack",
@@ -41,7 +41,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-#### Example Response
+##### Example Response
 ```json
 {
   "name": "AppleJack",
@@ -54,14 +54,14 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 #### Create a record (shortcuts)
 
-#### Route
-`GET /pony/create?name=Shutterfly&best_pony=yep`
+##### Route
+`GET /pony/create?name=Fluttershy&best_pony=yep`
 
-#### Expected Response
+##### Expected Response
 
 ```javascript
 {
- "name": "Shutterfly",
+ "name": "Fluttershy",
  "best_pony": "yep",
  "createdAt": "2014-02-24T21:02:16.068Z",
  "updatedAt": "2014-02-24T21:02:16.068Z",
@@ -77,14 +77,14 @@ You can create associations between models in two different ways.  You can eithe
 
 These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
-### Create record while associating w/ existing record (REST)
+#### Create record while associating w/ existing record (REST)
 
 Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.
 
-#### Route
+##### Route
 `POST /pony`
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "name": "Pinkie Pie",
@@ -93,7 +93,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 }
 ```
 
-#### Example Response
+##### Example Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -110,15 +110,15 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 ```
 
 
-### Create new record while associating w/ another new record (REST)
+#### Create new record while associating w/ another new record (REST)
 
 Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
 
-#### Route
+##### Route
 `POST /pony`
 
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "name": "Pinkie Pie",
@@ -130,7 +130,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 }
 ```
 
-#### Expected Response
+##### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -148,4 +148,3 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 
 <docmeta name="uniqueID" value="CreateARecord744986">
 <docmeta name="displayName" value="create">
-
