@@ -36,7 +36,7 @@ GET /:model/:id
 
 The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key](http://en.wikipedia.org/wiki/Unique_key) of the desired record.
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the docs for [.subscribe()](/#/documentation/reference/websockets/resourceful-pubsub/subscribe.html) for more info.
+If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the docs for [.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html) for more info.
 
 
 ### Parameters
@@ -66,4 +66,3 @@ Find the purchase with ID #1, E.g. `http://localhost:1337/purchase/1`
 
 <docmeta name="uniqueID" value="FindOne259267">
 <docmeta name="displayName" value="find one">
-

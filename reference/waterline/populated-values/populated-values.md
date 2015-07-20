@@ -1,6 +1,6 @@
 # Populated Values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](/#/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
+In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](http://sailsjs.org/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
 
 The type of a populated value is either:
 
@@ -85,4 +85,3 @@ Order.find()
 
 <docmeta name="uniqueID" value="populatedvalues790682">
 <docmeta name="displayName" value="Populated Values">
-

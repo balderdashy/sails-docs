@@ -15,9 +15,9 @@ _Or:_
 + `return res.view();`
 
 
-Uses the [configured view engine](http://sailsjs.org/#!/documentation/concepts/Views/ViewEngines.html) to compile the [view template](/#/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
+Uses the [configured view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to compile the [view template](http://sailsjs.org/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
 
-The specified [`locals`](./#documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
+The specified [`locals`](http://sailsjs.org/documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
 
 
 ### Arguments
@@ -53,7 +53,7 @@ Finally, here's a more involved example demonstrating how `res.view` can be comb
 // Find the 5 hottest oven brands on the market
 Oven.find().sort('heat ASC').exec(function (err, ovens){
   if (err) return res.serverError(err);
-  
+
   return res.view('oven/top5', {
     hottestOvens: ovens
   });
@@ -85,4 +85,3 @@ Oven.find().sort('heat ASC').exec(function (err, ovens){
 
 <docmeta name="uniqueID" value="resview916814">
 <docmeta name="displayName" value="res.view()">
-

@@ -75,7 +75,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how.
 
-These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](/#!documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
+These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
 #### Create record while associating w/ existing record (REST)
 

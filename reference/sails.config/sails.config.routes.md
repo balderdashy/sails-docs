@@ -11,8 +11,7 @@ module.exports.routes = {
 }
 ```
 
-Please see the [routes concept overview](/#/documentation/concepts/Routes) for a full discussion of Sails routes, and the [custom routes documentation](/#/documentation/concepts/Routes/RouteTargetSyntax.html) for a detailed description of the available configurations for both the route address and target.
+Please see the [routes concept overview](http://sailsjs.org/documentation/concepts/Routes) for a full discussion of Sails routes, and the [custom routes documentation](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html) for a detailed description of the available configurations for both the route address and target.
 
 <docmeta name="uniqueID" value="sailsconfigroutes141736">
 <docmeta name="displayName" value="sails.config.routes">
-

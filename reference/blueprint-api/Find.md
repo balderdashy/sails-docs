@@ -65,7 +65,7 @@ $http.get('/purchase?sort=createdAt DESC')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/#!/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -91,4 +91,3 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 
 <docmeta name="uniqueID" value="Find290807">
 <docmeta name="displayName" value="find where">
-

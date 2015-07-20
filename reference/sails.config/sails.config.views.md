@@ -1,6 +1,6 @@
 # sails.config.views
 
-Configuration for your app's server-side [views](/#/documentation/concepts/Views).  The options are conventionally specified in the [`config/views.js`](/#/documentation/anatomy/myApp/config/views.js.html) configuration file.
+Configuration for your app's server-side [views](http://sailsjs.org/documentation/concepts/Views).  The options are conventionally specified in the [`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html) configuration file.
 
 
 ### Properties
@@ -14,7 +14,7 @@ Configuration for your app's server-side [views](/#/documentation/concepts/Views
 
 ### Notes
 
-> + If your app is NOT using `ejs` (the default view engine) Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts when using a custom view engine like Jade or Handlebars, check out [that view engine's documentation](/#/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
+> + If your app is NOT using `ejs` (the default view engine) Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts when using a custom view engine like Jade or Handlebars, check out [that view engine's documentation](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
 
 
 
