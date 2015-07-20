@@ -55,13 +55,13 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 #### Create a record (shortcuts)
 
 ##### Route
-`GET /pony/create?name=Shutterfly&best_pony=yep`
+`GET /pony/create?name=Fluttershy&best_pony=yep`
 
 ##### Expected Response
 
 ```javascript
 {
- "name": "Shutterfly",
+ "name": "Fluttershy",
  "best_pony": "yep",
  "createdAt": "2014-02-24T21:02:16.068Z",
  "updatedAt": "2014-02-24T21:02:16.068Z",
