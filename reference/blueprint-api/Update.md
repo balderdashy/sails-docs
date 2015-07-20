@@ -18,21 +18,21 @@ Updates the model instance which matches the **id** parameter.  Responds with a 
 
 ### Examples
 
-### Update Record (REST)
+#### Update Record (REST)
 
 Change AppleJack's hobby to "kickin".
 
-#### Route
+##### Route
 `PUT /pony/47`
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "hobby": "kickin"
 }
 ```
 
-### Expected Response
+##### Expected Response
 ```json
 {
   "name": "AppleJack",
@@ -43,29 +43,29 @@ Change AppleJack's hobby to "kickin".
 }
 ```
 
-### Update Record (Shortcuts)
+#### Update Record (Shortcuts)
 
 `GET /pony/update/47?hobby=kickin`
 
-#### Expected Response
+##### Expected Response
 
 Same as above.
 
-### Add association between two existing records (REST)
+#### Add association between two existing records (REST)
 
 Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 
-#### Route
+##### Route
 `POST /pony/4/pets`
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "id": 15
 }
 ```
 
-#### Expected Response
+##### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -89,24 +89,24 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 }
 ```
 
-### Add association between two existing records (Shortcuts)
+#### Add association between two existing records (Shortcuts)
 `GET /pony/4/pets/add/15`
 
-### Remove Association (Many-To-Many) (REST)
+#### Remove Association (Many-To-Many) (REST)
 
 Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
-#### Route
+##### Route
 `DELETE /pony/4/pets`
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "id": 12
 }
 ```
 
-#### Expected Response
+##### Expected Response
 ```json
 
 {
@@ -128,14 +128,13 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 #### Remove Association (Many-To-Many) (Shortcuts)
 
-#### Route
+##### Route
 
 `GET /pony/4/pets/remove/12`
 
-#### Expected Response
+##### Expected Response
 
 Same as above.
 
 <docmeta name="uniqueID" value="UpdateARecord421031">
 <docmeta name="displayName" value="update">
-

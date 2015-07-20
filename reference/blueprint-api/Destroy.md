@@ -26,17 +26,17 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
 
 Delete Pinkie Pie.
 
-#### Route
+##### Route
 `DELETE /pony`
 
-#### JSON Request Body
+##### JSON Request Body
 ```json
 {
   "id": 4
 }
 ```
 
-#### Expected Response
+##### Expected Response
 
 ```json
 {
@@ -50,14 +50,13 @@ Delete Pinkie Pie.
 
 #### Destroy (Shortcuts)
 
-#### Route
+##### Route
 `GET /pony/destroy/4`
 
-#### Expected Response
+##### Expected Response
 
 Same as above.
 
 
 <docmeta name="uniqueID" value="DestroyARecord867513">
 <docmeta name="displayName" value="destroy">
-
