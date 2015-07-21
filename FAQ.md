@@ -1,7 +1,7 @@
 # FAQ
 
 ### Where is the documentation?
-+ [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/#!/documentation)
++ [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/documentation)
 + This is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs)
   + The content in the Github repo is eventually pushed to the website.
   + It is usually a several commits ahead, and is the go-to place for the most up-to-date information.

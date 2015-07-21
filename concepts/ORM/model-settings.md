@@ -54,7 +54,7 @@ For adapters that don't require a schema, such as Mongo or Redis, the default se
 connection: 'my-local-postgresql'
 ```
 
-The configured database [connection](http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
+The configured database [connection](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
 
 
 ### `identity`
@@ -71,7 +71,7 @@ The lowercase unique key for this model, e.g. `user`.  By default, a model's `id
 globalId: 'Purchase'
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/#!/documentation/concepts/Globals?q=disabling-globals).
+This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals).
 
 
 
@@ -151,10 +151,9 @@ attributes: {
 }
 ```
 
-See [Attributes](http://sailsjs.org/#!/documentation/concepts/ORM/Attributes.html).
+See [Attributes](http://sailsjs.org/documentation/concepts/ORM/Attributes.html).
 
 
 
 <docmeta name="uniqueID" value="Modelconfiguration960213">
 <docmeta name="displayName" value="Model Settings">
-

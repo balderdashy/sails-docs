@@ -1,6 +1,6 @@
 # res.negotiate()
 
-Given an error (`err`), send an appropriate error response back down to the client.  Especially handy for handling potential validation errors from [Model.create()](/#/documentation/reference/waterline/models/create.html) or [Model.update()](/#/documentation/reference/waterline/models/update.html).
+Given an error (`err`), send an appropriate error response back down to the client.  Especially handy for handling potential validation errors from [Model.create()](http://sailsjs.org/documentation/reference/waterline/models/create.html) or [Model.update()](http://sailsjs.org/documentation/reference/waterline/models/update.html).
 
 ### Usage
 
@@ -14,10 +14,10 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 `res.negotiate()` examines the provided error (`err`) and determines the appropriate error-handling behavior from one of the following methods:
 
-+ [`res.badRequest()`](/#/documentation/anatomy/myApp/api/responses/badRequest.js.html)   (400)
-+ [`res.forbidden()`](/#/documentation/anatomy/myApp/api/responses/forbidden.js.html)    (403)
-+ [`res.notFound()`](/#/documentation/anatomy/myApp/api/responses/notFound.js.html)     (404)
-+ [`res.serverError()`](/#/documentation/anatomy/myApp/api/responses/serverError.js.html)  (500)
++ [`res.badRequest()`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/badRequest.js.html)   (400)
++ [`res.forbidden()`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/forbidden.js.html)    (403)
++ [`res.notFound()`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/notFound.js.html)     (404)
++ [`res.serverError()`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/serverError.js.html)  (500)
 
 The determination is made based on `err`'s "status" property.  If a more specific diagnosis cannot be determined (e.g. `err` doesn't have a "status" property, or it's a string), Sails will default to `res.serverError()`.
 
@@ -50,4 +50,3 @@ Pet.update({name: 'fido'})
 
 <docmeta name="uniqueID" value="resnegotiate730536">
 <docmeta name="displayName" value="res.negotiate()">
-

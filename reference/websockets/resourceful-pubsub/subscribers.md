@@ -1,7 +1,7 @@
 # .subscribers(`record`,[`contexts`])
 
 ### Purpose
-Returns an array of sockets that are subscribed to `record`.  This can be used in conjunction with lower-level methods like [`sails.sockets.emit`](/#/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html) to send custom messages to a collection of sockets, or with [`.subscribe`](http://sailsjs.org/#!/documentation/reference/websockets/resourceful-pubsub/subscribe.html) to subscribe one group of sockets to a new instance.
+Returns an array of sockets that are subscribed to `record`.  This can be used in conjunction with lower-level methods like [`sails.sockets.emit`](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html) to send custom messages to a collection of sockets, or with [`.subscribe`](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html) to subscribe one group of sockets to a new instance.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
@@ -31,4 +31,3 @@ Controller Code
 <docmeta name="methodType" value="pubsub">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".subscribers()">
-

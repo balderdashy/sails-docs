@@ -13,7 +13,7 @@ This is where you will put "controller actions" that send data to your clients a
  * UserController
  *
  * @description :: Server-side logic for managing users
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ * @help        :: See http://sailsjs.org/documentation/concepts/Controllers
  */
 
 module.exports = {
