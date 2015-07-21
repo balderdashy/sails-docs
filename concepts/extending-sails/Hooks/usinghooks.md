@@ -2,10 +2,10 @@
 
 ## Using a user hook
 
-To use a user hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the user hook](/#/documentation/concepts/extending-sails/Hooks/userhooks.html) or copy the folder for the hook you want to use into `api/hooks`.
+To use a user hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the user hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html) or copy the folder for the hook you want to use into `api/hooks`.
 
 ## Using an installable hook
-To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](/#/documentation/concepts/extending-sails/Hooks/installablehooks.html) directly into your app&rsquo;s `node_modules` folder.
+To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html) directly into your app&rsquo;s `node_modules` folder.
 
 ## Calling hook methods
 Any methods that a hook exposes are available in the `sails.hooks[<hook-name>]` object.  For example, the `sails-hook-email` hook provides a `sails.hooks.email.send()` method (note that the `sails-hook-` prefix is stripped off).  Consult a hook&rsquo;s documentation to determine which methods it provides.
@@ -21,7 +21,7 @@ On rare occassions, you may need to change the name that Sails uses for an insta
 module.exports.installedHooks = {
    "sails-hook-email": {
       // load the hook into sails.hooks.emailHook instead of sails.hooks.email
-      "name": "emailHook", 
+      "name": "emailHook",
       // configure the hook using sails.config.emailSettings instead of sails.config.email
       "configKey": "emailSettings"
    }
@@ -30,10 +30,10 @@ module.exports.installedHooks = {
 
 > Note: you may have to create the `config/installedHooks.js` file yourself.
 
-* [Hooks overview](#/documentation/concepts/extending-sails/Hooks)
-* [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
-* [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
-* [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
+* [Hooks overview](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)
+* [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec)
+* [Creating a user hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html)
+* [Creating an installable hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 <docmeta name="uniqueID" value="Hooks75001">
 <docmeta name="displayName" value="Using Hooks">

@@ -2,7 +2,7 @@
 
 ### Overview
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
+The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](http://sailsjs.org/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
 <!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
 
 Here are a few things that the default Grunt configuration in Sails does to help you out:  

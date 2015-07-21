@@ -48,7 +48,7 @@ sails.__({
 
 ### Additional Options
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://sailsjs.org/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
 
 ```javascript
 // Which locales are supported?
@@ -65,7 +65,7 @@ localesDirectory: '/config/locales'
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
-But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://sailsjs.org/#!/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
+But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://sailsjs.org/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
 
 
 ### What About i18n on the client?
@@ -78,4 +78,3 @@ You can actually reuse Sails' i18n support to help you get your translated templ
 
 
 <docmeta name="displayName" value="Internationalization">
-

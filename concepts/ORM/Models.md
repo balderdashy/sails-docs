@@ -139,7 +139,7 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 #### Resourceful Pubsub Methods
 
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/#!/documentation/reference/websockets/resourceful-pubsub).
+A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub).
 
 
 <!--
@@ -153,10 +153,10 @@ Attribute methods are functions available on records (i.e. model instances) retu
 ###### Built-in attribute methods
 Every Waterline model includes some attribute methods automatically, including:
 
-+ [`.toJSON()`](http://sailsjs.org/#!/documentation/reference/waterline/records/toJSON.html)
-+ [`.save()`](http://sailsjs.org/#!/documentation/reference/waterline/records/save.html)
-+ [`.destroy()`](http://sailsjs.org/#!/documentation/reference/waterline/models/destroy.html)
-+ [`.validate()`](http://sailsjs.org/#!/documentation/reference/waterline/records/validate.html)
++ [`.toJSON()`](http://sailsjs.org/documentation/reference/waterline/records/toJSON.html)
++ [`.save()`](http://sailsjs.org/documentation/reference/waterline/records/save.html)
++ [`.destroy()`](http://sailsjs.org/documentation/reference/waterline/models/destroy.html)
++ [`.validate()`](http://sailsjs.org/documentation/reference/waterline/records/validate.html)
 
 
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->

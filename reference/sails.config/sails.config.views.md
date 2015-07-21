@@ -7,10 +7,10 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 
 | Property    | Type       | Default   | Details |
 |-------------|:----------:|-----------|---------|
-| `layout`    | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](/#/documentation/concepts/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.
-| `engine`    | ((string)) | `"ejs"` | The [view engine](/#/documentation/concepts/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
+| `layout`    | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](http://sailsjs.org/documentation/concepts/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.
+| `engine`    | ((string)) | `"ejs"` | The [view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
 | `extension` | ((string)) | Same as `engine` | The file extension for view files. |
-| `locals`    | ((object)) | `{}` | Default data to be included as [view locals](/#/documentation/concepts/Views/Locals.html) every time a server-side view is compiled anywhere in this app. |
+| `locals`    | ((object)) | `{}` | Default data to be included as [view locals](http://sailsjs.org/documentation/concepts/Views/Locals.html) every time a server-side view is compiled anywhere in this app. |
 
 ### Notes
 

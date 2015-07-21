@@ -1,7 +1,7 @@
 # Sails.js Documentation (v0.11.x)
 
 
-Guide and reference documentation for the 0.11.x release of Sails.  Content for most sections on the Sails website (beta.sailsjs.org) is compiled from here.  In some cases, the markdown files are split, relinked, converted to HTML, or formatted to fit within the skin of sailsjs.org- but most of the time, a `.md` file in this repo corresponds one-to-one with a client-side route on the website (e.g. `/#/documentation/reference/Blueprints/Create.html`).
+Guide and reference documentation for the 0.11.x release of Sails.  Content for most sections on the Sails website (beta.sailsjs.org) is compiled from here.  In some cases, the markdown files are split, relinked, converted to HTML, or formatted to fit within the skin of sailsjs.org- but most of the time, a `.md` file in this repo corresponds one-to-one with a client-side route on the website (e.g. `http://sailsjs.org/documentation/reference/Blueprints/Create.html`).
 
 
 ##### Contributing to the docs
@@ -13,4 +13,3 @@ Secondly, we are open to suggestions about the process we're using to manage our
 ##### How often are these files compiled and pushed to the website?
 
 Currently, these docs are pushed almost instantaneously to www.sailsjs.org.  That will likely continue to happen for the forseeable future.  In general, this repo should follow the same versioning strategy as Sails (using tags).
-

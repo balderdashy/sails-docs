@@ -67,8 +67,8 @@ setTimeout(function sunrise () {
             <ul class="link-list">
 
                 <h4>Docs</h4>
-                <a target="_blank" href="http://sailsjs.org/#!/documentation/anatomy"><li>App Structure</li></a>
-                <a target="_blank" href="http://sailsjs.org/#!/documentation/reference"><li>Reference</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/anatomy"><li>App Structure</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/reference"><li>Reference</li></a>
                 <a target="_blank" href="http://links.sailsjs.org/docs/faq"><li>FAQ</li></a>
                 <a target="_blank" href="http://sailsjs.org"><li>Supported Databases</li></a>
 

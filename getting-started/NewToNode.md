@@ -20,7 +20,7 @@ I have [Linux](http://sailsjs.org/get-started#?install-on-linux)
 I have [Windows](http://sailsjs.org/get-started#?install-on-windows)
 
 <h2>
-<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="#/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
 Install on OSX
 </h2>
 
@@ -37,7 +37,7 @@ Using [macports](http://www.macports.org/):
     port install nodejs  
 
 <h2>
-<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="#/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="http://sailsjs.org/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Linux
 </h2>
 
@@ -87,7 +87,7 @@ For *Debian sid (unstable)*, [Node.js is available in the official repo](http://
 For *Debian Wheezy (stable)*, [Node.js is available in wheezy-backports](http://packages.debian.org/wheezy-backports/nodejs). To install [backports](http://backports.debian.org/Instructions/), add this to your sources.list (`/etc/apt/sources.list`):
 
     deb http://YOURMIRROR.debian.org/debian wheezy-backports main
-    
+
 Then run:
 
     apt-get update
@@ -109,7 +109,7 @@ Available RPM packages for: openSUSE 11.4, 12.1, Factory and Tumbleweed; SLE 11 
 
 Example install on openSUSE 12.1:
 
-    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService 
+    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService
     sudo zypper in nodejs nodejs-devel
 
 ### FreeBSD and OpenBSD
@@ -117,24 +117,24 @@ Node.js is available through the ports system.
 
     /usr/ports/www/node
 
-Development versions are also available using ports 
+Development versions are also available using ports
 
     cd /usr/ports/www/node-devel/ && make install clean
 
 or packages on FreeBSD
 
     pkg_add -r node-devel
-    
+
 The Node Package Manager is not installed along with Node.js by default on FreeBSD and will be needed for development and installing dependencies.
 
     /usr/ports/www/npm
-    
+
 Also note that FreeBSD 10 using clang will conflict with the occasional build scrpt (which assumes gcc) using node-gyp, and can be resolved by setting an envvar.
 
     CXX=c++
 
 <h2>
-<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="#/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Windows
 </h2>
 
