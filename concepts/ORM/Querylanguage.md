@@ -134,7 +134,7 @@ Model.find({ name: { '!': 'foo' }})
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign.
+Searches for records using pattern matching with the `%` sign. (Case insensitive.)
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
@@ -143,7 +143,7 @@ Model.find({ food: { 'like': '%beans' }})
 #### 'contains'
 
 A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it.
+contains the string anywhere inside of it. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'contains': 'history' }})
@@ -156,7 +156,7 @@ Model.find({ class: { 'like': '%history%' }})
 #### 'startsWith'
 
 A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value.
+starts with the supplied string value. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'startsWith': 'american' }})
@@ -169,7 +169,7 @@ Model.find({ class: { 'like': 'american%' }})
 #### 'endsWith'
 
 A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value.
+ends with the supplied string value. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'endsWith': 'can' }})

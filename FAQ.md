@@ -11,7 +11,7 @@
 + [Help us improve the documentation](https://github.com/balderdashy/sails-docs)
 + [Contribute to the Sails core](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#contributing-to-core)
 + [Create/contribute to a plugin](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#writing-code)
-+ [Contribute to the sailsjs.org website](http://twitter.com/mikermcneil)
++ [Contribute to the sailsjs.org website](https://github.com/balderdashy/www.sailsjs.org)
 
 ### Where do I submit ideas?  Report issues?
 + [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself

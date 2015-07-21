@@ -2,8 +2,36 @@
 
 A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
 
-![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
+```javascript
+// Parrot.js
+// The set of parrots registered in our app.
+module.exports = {
+  attributes: {
+    // e.g., "Polly"
+    name: {
+      type: 'string'
+    },
 
+    // e.g., 3.26
+    wingspan: {
+      type: 'float',
+      required: true
+    },
+
+    // e.g., "cm"
+    wingspanUnits: {
+      type: 'string',
+      enum: ['cm', 'in', 'm', 'mm'],
+      defaultsTo: 'cm'
+    },
+
+    // e.g., [{...}, {...}, ...]
+    knownDialects: {
+      collection: 'Dialect'
+    }
+  }
+}
+```
 
 <!--
 
@@ -44,7 +72,7 @@ Waterline allows you to define custom methods on your models.  This feature take
 
 Model methods are generally asynchronous functions.  By convention, asynchronous model methods should be 2-ary functions, which accept an object of inputs as their first argument (usually called `opts` or `options`) and a Node callback as the second argument.  Alternatively, you might opt to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
 
-A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model records that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
 
 For example:
 

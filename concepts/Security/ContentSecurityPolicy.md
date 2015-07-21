@@ -29,7 +29,7 @@ Content Security Policy (CSP) is a W3C specification for instructing the client 
 | reflected-xss | Instructs a user agent to activate or deactivate any heuristics used to filter or block reflected cross-site scripting attacks, equivalent to the effects of the non-standard X-XSS-Protection header |
 | report-uri    | Specifies a URI to which the user agent sends reports about policy violation |
 
-> For more information, see the [W3C SCP Spec](https://w3c.github.io/webappsec/specs/content-security-policy/)
+> For more information, see the [W3C CSP Spec](https://w3c.github.io/webappsec/specs/content-security-policy/)
 
 
 
