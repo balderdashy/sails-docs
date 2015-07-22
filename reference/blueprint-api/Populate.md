@@ -42,7 +42,7 @@ curl http://localhost:1337/purchase/47/cashier
 ```
 
 
-Should return
+Should return:
 
 ```json
 {

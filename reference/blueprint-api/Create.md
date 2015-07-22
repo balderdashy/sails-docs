@@ -6,14 +6,13 @@ Creates a new model instance in your database then returns it's values.
 POST /:model
 ```
 
-
 Attributes can be sent in the HTTP body as form-encoded values or JSON.
 
 Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
 
 Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/websockets/resourceful-pubsub/watch.md) for more info).
 
-If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for .subscribe() for more info.
+If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance. If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for .subscribe() for more info.
 
 ### Parameters
 
@@ -73,9 +72,9 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 
 ### Examples with One Way Associations
 
-You can create associations between models in two different ways.  You can either make the association with a record that already exists OR you can create both records simultaneously.  Check out the examples to see how.
+You can create associations between models in two different ways. You can either make the association with a record that already exists OR you can create both records simultaneously. Check out the examples to see how.
 
-These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html).  The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
+These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html). The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
 #### Create record while associating w/ existing record (REST)
 
@@ -137,7 +136,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
   "hobby": "ice skating",
   "pet": {
     "name": "Gummy",
-    "species": "crocodile"，
+    "species": "crocodile",
     "id": 10
   },
   "id": 4,

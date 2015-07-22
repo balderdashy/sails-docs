@@ -1,20 +1,21 @@
 # Update a Record
 
-### `PUT /:model/:record`
-
-Update an existing record.
+Updates an existing record.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
 
-### Description
-Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+```
+PUT /:model/:record
+```
+
+Updates the model instance which matches the **id** parameter. Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
 
 ### Parameters
 
  Parameter                          | Type                                                    | Details
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
  id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | The primary key value of the record to update.<br/><br/>e.g. `PUT /product/5`
- *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For `GET` (shortcut) requests, add the parameters to the query string.
- callback                           | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
+ callback                           | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Examples
 
@@ -73,13 +74,13 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
   "id": 4,
   "pets": [{
       "name": "Gummy",
-      "species": "crocodile"
+      "species": "crocodile",
       "id": 10,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
     },{
       "name": "Bubbles",
-      "species": "wiggleworm"
+      "species": "wiggleworm",
       "id": 15,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
