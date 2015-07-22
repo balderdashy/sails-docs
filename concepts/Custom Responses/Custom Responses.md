@@ -2,11 +2,11 @@
 
 ### Overview
 
-Sails v.10 allows for customizable server responses.  Sails comes with a handful of the most common response types by default.  They can be found in the `/api/responses` directory of your project.  To customize these, simply edit the appropriate .js file. 
+Sails v.10 allows for customizable server responses.  Sails comes with a handful of the most common response types by default.  They can be found in the `/api/responses` directory of your project.  To customize these, simply edit the appropriate .js file.
 
 As a quick example, consider the following controller action:
 
-```
+```javascript
 foo: function(req, res) {
    if (!req.param('id')) {
      res.status(400);
@@ -24,7 +24,7 @@ This code handles a bad request by sending a 400 error status and a short messag
 
 Now, consider this replacement:
 
-```
+```javascript
 foo: function(req, res) {
    if (!req.param('id')) {
      res.badRequest('Sorry, you need to tell us the ID of the FOO you want!');

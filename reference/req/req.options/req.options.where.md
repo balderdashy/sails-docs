@@ -8,7 +8,7 @@ Default &ldquo;where&rdquo; criteria for user with blueprint [`find`](http://sai
 
 To default to finding only records where `userId` matches the logged-in user&rsquo;s id:
 
-```
+```javascript
 // In config/policies/filterByUser.js
 module.exports = function filterByUser (req, res, next) {
 

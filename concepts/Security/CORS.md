@@ -15,7 +15,7 @@ For security reasons, CORS is disabled by default in Sails.  But enabling it is 
 
 To allow cross-origin requests from _any_ domain to _any_ route in your app, simply enable `allRoutes` in [`config/cors.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.cors.html):
 
-```js
+```javascript
 allRoutes: true
 ```
 
@@ -25,7 +25,7 @@ See [`sails.config.cors`](http://sailsjs.org/documentation/reference/sails.confi
 ### Configuring CORS For Individual Routes
 Besides the global CORS configuration, you can set up individual routes in `config/routes.js` to accept (or deny) cross-origin requests.  To indicate that a route should accept CORS requests using the configuration parameters in `config/cors.js`, set its `cors` property to `true`:
 
-```
+```javascript
 "get /foo": {
    controller: "FooController",
    action: "index",
@@ -35,7 +35,7 @@ Besides the global CORS configuration, you can set up individual routes in `conf
 
 If you have the `allRoutes` parameter set to `true` in `config.cors.js`, but you want to exempt a specific route, you can do so by explicitly setting its `cors` property to `false`:
 
-```
+```javascript
 "get /foo": {
    controller: "FooController",
    action: "index",
@@ -45,7 +45,7 @@ If you have the `allRoutes` parameter set to `true` in `config.cors.js`, but you
 
 To override specific CORS configuration parameters for a route, add a `cors` property object:
 
-```
+```javascript
 "get /foo": {
    controller: "FooController",
    action: "index",
@@ -62,7 +62,7 @@ By default, Sails will still process all the requests that come in regardless of
 
 If you want to completely prevent Sails from processing requests from disallowed domains, you can use the `securityLevel` setting:
 
-```
+```javascript
 module.exports.cors = {
   allRoutes: true,
   origin: "http://sailsjs.org",

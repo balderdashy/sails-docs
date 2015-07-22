@@ -108,13 +108,12 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 
 ##### Expected Response
 ```json
-
 {
   "name": "Pinkie Pie",
   "hobby": "ice skating",
   "pets": [{
       "name": "Bubbles",
-      "species": "crackhead"
+      "species": "crackhead",
       "id": 15,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
@@ -123,7 +122,6 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
   "createdAt": "2013-10-18T01:22:56.000Z",
   "updatedAt": "2013-11-26T22:54:19.951Z"
 }
-
 ```
 
 #### Remove Association (Many-To-Many) (Shortcuts)

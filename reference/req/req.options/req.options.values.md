@@ -8,7 +8,7 @@ Default values for blueprint [`create`](http://sailsjs.org/documentation/referen
 
 To default to using the logged-in user&rsquo;s name when creating a new record:
 
-```
+```javascript
 // In config/policies/createWithUserName.js
 module.exports = function createWithUserName (req, res, next) {
 

@@ -10,7 +10,7 @@ Here is an example locale file (`config/locales/es.json`):
 ```json
 {
     "Hello!": "Hola!",
-    "Hello %s, how are you today?": "¿Hola %s, como estas?",
+    "Hello %s, how are you today?": "¿Hola %s, como estas?"
 }
 ```
 
@@ -21,7 +21,7 @@ For example, here's another pass at `config/locales/es.json`:
 ```json
 {
     "hello": "Hola!",
-    "hello-how-are-you-today": "Hola %s, ¿cómo estás?",
+    "hello-how-are-you-today": "Hola %s, ¿cómo estás?"
 }
 ```
 
@@ -30,7 +30,7 @@ And here's `config/locales/en.json`:
 ```json
 {
     "hello": "Hello!",
-    "hello-how-are-you-today": "Hello, how are you today?",
+    "hello-how-are-you-today": "Hello, how are you today?"
 }
 ```
 
