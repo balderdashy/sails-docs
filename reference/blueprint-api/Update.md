@@ -80,7 +80,7 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
       "updatedAt": "2014-02-13T00:06:50.603Z"
     },{
       "name": "Bubbles",
-      "species": "wiggleworm",
+      "species": "manticore",
       "id": 15,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
@@ -114,7 +114,7 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
   "hobby": "ice skating",
   "pets": [{
       "name": "Bubbles",
-      "species": "crackhead",
+      "species": "manticore",
       "id": 15,
       "createdAt": "2014-02-13T00:06:50.603Z",
       "updatedAt": "2014-02-13T00:06:50.603Z"
