@@ -54,6 +54,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 > + .add() does not accept arrays of any kind.  Don't try it.
 > + Any string arguments passed must be the primary key of the record.
 > + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
+> + Attempting to add an association that already exists will throw an error. [See here for an example.](https://github.com/balderdashy/waterline/issues/352)
 
 
 <docmeta name="uniqueID" value="add574043">
