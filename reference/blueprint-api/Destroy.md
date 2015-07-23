@@ -6,7 +6,7 @@ Deletes an existing record specified by `id` from the database forever and retur
 DELETE /:model/:record
 ```
 
-Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
+Destroys the model instance which matches the **id** parameter. Responds with a JSON object representing the newly destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
 
 Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
 
@@ -17,8 +17,8 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
- callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy. For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path. For `GET` (shortcut) requests, it must be supplied in the route path.
+ callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Examples
 

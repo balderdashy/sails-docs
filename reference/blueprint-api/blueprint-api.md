@@ -56,9 +56,9 @@ Adding custom blueprints is also supported, but they currently do not get bound 
 
 ### Disabling blueprints on a per-controller basis
 
-You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller defintion, and assigning it a configuration object with overrides for the settings in this file.
+You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller definition, and assigning it a configuration object with overrides for the settings in this file.
 
-```
+```javascript
 module.exports = {
   _config: {
     actions: false,

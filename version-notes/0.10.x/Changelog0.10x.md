@@ -37,7 +37,7 @@ Policies work exactly as they did in v0.9- however there is a new consideration 
 
 For example, let's say you have a v0.9 app whose `policies.js` configuration prevents access to the `find` action in your `DoveController`:
 
-```
+```javascript
 module.exports.policies = {
   '*': true,
   DoveController: {
@@ -48,7 +48,7 @@ module.exports.policies = {
 
 Assuming rest blueprint routes are enabled, this would prevent access to requests like both `/dove` and `/dove/14`. But now in v0.10, since `/dove/14` will actually run the `findOne` action, we must handle it explicitly:
 
-```
+```javascript
 module.exports.policies = {
   '*': true,
   DoveController: {
@@ -68,7 +68,7 @@ module.exports.policies = {
 ### Details
 The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them. Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
 
-```
+```javascript
 socket.on('message', function(cometEvent) {
    if (cometEvent.model == 'user') {
      // Handle inbound messages related to a user record
@@ -80,7 +80,7 @@ socket.on('message', function(cometEvent) {
 }
 ```
 Now, you subscribe to the identity of the model:
-```
+```javascript
 socket.on('user', function(cometEvent) {
   // Handle inbound messages related to a user record
 });
@@ -166,7 +166,7 @@ Your app's default `connection` (i.e. database) should now be configured as a st
 To configure a model to use specific adapters, you must now specify them in the `connection` key instead of `adapters`.
 
 For example:
-```
+```javascript
 module.exports = {
 
     connection: ['someMongoDatabase'],
@@ -203,13 +203,13 @@ _config: {
 
 ## Layout paths:
 In Sails v0.9, you could use the following syntax to specify `auth/someLayout.ejs` as a custom layout when rendering a view:
-```
+```javascript
 return res.view('auth/login',{
   layout: 'someLayout'
 });
 ```
 However in Sails v0.10, all layout paths are relative to your app's views path. In other words, the relative path of the layout is no longer resolved from the view's own path-- it is now always resolved from the views path. This makes it easier to understand which file is being used, particularly when layout files have similar names:
-```
+```javascript
 return res.view('auth/login', {
   layout: 'auth/someLayout'
 });

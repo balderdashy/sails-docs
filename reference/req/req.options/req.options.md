@@ -15,7 +15,7 @@ Additionally, several special `req.options` objects are available for use with [
 
 In a `config/policies/filterByUser.js` policy:
 
-```
+```javascript
 module.exports = function filterByUser (req, res, next) {
 
   if (req.session.user) {
