@@ -170,6 +170,7 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
 + [Live code Sails.js avec Mike McNeil](http://www.weezevent.com/live-code-sailsjs-avec-mike-mcneil)
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
 + [Backend фреймворк SailsJS + BackboneJS + MySQL](http://habrahabr.ru/post/184896/)
++ [realtime chat with sails and react](http://blog.nursoft.cl/creando-un-chat-realtime-en-sails-js-y-react/)
 
 
 --------------------------------------------------------------------------------
