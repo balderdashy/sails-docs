@@ -86,7 +86,7 @@ UserController
 
 20 Hooks:
 moduleloader,logger,request,orm,views,blueprints,responses,controllers,sockets,p
-ubsub,policies,services,csrf,cors,i18n,userconfig,session,grunt,http,userhooks
+ubsub,policies,services,csrf,cors,i18n,userconfig,session,grunt,http,projecthooks
 
 sails>
 ```

@@ -25,5 +25,5 @@ in the logs.
 * [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 <docmeta name="uniqueID" value="Hooks75000">
-<docmeta name="displayName" value="User Hooks">
+<docmeta name="displayName" value="Project Hooks">
 <docmeta name="stabilityIndex" value="3">

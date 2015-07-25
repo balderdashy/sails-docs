@@ -2,7 +2,7 @@
 
 ## Using a user hook
 
-To use a user hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the user hook](/#/documentation/concepts/extending-sails/Hooks/userhooks.html) or copy the folder for the hook you want to use into `api/hooks`.
+To use a user hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the user hook](/#/documentation/concepts/extending-sails/Hooks/projecthooks.html) or copy the folder for the hook you want to use into `api/hooks`.
 
 ## Using an installable hook
 To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](/#/documentation/concepts/extending-sails/Hooks/installablehooks.html) directly into your app&rsquo;s `node_modules` folder.
@@ -32,7 +32,7 @@ module.exports.installedHooks = {
 
 * [Hooks overview](#/documentation/concepts/extending-sails/Hooks)
 * [The hook specification](#/documentation/concepts/extending-sails/Hooks/hookspec)
-* [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/userhooks.html)
+* [Creating a user hook](#/documentation/concepts/extending-sails/Hooks/projecthooks.html)
 * [Creating an installable hook](#/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 <docmeta name="uniqueID" value="Hooks75001">
