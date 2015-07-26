@@ -59,7 +59,7 @@ Custom Waterline adapters are actually [pretty simple to build](https://github.c
 
 ### Connections
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Connections are defined in [`config/connections.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
+A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
 
 ```javascript
 // in config/connections.js
