@@ -19,7 +19,7 @@ To create a new installable hook:
 }
 ```
 If you use `npm init` to create your `package.json`, be sure to open the file afterwards and manually insert the `sails` key containing `isHook: true`.
-1. Write your hook code in `index.js` in accordance with the [hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec).
+1. Write your hook code in `index.js` in accordance with the [hook specification](http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification).
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.  Use the `dependencies` key of your `package.json` to refer to any dependencies that need to be installed in order for your hook to work (you may also use `npm install <dependency> --save` to easily save dependency information to `package.json`).
 
@@ -94,7 +94,7 @@ Assuming your hook is tested and looks good, and assuming that the hook name isn
 
 * [Hooks overview](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)
 * [Using hooks in your app](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html)
-* [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec)
+* [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification)
 * [Creating a user hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html)
 
 <docmeta name="uniqueID" value="Hooks74999">
