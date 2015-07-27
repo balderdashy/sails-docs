@@ -12,4 +12,4 @@ Secondly, we are open to suggestions about the process we're using to manage our
 
 ##### How often are these files compiled and pushed to the website?
 
-Currently, these docs are pushed almost instantaneously to www.sailsjs.org.  That will likely continue to happen for the forseeable future.  In general, this repo should follow the same versioning strategy as Sails (using tags).
+Currently, these docs are pushed ASAP to www.sailsjs.org. Updates to the website are done manually (and will be for the forseeable future), but we are working on automating this process. In general, this repo should follow the same versioning strategy as Sails (using tags).
