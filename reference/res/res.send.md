@@ -19,7 +19,7 @@ When a Buffer is given the Content-Type is set to "application/octet-stream" unl
 res.set('Content-Type', 'text/html');
 res.send(new Buffer('some html'));
 ```
-When a String is given the Content-Type is set defaulted to "text/html":
+When a String is given the Content-Type is set to "text/html":
 
 ```javascript
 res.send('some html');
