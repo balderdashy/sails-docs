@@ -45,6 +45,15 @@ Performance in Sails is comparable to what you'd expect from a standard Node.js/
 
 + http://serdardogruyol.com/?p=111
 
+Issues [#3099](https://github.com/balderdashy/sails/issues/3099) and [#2779](https://github.com/balderdashy/sails/issues/2779) are about a memory leak. It resides in the `express-session` module used by default, which stores sessions in-memory.
+To disable it, make sure that you disable sessions in the `.sailsrc`:
+```
+"hooks": {
+  "session": false
+}
+```
+
+You may also use an alternative (redis/mongo/cookies) to store sessions.
 
 <docmeta name="uniqueID" value="FAQ475097">
 <docmeta name="displayName" value="FAQ">
