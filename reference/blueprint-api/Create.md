@@ -21,18 +21,18 @@ If the action is triggered via a socket request, the requesting socket will ALSO
  *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | For `POST` (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For `GET` (shortcut) requests, add the parameters to the query string. <br/> <br/> Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
  callback       | ((string))                                                | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
-### Examples
+## Examples
 
-#### Create a record (REST)
+### Create a record (REST)
 
 Create a new pony named "AppleJack" with a hobby of "pickin".
 
-##### Route
+#### Route
 `POST /pony`
 
 
 
-##### JSON Request Body
+#### JSON Request Body
 ```json
 {
   "name": "AppleJack",
@@ -40,7 +40,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-##### Example Response
+#### Example Response
 ```json
 {
   "name": "AppleJack",
@@ -51,12 +51,12 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-#### Create a record (shortcuts)
+### Create a record (shortcuts)
 
-##### Route
+#### Route
 `GET /pony/create?name=Fluttershy&best_pony=yep`
 
-##### Expected Response
+#### Expected Response
 
 ```javascript
 {
@@ -70,20 +70,20 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 ```
 
 
-### Examples with One Way Associations
+## Examples with One Way Associations
 
 You can create associations between models in two different ways. You can either make the association with a record that already exists OR you can create both records simultaneously. Check out the examples to see how.
 
 These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html). The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
 
-#### Create record while associating w/ existing record (REST)
+### Create record while associating w/ existing record (REST)
 
 Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.
 
-##### Route
+#### Route
 `POST /pony`
 
-##### JSON Request Body
+#### JSON Request Body
 ```json
 {
   "name": "Pinkie Pie",
@@ -92,7 +92,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 }
 ```
 
-##### Example Response
+#### Example Response
 ```json
 {
   "name": "Pinkie Pie",
@@ -109,15 +109,15 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 ```
 
 
-#### Create new record while associating w/ another new record (REST)
+### Create new record while associating w/ another new record (REST)
 
 Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
 
-##### Route
+#### Route
 `POST /pony`
 
 
-##### JSON Request Body
+#### JSON Request Body
 ```json
 {
   "name": "Pinkie Pie",
@@ -129,7 +129,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 }
 ```
 
-##### Expected Response
+#### Expected Response
 ```json
 {
   "name": "Pinkie Pie",
