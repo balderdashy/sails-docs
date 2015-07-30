@@ -5,11 +5,11 @@ That's okay!  We'll get you pointed in the right direction.
 Per [nodejs.org](http://nodejs.org):
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
-More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
+More simply put, Node.js allows us to quickly and efficiently run JavaScript code outside the browser, making it possible to use the same language on both the frontend and the backend.
 
 ## What OS do I need?
 
-Node.js will install on most major Operating systems.  MacOSX, many flavors of Linux, and Windows are supported.  
+Node.js will install on most major Operating systems.  MacOSX, many flavors of Linux, and Windows are supported.
 
 Now, lets take a look at what OS you have.  Please choose from the following for instructions on setting up Node.js:
 
@@ -34,7 +34,7 @@ Using [homebrew](https://github.com/mxcl/homebrew):
 
 Using [macports](http://www.macports.org/):
 
-    port install nodejs  
+    port install nodejs
 
 <h2>
 <a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="http://sailsjs.org/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
@@ -142,11 +142,11 @@ Using [a package](http://nodejs.org/download/):
 
 _Simply [download Windows Installer](http://nodejs.org/download/)._
 
-Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):  
+Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):
 
-    cinst nodejs  
+    cinst nodejs
 
-or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):  
+or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):
 
     cinst nodejs.install
 
