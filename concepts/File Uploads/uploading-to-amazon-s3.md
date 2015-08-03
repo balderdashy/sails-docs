@@ -23,7 +23,7 @@ Then use it in one of your controllers:
     }, function (err, filesUploaded) {
       if (err) return res.negotiate(err);
       return res.ok({
-        files: uploadedFiles,
+        files: filesUploaded,
         textParams: req.params.all()
       });
     });
