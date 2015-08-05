@@ -36,7 +36,7 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 
 + Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
   + Start up Sails on each instance using `forever`
-  + More on load balancers: <http://en.wikipedia.org/wiki/Load_balancing_(computing\)>
+  + More on load balancers: <https://en.wikipedia.org/wiki/Load_balancing_(computing)>
 + Configure your load balancer to terminate SSL requests
   + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
 
