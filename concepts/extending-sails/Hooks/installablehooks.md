@@ -4,7 +4,7 @@ Installable hooks are custom Sails hooks that reside in an application&rsquo;s `
 
 To create a new installable hook:
 
-1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/defaultHooks.js).
+1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js).
 1. Create a new folder on your system with the name `sails-hook-<your hook name>`.  The `sails-hook-` prefix is optional but recommended for consistency; it is stripped off by Sails when the hook is loaded.
 1. Create a `package.json` file in the folder.  If you have `npm` installed on your system, you can do this easily by running `npm init` and following the prompts.  Otherwise, you can create the file manually, and ensure that it contains at a minimum the following:
 ```
