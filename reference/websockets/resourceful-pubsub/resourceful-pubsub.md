@@ -12,6 +12,8 @@ While you are free to use any Javascript library to listen for socket events on 
 io.socket.on("<model name>", listenerFunction)
 ```
 
+WARNING: while requests using sockets are not case sensitive (`io.socket.get("/User", ....)` works just as well as `io.socket.get("/user", ...)`), such is not the the case for listening to events. The model name must be lowercased:  `io.socket.on("user", ...)` will work, but `io.socket.on("User", ...)` will not.
+
 ### Example
 
 Let&rsquo;s say you have a model named `User` in your app, with a single &ldquo;name&rdquo; attribute.  First, we&rsquo;ll add a listener for &ldquo;user&rdquo; events:
