@@ -9,8 +9,11 @@ For apps that rely heavily on real-time client-server communication--for example
 While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own [Socket Client](http://sailsjs.org/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
 ```
-io.socket.on("<model name>", listenerFunction)
+io.socket.on("<model identity>", listenerFunction)
 ```
+
+> The `model identity` is typically the lowercased version of the model name, unless it has been manually configured in the model file.
+
 
 ### Example
 
