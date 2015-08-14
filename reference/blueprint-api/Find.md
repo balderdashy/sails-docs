@@ -22,6 +22,7 @@ _All parameters are optional._
  limit          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
  skip           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
  sort           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
+ populate       | ((string))   | If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See [here](http://sailsjs.org/documentation/reference/waterline-orm/populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
  callback       | ((string))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
 
 
