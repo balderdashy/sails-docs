@@ -12,7 +12,7 @@ While you are free to use any Javascript library to listen for socket events on 
 io.socket.on("<model identity>", listenerFunction)
 ```
 
-> The `model identity` is typically the lowercased version of the model name, unless it has been manually configured in the model file.
+> The _model identity_ is typically the lowercased version of the model name, unless it has been manually configured in the model file.
 
 
 ### Example
