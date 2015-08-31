@@ -118,8 +118,6 @@ Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
 Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
 ```
 
-> For more tips, read about the incident involving [Timothy the Monkey]().
-
 Another example:
 
 ```javascript
@@ -274,17 +272,6 @@ Person.marry([joe,raquel], function (err) {
 
 ###### Naming your attribute methods
 Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" (e.g. `getFullName()`) prefix and avoid writing attribute methods that change records in-place.
-
-<!--
-
-Imagine you have a small monkey named Timothy that rides on your shoulders and styles your hair when you are scheduled to speak at a conference.  In this scenario, you are a record of the `Person` model and Timothy is a record of the `Monkey` model. The `Person` model has primitive attributes like "name", "email", and "phoneNumber", and relational attributes like "petMonkey" (points to an individual `Monkey`) and "mom" (points to an individual `Person`).  Meanwhile the `Monkey` model has primitive attributes "name", "age", and "demeanor", as well as an relational attribute: "petOfPerson" (which points to an individual person).
-
-
-Everyone knows that a person can style her own hair, but it is more efficient if her pet monkey does it.  We can represent this by definining `styleHair: function (cb){ return cb(); }` as an attribute method on Person and `styleOwnersHair: function (cb){ return cb();}` as an attribute method on Monkey.
-
-
-If your app involves multigenerational hair-styling, you might think it would make sense to write an attribute method on the Monkey model called "getOwnersGrandma()" which would call a callback with the monkey's owner's mom's mom.
--->
 
 <!--
 

@@ -1,6 +1,5 @@
 # Creating an Installable Hook
-
-Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a user hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html) instead.
+Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
 
 To create a new installable hook:
 
@@ -95,7 +94,7 @@ Assuming your hook is tested and looks good, and assuming that the hook name isn
 * [Hooks overview](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)
 * [Using hooks in your app](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html)
 * [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a user hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/userhooks.html)
+* [Creating a project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html)
 
 <docmeta name="uniqueID" value="Hooks74999">
 <docmeta name="displayName" value="Installable Hooks">
