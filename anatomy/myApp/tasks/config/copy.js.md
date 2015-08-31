@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------
  *
  * # dev task config
- * Copies all directories and files, exept coffeescript and less fiels, from the sails
+ * Copies all directories and files, except coffeescript and less files, from the sails
  * assets folder into the .tmp/public directory.
  *
  * # build task config
