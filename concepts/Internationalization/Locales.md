@@ -46,6 +46,8 @@ You can also nest locale strings. But a better approach would be to use `.` to r
 
 ### Detecting and/or overriding the desired locale for a request
 
+To determine the current locale used by the request, use [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale).
+
 To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), calling it with the unique code for the new locale, e.g.:
 
 ```js
