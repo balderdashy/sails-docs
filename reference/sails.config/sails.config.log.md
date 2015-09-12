@@ -1,7 +1,7 @@
 # sails.config.log
 
 
-Configuration for the instance of the [Sails logger](http://beta.sailsjs.org/#/documentation/reference/Logs) (`sails.log`) used in your Sails app. The options are conventionally specified in the [config/log.js](/#/documentation/anatomy/myApp/config/log.js.html) configuration file.
+Configuration for the instance of the [Sails logger](http://sailsjs.org/documentation/concepts/logging) (`sails.log`) used in your Sails app. The options are conventionally specified in the [config/log.js](http://sailsjs.org/documentation/anatomy/myApp/config/log.js.html) configuration file.
 
 
 ### Properties
@@ -47,4 +47,3 @@ By default, the level is set to `info`.
 
 <docmeta name="uniqueID" value="sailsconfiglog812909">
 <docmeta name="displayName" value="sails.config.log">
-

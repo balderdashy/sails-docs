@@ -1,11 +1,11 @@
 # sails.config.policies
-
+<!-- 
 > TODO:
 >
 > Merge most of the contents of this file into the main reference section on policies.
 > Include a simple config reference table (with only one row with property: `*`) explaining how
 > this particular config module is read.  But don't worry about trying to explain what policies are here-- instead, link to the full docs on the subject (again, to reduce duplicate content and make this all more maintainable)
-
+-->
 ### What is this?
 Policies are like any other system for authentication control. You can allow or deny access in fine granularity with policies.
 

@@ -1,7 +1,7 @@
 # One Way Association
 ### Overview
 
-A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can't however query the associated model and populate to get the associatING model.
+A one way association is where a model is associated with another model.  You could query that model and populate to get the associated model.  You can't however query the associated model and populate to get the associatING model.
 
 ### One Way Example
 
@@ -75,7 +75,8 @@ null [ { name: 'Mike',
 
 ```
 ### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
+
 
 > Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
 

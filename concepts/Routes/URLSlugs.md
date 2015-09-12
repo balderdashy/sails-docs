@@ -9,10 +9,9 @@ skipAssets: true
 }
 ```
 
-In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view](http://beta.sailsjs.org/#/documentation/concepts/Views) as [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html).  The [`skipAssets` option](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) ensures that the vanity route doesn't accidentally match any of our [assets](http://beta.sailsjs.org/#/documentation/concepts/Assets) (e.g. `/images/logo.png`), so they are still accessible.
+In your `RepoController`'s `show` action, we'd use `req.param('account')` and `req.param('repo')` to look up the data for the appropriate repository, then pass it in to the appropriate [view](http://sailsjs.org/documentation/concepts/Views) as [locals](http://sailsjs.org/documentation/concepts/Views/Locals.html).  The [`skipAssets` option](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) ensures that the vanity route doesn't accidentally match any of our [assets](http://sailsjs.org/documentation/concepts/Assets) (e.g. `/images/logo.png`), so they are still accessible.
 
 
 
 <docmeta name="uniqueID" value="URLSlugs805236">
 <docmeta name="displayName" value="URL Slugs">
-

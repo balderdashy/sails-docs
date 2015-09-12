@@ -1,6 +1,6 @@
 # res
 
-The chart below describes support for the methods and properties on the Sails [Response](/#/documentation/reference/res) object (`res`) across multiple transports:
+The chart below describes support for the methods and properties on the Sails [Response](http://sailsjs.org/documentation/reference/res) object (`res`) across multiple transports:
 
 
 |                |  HTTP   | WebSockets |

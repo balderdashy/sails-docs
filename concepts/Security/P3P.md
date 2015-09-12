@@ -4,7 +4,7 @@
 
 P3P stands for the "Platform for Privacy Preferences", a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browsers, it is only supported by Internet Explorer.  It comes into play most often when dealing with legacy applications.
 
-Many modern organizations are willfully ignoring P3P. Here's what whate [Facebook has to say](https://www.facebook.com/help/327993273962160/) on the subject:
+Many modern organizations are willfully ignoring P3P. Here's what [Facebook has to say](https://www.facebook.com/help/327993273962160/) on the subject:
 
 > The organization that established P3P, the World Wide Web Consortium, suspended its work on this standard several years ago because most modern web browsers don't fully support P3P. As a result, the P3P standard is now out of date and doesn't reflect technologies that are currently in use on the web, so most websites currently don't have P3P policies.
 > 

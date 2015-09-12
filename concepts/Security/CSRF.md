@@ -1,10 +1,10 @@
 # CSRF
 
-Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)) is a type of attack which forces an end user to execute unwanted actions on a web application backend with which he/she is currently authenticated.  In other words, without protection, cookies stored in a browser like Google Chrome can be used to send requests to Chase.com from a user's computer whether that user is currently visiting Chase.com or Horrible-Hacker-Site.com.
+Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))) is a type of attack which forces an end user to execute unwanted actions on a web application backend with which he/she is currently authenticated.  In other words, without protection, cookies stored in a browser like Google Chrome can be used to send requests to Chase.com from a user's computer whether that user is currently visiting Chase.com or Horrible-Hacker-Site.com.
 
 ### Enabling CSRF Protection
 
-Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.csrf](/#/documentation/reference/Configuration/CSRF.html) (conventionally located in your project's [`config/csrf.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html) file):
+Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.csrf](http://sailsjs.org/documentation/reference/Configuration/CSRF.html) (conventionally located in your project's [`config/csrf.js`](http://sailsjs.org/documentation/anatomy/myApp/config/csrf.js.html) file):
 
 ```js
 csrf: true
@@ -22,7 +22,7 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF Tokens
 
-To get a CSRF token, you should either bootstrap it in your view using [locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html) (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+To get a CSRF token, you should either bootstrap it in your view using [locals](http://sailsjs.org/documentation/concepts/Views/Locals.html) (good for traditional multi-page web applications) or fetch it using sockets or AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
 
 
 ##### Using View Locals:
@@ -87,4 +87,3 @@ With some client-side modules, you may not have access to the AJAX request itsel
 
 <docmeta name="uniqueID" value="CSRF300312">
 <docmeta name="displayName" value="CSRF">
-

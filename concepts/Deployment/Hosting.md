@@ -30,6 +30,27 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
+You will also need to install `grunt-cli` with `npm i --save grunt-cli`.
+
+After doing that, create the file `.openshift/action_hooks/pre_start_nodejs` with the following contents. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6))
+
+```
+#!/bin/bash
+export NODE_ENV=production
+
+if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
+    (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
+fi
+```
+
+Then create the file `/supervisor_opts` with the following contents. This tells OpenShift's supervisor to ignore Sails' `.tmp` directory for the hot reload functionality. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
+
+```
+-i .tmp
+```
+
+You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
+
 ##### Using DigitalOcean?
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
@@ -40,9 +61,10 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 
 + [Sails.js and Heroku](http://pburtchaell.com/2015/sails/)
 + [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
++ [Sails.js on Heroku](http://vort3x.me/sailsjs-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
-+ http://dennisrongo.com/deploying-sails-js-to-heroku/#.UxQKPfSwI9w
++ http://dennisrongo.com/deploying-sails-js-to-heroku
 + http://stackoverflow.com/a/20184907/486547
 
 ##### Deploying to AWS?
@@ -54,7 +76,7 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 
 ##### Using PM2?
 
-+ http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html
++ http://devo.ps/blog/goodbye-node-forever-hello-pm2/
 
 
 ##### Deploying to CloudControl?

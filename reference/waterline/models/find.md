@@ -19,11 +19,11 @@ Finds and returns all records that meet the criteria object(s) that you pass it.
 
 ### Example Usage
 
-```javascript 
-User.find({}).exec(function findCB(err,found){
+```javascript
+User.find({}).exec(function findCB(err, found){
   while (found.length)
-    console.log('Found User with name '+found.pop().name)
-  });
+    console.log('Found User with name ' + found.pop().name)
+});
 
 // Found User with name Flynn
 // Found User with name Jessie

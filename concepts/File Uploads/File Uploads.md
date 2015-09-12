@@ -20,7 +20,7 @@ req.file('avatar').upload(function (err, uploadedFiles) {
 
 Files should be uploaded inside of an `action` in one of your controllers.  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.me`.
 
-```
+```javascript
 // api/controllers/UserController.js
 //
 // ...
@@ -195,8 +195,8 @@ req.file('avatar').upload({
 ## Read more
 
 + [Skipper docs](https://github.com/balderdashy/skipper)
-+ [Uploading to Amazon S3](#!/documentation/concepts/File-Uploads/uploading-to-amazon-s3.html)
-+ [Uploading to Mongo GridFS](#!/documentation/concepts/File-Uploads/uploading-to-mongo-gridfs.html)
++ [Uploading to Amazon S3](http://sailsjs.org/documentation/concepts/File-Uploads/uploading-to-amazon-s3.html)
++ [Uploading to Mongo GridFS](http://sailsjs.org/documentation/concepts/File-Uploads/uploading-to-mongo-gridfs.html)
 
 
 

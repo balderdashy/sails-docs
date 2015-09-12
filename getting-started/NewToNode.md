@@ -5,22 +5,22 @@ That's okay!  We'll get you pointed in the right direction.
 Per [nodejs.org](http://nodejs.org):
 > "Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices."
 
-More simply put, Node.js is an http server built to run quickly and efficiently while allowing you to use the same language on both the frontend and the backend.
+More simply put, Node.js allows us to quickly and efficiently run JavaScript code outside the browser, making it possible to use the same language on both the frontend and the backend.
 
 ## What OS do I need?
 
-Node.js will install on most major Operating systems.  MacOSX, many flavors of Linux, and Windows are supported.  
+Node.js will install on most major Operating systems.  MacOSX, many flavors of Linux, and Windows are supported.
 
 Now, lets take a look at what OS you have.  Please choose from the following for instructions on setting up Node.js:
 
-I have [Mac OSX](#/getStarted?q=--install-on-osx-)
+I have [Mac OSX](http://sailsjs.org/get-started#?install-on-osx)
 
-I have [Linux](#/getStarted?q=--install-on-linux-)
+I have [Linux](http://sailsjs.org/get-started#?install-on-linux)
 
-I have [Windows](#/getStarted?q=--install-on-windows-)
+I have [Windows](http://sailsjs.org/get-started#?install-on-windows)
 
 <h2>
-<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="#/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
 Install on OSX
 </h2>
 
@@ -34,10 +34,10 @@ Using [homebrew](https://github.com/mxcl/homebrew):
 
 Using [macports](http://www.macports.org/):
 
-    port install nodejs  
+    port install nodejs
 
 <h2>
-<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="#/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="http://sailsjs.org/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Linux
 </h2>
 
@@ -87,7 +87,7 @@ For *Debian sid (unstable)*, [Node.js is available in the official repo](http://
 For *Debian Wheezy (stable)*, [Node.js is available in wheezy-backports](http://packages.debian.org/wheezy-backports/nodejs). To install [backports](http://backports.debian.org/Instructions/), add this to your sources.list (`/etc/apt/sources.list`):
 
     deb http://YOURMIRROR.debian.org/debian wheezy-backports main
-    
+
 Then run:
 
     apt-get update
@@ -109,7 +109,7 @@ Available RPM packages for: openSUSE 11.4, 12.1, Factory and Tumbleweed; SLE 11 
 
 Example install on openSUSE 12.1:
 
-    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService 
+    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService
     sudo zypper in nodejs nodejs-devel
 
 ### FreeBSD and OpenBSD
@@ -117,24 +117,24 @@ Node.js is available through the ports system.
 
     /usr/ports/www/node
 
-Development versions are also available using ports 
+Development versions are also available using ports
 
     cd /usr/ports/www/node-devel/ && make install clean
 
 or packages on FreeBSD
 
     pkg_add -r node-devel
-    
+
 The Node Package Manager is not installed along with Node.js by default on FreeBSD and will be needed for development and installing dependencies.
 
     /usr/ports/www/npm
-    
+
 Also note that FreeBSD 10 using clang will conflict with the occasional build scrpt (which assumes gcc) using node-gyp, and can be resolved by setting an envvar.
 
     CXX=c++
 
 <h2>
-<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="#/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
 Install on Windows
 </h2>
 
@@ -142,23 +142,20 @@ Using [a package](http://nodejs.org/download/):
 
 _Simply [download Windows Installer](http://nodejs.org/download/)._
 
-Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):  
+Using [chocolatey](http://chocolatey.org) to install [Node](http://chocolatey.org/packages/nodejs):
 
-    cinst nodejs  
+    cinst nodejs
 
-or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):  
+or for [full install with NPM](http://chocolatey.org/packages/nodejs.install):
 
     cinst nodejs.install
 
 
-## On to Sails.js
-Now that Node.js is installed on your system, we can move on to Sails.js.
-
-Click [here](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md) to continue.
+## On to Sails.js!
+Once Node.js is installed on your system, you can go ahead and [install Sails](http://sailsjs.org/get-started#?getting-started-installation).
 
 ## Further help!
 We know that sometimes things don't go as planned. If you still have any issue with this, please feel free to visit Node.js's [IRC Channel](irc://irc.freenode.net/node.js) or our own [IRC Channel](irc://irc.freenode.net/sailsjs).
 
 
-<docmeta name="uniqueID" value="NewToNode748472">
-<docmeta name="displayName" value="New To Node">
+<docmeta name="displayName" value="New To Node?">

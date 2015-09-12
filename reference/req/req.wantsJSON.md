@@ -2,7 +2,7 @@
 
 A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)
 
-`req.wantsJSON` is used by all of the [built-in custom responses](/#/documentation/anatomy/myApp/api/responses) in Sails.
+`req.wantsJSON` is used by all of the [built-in custom responses](http://sailsjs.org/documentation/anatomy/myApp/api/responses) in Sails.
 
 
 ### Usage
@@ -48,4 +48,3 @@ A request "wantsJSON" if:
 
 <docmeta name="uniqueID" value="reqwantsJSON30891">
 <docmeta name="displayName" value="req.wantsJSON">
-

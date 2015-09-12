@@ -10,7 +10,7 @@ req.acceptedLanguages;
 
 `req.acceptedLanguages` contains all the languages specified by the request's `Accept-Language` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).)
 
-This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n](http://beta.sailsjs.org/#/documentation/concepts/Internationalization) hook automatically serves different content to different locales, based on the request.
+This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n](http://sailsjs.org/documentation/concepts/Internationalization) hook automatically serves different content to different locales, based on the request.
 
 
 ### Example
@@ -30,4 +30,3 @@ req.acceptedLanguages;
 
 <docmeta name="uniqueID" value="reqacceptedLanguages311952">
 <docmeta name="displayName" value="req.acceptedLanguages">
-

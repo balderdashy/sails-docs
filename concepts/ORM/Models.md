@@ -2,8 +2,36 @@
 
 A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
 
-![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
+```javascript
+// Parrot.js
+// The set of parrots registered in our app.
+module.exports = {
+  attributes: {
+    // e.g., "Polly"
+    name: {
+      type: 'string'
+    },
 
+    // e.g., 3.26
+    wingspan: {
+      type: 'float',
+      required: true
+    },
+
+    // e.g., "cm"
+    wingspanUnits: {
+      type: 'string',
+      enum: ['cm', 'in', 'm', 'mm'],
+      defaultsTo: 'cm'
+    },
+
+    // e.g., [{...}, {...}, ...]
+    knownDialects: {
+      collection: 'Dialect'
+    }
+  }
+}
+```
 
 <!--
 
@@ -21,7 +49,9 @@ module.exports = {
 
 ### Using models
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://beta.sailsjs.org/#/documentation/reference/waterline/models/find.html), [create](http://beta.sailsjs.org/#/documentation/reference/waterline/models/create.html), [update](http://beta.sailsjs.org/#/documentation/reference/waterline/models/update.html), and [destroy](http://beta.sailsjs.org/#/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+
+Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.org/documentation/reference/waterline/models/find.html), [create](http://sailsjs.org/documentation/reference/waterline/models/create.html), [update](http://sailsjs.org/documentation/reference/waterline/models/update.html), and [destroy](http://sailsjs.org/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+
 
 Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
 
@@ -42,7 +72,7 @@ Waterline allows you to define custom methods on your models.  This feature take
 
 Model methods are generally asynchronous functions.  By convention, asynchronous model methods should be 2-ary functions, which accept an object of inputs as their first argument (usually called `opts` or `options`) and a Node callback as the second argument.  Alternatively, you might opt to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
 
-A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model records that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
 
 For example:
 
@@ -137,7 +167,7 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 #### Resourceful Pubsub Methods
 
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub).
+A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub).
 
 
 <!--
@@ -151,10 +181,10 @@ Attribute methods are functions available on records (i.e. model instances) retu
 ###### Built-in attribute methods
 Every Waterline model includes some attribute methods automatically, including:
 
-+ [`.toJSON()`](http://sailsjs.org/#/documentation/reference/waterline/records/toJSON.html)
-+ [`.save()`](http://sailsjs.org/#/documentation/reference/waterline/records/save.html)
-+ [`.destroy()`](http://sailsjs.org/#/documentation/reference/waterline/models/destroy.html)
-+ [`.validate()`](http://sailsjs.org/#/documentation/reference/waterline/records/validate.html)
++ [`.toJSON()`](http://sailsjs.org/documentation/reference/waterline/records/toJSON.html)
++ [`.save()`](http://sailsjs.org/documentation/reference/waterline/records/save.html)
++ [`.destroy()`](http://sailsjs.org/documentation/reference/waterline/models/destroy.html)
++ [`.validate()`](http://sailsjs.org/documentation/reference/waterline/records/validate.html)
 
 
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->

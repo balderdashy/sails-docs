@@ -4,7 +4,7 @@ Below you'll find some of the more popular IRC Clients.
 ## Linux
  - [xChat](http://xchat.org)
  - [irssi](http://irssi.org)
- - [weeChat]](http://www.weechat.org)
+ - [weeChat](http://www.weechat.org)
 
 #### Using apt package manager for Ubuntu/Debian
 ```

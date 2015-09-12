@@ -8,7 +8,7 @@ var query = Stuff.find();
 
 You have likely already interacted with query objects in your Sails app. Most of the time, you probably won't think about them as objects _per se_, rather just another part of the syntax for communicating with the database.
 
-The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, you can just call [`.exec()`](/#/documentation/reference/waterline/queries/exec.html).
+The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, you can just call [`.exec()`](http://sailsjs.org/documentation/reference/waterline/queries/exec.html).
 
 
 ### Promises
@@ -40,7 +40,7 @@ Zookeeper.find().exec(function (err, zookeepers){
 });
 ```
 
-First, it is "shaken out" by Waterline core into a normalized [criteria object](/#/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Finally, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
+First, it is "shaken out" by Waterline core into a normalized [criteria object](http://sailsjs.org/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Finally, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
 
 When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to your callback for consumption by your app.
 
@@ -52,4 +52,3 @@ When the adapter receives a response, it is marshalled to the Waterline interfac
 
 <docmeta name="uniqueID" value="query820682">
 <docmeta name="displayName" value="Queries">
-

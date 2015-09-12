@@ -1,8 +1,8 @@
 # Miscellaneous (`sails.config.*`)
 
-For a conceptual overview of configuration in Sails, see http://sailsjs.org/#/documentation/concepts/Configuration.
+For a conceptual overview of configuration in Sails, see http://sailsjs.org/documentation/concepts/Configuration.
 
-This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.org/#/documentation/anatomy/myApp/config/env), or in your [config/local.js](http://sailsjs.org/#/documentation/concepts/Configuration?q=the-config%2Flocaljs-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
+This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.org/documentation/anatomy/myApp/config/env), or in your [config/local.js](http://sailsjs.org/documentation/concepts/Configuration?q=the-config%2Flocaljs-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
 
 ### `sails.config.port`
 
@@ -43,6 +43,14 @@ By default, Sails sets its environment using the `NODE_ENV` environment variable
 ### `sails.config.hookTimeout`
 
 Set a global timeout for Sails hooks, in milliseconds.  Sails will give up trying to lift if any hook takes longer than this to load.  Defaults to `20000`.
+
+
+
+### `sails.config.keepResponseErrors`
+
+By default, convenience functions `badRequest`, `forbidden`, `notFound`, and `serverError` will clear the response body when the environment is "production".  This behavior may be undesirable in certain cases, such as exposing underlying Waterline validation errors to clients while responding through `badRequest`.
+
+Set `keepResponseErrors` to `true` to ensure Sails preserves the response body for these functions.
 
 
 

@@ -1,6 +1,6 @@
 # .stream( `criteria` )
 ### Purpose
-This method uses a <a href="http://nodejs.org/api/stream.html">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.  
+This method uses a <a href="http://nodejs.org/api/stream.html">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.
 
 ### Overview
 #### Parameters
@@ -22,20 +22,20 @@ This method uses a <a href="http://nodejs.org/api/stream.html">node write stream
 UsersController.js
 ```javascript
 module.exports = {
-    
-  testStream: function(req,res){
+
+  testStream: function(req, res){
 
     if (req.param('startStream') && req.isSocket){
 
         var getSocket = req.socket;
-        
+
         // Start the stream.  Pipe it to sockets.
         User.stream({name:'Walter'}).pipe(getSocket.emit);
-        
+
     } else {
 
       res.view();
-    
+
     }
 
 
@@ -48,12 +48,12 @@ views/users/testSocket.ejs
 <script type="text/javascript">
 window.onload = function startListening(){
     socket.on('gotUser',function(data){
-      console.log(data.name+' number '+data.id+' has joined the party');
+      console.log(data.name + ' number ' + data.id + ' has joined the party');
     });
 };
 
 </script>
-<div class="addButton" onClick="socket.get('/users/testStream/',{startStream:true})">Stream all the Users !</div>
+<div class="addButton" onClick="socket.get('/users/testStream/', {startStream:true})">Stream all the Users!</div>
 
 ```
 

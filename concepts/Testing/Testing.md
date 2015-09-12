@@ -26,13 +26,17 @@ Before you start building your test cases, you should first organise your `./tes
 
 ### bootstrap.test.js
 
-This file is useful when you want to execute some code before and after running your tests (e.g. lifting and lowering your sails application):
+This file is useful when you want to execute some code before and after running your tests(e.g. lifting and lowering your sails application). Since your models are converted to waterline collections on lift, it is necessary to lift your sailsApp before trying to test them (This applies similarly to controllers and other parts of your app, so be sure to call this file first).
 
 ```javascript
 var Sails = require('sails'),
   sails;
 
 before(function(done) {
+
+  // Increase the Mocha timeout so that Sails has enough time to lift.
+  this.timeout(5000);
+
   Sails.lift({
     // configuration for testing purposes
   }, function(err, server) {
@@ -45,13 +49,23 @@ before(function(done) {
 
 after(function(done) {
   // here you can clear fixtures, etc.
-  sails.lower(done);
+  Sails.lower(done);
 });
 ```
 
 ### mocha.opts
 
-This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha.opts)
+This file should contain mocha configuration as described here: [mocha.opts](http://mochajs.org/#mocha-opts)
+
+**Note**: If you are writing your test in CoffeeScript be sure to add these lines to your `mocha.opts`.
+```
+--require coffee-script/register
+--compilers coffee:coffee-script/register
+```
+**Note**: The default test-case timeout in Mocha is 2 seconds. Increase the timeout value in mocha.opts to make sure the sails lifting completes before any of the test-cases can be started. For example:
+```
+--timeout 5s
+```
 
 ## Writing tests
 
@@ -97,18 +111,24 @@ describe('UsersController', function() {
 
 });
 ```
+## Running tests
 
-## Code coverage
+In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/unit/**/*.test.js`
 
-Another popular method for testing your code is [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage).
+#### Using `npm test` to run your test
 
-You can use [mocha](http://mochajs.org/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
 
-To test your code and prepare a simple HTML report run the following commands:
-```bash
-istanbul cover -x "**/config/**" _mocha -- --timeout 5000
-istanbul report html
+```js
+ // package.json
+ scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js",
+    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
+  },
+ // More config
 ```
+The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
-<docmeta name="uniqueID" value="Testing765149">
+
 <docmeta name="displayName" value="Testing">

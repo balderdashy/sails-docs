@@ -1,7 +1,7 @@
 # sails.config.globals
 
 
-Configuration for the [global variables](./#!documentation/reference/Globals) that Sails exposes to its Node process.  The options are conventionally specified in the [`config/globals.js`](/#/documentation/anatomy/myApp/config/globals.js.html) configuration file.
+Configuration for the [global variables](http://sailsjs.org/documentation/reference/Globals) that Sails exposes to its Node process.  The options are conventionally specified in the [`config/globals.js`](http://sailsjs.org/documentation/anatomy/myApp/config/globals.js.html) configuration file.
 
 
 
@@ -23,4 +23,3 @@ Configuration for the [global variables](./#!documentation/reference/Globals) th
 
 <docmeta name="uniqueID" value="sailsconfigglobals588825999999">
 <docmeta name="displayName" value="sails.config.globals">
-

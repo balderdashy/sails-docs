@@ -5,7 +5,7 @@ Policies in Sails are versatile tools for authorization and access control-- the
 
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
-> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.
+> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.
 
 
 ### Writing Your First Policy
@@ -21,7 +21,7 @@ For example, the `canWrite` policy mentioned above might look something like thi
 module.exports = function canWrite (req, res, next) {
   var targetFolderId = req.param('id');
   var userId = req.session.user.id;
-  
+
   Permission
   .findOneByFolderId( targetFolderId )
   .exec( function foundPermission (err, permission) {
@@ -31,7 +31,7 @@ module.exports = function canWrite (req, res, next) {
 
     // No permission exists linking this user to this folder.  Maybe they got removed from it?  Maybe they never had permission in the first place?  Who cares?
     if ( ! permission ) return res.redirect('/notAllowed');
-    
+
     // OK, so a permission was found.  Let's be sure it's a "write".
     if ( permission.type !== 'write' ) return res.redirect('/notAllowed');
 
@@ -68,7 +68,7 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```js
 {
   ProfileController: {
-    // Apply 'isLogged' in by default to all actions that are NOT specified below
+    // Apply 'isLoggedIn' by default to all actions that are NOT specified below
     '*': 'isLoggedIn',
     // If an action is explicitly listed, its policy list will override the default list.
     // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
@@ -105,18 +105,18 @@ Sails provides two built-in policies that can be applied globally, or to a speci
 ##### Adding some policies to a controller:
 ```javascript
   // in config/policies.js
-  
+
   // ...
   RabbitController: {
 
     // Apply the `false` policy as the default for all of RabbitController's actions
     // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
     '*': false,
-  
-    // For the action `nurture`, apply the 'isRabbitMother' policy 
+
+    // For the action `nurture`, apply the 'isRabbitMother' policy
     // (this overrides `false` above)
     nurture : 'isRabbitMother',
-  
+
     // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
     // before letting any users feed our rabbits
     feed : ['isNiceToAnimals', 'hasRabbitFood']
@@ -128,19 +128,19 @@ Here&rsquo;s what the `isNiceToAnimals` policy from above might look like (this 
 
 ```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
-  
+
   // `req.session` contains a set of data specific to the user making this request.
   // It's kind of like our app's "memory" of the current user.
-  
-  // If our user has a history of animal cruelty, not only will we 
-  // prevent her from going even one step further (`return`), 
+
+  // If our user has a history of animal cruelty, not only will we
+  // prevent her from going even one step further (`return`),
   // we'll go ahead and redirect her to PETA (`res.redirect`).
   if ( req.session.user.hasHistoryOfAnimalCruelty ) {
     return res.redirect('http://PETA.org');
   }
 
   // If the user has been seen frowning at puppies, we have to assume that
-  // they might end up being mean to them, so we'll 
+  // they might end up being mean to them, so we'll
   if ( req.session.user.frownsAtPuppies ) {
     return res.redirect('http://www.dailypuppy.com/');
   }
@@ -158,18 +158,5 @@ Besides protecting rabbits (while a noble cause, no doubt), here are a few other
 + any other kind of authentication scheme you can imagine
 
 
-### Authentication and Permissioning with Sails + Passport
-
-Passport works great with Sails!  In general, since Sails uses Connect/Express at its core, all of the Connect/Express-oriented things work pretty well.  In fact, Sails has no problem interpreting most Express middleware to work with socket.io.
-
-#### Community-supported Sails extensions using passport.js
-+ [sails-auth](https://www.npmjs.com/package/sails-auth): Passport-based Authentication Extension, including Basic Auth
-+ [sails-permissions](https://www.npmjs.com/package/sails-permissions): Permissions and Entitlements system for sails.js: supports user authentication with passport.js, role-based permissioning, object ownership, and row-level security.
-+ [sails-generate-auth](https://www.npmjs.com/package/sails-generate-auth): Generate a Passport.js authentication layer for your Sails app
-+ [Tutorial on how to implement passport.js with sails.js] (http://www.geektantra.com/2013/08/implement-passport-js-authentication-with-sails-js/).
-
-
-
 <docmeta name="uniqueID" value="Policies766425">
 <docmeta name="displayName" value="Policies">
-

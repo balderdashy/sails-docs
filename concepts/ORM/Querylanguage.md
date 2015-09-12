@@ -134,7 +134,7 @@ Model.find({ name: { '!': 'foo' }})
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign.
+Searches for records using pattern matching with the `%` sign. (Case insensitive.)
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
@@ -143,7 +143,7 @@ Model.find({ food: { 'like': '%beans' }})
 #### 'contains'
 
 A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it.
+contains the string anywhere inside of it. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'contains': 'history' }})
@@ -156,7 +156,7 @@ Model.find({ class: { 'like': '%history%' }})
 #### 'startsWith'
 
 A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value.
+starts with the supplied string value. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'startsWith': 'american' }})
@@ -169,7 +169,7 @@ Model.find({ class: { 'like': 'american%' }})
 #### 'endsWith'
 
 A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value.
+ends with the supplied string value. (Case insensitive.)
 
 ```javascript
 Model.find({ class: { 'endsWith': 'can' }})
@@ -222,14 +222,14 @@ Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 
 `paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
 
-``` javascript                                                                  
-Model.find().paginate({page: 2, limit: 10});                                     
+``` javascript
+Model.find().paginate({page: 2, limit: 10});
 ```
 
 > **Waterline**
 >
 > You can find out more about the Waterline API below:
-> * [Sails.js Documentation](http://sailsjs.org/#/documentation/reference/waterline/queries)
+> * [Sails.js Documentation](http://sailsjs.org/documentation/reference/waterline/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
 > * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
@@ -261,7 +261,7 @@ Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 >
 > All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
 >
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html) or [`.query()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html) method.
+> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.org/documentation/reference/waterline/models/native.html) or [`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html) method.
 
 
 <docmeta name="displayName" value="Query Language">

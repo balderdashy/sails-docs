@@ -22,7 +22,7 @@ In a production environment (NODE_ENV==="production") Sails always uses
  2. alter - auto-migrate, but attempt to keep my existing data (experimental)
  3. drop  - wipe/drop ALL my data and rebuild models every time I lift Sails
 
-When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to `
+When your sails app lifts, waterline validates all of the data in your database.  This flag tells waterline what to do with data when the data is corrupt.  You can set this flag to `safe` which will ignore the corrupt data and continue to lift.  You can also set it to
 
 
 | Auto-Migration Strategy  | Description |
@@ -54,7 +54,7 @@ For adapters that don't require a schema, such as Mongo or Redis, the default se
 connection: 'my-local-postgresql'
 ```
 
-The configured database [connection](http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
+The configured database [connection](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html) where this model will fetch and save its data.  Defaults to `localDiskDb`, the default connection that uses the `sails-disk` adapter.
 
 
 ### `identity`
@@ -71,7 +71,7 @@ The lowercase unique key for this model, e.g. `user`.  By default, a model's `id
 globalId: 'Purchase'
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/#/documentation/concepts/Globals?q=disabling-globals).
+This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals).
 
 
 
@@ -133,7 +133,7 @@ attributes: {
 tableName: 'some_preexisting_table'
 ```
 
-You can define a custom name for the physical collection in your adapter by adding a `tableName` attribute. __This isn't just for tables__.  In MySQL, PostrgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the collection, and so forth. If no tableName is specified, Waterline will use the model's `identity` as its `tableName`.
+You can define a custom name for the physical collection in your adapter by adding a `tableName` attribute. __This isn't just for tables__.  In MySQL, PostgreSQL, Oracle, etc. this setting refers to the name of the table, but in MongoDB or Redis, it refers to the collection, and so forth. If no tableName is specified, Waterline will use the model's `identity` as its `tableName`.
 
 This is particularly useful for working with pre-existing/legacy databases.
 
@@ -151,10 +151,9 @@ attributes: {
 }
 ```
 
-See [Attributes](http://sailsjs.org/#/documentation/concepts/ORM/Attributes.html).
+See [Attributes](http://sailsjs.org/documentation/concepts/ORM/Attributes.html).
 
 
 
 <docmeta name="uniqueID" value="Modelconfiguration960213">
 <docmeta name="displayName" value="Model Settings">
-

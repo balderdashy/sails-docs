@@ -9,7 +9,7 @@ The `initialize` feature allows a hook to perform startup tasks that may be asyn
 
 Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` takes one argument: a callback function which must be called in order for Sails to finish loading:
 
-```
+```javascript
 initialize: function(cb) {
 
    // Do some stuff here to initialize hook
@@ -21,7 +21,7 @@ initialize: function(cb) {
 
 ##### Hook timeout settings
 
-By default, hooks have ten seconds to complete their `initialize` function and call `cb` before Sails throws an error.  That timeout can be configured by setting the `_hookTimeout` key to the number of milliseconds that Sails should wait.  This can be done in the hook&rsquo;s [`defaults`](/#/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html):
+By default, hooks have ten seconds to complete their `initialize` function and call `cb` before Sails throws an error.  That timeout can be configured by setting the `_hookTimeout` key to the number of milliseconds that Sails should wait.  This can be done in the hook&rsquo;s [`defaults`](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html):
 
 ```
 defaults: {
@@ -47,31 +47,31 @@ For example:
 
 You can use the "hook loaded" events to make one hook dependent on another.  To do so, simply wrap your hook&rsquo;s `initialize` logic in a call to `sails.on()`.  For example, to make your hook wait for the `orm` hook to load, you could make your `initialize` similar to the following:
 
-```
+```javascript
 initialize: function(cb) {
 
    sails.on('hook:orm:loaded', function() {
-   
+
       // Finish initializing custom hook
       // Then call cb()
       return cb();
-      
+
    }
 }
 ```
 
 To make a hook dependent on several others, gather the event names to wait for into an array and call `sails.after`:
 
-```
+```javascript
 initialize: function(cb) {
 
    var eventsToWaitFor = ['hook:orm:loaded', 'hook:mygreathook:loaded'];
    sails.after(eventsToWaitFor, function() {
-   
+
       // Finish initializing custom hook
       // Then call cb()
       return cb();
-      
+
    }
 }
 ```

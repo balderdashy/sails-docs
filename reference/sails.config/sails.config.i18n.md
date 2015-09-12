@@ -1,7 +1,7 @@
 # sails.config.i18n
 
 
-Configuration for Sails' built-in internationalization & localization features.  For more information see the [concepts section on internationalization](http://beta.sailsjs.org/#/documentation/concepts/Internationalization).
+Configuration for Sails' built-in internationalization & localization features.  For more information see the [concepts section on internationalization](http://sailsjs.org/documentation/concepts/Internationalization).
 
 
 ### Properties
@@ -17,4 +17,3 @@ Configuration for Sails' built-in internationalization & localization features. 
 
 <docmeta name="uniqueID" value="sailsconfigi18n588825999999">
 <docmeta name="displayName" value="sails.config.i18n">
-

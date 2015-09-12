@@ -23,5 +23,4 @@ At this point, if you visit (http://localhost:1337/) you will see the default ho
 
 Now, let's get Sails to do cool stuff.
 
-<docmeta name="uniqueID" value="GettingStarted99009">
-<docmeta name="displayName" value="Getting Started">
+<docmeta name="displayName" value="Installation">

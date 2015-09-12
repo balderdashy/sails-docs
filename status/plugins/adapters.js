@@ -93,6 +93,10 @@ module.exports = {
 		repo: 'https://github.com/appscot/sails-orientdb',
 		status: 'edge'
 	},
+	'sails-filemaker': {
+		repo: 'https://github.com/geistinteractive/sails-filemaker',
+		status: 'edge'
+	}
 
 
 
