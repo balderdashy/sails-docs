@@ -149,3 +149,191 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 <docmeta name="uniqueID" value="CreateARecord744986">
 <docmeta name="displayName" value="create">
 
+### Examples with Many-to-Many Associations
+
+Suppose we have a many-to-many association set up with Ponies and Pets using the following API model defintions:
+
+```javascript
+/**
+ * Pony.js
+ */
+
+module.exports = {
+
+    attributes: {
+        name: 'string',
+        hobby: 'string',
+        pets: {
+            collection: "pet",
+            via: "ponies"
+        },
+    }
+};
+```
+
+```javascript
+
+```javascript
+/**
+ * Pet.js 
+ */
+
+module.exports = {
+
+    attributes: {
+        ponies: {
+            collection: "pony",
+            via: "pets"
+        },
+        name: 'string',
+        species: 'string',
+    }
+};
+```
+
+###Create a record while associating w/ more than one other new record
+
+Create a new pony named "Pinkie Pie", an "ice skating" hobby, and two **new** pets named "Gummy" & "Winona".
+
+#### Route
+`POST /pony`
+
+
+#### JSON Request Body
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets" : [
+    {
+      "name":"Gummy",
+      "species": "crocodile"
+    },
+    {
+      "name":"Winona",
+      "species":"Dog"
+    }]
+}
+```
+
+#### Expected Response
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "createdAt": "2015-09-12T18:23:33.392Z",
+  "updatedAt": "2015-09-12T18:23:33.392Z",
+  "id": 9
+}
+```
+
+Note that the pets attribute is not returned. However, a call to `GET /pony/9` with `populate:true` set in your config would return the following response.
+
+```json
+{
+    "pets": [
+        {
+            "name": "Gummy",
+            "species": "crocodile",
+            "createdAt": "2015-09-12T18:23:33.401Z",
+            "updatedAt": "2015-09-12T18:23:33.401Z",
+            "id": 5
+        },
+        {
+            "name": "Winona",
+            "species": "Dog",
+            "createdAt": "2015-09-12T18:23:33.402Z",
+            "updatedAt": "2015-09-12T18:23:33.402Z",
+            "id": 6
+        }
+    ],
+    "name": "Pinkie Pie",
+    "hobby": "ice skating",
+    "createdAt": "2015-09-12T18:23:33.392Z",
+    "updatedAt": "2015-09-12T18:23:33.395Z",
+    "id": 9
+}
+```
+
+###Create a record while associating w/ more than one other existing record
+
+Using the pets created above, we can create a new pony that is associated with more than one existing pet with the following:
+
+#### Route
+`POST /pony`
+
+
+#### JSON Request Body
+```json
+{
+  "name": "Pinkie Pie",
+  "hobby": "ice skating",
+  "pets" : [5,6]
+}
+```
+OR
+
+```json
+{
+  "name": "Fluttershy",
+  "hobby": "Animal caretaker",
+  "pets" : [
+        {
+            "name": "Gummy",
+            "species": "crocodile",
+            "createdAt": "2015-09-12T18:23:33.401Z",
+            "updatedAt": "2015-09-12T18:23:33.401Z",
+            "id": 5
+        },
+        {
+            "name": "Winona",
+            "species": "Dog",
+            "createdAt": "2015-09-12T18:23:33.402Z",
+            "updatedAt": "2015-09-12T18:23:33.402Z",
+            "id": 6
+        }
+    ]
+}
+```
+
+**So long as the ID is present in the pet JSON objects**
+
+
+#### Expected Response
+```json
+{
+    "name": "Fluttershy",
+    "hobby": "Animal caretaker",
+    "createdAt": "2015-09-12T18:30:19.798Z",
+    "updatedAt": "2015-09-12T18:30:19.798Z",
+    "id": 10
+}
+```
+
+Again, note  that the pets attribute is not returned. However, a call to `GET /pony/10` with `populate:true` set in your config would return the following response.
+
+```json
+{
+    "pets": [
+        {
+            "name": "Gummy",
+            "species": "crocodile",
+            "createdAt": "2015-09-12T18:23:33.401Z",
+            "updatedAt": "2015-09-12T18:23:33.401Z",
+            "id": 5
+        },
+        {
+            "name": "Winona",
+            "species": "Dog",
+            "createdAt": "2015-09-12T18:23:33.402Z",
+            "updatedAt": "2015-09-12T18:23:33.402Z",
+            "id": 6
+        }
+    ],
+    "name": "Fluttershy",
+    "hobby": "Animal caretaker",
+    "createdAt": "2015-09-12T18:27:44.811Z",
+    "updatedAt": "2015-09-12T18:29:50.125Z",
+    "id": 11
+}
+```
