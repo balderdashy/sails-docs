@@ -333,6 +333,6 @@ Again, note  that the pets attribute is not returned. However, a call to `GET /p
     "hobby": "Animal caretaker",
     "createdAt": "2015-09-12T18:27:44.811Z",
     "updatedAt": "2015-09-12T18:29:50.125Z",
-    "id": 11
+    "id": 10
 }
 ```
