@@ -27,7 +27,7 @@ Based upon the nature of the vulnerability, and the amount of time it would take
 You can expect follow-up emails outlining the progression of a solution to the vulnerability along with any other questions we may have regarding your experience.
 
 ##### When a solution is achieved we do the following:
-- notify you,
+- notify you
 - release a patch on the module's main repo
 - provide a link to the patch here along with an explanation of it's origin and crediting you (if you have chosen to be identified)
 - publicize the release via our various mailing lists.
