@@ -1,14 +1,12 @@
 # Reporting Security Issues in Sails
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>.
+If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>. Also please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
 
 ###What is a security vulnerability?
 
 A security vulnerability is any major bug or unintended consequence that could compromise a Sails.js app in production.
 
 For example, an issue where Sails crashes in a development environment when using non-standard Grunt tasks is _not a security vulnerability_.  On the other hand, if it was possible to perform a trivial DoS attack on a Sails cluster running in a production environment and using documented best-practices (a la the [Express/Connect body parser issue](http://expressjs-book.com/index.html%3Fp=140.html)), that _is a security vulnerability_ and we want to know about it.
-
-Please respect the core team's privacy and _do not send bugs resulting from undocumented usage, questions, or feature requests to this email address_.
 
 > Note that this definition includes any such vulnerability that exists due to one of our dependencies.  In this case, an upgrade to a different version of the dependency is not always necessary: for example, when Express 3 deprecated multipart upload support in core, Sails.js dealt with the feature mismatch by implementing a wrapper around the `multiparty` module called [Skipper](https://github.com/balderdashy/skipper#history).
 
