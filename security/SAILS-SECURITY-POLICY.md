@@ -1,6 +1,6 @@
 # Reporting Security Issues in Sails
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>. Also please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
+If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>.
 
 ###What is a security vulnerability?
 
@@ -16,6 +16,8 @@ For example, an issue where Sails crashes in a development environment when usin
 - A summary of the vulnerability
 - The code you used when you discovered the vulnerability or a code example of the vulnerability (whichever is shorter).
 - Whether you want us to make your involvement public.  If you want such a reference the name and link you wish to be referred (e.g. Jane Doe's link to her GitHub account)
+ 
+> Please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
 
 ###The process
 When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.
