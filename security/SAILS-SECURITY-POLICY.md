@@ -20,7 +20,7 @@ For example, an issue where Sails crashes in a development environment when usin
 > Please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
 
 ###The process
-When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.
+When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.  Our target patching timeframe for serious security vulnerabilities is 14 days - however, we cannot guarantee that this is possible in all cases (more on that below).
 
 Based upon the nature of the vulnerability, and the amount of time it would take to fix, we'll either send out a patch that disables the broken feature, provide an estimate of the time it will take to fix, and/or document best practices to follow to avoid production issues.
 
