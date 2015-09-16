@@ -20,7 +20,7 @@ Please respect the core team's privacy and _do not send bugs resulting from undo
 - Whether you want us to make your involvement public.  If you want such a reference the name and link you wish to be referred (e.g. Jane Doe's link to her GitHub account)
 
 ###The process
-When you report a vulnerability, one of the project members will respond to you within a maximum of 30 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.
+When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.
 
 Based upon the nature of the vulnerability, and the amount of time it would take to fix, we'll either send out a patch that disables the broken feature, provide an estimate of the time it will take to fix, and/or document best practices to follow to avoid production issues.
 
