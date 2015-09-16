@@ -34,6 +34,4 @@ You can expect follow-up emails outlining the progression of a solution to the v
 
 ### Is this an SLA?
 
-No. Like any open-source project, we're run by volunteers, and we can't legally guarantee any kind of service level agreement (see the MIT license for details).  However, the core team cares deeply about Sails, and all of us have at least a few different websites and APIs running on Sails in production.  We will always publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too. 
-
-© 2015, Mike McNeil
+No. Like any open-source project, we're run by volunteers, and we can't legally guarantee any kind of service level agreement (see the MIT license for details).  However, the core team cares deeply about Sails, and all of us have at least a few different websites and APIs running on Sails in production.  We will always publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
