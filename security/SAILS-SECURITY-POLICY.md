@@ -1,4 +1,4 @@
-# Reporting Security Issues in Sails
+## Reporting Security Issues in Sails
 
 If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>.
 
