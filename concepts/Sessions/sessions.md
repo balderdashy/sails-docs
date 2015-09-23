@@ -16,7 +16,7 @@ There are three main components to the implementation of sessions in Sails:
 
 The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
 
-###A day in the life of a `request` and `response` in the context of a session
+###A day in the life of a *request* and *response* 
 When a `request` is sent to Sails, the request header is parsed.  
 
 #### Scenario 1 -- The request header has no cookie property
