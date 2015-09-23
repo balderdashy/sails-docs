@@ -72,7 +72,7 @@ To enable Redis as a session store open `projectName/config/session.js` in your 
 
 ```
 
-For more information on configuring these properties go [here](https://github.com/tj/connect-redis).
+For more information on configuring these properties go [https://github.com/tj/connect-redis](https://github.com/tj/connect-redis).
 
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
