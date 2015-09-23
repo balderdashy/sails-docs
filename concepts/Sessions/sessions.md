@@ -50,10 +50,8 @@ Once the response is sent, any new requests will have access to `req.session.use
 
 Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity and if it matches an existing `sid` in the session store, the contents of the session store is added as a property on the `req` dictionary (e.g. `req.session`).  We can access properties on `req.session` (e.g. `req.session.me`) or add properties to it (e.g. `req.session.me == someValue`).  The values in the session store might change but generally the `Sails.sid` and `sid` do not change.
 
-### The `Sails.sid` will change if the *in memory* session store is restarted
-By default, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store moves on to session heaven (e.g. the session store disappears).  When Sails is restarted, a user agent request will follow scenario 1 above. 
-
-### The `Sails.sid` will change if the user agent cookie expires or is removed.
+### When does the `Sails.sid` change?
+By default, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store moves on to session heaven (e.g. the session store disappears).  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
 
 >The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
 
