@@ -60,7 +60,7 @@ By default, the Sails session store is *in memory*.  Therefore, when you close t
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
-To enable `Redis` as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a *Redis* instance running on the same machine as your Sails instance your session store will use *Redis*.  You can point to a different *Redis* instance by configuring the following optional properties in `projectName/config/session.js`:
+To enable Redis as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a Redis instance running on the same machine as your Sails instance your session store will use Redis.  You can point to a different Redis instance by configuring the following optional properties in `projectName/config/session.js`:
 
 ```
   // host: 'localhost',
