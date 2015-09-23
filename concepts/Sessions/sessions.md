@@ -19,9 +19,9 @@ The **session store** can either be in memory (e.g. the default Sails session st
 ###A day in the life of a *request*, a *response*, and a *session* 
 When a `request` is sent to Sails, the request header is parsed by the session middleware.  
 
-##### Scenario 1: The request header has no cookie *property*
+##### Scenario 1: The request header has no *cookie property*
 
-If the header does not contain a cookie *property*, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session *property* (usually in a controller/action).  For example, let's look at the following *login* action.
+If the header does not contain a cookie property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following *login* action.
 
 ```javascript
 module.exports = {
