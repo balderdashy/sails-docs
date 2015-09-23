@@ -19,7 +19,7 @@ The **session store** can either be in memory (e.g. the default Sails session st
 ###A day in the life of a *request* and *response* 
 When a `request` is sent to Sails, the request header is parsed.  
 
-##### Scenario 1 -- The request header has no cookie property
+##### Scenario 1 -- The request header has no cookie *property*
 
 If the header does not contain a *cookie* property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make whatever changes you desire (usually in a controller/action).  For example, let's look at the following *login* action.
 
@@ -44,25 +44,25 @@ Here we added a `userId` property to `req.session`.
 
 > **Note:** The property will not be stored in the *session store* until the response is sent.
 
-Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a `cookie` property in the request header a cookie will be established for us.  
+Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header a cookie will be established for us.  
 
-#### Scenario 2 -- The request header has a cookie property with a `Sails.sid`
+##### Scenario 2 -- The request header has a cookie *property* with a `Sails.sid`
 
 Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity and if it matches an existing `sid` in the session store, the contents of the session store is added as a property on the `req` dictionary (e.g. `req.session`).  We can access properties on `req.session` (e.g. `req.session.me`) or add properties to it (e.g. `req.session.me == someValue`).  The values in the session store might change but generally the `Sails.sid` and `sid` do not change.
 
-### The `Sails.sid` will change if the `in memory` session store is restarted
-By default, the Sails session store is `in memory`.  Therefore, when you close the Sails server, the current session store moves on to session heaven (e.g. the session store disappears).  When Sails is restarted, a user agent request will follow `scenario 1` above. 
+### The `Sails.sid` will change if the *in memory* session store is restarted
+By default, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store moves on to session heaven (e.g. the session store disappears).  When Sails is restarted, a user agent request will follow scenario 1 above. 
 
 ### The `Sails.sid` will change if the user agent cookie expires or is removed.
 
 >The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
 
 
-### Using `Redis` as the session store 
+### Using *Redis* as the session store 
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
-To enable `Redis` as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a `Redis` instance running on the same machine as your Sails instance your session store will use `Redis`.  You can point to a different `Redis` instance by configuring the following optional properties in `projectName/config/session.js`:
+To enable `Redis` as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a *Redis* instance running on the same machine as your Sails instance your session store will use *Redis*.  You can point to a different *Redis* instance by configuring the following optional properties in `projectName/config/session.js`:
 
 ```
   // host: 'localhost',
@@ -77,7 +77,7 @@ To enable `Redis` as a session store open `projectName/config/session.js` in you
 For more information on configuring these properties go [here](https://github.com/tj/connect-redis).
 
 #### Nerdy details of how the session cookie is created
-The value for the cookie is created by first hashing the `sid` with a configurable `secret` which is just a long string.
+The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
 
 >You can change the session `secret` property in `projectName/config/session.js`. 
 
