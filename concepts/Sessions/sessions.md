@@ -21,7 +21,7 @@ When a `request` is sent to Sails, the request header is parsed by the session m
 
 ##### Scenario 1: The request header has no cookie *property*
 
-If the header does not contain a cookie *property*, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make whatever changes you desire (usually in a controller/action).  For example, let's look at the following *login* action.
+If the header does not contain a cookie *property*, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session *property* (usually in a controller/action).  For example, let's look at the following *login* action.
 
 ```javascript
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
 
 Here we added a `userId` property to `req.session`.  
 
-> **Note:** The property will not be stored in the *session store* until the response is sent.
+> **Note:** The property will not be stored in the *session store* nor available to other requests until the response is sent.
 
 Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header a cookie will be established for us.  
 
