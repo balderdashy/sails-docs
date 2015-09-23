@@ -12,7 +12,7 @@ Note, we’re going to discuss sessions in the context of a browser user agent. 
 There are three main components to the implementation of sessions in Sails:
 1. the **session store** where information is retained
 2. the middleware that manages the session
-3. a cookie that is sent along with every request and stores a session id (by default, **sails.sid**)
+3. a cookie that is sent along with every request and stores a session id (by default, `sails.sid`)
 
 The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
 
@@ -21,7 +21,7 @@ When a `request` is sent to Sails, the request header is parsed.
 
 #### Scenario 1 -- The request header has no cookie property
 
-If the header does not contain a `cookie` property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make whatever changes you desire (usually in a controller/action).  For example, let's look at the following `login` action.
+If the header does not contain a *cookie* property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make whatever changes you desire (usually in a controller/action).  For example, let's look at the following *login* action.
 
 ```javascript
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
 
 Here we added a `userId` property to `req.session`.  
 
-> **Note:** The property will not be stored in the `session store` until the response is sent.
+> **Note:** The property will not be stored in the *session store* until the response is sent.
 
 Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a `cookie` property in the request header a cookie will be established for us.  
 
