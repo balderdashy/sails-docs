@@ -1,21 +1,22 @@
 #Understanding Sessions in Sails
 
-For our purposes `sessions` are synonymous with a few components that together allow you to store information about a `user agent` between requests.
+For our purposes **sessions** are synonymous with a few components that together allow you to store information about a user agent between requests.
 
->A `user agent` is the software (e.g. browser or native application) that represents `you` on a device (e.g. computer, smart phone, refrigerator).  
+>A **user agent** is the software (e.g. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
 
-Sessions can be very useful because the request/response cycle is `stateless`.
+Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore the lifecycle of a request/response ends when a response is made to the requesting user agent (e.g. `res.send()`).
 
->The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore the lifecycle of a request/response ends when a response is made to the requesting user agent (e.g. `res.end`).
+Note, we’re going to discuss sessions in the context of a browser user agent. While you can use sessions in Sails for whatever you like, it is generally a best practice to use it purely for storing the state of user agent authentication.
 
-Note, we’re going to discuss sessions in the context of a browser user agent. We believe that the session store should be limited to storing the state of user agent authentication.
+> Authentication is a process that allows a user agent to prove that they have a certain identity.  For example, in order to access some protected functionality, I might need to prove that my browser tab actually corresponds with a particular user record in a database.  If I provide you with a unique name and a password, you can look up the name and compare my password with a stored (hopefully encyrpted) password.  If there's a match, I'm authenticated. But how do you store that "authenticated-ness" between requests? That's where sessions come in.
 
-> `Authentication` is a process that allows a user agent to prove that they have a certain identity.  For example, I want to prove that I'm a particular identity in a user database.  If I provide you with a unique name and a password, you can look up the name and compare my password with a stored (hopefully encyrpted) password.  If there's a match, I'm authenticated. But how do you store that authenticated state between requests? That's where sesions come in.
+###What sessions are made of
+There are three main components to the implementation of sessions in Sails:
+1. the **session store** where information is retained
+2. the middleware that manages the session
+3. a cookie that is sent along with every request and stores a session id (by default, `sails.sid`)
 
-###Session components
-There are three main components to a session – 1) the session store where information is retained, 2) the middleware that manages the session, and 3) a cookie that stores a session id (`sid`). 
-
-The `session store` can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails supports using Redis for this purpose).  Sails uses `connect middleware` to manage the session which includes using a `cookie` to store a session id (`sid`) on the `user agent`.
+The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
 
 ###A day in the life of a `request` and `response` in the context of a session
 When a `request` is sent to Sails, the request header is parsed.  
