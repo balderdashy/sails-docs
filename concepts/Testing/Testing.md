@@ -73,7 +73,7 @@ Once you have prepared your directory you can start writing your unit tests.
 
 ./test/unit/models/Users.test.js
 ```js
-describe.only('UsersModel', function() {
+describe('UsersModel', function() {
 
   describe('#find()', function() {
     it('should check find function', function (done) {
