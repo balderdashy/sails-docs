@@ -78,7 +78,29 @@ https://github.com/balderdashy/sails-redis/
 
 
 ### Community Supported Adapters
-Have you written a Sails adapter?  Submit a PR to this file and add it here!
+
+##### sails-orientdb
+
+https://github.com/appscot/sails-orientdb
+
+[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
+
+###### Interfaces implemented:
++ Semantic
++ Queryable
++ Associations
++ Migratable
+
+##### sails-filemaker
+
+https://github.com/geistinteractive/sails-filemaker
+
+[FileMaker](https://en.wikipedia.org/wiki/FileMaker), is cross platform relational database and development platform. It has been owned and published by Apple since 1988.
+
+###### Interfaces implemented:
++ Semantic
+
+Have you written a Sails adapter? Submit a PR to this file and add it here!
 
 <docmeta name="uniqueID" value="adapterList22829">
 <docmeta name="displayName" value="Available Adapters">
