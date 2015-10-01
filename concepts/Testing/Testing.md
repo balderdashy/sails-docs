@@ -1,9 +1,9 @@
-# Testing your code
+# コードをテストする
 
-## Preparation
+## 準備
 
-For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).
-Before you start building your test cases, you should first organise your `./test` directory structure, for example in the following way:
+テストスイートとして我々は[mocha](http://visionmedia.github.com/mocha/)を採用しています。
+テストケースを構築する前にまずは`./test`を構成する必要があります。例えばこのようになるでしょう:
 ```batch
 ./myApp
 ├── api
@@ -26,7 +26,7 @@ Before you start building your test cases, you should first organise your `./tes
 
 ### bootstrap.test.js
 
-This file is useful when you want to execute some code before and after running your tests (e.g. lifting and lowering your sails application):
+このテストファイルはテストコードの前後に何らかのコードを実行したい時に便利です。（例：Sailアプリケーションを立ち上げたり止めたりするなど。）:
 
 ```javascript
 var Sails = require('sails');
@@ -49,11 +49,11 @@ after(function(done) {
 
 ### mocha.opts
 
-This file should contain mocha configuration as described here: [mocha.opts] (http://visionmedia.github.io/mocha/#mocha.opts)
+このファイルにはい以下に書かれたmochaの設定ファイルを記述する必要があります。: [mocha.opts] (http://visionmedia.github.io/mocha/#mocha.opts)
 
-## Writing tests
+## テストを書く
 
-Once you have prepared your directory you can start writing your unit tests.
+ディレクトリの準備か完了すればユニットテストを書き始めることが出来ます。
 
 ./test/unit/models/Users.test.js
 ```js
@@ -73,9 +73,9 @@ describe.only('UsersModel', function() {
 });
 ```
 
-#### Testing controllers
+#### コントローラをテストする
 
-To test controller responses you can use [Supertest](https://github.com/visionmedia/supertest) library which provides several useful methods for testing HTTP requests.
+[Supertest](https://github.com/visionmedia/supertest)ライブラリはHTMLリクエストをテストするための幾つかの便利なメソッドを提供しており、コントローラのレスポンスをテストするために利用することが出来ます。
 
 ./test/unit/controllers/UsersController.test.js
 ```js
@@ -96,13 +96,13 @@ describe('UsersController', function() {
 });
 ```
 
-## Code coverage
+## コードカバレッジ
 
-Another popular method for testing your code is [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage).
+コードをテストするのに人気のもう一つの方法は[Code Coverage](http://en.wikipedia.org/wiki/Code_coverage)です。
 
-You can use [mocha](http://visionmedia.github.io/mocha/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
+[mocha](http://visionmedia.github.io/mocha/)と[istanbul](https://github.com/gotwarlost/istanbul)を使うことで、コードをテストし、様々なコードカバレッジレポートを用意し、[Jenkins](http://jenkins-ci.org)のような継続的CIサービスで利用することが出来ます。
 
-To test your code and prepare a simple HTML report run the following commands:
+コードをテストしてシンプルなHTMLレポートを生成するには以下のコマンドを使います。
 ```bash
 istanbul cover -x "**/config/**" _mocha -- --timeout 5000
 istanbul report html

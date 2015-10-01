@@ -1,23 +1,23 @@
 # P3P
 
-### Background
+### 背景
 
-P3P stands for the "Platform for Privacy Preferences", a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browers, it is only supported by Internet Explorer.  It comes into play most often when dealing with legacy applications.
+P3Pは"Platform for Privacy Preferences"の略であり、利用者側でのより良いプライバシー制御を行うためのブラウザ/Web標準です。現在（2014年）メジャーなブラウザのうちInternet Explorerのみがサポートしています。これは主にレガシーなWebアプリケーションを扱うために使われます。
 
-Many modern organizations are willfully ignoring P3P. Here's what whate [Facebook has to say](https://www.facebook.com/help/327993273962160/) on the subject:
+多くのモダンな組織は完全にP3Pを無視しています、以下にこのテーマについて[Facebookが言及した](https://www.facebook.com/help/327993273962160/)事を挙げておきます。:
 
-> The organization that established P3P, the World Wide Web Consortium, suspended its work on this standard several years ago because most modern web browsers don't fully support P3P. As a result, the P3P standard is now out of date and doesn't reflect technologies that are currently in use on the web, so most websites currently don't have P3P policies.
+> P3Pを立ち上げた組織であるW3Cがこの活動を何年か前にやめてしまったために多くのモダンなブラウザはP3Pをフルサポートしていません。その結果P3P標準はすでに時代遅れであり、現在Webで使われている技術を反映していません。だから多くのWebサイトが現在のところP3Pに対応していないのです。
 > 
-> See also: http://www.zdnet.com/blog/facebook/facebook-to-microsoft-p3p-is-outdated-what-else-ya-got/9332
+> 以下もご覧ください: http://www.zdnet.com/blog/facebook/facebook-to-microsoft-p3p-is-outdated-what-else-ya-got/9332
 
 
-### Supporting P3P with Sails
+### SailsでP3Pに対応する
 
-But all that aside, sometimes you just have to support P3P anyways.
+そういうことはさておき、時にはP3Pをサポートしなければならない時もあります。
 
-Fortunately, a few different modules exist that bring P3P support to Express and Sails by enabling the relevant P3P headers.  To use one of these modules for handling P3P headers, install it from npm using the directions below, then open `config/http.js` in your project and configure it as a custom middleware.  To do that, define your P3P middleware as "p3p", and add the string "p3p" to your `middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before `cookieParser`):
+幸いP3P関連のヘッダーを有効化することでSailsとExpressでP3P対応をすることのできるモジュールはいくつかあります。これらのモジュールを使ってP3Pヘッダを扱うためには以下の説明ししたがってnpmを使ってモジュールをインストールしてからプロジェクトの`config/http.js`を開いてカスタムのミドルウエアとして追加してください。これを行うにはお使いのP3Pミドルウエアを"p3p"として定義して"p3p"の文字列を`middleware.order`のミドルウエアチェーンの中の任意の場所に追加してください。（`cookieParser`の直前が良いでしょう。）:
 
-E.g. in `config/http.js`:
+`config/http.js`で:
 
 ```js
 // .....
@@ -50,19 +50,19 @@ module.exports.http = {
 ```
 
 
-Check out the examples below for more guidance - and be sure and follow the links to see the docs for the module you're using for the latest information, comparative analysis of its features, any recent bug fixes, and advanced usage details.
+より詳しくは以下の例をご覧ください。また、お使いのモジュールの最新情報、互換性分析や最新のバグフィックス、高度な利用方法に関しては以下のリンク先にアクセスして各モジュールのドキュメントをご確認ください。
 
 
-##### Using [node-p3p](https://github.com/troygoode/node-p3p)
+##### [node-p3p](https://github.com/troygoode/node-p3p)を使う
 
-> `node-p3p` is open-source under the [MIT license](https://github.com/troygoode/node-p3p/blob/master/LICENSE).
+> `node-p3p`は[MIT license](https://github.com/troygoode/node-p3p/blob/master/LICENSE)で利用できるオープンソースです.
 
 ```sh
 # In your sails app
 npm install p3p --save
 ```
 
-Then in the `middleware` config object in `config/http.js`:
+そして`config/http.js`の`middleware`設定オブジェクトで:
 
 ```js
   // ...
@@ -72,16 +72,16 @@ Then in the `middleware` config object in `config/http.js`:
 ```
 
 
-##### Using [lusca](https://github.com/krakenjs/lusca#luscap3pvalue)
+##### [lusca](https://github.com/krakenjs/lusca#luscap3pvalue)を使う
 
-> `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
+> `lusca`は[Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)で利用できるオープンソースです.
 
 ```sh
 # In your sails app
 npm install lusca --save
 ```
 
-Then in the `middleware` config object in `config/http.js`:
+そして`config/http.js`の`middleware`設定オブジェクトで:
 
 ```js
   // ...
@@ -91,7 +91,7 @@ Then in the `middleware` config object in `config/http.js`:
 ```
 
 
-### Additional Resources: 
+### 追加資料: 
 
 + [Description of the P3P Project (Microsoft)](http://support.microsoft.com/kb/290333)
 + ["P3P Work suspended" (W3C)](http://www.w3.org/P3P/)

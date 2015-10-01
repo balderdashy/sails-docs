@@ -1,13 +1,13 @@
-# Services
+# サービス
 
-## Overview
+## 概要
 
-Services can be thought of as libraries which contain functions that you might want to use in many places of your application.  For example, you might have an EmailService which wraps some default email message boilerplate code that you would want to use in many parts of your application. The main benefit of using services in Sails is that they are *globalized*--you don't have to use `require()` to access them.
+サービスはアプリケーションの中の多くの場所で使いたいような機能を含むライブラリのようなものです。例えば、デフォルトのメール送信のボイラーテンプレートをラップするようなEmailServiceをアプリケーションの中の多くの場所で使いたい場合です。Sailsでサービスを使う主な利点はこれらは *グローバル化* されていることです。つまりアクセスするのに`require()`を使う必要がありません。
 
 
-## How do I create a service?
+## どのようにサービスを作成できますか。
 
-Simply save a Javascript file containing a function or object into your **api/services** folder.  The filename will be used as the globally-accessible variable name for the service.  For example, an email service might look something like this:
+単にプロジェクトの**api/services**ファイルにオブジェクトやファンクションの書かれたjavascriptファイルを保存するだけです。ファイル名はグローバルにアクセス可能なサービス名として使われます。例えば、Eメールサービスは次のようになります。:
 
 ```javascript
 // EmailService.js - in api/services
@@ -33,10 +33,10 @@ module.exports = {
 };
 ```
 
-You can then use `EmailService` anywhere in your app:
+これでアプリケーションのどこからでも`EmailService`で使うことが出来ます。:
 
 ```javascript
-// Somewhere in a controller
+// コントローラのどこかで
   EmailService.sendInviteEmail({email: 'test@test.com', name: 'test'});
 ```
 

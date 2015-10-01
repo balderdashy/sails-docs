@@ -1,27 +1,27 @@
-# Layouts
+# レイアウト
 
-When building an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout.  This [reduces the total amount of code](http://en.wikipedia.org/wiki/Don't_repeat_yourself) in your project and helps you avoid making the same changes in multiple files down the road.
+多くの異なるページを持つアプリケーションを構築する際に外挿マークアップを利用して幾つかのHTMLファイルをレイアウトに挿出来ると便利です。この[総コード量の減少](http://en.wikipedia.org/wiki/Don't_repeat_yourself)を行うことで複数のファイルで同じ変更をするのを避けることが出来ます。
 
-In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
+SailsとExpressではレイアウトはビューエンジン自体に実装されています。例えば、`jade`は独自のシンタックスを持つ独自のレイアウトシステムを持っています。
 
-For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html) to find the appropriate syntax.
-
-
-### Creating Layouts
-
-Sails layouts are special `.ejs` files in your app's `views/` folder you can use to "wrap" or "sandwich" other views. Layouts usually contain the preamble (e.g. `!DOCTYPE html<html><head>....</head><body>`) and conclusion (`</body></html`).  Then the original view file is included using `<%- body %>`.  Layouts are never used without a view- that would be like serving someone a bread sandwich.
-
-Layout support for your app can be configured or disabled in [`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html), and can be overridden for a particular route or action by setting a special [local](./#!documentation/reference/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
+簡便のためにSailsは**デフォルトのテンプレートエンジンであるEJSを使う際にのみ**レイアウトをサポートします。もし別のテンプレートエンジンに変更したい際には[that view engine's documentation](./#!documentation/reference/Views/ViewEngines.html)をご覧になって適切なレイアウトをお探しください。
 
 
-### Notes
+### レイアウトを作成する
 
-> #### Why do layouts only work for EJS?
-> In Express 3, built-in support for layouts/partials was deprecated. Instead, developers are expected to rely on the view engines themselves to implement this features. (See https://github.com/balderdashy/sails/issues/494 for more info on that.)
+Sailsのレイアウトはアプリケーションの`views/`フォルダーに特別な`.ejs`ファイルとして存在し、別のビューにラップしたり挟み込んだりして使えます。レイアウトは通常プリミティブな前置き(例：`!DOCTYPE html<html><head>....</head><body>`) と後付(`</body></html`)を含んでいます。そして`<%- body %>`を使うことでオリジナルのビューをインクルードすることが出来ます。レイアウトはビュー無しで使われることはありません。つまり、ブレンドサンドイッチを提供するようなものです。
+
+レイアウトは[`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)で設定や無効化をすることが出来、`layout`と呼ばれる特別な[local](./#!documentation/reference/Views/Locals.html)を設定することで特定のルートやアクションに関しての設定を行うことが出来ます。デフォルトではSailsは`views/layout.ejs`に置かれたレイアウトを利用することで全てのビューを仕上げます。
+
+
+### 備考
+
+> #### どうしてレイアウトはESJでのみ動作するのですか?
+> Express3ではlayouts/partialsに対する内蔵サポートは廃止されています。その代わりに開発者はビューエンジン自体を使ってこの機能を実装することを期待されています。詳細に関しては(https://github.com/balderdashy/sails/issues/494 をご覧ください。)
 > 
-> Since adopting Express 3, Sails has chosen to support the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
+> Express3を採用するにあたってSailsでは簡便のためとExpress 2.xやSails 0.8.xで作られたアプリケーションとの後方互換性のため、そして特に他のMVCフレームワークから移行するルーザーにとってわかりやすくするためにレガシーな`layouts`を採用しています。その結果レイアウトはデフォルトのビューエンジンであるejでのみテストされているのです。
 >
-> If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. Jade, handlebars, haml, dust) you&rsquo;ll want to set `layout:false` in [`sails.config.views`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.views.html), then rely on your view engine&rsquo;s custom layout/partial support.
+> もし、レイアウトを使いたくなかったり、ejs以外のサーバサイドテンプレートエンジンを使っている場合（Jadeやhandlebars、haml、dustなど）[`sails.config.views`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.views.html)で`layout:false`をセットすることであなたの使っているビューエンジンのみでlayout/partialのサポートをすることができます。
 
 
 

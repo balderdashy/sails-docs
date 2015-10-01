@@ -1,13 +1,13 @@
-# Through Associations
-### Overview
+# スルーアソシエーション
+### 概要
 
-Many-to-Many through associations behave the same way as many-to-many associations with the exception
-of the join table being automatically created for you. This allows you to attach additional attributes
-onto the relationship inside of the join table.
+多対多のスルーアソシエーションはジョインテーブルが自動生成されるという点以外は多対多のアソシエーションと
+同様に振る舞います。
+これによってリレーションに関する追加の情報をジョインテーブルの内部に追加できます。
 
-Unfortunately, they are not supported yet.  Don't worry though, there's an easy workaround.
+残念ながらこれはまだサポートされていません。しかし、これには簡単な方法があるので心配はいりません。
 
-You can accomplish this by using an additional model as an intermediary.  Instead of a many-to-many association between two models, you can use multiple one-to-many associations through the intermediary model.
+追加の中間テーブルを用意することでこれを行うことができます。2つのモデルの間の多対多のアソシエーションの代わりに複数の1対他のリレーションを中間テーブルにに対して利用することでこれが可能です。
 
 
 

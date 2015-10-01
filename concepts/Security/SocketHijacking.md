@@ -1,11 +1,11 @@
-# Socket Hijacking
+# セッションハイジャック
 
-Unfortunately, cross-site request forgery attacks are not limited to the HTTP protocol.  WebSocket hijacking (sometimes known as [CSWSH](http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html)) is a commonly overlooked vulnerability in most realtime applications.  Fortunately, since Sails treats both HTTP and WebSocket requests as first-class citizens, its built-in [CSRF protection](http://beta.sailsjs.org/#/documentation/concepts/Security/CSRF.html) and [configurable CORS rulesets](http://beta.sailsjs.org/#/documentation/concepts/Security/CORS.html) apply to both protocols.
+残念ながらクロスサイトによるリクエスト偽装はHTTPプロトコルに限った話ではありません。Webソケットハイジャック（[CSWSH](http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html)ともいわれています）は多くのリアルタイムアプリケーションで見られる脆弱性です。幸いSailsではHTTPとWebSocketのいずれも「一等市民」と見なしていますので内蔵されている[CSRF protection](http://beta.sailsjs.org/#/documentation/concepts/Security/CSRF.html)と[configurable CORS rulesets](http://beta.sailsjs.org/#/documentation/concepts/Security/CORS.html) は両方のプロトコルをサポートしています。
 
-You can prepare your Sails app against CSWSH attacks by enabling the built-in protection in [`config/csrf.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html) and ensuring that a `_csrf` token is sent with all relevant incoming socket requests.  Additionally, if you're planning on allowing sockets to connect to your Sails app cross-origin (i.e. from a different domain, subdomain, or port) you'll want to configure your CORS settings accordingly.  You can also define the `authorization` setting in [`config/sockets.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html) as a custom function which allows or denies the initial socket connection based on your needs.
+[`config/csrf.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html) でSailsに内蔵の防護策を有効化し、入ってくるソケットリクエストに`_csrf`を持たせることでアプリケーションをCSWSHに対応させることができます。さらにアプリケーションがクロスオリジン（別のドメインやサブドメイン）のソケット接続を許可する場合それにしたがってCORS設定を変更します。[`config/sockets.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/sockets.js.html)で`authorization`設定を行い、ニーズに合わせてソケットの接続の可否を許可するカスタムのファンクションを用意することもできます。
 
-#### Notes
-+ CSWSH prevention is only a concern in scenarios where people use the same client application to connect sockets to multiple web services (e.g. cookies in a browser like Google Chrome can be used to connect a socket to Chase.com from both Chase.com and Horrible-Hacker-Site.com.)
+#### 備考
++ CSWSH防御はユーザが同じクライアントアプリケーションから複数のソケットサービスに接続すること（Chromeの中に保存されているクッキーのデータがChase.comとHorrible-Hacker-Site.comの両方で利用可能になるような）を想定した機能です。
 
 
 

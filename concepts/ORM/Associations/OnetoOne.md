@@ -1,14 +1,14 @@
-# One-to-One
-### Overview
+# 1対1
+### 概要
 
-A one-to-one association states that a model may only be associated with one other model. In order
-for the model to know which other model it is associated with, a foreign key must be included in the
-record.
+1対1アソシエーションはあるモデルが一つの別のモデルにのみ関連付けられている状態を言います。
+一方のモデルが度の一方のモデルに関連付けられているかを知るためにレコードには外部キーが含まれている
+必要があります。
 
-### One-to-One Example
+### 1対1の例
 
-In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` in
-this case but a `Pet` is not limited to a single `User`.
+この例では`Pet`と`User`を関連付けます。
+このケースでは`User`は一つだけの`Pet`を持つことできますが、`Pet`は一つだけの`User`によって所有されているわけではありません。
 
 
 `myApp/api/models/pet.js`
@@ -47,7 +47,7 @@ module.exports = {
 }
 ```
 
-Using `sails console`
+`sails console`を利用します。
 
 ```sh
 
@@ -110,8 +110,8 @@ null { name: 'Mike',
      owner: 1 } }
 
 ```
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+### 備考
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
 
 
 <docmeta name="uniqueID" value="OnetoOne169258">

@@ -1,24 +1,24 @@
-# Many-to-Many
-### Overview
+# 多対多
+### 概要
 
-A many-to-many association states that a model can be associated with many other models and vice-versa.
-Because both models can have many related models a new join table will need to be created to keep track
-of these relations.
+多対多のアソシエーション状態はあるモデルが複数のモデルに関連付けられることが出来て、
+もう一方のモデルも同様に複数のモデルに関連付けられることが出来る状態です。
+両方のモデルともに複数の関連付けられた持つことが出来るためこの関連を記録するために新しいジョインテーブルを作成する必要があります。
 
-Waterline will look at your models and if it finds that two models both have collection attributes that
-point to each other, it will automatically build up a join table for you.
+Waterlineはモデルを確認し2つのモデルがお互いを指し示すアトリビュートを見つけた場合
+自動的にジョインテーブルを作成します。
 
-Because you may want a model to have multiple many-to-many associations on another model a `via` key
-is needed on the `collection` attribute. This states which `model` attribute on the one side of the
-association is used to populate the records.
+モデルが別のモデルと複数の多対多のアソシエーションを持つこともあるため
+`collection`アトリビュートには`via`キーが必要です。
+これでアソシエーションの一方のどの`model`アトリビュートがレコードを埋めるために使われるかが示されます。
 
-Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
-`Pet` records and a `Pet` may have multiple owners.
+`User`と`Pet`の例を用いて`User`が複数のペットを持って
+`Pet`もまた複数のオーナーを持つことが出来るようなスキーマを構築する方法を説明します。
 
 
-### Many-to-Many Example
+### 多対多の例
 
-In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the `Pets` with all of the `Users`.  If everything worked properly, we should be able to query any `User` and see that they 'own' all of the `Pets`.  Furthermore, we should be able to query any `Pet` and see that it is 'owned' by every `User`.
+この例ではまずはユーザとペットの配列を作るところから始めます。まずはそれぞれの要素の配列を作り、それから全ての`Pets`と`Users`を関連付けます。もしすべてがうまくいけば全ての`User`に関して彼らが`Pets`を「持っている」事がわかります。さらに、全ての`Pet`がすべての`User`によって「所有されている」ことがわかるようになります。
 
 
 `myApp/api/models/pet.js`
@@ -71,14 +71,14 @@ module.exports = {
 
 module.exports.bootstrap = function (cb) {
 
-// After we create our users, we will store them here to associate with our pets
+// まずはユーザを作ってからここでペットと関連付けられていることを記録します。
 var storeUsers = []; 
 
 var users = [{name:'Mike',age:'16'},{name:'Cody',age:'25'},{name:'Gabe',age:'107'}];
 var ponys = [{ name: 'Pinkie Pie', color: 'pink'},{ name: 'Rainbow Dash',color: 'blue'},{ name: 'Applejack', color: 'orange'}]
 
-// This does the actual associating.
-// It takes one Pet then iterates through the array of newly created Users, adding each one to it's join table
+// これが実際の関連付けを行います。
+// これは一つのペットを選び出し、新しく作られたユーザの配列をジョインテーブルに追加することでアソシエーションを記述します。
 var associate = function(onePony,cb){
   var thisPony = onePony;
   var callback = cb;
@@ -94,8 +94,8 @@ var associate = function(onePony,cb){
 };
 
 
-// This callback is run after all of the Pets are created.
-// It sends each new pet to 'associate' with our Users  
+// このコールバックは全てのペットが作成されてから実行されます。
+// これはそれぞれの新しいペットをユーザにひも付けます。  
 var afterPony = function(err,newPonys){
   while (newPonys.length){
     var thisPony = newPonys.pop();
@@ -110,8 +110,8 @@ var afterPony = function(err,newPonys){
   return cb()
 };
 
-// This callback is run after all of our Users are created.
-// It takes the returned User and stores it in our storeUsers array for later.
+// このコールバックは全てのユーザが作成されてから実行されます。
+// ここでは返ってきたユーザを取得して今後のためにstoreUsers配列に収納します。
 var afterUser = function(err,newUsers){
   while (newUsers.length)
     storeUsers.push(newUsers.pop())
@@ -125,7 +125,7 @@ User.create(users).exec(afterUser)
 };
 ```
 
-Lifting our app with `sails console`
+`sails console`を使ってアプリケーションを立ち上げます。
 
 ```sh
 
@@ -325,8 +325,8 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 
 
 ```
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+### 備考
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
 
 <docmeta name="uniqueID" value="ManytoMany276455">
 <docmeta name="displayName" value="Many-to-Many">

@@ -1,29 +1,29 @@
-#Cross-Origin Resource Sharing (CORS)
+#クロスオリジンでのリソース共有(CORS)
 
 <!--
-Your default Sails setup is already equipped to handle AJAX requests from a web page on the same domain.  But what if you need to handle AJAX requests originating from other domains?  You could set up your browser JSONP That's where [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) comes in.
+デフォルトのSailはすでに同じドメインからのAJAXリクエストを処理するように設定されています。でも他のドメインからのリクエストに対応したい場合はどうでしょう。ブラウザのJSONPをセットアップアップすることができます。これこそが [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)がっ必要な場面なんです。
 -->
 
-[CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) is a mechanism that allows browser scripts on pages served from other domains (e.g. myothersite.com) to talk to your server (e.g. api.mysite.com).  Like JSONP, the goal of CORS is to function as a secure method to circumvent the [same-origin policy](http://en.wikipedia.org/wiki/Same-origin_policy); allowing your Sails server to successfully respond to requests from client-side JavaScript code running on a page from some other domain.  But unlike JSONP, it works with more than just GET requests.
+[CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)は別のドメイン(例：myothersite.com)から提供されたブラウザスクリプトがあなたのサーバ(例：api.mysite.com)にアクセスできるようになる仕組みです。JSONPと同じく、CORSのゴールは [same-origin policy](http://en.wikipedia.org/wiki/Same-origin_policy)を回避し、他のドメインで動作しているjavascriptコードからのリクエストに応対するための安全な方法です。しかし、JSONPと違ってこれはGETリクエスト以外に対しても動作してしまいます。
 
-Sails can be configured to allow cross-origin requests from a list of domains you specify, or from every domain.  This can be done on a per-route basis, or globally for every route in your app.
+Sailsは全てのドメインや特定のドメインリストからのアクセスを許可するように設定が可能です。これはルートベースで指定することもアプリケーションの全てのルートに関して指定することも可能です。
 
 
-### Enabling CORS
+### CORSを有効化する
 
-For security reasons, CORS is disabled by default in Sails.  But enabling it is dead-simple.
+セキュリティ―上の理由からSailsではCORSはデフォルトで無効になっています。しかし、とても簡単に有効化することができます。
 
-To allow cross-origin requests from _any_ domain to _any_ route in your app, simply enable `allRoutes` in [`config/cors.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html):
+_全ての_ ドメインからの _全ての_ ルートへのクロスオリジンアクセスを許可するためには単純に[`config/cors.js`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html)で`allRoutes`を有効化するだけです。:
 
 ```js
 allRoutes: true
 ```
 
-See [`sails.config.cors`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html) for a comprehensive reference of all available options.
+全てのオプションの利用方法は[`sails.config.cors`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.cors.html) をご覧下さい。
 
 
-### Configuring CORS For Individual Routes
-Besides the global CORS configuration, you can set up individual routes in `config/routes.js` to accept (or deny) cross-origin requests.  To indicate that a route should accept CORS requests using the configuration parameters in `config/cors.js`, set its `cors` property to `true`:
+### それぞれのルートに対してCORSを設定する
+CORS設定のゴールは`config/routes.js`にあるそれぞれのルートに対してクロスオリジンアクセスを許可（あるいは拒否）することです。それぞれのルートへのCORSを許可することを示すには`config/cors.js`の中で`cors`プロパティを`true`にすることで行えます。:
 
 ```
 "get /foo": {
@@ -33,7 +33,7 @@ Besides the global CORS configuration, you can set up individual routes in `conf
 }
 ```
 
-If you have the `allRoutes` parameter set to `true` in `config.cors.js`, but you want to exempt a specific route, you can do so by explicitly setting its `cors` property to `false`:
+もし`config.cors.js`で`allRoutes`を`true`にセットし特定のルートを除外したい場合、`cors`に対して`false`を明示することで行えます。:
 
 ```
 "get /foo": {
@@ -43,7 +43,7 @@ If you have the `allRoutes` parameter set to `true` in `config.cors.js`, but you
 }
 ```
 
-To override specific CORS configuration parameters for a route, add a `cors` property object:
+ルートに対しての特定のCORSパラメータを上書きするには`cors`プロパティオブジェクトを追加します。:
 
 ```
 "get /foo": {

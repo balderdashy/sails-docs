@@ -1,24 +1,24 @@
-# Internationalization
+# 国際化
 
-### Overview
+### 概要
 
-If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n)).
+もしあなたのアプリケーションが世界中の人やシステムとふれあうとしたら国際化とローカライゼーションはあなたの国際戦略の中で大切な位置を占めるでしょう。Sailsは[i18n-node](https://github.com/mashpie/i18n-node)のおかげでユーザの言語プリファレンスの検知及び静的ワードの翻訳のサポートを内蔵しています。([npm](https://www.npmjs.org/package/i18n)).
 
 
 
 <!--
-  Potentially cover this:
-  *(but it might be obvious and not useful/necessary to include, not sure- could also be more confusing than helpful)*
-Note that this built-in support is for **dynamically-rendered** (but otherwise **static**) content.  You can only use it in responses which are pre-processed on the server.  In other words, you can use these translations in your views, controller actions, and policies, but stuff in your assets folder.)
+  もしかしたらカバーすべきかも:
+  *(ただ、これを含むのは明確でそれほど有用だったり大切だったししないかもしれません。自信はありませんが便利というよりややこしいかも。*
+このビルトインのサポートは**動的にレンダリングされる**（**スタティック**でない）コンテントに対してです。予めサーバで処理されたレスポンスに対してのみこれを使うことが出来ます。別の言い方をすればこの翻訳機能はビューやコントローラ、ポリシーでは使えますがassetフォルダの中身に関しては使えません。
 
-we do not recommend translating strings in the front-end of your application (e.g. the browser or an iOS app) for a variety of reasons, the most obvious being SEO, but also fragmentation. You can of course still do so- just don't use this built-in support from the i18n hook.
+幾つかの原因（明らかな例としてはSEO対策やフラグメンテーションの理由など）から文字列の翻訳をフロントエンド（例えば：ブラウザやiOSアプリなど）で行うことは推奨されません。もちろん、それでもやれないことはないですがこのビルトインサポートをi18nのフックからは使わないでください。
 -->
 
 
-### Usage
+### 利用方法
 
 
-In a view:
+ビューで:
 ```ejs
 <h1> <%= __('Hello') %> </h1>
 <h1> <%= __('Hello %s, how are you today?', 'Mike') %> </h1>
@@ -26,7 +26,7 @@ In a view:
 ```
 
 
-In a controller or policy:
+コントローラやポリシーで:
 ```javascript
 req.__('Hello'); // => Hola
 req.__('Hello %s', 'Marcus'); // => Hola Marcus
@@ -34,7 +34,7 @@ req.__('Hello {{name}}', { name: 'Marcus' }); // => Hola Marcus
 ```
 
 
-Or if you already know the locale id, you can translate from anywhere in your application using `sails.__`:
+あるいはもしロケールIDがわかっているとしたら`sails.__`を使うことでアプリケーションの中のどこからでも翻訳できます。:
 
 ```javascript
 sails.__({
@@ -46,31 +46,31 @@ sails.__({
 
 
 
-### Locales
-The i18n hook reads JSON-formatted translation files from your project's "locales" directory (`config/locales` by default).  Each file corresponds with a [locale](http://en.wikipedia.org/wiki/Locale) (usually a language) that your Sails backend will support.
+### ロケール
+i18nフックはプロジェクトの中の"locales"ディレクトリ(デフォルトでは`config/locales`にあります)の中にあるJSONフォーマットの翻訳ファイルを読み込みます。それぞれのファイルはSailsバックエンドがサポートすべき[locale](http://en.wikipedia.org/wiki/Locale)（通常は言語）に対応します。
 
-These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc.
+これらのファイルはあなたがビューやコントローラの中で使えるロケール特有の文字列を（JSONのキー・バリューのペアで）含んでいます。
 
-Here is an example locale file (`config/locales/es.json`):
+以下にロケールファイルの例を挙げます (`config/locales/ja.json`):
 ```json
 {
-    "Hello!": "Hola!",
-    "Hello %s, how are you today?": "¿Hola %s, como estas?",
+    "Hello!": "こんにちは!",
+    "Hello %s, how are you today?": "こんにちは%sさん、お元気ですか。",
 }
 ```
 
-Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
+文字列ファイルの中のキー(例:"Hello %s, how are you today?")は**大文字と小文字を区別する**ことにご留意ください。個々に幾つかの違ったアプローチがありますが、どれが一番いいのかはそれは翻訳ファイルとHTMLファイルに関して、だれがどのように編集することが多いかということによって変わってきます。特に、もし翻訳ファイルを手動で編集する機会が多い場合、シンプルな全て小文字のキー名にすることでメンテナンスがしやすくなるでしょう。
 
-For example, here's another pass at `config/locales/es.json`:
+例えば`config/locales/ja.json`での別のやり方は:
 
 ```json
 {
-    "hello": "Hola!",
-    "hello-how-are-you-today": "Hola %s, ¿cómo estás?",
+    "hello": "こんにちは!",
+    "hello-how-are-you-today": "こんにちは%sさん、お元気ですか。",
 }
 ```
 
-And here's `config/locales/en.json`:
+そしてこれが `config/locales/en.json`です。:
 
 ```json
 {
@@ -80,19 +80,19 @@ And here's `config/locales/en.json`:
 ```
 
 
-### Detecting and/or overriding the desired locale for a request
+###  リクエストのロケールを検出、上書きする。
 
-To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), calling it with the unique code for the new locale, e.g.:
+自動検出されたロケールを上書きするには[`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale)を利用し、これを新しいロケールのユニークコードとともに呼び出します。 例:
 
 ```js
-// Force the language to German for the remainder of the request:
+// リクエストのリマインダー表示にドイツ語を強制する:
 req.setLocale('de');
-// (this will use the strings located in `config/locales/de.json` for translation)
+// (これで翻訳には`config/locales/de.json`に配置された文字列が利用されます。)
 ```
 
-By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.
+デフォルトではnode-i18nは言語ヘッダーを見ることで望ましい言語を検出します。言語ヘッダーはユーザーのブラウザ設定で決められ、殆どの場合においてそれは正しいのでロケールの上書きに関しては柔軟な対応が可能にするべきです。
 
-For instance, if your app allows users to pick their preferred language, you might create a [policy](http://beta.sailsjs.org/#/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
+例えば、もしあなたのアプリでユーザが任意の言語を選ぶことが出来るようにする場合、まずユーザセッションにおけるカスタム言語を確認する[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies) ポリシーを作り、もしそれが存在する場合、その後に続くポリシーやコントローラ、ビューで使うロケールをセットすることになります。:
 
 ```js
 // api/policies/localize.js
@@ -105,8 +105,8 @@ module.exports = function(req, res, next) {
 
 <!--
 
-  Alternatively, here's another extended example:
-  (todo: at the very least pull this into a separate guide)
+  その他に、別の拡張したサンプルです。:
+  (todo: 別のガイドページに以降する。)
 
 ```js
 // config/routes.js
@@ -132,43 +132,43 @@ module.exports = function(req, res, next) {
 
 
 
-### Translating Dynamic Content
+### 動的コンテンツを翻訳する
 
-If your backend is storing interlingual data (e.g. product data is entered in multiple languages via a CMS), you shouldn't rely on simple JSON locale files unless you're somehow planning on editing your locale translations dynamically.  One option is to edit the locale translations programatically, either with a custom implementation or through a translation service.  Sails/node-i18n JSON stringfiles are compatible with the format used by [webtranslateit.com](https://webtranslateit.com/en).
+もしあなたバックエンドが複数言語のデータを保している場合、（例えば、商品名がCMSから複数の言語で入力されているなど）（何らかの方法でローカルの翻訳ファイルを動的に編集することを意図しないかぎりは）シンプルなJSONロケールファイルに依存するべきではないでしょう。ここで取りうる一つの方法は翻訳サービスのカスタムな実装によりロケールファイルをプログラム的に編集する方法です。Sails/node-i18nのJSON文字列ファイルは[webtranslateit.com](https://webtranslateit.com/en)で利用されるフォーマットと互換性があります。
 
-On the other hand you might opt to store these types of dynamic translated strings in a database.  If so, just make sure and build your data model accordingly so you can store and retrieve the relevant dynamic data by locale id (e.g. "en", "es", "de", etc)  That way, you can leverage the [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) method to help you figure out which translated content to use in any given response, and keep consistent with the conventions used elsewhere in your app.
+一方で、データベースに保管されたこれらの動的翻訳文字列を利用したいこともあるでしょう。もしそうなら、それに従ったデータモデルを作成し、ロケールID(例えば"en", "es", "de"など)によって関連するデータを動的に取得する方法を用意しなければいけません。こうすることで、[`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) メソッドを利用してそれぞれのレスポンスで使うべき翻訳ファイルを取得することができ、アプリケーションの中の他の場所で使われるやり方との整合性を保つことが出来るでしょう。
 
 
 
-### Additional Options
+### 追加のオプション
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+国際化とローカライゼーションの設定は [`sails.config.i18n`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.i18n.html)で設定されています。このファイルを編集する典型的な例はあなたのアプリケーションのサポートする言語や翻訳ファイルの位置を変更する時です。:
 
 ```javascript
-// Which locales are supported?
+// どのロケールがサポートされますか?
 locales: ['en', 'es'],
 
-// Where are your locale translations located?
+// 翻訳がいるはどこに置かれていますか?
 localesDirectory: '/config/locales'
 ```
 
 
 
 
-### Disabling or customizating Sails' default internationalization support
+### Sailのデフォルトの国際化サポートを無効化、もしくはカスタマイズする。
 
-Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
+もちろんプロジェクトの中のどこでも好きなNodeモジュールを`require()`して、好きな国際化の方法を取ることが出来ます。
 
-But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://beta.sailsjs.org/#/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
+しかし、ここで理解するに値すべきことはSailsは[node-i18n](https://github.com/mashpie/i18n-node)の実装を[i18n hook](http://beta.sailsjs.org/#/documentation/concepts/Internationalization)で行っているので[`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)や[`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) の設定を使ってこれを完全に無効化したり、オーバライドすることが出来ます。
 
 
-### What About i18n on the client?
+### クライアントでの国際化に関して
 
-The above technique works great out of the box for server-side views. But what about rich client apps that serve static HTML templates from a CDN or static host? (e.g. performance-obsessed SPAs or PhoneGap apps/Chrome extensions)
+ここに上げたテクニックはサーバーサイドのビューではとてもうまく動きます。しかし、静的なテンプレートをCDNや静的ホストから提供するリッチクライアント、（例えばパフォーマンス重視のSPAやPhonegapアプリやGoogleエクステンションなど）ではどうでしょうか。
 
-You can actually reuse Sails' i18n support to help you get your translated templates to the browser.  If you want to use Sails to internationalize your _client-side templates_, put your front-end templates in a subdirectory of your app's `/views` folder.
-+ In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
-+ In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
+実はSailsのi18nサポートは翻訳済みのテンプレートをブラウザに届ける際にも再利用することが出来ます。もしSailの国際化機能を_クライアントサイドテンプレート_で使いたいときはフロントエンドテンプレートを`/views`のサブディレクトリに配置してください。
++ 開発モードでは、Sailsプロジェクトですでにデフォルトでインストールされているgrunt-contrib-watchによってテンプレートファイルが編集されたり、文字列ファイルが編集されるたびに、テンプレートアイルを翻訳してプレコンパイルしなおさなければなりません。
++ プロダクションモードではlift()を行う時点で全てのテンプレートが翻訳され、プレコンパイルされることになります。読み込み時間を気にする用途（例えばモバイルWebアプリケーション）では翻訳され、プレコンパイルされ、最小化されたテンプレートをCloudfrontのようなCDNにアップロードして更なるパフォーマンスの追求を行うことが出来ます。
 
 
 

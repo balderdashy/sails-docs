@@ -1,11 +1,11 @@
-# One Way Association
-### Overview
+# 片方向のアソシエーション
+### 概要
 
-A one way association is where a model is associated with another model.  You could query that model and populate to get the associatED model.  You can't however query the associated model and populate to get the associatING model.
+片方向のアソシエーションはモデルが別のモデルに関連付けられている状態を言います。この状態ではあるモデルを問い合わせることで関連するモデルを取得することができます。
 
-### One Way Example
+### 片方向のアソシエーションの例
 
-In this example, we are associating a `User` with a `Pet` but not a `Pet` with a `User`.
+この例では`User`に`Pet`を関連付けますが`Pet`に`User`を関連付けることはしません。
 
 `myApp/api/models/pet.js`
 
@@ -74,10 +74,10 @@ null [ { name: 'Mike',
 
 
 ```
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+### 備考
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
 
-> Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
+> 片側のモデルだけにアソシエーションを設定したため、`Pet`がいくつの`User`に関連付けられるかの制約はありません。もしそれを行いたい場合は`Pet`を厳密に一人の`User`に関連付けたり`User`を厳密に一つの`Pet`に関連付けるようにアソシエーションを編集することができます。 
 
 <docmeta name="uniqueID" value="OneWayAssociation708096">
 <docmeta name="displayName" value="One Way Association">

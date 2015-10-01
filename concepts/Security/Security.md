@@ -1,8 +1,8 @@
-# Security
+# セキュリティ
 
-### Overview
+### 概要
 
-Sails and Express provide built-in, easily configurable protection against most known types of web-application-level attacks.
+SailsとExpressにはよく知られているほとんどのWebアプリケーションでレベルでの攻撃から防御することのできる、簡単に設定可能な防御策を内蔵しています。
 
 <docmeta name="uniqueID" value="Security59375">
 <docmeta name="displayName" value="Security">
