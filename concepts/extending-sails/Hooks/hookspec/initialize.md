@@ -1,13 +1,13 @@
 # `.initialize(cb)`
 
-The `initialize` feature allows a hook to perform startup tasks that may be asynchronous or rely on other hooks.  All Sails configuration is guaranteed to be completed before a hook&rsquo;s `initialize` function runs.  Examples of tasks that you may want to put in `initialize` are:
+`initialize`機能を使うと別のフックに依存していたり非同期であるかもしれないスタートアップタスクを実行することが出来ます。全てのSails設定はフックの`initialize`が行われる前に実行されることが保証されています。`initialize`の中に挿入したいタスクの例としては:
 
-* Logging in to a remote API
-* Reading from a database that will be used by hook methods
-* Loading support files from a user-configured directory
-* Waiting for another hook to load first
+* リモートAPIへのログイン
+* フックメソッドれつかれるデータベースからの読み込み
+* ユーザーによって設定されたディレクトリからのサポートファイルの読み込み
+* 別のフックが先に読み込まれるのを待つ
 
-Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` takes one argument: a callback function which must be called in order for Sails to finish loading:
+他のフック機能と同じように`initialize`はオプショナルでありフックの定義に書かなくても構いません。もし実装されていれば`initialize`は一つの引数（Sailsがロード完了するために必要なコールバックファンクション）をとります。:
 
 ```javascript
 initialize: function(cb) {
@@ -19,9 +19,9 @@ initialize: function(cb) {
 }
 ```
 
-##### Hook timeout settings
+##### フックのタイムアウト設定
 
-By default, hooks have ten seconds to complete their `initialize` function and call `cb` before Sails throws an error.  That timeout can be configured by setting the `_hookTimeout` key to the number of milliseconds that Sails should wait.  This can be done in the hook&rsquo;s [`defaults`](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html):
+デフォルトではフックは`initialize`を10秒で終了させられない場合、Sailsがエラーを出力する前に`cb`を呼び出します。このタイムアウトは`_hookTimeout`キーSailsが待つべきミリ秒数を指定することで設定可能です。それはフックの[`defaults`](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html) で行うことが出来ます。
 
 ```
 defaults: {
@@ -31,36 +31,36 @@ defaults: {
 }
 ```
 
-##### Hook events and dependencies
+##### フックイベントと依存
 
-When a hook successfully initializes, it emits an event with the following name:
+フックの初期化に成功した際、以下の名前のイベントを発生させます:
 
 `hook:<hook name>:loaded`
 
-For example:
+例えば:
 
-* The core `orm` hook emits `hook:orm:loaded` after its initialization is complete.
-* A hook installed into `node_modules/sails-hook-foo` emits `hook:foo:loaded` by default
-* The same `sails-hook-foo` hook, with `sails.config.installedHooks['sails-hook-foo'].name` set to `bar` would emit `hook:bar:loaded`
-* A hook installed into `node_modules/mygreathook` would emit `hook:mygreathook:loaded`
-* A hook installed into `api/hooks/mygreathook` would also emit `hook:mygreathook:loaded`
+* コアの`orm`フックは初期化完了後に`hook:orm:loaded`イベントを発生させます。
+* `node_modules/sails-hook-foo`にインストールされたフックはデフォルトでは`hook:foo:loaded`を発生させます。
+* 同じ`sails-hook-foo`フックが`sails.config.installedHooks['sails-hook-foo'].name`で`bar`と設定された場合は`hook:bar:loaded`を発生させます
+* `node_modules/mygreathook`にインストールされたフックは`hook:mygreathook:loaded`イベントを発生させます。
+* `api/hooks/mygreathook` にインストールされたフックは`hook:mygreathook:loaded`イベントを発生させます。
 
-You can use the "hook loaded" events to make one hook dependent on another.  To do so, simply wrap your hook&rsquo;s `initialize` logic in a call to `sails.on()`.  For example, to make your hook wait for the `orm` hook to load, you could make your `initialize` similar to the following:
+"hook loaded"を利用することであるフックを別のフックに依存させることが出来ます。これをやるには単にフックの`initialize`を`sails.on()`でラップします。例えば、あるフックが`orm`フックが読み込まれるのを待つようにするためにはあなたのフックの`initialize`を以下のようにします。:
 
 ```javascript
 initialize: function(cb) {
 
    sails.on('hook:orm:loaded', function() {
 
-      // Finish initializing custom hook
-      // Then call cb()
+      // カスタムフックの初期化を完了
+      // そして、cb()をコールする
       return cb();
 
    }
 }
 ```
 
-To make a hook dependent on several others, gather the event names to wait for into an array and call `sails.after`:
+あるフックを別の幾つかのフックに依存させるには待つべきイベントの名前を配列に入れて`sails.after`をコールします:
 
 ```javascript
 initialize: function(cb) {
@@ -68,8 +68,8 @@ initialize: function(cb) {
    var eventsToWaitFor = ['hook:orm:loaded', 'hook:mygreathook:loaded'];
    sails.after(eventsToWaitFor, function() {
 
-      // Finish initializing custom hook
-      // Then call cb()
+      // カスタムフックの初期化を完了
+      // そして、cb()をコールする
       return cb();
 
    }

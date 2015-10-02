@@ -1,6 +1,6 @@
 # `.defaults`
 
-The `defaults` feature can be implemented either as an object or a function which takes a single argument (see &ldquo;using `defaults` as a function&rdquo; below) and returns an object.  The object you specify will be used to provide default configuration values for Sails.  You should use this feature to specify default settings for your hook.  For example, if you were creating a hook that communicates with a remote service, you may want to provide a default domain and timeout length:
+`defaults`機能はオブジェクトまたは単一の引数を取るファンクション (以下の&ldquo;using `defaults` as a function&rdquo; をご覧ください)として実装することが出来、オブジェクトを返すことが出来ます。あなたが指定したオブジェクトはSailsのデフォルトの設定を提供するために使われます。あなたのフックのデフォルト設定を指定するためにこれを使うべきです。例えば、リモートサービスと通信するフックを作っている場合、以下のようにデフォルトのドメインとタイムアウトの長さを提供します。:
 
 ```
 {
@@ -11,10 +11,10 @@ The `defaults` feature can be implemented either as an object or a function whic
 }
 ```
 
-If a `myapihook.timeout` value is provided via a Sails configuration file, that value will be used; otherwise it will default to `5000`.  
+Sailsの設定で`myapihook.timeout`が提供されていた場合、その値が使われます。そうでなければデフォルトの`5000`が使われます。
 
-##### Namespacing your hook configuration
-For [project hooks](http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks), you should namespace your hook&rsquo;s configuration under a key that uniquely identifies that hook (e.g. `myapihook` above).  For [installable hooks](http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks), you should use the special `__configKey__` key to allow end-users of your hook to [change the configuration key](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook) if necessary.  The default key for a hook using `__configKey__` is the hook name.  For example, if you create a hook called `sails-hooks-myawesomehook` which includes the following `defaults` object:
+##### フック設定のネームスペース
+[プロジェクトフック](http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks)に関してはフックを一意に示すキー(例：上記の`myapihook`)のもとにフックの設定を置かなければなりません。[インスタンスフック](http://sailsjs.org/documentation/concepts/extending-sails/Hooks?q=types-of-hooks)に関しては特別な`__configKey__`キーを使い、フックのエンドユーザが必要に応じて[設定キーを変更](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook) 出来るようにしなければなりません。`__configKey__`を使うフックのデフォルトのキーはフック名です。例えば以下の`defaults`オブジェクトを持つ`sails-hooks-myawesomehook`と呼ばれるフックを作った時には:
 
 ```
 {
@@ -24,11 +24,11 @@ For [project hooks](http://sailsjs.org/documentation/concepts/extending-sails/Ho
 }
 ```
 
-then it will, by default, provide default settings for the `sails.config.myawesomehook.name` value.  If the end-user of the hook overrides the hook name to be `foo`, then the `defaults` object will provide a default value for `sails.config.foo.name`.
+これはデフォルトでは`sails.config.myawesomehook.name`の値を提供することになります。もしエンドユーザーがフックの名前を`foo`に上書きした場合、`defaults` オブジェクトは `sails.config.foo.name`のデフォルト値を提供することになります。
 
-##### Using `defaults` as a function
+##### `defaults`をファンクションとして使う
 
-If you specify a function for the `defaults` feature instead of a plain object, it takes a single argument (`config`) which receives any Sails configuration overrides.  Configuration overrides can be made by passing settings to the command line when lifting Sails (e.g. `sails lift --prod`), by passing an object as the first argument when programmatically lifting or loading Sails (e.g. `Sails.lift({port: 1338}, ...)`) or by using a [`.sailsrc`](http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html) file.  The `defaults` function should return a plain object representing configuration defaults for your hook.
+`defaults`機能でプレーンオブジェクトの代わりにファンクションを指定した場合、Sailsの設定で上書きされた (`config`)を受け取ることになります。設定の上書きはSailをliftする際に設定を渡したり(例：`sails lift --prod`)、Sailsをプログラム的にliftまたは読み込む際に最初の引数にオブジェクトを渡したり(例：`Sails.lift({port: 1338}, ...)`)、[`.sailsrc`](http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html)を使ったりする方法でできます。`defaults`ファンクションはあなたのフックのデフォルト設定を表すプレーンオブジェクトを返さなければなりません。
 
 <docmeta name="uniqueID" value="Hooks75003">
 <docmeta name="displayName" value=".defaults">

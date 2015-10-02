@@ -1,19 +1,19 @@
-# Using Hooks in a Sails App
+# Sailsアプリケーションでフックを使う
 
-## Using a project hook
-To use a project hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html) or copy the folder for the hook you want to use into `api/hooks`.
+## プロジェクトフックを使う
+プロジェクトフックをSailsで使うには、まずもし`api/hooks`フォルダがなければ作成します。次に[プロジェクトフックを作成する](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html) か使いたいフックを `api/hooks` フォルダにコピーします。
 
-## Using an installable hook
-To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html) directly into your app&rsquo;s `node_modules` folder.
+## インストーラブルフックを使う
+インストーラブルフックを作成するには単にインストールしたいフックの名前（例：`npm install sails-hook-autoreload`）で`npm install`を実行します。また、アプリケーションの`node_modules`フォルダに直接[あなたが作成したインストーラブルフック](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)をコピーまたはリンクすることも出来ます。
 
-## Calling hook methods
-Any methods that a hook exposes are available in the `sails.hooks[<hook-name>]` object.  For example, the `sails-hook-email` hook provides a `sails.hooks.email.send()` method (note that the `sails-hook-` prefix is stripped off).  Consult a hook&rsquo;s documentation to determine which methods it provides.
+## フックメソッドを作る
+フックが露出する全てのメソッドは`sails.hooks[<hook-name>]`オブジェクトで利用可能です。例えば、`sails-hook-email`フックは`sails.hooks.email.send()`を提供します。(`sails-hook-` プレフィックスはなくなることにご留意ください。)どのメソッドが提供されるかはフックのドキュメンテーションをご覧ください。
 
-## Configuring a hook
-Once you&rsquo;ve added an installable hook to your app, you can configure it using the regular Sails config files like `config/local.js`, `config/env/development.js`, or a custom config file you create yourself.  Hook settings are typically namespaced under the hook&rsquo;s name, with any `sails-hook-` prefix stripped off.  For example, the `from` setting for `sails-hook-email` is available as `sails.config.email.from`.  The documentation for the installable hook should describe the available configuration options.
+## フックを設定する
+一旦プロジェクトにインストーラブルフックを追加すると `config/local.js` や `config/env/development.js`のような通常のSailsの設定ファイルやあなたが作成したカスタムの設定ファイルで設定を行うことが出来ます。フックの設定は通常`sails-hook-`がなくされたフック名のネームスペースの下に配置されます。例えば`sails-hook-email`の`from`設定は`sails.config.email.from`で利用可能です。インストーラブルフックのドキュメンテーションでは設定可能なオプションを記述すべきです。
 
-## Changing the way Sails loads an installable hook
-On rare occassions, you may need to change the name that Sails uses for an installable hook, or change the configuration key that the hook uses.  This may be the case if you already have a project hook with the same name as an installable hook, or if you&rsquo;re already using a configuration key for something else.  To avoid these conflicts, Sails provides the `sails.config.installedHooks.<hook-identity>` configuration option.  The hook identity is *always* the name of the folder that the hook is installed in.  
+## Sailsがインストーラブルフックをロードする方法を変える
+稀なケースですが、利用するインストーラブルフックの名前を変えたりフックの使う設定キーを変更することが必要な時があります。これはすでに使用したいインストーラブルフックと同名のプロジェクトフックがあったりすでに設定キーが使われていたりする場合などです。このようなコンフリクトを避けるためには`sails.config.installedHooks.<hook-identity>`設定オプションを使います。フックの識別子は *常に* フックがインストールされたフォルダの名前です。
 
 ```
 // config/installedHooks.js
@@ -27,7 +27,7 @@ module.exports.installedHooks = {
 };
 ```
 
-> Note: you may have to create the `config/installedHooks.js` file yourself.
+> Note: `config/installedHooks.js` ファイルを自分で作る必要があることにご留意ください。
 
 * [Hooks overview](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)
 * [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec)

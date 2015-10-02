@@ -1,14 +1,14 @@
-# Extending Sails
+# Sailsを拡張する
 
-In keeping with the Node philosophy, Sails aims to keep its core as small as possible, delegating all but the most critical functions to separate modules[*](./#foot1).  There are currently three types of extensions that you can make to Sails:
+Nodeの思想を維持するためにSailsは可能な限りコアを小さく、なるべく全てのものを移譲して、もっとも重要なものはモジュール[*](./#foot1)に分けています。現在Sailsには3種類の拡張方法があります。
 
-+ [**Generators**](http://sailsjs.org/documentation/concepts/extending-sails/Generators) - for adding and overriding functionality in the Sails CLI.  *Example*: [sails-generate-model](https://www.npmjs.com/package/sails-generate-model), which allows you to create models on the command line with `sails generate model foo`.
-+ [**Adapters**](http://sailsjs.org/documentation/concepts/extending-sails/Adapters) - for integrating Waterline (Sails' ORM) with new data sources, including databases, APIs, or even hardware. *Example*: [sails-postgresql](https://www.npmjs.com/package/sails-postgresql), the official [PostgreSQL](http://www.postgresql.org/) adapter for Sails.
-+ [**Hooks**](http://sailsjs.org/documentation/concepts/extending-sails/Hooks) - for overriding or injecting new functionality in the Sails runtime.  *Example*: [sails-hook-autoreload](https://www.npmjs.com/package/sails-hook-autoreload), which adds auto-refreshing for a Sails project's API without having to manually restart the server.
++ [**Generators**](http://sailsjs.org/documentation/concepts/extending-sails/Generators) - SailsのCILに機能を足したり、上書きするためのものです。  *例*: [sails-generate-model](https://www.npmjs.com/package/sails-generate-model), `sails generate model foo`の形式でコマンドラインからモジュールを生成することが出来るようになります。
++ [**Adapters**](http://sailsjs.org/documentation/concepts/extending-sails/Adapters) - Waterline（SailsのORM)に新しいデータソース（データベースやAPI,ハードウエアなど）を追加するものです。*例*: [sails-postgresql](https://www.npmjs.com/package/sails-postgresql), Sailsの公式[PostgreSQL](http://www.postgresql.org/)アダプタです。
++ [**Hooks**](http://sailsjs.org/documentation/concepts/extending-sails/Hooks) - Satilsの実行時に機能を追加したり上書きするためのものです。*例*: [sails-hook-autoreload](https://www.npmjs.com/package/sails-hook-autoreload), 手動でサーバを再起動することなくSaplsプロジェクトのAPIをリフレッシュすることが出来ます。
 
-If you&rsquo;re interested in developing a &ldquo;plugin&rdquo; for Sails, you will most often want to make a [hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks).  
+もしもSailsのプラグインを開発したい場合、最も多くの場合において[hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)を作ることになるでしょう。
 
-<a name="foot1">*</a> <sub>Some of the more important modules, like the Request hook, are still bundled with the Sails core, but they could technically be removed and installed separately.</sub>
+<a name="foot1">*</a> <sub>リクエストフックのような幾つかの重要なモジュールはSailsのコアにバンドルされていますが厳密には削除したり別々にインストールすることも出来ます。</sub>
 
 <docmeta name="uniqueID" value="extendingsails78468">
 <docmeta name="displayName" value="Extending Sails">

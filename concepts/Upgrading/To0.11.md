@@ -1,7 +1,7 @@
-# To v0.11
+# v0.11へ
 
-v0.11 comes with many minor improvements, as well as some internal cleanup in core. The biggest change is that Sails core is now using Socket.io v1.
+v0.11はコアコードを内部的に綺麗にしたりするような小規模な改善からなります。最も大きな変化はSailsのコアがSocket.io v1を採用するようになったことです。
 
-Almost none of this should affect the existing code in project, but there are a few important differences and new features to be aware of. See the [full migration guide](https://github.com/balderdashy/sails/blob/master/0.11-migration-guide.md) for details on how to upgrade.
+プロジェクトの中の既存のコードに影響をあたえることはほとんどありませんが、幾つかの新機能や重要な変更があります。アップグレード方法の詳細に関しては[full migration guide](https://github.com/balderdashy/sails/blob/master/0.11-migration-guide.md)をご覧ください。
 
 <docmeta name="displayName" value="To v0.11">

@@ -1,24 +1,24 @@
 # `.configure()`
 
-The `configure` feature provides a way to configure a hook after the [`defaults` objects](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html) have been applied to all hooks.  By the time a custom hook&rsquo;s `configure()` function runs, all user-level configuration and core hook settings will have been merged into `sails.config`.  However, you should *not* depend on other custom hooks&rsquo; configuration at this point, as the load order of custom hooks is not guaranteed.
+`configure`機能は[`defaults` objects](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html) が全てのフックに対して適用されたあとでフックを設定するための手段です。カスタムフックの`configure()`が実行された時全てのユーザレベルでの設定とコアフックのセッティングは`sails.config`にマージされます。しかしながらカスタムフックを読み込む順番は保証されていないので別のフックの設定に依存してはいけません。
 
-`configure` should be implemented as a function with no arguments, and should not return any value.  For example, the following `configure` function could be used for a hook that communicates with a remote API, to change the API endpoint based on whether the user set the hook&rsquo;s `ssl` property to `true`.  Note that the hook&rsquo;s configuration key is available in `configure` as `this.configKey`:
+`configure` は引数を持たないファンクションとして実装され、いかなる返り値も返すことが出来ません。例えば以下の`configure`ファンクションははリモートAPIを通信するためのものであり、ユーザがフックの`ssl`設定をどうするのかによってアクセスするエンドポイントを変更するものです。フックの設定キーは`this.configKey`として`configure`で利用可能なことを覚えておいてください。:
 
 ```
 configure: function() {
 
-   // If SSL is on, use the HTTPS endpoint
+   // SSLがONならSSLのエンドポイントを使う
    if (sails.config[this.configKey].ssl == true) {
       sails.config[this.configKey].url = "https://" + sails.config[this.configKey].domain;
    }
-   // Otherwise use HTTP
+   // そうでなければHTTPを使う
    else {
       sails.config[this.configKey].url = "http://" + sails.config[this.configKey].domain;
    }
 }
 ```
 
-The main benefit of `configure` is that all hook `configure` functions are guaranteed to run before any [`initialize` functions](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html) run; therefore a hook&rsquo;s `initialize` function can examine the configuration settings of other hooks.
+`configure`　を使う主な利点はすべての`configure`ファンクションは全ての[`initialize` functions](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html) の前に実行されることが保証されているということです。したがってフックの`initialize`ファンクションは別のフックの設定を調べることが出来ます。
 
 <docmeta name="uniqueID" value="Hooks75004">
 <docmeta name="displayName" value=".configure()">

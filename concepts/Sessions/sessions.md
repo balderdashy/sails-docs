@@ -1,38 +1,38 @@
-#Understanding Sessions in Sails
+#Sailsのセッションを理解する
 
-For our purposes **sessions** are synonymous with a few components that together allow you to store information about a user agent between requests.
+**セッション**の目的はいくつかのコンポーネントを同期することで同じユーザエージェントの複数のリクエストの間で情報を共有することです。
 
->A **user agent** is the software (e.g. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
+>**ユーザエージェント**はデバイス上（ブラウザタブやスマートフォンアプリケーション、冷蔵庫など）においてあなたを代表するソフトウエア（ブラウザやネイティブアプリケーション）です。これはクッキーやアクセストークンと1対1で結びついています。 
 
-Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore the lifecycle of a request/response ends when a response is made to the requesting user agent (e.g. `res.send()`).
+リクエストとレスポンスのサイクルは**ステートレス**ですのでセッションは非常に有用です。リクエストとレスポンスのサイクルがステートレスとみなされる理由は本質的にはクライアントもサーバも特定のリクエストと別のリクエストを区別するデータを持たないからです。そのためリクエストとレスポンスのライフサイクルはユーザエージェントのリクエストに対するレスポンスが作成された時点で（例：`res.send()`）終了します。
 
-Note, we’re going to discuss sessions in the context of a browser user agent. While you can use sessions in Sails for whatever you like, it is generally a best practice to use it purely for storing the state of user agent authentication. Authentication is a process that allows a user agent to prove that they have a certain identity.  For example, in order to access some protected functionality, I might need to prove that my browser tab actually corresponds with a particular user record in a database.  If I provide you with a unique name and a password, you can look up the name and compare my password with a stored (hopefully encyrpted) password.  If there's a match, I'm authenticated. But how do you store that "authenticated-ness" between requests? That's where sessions come in.
+ちなみに、これから議論する内容はブラウザユーザーエージェントでの話です。Sailsのなかでセッションは好きなような目的で使えることができますが、一般的に使われる目的は単にユーザの認証を保存するために使われる目的です。認証とはユーザーエージェントが何らかのアイデンティティを持っていることを確認する作業です。例えば何らかの保護された機能を使うときにブラウザタブがデータベースの中の特定のユーザーデータに結びついているかを確認しなければならないかもしれません。もし私がユニークな名前とパスワードを提供すればあなたは名前を探しだして（暗号化されていればいいのですが、）保存されているパスワード比較することができます。もしそれらが一致すれば私は認証されたことになります。しかし、どうやって「認証されていること」を保存すればいいのでしょうか。そこでセッションの出番なのです。
 
-###What sessions are made of
-There are three main components to the implementation of sessions in Sails:
-1. the **session store** where information is retained
-2. the middleware that manages the session
-3. a cookie that is sent along with every request and stores a session id (by default, `sails.sid`)
+###セッションは何から出来ているのでしょうか
+Sailsでのセッションの実装は3つの主な要素から成り立っています。s:
+1. 情報を保管する**セッションストア**
+2. セッションを管理するミドルウエア
+3. セッションIDを保管しアクセスごとに送信されるクッキー(デフォルトでは`sails.sid`)
 
-The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
+この**セッションストア**はメモリの中（例えばSailsのデフォルトのセッションストア）にあってもデータベースの中（Sailsにはこの目的でのRedisのサポートがあります）にあっても構いません。Sailsはセッションを管理する目的でConnectミドルウエアの一番上にミドルウエアを構築し、それはユーザエージェントのセッションID(`sid`)を保管するために**クッキー**を使います。
 
-###A day in the life of a *request*, a *response*, and a *session* 
-When a `request` is sent to Sails, the request header is parsed by the session middleware.  
+###*request*と*response*と*session*の日常
+`request`がSailsに送信されるとセッションミドルウエアによってリクエストヘッダーがパースされます。 
 
-##### Scenario 1: The request header has no *cookie property*
+##### シナリオ１: リクエストヘッダーが*cookie property*を持たない場合
 
-If the header does not contain a cookie property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following *login* action.
+もしヘッダーがクッキープロパティを持たない場合、`sid`がセッションの中に作成され、デフォルトのセッションディレクトリが`req`（例えば`req.session`）に追加されます。この時点でセッションプロパティを変更（通常コントローラアクションで）することが出来ます。例えば、以下の様な*login* を見てみましょう。 
 
 ```javascript
 module.exports = {
   
   login: function(req, res) {
 
-    // Authentication code here
+    // ここに認証コードが入ります。
 
-    // If successfully authenticated
+    // もし、認証に成功したら
 
-    req.session.userId = foundUser.id;   // returned from a database
+    req.session.userId = foundUser.id;   // データベースから返ってきたものです
 
     return res.json(foundUser);
 
@@ -40,27 +40,27 @@ module.exports = {
 }
 ```
 
-Here we added a `userId` property to `req.session`.  
+`req.session`に`userId`が追加されました。  
 
-> **Note:** The property will not be stored in the *session store* nor available to other requests until the response is sent.
+> **備考:** レスポンスが返されるまでプロパティは*セッションストア*に保存されませんし、他のリクエストから利用可能にもなりません。
 
-Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header a cookie will be established for us.  
+一度レスポンスが送信されるとすべての新規リクエストは`req.session.userId`にアクセス可能になります。クッキーの*プロパティ*はリクエストヘッダーに存在しませんでしたからこのためにクッキーが新しく作成されます。
 
-##### Scenario 2: The request header has a cookie *property* with a `Sails.sid`
+##### シナリオ2: リクエストヘッダーが`Sails.sid`の*property*を持っている時
 
-Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity and if it matches an existing `sid` in the session store, the contents of the session store is added as a property on the `req` dictionary (e.g. `req.session`).  We can access properties on `req.session` (e.g. `req.session.me`) or add properties to it (e.g. `req.session.me == someValue`).  The values in the session store might change but generally the `Sails.sid` and `sid` do not change.
+ユーザエージェントが次のリクエストをスるとき、クッキーに格納された`Sails.sid`は自動的に確認されセッションストアに保管された`sid`とマッチされればセッションストアの内容は`req`ディレクトリ(例えば`req.session`)のプロパティに保存されます。`req.session`のプロパティ(例：`req.session.me`)にアクセスしたりそこに内容を追加したり(例：`req.session.me == someValue`)出来ます。セッションストアの値は変わることがありますが通常`Sails.sid`と`sid`は変わることがありません。
 
-### When does the `Sails.sid` change?
-By default, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store moves on to session heaven (e.g. the session store disappears).  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
+### `Sails.sid`はいつ変更されますか
+デフォルトではセッションストアは*インメモリ*です。そのためSailのサーバを閉じた時に現在のセッションデータはセッション天国に行ってしまいます。（つまりセッションストアは消え去ります）Sailsがリスタートした時仮にユーザエージェントのリクエストのクッキーの中に`Sails.sid`が存在してもセッションストアには`sid`はありません。そのため新しい`sid`が生成され、クッキーの中身が置き換えられます。`Sails.sid`はユーザーエージェントのクッキーが期限切れになったり削除された時にも変更されます。
 
->The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
+>Sailsのクッキーのライフスパンは`projectName/config/session.js`の`cookie.maxAge`プロパティを書き換えることでデフォルトから変更することができます（例えば有効期限切れしないなど）
 
 
-### Using *Redis* as the session store 
+### セッションストアに*Redis*を利用する 
 
-Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
+Redisはキーバリュー型のデータベースパッケージでありセッションストアをSailsのインスタンスから分離するのに使えます。セッションの設定をこうすることには２つのメリットが有ります。一つはSailsがリスタートしてもセッションデータが残るということです。もう一つはもしもロードバランサの後ろに複数のSailsインスタンスを用意した時にも全てのインスタンスが統合されたセッションストアにアクセスすることが出来ることです。
 
-To enable Redis as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a Redis instance running on the same machine as your Sails instance your session store will use Redis.  You can point to a different Redis instance by configuring the following optional properties in `projectName/config/session.js`:
+Redisをセッションストアにするのを有効化する際はお好みのテキストエディタで`projectName/config/session.js`を開いて`adapter`プロパティのコメントアウトを外します。これだけです。開発中はRedisインスタンスが同じマシーンで動き続けている限り、SailsはセッションストレージとしてRedisを使います。`projectName/config/session.js`で以下のオプションパラメータを設定することで別のRedisインスタンスを指すことも出来ます。:
 
 ```
   // host: 'localhost',
@@ -72,15 +72,15 @@ To enable Redis as a session store open `projectName/config/session.js` in your 
 
 ```
 
-For more information on configuring these properties go to [https://github.com/tj/connect-redis](https://github.com/tj/connect-redis).
+これらのプロパティの設定に関してのさらなる情報は[https://github.com/tj/connect-redis](https://github.com/tj/connect-redis)をご覧ください。
 
-#### Nerdy details of how the session cookie is created
-The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
+#### どのようにセッションのクッキーが作られるかの詳細
+クッキーの中身は設定可能な*secret*と`sid`をハッシュすることで作成されます、
 
->You can change the session `secret` property in `projectName/config/session.js`. 
+>`projectName/config/session.js`でセッションに使う`secret`プロパティを変更することが出来ます。 
 
-The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combine and hash to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header. 
+Sailsの`sid` (例：`Sails.sid`)はプレーンな`sid`の後に続いて`sid`と`secret`を合わせたもののハッシュがつながっているものになります。これを具体的にするために例を上げてみましょう。Sailsは`234lj232hg234jluy32UUYUHH`と`session secret`である`9238cca11a83d473e10981c49c4f`からなる`sid`を作成するとします。Sailsは単純にこれらの文字列を組み合わせて`AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`という`signature`を作ります。ですから、`Sails.sid`は`234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`になり、レスポンスヘッダーで`set-cookie`プロパティを送信することでユーザーエージェントのクッキーに保管されます。
 
-**What does this prevent?** It prevents a user from guessing the `sid` as well as prevents a evil doer from spoofing a user into making an authetication request with a `sid` that the evil doer knows.  This could allow the evil doer to use the `sid` to do bad things while the user is authenticated via the session.
+**これは何を防いでいるのですか?** これはユーザの`sid`を推測困難にすることで攻撃者が知っている`sid`を利用してユーザになりすした認証リクエストを送信するのを防ぎます。これがもし許されるとユーザーがセッション経由でログインしている際に攻撃者が`sid`を悪用することが可能になってしまいます。
 
 <docmeta name="displayName" value="Sessions">

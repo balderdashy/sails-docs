@@ -1,7 +1,7 @@
-# Custom Adapters
-### Overview
+# カスタムアダプタ
+### 概要
 
-Sails makes it fairly easy to write your own adapter.  Check out the [sails-boilerplate-repo](https://github.com/balderdashy/sails-adapter-boilerplate) to learn how 
+Sailsではとても簡単にアダプタを書くことが出来ます。やり方に関しては[sails-boilerplate-repo](https://github.com/balderdashy/sails-adapter-boilerplate)をご確認ください。
 
 
 <docmeta name="uniqueID" value="customAdapters92223">

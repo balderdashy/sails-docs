@@ -1,23 +1,23 @@
-# List of Available Adapters
-This file is meant to be an up to date, comprehensive list of all of the generators available for the Sails.js framework.  If we missed one or you would like to add a generator you've made, just submit a Pull Request to this file, adding to the list.
+# 利用可能なジェネレータリスト
+このファイルはSailsで利用可能なジェネレータに関する最新の包括的なリストとなることを意図しています。もし忘れているものがあったりジェネレータを書いた時にはリストに追加したうえでPullリクエストを送ってください。
 
-### Officially Supported Generators
+### 公式サポートされているジェネレータ
 
 #### sails-generate-generator
-###### Github Repo
+###### Githubレポジトリ
 https://github.com/balderdashy/sails-generate-generator/
 
-###### On NPM
+###### NPMで
 'npm install sails-generate-generator`
 
-###### Description
-Generate the boilerplates to make your own generator.
+###### 内容
+自作のジェネレータを作るためのボイラーテンプレートを生成します。
 
 
 
 
 
-### Community Supported Generators
+### コミュニティーレベルでサポートされているアダプタ
 
 
 <docmeta name="uniqueID" value="generatorList11719">

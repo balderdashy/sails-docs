@@ -1,32 +1,32 @@
-# Adapters
-### Status
+# アダプター
+### ステータス
 
-##### Stability: [3](http://nodejs.org/api/documentation.html#documentation_stability_index) - Stable
+##### 安定度: [3](http://nodejs.org/api/documentation.html#documentation_stability_index) - ステーブル
 
-The API has proven satisfactory, but cleanup in the underlying code may cause minor changes.  Backwards-compatibility is guaranteed.
+APIは十分に検証済みですが小規模な変更のためにコードを治す必要があります。後方互換性は保証されています。
 
-### What is an adapter?
+### アダプターとは何でしょうか
 
- Adapters expose **interfaces**, which imply a contract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.
-
-
-### What kind of things can I do in an adapter?
-
-Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods `create()`, `find()`, `update()`, and `destroy()`.
-
-For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection informtion and runs an `INSERT ...` SQL query.
-
-In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.
+アダプタはある機能を実装することを意図して**インターフェース**を露出するものです。これによって複数のモデル、開発者、アプリケーション、さらには会社の間でもアプリケーションコードをメンテナンス可能に、効率よく、信頼性の高いものにすることが出来ます。アダプタはデータベースやオープンAPI、内部や商用のWebサービス、更にはハードウエアを統合するのに便利に使えます。
 
 
-##### Class methods
-Below, `class methods` refer to the static, or collection-oriented, functions available on the model itself, e.g. `User.create()` or `Menu.update()`.  To add custom class methods to your model (beyond what is provided in the adapters it implements), define them as top-level key/function pairs in the model object.
+### アダプタを使ってどんなことが出来ますか。
 
-##### Instance methods
-`instance methods` on the other hand, (also known as object, or model, methods) refer to methods available on the individual result models themselves, e.g. `User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });`.  To add custom instance methods to your model (beyond what is provided in the adapters it implements), define them as key/function pairs in the `attributes` object of the model's definition.
+アダプタはモデルに意味をもたせたCRUDメソッドを提供することに主眼が置かれています。CRUDはCreate、Read、Update、Deleteの略です。SailsとWaterlineではこれらのメソッドを`create()`、`find()`、`update()`そして `destroy()`と呼んでいます。
 
-##### DDL and auto-migrations
-`DDL` stands for data-definition language, and is a common fixture of schema-oriented databases.  In Sails, auto-migrations are supported out of the box.  Since adapters for the most common SQL databases support `alter()`, they also support automatic schema migration!  In your own adapter, if you write the `alter()` method, the same behavior will take effect.  The feature is configurable using the `migrate` property, which can be set to `safe` (don't touch the schema, period), `drop` (recreate the tables every time the app starts), or `alter` (the default-- merge the schema in the apps' models with what is currently in the database).
+例えば`MySQLAdapter`内部的には指定されたテーブル名とコネクション情報を使って`INSERT ...`SQLクエリを実行するというように`create()`メソッドを実装しています。
+
+実務的にはアダプタは好きな様になんでもすることが出来ます。つまり、あなたが作った全てのメソッドは接続オブジェクトとそれを使うモデルから呼び出すことが出来ます。
+
+
+##### クラスメソッド
+以下の`class methods`はモデルそのもので利用可能な静的またはコレクション指向なファンクションです。（例えば`User.create()`や`Menu.update()`のようなものです）モデルに（アダプタ自身が持っているものを超えるような）カスタムメソッドを追加するにはモデルオブジェクトのトップレベルにkey/functionのペアとして追加してください。
+
+##### インスタンスメソッド
+一方で`instance methods`（オブジェクトソッドやモデルメソッドとも呼ばれます）はモデルのそれぞれの結果に対して実行可能なメソッドです。（例:`User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });`）モデルに（アダプタ自身が持っているものを超えるような）インスタンスメソッドを追加するにはモデル定義の`attributes`オブジェクトににkey/functionのペアとして追加してください。
+
+##### DDLと自動マイグレーション
+`DDL`とはdata-definition languageの略で、スキーマ指向のデータベースでおなじみのものです。Sailsでは設定だけで簡単に使える自動マイグレーションが用意されています。多くのSQLデータベース向けのアダプタで`alter()`が対応されていますので自動スキーママイグレーションも利用可能です。あなたがアダプタの中で`alter()`メソッドを書いた場合同様の振る舞いを起こすことが出来ます。この機能は`migrate`プロパティを使って設定可能で、`safe`（つまりスキーマに触れない）、 `drop`（つまりSailsを起動するたびにテーブルを再生成する）、`alter`（デフォルト。現在のスキーマをデータベースとマージする）をセットすることが出来ます。
 
 
 <docmeta name="uniqueID" value="Adapters83669">
