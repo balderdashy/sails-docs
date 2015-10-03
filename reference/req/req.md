@@ -4,11 +4,11 @@ Sails is built on [Express](https://github.com/balderdashy/sails-docs/blob/maste
 
 A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
 
-Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`](http://beta.sailsjs.org/#/documentation/reference/req/req.wantsJSON.html) and [`req.params.all()`](http://beta.sailsjs.org/#/documentation/reference/req/req.allParams.html).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
+Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html) and [`req.params.all()`](http://sailsjs.org/documentation/reference/req/req.allParams.html).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
 
 ### Protocol Support
 
-The chart below describes support for the methods and properties on the Sails [Request](/#/documentation/reference/req) object (`req`) across multiple transports:
+The chart below describes support for the methods and properties on the Sails [Request](http://sailsjs.org/documentation/reference/req) object (`req`) across multiple transports:
 
 <!-- TODO: add SPDY -->
 
@@ -62,4 +62,3 @@ The chart below describes support for the methods and properties on the Sails [R
 <docmeta name="uniqueID" value="req35837">
 <docmeta name="displayName" value="Request (`req`)">
 <docmeta name="stabilityIndex" value="3">
-

@@ -103,15 +103,15 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 > This is not how it actually works, but how it could work soon:
 
-+ `Adaper.define()`
-+ `Adaper.describe()`
-+ `Adaper.drop()`
++ `Adapter.define()`
++ `Adapter.describe()`
++ `Adapter.drop()`
 + `Adapter.alter()` (change table name, other table metadata)
-+ `Adaper.addAttribute()` (add column)
-+ `Adaper.removeAttribute()` (remove column)
-+ `Adaper.alterAttribute()` (rename column, add or remove uniquness constraint to column)
-+ `Adaper.addIndex()`
-+ `Adaper.removeIndex()`
++ `Adapter.addAttribute()` (add column)
++ `Adapter.removeAttribute()` (remove column)
++ `Adapter.alterAttribute()` (rename column, add or remove uniquness constraint to column)
++ `Adapter.addIndex()`
++ `Adapter.removeIndex()`
 
 ###### Auto-migration strategies
 + `"safe"` (default in production env)
@@ -120,6 +120,20 @@ Adapters which implement the Migratable interface are usually interacting with S
   + drop all tables and recreate them each time the server starts-- useful for development
 + `"alter"`
   + experimental automigrations
++ `"create"`
+  + create all missing tables/columns without modifying existing data
+
+
+
+## SQL (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+Adapters which implement the SQL interface interact with databases supporting the SQL language. This interface exposes the method `.query()` allowing the user to run *raw* SQL queries against the database.
+
+###### Adapter methods
+
++ `Adapter.query(query,[ data,] cb)`
 
 
 

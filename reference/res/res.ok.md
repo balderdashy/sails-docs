@@ -1,6 +1,6 @@
 # res.ok()
 
-Send a 200 ("OK") response back down to the client with the provided data.  Performs content-negotiation on the request and calls either [`res.json()`](/#/documentation/reference/res/res.json.html) or [`res.view()`](/#/documentation/reference/res/res.view.html).
+Send a 200 ("OK") response back down to the client with the provided data.  Performs content-negotiation on the request and calls either [`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html) or [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html).
 
 
 ### Usage
@@ -20,11 +20,11 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ If the request "[wants JSON](/#/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"OK"`).
++ If the request "[wants JSON](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"OK"`).
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
   + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](/#/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will fall back and send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](/#/documentation/concepts/Views/Locals.html): `data`.
+  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will fall back and send JSON.
+  + If Sails serves a view, the `data` argument will be accessible as a [view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`.
 
 
 
@@ -72,8 +72,8 @@ return res.ok({
 
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
->+ `res.ok()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in [`api/responses/ok.js`](/#/documentation/anatomy/myApp/api/responses/ok.js.html), which is bundled automatically in newly generated Sails apps.  If an `ok.js` response method does not exist in your app, Sails will implicitly use the default behavior.
->+ This method is used by [blueprint actions](/#/documentation/reference/blueprint-api?q=blueprint-actions) to send a success response.  Therefore as you might expect, it is a great place to marshal response data for clients which expect data in a specific format, i.e. to convert data to XML, or it wrap in an additional object (for Ember clients).
+>+ `res.ok()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in [`api/responses/ok.js`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/ok.js.html), which is bundled automatically in newly generated Sails apps.  If an `ok.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+>+ This method is used by [blueprint actions](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions) to send a success response.  Therefore as you might expect, it is a great place to marshal response data for clients which expect data in a specific format, i.e. to convert data to XML, or it wrap in an additional object (for Ember clients).
 
 
 
@@ -83,6 +83,3 @@ return res.ok({
 
 <docmeta name="uniqueID" value="resok847363">
 <docmeta name="displayName" value="res.ok()">
-
-
-

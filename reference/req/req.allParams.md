@@ -1,6 +1,6 @@
 # req.allParams()
 
-Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](./#!documentation/reference/req.param) for details.
+Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](http://sailsjs.org/documentation/reference/req.param) for details.
 
 ### Usage
 
@@ -50,4 +50,3 @@ Product.update({sku: sku})
 
 <docmeta name="uniqueID" value="reqallParams817828">
 <docmeta name="displayName" value="req.allParams()">
-

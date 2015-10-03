@@ -9,24 +9,14 @@
   3. Find Records
   4. Find One Record
   5. Update a Record
-2. **Plugins**
-  1. Adapters
-    1. Available Adapters
-    2. Custom Adapters
-  2. Generators
-    1. Custom Genarators
-    2. Available Generators
-  3. Hooks
-    1. Custom Hooks
-    2. Available Hooks
-3. **Command Line Interface**
+2. **Command Line Interface**
   1. sails console
   2. sails debug
   3. sails generate
   4. sails lift
   5. sails new
   6. sails version
-4. **Request** (`req`)
+3. **Request** (`req`)
   1. req.is()
   2. req.accepted()
   3. req.acceptedLanguages()
@@ -57,7 +47,7 @@
   28. req.url
   29. req.wantsJSON
   30. req.xhr
-5. **Response** (`res`)
+4. **Response** (`res`)
   1. res.negotiate()
   2. res.attachment()
   3. res.clearCookie()
@@ -77,7 +67,7 @@
   17. res.status()
   18. res.type()
   19. res.view()
-6. **Configuration**
+5. **Configuration**
   1. sails.config.i18n
   2. sails.config.blueprints
   3. sails.config.connections
@@ -93,14 +83,14 @@
   13. sails.config.session
   14. sails.config.sockets
   15. sails.config.views
-7. **Socket Client**
+6. **Socket Client**
   1. io.socket.on()
   2. io.socket.delete()
   3. io.socket.get()
   4. io.socket.post()
   5. io.socket.put()
   6. io.socket.request()
-8. **sails.sockets**
+7. **sails.sockets**
   1. sails.sockets.leave()
   2. sails.sockets.blast()
   3. sails.sockets.emit()
@@ -113,9 +103,5 @@
   10. sails.sockets.subscribers()
   11. sails.sockets.unsubscribeFromFirehose()
 
-<docmeta name="uniqueID" value="home198259">
-<docmeta name="displayName" value="--">
 
-
-<docmeta name="uniqueID" value="home198238">
-<docmeta name="displayName" value="--">
+<docmeta name="displayName" value="Reference: Table of Contents">

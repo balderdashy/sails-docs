@@ -20,11 +20,11 @@ This finds and returns a single record that meets the criteria.
 
 ### Example Usage
 
-```javascript 
-User.findOne({name:'Jessie'}).exec(function findOneCB(err,found){
+```javascript
+User.findOne({name:'Jessie'}).exec(function findOneCB(err, found){
   console.log('We found '+found.name);
-  });
-  
+});
+
 // We found Jessie
 // Don't forget to handle your errors
 

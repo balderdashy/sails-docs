@@ -26,13 +26,13 @@ io.socket.on(eventIdentity, function (msg) {
 Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 ###### Resourceful Pubsub Methods
-+ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](/#/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](/#/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](/#/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
-+ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(/#/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](/#/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](/#/documentation/reference/websockets/resourceful-pubsub/watch.html))
++ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
++ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html))
 
 ###### Low-Level Socket Methods
-+ server emits a message to all known sockets (see [sails.sockets.blast()](/#/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html))
-+ server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](/#/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html))
-+ server [broadcasts](/#/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html) to a room in which this socket (`io.socket`) has been allowed to [join](/#/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
++ server emits a message to all known sockets (see [sails.sockets.blast()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html))
++ server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html))
++ server [broadcasts](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html) to a room in which this socket (`io.socket`) has been allowed to [join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
 
 
 
@@ -78,9 +78,19 @@ angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
 >+ When listening for resourceful pubsub calls, the `eventIdentity` is the same as the identity of the calling model (e.g. if you have a model "UserComment", the identity is "usercomment".)
 >+ For context-- these types of server-sent events are sometimes referred to as ["comet"](http://en.wikipedia.org/wiki/Comet_(programming)) messages.
 
+### Handle Socket 'Connect' and 'Disconnect' events
+If connection to server was interrupted - server was restarted or some network issue - it is possible to handle these events and subscribe to sockets again.
+```javascript
+  io.socket.on('connect', function(){
+      io.socket.get('/messages');
+      io.socket.get('/notifications/subscribe/statusUpdates');
+  });
+
+  io.socket.on('disconnect', function(){
+      console.log('Lost connection to server');
+  });
+```
 
 
 <docmeta name="uniqueID" value="socketon682488">
 <docmeta name="displayName" value="io.socket.on()">
-
-

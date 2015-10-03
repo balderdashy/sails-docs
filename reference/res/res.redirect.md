@@ -55,8 +55,8 @@ return res.redirect('back');
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 > + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
-> + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](/#/documentation/reference/req/req.wantsJSON.html)).
-> + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(/#/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
+> + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)).
+> + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(http://sailsjs.org/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
 >  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
 >  + This behavior may change to more closely reflect HTTP in future versions of Sails.
 
@@ -71,4 +71,3 @@ return res.redirect('back');
 
 <docmeta name="uniqueID" value="resredirect444617">
 <docmeta name="displayName" value="res.redirect()">
-

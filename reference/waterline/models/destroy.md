@@ -19,11 +19,11 @@ Destroys all records in your database that match the given criteria.
 
 ### Example Usage
 
-```javascript 
+```javascript
 User.destroy({name:'Flynn'}).exec(function deleteCB(err){
   console.log('The record has been deleted');
-  });
-  
+});
+
 // If the record existed, then it has been deleted
 // Don't forget to handle your errors
 

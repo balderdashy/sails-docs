@@ -21,12 +21,12 @@ Creates a new instance of this model in the database.
 
 ### Example Usage
 
-```javascript 
+```javascript
 // create a new record with name 'Walter Jr'
 
-User.create({name:'Walter Jr'}).exec(function createCB(err,created){
-  console.log('Created user with name '+created.name);
-  });
+User.create({name:'Walter Jr'}).exec(function createCB(err, created){
+  console.log('Created user with name ' + created.name);
+});
 
 // Created user with name Walter Jr
 // Don't forget to handle your errors and abide by the rules you defined in your model
