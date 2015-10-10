@@ -36,7 +36,7 @@ Validations are handled by [Anchor](https://github.com/balderdashy/anchor), a th
 |integer| same as above | Im not sure why there are two of these. |
 |ip| check if `string` in this record is a valid IP (v4 or v6) | |
 |ipv4| check if `string` in this record is a valid IP v4 | |
-|ipv6| check if `string` in this record is aa valid IP v6 | |
+|ipv6| check if `string` in this record is a valid IP v6 | |
 |is| | something to do with REGEX|
 |json| does a try&catch to check for valid JSON. | |
 |len| is `integer` > param1 && < param2 | Where are params defined? |
