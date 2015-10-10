@@ -1,22 +1,22 @@
-# Partials
+# パーシャル
 
-Sails uses `ejs-locals` in its view rendering code, so in your views you can do:
+Sailsはビューのレンダリングコードで`ejs-locals`を利用します。そのためビューでは次のようなことが出来ます:
 
 ```
 <%- partial ('foo.ejs') %> 
 ```
 
-to render a partial located at `/views/foo.ejs`. All of your locals will be sent to the partial automatically.
+これで`/views/foo.ejs`に配置されているパーシャルをレンダー出来ます。全てのローカルは自動的にパーシャルに受け渡されます。
 
-the paths are relative to the view, that is loading the partial. So if you have a a user view at `/views/users/view.ejs` and want to load `/views/partials/widget.ejs` then you would use:
+パスはパーシャルを読み込もうとしているビューに対して相対的です。そのため、ビューが`/views/users/view.ejs`にあり、`/views/partials/widget.ejs`を読み込もうとしているときは以下のようにすべきです：
 
 ```
 <%- partial ('../../partials/widget.ejs') %> 
 ```
 
-One thing to note: partials are rendered synchronously, so they will block Sails from serving more requests until they're done loading. It's something to keep in mind while developing your app, especially if you anticipate a large number of connections.
+もう一つ、備考：パーシャルは同期的にレンダリングされます。そのため、ロードが終了するまでの間Sailsが別のリクエストに対応するのをブロックしていしまいます。これは特に多くのコネクションに対応すべきアプリケーションを開発する際には気に留めておいてください。
 
-NOTE: When using other templating languages than ejs, their syntax for loading partials or block, etc. will be used. Please refer to their documentation for more information on their syntax and conventions
+備考：ejs以外のテンプレート言語を使う場合、使用する言語のパーシャルやブロックなどの文法が適用されます。それぞれのやり方や構文に関しては各言語のドキュメントでご確認ください。
 
 <docmeta name="uniqueID" value="Partials610916">
 <docmeta name="displayName" value="Partials">

@@ -1,7 +1,7 @@
-# Custom Generators
-### Overview
+# カスタムのジェネレータ
+### 概要
 
-Here is some info on writing custom generators.
+ここにカスタムジェネレータに関する記述が行われます。
 
 <docmeta name="uniqueID" value="customGenerators22840">
 <docmeta name="displayName" value="Custom Generators">

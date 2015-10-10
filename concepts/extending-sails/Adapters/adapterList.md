@@ -1,15 +1,15 @@
-# List of Available Adapters
-This file is meant to be an up to date, comprehensive list of all of the adapters available for the Sails.js framework.  If we missed one or you would like to add an adapter you made, just submit a Pull Request to this file, adding to the list.
+# 対応済みアダプタのリスト
+このファイルはSailsで利用可能なアダプタに関する最新の包括的なリストとなることを意図しています。もし忘れているものがあったりアダプタを書いた時にはリストに追加したうえでPullリクエストを送ってください。
 
-### Officially Supported Adapters
+### 公式サポートしているアダプタ
 
 ##### sails-disk
 
 https://github.com/balderdashy/sails-disk/
 
-Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project, and essential for developing in environments where you may not always have a database set up. This adapter is bundled with Sails and works out of the box with zero configuration.
+コンピュータのハードディスクまたはマウントされたネットワークドライブに書き込みます。スケール化したデプロイ環境には適しませんがデータベースが常に準備されているとは限らない環境や小さなプロジェクトではとても役立ちます。このアダプタはSailsにバンドルされており、設定なしで簡単に使うことが出来ます。
 
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 + Streaming
@@ -19,9 +19,9 @@ Write to your computer's hard disk, or a mounted network drive.  Not suitable fo
 
 https://github.com/balderdashy/sails-memory/
 
-Pretty much like Disk, but doesn't actually write to disk, so it's not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.
+ディスクととても似ていますが実際にディスクに書き込まれません、つまり保存されません。スケール化したデプロイ環境には適しませんがディスクが存在しなかったり容量が少ない環境のシステムを開発するには役立ちます。
 
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 + Streaming
@@ -31,10 +31,10 @@ Pretty much like Disk, but doesn't actually write to disk, so it's not persisten
 
 https://github.com/balderdashy/sails-mysql/
 
-MySQL is the world's most popular relational database.
+MySQLは世界中で最もポピュラーなリレーショナル・データベースです。
 http://en.wikipedia.org/wiki/MySQL
 
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 + Streaming
@@ -45,9 +45,9 @@ http://en.wikipedia.org/wiki/MySQL
 
 https://github.com/balderdashy/sails-postgresql/
 
-[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL)はもう一つのポピュラーなリレーショナル・データベースです。
 
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 + Streaming
@@ -59,9 +59,9 @@ https://github.com/balderdashy/sails-postgresql/
 https://github.com/balderdashy/sails-mongo/
 
 
-[MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
+[MongoDB](http://en.wikipedia.org/wiki/MongoDB) は代表的なNoSQLデータベースです。
   
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 + Streaming
@@ -70,15 +70,37 @@ https://github.com/balderdashy/sails-mongo/
 
 https://github.com/balderdashy/sails-redis/
 
-[Redis](http://redis.io/) is an open source, BSD licensed, advanced key-value store.
+[Redis](http://redis.io/) はBSDライセンスのオープンソースで提供される先進的キーバリュー型ストアです。
 
-###### Interfaces implemented:
+###### 実装済インタフェース:
 + Semantic
 + Queryable
 
 
-### Community Supported Adapters
-Have you written a Sails adapter?  Submit a PR to this file and add it here!
+### コミュニティーレベルでサポートされているアダプタ
+
+##### sails-orientdb
+
+https://github.com/appscot/sails-orientdb
+
+[OrientDB](http://en.wikipedia.org/wiki/OrientDB) はドキュメントとグラフの両方のDBMS機能を持ったオープンソースのNoSQLなDBMSです。
+
+###### 実装済インタフェース:
++ Semantic
++ Queryable
++ Associations
++ Migratable
+
+##### sails-filemaker
+
+https://github.com/geistinteractive/sails-filemaker
+
+[FileMaker](https://en.wikipedia.org/wiki/FileMaker) はクロスプラットフォームのでリレーショナルデータベースと開発プラットフォームです。1988年からアップルによって所有、公開されています。
+
+###### Interfaces implemented:
++ Semantic
+
+アダプタを書きましたか？ここに書き込んでPRしてください！
 
 <docmeta name="uniqueID" value="adapterList22829">
 <docmeta name="displayName" value="Available Adapters">

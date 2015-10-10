@@ -1,30 +1,30 @@
-# Generators
-## Status
+# ジェネレータ
+## ステータス
 
-##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+##### 状態: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - 非安定的
 
-The API is in the process of settling, but has not yet had sufficient real-world testing to be considered stable.  
+APIは安定途上にありますがまだ安定していると判断できるほど実世界でテストされていません。
 
-Backwards-compatibility will be maintained if reasonable.
+後方互換性は、それが合理的であると判断した場合維持されます。
 
 
-### Purpose
+### 目的
 
-What is my purpose in this world?
+この目的は何でしょうか？
 
 ### old partial content from when spec was an itty bitty baby
 
-Generators are designed to make it easier to customize the `sails new` and `sails generate` command-line tools, and provide better support for different Gruntfiles, configuration options, view engines, coffeescript, etc.
+ジェネレータは`sails new`や`sails generate`コマンドを簡略化し、異なるGruntfilesや設定ファイル、ビューオプション、coffeescriptなどに対してより良いサポートを提供します。
 
 
-#### Structure
+#### 構造
 
 
-A generator has either:
+ジェネレータは以下のうちいずれかを持っています。:
 
-(1) a `generate` method, or
+(1) `generate`メソッド、または
 
-(2) a `configure` + `render` method  (render may be omitted in the simplest of cases)
+(2) `configure` + `render` メソッド (簡単なケースではrenderは省略可能。)
 
 
 Sails 

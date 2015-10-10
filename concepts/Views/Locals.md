@@ -1,27 +1,27 @@
-# Locals
+# ローカル
 
-The variables accessible in a particular view are called `locals`.  Locals represent server-side data that is _accessible_ to your view-- locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
+特定のビューからアクセスすることの出来る変数を`locals`と言います。ローカルとはビューから _アクセス可能な_ サーバサイドデータを意味します。ローカルは実際に利用しているビューエンジンごとに決められた特殊な構文によって明示的に呼び出されないかぎりは実際にコンパイル済みのHTMLに _含まれている_ わけではありません。
 
 ```ejs
 <div>Logged in as <a><%= name %></a>.</div>
 ```
 
-##### Using locals in your views
+##### ビューからローカルを使う
 
-The notation for accessing locals varies between view engines.  In EJS, you use special template markup (e.g. `<%= someValue %>`) to include locals in your views.
+ローカルにアクセスするための文法はビューエンジンごとに異なります。EJSでは特別なテンプレートマークアップ (例： `<%= someValue %>`)を使うことでビューにローカルをインクルードします。
 
-There are three kinds of template tags in EJS:
+EJSには3種類のテンプレートタグがあります:
 + `<%= someValue %>`
-  + HTML-escapes the `someValue` local, and then includes it as a string.
+  + ローカルの中の`someValue`をエスケープしたうえで文字列としてインクルードします。
 + `<%- someRawHTML %>`
-  + Includes the `someRawHTML` local verbatim, without escaping it.
-  + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
+  + ローカルの中の`someRawHTML`をエスケープせずに読み込みます。
+  + ご注意ください！これを使うことで何が起こるかわからない場合、XSS攻撃の脆弱性を作りこんでしまう危険性があります。
 + `<% if (!loggedIn) { %>  <a>Logout</a>  <% } %>`
-  + Runs the javascript inside the `<% ... %>` when the view is compiled.
-  + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
+  + ビューがコンパイルされた時に`<% ... %>` の中のjavascriptを実行します。
+  + 条件式(`if`/`else`)やデータのループ(`for`/`each`)を使うときに便利です。
 
 
-Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `user` and `corndogs`:
+以下に2つのロケール`user`と`corndogs`を使ったビュー(`views/backOffice/profile.ejs`)の例を挙げます。:
 
 ```html
 <div>
@@ -35,9 +35,9 @@ Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `
 </div>
 ```
 
-> You might have noticed another local, `_`.  By default, Sails passes down a few locals to your views automatically, including lodash (`_`).
+> ここで別のローカル`_`にお気づきのことと思います.Sailsはデフォルトで ローダッシュ(`_`)を含む幾つかローカルを自動的にビューに渡します。  
 
-If the data you wanted to pass down to this view was completely static, you don't necessarily need a controller- you could just hard-code the view and its locals in your `config/routes.js` file, i.e:
+もし渡したいデータが完全に静的な場合、コントローラは必要ありません。つまりプロジェクトの`config/routes.js`のにビューとそのローカルをハードコード出来るのです。すなわち:
 
 ```javascript
   // ...
@@ -58,9 +58,9 @@ If the data you wanted to pass down to this view was completely static, you don'
   // ...
 ```
 
-On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html) method.
+一方で多くのシナリオでデータはダイナミックでしょうから、モデルからそれらのデータを読み込むためのコントローラを用意してその後に[res.view()](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html)メソッドを利用しそのデータをビューに受け渡す必要があります。
 
-Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might send down our view like this:
+ここで、モデルはすでにセットアップされており、あるルートをあるコントローラアクションに紐付けるとします。ここで以下のようにビューを受け渡すことが出来ます。:
 
 ```javascript
 // in api/controllers/UserController.js...

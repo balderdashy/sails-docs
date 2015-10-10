@@ -1,14 +1,14 @@
 # HTTP Strict Transport Security
 
 
-### Enabling STS
+### STSを有効化する
 
-Implementing STS is actually very simple and [only takes a few lines of code](https://github.com/krakenjs/lusca/blob/master/lib/hsts.js).  But better yet, a few different open-source modules exist that bring support for this feature to Express and Sails.  To use one of these modules, install it from npm using the directions below, then open `config/http.js` in your project and [configure it as a custom middleware](http://beta.sailsjs.org/#/documentation/concepts/Middleware).  The example(s) below cover basic usage and configuration.  For more guidance and advanced usage details, be sure and follow the link to the docs.
+実はSTSを実装するにはとてもシンプルで[数行のコードを書くだけで](https://github.com/krakenjs/lusca/blob/master/lib/hsts.js)できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの`config/http.js`の中で[カスタムのミドルウエアとして設定](http://beta.sailsjs.org/#/documentation/concepts/Middleware)してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。
 
 
-##### Using [lusca](https://github.com/krakenjs/lusca#luscahstsoptions)
+##### [lusca](https://github.com/krakenjs/lusca#luscahstsoptions)を使う
 
-> `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
+> `lusca` は[Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)で使えるオープンソースです。
 
 
 ```sh
@@ -16,7 +16,7 @@ Implementing STS is actually very simple and [only takes a few lines of code](ht
 npm install lusca --save
 ```
 
-Then in the `middleware` config object in `config/http.js`:
+そして、`config/http.js`の`middleware`設定オブジェクトで:
 
 ```js
   // ...
@@ -27,7 +27,7 @@ Then in the `middleware` config object in `config/http.js`:
 
 
 
-### Additional Resources
+### 追加資料
 + [HTTP Strict Transport Security (OWasp)](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security)
 
 

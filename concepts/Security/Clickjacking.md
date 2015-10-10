@@ -1,24 +1,24 @@
 # Clickjacking
 
 
-[Clickjacking](https://www.owasp.org/index.php/Clickjacking) (aka "UI redress attacks") are where an attacker manages to trick your users into triggering "unintended" UI events (e.g. DOM events.)
+[Clickjacking](https://www.owasp.org/index.php/Clickjacking) (別名"UI redress attacks") は攻撃者がユーザーが意図しないUIイベント（例えばDOMイベント等）を行うように仕向ける攻撃です。
 
 
 
 ### X-FRAME-OPTIONS
 
-One simple way to help prevent clickjacking attacks is to enable the X-FRAME-OPTIONS header.
+Clickjacking攻撃を避けるためのシンプルな方法としてはX-FRAME-OPTIONSを有効化することです。
 
-##### Using [lusca](https://github.com/krakenjs/lusca#luscaxframevalue)
+##### [lusca](https://github.com/krakenjs/lusca#luscaxframevalue)を使う
 
-> `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
+> `lusca` は[Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)で使えるオープンソースです。
 
 ```sh
 # In your sails app
 npm install lusca --save
 ```
 
-Then in the `middleware` config object in `config/http.js`:
+そして、`config/http.js`の中の設定オブジェクトで:
 
 ```js
   // ...
@@ -34,7 +34,7 @@ Then in the `middleware` config object in `config/http.js`:
 
 
 
-### Additional Resources
+### 追加のリソース
 + [Clickjacking (OWasp)](https://www.owasp.org/index.php/Clickjacking)
 
 

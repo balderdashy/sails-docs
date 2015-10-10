@@ -1,16 +1,16 @@
-# One-to-Many
-### Overview
+# 1対多
+### 概要
 
-A one-to-many association states that a model can be associated with many other models. To build this
-association a virtual attribute is added to a model using the `collection` property. In a one-to-many
-association one side must have a `collection` attribute and the other side must contain a `model`
-attribute. This allows the many side to know which records it needs to get when a `populate` is used.
+1対他のアソシエーションはあるモデルが複数の別のモデルに属する状態を言います。
+このアソシエーションを構築するためには`collection`を使っ仮想的なアトリビュートを作ります。
+1対他のアソシエーションにおいては片方が`collection`アトリビュートを持ち、もう一方では`model`アトリビュートをもつ必要があります。
+これにとって「多」側で`populate`が利用された際にどのレコードを取得すべきかわかることが出来ます。
 
-Because you may want a model to have multiple one-to-many associations on another model a `via` key
-is needed on the `collection` attribute. This states which `model` attribute on the one side of the
-association is used to populate the records.
+モデルが別のモデルと複数の多対多のアソシエーションを持つこともあるため`collection`アトリビュートには
+`via`キーが必要です。
+これでアソシエーションの一方のどの`model`アトリビュートがレコードを埋めるために使われるかが示されます。
 
-### One-to-Many Example
+### 1対多の例
 
 `myApp/api/models/pet.js`
 
@@ -113,8 +113,8 @@ null [ { name: 'Applejack',
 
 ```
 
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
+### 備考
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
 
 
 <docmeta name="uniqueID" value="OnetoMany478093">
