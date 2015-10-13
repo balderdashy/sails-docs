@@ -9,7 +9,7 @@ Checks for the existence of the record in the first parameter.  If it can't be f
 |---|---------------------|---------------------|------------|
 | 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
 | 2 |  Records to Create  | `{}`,`[{}]`          |  Yes  |
-| 2 |     Callback        | `function`           | No        |
+| 3 |     Callback        | `function`           | No        |
 
 #### Callback Parameters
 
