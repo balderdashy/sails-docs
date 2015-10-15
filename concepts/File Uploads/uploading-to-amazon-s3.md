@@ -1,17 +1,17 @@
-# Uploading to Amazon S3
+# Amazon S3にアップロードする
 
->Please note that your Amazon S3 bucket must be created in the 'US Standard' region. 
->If you fail to do so, you will get a 'TypeError('Uncaught, unspecified "error" event.').
+>Amazon S3 bucketが'US Standard'リージョンに生成するのを忘れないで下さい。
+>これを怠ると'TypeError('Uncaught, unspecified "error" event.')エラーが返ってきます。
 
-With Sails, you can stream file uploads to Amazon S3 with very little additional configuration.
+Sailsではとても僅かな設定の追加でAmazon S3へのストリームファイルアップロードが出来ます。
 
 
-First install the [S3 Skipper adapter](https://github.com/balderdashy/skipper-s3):
+まず初めに[S3 Skipper adapter](https://github.com/balderdashy/skipper-s3)をインストールします:
 ```sh
 $ npm install skipper-s3 --save
 ```
 
-Then use it in one of your controllers:
+次にコントローラで利用します:
 
 ```javascript
   uploadFile: function (req, res) {

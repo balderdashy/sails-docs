@@ -1,19 +1,19 @@
-# Generating controllers
+# コントローラを生成する
 
-You can use the [Sails command line tool](http://sailsjs.org/documentation/reference/cli) to quickly generate a controller, by typing:
+以下のようにタイプすることで[Sailsコマンドラインツール](http://sailsjs.org/documentation/reference/cli)を使ってお手軽にコントローラを生成することが出来ます:
 
 ```sh
 $ sails generate controller <controller name> [action names separated by spaces...]
 ```
 
-For example, if you run the following command:
+例えば以下のコマンドを実行すると:
 
 ```sh
 $ sails generate controller comment create destroy tag like
 info: Generated a new controller `comment` at api/controllers/CommentController.js!
 ```
 
-Sails will generate `api/controllers/CommentController.js`:
+Sailsは`api/controllers/CommentController.js`を生成します:
 
 ```javascript
 /**

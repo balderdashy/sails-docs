@@ -1,33 +1,33 @@
-# Default responses
+# デフォルトのレスポンス
 
-The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
+以下のレスポンスは`/api/responses`以下にある全ての新しいSailsアプリケーションにバインドされています。それぞれのレスポンスはJSONを希望しているクライアントにはHTTPステータスコードと`status`、関連するエラーの情報を含んだキーからなる標準化されたJSONオブジェクトを返します。
 
 #### res.serverError(errors)
 
-This response normalizes the error/errors of `errors` into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
+このレスポンスは`Error`オブジェクトを適切に可読化して`errors`アレイに入れることで標準化します。`errors`は一つまたは複数の文字列か`Error`オブジェクトです。その後、すべてのエラーをSailsのロガー（通常はコンソールです）に記録し、クライアントがHTTPを要求していれば`views/500.*`ファイルでレスポンスを返し、クライアントがJSONを要求していればJSONオブジェクトで返します。開発モードではエラーのリストがレスポンスに含まれす。プロダクションモードでは実際のエラーは抑制されます。
 
 #### res.badRequest(validationErrors, redirectTo)
 
-For requesters expecting JSON, this response includes the 400 status code and any relevant data sent as `validationErrors`.
+JSONを要求するリクエストに対しては`validationErrors`として400ステータスコードとともに関連するデータを返します。
 
-For traditional (not-AJAX) web forms, this middleware follows best-practices for when a user submits invalid form data:
+トラディショナルな（AJAXでない）Webフォームに関してはミドルウエアは以下の流れのユーザが不正なデータを送った際に行われるベストプラクティスを実行します:
 
- - First, a one-time-use flash variable is populated, probably a string message or an array of semantic validation error objects.
- - Then the  user is redirected back to `redirectTo`, i.e. the URL where the bad request originated.
- - There, the controller and/or view might use the flash `errors` to either display a message or highlight the invalid HTML form fields.
+ - 初めに1回限り使い捨てのflash変数がセットされますが、この中にはおそらくセマンティックなバリデーションエラーの配列が入っています。
+ - それからユーザは`redirectTo`（つまりその不正なリクエストの発生元）にリダイレクトバックされます。
+ - ここでコントローラとビュー（あるいはコントローラかビュー）は `errors`のflash変数を使ってエラーメッセージを表示したりフォームをハイライトしたりします。
 
 
 #### res.notFound()
 
-If the requester is expecting JSON, this response simply sends a 404 status code and a `{status: 404}` object. 
+リクエスト元がJSONを要求している場合、単純に404ステータスコードと`{status: 404}`を返します。
 
-Otherwise the view located in `myApp/views/404.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+そうでない場合は、`myApp/views/404.*`のパスのビューが呼び出されます。ビューが見つからない場合は単にJSONレスポンスを返します。
 
 #### res.forbidden(message)
 
-If the requester is expecting JSON, this response sends the 403 status code along with the contents of `message`.
+リクエスト元がJSONを要求している場合、単純に403ステータスコードと`message`の中身を返します。
 
-Otherwise the view located in `myApp/views/403.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+そうでない場合は、`myApp/views/403.*`のパスのビューが呼び出されます。ビューが見つからない場合は単にJSONレスポンスを返します。
 
 
 <docmeta name="displayName" value="Default Responses">

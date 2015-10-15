@@ -1,10 +1,10 @@
-## Code coverage
+## コードカバレッジ
 
-Another popular method for testing your code is [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage).
+コードをテストするのに人気のもう一つの方法は[Code Coverage](http://en.wikipedia.org/wiki/Code_coverage)です。
 
-You can use [mocha](http://mochajs.org/) and [istanbul](https://github.com/gotwarlost/istanbul) to check your code and prepare various coverage reports (HTML, Cobertura) which can be used in continuous integration services such as [Jenkins](http://jenkins-ci.org).
+[mocha](http://visionmedia.github.io/mocha/)と[istanbul](https://github.com/gotwarlost/istanbul)を使うことで、コードをテストし、様々なコードカバレッジレポートを用意し、[Jenkins](http://jenkins-ci.org)のような継続的CIサービスで利用することが出来ます。
 
-To test your code and prepare a simple HTML report run the following commands:
+コードをテストしてシンプルなHTMLレポートを生成するには以下のコマンドを使います。:
 ```bash
 istanbul cover -x "**/config/**" _mocha -- --timeout 5000
 istanbul report html

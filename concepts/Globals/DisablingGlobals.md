@@ -1,15 +1,15 @@
-# Disabling Globals
+# グローバルを無効化する
 
-Sails determines which globals to expose by looking at [`sails.config.globals`](http://sailsjs.org/documentation/reference/sails.config/sails.config.globals.html), which is conventionallly configured in [`config/globals.js`](http://sailsjs.org/documentation/anatomy/myApp/config/globals.js.html).
+Sailsではどのグローバルを有効化するかを通常 [`config/globals.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/globals.js.html)に配置される[`sails.config.globals`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.globals.html)で判断しています。
 
-To disable all global variables, just set the setting to `false`:
+全てのグローバル変数を無効化するにはこの設定を単に`false`と設定してください:
 
 ```js
 // config/globals.js
 module.exports.globals = false;
 ```
 
-To disable _some_ global variables, specify an object instead, e.g.:
+_いくつかの_ グローバル変数を無効化するには、その代わりに以下のようにオブジェクトを指定してください。:
 
 ```js
 // config/globals.js
@@ -21,12 +21,12 @@ module.exports.globals = {
 };
 ```
 
-### Notes
+### 備考
 
-> + Bear in mind that none of the globals, including `sails`, are accessible until _after_ sails has loaded.  In other words, you won't be able to use `sails.models.user` or `User` outside of a function (since `sails` will not have finished loading yet.)
+> + `sails`を含むいずれのグローバルもSailsが _ロードされてから_ のみ有効ということを覚えておいてください。別の言い方をすると`sails.models.user` や `User` は（`sails`が読み込みを完了していないので）ファンクションの外では使えません。
 
-<!-- not true anymore:
-Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  
+<!-- もう真実ではありません:
+ドキュメントのこの節の大部分はあなたのSailsアプリケーションを代表するシングルトンオブジェクトである`sails`のメソッドとプロパティを紹介することにフォーカスしています。
 -->
 
 <docmeta name="displayName" value="Disabling Globals">

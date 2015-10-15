@@ -1,6 +1,6 @@
-# Creating a Service?
+# サービスを作成しますか?
 
-Simply save a Javascript file containing a function or object into your **api/services** folder.  The filename will be used as the globally-accessible variable name for the service.  For example, an email service might look something like this:
+単にプロジェクトの**api/services**ファイルにオブジェクトやファンクションの書かれたjavascriptファイルを保存するだけです。ファイル名はグローバルにアクセス可能なサービス名として使われます。例えば、Eメールサービスは次のようになります。:
 
 ```javascript
 // EmailService.js - in api/services
@@ -26,10 +26,10 @@ module.exports = {
 };
 ```
 
-You can then use `EmailService` anywhere in your app:
+これでアプリケーションのどこからでも`EmailService`で使うことが出来ます。:
 
 ```javascript
-// Somewhere in a controller
+// コントローラのどこかで
   EmailService.sendInviteEmail({email: 'test@test.com', name: 'test'});
 ```
 

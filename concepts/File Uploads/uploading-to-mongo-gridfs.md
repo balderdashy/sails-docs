@@ -1,14 +1,14 @@
-# Uploading to Mongo GridFS
+# Mongo GridFSにアップロードする
 
-Uploading files to MongoDB is possible thanks to Mongo's GridFS filesystem.  With Sails, you can accomplish this with very little additional configuration using the Skipper adapter for [MongoDB's GridFS](https://github.com/willhuang85/skipper-gridfs).
+GridFSファイルシステムのおかげでMongoDBへのアップロードが可能です。Sailsでは[MongoDB's GridFS](https://github.com/willhuang85/skipper-gridfs)のSkipperアダプタを使うことで、とても僅かな設定の追加でこれを実現できます。
 
-Install it with:
+以下のようにインストールします:
 
 ```sh
 $ npm install skipper-gridfs --save
 ```
 
-Then use it in one of your controllers:
+そしてコントローラ内で利用します:
 
 ```javascript
   uploadFile: function (req, res) {

@@ -1,6 +1,6 @@
-### Translating Dynamic Content
+### 動的コンテンツを翻訳する
 
-If your backend is storing interlingual data (e.g. product data is entered in multiple languages via a CMS), you shouldn't rely on simple JSON locale files unless you're somehow planning on editing your locale translations dynamically.  One option is to edit the locale translations programatically, either with a custom implementation or through a translation service.  Sails/node-i18n JSON stringfiles are compatible with the format used by [webtranslateit.com](https://webtranslateit.com/en).
+もしあなたバックエンドが複数言語のデータを保している場合、（例えば、商品名がCMSから複数の言語で入力されているなど）（何らかの方法でローカルの翻訳ファイルを動的に編集することを意図しないかぎりは）シンプルなJSONロケールファイルに依存するべきではないでしょう。ここで取りうる一つの方法は翻訳サービスのカスタムな実装またはtranslationサービスによってロケールファイルをプログラム的に編集する方法です。Sails/node-i18nのJSON文字列ファイルは[webtranslateit.com](https://webtranslateit.com/en)で利用されるフォーマットと互換性があります。
 
-On the other hand you might opt to store these types of dynamic translated strings in a database.  If so, just make sure and build your data model accordingly so you can store and retrieve the relevant dynamic data by locale id (e.g. "en", "es", "de", etc)  That way, you can leverage the [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) method to help you figure out which translated content to use in any given response, and keep consistent with the conventions used elsewhere in your app.
+一方で、データベースに保管されたこれらの動的翻訳文字列を利用したいこともあるでしょう。もしそうなら、それに従ったデータモデルを作成し、ロケールID(例えば"en", "es", "de"など)によって関連するデータを動的に取得する方法を用意しなければいけません。こうすることで、[`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale) メソッドを利用してそれぞれのレスポンスで使うべき翻訳ファイルを取得することができ、アプリケーションの中の他の場所で使われるやり方との整合性を保つことが出来るでしょう。
 <docmeta name="displayName" value="Translating Dynamic Content">

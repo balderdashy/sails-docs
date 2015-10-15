@@ -1,31 +1,31 @@
-# Locales
+# ロケール
 
-### Overview
+### 概要
 
-The i18n hook reads JSON-formatted translation files from your project's "locales" directory (`config/locales` by default).  Each file corresponds with a [locale](http://en.wikipedia.org/wiki/Locale) (usually a language) that your Sails backend will support.
+i18nフックはプロジェクトの中の"locales"ディレクトリ(デフォルトでは`config/locales`にあります)の中にあるJSONフォーマットの翻訳ファイルを読み込みます。それぞれのファイルはSailsバックエンドがサポートすべき[locale](http://en.wikipedia.org/wiki/Locale)（通常は言語）に対応します。
 
-These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc.
+これらのファイルはあなたがビューやコントローラの中で使えるロケール特有の文字列を（JSONのキー・バリューのペアで）含んでいます。
 
-Here is an example locale file (`config/locales/es.json`):
+以下にロケールファイルの例を挙げます (`config/locales/ja.json`):
 ```json
 {
-    "Hello!": "Hola!",
-    "Hello %s, how are you today?": "¿Hola %s, como estas?"
+    "Hello!": "こんにちは!",
+    "Hello %s, how are you today?": "こんにちは%sさん、お元気ですか。"
 }
 ```
 
-Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
+文字列ファイルの中のキー(例:"Hello %s, how are you today?")は**大文字と小文字を区別し**、厳密なマッチングが必要なことにご留意ください。ここには幾つかの違ったアプローチがありますが、どれが一番いいのかはそれは翻訳ファイルとHTMLファイルに関して、だれがどのように編集することが多いかということによって変わってきます。特に、もし翻訳ファイルを手動で編集する機会が多い場合、シンプルな全て小文字のキー名にすることでメンテナンスがしやすくなるでしょう。
 
-For example, here's another pass at `config/locales/es.json`:
+例えば以下が別のやり方における`config/locales/ja.json`の例です:
 
 ```json
 {
-    "hello": "Hola!",
-    "hello-how-are-you-today": "Hola %s, ¿cómo estás?"
+    "hello": "こんにちは!",
+    "hello-how-are-you-today": "こんにちは%sさん、お元気ですか。"
 }
 ```
 
-And here's `config/locales/en.json`:
+そしてこれが `config/locales/en.json`です。:
 
 ```json
 {
@@ -34,7 +34,7 @@ And here's `config/locales/en.json`:
 }
 ```
 
-You can also nest locale strings. But a better approach would be to use `.` to represent nested strings. For example, here's the list of labels for the index page of a user controller:
+ロケール文字列をネストすることも出来ます。しかしより良いアプローチとしてはネストされた文字列を表すために`.`を使うことです。例えばuserコントローラのindexページで使うラベルのリストです。:
 
 ``` json
 {
@@ -44,11 +44,11 @@ You can also nest locale strings. But a better approach would be to use `.` to r
 ```
 
 
-### Detecting and/or overriding the desired locale for a request
+### リクエストの理想的なロケールを検出、上書きする。
 
-To determine the current locale used by the request, use [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale).
+現在のリクエストで使われているロケールを判断するには[`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale)を使います。
 
-To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), calling it with the unique code for the new locale, e.g.:
+自動検出されたロケールを上書きするには[`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale)を利用し、これを新しいロケールのユニークコードとともに呼び出します。 例:
 
 ```js
 // Force the language to German for the remainder of the request:
@@ -56,9 +56,9 @@ req.setLocale('de');
 // (this will use the strings located in `config/locales/de.json` for translation)
 ```
 
-By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.
+デフォルトではnode-i18nは言語ヘッダーを見ることで望ましい言語を検出します。言語ヘッダーはユーザーのブラウザ設定で決められ、殆どの場合においてそれは正しいのでロケールの上書きに関しては柔軟な対応が可能にするべきです。
 
-For instance, if your app allows users to pick their preferred language, you might create a [policy](http://sailsjs.org/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
+例えば、もしあなたのアプリでユーザが任意の言語を選ぶことが出来るようにする場合、まずユーザセッションにおけるカスタム言語を確認する[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies) ポリシーを作り、もしそれが存在する場合、その後に続くポリシーやコントローラ、ビューで使う適切なロケールをセットすることになります。:
 
 ```js
 // api/policies/localize.js
@@ -71,8 +71,8 @@ module.exports = function(req, res, next) {
 
 <!--
 
-  Alternatively, here's another extended example:
-  (todo: at the very least pull this into a separate guide)
+  その他に、別の拡張したサンプルです。:
+  (todo: 最新のPullでは別のガイドページに以降する。)
 
 ```js
 // config/routes.js

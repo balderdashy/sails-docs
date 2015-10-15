@@ -1,6 +1,6 @@
-# Adding a Custom Response
+# カスタムレスポンス
 
-To add your own custom response method, simply add a file to `/api/responses` with the same name as the method you would like to create.  The file should export a function, which can take any parameters you like.
+独自のカスタムレスポンスを生成するには、単に作成したいメソッド名と同じ名前のファイルを`/api/responses`に追加するだけです。このファイルはファンクションをエクスポートする必要があり、好きなパラメータを持つことが出来ます。
 
 ```
 /** 
@@ -21,29 +21,29 @@ module.exports = function(message) {
     status: statusCode
   };
 
-  // Optional message
+  // オプションのメッセージ
   if (message) {
     result.message = message;
   }
 
-  // If the user-agent wants a JSON response, send json
+  // ユーザーエージェントがJSONを欲しがっていればJSONを送信する。
   if (req.wantsJSON) {
     return res.json(result, result.status);
   }
 
-  // Set status code and view locals
+  // ステータスコードを設定し、ビューを参照する
   res.status(result.status);
   for (var key in result) {
     res.locals[key] = result[key];
   }
-  // And render view
+  // そしてビューをレンダリングする
   res.render(viewFilePath, result, function(err) {
-    // If the view doesn't exist, or an error occured, send json
+    // ビューが存在しないか、エラーが起こればJSONを送信する。
     if (err) {
       return res.json(result, result.status);
     }
 
-    // Otherwise, serve the `views/mySpecialView.*` page
+    // そうでなければ`views/mySpecialView.*`ページを渡す。
     res.render(viewFilePath);
   });   
 ```

@@ -1,12 +1,12 @@
-# The `config/local.js` file
+# `config/local.js`ファイル
 
-The `config/local.js` file is useful for configuring a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.org/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+`config/local.js`ファイルはSailsアプリケーションをローカル環境（あなたのラップトップなど）で動かすのに便利です。このファイルでの設定は[.sailsrc](http://sailsjs.org/documentation/concepts/Configuration/usingsailsrcfiles.html)以外の全ての設よりも優先します。これはローカルな利用のみに利用されることを想定しているのでバージョン管理の管理下に入れるべきではありません（また、その理由でこのファイルはデフォルトの`.gitignore`に入っています。）。`local.js`をローカルのデータベース設定やアプリケションをローカルでリフトする際に使うポートなどの情報を保管してください。
 
-While you’re developing your app, this config file should include any settings specifically for your development computer or server (db passwords, etc.)  If you're using git, note that `config/local.js` is included in the `.gitignore` in new Sails apps by default, and so it won't be checked into your repository when you commit.
+アプリケーションを開発するにあたってはこのファイルが全てのあなたのコンピュータやサーバ依存のデータ（データベースのパスワードなど）を保管するようにして場合、`config/local.js`は新規のSailsアプリケーションの`.gitignore`にデフォルトで含まれており、コミットする際にレポジトリに保管されないことを覚えておいてください。
 
-When you&rsquo;re ready to deploy your app in production, you can also use this file for configuration options on the server where it will be deployed.  However, for server deployments, environment variables are usually preferable.  You can also use command-line arguments and the `.sailsrc` file as alternatives to `config/local.js` for your local development configuration. [See the overview](http://sailsjs.org/documentation/concepts/Configuration) for general information about Sails configuration.
+アプリケーションがデプロイできるようになったらこのファイルをデプロイ先のサーバで使う設定プションを保存するのにも使えます。しかしながらサーバのデプロイにあたっては通常、環境変数を使うことが望ましいです。ローカルの開発コンフィグを保存するには`config/local.js`の代わりにコマンドの引数や`.sailsrc`ファイルを使うことも出来ます。Sailsの設定の全般的情報に関しては[概要](http://sailsjs.org/documentation/concepts/Configuration) をご覧ください。
 
-> **Note:** This file is included in your .gitignore, so if you&rsquo;re using git as a version control solution for your Sails app, keep in mind that this file won&rsquo;t be committed to your repository!
-> Good news is, that means you can specify configuration for your local machine in this file without inadvertently committing personal information (like database passwords) to the repo.  Plus, this prevents other members of your team from commiting their local configuration changes on top of yours.
+> **備考:** このファイルは.gitignoreに含まれていますので、あなたのSailsアプリケーションのバージョン管理にgitを使っている場合、このファイルはコミットされないということにご注意ください！
+> この利点はつまり個人的情報（データベースパスワードなど）をうっかりレポジトリにコミットしてしまう心配なくあなたのローカルマシンに対する設定をすることが出来るということです。さらに他の開発メンバーがあなたの設定内容を上書きしてコミットしてしまうことも防げます。
 
 <docmeta name="displayName" value="The local.js file">

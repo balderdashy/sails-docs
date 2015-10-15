@@ -1,33 +1,34 @@
-# Routing to Controllers
+# コントローラへのルート
 
-By default, Sails will create a [blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api) for each action in a controller, so that a `GET` request to `/:controllerIdentity/:nameOfAction` will trigger the action.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
+Sailsはデフォルトで各コントローラに[blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api)を生成しますので`/:コントローラ/:アクション`への`GET`リクエストはアクションをトリガーします。前のセクションの例が`api/controllers/SayController.js`として保存されていればアプリケーションがリフトされるときはいつでも`/say/hi`や`/say/bye`がデフォルトで有効になります。
+コントローラがサブフォルダ`/we`に保存されていればルートは `/we/say/hi`と`/we/say/bye`になります。Sailsの自動ルートバインディングに関するさらなる情報は[blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) をご覧ください。
 
-Besides the default routing, Sails allows you to manually bind routes to controller actions using the [`config/routes.js`](http://sailsjs.org/documentation/concepts/Routes) file.  Some examples of when you might want to use explicit routes are:
+デフォルトのルートに加え、Sailsでは[`config/routes.js`](http://sailsjs.org/documentation/concepts/Routes)ファイルを付けうことで手動でルートのバインディングが出来ます。ルートを明示的に設定する必要のある例は:
 
-+ When you want to use separate actions to handle the same route path, based on the [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verb).  The aforementioned **action blueprint** routes bind *all* request methods for a path to a given action, including `GET`, `POST`, `PUT`, `DELETE`, etc.
-+ When you want an action to be available at a custom URL (e.g. `PUT /login`, `POST /signup`, or a "vanity URL" like `GET /:username`)
-+ When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)
++ [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)(verbとも呼ばれます)に基づきアクションが個別のルートを取り扱いたい時。前述の **action blueprint** は `GET`、`POST`、`PUT`、`DELETE`などを含め、*すべての* アクションに与えられたリクエストメソッドをバインディングします。
++ カスタムURLでアクションにアクセスできるようにしたい時。(例: `PUT /login`、`POST /signup`や`GET /:username`ような"vanity URL")
++ ルートがどう処理されるのかに関して追加の設定を行いたい場合。(例: 特別なCORS設定)
 
-To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the controller name + `.` + action name as the value (i.e. the **route target**).
+`config/routes.js`ファイルで手動のルート設定を行うには、HTTP verbとパス(すなわち **ルートアドレス**)をキーとして、コントローラー名+ `.` +アクションを値（すなわち **ルートターゲット**）として使います。
 
-For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
+例えば以下の手動設定ルートは`/make/a/sandwich`がPOSTリクエストを受けた時はいつでも`api/controllers/SandwichController.js`の`makeIt()`アクションをトリガーします。:
 
 ```js
   'POST /make/a/sandwich': 'SandwichController.makeIt'
 ```
 
 
-> **Note:**
+> **備考:**
 >
-> For controller files saved in subfolders, the subfolder is part of the controller identity:
+> サブフォルダに保存されたコントローラに関してはサブフォルダ名はコントローラ名の一部になります。:
 >
 > ```js
 >   '/do/homework': 'stuff/things/HomeworkController.do'
 > ```
 >
-> This will cause the `do()` action in `api/controllers/stuff/things/HomeworkController.js` to be triggered whenever `/do/homework` is requested.
+> これで`/do/homework`がリクエストされた時はいつでも`api/controllers/stuff/things/HomeworkController.js`の`do()`アクションをトリガーするようになります。
 
-A full discussion of manual routing is out of the scope of this doc--please see the [routes documentation](http://sailsjs.org/documentation/concepts/Routes) for a full overview of the available options.
+手動ルーティングに関しての全体的なディスカッションはこのドキュメントのスコープから外れます。利用可能な全てのオプションに関しては[routes documentation](http://sailsjs.org/documentation/concepts/Routes) をご覧ください。
 
 
 <docmeta name="displayName" value="Routing to Controllers">
