@@ -1,41 +1,41 @@
-# Upgrading to v0.10
+# v0.10にアップグレードする
 
-For the most part, running sails lift in an existing v0.9 project should just work. The core contributors have taken a number of steps to make the upgrade as easy as possible, and if you follow the deprecation messages in the console, you should do just fine.
+多くの部分でv0.9プロジェクトと単純にliftするだけで動作します。コアコントリビュータはアップグレードをできるかぎり簡単にするために多くのステップを踏んできましたのでコンソールのデプリケーションメッセージに従うだけで大丈夫です。
 
-Sails v0.10 comes with some big changes. The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.9.x Sails app to v0.10.
+Sails v0.10には大きな変更点がいくつかあります。以下のセクションでは何が代わったの概要や大きなバグフィックス、改善、新機能とSails v0.90アプリケーションをSilas v0.10アプリケーションにアップグレードするための基本的なやり方を紹介します。
 
-## File uploads
+## ファイルアップロード
 
-The Connect multipart middleware [will soon be officially deprecated](http://www.senchalabs.org/connect/multipart.html). But since this module was used as the built-in HTTP body parser in Sails v0.9 and Express v3, this is a breaking change for v0.9 Sails projects relying on `req.files`.
+Connectマルチパートミドルウエアは[まもなく公式に廃止されます](http://www.senchalabs.org/connect/multipart.html)。しかし、Sails v0.9 と Express v3 の内臓のHTTPボディーパーサに利用されていたため`req.files`に依存していたSails 0.9プロジェクトにとってこれは大きな変更点になります。
 
-By default in v0.10, Sails includes [skipper](https://github.com/balderdashy/skipper), a body parser which allows for streaming file uploads without buffering tmp files to disk. For run-of-the-mill file upload use cases, Skipper comes with bundled support for uploads to local disk (via skipper-disk), but streaming uploads can be plugged in to any of its supported adapters.
+v0.10ではデフォルトで[skipper](https://github.com/balderdashy/skipper)を内蔵していますがこれはストリーミングファイルアップロードをディスクへのバッファなしに実現します。通常のファイルアップロードのケースに関してSkipperは（skipper-diskを通じて）ローカルディスクへのアップロードの対応を内蔵していますが、ストリーミングアップロードはこれに対応するアダプタを通じて行う必要があります。
 
-For examples/documentation, please see the Skipper repository as well as the Sails documentation on `req.file()`.
+この例やドキュメンテーションに関してはSkipperのレポジトリの他にSailsの`req.file()`の項目をお読みください。
 
-### Why?
+### どうしてでしょうか?
 
-A body parser's job is to parse the "body" of incoming multipart HTTP requests. Sometimes, that "body" includes text parameters, but sometimes, it includes file uploads.
+ボディパーサの役割はマルチパートのHTTPリクエストの"body"をパースすることです。時に"body"はテキストパラメータを含んでいることもありますが、ファイルアップロードを含んでいることもあります。
 
-Connect multipart is great code, and it supports both file uploads AND text parameters in multipart requests. But like most modules of its kind, it accomplishes this by buffering file uploads to disk. This can quickly overwhelm a server's available disk space, and in many cases exposes a serious DoS attack vulnerability.
+Connectは素晴らしいコードですし、マルチパートリクエストにおいてテキストパラメータとファイルアップロードの両方をサポートします。しかしこのような種類のモジュールの多くと同じようにディスクにファイルアップロードをバッファすることにより実現しています。これは簡単にディスクに容量を凌駕してしまい、多くのケースでDoS攻撃の脆弱性を晒すことになります。
 
-Skipper is unique in that it supports **streaming** file uploads, but also maintains support for metadata in the request body (i.e. JSON/XML/urlencoded request body parameters). It uses a handful of heuristics to make sure only the files you're expecting get plugged in and received by the blob adapter, and other (potentially malicous) file fields are ignored.
+Skipperは **ストリーミング** ファイルアップロードをサポートするという点において特徴的で、リクエストボディの中にあるメタデータ（すなわち、JSON/XML/urlencodedのようなリクエストボディパラメータです）も維持することが出来ます。これはヒューリスティックの利点を使ってプラグインやblobアダプタが意図したファイルのみを受け取るようにし、その他の（もしかしたら悪意を持った）ファイルは無視します。
 
-> #### ** Important!**
-> For Skipper to work, you _must include all text parameters BEFORE file parameters_ in file upload requests to the server. Once Skipper sees the first file field, it stops waiting for text parameters (this is to avoid unnecessary/unsafe buffering of file data).
+> #### ** 重要**
+> Skipperが動作するためには、ファイルアップロードをサーバにリクエストするにあたって _全てのテキストパラメータはファイルパラメータの前にインクルードされなければいけません_ 。Skipperは最初のファイルがアップロードされたと判断するとテキストパラメータを待ち受けるのをやめてしまいます。（これは危険で不要な、ファイル内容バッファを避けるための措置です。）
 
-### Configuring a different body parser
+### 別のボディーパーサを設定する
 
-As with most things in Sails, you can use any Connect/Express/Sails-compatible bodyparser you like. To switch back to **connect-multipart**, or any other body parser (like **formidable** or **busboy**), change your app's http configuration.
+Sailsの中の多くのものと同じように全てのConnect/Express/Sails対応をボディーパーサをお好みに合わせて使うことが出来ます。**connect-multipart** に戻したい場合や、別のボディーパーサ( **formidable** や **busboy** のような)を使いたい場合はアプリケーションのhttp設定を変えてください。
 
-## Blueprints
+## ブループリント
 
-A new blueprint action (`findOne`) has been added. For instance, if you have a `FooController` and `Foo` model, then send a request to `/foo/5`, the `findOne` action in your `FooController` will run. If you don't have a `findOne` action, the `findOne` blueprint action will be used in its stead. Requests sent to `/foo` will still run the find controller/blueprint action.
+新しいブループリントアクション(`findOne`)が追加されました。例えば、もし`FooController`と`Foo`があってそこに`/foo/5`へのリクエストが有った場合、`FooController`の`findOne`アクションが実行されます。もし`findOne`アクションがないときはブループリントアクションが代わりに実行されます。`/foo`に送られたリクエストは引き続きfindのコントローラアクションまたはブループリントアクションとして動作します。
 
-## Policies
+## ポリシー
 
-Policies work exactly as they did in v0.9- however there is a new consideration you should take into account: Due to the introduction of the more specific `findOne()` blueprint action mentioned above, you will want to make sure you're handling it explicitly in your policy mapping configuration.
+ポリシーはv0.9で動いていたのと全く同じように動きます。新たに想定しなければいけない状況があります。上に挙げたように`findOne()`ブループリントアクションが追加されたのでこれをポリシーマッピング設定で別個のものとして扱わなければなりません。
 
-For example, let's say you have a v0.9 app whose `policies.js` configuration prevents access to the `find` action in your `DoveController`:
+例えば`policies.js`で`DoveController`の`find`アクションへのアクセスを防いでいたSails v0.9アプリケーションがあるとしましょう。
 
 ```
 module.exports.policies = {
@@ -46,7 +46,7 @@ module.exports.policies = {
 };
 ```
 
-Assuming rest blueprint routes are enabled, this would prevent access to requests like both `/dove` and `/dove/14`. But now in v0.10, since `/dove/14` will actually run the `findOne` action, we must handle it explicitly:
+全てのブループリントルートが有効化されていると仮定すると、`/dove` と `/dove/14` の両方へのアクセスが防がれています。しかし、v0.10では`/dove/14`は実際には`findOne`を実行しますのでこれを別々に取り扱わなければなりません。:
 
 ```
 module.exports.policies = {
@@ -60,112 +60,113 @@ module.exports.policies = {
 
 ## Pubsub
 
-### Summary
-+ `message` socket (i.e. "comment") event on client is now `modelIdentity` (where "modelIdentity" is different depending on the model that the `publish*()` method was called from.
-+ Clients are no longer subscribed to model-creation events by the blueprint routes. To listen for creation events, use `Model.watch()`.
-+ The events that were formerly `create`, `update`, and `destroy` are now `created`, `updated`, and `destroyed`.
+### 概要
++ クライアントの`message`ソケット（すなわち、"comment"）イベントは`modelIdentity`になりました。(modelIdentityは度のモデルからメソッドが呼び出されるのかによって違います)
++ クライアントはもうblueprintルートのmodel-creationにサブスクライブされません。データ作成イベントをリッスンするには`Model.watch()`を使ってください。
++ かつて`create`、 `update`、`destroy`と命名されていたイベントは現在は`created`、`updated`、`destroyed`です。
 
-### Details
-The biggest change to pubsub is that Socket.io events are emitted under the name of the model emitting them. Previously, your client listened for the `message` event and then had to determine which model it came from based on the included data:
+### 詳細
+最大の変更点はSocket.ioのイベントはモデル自身の名前の元に送信されるということになったことです。以前はクライアントは`message`イベントをリッスンしてそこに含まれているデータを元にどのモデルが送信していたかを判断していました。:
 
 ```
 socket.on('message', function(cometEvent) {
    if (cometEvent.model == 'user') {
-     // Handle inbound messages related to a user record
+     // userレコードに関するインバウンドメッセージを扱う
    }
    else if (cometEvent.model === 'product') {
-     // Handle inbound messages related to a product record
+     // productレコードに関するインバウンドメッセージを扱う
    }
    // ...
 }
 ```
-Now, you subscribe to the identity of the model:
+現在はモデルの識別子にアクセスします。:
 ```
 socket.on('user', function(cometEvent) {
-  // Handle inbound messages related to a user record
+  // userレコードに関するインバウンドメッセージを扱う
 });
 
 socket.on('product', function (cometEvent) {
-  // Handle inbound messages related to a product record
+  // productレコードに関するインバウンドメッセージを扱う
 });
 ```
-This helps to structure your front end code.
+これはフロントエンドコードの構造化に役立ちます。
 
-The way you subscribe clients to models has also changed. Previously, you specified whether you were subscribing to the model class (class room) or one or more model instances based on the parameters that you passed to `Model.subscribe`. It was effectively one method to do two very different things.
+クライアントがモデルをサブスクライブする方法も変更されました。今まではそれがモデルクラスであっても、１つや複数のモデルインスタンスであっても`Model.subscribe`に渡されるパラメータを元にサブスクライブする対象を判断していました。これは事実上、一つのメソッドで二つの全く異なることをしていました。
 
-Now, you use `Model.subscribe()` to subscribe only to model instances (records). You can also specify event "contexts", or types, that you'd like to hear about. For example, if you only wanted to get messages about updates to an instance, you would call `User.subscribe(req, myUser, 'update')`. If no context is given in a call to `.subscribe()`, then all contexts specified by the model class's autosubscribe property will be used.
+今は`Model.subscribe()`をモデルインスタンス（レコード）をサブスクライブすることのみに使います。同様にリッスンしたいイベントの"contexts"やタイプを指定できます。例えばもしあるインスタンスのアップデートのみ、メッセージを受け取りたい場合は`User.subscribe(req, myUser, 'update')`をコールできます。もし`.subscribe()`を呼び出す際に何のコンテキストも与えられていない場合はモデルクラスのautosubscribeで指定された全てのコンテキストが使われます。
 
-To subscribe to model creation events, you can now use `Model.watch()`. Upon subscription, your clients will receive messages every time a new record is created on that model using the blueprint routes, and will automatically be subscribed to the new instance as well.
+モデルの生成イベントをリッスンするには現在は`Model.watch()`が使えます。
+サブスクリプションすることによってクライアントはblueprintルートを使ってそのモデルにデータが生成される度にメッセージを受け取り、新しいインスタンスを自動的にリッスンします。
 
-Remember, when working with blueprints, clients are no longer auto subscribed to the class room. This must be done manually.
+blueprintsを使っている時にクラスが自動的にサブスクライブすることはもう無いということを覚えておいてください。これは手動で行う必要があります。
 
-Finally, if you want to see all pubsub messages from all models, you can access the `firehose`, a development-only tool that broadcasts messages about _everything_ that happens to your models. You can subscribe to the firehose using `sails.sockets.subscribeToFirehose(socket)`, or on the front end by making a socket request to `/firehose`. The firehose will broadcast a `firehose` event whenever a model is created, updated, destroyed, added to, removed from or messaged. This effectively replaces the `message` event used in previous Sails versions.
+最後に、全てのモデルからのpubsubメッセーをじ受け取りたい際は開発環境でのみ使える`firehose`と呼ばれるツールにアクセスでき、ここではモデルに発生する _全てのこと_ に関してメッセージがブロードキャストされます。
 
-To see examples of the new pubsub methods in action, see [SailsChat](https://github.com/balderdashy/sailschat).
+新しいpubsubの例をアクションの中で見るには[SailsChat](https://github.com/balderdashy/sailschat) をご覧ください。
 
-## Arguments to lifecycle callbacks are now typecasted
+## ライフサイクルコールバックへの引数は型キャストされます。
 
-Previously, with `schema: true`, if you sent an attribute value to a `.create()` or `.update()` that did not match the expected type declared in the model's attributes, the value you passed in would still be accessible in your model's lifecycle callbacks.
+以前は`schema: true`をすることで`.create()`や`.update()`にモデルアトリビュートで期待されている以外のデータ型を渡した場合、それらの値はライフサイクルコールバックでアクセス可能でした。
 
-In Sails/Waterline v0.10, this is no longer the case. Values passed to `.create()` and `.update()` are type-casted before your lifecycle callbacks run. Affected lifecycle callbacks include `beforeUpdate()`, `beforeCreate()`, and `beforeValidate()`.
+Sails/Waterline v0.10ではもうすでにこの限りではありません。`.create()`と`.update()`に渡された値はライフサイクルコールバックがされる前に型キャストされます。`beforeUpdate()`と`beforeCreate()`と`beforeValidate()`の影響を受けるコールバックの範囲に入ります。
 
-## beforeValidation() is now beforeValidate()
+## beforeValidation() は beforeValidate() になりました
 
-If you were using the `beforeValidation` or `afterValidation` model lifecycle callbacks in any of your models, you should change them to `beforeValidate` or `afterValidate`. This change was made in Waterline to match the style of the other lifecycle callbacks (e.g. `beforeCreate`, `afterUpdate`, etc.).
+もし`beforeValidation`か`afterValidation`のモデルライフサイクルコールバックをモデルで使っていた場合それらを`beforeValidate`と`afterValidate`に変えなければなりません。これはWaterlineをその他のライフサイクルコールバック (`beforeCreate`, `afterUpdate`などのスタイルに合わせたためです)。
 
-## .done() vs. .exec()
+## .done() と .exec()
 
-** The old (/confusing?) meaning of `.done()` has been deprecated.**
+** 古い（あるいはややこしい？）意味の`.done()`はもはや廃止されました**
 
-In Sails <= v0.8, the syntax for executing an ORM query was `Model. [ … ] .done( cb )`. In v0.9, when promise support was added, the `Model. [ … ] .exec( cb )` became the recommended replacement, since `.done()` has a special meaning in the promise spec. However, the original usage of `.done()` was left untouched to make upgrading from v0.8 to v0.9 easier.
+Sails <= v0.8ではORMを実行する文法は`Model. [ … ] .done( cb )`でした。v0.9ではpromiseのサポートが追加されpromiseの中で`.done()`が特別な意味を持つので`Model. [ … ] .exec( cb )`が推奨される代替方法になりました。しかし、v0.8 から v0.9への移行を簡単にするためにもともとの`.done()`の用法もそのままにしていました。
 
-But as of Sails/Waterline v0.10, the original meaning of `.done()` has been officially deprecated to allow for a more robust promise implementation going forward, and pluggable promise library support (e.g. choose `Q` or `Bluebird` etc.).
+しかし、Sails/Waterline v0.10ではもっとしっかりしたpromiseの実装を進め、(`Q` や `Bluebird`などの)プラグイン可能なライブラリをサポートするために、もともとの意味の`.done()`は正式に廃止されました。
 
-## Associations
+## アソシエーション
 
-Sails v0.10 introduces associations between data models. Since the work we've done on associations is largely additive, your existing models should still just work. That said, this is a powerful new feature that allows you to write less code and makes your app more maintainable, so we suggest taking advantage of it! To learn about how to use associations in Sails, check out the docs.
+Sails v0.10ではデータモデル間のアソシエーションを導入しました。我々が加えた変更は主に付加的なものなので現存のモデルは以前としてただ動くでしょう。これはつまり、このパワフルな新機能は書くべきコードを少なくし、アプリケーションをさらにメンテナンス性の高いものにするのでこの利点を活かしましょうということです！Sailsでどのようにアソシエーションを使うかはドキュメントをご覧ください。
 
-Associations (or "relations") are really just special attributes. Instead of string or integer values, you can specify an instance of a model or a collection of model instances. You can think about this kind of like an object (`{...}`) or an array (`[{...}, {...}]`) you might store as JSON in a NoSQL database. The difference is, in Sails, this works with any of the supported databases, and even allows you to populate (i.e. join) across different databases and types of databases.
+アソシエーション（あるいはリレーション）は単に特種なアトリビュートです。文字列や整数の代わりにモデルのインスタンスやそのコレクションを指定します。これはJSONやNoSQLデータベースに格納されるオブジェクト(`{...}`)や(`[{...}, {...}]`)のようなものと考えていただいても良いでしょう。違いは、Sailsではサポートしているすべてのデータベースと動作することができ、しかも異なるデータベースや異なる種類のデータベースをまたいでpopulate（すなわちJSON）することが出来るということです。
 
-## Generators
+## ジェネレータ
 
-Sails has had support for generating code for a while now (e.g. `sails generate controller foo`) but in v0.10, we wanted to make this feature more extensible, open, and accessible to everybody in the Sails community. With that in mind, v0.10 comes with a complete rewrite of the command-line tool, and pluggable generators. Want to be able to run `sails generate blog foo` to make a new blog built on Sails? Create a `blog` generator (run sails `generate generator blog`), add your templates, and configure the generator to copy the new templates over. Then you can release it to the community by publishing an npm module called `sails-generate-blog`. Compatibility with Yeoman generators is also in our roadmap.
+Sailはコードの自動生成 (例： `sails generate controller foo`) をサポートしますが、v0.10ではこの機能を更に拡張可能に、Sailsコミュニティの誰にでもオープンにアクセス可能にしたいと考えました。このような考え方のもとv0.10ではコマンドラインツールとプラグイン可能なジェネレータをを完全に書き換えました。`sails generate blog foo`を使って新しいブログをSailsで作りたいでしょうか。それなら(`generate generator blog`を実行して)`blog`ジェネレータを作ってテンプレートを追加し、テンプレートを書き換えるための設定を行ってください。それからnpmのコマンドを使って、`sails-generate-blog`と命名されたこのモジュールをコミュニティーに向けて公開できます。Yomanジェネレータとの互換性機能も予定されています。
 
-## Command-line tool
+## コマンドラインツール
 
-The big change here is how you create a new api. In the past you called `sails generate new_api`. This would generate a new controller and model called `new_api` in the appropriate places. This is now done using `sails generate api new_api`.
+ここでの大きな変更点は新しいAPIの作り方です。かつては`sails generate new_api`をコールしていました。これによって`new_api`と呼ばれるモデルとコントローラを適切な位置に生成できます。現在はこれを`sails generate api new_api`で行うことが出来ます。
 
-You can still generate models and controllers seperately using the same CLI Commands.
+同じCLIのコマンドを使ってモデルとコントローラを別々に生成することも出来ます。
 
-Also, `--linker` switch is no longer available. In previous version, if `--linker` switch was provided, it created a `myApp/assets/linker folder`, with `js`, `styles` and `templates` folders inside. In this new version, the `myApp/assets/linker` folder is not created. Compiling CoffeeScript and Less is the default behavior now, right from the `myApp/assets/js` and `myApp/assets/scripts` folders.
+同様に、`--linker`スイッチはもう使えません。以前のバージョンでは `--linker`を提供されていれば`js`、`styles`と`templates`フォルダが入っている`myApp/assets/linker`フォルダーを生成しました。新しいバージョンでは`myApp/assets/linker`フォルダーは生成されません。`myApp/assets/js`と`myApp/assets/scripts`フォルダでのCoffeeScriptとLessのコンパイルは最初から標準の動作になりました、
 
-## Custom server responses
+## カスタムサーバレスポンス
 
-In v0.10, you can now generate your own custom server responses.
+v0.10ではカスタムのサーバレスポンスを生成できます。
 
-Like before, there are a few that we automatically create for you. Instead of generating `myApp/config/500.js` and other `.js` responses in the config directory, they are now generated in `myApp/api/responses/`.
+以前と同じように幾つかのものは自動生成されます。`myApp/config/500.js`などの`.js`レスポンスをコンフィグディレクトリで生成する代わりに今では`myApp/api/responses/`に生成されます。
 
-To migrate, you will need to create a new v0.10 project and copy the `myApp/api/responses` directory into your existing app. You will then modify the appropriate .js file to reflect any customization you made in your response logic files (500.js,etc).
+マイグレーションするには新しいv0.10プロジェクトを作って`myApp/api/responses`ディレクトリを既存のアプリケーションにコピーします。それから、レスポンスロジックファイル(500.jsなど)をあなたが行ったカスタマイズに対応するように適切な.jsファイルを編集します。
 
-## Legacy data stored in the temporary sails-disk database
+## レガシーなデータはsails-diskの一時データベースに保管されます。
 
-`sails-disk`, used by default in new Sails projects, now stores data a bit differently. If you have some temporary data stored in a 0.9.x project, you'll want to wipe it out and start fresh. To do this:
+新しいSailsプロジェクトでデフォルトで使われる`sails-disk`では少し違った方法でデータを格納します。もし0.9.xのプロジェクトで保存された一時的データがある場合、それらを削除して新しく始める必要があります。これを行うには:
 
-From your project's root directory:
+プロジェクトのルートディレクトリで:
 
 ```
 $ rm .tmp/disk.db
 ```
 
-## Adapter/Database Configuration
+## アダプタとデータベースの設定
 
-`config.adapters` (in `myApp/config/adapters.js`) is now config.connections (in new projects, this is generated in `myApp/config/connections.js`). Also, `config.model` is now `config.models`.
+`config.adapters`(`myApp/config/adapters.js`にあります)はconfig.connections(新規のプロジェクトでは`myApp/config/connections.js`に生成されます)になりました。同じく`config.model`は現在は`config.models`です。
 
-Your app's default `connection` (i.e. database) should now be configured as a string `config.models.connection` used by default for model. New projects are generated with a `/config/models.js` file that includes the default connection.
+アプリケーションのデフォルトの`connection`（つまりデータベース）はこれからは`config.models.connection`で設定されなければならず、これらモデルでデフォルトとして使われます。新規プロジェクトは`/config/models.js`ファイルで生成され、デフォルトのコネクションを含みます。
 
-To configure a model to use specific adapters, you must now specify them in the `connection` key instead of `adapters`.
+特定のアダプタを指定したい場合は`adapters`の代わりに`connection`キーで設定しなければなりません。
 
-For example:
+例:
 ```
 module.exports = {
 
@@ -180,9 +181,9 @@ module.exports = {
 };
 ```
 
-## Blueprints/Controller configuration
+## Blueprints/Controller設定
 
-The object literal describing controller configuration overrides for controller blueprints should change from:
+コントローラのブループリントを上書きするコントローラ設定のオブジェクトリテラルは以下のように変更されなければいけません。:
 ```
 ...
 _config: {
@@ -192,7 +193,7 @@ _config: {
   }
 }
 ```
-to:
+変更後:
 ```
 ...
 _config: {
@@ -201,14 +202,14 @@ _config: {
 }
 ```
 
-## Layout paths:
-In Sails v0.9, you could use the following syntax to specify `auth/someLayout.ejs` as a custom layout when rendering a view:
+## レイアウトパス:
+Sails v0.9ではビューをレンダリングする際のカスタムレイアウトとして`auth/someLayout.ejs`を指定するためには以下の構文を使わなければなりません。:
 ```
 return res.view('auth/login',{
   layout: 'someLayout'
 });
 ```
-However in Sails v0.10, all layout paths are relative to your app's views path. In other words, the relative path of the layout is no longer resolved from the view's own path-- it is now always resolved from the views path. This makes it easier to understand which file is being used, particularly when layout files have similar names:
+しかし、Sails v0.10では全てのレイアウトパスはアプリケーションのビューのパスに対して相対的です。言い換えれば、レイアウトのの相対パスはビューのパス自身によって解決されなくなり、常にビューのパスで解決されるということです。これは特に同じような名前を持つレイアウトファイルでこのファイルが利用されるのかを理解するのに役立ちます。:
 ```
 return res.view('auth/login', {
   layout: 'auth/someLayout'
