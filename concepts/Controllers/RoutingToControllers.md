@@ -1,7 +1,6 @@
 # コントローラへのルート
 
-Sailsはデフォルトで各コントローラに[blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api)を生成しますので`/:コントローラ/:アクション`への`GET`リクエストはアクションをトリガーします。前のセクションの例が`api/controllers/SayController.js`として保存されていればアプリケーションがリフトされるときはいつでも`/say/hi`や`/say/bye`がデフォルトで有効になります。
-コントローラがサブフォルダ`/we`に保存されていればルートは `/we/say/hi`と`/we/say/bye`になります。Sailsの自動ルートバインディングに関するさらなる情報は[blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) をご覧ください。
+Sailsはデフォルトで各コントローラに[blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api)を生成しますので`/:コントローラ/:アクション`への`GET`リクエストはアクションをトリガーします。前のセクションの例が`api/controllers/SayController.js`として保存されていればアプリケーションがリフトされるときはいつでも`/say/hi`や`/say/bye`がデフォルトで有効になります。コントローラがサブフォルダ`/we`に保存されていればルートは `/we/say/hi`と`/we/say/bye`になります。Sailsの自動ルートバインディングに関するさらなる情報は[blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) をご覧ください。
 
 デフォルトのルートに加え、Sailsでは[`config/routes.js`](http://sailsjs.org/documentation/concepts/Routes)ファイルを付けうことで手動でルートのバインディングが出来ます。ルートを明示的に設定する必要のある例は:
 
