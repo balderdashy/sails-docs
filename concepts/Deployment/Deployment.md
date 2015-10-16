@@ -37,7 +37,7 @@ Node.jsはものすごく速いです。そのため来るべきトラフィッ�
 + データベース設定がプロダクション環境に設定されていることを確認して下さい。これはあなたがMySQLのようなリレーショナルデータベースを利用しているときは特に重要です。なぜならSailsはプロダクション環境で実行された時にはすべてのモデルを`migrate:safe`に設定します。つまり自動マイグレーションは行われません。データベースの作成は以下の手順でできます。
   + データベースをサーバ上に作成しローカル上でそのデータベースへの接続をするように設定し、更に`migrate:alter`の設定をしたうえでSailsを起動します。こレにより自動的にセットアップできます。
   + データベースサーバにリモートから接続できない場合は単純にローカルのスキーマをダンプしてデータベースサーバでインポートしてください。
-+ POST, PUT, DELETEのリクエストに対してCSRF防御を適用します。
++ POST, PUT, DELETEのリクエストに対して[CSRF防御](http://sailsjs.org/documentation/concepts/Security/CSRF.html?q=enabling-csrf-protection)を適用します。
 + SSLを有効化します。
 + もしSocketを使ってる時は:
   + `config/sockets.js`を適切に設定し、[ここ](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)に書いているsocket.ioが推奨するプロダクション環境での設定に適合するようにします。
@@ -58,4 +58,3 @@ Node.jsはものすごく速いです。そのため来るべきトラフィッ�
 
 <docmeta name="uniqueID" value="Deployment402941">
 <docmeta name="displayName" value="Deployment">
-

@@ -134,7 +134,7 @@ Model.find({ name: { '!': 'foo' }})
 
 #### 'like'
 
-`%`記号を使ってパターンマッチングでレコードを検索します。
+`%`記号を使ってパターンマッチングでレコードを検索します。(大文字と小文字を区別します)
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
@@ -143,7 +143,7 @@ Model.find({ food: { 'like': '%beans' }})
 #### 'contains'
 
 両端に`%`記号を付けたパターンマッチング検索のショートカットです。
-指定した内容が文字列中のどこかに存在するレコードを返します。
+指定した内容が文字列中のどこかに存在するレコードを返します。(大文字と小文字を区別します)
 
 ```javascript
 Model.find({ class: { 'contains': 'history' }})
@@ -156,7 +156,7 @@ Model.find({ class: { 'like': '%history%' }})
 #### 'startsWith'
 
 右端に`%`記号を付けたパターンマッチング検索のショートカットです。
-文字列が指定した内容で始まるレコードを返します。
+文字列が指定した内容で始まるレコードを返します。(大文字と小文字を区別します)
 
 ```javascript
 Model.find({ class: { 'startsWith': 'american' }})
@@ -169,7 +169,7 @@ Model.find({ class: { 'like': 'american%' }})
 #### 'endsWith'
 
 左端に`%`記号を付けたパターンマッチング検索のショートカットです。
-文字列が指定した内容で終わるレコードを返します。
+文字列が指定した内容で終わるレコードを返します。(大文字と小文字を区別します)
 
 ```javascript
 Model.find({ class: { 'endsWith': 'can' }})
@@ -222,14 +222,14 @@ Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 
 `paginate`は`skip`と`limit`を一緒に使うのと同じ役割を果たすWaterlineヘルパーメソッドです。
 
-``` javascript                                                                  
-Model.find().paginate({page: 2, limit: 10});                                     
+``` javascript
+Model.find().paginate({page: 2, limit: 10});
 ```
 
 > **Waterline**
 >
 > WaterlineAPIに関して更に詳しくは以下のドキュメントで確認できます。:
-> * [Sails.js Documentation](http://sailsjs.org/#/documentation/reference/waterline/queries)
+> * [Sails.js Documentation](http://sailsjs.org/documentation/reference/waterline/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
 > * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
@@ -261,7 +261,7 @@ Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 >
 > Waterlineのすべてのクエリは**ケースセンシティブではありません**。このおかげでクエリを簡単に実行できますが、文字列をインデックスするのは難しくなります。このことは文字列を検索したり文字列で並び替えたりするときに念頭に置いておいてください。
 >
-> 現在のところ、**ケースセンシティブ**なクエリを発行するもっともよい手段は [`.native()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/native.html)か[`.query()`](http://beta.sailsjs.org/#/documentation/reference/waterline/models/query.html)のメソッドを使うことです。
+> 現在のところ、**ケースセンシティブ**なクエリを発行するもっともよい手段は [`.native()`](http://sailsjs.org/documentation/reference/waterline/models/native.html)か[`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html)のメソッドを使うことです。
 
 
 <docmeta name="displayName" value="Query Language">

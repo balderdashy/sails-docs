@@ -7,8 +7,7 @@
 
 ### 1対1の例
 
-この例では`Pet`と`User`を関連付けます。
-このケースでは`User`は一つだけの`Pet`を持つことできますが、`Pet`は一つだけの`User`によって所有されているわけではありません。
+この例では`Pet`と`User`を関連付けます。このケースでは`User`は一つだけの`Pet`を持つことできますが、`Pet`は一つだけの`User`によって所有されているわけではありません。しかしながら両側からアソシエーションの問い合わせを行う必要があるので両方のモデルをcreate/updateしなければいけません。
 
 
 `myApp/api/models/pet.js`
@@ -111,7 +110,7 @@ null { name: 'Mike',
 
 ```
 ### 備考
-> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md)をご覧ください。
 
 
 <docmeta name="uniqueID" value="OnetoOne169258">

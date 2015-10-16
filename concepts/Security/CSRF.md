@@ -1,10 +1,10 @@
 # CSRF
 
-クロスサイトのリクエスト強制([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF))はすでに認証されているWebアプリケーションに対してエンドユーザが意図しないリク絵イストを強制するものです。言い換えればこの防御なしにはChase.comで使うためにChromeに保存されたクッキーのデータを今アクセスしているHorrible-Hacker-Site.comのために使われてしまうということです。 
+クロスサイトのリクエスト強制([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)))はすでに認証されているWebアプリケーションに対してエンドユーザが意図しないリク絵イストを強制するものです。言い換えればこの防御なしにはChase.comで使うためにChromeに保存されたクッキーのデータを今アクセスしているHorrible-Hacker-Site.comのために使われてしまうということです。 
 
 ### SCRF防御を有効にする
 
-Sailsは設定するだけで簡単に使えるオプショナルなCSRF防御策を用意しています。これを有効化するためには[sails.config.csrf](/#/documentation/reference/Configuration/CSRF.html)(通常プロジェクトの中の[`config/csrf.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/csrf.js.html)ファイルに保管されています。)に以下の編集を加えます。:
+Sailsは設定するだけで簡単に使えるオプショナルなCSRF防御策を用意しています。これを有効化するためには[sails.config.csrf](http://sailsjs.org/documentation/reference/Configuration/CSRF.html)(通常プロジェクトの中の[`config/csrf.js`](http://sailsjs.org/documentation/anatomy/myApp/config/csrf.js.html)ファイルに保管されています。)に以下の編集を加えます。:
 
 ```js
 csrf: true
@@ -22,7 +22,7 @@ CSRFトークンは一時的でセッション依存です。例えばマリー�
 
 ### CSRFトークンを発行する
 
-CSRFトークンを取得するには[locals](http://beta.sailsjs.org/#/documentation/concepts/Views/Locals.html)を使ってビューでこれを立ち上げる（昔ながらのマルチーページアプリケーションに向いています）か特別な防御がされているJSONエンドポイントからAJAXやソケットで取得（シングルページアプリケーション（SPA）で便利です。）しなければいけません。
+CSRFトークンを取得するには[locals](http://sailsjs.org/documentation/concepts/Views/Locals.html)を使ってビューでこれを立ち上げる（昔ながらのマルチーページアプリケーションに向いています）か特別な防御がされているJSONエンドポイントからAJAXやソケットで取得（シングルページアプリケーション（SPA）で便利です。）しなければいけません。
 
 
 ##### ビューのローカルを使う:
@@ -37,6 +37,11 @@ e.g.:
  <input type='submit'>
 </form>
 ```
+もしフォームから`multipart/form-data`を行おうとしている場合は`_csrf`フィールドが`file`インプットの前に行われるようにしてください、そうしなければファイルのアップロードが行われる前にタイムアウトして403エラーが発生するおそれがあります。
+
+
+
+
 
 ##### AJAX/WebSocketsを使う
 
@@ -62,6 +67,13 @@ $.post('/checkout', {
   electronicReceiptOK: true,
   _csrf: 'USER_CSRF_TOKEN'
 }, function andThen(){ ... });
+```
+
+幾つかのクライアントモジュールではAJAXリクエスト自体にアクセス権がりません。このような場合はCSRFトークンをクエリーのURLに直接含ませることを考慮すべきです。しかしこれを行うにはURLのエンコードをトークンが消費される前に行うのを忘れずにいてください。
+```js
+..., {
+  checkoutAction: '/checkout?_csrf='+encodeURIComponent('USER_CSRF_TOKEN')
+}
 ```
 
 

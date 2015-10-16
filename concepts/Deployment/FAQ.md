@@ -3,7 +3,7 @@
 
 ##### 環境変数を利用することは出来ますか?
 
-`port`と`environment`環境の選択を環境変数を用いて設定することも出来ます。
+はい。`port`と`environment`環境の選択を環境変数を用いて設定することも出来ます。
 `NODE_ENV=production sails lift`
 `PORT=443 sails lift`
 
@@ -45,7 +45,15 @@ SailsのパフォーマンスはNode.js/Express相当です。つまり別の言
 
 + http://serdardogruyol.com/?p=111
 
+問題[#3099](https://github.com/balderdashy/sails/issues/3099) と [#2779](https://github.com/balderdashy/sails/issues/2779)はメモリリークに関するものです。これはデフォルトで利用され、セッションをメモリ内に保管する`express-session`に存在する問題です。
+これを無効化するには`.sailsrc`でセッションを無効化してください。:
+```
+"hooks": {
+  "session": false
+}
+```
+
+セッションを保管する別の方法(redis/mongo/cookies)もあります。
 
 <docmeta name="uniqueID" value="FAQ475097">
 <docmeta name="displayName" value="FAQ">
-

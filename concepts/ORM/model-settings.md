@@ -32,7 +32,7 @@ Sailsを起動するときにWaterlineはデータベースの中にあるすべ
 |`drop`       | Sailsを起動するときにすべてのデータを消してデータベースを再構築します。
 
 
-> 備考　`drop`を行うことではもちろん、`alter`でもデータ消失のリスクが有ります。ご注意ください。本番環境でのデータセットでは決して`drop`や`alter`を使わないでください。
+> 備考　`drop`を行うことではもちろん、`alter`でもデータ消失のリスクが有ります。ご注意ください。本番環境でのデータセットでは決して`drop`や`alter`を使わないでください。更に、大規模なデータベースでは`alter`を選択すると起動に時間がかかることがあります。これにより`sails console`のようなコマンドがハングアップしているように見えることがあります。
 
 
 
@@ -54,7 +54,7 @@ schema: true
 connection: 'my-local-postgresql'
 ```
 
-設定済みのデータベース[接続設定](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html)のうち、このモデルがデータを取得したるデータを書き込むものです。デフォルトは`sails-disk`をつかったSailsのデフォルトのデータベースである`localDiskDb`が選択されます。`
+設定済みのデータベース[接続設定](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html)のうち、このモデルがデータを取得したるデータを書き込むものです。デフォルトは`sails-disk`をつかったSailsのデフォルトのデータベースである`localDiskDb`が選択されます。`
 
 
 ### `identity`
@@ -71,7 +71,7 @@ identity: 'purchase'
 globalId: 'Purchase'
 ```
 
-このフラッグはモデルに（モデルのグローバルアクセスが許可されている場合に限り）グローバルでアクセス可能な際の名前を決定します。models-においてモデルのグローバルを無効化するためにこのフラグを使ってはいけません。[sails.config.globals]()を御覧ください。
+このフラッグはモデルに（モデルのグローバルアクセスが許可されている場合に限り）グローバルでアクセス可能な際の名前を決定します。models-においてモデルのグローバルを無効化するためにこのフラグを使ってはいけません。[sails.config.globals](http://sailsjs.org/documentation/concepts/Globals?q=disabling-globals)を御覧ください。
 
 
 
@@ -151,7 +151,7 @@ attributes: {
 }
 ```
 
-[アトリビュート]()の項目をご覧ください。
+[アトリビュート](http://sailsjs.org/documentation/concepts/ORM/Attributes.html)の項目をご覧ください。
 
 
 

@@ -36,7 +36,6 @@ module.exports = {
 		owners: {
 			collection: 'user',
 			via: 'pets',
-			dominant:true
 		}
 	}
 }
@@ -326,7 +325,7 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 
 ```
 ### 備考
-> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)をご覧ください。
 
 <docmeta name="uniqueID" value="ManytoMany276455">
 <docmeta name="displayName" value="Many-to-Many">

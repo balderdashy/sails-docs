@@ -2,11 +2,12 @@
 ### 概要
 
 モデルアトリビュートはモデルにおける基本的な情報です。例えば`Person`と名付けられたモデルでは`firstName`, `lastName`, `phoneNumber`, `age`, `birthDate`や`emailAddress`のようなアトリビュートがあります。
-
+<!---
 > TODO: address sql vs. no sql and stuff like:
 > """
 > In most cases, this data is _homogenous_, meaning each record has the same attributes,
 > """
+-->
 
 ### アトリビュート・オプション
 
@@ -27,6 +28,17 @@
 - array
 - json
 
+###### email
+入力が正しいEメールアドレスかを調べます。
+
+```javascript
+attributes: {
+  email: {
+    type: 'string',
+    email: true
+  }
+}
+```
 
 ###### defaultsTo
 
@@ -77,19 +89,19 @@ Will create a simple index in the underlying datastore for faster queries if ava
 
 There is currently an issue with adding indexes to string fields. Because Waterline performs its queries in a case insensitive manner we are unable to use the index on a string attribute. There are some workarounds being discussed but nothing is implemented so far. This will be updated in the near future to fully support indexes on strings.
 
-```javascript
+javascript
 attributes: {
   email: {
     type: 'string',
     index: true
   }
 }
-```
+
 -->
 
 ###### primaryKey
 
-このキーをレコードの主キーとして利用します。たった一つのアトリビュートのみが`primaryKey`になりえます。備考：[autoPK](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=autopk)をfalseにしない限りこのオプションは動作しません。
+このキーをレコードの主キーとして利用します。たった一つのアトリビュートのみが`primaryKey`になりえます。備考：[autoPK](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=autopk)をfalseにしない限りこのオプションは動作しません。
 
 ```javascript
 attributes: {
@@ -238,7 +250,7 @@ module.exports = {
 };
 ```
 
-> この例で我々は[`tableName`](http://beta.sailsjs.org/#/documentation/concepts/ORM/model-settings.html?q=tablename)も使っていることがお分かりになるでしょう。これでデータを格納するテーブル名を指定することが出来ます。
+> この例で我々は[`tableName`](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=tablename)も使っていることがお分かりになるでしょう。これでデータを格納するテーブル名を指定することが出来ます。
 
 
 
@@ -248,4 +260,3 @@ module.exports = {
 
 <docmeta name="uniqueID" value="Attributes951609">
 <docmeta name="displayName" value="Attributes">
-

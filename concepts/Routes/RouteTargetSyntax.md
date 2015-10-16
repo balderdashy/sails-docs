@@ -26,14 +26,16 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 ```
 '/*'
 ```
-    
+
 上のものはすべてのパスに当てはまります:
 
 ```
 '/user/foo/*'
 ```
-    
+
 上のものは**/user/foo**で*始まる*すべてのパスに当てはまります。
+
+> **備考:** `'/*'`のようなワイルドカードのルートを利用する場合、スタティックなアセットへのリクエストにも適用され(すなわち `/js/dependencies/sails.io.js`のようなものも)、上書きされることを覚えておいてください。これを防ぐには[以下の](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options)`skipAssets`オプションを利用してください。
 
 `:paramName`を`*`の代わりにワイルドカードとして利用することにより、アドレス中のワイルドカードにマッチする部分を名前付きのパラメータとして利用することが出来ます。:
 
@@ -46,7 +48,7 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 ```
 '/user/foo/*/bar/*'
 ```
-   
+
 ただし、ワイルドカードにされた部分に与えられた値はそれぞれ`req.param('name')`と`req.param('age')`で取得出来ます。
 
 #### アドレス中の正規表現
@@ -69,7 +71,7 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 
     '/user': 'UserController.doSomething',
     '/*'   : 'CatchallController.doSomethingElse'
-    
+
 マッチングが途中で打ち切られてしまうので、リクエスト`/user`は最初の設定のハンドラがコード内で`next()`を呼び出さない限りは2つ目の設定にマッチすることはありません。([policies](http://beta.sailsjs.org/#/documentation/concepts/Policies)のみが`next()`をコールすることが出来ます。)何かとても特殊なことをするという場合以外は、各リクエストは**config/routes.js**中の一つのリクエストにのみマッチするようにしておいたほうが無難です。
 
 ### ルートターゲット
@@ -78,7 +80,7 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 
 #### コントローラ・アクションに対するターゲットの記法
 
-最もよく使われるターゲットは特定の[コントローラアクション](http://beta.sailsjs.org/#/documentation/concepts/Controllers?q=actions)を指定するルートです。以下の4つのルートは皆同じ意味です。:
+最もよく使われるターゲットは特定の[コントローラアクション](http://sailsjs.org/documentation/concepts/Controllers?q=actions)を指定するルートです。以下の4つのルートは皆同じ意味です。:
 
 ```
 'GET /foo/go': 'FooController.myGoAction',
@@ -92,31 +94,31 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 
 この記法におけるコントローラとアクションの名前はケースセンシティブです。
 
-[blueprints API](/#/documentation/reference/blueprint-api)はデフォルトで("create", "update" and "delete"などの)いくつかのアクションをコントローラに追加することをご留意ください。 これらのアクションはすべてルーティング可能です。:
+[blueprints API](http://sailsjs.org/documentation/reference/blueprint-api)はデフォルトで("create", "update" and "delete"などの)いくつかのアクションをコントローラに追加することをご留意ください。 これらのアクションはすべてルーティング可能です。:
 
 ```
 'GET /foo/go': 'UserController.find'
 ```
 
-**api/controllers/UserController/js**ファイルと**api/models/User.js**ファイルが有ったとします。そこで以上の設定においてブラウザから**/foo/go**にアクセスすると、Blueprintのデフォルトの "find* アクションが実行され、`User`モデルの中のすべてのリストが表示されます。また、もし`find`と名付けられた[カスタムアクション](/#/documentation/concepts/Controllers?q=actions)が存在するときにはそれがかわりに呼び出されます。
+**api/controllers/UserController.js**ファイルと**api/models/User.js**ファイルが有ったとします。そこで以上の設定においてブラウザから**/foo/go**にアクセスすると、Blueprintのデフォルトの "find* アクションが実行され、`User`モデルの中のすべてのリストが表示されます。また、もし`find`と名付けられた[カスタムアクション](http://sailsjs.org/documentation/concepts/Controllers?q=actions)が存在するときにはそれがかわりに呼び出されます。
 
 
 ####ビューをターゲットとする記法
 
-その他のよく使われる記法としては[ビュー](http://beta.sailsjs.org/#/documentation/concepts/Views)をバインドするものです。この記法はシンプルです。**views**フォルダーにおける拡張子を除いたパスを記述するものです。:
+その他のよく使われる記法としては[ビュー](http://sailsjs.org/documentation/concepts/Views)をバインドするものです。この記法はシンプルです。**views**フォルダーにおける拡張子を除いたパスを記述するものです。:
 
 ```
 'GET /home': {view: 'home/index'}
 ```
 
-このルートは`GET /home`を**views/home/index.ejs**に保管されているビューにマップさせるものです。（仮にデフォルトのEJS[テンプレートエンジン](http://beta.sailsjs.org/#/documentation/concepts/Views/ViewEngines.html)が利用されているとすれば。）ビューファイルが存在する限り**/home**への**GET**リクエストは表示されます。
+このルートは`GET /home`を**views/home/index.ejs**に保管されているビューにマップさせるものです。（仮にデフォルトのEJS[テンプレートエンジン](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html)が利用されているとすれば。）ビューファイルが存在する限り**/home**への**GET**リクエストは表示されます。
 
 > このルートは直接ビューにルーティングされていますのでいかなるポリシーも適用されないことをご留意ください。
 > 詳細に関してはスタックオーバーフローの[質問](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313)をご覧ください。
 
 #### Blueprintをターゲットとする記法
 
-場合によってはSailsの[blueprintアクション](http://beta.sailsjs.org/#/documentation/reference/blueprint-api?q=blueprint-actions)に対して通常とは異なるルーティングをマッピングする必要がある時があるでしょう。例えばもしそれぞれ**UserController**と**User**と命名されたコントローラとモデルがあり、Sailsが自動的に**GET /user**をblueprintの全データをリスト表示する"find"アクションにマップしたとします。このアクションに対して別のルーティングを割り当てたい場合はBlueprintをターゲットとする記法を利用できます。:
+場合によってはSailsの[blueprintアクション](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions)に対して通常とは異なるルーティングをマッピングする必要がある時があるでしょう。例えばもしそれぞれ**UserController**と**User**と命名されたコントローラとモデルがあり、Sailsが自動的に**GET /user**をblueprintの全データをリスト表示する"find"アクションにマップしたとします。このアクションに対して別のルーティングを割り当てたい場合はBlueprintをターゲットとする記法を利用できます。:
 
 ```
 'GET /findAllUsers': {model: 'user', blueprint: 'find'},
@@ -143,12 +145,12 @@ Sailsでは**config/routes.js**において、いくつかの方法で明示的�
 'GET /google': 'http://www.google.com'
 ```
 
-Sailsアプリ内で無限ループを引き起こさないようにご注意ください！
+Sailsアプリ内でリダレクトループを引き起こさないようにご注意ください！
 
 リダイレクトの過程で多くの場合、オリジナルのHTTPリクエストは失われ、単に**GET**として取り扱われることにご留意ください。上記の例では**/alias**への**POST**リクエストは**/some/other/route**への**GET**リクエストとして処理されます。これはブラウザ依存の振る舞いですが、リダイレクトの間もリクエストが残ると期待しないことをおすすめします。
 
 #### レスポンスをターゲットとする記法
-以下の記法を用いてデフォルトまたはカスタムの[レスポンス](http://beta.sailsjs.org/#/documentation/concepts/Custom-Responses)に対して直接マッピングを指定することも出来ます。:
+以下の記法を用いてデフォルトまたはカスタムの[レスポンス](http://sailsjs.org/documentation/concepts/Custom-Responses)に対して直接マッピングを指定することも出来ます。:
 
 ```
 '/foo': {response: 'notFound'}
@@ -158,7 +160,7 @@ Sailsアプリ内で無限ループを引き起こさないようにご注意く
 
 #### ポリシーをターゲットとした記法
 
-多くの場合において[**config/policies.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.policies.html)設定ファイルを使ってコントローラに対して[ポリシー](http://beta.sailsjs.org/#/documentation/concepts/Policies) を設定するでしょう。しかしながら時々（特に [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax)や[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) をターゲットする記法を使いたいときには）、個々ののルートに対してポリシーを直接指定したい時もあるでしょう。ポリシーをターゲットする記法は以下のとおりです。:
+多くの場合において[**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html)設定ファイルを使ってコントローラに対して[ポリシー](http://sailsjs.org/documentation/concepts/Policies) を設定するでしょう。しかしながら時々（特に [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax)や[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) をターゲットする記法を使いたいときには）、個々ののルートに対してポリシーを直接指定したい時もあるでしょう。ポリシーをターゲットする記法は以下のとおりです。:
 
 ```
 '/foo': {policy: 'myPolicy'}
@@ -177,13 +179,12 @@ Sailsアプリ内で無限ループを引き起こさないようにご注意く
 
 | プロパティ    | 適用可能なターゲット       | データ型 | 詳細 |
 |-------------|:----------:|-----------|-----------|
-|`skipAssets`|全て|((論理型))|もし、(**myImage.jpg**のような)ドットを含むアドレスをマッチさせたく**ない**場合`true`に設定してください。これにより[ワイルドカード](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters)を使っている場合に入力内容がアセットにマッチするのを維持します。[URL slugs](/#/documentation/concepts/Routes/URLSlugs.html)を使う際に便利です。|
-|`skipRegex`|全て|((論理型))|ドットを含む全てのURLをスキップするだけでは寛大すぎる場合や別の基準に基づいて正規表現をハンドルしたい場合`skipRegex`を利用することが出来ます。このオプションではマッチすべき正規表現または正規表現の配列を指定することが出来ます。もしすべての条件がマッチした場合、ハンドラーはスキップされます。ハンドラーを正規表現を使ってバインドする場合と異なり`skipRegex`文字列ではなく*実際の [RegExpオブジェクト](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*を渡さなければなりません。|
-|`locals`|[controller](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((オブジェクト))|リクエストがハンドルされる間にレンダリングされるビューに対して渡されるデフォルトの[ローカル変数](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html?q=arguments)を指定します。|
-|`cors`|全て|((オブジェクト))または((論理型))または((文字列))|オリジンの異なるリクエストに対してどう処理するのかを定義します。詳細に関しては[CORSのメインドキュメント](http://beta.sailsjs.org/#/documentation/concepts/CORS)を御覧ください。|
-|`populate`|[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((boolean))|"find"または"findOne"のblueprintアクションの際にどのようなモデルフィールドが[populate](http://beta.sailsjs.org/#/documentation/reference/waterline/populated-values)されるかを表します。デフォルトでは[**config/blueprints.js**](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.blueprints.html)にある設定が適用されます。
-|`skip`, `limit`, `sort`, `where`|[blueprint](http://beta.sailsjs.org/#/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((オブジェクト))|blueprintSetの"find"に対する条件式を設定します。詳細に関しては[クエリーリファレンス](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md)を御覧ください。
+|`skipAssets`|全て|((論理型))|もし、(**myImage.jpg**のような)ドットを含むアドレスをマッチさせたく**ない**場合`true`に設定してください。これにより[ワイルドカード](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters)を使っている場合に入力内容がアセットにマッチするのを維持します。[URL slugs](http://sailsjs.org/documentation/concepts/Routes/URLSlugs.html)を使う際に便利です。|
+|`skipRegex`|全て|((regexp型))|ドットを含む全てのURLをスキップするだけでは寛大すぎる場合や別の基準に基づいて正規表現をハンドルしたい場合`skipRegex`を利用することが出来ます。このオプションではマッチすべき正規表現または正規表現の配列を指定することが出来ます。もしすべての条件がマッチした場合、ハンドラーはスキップされます。ハンドラーを正規表現を使ってバインドする場合と異なり`skipRegex`文字列ではなく*実際の [RegExpオブジェクト](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*を渡さなければなりません。|
+|`locals`|[controller](http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((オブジェクト))|リクエストがハンドルされる間にレンダリングされるビューに対して渡されるデフォルトの[ローカル変数](http://sailsjs.org/documentation/reference/res/res.view.html?q=arguments)を指定します。|
+|`cors`|全て|((オブジェクト))または((論理型))または((文字列))|オリジンの異なるリクエストに対してどう処理するのかを定義します。詳細に関しては[CORSのメインドキュメント](http://sailsjs.org/documentation/concepts/CORS)を御覧ください。|
+|`populate`|[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((boolean))|"find"または"findOne"のblueprintアクションの際にどのようなモデルフィールドが[populate](http://sailsjs.org/documentation/reference/waterline/populated-values)されるかを表します。デフォルトでは[**config/blueprints.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html)にある設定が適用されます。
+|`skip`, `limit`, `sort`, `where`|[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((オブジェクト))|blueprintSetの"find"に対する条件式を設定します。詳細に関しては[クエリーリファレンス](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md)を御覧ください。
 
 <docmeta name="uniqueID" value="RouteTargetSyntax278177">
 <docmeta name="displayName" value="Custom Routes">
-

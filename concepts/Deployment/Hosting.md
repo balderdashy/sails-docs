@@ -30,6 +30,27 @@ appフォルダの中の`config/local.js`を開きここに以下の行を加え
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
+同様に`npm i --save grunt-cli`を利用して`grunt-cli`をインストールする必要があります。
+
+これを行った後で、以下の内容の`.openshift/action_hooks/pre_start_nodejs`ファイルを作成します。([ソース](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6))
+
+```
+#!/bin/bash
+export NODE_ENV=production
+
+if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
+    (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
+fi
+```
+
+そして、以下の内容の`/supervisor_opts`ファイルを作成します。これはOpenShiftのスーパバイザに対してホットリロード機能に関してSailsの`.tmp`ディレクトリを無視するように伝えます。([ソース](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
+
+```
+-i .tmp
+```
+
+これで`git add . && git commit -a -m "your message" && git push`を行ってOpenShiftにデプロイ出来ます。
+
 ##### DigitalOceanを使う
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
@@ -38,6 +59,7 @@ appフォルダの中の`config/local.js`を開きここに以下の行を加え
 
 ##### Herokuにデプロイする
 
++ [Sails.js and Heroku](http://pburtchaell.com/2015/sails/)
 + [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
@@ -53,7 +75,7 @@ appフォルダの中の`config/local.js`を開きここに以下の行を加え
 
 ##### PM2を使う
 
-+ http://devo.ps/blog/2013/06/26/goodbye-node-forever-hello-pm2.html
++ http://devo.ps/blog/goodbye-node-forever-hello-pm2/
 
 
 ##### CloudControlにデプロイする
