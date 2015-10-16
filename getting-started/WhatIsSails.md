@@ -15,40 +15,27 @@ Sailsは他のMVCWebフレームワークと同様の目的を、多くの同様
 
 > **歴史**
 >
-> Sailsがこういうコンセプトを発明したのではありません。もう[ずっと前からあった](https://en.wikipedia.org/wiki/Convention_over_configuration)のです。設定より慣習(CoCとも言います)という言葉がRuby on Railsで有名になりましたがそれより前にも、（90年代後半や2000年代初頭の伝統的なJavaWebフレームワークで一般的に見られた、恐ろしく冗長なXML設定に対する自然な反発として）JavaBeansのコアテナントのスペックその他で多く使われていたのです。
+> Sailsがこういうコンセプトを発明したのではありません。もう[ずっと前からあった](https://en.wikipedia.org/wiki/Convention_over_configuration)のです。設定より慣習(CoCとも言います)という言葉がRuby on Railsで有名になりましたがそれより前にも、（90年代後半や2000年代初頭の伝統的なJavaWebフレームワークで一般的に見られた、恐ろしく冗長なXML設定に対する自然な反発として）JavaBeansのスペックにおいてコアとなる主義をはじめ、その他で多く使われていたのです。
 
 
 ## ゆるい結合
 
-> TODO: explain why pushing towards an open standard for programming apps is important.
->
-> TODO: more specifically, give some background why small, loosely coupled modules are good.
->
-> TODO: explain how Sails core is a set of standalone, loosely coupled components (link to MODULES.md).
->
-> TODO: discuss how a Sails app is a set of standalone, loosely coupled components:
->  + how each model, or controller, etc. is a node module.
->  + how policies are designed to be general-purpose and shared between apps and/or developers.
->  + how Sails strives to make adapter development as easy as possible, even for non-database integrations.
->
-> TODO: explain how Sails is designed for any part to be rip-outable, overridden, or extended (hooks, generators, adapters)
->
-> TODO: Explain how Sails can be used without any boilerplate files, just like Express, to fit an imperative programming style, or plug in as part of your existing Node / Node+Express app.
+包括的で万能な道具を使うことを強制する開発アプローチの時代は終わりました。ツールは我々の要求に応じて選ばれて使うことができなければいけません。実際、これは単に簡単に物を作れるようにするということなのです。Sailsのアプローチはアプリケーションのコンポーネントを自由に追加したり取り除いたり出来るようにゆるく結合させるものです。
+
+コアとなるNodeは“can do”カルチャーのもとに作られており、実験をして物事を動かす事を望んでいます。Sailsはこの態度を受け入れ、あなたの周りで役に立つ道具を作るように努力しています。あなたがSailsに求める自動化の魔法がどれくらいかはあなたのNodeの経験や、プロジェクトにどれくらいの時間を掛けられるかに強く結びついているでしょう。Sailsは柔軟なので時間があるときには探索し、想像できる一方で時間がない時には自動化を提供します。
+
+
+Sailsなんてことはないrequireを利用することで緩い結合を実現しています。魔法はありませんが、全体の一部となるコンポーネントを作る時以外に、全体が動くためにはコンポーネントが存在ししている必要はないのです。例えば、コントローラ、モデル、設定のファイルは単にNodeモジュールです。Sails同様の慣習を使っています。SailsはコントローラフォルダにあるUserController.jsこそがユーザーコントローラであると推測して使います。別の例はpoliciesです。ポリシーはコントローラ特定のコントローラアクションで実行されるちょっとしたコードを持つことが出来ます。ここでクールなのはポリシーをコントローラやアクションと紐付ける設定は別々に分かれているのです。これで全く別のポリシーを書くことが出来、それらはSailsアプリケーション間で完全に持ち運び可能なのです。どのコントローラやアクションと紐付けるかはあとから決めることが出来るのです。
+
+Sailsのコアは２０個異なるフックから構成されています:サーバランタイムを変更したり、ミドルウエアを追加したり、ルートリスナーをバインドしたり、さもなければフレームワークに追加機能を足したりです。これによりSailsでは全てのコンポーネントや設定パラメータををオーバライドしたり無効化することが出来ます。これらのフックはSailsがスタートした時にランタイムで読み込まれます。更にあなたは一時的な設定をすることすら出来ます。実はこれがフックとサービスの大きな違いの一つなのです。
+
+緩い結合の他のは設定ファイルです。あなたのプロジェクトで何らかの設定が必要ですか。問題ありません。configフォルダーに一般的なmodule.exportsパターンを使うファイルを作成すれはそのモジュールの中の全てがSailsのグローバルオブジェクトからアクセス可能になるのです。
+
+Sailsのほとんどすべてのコンポーネントは省略したり、上書きしたり、拡張したり出来ます。例えばSailsにはblueprintと言われるツールの集合があります。これらのblueprintはプロジェクトにおいてCRUD操作に関係するルートを立ち上げ、動作させるのをとても簡単にします。しかし、read、update、deleteの動作は使いたいものの、createアクションは少し思いやりのある動作が必要だと想定してみましょう。問題ありません、単にcreateアクションを作るだけでその他のCRUD動作はそのまま動き続けます。あなたのカスタムのアクションはblueprintアクションを代替します。これはとても単純です。
 
 > Links:
 > + [Unix philosophy](http://blog.izs.me/post/48281998870/unix-philosophy-and-node-js)
 > + [Node culture](https://blog.nodejitsu.com/the-nodejs-philosophy/)
-
-
-## 現実主義
-
-> TODO: set the stage- the purpose of any practical web framework should be to solve real-world use cases.  Node, being built on JavaScript, is the most intensely pragmatic thing to hit the scene since the introduction of Java.  It [will replace Java](http://readwrite.com/2013/08/09/why-javascript-will-become-the-dominant-programming-language-of-the-enterprise) [in the enterprise](http://blog.appfog.com/node-js-is-taking-over-the-enterprise-whether-you-like-it-or-not/).
-
-> TODO: explain where this fits into the Node.js ecosystem, and pay homage to the PHP community (pragmatism is the best thing PHP has going for it)
-
-> TODO: provide some examples of choices we've made w/ Sails that lean away from strict adherance and towards pragmatism (e.g. globals, services, symlinking dependencies on sails new, etc.)
-
-> TODO: explain how it's important to allow for elegant harmony to be restored (ability to disable globals, running a sails app as a standard node module with `npm start`, running sails from a single file)
 
 
 
@@ -122,8 +109,6 @@ Reducing the amount of time and energy you spend on your app's server code allow
 
 -->
 
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/what_is_sails)
 
 
-<docmeta name="uniqueID" value="WhatIsSails126387">
 <docmeta name="displayName" value="What Is Sails">
