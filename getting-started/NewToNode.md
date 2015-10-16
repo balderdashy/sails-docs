@@ -127,7 +127,6 @@ Node.jsはports systemを通じてインストール可能です。
 
 FreeBSDでのデフォルトにはNode Package Managerがインストールされませんが開発と依存のインストールには必要です。
 
-
     /usr/ports/www/npm
 
 clangを使っているFreeBSD 10ではnode-gypを使っているビルドスクリプトでコンフリクトが起こります(gccと示しています)が、環境変数を設定することで回避できます。
