@@ -2,7 +2,7 @@
 
 モデルは構造化されたデータの集合を表し、通常はデータベースの中のひとつのテーブルまたはコレクションを含みます。モデルは通常`api/models/`フォルダの中にファイルを作成することで定義します。
 
-!```javascript
+```javascript
 // Parrot.js
 // The set of parrots registered in our app.
 module.exports = {

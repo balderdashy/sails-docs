@@ -45,4 +45,3 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 
 <docmeta name="uniqueID" value="Scaling291270">
 <docmeta name="displayName" value="Scaling">
-

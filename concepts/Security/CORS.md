@@ -74,4 +74,3 @@ module.exports.cors = {
 
 <docmeta name="uniqueID" value="cors198259">
 <docmeta name="displayName" value="CORS">
-

@@ -87,4 +87,3 @@ $.post('/checkout', {
 
 <docmeta name="uniqueID" value="CSRF300312">
 <docmeta name="displayName" value="CSRF">
-

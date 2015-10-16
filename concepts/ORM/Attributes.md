@@ -3,10 +3,10 @@
 
 モデルアトリビュートはモデルにおける基本的な情報です。例えば`Person`と名付けられたモデルでは`firstName`, `lastName`, `phoneNumber`, `age`, `birthDate`や`emailAddress`のようなアトリビュートがあります。
 <!---
-> TODO: address sql vs. no sql and stuff like:
-> """
-> In most cases, this data is _homogenous_, meaning each record has the same attributes,
-> """
+TODO: address sql vs. no sql and stuff like:
+"""
+In most cases, this data is _homogenous_, meaning each record has the same attributes,
+"""
 -->
 
 ### アトリビュート・オプション

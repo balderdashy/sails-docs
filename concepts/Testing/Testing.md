@@ -117,8 +117,7 @@ mochaを使ってテストを行うためには`mocha`をマンドラインで�
 
 #### テストの実行に`npm test`を利用する
 
-上記のようなmochaコマンドを避け、（特にbootstrap.test.jsをコールする際に）`npm test`を代わりに使う際にはpackage.jsonを変更しなければなりません。
-スクリプトオブジェクトで以下のように`mocha test/bootstrap.test.js test/unit/**/*.test.js`を値とする`test`キーを追加します。:
+上記のようなmochaコマンドを避け、（特にbootstrap.test.jsをコールする際に）`npm test`を代わりに使う際にはpackage.jsonを変更しなければなりません。スクリプトオブジェクトで以下のように`mocha test/bootstrap.test.js test/unit/**/*.test.js`を値とする`test`キーを追加します。:
 
 ```js
  // package.json
@@ -130,7 +129,6 @@ mochaを使ってテストを行うためには`mocha`をマンドラインで�
  // More config
 ```
 `*`は`unit`フォルダにある全ての`.test.js`で終わるファイルをマッチさせるためのワイルドカードですのでもし`*.spec.js`のほうが使いやすければそのように変更することも出来ます。同様に１つではなく複数の`*`を使うことでワイルドカードを利用することも可能です。
-
 
 
 <docmeta name="displayName" value="Testing">
