@@ -6,21 +6,6 @@ Here is a non-comprehensive list of Sails.js hosting providers.
 
 + http://blog.modulus.io/sails-js
 
-##### Deploying to NodeJitsu?
-To deploy to NodeJitsu, you'll need to make some minor modifications to your configuration:
-Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
-
-```
-    // Port this Sails application will live on
-	port: 80,
-	host: 'subdomain.jit.su',
-```
-
-The `host:` is new to the file and is not created by default.  You will need to add this.  Nodejitsu will ask you for the `subdomain` when you run `jitsu deploy`
-
-+ https://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
-+ https://github.com/balderdashy/sails/issues/455
-
 ##### Deploying to OpenShift?
 To deploy to OpenShift, you'll need to make some minor modifications to your configuration:
 Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
