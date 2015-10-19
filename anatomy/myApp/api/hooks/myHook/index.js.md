@@ -1,7 +1,7 @@
 # myApp/api/hooks/myHook/index.js
-### Purpose
+### 目的
 
-This is an example of a [project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html), which adds functionality to Sails for `myApp`.  See the [hooks](http://sailsjs.org/documentation/concepts/extending-sails/Hooks) concepts section for more details.
+これは[プロジェクトフック](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html)の例であり、`myApp`のSailsアプリケーションに機能を加えるものです。詳しくは[フック](http://sailsjs.org/documentation/concepts/extending-sails/Hooks)のコンセプトのの項目をご覧ください。
 
 ```js
 

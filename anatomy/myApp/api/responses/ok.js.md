@@ -1,13 +1,13 @@
 # myApp/api/responses/ok.js
-### Purpose
+### 目的
 
-This is one of the default Server Responses included in a new Sails project.
+これはSailsの新規プロジェクトに標準で含まれているサーバレスポンスの一つです。
 
-It contains the logic for what should happen when you wish to issue an http 200 response. It can be issued from anywhere you have access to the express `res` object by calling res.ok.
+ここにはhttpの200レスポンスを出すべき時のロジックが含まれています。これはexpressの`res`オブジェクトへアクセスできるところならどこからでもres.okをコールすることで呼び出せます。
 
-Feel free to edit this file to suit your needs.  You can also create a custom response using our `sails-generate-custom-response` generator.
+ニーズに応じてこのファイルを自由に書き換えてください。また、ジェネレータの`sails-generate-custom-response`でカスタムレスポンスを作れます。
 
-See the Response section of Reference Documentation for more info.
+さらなる情報はリファレンスドキュメンテーションのレスポンスの項目をご覧ください。
 
 <docmeta name="uniqueID" value="okjs629833">
 <docmeta name="displayName" value="ok.js">

@@ -1,6 +1,6 @@
 # myApp/assets/js/dependencies
-### Purpose
-This directory allows grunt to load javascript files in index.ejs before the rest of the javascript files in the js directory.
+### 目的
+このディレクトリは残りのjsファイルが読み込まれる前にgruntがindex.ejsにjavascriptファイルを読みこませるためのものです。
 
     js/
     | main.js
@@ -8,7 +8,7 @@ This directory allows grunt to load javascript files in index.ejs before the res
     | dependencies/
     | | sails.io.js
 
-This setup will create
+この状態では以下のようにセットアップされます。
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>

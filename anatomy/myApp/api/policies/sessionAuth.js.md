@@ -1,5 +1,5 @@
 # myApp/api/policies/sessionAuth.js
-### Purpose
+### 目的
 This is an example policy file against which all routes are checked before allowing a client access to any part of your app.  By default, it allows everyone to access everything but this can (and probably should) be changed before you switch into production mode.     
 
 In Sails, a policy is simply express middleware that does something to authenticate users before they are allowed to access some part of your app.  For more information on creating policies, you'll probably want to check our guide on it.

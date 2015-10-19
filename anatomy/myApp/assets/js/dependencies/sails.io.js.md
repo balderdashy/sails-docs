@@ -1,9 +1,9 @@
 # myApp/assets/js/dependencies/sails.io.js
-### Purpose
+### 目的
 
-This file adds a few custom methods to socket.io which provide the "built-in" websockets functionality for Sails.
+このファイルはSailsに内蔵のwebsockets機能であるsocket.ioに幾つかの機能を追加するものです。
 
-Specifically, those methods allow you to send and receive Socket.IO messages to & from Sails by simulating a REST client interface on top of Socket.IO. It models it's API after the $.ajax pattern from jQuery which you might be familiar with.
+厳密に言うと、これらのメソッドはSocket.IOのうえでRESTクライアントインタフェースをシミュレーションすることでSailsとSocket.IOメッセージを送受信できるようにするものです。これはjQueryでお馴染みの$.ajaxパターンのAPIをモデルにしたものです
 
 
 <docmeta name="uniqueID" value="sailsiojs779166">

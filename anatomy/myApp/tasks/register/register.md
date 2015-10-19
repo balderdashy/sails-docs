@@ -1,8 +1,8 @@
 # register
-### Purpose
-Halp!  Make this document better!!
+### 目的
+助けてください。情報が必要です。このファイルの改善にご協力ください。
 
-To run a custom task list, create a file in this directory and set NODE_ENV to match this file name.  For example, if NODE_ENV is QA, sails will run tasks/register/QA.js if it exists.
+カスタムのタスクリストを作成するにはこのディレクトリにファイルを作成し、ファイル名と一致するNODE_ENVを設定してくだい。例えば、NODE_ENVがQAなら、Sailsはtasks/register/QA.jsが存在すれば実行します。
 
 <docmeta name="uniqueID" value="registermd221221">
 <docmeta name="displayName" value="register">

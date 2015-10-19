@@ -1,5 +1,5 @@
 # myApp/api/responses
-### Purpose
+### 目的
 
 This folder holds the logic for issuing server responses to your clients.
 

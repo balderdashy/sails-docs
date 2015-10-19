@@ -1,9 +1,9 @@
 # myApp/.sailsrc
-### Purpose
+### 目的
 
-This file is useful for setting configuration for ALL Sails apps on a computer.  You can also use it to extend the functionality of the Sails CLI tool.
+このファイルはコンピュータにある全てのSailsアプリケーションを設定するのに便利です。SailsのCLIツールを拡張するのにも使えます。
 
-[Reference docs for .sailsrc](http://sailsjs.org/documentation/reference/Configuration/Configuration.html)
+[.sailsrcのドキュメントお読みください](http://sailsjs.org/documentation/reference/Configuration/Configuration.html)
 
 
 <docmeta name="uniqueID" value="sailsrc6419">

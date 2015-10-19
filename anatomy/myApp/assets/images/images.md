@@ -1,9 +1,9 @@
 # myApp/assets/images
-### Purpose
+### 目的
 
-This is where you should put image files that need to be statically hosted by your app.  
-
-Upon lifting your app, an image called `omgCat.jpg` could be found at `http://localhost:1337/images/omgCat.jpg`
+このフォルダはアプリケーションの中で静的にホストされたいイメージファイルの置き場所です。
+  
+アプリケーションをliftするにあたって`omgCat.jpg`と呼ばれるファイルは`http://localhost:1337/images/omgCat.jpg`でアクセス可能です。
 
 
 <docmeta name="uniqueID" value="imagesmd510380">

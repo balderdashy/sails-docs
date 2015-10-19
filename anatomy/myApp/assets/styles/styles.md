@@ -1,6 +1,6 @@
 # myApp/assets/styles
-### Purpose
-This is where you will put all of the .css files that you would like to be statically hosted by your app. 
+### 目的
+このフォルダはアプリケーションから静的に提供したいクライアントサイドの.cssを保管するところです。
 
 <docmeta name="uniqueID" value="stylesmd285346">
 <docmeta name="displayName" value="styles">

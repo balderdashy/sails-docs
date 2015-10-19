@@ -1,7 +1,7 @@
 # myApp/README
-### Purpose
+### 目的
 
-This is a generic README that you can edit to describe your app.
+これはあなたのアプリケーションに関して記述するために編集できる一般的なREADMEです。
 
 <docmeta name="uniqueID" value="READMEmd869459">
 <docmeta name="displayName" value="README">
@@ -9,6 +9,6 @@ This is a generic README that you can edit to describe your app.
 ```
 # myApp
 
-a [Sails](http://sailsjs.org) application
+[Sails](http://sailsjs.org)で作られたアプリケーションです。
 
 ```

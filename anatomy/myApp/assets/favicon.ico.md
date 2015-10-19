@@ -1,8 +1,8 @@
 # myApp/assets/favicon.ico
-### Purpose
-This file is the [Favicon](http://en.wikipedia.org/wiki/Favicon) for your app.  
+### 目的
+このファイルはアプリケーションの[Favicon](http://en.wikipedia.org/wiki/Favicon)です。
 
-### More Info
+### さらなる情報
 
 <docmeta name="uniqueID" value="favicon738321">
 <docmeta name="displayName" value="favicon.ico">
