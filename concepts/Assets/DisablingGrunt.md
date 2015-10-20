@@ -19,3 +19,15 @@ If you still want to use Grunt for other purposes, but don't want any of the def
 
 <docmeta name="uniqueID" value="DisablingGrunt970874">
 <docmeta name="displayName" value="Disabling Grunt">
+
+### NOTE:
+
+When removing the grunt hook above you must also specify the following in `.sailsrc` in order for your assets to be served, otherwise all assets will return a `404`.
+
+```json
+{
+    "paths": {
+    	"public": "assets"
+    }
+}
+```
