@@ -5,6 +5,7 @@
 Sailsではアダプタはアプリケーションとデータベースの間にいます。別の言い方をするとそれらはSailsがデータベースとやり取りする[ORM](http://en.wikipedia.org/wiki/Object-relational_mapping)である[Waterline](https://github.com/balderdashy/waterline)のプラグインなのです。
 
 このファイルはモデルの中で別々のグローバルな「保存設定」が混ざったものを設定し、それらをモデルの中でマッチングできます。[`sails.models.connection`](http://sailsjs.org/documentation/anatomy/myApp/config/models.js.html) はモデルで[明確な指定](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=connection)が無いときにどのコネクションが利用されるかを表します。
+
 <docmeta name="uniqueID" value="connectionsjs160878">
 <docmeta name="displayName" value="connections.js">
 

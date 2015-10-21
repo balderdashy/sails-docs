@@ -8,6 +8,7 @@
 
 さらにURLの一部をリクエストパラメータとして扱うようなルートも指定出来ます。例えば`http://localhost:1337/ponies/PinkiePie`は'id'が'PinkiePie'のリソースにアクセスします。
 
+
 <docmeta name="uniqueID" value="routesjs120276">
 <docmeta name="displayName" value="routes.js">
 
