@@ -1,17 +1,17 @@
 # myApp/config/sockets.js
-### Purpose
-This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO. 
+### 目的
+このファイルでアプリケーションがSocket.IOでクライアントと通信をする方法をカスタマイズ出来ます。
 
-It provides transparent access to Sails' encapsulated pubsub/socket server for complete customizability. In it you can do things on the list below (and more!).
+これはSailsのカプセル化されたpubsub・ソケットサーバへの透過的アクセスを出来、これによって完全なカスタマイズ性を確保します。この中では以下のこと（ともっと多くのこと）が出来ます。
 
-- Override afterDisconnect function (server side)
-- Define custom authorization logic for client socket connections
-- Set transport method
-- Change Heartbeat Interval
-- Change socket store
+- afterDisconnectファンクションをオーバーライドする(サーバ側)
+- クライアントからのソケット接続用いる認証方法を定義する
+- 転送方法をセットする
+- Heartbeat Intervalを変更する
+- ソケットストアを変更する
 
 ### More Info
-> Socket.IO configuration options can be found [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
+> Socket.IO設定のオプションは[here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO)で見ることが出来ます。
 
 
 <docmeta name="uniqueID" value="socketsjs106184">

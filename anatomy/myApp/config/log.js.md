@@ -1,11 +1,11 @@
 # myApp/config/log.js
-### Purpose
+### 目的
 
-This file contains the logger configuration for your Sails app. 
+このファイルにはSailsアプリケーションおけるロガーの設定が入っています。
 
-Configure the log level for your app, as well as the transport. 
+アプリケーションのログレベルと透過性が設定されます。
 
-Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages.
+舞台裏では、SailsはロギングにWinstonを利用していますので、ログメッセージの透過性とアダプタををカスタムできる素晴らしい機能を持っています。
 
 
 <docmeta name="uniqueID" value="logjs173177">

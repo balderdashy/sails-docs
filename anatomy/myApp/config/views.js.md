@@ -1,6 +1,6 @@
 # myApp/config/views.js
-### Purpose
-This file is where Sails looks to find out which templating engine to use when rendering server side HTML templates.  By default Sails uses ejs but it supports all view engines which implement TJ Holowaychuk's `consolidate.js`, including, but not limited to:
+### 目的
+このファイルはSailsがサーバサイドテンプレートをレンダリングするのにどのテンプレートエンジンを利用するのかを判断するためのファイルです。デフォルトではSailsはejsを利用しますが、以下のものを含む（ただし、それだけは限らない）TJ Holowaychukの`consolidate.js`を実装する全てのエンジンをサポートしています。:
 
 - ejs
 - jade

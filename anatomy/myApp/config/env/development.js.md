@@ -1,6 +1,6 @@
 # myApp/config/env/development.js
-### Purpose
-This file will be loaded when Sails is running in `development` mode. Sails runs in `development` mode by default if no other environment is specified.
+### 目的
+このファイルはSailsが`development`モードで実行されるときにロードされます。Sailsは特に指定のない限り`development`モードで実行されます。
 
 <docmeta name="uniqueID" value="developmentjs874591">
 <docmeta name="displayName" value="development.js">

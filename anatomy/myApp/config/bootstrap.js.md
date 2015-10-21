@@ -1,8 +1,8 @@
 # myApp/config/bootstrap.js
-### Purpose
-This is a server-side javascript file that is executed by Sails just before your app is lifted.
+### 目的
+このファイルはアプリケーションが起動する直前に実行されるサーバサイドjavascriptファイルです。
 
-This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
+ここでデータモデルをセットアップしたり、何かのジョブを実行したり、特別なロジックを実行することが出来ます。
 
 
 <docmeta name="uniqueID" value="bootstrapjs878964">
