@@ -74,7 +74,26 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
+Depending on the adapter in use, it's also possible to use unix sockets, without port and host. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
+
+```javascript
+// in config/local.js
+// ...
+connections:{
+  local_mysql:{ //arbitrary name
+    module: 'sails-mysql',
+    user: 'root',
+    password: 'root',
+    database: 'sailstest1',
+    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+  }
+}
+// ...
+```
+
+
 The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
+Often it is also useful override the connections object in [`config/local.js`](http://sailsjs.org/documentation/concepts/configuration/the-local-js-file)
 
 
 ### Analogy
