@@ -34,7 +34,7 @@ $http.delete('/store/16/employeesOfTheMonth/7')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
@@ -65,13 +65,13 @@ Should return store #16, the primary record:
 
 ### Notes
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/#/documentation/reference/blueprint-api/Update.html).
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
 > + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
+>   $ sails generate api store
 >   $ sails generate api employee
 >   ```
 >

@@ -10,7 +10,7 @@ Feel free to change this as you see fit.  Its also a great place to include java
 <docmeta name="uniqueID" value="layoutejs708856">
 <docmeta name="displayName" value="layout.ejs">
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>

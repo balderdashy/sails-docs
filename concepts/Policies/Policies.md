@@ -5,7 +5,7 @@ Sailsにおける「ポリシー」は認証とアクセスコントロールを
 
 ポリシーはどんなものでも利用することが出来ます。つまりHTTP BasicAuthでも、サードパーティーのシングルサインオンでも、OAuth2.0でも、あるいはあなたが書いたオリジナルの認証・認可スキーマとでも利用することが出来ます。
 
-> 備考：ポリシーはコントローラーアクションに対して**のみ**提供され、ビューには適用されません。もしも[routes.js config file](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.routes.html) でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。
+> 備考：ポリシーはコントローラーアクションに対して**のみ**提供され、ビューには適用されません。もしも[routes.js config file](http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html) でビューを直接指定指定した場合ポリシーは一切適用されません。ポリシーが確実に適用されるようにするにはビューを表示するコントローラを作成し、ルートからはそのコントローラを呼び出すようにしてください。
 
 
 ### 初めてのポリシーを書く
@@ -21,7 +21,7 @@ Sailsにおける「ポリシー」は認証とアクセスコントロールを
 module.exports = function canWrite (req, res, next) {
   var targetFolderId = req.param('id');
   var userId = req.session.user.id;
-  
+
   Permission
   .findOneByFolderId( targetFolderId )
   .exec( function foundPermission (err, permission) {
@@ -31,7 +31,7 @@ module.exports = function canWrite (req, res, next) {
 
     // No permission exists linking this user to this folder.  Maybe they got removed from it?  Maybe they never had permission in the first place?  Who cares?
     if ( ! permission ) return res.redirect('/notAllowed');
-    
+
     // OK, so a permission was found.  Let's be sure it's a "write".
     if ( permission.type !== 'write' ) return res.redirect('/notAllowed');
 
@@ -68,7 +68,7 @@ SailsではビルドインのACL(アクセスコントロールリスト）が `
 ```js
 {
   ProfileController: {
-    // Apply 'isLogged' in by default to all actions that are NOT specified below
+    // Apply 'isLoggedIn' by default to all actions that are NOT specified below
     '*': 'isLoggedIn',
     // If an action is explicitly listed, its policy list will override the default list.
     // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
@@ -105,18 +105,18 @@ SailsにはGlobalに割り当てたり、指定したコントローラやアク
 ##### コントローラにいくつかのポリシーを適用する:
 ```javascript
   // in config/policies.js
-  
+
   // ...
   RabbitController: {
 
     // Apply the `false` policy as the default for all of RabbitController's actions
     // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
     '*': false,
-  
-    // For the action `nurture`, apply the 'isRabbitMother' policy 
+
+    // For the action `nurture`, apply the 'isRabbitMother' policy
     // (this overrides `false` above)
     nurture : 'isRabbitMother',
-  
+
     // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
     // before letting any users feed our rabbits
     feed : ['isNiceToAnimals', 'hasRabbitFood']
@@ -128,10 +128,10 @@ SailsにはGlobalに割り当てたり、指定したコントローラやアク
 
 ```javascript
 module.exports = function isNiceToAnimals (req, res, next) {
-  
+
   // `req.session` contains a set of data specific to the user making this request.
   // It's kind of like our app's "memory" of the current user.
-  
+
   // If our user has a history of animal cruelty, not only will we 
   // prevent her from going even one step further (`return`), 
   // we'll go ahead and redirect her to PETA (`res.redirect`).
@@ -140,7 +140,7 @@ module.exports = function isNiceToAnimals (req, res, next) {
   }
 
   // If the user has been seen frowning at puppies, we have to assume that
-  // they might end up being mean to them, so we'll 
+  // they might end up being mean to them, so we'll
   if ( req.session.user.frownsAtPuppies ) {
     return res.redirect('http://www.dailypuppy.com/');
   }
@@ -158,14 +158,5 @@ module.exports = function isNiceToAnimals (req, res, next) {
 + 考えられるその他すべての認証スキーム
 
 
-### Passportを使っているんだけどどうすればいいですか。
-
-PassportはSailsとの組み合わせでも見事に動作します。一般的な話として、SailsはConnect/ExpressをコアにしていますのであらゆるConnect/Expressオリエンテッドなものはうまく動作します。実際にSaisはsocket.ioと一緒に動作するほとんどのExpressミドルウエアに関してプログラム解釈に関連するもんだおは起きていません。
-
-この辺りに関しては以下のものを始めとする良い利用例があります。 [Using Passport.JS with Sails.JS](http://jethrokuan.github.io/2013/12/19/Using-Passport-With-Sails-JS.html).
-
-
-
 <docmeta name="uniqueID" value="Policies766425">
 <docmeta name="displayName" value="Policies">
-

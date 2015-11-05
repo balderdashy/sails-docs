@@ -124,7 +124,18 @@ module.exports.blueprints = {
   // POST   /foos
   // PUT    /foos/:id?
   // DELETE /foos/:id?
-  pluralize: false
+  pluralize: false,
+  
+  
+  // Whether to send pub/sub socket (or 'comet') events to the client they originated from.
+  //
+  // If `mirror` is false, then the client making the requests (for example, to update a record)
+  // will not receive the associated resourceful pub/sub events (for example 'updated'). However,
+  // all other subscribed client's will receive the event.
+  //
+  // If `mirror` is true, the client making requests WILL receive the associated resourceful
+  // pub/sub events, along will all other subscribed clients.
+  mirror: false
 
 };
 

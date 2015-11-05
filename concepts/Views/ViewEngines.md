@@ -4,9 +4,9 @@ Sailsのデフォルトのビューエンジンは[EJS](https://github.com/visio
 
 ##### ビューエンジンを取り替える
 
-別のビューエンジン使うにはnpmを使ってインストールし、`sails.config.views.engine`([`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)にあります。)を設定する必要があります。
+別のビューエンジン使うにはnpmを使ってインストールし、`sails.config.views.engine`([`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html)にあります。)を設定する必要があります。
 
-例えばjadeに切り替えるには`npm install jade --save-dev`を実行し、[`config/views.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/views.js.html)に`engine: 'jade'`を設定します。
+例えばjadeに切り替えるには`npm install jade --save-dev`を実行し、[`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html)に`engine: 'jade'`を設定します。
 
 
 
@@ -17,13 +17,13 @@ Sailsのデフォルトのビューエンジンは[EJS](https://github.com/visio
   - [eco](https://github.com/sstephenson/eco)
   - [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
   - [ejs](https://github.com/visionmedia/ejs) (.ejs)
-  - [haml](https://github.com/visionmedia/haml.js) [(website)](http://haml-lang.com/)
-  - [haml-coffee](https://github.com/9elements/haml-coffee) [(website)](http://haml-lang.com/)
+  - [haml](https://github.com/visionmedia/haml.js) [(website)](http://haml.info/)
+  - [haml-coffee](https://github.com/9elements/haml-coffee) [(website)](http://haml.info/)
   - [handlebars](https://github.com/wycats/handlebars.js/) [(website)](http://handlebarsjs.com/) (.hbs)
   - [hogan](https://github.com/twitter/hogan.js) [(website)](http://twitter.github.com/hogan.js/)
   - [jade](https://github.com/visionmedia/jade) [(website)](http://jade-lang.com/) (.jade)
   - [jazz](https://github.com/shinetech/jazz)
-  - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](http://api.jquery.com/category/plugins/templates/)
+  - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](https://github.com/kof/jqtpl)
   - [JUST](https://github.com/baryshev/just)
   - [liquor](https://github.com/chjj/liquor)
   - [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
@@ -46,4 +46,3 @@ Sailsのデフォルトのビューエンジンは[EJS](https://github.com/visio
 
 <docmeta name="uniqueID" value="ViewEngines339501">
 <docmeta name="displayName" value="View Engines">
-

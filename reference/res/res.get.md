@@ -15,7 +15,7 @@ res.get('Content-Type');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+Response headers can be changed up until the response is sent - see [`res.set()`](/#/documentation/reference/res/res.set.html).
+>+Response headers can be changed up until the response is sent - see [`res.set()`](http://sailsjs.org/documentation/reference/res/res.set.html).
 
 
 
@@ -31,4 +31,3 @@ res.get('Content-Type');
 
 <docmeta name="uniqueID" value="resget697790">
 <docmeta name="displayName" value="res.get()">
-

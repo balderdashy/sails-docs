@@ -9,7 +9,7 @@ If you're used to putting all your HTML in a single file, this might look funny.
 <docmeta name="uniqueID" value="homepageejs785450">
 <docmeta name="displayName" value="homepage.ejs">
 
-```
+```html
 <!-- Default home page -->
 <link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
 <style>
@@ -67,8 +67,8 @@ setTimeout(function sunrise () {
             <ul class="link-list">
 
                 <h4>Docs</h4>
-                <a target="_blank" href="http://sailsjs.org/#!documentation/anatomy"><li>App Structure</li></a>
-                <a target="_blank" href="http://sailsjs.org/#!documentation/reference"><li>Reference</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/anatomy"><li>App Structure</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/reference"><li>Reference</li></a>
                 <a target="_blank" href="http://links.sailsjs.org/docs/faq"><li>FAQ</li></a>
                 <a target="_blank" href="http://sailsjs.org"><li>Supported Databases</li></a>
 

@@ -2,12 +2,13 @@
 
 ### 概要
 
-Sailsにバンドルされているアセットパイプラインはあなたのプロジェクトをより矛盾がなくより生産的に設計するために一般的なデフォルトを使って実装されたGruntタスクのセットになっています。フロントエンドのアセットワークフローはすべてデフォルトのタスクの枠にとらわれずにカスタマイズすることが出来ます。Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](/#/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
+Sailsにバンドルされているアセットパイプラインはあなたのプロジェクトをより矛盾がなくより生産的に設計するために一般的なデフォルトを使って実装されたGruntタスクのセットになっています。フロントエンドのアセットワークフローはすべてデフォルトのタスクの枠にとらわれずにカスタマイズすることが出来ます。Sailsはあなたのニーズに合わせて簡単に[新しいタスクを作る](http://sailsjs.org/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) ことが出来ます。
+<!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
 
 例えば以下の様な機能がSailsのデフォルトのGrunt設定として使うことが出来ます。:
 - LESSの自動コンパイル
 - JITの自動コンパイル
-- Coffescriptの自動コンパイル
+- Coffeescriptの自動コンパイル
 - その他のアセットの自動注入、最小化、連結
 - Web上へアップするためのファイルの作成
 - ファイスの監視や同期化
@@ -25,7 +26,7 @@ Sailsにバンドルされているアセットパイプラインはあなたの
 
 ##### coffee
 
-> `assest/js/`にあるcoffeeScriptファイルをJavascriptにコンパイルし`.tmp/public/js/`に移動します。
+> `assets/js/`にあるcoffeeScriptファイルをJavascriptにコンパイルし`.tmp/public/js/`に移動します。
 
 > [使い方](https://github.com/gruntjs/grunt-contrib-coffee)
 
@@ -38,7 +39,7 @@ Sailsにバンドルされているアセットパイプラインはあなたの
 ##### copy
 
 > **dev task 設定の時**
-> coffescriptとlessファイル以外のすべてのファイルとディレクトリーをSailsのアセットフォルダーから`.tmp/public/`ディレクトリにコピします。
+> coffeescriptとlessファイル以外のすべてのファイルとディレクトリーをSailsのアセットフォルダーから`.tmp/public/`ディレクトリにコピします。
 
 > **build task 設定の時**
 > 全てのファイルとディレクトリを`.tmp/public`ディレクトリからwwwディレクトリにコピーします。
@@ -89,4 +90,3 @@ Javascriptのタグには`<script>`を、CSSファイルには`<link>`を自動�
 
 <docmeta name="uniqueID" value="DefaultTasks764297">
 <docmeta name="displayName" value="Default Tasks">
-

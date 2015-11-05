@@ -1,9 +1,10 @@
 # HTTP Strict Transport Security
 
+HTTP Strict Transport Security(STS)は `HTTP`の代わりに`HTTPS`を利用させることを強制するオプショナルなセキュリティ強化策です。
 
 ### STSを有効化する
 
-実はSTSを実装するにはとてもシンプルで[数行のコードを書くだけで](https://github.com/krakenjs/lusca/blob/master/lib/hsts.js)できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの`config/http.js`の中で[カスタムのミドルウエアとして設定](http://beta.sailsjs.org/#/documentation/concepts/Middleware)してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。
+実はSTSを実装するにはとてもシンプルで[数行のコードを書くだけで](https://github.com/krakenjs/lusca/blob/master/lib/hsts.js)できます。しかし、更に良いことにSailsとExpressでこの機能を実現できる幾つかのオープンソースモジュールがあります。これらのモジュールを使うには以下の手順に従ってnpmからインストールしてアプリケーションの`config/http.js`の中で[カスタムのミドルウエアとして設定](http://sailsjs.org/documentation/concepts/Middleware)してください。以下の例で簡単な使い方があります。詳しい説明や応用的な使い方は下記にあるリンクを参照してください。
 
 
 ##### [lusca](https://github.com/krakenjs/lusca#luscahstsoptions)を使う

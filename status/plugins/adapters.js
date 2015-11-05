@@ -85,10 +85,18 @@ module.exports = {
 		repo: 'https://github.com/ktkaushik/sails-mongoose',
 		status: 'unknown'
 	},
-  'sails-mssql': {
-    repo: 'https://github.com/jaredfromsubway/sails-mssql',
-    status: 'unknown'
-  },
+	'sails-mssql': {
+		repo: 'https://github.com/jaredfromsubway/sails-mssql',
+		status: 'unknown'
+	},
+	'sails-orientdb': {
+		repo: 'https://github.com/appscot/sails-orientdb',
+		status: 'edge'
+	},
+	'sails-filemaker': {
+		repo: 'https://github.com/geistinteractive/sails-filemaker',
+		status: 'edge'
+	}
 
 
 
@@ -133,6 +141,15 @@ module.exports = {
 	'sails-parse': {
 		repo: 'https://github.com/murilopolese/sails-parse',
 		status: 'unknown'
+	},
+	
+	//
+	// Tumblr
+	//
+
+	'sails-tumblr': {
+		repo: 'https://github.com/Roberto14/sails-tumblr',
+		status: 'experimental'
 	},
 
 	// known to exist but missing from this list:

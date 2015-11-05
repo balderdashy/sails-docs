@@ -75,7 +75,8 @@ null [ { name: 'Mike',
 
 ```
 ### 備考
-> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)をご覧ください。
+
 
 > 片側のモデルだけにアソシエーションを設定したため、`Pet`がいくつの`User`に関連付けられるかの制約はありません。もしそれを行いたい場合は`Pet`を厳密に一人の`User`に関連付けたり`User`を厳密に一つの`Pet`に関連付けるようにアソシエーションを編集することができます。 
 

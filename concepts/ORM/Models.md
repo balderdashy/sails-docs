@@ -2,8 +2,36 @@
 
 モデルは構造化されたデータの集合を表し、通常はデータベースの中のひとつのテーブルまたはコレクションを含みます。モデルは通常`api/models/`フォルダの中にファイルを作成することで定義します。
 
-![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
+```javascript
+// Parrot.js
+// The set of parrots registered in our app.
+module.exports = {
+  attributes: {
+    // e.g., "Polly"
+    name: {
+      type: 'string'
+    },
 
+    // e.g., 3.26
+    wingspan: {
+      type: 'float',
+      required: true
+    },
+
+    // e.g., "cm"
+    wingspanUnits: {
+      type: 'string',
+      enum: ['cm', 'in', 'm', 'mm'],
+      defaultsTo: 'cm'
+    },
+
+    // e.g., [{...}, {...}, ...]
+    knownDialects: {
+      collection: 'Dialect'
+    }
+  }
+}
+```
 
 <!--
 
@@ -21,7 +49,9 @@ module.exports = {
 
 ### モデルを使う
 
-モデルはコントローラ、ポリシー、サービス、レスポンス、テスト及びカスタムモデルからアクセス可能です。モデルにはいくつものメソッドが自動で用意されておりそのうち最も大切なのは[find](http://beta.sailsjs.org/#/documentation/reference/waterline/models/find.html)、[create](http://beta.sailsjs.org/#/documentation/reference/waterline/models/create.html)、[update](http://beta.sailsjs.org/#/documentation/reference/waterline/models/update.html)、[destroy](http://beta.sailsjs.org/#/documentation/reference/waterline/models/destroy.html)です。これらのメソッドは[非同期](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)で処理されます。（裏側ではWaterlineがクエリーをデータベースに投げ、レスポンスを待ちます。）
+
+モデルはコントローラ、ポリシー、サービス、レスポンス、テスト及びカスタムモデルからアクセス可能です。モデルにはいくつものメソッドが自動で用意されておりそのうち最も大切なのは[find](http://sailsjs.org/documentation/reference/waterline/models/find.html)、[create](http://sailsjs.org/documentation/reference/waterline/models/create.html)、[update](http://sailsjs.org/documentation/reference/waterline/models/update.html)、[destroy](http://sailsjs.org/documentation/reference/waterline/models/destroy.html)です。これらのメソッドは[非同期](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)で処理されます。（裏側ではWaterlineがクエリーをデータベースに投げ、レスポンスを待ちます。）
+
 
 最終的にはクエリメソッドはクエリオブジェクトを返します。実際にクエリを実行するには`.exec(cb)`をこのクエリオブジェクト上でコールしなければなりません。（`cb`はクエリが完了後に呼び出されるコールバックです。）
 
@@ -151,10 +181,10 @@ another special type of class method.  It stands for 'Publish, Subscribe' and th
 ###### ビルトインのアトリビュートメソッド
 すべてのWaterlineモデルにはいくつかのアトリビュートメソッドが自動的に含まれています。例えば:
 
-+ [`.toJSON()`]()
-+ [`.save()`]()
-+ [`.destroy()`]()
-+ [`.validate()`]()
++ [`.toJSON()`](http://sailsjs.org/documentation/reference/waterline/records/toJSON.html)
++ [`.save()`](http://sailsjs.org/documentation/reference/waterline/records/save.html)
++ [`.destroy()`](http://sailsjs.org/documentation/reference/waterline/models/destroy.html)
++ [`.validate()`](http://sailsjs.org/documentation/reference/waterline/records/validate.html)
 
 
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->
