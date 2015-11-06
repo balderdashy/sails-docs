@@ -1,6 +1,6 @@
 # myApp/assets/js
-### Purpose
-This is where you put client-side javascript files that you want to be statically hosted by your app.  Sails puts a few in there for making communication via socket.io easier.
+### 目的
+このフォルダはアプリケーションから静的に提供したいクライアントサイドのjavascriptを保管するところです。Sailsではsocket.ioを通じた通信を簡単にするために幾つかのものを置いています。
 
 <docmeta name="uniqueID" value="jsmd574851">
 <docmeta name="displayName" value="js">

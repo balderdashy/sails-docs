@@ -1,9 +1,9 @@
 # myApp/assets/.tmp/public/
-### Purpose
+### 目的
 
-Sails stashes your public assets into this directory for it's live updating via grunt-watch
+Sailsはパブリックなアセットをgrunt-watchでライブアップデートする際にここに一時的に保管します。
 
-### More Info
+### さらなる情報
 
 <docmeta name="uniqueID" value="tmpPublic281919">
 <docmeta name="displayName" value="public">

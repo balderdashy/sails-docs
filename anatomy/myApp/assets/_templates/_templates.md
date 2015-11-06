@@ -1,24 +1,24 @@
 # myApp/assets/templates
-### Purpose - Client-side Templates
+### 目的 - クライアントサイドテンプレート
 
-HTML templates are important prerequisites of modern, rich client applications.
-To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-that you load these templates client-side.
+HTMLテンプレートはモダンなリッチクライアントアプリケーションにとっての必須の機能です。
+それらの魔法を使ってBackbone、Angular、Ember、Knockoutといったフレームワークを使うには
+それらのテンプレートクライアントサイドに読み込まなければいけません。
 
-By default, your Gruntfile is configured to automatically load and precompile
-client-side JST templates in your `assets/templates` folder, then
-include them here automatically (between TEMPLATES and TEMPLATES END).
+デフォルトでGruntfileファイルは`assets/templates`クライアントサイドのJSTテンプレートを
+自動的に読み込み、プレコンパイルし、その後
+自動的にここに（TEMPLATESとTEMPLATES ENDの間に）読み込みます。
 
     <!--TEMPLATES-->
         
     <!--TEMPLATES END-->
 
-To customize this behavior to fit your needs, just edit your Gruntfile.
-For example, here are a few things you could do:
+この振る舞いを必要に応じて変えるには単にGruntfileをご覧ください。
+例えば、以下が出来ることの一部です:
 
-- Import templates from other directories
-- Use a different template engine (handlebars, jade, dust, etc) 
-- Internationalize your client-side templates using a server-side stringfile before they're served.
+- 別のディレクトリからテンプレートを読み込む
+- 別のテンプレートエンジンを使う(handlebars、jade、dustなど)
+- サーバサイドのstringfileを使ってクライアントサイドコードを提供前に国際化する
 
 <docmeta name="uniqueID" value="templatesmd846667">
 <docmeta name="displayName" value="templates">

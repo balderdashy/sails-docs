@@ -1,37 +1,37 @@
-# Reporting Security Issues in Sails
+# Sailsのセキュリティー問題を報告する
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>.
+もしSailsやWaterlineその他のSailsコアチームによってメンテナンスされているモジュールに脆弱性があると思った場合は **critical at treeline dot io** <em>（一般的な話題を投稿しないでください。）</em>にメールで知らせてください。
 
-### What is a security vulnerability?
+### 脆弱性とは何ですか
 
-A security vulnerability is any major bug or unintended consequence that could compromise a Sails.js app in production.
+脆弱性とはproduction環境のSails.jsアプリケーションを征服できる重大なバグまたは予想外の挙動です。
 
-For example, an issue where Sails crashes in a development environment when using non-standard Grunt tasks is _not a security vulnerability_.  On the other hand, if it was possible to perform a trivial DoS attack on a Sails cluster running in a production environment and using documented best-practices (a la the [Express/Connect body parser issue](http://expressjs-book.com/index.html%3Fp=140.html)), that _is a security vulnerability_ and we want to know about it.
+非標準のGruntをdevelopment環境で利用している際にSailsがクラッシュするという問題は _脆弱性ではありません_ 。一方で、([Express/Connect body parser issue](http://expressjs-book.com/index.html%3Fp=140.html)にあるような)ベストプラクティスを実行したうえでproduction環境で動いているSailsクラスタに些細なDoS攻撃を仕掛けることの出来出来るような問題は _脆弱性であり_ 、我々が知りたがっていることです。
 
-> Note that this definition includes any such vulnerability that exists due to one of our dependencies.  In this case, an upgrade to a different version of the dependency is not always necessary: for example, when Express 3 deprecated multipart upload support in core, Sails.js dealt with the feature mismatch by implementing a wrapper around the `multiparty` module called [Skipper](https://github.com/balderdashy/skipper#history).
+> ここにおいての脆弱性の定義は依存によって存在する脆弱性を含みます。この場合、別のバージョンにアップグレードするのが常に必要であるとは限りません: 例えば、Express 3でマルチパートでのアップロードがコアのサポートから廃止された時に、Sailsのでは機能のミスマッチに関して[Skipper](https://github.com/balderdashy/skipper#history)と呼ばれる`multiparty`モジュールを実装することで対応しました。
 
-### What should be included in the email?
+### メールに何を書けばいいですか
 
-- Identify the module where you found the security vulnerability (e.g. Sails, Waterline, other core module).
-- A summary of the vulnerability
-- The code you used when you discovered the vulnerability or a code example of the vulnerability (whichever is shorter).
-- Whether you want us to make your involvement public.  If you want such a reference the name and link you wish to be referred (e.g. Jane Doe's link to her GitHub account)
+- どのモジュールで脆弱性を見つけたか(Sails、 Waterlineその他のモジュールなど)
+- 脆弱性の概要
+- 脆弱性を見つけた時に使ったコードか脆弱なコードの例（そのうち短い方）
+- あなたが関わったことを公開して欲しいかどうか。公開して欲しい場合、名前と参照先リンク(例:Jane Doeのリンクを彼女のGithubアカウントに)
  
-> Please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
+> コアチームのプライバシーを尊重し、このメールアドレスに対して質問や機能のリクエスト、ドキュメントされていない使い方によって生じたバグを送らないでください。
 
-### The process
-When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.  Our target patching timeframe for serious security vulnerabilities is 14 days - however, we cannot guarantee that this is possible in all cases (more on that below).
+### 手順
+脆弱性が報告された場合、プロジェクトメンバーの誰かが最大14日以内に応答します。多くの場合、報告を受けたことを認識してすみやかに対応を行う旨のお知らせです。対応に掛ける時間の目標は14日ですが、全てのケースでこれが実現できるということを保証しません。（詳細は下記をご覧ください）
 
-Based upon the nature of the vulnerability, and the amount of time it would take to fix, we'll either send out a patch that disables the broken feature, provide an estimate of the time it will take to fix, and/or document best practices to follow to avoid production issues.
+脆弱性の性質やそれを直すのにどれくらい時間がかかるかによって、機能を無効化するパッチを送るのか、修正にどれだけの期間がかかるのかの予測をお知らせするか、問題を避けるためのベストプラクティスをお知らせします。
 
-You can expect follow-up emails outlining the progression of a solution to the vulnerability along with any other questions we may have regarding your experience.
+我々はあなたに脆弱性対策の進捗状況の説明やあなたの直面した状況に関しての追加の質問を行うためにメールでフォローアップをお送りすることがあります。
 
-##### When a solution is achieved we do the following:
-- notify you
-- release a patch on the module's main repo
-- provide a link to the patch here along with an explanation of it's origin and crediting you (if you have chosen to be identified)
-- publicize the release via our various mailing lists.
+##### 解決策を実現したら我々は以下のことを行います:
+- あなたにお知らせします
+- モジュールのメインレポジトリにパッチをリリースします
+- （あなたが特定されることを希望する場合）あなたの名前を挙げてこのパッチのきっかけを説明したものをパッチへのリンクと合わせて公開します。
+- リリースを各種のメーリングリストで公開します
 
-### Is this an SLA?
+### これはSLAですか
 
-No. Like any open-source project, we're run by volunteers, and we can't legally guarantee any kind of service level agreement (see the MIT license for details).  However, the core team cares deeply about Sails, and all of us have at least a few different websites and APIs running on Sails in production.  We will always publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
+いいえ。多くのOSSプロジェクトと同じように我々はボランティアによって運営されていますので、いかなるSLAに関しても法的に責任を追うことは出来ません。（詳しくはMITライセンスをご覧ください。）しかし、コアチームはSailsの事を大切に思っていますし、みんなが少なくとも幾つかのSailsによってプロダクション環境で動いているAPIやWebサイトを持っています。我々は、深刻なセキュリティ問題に関して修正を行っていますが、これは良心からというわけではなく自分自身（と自分の客）のアプリケーションに影響するからでもあるのです。

@@ -1,10 +1,10 @@
 # myApp/api/models/User.js
-### Purpose
-This file was created when you ran 'sails generate api User'.  It contains the structure for the model called 'User'.
+### 目的
+このファイルは'sails generate api User'を実行した時に生成されます。ここには'User'と呼ばれるモデルの構造が含まれます。
 
-In this file you will specify what attributes each model instance (record) should have.  You can also add custom model instance methods, as well as override the global settings for things like `policies` and `connections`.  
+このファイルではそれぞれのモデルインスタンス（レコード）がどの属性を持つのかが指定されます。また、カスタムのインスタンスメソッドを追加することができ、同様に`policies`や`connections`にようなグローバルな設定を上書きすることも出来ます。
 
-One of the best parts about Sails is it uses [Waterline](https://github.com/balderdashy/waterline).  This means you can start developing your data models long before you commit to a particular database. 
+Sailsの最も大きい利点の一つは[Waterline](https://github.com/balderdashy/waterline)を使うことです。これは特定のデータベースにコミットするはるか前にデータモデルの開発を始められるということです。
 
 <docmeta name="uniqueID" value="Userjs263218">
 <docmeta name="displayName" value="User.js">

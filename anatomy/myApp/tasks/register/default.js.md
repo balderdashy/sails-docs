@@ -3,7 +3,7 @@
 <docmeta name="uniqueID" value="defaultjs909775">
 <docmeta name="displayName" value="default.js">
 
-The default grunt task list.  sails will run this if there is no task list file matching NODE_ENV (eg. NODE_ENV = QA and QA.js exists) and no other environment is set (--prod, etc.).
+デフォルトのgruntのタスクリストです。SailsはNODE_ENVにマッチする(例:NODE_ENV = QA and QA.jsが存在する)タスクリストファイルがない際と、別の環境 (--prodなど)が設定されていな場合にこれを実行します。
 
 ```
 module.exports = function (grunt) {

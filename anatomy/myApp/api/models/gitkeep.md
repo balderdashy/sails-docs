@@ -1,7 +1,7 @@
 # myApp/api/models/.gitkeep
-### Purpose
+### 目的
 
-Ignore this file.  It only exists because `git` refuses to push empty directories to a remote server.  `.gitkeep` is an unofficial convention that has emerged as a workaround for people who don't discriminate against empty directories.
+このファイルは無視してください。これが存在する理由は`git`が空のディレクトリをリモートフォルダに転送するのを拒否するからです。`.gitkeep`は空のディレクトリを区別しないようにした人たちによる非正規の慣習です。
 
 
 <docmeta name="uniqueID" value="gitkeep437760">

@@ -1,14 +1,14 @@
 # myApp/api/services
-### Purpose
-This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't nessecarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on `.req()` and `.res()` can be turned into a service if for no other reason than to keep your controllers clean and managable.  
+### 目的
+このフォルダはサービスを格納するところです。「サービス」はコントローラと似ていますが、通常はユーザがリクエストを送り、サーバがレスポンスを返すという流れの間で発生する必要が必ずしも無いものに関して使われます。`.req()`と`.res()`に依存しない全てのロジックは特段の理由がない限りはサービスに変換することが出来、コントローラを綺麗に、メンテナンス性高く保つことが出来ます。
 
-Hypothetically, one could create a service for
+例えば以下のサービスを作る事ができます。
 
-- Sending emails
-- Automating tweets to celebrities
-- Retreiving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
+- メールを送信する
+- セレブの向けの自動ツイート
+- サードパーティのAPIからデータを取得し、準備ができた時に（websockets）を通じてクライアントにプッシュする。
 
-Services are written in one or more .js file within this directory. 
+サービスはこのディレクトリにある1つまたは複数の.jsファイルとして欠くことが出来ます。
 
 
 ### Example Email.js

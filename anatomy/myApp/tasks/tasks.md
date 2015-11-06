@@ -1,14 +1,14 @@
 # myApp/tasks
-### Grunt Tasks
+### Gruntタスク
 
-Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails for this purpose. 
+Sailsはアセット管理に[Grunt](http://gruntjs.com)タスクを使います。このファイルはこの目的にSailsが使うGRUNTタスクに対する設定情報を含んでいます。
 
-If you created your Sails app with `sails new foo --linker`, this is also where you can define the location of files that are automatically minified and injected (in order) into the views rendered by your app.
+もし`sails new foo --linker`でSailsアプリケーションを作成していた場合、ここはアプリケーションがレンダリングしたビューに対して自動的に最小化され（順番通りに）挿入されるファイルの場所を指定するところでもあります。
 
-At the top part of this file, you'll find a few of the most commonly configured options, but Sails' integration with Grunt is also fully customizable.  If you'd like to work with your assets differently  you can change this file to do anything you like!
+このファイルの先頭には一般的に使われる幾つかの設定がありますが、SailsとGruntの統合は完全にカスタマイズ可能なものです。もしアセットに関して違うやり方を取りたければあなたの好きな動きをするようにこのファイルを書き換えてください。！
 
-### More Info
-> More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
+### さらなる情報
+> Gruntを静的アセットとして使うさらなる情報は: http://gruntjs.com/configuring-tasks
 
 
 <docmeta name="uniqueID" value="tasksmd668626">

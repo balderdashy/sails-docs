@@ -1,8 +1,8 @@
 # myApp/config/http.js
 
-This file is conventionally used for configuring the underlying HTTP server (the `sails.config.http` object.)
+このファイルは通常、プロジェクトの基礎部分にあるHTTPサーバ(`sails.config.http`オブジェクト)を設定するのに使われます。
 
-This includes all HTTP-specific middleware, including the serving/caching of flat files.
+ここにはフラットなファイルを受け取りする、HTTPに特化したミドルウエアが含まれています。
 
 <docmeta name="uniqueID" value="httpjs768553">
 <docmeta name="displayName" value="http.js">
