@@ -12,7 +12,7 @@ association is used to populate the records.
 
 ### One-to-Many Example
 
-`myApp/api/models/pet.js`
+`myApp/api/models/Pet.js`
 
 ```javascript
 
@@ -30,7 +30,7 @@ module.exports = {
 
 ```
 
-`myApp/api/models/user.js`
+`myApp/api/models/User.js`
 
 ```javascript
 
