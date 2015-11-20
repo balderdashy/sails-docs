@@ -94,7 +94,7 @@ Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **ap
 
 The controller and action names in this syntax are case-insensitive.
 
-Note that the [blueprints API](http://sailsjs.org/documentation/reference/blueprint-api) adds several actions to your controllers by default (like "find", "create", "update" and "delete"), all of which are available for routing:
+Note that the [blueprint API](http://sailsjs.org/documentation/reference/blueprint-api) adds several actions to your controllers by default (like "find", "create", "update" and "delete"), all of which are available for routing:
 
 ```
 'GET /foo/go': 'UserController.find'
