@@ -34,8 +34,9 @@ Checks the incoming value for a valid email address.
 ```javascript
 attributes: {
   email: {
-    type: 'string',
-    email: true
+    type: 'email',
+    unique: true,
+    columnName: 'email_address'
   }
 }
 ```
