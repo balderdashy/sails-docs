@@ -19,7 +19,7 @@ The route address indicates what URL should be matched in order to apply the han
 
 If no verb is specified, the target will be applied to any request that matches the path, regardless of the HTTP method used (**GET**, **POST**, **PUT** etc.).  Note the initial `/` in the path--all paths should start with one in order to work properly.
 
-####Wildcards and dynamic parameters
+#### Wildcards and dynamic parameters
 
 In addition to specifying a static path like **foo/bar**, you can use `*` as a wildcard:
 
