@@ -2,6 +2,10 @@
 ### Purpose
 This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.  
 
+If a collection attribute is defined in a many-to-many, one-to-many or many-to-many-through association the populate option also accepts a full criteria object. This allows you to filter associations and run limit and skip on the results.
+
+Note that this means the query parameter does not work for one-to-one associations.
+
 ### Overview
 #### Parameters
 
