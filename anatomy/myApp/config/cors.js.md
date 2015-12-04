@@ -1,14 +1,14 @@
 # myApp/config/cors.js
-### Purpose
-This file defines how your Sails app handles CORS and contains settings for configuring it.
+### 目的
+このファイルはSailsアプリケーションがどのようにCORSを扱うかを規定するものです。
 
-Cross-Origin Resource Sharing is like a more modern version of JSONP. It allows your server/API to successfully respond to requests from client-side JavaScript code running on some other domain (e.g. google.com)
+Cross-Origin Resource SharingはJSONPのモダン版のようなものです。これによりサーバ（API）は別のドメイン(例えばgoogle.com)で実行されているクライアントサイドJavaScriptコードからのリクエストに応えることが出来ます。
 
-Unlike JSONP, it works with POST, PUT, and DELETE requests
+これはJSONPとは違い、POST、PUT、DELETEでも動作します。
 
-For more information on CORS, check out [this here hyperlink](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing).
+CORSに関するさらなる情報は[こちら](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)をご覧ください。
 
-This can be changed on a per-route basis by adding a "cors" object to the route configuration like this
+以下のようにルート設定に"cors"オブジェクトを加える事でルートごとに設定を行うことが出来ます。
 
 ```javascript
 

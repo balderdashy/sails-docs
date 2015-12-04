@@ -1,6 +1,6 @@
 # myApp/config
-### Purpose
-This folder contains various files that will allow you to customize and configure your Sails app.
+### 目的
+このフォルダにはあなたのSailsアプリケーションを設定しカスタマイズできる様々なファイルが有ります。
 
 
 <docmeta name="uniqueID" value="configmd867312">

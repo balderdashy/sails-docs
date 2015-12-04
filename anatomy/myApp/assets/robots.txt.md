@@ -1,8 +1,8 @@
 # myApp/assets/robots.txt
-### Purpose
-This file tells web crawlers and search bots about your app.  It tells them what kind of content to expect as well as how to index it.
+### 目的
+このファイルはWebクローラやサーチボットにアプリケーションに関してのことを伝えます。ここにはどのようにインデックスして欲しいかやどのようなコンテンツが期待できるかをそれらに伝えます。
 
-Learn all about robots.txt [right here](http://www.robotstxt.org/robotstxt.html).
+robots.txt に対する完全な情報は[こちら](http://www.robotstxt.org/robotstxt.html)をご覧ください。
 
 <docmeta name="uniqueID" value="robotstxt863673">
 <docmeta name="displayName" value="robots.txt">

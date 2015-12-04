@@ -27,7 +27,7 @@ $http.get('/purchase/47/cashier')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.get('/purchase/47/cashier', function (purchase) {
@@ -42,7 +42,7 @@ curl http://localhost:1337/purchase/47/cashier
 ```
 
 
-Should return
+Should return:
 
 ```json
 {
@@ -71,7 +71,6 @@ Should return
 >   $ sails generate api purchase
 >   $ sails generate api employee
 >   ```
->
 > ...then editing `api/models/Purchase.js`.
 
 <docmeta name="uniqueID" value="Populate838372">

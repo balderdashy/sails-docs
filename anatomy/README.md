@@ -1,4 +1,4 @@
 sails-docs-anatomy
 ==================
 
-Anatomy documentation for www.sailsjs.org
+www.sailsjs.orgの構造に関するドキュメントです。

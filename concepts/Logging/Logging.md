@@ -1,10 +1,10 @@
 # ロギング
 
 ### 概要
-Sailsは[`captains-log`](https://github.com/balderdashy/captains-log)と呼ばれるシンプルなビルドインのロガーが備わっています。この使い方はあえてNodeの[`console.log`](http://nodejs.org/api/stdio.html)にとても良く似せて作っていますが、「複数のログレベルが色分けされ、前置詞で分けられて表示される」という便利な機能が追加されています。
+Sailsは[`captains-log`](https://github.com/balderdashy/captains-log)と呼ばれるシンプルなビルドインのロガーが備わっています。この使い方はあえてNodeの[`console.log`](https://nodejs.org/api/console.html#console_console_log_data)にとても良く似せて作っていますが、「複数のログレベルが色分けされ、前置詞で分けられて表示される」という便利な機能が追加されています。
 
 ### 設定
-Sailsのロガーの設定は通常Sailsプロジェクトが新しく作成された時に[`config/log.js`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/config/log.js.html)に生成される[`sails.config.log`](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.log.html)で定義されています。
+Sailsのロガーの設定は通常Sailsプロジェクトが新しく作成された時に[`config/log.js`](http://sailsjs.org/documentation/anatomy/myApp/config/log.js.html)に生成される[`sails.config.log`](http://sailsjs.org/documentation/reference/sails.config/sails.config.log.html)で定義されています。
 
 各ログレベルが設定された時、Sailsは現在設定されているレベル以上のログに関して出力をします。このログレベルは標準化されておりsocket.ioやWaterlineその他の依存ファイルからのログを出力する際にも適用されます。ログレベルの上下関係と相対的優先度に関して以下の表にまとめます。:
 
@@ -27,4 +27,3 @@ Sailsのロガーの設定は通常Sailsプロジェクトが新しく作成さ�
 
 <docmeta name="uniqueID" value="Logging277763">
 <docmeta name="displayName" value="Logging">
-

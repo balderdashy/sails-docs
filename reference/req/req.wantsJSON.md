@@ -2,7 +2,7 @@
 
 A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)
 
-`req.wantsJSON` is used by all of the [built-in custom responses](/#/documentation/anatomy/myApp/api/responses) in Sails.
+`req.wantsJSON` is used by all of the [built-in custom responses](http://sailsjs.org/documentation/anatomy/myApp/api/responses) in Sails.
 
 
 ### Usage
@@ -30,11 +30,21 @@ else {
 }
 ```
 
+### Details
+
+Here is the specific order in which `req.wantsJSON` inspects the request.  **If any of the following match, subsequent checks are ignored.**
+
+A request "wantsJSON" if:
+
++ if this looks like an AJAX request
++ if this is a virtual request from a socket
++ if this request DOESN'T explicitly want HTML
++ if this request has a "json" content-type AND ALSO has its "Accept" header set
++ if `req.options.wantsJSON` is truthy
+
 ### Notes
 > + Lower-level content negotiation is, of course, still possible using `req.is()`, `req.accepts()`, `req.xhr`, and `req.get()`.
 > + As of Sails v0.10, requests originating from a WebSocket client always "want JSON".
 
-
 <docmeta name="uniqueID" value="reqwantsJSON30891">
 <docmeta name="displayName" value="req.wantsJSON">
-

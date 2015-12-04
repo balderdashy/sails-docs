@@ -1,8 +1,8 @@
 # myApp/config/policies.js
-### Purpose
-This file contains the default policies for your app.
+### 目的
+このファイルにはアプリケーションのデフォルトのポリシーが入っています。
 
-Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies to a given controller, or protect just one of it's actions. Any policy file (e.g. `myApp/api/policies/authenticated.js`) can be dropped into the `myApp/api/policies/` folder, at which point it can be accessed by it's filename, minus the extension, (e.g. `authenticated`).
+ポリシーはコントローラの前に実行される簡単なExpressミドルウエアファンクションです。コントローラやその中のアクションを保護するために、1つまたは複数のポリシーを適用することができます。全てのポリシー(例:`myApp/api/policies/sessionAuth.js`)は`myApp/api/policies/`フォルダに保管され、ファイル名から拡張子を取ったもの(例:`sessionAuth`)でアクセスできます。
 
 
 <docmeta name="uniqueID" value="policiesjs831604">
@@ -21,7 +21,7 @@ Policies are simply Express middleware functions which run before your controlle
  * below by its filename, minus the extension, (e.g. "authenticated")
  *
  * For more information on configuring policies, check out:
- * http://sailsjs.org/#!documentation/
+ * http://sailsjs.org/documentation/
  */
 
 

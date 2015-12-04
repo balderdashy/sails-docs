@@ -1,13 +1,13 @@
 # myApp/Gruntfile.js
-### Purpose
+### 目的
 
-Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains configuration information for the GRUNT tasks that Sails uses for this purpose.
+Sailsではアセット管理に[Grunt](http://gruntjs.com)を使っています。このファイルではSailsがその目的に使うためのGRUNTの設定情報を記載しています。
 
-Sails' integration with Grunt is fully customizable but for most use cases, this file should remain unchanged.  Instead, put your custom logic in `myApp/tasks/`.
+SailsにおけるGruntの設定は完全にカスタマイズ可能ですが、多くのケースにおいてこのファイルは書き換えられるべきではありません。その代わりにカスタムロジックは`myApp/tasks/`に保存してください。
 
 
-### More Info
-> More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
+### さらなる情報
+> 静的なアセットとGruntを利用することに関してのさらなる情報は以下をご覧ください: http://gruntjs.com/configuring-tasks
 
 <docmeta name="uniqueID" value="Gruntfilejs375150">
 <docmeta name="displayName" value="Gruntfile.js">
@@ -19,7 +19,7 @@ Sails' integration with Grunt is fully customizable but for most use cases, this
  * Gruntfile
  *
  * This Node script is executed when you run `grunt` or `sails lift`.
- * It's purpose is to load the Grunt tasks in your project's `tasks`
+ * Its purpose is to load the Grunt tasks in your project's `tasks`
  * folder, and allow you to add and remove tasks as you see fit.
  * For more information on how this works, check out the `README.md`
  * file that was generated in your `tasks` folder.

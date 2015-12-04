@@ -1,9 +1,9 @@
 # myApp/api/controllers/UserController.js
-### Purposes
+### 目的
 
-This file was created when you ran 'sails generate api User'.  It contains all of the controller logic for the model called 'User'. 
+このファイルは'sails generate api User'を実行した時に生成されます。ここには'User'と呼ばれるモデルの全てのコントローラロジックが含まれます。
 
-This is where you will put "controller actions" that send data to your clients and render the views which display that data.
+ここはクライアントに情報を送信し、データを表示するビューをレンダーする「コントローラアクション」を書くところです。
 
 <docmeta name="uniqueID" value="UserControllerjs867576">
 <docmeta name="displayName" value="UserController.js">
@@ -13,7 +13,7 @@ This is where you will put "controller actions" that send data to your clients a
  * UserController
  *
  * @description :: Server-side logic for managing users
- * @help        :: See http://links.sailsjs.org/docs/controllers
+ * @help        :: See http://sailsjs.org/documentation/concepts/Controllers
  */
 
 module.exports = {

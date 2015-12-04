@@ -58,7 +58,7 @@ EJSには3種類のテンプレートタグがあります:
   // ...
 ```
 
-一方で多くのシナリオでデータはダイナミックでしょうから、モデルからそれらのデータを読み込むためのコントローラを用意してその後に[res.view()](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html)メソッドを利用しそのデータをビューに受け渡す必要があります。
+一方で多くのシナリオでデータはダイナミックでしょうから、モデルからそれらのデータを読み込むためのコントローラを用意してその後に[res.view()](http://sailsjs.org/documentation/reference/res/res.view.html)メソッドを利用しそのデータをビューに受け渡す必要があります。
 
 ここで、モデルはすでにセットアップされており、あるルートをあるコントローラアクションに紐付けるとします。ここで以下のようにビューを受け渡すことが出来ます。:
 
@@ -77,4 +77,3 @@ EJSには3種類のテンプレートタグがあります:
 
 <docmeta name="uniqueID" value="Locals453748">
 <docmeta name="displayName" value="Locals">
-

@@ -1,6 +1,6 @@
 # myApp/config/locales/fr.json
-### Purpose
-This tells French browsers sexy things in JSON. 
+### 目的
+このファイルはフランスのブラウザのセクシーなことをJSONで伝えます。
 
 
 <docmeta name="uniqueID" value="frjson25047">

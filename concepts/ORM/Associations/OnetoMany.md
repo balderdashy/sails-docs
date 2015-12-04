@@ -114,7 +114,7 @@ null [ { name: 'Applejack',
 ```
 
 ### 備考
-> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)をご覧ください。
+> このタイプのアソシエーションに関するさらに詳細な説明は[Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)をご覧ください。
 
 
 <docmeta name="uniqueID" value="OnetoMany478093">

@@ -12,12 +12,12 @@ Sailsではビューは _サーバー上で_ コンパイルされ、HTMLペー�
 
 別のエンジンを利用したい場合、様々な選択肢があります。Sailは[Consolidate](https://github.com/visionmedia/consolidate.js/)を通じ[Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)と互換性のある全てのテンプレートエンジンを利用することが出来ます。
 
-ビューはデフォルトでは[`views/`](http://beta.sailsjs.org/#/documentation/anatomy/myApp/views)フォルダーで定義されますが、他のSailsのデフォルトパスと同じように[設定が可能です](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)。もしダイナミックなHTMLページを提供する必要が無い場合（例えばモバイルアプリケーションのAPIを開発しているような場合）、ディレクトリをアプリケーションから削除しても構いません。
+ビューはデフォルトでは[`views/`](http://sailsjs.org/documentation/anatomy/myApp/views)フォルダーで定義されますが、他のSailsのデフォルトパスと同じように[設定が可能です](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)。もしダイナミックなHTMLページを提供する必要が無い場合（例えばモバイルアプリケーションのAPIを開発しているような場合）、ディレクトリをアプリケーションから削除しても構いません。
 
 
 ##### ビューをコンパイルする
 
-`res`オブジェクトにアクセス出来るところならどこでも（すなわち、コントローラ、アクション、カスタムレスポンスやポリシーで）[`res.view`](http://beta.sailsjs.org/#/documentation/reference/res/res.view.html)を利用してビューをコンパイルし、その結果のHTMLをユーザに送出することが出来ます。
+`res`オブジェクトにアクセス出来るところならどこでも（すなわち、コントローラ、アクション、カスタムレスポンスやポリシーで）[`res.view`](http://sailsjs.org/documentation/reference/res/res.view.html)を利用してビューをコンパイルし、その結果のHTMLをユーザに送出することが出来ます。
 
 同様にビューディレクトリを`routes.js`ファイルに結びつけることが出来ます。これにはアプリケーションのビューの`views/`ディレクトリからの相対パスを指定するだけです。例えば：
 
@@ -51,4 +51,3 @@ Sailsではビューは _サーバー上で_ コンパイルされ、HTMLペー�
 
 <docmeta name="uniqueID" value="Views426660">
 <docmeta name="displayName" value="Views">
-

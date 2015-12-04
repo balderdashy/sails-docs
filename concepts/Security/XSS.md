@@ -5,8 +5,8 @@
 
 
 ### 追加資料
-+ [XSS (OWasp)](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
-+ [XSS Prevention Cheatsheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
++ [XSS (OWasp)][https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)]
++ [XSS Prevention Cheatsheet][https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet]
 
 <docmeta name="uniqueID" value="XSS397141">
 <docmeta name="displayName" value="XSS">

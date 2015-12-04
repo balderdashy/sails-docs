@@ -1,8 +1,8 @@
 # myApp/api/policies/sessionAuth.js
-### Purpose
-This is an example policy file against which all routes are checked before allowing a client access to any part of your app.  By default, it allows everyone to access everything but this can (and probably should) be changed before you switch into production mode.     
+### 目的
+これはアプリケーションの全ての部分に関して、全てのルートがアクセスされる前に確認されるようなポリシーファイルの例です。デフォルトでは誰もが全てのルートにアクセス出来るようになっていますが、プロダクションモードに変更する前に来れを変更することが出来ます（おそらく変更すべきです）。
 
-In Sails, a policy is simply express middleware that does something to authenticate users before they are allowed to access some part of your app.  For more information on creating policies, you'll probably want to check our guide on it.
+Sailsではポリシーは単純にExpressのmiddlewareであり、アプリケーションの一部分にユーザがアクセスする前に認可のために何かをするものです。ポリシーの作成に関する詳細は、該当するガイドを参照する必要があるかと思われます。
 
 <docmeta name="uniqueID" value="sessionAuthjs444151">
 <docmeta name="displayName" value="sessionAuth.js">
@@ -14,7 +14,7 @@ In Sails, a policy is simply express middleware that does something to authentic
  * @module      :: Policy
  * @description :: Simple policy to allow any authenticated user
  *                 Assumes that your login action in one of your controllers sets `req.session.authenticated = true;`
- * @docs        :: http://sailsjs.org/#!documentation/policies
+ * @docs        :: http://sailsjs.org/documentation/policies
  *
  */
 module.exports = function(req, res, next) {

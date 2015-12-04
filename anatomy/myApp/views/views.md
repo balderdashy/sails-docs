@@ -1,8 +1,8 @@
 # myApp/views
-### Purpose
-This is the directory that holds all of your custom views.  
+### 目的
+このディレクトリはアプリケーションのカスタムビューの全てを格納するところです。
 
-To create a custom view, create a new directory inside of this then create a new .ejs file.  In order for it to be rendered by a client, you must either set up a route in `myApp/config/routes.js` or use the `res.view()` method inside of a custom controller action.
+カスタムビューを作成するにはこのディレクトリの中に新しいディレクトリを作成し、あたらしい.ejsファイルを作成します。クライアントによってレンダリングされるようにするためには`myApp/config/routes.js`にルートを作成するか、カスタムコントローラアクションの中で`res.view()`メソッドを利用する必要があります。
 
 
 <docmeta name="uniqueID" value="viewsmd633977">

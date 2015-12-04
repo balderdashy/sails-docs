@@ -8,7 +8,7 @@ GET /:model
 
 Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned.  If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for details.
+If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned. If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for details.
 
 
 ### Parameters
@@ -22,7 +22,8 @@ _All parameters are optional._
  limit          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
  skip           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
  sort           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
- callback       | ((number))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
+ populate       | ((string))   | If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See [here](http://sailsjs.org/documentation/reference/waterline-orm/populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
+ callback       | ((string))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
 
 
 
@@ -65,7 +66,7 @@ $http.get('/purchase?sort=createdAt DESC')
 });
 ```
 
-**Using [sails.io.js](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -91,4 +92,3 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 
 <docmeta name="uniqueID" value="Find290807">
 <docmeta name="displayName" value="find where">
-

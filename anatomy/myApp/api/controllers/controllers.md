@@ -1,8 +1,8 @@
 # myApp/api/controllers
-### Purpose
-This is the directory that holds your controllers.  In Sails, controllers are javascript files that contain logic for interacting with models and rendering appropriate views to the client.
+### 目的
+このフォルダはコントローラの保存場所です。Sailsではコントローラはモデルとやり取りをし適切なビューをレンダーするためのロジックを含むjavascriptファイルです。
 
-When you call `sails generate api cats` via the command line from inside your project's root directory, Sails will generate the file `myApp/api/controllers/CatsController.js` along with a matching model. 
+あなたのプロジェクトのルートディレクトリでコマンドラインから`sails generate api cats`を実行した時、Sailsは該当するモデルとともに`myApp/api/controllers/CatsController.js`を生成します。
 
 
 <docmeta name="uniqueID" value="controllersmd841616">

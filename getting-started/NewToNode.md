@@ -5,28 +5,28 @@
 [nodejs.org](http://nodejs.org)に関して:
 > "Node.jsはChromeのJavaScriptランタイムの上に構築された高速でスケーラブルなネットワークアプリケーションです。Node.jsはイベントドリブンでノンブロッキングI/Oモデルを採用しているので、とても軽量で効率的で、分散端末環境下でのデータインテンシブなリアルタイムのアプリケーションに最適です。"
 
-もっと簡単に言うとNode.jsは簡単で効率的に動作するHTTPサーバーで、これによってフロントエンドとバックエンドを同じ言語で書くことが出来るのです。
+もっと簡単に言うとNode.jsはJavascript簡単かつ効率的にブラウザの外で動作させることができ、これによってフロントエンドとバックエンドを同じ言語で書くことが出来るのです。
 
 ## どんなOSを使わなければなりませんか?
 
-Node.jsは多くのメジャーなOSにインストールすることが出来ます。MacOSXや多くのLinux、Windowsがサポートされています。  
+Node.jsは多くのメジャーなOSにインストールすることが出来ます。MacOSXや多くのLinux、Windowsがサポートされています。 
 
 それでは、どのOSを使っているかを確認して、書くOSに対する以下のNode.jsセットアップガイドに進んでください。:
 
-[Mac OSX](#/getStarted?q=--install-on-osx-)を使っています。
+[Mac OSX](http://sailsjs.org/get-started#?install-on-osx-)を使っています。
 
-[Linux](#/getStarted?q=--install-on-linux-)を使っています。
+[Linux](http://sailsjs.org/get-started#?install-on-linux-)を使っています。
 
-[Windows](#/getStarted?q=--install-on-windows-)を使っています。
+[Windows](http://sailsjs.org/get-started#?install-on-windows-)を使っています。
 
 <h2>
-<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="#/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-osx" name="/getStarted?q=--install-on-osx-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-osx-"><span class="mini-icon mini-icon-link"></span></a>
 OSXにインストールする
 </h2>
 
-[a package](http://nodejs.org/#download)を使う:
+[パッケージ](http://nodejs.org/download/)を使う:
 
-_単に[download Macintosh Installer](http://nodejs.org/#download)を使って_
+_単に[download Macintosh Installer](http://nodejs.org/download/)を使って_
 
 [homebrew](https://github.com/mxcl/homebrew)を使って:
 
@@ -37,7 +37,7 @@ _単に[download Macintosh Installer](http://nodejs.org/#download)を使って_
     port install nodejs  
 
 <h2>
-<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="#/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-linux" name="/getStarted?q=--install-on-linux-" class="anchor" href="http://sailsjs.org/getStarted?--install-on-linux-"><span class="mini-icon mini-icon-link"></span></a>
 Linuxにインストールする
 </h2>
 
@@ -87,7 +87,7 @@ Node.jsはオフィシャルのgentooパッケージツリーで利用可能で�
 *Debian Wheezy (stable)*では, [Node.jsはwheezy-backportsでサポートされています。](http://packages.debian.org/wheezy-backports/nodejs). [backports](http://backports.debian.org/Instructions/)をインストールするには、以下をsources.list (`/etc/apt/sources.list`)に追加してください。:
 
     deb http://YOURMIRROR.debian.org/debian wheezy-backports main
-    
+
 そして、以下を実行してください。:
 
     apt-get update
@@ -109,7 +109,7 @@ Available RPM packages for: openSUSE 11.4, 12.1, Factory and Tumbleweed; SLE 11 
 
 openSUSE 12.1にインストールする方法の例:
 
-    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService 
+    sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/nodejs/openSUSE_12.1/ NodeJSBuildService
     sudo zypper in nodejs nodejs-devel
 
 ### FreeBSDとOpenBSD
@@ -125,32 +125,37 @@ Node.jsはports systemを通じてインストール可能です。
 
     pkg_add -r node-devel
 
+FreeBSDでのデフォルトにはNode Package Managerがインストールされませんが開発と依存のインストールには必要です。
+
+    /usr/ports/www/npm
+
+clangを使っているFreeBSD 10ではnode-gypを使っているビルドスクリプトでコンフリクトが起こります(gccと示しています)が、環境変数を設定することで回避できます。
+
+    CXX=c++
+
 <h2>
-<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="#/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
+<a id="install-on-windows" name="/getStarted?q=--install-on-windows-" class="anchor" href="http://sailsjs.org/getStarted?q=--install-on-windows-"><span class="mini-icon mini-icon-link"></span></a>
 Windowsにインストールする
 </h2>
 
-[パッケージ](http://nodejs.org/#download)を使う:
+[パッケージ](http://nodejs.org/download/)を使う:
 
-単に[Windows Installerをダウンロード](http://nodejs.org/#download)._する
+単に[Windows Installerをダウンロード](http://nodejs.org/download/)._する
 
-[chocolatey](http://chocolatey.org)を使って[Node](http://chocolatey.org/packages/nodejs)をインストールする:  
+[chocolatey](http://chocolatey.org)を使って[Node](http://chocolatey.org/packages/nodejs)をインストールする:
 
-    cinst nodejs  
+    cinst nodejs
 
-あるいは[NPMでフルインストールする](http://chocolatey.org/packages/nodejs.install):  
+あるいは[NPMでフルインストールする](http://chocolatey.org/packages/nodejs.install):
 
     cinst nodejs.install
 
 
 ## Sails.jsのインストールに進む
-これであなたのシステムにNode.jsがインストールされました。
-
-[ここ](https://github.com/balderdashy/sails-docs/blob/master/getting-started/getting-started.md)をクリックして進んでください。
+Node.jsがお使いのシステムにインストールされたら[Sailsのインストール](http://sailsjs.org/get-started#?getting-started-installation)に進めます。
 
 ## さらなる手助け
 時々、物事は予定通りに進まないものです。もしそれでも問題があるときはNode.jsの[IRC Channel](irc://irc.freenode.net/node.js)や我々の[IRC Channel](irc://irc.freenode.net/sailsjs)を訪ねてください。
 
 
 <docmeta name="uniqueID" value="NewToNode748472">
-<docmeta name="displayName" value="New To Node">

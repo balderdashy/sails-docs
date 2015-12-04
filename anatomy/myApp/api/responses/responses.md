@@ -1,11 +1,11 @@
 # myApp/api/responses
-### Purpose
+### 目的
 
-This folder holds the logic for issuing server responses to your clients.
+このファイルはクライアントに対してレスポンスを発行するためのロジックが入っています。
 
-When you generate a new Sails project, we include some of the more common ones for you. Feel free to edit them to suit your needs.  You can also create a custom response using our `sails-generate-custom-response` generator.
+新しいSailsプロジェクトを作成すると、この中にはいくつかの一般的なものが含まれています。必要に応じてこれらを自由に書き換えてください。`sails-generate-custom-response`を使ってカスタムレスポンスを作成することも出来ます。
 
-See the Response section of Reference Documentation for more info.
+リファレンスドキュメンテーションのResponseの項を参照してください。
 
 <docmeta name="uniqueID" value="responsesmd261495">
 <docmeta name="displayName" value="responses">

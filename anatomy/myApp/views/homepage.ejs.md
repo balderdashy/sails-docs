@@ -1,15 +1,15 @@
 # myApp/views/homepage.ejs
-### Purpose
-This is the actual template that is rendered by default when a user visits the base URL of your lifted app.  Notice the file extension?  It stands for [Embedded JavaScript](http://embeddedjs.com/).  EJS is what Sails uses by default to render server side HTML views.  This can be changed in `myApp/config/views.js`.
+### 目的
+これはユーザが起動されたアプリケーションのベースURLを訪問した時にデフォルトで実際にレンダリングされるテンプレートです。拡張子にお気づきでしょうか。これは[Embedded JavaScript](http://embeddedjs.com/)に基づきます。EJSはSailsでサーバサイドのHTMLビューをレンダリングするのにデフォルトで利用されます。これは`myApp/config/views.js`で変更可能です。
 
-If a new view you've created isn't rendering, make sure you've hooked it up in your `myApp/config/routes.js`.
+もしあなたの作成したビューがレンダリングされなければそれが`myApp/config/routes.js`でフックされているかを確認してください。
 
-If you're used to putting all your HTML in a single file, this might look funny.  You might be thinking "Where are the head and body tags"?  The answer is, `myApp/views/layout.ejs`.
+もし全てのHTMLを一つのファイルに保存するのに慣れている場合はこれは少しおかしく見えるかもしれません。「headとbodyのタグはどこにあるんだ？」こう思うかもしれません。答えは`myApp/views/layout.ejs`です。
 
 <docmeta name="uniqueID" value="homepageejs785450">
 <docmeta name="displayName" value="homepage.ejs">
 
-```
+```html
 <!-- Default home page -->
 <link type="text/css" href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
 <style>
@@ -67,8 +67,8 @@ setTimeout(function sunrise () {
             <ul class="link-list">
 
                 <h4>Docs</h4>
-                <a target="_blank" href="http://sailsjs.org/#!documentation/anatomy"><li>App Structure</li></a>
-                <a target="_blank" href="http://sailsjs.org/#!documentation/reference"><li>Reference</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/anatomy"><li>App Structure</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/reference"><li>Reference</li></a>
                 <a target="_blank" href="http://links.sailsjs.org/docs/faq"><li>FAQ</li></a>
                 <a target="_blank" href="http://sailsjs.org"><li>Supported Databases</li></a>
 

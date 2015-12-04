@@ -2,7 +2,7 @@
 
 Send a JSON or JSONP response.
 
-Identical to [`res.json()`](/#/documentation/reference/res/res.json.html), except if a "callback" parameter exists, a [JSONP](http://en.wikipedia.org/wiki/JSONP) response will be sent instead, using the value of the "callback" parameter as the name of the function wrapper.
+Identical to [`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html), except if a "callback" parameter exists, a [JSONP](http://en.wikipedia.org/wiki/JSONP) response will be sent instead, using the value of the "callback" parameter as the name of the function wrapper.
 
 ### Usage
 ```js
@@ -54,4 +54,3 @@ res.jsonp(500, { error: 'message' })
 
 <docmeta name="uniqueID" value="resjsonp798206">
 <docmeta name="displayName" value="res.jsonp()">
-

@@ -1,12 +1,12 @@
 # myApp/config/routes.js
-### Purpose
-This file is where you can define explicit routes to connect clients with the resources that they request.
+### 目的
+このファイルはクライアントと、彼らがリクエストしたリソースをつなげるための明示的なルートを定義します。
 
-When a user tries to access a resource on your app, Sails uses this file (and a few other things) in order to map the URL requested to it's appropriate controller action which upon authentication, will respond to the client with the requested resource.  
+ユーザがアプリケーションにアクセスした時にSailsはリクエストされたURLと、認証されたそれに適切なコントローラアクションをひも付け、リクエストされたリソースをクライアントに応答するために、このファイル（と幾つかのファイル）を
 
-By default, there is only one explicitely defined route.  Its purpose is to point users that try to access the base URL `http://localhost:1337/` to the view located in `myApp/views/home/index.ejs`. Feel free to add as many routes as you'd like to this file.  
+デフォルトでは明示されたルートは一つしかありません。この目的はユーザがベースURL`http://localhost:1337/`にアクセスした時に`myApp/views/home/index.ejs`を指定するためのものです。ご自由に好きなだけこのファイルにルートを追加してください。
 
-You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, `http://localhost:1337/ponies/PinkiePie` would request the resource with the 'id' parameter equal to 'PinkiePie'.
+さらにURLの一部をリクエストパラメータとして扱うようなルートも指定出来ます。例えば`http://localhost:1337/ponies/PinkiePie`は'id'が'PinkiePie'のリソースにアクセスします。
 
 
 <docmeta name="uniqueID" value="routesjs120276">
