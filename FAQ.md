@@ -130,7 +130,6 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
   + [Recording](http://video.nodepdx.org/video/14/intro-to-sailsjs)
   + [Slides](https://docs.google.com/file/d/0B1OhsrcuV2-9RXAzQWlFbkNpT3c/edit?usp=sharing)
 + [Working With Data in Sails.js](http://net.tutsplus.com/tutorials/javascript-ajax/working-with-data-in-sails-js/) tutorial on NetTuts
-+ [User Authentication with Sails.js](http://sethetter.com/user-authentication-with-sails-js/)
 + [How to Create a Node.js App using Sails.js on an Ubuntu VPS](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)
 + Desarrollar Webapps Realtime:
