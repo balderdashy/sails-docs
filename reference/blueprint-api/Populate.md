@@ -1,16 +1,16 @@
 # Populate Where...
 
-If the specified association is plural ("collection"), this action returns the list of associated records as a JSON array of objects.  If the specified association is singular ("model"), this action returns the associated record as a JSON object.
+指定されたアソシエーションが複数("collection")の時、このアクションは関連付けられたレコードのリストをJSONオブジェクトの配列として返します。指定されたアソシエーションが一つ("model")の時、このアクションは関連付けられたレコードのJSONオブジェクトを返します。
 
 ```
 GET /:model/:record/:association
 ```
 
-### Example
+### 例
 
-Populate the `cashier` who conducted purchase #47.
+購入#47に関わった`cashier`を取得する。
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/)を使う:**
 
 ```javascript
 $.get('/purchase/47/cashier', function (purchase) {
@@ -18,7 +18,7 @@ $.get('/purchase/47/cashier', function (purchase) {
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/)を使う:**
 
 ```javascript
 $http.get('/purchase/47/cashier')
@@ -27,7 +27,7 @@ $http.get('/purchase/47/cashier')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)を使う:**
 
 ```javascript
 io.socket.get('/purchase/47/cashier', function (purchase) {
@@ -35,14 +35,14 @@ io.socket.get('/purchase/47/cashier', function (purchase) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL)を使う:**
 
 ```bash
 curl http://localhost:1337/purchase/47/cashier
 ```
 
 
-Should return:
+以下のように返ってくるはずです:
 
 ```json
 {
@@ -61,9 +61,9 @@ Should return:
 ```
 
 
-### Notes
+### 備考
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model with an association attribute: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + 上記の例では"rest"blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが少なくともアソシエーション`involvedInPurchases: {collection: 'Purchase', via: 'cashier'}`を持った'Employee'モデルとアソシエーション`cashier: {model: 'Employee'}`を持った`Purchase`モデルを持っているべきです。 同様に空の`PurchaseController`と`EmployeeController`も必要です。これを簡単に行うには以下を実行します:
 >
 >   ```shell
 >   $ sails new foo

@@ -1,42 +1,42 @@
-# Destroy a Record
+# レコードを削除する
 
-Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
+`id`で指定された既存のレコードをデータベースから永久に削除し、削除されたレコードを返す。
 
 ```
 DELETE /:model/:record
 ```
 
-Destroys the model instance which matches the **id** parameter. Responds with a JSON object representing the newly destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
+**id** パラメータに合致するモデルインスタンスを削除します。レスポンスには新たに削除されたインスタンスを返します。指定された **id** にマッチするインスタンスが存在しない場合、代わりに`404`を返します。
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
+加えて、インスタンス空間サブスクライブしている全てのソケットに対して`destroy`イベントを発行します。
 
-Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
+その結果、現在サブスクライブしている全てのインスタンスはこれからサブスクライブの解除をします。
 
 
-### Parameters
+### パラメータ
 
- Parameter                          | Type                                    | Details
+ パラメータ                           | 型                                      | 詳細
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy. For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path. For `GET` (shortcut) requests, it must be supplied in the route path.
- callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | 削除したいレコードの主キー。`POST` (RESTful) リクエストではこれはJSONボディまたはルートパスの一部として与えられます。`GET` (ショートカット) リクエストではこれはルートパスの一部として与えられます。
+ callback                           | ((string))                              | 指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:`?callback=myJSONPHandlerFn`
 
-### Examples
+### 例
 
 #### Destroy (REST)
 
-Delete Pinkie Pie.
+Pinkie Pieを削除します。
 
-##### Route
+##### ルート
 `DELETE /pony`
 
-##### JSON Request Body
+##### JSONリクエストボディ
 ```json
 {
   "id": 4
 }
 ```
 
-##### Expected Response
+##### 期待されるレスポンス
 
 ```json
 {
@@ -48,14 +48,14 @@ Delete Pinkie Pie.
 }
 ```
 
-#### Destroy (Shortcuts)
+#### Destroy (ショートカット)
 
-##### Route
+##### ルート
 `GET /pony/destroy/4`
 
-##### Expected Response
+##### 期待されるレスポンス
 
-Same as above.
+同上。
 
 
 <docmeta name="uniqueID" value="DestroyARecord867513">

@@ -1,17 +1,17 @@
 # sails lift
 
-Run the Sails app in the current dir (if `node_modules/sails` exists, it will be used instead of the globally installed Sails)
+カレントディレクトリ（もし`node_modules/sails`があればグローバルにインストールされたSailsの代わりに利用します。）でSailsアプリケーションを実行します。
 
-##### Options:
+##### オプション:
 
-  * `--dev` - in development environment (the default). In the development environment Sails use *grunt-watch* to keep a eye on your files in `/assets`. If you change something (for example in one of our css-files) and reload your browser Sails will automatically show your changes. Also you views won't be cached so you can change your view-files without restarting Sails like the assets.
-  * `--prod` - in production environment
-  * `--port <portNum>` - on the port specified by `portNum` instead of the default (1337)
-  * `--verbose` - with verbose logging enabled
-  * `--silly` - with insane logging enabled
+  * `--dev` - 開発環境（デフォルト）で実行します。 開発環境ではSailsでは`/assets`フォルダを監視するのに *grunt-watch* を使います。もし何かを変更（たとえばcss-filesのどれかなど）して、ブラウザをリロードした場合、Sailsは自動的に変更を表示します。同様に、ビューはキャッシュされませんのでSailsを再起動することなくアセットのようなビューファイルを変更することが出来ます。
+  * `--prod` - 本番環境で実行します。
+  * `--port <portNum>` - デフォルトの(1337)ポートに変えて`portNum`で指定されたポート上で実行します。
+  * `--verbose` - 多めにログをとります。
+  * `--silly` - 異常なほど多めにログをとります。
   
 
-### Example
+### 例
 
 ```sh
 $ sails lift

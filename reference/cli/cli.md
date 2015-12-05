@@ -1,7 +1,7 @@
-# Command Line Interface (CLI)
+# コマンドライン・インタフェース (CLI)
 
-### Overview
-Sails comes with a convenient command line tool to quickly get your app scaffolded and running.
+### 概要
+Sailsはアプリケーションを素早くスキャフォールドして実行できる便利なコマンドライン・インタフェースを持っています。
 
 
 

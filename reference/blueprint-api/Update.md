@@ -1,39 +1,39 @@
-# Update a Record
+# レコードを編集する
 
-Updates an existing record.
-Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
+既存のレコードを編集します。
+変更すべき属性はフォームエンコードされたHTTPボディまたはJSONで送ることが出来ます。
 
 ```
 PUT /:model/:record
 ```
 
-Updates the model instance which matches the **id** parameter. Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+**id**パラメータに一致するモデルインスタンスを更新します。新たに更新されたインスタンスをJSONオブジェクトとして返します。バリデーションエラーが起こった場合、不正な属性のJSONレスポンスとともに`400`ステータスコードを返します。**id**パラメータに一致するモデルインスタンスがない場合は`404`が返されます。
 
-### Parameters
+### 属性
 
- Parameter                          | Type                                                    | Details
+ 属性                                | 型                                                      | 詳細
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | The primary key value of the record to update.<br/><br/>e.g. `PUT /product/5`
- *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
- callback                           | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | 編集したいレコードの主キー値<br/><br/>例: `PUT /product/5`
+ *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | `POST` (RESTful)リクエストに対しては編集したいレコードにセットしたい値をボディパラメータの中でモデルで定義されたものと同じ名前の属性で定義します。`GET` (shortcut)リクエストに関してはパラメータはクエリストリングに追加されます。
+ callback                           | ((string))                                              | 指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:`?callback=myJSONPHandlerFn`
 
-### Examples
+### 例
 
-#### Update Record (REST)
+#### レコードを編集する (REST)
 
-Change AppleJack's hobby to "kickin".
+AppleJackの趣味を"kickin"に変える。
 
-##### Route
+##### ルート
 `PUT /pony/47`
 
-##### JSON Request Body
+##### JSONリクエストボディ
 ```json
 {
   "hobby": "kickin"
 }
 ```
 
-##### Expected Response
+##### 期待されるレスポンス
 ```json
 {
   "name": "AppleJack",
@@ -44,29 +44,29 @@ Change AppleJack's hobby to "kickin".
 }
 ```
 
-#### Update Record (Shortcuts)
+#### レコードを編集する (Shortcuts)
 
 `GET /pony/update/47?hobby=kickin`
 
-##### Expected Response
+##### 期待されるレスポンス
 
-Same as above.
+同上。
 
-#### Add association between two existing records (REST)
+#### 既存の2つのレコード間のアソシエーションを加える。 (REST)
 
-Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
+Pinkie Pieに既存の"Bubbles"でIDが15のペットを与える。
 
-##### Route
+##### ルート
 `POST /pony/4/pets`
 
-##### JSON Request Body
+##### JSONリクエストボディ
 ```json
 {
   "id": 15
 }
 ```
 
-##### Expected Response
+##### 期待されるレスポンス
 ```json
 {
   "name": "Pinkie Pie",
@@ -90,24 +90,24 @@ Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
 }
 ```
 
-#### Add association between two existing records (Shortcuts)
+#### 既存の2つのレコード間のアソシエーションを加える。 (Shortcuts)
 `GET /pony/4/pets/add/15`
 
-#### Remove Association (Many-To-Many) (REST)
+#### アソシエーションを削除する (多対多) (REST)
 
-Remove Pinkie Pie's pet, "Gummy" (ID 12)
+Pinkie Pieのペット"Gummy" (ID 12)を削除する。
 
-##### Route
+##### ルート
 `DELETE /pony/4/pets`
 
-##### JSON Request Body
+##### JSONリクエストボディ
 ```json
 {
   "id": 12
 }
 ```
 
-##### Expected Response
+##### 期待されるレスポンス
 ```json
 {
   "name": "Pinkie Pie",
@@ -125,15 +125,15 @@ Remove Pinkie Pie's pet, "Gummy" (ID 12)
 }
 ```
 
-#### Remove Association (Many-To-Many) (Shortcuts)
+#### アソシエーションを削除する (多対多) (Shortcuts)
 
-##### Route
+##### ルート
 
 `GET /pony/4/pets/remove/12`
 
-##### Expected Response
+##### 期待されるレスポンス
 
-Same as above.
+同上。
 
 <docmeta name="uniqueID" value="UpdateARecord421031">
 <docmeta name="displayName" value="update">

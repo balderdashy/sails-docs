@@ -1,38 +1,38 @@
-# Create a Record
+# レコードを作成する
 
-Creates a new model instance in your database then returns it's values.
+データベースに新しいモデルを作成し、その値を返します。
 
 ```
 POST /:model
 ```
 
-Attributes can be sent in the HTTP body as form-encoded values or JSON.
+属性はフォームエンコードされたHTTPボディまたはJSONで送ることが出来ます。
 
-Responds with a JSON object representing the newly created instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.
+新規作成されたインスタンスを含むJSONオブジェクトともにレスポンスされます。バリデーションエラーが起きた場合は不正な属性が含まれたJSONとともに`400`ステータスを返します。
 
-Additionally, a `create` event will be published to all listening sockets (see the docs for [.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/websockets/resourceful-pubsub/watch.md) for more info).
+加えて、全てのソケットに対して`create`イベントが発行されます。(詳しくは[.watch()](https://github.com/balderdashy/sails-docs/blob/master/reference/websockets/resourceful-pubsub/watch.md)のドキュメントを御覧ください。)
 
-If the action is triggered via a socket request, the requesting socket will ALSO be subscribed to the newly created model instance. If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for .subscribe() for more info.
+アクションがソケットのリクエストとしてトリガーされた場合、リクエストを送ったソケットは同様に新規作成されたモデルインスタンスを受け取ります。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは.subscribe()のドキュメントを御覧ください。
 
-## Parameters
+## パラメータ
 
- Parameter      | Type                                                      | Details
+ パラメータ       | 型                                                        | 詳細
  -------------- | --------------------------------------------------------- |:---------------------------------
- *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | For `POST` (RESTful) requests, pass in body parameter with the same name as the attribute defined on your model to set those values on your new record.  For `GET` (shortcut) requests, add the parameters to the query string. <br/> <br/> Nested objects and arrays passed in as parameters are handled the same way as if they were passed into the model's <a>.create()</a> method.
- callback       | ((string))                                                | If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ *              | ((string))<br/>((number))<br/>((object))<br/>((array))    | `POST` (RESTful)リクエストに対しては新規作成されるレコードのそれぞれの値を定義するためには、ボディパラメータの中でモデルで定義されたものと同じ名前の属性を定義します。`GET` (shortcut)リクエストに関してはパラメータはクエリストリングに追加されます。<br/> <br/> パラメータとして渡された入れ子のオブジェクトや配列はモデルの<a>.create()</a>メソッドに渡された時と同じように動作します。
+ callback       | ((string))                                                | 指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:`?callback=myJSONPHandlerFn`
 
-## Examples
+## 例
 
-### Create a record (REST)
+### レコードを作成 (REST)
 
-Create a new pony named "AppleJack" with a hobby of "pickin".
+"pickin"の趣味を持った"AppleJack"という名前のポニーを作成。
 
-#### Route
+#### ルート
 `POST /pony`
 
 
 
-#### JSON Request Body
+#### JSONリクエストボディ
 ```json
 {
   "name": "AppleJack",
@@ -40,7 +40,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-#### Example Response
+#### レスポンスの例
 ```json
 {
   "name": "AppleJack",
@@ -51,12 +51,12 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 }
 ```
 
-### Create a record (shortcuts)
+### レコードを作成(ショートカット)
 
-#### Route
+#### ルート
 `GET /pony/create?name=Fluttershy&best_pony=yep`
 
-#### Expected Response
+#### 期待されるレスポンス
 
 ```javascript
 {
@@ -70,20 +70,20 @@ Create a new pony named "AppleJack" with a hobby of "pickin".
 ```
 
 
-## Examples with One Way Associations
+## 一方のアソシエーションを含む例
 
-You can create associations between models in two different ways. You can either make the association with a record that already exists OR you can create both records simultaneously. Check out the examples to see how.
+モデル化のアソシエーションの作成は2つの方法で行えます。すでの存在するレコードへのアソシエーションを作ることが出来るほか、それぞれを同時に作ることができます。どのようにするのかは例をご覧ください。
 
-These examples assume the existence of `Pet` and `Pony` APIs which can be created by hand or using the [Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html). The `Pony` model must be configured with a `pet` attribute pointing to the `Pet` model.  See [Model Association Docs](./ModelAssociations.md) for info on how to do this.
+これらの例では`Pet`と`Pony`APIが手動または[Sails CLI Tool](http://sailsjs.org/documentation/reference/CommandLine/CommandLine.html)で作られていると仮定します。`Pony` モデルには`Pet`モデルを指す`pet`属性が設定されている必要があります。これをどうするのかに関しての詳しい話は[Model Association Docs](./ModelAssociations.md)をご覧ください。
 
-### Create record while associating w/ existing record (REST)
+### 既存のレコードと関連付けられたレコードを作成する(REST)
 
-Create a new pony named "Pinkie Pie" and associate it with an existing pet named "Gummy" which has an `id` of 10.
+既存の"Gummy"と名付けられた`id`10のペットと関連付けられた、"Pinkie Pie"という名前のポニーを追加する。
 
-#### Route
+#### ルート
 `POST /pony`
 
-#### JSON Request Body
+#### JSONリクエストボディ
 ```json
 {
   "name": "Pinkie Pie",
@@ -92,7 +92,7 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 }
 ```
 
-#### Example Response
+#### Responseの例
 ```json
 {
   "name": "Pinkie Pie",
@@ -109,15 +109,15 @@ Create a new pony named "Pinkie Pie" and associate it with an existing pet named
 ```
 
 
-### Create new record while associating w/ another new record (REST)
+### 新規レコードと関連付けられた新規レコードを作成する。
 
-Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet named "Gummy".
+新しい"Gummy"と名付けられた`ペットと関連付けられた、"Pinkie Pie"という名前と"ice skating"の趣味を持つポニーを追加する。
 
-#### Route
+#### ルート
 `POST /pony`
 
 
-#### JSON Request Body
+#### JSONリクエストボティ
 ```json
 {
   "name": "Pinkie Pie",
@@ -129,7 +129,7 @@ Create a new pony named "Pinkie Pie", an "ice skating" hobby, and a new pet name
 }
 ```
 
-#### Expected Response
+#### 期待されるレスポンス
 ```json
 {
   "name": "Pinkie Pie",

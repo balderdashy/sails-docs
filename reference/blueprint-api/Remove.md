@@ -1,23 +1,23 @@
-# Remove from Collection
+# コレクションから取り除く
 
-Removes an association between two records.
+2つのレコードの間のアソシエーションをコレクションから取り除きます。
 
 ```
 DELETE /:model/:record/:association/:record_to_remove
 ```
 
-This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).
+このアクションは何らかのレコードを("外部"レコード)を自分のレコード("プライマリ"レコード)のアトリビュートコレクションから取り除きます。
 
-+ If the foreign record does not exist, it is created first.
-+ If the collection doesn't contain a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ 外部レコードが実在しない場合、まず作成します。
++ すでにプライマリレコードのコレクションにすでに外部レコードが含まれない場合、そのアクションは無視されます。
++ アソシエーションが2方向（例:両サイドにviaが含まれる反射的な関係の場合）反対側となる外部レコードのアソシエーションも更新されます。
 
 
-### Example
+### 例
 
-Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16.
+Dolly (従業員 #7)をストア#16の`employeesOfTheMonth`リストから取り除きます。
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/)を使う:**
 
 ```javascript
 $.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
@@ -25,7 +25,7 @@ $.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/)を使う:**
 
 ```javascript
 $http.delete('/store/16/employeesOfTheMonth/7')
@@ -34,7 +34,7 @@ $http.delete('/store/16/employeesOfTheMonth/7')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)を使う:**
 
 ```javascript
 io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
@@ -42,14 +42,14 @@ io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL)を使う:**
 
 ```bash
 curl http://localhost:1337/store/16/employeesOfTheMonth/7 -X "DELETE"
 ```
 
 
-Should return store #16, the primary record:
+プライマリレコードであるストア#16を返します。:
 
 ```json
 {
@@ -63,10 +63,10 @@ Should return store #16, the primary record:
 
 
 
-### Notes
+### 備考
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + このアクションは _複数の_ (コレクションの)アソシエーションを扱います。_単一の_ （モデルの）アソシエーションを追加・削除したい場合単に[update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html)を使ってください。
+> + 上記の例では"rest"blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが少なくともアソシエーション`employeesOfTheMonth: {collection: 'Employee'}`を持った`Store`モデルと空の'Employee'モデルを持っているべきです。 同様に空の`PurchaseController`と`EmployeeController`も必要です。これを簡単に行うには以下を実行します:
 >
 >   ```shell
 >   $ sails new foo
@@ -75,7 +75,7 @@ Should return store #16, the primary record:
 >   $ sails generate api employee
 >   ```
 >
-> ...then editing `api/models/Store.js`.
+> ...そして。`api/models/Store.js`を編集します。
 
 <docmeta name="uniqueID" value="Remove2294521">
 <docmeta name="displayName" value="remove from">

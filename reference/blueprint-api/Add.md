@@ -1,24 +1,24 @@
-# Add to Collection
+# コレクションに追加する
 
-Adds an association between two records.
+2つのレコードの間にアソシエーションを追加します
 
 ```
 POST /:model/:record/:association/:record_to_add?
 ```
 
-This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
+このアクションは何らかのレコードを("外部"レコード)を自分のレコード("プライマリ"レコード)のアトリビュートコレクションとして追加します。
 
-+ If `:record_to_add` of an existing record is supplied, it will be associated with the primary record.
-+ If no `:record_to_add` is supplied, and the body of the **POST** contains values for a new record, that record will be created and associated with the primary record.
-+ If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ 実在するレコードの`:record_to_add`が与えられた場合、それがプライマリレコードに関連付けられます。
++ `:record_to_add`が何も提供されない場合で**POST**のBodyに新しいレコードの値が入っている場合、そのレコードが作成されプライマリレコードと関連付けられます。
++ すでにプライマリレコードのコレクションにすでに外部レコードが含まれる場合、そのアクションは無視されます。
++ アソシエーションが2方向（例:両サイドにviaが含まれる反射的な関係の場合）反対側となる外部レコードのアソシエーションも更新されます。
 
 
-### Example
+### 例
 
-Add purchase 47 to the list of purchases that Dolly (employee #7) has been involved in.
+購入#47をDolly (従業員 #7)が関わった購入に関連付ける場合。
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/)を使う:**
 
 ```javascript
 $.post('/employee/7/involvedInPurchases/47', function (purchases) {
@@ -26,7 +26,7 @@ $.post('/employee/7/involvedInPurchases/47', function (purchases) {
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/)を使う:**
 
 ```javascript
 $http.post('/employee/7/involvedInPurchases/47')
@@ -35,7 +35,7 @@ $http.post('/employee/7/involvedInPurchases/47')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)を使う:**
 
 ```javascript
 io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
@@ -43,14 +43,14 @@ io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL)を使う:**
 
 ```bash
 curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
 ```
 
 
-Should return "Dolly", the primary record:
+プライマリレコードである"Dolly"を返すべきです。:
 
 ```json
 {
@@ -71,10 +71,10 @@ Should return "Dolly", the primary record:
 ```
 
 
-### Notes
+### 備考
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + このアクションは _複数の_ (コレクションの)アソシエーションを扱います。_単一の_ （モデルの）アソシエーションを追加・削除したい場合単に[update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html)を使ってください。
+> + 上記の例では"rest"blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが少なくともアソシエーション`involvedInPurchases: {collection: 'Purchase', via: 'cashier'}`を持った'Employee'モデルとアソシエーション`cashier: {model: 'Employee'}`を持った`Purchase`モデルを持っているべきです。 同様に空の`PurchaseController`と`EmployeeController`も必要です。これを簡単に行うには以下を実行します:
 >
 >   ```shell
 >   $ sails new foo
@@ -83,7 +83,7 @@ Should return "Dolly", the primary record:
 >   $ sails generate api employee
 >   ```
 >
-> ...then editing `api/models/Purchase.js` and `api/models/Employee.js`.
+> ...そして。`api/models/Purchase.js`と`api/models/Employee.js`を編集します。
 
 <docmeta name="uniqueID" value="Add262514">
 <docmeta name="displayName" value="add to">

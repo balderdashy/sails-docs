@@ -1,6 +1,6 @@
-# Find One
+# 1件取り出す
 
-Returns a single record from the model as a JSON Object.
+モデルからレコードを1件、JSONオブジェクトとして取り出す。
 
 ```
 GET /:model/:id
@@ -34,26 +34,26 @@ GET /:model/:id
 </table>
 -->
 
-The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object. The specified `id` is the [primary key](http://en.wikipedia.org/wiki/Unique_key) of the desired record.
+**findOne()** blueprintアクションは(`:modelIdentity`として与えられた)モデルからレコードを1件JSONオブジェクトで取り出します。指定された`id`は欲しいレコードの[主キー](http://en.wikipedia.org/wiki/Unique_key)です。
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record. If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the docs for [.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html) for more info.
+アクションがリクエストを通じて呼びされた場合、リクエストを行ったソケットは返されたレコードをサブスクライブします。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは[.subscribe()のドキュメント](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html)を御覧ください。
 
 
-### Parameters
+### パラメータ
 
- Parameter                          | Type                                    | Details
+ パラメータ                           | 型                                      | 詳細
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. `/product/7`
- callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | レコードの主キー値 <br/><br/>例: `/product/7`
+ callback                           | ((string))                              | 指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:`?callback=myJSONPHandlerFn`
 
-### Example
-Find the purchase with ID #1, E.g. `http://localhost:1337/purchase/1`
+### 例
+IDが1の購入を検索する。例:`http://localhost:1337/purchase/1`
 
-#### Route
+#### ルート
 `GET /purchase/1`
 
 
-#### Expected Response
+#### 想定されるレスポンス
 
  ```json
  {
