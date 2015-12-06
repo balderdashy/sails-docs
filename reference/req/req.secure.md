@@ -1,8 +1,8 @@
 # req.secure
 
-Indicates whether or not the request was sent over a secure [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security) connection (i.e. `https://` or `wss://`).
+リクエストが[TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security)接続(すなわち`https://` または `wss://`)で送られたかを示します。
 
-### Usage
+### 使い方
 ```javascript
 req.secure;
 ```

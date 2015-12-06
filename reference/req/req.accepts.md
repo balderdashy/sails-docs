@@ -1,14 +1,14 @@
 # req.accepts()
 
-Checks whether this request's stated list of "accepted" [media types](http://www.iana.org/assignments/media-types/media-types.xhtml) includes the specified `type`. Returns true or false.
+リクエストが許容される[media types](http://www.iana.org/assignments/media-types/media-types.xhtml) に特定の`type`が含まれるかどうかを確認します。TrueかFalseを返します。
 
 
-### Usage
+### 使いかた
 ```javascript
 req.accepts(type);
 ```
 
-### Example
+### 例
 
 ```javascript
 req.accepts('application/json');
@@ -17,8 +17,8 @@ req.accepts('json');
 // -> true
 ```
 
-### Notes
-> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+### 備考
+> + Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては[`accepts` module](https://github.com/expressjs/accepts)を御覧ください。
 
 
 <docmeta name="displayName" value="req.accepts()">

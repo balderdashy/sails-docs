@@ -1,15 +1,15 @@
 # req.host
-The hostname of this request, without the port number, as specified by its "Host" header.
+"Host"ヘッダーで指定されたこのリクエストのホスト名をポート番号抜きで返します。
 
 
-### Usage
+### 使い方
 ```javascript
 req.host;
 ```
 
-### Example
+### 例
 
-If this request's "Host" header was: "ww3.staging.ibm.com:1492":
+もしリクエストの"Host"ヘッダーが"ww3.staging.ibm.com:1492"なら:
 
 ```javascript
 req.host;

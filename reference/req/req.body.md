@@ -1,16 +1,16 @@
 # req.body
 
-An object containing text parameters from the parsed request body, defaulting to `{}`.
+リクエストボディをパースしたテキストパワメータが含まれ、デフォルトは`{}`です。
 
-By default, the request body can be url-encoded or stringified as JSON.  Support for other formats, such as serialized XML, is possible using the [middleware](http://sailsjs.org/documentation/concepts/Middleware) configuration.
+デフォルトで、リクエストボディはURLエンコードされているか、Json文字列です。シリアライズされたXMLなど、その他フォーマットのサポートは[middleware](http://sailsjs.org/documentation/concepts/Middleware)を設定を使って可能です。
 
-### Usage
+### 使い方
 ```js
 req.body;
 ```
 
-### Notes
->+ If a request contains one or more file uploads, only the text parameters sent _**before**_ the first file parameter will be available in `req.body`.
+### 備考
+>+ リクエストが、一つまたは複数のファイルアップロードを含んでいる場合、文字列属性は`req.body`の中の最初のパラメータの _**前に**_ あるもののみ取得可能です。
 
 
 <docmeta name="uniqueID" value="reqbody1481">

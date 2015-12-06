@@ -1,18 +1,18 @@
 # req.params
 
-An object containing parameter values parsed from the URL path.
+URLパスから得られたパラメータ値を持ったオブジェクトです。
 
-For example if you have the route `/user/:name`, then the "name" from the URL path wil be available as `req.params.name`.  This object defaults to `{}`.
+例えば、`/user/:name`がある場合、"name"は`req.params.name`としてURLパスから得ることが出来ます。このオブジェクトのデフォルト値は`{}`です。
 
 
-### Usage
+### 使い方
 
 ```javascript
 req.params;
 ```
 
-### Notes
-> + When a route address is defined using a regular expression, each capture group match from the regex is available as `req.params[0]`, `req.params[1]`, etc.This strategy is also applied to unnamed wild-card matches in string routes such as `/file/*`.
+### 備考
+> + ルートアドレスが正規表現を使って出来ていた場合、正規表現のそれぞれのマッチから得られた値は`req.params[0]`、`req.params[1]`のように得られます。この方法は`/file/*`のような命名されていないワイルドカードマッチにも使えます。
 
 
 

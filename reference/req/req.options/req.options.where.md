@@ -1,12 +1,12 @@
 # req.options.values.where
 
-Default &ldquo;where&rdquo; criteria for user with blueprint [`find`](http://sailsjs.org/documentation/reference/blueprint-api/Find.html) and [`update`](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) actions.
+blueprintの[`find`](http://sailsjs.org/documentation/reference/blueprint-api/Find.html)と[`update`](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) アクションの「where条件の」デフォルト値です。
 
-> Note: Before using `req.options.where`, confirm that it exists and create it if necessary.
+> 備考:　`req.options.where`を使う前にそれが存在するかを確認し、必要に応じて作成して下さい。
 
-### Example
+### 例
 
-To default to finding only records where `userId` matches the logged-in user&rsquo;s id:
+`userId`がログイン済ユーザのidに一致するもののみ取り出すのをデフォルトにするには:
 
 ```javascript
 // In config/policies/filterByUser.js
@@ -27,6 +27,6 @@ module.exports = function filterByUser (req, res, next) {
 }
 ```
 
-Then [apply this policy](http://sailsjs.org/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
+そして、目的のblueprintアクションに[このポリシーを適用](http://sailsjs.org/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action)して下さい。
 
 <docmeta name="displayName" value="req.options.where">

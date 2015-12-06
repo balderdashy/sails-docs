@@ -1,14 +1,14 @@
 # req.subdomains
-An array of all the subdomains in this request's URL.
+リクエストのURLにある全てのサブドメインの配列
 
-### Usage
+### 使い方
 ```javascript
 req.subdomains;
 ```
 
-### Example
+### 例
 
-If the requested URL was "https://ww3.staging.ibm.com":
+リクエストされたURLが"https://ww3.staging.ibm.com"の場合:
 
 ```javascript
 req.subdomains;

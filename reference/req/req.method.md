@@ -1,21 +1,21 @@
 # req.method
-The request method (aka "verb".)
+リクエストのメソッド（別名:動詞）です。
 
-### Usage
+### 使い方
 ```js
 req.method;
 ```
 
-### Example
+### 例
 
-If a client sends a POST request to `/product`:
+クライアントが`/product`に対してPOSTリクエストをした場合 :
 
 ```js
 req.method;
 // -> "POST"
 ```
 
-### Notes
+### 備考
 
 > + All requests to a Sails server have a "method", even via WebSockets (this is thanks to the request interpreter)
 

@@ -1,44 +1,44 @@
 # req.param()
-Returns the value of the parameter with the specified name.
+指定された名前のパラメータの値を返します。
 
-### Usage
+### 使い方
 
 ```javascript
 req.param(name[, defaultValue]);
 ```
 
-### Details
+### 詳細
 
-`req.param()` searches the url path, query string, and body of the request for the specified parameter.  If no parameter value exists anywhere in the request with the given `name`, it returns `undefined`, or the optional `defaultValue` if specified.
+`req.param()`は指定さてたパラメータのURLパス、クエリ文字列、リクエストボディを探します。指定された`name`のパラメータがどこにもない場合は`undefined`または、`defaultValue`が指定されている場合はそれを返します。
 
-+ url path parameters ([`req.params`](http://sailsjs.org/documentation/reference/req/req.params.html))
-  + e.g. a request "/foo/4" to route `/foo/:id` has url path params `{ id: 4 }`
-+ query string parameters ([`req.query`](http://sailsjs.org/documentation/reference/req/req.query.html))
-  + e.g. a request "/foo?email=5" has query params `{ email: 5 }`
-+ body parameters ([`req.body`](http://sailsjs.org/documentation/reference/req/req.body.html))
-  + e.g. a request with a parseable body (e.g. JSON, url-encoded, or XML) has body parameters equal to its parsed value
++ URLパスパラメータ ([`req.params`](http://sailsjs.org/documentation/reference/req/req.params.html))
+  + 例えば、ルート`/foo/:id`へのリクエスト"/foo/4"は`{ id: 4 }`を持ちます。
++ クエリ文字列パラメータ ([`req.query`](http://sailsjs.org/documentation/reference/req/req.query.html))
+  + 例えば、リクエスト"/foo?email=5"は`{ email: 5 }`を持ちます。
++ ボディパラメータ ([`req.body`](http://sailsjs.org/documentation/reference/req/req.body.html))
+  + 例:パース可能なボディ（例:JSON、URLエンコードまたXML）はそのパース済みの値を持ちます。
 
 
-### Example
+### 例
 
-Consider a route (`POST /product/:sku`) which points to a blueprint, controller, or policy with the following code:
+以下の様なコードを持つコントローラ、ポリシー、またはBlueprintを指すルート(`POST /product/:sku`) を想定します。:
 
 ```javascript
 req.param('sku');
 // -> 123
 ```
 
-We can get the expected result by sending the `sku` parameter any of the following ways:
+以下のいずれの方法を使って`sku`を送る際にも期待している結果が得られます。:
 
 + `POST /product/123`
 + `POST /product?sku=123`
 + `POST /product`
-    + with a JSON request body: `{ "sku": 123 }`
+    + 次のJSONのリクエストボディを持って: `{ "sku": 123 }`
 
 
 
-### Notes
-> + If you'd like to get ALL parameters from ALL sources (including the URL path, query string, and parsed request body) you can use [`req.allParams()`](http://sailsjs.org/documentation/reference/req/req.allParams.html).
+### 備考
+> + 全てのソースからの全てのパラメータ（URLパス、クエリ文字列、パース済リクエストボディ）を欲しい場合は代わりに[`req.allParams()`](http://sailsjs.org/documentation/reference/req/req.allParams.html)が使えます。
 
 
 

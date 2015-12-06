@@ -1,12 +1,12 @@
 # req.options.values
 
-Default values for blueprint [`create`](http://sailsjs.org/documentation/reference/blueprint-api/Create.html) and [`update`](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) actions.
+blueprintの[`create`](http://sailsjs.org/documentation/reference/blueprint-api/Create.html)と[`update`](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) アクションのデフォルト値です。
 
-> Note: Before using `req.options.value`, confirm that it exists and create it if necessary.
+> 備考: `req.options.value`を使う前にそれが存在するかを確認し、必要に応じて作成して下さい。
 
-### Example
+### 例
 
-To default to using the logged-in user&rsquo;s name when creating a new record:
+新しいレコードを作る際にログインしているユーザの名前を使うことをデフォルトにするには:
 
 ```javascript
 // In config/policies/createWithUserName.js
@@ -27,6 +27,6 @@ module.exports = function createWithUserName (req, res, next) {
 }
 ```
 
-Then [apply this policy](http://sailsjs.org/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action) to the desired blueprint actions.
+そして、目的のblueprintアクションに[このポリシーを適用](http://sailsjs.org/documentation/concepts/Policies?q=to-apply-a-policy-to-a-specific-controller-action)して下さい。
 
 <docmeta name="displayName" value="req.options.values">

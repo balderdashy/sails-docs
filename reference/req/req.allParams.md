@@ -1,17 +1,17 @@
 # req.allParams()
 
-Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](http://sailsjs.org/documentation/reference/req.param) for details.
+リクエストの中で送信された _全ての_ パラメータを一つのオブジェクトにして送信します。URLパスに含まれるパラメータやクエリストリング、リクエストボディの内容もこれに含まれます。詳しくは[`req.param()`](http://sailsjs.org/documentation/reference/req.param)を御覧ください。
 
-### Usage
+### 使い方
 
 ```js
 req.allParams();
 ```
 
 
-### Example
+### 例
 
-Update the product with the specified `sku`, setting new values using the parameters which were passed in:
+特定の`sku`を持つ製品を与えられたパラメータの内容を使って編集します。:
 
 ```javascript
 var values = req.allParams();
@@ -30,9 +30,9 @@ Product.update({sku: sku})
 });
 ```
 
-### Notes
+### 備考
 
->+ This method can also be called as `req.params.all()` - they are synonyms.
+>+ メソッドは`req.params.all()`としても呼び出せます - これらは同期されています。
 
 
 

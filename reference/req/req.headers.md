@@ -1,20 +1,20 @@
 # req.headers
 
-An object containing pre-defined/custom header given in the current request.
+リクエストの中の規定及びカスタムのヘッダー。
 
-### Usage
+### 使い方
 
 ```javascript
 req.headers;
 ```
 
-### Details
+### 詳細
 
-Often we want to check the headers of the current request, so this can be done easily in the sails.
+しばしば現在のリクエストのヘッダーを確認したいことがありますが、Sailsではそれが簡単にできます。
 
-### Example
+### 例
 
-Sample output of the `req.headers` object:
+`req.headers`オブジェクトの出力例:
 
 ```javascript
 console.log(req.headers);
@@ -30,15 +30,15 @@ console.log(req.headers);
 ```
   
   
-### Example 
+### 例 
 
-And if you want to access any specific, custom or pre-defined header, it can be done with bracket notation:
+規定及びカスタムのヘッダから特定のものにアクセスしたい場合はカッコを使ったノーテーションで行えます:
 
 ```javascript
 req.headers['custom-header'];
 ```
 
-or dot notation:
+あるいはドットを使ったノーテーションで:
 
 ```javascript
 req.headers.host;

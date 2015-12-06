@@ -1,26 +1,26 @@
 # req.wantsJSON
 
-A flag indicating whether the requesting client would prefer a JSON response (as opposed to some other format, like XML or HTML.)
+クライアントが（XMLやHTMLではなく）JSONレスポンスを求めていることを示すフラグです。
 
-`req.wantsJSON` is used by all of the [built-in custom responses](http://sailsjs.org/documentation/anatomy/myApp/api/responses) in Sails.
+`req.wantsJSON`はSailsの全ての[ビルトインのカスタムレスポンス](http://sailsjs.org/documentation/anatomy/myApp/api/responses)で利用されています。
 
 
-### Usage
+### 使い方
 ```js
 req.wantsJSON;
 ```
 
-### Details
+### 詳細
 
-The intended purpose of `req.wantsJSON` is to provide a clean, reusable indication of whether the server should respond with JSON, or send back something else (like an HTML page or a 302 redirect.) It is not the right answer for _every_ content negotiation problem, but it is a simple, go-to solution for most use cases.
+`req.wantsJSON`の意図している使い道はサーバがJSONを返すべきなのか、それとも(HTMLページや302リダイレクトのような)何か別のものを返すべきなのかのクリーンで再利用可能な判断方法を提供することです。これは _全ての_ コンテンツネゴシエーション問題に利用できるわけではありませんが、シンプルで殆どのケースで使える方法です。
 
-For instance, for requests typed into the URL bar, all major browsers set an "Accept: text/plain;" request header.  In that case, `req.wantsJSON` is false.  But for many other cases, the distinction is not quite as clear.  In those scenarios, Sails uses heuristics to determine the best value for `req.wantsJSON`.
+例えば、URLバーに入力されたリクエストに関しては全てのメジャーなブラウザは"Accept: text/plain;"リクエストヘッダーを付加します。このケースでは`req.wantsJSON`はFalseです。しかし別のケースでは区別はそれほど明確ではありません。これらのシナリオではSailsは`req.wantsJSON`に最適な値をヒューリスティックに判断します。
 
-Technically, `req.wantsJSON` inspects the request's `"Content-type"`, `"Accepts"`, and `"X-Requested-With"` headers to make an inference as to whether the request is expecting a JSON response.  If the request did not provide enough information to know for sure, Sails errs on the side of JSON (i.e. `req.wantsJSON` will be set to `true`.)
+厳密には、`req.wantsJSON`はリクエストの`"Content-type"`、`"Accepts"`、`"X-Requested-With"`を確認してリクエストがJSONを求めているかどうかを推測します。リクエストが確な判断ができるのに十分な情報を持っていない場合、SailsはJSONの側を選びます(すなわち`req.wantsJSON`は`true`になります)。
 
-This all makes your app more future-proof and less brittle: as best-practices for content negotiation change over time (e.g. a new type of consumer device or enterprise user-agent introduces a new header) Sails can patch `req.wantsJSON` at the framework level and modify the heuristics accordingly. Not to mention that it reduces code duplication and saves you the annoyance of manually inspecting headers in each of your routes.
+これによりアプリケーションはより未来志向で堅牢なものになります: つまり、長期的なコンテンツネゴシエーションの変化（新しい消費者向けデバイスや企業向けユーザエージェントが別のヘッダを導入するような）に対するベストプラクティスとしてSailsは`req.wantsJSON`をフレームワークレベルでパッチしてヒューリスティックをそれに応じて変更します。言うまでもなく、これによりコードの重複が抑制できそれぞれのルートでヘッダーを確認するイライラからも逃れることが出来ます。
 
-### Example
+### 例
 ```javascript
 if (req.wantsJSON) {
   return res.json(data);
@@ -30,21 +30,21 @@ else {
 }
 ```
 
-### Details
+### 詳細
 
-Here is the specific order in which `req.wantsJSON` inspects the request.  **If any of the following match, subsequent checks are ignored.**
+`req.wantsJSON`がリクエストを検査する際の具体的な順序は以下のとおりです。 ** 以下のいずれかにマッチした時は、それから先のチェックは無視されます **
 
-A request "wantsJSON" if:
+もし以下ならリクエストは"wantsJSON" :
 
-+ if this looks like an AJAX request
-+ if this is a virtual request from a socket
-+ if this request DOESN'T explicitly want HTML
-+ if this request has a "json" content-type AND ALSO has its "Accept" header set
-+ if `req.options.wantsJSON` is truthy
++ AJAXリクエストのように見えれば
++ ソケットからのバーチャルなリクエストに見えれば
++ 明示的にHTMLを要求していなければ
++ JSONのcontent-typeヘッダーを持っていて"Accept"ヘッダーを持っていれば
++ `req.options.wantsJSON`がTrueであれば
 
-### Notes
-> + Lower-level content negotiation is, of course, still possible using `req.is()`, `req.accepts()`, `req.xhr`, and `req.get()`.
-> + As of Sails v0.10, requests originating from a WebSocket client always "want JSON".
+### 備考
+> + 低レベルなコンテントネゴシエーションは、もちろん`req.is()`、`req.accepts()`、`req.xhr`と`req.get()`を使って行えます。
+> + Sails v0.10からはWebSocketを出元とするリクエストは全て"want JSON"として扱われます。
 
 <docmeta name="uniqueID" value="reqwantsJSON30891">
 <docmeta name="displayName" value="req.wantsJSON">

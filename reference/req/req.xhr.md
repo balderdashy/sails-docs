@@ -1,13 +1,13 @@
 # req.xhr
-A flag indicating whether the current request (`req`) appears to be an AJAX request (i.e. it was issued with its "X-Requested-With" header set to "XMLHttpRequest".)
+リクエスト(`req`)がAJAXリクエストに見えるかどうかのフラグ。（すなわち、これは"X-Requested-With"に"XMLHttpRequest"が設定されているかによってもたらされます）
 
 
-### Usage
+### 使い方
 ```js
 req.xhr;
 ```
 
-### Example
+### 例
 ```javascript
 if (req.xhr) {
   // Yup, it's AJAX alright.
@@ -15,8 +15,8 @@ if (req.xhr) {
 ```
 
 
-### Notes
-> + Whenever possible, you should prefer the `req.wantsJSON` flag.  Avoid writing custom content-negotiation negotiation logic into your app  - it makes your code more brittle and more verbose.
+### 備考
+> + 可能な限り`req.wantsJSON`を使うことを選択すべきです。あなたのアプリケーションでカスタムのコンテントネゴシエーションを書くことは避けて下さい。それはあなたのコードをより冗長で脆弱なものにします。
 
 
 

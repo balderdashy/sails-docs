@@ -1,15 +1,15 @@
 # req.cookies
-An object containing all of the [**unsigned cookies**](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) from this request (`req`).
+リクエスト(`req`)に含まれる全ての[**サインされてないクッキー**](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) を含みます。
 
 
-### Usage
+### 使い方
 ```javascript
 req.cookies;
 ```
 
 
-### Example
-Assuming the request contained a cookie named "chocolatechip" with value "Yummy:
+### 例
+"chocolatechip"と名付けられ、"Yummyの値を持つクッキーが含まれると仮定します。:
 
 ```javascript
 req.cookies.chocolatechip;

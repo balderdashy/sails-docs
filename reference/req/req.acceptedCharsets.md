@@ -1,29 +1,29 @@
 # req.acceptedCharsets
-This property is an array that contains the acceptable charsets specified by the user agent in the request.
+このプロパティはリクエスト中でユーザエージェントから指定された受け入れ可能な文字コードの配列を持ちます。
 
 
 
-### Usage
+### 使い方
 
 ```js
 req.acceptedCharsets;
 ```
 
-### Details
+### 詳細
 
-Useful for advanced content negotiation where a client may or may not support certain character sets, such as unicode (utf-8.)  This returns all of the "acceptable" charsets specified in this request's `Accept-Charset` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2).)
+これはユニコード(utf-8)のような特定の文字コードをクライアントがサポートしているかいないかわからない時に高度なコンテンツネゴシエーションを行うのに便利です。これはリクエストの`Accept-Charset` ヘッダー ([RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.2)をご覧ください)に含まれる全ての受け入れ可能な文字コードを返します。
 
 
 
-### Example
+### 例
 
 ```js
 req.acceptedCharsets;
 // -> ['utf-8', 'utf-16']
 ```
 
-### Notes
-> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+### 備考
+> + Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては[`accepts` module](https://github.com/expressjs/accepts)を御覧ください。
 
 
 

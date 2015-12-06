@@ -1,22 +1,22 @@
 # req.path
 
-The URL pathname from the [request URL string](http://nodejs.org/api/http.html#http_message_url) of the current request (`req`). Note that this is the part of the URL after and including the leading slash (e.g. `/foo/bar`), but without the query string (e.g. `?name=foo`) or fragment (e.g. `#foobar`.)
+リクエストの[リクエストURL文字列](http://nodejs.org/api/http.html#http_message_url)から得たURLパス名です。これはURLのスラッシュ以降(例: `/foo/bar`)の部分を示しますが、クエリ文字列(例: `?name=foo`)やフラグメント(例:`#foobar`)を示さないことにご留意下さい.
 
 
-### Usage
+### 使い方
 
 ```js
 req.path;
 ```
 
 
-### Example
+### 例
 
-Assuming a client sends the following request:
+クライアントが以下のリクエストを送ったとします。:
 
 > http://localhost:1337/donor/37?name=foo#foobar
 
-`req.path` will be defined as follows:
+`req.path` は以下のように定義されます:
 
 ```js
 req.path;

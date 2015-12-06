@@ -1,29 +1,29 @@
 # req.acceptedLanguages
-An array containing the "acceptable" response languages specified by the user agent in the "[Accept-Language](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)" header of this request (`req`).
+リクエスト(`req`)の`Accept-Language` ヘッダー ([RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)をご覧下さい)にで指定された受け入れ可能な言語の配列を含みます。
 
-### Usage
+### 使い方
 ```js
 req.acceptedLanguages;
 ```
 
-### Details
+### 詳細
 
-`req.acceptedLanguages` contains all the languages specified by the request's `Accept-Language` header (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).)
+`req.acceptedLanguages`はリクエストの`Accept-Language` ヘッダー (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)をご覧下さい)で指定された全ての言語を含みます。
 
-This method is used by Sails internally for its implementation of internationalization and localization.  The [i18n](http://sailsjs.org/documentation/concepts/Internationalization) hook automatically serves different content to different locales, based on the request.
+このメソッドはSailsの内部で国際化やローカライゼーションのために使われます。[i18n](http://sailsjs.org/documentation/concepts/Internationalization)フックはリクエストに応じて自動的に別々のロケールに対して別々のコンテンツを提供します。
 
 
-### Example
+### 例
 
 ```js
 req.acceptedLanguages;
 // -> ['en-US', 'en']
 ```
 
-### Notes
-> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
-> + Browsers send the "Accept-Language" header automatically based on the user's language settings.
-> + You can expect the "Accept-Language" header to exist in most requests which originate from web browsers.
+### 備考
+> + Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては[`accepts` module](https://github.com/expressjs/accepts)を御覧ください。
+> + ブラウザはユーザの言語設定に基づいて自動的に"Accept-Language"ヘッダを送ります。
+> + Webブラウザを出元とする多くのリクエストに関して"Accept-Language"ヘッダがあると期待できます。
 
 
 

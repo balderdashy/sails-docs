@@ -1,6 +1,6 @@
 # req.url
 
-Like [`req.path`](http://sailsjs.org/documentation/reference/req/req.path.html), but also includes the query string suffix.
+[`req.path`](http://sailsjs.org/documentation/reference/req/req.path.html)に似ていますが、後に続くクエリー文字列も含みます
 
 ```js
 req.url;
@@ -9,16 +9,16 @@ req.url;
 ```
 
 
-### Notes
-> + It is worth mentioning that the URL fragment/hash (e.g. "#some/clientside/route") part of the url is [not available on the server](https://github.com/strongloop/express/issues/1083#issuecomment-5179035). This is an [open issue with the current HTTP specification](http://stackoverflow.com/a/2305927/486547). So if you write an action to redirect from one subdomain to another, for instance, you won't be able to peek at the URL fragment in that action.
-> + However, if you respond with a 302 redirect (i.e. `res.redirect()`) the user agent on the other end will preserve the URL fragment/hash and tack it on to the end of the new redirected URL.  In many cases, this is exactly what you want!
+### 備考
+> + URLのハッシュ・フラグメント部分は[サーバ側では利用不可能](https://github.com/strongloop/express/issues/1083#issuecomment-5179035)ということを意識することは重要です。これは[現在のHTTPスペックに存在する問題](http://stackoverflow.com/a/2305927/486547)です。そのため、サブドメイン間をリダイレクトするアクションを書く場合などはそのアクションでフラグメンションを見ることは出来ません。
+> + しかしながら、もし302リダイレクト(すなわち`res.redirect()`) として扱った場合、もう一方のユーザエージェントはフラグメント・ハッシュを維持し、新しくリダイレクトされたURLでもトラックします。多くの場合、これはあなたのやりたいことそのものです。 
 
 
 
 <!--
-This doesn't seem to be true anymore:
+これはすでに事実ではなさそうです:
 
-The querystring parser in Express/Connect removes the query string from the standard `req.url` in Node, so in Sails/Express/Koa/Connect, `req.url` is effectively a synonym for `req.path`.  Please see `req.path` for example usage.
+Express/Connectのクエリ文字列パーサはNodeの通常の`req.url`ではクエリ文字列を取り除きますのでSails/Express/Koa/Connectでは`req.url`は`req.path`と同じです。使用例に関しては`req.path`を御覧ください。
 -->
 
 
