@@ -1,38 +1,38 @@
 # res.badRequest()
 
-This method is used to send a [400](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Bad Request") response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.
+このメソッドは[400](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Bad Request")レスポンスを返し、クライアントにリクエストが不正であることを示します。通常これはヘッダーのパラメータに不正があるときやアプリケーションロジックで処理できないことを意味します。
 
 
 
-### Usage
+### 使い方
 
 ```js
 return res.badRequest();
 ```
 
-_Or:_
+_あるいは:_
 + `return res.badRequest(data);`
 + `return res.badRequest(data, pathToView);`
 
 
 
-### Details
+### 詳細
 
-Like the other built-in custom response modules, the behavior of this method is customizable.
+ほかのカスタムレスポンスモジュールと同じようにこのメソッドはカスタマイズ可能です。
 
-By default, it works as follows:
+デフォルトでこれは以下のように動作します:
 
-+ If the request "[wants JSON](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Bad Request"`).
-+ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
-  + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will just send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`.
++ リクエストが"[JSONを望んでいる](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)"場合（例えはリクエストがAJAXやWebSocketsその他cURLなどのRESTクライアントからのものである場合）、Sailsは与えられたエラーの`data`をJSONで返します。もし何の`data`も与えられていない時はデフォルトのレスポンスボディ（文字列の`"Bad Request"`）が送信されます。
++ リクエストがJSONを望んで _いない場合_ （例:URLがブラウザに打ち込まれた場合）、Sailsはビューのうち1つを返そうとします。
+  + 特定の`pathToView`が与えられているときはSailsはそのビューを返そうとします。
+  + そうではなく`pathToView`が与えられて_いない時_Sailsは適切なviewを推測しようとします。（詳しくは[`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html)を御覧ください。）、もし適切なビューを見つけられない時Sailsは単にJSONを返します。
+  + Sailsがビューを返すとき、`data`引数は[view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`としてアクセス可能です。
 
 
 
-### Example
+### 例
 
-Using the default view:
+デフォルトのビューを使う:
 
 ```javascript
 if ( req.param('amount') < 500 )
@@ -42,7 +42,7 @@ if ( req.param('amount') < 500 )
 }
 ```
 
-With a custom view:
+カスタムのビュー使う:
 
 ```javascript
 if ( req.param('amount') < 500 )
@@ -55,11 +55,11 @@ if ( req.param('amount') < 500 )
 
 
 
-### Notes
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
->+ `res.badRequest()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/badRequest.js`, which is bundled automatically in newly generated Sails apps.  If a `badRequest.js` response method does not exist in your app, Sails will implicitly use the default behavior.
->+ This method is called automatically if a call to [`req.validate()`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) fails any of its validation checks.
->+ By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
+### 備考
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
+>+ `res.badRequest()`は（ほかのユーザ側のレスポンスメソッドと同様に）編集や上書きが可能です。`/responses/badRequest.js`で定義されたレスポンスメソッドが実行されますが、これはSailsアプリケーションを生成する際に自動的に作成されます。`badRequest.js`が無いときはSailsは暗黙でデフォルトの振る舞いを利用します。
+>+ このメソッドはバリデーションチェックに失敗し、 [`req.validate()`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)が呼び出された時に自動で呼びだされます。
+>+　デフォルトではアプリケーションが本番環境で実行されている時(すなわち`process.env.NODE_ENV === 'production'`)に於いては特定のエラー(`err`)は除外されます。
 
 
 

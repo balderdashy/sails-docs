@@ -1,13 +1,13 @@
 # res.attachment()
 
-Sets the "Content-Disposition" header of the current response to "attachment". If a `filename` is given, then the "Content-Type" will be automatically set based on the extension of the file (e.g. `.jpg` or `.html`), and the "Content-Disposition" header will be set to "filename=`filename`".
+現在のリクエストの "Content-Disposition"に"attachment"をセットします。`filename`が与えられていれば"Content-Type"はファイル名の拡張子(`.jpg`または`.html`など)から自動的に推測されてセットされ"Content-Disposition"ヘッダーには"filename=`filename`"がセットされます。
 
-### Usage
+### 使い方
 ```javascript
 res.attachment([filename]);
 ```
 
-### Example
+### 例
 ```javascript
 res.attachment();
 // -> response header will contain:

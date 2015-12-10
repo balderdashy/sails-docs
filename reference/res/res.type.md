@@ -1,15 +1,15 @@
 # res.type()
 
-Sets the "Content-Type" response header to the specified `type`.
+レスポンスの"Content-Type"ヘッダーに指定された`type`をセットします。
 
-This method is pretty forgiving (see examples below), but note that if `type` contains a `"/"`, `res.type()` assumes it is a MIME type and interprets it literally.
+このメソッドは非常に寛容（下記の例を御覧ください）ですが、`type`が`"/"`を含んでいた場合、これはMINEタイプだとみなし、そのまま解釈します。
 
-### Usage
+### 使い方
 ```javascript
 res.type(type);
 ```
 
-### Example
+### 例
 ```javascript
 res.type('.html');
 res.type('html');

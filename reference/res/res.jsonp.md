@@ -1,15 +1,15 @@
 # res.jsonp()
 
-Send a JSON or JSONP response.
+JSONまたはJSONPのレスポンスを送信します。
 
-Identical to [`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html), except if a "callback" parameter exists, a [JSONP](http://en.wikipedia.org/wiki/JSONP) response will be sent instead, using the value of the "callback" parameter as the name of the function wrapper.
+"callback"パラメータが存在する場合に"callback"パタメータをファンクションラッパーの名前に使った[JSONP](http://en.wikipedia.org/wiki/JSONP)レスポンスを返すということ以外は[`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html)と同じです。
 
-### Usage
+### 使い方
 ```js
 return res.jsonp([statusCode, ] data);
 ```
 
-### Example
+### 例
 
 ```js
 return res.jsonp({
@@ -25,9 +25,9 @@ return res.jsonp({
 
 <!--
 
-Need to make this better:
+これを改善する必要があります:
 
-By default the JSONP callback name is simply callback, however you may alter this with the jsonp callback name setting. The following are some examples of JSONP responses using the same code:
+デフォルトではJSONPコールバック名は単にcallbakですが、これをコールバック名の設定で変更することが出来ます。以下に同じコードを使ったJSONPのサンプルを挙げます:
 
 ```javascript
 // ?callback=foo
@@ -42,9 +42,9 @@ res.jsonp(500, { error: 'message' })
 ```
 -->
 
-### Notes
-> + Don't forget this method's name is all lowercase.
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+### 備考
+> + メソッド名が全て小文字なことを忘れないでください。
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
 
 
 

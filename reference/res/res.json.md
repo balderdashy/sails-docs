@@ -1,26 +1,26 @@
 # res.json()
 
-Sends a JSON response composed of a stringified version of the specified `data`.
+与えられた`data`を文字列化したものを含むJSONを送信します。
 
-### Usage
+### 使い方
 ```js
 return res.json([statusCode, ] data);
 ```
 
-### Details
+### 詳細
 
-This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
+このメソッドは配列が与えられた時のres.send()と同じ働きをしますが、non-objects(null、undefinedなど)に関してそれが厳密には正しいJSONでなくても明示的にJSONに変換するために使います。
 
-### Example
+### 例
 ```javascript
 res.json(null)
 res.json({ user: 'tobi' })
 res.json(500, { error: 'message' })
 ```
 
-### Notes
-> + Don't forget this method's name is all lowercase.
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+### 備考
+> + メソッド名が全て小文字なことを忘れないでください。
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
 
 
 

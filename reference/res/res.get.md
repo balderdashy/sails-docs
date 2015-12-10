@@ -1,21 +1,21 @@
 # res.get()
 
-Returns the current value of the specified response header (`header`).
+指定されたレスポンスヘッダ―(`header`)の現在の値を返します。
 
-### Usage
+### 使い方
 ```js
 res.get(header);
 ```
 
-### Example
+### 例
 ```javascript
 res.get('Content-Type');
 // -> "text/plain"
 ```
 
-### Notes
->+ The `header` argument is case-insensitive.
->+Response headers can be changed up until the response is sent - see [`res.set()`](http://sailsjs.org/documentation/reference/res/res.set.html).
+### 備考
+>+ `header`引数は大文字小文字を区別しません。
+>+レスポンスヘッダーはレスポンスが送信される前に変更が可能です。[`res.set()`](http://sailsjs.org/documentation/reference/res/res.set.html)を御覧ください。
 
 
 

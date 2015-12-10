@@ -1,39 +1,39 @@
 # res.redirect()
 
-Redirect the requesting user-agent to the given absolute or relative url.
+与えられた絶対パスまたは相対パスにユーザーエージェントをリダイレクトする。
 
 
-### Usage
+### 使い方
 ```js
 return res.redirect(url);
 ```
 
-### Arguments
+### 引数
 
-|   | Argument       | Type        | Details |
+|   | 引数            | 型          | 詳細     |
 |---|----------------|:-----------:|---------|
-| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | `url`          | ((string))  | URL表現 (完全なスペックに関しては以下をご覧ください。).<br/> 例:`"http://google.com"` あるいは `"/login"`
 
 
 
-### Details
+### 詳細
 
-Sails/Express/Koa/Connect support a few forms of redirection, first being a fully qualified URI for redirecting to a different domain:
+Sails/Express/Koa/Connectはいくつかのリダイレクトの形をサポートします。まずは別のドメインへの完全な形のURIです。:
 
 ```javascript
 return res.redirect('http://google.com');
 ```
 
-The second form is the domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/admin` would land you at http://example.com/admin:
+2番めにはドメインに対しての相対リダイレクトです。例えば、http://example.com/admin/post/new にいる場合、`/admin`へのリダイレクトはhttp://example.com/adminへ導かれます。:
 
 ```javascript
 return res.redirect('/checkout');
 ```
 
 <!--
-Probably more confusing than helpful:
+おそらく、便利というよりややこしいです。:
 
-This next redirect is relative to the mount point of the application. For example if you have a blog application mounted at /blog, ideally it has no knowledge of where it was mounted, so where a redirect of /admin/post/new would simply give you http://example.com/admin/post/new, the following mount-relative redirect would give you http://example.com/blog/admin/post/new:
+次のリダイレクトはアプリケーションのマウントポイントからの相対パスです。例えば、ブログアプリケーションが/blogにマウントされていた場合、理想的にはどこにマウントされているのかという知識は必要ないはずので、/admin/post/newへのリダイレクトは単にhttp://example.com/admin/post/newへになりますので、以下の相対リダイレクトはhttp://example.com/blog/admin/post/newを与えます:
 
 ```javascript
 return res.redirect('admin/post/new');
@@ -41,24 +41,24 @@ return res.redirect('admin/post/new');
 -->
 
 
-Pathname relative redirects are also possible. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
+パス名に対するリダイレクトも同様に可能です。もしhttp://example.com/admin/post/newにいる場合、以下のリダイレクトはhttp//example.com/admin/postに導かれます:
 
 ```javascript
 return res.redirect('..');
 ```
-The final special-case is a back redirect, which allows you to redirect a request back where it came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default)
+最後の特別なケースはBackリダイレクトであり、これは"Referer" (あるいは"Referrer")ヘッダー（もし省略されていた場合、デフォルトとして`/`に）を利用してリクエストが来る前へリダイレクトで戻す方法です。
 
 ```javascript
 return res.redirect('back');
 ```
 
-### Notes
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
-> + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
-> + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)).
-> + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(http://sailsjs.org/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
->  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
->  + This behavior may change to more closely reflect HTTP in future versions of Sails.
+### 備考
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
+> + アプリケーションで`res.redirect()`が呼び出された時、Sailsはステータスコード[302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection)でレスポンスします。これはユーザエージェントに対して、与えられたURLに対して新しいリクエストを行うよう示すものです。これは、ユーザエージェントに対してリダイレクトを _強制_ するものではなくただ、そのように振る舞ってくれることを期待するだけのものです。
+> + 一般的に、リクエストが「JSONを要求」している（すなわち、[`req.wantsJSON`](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)）場合、`res.redirect()`を使う必要はありません。
+> + リクエストがSocket.ioから出ている場合、常に「JSONを要求」しているとされますｓ．`res.redirect(http://sailsjs.org/documentation/reference/res/res.redirect.html)`をソケットに対してコールした場合、Sailsはサーバサイドで内部的にリクエストをリダイレクトし、効果的にリダイレクトがが行われるように強制します。（すなわち、302ステータスコードを送信する代わりに、サーバーが単にリダイレクト先にURLに対する新規リクエストを送信します。）
+>  + その結果、ソケットリクエストにおいては（技術的にはプロキシーで実現が出来るものの）外部のドメインへのリダイレクトはサポートされていません。
+>  + この振る舞いは将来のバージョンのSailsではよりHTTPの振る舞いに合った形に変更されるかもしれません。
 
 
 

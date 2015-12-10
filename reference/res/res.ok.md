@@ -1,34 +1,34 @@
 # res.ok()
 
-Send a 200 ("OK") response back down to the client with the provided data.  Performs content-negotiation on the request and calls either [`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html) or [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html).
+与えられたデータを使い、クライアントに200 ("OK")レスポンスを返します。リクエストに対するコンテンツネゴシエーションを行い、[`res.json()`](http://sailsjs.org/documentation/reference/res/res.json.html)または[`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html)を呼び出します。
 
 
-### Usage
+### 使い方
 
 ```js
 return res.ok();
 ```
 
-_Or:_
+_あるいは:_
 + `return res.ok(data);`
 + `return res.ok(data, pathToView);`
 
 
-### Details
+### 詳細
 
-Like the other built-in custom response modules, the behavior of this method is customizable.
+ほかのカスタムレスポンスモジュールと同じようにこのメソッドはカスタマイズ可能です。
 
-By default, it works as follows:
+デフォルトでこれは以下のように動作します:
 
-+ If the request "[wants JSON](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"OK"`).
-+ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
-  + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will fall back and send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`.
++ リクエストが"[JSONを望んでいる](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)"場合（例えはリクエストがAJAXやWebSocketsその他cURLなどのRESTクライアントからのものである場合）、Sailsは与えられたエラーの`data`をJSONで返します。もし何の`data`も与えられていない時はデフォルトのレスポンスボディ（文字列の`"OK"`）が送信されます。
++ リクエストがJSONを望んで _いない場合_ （例:URLがブラウザに打ち込まれた場合）、Sailsはビューのうち1つを返そうとします。
+  + 特定の`pathToView`が与えられているときはSailsはそのビューを返そうとします。
+  + そうではなく`pathToView`が与えられて_いない時_Sailsは適切なviewを推測しようとします。（詳しくは [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html)を御覧ください。）、もし適切なビューを見つけられない時Sailsは単にJSONを返します。
+  + Sailsがビューを返すとき、`data`引数は[view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`としてアクセス可能です。
 
 
 
-### Example
+### 例
 
 ```javascript
 return res.ok({
@@ -38,7 +38,7 @@ return res.ok({
 ```
 
 
-If the request originated from a socket or AJAX request, the response sent from the usage above would contain the following JSON:
+リクエストがAJAXから来ていた場合、上記の利用例に対しては以下のJSONを含んだレスポンスが送信されます:
 
 ```json
 {
@@ -48,7 +48,7 @@ If the request originated from a socket or AJAX request, the response sent from 
 ```
 
 
-Alternatively, if the code that calls `res.ok()` was located somewhere where a view file could be guessed, that view would be served, with with Loïc available as the `data` local.  For example if `res.ok()` was called in `UserController.update`, then we might create the following view as `views/user/update.ejs`:
+また、`res.ok()`がビューが予測可能な場所から呼び出された時はパラメータが`data`のローカルで利用可能な形でそのビューが提供されます。例えば`res.ok()`が`UserController.update`呼びだされた時には`views/user/update.ejs`を使って以下のビューが作成されます:
 
 ```html
 <input type="text" placeholder="Name" value="<%= data.name %>"/>
@@ -56,10 +56,10 @@ Alternatively, if the code that calls `res.ok()` was located somewhere where a v
 ```
 
 
-If the code that calls `res.ok()` is not in a controller action, a conventional view cannot be guessed, so Sails will just send back JSON instead.
+`res.ok()`が呼び出された場所がコントローラアクションでない場合、慣習的なビューは予想されませんのでSailは代わりに単にJSONを返します:
 
 
-Finally, if a custom `pathToView` is provided as the second argument, Sails will always use that view instead of guessing, e.g. the following usage will compile and respond with a view located in `views/user/detail.ejs`:
+最後に`pathToView`が2つ目の引数で指定された時にはSailsは推測をせずに常にそのビューを使います。例えば、以下の仕様例では`views/user/detail.ejs`にあるビューが利用されてコンパイルされ、レスポンスされます:
 
 ```javascript
 return res.ok({
@@ -70,10 +70,10 @@ return res.ok({
 
 
 
-### Notes
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
->+ `res.ok()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in [`api/responses/ok.js`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/ok.js.html), which is bundled automatically in newly generated Sails apps.  If an `ok.js` response method does not exist in your app, Sails will implicitly use the default behavior.
->+ This method is used by [blueprint actions](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions) to send a success response.  Therefore as you might expect, it is a great place to marshal response data for clients which expect data in a specific format, i.e. to convert data to XML, or it wrap in an additional object (for Ember clients).
+### 備考
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
+>+ `res.notFound()`は（ほかのユーザ側のレスポンスメソッドと同様に）編集や上書きが可能です。[`api/responses/ok.js`](http://sailsjs.org/documentation/anatomy/myApp/api/responses/ok.js.html),で定義されたレスポンスメソッドが実行されますが、これはSailsアプリケーションを生成する際に自動的に作成されます。`ok.js`が無いときはSailsは暗黙でデフォルトの振る舞いを利用します。
+>+ このメソッドは[blueprint actions](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions)が成功したリクエストに対するレスポンスを返す際に使われます。そのためそのため、この部分はレスポンスデータクライアントが望む特定の形式に整形する、すなわちデータをXMLにコンバートしたり、追加のオブジェクトにラップしたり（Ember向けに）するのに、最適な場所です。
 
 
 

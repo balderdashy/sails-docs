@@ -1,10 +1,10 @@
 # res.location()
-Sets the "Location" response header to the specified URL expression (`url`).
+与えられたURL(`url`)のエクスプレッションに"Location"レスポンスヘッダーを設定します。
 
-### Usage
+### 使い方
 res.location(url);
 
-### Example
+### 例
 ```javascript
 res.location('/foo/bar');
 res.location('foo/bar');
@@ -13,8 +13,8 @@ res.location('../login');
 res.location('back');
 ```
 
-### Notes
->+ You can use the same kind of URL expressions as in res.redirect().
+### 備考
+>+ res.redirect()と同じURL表記を使えます。
 
 
 
