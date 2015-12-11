@@ -1,24 +1,24 @@
 # .findOrCreate( `criteria` , `record` , [`callback`] )
-### Purpose
-Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
+### 目的
+1つ目のパラメータでレコードの存在を確認します。もし見つからなければ2つ目のパラメータのレコードが作成されます。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
-| 2 |  Records to Create  | `{}`,`[{}]`          |  Yes  |
-| 3 |     Callback        | `function`           | No        |
+| 1 |    検索条件   | `{}`,`[{}]`, `string`, `int`| はい |
+| 2 |  作成するレコード  | `{}`,`[{}]`          |  はい  |
+| 3 |     コールバック        | `function`          | はい        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  エラー              | `Error`             |
+| 2 |  作成したレコード    | `{}`, `[{}]`          |
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(err, record){
@@ -29,9 +29,9 @@ User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(e
 // Don't forget to handle your errors and abide by the rules you defined in your model
 
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+### 備考
+> 全ての文字列引数はレコードのIDである必要があります。
+> 配列である属性探したい場合、追加のカッコで囲まなければWaterlineはinQueryを行いたいと解釈してしまいます。
 
 
 <docmeta name="uniqueID" value="findOrCreate760631">

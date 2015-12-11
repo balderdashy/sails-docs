@@ -1,19 +1,19 @@
 # .toJSON()
 
-### Purpose
-This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.
+### 目的
+このメソッドはクローンされたモデルインスタンスを返します。しかし、これは全てのインスタンスメソッドを含みます。これに関して備考を読むようにして下さい。
 
-### Overview
+### 概要
 
 
-#### Return Value
+#### 返り値
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-|   |   Cloned Record     |        `{ }`        |
+| 1 |  クローンされたレコード    | `{}`     |
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.find().exec(
@@ -45,7 +45,7 @@ User.find().exec(
 
 ```
 
-For model
+モデルで
 
 ```javascript
 module.exports = {
@@ -64,12 +64,12 @@ module.exports = {
 }
 
 ```
-### Notes
-> The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-> Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
-> You would use this to keep private data like email addresses and passwords from being sent back to every client.
+### 備考
+> toJSONの真価はres.jsonを通じて送り出される全てのモデルインスタンスがtoJSONを経由するということです。
+> 特定のモデル(すぐに使えるblueprints含め)を扱う全てのコントローラアクションにカスタムのコードを書く代わりに単にデフォルトのtoJSONファンクションを上書きすることにより出て行くデータを操作できます。
+> メールアドレス等のプライベートな情報が全てのクライアントに送られないようにするためにこれを使うべきです。
 
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+> これはインスタンスメソッドです。現在、インスタンスメソッドはトランザクション出来ません。そのため、同じ意味を持つモデルメソッドを使うことをおすすめします。  
 
 
 <docmeta name="uniqueID" value="toJSON161307">

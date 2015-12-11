@@ -1,6 +1,6 @@
 # Waterline (ORM)
 
-By default, Sails comes bundled with an ORM called Waterline (implemented in the [orm hook](https://github.com/balderdashy/sails/tree/master/lib/hooks/orm).)
+SailsにはデフォルトでWaterlineと呼ばれるORMが組み込まれています（[orm hook](https://github.com/balderdashy/sails/tree/master/lib/hooks/orm)に実装されています）。
 
 
 <docmeta name="uniqueID" value="Waterline537291">

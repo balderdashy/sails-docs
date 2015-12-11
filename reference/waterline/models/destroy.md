@@ -1,23 +1,23 @@
 # .destroy( `criteria` , [`callback`] )
-### Purpose
-Destroys all records in your database that match the given criteria.
+### 目的
+与えられた条件式に合う、データベース中にある全てのレコードを削除します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
-| 2 |     Callback        | `function`          | No        |
+| 1 |    検索条件   | `{}`,`[{}]`, `string`, `int`  | はい |
+| 2 |     コールバック        | `function`          | いいえ        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Deleted Records    | `[{}]`              |
+| 1 |  エラー              | `Error`             |
+| 2 |  削除されたレコード    | `[{}]`        |
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.destroy({name:'Flynn'}).exec(function deleteCB(err){
@@ -34,9 +34,9 @@ User.destroy({id:['id1', 'id2']}).exec(function deleteCB(err){
 // Don't forget to handle your errors
 
 ```
-### Notes
-> If you want to confirm the record exists before you delete it, you must first perform a find()
-> Any string arguments passed must be the ID of the record.
+### 備考
+> 削除する前にデータが存在することを確認する必要がありますので、先にfind()しなければいけません。
+> 全ての文字列引数はレコードのIDである必要があります。
 
 
 <docmeta name="uniqueID" value="destroy398816">

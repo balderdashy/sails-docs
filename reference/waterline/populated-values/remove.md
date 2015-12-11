@@ -1,17 +1,17 @@
 # *.remove( `primary key` )
-### Purpose
-Used to remove records from the join table that is automatically generated during a many-to-many association. Unlike .add(), it only accepts the primary key of the model instance (defaults to record ID).
+### 目的
+多対多のアソシエーションにおいて自動的に生成されたジョインテーブルからレコードを削除するのに使います。.add()とは違い、これはモデルインスタンスの主キー（デフォルトではレコードID）のみを受け入れます。
 
 
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Primary Key      | `string`, `int`     |     Yes    |
+| 1 |    主キー   | `string`, `int` | はい |
 
-### Example Usage
+### 使用例
 
 ```javascript
 
@@ -44,9 +44,9 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 
 ```
 
-### Notes
-> + Any string arguments passed must be the primary key of the record.
-> + `.remove()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
+### 備考
+> + 全ての文字列引数はレコードのIDである必要があります。
+> + `.remove()`だけではアソシエーションに対する変更のデータベースへの永続化をしません。`.add()`や`.remove()`のあとに`.save()`を行って下さい。
 
 <docmeta name="uniqueID" value="remove790682">
 <docmeta name="methodType" value="association">

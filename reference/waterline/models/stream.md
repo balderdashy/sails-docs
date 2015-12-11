@@ -1,23 +1,23 @@
 # .stream( `criteria` )
-### Purpose
-This method uses a <a href="http://nodejs.org/api/stream.html">node write stream</a> to pipe model data as it is retrieved without first having to buffer all of the results to memory.
+### 目的
+このメソッドは<a href="http://nodejs.org/api/stream.html">node write stream</a>を使って、最初に全ての結果をメモリにバッファすることなくデータを取得できるようにモデルデータをパイプします。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int` | Yes |
-| 2 | Custom Write/End Methods | `{}`          | No        |
+| 1 |    検索条件   | `{}`,`[{}]`, `string`, `int`| はい |
+| 2 |     カスタムのWrite/Endメソッド        | ``{}`          | いいえ        |
 
-#### Returned
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Stream of Records  | `stream`  |
+| 1 |  エラー              | `Error`             |
+| 2 |  レコードのストリーム    | `stream`          |
 
-### Example Usage
+### 使用例
 
 UsersController.js
 ```javascript
@@ -57,10 +57,10 @@ window.onload = function startListening(){
 
 ```
 
-### Notes
-> This method is useful for piping data from VERY large models straight to res.  You can also pipe it other places.  See the node stream docs for more info.
-> Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
-> Any string arguments passed must be the ID of the record.
+### 備考
+> このメソッドはとても大きなモデルからデータをそのままレスポンスにパイプするときに便利です。　また、別の場所にパイプすることも出来ます。詳しくはnode streamのドキュメントをお読み下さい。
+> mongo、mysql、posgresqlのアダプタのみがサポートされます。これはdiskアダプタだは動作しません。
+> 全ての文字列引数はレコードのIDである必要があります。
 
 <docmeta name="uniqueID" value="stream427721">
 <docmeta name="methodType" value="mcm">

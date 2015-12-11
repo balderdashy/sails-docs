@@ -1,29 +1,29 @@
-# Working with Models
+# モデルを扱う
 
-This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (i.e. the [resourceful pubsub methods]()), be exposed by the underlying adapters to provide custom functionality, or be hand-written in your app to wrap reusable custom code.
-
-> For an in-depth introduction to models in Sails/Waterline, see <a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">http://sailsjs.org/documentation/concepts/ORM/Models.html</a>.
+ドキュメントのこのセクションはWaterlineですぐに使えるモデルメソッドに焦点を当てます。それに加えてフックからもたらされる追加的なメソッド(すなわち[resourceful pubsub methods]())、カスタムの機能を提供するために下のアダプタから露出されるもの、実在するコードを上書きするためのアプリケーション内で手作りするコードのメソッドがあります。
+ 
+> Sails/Waterlineのモデルに関してのより深い説明は<a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">http://sailsjs.org/documentation/concepts/ORM/Models.html</a>を御覧ください。
 
 ![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
 
 
-### Built-In Model Methods
+### ビルトインのモデルメソッド
 
-In general, model methods are _asynchronous_, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, or promises.
-Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries](http://sailsjs.org/documentation/reference/waterline/queries) for more on that.
+一般的にモデルのメソッドは _非同期_ であり、これが意味するところはただ、これを呼び出してその返り値を使うことは出来ないということです。そのかわりにコールバックまたはpromisesを使わなければなりません。
+多くのビルトインのモデルはコールバックを1つ目の引数として受け取りますっ。コールバックが与えられなければチェーン可能なクエリーオブジェクトが返され、それは`.where()` and `.exec()`のようなメソッドを持ちます。詳しくは[Working with Queries](http://sailsjs.org/documentation/reference/waterline/queries)を御覧ください。
 
 
- Method                | Summary
+ メソッド                | 概要
  --------------------- | ------------------------------------------------------------------------
- `.create()`           | Create record consisting of object passed in
- `.find()`             | Lookup an array of records which match the specified criteria
- `.findOne()`          | Lookup a single record which matches the specified criteria, or send back `null` if it doesn't.
- `.update()`           | Update records matching the specified criteria, setting the specified object of `attrName:value` pairs.
- `.destroy()`          | Destroy records matching the specified criteria.
- `.findOrCreate()`     | Lookup a single record which matches the specified criteria, or create it if it doesn't.
- `.count()`            | Get the total count of records which match the specified criteria.
- `.native()`/`query()` | Make a direct call to the underlying database driver.
- `.stream()`           | Return a readable (object-mode) stream of records which match the specified criteria
+ `.create()`           | 与えられたオブジェクトからなるレコードを作成する。
+ `.find()`             | 与えられた検索条件に合うレコードの配列を探す。
+ `.findOne()`          | 与えられた検索条件に合うレコードを1件探し、それがなければ`null`を返す。
+ `.update()`           | 与えられた検索条件に合うレコードに`attrName:value`のペアからなるオブジェクトの値をセットする。
+ `.destroy()`          | 与えられた検索条件に合うレコードを削除する。
+ `.findOrCreate()`     | 与えられた検索条件に合うレコードを1件探し、あるいはそれが存在しなけば作成する。
+ `.count()`            | 与えられた検索条件に合うレコードの総件数を取得する。
+ `.native()`/`query()` | 元になっているデータベースドライバを直接呼び出す。
+ `.stream()`           | 与えられた検索条件に合うレコードの読み出し可能な（オブジェクトモード）ストリームを返す。
 
 
 
@@ -35,9 +35,9 @@ Most built-in model methods accept a callback as an optional final argument. If 
 
 ### `sails.models`
 
-If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models.
+もしSailsのグローバル変数を無効にしなかればならない時でも、`sails.models.<model_identity>`を使ってモデルへのアクセスが出来ます。
 
-A model's `identity` is different than its `globalId`.  The `globalId` is determined automatically from the name of the model, whereas the `identity` is the all-lowercased version.  For instance, you the model defined in `api/models/Kitten.js` has a globalId of `Kitten`, but its identity is `kitten`. For example:
+モデルの`identity`はその`globalId`とは異なります。`globalId`はモデルの名前から自動的に判断され、`identity`はその全てが小文字になった版です。例えば、`api/models/Kitten.js`で定義されたモデルは`Kitten`のglobalIdを持ちますが、そのidentityは`kitten`です。例えば:
 
 ```javascript
 // Kitten === sails.models.kitten

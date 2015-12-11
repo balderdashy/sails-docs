@@ -1,19 +1,19 @@
-# Working with Queries
+# クエリーを扱う
 
-Chainable deferred objects returned from Waterline model methods like `.find()` and `.create()`.
+`.find()`や`.create()`と同じようにチェーン可能なdeferredオブジェクトがWaterlineから返されます
 
 ```js
 var query = Stuff.find();
 ```
 
-You have likely already interacted with query objects in your Sails app. Most of the time, you probably won't think about them as objects _per se_, rather just another part of the syntax for communicating with the database.
+おそらく、すでにSailsアプリケーションでクエリオブジェクトを扱ったことがあると思います。多くの場合、そのオブジェクト _それ自体_　に関してはデータベースと通信するシンタックスの一部ということ以上に考えてこなかったと思います。
 
-The primary purpose of Waterline query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire.  When you're ready to fire the query off to the database, you can just call [`.exec()`](http://sailsjs.org/documentation/reference/waterline/queries/exec.html).
+Waterlineクエリインスタンスの第一の目的はモデル操作に関して便利で、チェーン可能なシンタックスを提供することです。`.populate()`や`.where()`、`.sort()`のようなメソッドはデータベースの呼び出しをそれが送られる _前に_ 洗練することが出来ます。クエリをデータベースに送信する準備ができた時には単に[`.exec()`](http://sailsjs.org/documentation/reference/waterline/queries/exec.html)を呼び出すことが出来ます。
 
 
 ### Promises
 
-In addition to the `.exec()` method, Waterline queries implement a partial integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.then()` and `.catch()` methods.
+`.exec()`メソッドに加え、Waterlineクエリーは[Bluebird](https://github.com/petkaantonov/bluebird) promiseライブラリの部分的なサポートを実装しており、`.then()`と`.catch()`メソッドを露出しています。
 
 ```js
 Stuff.find()
@@ -22,7 +22,7 @@ Stuff.find()
 ```
 
 
-If you are a fan of promises, and have a reasonable amount of experience with them, you should have no problem working with this interface.  However if you are not very familiar with promises, or don't care one way or another, you will probably have an easier time working with `.exec()`, which uses standard Node.js callback conventions.
+あなたがpromisesのファンであって、それに対しての十分な経験があればそのインタフェースを扱うのに問題はないと思います。しかしながらもしpromisesにそれほど慣れていない場合やそんなことを気にしないなどの場合、おそらくNodeのコールバックの慣習を採用した`.exec()`ほうが物事を簡単に進められます。
 
 ```js
 Stuff.find()
@@ -30,9 +30,9 @@ Stuff.find()
 ```
 
 
-### Query Execution
+### クエリの実行
 
-When you **execute** a query, a lot happens:
+クエリを **実行** すると、たくさんのことが起こります:
 
 ```js
 Zookeeper.find().exec(function (err, zookeepers){
@@ -40,14 +40,14 @@ Zookeeper.find().exec(function (err, zookeepers){
 });
 ```
 
-First, it is "shaken out" by Waterline core into a normalized [criteria object](http://sailsjs.org/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Finally, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
+まず、Waterlineのコアからノーマライズされた[criteria object](http://sailsjs.org/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics)が送り出されます。それから、それから、使っているデータベース(例:Redis、Mongoや多種のSQLの方言など) に対応した生のクエリに変換されるために関連するWaterlineのアダプタに渡されます。最後にそれぞれの関連するアダプタがそのネイティブのNode.jsデータベースドライバが物理的なデータベースに対してネットワークを通じてクエリを発行します。
 
-When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to your callback for consumption by your app.
+アダプタがレスポンスを受け取った時には、Waterlineインタフェースのスペックに誘導され、その他のアダプタからの生のレスポンスと統合して整合性ある結果セットに変換されるためにWaterlineのコアに送り返されます。この時点で、アプリケーションで利用されるコールバックに渡される直前の最後のノーマライゼーションが行われます。
 
 
-### Notes
+### 備考
 
-> + Waterline model methods will **NOT** return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.
+> + Waterlineのモデルメソッドは最後の引数にコールバックが直接渡されていた場合、クエリインスタンスを **返しません**。代わりに、クエリが完了した際にはそのコールバックがトリガーされます。
 
 
 <docmeta name="uniqueID" value="query820682">

@@ -1,16 +1,16 @@
 # .populate( `foreignKey`, [`query`] )
-### Purpose
-This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.  
+### 目的
+このチェーン可能なメソッドは問い合わされているレコードに関連付けられているレコードを取得し、.find()、.update()や.exec()するために使われます。モデル設定で指定された外部キーを与えなければいけません、
+ 
+### 概要
+#### パラメータ
 
-### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |     Foreign Key     |      `string`       |     Yes    |
-| 2 |     Query           |      `object`       |     No     |
+| 1 |    外部キー        | `string`         | はい        |
+| 2 |     クエリ           |      `object`       |     いいえ     |
 
-### Example Usage
+### 使用例
 
 ```javascript 
 
@@ -74,8 +74,8 @@ User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
 
 ```
 
-### Notes
-> Any string arguments passed must be the primary key of the record.
+### 　備考
+> 全ての文字列引数はレコードのIDである必要があります。
 
 
 <docmeta name="uniqueID" value="populate245634">

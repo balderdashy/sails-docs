@@ -1,12 +1,12 @@
 # .sort(`string`)
-### Purpose
+### 目的
 
-### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
+#### パラメータ
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |  Sort String        |      `string`       | Yes        |
+| 1 |    ソート文字列        | `string`     | はい        |
 
-### Example Usage
+### 使用例
 
 ```javascript 
 var myQuery = User.find();
@@ -24,10 +24,10 @@ myQuery.exec(function callBack(err,results){
     });
 
 ```
-### Notes
-> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+### 備考
+> .find()メソッドはコールバックが与えられない時はチェーン可能なオブジェクトを返します。このメソッドはさらなるフィルタ結果のために.find()にチェーンすることが出来ます。
 
-> Other Sort Types include
+> その他のソートの種類は
   - ASC
   - DESC
 

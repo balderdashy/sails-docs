@@ -1,24 +1,24 @@
 # .findOne( `criteria` , [`callback`] )
-### Purpose
-This finds and returns a single record that meets the criteria.
+### 目的
+条件式に合うレコードを1つ返します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`, `string`      | Yes        |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    検索条件   | `{}``string`| はい |
+| 2 |     コールバック        | `function`          | はい        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Found Record       | `{}`                |
+| 1 |  エラー              | `Error`             |
+| 2 |  見つかったレコード    | `{}`        |
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.findOne({name:'Jessie'}).exec(function findOneCB(err, found){
@@ -29,11 +29,11 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err, found){
 // Don't forget to handle your errors
 
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+### 備考
+> 全ての文字列引数はレコードのIDである必要があります。
+> 配列である属性探したい場合、追加のカッコで囲まなければWaterlineはinQueryを行いたいと解釈してしまいます。
 
-> If no matching record is found, the value of `found` will be `undefined`.  Not finding a record does *not* constitute an error for `findOne`.
+> 該当するレコードがない場合、`found`の値は`undefined`になります。`findOne`ではレコードが見つからないことはエラーには *なりません*
 
 <docmeta name="uniqueID" value="findOne423345">
 <docmeta name="methodType" value="mcm">

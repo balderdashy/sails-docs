@@ -1,24 +1,24 @@
 # * .save(`callback`)
 
-### Purpose
-The `save()` method updates your record in the database using the current attributes.  It then returns the newly saved object in the callback. 
+### 目的
+`save()`メソッドは現在の属性を使ってデータベースのレコードを更新します。これは新しく保存されたオブジェクトをコールバックで返します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |     Callback        | `function`          | Yes        |
+| 1 |     コールバック        | `function`          | はい        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Saved Record       | `{ }`               |
+| 1 |  エラー              | `Error`             |
+| 2 |  保存されたデータ    | `{}`     |
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.find().exec(
@@ -39,8 +39,8 @@ User.find().exec(
 // Don't forget to abide by the rules you set in your model
 
 ```
-### Notes
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+### 備考
+> これはインスタンスメソッドです。現在、インスタンスメソッドはトランザクション出来ません。そのため、同じ意味を持つモデルメソッドを使うことをおすすめします。  
 
 <docmeta name="uniqueID" value="save581656">
 <docmeta name="methodType" value="association">

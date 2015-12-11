@@ -1,23 +1,23 @@
 # .count( [`criteria`, ] `callback` )
-### Purpose
-Returns the number of records in your database that meet the given search criteria.
+### 目的
+データベースの中に与えられた検索条件を満たすレコードが何件あるかを返します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-| # | Description   | Accepted Data Types          | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------|------------------------------|------------|
-| 1 | Find Criteria | `{}`,`[{}]`, `string`, `int` | No         |
-| 2 | Callback      | `function`                   | No         |
+| 1 | 検索条件       | `{}`,`[{}]`, `string`, `int` | いいえ       |
+| 2 | コールバック    | `function`                   | いいえ      |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-| # | Description       | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|-------------------|---------------------|
-| 1 | Error             | `Error`             |
-| 2 | Number of Records | `int`               |
+| 1 | エラー             | `Error`             |
+| 2 | レコード数         | `int`               |
 
-### Example Usage
+### 
 
 ```javascript 
 User.count({name:'Flynn'}).exec(function countCB(error, found) {
@@ -29,8 +29,8 @@ User.count({name:'Flynn'}).exec(function countCB(error, found) {
   
 
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
+### 備考
+> 全ての文字列引数はレコードのIDである必要があります。
 
 
 

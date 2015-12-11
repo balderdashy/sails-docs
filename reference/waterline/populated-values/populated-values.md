@@ -1,15 +1,15 @@
 # Populated Values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](http://sailsjs.org/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
+Eメールアドレスや電話番号、誕生日などの基本的な促成に加えてWaterlineではアソシエーションを使ってリンクされたデータのセットを動的に取得し、保存する必要があります。クエリーが[`.populate()`](http://sailsjs.org/documentation/reference/waterline/queries/populate.html)が呼びだされた時にはそれぞれの結果は一つまたは複数の **populated values** を持ちます。それら、それぞれの**populated values**クエリされた時点での特定のアソシエーションへのリンクを含むスナップショットです。
 
-The type of a populated value is either:
+populated valueは2種類あります:
 
-+ `null`, or a plain old JavaScript object (POJO), or  _(if it corresponds to a "model" association)_
-+ an empty array, or an array of plain old JavaScript objects _(if it corresponds to a "collection" association)_
++ `null`または単なるJavaScriptオブジェクト(POJO)(合致するアソシエーションが"model"であれば)_
++ 空の配列、または単なるJavaScriptオブジェクトの配列(合致するアソシエーションが"collection"であれば)_
 
 
 
-For example, assuming we're dealing with orders of adorable wolf puppies:
+たとえは、可愛い狼の子供のオーダーを扱っているとすると:
 
 ```js
 Order.find()
@@ -37,17 +37,17 @@ Order.find()
 
 
 
-### Modifying populated values
+### populated valuesを編集する
 
-Changes to populated values are persisted (i.e. saved to the database) by calling `.save()` on the record they are attached to.  You cannot call `.save()` directly on a populated value.
+変更はアタッチされたレコードで`.save()`をコールすることによって永続化（すなわちデータベースにセーブ）されます。populated valueに直接`.save()`する事はできません。
 
-Changing or remove the linked record of a "model" association can be accomplished by simply setting the property directly on the original record:
+"model"アソシエーションでリンクされたレコードの変更または削除は単に元のレコードにプロパティを設定することによって行えます:
 
 ```js
 orders[1].seller = { corporateName: 'Wolf Orphanage' };
 ```
 
-"collection" associations, on the other hand, _do_ have a couple of special (non-enumerable) methods for associating and disassociating linked records.  However, `.save()` must still be called on the original record in order for changes to be persisted to the database.
+一方"model"アソシエーションに関しては、リンクされたレコードを接続または切断するための幾つかの(数えきれない)特殊なメソッドがあります。しかしながら、変更がデータベースで永続化されるためには`.save()`メソッドは依然としてもとのレコードで呼び出す必要があります。
 
 ```js
 orders[1].buyers.add({ name: 'Jon Snow' });
@@ -55,9 +55,9 @@ orders[1].save(function (err) { ... });
 ```
 
 
-### Example
+### 例
 
-Finally, to put it all together:
+最後にこれらをまとめて:
 
 ```js
 Order.find()
