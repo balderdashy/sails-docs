@@ -2,7 +2,7 @@
 
 ### Overview
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically encrypting a password before creating or updating an `Account` model.
+Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically encrypt a password before creating or updating an `Account` model.
 
 Sails exposes a handful of lifecycle callbacks by default.
 
@@ -70,4 +70,3 @@ module.exports = {
 
 <docmeta name="uniqueID" value="Lifecyclecallbacks631538">
 <docmeta name="displayName" value="Lifecycle callbacks">
-
