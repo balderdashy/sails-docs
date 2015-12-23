@@ -59,10 +59,10 @@ views/users/testSocket.ejs
 window.onload = function subscribeAndListen(){
     // When the document loads, send a request to users.testSocket
     // The controller code will subscribe you to the model 'users'
-    socket.get('/users/testSocket/');
+    io.socket.get('/users/testSocket/');
 
     // Listen for the event called 'user' emited by the publishCreate() method.
-    socket.on('user',function(obj){
+    io.socket.on('user',function(obj){
       if (obj.verb == 'created') {
          var data = obj.data;
          console.log('User '+data.name+' has been created.');
@@ -74,7 +74,7 @@ function makeNew(){
 
     // Send the new users name to the 'testSocket' action on the 'users' controller
 
-    socket.get('/users/testSocket/',{name:'Walter'});
+    io.socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 </script>
