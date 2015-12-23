@@ -52,6 +52,15 @@ if (sails.config.environment === 'production' && !sails.config.csrf) {
 }
 ```
 
+### Setting `sails.config` values directly using environment variables
+
+In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  For example, you could do the following to set the [CORS origin](http://sailsjs.org/documentation/concepts/security/cors) (`sails.config.cors.origin`) to "http://somedomain.com" on the command line:
+
+```javascript
+sails_cors__origin="http://somedomain.com" sails lift
+```
+
+This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 
 
 ### Custom Configuration
