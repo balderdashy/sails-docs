@@ -32,9 +32,8 @@ Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g
 }
 ```
 
-### Notes
+### Full Example
 
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
 
 The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `StoreController` and `EmployeeController`.  You can quickly achieve this by running:
 
@@ -71,6 +70,10 @@ With a post payload of:
 To find Dolly's id: ```http://localhost:1337/store/16```
 
 Then Remove her from the collection: `DELETE /store/16/employeesOfTheMonth/7`
+
+### Notes
+
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
 
 <docmeta name="uniqueID" value="Remove2294521">
 <docmeta name="displayName" value="remove from">
