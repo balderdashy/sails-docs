@@ -56,7 +56,7 @@ module.exports = {
 
 You will then need to create a store with an employeesOfTheMonth collection as described [here](https://github.com/jodonnell-broadsoft/sails-docs/blob/master/reference/blueprint-api/Create.md#create-new-record-while-associating-w-another-new-record-rest)
 
-With a post payload of:
+With a POST payload of:
 ```
 {
 	"name": "Starbucks",
