@@ -1,6 +1,6 @@
 # Remove from Collection
 
-Removes an association between two records.
+Removes a record from an associated collection between two records.
 
 ```
 DELETE /:model/:record/:association/:record_to_remove
@@ -11,7 +11,6 @@ This action removes a reference to some other record (the "foreign" record) from
 + If the foreign record does not exist, it is created first.
 + If the collection doesn't contain a reference to the foreign record, this action will be ignored.
 + If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
-
 
 ### Example
 
@@ -33,7 +32,6 @@ Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g
 ```
 
 ### Full Example
-
 
 The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `StoreController` and `EmployeeController`.  You can quickly achieve this by running:
 
