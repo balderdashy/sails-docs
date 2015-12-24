@@ -50,7 +50,7 @@ Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g
 >     attributes: {
 >       employeesOfTheMonth: {collection: 'Employee'}
 >     }
->   };
+>    };
 >   ```
 
 <docmeta name="uniqueID" value="Remove2294521">
