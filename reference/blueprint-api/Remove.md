@@ -53,6 +53,24 @@ Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g
 >     }
 >   }
 >   ```
+>   
+
+You will then need to create a store with an employeesOfTheMonth collection as described [here](https://github.com/jodonnell-broadsoft/sails-docs/blob/master/reference/blueprint-api/Create.md#create-new-record-while-associating-w-another-new-record-rest)
+
+With a post payload of:
+```
+{
+	"name": "Starbucks",
+  "id": 16,
+	"employeesOfTheMonth": [{
+		"name": "Dolly"
+	}]
+}
+```
+
+To find Dolly's id: ```http://localhost:1337/store/16```
+
+Then Remove her from the collection: `DELETE /store/16/employeesOfTheMonth/7`
 
 <docmeta name="uniqueID" value="Remove2294521">
 <docmeta name="displayName" value="remove from">
