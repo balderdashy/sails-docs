@@ -15,41 +15,12 @@ This action removes a reference to some other record (the "foreign" record) from
 
 ### Example
 
-Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16.
+Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g. `http://localhost:1337/store/16/employeesOfTheMonth/7`
 
-**Using [jQuery](http://jquery.com/):**
+#### Route
+`DELETE /store/16/employeesOfTheMonth/7`
 
-```javascript
-$.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
-  console.log(purchases);
-});
-```
-
-**Using [Angular](https://angularjs.org/):**
-
-```javascript
-$http.delete('/store/16/employeesOfTheMonth/7')
-.then(function (purchases) {
-  console.log(purchases);
-});
-```
-
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
-
-```javascript
-io.socket.delete('/store/16/employeesOfTheMonth/7', function (purchases) {
-  console.log(purchases);
-});
-```
-
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
-
-```bash
-curl http://localhost:1337/store/16/employeesOfTheMonth/7 -X "DELETE"
-```
-
-
-Should return store #16, the primary record:
+#### Expected Response
 
 ```json
 {
@@ -60,8 +31,6 @@ Should return store #16, the primary record:
   "id": 16
 }
 ```
-
-
 
 ### Notes
 
