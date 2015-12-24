@@ -35,7 +35,7 @@ Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, E.g
 ### Notes
 
 > + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Store` model with association: `employeesOfTheMonth: {collection: 'Employee'}`.  You'll also need at least an empty `StoreController` and `EmployeeController`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
