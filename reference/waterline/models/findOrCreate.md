@@ -1,7 +1,5 @@
 # findOrCreate
 
-### Purpose
-
 - Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
 - If no parameters are passed, it will return the first record that exists.
 - If no `record` is provided, it will either find a record with matching `criteria` or create the record if the object can not be found.
