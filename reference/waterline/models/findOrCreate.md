@@ -1,34 +1,38 @@
-# .findOrCreate( `criteria` , `record` , [`callback`] )
+# findOrCreate
+
 ### Purpose
-Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
+
+- Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
+- If no parameters are passed, it will return the first record that exists.
+- If no `record` is provided, it will either find a record with matching `criteria` or create the record if the object can not be found.
+
+Eg. `Model.findOrCreate( findCriteria , recordToCreate , [callback] )`
 
 ### Overview
+
 #### Parameters
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`  | Yes |
-| 2 |  Records to Create  | `{}`,`[{}]`          |  Yes  |
-| 3 |     Callback        | `function`           | No        |
+Parameter                          | Type                                    | Details
+---------------------------------- | --------------------------------------- |:---------------------------------
+findCriteria<br/>*(required)*                |  `{}`,`[{}]`, `string`, `int`    | The criteria used to find the record. If not found and no recordToCreate is provided, it is also the record that will be created.
+recordToCreate                      | `{}`, `[{}]`                              | The object, or array of objects, that you would like to create
+callback                           | `function(error, createdOrFoundRecords)`                             |  The function that will be called after the command is executed
+
 
 #### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+Parameter                          | Type                                    | Details
+---------------------------------- | --------------------------------------- |:---------------------------------
+error                              |  `Error'                                 | An error is returned if the request is unsuccessful
+createdOrFoundRecords              | `{}`, `[{}]`                              | The object, or array of objects, that were found or created
 
 ### Example Usage
 
 ```javascript
-User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(err, record){
+User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(error, createdOrFoundRecords){
   console.log('What\'s cookin\' '+record.name+'?');
 });
-
-// What's cookin' Jessie?
-// Don't forget to handle your errors and abide by the rules you defined in your model
-
 ```
+
 ### Notes
 > Any string arguments passed must be the ID of the record.
 > If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
@@ -38,4 +42,3 @@ User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(e
 <docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".findOrCreate()">
-
