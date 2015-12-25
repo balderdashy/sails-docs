@@ -1,6 +1,6 @@
 # myApp/tasks/register/build.js
 
-<docmeta name="uniqueID" value="buildjs920895">
+
 <docmeta name="displayName" value="build.js">
 
 ```

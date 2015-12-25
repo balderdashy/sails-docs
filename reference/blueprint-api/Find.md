@@ -90,5 +90,5 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 >   $ sails generate api purchase
 >   ```
 
-<docmeta name="uniqueID" value="Find290807">
+
 <docmeta name="displayName" value="find where">

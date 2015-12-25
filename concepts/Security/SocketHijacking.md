@@ -10,5 +10,5 @@ You can prepare your Sails app against CSWSH attacks by enabling the built-in pr
 
 
 
-<docmeta name="uniqueID" value="SocketHijacking397141">
+
 <docmeta name="displayName" value="Socket Hijacking">

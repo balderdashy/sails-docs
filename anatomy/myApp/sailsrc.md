@@ -6,7 +6,7 @@ This file is useful for setting configuration for ALL Sails apps on a computer. 
 [Reference docs for .sailsrc](http://sailsjs.org/documentation/reference/Configuration/Configuration.html)
 
 
-<docmeta name="uniqueID" value="sailsrc6419">
+
 <docmeta name="displayName" value=".sailsrc">
 
 ```

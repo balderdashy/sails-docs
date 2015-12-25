@@ -36,6 +36,6 @@ io.socket.get('/users/9', function (resData) {
 ```
 
 
-<docmeta name="uniqueID" value="socketget480208">
+
 <docmeta name="displayName" value="io.socket.get()">
 

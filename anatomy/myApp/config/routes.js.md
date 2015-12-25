@@ -9,7 +9,7 @@ By default, there is only one explicitly defined route.  Its purpose is to point
 You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, `http://localhost:1337/ponies/PinkiePie` would request the resource with the 'id' parameter equal to 'PinkiePie'.
 
 
-<docmeta name="uniqueID" value="routesjs120276">
+
 <docmeta name="displayName" value="routes.js">
 
 ```

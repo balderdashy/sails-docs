@@ -22,7 +22,7 @@ Arbitrary data to send to the subscribed sockets.
 #### `request`
 If this argument is included then the socket attached to that request will *not* receive the notification.
 
-<docmeta name="uniqueID" value="message373731">
+
 <docmeta name="methodType" value="pubsub">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".message()">

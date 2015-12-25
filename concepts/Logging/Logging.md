@@ -25,5 +25,5 @@ When configured at a given log level, Sails will output log messages that are ou
 + When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
 
 
-<docmeta name="uniqueID" value="Logging277763">
+
 <docmeta name="displayName" value="Logging">

@@ -22,6 +22,6 @@ res.attachment('path/to/logo.png');
 
 
 
-<docmeta name="uniqueID" value="resattachment107506">
+
 <docmeta name="displayName" value="res.attachment()">
 

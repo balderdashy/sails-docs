@@ -31,7 +31,7 @@ myQuery.exec(function callBack(err,results){
   - ASC
   - DESC
 
-<docmeta name="uniqueID" value="sort822396">
+
 <docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".sort()">

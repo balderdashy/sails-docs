@@ -84,5 +84,5 @@ Oven.find().sort('heat ASC').exec(function (err, ovens){
 
 
 
-<docmeta name="uniqueID" value="resview916814">
+
 <docmeta name="displayName" value="res.view()">

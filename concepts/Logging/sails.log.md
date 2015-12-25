@@ -70,6 +70,6 @@ sails.log.silly('A user probably clicked on something..?');
 
 
 
-<docmeta name="uniqueID" value="sailslog321347">
+
 <docmeta name="displayName" value="sails.log()">
 

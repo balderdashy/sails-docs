@@ -14,7 +14,7 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
 > Socket.IO configuration options can be found [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
 
 
-<docmeta name="uniqueID" value="socketsjs106184">
+
 <docmeta name="displayName" value="sockets.js">
 
 ```

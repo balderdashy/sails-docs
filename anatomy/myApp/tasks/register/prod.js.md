@@ -1,6 +1,6 @@
 # myApp/tasks/register/prod.js
 
-<docmeta name="uniqueID" value="prodjs338763">
+
 <docmeta name="displayName" value="prod.js">
 
 The production grunt task list.  sails will run this if there is no task list file matching NODE_ENV (eg. NODE_ENV = QA and QA.js exists).

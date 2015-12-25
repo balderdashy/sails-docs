@@ -17,5 +17,5 @@ By default, Sails controllers automatically bind routes for each of their functi
 |`autoWatch`|((boolean))|true|Whether to run [`Model.watch()`](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html) in the `find` and `findOne` blueprint actions.  Can be overridden on a per-model basis.
 |`jsonp`|((boolean))|false|Optionally wrap blueprint JSON responses in a JSONP callback using `res.jsonp()` from Express 3.
 
-<docmeta name="uniqueID" value="Blueprints187690">
+
 <docmeta name="displayName" value="sails.config.blueprints">

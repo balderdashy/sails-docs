@@ -46,5 +46,5 @@ A request "wantsJSON" if:
 > + Lower-level content negotiation is, of course, still possible using `req.is()`, `req.accepts()`, `req.xhr`, and `req.get()`.
 > + As of Sails v0.10, requests originating from a WebSocket client always "want JSON".
 
-<docmeta name="uniqueID" value="reqwantsJSON30891">
+
 <docmeta name="displayName" value="req.wantsJSON">

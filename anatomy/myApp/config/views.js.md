@@ -25,7 +25,7 @@ This file is where Sails looks to find out which templating engine to use when r
 - walrus
 - whiskers
 
-<docmeta name="uniqueID" value="viewsjs122314">
+
 <docmeta name="displayName" value="views.js">
 
 ```

@@ -9,7 +9,7 @@ Sails' integration with Grunt is fully customizable but for most use cases, this
 ### More Info
 > More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
 
-<docmeta name="uniqueID" value="Gruntfilejs375150">
+
 <docmeta name="displayName" value="Gruntfile.js">
 
 <div www-sjs-anatomy-boilerplate>

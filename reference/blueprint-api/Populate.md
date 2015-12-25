@@ -73,5 +73,5 @@ Should return:
 >   ```
 > ...then editing `api/models/Purchase.js`.
 
-<docmeta name="uniqueID" value="Populate838372">
+
 <docmeta name="displayName" value="populate where">

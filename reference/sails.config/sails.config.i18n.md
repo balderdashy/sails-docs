@@ -15,5 +15,5 @@ Configuration for Sails' built-in internationalization & localization features. 
 
 
 
-<docmeta name="uniqueID" value="sailsconfigi18n588825999999">
+
 <docmeta name="displayName" value="sails.config.i18n">

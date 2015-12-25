@@ -1,6 +1,6 @@
 # myApp/tasks/config/uglify.js
 
-<docmeta name="uniqueID" value="uglifyjs687746">
+
 <docmeta name="displayName" value="uglify.js">
 
 ```

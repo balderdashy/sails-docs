@@ -17,5 +17,5 @@ At the API layer, there isn't much that can be done in the way of prevention.  H
 + [Slowloris DDoSAttacks](http://www.ddosattacks.biz/attacks/slowloris-ddos-attack-aka-slow-and-low/)
 
 
-<docmeta name="uniqueID" value="DDOS139869">
+
 <docmeta name="displayName" value="DDOS">

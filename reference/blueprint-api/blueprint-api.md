@@ -74,6 +74,6 @@ module.exports = {
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](http://sailsjs.org/documentation/reference/websockets/sails.io.js) for example usage.
 >
 
-<docmeta name="uniqueID" value="blueprintapi170785">
+
 <docmeta name="displayName" value="Blueprint API">
 <docmeta name="stabilityIndex" value="2">

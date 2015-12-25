@@ -1,6 +1,6 @@
 # myApp/tasks/config/sails-linker.js
 
-<docmeta name="uniqueID" value="sailslinkerjs717161">
+
 <docmeta name="displayName" value="sails-linker.js">
 
 ```

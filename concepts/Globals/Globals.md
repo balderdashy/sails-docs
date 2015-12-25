@@ -16,5 +16,5 @@ Your app's [models](http://sailsjs.org/documentation/reference/Models) and [serv
 Sails also exposes an instance of [lodash](http://lodash.com) as `_`, and an instance of [async](https://github.com/caolan/async) as `async`.  These commonly-used utilities are provided by default so that you don't have to `npm install` them in every new project.  Like any of the other globals in sails, they can be disabled.
 
 
-<docmeta name="uniqueID" value="Globals668238">
+
 <docmeta name="displayName" value="Globals">

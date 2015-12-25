@@ -59,7 +59,7 @@ module.exports = {
 
 > This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
 
-<docmeta name="uniqueID" value="validate76690">
+
 <docmeta name="methodType" value="instance">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".validate()">

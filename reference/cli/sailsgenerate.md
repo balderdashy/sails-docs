@@ -24,5 +24,5 @@ Generate a **foo** folder containing the files necessary for building a new gene
 
 
 
-<docmeta name="uniqueID" value="sailsgenerate197041">
+
 <docmeta name="displayName" value="sails generate">

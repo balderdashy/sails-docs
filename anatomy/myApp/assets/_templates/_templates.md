@@ -20,6 +20,6 @@ For example, here are a few things you could do:
 - Use a different template engine (handlebars, jade, dust, etc) 
 - Internationalize your client-side templates using a server-side stringfile before they're served.
 
-<docmeta name="uniqueID" value="templatesmd846667">
+
 <docmeta name="displayName" value="templates">
 

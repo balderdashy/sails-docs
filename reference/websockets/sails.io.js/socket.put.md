@@ -37,6 +37,6 @@ io.socket.put('/users/9', { occupation: 'psychic' }, function (resData) {
 
 
 
-<docmeta name="uniqueID" value="socketput168503">
+
 <docmeta name="displayName" value="io.socket.put()">
 

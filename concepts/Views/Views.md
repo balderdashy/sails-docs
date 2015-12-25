@@ -49,5 +49,5 @@ In this case, you have a couple of options for bootstrapping the single-page app
   + Anything in your assets folder can be moved to a static CDN (like Cloudfront or CloudFlare), allowing you to take advantage of that provider's geographically distributed data centers to get your content closer to your users.
 
 
-<docmeta name="uniqueID" value="Views426660">
+
 <docmeta name="displayName" value="Views">

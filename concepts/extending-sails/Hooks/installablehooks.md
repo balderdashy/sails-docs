@@ -98,6 +98,6 @@ Assuming your hook is tested and looks good, and assuming that the hook name isn
 * [Creating a project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html)
 
 
-<docmeta name="uniqueID" value="Hooks74999">
+
 <docmeta name="displayName" value="Installable Hooks">
 <docmeta name="stabilityIndex" value="3">

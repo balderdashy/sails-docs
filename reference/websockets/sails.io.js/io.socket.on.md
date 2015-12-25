@@ -92,5 +92,5 @@ If connection to server was interrupted - server was restarted or some network i
 ```
 
 
-<docmeta name="uniqueID" value="socketon682488">
+
 <docmeta name="displayName" value="io.socket.on()">

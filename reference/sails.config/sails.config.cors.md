@@ -33,5 +33,5 @@ The following will allow cross-origin AJAX GET, PUT and POST requests to `/foo/b
 
 
 
-<docmeta name="uniqueID" value="sailsconfigcors588825999999">
+
 <docmeta name="displayName" value="sails.config.cors">

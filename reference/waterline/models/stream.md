@@ -62,7 +62,7 @@ window.onload = function startListening(){
 > Only the mongo, mysql, and posgresql adapters support this method.  This won't work with the disk adapter.
 > Any string arguments passed must be the ID of the record.
 
-<docmeta name="uniqueID" value="stream427721">
+
 <docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".stream()">

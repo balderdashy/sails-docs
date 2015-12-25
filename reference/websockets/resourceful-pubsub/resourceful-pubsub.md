@@ -52,5 +52,5 @@ You would see something like the following in the console of the first window:
 
 The `verb` indicates the kind of action that occurred.  The `id` refers to the instance that the action occurred on, and `data` contains more information about the `User` that was acted upon.  Each event type sends back slightly different information; see the individual resourceful pubsub method reference documents for more info.
 
-<docmeta name="uniqueID" value="resourcefulpubsub293545">
+
 <docmeta name="displayName" value="Resourceful PubSub">

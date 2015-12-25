@@ -6,7 +6,7 @@ If a new view you've created isn't rendering, make sure you've hooked it up in y
 
 If you're used to putting all your HTML in a single file, this might look funny.  You might be thinking "Where are the head and body tags"?  The answer is, `myApp/views/layout.ejs`.
 
-<docmeta name="uniqueID" value="homepageejs785450">
+
 <docmeta name="displayName" value="homepage.ejs">
 
 ```html

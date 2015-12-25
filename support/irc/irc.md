@@ -5,5 +5,5 @@ If you are looking for a quick answer and you can't find what you're looking for
 If you've never been on IRC, now is the perfect time.  Getting started is easy.  
 
 
-<docmeta name="uniqueID" value="irc77272">
+
 <docmeta name="displayName" value="#sailsjs on IRC">
