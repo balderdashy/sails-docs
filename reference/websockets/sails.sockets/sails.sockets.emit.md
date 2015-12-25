@@ -1,6 +1,6 @@
 # sails.sockets.emit( `socketIds`, [`event`], `data`)
 ### Purpose
-Send a message to one or more sockets by ID.
+Send a message to one or more sockets by id.
 
 ### Overview
 #### Parameters
@@ -9,6 +9,9 @@ Send a message to one or more sockets by ID.
 | 1 |           IDs of sockets to receive message        | `string`, `array`            | Yes         |
 | 2 |           Event name        | `string`            | No         |
 | 3 |           Message data        | `object`            | Yes         |
+
+
+
 
 ### Example Usage
 ```javascript
@@ -24,8 +27,8 @@ sayHiToFriend: function(req, res) {
 ```
 
 ### Notes
-> + If the event name is not specified then the "message" event will be used by default. This would allow the target sockets to listen on the "message" event in order to react to the emit.
-
+> + If the event name is not specified then the "message" event will be used by default. That means that target sockets listening for the `message` event in client-side code (e.g. `io.socket.on('message', function (data){ /* ... */ })`) will have that event handler triggered.
+> + If _any_ of the target socket ids are unknown, an error is thrown (this error has a `code` property equal to `SAILS:HOOK:SOCKETS:NO_SUCH_SOCKET`).
 
 
 <docmeta name="uniqueID" value="sailssocketsemit963182">
