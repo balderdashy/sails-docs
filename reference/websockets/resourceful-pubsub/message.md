@@ -27,3 +27,13 @@ If this argument is included then the socket attached to that request will *not*
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".message()">
 
+### Example
+
+Find a user in the sails controller by name and send a socket message back to the client. This object can contain any data you want.
+
+```
+User.findOne({name: 'Bob'}).then(function(foundUser){
+  User.message(foundUser, {count: 12, hairColor: 'red'});
+});
+```
+
