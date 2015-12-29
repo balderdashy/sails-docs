@@ -5,6 +5,6 @@
 
 ```
 {
-  "Welcome": "Wilkommen"
+  "Welcome": "Willkommen"
 }
 ```
