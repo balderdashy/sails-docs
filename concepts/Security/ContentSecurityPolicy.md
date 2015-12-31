@@ -34,6 +34,6 @@ Content Security Policy (CSP) is a W3C specification for instructing the client 
 
 
 
-<docmeta name="uniqueID" value="ContentSecurityPolicy649437">
+
 <docmeta name="displayName" value="Content Security Policy">
 

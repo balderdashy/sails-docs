@@ -1,6 +1,6 @@
 # myApp/config/blueprints.js
 
-<docmeta name="uniqueID" value="blueprintsjs106161">
+
 <docmeta name="displayName" value="blueprints.js">
 
 ```

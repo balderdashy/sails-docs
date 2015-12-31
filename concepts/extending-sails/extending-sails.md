@@ -10,5 +10,5 @@ If you&rsquo;re interested in developing a &ldquo;plugin&rdquo; for Sails, you w
 
 <a name="foot1">*</a> <sub>Some of the more important modules, like the Request hook, are still bundled with the Sails core, but they could technically be removed and installed separately.</sub>
 
-<docmeta name="uniqueID" value="extendingsails78468">
+
 <docmeta name="displayName" value="Extending Sails">

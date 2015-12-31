@@ -1,6 +1,6 @@
 # myApp/tasks/config/coffee.js
 
-<docmeta name="uniqueID" value="coffeejs932693">
+
 <docmeta name="displayName" value="coffee.js">
 
 ```

@@ -20,6 +20,6 @@ configure: function() {
 
 The main benefit of `configure` is that all hook `configure` functions are guaranteed to run before any [`initialize` functions](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html) run; therefore a hook&rsquo;s `initialize` function can examine the configuration settings of other hooks.
 
-<docmeta name="uniqueID" value="Hooks75004">
+
 <docmeta name="displayName" value=".configure()">
 <docmeta name="stabilityIndex" value="3">

@@ -36,7 +36,7 @@ In AJAX/Socket-heavy apps, just send a GET request to the /csrfToken route to ge
 > For more information on CSRF, check out [this hyperlink](http://en.wikipedia.org/wiki/Cross-site_request_forgery).
 
 
-<docmeta name="uniqueID" value="csrfjs233850">
+
 <docmeta name="displayName" value="csrf.js">
 
 ```

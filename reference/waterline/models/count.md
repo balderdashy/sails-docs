@@ -34,7 +34,7 @@ User.count({name:'Flynn'}).exec(function countCB(error, found) {
 
 
 
-<docmeta name="uniqueID" value="count42579">
+
 <docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".count()">

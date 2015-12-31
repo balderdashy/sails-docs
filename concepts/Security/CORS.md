@@ -72,5 +72,5 @@ module.exports.cors = {
 
 Security level 1 (high) will respond with a 403 status code to any request from a disallowed origin prefixed with the `http` or `https` protocol.  Security level 2 (very high) will do the same, but extended to *all* protocols (so things like Postman and curl won't work).
 
-<docmeta name="uniqueID" value="cors198259">
+
 <docmeta name="displayName" value="CORS">

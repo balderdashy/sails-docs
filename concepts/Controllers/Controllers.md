@@ -52,5 +52,5 @@ So the goal of the "thin controller" philosophy is to encourage decoupling of re
 + If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm]() under a permissive open-source license for other developers to use and help maintain.
 
 
-<docmeta name="uniqueID" value="Controllers464694">
+
 <docmeta name="displayName" value="Controllers">

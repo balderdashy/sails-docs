@@ -10,5 +10,5 @@ Here is some information
 ##### Organization
 ##### Etc...
 
-<docmeta name="uniqueID" value="littleStubFriend19283">
+
 <docmeta name="displayName" value="someName">

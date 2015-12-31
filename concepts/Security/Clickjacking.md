@@ -39,6 +39,6 @@ Then in the `middleware` config object in `config/http.js`:
 
 
 
-<docmeta name="uniqueID" value="Clickjacking879453">
+
 <docmeta name="displayName" value="Clickjacking">
 <docmeta name="tags" value="clickjacking,ui redress attack">

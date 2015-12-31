@@ -35,7 +35,7 @@ User.findOne({name:'Jessie'}).exec(function findOneCB(err, found){
 
 > If no matching record is found, the value of `found` will be `undefined`.  Not finding a record does *not* constitute an error for `findOne`.
 
-<docmeta name="uniqueID" value="findOne423345">
+
 <docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".findOne()">

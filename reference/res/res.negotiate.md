@@ -48,5 +48,5 @@ Pet.update({name: 'fido'})
 
 
 
-<docmeta name="uniqueID" value="resnegotiate730536">
+
 <docmeta name="displayName" value="res.negotiate()">

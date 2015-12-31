@@ -85,5 +85,5 @@ With some client-side modules, you may not have access to the AJAX request itsel
 > + For "spending" CSRF tokens in a traditional form submission, refer to the example above (under "Using View Locals".)
 > + You can choose to send the CSRF token as a header instead of a parameter- refer to the [Connect documentation](http://www.senchalabs.org/connect/csrf.html) for the most up-to-date information.  The next (post v0.10) minor release of Sails will likely upgrade to Express 4, at which point the new Express csrf middleware will be included instead, but backwards compatibility will be maintained.
 
-<docmeta name="uniqueID" value="CSRF300312">
+
 <docmeta name="displayName" value="CSRF">

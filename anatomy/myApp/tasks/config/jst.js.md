@@ -1,6 +1,6 @@
 # myApp/tasks/config/jst.js
 
-<docmeta name="uniqueID" value="jstjs459109">
+
 <docmeta name="displayName" value="jst.js">
 
 ```

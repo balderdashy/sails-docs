@@ -36,6 +36,6 @@ io.socket.post('/users', { name: 'Timmy Mendez' }, function (resData) {
 ```
 
 
-<docmeta name="uniqueID" value="socketpost175407">
+
 <docmeta name="displayName" value="io.socket.post()">
 

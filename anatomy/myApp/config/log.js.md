@@ -8,7 +8,7 @@ Configure the log level for your app, as well as the transport.
 Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages.
 
 
-<docmeta name="uniqueID" value="logjs173177">
+
 <docmeta name="displayName" value="log.js">
 
 ```

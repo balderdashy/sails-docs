@@ -6,7 +6,7 @@ In Sails, adapters act as the intermediary between the app and the database.  To
 
 This file lets you create different global "saved settings" that you can mix and match in your models. The [`sails.models.connection`](http://sailsjs.org/documentation/anatomy/myApp/config/models.js.html) option indicates which connection should be used if a model doesn't have one [explicitly specified](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=connection).
 
-<docmeta name="uniqueID" value="connectionsjs160878">
+
 <docmeta name="displayName" value="connections.js">
 
 ```

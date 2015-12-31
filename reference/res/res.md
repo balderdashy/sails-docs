@@ -49,6 +49,6 @@ The chart below describes support for the methods and properties on the Sails [R
   - :heavy_multiplication_x: - unsupported due to protocol restrictions
 
 
-<docmeta name="uniqueID" value="res550242">
+
 <docmeta name="displayName" value="Response (`res`)">
 <docmeta name="stabilityIndex" value="3">

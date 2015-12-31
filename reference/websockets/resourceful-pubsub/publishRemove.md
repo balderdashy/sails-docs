@@ -26,7 +26,7 @@ If this argument is included then the socket attached to that request will *not*
 See the documentation for `publishUpdate` for information about `options.noReverse`.  In general, you should not have to set this argument unless you are writing your own implementation of `publishRemove` for a model.
 
 
-<docmeta name="uniqueID" value="publishRemove468150">
+
 <docmeta name="methodType" value="pubsub">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".publishRemove()">

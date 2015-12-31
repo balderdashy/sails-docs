@@ -67,6 +67,6 @@ Optional Values:
 
 
 
-<docmeta name="uniqueID" value="sailsconfigsession786744">
+
 <docmeta name="displayName" value="sails.config.session">
 

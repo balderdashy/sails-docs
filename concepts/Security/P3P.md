@@ -97,6 +97,6 @@ Then in the `middleware` config object in `config/http.js`:
 + ["P3P Work suspended" (W3C)](http://www.w3.org/P3P/)
 + [P3P Compact Specification (CompactPrivacyPolicy.org)](http://compactprivacypolicy.org/compact_specification.htm)
 
-<docmeta name="uniqueID" value="P3P183449">
+
 <docmeta name="displayName" value="P3P">
 

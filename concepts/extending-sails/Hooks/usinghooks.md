@@ -35,6 +35,6 @@ module.exports.installedHooks = {
 * [Creating an installable hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 
-<docmeta name="uniqueID" value="Hooks75001">
+
 <docmeta name="displayName" value="Using Hooks">
 <docmeta name="stabilityIndex" value="3">

@@ -31,6 +31,6 @@ sayHiToFriend: function(req, res) {
 > + If _any_ of the target socket ids are unknown, an error is thrown (this error has a `code` property equal to `SAILS:HOOK:SOCKETS:NO_SUCH_SOCKET`).
 
 
-<docmeta name="uniqueID" value="sailssocketsemit963182">
+
 <docmeta name="displayName" value="sails.sockets.emit()">
 

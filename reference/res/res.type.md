@@ -22,6 +22,6 @@ res.type('png');
 
 
 
-<docmeta name="uniqueID" value="restype43929">
+
 <docmeta name="displayName" value="res.type()">
 

@@ -21,5 +21,5 @@ Configuration for the [global variables](http://sailsjs.org/documentation/refere
 
 
 
-<docmeta name="uniqueID" value="sailsconfigglobals588825999999">
+
 <docmeta name="displayName" value="sails.config.globals">

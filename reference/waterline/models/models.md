@@ -48,5 +48,5 @@ sails.models.kitten.find().exec(function (err, allTheKittens) {
 ```
 
 
-<docmeta name="uniqueID" value="Models537291">
+
 <docmeta name="displayName" value="Models">

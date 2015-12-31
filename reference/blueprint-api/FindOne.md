@@ -64,5 +64,5 @@ Find the purchase with ID #1, E.g. `http://localhost:1337/purchase/1`
  }
  ```
 
-<docmeta name="uniqueID" value="FindOne259267">
+
 <docmeta name="displayName" value="find one">

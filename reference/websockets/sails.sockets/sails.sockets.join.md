@@ -33,6 +33,6 @@ subscribeToFunRoom: function(req, res) {
 ### Notes
 > + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
-<docmeta name="uniqueID" value="sailssocketsjoin958690">
+
 <docmeta name="displayName" value="sails.sockets.join()">
 

@@ -1,6 +1,6 @@
 # myApp/config/globals.js
 
-<docmeta name="uniqueID" value="globalsjs86282">
+
 <docmeta name="displayName" value="globals.js">
 
 ```

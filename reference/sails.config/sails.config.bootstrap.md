@@ -19,6 +19,6 @@ module.exports.bootstrap = function (cb) {
 
 
 
-<docmeta name="uniqueID" value="Bootstrap85232">
+
 <docmeta name="displayName" value="sails.config.bootstrap">
 

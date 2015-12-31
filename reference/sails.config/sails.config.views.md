@@ -18,5 +18,5 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 
 
 
-<docmeta name="uniqueID" value="sailsconfigviews588825">
+
 <docmeta name="displayName" value="sails.config.views">
