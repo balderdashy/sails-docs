@@ -81,9 +81,8 @@ The companies below provide custom development, services, training, and/or suppo
   <img height="15" alt="Linkedin icon" class="linkedin" src="http://balderdash.co/images/icon_linkedIn@2x.png">
 </a>
 
-Sails is maintained by [Balderdash](http://balderdash.co/), an interactive development studio in Austin, TX.  Heather and I started the company in 2012, on the promise that Node.js could be used to build production back-end applications from start to finish.  We created Sails to support that mission, and over 2 years later, the experiment has been a resounding success.  As you might expect, we do a lot of custom Sails+Node.js development, but our team has experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications,  and building rich user experiences across many different devices and screen resolutions. We also provide training services for teams looking to increase their efficiency w/ Node.js.
+Sails was built by the team behind [Balderdash](http://balderdash.co/), an interactive development studio in Austin, TX.  [Heather](http://www.sealab.io/) and [I](http://twitter.com/mikermcneil) started the company in 2012, on the promise that Node.js could be used to build production back-end applications from start to finish.  We created Sails to support that mission, and years later, the experiment has been a resounding success.  As you might expect, we've done a lot of custom Sails+Node.js development, but our team has experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications,  and building rich user experiences across many different devices and screen resolutions. 
 
-+ [Get us involved on a project.](http://balderdash.co/)
 + [Our process.](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
 + [Our](https://speakerdeck.com/mikermcneil/intro-to-sails-dot-js) [s](https://angel.co/balderdash)[to](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)[ry](http://blog.modulus.io/sails-js).
 
@@ -116,6 +115,8 @@ Sails is maintained by [Balderdash](http://balderdash.co/), an interactive devel
 + [Follow us on Twitter: @appendto](http://twitter.com/appendto)
 + [Visit us on Facebook](http://facebook.com/appendto)
 + Subscribe to our Newsletter - [The Modern Web Observer](http://appendto.com/mwo)
+
+> If you would like to see your company added to this section, please tweet [@mikermcneil](http://twitter.com/mikermcneil) on Twitter.
 
 
 ### What are some good community tutorials?
