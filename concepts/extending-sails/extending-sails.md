@@ -8,7 +8,7 @@ In keeping with the Node philosophy, Sails aims to keep its core as small as pos
 
 If you&rsquo;re interested in developing a &ldquo;plugin&rdquo; for Sails, you will most often want to make a [hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks).  
 
-<a name="foot1">*</a> <sub>Some of the more important modules, like the Request hook, are still bundled with the Sails core, but they could technically be removed and installed separately.</sub>
+<a name="foot1">*</a> <sub>_Core hooks_, like `http`, `request`, etc. are hooks which are bundled with Sails out of the box.  They can be disabled by specifying a `hooks` configuration in your `.sailsrc` file, or when lifting Sails programatically.</sub>
 
 
 <docmeta name="displayName" value="Extending Sails">
