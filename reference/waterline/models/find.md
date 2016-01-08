@@ -21,21 +21,23 @@ Finds and returns all records that meet the criteria object(s) that you pass it.
 
 ```javascript
 User.find({}).exec(function findCB(err, found){
-  while (found.length)
-    console.log('Found User with name ' + found.pop().name)
+  // this array contains every user's complete user object
+  found[0];
+	// => { id: 1, name: 'Alice Smith', petID: 7 }
 });
 
-// Found User with name Flynn
-// Found User with name Jessie
-
-// Don't forget to handle your errors
+User.find({}, {name: true}).exec(function findCB(err, found){
+  // this array contains every user's name and object ID only
+	found[0];
+	// => { id: 1, name: 'Alice Smith' }
+});
 
 ```
 ### Notes
-> Any string arguments passed must be the ID of the record.
 > This method will ALWAYS return records in an array.
 > If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
-
+> The find method supports projection.
+> Any string arguments passed must be the ID of the record.
 
 
 
