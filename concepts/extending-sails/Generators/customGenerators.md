@@ -4,12 +4,21 @@
 The easiest way to get started your own custom generator is to use `sails-generate-generator`.
 
 #### sails-generate-generator
-###### Github Repo
+
+###### On GitHub
 https://github.com/balderdashy/sails-generate-generator/
 
 ###### On NPM
 
-`npm install sails-generate-generator`
+```
+npm install sails-generate-generator
+```
+
+###### Usage
+
+```
+sails generate generator whatever
+```
 
 
 
