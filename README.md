@@ -60,6 +60,8 @@ A great way to help the Sails project, especially if you speak a language other 
 If your language is not represented in the table above, and you are interested in beginning a translation project, follow these steps:
 
 + Fork this repo (`balderdashy/sails-docs`) and change the name of your fork to be `sails-docs-{{IETF}}` where {{IETF}} is the [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) for your language.
-+ Update the README to explain how far you've gotten so far, let interested contributors know how to contact you, and provide any other information you think would be helpful for others reading your translation.
++ Edit the README to summarize your progress so far, provide any other information you think would be helpful for others reading your translation, and let interested contributors know how to contact you.
 + Send a pull request editing the table above to add a link to your fork.
++ When you are satisfied with the first complete version of your translation, open an issue and someone from our docs team will be happy to help you get preview it in the context of the Sails website, get it live on a domain (yours, or a subdomain of sailsjs.org, whichever makes the most sense), and share it with the rest of the Sails community.
+
 
