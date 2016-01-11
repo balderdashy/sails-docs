@@ -1,6 +1,6 @@
 # Sails.js Documentation
 
-The official documentation for the current stable release of Sails (0.11.x).  Content for most sections on the Sails website (sailsjs.org) is compiled from here.
+The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the Sails website (sailsjs.org) is compiled from here.
 
 
 ## In Other Languages
