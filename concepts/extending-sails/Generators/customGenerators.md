@@ -42,7 +42,7 @@ To begin the process of generating a generator you can use `sails-generate-gener
 
 >**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust us it will not create a worm hole to an evil alternate universe. 
 
-###Creating a Generator
+### Creating a Generator
 
 First we need a Sails project.  If you haven't already created one go to your terminal and type:
 
