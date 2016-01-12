@@ -36,22 +36,25 @@ For more instructions on installing the stable, beta, and edge versions of Sails
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
+We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails' dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
+
+Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  Out of the box, it also depends on other great modules, like `grunt`, `waterline`, and `fs-extra`.  Click the badge above for the full list of dependencies.
 
 
 ### Where do I get help?
-+ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
-+ Get help from the [Google Group](https://groups.google.com/forum/#!forum/sailsjs)
-+ Get help on IRC ([#sailsjs on freenode](http://irc.netsplit.de/channels/details.php?room=%23sailsjs&net=freenode))
-+ [Tweet @sailsjs](http://twitter.com/sailsjs)
 
+Aside from the [official documentation](http://sailsjs.org/documentation), be sure and check out the [Support page on the Sails website](http://sailsjs.org/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action).
 
 
 ### Who else is using Sails.js?
 
-> Sails is used by services companies small and large, all over the world.
-> This small list is definitely not authoratative-- we haven't had the opportunity to collect that information yet. In the mean time, if you're using Sails in your company/product/service, we'd love to hear about it!  Please click `edit` to submit a pull request updating this list.
+> Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature). This small list is definitely not authoritative, so if you're using Sails in your app/product/service, we'd love to hear about it!  Click the `edit` button in GitHub's UI to submit a pull request updating this list.
 
++ [The City of Paris](http://paris.fr)
++ [18F (United States)](https://18f.gsa.gov/)
++ [Postman](https://www.getpostman.com/)
++ [BeyondSoft](https://beyondsoft.com/)
++ [The Broad Institute / Human Genome Project](https://www.broadinstitute.org/)
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [Insight Replay](http://insightreplay.com) - Instant replay for [athletes](http://insightreplay.com/insight-replay-at-sochi-winter-olympics/) and coaches
@@ -178,147 +181,3 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 
-
-
-
-
-
-
-
-<!--
-Building Your Own Adapters
-Controllers
-Database Support
-examples
-Guide: Login Example
-Guide: Passport auth example
-Guide: Sockets
-Home
-Models
-Policies
-Routes
-Services
-Views
-What Is Sails
-
-[New to NodeJS](/balderdashy/sails/wiki/new-to-nodejs)<br />
-[Configuration](/balderdashy/sails/wiki/configuration)<br />
-[Deployment](/balderdashy/sails/wiki/deployment)<br />
-
-***
-For those of you that would like to contribute.<br />
-[Changelog](/balderdashy/sails/wiki/changelog)<br />
-[Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)<br />
-
-***
-
-See https://github.com/balderdashy/sails/wiki/_pages for more pages.
-
-# Getting Started With Sails
-
-![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png)
-
-# Installation
-
-> New to Node.js?  Get started by following the directions here: http://nodejs.org/
-
-Once you have Node.js up and running, installing Sails is pretty dern easy.  Just type:
-```sh
-sudo npm install -g sails
-```
-
-
-# Creating a New Sails Project
-
-Here's how you get off the ground:
-
-```sh
-# Create the app
-sails new testProject
-
-# cd into the new project
-cd testProject
-
-# Fire up the server
-# (you have to run this from the root of your project)
-sails lift
-```
-
-
-# Creating a Model
-Creating a model is very easy with the command line tool. You can even define attributes and their
-type by adding arguments at the end of the command. To generate a User model, enter the following:
-```
-sails generate model User
-```
-
-You will see that this creates a user model at **/api/models/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
-
-```javascript
-module.exports = {
-        attributes      : {
-                name: 'STRING'
-        }
-
-};
-```
-
-# What's Better Than Scaffolding?  How About a JSON API?
-
-Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for
-modern web apps! Instead, Sails automatically builds a RESTful JSON API for your models. Best of
-all, it supports HTTP _and_ WebSockets! By default for every controller you create, you get the
-basic CRUD operations created automatically.
-
-For instance, after generating the User model above, if you visit `http://localhost:1337/user/create`, you'll see:
-```json
-{
-  "createdAt": "2013-01-10T01:33:19.105Z",
-  "updatedAt": "2013-01-10T01:33:19.105Z",
-  "id": 1
-}
-```
-
-That's it!  You just created a model in the database!  You can also `find`, `update`, and `destroy` users:
-
-```
-# List of all users
-http://localhost:1337/user
-
-# Find the user with id 1
-http://localhost:1337/user/1
-
-# Create a new user
-http://localhost:1337/user/create
-(or send an HTTP POST to http://localhost:1337/user)
-
-# Update the user with id 1
-http://localhost:1337/user/update/1
-(or send an HTTP PUT to http://localhost:1337/user/1)
-
-# Destroy the user with id 1
-http://localhost:1337/user/destroy/1
-(or send an HTTP DELETE to http://localhost:1337/user/1)
-```
-
-# Security
-You can control access to your application's endpoints using policies.  See: https://github.com/balderdashy/sails/wiki/Policies
-
-## Using https
-HTTPS works the same way in Sails as it does in Express.  Drop your certificate and key file into your project, then configure the path to them.  For example, if you put your cert and key in a directory called `ssl` in the root of your project, you'd want to add the following to your `config/application.js` file:
-
-```javascript
-module.exports.ssl = {
-  cert : fs.readFileSync(sails.config.appPath+'/ssl/combined.crt'),
-  key  : fs.readFileSync(sails.config.appPath+'/ssl/yoursite.com.key')
-};
-```
-
-
-# Learn more
-https://github.com/balderdashy/sails/wiki/_pages
-
-
--->
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/home)
