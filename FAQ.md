@@ -3,33 +3,46 @@
 ### Where is the documentation?
 + [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/documentation)
 + This is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs)
-  + The content in the Github repo is eventually pushed to the website.
-  + It is usually a several commits ahead, and is the go-to place for the most up-to-date information.
-  + This will become more automated as we're able to get more time to automate our tools (will open-source these asap post v0.10 release)
+  + The content in the Github repo is pushed to the website when it is merged into the branch for the current stable Sails release.
+  + Master is sometimes a few commits ahead, any critical documentation updates make it onto the website within a day or two.   http://sailsjs.org/documentation is the go-to place for the most up-to-date information.
+
+
+
+### How does the markdown documentation end up on the Sails website?
+
+A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [Sails website repo](https://github.com/balderdashy/sails-docs) for more information.
+
 
 ### How do I get involved?
-+ [Help us improve the documentation](https://github.com/balderdashy/sails-docs)
-+ [Contribute to the Sails core](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#contributing-to-core)
-+ [Create/contribute to a plugin](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#writing-code)
-+ [Contribute to the sailsjs.org website](https://github.com/balderdashy/www.sailsjs.org)
+
+There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.org/documentation/concepts/extending-sails), fix a bug on the [website](https://github.com/balderdashy/www.sailsjs.org), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
+
 
 ### Where do I submit ideas?  Report issues?
-+ [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
-+ [Got a feature request or idea?](https://trello.com/b/cGzNVE0b/sails-js-feature-requests)
 
+The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) before you create an issue, submit a proposal, or begin working on pull request.
 
 
 ### What version of Sails should I use?
 
 [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
 
-The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.  Installing is easy- just follow the instructions in the README or on the Sails website (e.g. `npm install sails`.)
+Unless you are a contributor running a pre-release version of the framework in order to do some testing or work on core, you should use the latest stable version of Sails from NPM (click the badge above).  Installing is easy- just follow the instructions on [the Sails website](http://sailsjs.org).
 
-To install the beta/ pre-release version of Sails, install from the `beta` tag on npm (e.g. `npm install sails@beta`).  This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  Except for extreme situations, the API in the release candidate should be consistent with the upcoming stable release it corresponds with.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
+> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --force`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force && npm install`.
+
+If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
 
 Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
 
-For more instructions on installing the stable, beta, and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+
+
+### I'm having trouble installing Sails. What should I do?
+
+Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) and then create a GitHub issue in the Sails repo.
+
+
 
 
 ### What are the dependencies of Sails?
