@@ -23,26 +23,26 @@ Generate a **api/adapters/foo** folder containing the files necessary for buildi
 Generate a **foo** folder containing the files necessary for building a new generator.
 
 #### Coffeescript support
-If you want to use Coffeescript for write yours controllers, models even config files, just follow the next steps:
- 1. Install Coffeescript locally and save it in your package.json
+If you want to use Coffeescript for write your controllers or models even config files; just follow these steps:
+ 1. Install Coffeescript locally and save it in your `package.json` file:
 ```sh
 npm install --save coffee-script
 ```
- 2. Install the generators for coffeescript (optional)
+ 2. Install the generators for Coffeescript (optional):
 ```sh
 npm install --save-dev sails-generate-controller-coffee sails-generate-model-coffee
 ```
- 3. For generate scaffold code add *--coffee* as you see next
+ 3. To generate scaffold code, add `--coffee`:
 ```sh
 sails generate api <foo> --coffee
-# Generate api/models/Foo.js and api/controllers/FooController.coffee
+# Generate api/models/Foo.coffee and api/controllers/FooController.coffee
 sails generate model <foo> --coffee
-# Generate api/models/Foo
+# Generate api/models/Foo.coffee
 sails generate controller <foo> --coffee
 # Generate api/controllers/FooController.coffee
 ```
 
-Thats it, now you can write your code using Coffeescript
+Thats it, now you can write your code using Coffeescript!
 
 
 <docmeta name="displayName" value="sails generate">
