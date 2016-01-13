@@ -6,7 +6,7 @@ Sails apps support full-duplex realtime communication between the client and ser
 
 ### Realtime communication between the client and the server
 
-The easiest to send a realtime message from a client to the Sails app it&rsquo;s connected to is by using the [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/socket-client) library.  This library allows a connected socket to make a virtual request to a [Sails route](http://sailsjs.org/documentation/concepts/routes) and have Sails handle the request in the same manner as a "regular" HTTP request.  The main difference between this type of request and (for example) an AJAX request is that the [controller action](http://sailsjs.org/documentation/concepts/controllers#?actions) in your Sails app will have access to the socket which made the request, allowing it to _subscribe_ that socket to realtime notifications (see [sending realtime messages from the server](http://sailsjs.org/documentation/concepts/realtime#?sending-realtime-messages-from-the-server-to-one-or-more-clients) below).
+The easiest way to send a realtime message from a client to a Sails app is by using the [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/socket-client) library.  This library allows a connected socket to make a virtual request to a [Sails route](http://sailsjs.org/documentation/concepts/routes) and have Sails handle the request in the same manner as a "regular" HTTP request.  The main difference between this type of request and (for example) an AJAX request is that the [controller action](http://sailsjs.org/documentation/concepts/controllers#?actions) in your Sails app will have access to the socket which made the request, allowing it to _subscribe_ that socket to realtime notifications (see [sending realtime messages from the server](http://sailsjs.org/documentation/concepts/realtime#?sending-realtime-messages-from-the-server-to-one-or-more-clients) below).
 
 The sails.io.js library is automatically loaded by all Sails apps generated with [`sails new`](http://sailsjs.org/documentation/reference/command-line-interface/sails-new).  See the [Socket Client reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client) for full documentation on this library.
 
@@ -26,7 +26,7 @@ No special setup is necessary in your hosted Redis install; just plug the approp
 
 ### Reference
 
-* [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) - overview and method reference for the Sails Socket Client library
+* [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/socket-client) - overview and method reference for the Sails Socket Client library
 * [sails.sockets.*](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) - overview and method reference for the Sails low-level socket methods
 * [Resourceful pub-sub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub) - overview and method reference for the Sails resourceful pub-sub API, used for sending realtime messages about Sails models
 * [Socket.io](http://socket.io) - The underlying library Sails uses for realtime communicaiton
