@@ -26,6 +26,7 @@ _Or:_
 
 ```javascript
 sails.sockets.broadcast('artsAndEntertainment', { msg: 'Hi there!' });
+sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { msg: 'Hola!' });
 ```
 
 ### Notes
