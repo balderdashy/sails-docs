@@ -32,7 +32,8 @@ leaveFunRoom: function(req, res) {
 ```
 
 ### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+> + In multi-server (aka "clustered") deployments, you should always use `.leave()` asynchronously (by sending a function as the `cb` argument and continuing execution inside that function).
++ The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
 
 
