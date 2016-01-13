@@ -3,20 +3,20 @@
 Broadcast a message to a room.
 
 ```javascript
-sails.sockets.broadcast(roomName, data);
+sails.sockets.broadcast(roomNames, data);
 ```
 
 _Or:_
-+ `sails.sockets.broadcast(roomName, eventName, data);`
-+ `sails.sockets.broadcast(roomName, data, socketToOmit);`
-+ `sails.sockets.broadcast(roomName, eventName, data, socketToOmit);`
++ `sails.sockets.broadcast(roomNames, eventName, data);`
++ `sails.sockets.broadcast(roomNames, data, socketToOmit);`
++ `sails.sockets.broadcast(roomNames, eventName, data, socketToOmit);`
 
 
 ### Usage
 
 |   |          Argument           | Type                | Details
 | - | --------------------------- | ------------------- | -----------
-| 1 |        roomName             | ((string))          | The room to broadcast a message in (see [sails.sockets.join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html))
+| 1 |        roomNames             | ((string)) -or- ((Array))          | The name of one or more rooms to broadcast a message in (see [sails.sockets.join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html)).  To broadcast to individual sockets, use their IDs as the room names.
 | 2 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
 | 3 |        data                 | ((object))          | The data to send in the message.
 | 4 |        socketToOmit         | ((Socket))          | Optional. If provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).

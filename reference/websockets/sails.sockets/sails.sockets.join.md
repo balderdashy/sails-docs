@@ -13,6 +13,7 @@ sails.sockets.join(socket, roomName);
 |---|------------|:-----------:|---------|
 | 1 | `socket`   | ((string)) -or- ((socket)) | The socket to be subscribed.  May be specified by the socket's id or a raw socket object.
 | 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
+| 3 | `cb`       | ((function))| An optional callback which will be called with a single argument `err`.
 
 ### Example
 
@@ -21,9 +22,11 @@ In a controller action:
 ```javascript
 subscribeToFunRoom: function(req, res) {
   var roomName = req.param('roomName');
-  sails.sockets.join(req.socket, roomName);
-  res.json({
-    message: 'Subscribed to a fun room called '+roomName+'!'
+  sails.sockets.join(req.socket, roomName, function(err) {
+    if (err) {return res.serverError(err);}
+    res.json({
+      message: 'Subscribed to a fun room called '+roomName+'!'
+    });
   });
 }
 ```

@@ -3,19 +3,23 @@
 Get the IDs of all sockets subscribed to a room.
 
 ```javascript
-sails.sockets.subscribers(roomName);
+sails.sockets.subscribers(roomName, cb);
 ```
 
 ### Usage
 
 |   |          Argument           | Type                | Details
 | - | --------------------------- | ------------------- | -----------
-| 1 |        roomName             | ((string))          | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
+| 1 |        roomName             | ((string))          | The name of the room whose socket IDs should be retrieved. <br/> e.g. `'supportchat'`.
+| 2 |        cb             | ((function))          | Function to be called when the socket IDs have been retrieved.  The function should have two arguments: `err` and `socketIds`.
+
 
 ### Example
 
 ```javascript
-sails.sockets.subscribers('supportchat');
+sails.sockets.subscribers('supportchat', function(err, socketIds) {
+  console.log(socketIds);
+});
 // => ['BetX2G-2889Bg22xi-jy', 'BTA4G-8126Kr32bi-za']
 ```
 

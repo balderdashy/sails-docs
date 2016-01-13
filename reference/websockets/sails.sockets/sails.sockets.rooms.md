@@ -1,4 +1,7 @@
 # sails.sockets.rooms()
+
+> ### _**This method is deprecated**.  Please keep track of your rooms in app-level code._
+
 ### Purpose
 Get the list of all current socket rooms
 
@@ -17,7 +20,7 @@ getRoomsList: function(req, res) {
 }
 ```
 
-*Note: In Socket.io, all sockets are automatically subscribed to a global room with an empty name ('').  This room is not returned as part of the array in `sails.sockets.rooms`* 
+*Note: In Socket.io, all sockets are automatically subscribed to a global room with an empty name ('').  This room is not returned as part of the array in `sails.sockets.rooms`*
 
 
 

@@ -1,4 +1,7 @@
 # sails.sockets.socketRooms( `socket` )
+
+> ### _**This method is deprecated**.  Please keep track of your rooms in app-level code._
+
 ### Purpose
 Get the list of rooms a socket is subscribed to
 
