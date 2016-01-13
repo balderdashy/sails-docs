@@ -2,7 +2,7 @@
 
 ### Overview
 
-Sails apps support full-duplex realtime communication between the client and server.  This means that a client (e.g. a web browser page or tab) can maintain a persistent connection to a Sails app, and messages can be sent from client to server or from server to client at any time.  Two common uses of realtime communication are live chat implementations and multiplayer games.  Sails implements realtime using the [socket.io](http://socket.io) library.  Throughout the Sails documentation, the terms `socket` and `websocket` are commonly used to refer to a two-way, persistent communication channel between a Sails app and a client.
+Sails apps support full-duplex realtime communication between the client and server.  This means that a client (e.g. a web browser page or tab) can maintain a persistent connection to a Sails app, and messages can be sent from client to server or from server to client at any time.  Two common uses of realtime communication are live chat implementations and multiplayer games.  Sails implements realtime using the [socket.io](http://socket.io) library.  Throughout the Sails documentation, the terms **socket** and **websocket** are commonly used to refer to a two-way, persistent communication channel between a Sails app and a client.
 
 ### Realtime communication between the client and the server
 
