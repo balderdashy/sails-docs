@@ -6,6 +6,13 @@
   + The content in the Github repo is pushed to the website when it is merged into the branch for the current stable Sails release.
   + Master is sometimes a few commits ahead, any critical documentation updates make it onto the website within a day or two.   http://sailsjs.org/documentation is the go-to place for the most up-to-date information.
 
+
+
+### How does the markdown documentation end up on the Sails website?
+
+A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [Sails website repo](https://github.com/balderdashy/sails-docs) for more information.
+
+
 ### How do I get involved?
 
 There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.org/documentation/concepts/extending-sails), fix a bug on the [website](https://github.com/balderdashy/www.sailsjs.org), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
