@@ -9,7 +9,7 @@ sails.sockets.id(socket);
 ### Usage
 
 |   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
+|---| --------------------------- | ------------------- | -----------
 | 1 |           socket            | ((Socket))          | A request socket (WebSocket/Socket.io) object <br/> e.g. `req.socket`.
 
 

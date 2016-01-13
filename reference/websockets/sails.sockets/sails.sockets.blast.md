@@ -16,7 +16,7 @@ _Or:_
 ### Usage
 
 |   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
+|---| --------------------------- | ------------------- | -----------
 | 1 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
 | 2 |        data                 | ((*))               | The data to send in the message.
 | 3 |        socketToOmit         | ((Socket))          | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.

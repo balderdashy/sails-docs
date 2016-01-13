@@ -15,7 +15,7 @@ _Or:_
 ### Usage
 
 |   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
+|---| --------------------------- | ------------------- | -----------
 | 1 |        roomNames             | ((string)) -or- ((Array))          | The name of one or more rooms to broadcast a message in (see [sails.sockets.join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html)).  To broadcast to individual sockets, use their IDs as the room names.
 | 2 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
 | 3 |        data                 | ((object))          | The data to send in the message.

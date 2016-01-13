@@ -9,7 +9,7 @@ sails.sockets.subscribers(roomName, cb);
 ### Usage
 
 |   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
+|---| --------------------------- | ------------------- | -----------
 | 1 |        roomName             | ((string))          | The name of the room whose socket IDs should be retrieved. <br/> e.g. `'supportchat'`.
 | 2 |        cb             | ((function))          | Function to be called when the socket IDs have been retrieved.  The function should have two arguments: `err` and `socketIds`.
 
