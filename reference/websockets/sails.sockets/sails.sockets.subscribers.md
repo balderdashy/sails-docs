@@ -23,6 +23,11 @@ sails.sockets.subscribers('supportchat', function(err, socketIds) {
 // => ['BetX2G-2889Bg22xi-jy', 'BTA4G-8126Kr32bi-za']
 ```
 
+### Notes
+> This method currently only operates on a _single server_.  If your Sails app is distributed over multiple servers (for example
+  by using the [`socket.io-redis` adapter](https://github.com/socketio/socket.io-redis)), calling `.subscribers(roomName, cb)` will only
+  retrieve the socket IDs of subscribers to `roomName` that are connected to the server making the call.
+
 <!--
 
   Wrote this, then took this out because it's needlessly complex.
