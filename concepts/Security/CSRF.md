@@ -80,10 +80,10 @@ With some client-side modules, you may not have access to the AJAX request itsel
 
 ### Notes
 
-> + For most developers and organizations, CSRF attacks need only be a concern if you allow users to log into/securely access your Sails backend from the browser. If you _don't_ (e.g. users only access the secured sections from your native iOS or Android app), it is possible you don't need to enable CSRF protection.  Why?  Because technically, the common CSRF attack discussed on this page is only _possible_ in scenarios where users use the _same client application_ (e.g. Chrome) to access different web services (e.g. Chase.com, Horrible-Hacker-Site.com.)
+> + You can choose to send the CSRF token as the `X-CSRF-Token` header instead of the `_csrf` parameter.
+> + For most developers and organizations, CSRF attacks need only be a concern if you allow users to log into/securely access your Sails backend _from the browser_ (i.e. from your HTML/CSS/JavaScript front-end code). If you _don't_ (e.g. users only access the secured sections from your native iOS or Android app), it is possible you don't need to enable CSRF protection.  Why?  Because technically, the common CSRF attack discussed on this page is only _possible_ in scenarios where users use the _same client application_ (e.g. Chrome) to access different web services (e.g. Chase.com, Horrible-Hacker-Site.com.)
 > + For more information on CSRF, check out [Wikipedia](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
 > + For "spending" CSRF tokens in a traditional form submission, refer to the example above (under "Using View Locals".)
-> + You can choose to send the CSRF token as a header instead of a parameter- refer to the [Connect documentation](http://www.senchalabs.org/connect/csrf.html) for the most up-to-date information.  The next (post v0.10) minor release of Sails will likely upgrade to Express 4, at which point the new Express csrf middleware will be included instead, but backwards compatibility will be maintained.
 
 
 <docmeta name="displayName" value="CSRF">
