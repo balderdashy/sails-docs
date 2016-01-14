@@ -4,23 +4,24 @@
 
 For our test suite, we use [mocha](http://mochajs.org/).
 Before you start building your test cases, you should first organise your `test/` directory structure, for example in the following way:
+
 ```batch
 ./myApp
-├── api
-├── assets
+├── api/
+├── assets/
 ├── ...
-├── test
-│  ├── integration
-│  │  ├── controllers
+├── test/
+│  ├── integration/
+│  │  ├── controllers/
 │  │  │  └── UserController.test.js
-│  │  ├── models
+│  │  ├── models/
 │  │  │  └── User.test.js
 │  │  └── ...
-│  ├── fixtures
-│  ├── ...
+│  ├── fixtures/
+│  ├── helpers/
 │  ├── bootstrap.test.js
 │  └── mocha.opts
-└── views
+└── views/
 
 ```
 
@@ -118,13 +119,12 @@ In order to run your test using mocha, you'll have to use `mocha` in the command
 To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
 
 ```js
- // package.json
- scripts": {
-    "start": "node app.js",
-    "debug": "node debug app.js",
-    "test": "mocha test/bootstrap.test.js test/integration/**/*.test.js"
-  },
- // More config
+// package.json
+scripts": {
+  "start": "node app.js",
+  "debug": "node debug app.js",
+  "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+}
 ```
 The `*` is a wildcard used to match any file inside the `integration/` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
