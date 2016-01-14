@@ -56,6 +56,7 @@ Set `keepResponseErrors` to `true` to ensure Sails preserves the response body f
 
 Use this config to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
 
-If `sails.config.ssl` is an object with `key` and `cert` or `pfx` keys, those options will be used to lift your Sails app with an HTTPS server.  If `sails.config.ssl` is simply set to `true`, your Sails app will also be lifted with an HTTPS server, but the server details will be taken from the `sails.config.http.serverOptions` object instead.  Use this method when you require a more advanced SSL setup, for example by using an [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener).
+If `sails.config.ssl` is set, it should be an object with `key` and `cert` keys _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `cert` and `key` to `true` and specify your advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+
 
 <docmeta name="displayName" value="sails.config.*">

@@ -3,55 +3,71 @@
 ### Where is the documentation?
 + [Docs for the latest stable npm release of Sails are on the website](http://sailsjs.org/documentation)
 + This is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs)
-  + The content in the Github repo is eventually pushed to the website.
-  + It is usually a several commits ahead, and is the go-to place for the most up-to-date information.
-  + This will become more automated as we're able to get more time to automate our tools (will open-source these asap post v0.10 release)
+  + The content in the Github repo is pushed to the website when it is merged into the branch for the current stable Sails release.
+  + Master is sometimes a few commits ahead, any critical documentation updates make it onto the website within a day or two.   http://sailsjs.org/documentation is the go-to place for the most up-to-date information.
+
+
+
+### How does the markdown documentation end up on the Sails website?
+
+A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [Sails website repo](https://github.com/balderdashy/sails-docs) for more information.
+
 
 ### How do I get involved?
-+ [Help us improve the documentation](https://github.com/balderdashy/sails-docs)
-+ [Contribute to the Sails core](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#contributing-to-core)
-+ [Create/contribute to a plugin](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#writing-code)
-+ [Contribute to the sailsjs.org website](https://github.com/balderdashy/www.sailsjs.org)
+
+There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.org/documentation/concepts/extending-sails), fix a bug on the [website](https://github.com/balderdashy/www.sailsjs.org), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
+
 
 ### Where do I submit ideas?  Report issues?
-+ [Report suspected bug](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#opening-issues) with the Sails core itself
-+ [Got a feature request or idea?](https://trello.com/b/cGzNVE0b/sails-js-feature-requests)
 
+The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) before you create an issue, submit a proposal, or begin working on pull request.
 
 
 ### What version of Sails should I use?
 
 [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
 
-The latest stable version in npm is always a safe bet (see the badge above.).  The latest stable npm release corresponds with the `stable` branch in the Sails repo.  Installing is easy- just follow the instructions in the README or on the Sails website (e.g. `npm install sails`.)
+Unless you are a contributor running a pre-release version of the framework in order to do some testing or work on core, you should use the latest stable version of Sails from NPM (click the badge above).  Installing is easy- just follow the instructions on [the Sails website](http://sailsjs.org).
 
-To install the beta/ pre-release version of Sails, install from the `beta` tag on npm (e.g. `npm install sails@beta`).  This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  Except for extreme situations, the API in the release candidate should be consistent with the upcoming stable release it corresponds with.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
+> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --force`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force && npm install`.
+
+If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
 
 Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
 
-For more instructions on installing the stable, beta, and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+
+
+### I'm having trouble installing Sails. What should I do?
+
+Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md) and then create a GitHub issue in the Sails repo.
+
+
 
 
 ### What are the dependencies of Sails?
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-Sails is tested with [node](http://nodejs.org/) versions 0.8.22 and 0.10.x, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  It also depends on other great modules, like grunt, waterline, and fs-extra.  Click the badge above for the full list of dependencies.
+We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails' dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
+
+Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  Out of the box, it also depends on other great modules, like `grunt`, `waterline`, and `fs-extra`.  Click the badge above for the full list of dependencies.
 
 
 ### Where do I get help?
-+ [Ask a question on StackOverflow](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30)
-+ Get help from the [Google Group](https://groups.google.com/forum/#!forum/sailsjs)
-+ Get help on IRC ([#sailsjs on freenode](http://irc.netsplit.de/channels/details.php?room=%23sailsjs&net=freenode))
-+ [Tweet @sailsjs](http://twitter.com/sailsjs)
 
+Aside from the [official documentation](http://sailsjs.org/documentation), be sure and check out the [Support page on the Sails website](http://sailsjs.org/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action).
 
 
 ### Who else is using Sails.js?
 
-> Sails is used by services companies small and large, all over the world.
-> This small list is definitely not authoratative-- we haven't had the opportunity to collect that information yet. In the mean time, if you're using Sails in your company/product/service, we'd love to hear about it!  Please click `edit` to submit a pull request updating this list.
+> Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature). This small list is definitely not authoritative, so if you're using Sails in your app/product/service, we'd love to hear about it!  Click the `edit` button in GitHub's UI to submit a pull request updating this list.
 
++ [The City of Paris](http://paris.fr)
++ [18F (United States)](https://18f.gsa.gov/)
++ [Postman](https://www.getpostman.com/)
++ [BeyondSoft](https://beyondsoft.com/)
++ [The Broad Institute / Human Genome Project](https://www.broadinstitute.org/)
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [Insight Replay](http://insightreplay.com) - Instant replay for [athletes](http://insightreplay.com/insight-replay-at-sochi-winter-olympics/) and coaches
@@ -178,147 +194,3 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 ![image_squidhome@2x.png](http://i.imgur.com/RIvu9.png)
 
 
-
-
-
-
-
-
-
-<!--
-Building Your Own Adapters
-Controllers
-Database Support
-examples
-Guide: Login Example
-Guide: Passport auth example
-Guide: Sockets
-Home
-Models
-Policies
-Routes
-Services
-Views
-What Is Sails
-
-[New to NodeJS](/balderdashy/sails/wiki/new-to-nodejs)<br />
-[Configuration](/balderdashy/sails/wiki/configuration)<br />
-[Deployment](/balderdashy/sails/wiki/deployment)<br />
-
-***
-For those of you that would like to contribute.<br />
-[Changelog](/balderdashy/sails/wiki/changelog)<br />
-[Contributing to Sails](/balderdashy/sails/wiki/Contributing-to-Sails)<br />
-
-***
-
-See https://github.com/balderdashy/sails/wiki/_pages for more pages.
-
-# Getting Started With Sails
-
-![image_squidhome@2x.png](http://i.imgur.com/m1vTk.png)
-
-# Installation
-
-> New to Node.js?  Get started by following the directions here: http://nodejs.org/
-
-Once you have Node.js up and running, installing Sails is pretty dern easy.  Just type:
-```sh
-sudo npm install -g sails
-```
-
-
-# Creating a New Sails Project
-
-Here's how you get off the ground:
-
-```sh
-# Create the app
-sails new testProject
-
-# cd into the new project
-cd testProject
-
-# Fire up the server
-# (you have to run this from the root of your project)
-sails lift
-```
-
-
-# Creating a Model
-Creating a model is very easy with the command line tool. You can even define attributes and their
-type by adding arguments at the end of the command. To generate a User model, enter the following:
-```
-sails generate model User
-```
-
-You will see that this creates a user model at **/api/models/User.js**.  Let's give her a name-- try uncommenting the name attribute so it looks more or less like this:
-
-```javascript
-module.exports = {
-        attributes      : {
-                name: 'STRING'
-        }
-
-};
-```
-
-# What's Better Than Scaffolding?  How About a JSON API?
-
-Sails API scaffolding is nothing like Rails scaffolding. HTML scaffolds just don't make sense for
-modern web apps! Instead, Sails automatically builds a RESTful JSON API for your models. Best of
-all, it supports HTTP _and_ WebSockets! By default for every controller you create, you get the
-basic CRUD operations created automatically.
-
-For instance, after generating the User model above, if you visit `http://localhost:1337/user/create`, you'll see:
-```json
-{
-  "createdAt": "2013-01-10T01:33:19.105Z",
-  "updatedAt": "2013-01-10T01:33:19.105Z",
-  "id": 1
-}
-```
-
-That's it!  You just created a model in the database!  You can also `find`, `update`, and `destroy` users:
-
-```
-# List of all users
-http://localhost:1337/user
-
-# Find the user with id 1
-http://localhost:1337/user/1
-
-# Create a new user
-http://localhost:1337/user/create
-(or send an HTTP POST to http://localhost:1337/user)
-
-# Update the user with id 1
-http://localhost:1337/user/update/1
-(or send an HTTP PUT to http://localhost:1337/user/1)
-
-# Destroy the user with id 1
-http://localhost:1337/user/destroy/1
-(or send an HTTP DELETE to http://localhost:1337/user/1)
-```
-
-# Security
-You can control access to your application's endpoints using policies.  See: https://github.com/balderdashy/sails/wiki/Policies
-
-## Using https
-HTTPS works the same way in Sails as it does in Express.  Drop your certificate and key file into your project, then configure the path to them.  For example, if you put your cert and key in a directory called `ssl` in the root of your project, you'd want to add the following to your `config/application.js` file:
-
-```javascript
-module.exports.ssl = {
-  cert : fs.readFileSync(sails.config.appPath+'/ssl/combined.crt'),
-  key  : fs.readFileSync(sails.config.appPath+'/ssl/yoursite.com.key')
-};
-```
-
-
-# Learn more
-https://github.com/balderdashy/sails/wiki/_pages
-
-
--->
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/wiki/home)

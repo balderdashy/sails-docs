@@ -1,4 +1,4 @@
-#Cross-Origin Resource Sharing (CORS)
+# Cross-Origin Resource Sharing (CORS)
 
 <!--
 Your default Sails setup is already equipped to handle AJAX requests from a web page on the same domain.  But what if you need to handle AJAX requests originating from other domains?  You could set up your browser JSONP That's where [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing) comes in.
