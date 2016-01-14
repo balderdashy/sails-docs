@@ -18,7 +18,7 @@ Before you start building your test cases, you should first organise your `test/
 │  │  │  └── User.test.js
 │  │  └── ...
 │  ├── fixtures/
-│  ├── helpers/
+|  ├── ...
 │  ├── bootstrap.test.js
 │  └── mocha.opts
 └── views/
