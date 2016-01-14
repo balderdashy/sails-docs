@@ -1,5 +1,7 @@
 # Sails.js Documentation
 
+[![Join the chat at https://gitter.im/balderdashy/sails-docs](https://badges.gitter.im/balderdashy/sails-docs.svg)](https://gitter.im/balderdashy/sails-docs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the Sails website (sailsjs.org) is compiled from here.
 
 
