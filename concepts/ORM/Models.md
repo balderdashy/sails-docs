@@ -233,6 +233,7 @@ module.exports = {
 
 > Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_ by convention.
 
+> Note Custom attributes are not serialized by default, override [toJSON](http://sailsjs.org/documentation/reference/waterline-orm/records/to-json) to serialize them.
 
 ###### When to write a custom attribute method
 
