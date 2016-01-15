@@ -1,6 +1,6 @@
 # myApp/tasks/config/less.js
 
-<docmeta name="uniqueID" value="lessjs876526">
+
 <docmeta name="displayName" value="less.js">
 
 ```

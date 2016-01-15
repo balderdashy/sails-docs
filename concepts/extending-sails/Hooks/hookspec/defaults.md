@@ -30,6 +30,6 @@ then it will, by default, provide default settings for the `sails.config.myaweso
 
 If you specify a function for the `defaults` feature instead of a plain object, it takes a single argument (`config`) which receives any Sails configuration overrides.  Configuration overrides can be made by passing settings to the command line when lifting Sails (e.g. `sails lift --prod`), by passing an object as the first argument when programmatically lifting or loading Sails (e.g. `Sails.lift({port: 1338}, ...)`) or by using a [`.sailsrc`](http://sailsjs.org/documentation/anatomy/myApp/sailsrc.html) file.  The `defaults` function should return a plain object representing configuration defaults for your hook.
 
-<docmeta name="uniqueID" value="Hooks75003">
+
 <docmeta name="displayName" value=".defaults">
 <docmeta name="stabilityIndex" value="3">

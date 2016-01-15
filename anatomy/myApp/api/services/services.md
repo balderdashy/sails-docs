@@ -28,6 +28,6 @@ You would call this service with ` Email.send('rick','bill','lol') `
 > Mind your case.  Email.send !== email.send
 
 
-<docmeta name="uniqueID" value="servicesmd572453">
+
 <docmeta name="displayName" value="services">
 

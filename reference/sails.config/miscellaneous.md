@@ -52,6 +52,10 @@ By default, convenience functions `badRequest`, `forbidden`, `notFound`, and `se
 
 Set `keepResponseErrors` to `true` to ensure Sails preserves the response body for these functions.
 
+### `sails.config.ssl`
 
+Use this config to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+
+If `sails.config.ssl` is set, it should be an object with `key` and `cert` keys _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `cert` and `key` to `true` and specify your advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
 
 <docmeta name="displayName" value="sails.config.*">

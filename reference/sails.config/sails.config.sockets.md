@@ -8,7 +8,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
  ---------------|------------|----------|---------|
  `onConnect`    |((function))| see [config/sockets.js](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket connects to the server. This function is **deprecated**. Use `beforeConnect` instead.
  `onDisconnect` |((function))| see [config/sockets.js](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket disconnects from the server. This function is **deprecated**. Use `afterDisconnect` instead.
- `adapter`      |((string))  |`'memory'`| The database where socket.io will store its message queue and answer pubsub logic.  Can be set to either `'memory'` or `'redis'`
+ `adapter`      |((string))  |`'memory'`| The database where socket.io will store its message queue and answer pubsub logic.  Can be set to either `'memory'` or `'redis'`. In versions 0.11, `'redis'` is deprecated and `'socket.io-redis'` must be used. Install the appropiate dependency using ```npm install socket.io-redis@0.1.4 --save```
  `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using the redis socket store adapter)
  `port`         |((integer)) |`6379`   | Port of your redis instance (only applicable if using the redis socket store adapter)
  `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance (only applicable if using the redis socket store adapter)
@@ -32,5 +32,5 @@ These configuration options provide lower-level access to the underlying Socket.
 | `cookie` | ((string)), ((boolean)) | `false` | This is a raw configuration option exposed from Engine.io.  It indicates the name of the HTTP cookie that contains the connecting socket.io client's socket id.  The cookie will be set when responding to the initial Socket.io "handshake".  Alternatively, may be set to `false` to disable the cookie altogether.  Note that the `sails.io.js` client does not rely on this cookie, so it is disabled (set to `false`) by default for enhanced security.  If you are using socket.io directly and need to re-enable this cookie, keep in mind that the conventional setting is `"io"`.  |
 
 
-<docmeta name="uniqueID" value="sailsconfigsockets959426">
+
 <docmeta name="displayName" value="sails.config.sockets">

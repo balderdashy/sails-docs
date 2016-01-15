@@ -4,7 +4,7 @@ In addition to basic attribute data like email addresses, phone numbers, and bir
 
 The type of a populated value is either:
 
-+ `null`, or a plain old JavaScript object (POJO), or  _(if it corresponds to a "model" association)_
++ `null`, or a plain old JavaScript object (POJO),  _(if it corresponds to a "model" association)_ or
 + an empty array, or an array of plain old JavaScript objects _(if it corresponds to a "collection" association)_
 
 
@@ -83,5 +83,5 @@ Order.find()
 
 
 
-<docmeta name="uniqueID" value="populatedvalues790682">
+
 <docmeta name="displayName" value="Populated Values">

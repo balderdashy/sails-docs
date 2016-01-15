@@ -26,6 +26,6 @@ in the logs.
 * [The hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec)
 * [Creating an installable hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
-<docmeta name="uniqueID" value="Hooks75000">
+
 <docmeta name="displayName" value="Project Hooks">
 <docmeta name="stabilityIndex" value="3">

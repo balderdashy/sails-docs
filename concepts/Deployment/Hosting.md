@@ -77,6 +77,6 @@ Sails.js is maintained by my company, [Balderdash](http://balderdash.co), a Node
 
 
 
-<docmeta name="uniqueID" value="Hosting276234">
+
 <docmeta name="displayName" value="Hosting">
 

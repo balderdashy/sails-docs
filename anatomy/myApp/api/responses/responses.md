@@ -7,6 +7,6 @@ When you generate a new Sails project, we include some of the more common ones f
 
 See the Response section of Reference Documentation for more info.
 
-<docmeta name="uniqueID" value="responsesmd261495">
+
 <docmeta name="displayName" value="responses">
 

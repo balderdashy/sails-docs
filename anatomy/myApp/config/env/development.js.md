@@ -2,7 +2,7 @@
 ### Purpose
 This file will be loaded when Sails is running in `development` mode. Sails runs in `development` mode by default if no other environment is specified.
 
-<docmeta name="uniqueID" value="developmentjs874591">
+
 <docmeta name="displayName" value="development.js">
 
 ```

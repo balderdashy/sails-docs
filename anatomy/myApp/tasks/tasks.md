@@ -11,6 +11,6 @@ At the top part of this file, you'll find a few of the most commonly configured 
 > More information on using Grunt to work with static assets: http://gruntjs.com/configuring-tasks
 
 
-<docmeta name="uniqueID" value="tasksmd668626">
+
 <docmeta name="displayName" value="tasks">
 

@@ -21,6 +21,6 @@ sails.config.models;
  `dynamicFinders`      | ((boolean))  | `true`             | Toggle the automatic creation of Dynamic Finders
 
 
-<docmeta name="uniqueID" value="sailsconfigmodels258825">
+
 <docmeta name="displayName" value="sails.config.models">
 <docmeta name="stabilityIndex" value="3">

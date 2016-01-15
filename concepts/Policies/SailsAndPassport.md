@@ -11,5 +11,5 @@ Passport works great with Sails!  In general, since Sails uses Connect/Express a
 
 
 
-<docmeta name="uniqueID" value="Policies766425">
+
 <docmeta name="displayName" value="Sails + Passport">

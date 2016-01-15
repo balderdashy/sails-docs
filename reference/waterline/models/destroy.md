@@ -39,7 +39,7 @@ User.destroy({id:['id1', 'id2']}).exec(function deleteCB(err){
 > Any string arguments passed must be the ID of the record.
 
 
-<docmeta name="uniqueID" value="destroy398816">
+
 <docmeta name="methodType" value="instance">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".destroy()">

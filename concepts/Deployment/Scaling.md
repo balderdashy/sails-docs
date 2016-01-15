@@ -43,5 +43,5 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
   + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted
 
 
-<docmeta name="uniqueID" value="Scaling291270">
+
 <docmeta name="displayName" value="Scaling">

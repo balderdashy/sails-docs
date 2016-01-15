@@ -22,7 +22,7 @@ This can be changed on a per-route basis by adding a "cors" object to the route 
 
 ```
 
-<docmeta name="uniqueID" value="corsjs397059">
+
 <docmeta name="displayName" value="cors.js">
 
 ```

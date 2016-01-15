@@ -76,6 +76,6 @@ initialize: function(cb) {
 }
 ```
 
-<docmeta name="uniqueID" value="Hooks75005">
+
 <docmeta name="displayName" value=".initialize()">
 <docmeta name="stabilityIndex" value="3">

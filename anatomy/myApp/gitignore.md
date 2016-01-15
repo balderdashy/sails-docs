@@ -12,7 +12,7 @@ Some reasonable defaults are included, but, of course, you should modify/extend/
 [Read more about .gitignore](https://help.github.com/articles/ignoring-files)
 
 
-<docmeta name="uniqueID" value="gitignore878586">
+
 <docmeta name="displayName" value=".gitignore">
 
 ```

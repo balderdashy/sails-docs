@@ -7,7 +7,7 @@ Before one of your custom views is sent to the client, it is injected into this 
 Feel free to change this as you see fit.  Its also a great place to include javascript and css that you plan on using in every view.  This keeps you from having to include them in all your custom .ejs files.  Note, this isnt an issue if you created your app with the `--linker` flag.  In this case, everything in your assets directory is minified and injected into every view rendered by your app. 
 
 
-<docmeta name="uniqueID" value="layoutejs708856">
+
 <docmeta name="displayName" value="layout.ejs">
 
 ```html

@@ -1,6 +1,6 @@
 # myApp/tasks/register/linkAssets.js
 
-<docmeta name="uniqueID" value="linkAssetsjs43498">
+
 <docmeta name="displayName" value="linkAssets.js">
 
 ```

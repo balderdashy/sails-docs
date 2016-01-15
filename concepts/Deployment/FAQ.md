@@ -55,6 +55,6 @@ To disable it, make sure that you disable sessions in the `.sailsrc`:
 
 You may also use an alternative (redis/mongo/cookies) to store sessions.
 
-<docmeta name="uniqueID" value="FAQ475097">
+
 <docmeta name="displayName" value="FAQ">
 

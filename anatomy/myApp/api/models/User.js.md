@@ -6,7 +6,7 @@ In this file you will specify what attributes each model instance (record) shoul
 
 One of the best parts about Sails is it uses [Waterline](https://github.com/balderdashy/waterline).  This means you can start developing your data models long before you commit to a particular database. 
 
-<docmeta name="uniqueID" value="Userjs263218">
+
 <docmeta name="displayName" value="User.js">
 
 ```

@@ -6,7 +6,7 @@ This is a standard configuration file for [npm](https://npmjs.org/doc/json.html)
 > Check out [this awesome interactive guide by Nodejitsu](http://package.json.nodejitsu.com) explaining package.json 
 
 
-<docmeta name="uniqueID" value="packagejson891874">
+
 <docmeta name="displayName" value="package.json">
 
 ```

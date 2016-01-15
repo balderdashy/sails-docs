@@ -12,5 +12,5 @@ Upon connecting to the Freenode network, join us by typing `/join #sailsjs`.
 
 If you registered a nick, you can identify yourself with `/msg nickserv identify <password>`
 
-<docmeta name="uniqueID" value="ircClientConfig271113">
+
 <docmeta name="displayName" value="Setting Up Your Client">

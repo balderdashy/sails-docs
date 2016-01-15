@@ -327,6 +327,6 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 ### Notes
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
 
-<docmeta name="uniqueID" value="ManytoMany276455">
+
 <docmeta name="displayName" value="Many-to-Many">
 

@@ -45,6 +45,6 @@ getRoomSubscribers: function(req, res) {
 
 
 
-<docmeta name="uniqueID" value="sailssocketssubscribers65666">
+
 <docmeta name="displayName" value="sails.sockets.subscribers()">
 

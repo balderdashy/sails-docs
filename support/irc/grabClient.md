@@ -23,5 +23,5 @@ sudo steveJobsPM --prettyPlease install -m 'is this okay?' irssi
  - [xChat](http://xchat.org)
  - [hydra IRC](http://www.hydrairc.com/content/downloads)
 
-<docmeta name="uniqueID" value="ircClient82219">
+
 <docmeta name="displayName" value="Grab A Client">

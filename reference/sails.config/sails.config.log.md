@@ -6,44 +6,43 @@ Configuration for the instance of the [Sails logger](http://sailsjs.org/document
 
 ### Properties
 
+| Property  | Type        | Default     | Details                                                                                                                  |
+|-----------|-------------|-------------|--------------------------------------------------------------------------------------------------------------------------|
+| `level`   | ((string))  | `'info'`    | Set the level of detail to be shown in your app's log                                                                    |
+| `inspect` | ((boolean)) | `true`      | Set to false to disable captain's log's handling of logging, logs will instead be passed to the configured custom logger |
+| `custom`  | ((object))  | `undefined` | Set to the instance of a custom logger (such as [winston](https://github.com/winstonjs/winston)) logs will be passed through to the custom logger
 
-| Property  | Type       | Default   | Details |
-|-----------|:----------:|-----------|---------|
-| `level`   | ((string)) | `'info'`  | Set the level of detail to be shown in your app's log |
+### Using a Custom Logger
 
-<!--
-### Notes
+You can use a custom logger by disabling captain's log and providing a logger with similar methods that logs can be passed to. An example using [winston](https://github.com/winstonjs/winston) defining both a console transport and file transport is below.
 
-> +. ...
+```javascript
+var winston = require('winston');
+var customLogger = new winston.Logger();
 
--->
+// A console transport logging debug and above.
+customLogger.add(winston.transports.Console, {
+  level: 'debug',
+  colorize: true
+});
 
-<!--
-### What is this?
-The logger file configures the log level for your app, as well as the transport.
+// A file based transport logging only errors formatted as json.
+customLogger.add(winston.transports.File, {
+  level: 'error',
+  filename: 'filename.log',
+  json: true
+});
 
-### Description
+module.exports.log = {
+  // Pass in our custom logger, and pass all log levels through.
+  custom: customLogger,
+  level: 'silly',
 
-The logger file configures the log level for your app, as well as the transport.
-
-*(Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages)*
-
-#### There are 5 different levels to the log:
-
-+ **'error'** : Display calls to `.error()`
-+ **'warn'**    : Display calls from `.error()` to `.warn()`
-+ **'debug'** : Display calls from `.error()`, `.warn()` to `.debug()`
-+ **'info'**  : Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
-+ **'verbose'**: Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
-
-
-By default, the level is set to `info`.
-
+  // Disable captain's log so it doesn't prefix or stringify our meta data.
+  inspect: false
+};
+```
 
 
 
--->
-
-
-<docmeta name="uniqueID" value="sailsconfiglog812909">
 <docmeta name="displayName" value="sails.config.log">

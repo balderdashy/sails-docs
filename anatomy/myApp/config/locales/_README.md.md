@@ -1,6 +1,6 @@
 # myApp/config/locales/_README
 
-<docmeta name="uniqueID" value="READMEmd329624">
+
 <docmeta name="displayName" value="_README">
 
 # Internationalization / Localization Settings

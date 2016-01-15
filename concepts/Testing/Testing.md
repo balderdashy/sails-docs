@@ -3,24 +3,25 @@
 ## Preparation
 
 For our test suite, we use [mocha](http://mochajs.org/).
-Before you start building your test cases, you should first organise your `./test` directory structure, for example in the following way:
+Before you start building your test cases, you should first organise your `test/` directory structure, for example in the following way:
+
 ```batch
 ./myApp
-├── api
-├── assets
+├── api/
+├── assets/
 ├── ...
-├── test
-│  ├── unit
-│  │  ├── controllers
-│  │  │  └── UsersController.test.js
-│  │  ├── models
-│  │  │  └── Users.test.js
+├── test/
+│  ├── integration/
+│  │  ├── controllers/
+│  │  │  └── UserController.test.js
+│  │  ├── models/
+│  │  │  └── User.test.js
 │  │  └── ...
-│  ├── fixtures
-│  ├── ...
+│  ├── fixtures/
+|  ├── ...
 │  ├── bootstrap.test.js
 │  └── mocha.opts
-└── views
+└── views/
 
 ```
 
@@ -29,8 +30,7 @@ Before you start building your test cases, you should first organise your `./tes
 This file is useful when you want to execute some code before and after running your tests(e.g. lifting and lowering your sails application). Since your models are converted to waterline collections on lift, it is necessary to lift your sailsApp before trying to test them (This applies similarly to controllers and other parts of your app, so be sure to call this file first).
 
 ```javascript
-var Sails = require('sails'),
-  sails;
+var sails = require('sails');
 
 before(function(done) {
 
@@ -40,7 +40,6 @@ before(function(done) {
   Sails.lift({
     // configuration for testing purposes
   }, function(err, server) {
-    sails = server;
     if (err) return done(err);
     // here you can load fixtures, etc.
     done(err, sails);
@@ -49,7 +48,7 @@ before(function(done) {
 
 after(function(done) {
   // here you can clear fixtures, etc.
-  Sails.lower(done);
+  sails.lower(done);
 });
 ```
 
@@ -69,20 +68,20 @@ This file should contain mocha configuration as described here: [mocha.opts](htt
 
 ## Writing tests
 
-Once you have prepared your directory you can start writing your unit tests.
+Once you have prepared your directory you can start writing your integration tests.
 
-./test/unit/models/Users.test.js
+./test/integration/models/User.test.js
 ```js
-describe('UsersModel', function() {
+describe('UserModel', function() {
 
   describe('#find()', function() {
     it('should check find function', function (done) {
-      Users.find()
-        .then(function(results) {
-          // some tests
-          done();
-        })
-        .catch(done);
+      User.find()
+      .then(function(results) {
+        // some tests
+        done();
+      })
+      .catch(done);
     });
   });
 
@@ -93,11 +92,11 @@ describe('UsersModel', function() {
 
 To test controller responses you can use [Supertest](https://github.com/visionmedia/supertest) library which provides several useful methods for testing HTTP requests.
 
-./test/unit/controllers/UsersController.test.js
+./test/integration/controllers/UserController.test.js
 ```js
 var request = require('supertest');
 
-describe('UsersController', function() {
+describe('UserController', function() {
 
   describe('#login()', function() {
     it('should redirect to /mypage', function (done) {
@@ -111,24 +110,25 @@ describe('UsersController', function() {
 
 });
 ```
+
+
 ## Running tests
 
-In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/unit/**/*.test.js`
+In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/integration/**/*.test.js`
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/unit/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts dictionary, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
 
 ```js
- // package.json
- scripts": {
+  // package.json
+  "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "mocha test/bootstrap.test.js test/unit/**/*.test.js"
-  },
- // More config
+    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+  }
 ```
-The `*` is a wildcard used to match any file inside the `unit` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
+The `*` is a wildcard used to match any file inside the `integration/` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
 
 <docmeta name="displayName" value="Testing">

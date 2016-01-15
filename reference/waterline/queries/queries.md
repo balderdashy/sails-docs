@@ -50,5 +50,5 @@ When the adapter receives a response, it is marshalled to the Waterline interfac
 > + Waterline model methods will **NOT** return a query instance if an optional callback is directly passed as the final argument.  Instead, that callback will be triggered when the query is complete.
 
 
-<docmeta name="uniqueID" value="query820682">
+
 <docmeta name="displayName" value="Queries">

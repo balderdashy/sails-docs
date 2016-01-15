@@ -23,6 +23,6 @@ debugger listening on port 5858
 
 > To use the standard (command-line) node debugger with sails, you can always just run `node debug app.js`.
 
-<docmeta name="uniqueID" value="sailsdebug521538">
+
 <docmeta name="displayName" value="sails debug">
 

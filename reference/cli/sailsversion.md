@@ -10,6 +10,6 @@ $ sails version
 ```
 
 
-<docmeta name="uniqueID" value="sailsversion892721">
+
 <docmeta name="displayName" value="sails version">
 

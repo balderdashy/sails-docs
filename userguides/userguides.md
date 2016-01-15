@@ -25,5 +25,5 @@ Just kidding about the legal disclaimer.  Seriously though, thank you for contib
 #### Sincerely and Truly
 Nick (@uncletammy)
 
-<docmeta name="uniqueID" value="sailsUserGuides83838">
+
 <docmeta name="displayName" value="User Submitted Guides">

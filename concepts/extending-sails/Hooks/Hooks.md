@@ -38,6 +38,6 @@ There are three types of hooks available in Sails:
 * [Creating an installable hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 
-<docmeta name="uniqueID" value="Hooks74998">
+
 <docmeta name="displayName" value="Hooks">
 <docmeta name="stabilityIndex" value="3">

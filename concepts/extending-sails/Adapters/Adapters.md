@@ -29,6 +29,6 @@ Below, `class methods` refer to the static, or collection-oriented, functions av
 `DDL` stands for data-definition language, and is a common fixture of schema-oriented databases.  In Sails, auto-migrations are supported out of the box.  Since adapters for the most common SQL databases support `alter()`, they also support automatic schema migration!  In your own adapter, if you write the `alter()` method, the same behavior will take effect.  The feature is configurable using the `migrate` property, which can be set to `safe` (don't touch the schema, period), `drop` (recreate the tables every time the app starts), or `alter` (the default-- merge the schema in the apps' models with what is currently in the database).
 
 
-<docmeta name="uniqueID" value="Adapters83669">
+
 <docmeta name="displayName" value="Adapters">
 <docmeta name="stabilityIndex" value="3">

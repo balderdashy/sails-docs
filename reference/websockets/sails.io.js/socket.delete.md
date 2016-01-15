@@ -37,6 +37,6 @@ io.socket.delete('/users/9', function (resData) {
 
 
 
-<docmeta name="uniqueID" value="socketdelete671580">
+
 <docmeta name="displayName" value="io.socket.delete()">
 

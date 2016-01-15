@@ -96,7 +96,7 @@ function doEdit(){
 
 ```
 
-<docmeta name="uniqueID" value="publishUpdate712330">
+
 <docmeta name="methodType" value="pubsub">
 <docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".publishUpdate()">
