@@ -1,4 +1,4 @@
-# sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )
+# sails.sockets.broadcast()
 
 Broadcast a message to a room.
 
