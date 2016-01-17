@@ -48,17 +48,19 @@ var sails = require('sails');
 Alternatively, if you are implementing something unconventional (e.g. writing tests for Sails core)
 where you need to create more than one Sails application instance in a process, you _should not_ use
 the instance returned by `require('sails')`, as this can cause unexpected behavior.  Instead, you should
-obtain application instances can be created by using the Sails constructor:
+obtain application instances by using the Sails constructor:
 
 ```
 var Sails = require('sails').constructor;
-var sails0 = Sails();
-var sails1 = Sails();
-var sails2 = Sails();
+var sails0 = new Sails();
+var sails1 = new Sails();
+var sails2 = new Sails();
 ```
 
 Each app instance (`sails0`, `sails1`, `sails2`) can be loaded/lifted separately,
-using different configuration.  For more on using Sails programatically, see the
-conceptual overview on [programatic usage in Sails]().
+using different configuration.
+
+<!-- For more on using Sails programatically, see the
+conceptual overview on [programatic usage in Sails](). -->
 
 <docmeta name="displayName" value="Application">

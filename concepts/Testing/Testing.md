@@ -4,23 +4,24 @@
 
 For our test suite, we use [mocha](http://mochajs.org/).
 Before you start building your test cases, you should first organise your `test/` directory structure, for example in the following way:
+
 ```batch
 ./myApp
-├── api
-├── assets
+├── api/
+├── assets/
 ├── ...
-├── test
-│  ├── integration
-│  │  ├── controllers
+├── test/
+│  ├── integration/
+│  │  ├── controllers/
 │  │  │  └── UserController.test.js
-│  │  ├── models
+│  │  ├── models/
 │  │  │  └── User.test.js
 │  │  └── ...
-│  ├── fixtures
-│  ├── ...
+│  ├── fixtures/
+|  ├── ...
 │  ├── bootstrap.test.js
 │  └── mocha.opts
-└── views
+└── views/
 
 ```
 
@@ -109,22 +110,23 @@ describe('UserController', function() {
 
 });
 ```
+
+
 ## Running tests
 
 In order to run your test using mocha, you'll have to use `mocha` in the command line and then pass as arguments any test you want to run, be sure to call bootstrap.test.js before the rest of your tests like this `mocha test/bootstrap.test.js test/integration/**/*.test.js`
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts obj, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts dictionary, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
 
 ```js
- // package.json
- scripts": {
+  // package.json
+  "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
-    "test": "mocha test/bootstrap.test.js test/integration/**/*.test.js"
-  },
- // More config
+    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+  }
 ```
 The `*` is a wildcard used to match any file inside the `integration/` folder that ends in `.test.js` so if it suits you, you can perfectly modify it to search for `*.spec.js` instead. In the same way you can use wildcards for your folders by using two `*` instead of one.
 
