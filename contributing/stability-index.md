@@ -1,0 +1,22 @@
+# Stability Index
+
+Throughout the documentation and in README files in Sails, you will see indications of a section's stability. The Sails framework is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
+
+The stability indices are as follows:
+
+##### Stability: 0 - Deprecated
+This hook/feature/etc. is known to be problematic, and changes are planned.  Do not rely on it in new code, and be sure to change existing code before upgrading.  Use of the feature may cause warnings.  Backwards compatibility should not be expected.
+
+##### Stability: 1 - Experimental
+This hook/feature/etc. is subject to change or removal in future major releases of Sails.
+
+##### Stability: 2 - Stable
+This hook/feature/etc. has proven satisfactory. Compatibility with existing Sails apps and the plugin ecosystem is a high priority, and so stable hooks/features/etc. will not be broken or removed in future major releases of Sails unless absolutely necessary.
+
+##### Stability: 3 - Locked
+This hook/feature/etc. will not undergo any future API changes, except as demanded by critical fixes related to security or performance.  Please do not propose usage/philosophical changes for features/hooks/etc. at this stability index; they will be refused.
+
+
+
+### Notes
+> - Sails' stability index, and much of the verbiage of this file, is based on [the Stability Index used by Node.js core](https://nodejs.org/api/documentation.html#documentation_stability_index).
