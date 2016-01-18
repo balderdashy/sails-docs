@@ -30,5 +30,8 @@ unsubscribeFunRoomMembersFromFunnerRooms: function(req, res) {
 }
 ```
 
+### Notes
+> + In a multi-server environment, the callback function (`cb`) will be executed when the `.removeRoomMembersFromRooms()` call completes _on the current server_.  This does not guarantee that other servers in the cluster have already finished running the operation.
+
 <docmeta name="displayName" value="sails.sockets.removeRoomMembersFromRooms()">
 
