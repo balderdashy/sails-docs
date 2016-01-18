@@ -1,5 +1,5 @@
 # Assets
-
+> Note: I am adding this blockquote to test that sailsjs.org is now pulling docs form the 0.11 branch.
 ### Overview
 
 Assets refer to [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) on your server that you want to make accessible to the outside world. In Sails, these files are placed in the [`assets/`](http://sailsjs.org/documentation/anatomy/myApp/assets) directory, where they are processed and synced to a hidden temporary directory (`.tmp/public/`) when you lift your app. The contents of this `.tmp/public` folder are what Sails actually serves - roughly equivalent to the "public" folder in [express](https://github.com/expressjs), or the "www" folder you might be familiar with from other web servers like Apache.  This middle step allows Sails to prepare/pre-compile assets for use on the client - things like LESS, CoffeeScript, SASS, spritesheets, Jade templates, etc.
