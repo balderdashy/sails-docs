@@ -15,7 +15,7 @@ Whether it's a bug fix or a huge new feature set, it's important that we consist
 
 Please check over the following requirements before submitting a pull request:
  - Bug fixes should have accompanying tests where possible.  We use [Mocha](http://visionmedia.github.io/mocha/) for testing.
- - Code should follow our style guide to maintain consistency (see `.jshint` file in repo)
+ - Code should follow our style guide to maintain consistency (see `.jshint` and/or `.editorconfig` files in repo)
 
 If you have a high priority hot-fix for the currently deployed version, please [post an issue on Github](https://github.com/balderdashy/sails/issues?milestone=none&state=open), and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.
 
