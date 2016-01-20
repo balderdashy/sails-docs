@@ -23,67 +23,61 @@ module.exports = {
 The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation library for Node.js.
 
 
-| Name of validator | What does it check? | Notes on usage |
-|-------------------|---------------------|----------------|
-|after| Only allow date strings that refer to a moment _after_ the configured JavaScript `Date` instance | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` |
-|alpha| check if `string` in this record contains only letters (a-zA-Z) | |
-|alphadashed|| does this `string` contain only letters and/or dashes? |
-|alphanumeric| check if `string` in this record contains only letters and numbers. | |
-|alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | |
-|array| is this a valid javascript `array` object? | strings formatted as arrays won't pass |
-|before| Only allow date strings that refer to a moment _before_ the configured JavaScript `Date` instance | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` |
-|binary| is this binary data? | If it's a string, it will always pass |
-|boolean| is this a valid javascript `boolean` ? | `string`s will fail |
-|contains| check if `string` in this record contains the seed | |
-|creditcard| check if `string` in this record is a credit card | |
-|date| check if `string` in this record is a date | takes both strings and javascript |
-|datetime| check if `string` in this record looks like a javascript `datetime`| |
-|decimal| | contains a decimal or is less than 1?|
-|email| check if `string` in this record looks like an email address | |
-|empty| Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered "empty" | lo-dash _.isEmpty() |
-|equals| check if `string` in this record is equal to the specified value | `===` ! They must match in both value and type |
-|falsey| Would a Javascript engine register a value of `false` on this? | |
-|finite| Checks if given value is, or can be coerced to, a finite number | This is not the same as native isFinite which will return true for booleans and empty strings |
-|float| check if `string` in this record is of the number type float | |
-|hexadecimal| check if `string` in this record is a hexadecimal number | |
-|hexColor| check if `string` in this record is a hexadecimal color | |
-|in| check if `string` in this record is in the specified array of allowed `string` values | |
-|int|check if `string` in this record is an integer | |
-|integer| same as above | Im not sure why there are two of these. |
-|ip| check if `string` in this record is a valid IP (v4 or v6) | |
-|ipv4| check if `string` in this record is a valid IP v4 | |
-|ipv6| check if `string` in this record is a valid IP v6 | |
-|is| | something to do with REGEX|
-|json| does a try&catch to check for valid JSON. | |
-|len| is `integer` > param1 && < param2 | Where are params defined? |
-|lowercase| is this string in all lowercase? | |
-|max| | |
-|maxLength| is `integer` > 0 && < param2 |  |
-|min| | |
-|minLength| | |
-|not| | Something about regexes |
-|notContains| | |
-|notEmpty| |  |
-|notIn| does the value of this model attribute exist inside of the defined validator value (of the same type) | Takes strings and arrays |
-|notNull| does this not have a value of `null` ? | |
-|notRegex| | |
-|null| check if `string` in this record is null | |
-|number| is this a number? | NaN is considered a number |
-|numeric| checks if `string` in this record contains only numbers | |
-|object| checks if this attribute is the language type of Object | Passes for arrays, functions, objects, regexes, new Number(0), and new String('') ! |
-|regex| | |
-|protected| Should this attribute be removed when `toJSON` is called on a model instance?  | |
-|required| Must this model attribute contain valid data before a new record can be created? | |
-|string| is this a `string` ?| |
-|text| okay, well is <i>this</i> a `string` ?| |
-|truthy| Would a Javascript engine register a value of `false` on this? | |
-|undefined| Would a javascript engine register this thing as having the value 'undefined' ? | |
-|uppercase| checks if `string` in this record is uppercase | |
-|url| checks if `string` in this record is a URL | |
-|urlish| Does the `string` in this record contain something that looks like a route, ending with a file extension? | /^\s([^\/]+\.)+.+\s*$/g |
-|uuid| checks if `string` in this record is a UUID (v3, v4, or v5) | |
-|uuidv3| checks if `string` in this record is a UUID (v3) | |
-|uuidv4| checks if `string` in this record is a UUID (v4) | |
+| Name of validator | What does it check? | Notes on usage | Attribute Type |
+|-------------------|---------------------|----------------|:--------------:|
+|after| Interpret incoming string as date and ensure that it refers to a moment _after_ the configured JavaScript `Date` instance. | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|alpha| Ensure incoming string contains only uppercase and/or lowercase letters.  | (i.e. `/a-z/i`) | ((string)) |
+|alphadashed|| does this `string` contain only letters and/or dashes? | ((string)) |
+|alphanumeric| check if `string` in this record contains only letters and numbers. | | ((string)) |
+|alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | | ((string)) |
+|array| is this a valid javascript `array` object? | strings formatted as arrays won't pass | ((array)) |
+|before| Only allow date strings that refer to a moment _before_ the configured JavaScript `Date` instance | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|binary| is this binary data? | If it's a string, it will always pass | ((string)) or ((buffer)) |
+|boolean| is this a valid javascript `boolean` ? | `string`s will fail | ((boolean)) |
+|contains| check if `string` in this record contains the seed | | ((string)) |
+|creditcard| check if `string` in this record is a credit card | | ((string)) |
+|date| check if `string` in this record is a date | takes both strings and javascript | ((string)) |
+|datetime| check if `string` in this record looks like a javascript `datetime`| | ((string)) |
+|decimal| | contains a decimal or is less than 1?| ((number)) |
+|email| check if `string` in this record looks like an email address | | ((string)) |
+|empty| Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered "empty" | lo-dash _.isEmpty() | ((json)) |
+|equals| check if `string` in this record is equal to the specified value | `===` ! They must match in both value and type | ((json)) |
+|falsey| Would a Javascript engine register a value of `false` on this? | | ((json)) |
+|finite| Checks if given value is, or can be coerced to, a finite number | This is not the same as native isFinite which will return true for booleans and empty strings | ((number)) or ((string)) |
+|float| check if `string` in this record is of the number type float | | ((number)) or ((string)) |
+|hexadecimal| check if `string` in this record is a hexadecimal number | | ((number)) or ((string)) |
+|hexColor| check if `string` in this record is a hexadecimal color | | ((string)) |
+|in| check if `string` in this record is in the specified array of allowed `string` values | | ((string)) |
+|int| Ensure incoming value is an integer, or is a string that looks like one. | This is an alias for the `integer` rule below. | ((number)) or ((string)) |
+|integer| Ensure incoming value is an integer, or is a string that looks like one. | | ((number)) or ((string)) |
+|ip| check if `string` in this record is a valid IP (v4 or v6) | | ((string)) |
+|ipv4| check if `string` in this record is a valid IP v4 | | ((string)) |
+|ipv6| check if `string` in this record is a valid IP v6 | | ((string)) |
+|is| Ensure incoming value matches the configured regular expression. | | ((string)) |
+|json| does a try&catch to check for valid JSON. | | ((json)) |
+|lowercase| is this string in all lowercase? | | ((string)) |
+|max| | | ((number)) |
+|maxLength| |  | ((string)) |
+|min| | | ((number)) |
+|minLength| | | ((string)) |
+|not| Ensure incoming value **does not** match the configured regular expression. | | ((string)) |
+|notContains| | | ((string)) |
+|notEmpty| |  | ((string)) |
+|notIn| Ensure incoming value **is not in** the configured array. | | ((string)) |
+|notNull| Ensure incoming value **is not** equal to `null` | | ((json)) |
+|null| Ensure incoming value **is `null`**. | | ((json)) |
+|numeric| Ensure incoming value is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
+|required| Ensure incoming value is defined; that is, **not `undefined`**. | | ((json)) |
+|string| Ensure incoming value is a string. | | ((string)) |
+|text| Ensure incoming value is a string. | | ((string)) |
+|truthy| Ensure a Javascript engine would consider the incoming value `false` if used in an `if` statement. | | ((json)) |
+|undefined| Ensure incoming value is `undefined`. | | ((json)) |
+|uppercase| checks if `string` in this record is uppercase | | ((string)) |
+|url| Ensure incoming value is a URL. | | ((string)) |
+|urlish| Ensure incoming value looks vaguely like a URL of some kind. | `/^\s([^\/]+\.)+.+\s*$/g` | ((string)) |
+|uuid| checks if `string` in this record is a UUID (v3, v4, or v5) | | ((string)) |
+|uuidv3| checks if `string` in this record is a UUID (v3) | | ((string)) |
+|uuidv4| checks if `string` in this record is a UUID (v4) | | ((string)) |
 
 
 
