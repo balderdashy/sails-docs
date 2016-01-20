@@ -22,6 +22,16 @@ module.exports = {
 
 The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation library for Node.js.
 
+> In the table below, the "Compatible Attribute Type(s)" column shows what type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Coincidentally, the table below takes a few shortcuts:
+> - If compatible with ((string)), then the validation rule is also compatible with ((text)) and ((json)).
+> - If compatible with ((integer)), then the validation rule is also compatible with ((number)) and ((json)).
+> - If compatible with ((float)), then the validation rule is also compatible with ((number)) and ((json)).
+> - If compatible with ((number)), then the validation rule is also compatible with ((json)).
+> - If compatible with ((boolean)), then the validation rule is also compatible with ((json)).
+> - If compatible with ((date)), then the validation rule is also compatible with ((datetime)).
+> - If compatible with ((time)), then the validation rule is also compatible with ((datetime)).
+> - If compatible with ((array)), then the validation rule is also compatible with ((json)).
+
 
 | Name of Rule      | What It Checks      | Notes On Usage | Compatible Attribute Type(s) |
 |-------------------|---------------------|----------------|:----------------------------:|
@@ -32,7 +42,7 @@ The following validation rules are handled by [Anchor](https://github.com/sailsj
 |alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | | ((string)) |
 |array| is this a valid javascript `array` object? | strings formatted as arrays won't pass | ((array)) |
 |before| Only allow date strings that refer to a moment _before_ the configured JavaScript `Date` instance | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
-|binary| is this binary data? | If it's a string, it will always pass | ((string)) or ((buffer)) |
+|binary| is this binary data? | If it's a string, it will always pass | ((string)) |
 |boolean| is this a valid javascript `boolean` ? | `string`s will fail | ((boolean)) |
 |contains| check if `string` in this record contains the seed | | ((string)) |
 |creditcard| check if `string` in this record is a credit card | | ((string)) |
@@ -69,7 +79,6 @@ The following validation rules are handled by [Anchor](https://github.com/sailsj
 |numeric| Ensure incoming value is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
 |required| Ensure incoming value is defined; that is, **not `undefined`**. | | ((json)) |
 |string| Ensure incoming value is a string. | | ((string)) |
-|text| Ensure incoming value is a string. | | ((string)) |
 |truthy| Ensure a Javascript engine would consider the incoming value `false` if used in an `if` statement. | | ((json)) |
 |undefined| Ensure incoming value is `undefined`. | | ((json)) |
 |uppercase| checks if `string` in this record is uppercase | | ((string)) |
