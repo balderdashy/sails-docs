@@ -23,8 +23,8 @@ module.exports = {
 The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation library for Node.js.
 
 
-| Name of validator | What does it check? | Notes on usage | Attribute Type |
-|-------------------|---------------------|----------------|:--------------:|
+| Name of Rule      | What It Checks      | Notes On Usage | Compatible Attribute Type(s) |
+|-------------------|---------------------|----------------|:----------------------------:|
 |after| Interpret incoming string as date and ensure that it refers to a moment _after_ the configured JavaScript `Date` instance. | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
 |alpha| Ensure incoming string contains only uppercase and/or lowercase letters.  | (i.e. `/a-z/i`) | ((string)) |
 |alphadashed|| does this `string` contain only letters and/or dashes? | ((string)) |
