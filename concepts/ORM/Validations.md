@@ -25,13 +25,13 @@ The following validation rules are handled by [Anchor](https://github.com/sailsj
 
 | Name of validator | What does it check? | Notes on usage |
 |-------------------|---------------------|----------------|
-|after| check if `string` date in this record is after the specified `Date` | must be valid javascript `Date` |
+|after| Only allow date strings that refer to a moment _after_ the configured JavaScript `Date` instance | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` |
 |alpha| check if `string` in this record contains only letters (a-zA-Z) | |
 |alphadashed|| does this `string` contain only letters and/or dashes? |
 |alphanumeric| check if `string` in this record contains only letters and numbers. | |
 |alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | |
 |array| is this a valid javascript `array` object? | strings formatted as arrays won't pass |
-|before| check if `string` in this record is a date that's before the specified date | |
+|before| Only allow date strings that refer to a moment _before_ the configured JavaScript `Date` instance | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` |
 |binary| is this binary data? | If it's a string, it will always pass |
 |boolean| is this a valid javascript `boolean` ? | `string`s will fail |
 |contains| check if `string` in this record contains the seed | |
