@@ -20,7 +20,7 @@ module.exports = {
 
 ### Validation Rules
 
-The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation libraries for Node.js.
+The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation library for Node.js.
 
 
 | Name of validator | What does it check? | Notes on usage |
