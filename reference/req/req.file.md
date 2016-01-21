@@ -2,16 +2,17 @@
 
 Build and return a [Skipper Upstream](https://github.com/balderdashy/skipper) representing an incoming multipart file upload from the specified `field`.
 
-```js
+```javascript
 req.file(field);
 ```
 
 
 ### Usage
 
+
 |   |          Argument           | Type                | Details                                                                      |
-| - | --------------------------- |:-------------------:| ---------------------------------------------------------------------------- |
-| 1 |        `field`              |   ((string))        | The name of the file parameter to listen on for uploads; e.g. `avatar`.
+|---|-----------------------------|:-------------------:|------------------------------------------------------------------------------|
+| 1 |        `field`              |   ((string))        | The name of the file parameter to listen on for uploads; e.g. `avatar`.      |
 
 
 
