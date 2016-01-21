@@ -9,9 +9,9 @@ req.file(field);
 
 ### Usage
 
-|   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
-| 1 |        field                | ((string))          | The name of the file parameter to listen on for uploads; e.g. `avatar`.
+|   |          Argument           | Type                | Details                                                                      |
+| - | --------------------------- |:-------------------:| ---------------------------------------------------------------------------- |
+| 1 |        `field`              |   ((string))        | The name of the file parameter to listen on for uploads; e.g. `avatar`.
 
 
 
