@@ -78,8 +78,7 @@ attributes: {
   }
 }
 ```
-
-It should be careful when MySQL with utf8mb4 character set is used for data storing. Since `type: 'string'` is translated to `varchar(255)` in MySQL, `unique: true` constraint will cause index too long error like `ER_INDEX_COLUMN_TOO_LONG: Index column size too large. The maximum column size is 767 bytes.`. Adding `size` constraint can solve this problem.
+> When using MySQL with the `utf8mb4` character set, you will need to add the `size` constraint to the appropriate column in your table directly via MySQL. Otherwise, since `type: 'string'` is translated to `varchar(255)` in the MySQL adapter, the `unique: true` constraint will cause an 'index too long' error: `ER_INDEX_COLUMN_TOO_LONG: Index column size too large. The maximum column size is 767 bytes.`
 
 <!--
 
