@@ -65,21 +65,30 @@ module.exports = {
 
 ```
 
-Usage with custom attribute
+Usage with custom attribute methods
 
 ```javascript
 module.exports = {
   attributes: {
-    name: 'string',
-    greeting: function(){
-      return 'Hello ' + this.name;
+    // Primitive attributes
+    firstName: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    lastName: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    
+    // Attribute methods
+    getFullName: function (){
+      return this.firstName + ' ' + this.lastName;
     },
     
     // Override the default toJSON method
-
     toJSON: function() {
       var obj = this.toObject();
-      obj.greeting = this.greeting();
+      obj.fullName = this.getFullName();
       return obj;
     }
   }
