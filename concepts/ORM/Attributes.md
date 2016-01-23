@@ -27,18 +27,7 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - binary
 - array
 - json
-
-###### email
-Checks the incoming value for a valid email address.
-
-```javascript
-attributes: {
-  email: {
-    type: 'string',
-    email: true
-  }
-}
-```
+- email
 
 ###### defaultsTo
 
