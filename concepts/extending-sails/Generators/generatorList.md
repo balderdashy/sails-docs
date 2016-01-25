@@ -22,12 +22,9 @@
 There are a number of community-supported generators available. Here are a few we know about:
 
 + [sails-generate-new-gulp](https://github.com/Karnith/sails-generate-new-gulp)
-+ [sails-generate-frontend-gulp](https://github.com/Karnith/sails-generate-frontend-gulp)
-+ [sails-generate-backend-gulp](https://github.com/Karnith/sails-generate-backend-gulp)
-+ [sails-generate-auth](https://github.com/kasperisager/sails-generate-auth)
++ [sails-generate-archive](https://github.com/jaumard/sails-generate-archive)
++ [sails-generate-scaffold](https://github.com/irlnathan/sails-generate-scaffold)
 + [sails-generate-bower](https://github.com/smies/sails-generate-bower)
-+ [sails-generate-gulpfile](https://github.com/Karnith/sails-generate-gulpfile)
-+ [sails-generate-bower-gulp](https://github.com/Karnith/sails-generate-bower-gulp)
 + [sails-generate-angular-gulp](https://github.com/Karnith/sails-generate-angular-gulp) 
 + [sails-generate-ember-blueprints](https://github.com/mphasize/sails-generate-ember-blueprints)
 + And [many more](https://www.npmjs.com/search?q=sails+generate)...
