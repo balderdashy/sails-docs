@@ -23,6 +23,33 @@ No. The Sails socket client is extremely helpful when building realtime/chat fea
 
 Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete `assets/js/dependencies/sails.io.js`.
 
+### Basic usage (browser)
+
+In the browser, all that is required to use `sails.io.js` is to include the library in a `<SCRIPT>` tag.  Sails adds the library to the `assets/js/dependencies` folder of all new apps, so you can do:
+
+```html
+<script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
+```
+
+and then use the global [`io.socket` instance]() and all of [its methods]() in subsequent inline or external scripts.
+
+### Basic usage (Node.js)
+
+In a Node.js script, you will need to include both the `sails.io.js` and `socket.io-client` libraries:
+
+```javascript
+var sailsIo = require('sails.io.js');
+var socketIo = require('socket.io-client');
+// Initialize the sails.io.js library with the socket.io-client module,
+// which will automatically create and connect a new socket as io.socket
+var io = sailsIo(socketIo);
+```
+
+### Advanced usage
+
+The `sails.io.js` library can be configured in various ways, including turning off the auto-creation of sockets.  You can also create multiple socket connections at once, each of which will be an instance (like `io.socket`) of the [SailsSocket class]().
+
+
 <!--
 
   TODO: add a bit more of a technical description in here at some point
