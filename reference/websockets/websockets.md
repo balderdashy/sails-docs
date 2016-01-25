@@ -2,7 +2,7 @@
 
 For a full discussion of realtime concepts in Sails, see the [Realtime concept documentation](http://sailsjs.org/documentation/concepts/realtime).
 
-For information on client-to-server socket communication, see the [Socket Client reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client).
+For information on client-to-server socket communication, see the [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/sails-io-js).
 
 For information on server-to-client socket communication, see the [sails.sockets](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets).
 
