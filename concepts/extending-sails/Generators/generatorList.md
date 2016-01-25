@@ -24,6 +24,7 @@ There are a number of community-supported generators available. Here are a few w
 + [sails-generate-new-gulp](https://github.com/Karnith/sails-generate-new-gulp)
 + [sails-generate-archive](https://github.com/jaumard/sails-generate-archive)
 + [sails-generate-scaffold](https://github.com/irlnathan/sails-generate-scaffold)
++ [sails-generate-directive](https://github.com/balderdashy/sails-generate-directive)
 + [sails-generate-bower](https://github.com/smies/sails-generate-bower)
 + [sails-generate-angular-gulp](https://github.com/Karnith/sails-generate-angular-gulp) 
 + [sails-generate-ember-blueprints](https://github.com/mphasize/sails-generate-ember-blueprints)
