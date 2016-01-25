@@ -183,7 +183,27 @@ scope.whatIsThis = 'an example file created at '+scope.createdAt;
 
 Now, let's take a look at the `targets` dictionary in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated. 
 
-<img src="http://i.imgur.com/D2YAqBl.jpg?1" />
+```javascript
+...
+targets: {
+
+    // Usage:
+    // './path/to/destination.foo': { someHelper: opts }
+
+    // Creates a dynamically-named file relative to `scope.rootPath`
+    // (defined by the `filename` scope variable).
+    //
+    // The `template` helper reads the specified template, making the
+    // entire scope available to it (uses underscore/JST/ejs syntax).
+    // Then the file is copied into the specified destination (on the left).
+    './:filename': { template: 'example.template.js' },
+
+    // Creates a folder at a static path
+    './hey_look_a_folder': { folder: {} }
+
+  },
+...
+```
 
 The `template` and `folder` helpers look a lot like routes.  These helpers perform the actions that their names indicate.
 
