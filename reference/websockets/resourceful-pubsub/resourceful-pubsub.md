@@ -2,14 +2,20 @@
 
 ### Overview
 
-For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of Resourceful PubSub ([Publish / Subscribe](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)).  Every model (AKA *resource*) in your app is automatically equipped with class methods for subscribing sockets to notifications about instance creations, updates and deletions.  If you&rsquo;re using the [Blueprint API](http://sailsjs.org/documentation/reference/blueprint-api), socket messages are automatically broadcast to subscribed sockets when a model event occurs.  If not, you can use the methods described in this section to manually communicate model events to clients.
+For apps that rely heavily on real-time client-server communication--for example, peer-to-peer chat and social networking apps--sending and listening for socket events can quickly become overwhelming.  Sails helps smooth away some of this complexity by introducing the concept of **resourceful pubsub** ([Publish / Subscribe](http://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)).  Every model (AKA *resource*) in your app is automatically equipped with class methods which provide a conventional, data-centric interface for both _broadcasting notifications_ and _subscribing sockets to notifications_ about individual database records being created, updated, or destroyed.
+
+If you&rsquo;re app is currently using the [Blueprint API](http://sailsjs.org/documentation/reference/blueprint-api), you are already using resourceful pubsub methods!  They are embedded in the default blueprint actions bundled with Sails, and called automatically when those actions run; causing requesting sockets to be subscribed when data is fetched and messages to be broadcasted to already-subscribed sockets when data is changed.
+
+But even when writing custom code, you can call the methods described in this section manually in lieu of using `sails.sockets.*` methods directly.  Think of resourceful pubsub methods as a way of standardizing the interface for socket communication across your application: things like the names for rooms, the schema for data transmitted as socket messages, and the names of socket events.  These methods are designed _exclusively_ for scenarios where one or more user interfaces are listening to socket events as a way of keeping in sync with the backend.  If that does not fit your use case or if you are having trouble deciding, don't worry; just call `sails.sockets.broadcast()`, `sails.sockets.join()`, or `sails.sockets.leave()` directly instead.  It is perfectly acceptable to use either approach, or even _both_ approaches in the same app.
+
 
 ### Listening for events on the client
 
-While you are free to use any Javascript library to listen for socket events on the client, Sails does provide its own [Socket Client](http://sailsjs.org/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the server.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
+While you are free to use any Javascript library to listen for socket events on the client, Sails provides its own socket client called [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the Sails server from any web browser or Node.js process that supports Socket.io.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
 ```
-io.socket.on("<model identity>", listenerFunction)
+io.socket.on('<model identity>', function (event) {
+});
 ```
 
 > The _model identity_ is typically the lowercased version of the model name, unless it has been manually configured in the model file.
@@ -20,10 +26,10 @@ io.socket.on("<model identity>", listenerFunction)
 Let&rsquo;s say you have a model named `User` in your app, with a single &ldquo;name&rdquo; attribute.  First, we&rsquo;ll add a listener for &ldquo;user&rdquo; events:
 
 ```
-io.socket.on("user", function(event){console.log(event);})
+io.socket.on('user', function(event){console.log(event);})
 ```
 
-This will log any notifications about `User` models to the console.  However, we won&rsquo;t receive any such messages until we *subscribe* to the existing `User` model instances.  If you&rsquo;re using the default blueprints, you can subscribe by making a socket request from the client to `/user`:
+This will log any notifications about `User` models to the console.  However, we won&rsquo;t receive any such messages until we *subscribe* to the existing `User` records (aka model instances).  If your app currently has the blueprint API enabled, you can use the sails.io.js client to watch the User model for new records, as well as subscribing to the returned set of records by making a socket `GET` request from the client to `/user`:
 
 ```
 io.socket.get("/user", function(resData, jwres) {console.log(resData);})
