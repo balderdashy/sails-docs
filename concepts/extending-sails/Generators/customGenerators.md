@@ -58,7 +58,7 @@ First we need a Sails project.  If you haven't already created one go to your te
 
 You'll know the generator was created if you see the message: `info: Created a new generator!`.
 
-###Enabling the Generator
+### Enabling the Generator
 
 To enable the _generator_ you need to tell Sails about it via `\myProject\.sailsrc`. If you were using an existing generator you would link to an npm module in `.sailsrc` and then just install it with `npm install`.  Since you're developing a generator, you'll link to it directly.  To create the link go back to the terminal and `cd` into the `awesome` _generator_ folder and type:
 
@@ -85,11 +85,11 @@ Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property
 
 Lastly, you'll need to do an `npm install` from the terminal in order to install the necessary modules that were added to the generator's `package.json` file.
 
-###Using the Generator
+### Using the Generator
 
 Back at the terminal type: `sails generate awesome example`. Let's take a look at what was generated.
 
-####What did the Generator create?
+#### What did the Generator create?
 
 Open up your project in a text editor you'll notice that a folder called `hey_look_a_folder` was created and a file named `example` was also created: 
 
@@ -108,13 +108,13 @@ module.exports = function () {
 
 The folder and file illustrate the power of the _generator_ not only to create elements but to use `arguments` from the command-line to influence their content. For example, the file name, `example`, used an element from the command line argument `sails generate awesome example`.
 
-###Basic generator configuration
+### Basic generator configuration
 
 All of the configuration for the `awesome` _generator_ is contained in `\myProjects\awesome\Generator.js`.  The main parts of `Generator.js` are the `before()` function and the `targets` dictionary.
 
 > **Note:** We refer to the JavaScript object that uses `{}` as a dictionary.
 
-###Configuring the `before()` function
+### Configuring the `before()` function
 
 Let's take a closer look at `myProject/awesome/Generator.js`:
 
@@ -207,7 +207,7 @@ targets: {
 
 The `template` and `folder` helpers look a lot like routes.  These helpers perform the actions that their names indicate.
 
-#####The _template_ helper
+##### The _template_ helper
 
 Not surprisingly the _template_ helper creates files based upon a template.  Remember, that the scope dictionary is accessible to the templates.
 
@@ -233,7 +233,7 @@ module.exports = function () {
 
 >**Note:** the scope property `whatIsThis` which as you may recall uses the createdAt: property created in the `before` function.
 
-#####The _folder_ helper
+##### The _folder_ helper
 
 The _folder_ helper generates folders.  
 
@@ -258,7 +258,7 @@ You can also use the `--force` parameter from the command-line when executing th
 ~/ $ sails generate awesome test --force
 ```
 
-###Using a generator within a generator
+### Using a generator within a generator
 To leverage the work of other programmers, _generators_ were designed to be used by other _generators_.  This is where the scope dictionary being passed down to all _generators_ becomes really powerful. 
 
 For example, Sails core has a _generator_ called `sails-generate-model`.  Since it's built into Sails core, there's no installation necessary.  To add it to our awesome _generator_ example is simple.  Within the `myProject\awesome\Generator.js` include it by inserting `./': ['model'],`
@@ -305,7 +305,7 @@ module.exports = {
 };
 ```
 
-###Bonus: Publishing your generator to npmjs.org
+### Bonus: Publishing your generator to npmjs.org
 
 To publish the awesome _generator_ to npmjs.org go into the `myProject\awesome\package.json` file and change the name, author and any other meta information (e.g. licensing).
 
