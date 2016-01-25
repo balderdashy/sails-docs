@@ -1,12 +1,20 @@
 # req.file()
 
-Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart file uploads (an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified `field`.
+Build and return a [Skipper Upstream](https://github.com/balderdashy/skipper) representing an incoming multipart file upload from the specified `field`.
+
+```javascript
+req.file(field);
+```
 
 
 ### Usage
-```js
-req.file(field);
-```
+
+
+|   |          Argument           | Type                | Details                                                                      |
+|---|-----------------------------|:-------------------:|------------------------------------------------------------------------------|
+| 1 |        `field`              |   ((string))        | The name of the file parameter to listen on for uploads; e.g. `avatar`.      |
+
+
 
 ### Details
 
@@ -28,14 +36,13 @@ When a multipart request hits your server, instead of writing temporary files to
 In a controller action or policy:
 
 ```javascript
-var SomeReceiver = require('../services/SomeReceiver');
-
-req.file('avatar').upload( SomeReceiver(), function (err, files) {
-    if (err) return res.serverError(err);
-    return res.json({
-      message: files.length + ' file(s) uploaded successfully!',
-      files: files
-    });
+// See the Skipper README on GitHub for usage documentation for `.upload()`, including
+// a complete list of options.
+req.file('avatar').upload(function (err, uploadedFiles){
+  if (err) return res.serverError(err);
+  return res.json({
+    message: files.length + ' file(s) uploaded successfully!',
+    files: files
   });
 });
 ```
@@ -43,7 +50,7 @@ req.file('avatar').upload( SomeReceiver(), function (err, files) {
 
 ### Notes
 > + Remember that the client request's **text parameters must be sent first**, before the file parameters.
-> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files).
+> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files). Specifically, an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js) is a [Node.js Readable stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) in "object mode", where each object is itself an incoming multipart file upload stream.
 > + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
 
 
