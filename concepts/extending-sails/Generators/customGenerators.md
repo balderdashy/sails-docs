@@ -118,7 +118,38 @@ All of the configuration for the `awesome` _generator_ is contained in `\myProje
 
 Let's take a closer look at `myProject/awesome/Generator.js`:
 
-<img src="http://i.imgur.com/1VOvDwe.jpg" />
+```javascript
+...
+before: function (scope, cb) {
+
+    // scope.args are the raw command line arguments.
+    if (!scope.args[0]) {
+      return cb( new Error('Please provide a name for this awesome.') );
+    }
+
+    // scope.rootPath is the base path for this generator
+    if (!scope.rootPath) {
+      return cb( INVALID_SCOPE_VARIABLE('rootPath') );
+    }
+
+    // Attach defaults
+    _.defaults(scope, {
+      createdAt: new Date()
+    });
+
+    // Decide the output filename for use in targets below:
+    scope.filename = scope.args[0];
+
+    // Add other stuff to the scope for use in our templates:
+    scope.whatIsThis = 'an example file created at '+scope.createdAt;
+
+    // When finished, we trigger a callback with no error
+    // to begin generating files/folders as specified by
+    // the `targets` below.
+    cb();
+  },
+  ...
+  ```
 
 Each _generator_ has access to the `scope` dictionary, which is useful when you want to obtain the arguments that were entered when the _generator_ was executed.
 
