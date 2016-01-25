@@ -74,10 +74,6 @@ angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
 });
 ```
 
-### Notes
->+ When listening for resourceful pubsub calls, the `eventIdentity` is the same as the identity of the calling model (e.g. if you have a model "UserComment", the identity is "usercomment".)
->+ For context-- these types of server-sent events are sometimes referred to as ["comet"](http://en.wikipedia.org/wiki/Comet_(programming)) messages.
-
 ### Handle Socket 'Connect' and 'Disconnect' events
 If connection to server was interrupted - server was restarted or some network issue - it is possible to handle these events and subscribe to sockets again.
 ```javascript
@@ -90,6 +86,12 @@ If connection to server was interrupted - server was restarted or some network i
       console.log('Lost connection to server');
   });
 ```
+
+
+
+### Notes
+>+ When listening for resourceful pubsub calls, the `eventIdentity` is the same as the identity of the calling model (e.g. if you have a model "UserComment", the identity is "usercomment".)
+>+ For context-- these types of server-sent events are sometimes referred to as ["comet"](http://en.wikipedia.org/wiki/Comet_(programming)) messages.
 
 
 

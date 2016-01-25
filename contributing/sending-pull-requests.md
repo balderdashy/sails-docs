@@ -15,7 +15,7 @@ Whether it's a bug fix or a huge new feature set, it's important that we consist
 
 Please check over the following requirements before submitting a pull request:
  - Bug fixes should have accompanying tests where possible.  We use [Mocha](http://visionmedia.github.io/mocha/) for testing.
- - Code should follow our style guide to maintain consistency (see `.jshint` file in repo)
+ - Code should follow our style guide to maintain consistency (see `.jshint` and/or `.editorconfig` files in repo)
 
 If you have a high priority hot-fix for the currently deployed version, please [post an issue on Github](https://github.com/balderdashy/sails/issues?milestone=none&state=open), and mention @mikermcneil.  Also, for emergencies, please feel free to tweet @sailsjs.
 
@@ -45,12 +45,12 @@ Make your enhancements, fix bugs, do your `thang`.
 
 ## Test
 Please write a test for your addition/fix.  I know it kind of sucks if you're not used to it, but it's how we maintain great code. 
-For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  If run into trouble with this part, please reach out to the [Google Group!](https://groups.google.com/forum/#!forum/sailsjs)
+For our test suite, we use [mocha](http://visionmedia.github.com/mocha/).  You can run the tests with `npm test`.  See the "Testing" section in the contribution guide for more information.
 
 ![Screen Shot 2013-02-12 at 2.56.59 PM.png](http://i.imgur.com/dalbOdZ.png) 
 
 ## Pull Request
-When you're done, you can commit your fix, push up your code, and then go into github and submit a pull request.  We'll look it over and get back to you ASAP.
+When you're done, you can commit your fix, push up your changes, and then go into github and submit a pull request.  We'll look it over and get back to you ASAP.
 
 ![Screen Shot 2013-02-12 at 2.55.40 PM.png](http://i.imgur.com/GBg0AOi.png) 
 
@@ -71,5 +71,3 @@ $ sails lift
 
 ### *Thanks for your contributions!*
 
-
-[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8acf2fc2ca0aca8a3018e355ad776ed7 "githalytics.com")](http://githalytics.com/balderdashy/sails/contributing)

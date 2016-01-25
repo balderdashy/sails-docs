@@ -68,33 +68,4 @@ module.exports = function(req, res, next) {
 };
 ```
 
-
-<!--
-
-  Alternatively, here's another extended example:
-  (todo: at the very least pull this into a separate guide)
-
-```js
-// config/routes.js
-module.export.routes = {
-  '/:lang/': 'MyController.index',
-  '/:lang/help': 'MyController.help',
-  '/:lang/contact': 'MyController.contact',
-  // ...etc...
-}
-
-// config/policies.js
-module.exports.policies = {
-  '*' : 'localize'
-}
-
-// api/policies/localize.js
-module.exports = function(req, res, next) {
-   req.setLocale(req.param('lang'));
-   next();
-};
-```
--->
-
-
 <docmeta name="displayName" value="Locales">

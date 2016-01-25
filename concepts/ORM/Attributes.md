@@ -27,18 +27,7 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - binary
 - array
 - json
-
-###### email
-Checks the incoming value for a valid email address.
-
-```javascript
-attributes: {
-  email: {
-    type: 'string',
-    email: true
-  }
-}
-```
+- email
 
 ###### defaultsTo
 
@@ -78,6 +67,7 @@ attributes: {
   }
 }
 ```
+> When using MySQL with the `utf8mb4` character set, you will need to add the `size` constraint to the appropriate column in your table directly via MySQL. Otherwise, since `type: 'string'` is translated to `varchar(255)` in the MySQL adapter, the `unique: true` constraint will cause an 'index too long' error: `ER_INDEX_COLUMN_TOO_LONG: Index column size too large. The maximum column size is 767 bytes.`
 
 <!--
 
