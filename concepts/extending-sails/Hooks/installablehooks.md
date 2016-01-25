@@ -23,6 +23,23 @@ If you use `npm init` to create your `package.json`, be sure to open the file af
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.  Use the `dependencies` key of your `package.json` to refer to any dependencies that need to be installed in order for your hook to work (you may also use `npm install <dependency> --save` to easily save dependency information to `package.json`).
 
+### Specifying the internal name Sails uses for your hook (advanced)
+
+In certain cases, especially when using a [scoped NPM package](https://docs.npmjs.com/misc/scope) to override a core Sails hook, you will want to change the name that Sails uses internally when it loads your hook.  You can use the `sails.hookName` configuration option in your `package.json` file for this.  The value should be the name you want to be loaded into the `sails.hooks` dictionary, so you generally will _not_ want a `sails-hooks-` prefix.  For example, if you have a module `@mycoolhooks/sails-hook-sockets` that you wish to use to override the core `sails-hook-sockets` module, the `package.json` might look like:
+
+```
+{
+    "name": "@mycoolhooks/sails-hook-sockets",
+    "version": "0.0.0",
+    "description": "my own sockets hook",
+    "main": "index.js",
+    "sails": {
+      "isHook": true,
+      "hookName": "sockets"
+    }
+}
+```
+
 ### Testing your new hook
 
 Before you distribute your installable hook to others, you&rsquo;ll want to write some tests for it.  This will help ensure compatibility with future Sails versions and significantly reduce hair-pulling and destruction of nearby objects in fits of rage.  While a full guide to writing tests is outside the scope of this doc, the following steps should help get you started:
