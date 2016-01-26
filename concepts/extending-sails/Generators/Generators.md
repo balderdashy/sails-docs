@@ -11,7 +11,7 @@ Sails' generators allow you to completely customize what happens when you run `s
 - to start off with all documentation and comments in a language other than English
 
 
-If you are interested in making custom generators, the best place to start is by checking out the [introduction to custom generators](http://sailsjs.org/documentation/concepts/extending-sails/generators/custom-generators).  You also might check out [open-source generators that are already out there](https://sailsjs-website.herokuapp.com/documentation/concepts/extending-sails/generators/available-generators), in case there is something already out there that will save you some time.
+> If you are interested in making custom generators, the best place to start is by checking out the [introduction to custom generators](http://sailsjs.org/documentation/concepts/extending-sails/generators/custom-generators).  You also might check out [open-source generators from the community](https://sailsjs-website.herokuapp.com/documentation/concepts/extending-sails/generators/available-generators), in case something already out there will save you some time.
 
 
 <docmeta name="displayName" value="Generators">
