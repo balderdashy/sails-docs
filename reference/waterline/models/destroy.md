@@ -12,7 +12,7 @@ Something.destroy(criteria).exec(function (err, deletedRecords) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|---------------------|----------------------------------------------|------------------------------------|
-| 1 |    criteria         | ((Criteria))                                 | Optional.  If specified, only records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Otherwise if omitted, _all records will be destroyed!_ |
+| 1 |    criteria         | ((dictionary))                               | Optional.  If specified, only records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Otherwise if omitted, _all records will be destroyed!_ |
 | 2 |    callback         | ((function))          | Optionally, a callback may be provided as a second argument instead of using `.exec()` or a promise.        |
 
 ##### Callback
@@ -30,7 +30,7 @@ Something.destroy(criteria).exec(function (err, deletedRecords) {
 
 ### Example
 
-To delete all users named Finn:
+To delete any users named Finn from the database:
 ```javascript
 
 User.destroy({name:'Finn'}).exec(function (err){
@@ -42,6 +42,21 @@ User.destroy({name:'Finn'}).exec(function (err){
 });
 ```
 
+
+To delete a particular book which is no longer available:
+```javascript
+Book.destroy({
+  id: 4
+}).exec(function (err){
+  if (err) {
+    return res.negotiate(err);
+  }
+  sails.log('Deleted book with `id: 4`, if it existed.');
+  return res.ok();
+});
+```
+
+
 To delete two particular users who have been causing trouble:
 
 ```javascript
@@ -51,7 +66,7 @@ User.destroy({
   if (err) {
     return res.negotiate(err);
   }
-  sails.log('The troublesome users have been exterminated.');
+  sails.log('The records for troublesome users (3 and 97) have been deleted, if they still existed.');
   return res.ok();
 });
 ```
