@@ -1,6 +1,6 @@
 # Add (Blueprint)
 
-Add a foreign record to one of this record's collection associations.
+Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
 
 ```
 POST /:model/:record/:association/:record_to_add?
