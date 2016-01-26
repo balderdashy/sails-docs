@@ -17,9 +17,9 @@ _Or:_
 
 |         Argument           | Type                | Details                                                           |
 |:-------------------------- | ------------------- |:----------------------------------------------------------------- |
-|        _eventName_         | ((string?))         | Optional. Defaults to `'message'`.
+|        eventName         | ((string?))         | Optional. Defaults to `'message'`.
 |        data                | ((json))            | The data to send in the message.
-|       _socketToOmit_       | ((req?))            | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
+|       socketToOmit       | ((req?))            | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
 
 
 
