@@ -1,4 +1,4 @@
-# find
+# Find (Blueprint)
 
 Find a list of records from the model as a JSON array of dictionaries.
 
