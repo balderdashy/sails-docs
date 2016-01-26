@@ -24,7 +24,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 ### Example
 Find the purchase with id #1:
 
-```url
+```
 GET /purchase/1
 ```
 
