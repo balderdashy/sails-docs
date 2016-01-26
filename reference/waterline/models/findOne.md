@@ -1,42 +1,57 @@
-# .findOne( `criteria` , [`callback`] )
-### Purpose
-This finds and returns a single record that meets the criteria.
+# .findOne()
 
-### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`, `string`      | Yes        |
-| 2 |     Callback        | `function`          | Yes        |
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Found Record       | `{}`                |
-
-
-### Example Usage
+Attempt to find a particular record in your database that matches the given criteria.
 
 ```javascript
-User.findOne({name:'Jessie'}).exec(function findOneCB(err, found){
-  console.log('We found '+found.name);
+Something.findOne(criteria).exec(function (err, record) {
+  
 });
-
-// We found Jessie
-// Don't forget to handle your errors
-
 ```
+
+#### Usage
+
+|   |     Argument        | Type                                         | Details                            |
+|---|---------------------|----------------------------------------------|------------------------------------|
+| 1 |    criteria         | ((dictionary))                               | The first record which matches this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be returned.
+
+##### Callback
+
+|   |     Argument        | Type                | Details |
+|---|---------------------|---------------------|----------------------------------------------------------------------------------|
+| 1 |    err              | ((Error)) or `undefined`          | The error that occurred, or `undefined` if there were no errors.
+| 2 |    record           | ((dictionary)) or `undefined`     | The record that was found, or `undefined` if no such record could be located.
+
+
+
+
+### Example
+
+To locate the user whose username is "finn" in your database:
+```javascript
+
+User.findOne({
+  username:'finn'
+}).exec(function (err, finn){
+  if (err) {
+    return res.negotiate(err);
+  }
+  if (!finn) {
+    return res.notFound('Could not find Finn, sorry.');
+  }
+  
+  sails.log('Found "%s"', finn.fullName);
+  return res.json(finn);
+});
+```
+
+
+
 ### Notes
-> Any string arguments passed must be the ID of the record.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
-
-> If no matching record is found, the value of `found` will be `undefined`.  Not finding a record does *not* constitute an error for `findOne`.
+> - Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the value of `record` in the callback will be `undefined`. 
 
 
-<docmeta name="methodType" value="mcm">
+
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".findOne()">
+
 
