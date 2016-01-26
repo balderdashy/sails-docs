@@ -25,7 +25,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 Find the purchase with id #1:
 
 ```url
-GET http://localhost:1337/purchase/1
+GET /purchase/1
 ```
 
 ##### Expected Response
