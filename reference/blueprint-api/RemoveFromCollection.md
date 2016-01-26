@@ -1,4 +1,4 @@
-# Remove from Collection
+# Remove From (Blueprint)
 
 Removes a record from an associated collection between two records.
 
