@@ -65,3 +65,6 @@ If your language is not represented in the table above, and you are interested i
 + When you are satisfied with the first complete version of your translation, open an issue and someone from our docs team will be happy to help you get preview it in the context of the Sails website, get it live on a domain (yours, or a subdomain of sailsjs.org, whichever makes the most sense), and share it with the rest of the Sails community.
 
 
+#### How else can I help?
+
+For more information on contributing to Sails in general, see the [Contribution Guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
