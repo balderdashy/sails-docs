@@ -1,7 +1,8 @@
 # myApp/assets/templates
 ### Purpose - Client-side Templates
 
-HTML templates are important prerequisites of modern, rich client applications.
+Client-side HTML templates are important prerequisites for certain types of modern, rich client applications built for browsers; particularly [SPAs](https://en.wikipedia.org/wiki/Single-page_application). Whether or not you use this sort of template in your app and how you structure your templates is, of course, completely up to you.  But for the sake of convention, new apps generated with Sails include a `templates/` folder for you by default.
+
 To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
 that you load these templates client-side.
 
