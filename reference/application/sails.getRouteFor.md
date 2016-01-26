@@ -52,4 +52,4 @@ So that in the rendered view...
 > - If more than one route matches the specified target, the first match is returned.
 > - If you only need the URL for a route (e.g. to use as an `href` from within one of your views), you may want to use [`sails.getUrlFor()`]() instead of this function.
 
-<docmeta name="displayName" value="sails.getUrlFor()">
+<docmeta name="displayName" value="sails.getRouteFor()">
