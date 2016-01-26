@@ -16,7 +16,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>_(required)_                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. this would be `7` if the URL path is `/product/7`.
+ id                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. this would be `7` if the URL path is `/product/7`.
  _callback_                         | ((string?))                             | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
