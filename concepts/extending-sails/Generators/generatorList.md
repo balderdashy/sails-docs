@@ -1,6 +1,8 @@
-# List of Available Generators
+# Available Generators
 
-### Officially Supported Generators
+### Core Generators
+
+> These generators are built in to Sails by default.
 
 | Repo       |  Latest Stable Version   |
 |------------|--------------------------|
@@ -18,8 +20,9 @@
 
 
 
-### Other Generators From The Community
-There are a number of community-supported generators available. Here are a few we know about:
+### Community Generators
+
+There are over 100 community-supported generators [available on NPM](https://www.npmjs.com/search?q=sails+generate):
 
 + [sails-generate-new-gulp](https://github.com/Karnith/sails-generate-new-gulp)
 + [sails-generate-archive](https://github.com/jaumard/sails-generate-archive)
