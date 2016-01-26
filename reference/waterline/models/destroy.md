@@ -11,13 +11,13 @@ Something.destroy(criteria).exec(function (err) {
 #### Usage
 
 |   |     Argument        | Type                                         | Details                            |
-|---|---------------------|----------------------------------------------|:-----------------------------------|
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ |
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
-|---|---------------------|---------------------|:-----------------------------------------------------------------------------|
+|---|:--------------------|---------------------|:-----------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 
 
