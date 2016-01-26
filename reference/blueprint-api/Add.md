@@ -3,7 +3,7 @@
 Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
 
 ```
-POST /:model/:record/:association/:fk
+POST /:model/:id/:association/:fk
 ```
 
 This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
