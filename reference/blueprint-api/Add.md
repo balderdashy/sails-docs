@@ -18,9 +18,9 @@ This action pushes a reference to some other record (the "foreign" record) onto 
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The parent record's primary key value<br/><br/>e.g. `7`
- association<br/>*(required)*        | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
- fk<br/>*(required)*  | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to add to the collection association.<br/><br/>e.g. `47`
+ id                | ((number))<br/>*-or-*<br/>((string))    | The parent record's primary key value<br/><br/>e.g. `7`
+ association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
+ fk | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to add to the collection association.<br/><br/>e.g. `47`
  _callback_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
