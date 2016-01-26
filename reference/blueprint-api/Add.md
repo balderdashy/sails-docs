@@ -14,6 +14,16 @@ This action pushes a reference to some other record (the "foreign" record) onto 
 + If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
 
 
+### Parameters
+
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The parent record's primary key value<br/><br/>e.g. `7`
+ association<br/>*(required)*        | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
+ fk<br/>*(required)*  | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to add to the collection association.<br/><br/>e.g. `47`
+ _callback_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+
+
 ### Example
 
 Add purchase #47 to the list of purchases that Dolly (employee #7) has been involved in:
