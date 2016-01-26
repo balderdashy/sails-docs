@@ -3,7 +3,7 @@
 Destroy records in your database that match the given criteria.
 
 ```javascript
-Something.destroy(criteria).exec(function (err, deletedRecords) {
+Something.destroy(criteria).exec(function (err) {
   
 });
 ```
