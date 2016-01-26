@@ -6,8 +6,6 @@ use cases where multiple Sails app instances need to exist at once, or where glo
 are not an option. The application object can also always be accessed on an incoming
 request (`req._sails`), and inside of [model]() and [service]() modules via `this.sails`.
 
-
-
 ### Properties
 
 The application object has a number of methods and properties which are useful.
@@ -36,5 +34,35 @@ By default, a hook's identity is the lowercased version of its folder name, with
 
 See the [hooks concept documentation]() for more info about hooks.
 
+
+### How does it work?
+
+An application instance is automatically created the first time you `require('sails')`.
+This is what is happening in the generated `app.js` file:
+
+```javascript
+var sails = require('sails');
+```
+
+
+
+### Creating a new application object (advanced)
+
+Alternatively, if you are implementing something unconventional (e.g. writing tests for Sails core)
+where you need to create more than one Sails application instance in a process, you _should not_ use
+the instance returned by `require('sails')`, as this can cause unexpected behavior.  Instead, you should
+obtain application instances by using the Sails constructor:
+
+```
+var Sails = require('sails').constructor;
+var sails0 = new Sails();
+var sails1 = new Sails();
+var sails2 = new Sails();
+```
+
+Each app instance (`sails0`, `sails1`, `sails2`) can be loaded/lifted separately,
+using different configuration.
+
+For more on using Sails programatically, see the conceptual overview on [programatic usage in Sails]().
 
 <docmeta name="displayName" value="Application">
