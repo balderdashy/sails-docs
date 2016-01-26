@@ -29,7 +29,13 @@ _All parameters are optional._
 
 ### Example
 
-Find the 30 newest purchases in our database:
+Find up to 30 of the newest purchases in our database:
+
+```
+GET /purchase?sort=createdAt DESC&limit=30
+```
+
+##### Expected Response
 
 e.g. 
 ```json
