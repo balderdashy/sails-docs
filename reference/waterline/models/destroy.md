@@ -12,7 +12,7 @@ Something.destroy(criteria).exec(function (err) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|---------------------|----------------------------------------------|------------------------------------|
-| 1 |    criteria         | ((dictionary?))                               | Optional.  If specified, only records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Otherwise if omitted, _all records will be destroyed!_ |
+| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Be forewarned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ |
 
 ##### Callback
 
