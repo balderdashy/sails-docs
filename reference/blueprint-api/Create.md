@@ -1,4 +1,4 @@
-# Create a Record
+# Create (Blueprint)
 
 Creates a new model instance in your database then returns it's values.
 
