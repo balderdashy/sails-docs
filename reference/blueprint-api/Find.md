@@ -1,6 +1,6 @@
-# Find Records
+# find
 
-Returns a list of records from the model as a JSON array of objects.
+Find a list of records from the model as a JSON array of dictionaries.
 
 ```
 GET /:model
@@ -18,7 +18,7 @@ _All parameters are optional._
  Parameter      | Type         | Details
  -------------- | ------------ |:---------------------------------
  _*_              | ((string))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
- _where_          | ((string))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with a Waterline WHERE criteria object, _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
+ _where_          | ((string))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
  _limit_          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
  _skip_           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
  _sort_           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
