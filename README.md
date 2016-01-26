@@ -50,7 +50,9 @@ Each .md file has its own page on the website (i.e. all reference, concepts, and
 
 #### When will my change appear on the Sails website?
 
-Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.11).  We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org.  Updates to the website have been done in numerous different ways in the past, including an approach that recompiled documentation automatically via a GitHub hook.  Today, since sailsjs.org has changed hosts, these updates are done manually, but we intend to automate this process again in the near future.
+Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.11). We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org, and content is only merged just before redeploying the sails website.
+
+If you want to see how documentation changes will appear on sailsjs.org, you can visit [preview.sailsjs.org](http://preview.sailsjs.org). The preview site updates itself automatically as changes are merged into the master branch of sails-docs.
 
 
 #### How can I help translate the documentation?
