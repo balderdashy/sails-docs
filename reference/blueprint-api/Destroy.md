@@ -1,4 +1,4 @@
-# Destroy a Record
+# Destroy (Blueprint)
 
 Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
 
