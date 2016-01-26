@@ -18,7 +18,7 @@ Something.destroy(criteria).exec(function (err) {
 
 |   |     Argument        | Type                | Details |
 |---|---------------------|---------------------|------------------------------------------------------------------------------|
-| 1 |    err              | ((Error))           | The error that occurred, if relevant (otherwise `err` is falsey)             |
+| 1 |    err              | ((Error)) _(?)_          | The error that occurred, or `undefined` if there were no errors.
 
 
 
