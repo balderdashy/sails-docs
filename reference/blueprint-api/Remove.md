@@ -23,7 +23,7 @@ This action removes a reference to some other record (the "foreign" record) from
 
 ### Example
 
-Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16, e.g. `http://localhost:1337/store/16/employeesOfTheMonth/7`
+Remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16:
 
 ```
 DELETE /store/16/employeesOfTheMonth/7
