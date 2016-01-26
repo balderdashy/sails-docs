@@ -11,13 +11,13 @@ Something.findOne(criteria).exec(function (err, record) {
 #### Usage
 
 |   |     Argument        | Type                                         | Details                            |
-|---|---------------------|----------------------------------------------|------------------------------------|
+|---|:--------------------|----------------------------------------------|------------------------------------|
 | 1 |    criteria         | ((dictionary))                               | The first record which matches this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be returned.
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
-|---|---------------------|---------------------|----------------------------------------------------------------------------------|
+|---|:--------------------|---------------------|----------------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    record           | ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
 
