@@ -1,4 +1,4 @@
-# Find One (Blueprint Action)
+# Find One (Blueprint)
 
 Returns a single record from the model as a JSON Object.
 
