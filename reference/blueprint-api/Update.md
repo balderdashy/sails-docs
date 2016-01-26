@@ -17,8 +17,7 @@ Updates the model instance which matches the **id** parameter. Responds with a J
  *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
  _callback_                         | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
-### Examples
-
+### Example
 
 Change Applejack's hobby to "kickin":
 
