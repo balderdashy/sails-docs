@@ -19,13 +19,11 @@ Updates the model instance which matches the **id** parameter. Responds with a J
 
 ### Examples
 
-##### Update Record (REST)
 
 Change Applejack's hobby to "kickin":
 
 `PUT /pony/47`
 
-##### JSON Request Body
 ```json
 {
   "hobby": "kickin"
