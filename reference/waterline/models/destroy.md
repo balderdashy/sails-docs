@@ -12,7 +12,7 @@ Something.destroy(criteria).exec(function (err, deletedRecords) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|---------------------|----------------------------------------------|------------------------------------|
-| 1 |    criteria         | ((dictionary)) or ((string)) or ((number))   | Optional.  If specified, only records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Otherwise if omitted, _all records will be destroyed!_ |
+| 1 |    criteria         | ((Criteria))                                 | Optional.  If specified, only records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be destroyed.  Otherwise if omitted, _all records will be destroyed!_ |
 | 2 |    callback         | ((function))          | Optionally, a callback may be provided as a second argument instead of using `.exec()` or a promise.        |
 
 ##### Callback
