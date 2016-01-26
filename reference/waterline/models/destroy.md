@@ -1,9 +1,14 @@
-# .destroy( `criteria` , [`callback`] )
-### Purpose
-Destroys all records in your database that match the given criteria.
+# .destroy()
 
-### Overview
-#### Parameters
+Destroy records in your database that match the given criteria.
+
+```javascript
+Something.destroy(criteria).exec(function (err, deletedRecords) {
+  
+});
+```
+
+#### Usage
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
