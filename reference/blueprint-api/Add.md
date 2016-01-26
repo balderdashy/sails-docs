@@ -1,6 +1,6 @@
 # Add (Blueprint)
 
-Add a new child record to one of the collection associations of this parent record.
+Add a foreign record to one of this record's collection associations.
 
 ```
 POST /:model/:record/:association/:record_to_add?
