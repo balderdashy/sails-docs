@@ -1,4 +1,4 @@
-# Update a Record
+# Update (Blueprint)
 
 Updates an existing record.
 Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
