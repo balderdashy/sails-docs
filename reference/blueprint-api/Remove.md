@@ -1,11 +1,12 @@
 # Remove (Blueprint)
 
-Removes a record from an associated collection between two records.
+Remove a foreign record from one of this record's collection associations.
 
 ```
 DELETE /:model/:id/:associatedCollection/:recordIdToRemove
 ```
-This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).
+
+This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).  Note that this does not actually destroy the foreign record-- it just removes it.
 
 + If the foreign record does not exist, it is created first.
 + If the collection doesn't contain a reference to the foreign record, this action will be ignored.
