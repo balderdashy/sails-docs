@@ -1,6 +1,6 @@
-# Add to Collection
+# Add (Blueprint)
 
-Adds an association between two records.
+Add a new child record to one of the collection associations of this parent record.
 
 ```
 POST /:model/:record/:association/:record_to_add?
