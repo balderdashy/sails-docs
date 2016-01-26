@@ -19,6 +19,11 @@ io.sails.url = "http://somesailsapp.com";
 </script>
 ```
 
-### Methods and properties
+### Properties
 
-See the [SailsSocket methods reference] for a full list of methods and properties available on `io.socket`.
+See the [SailsSocket properties reference]() for a full list of properties available on `io.socket`.
+
+### Methods
+
+For basic server communication and event listening methods, see the other `io.socket.*` pages in this section.  For advanced methods involving server connection, see the [SailsSocket advanced methods reference]().
+

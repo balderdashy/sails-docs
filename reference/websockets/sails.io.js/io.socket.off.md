@@ -1,10 +1,8 @@
-# .off()
+# io.socket.off()
 
 Unbind the specified `eventIdentity` from the given handler (opposite of [`.on()`]())
 
 ### Usage
-
-Using the automatically-created [`io.socket`] instance:
 
 ```js
 io.socket.off(eventIdentity, callback);

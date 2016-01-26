@@ -18,5 +18,5 @@ Use `io.sails.environment` to set an environment for `sails.io.js`, which affect
 
 ### Other properties and defaults
 
-The other properties of `io.sails` are used as defaults when creating new sockets (either via autoconnect or `io.sails.connect()).  See the [SailsSocket proprties reference] for a full list, as well as a table of the default `io.sails` values.
+The other properties of `io.sails` are used as defaults when creating new sockets (either via autoconnect or `io.sails.connect()).  See the [SailsSocket proprties reference]() for a full list, as well as a table of the default `io.sails` values.
 

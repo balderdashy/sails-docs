@@ -31,7 +31,7 @@ In the browser, all that is required to use `sails.io.js` is to include the libr
 <script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
 ```
 
-and then use the global [`io.socket` instance]() and all of [its methods]() in subsequent inline or external scripts.
+and then use the global [`io.socket` instance]() and all of in subsequent inline or external scripts.
 
 ### Basic usage (Node.js)
 
@@ -45,9 +45,9 @@ var socketIo = require('socket.io-client');
 var io = sailsIo(socketIo);
 ```
 
-### Advanced usage
+### Configuration and advanced usage
 
-The `sails.io.js` library can be configured in various ways, including turning off the auto-creation of sockets.  You can also create multiple socket connections at once, each of which will be an instance (like `io.socket`) of the [SailsSocket class]().
+The `sails.io.js` library can be configured in various ways, including turning off the auto-creation of sockets.  Global configuration for new sockets (including [`io.socket`]()) lives in the [`io.sails` object]().  You can also create multiple socket connections at once using [`io.sails.connect`](), each of which will be an instance (like `io.socket`) of the [SailsSocket class]().
 
 
 <!--
