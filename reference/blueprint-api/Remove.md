@@ -16,9 +16,9 @@ This action removes a reference to some other record (the "foreign" record) from
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. `16`
- association<br/>*(required)*        | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
- fk<br/>*(required)*  | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to remove from the collection association.<br/><br/>e.g. `7`
+ id                | ((number))<br/>*-or-*<br/>((string))    | The desired record's primary key value<br/><br/>e.g. `16`
+ association       | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
+ fk  | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to remove from the collection association.<br/><br/>e.g. `7`
  _callback_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Example
