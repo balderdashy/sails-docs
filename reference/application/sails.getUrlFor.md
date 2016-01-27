@@ -11,9 +11,9 @@ sails.getUrlFor(target);
 
 ### Usage
 
-|   |          Argument           | Type                | Details
-|---| --------------------------- | ------------------- | -----------
-| 1 |        target               | ((string))          | The route target string; e.g. `MeController.login`
+|          Argument           | Type                | Details
+|:--------------------------- | ------------------- | -----------
+|        target               | ((string))          | The route target string; e.g. `MeController.login`
 
 
 #### Returns
