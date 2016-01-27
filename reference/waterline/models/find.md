@@ -10,16 +10,16 @@ Something.find(criteria).exec(function (err, records) {
 
 ### Usage
 
-|   |     Argument        | Type                                         | Details                            |
-|---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) to use for matching records in the database.
+|     Argument        | Type                                         | Details                            |
+|:--------------------|----------------------------------------------|:-----------------------------------|
+|    criteria         | ((dictionary))                               | The [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) to use for matching records in the database.
 
 ##### Callback
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
+|     Argument        | Type                | Details |
+|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+|    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+|    records          | ((array))           | The array of records from your database which match the given criteria.
 
 
 ### Example
