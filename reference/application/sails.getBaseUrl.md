@@ -1,12 +1,17 @@
 # sails.getBaseUrl()
 
-Return the base URL for this app
-
+Return the base URL for this app, based on available configuration.
 
 
 ```javascript
 sails.getBaseUrl();
 ```
+
+
+### Usage
+
+_This function does not accept any arguments._
+
 
 #### Returns
 
