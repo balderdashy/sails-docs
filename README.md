@@ -1,6 +1,8 @@
+![Squiddy reads the docs](http://sailsjs.org/images/squidford_swimming.png)
+
 # Sails.js Documentation
 
-The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the Sails website (sailsjs.org) is compiled from here.
+The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the [official Sails website](http://sailsjs.org) is compiled from here.
 
 
 ## In Other Languages
