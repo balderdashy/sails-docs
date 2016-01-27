@@ -8,6 +8,7 @@ request (`req._sails`).
 
 
 
+
 ### Properties
 
 The application object has a number of methods and properties which are useful.
@@ -16,20 +17,25 @@ pages in this section.  Here are a few of its most useful properties:
 
 ##### sails.models
 
-> (TODO: finish this section)
+A dictionary of all loaded [Sails models](), indexed by their _identity_.
+
+By default, a model's identity is the lowercased version of its filename, without the **.js** extension.  For example, the default identity for a model loaded from `api/models/PowerPuff.js` would be `powerpuff`, and the model would be accessible via `sails.models.powerpuff`.  A model's identity can be customized by setting an `identity` property in its module file.
 
 ##### sails.config
 
-> (TODO: finish this section - mainly just link to "Configuration" section)
+The full set of configuration options for the Sails instance, loaded from a combination of environment variables, `.sailsrc` files, user-configuration files and defaults.  See the [configuration concepts section]() for a full overview of configuring Sails, and the [configuration reference]() for details on individual options.
 
 ##### sails.sockets
 
-> (TODO: finish this section - mainly just link to "sails.sockets" reference section)
+A set of convenience methods for low-level interaction with connected websockets.  See the [`sails.sockets.*` reference section]() for details.
 
 ##### sails.hooks
 
-> (TODO: finish this section - mainly just link to "Extending Sails/Hooks" conceptual section)
+A dictionary of all loaded [Sails hooks](), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails; for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](), for advanced usage.
 
+By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](http://sailsjs-website.herokuapp.com/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
+
+See the [hooks concept documentation]() for more info about hooks.
 
 
 ### How does it work?
@@ -60,7 +66,7 @@ var sails2 = new Sails();
 Each app instance (`sails0`, `sails1`, `sails2`) can be loaded/lifted separately,
 using different configuration.
 
-<!-- For more on using Sails programatically, see the
-conceptual overview on [programatic usage in Sails](). -->
+For more on using Sails programatically, see the conceptual overview on [programatic usage in Sails]().
+
 
 <docmeta name="displayName" value="Application">
