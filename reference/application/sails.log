@@ -1,0 +1,41 @@
+# sails.log()
+
+Log a message or some data at the debug log level.
+
+```javascript
+sails.log(...);
+```
+
+
+### Usage
+
+Usage of Sails logging methods is identical to that of [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data) in Node core; including support for:
+ - an unlimited number of arguments
+ - printf-style parameterization (a la [`util.format()`](https://nodejs.org/api/util.html#util_util_format_format))
+ - automatically inspecting non-string arguments (a la [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options)
+
+Log output can be configured, or completely overridden using built-in log configuration settings ([`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log)).
+
+#### Returns
+
+_N/A_
+
+
+
+### Example
+
+```javascript
+var sum = +req.param('x') + +req.param('y');
+sails.log();
+sails.log('Hey %s, did you know that the sum of %d and %d is %d?', req.param('name'), +req.param('x'), +req.param('y'), sum);
+sails.log('Bet you didn\'t know robots could do math, huh?');
+sails.log();
+sails.log('Anyways, here is a dictionary containing all the parameters I received in this request:', req.allParams());
+sails.log('Until next time!');
+return res.ok();
+```
+
+### Notes
+> - For a deeper conceptual exploration of logging in Sails, see [concepts/logging](http://sailsjs.org/documentation/concepts/logging).
+
+<docmeta name="displayName" value="sails.getRouteFor()">
