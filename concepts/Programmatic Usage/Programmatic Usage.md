@@ -22,7 +22,7 @@ Once you have a reference to a new Sails app, you can use [`.load()`]() or [`.li
 
 > Any configuration options sent as arguments to `.load()` or `.lift()` will take precedence over options loaded from anywhere else.
 
-The difference between `.load()` and `.lift()` is that `.lift()` takes the additional step of starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`]() method of the loaded app.
+The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`]() method of the loaded app.
 
 ```javascript
 // Starting an app with .lift() on port 1338 and making a POST request
