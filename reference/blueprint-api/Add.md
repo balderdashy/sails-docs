@@ -1,56 +1,40 @@
-# Add to Collection
+# Add (Blueprint)
 
-Adds an association between two records.
+Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
 
 ```
-POST /:model/:record/:association/:record_to_add?
+POST /:model/:id/:association/:fk
 ```
 
 This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
 
-+ If `:record_to_add` of an existing record is supplied, it will be associated with the primary record.
-+ If no `:record_to_add` is supplied, and the body of the **POST** contains values for a new record, that record will be created and associated with the primary record.
-+ If the collection within the primary record already contains a reference to the foreign record, this action will be ignored.
++ If `:fk` of an existing foreign record is supplied, it will be associated with the primary record.
++ If no `:fk` is supplied, and the body of the **POST** contains values for a new record, that record will be created and associated with the primary record.
++ If the collection association within the primary record already contains a reference to the foreign record, this action will be ignored.
 + If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
+
+
+### Parameters
+
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ id                | ((number))<br/>*-or-*<br/>((string))    | The parent record's primary key value<br/><br/>e.g. `7`
+ association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
+ fk | ((number))<br/>*-or-*<br/>((string))    | The id of the foreign record to add to the collection association.<br/><br/>e.g. `47`
+ _callback_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
 ### Example
 
-Add purchase 47 to the list of purchases that Dolly (employee #7) has been involved in.
+Add purchase #47 to the list of purchases that Dolly (employee #7) has been involved in:
 
-**Using [jQuery](http://jquery.com/):**
-
-```javascript
-$.post('/employee/7/involvedInPurchases/47', function (purchases) {
-  console.log(purchases);
-});
+```
+POST /employee/7/involvedInPurchases/47
 ```
 
-**Using [Angular](https://angularjs.org/):**
+##### Expected response
 
-```javascript
-$http.post('/employee/7/involvedInPurchases/47')
-.then(function (purchases) {
-  console.log(purchases);
-});
-```
-
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
-
-```javascript
-io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
-  console.log(purchases);
-});
-```
-
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
-
-```bash
-curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
-```
-
-
-Should return "Dolly", the primary record:
+This will return "Dolly", the primary record:
 
 ```json
 {
@@ -71,8 +55,43 @@ Should return "Dolly", the primary record:
 ```
 
 
+##### Using jQuery
+
+```javascript
+$.post('/employee/7/involvedInPurchases/47', function (purchases) {
+  console.log(purchases);
+});
+```
+
+##### Using Angular
+
+```javascript
+$http.post('/employee/7/involvedInPurchases/47')
+.then(function (purchases) {
+  console.log(purchases);
+});
+```
+
+##### Using sails.io.js
+
+```javascript
+io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
+  console.log(purchases);
+});
+```
+
+##### Using [cURL](http://en.wikipedia.org/wiki/CURL)
+
+```bash
+curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
+```
+
+
+
+
 ### Notes
 
+> + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
 > + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html).
 > + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
 >

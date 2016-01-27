@@ -1,0 +1,43 @@
+# sails.getUrlFor()
+
+Look up the first route pointing at the specified target (e.g. `MeController.login`) and return its URL.
+
+
+
+```javascript
+sails.getUrlFor(target);
+```
+
+
+### Usage
+
+|   |          Argument           | Type                | Details
+|---|---------------------------- | ------------------- |:-----------
+| 1 |        target               | ((string))          | The route target string; e.g. `MeController.login`
+
+
+#### Returns
+
+**Type:** ((string))
+
+```javascript
+'/login'
+```
+
+
+
+### Example
+
+In a view...
+
+```ejs
+<a href="<%= sails.getUrlFor('PageController.login') %>">Login</a>
+<a href="<%= sails.getUrlFor('PageController.signup') %>">Signup</a>
+```
+
+### Notes
+> - This function searches the Sails app's explicitly configured routes; [`sails.config.routes`](http://sailsjs.org/documentation/reference/configuration/sails-config-routes).  Shadow routes bound by hooks (including [blueprint routes](http://sailsjs.org/documentation/reference/blueprint-api#?blueprint-routes)) will not be matched.
+> - If a matching target cannot be found, this function throws an `E_NOT_FOUND` error (i.e. if you catch the error and check its `code` property, it will be the string `E_NOT_FOUND`).
+> - If more than one route matches the specified target, the first match is returned.
+
+<docmeta name="displayName" value="sails.getUrlFor()">
