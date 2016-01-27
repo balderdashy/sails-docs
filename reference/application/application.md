@@ -6,6 +6,14 @@ use cases where multiple Sails app instances need to exist at once, or where glo
 are not an option. The application object can also always be accessed on an incoming
 request (`req._sails`), and inside of [model]() and [service]() modules via `this.sails`.
 
+### How does it work?
+
+An application instance is automatically created the first time you `require('sails')`.
+This is what is happening in the generated `app.js` file:
+
+```javascript
+var sails = require('sails');
+```
 
 ### Properties
 
@@ -35,21 +43,24 @@ By default, a hook's identity is the lowercased version of its folder name, with
 
 See the [hooks concept documentation]() for more info about hooks.
 
+### Events
 
-### How does it work?
+Sails instances inherit Node's [`EventEmitter` interface](), and emits several useful events that you can listen for in app code.
 
-An application instance is automatically created the first time you `require('sails')`.
-This is what is happening in the generated `app.js` file:
+| Event name | Emitted when... |
+| `ready`    | The app had been loaded and the bootstrap has run, but it is not yet listening for requests |
+| `lifted`   | The app has been lifted and is listening for requests. |
+| `lowered`  | The app has been lowered and is no longer listening for requests. |
+| `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
 
-```javascript
-var sails = require('sails');
-```
+To listen for one of these events, use `sails.on(eventName, eventHandler)`.
 
+You can also _emit_ events from the Sails instance.  While not recommended for use in app-level code, `sails.emit()` is particularly useful in testing scenarios, to [make virtual requests]() to a loaded (but not [lifted]()) Sails app.
 
 
 ### Creating a new application object (advanced)
 
-Alternatively, if you are implementing something unconventional (e.g. writing tests for Sails core)
+If you are implementing something unconventional (e.g. writing tests for Sails core)
 where you need to create more than one Sails application instance in a process, you _should not_ use
 the instance returned by `require('sails')`, as this can cause unexpected behavior.  Instead, you should
 obtain application instances by using the Sails constructor:
