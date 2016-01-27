@@ -15,4 +15,4 @@ io.socket.off(eventIdentity, callback);
 
 > In order to use `.off()`, you will need to store the callback argument sent to [`.on()`]() in a variable.
 
-<docmeta name="displayName" value=".off()">
+<docmeta name="displayName" value="io.socket.off()">

@@ -27,3 +27,4 @@ See the [SailsSocket properties reference]() for a full list of properties avail
 
 For basic server communication and event listening methods, see the other `io.socket.*` pages in this section.  For advanced methods involving server connection, see the [SailsSocket advanced methods reference]().
 
+<docmeta name="displayName" value="io.socket">

@@ -10,3 +10,4 @@ Any web page which loads the `sails.io.js` will create a new SailsSocket instanc
 
 Additional SailsSocket instances can be created via calls to [`io.sails.connect`]().
 
+<docmeta name="displayName" value="SailsSocket">

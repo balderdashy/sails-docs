@@ -8,4 +8,4 @@ Stop listening for all server-related events.  This includes `connect` and `disc
 io.socket.removeAllListeners();
 ```
 
-<docmeta name="displayName" value=".removeAllListeners()">
+<docmeta name="displayName" value="io.socket.removeAllListeners()">
