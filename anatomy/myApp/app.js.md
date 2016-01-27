@@ -1,6 +1,6 @@
 # myApp/app.js
 ### Purpose
-This file exists only to tell Node how to start your app.  It is used once and only when you lift your app from the command line.  You should just ignore this file.
+This file exists only to tell Node how to start your app when you are not running `sails lift`.  It is only relevant when you start the server from the command line with `npm start` (i.e. `node app`).  In most cases, you can safely ignore this file.
 
 
 <docmeta name="displayName" value="app.js">
