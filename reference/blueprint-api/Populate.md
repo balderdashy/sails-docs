@@ -1,4 +1,4 @@
-# Populate Where...
+# Populate (Blueprint)
 
 If the specified association is plural ("collection"), this action returns the list of associated records as a JSON array of objects.  If the specified association is singular ("model"), this action returns the associated record as a JSON object.
 

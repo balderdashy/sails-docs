@@ -42,4 +42,5 @@ return res.ok();
 > - The built-in logger in Sails is called internally by the framework, but also exposed as an alternative to calling `console.log()` directly.  Keep in mind that the Sails logger can be configured, or completely overridden using built-in log configuration settings ([`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log)).
 > - Keep in mind that, like any part of Sails, using `sails.log` is completely optional.  Most Sails apps take advantage of the built-in logger; while some users prefer to stick with `console.log()`, while still others `require()` more feature-rich libraries like [Winston](https://www.npmjs.com/package/winston). If you aren't sure what your app needs yet, start with the built-in logger and go from there.
 
+
 <docmeta name="displayName" value="sails.log()">

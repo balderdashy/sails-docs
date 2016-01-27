@@ -1,46 +1,41 @@
-# .find(`criteria` , [`callback`])
-### Purpose
-Finds and returns all records that meet the criteria object(s) that you pass it.
+# .find()
 
-### Overview
-#### Parameters
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes |
-| 2 |     Callback        | `function`          | Yes        |
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Found Records      | `[{}]`              |
-
-### Example Usage
+Find records in your database that match the given criteria.
 
 ```javascript
-User.find({}).exec(function findCB(err, found){
-  while (found.length)
-    console.log('Found User with name ' + found.pop().name)
+Something.find(criteria).exec(function (err, records) {
+  
 });
-
-// Found User with name Flynn
-// Found User with name Jessie
-
-// Don't forget to handle your errors
-
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
-> This method will ALWAYS return records in an array.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+
+### Usage
+
+|   |     Argument        | Type                                         | Details                            |
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
+| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) to use for matching records in the database.
+
+##### Callback
+
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
 
 
+### Example
+
+To find any users named Finn in the database:
+```javascript
+User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
+  if (err) {
+    return res.negotiate(err);
+  }
+  sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
+  return res.json(usersNamedFinn);
+});
+```
 
 
-
-<docmeta name="methodType" value="mcm">
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".find()">
 

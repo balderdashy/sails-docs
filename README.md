@@ -1,6 +1,8 @@
+![Squiddy reads the docs](http://sailsjs.org/images/squidford_swimming.png)
+
 # Sails.js Documentation
 
-The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the Sails website (sailsjs.org) is compiled from here.
+The official documentation for the current stable release of Sails is on the [master branch](github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the [official Sails website](http://sailsjs.org) is compiled from here.
 
 
 ## In Other Languages
@@ -50,7 +52,9 @@ Each .md file has its own page on the website (i.e. all reference, concepts, and
 
 #### When will my change appear on the Sails website?
 
-Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.11).  We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org.  Updates to the website have been done in numerous different ways in the past, including an approach that recompiled documentation automatically via a GitHub hook.  Today, since sailsjs.org has changed hosts, these updates are done manually, but we intend to automate this process again in the near future.
+Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.11). We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org, and content is only merged just before redeploying the sails website.
+
+If you want to see how documentation changes will appear on sailsjs.org, you can visit [preview.sailsjs.org](http://preview.sailsjs.org). The preview site updates itself automatically as changes are merged into the master branch of sails-docs.
 
 
 #### How can I help translate the documentation?
@@ -63,4 +67,9 @@ If your language is not represented in the table above, and you are interested i
 + Edit the README to summarize your progress so far, provide any other information you think would be helpful for others reading your translation, and let interested contributors know how to contact you.
 + Send a pull request editing the table above to add a link to your fork.
 + When you are satisfied with the first complete version of your translation, open an issue and someone from our docs team will be happy to help you get preview it in the context of the Sails website, get it live on a domain (yours, or a subdomain of sailsjs.org, whichever makes the most sense), and share it with the rest of the Sails community.
+
+
+#### How else can I help?
+
+For more information on contributing to Sails in general, see the [Contribution Guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
 

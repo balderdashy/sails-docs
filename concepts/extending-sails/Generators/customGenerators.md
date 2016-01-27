@@ -339,7 +339,6 @@ From the awesome _generator_ folder within the terminal type:
 ```
 
 And you're all set!
-```
 
 
 
