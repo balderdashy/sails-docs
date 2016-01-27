@@ -10,7 +10,7 @@
 
 ### How does the markdown documentation end up on the Sails website?
 
-A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [Sails website repo](https://github.com/balderdashy/sails-docs) for more information.
+A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [Sails website repo](https://github.com/balderdashy/www.sailsjs.org) for more information.
 
 
 ### How do I get involved?
@@ -97,7 +97,7 @@ The companies below provide custom development, services, training, and/or suppo
   <img height="15" alt="Linkedin icon" class="linkedin" src="http://balderdash.co/images/icon_linkedIn@2x.png">
 </a>
 
-Sails was built by the team behind [Balderdash](http://balderdash.co/), an interactive development studio in Austin, TX.  [Heather](http://www.sealab.io/) and [I](http://twitter.com/mikermcneil) started the company in 2012, on the promise that Node.js could be used to build production back-end applications from start to finish.  We created Sails to support that mission, and years later, the experiment has been a resounding success.  As you might expect, we've done a lot of custom Sails+Node.js development, but our team has experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications,  and building rich user experiences across many different devices and screen resolutions. 
+Sails was built by the team behind [Balderdash](http://balderdash.co/), an interactive development studio in Austin, TX.  [Heather](http://www.sealab.io/) and [I](http://twitter.com/mikermcneil) started the company in 2012, on the promise that Node.js could be used to build production back-end applications from start to finish.  We created Sails to support that mission, and years later, the experiment has been a resounding success.  As you might expect, we've done a lot of custom Sails+Node.js development, but our team has experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications,  and building rich user experiences across many different devices and screen resolutions.
 
 + [Our process.](https://docs.google.com/file/d/0B1OhsrcuV2-9N2RYUV9KRHNWTlE/edit?usp=sharing)
 + [Our](https://speakerdeck.com/mikermcneil/intro-to-sails-dot-js) [s](https://angel.co/balderdash)[to](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)[ry](http://blog.modulus.io/sails-js).
