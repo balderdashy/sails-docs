@@ -26,7 +26,7 @@ For example, here are a few things you could do:
 - Internationalize your client-side templates using a server-side stringfile before they're served.
 
 
-For more information, check out the conceptual documentation on [Sails' asset pipeline](http://preview.sailsjs.org/documentation/concepts/assets).
+For more information, check out the conceptual documentation on the [default Grunt tasks](http://preview.sailsjs.org/documentation/concepts/assets/default-tasks) that make up Sails' asset pipeline.
 
 <docmeta name="displayName" value="templates">
 
