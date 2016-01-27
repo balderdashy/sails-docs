@@ -12,7 +12,7 @@ sails.getRouteFor(target);
 ### Usage
 
 |          Argument           | Type                | Details
-| --------------------------- | ------------------- | -----------
+| --------------------------- | ------------------- |:-----------
 |        target               | ((string))          | The route target string; e.g. `MeController.login`
 
 
