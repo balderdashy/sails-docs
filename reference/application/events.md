@@ -15,6 +15,7 @@ sails.on(eventName, eventHandlerFn);
 None of the events are emitted with extra information, so your `eventHandlerFn` should not have any arguments.
 
 | Event name | Emitted when... |
+|------------| ----------------|
 | `ready`    | The app has been loaded and the bootstrap has run, but it is not yet listening for requests |
 | `lifted`   | The app has been lifted and is listening for requests. |
 | `lowered`  | The app has been lowered and is no longer listening for requests. |
