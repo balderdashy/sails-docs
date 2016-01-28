@@ -43,21 +43,6 @@ By default, a hook's identity is the lowercased version of its folder name, with
 
 See the [hooks concept documentation]() for more info about hooks.
 
-### Events
-
-Sails instances inherit Node's [`EventEmitter` interface](), and emits several useful events that you can listen for in app code.
-
-| Event name | Emitted when... |
-| `ready`    | The app had been loaded and the bootstrap has run, but it is not yet listening for requests |
-| `lifted`   | The app has been lifted and is listening for requests. |
-| `lowered`  | The app has been lowered and is no longer listening for requests. |
-| `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
-
-To listen for one of these events, use `sails.on(eventName, eventHandler)`.
-
-You can also _emit_ events from the Sails instance.  While not recommended for use in app-level code, `sails.emit()` is particularly useful in testing scenarios, to [make virtual requests]() to a loaded (but not [lifted]()) Sails app.
-
-
 ### Creating a new application object (advanced)
 
 If you are implementing something unconventional (e.g. writing tests for Sails core)
