@@ -5,13 +5,12 @@
 
 Return a best guess of the base URL for this app, based on a combination of user-supplied and default configuration values.
 
-`getBaseUrl()` constructs a URL string by inspecting various configuration values and defaults.  For example, if `sails.config.ssl.key` and `sails.config.ssl.cert` both have values, the URL will start with `https://` instead of `http://`.  If `sails.config.explicitHost` is not undefined, its value will be used as the domain name; otherwise it will be `localhost`.  If `sails.config.port` is not 80 or 443, its value will be appended to the URL as well.
-
-
 
 ```javascript
 sails.getBaseUrl();
 ```
+
+`getBaseUrl()` constructs a URL string by inspecting various configuration values and defaults.  For example, if `sails.config.ssl.key` and `sails.config.ssl.cert` both have values, the URL will start with `https://` instead of `http://`.  If `sails.config.explicitHost` is not undefined, its value will be used as the domain name; otherwise it will be `localhost`.  If `sails.config.port` is not 80 or 443, its value will be appended to the URL as well.
 
 
 ### Usage
