@@ -41,7 +41,7 @@ sailsApp.lift(
     console.log("Sails app lifted successfully in port", sailsApp.config.port);
   }
 )
-
+```
 
 ### Notes
 > - The difference between `.lift()` and [`.load()`]() is that `.lift()` takes the additional steps of (1) running the app's [bootstrap]() (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
