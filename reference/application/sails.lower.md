@@ -33,7 +33,7 @@ sailsApp.lower(
     console.log("Sails app lowered successfully!");
   }
 )
-
+```
 
 ### Notes
 > - After an app is successfully lowered, it will emit the `lowered` event.
