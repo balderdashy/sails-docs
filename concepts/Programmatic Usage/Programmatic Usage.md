@@ -86,3 +86,5 @@ Finally, note that while you can use the Sails constructor to create and start a
 ### Reference
 
 The full reference for Sails' programmatic interface is available in the [Application reference section](http://sailsjs.org/documentation/reference/application)
+
+<docmeta name="displayName" value="Programmatic Usage">
