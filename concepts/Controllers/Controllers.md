@@ -49,7 +49,7 @@ So the goal of the "thin controller" philosophy is to encourage decoupling of re
 
 + Write a custom model method to encapsulate some code that performs a particular task relating to a particular model
 + Write a service as a function to encapsulate some code that performs a particular application-specific task
-+ If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm]() under a permissive open-source license for other developers to use and help maintain.
++ If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm](https://docs.npmjs.com/getting-started/publishing-npm-packages) under a permissive open-source license for other developers to use and help maintain.
 
 
 

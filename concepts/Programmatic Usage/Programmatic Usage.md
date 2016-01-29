@@ -16,13 +16,13 @@ var myOtherSailsApp = new Sails();
 
 ### Configuring, starting and stopping Sails apps programmatically
 
-Once you have a reference to a new Sails app, you can use [`.load()`]() or [`.lift()`]() to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
+Once you have a reference to a new Sails app, you can use [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) or [`.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
 
 > When Sails is started programmatically, it will still use the `api`, `config` and other folders underneath the current working directory to load controllers, models, and configuration options.  One notable exception is that `.sailsrc` files will _not_ be loaded when starting apps this way.
 
 > Any configuration options sent as arguments to `.load()` or `.lift()` will take precedence over options loaded from anywhere else.
 
-The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`]() method of the loaded app.
+The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.org/documentation/reference/application/sails-request) method of the loaded app.
 
 ```javascript
 // Starting an app with .lift() on port 1338 and making a POST request

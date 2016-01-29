@@ -2,7 +2,7 @@
 
 The easiest way to send a realtime message from a client to a Sails app is by using the [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/sails-io-js) library.  This library allows you to easily connect sockets to a running Sails app, and provides methods for making requests to [Sails routes](http://sailsjs.org/documentation/concepts/routes) that are handled in the same manner as a "regular" HTTP request.
 
-The sails.io.js library is automatically added to the default [layout template](http://sailsjs.org/documentation/concepts/views/layouts) of new Sails apps using a `<script>` tag.  When a web page loads the `sails.io.js` script, it attempts to create a new [client socket]() and connect it to the Sails app, exposing it as the global variable `io.socket`.
+The sails.io.js library is automatically added to the default [layout template](http://sailsjs.org/documentation/concepts/views/layouts) of new Sails apps using a `<script>` tag.  When a web page loads the `sails.io.js` script, it attempts to create a new [client socket](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket) and connect it to the Sails app, exposing it as the global variable `io.socket`.
 
 ### Examples
 
@@ -34,7 +34,7 @@ You may have noticed that a client socket `.get()` is very similar to making an 
 
 ### Reference
 
-* View the full [sails.io.js library]() reference.
+* View the full [sails.io.js library](http://sailsjs.org/documentation/reference/web-sockets/socket-client) reference.
 * See the [sails.sockets](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) reference to learn how to send messages from the server to connected sockets
 * See the [resourceful pub-sub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub) reference to learn how to use Sails blueprints to automatically send realtime messages about changes to your [models](http://sailsjs.org/documentation/concepts/models-and-orm/models).
 * Visit the [Socket.io](http://socket.io) website to learn more about the underlying library Sails uses for realtime communication

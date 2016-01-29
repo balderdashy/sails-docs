@@ -4,7 +4,7 @@ This section describes the methods available on each SailsSocket instance.  Most
 
 ### Basic methods
 
-The most common methods you will use with a SailsSocket instance are documented in the main Socket Client reference section.  These include [`.get()`](), [`.put()`](), [`.post()`](), [`.delete()`](), [`.request()`](), [`.on()`]() and [`.off()`]().
+The most common methods you will use with a SailsSocket instance are documented in the main Socket Client reference section.  These include [`.get()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-get), [`.put()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-put), [`.post()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-post), [`.delete()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-delete), [`.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request), [`.on()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on) and [`.off()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-off).
 
 ### Advanced methods
 
@@ -28,7 +28,7 @@ io.socket.disconnect();
 
 ##### .reconnect()
 
-Reconnect a SailsSocket instance to a server after being disconnected (either involuntarily or via a call to [`.disconnect()`]()).  The instance will connect using its currently configured [properties]().  Throws an error if the socket is already connected to a server.
+Reconnect a SailsSocket instance to a server after being disconnected (either involuntarily or via a call to [`.disconnect()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/methods#?disconnect)).  The instance will connect using its currently configured [properties](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties).  Throws an error if the socket is already connected to a server.
 
 ```js
 io.socket.reconnect();

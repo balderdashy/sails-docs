@@ -4,15 +4,15 @@ The Sails core has been iterated upon several times to make it easier to maintai
 
 ### (1) Load Configuration "Overrides"
 
-Gather the set of configuration values passed in on the command line, in environment variables, and in programmatic configuration (i.e. options passed to [`sails.load`]() or [`sails.lift`]().).  When an app is started via the command-line interface (i.e. by typing `sails lift` or `sails console`), the values of any `.sailsrc` files will also be merged into the config overrides.  These override values will take precedence over any user configuration encountered in the next step.
+Gather the set of configuration values passed in on the command line, in environment variables, and in programmatic configuration (i.e. options passed to [`sails.load`](http://sailsjs.org/documentation/reference/application/sails-load) or [`sails.lift`](http://sailsjs.org/documentation/reference/application/sails-lift).).  When an app is started via the command-line interface (i.e. by typing `sails lift` or `sails console`), the values of any `.sailsrc` files will also be merged into the config overrides.  These override values will take precedence over any user configuration encountered in the next step.
 
 ### (2) Load User Configuration
 
-Unless the `userconfiguration` hook is explicitly disabled, Sails will next load the configuration files in the `config` folder (and subfolders) underneath the current working directory.  See the [configuration concept section]() for more details about user configuration.  Configuration from step 1 will be merged on top of these values to form the `sails.config` object.
+Unless the `userconfiguration` hook is explicitly disabled, Sails will next load the configuration files in the `config` folder (and subfolders) underneath the current working directory.  See the [configuration concept section](http://sailsjs.org/documentation/concepts/configuration) for more details about user configuration.  Configuration from step 1 will be merged on top of these values to form the `sails.config` object.
 
 ### (3) Load Hooks
 
-Next, Sails will load the other hooks.  [Core hooks]() will load first, followed by user hooks and installable hooks.  Note that hooks typically include configuration of their own which will be used as _default values_ in `sails.config`.  For example, if no `port` setting is configured by this point, the `http` hook's default value of 1337 will be used.
+Next, Sails will load the other hooks.  [Core hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks#?types-of-hooks) will load first, followed by user hooks and installable hooks.  Note that hooks typically include configuration of their own which will be used as _default values_ in `sails.config`.  For example, if no `port` setting is configured by this point, the `http` hook's default value of 1337 will be used.
 
 ### (4) Assemble Router
 

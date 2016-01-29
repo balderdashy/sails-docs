@@ -46,7 +46,7 @@ sailsApp.load(
 ```
 
 ### Notes
-> - The difference between `.lift()` and [`.load()`]() is that `.lift()` takes the additional steps of (1) running the app's [bootstrap]() (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
-> - Even though a Sails app does not listen for requests on an HTTP port, you can make "virtual" requests to it using [`sails.emit`]()
+> - The difference between `.lift()` and [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
+> - Even though a Sails app does not listen for requests on an HTTP port, you can make "virtual" requests to it using [`sails.request`](http://sailsjs.org/documentation/reference/application/sails-request)
 
 <docmeta name="displayName" value="sails.load()">

@@ -2,7 +2,7 @@
 
 ### Overview
 
-Sails instances inherit Node's [`EventEmitter` interface](), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible), events can be very useful when extending Sails (via [hooks]() or [adapters]()) and in a testing environment.
+Sails instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible), events can be very useful when extending Sails (via [hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks) or [adapters](http://sailsjs.org/documentation/concepts/extending-sails/adapters)) and in a testing environment.
 
 ### Events emitted by Sails
 
@@ -21,9 +21,10 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 | `lowered`  | The app has been lowered and is no longer listening for requests. |
 | `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
 
+<!--
 ### Using `sails.emit` for virtual requests
 
-You may occasionally wish to simulate requests to a Sails app without starting an actual http server--this is often useful in testing environments.  You can do this by loading the app with [`sails.load()`]() rather than [`sails.lift()`]() and then sending a `router:request` event to the app:
+You may occasionally wish to simulate requests to a Sails app without starting an actual http server--this is often useful in testing environments.  You can do this by loading the app with [`sails.load()`](http://sailsjs.org/documentation/reference/application/sails-load) rather than [`sails.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) and then sending a `router:request` event to the app:
 
 ```javascript
 sails.emit('router:request', requestObj, responseObj)
@@ -49,5 +50,5 @@ sails.emit('router:request', {
   }
 });
 ```
-
+-->
 <docmeta name="displayName" value="Events">

@@ -2,7 +2,7 @@
 
 ### Overview
 
-Sails apps support full-duplex realtime communication between the client and server.  This means that a client (e.g. a web browser page or tab) can maintain a persistent connection to a Sails app, and messages can be sent from client to server or from server to client at any time.  Two common uses of realtime communication are live chat implementations and multiplayer games.  Sails implements realtime on the server using the [socket.io](http://socket.io) library, and on the client using the [sails.io.js]() library.  Throughout the Sails documentation, the terms **socket** and **websocket** are commonly used to refer to a two-way, persistent communication channel between a Sails app and a client.
+Sails apps support full-duplex realtime communication between the client and server.  This means that a client (e.g. a web browser page or tab) can maintain a persistent connection to a Sails app, and messages can be sent from client to server or from server to client at any time.  Two common uses of realtime communication are live chat implementations and multiplayer games.  Sails implements realtime on the server using the [socket.io](http://socket.io) library, and on the client using the [sails.io.js](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on) library.  Throughout the Sails documentation, the terms **socket** and **websocket** are commonly used to refer to a two-way, persistent communication channel between a Sails app and a client.
 
 Communicating with a Sails app via sockets is similar to using AJAX, in that both methods allow a web page to interact with the server without refreshing.  However, sockets differ from AJAX in two important ways: first, a socket can stay connected to the server for as long as the web page is open, allowing it to maintain _state_ (AJAX requests, like all HTTP requests, are _stateless_).  Second, because of the always-on nature of the connection, a Sails app can send data down to a socket at any time (hence the "realtime" moniker), whereas AJAX only allows the server to respond when a request is made.
 
@@ -81,7 +81,7 @@ module.exports = {
 
 ### Reference
 
-* See the full reference for the [sails.io.js library]() to learn how to use sockets on the client side to communicate with your Sails app.
+* See the full reference for the [sails.io.js library](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on) to learn how to use sockets on the client side to communicate with your Sails app.
 * See the [sails.sockets](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) reference to learn how to send messages from the server to connected sockets
 * See the [resourceful pub-sub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub) reference to learn how to use Sails blueprints to automatically send realtime messages about changes to your [models](http://sailsjs.org/documentation/concepts/models-and-orm/models).
 * Visit the [Socket.io](http://socket.io) website to learn more about the underlying library Sails uses for realtime communication

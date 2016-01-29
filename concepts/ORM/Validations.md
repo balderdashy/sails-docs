@@ -100,7 +100,7 @@ If an attribute declares itself `unique: true`, then Sails ensures no two record
 ```javascript
 // api/models/User.js
 module.exports = {
-  
+
   attributes: {
     emailAddress: {
       type: 'string',
@@ -108,7 +108,7 @@ module.exports = {
       required: true
     }
   }
-  
+
 };
 ```
 
@@ -116,7 +116,7 @@ module.exports = {
 
 Imagine you have 1,000,000 user records in your database.  If `unique` was implemented like other validations, every time a new user signed up for your app, Sails would need to search through _one million_ existing records to ensure that no one else was already using the email address provided by the new user.  Not only would that be slow, but by the time we finished searching through all those records, someone else could have signed up!
 
-Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter]() to implement support for the `unique` validation-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration]().  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
+Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](http://sailsjs.org/documentation/concepts/models-and-orm#?adapters) to implement support for the `unique` validation-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
 
 ##### What about indexes?
 
@@ -141,10 +141,10 @@ if ( !_.isString( req.param('email') ) ) {
 
 To take this one step further, now let's say your application accepts payments.  During the sign up flow, if a user signs up with a paid plan, he or she must also provide an email address for billing purposes (`billingEmail`).  If a user signs up with a free account, he or she skips that step.  On the account settings page, users on a paid plan do see a "Billing Email" form field where they can customize their billing address.  This is different from users on the free plan, who see a call to action which links to the "Upgrade Plan" page.
 
-Even with these requirements, which seem quite specific, there are unanswered questions:  
+Even with these requirements, which seem quite specific, there are unanswered questions:
 
 - Do we update the billing email automatically when the other email address from which it was defaulted changes?
-- What if the billing email had been changed at least once? 
+- What if the billing email had been changed at least once?
 - What happens to the billing email after a user downgrades to the free plan? If a user upgrades to a paid plan again, do we infer his or her billing email address anew or use the old one?
 - What happens to the billing email when an existing user connects his or her LinkedIn account and a new `linkedInEmail` is saved?
 - What happens to the billing email if a monthly invoice email cannot be delivered?
@@ -157,7 +157,7 @@ Depending on the answers to questions like these, we might end up keeping the `r
 
 Finally, here are a few tips:
 - Your initial decision about whether or not to use validations for a particular attribute should depend on your app's requirements and how you are calling `.update()` and `.create()`. Don't be afraid to forgo built-in validation support and check values by hand in your controllers or in a helper function.  Oftentimes this is the cleanest and most maintainable approach.
-- There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
+- There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
 - It is a very good idea to spend the time to fully understand your application's user interface _first_ before spending up lots of time setting up complex validations on your model attributes.
 
 > As much as possible, you should obtain or flesh out your own wireframes of your app's user interface _before_ you spend any serious amount of time implementing backend code _in general_.  Of course, this isn't always possible- and that's what [blueprints]() are for.  But you should realize that applications built with a UI-centric, or "front-end first" philosophy are often easier to maintain, tend to have fewer bugs, and since they rebuilt with full knowledge of the user interface from the get-go, they often have more elegant APIs.
@@ -184,12 +184,12 @@ module.exports = {
       minLength: 5,
       maxLength: 15
     },
-    
+
     location: {
       type: 'json',
       isPoint: true // << defined below
     },
-    
+
     password: {
       type: 'string',
       password: true // << defined below

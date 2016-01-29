@@ -2,7 +2,7 @@
 
 Sends a virtual request to a Sails server using Socket.io.
 
-This function is very similar to [`.get()`](), [`io.socket.post()`](), etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
+This function is very similar to [`io.socket.get()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-get), [`io.socket.post()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-post), etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
 
 ### Usage
 

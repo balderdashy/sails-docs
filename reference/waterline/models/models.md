@@ -1,6 +1,6 @@
 # Working with Models
 
-This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (i.e. the [resourceful pubsub methods]()), be exposed by the underlying adapters to provide custom functionality, or be hand-written in your app to wrap reusable custom code.
+This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (i.e. the [resourceful pubsub methods](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub)), be exposed by the underlying adapters to provide custom functionality, or be hand-written in your app to wrap reusable custom code.
 
 > For an in-depth introduction to models in Sails/Waterline, see <a href="http://sailsjs.org/documentation/concepts/ORM/Models.html">http://sailsjs.org/documentation/concepts/ORM/Models.html</a>.
 
