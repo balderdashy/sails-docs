@@ -12,16 +12,17 @@ This method can be used on a instances that have been started with [`sails.load(
 ### Usage
 
 |   |       Argument             | Type                | Details
-|---|--------------------------- | ------------------- |:-----------
+|---|--------------------------- | ------------------- |:-----------:
 | 1 |      request                | ((string)) -or- ((dictionary))          | The virtual request to make.  If specified as a string, this should be an address containing an optional method and a path, e.g. `/foo` or `PUT /user/friend`.  If specified as an object, it should have one or more of the properties described in the "request argument" section below.
 | 2 |      body                  | ((json)) | (optional) A JSON-serializable value to use as the request body.  This argument will override the `data` property of the `request` argument, if provided.
 | 3 |      callback              | ((function)) | (optional) A callback to be called with the virtual response.
 
 #### Request object
 
-If the `request` argument is specified as an object, it can have the following properties
+If the `request` argument is specified as an object, it can have the following properties:
+
 |       Property             | Type                | Example | Details
-|--------------------------- | ------------------- | ------- | :-----------
+|--------------------------- | ------------------- | ------- | :-----------:
 | url                        | ((string))          | `"/foo"`, `"PUT /user/friend"`    | (required) The route in the Sails app to make a request to, with an optional HTTP method prefix
 | method                     | ((string))          | `"GET"`, `"POST"`    | (optional) The HTTP method to use in the request.  This will override any method supplied as part of the `url` property.
 | headers                    | ((dictionary))          | `{content-type: 'application/json'}`    | (optional) Dictionary of headers to use in the virtual request.
