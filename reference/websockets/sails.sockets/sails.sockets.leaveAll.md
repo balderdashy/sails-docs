@@ -12,8 +12,7 @@ sails.sockets.leaveAll(roomName, cb);
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
 | 1 | `roomName`   | ((string)) | The room to retrieve members from.
-| 2 | _`cb`_       | ((function?))| An optional callback which will be called when the operation is complete, or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
-
+| 2 | _`cb`_       | ((function?))| An optional callback which will be called when the operation is complete _on the current server_ (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
 
 ### Example
 
