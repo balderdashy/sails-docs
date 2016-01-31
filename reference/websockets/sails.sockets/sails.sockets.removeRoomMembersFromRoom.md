@@ -2,12 +2,12 @@
 
 Unsubscribe all members of a room from one or more other rooms.
 
-### Usage
-
 ```js
 sails.sockets.removeRoomMembersFromRooms(sourceRoom, destRooms, cb);
 ```
 
+
+### Usage
 
 |   | Argument       | Type                         | Details |
 |---|----------------|:----------------------------:|:--------|
