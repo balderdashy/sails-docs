@@ -46,10 +46,10 @@ The following values are optional, if no options are set a redis instance runnin
 
 Any session adapter written for Connect/Express works in Sails, as long as you use a compatible version.
 
-For example to use Mongo as your session store, you should use version 0.8.4 of `connect-mongo`.  First, run the following from your project's directory:
+For example to use Mongo as your session store, you should use version 0.8.* of `connect-mongo`.  First, run the following from your project's directory:
 
 ```
-npm install sails-mongo@0.8.4 --save
+npm install connect-mongo@0.8.* --save
 ```
 
 Then add the following lines to your session configuration dictionary in `config/session.js`:
