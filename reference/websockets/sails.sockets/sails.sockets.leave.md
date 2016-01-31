@@ -48,7 +48,7 @@ leaveFunRoom: function(req, res) {
 ```javascript
 kickSocketFromRoom: function(req, res) {
   if ( _.isUndefined(req.param('socketId')) || _.isUndefined(req.param('roomName')) ) {
-    return res.badRequest('`socketId` and `roomName` parameters are required.');
+    return res.badRequest('`socketId` and `roomName` are required.');
   }
   
   // Since this is using a socket id explicitly, instead of inferring one from `req`,
