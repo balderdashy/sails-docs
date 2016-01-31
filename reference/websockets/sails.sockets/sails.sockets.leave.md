@@ -2,7 +2,6 @@
 
 Unsubscribe a socket from a room.
 
-### Usage
 
 ```js
 sails.sockets.leave(socket, roomName);
@@ -12,6 +11,7 @@ _Or:_
 + `sails.sockets.leave(socket, roomName, cb);`
 
 
+### Usage
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
