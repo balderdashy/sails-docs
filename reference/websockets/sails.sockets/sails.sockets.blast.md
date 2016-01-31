@@ -1,4 +1,4 @@
-# sails.sockets.blast()
+# blast()
 
 Broadcast a message to all sockets connected to the server.
 
