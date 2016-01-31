@@ -1,4 +1,5 @@
 # sails.config.sockets
+
 ### What is this?
 These configuration options provide transparent access to Socket.io, the WebSocket/pubsub server encapsulated by Sails.
 
@@ -6,8 +7,6 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
   Property      | Type       | Default  | Details |
  ---------------|------------|----------|---------|
- `onConnect`    |((function))| see [config/sockets.js](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket connects to the server. This function is **deprecated**. Use `beforeConnect` instead.
- `onDisconnect` |((function))| see [config/sockets.js](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html)  | A function to run every time a new client-side socket disconnects from the server. This function is **deprecated**. Use `afterDisconnect` instead.
  `adapter`      |((string))  |`'memory'`| The database where socket.io will store its message queue and answer pubsub logic.  Can be set to either `'memory'` or `'redis'`. In versions 0.11, `'redis'` is deprecated and `'socket.io-redis'` must be used. Install the appropiate dependency using `npm install socket.io-redis@0.1.4 --save`
  `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using the redis socket store adapter)
  `port`         |((integer)) |`6379`   | Port of your redis instance (only applicable if using the redis socket store adapter)
