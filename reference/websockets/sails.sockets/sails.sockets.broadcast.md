@@ -19,7 +19,7 @@ _Or:_
 | 1 |        roomNames              | ((string)) -or- ((Array))          | The name of one or more rooms to broadcast a message in (see [sails.sockets.join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html)).  To broadcast to individual sockets, use their IDs as room names.
 | 2 |        _eventName_            | ((string?))          | Optional. Defaults to `'message'`.
 | 3 |        data                   | ((json))          | The data to send in the message.
-| 4 |        _socketToOmit_         | ((req?))          | Optional. If provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
+| 4 |        _socketToOmit_         | ((req?))          | Optional. If provided, the socket belonging to the specified socket request will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
 
 
 ### Example
@@ -30,7 +30,7 @@ sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { msg: 'Hola!
 ```
 
 ### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+> + Be sure and check `req.isSocket === true` before passing in `req` as `socketToOmit`. For the socket to be omitted, the provided `req` must be from a socket request, not just any HTTP request.
 
 
 <docmeta name="displayName" value="broadcast()">
