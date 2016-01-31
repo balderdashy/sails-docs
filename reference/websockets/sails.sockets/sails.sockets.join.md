@@ -1,6 +1,6 @@
 # sails.sockets.join()
 
-Subscribes a socket to a generic room.
+Subscribe a socket to a generic room.
 
 ### Usage
 
@@ -37,5 +37,5 @@ subscribeToFunRoom: function(req, res) {
 + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
 
 
-<docmeta name="displayName" value="sails.sockets.join()">
+<docmeta name="displayName" value="join()">
 
