@@ -22,6 +22,10 @@ In a controller action:
 
 ```javascript
 subscribeToFunRoom: function(req, res) {
+  if (!req.isSocket) {
+    return res.badRequest();
+  }
+
   var roomName = req.param('roomName');
   sails.sockets.join(req, roomName, function(err) {
     if (err) {
