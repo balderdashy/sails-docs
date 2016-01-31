@@ -1,6 +1,6 @@
 # leave()
 
-Unsubscribe a socket from a generic room.
+Unsubscribe a socket from a room.
 
 ### Usage
 
