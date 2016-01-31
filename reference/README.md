@@ -1,93 +1,9 @@
-# sails-docs-reference
+# sails-docs/reference
 
-Reference Section of Sails.js documentation
-
-
-
-## ideas for some restructuring:
+This section contains the official reference documentation for Sails.  It is made available at http://sailsjs.org/documentation/reference.
 
 
-```
- |
- |- Usage
-   |
-   |- Request (req)
-   |
-   |- Response (res)
-   |
-   |- Config (sails.config)
-   |
-   |- Model (sails.models)
-   |
-   |- Sockets (sails.sockets)
-   |
-   |- Sails CLI
-   |
-   |- Blueprint API
-   |
-   |- Browser SDK (sails.io.js)
-
- |
- |- Concepts
-    |
-    |- Security
-    |
-    |- Deployment
-       |
-       |- FAQ
-       |- Hosting
-       |- Scaling
-    |
-    |- Testing
-    |
-    |- Internationalization
-    |
-    |- Logging
-    |
-    |- File Uploads
-    |
-    |- Assets & Tasks
-    |
-    |- Middleware
-    |
-    |- Routes
-    |
-    |- Blueprints
-    |
-    |- Policies
-    |
-    |- Controllers
-    |
-    |- Custom Responses
-    |
-    |- Models
-       |
-       |- Attributes
-       |- Validations
-       |- Associations
-       |- Lifecycle Callbacks
-       |- Custom Schemas
-       |- Migrations
-    |
-    |- Services
-       |- todo: add example: Sending Email
-    |
-    |- Views
-
- |
- |- Advanced
-    |
-    |- Plugins
-    |
-    |- Programmatic Usage
-    |
-    |- Globals
-    |
-    |- .sailsrc
-
-
-```
-
-
-<docmeta name="displayName" value="error">
+### Notes
+> - This README file **is not compiled to HTML** for the website.  It is just here to explain what you're looking at.
+> - Depending on what branch of `sails-docs` you are currently viewing, the domain may vary.  Documentation pages in this section may actually be for a past version of Sails (e.g. the `0.11` branch compiles to http://0.11.sailsjs.org) or for an upcoming release (e.g. the branch for the upcoming release of Sails compiles to http://next.sailsjs.org).  See the top-level README file in the `sails-docs` repo for information about working with the markdown files in this repo, and to understand the branching/versioning strategy.
 
