@@ -1,4 +1,4 @@
-# sails.sockets.leave()
+# leave()
 
 Unsubscribe a socket from a generic room.
 
@@ -42,5 +42,5 @@ leaveFunRoom: function(req, res) {
 
 
 
-<docmeta name="displayName" value="sails.sockets.leave()">
+<docmeta name="displayName" value="leave()">
 
