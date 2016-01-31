@@ -26,13 +26,17 @@ In a controller action:
 
 ```javascript
 leaveFunRoom: function(req, res) {
-    var roomName = req.param('roomName');
-    sails.sockets.leave(req, roomName, function(err) {
-      if (err) {return res.serverError(err);}
-      return res.json({
-        message: 'Left a fun room called '+roomName+'!'
-      });
+  if (!req.isSocket) {
+    return res.badRequest();
+  }
+  
+  var roomName = req.param('roomName');
+  sails.sockets.leave(req, roomName, function(err) {
+    if (err) {return res.serverError(err);}
+    return res.json({
+      message: 'Left a fun room called '+roomName+'!'
     });
+  });
 }
 ```
 
