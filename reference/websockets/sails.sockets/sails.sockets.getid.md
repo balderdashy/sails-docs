@@ -1,38 +1,42 @@
-# sails.sockets.getId()
+# getId()
 
-Gets the ID of a request socket object.
+Parse the socket ID from an incoming socket request (`req`).
 
 ```javascript
-sails.sockets.getId(socket);
+sails.sockets.getId(req);
 ```
 
 ### Usage
 
 |   |          Argument           | Type                | Details
 |---| --------------------------- | ------------------- | -----------
-| 1 |           socket            | ((Socket)) -or- ((req))          | A request socket (WebSocket/Socket.io) object <br/> e.g. `req.socket`, or a request `req` containing such a socket.
+| 1 |           `req`             | ((req))             | A socket request (`req`).
 
 
-Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.broadcast](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html))
+Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.broadcast](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html)).
 
 
 ### Example
+
 ```javascript
 // Controller action
-
 getSocketID: function(req, res) {
-  if (!req.isSocket) return res.badRequest();
+  if (!req.isSocket) {
+    return res.badRequest();
+  }
 
-  var socketId = sails.sockets.getId(req.socket);
+  var socketId = sails.sockets.getId(req);
   // => "BetX2G-2889Bg22xi-jy"
 
-  return res.ok('My socket ID is: ' + socketId);
+  sails.log('My socket ID is: ' + socketId);
+  
+  return res.json(socketId);
 }
 ```
 
 
 ### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+> + Be sure and check `req.isSocket === true` before passing in `req`. This method does not work for HTTP requests!
 
 
-<docmeta name="displayName" value="sails.sockets.getId()">
+<docmeta name="displayName" value="getId()">
