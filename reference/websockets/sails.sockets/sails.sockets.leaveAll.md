@@ -2,7 +2,7 @@
 
 Unsubscribe all members of a room (e.g. `chatroom7`) from that room _and_ every other room they are currently subscribed to; except the automatic room associated with their socket ID.
 
-```js
+```javascript
 sails.sockets.leaveAll(roomName, cb);
 ```
 
