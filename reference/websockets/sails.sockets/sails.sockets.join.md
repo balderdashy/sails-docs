@@ -35,7 +35,7 @@ subscribeToFunRoom: function(req, res) {
 ### Notes
 > + Every socket is automatically subscribed to a room with its ID as the name, allowing direct messaging to a socket via [`sails.sockets.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast)
 > + In a multi-server environment, when calling `.join()` with a socket ID argument, the callback function (`cb`) will be executed when the `.join()` call completes _on the current server_.  This does not guarantee that other servers in the cluster have already finished running the operation.
-+ The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
 
 
 <docmeta name="displayName" value="join()">
