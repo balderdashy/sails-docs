@@ -1,4 +1,4 @@
-# addRoomMembersToRooms()
+# sails.sockets.addRoomMembersToRooms()
 
 Subscribes all members of a room to one or more additional rooms
 
