@@ -1,6 +1,6 @@
 # broadcast()
 
-Broadcast a message to a room.
+Broadcast a message to all sockets in a room.
 
 ```javascript
 sails.sockets.broadcast(roomNames, data);
