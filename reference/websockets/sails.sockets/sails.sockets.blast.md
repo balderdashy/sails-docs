@@ -43,5 +43,5 @@ sails.sockets.blast('user_logged_in', {
 > + For backwards compatibility, this method accepts both `req` and `req.socket`, but `req` is preferred.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.
 
 
-<docmeta name="displayName" value="sails.sockets.blast()">
+<docmeta name="displayName" value="blast()">
 
