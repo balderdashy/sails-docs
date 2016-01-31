@@ -2,12 +2,13 @@
 
 Subscribe all members of a room to one or more additional rooms.
 
-### Usage
-
 ```js
 sails.sockets.addRoomMembersToRooms(sourceRoom, destRooms, cb);
 ```
 
+
+
+### Usage
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
