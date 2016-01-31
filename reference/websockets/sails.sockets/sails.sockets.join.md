@@ -1,6 +1,6 @@
 # sails.sockets.join()
 
-Subscribe a socket to a generic room.
+Subscribe a socket to a room.
 
 ### Usage
 
@@ -10,10 +10,11 @@ sails.sockets.join(socket, roomName);
 
 
 |   | Argument   | Type        | Details |
-|---|------------|:-----------:|---------|
-| 1 | `socket`   | ((string)) -or- ((req)) -or- ((socket)) | The socket to be subscribed.  May be specified by the socket's id, a request socket object (`req.socket`), or a request containing such a socket (`req`).
+|---|------------|:-----------:|:--------|
+| 1 | `socket`   | ((string)) -or- ((req)) | The socket to be subscribed.  May be specified by the socket's id or an incoming socket request (`req`).
 | 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
-| 3 | `cb`       | ((function))| An optional callback which will be called with a single argument `err`.
+| 3 | _`cb`_       | ((function?))| An optional callback which will be called with a single argument (`err`) if any errors occurred.
+
 
 ### Example
 
