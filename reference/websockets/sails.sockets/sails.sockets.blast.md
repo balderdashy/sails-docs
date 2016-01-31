@@ -19,7 +19,7 @@ _Or:_
 |---|:-------------------------- | ------------------- |:----------------------------------------------------------------- |
 | 1 |        _eventName_         | ((string?))         | Optional. Defaults to `'message'`.
 | 2 |        data                | ((json))            | The data to send in the message.
-| 3 |       _socketToOmit_       | ((req?))            | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
+| 3 |       _socketToOmit_       | ((req?))            | Optional. If provided, the socket associated with this socket request will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
 
 
 
@@ -39,8 +39,7 @@ sails.sockets.blast('user_logged_in', {
 ```
 
 ### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req` also exists for HTTP requests of course, so be sure and ensure `req.isSocket === true` before passing `req` into this method.
-> + For backwards compatibility, this method accepts both `req` and `req.socket`, but `req` is preferred.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.
+> + Be sure and check `req.isSocket === true` before passing in `req` to this method. For the socket to be omitted, the current `req`  must be from a socket request, not just any HTTP request.
 
 
 <docmeta name="displayName" value="blast()">
