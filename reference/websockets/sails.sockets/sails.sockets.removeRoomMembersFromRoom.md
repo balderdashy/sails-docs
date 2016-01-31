@@ -1,6 +1,6 @@
 # sails.sockets.removeRoomMembersFromRooms()
 
-Unsubscribes all members of a room from one or more other rooms
+Unsubscribe all members of a room from one or more other rooms.
 
 ### Usage
 
