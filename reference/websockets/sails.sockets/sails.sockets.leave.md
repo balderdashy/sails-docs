@@ -26,8 +26,12 @@ In a controller action:
 
 ```javascript
 leaveFunRoom: function(req, res) {
+  if ( _.isUndefined(req.param('roomName')) ) {
+    return res.badRequest('`roomName` is required.');
+  }
+  
   if (!req.isSocket) {
-    return res.badRequest();
+    return res.badRequest('This endpoints only supports socket requests.');
   }
   
   var roomName = req.param('roomName');
@@ -35,6 +39,24 @@ leaveFunRoom: function(req, res) {
     if (err) {return res.serverError(err);}
     return res.json({
       message: 'Left a fun room called '+roomName+'!'
+    });
+  });
+}
+```
+
+
+```javascript
+kickSocketFromRoom: function(req, res) {
+  if ( _.isUndefined(req.param('socketId')) || _.isUndefined(req.param('roomName')) ) {
+    return res.badRequest('`socketId` and `roomName` parameters are required.');
+  }
+  
+  // Since this is using a socket id explicitly, instead of inferring one from `req`,
+  // we don't have to check `isSocket`.  Note that `req` is not passed in-- instead we use a string socket id.
+  sails.sockets.leave(req.param('socketId'), req.param('roomName'), function(err) {
+    if (err) {return res.serverError(err);}
+    return res.json({
+      message: 'Socket:`'+req.param('socketId')+'` was kicked from room: `'+req.param('roomName')+'`.  No more fun, ever!'
     });
   });
 }
