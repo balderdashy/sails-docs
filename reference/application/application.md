@@ -15,6 +15,9 @@ This is what is happening in the generated `app.js` file:
 var sails = require('sails');
 ```
 
+
+
+
 ### Properties
 
 The application object has a number of methods and properties which are useful.
@@ -42,6 +45,16 @@ A dictionary of all loaded [Sails hooks](http://sailsjs.org/documentation/concep
 By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](http://sailsjs.org/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
 
 See the [hooks concept documentation](http://sailsjs.org/documentation/concepts/extending-sails/hooks) for more info about hooks.
+
+##### `sails.io`
+
+The API exposed by the [`sails.sockets.*` methods](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) is flexible enough out of the box to cover the requirements of most applications, and using them will future-proof your app against possible changes in the underlying implementation.  However, if you are working on bringing some legacy code from a vanilla Socket.io app into your Sails app, it can be useful to talk to Socket.io directly.  To accomplish this, Sails provides raw access to the underlying [socket.io](http://socket.io/) server instance (`io`) as `sails.io`. See the [Socket.io docs](http://socket.io/docs/) for more information.  If you decide to use Socket.io directly, please proceed with care.
+
+> As of v0.11.4, Sails bundles `socket.io@v1.4.3` as a dependency of [sails-hook-sockets](github.com/balderdashy/sails-hook-sockets), a core hook.
+
+
+
+
 
 ### Creating a new application object (advanced)
 
