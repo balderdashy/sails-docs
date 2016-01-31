@@ -29,7 +29,7 @@ leaveFunRoom: function(req, res) {
     var roomName = req.param('roomName');
     sails.sockets.leave(req, roomName, function(err) {
       if (err) {return res.serverError(err);}
-      res.json({
+      return res.json({
         message: 'Left a fun room called '+roomName+'!'
       });
     });
