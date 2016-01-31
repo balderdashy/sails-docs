@@ -4,7 +4,7 @@
 
 Sails exposes several methods (`sails.sockets.*`) which provide a simple interface for realtime communication with connected socket clients.  This is useful for pushing events and data to connected clients in realtime, rather than waiting for them to actively request it using HTTP.  This is true regardless of whether a client sockets was connected from a browser tab, from an iOS app, or even from your favorite household IoT appliance.
 
-These methods are implemented using a built-in instance of [Socket.io](http://socket.io), which is available directly as `sails.io` (see below).  However, in almost every case, you should call the `sails.sockets.*` methods (either directly, or via a higher level abstraction such as resourceful pubsub methods).
+These methods are implemented using a built-in instance of [Socket.io](http://socket.io), which is available directly as `sails.io` (see below).  In many cases, you will want to call the methods available on `sails.sockets.*` directly; however for certain use cases, you might also want to take advantage of [resourceful pubsub methods](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub), a higher level abstraction which are used by Sails built-in [blueprint API](http://sailsjs.org/documentation/reference/blueprint-api).
 
 ### `sails.io`
 
