@@ -2,12 +2,15 @@
 
 Subscribe a socket to a room.
 
-### Usage
-
 ```js
 sails.sockets.join(socket, roomName);
 ```
 
+_Or:_
++ `sails.sockets.join(socket, roomName, cb);`
+
+
+### Usage
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
