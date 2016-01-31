@@ -1,6 +1,6 @@
 # sails-docs/concepts
 
-This section contains the "Anatomy" documentation which is eventually available at http://sailsjs.org/documentation/concepts.
+This section contains the markdown files which are compiled to HTML and eventually made available as conceptual documentation for the Sails framework at http://sailsjs.org/documentation/concepts.
 
 ### Notes
 > - This README file **is not compiled to HTML** for the website.  It is just here to explain what you're looking at.
