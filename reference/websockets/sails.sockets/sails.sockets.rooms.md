@@ -1,6 +1,6 @@
 # sails.sockets.rooms()
 
-> ### _**This method is deprecated**.  Please keep track of your rooms in app-level code._
+> _**This method is deprecated**.  Please keep track of your rooms in app-level code._
 
 ### Purpose
 Get the list of all current socket rooms
