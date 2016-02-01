@@ -54,7 +54,7 @@ Find Elixabeth by her username and steal her favorite cat, then broadcast a mess
 
 ```js
 User.findOne({username: 'elizabeth'})
-.populate('pets', { limit: 30 })
+.populate('pets', { limit: 5 })
 .exec(function(err, liz){
   if (err) return res.serverError(err);
   if (!liz) return res.notFound();
@@ -68,7 +68,7 @@ User.findOne({username: 'elizabeth'})
     // Note that we exclude the requesting socket from the broadcast.
     // Also note that, since we set `noReverse`, no "pet" events will be broadcasted
     // to Humphrey's subscribers (Liz wouldn't want us to worry them).
-    User.publishRemove(30, 'pets', 3, req, { noReverse: true });
+    User.publishRemove(liz.id, 'pets', 3, req, { noReverse: true });
     
     return res.ok();
   });
