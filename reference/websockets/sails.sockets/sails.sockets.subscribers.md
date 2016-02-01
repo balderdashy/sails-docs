@@ -1,5 +1,9 @@
 # sails.sockets.subscribers()
 
+
+Get the IDs of all sockets subscribed to a room.
+
+
 > _**This method is deprecated**._
 > 
 > If you absolutely need to retrieve the list of socket IDs in a room, you may use the lower-level `app.io.sockets.in(roomName).clients(cb)` method (see https://github.com/socketio/socket.io/#namespaceclientsfnfunction).
@@ -8,12 +12,12 @@
 >
 >For the most common use-case of "taking all members of room A and subscribing/unsubscribing them to room B", you can use the [`sails.sockets.addRoomMembersToRooms`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-add-room-members-to-rooms) and [`sails.sockets.removeRoomMembersFromRooms`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-remove-room-members-from-rooms) methods, which _do_ work cross-server.
 
-Get the IDs of all sockets subscribed to a room.
 
 
 ```javascript
 sails.sockets.subscribers(roomName, cb);
 ```
+
 
 ### Usage
 
