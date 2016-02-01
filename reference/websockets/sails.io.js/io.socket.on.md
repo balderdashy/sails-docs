@@ -1,9 +1,6 @@
 # io.socket.on()
 
-Starts listening for server-sent events from Sails with the specified `eventIdentity`.  Will trigger the provided callback function when a matching event is received.
-
-
-### Usage
+Start listening for server-sent events from Sails with the specified `eventIdentity`.  Will trigger the provided callback function when a matching event is received.
 
 ```js
 io.socket.on(eventIdentity, function (msg) {
@@ -11,16 +8,20 @@ io.socket.on(eventIdentity, function (msg) {
 });
 ```
 
+
+### Usage
+
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
 | 1 | `eventIdentity`      | ((string))   | The unique identity of a server-sent event, e.g. "recipe"
-| 2 | `callback` | ((function)) | Will be called when the server emits a message to this socket.
+| 2 | _`callback`_ | ((function?)) | Will be called when the server emits a message to this socket.
+
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `msg`     | ((object))        | Message sent from the Sails server
+| 1 | `msg`     | ((json))        | The message broadcasted from the Sails server.
 
 
 Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
@@ -29,7 +30,7 @@ Note that the callback will NEVER trigger until one of your back-end controllers
 + server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
 + server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html))
 
-###### Low-Level Socket Methods
+###### Low-Level Socket Methods (`sails.sockets`)
 + server emits a message to all known sockets (see [sails.sockets.blast()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html))
 + server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html))
 + server [broadcasts](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html) to a room in which this socket (`io.socket`) has been allowed to [join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
@@ -42,7 +43,7 @@ Listen for new orders and updates to existing orders:
 
 ```javascript
 io.socket.on('order', function onServerSentEvent (msg) {
-  // msg => {...whatever the server published/emitted...}
+  // msg => {...whatever the server broadcasted...}
 });
 ```
 
@@ -75,7 +76,8 @@ angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
 ```
 
 ### Handle Socket 'Connect' and 'Disconnect' events
-If connection to server was interrupted - server was restarted or some network issue - it is possible to handle these events and subscribe to sockets again.
+If a socket's connection to the server was interrupted-- perhaps because the server was restarted, or the client had some kind of network issue-- it is possible to handle `connect` and `disconnect` events and manually reconnect the socket again.  `sails.io.js` does this for you automatically, but you can also bind your own handlers.  While **this is not recommended for 99% of apps**, usage is documented below for completeness:
+
 ```javascript
   io.socket.on('connect', function(){
       io.socket.get('/messages');
