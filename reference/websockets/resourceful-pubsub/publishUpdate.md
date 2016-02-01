@@ -26,12 +26,16 @@ _Or:_
 
 ##### Additional Options
 
-If the `options` dictionary is provided, and it contains a `previous` property, then that property is expected to be a representation of the record's values *before* they were updated.  This may be used to determine whether or not to broadcast additional messages.  See, by default if `options.previous` is provided, `publishUpdate()` will check whether any associated records were affected by the update, and possibly send out additional notifications (if a reflexive association was changed).
+If the `options` dictionary is provided, and it contains a `previous` property, then it is expected to be a representation of the record's values *before* they were updated.  This may be used to determine whether or not to broadcast additional messages.  See, by default if `options.previous` is provided, `publishUpdate()` will check whether any associated records were affected by the update, and possibly send out additional notifications (if a reflexive association was changed).
 
 For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` association changed (e.g. from `4` to `7`), then an additional `publishRemove` call would be made to inform client sockets subscribed to user `4` that this user has lost one of its pets.  Similarly, a `publishAdd` call would be made to inform client sockets subscribed to user `7` that this user has gained a new pet.
 
 To suppress automatic broadcasts for reflexive associations, set the `options.noReverse` flag to `true`.
 
+|          Option             | Type                       | Details                                           |
+|:--------------------------- | -------------------------- |:--------------------------------------------------|
+|        `previous`           | ((dictionary))             | If provided, this dictionary will be understood as a set of previous values of updated attributes; from _before_ they were updated.  It may also be used to determine whether or not to broadcast additional messages, as described above.
+|        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
 
 ##### Behavior
 
