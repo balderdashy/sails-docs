@@ -9,12 +9,10 @@ SomeModel.unsubscribe(req, ids);
 ### Usage
 
 |   | Argument   | Type         | Details |
-|---|:-----------|:------------:|---------|
+|---|:-----------|:------------:|:--------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
 | 2 | `ids`      | ((array))    | An array of record ids (strings).
 
-
-*Note*: `unsubscribe` will only work when the request is made over a socket connection (e.g. using `io.socket.get()`), *not* over HTTP (e.g. using `jQuery.get()`).
 
 
 ### Example
@@ -32,6 +30,7 @@ User.find({name: 'Lenny'}).exec(function(err, lennies) {
 
 ### Notes
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
+> + `unsubscribe` will only work when the request is made over a socket connection (e.g. using `io.socket.get()`), *not* over HTTP (e.g. using `jQuery.get()`).
 
 
 <docmeta name="displayName" value=".unsubscribe()">
