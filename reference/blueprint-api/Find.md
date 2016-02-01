@@ -13,8 +13,6 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 ### Parameters
 
-_All parameters are optional._
-
  Parameter      | Type         | Details
  -------------- | ------------ |:---------------------------------
  model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `PUT /purchase/5`)
