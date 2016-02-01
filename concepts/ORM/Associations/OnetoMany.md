@@ -14,7 +14,7 @@ is needed on the `collection` attribute. This states which `model` attribute on 
 association is used to populate the records.
 
 ```javascript
-// myApp/api/models/user.js
+// myApp/api/models/User.js
 // A user may have many pets
 module.exports = {
   attributes: {
@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 ```javascript
-// myApp/api/models/pet.js
+// myApp/api/models/Pet.js
 // A pet may only belong to a single user
 module.exports = {
   attributes: {
