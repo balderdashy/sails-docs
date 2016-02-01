@@ -1,114 +1,98 @@
 # One-to-One
+
+**AKA "Has One"
+
 ### Overview
 
 A one-to-one association states that a model may only be associated with one other model. In order
-for the model to know which other model it is associated with, a foreign key must be included in the
-record.
+for the model to know which other model it is associated with, a foreign key must be included on one of the
+records along with a `unique` database constraint on it.
 
-### One-to-One Example
+There are currently two ways of handling this association in Waterline.
 
-In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` and viceversa, a `Pet` can only have one `User`. However, in order to query this association from both sides, you will have to create/update both models.
+### Has One Using A Collection
 
+In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` and viceversa, a `Pet` can only have one `User`. However in order to query from both sides in this example we must add a `collection` attribute to the `User` model. This allows us to call both `User.find().populate('pet')` along with `Pet.find().populate('owner')`.
 
-`myApp/api/models/pet.js`
-
-```javascript
-
-module.exports = {
-
-	attributes: {
-		name:'STRING',
-		color:'STRING',
-		owner:{
-			model:'user'
-		}
-	}
-
-}
-
-
-```
-
-`myApp/api/models/user.js`
+The two models will stay in sync by updating the `Pet` model's `owner` attribute. Adding the `unique` property ensures that only one value for each `owner` will exist in the database. The downside is that when populating from the `User` side you will always get an array back.
 
 ```javascript
-
+// myApp/api/models/Pet.js
 module.exports = {
-
-	attributes: {
-		name:'STRING',
-		age:'INTEGER',
-		pony:{
-			model: 'pet'
-		}
-	}
-
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    color: {
+      type: 'string'
+    },
+    owner:{
+      model:'user',
+      unique: true
+    }
+  }
 }
 ```
 
-Using `sails console`
-
-```sh
-
-sails> User.create({ name: 'Mike', age: 21}).exec(console.log);
-null { name: 'Mike',
-  age: 21,
-  createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
-  updatedAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
-  id: 1 }
-  
-sails> Pet.create({ name: 'Pinkie Pie', color: 'pink', owner: 1}).exec(console.log)
-null { name: 'Pinkie Pie',
-    color: 'pink',
-    owner: 1,
-    createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-    updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-    id: 2 }
-    
-sails> Pet.find().populate('owner').exec(console.log)
-null [ { name: 'Pinkie Pie',
-    color: 'pink',
-    owner: 
-     { name: 'Mike',
-       age: 21,
-       id: 1,
-       createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
-       updatedAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST) },
-    createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-    updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-    id: 2 } ]
-
-sails> User.find().populate('pony').exec(console.log)
-null [ { name: 'Mike',
-    age: 21,
-    createdAt: Thu Feb 20 2014 18:11:15 GMT-0600 (CST),
-    updatedAt: Thu Feb 20 2014 18:11:15 GMT-0600 (CST),
-    id: 2,
-    pony: undefined } ]
-
-sails> User.update({name:'Mike'},{pony:2}).exec(console.log)
-null [ { name: 'Mike',
-    age: 21,
-    createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
-    updatedAt: Thu Feb 20 2014 17:30:58 GMT-0600 (CST),
-    id: 1,
-    pony: 2 } ]
-
-sails> User.findOne(1).populate('pony').exec(console.log)
-null { name: 'Mike',
-  age: 21,
-  createdAt: Thu Feb 20 2014 17:12:18 GMT-0600 (CST),
-  updatedAt: Thu Feb 20 2014 17:30:58 GMT-0600 (CST),
-  id: 1,
-  pony: 
-   { name: 'Pinkie Pie',
-     color: 'pink',
-     id: 2,
-     createdAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-     updatedAt: Thu Feb 20 2014 17:26:16 GMT-0600 (CST),
-     owner: 1 } }
-
+```javascript
+// myApp/api/models/User.js
+module.exports = {
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    age: {
+      type: 'integer'
+    },
+    pet: {
+      collection:'pet',
+      via: 'owner'
+    }
+  }
+}
 ```
+
+### Has One Manual Sync
+
+In this example, we are associating a `Pet` with a `User`. The `User` may only have one `Pet` and viceversa, a `Pet` can only have one `User`. However in order to query from both sides a `model` property is added to the `User` model. This allows us to call both `User.find().populate('pet')` along with `Pet.find().populate('owner')`.
+
+The two models will not stay in sync however. So when updating one side you must remember to update the other side as well.
+
+```javascript
+// myApp/api/models/Pet.js
+module.exports = {
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    color: {
+      type: 'string'
+    },
+    owner:{
+      model:'user'
+    }
+  }
+}
+```
+
+```javascript
+// myApp/api/models/User.js
+module.exports = {
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    age: {
+      type: 'integer'
+    },
+    pet: {
+      model:'pet'
+    }
+  }
+}
+```
+
+
 ### Notes
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md)
 
