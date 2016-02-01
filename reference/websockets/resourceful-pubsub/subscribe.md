@@ -14,7 +14,7 @@ _Or:_
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
-| 1 | `req`      | ((req))      | The request object (`req`).
+| 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
 | 2 | `ids`      | ((array))    | An array of record ids (primary keys).
 | 3 | _`contexts`_ | ((array?))    | An optional array of change-type strings ("contexts").  If provided, the subscribing client socket will only receive messages involving the specified types of changes (e.g. if a "destroy" context is specified, the socket will receive notifications from `publishDestroy()` calls involving this record).  Otherwise, if left unspecified, the socket will hear about any published events involving this record.
 
@@ -77,7 +77,9 @@ You can omit `context` to subscribe a socket to the default contexts for that mo
 
 ### Notes
 
-> -`subscribe` will only work with requests made over a socket.io connection (e.g. using `io.socket.get()`), *not* over an http connection (e.g. using `jQuery.get()`).  See the [sails.io.js socket client documentation](http://sailsjs.org/documentation/reference/web-sockets/socket-client) for information on using client sockets to send WebSockets/Socket.io messages with Sails.
+> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
+> +`subscribe` will only work with requests made over a socket.io connection (e.g. using `io.socket.get()`), *not* over an http connection (e.g. using `jQuery.get()`).  See the [sails.io.js socket client documentation](http://sailsjs.org/documentation/reference/web-sockets/socket-client) for information on using client sockets to send WebSockets/Socket.io messages with Sails.
+
 
 
 
