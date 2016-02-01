@@ -1,6 +1,6 @@
 # Destroy (Blueprint)
 
-Delete an existing record specified by `id` from the database forever, and respond with the deleted record.
+Delete the record specified by `id` from the database forever and notify subscribed sockets.
 
 ```
 DELETE /:model/:id
