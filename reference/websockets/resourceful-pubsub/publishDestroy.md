@@ -30,7 +30,6 @@ For example, let's say a `Pet` model has an `owner` association (a _singular_, o
 
 |          Option             | Type                       | Details                                           |
 |:--------------------------- | -------------------------- |:--------------------------------------------------|
-|        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
 |        `previous`           | ((dictionary))             | If provided, this dictionary will be understood as the values of relevant attributes from the deleted record, and it may be used to determine whether or not to broadcast additional messages as described above.  It will also be included in the message broadcasted to subscribed client sockets.
 
 ##### Behavior
