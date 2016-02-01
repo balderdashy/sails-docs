@@ -3,7 +3,7 @@
 Delete an existing record specified by `id` from the database forever, and respond with the deleted record.
 
 ```
-DELETE /:model/:record
+DELETE /:model/:id
 ```
 
 This destroys the record which matches the **id** parameter and responds with a JSON dictionary representing the destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
@@ -15,12 +15,12 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))    | The primary key value of the record to destroy. For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path. For `GET` (shortcut) requests, it must be supplied in the route path.
- callback                           | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ id<br/>*(required)*                | ((string))                              | The primary key value of the record to destroy. For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path. For `GET` (shortcut) requests, it must be supplied in the route path.
+ _callback_                           | ((string?))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
-### Examples
 
-#### Destroy (REST)
+
+### Example
 
 Delete Pinkie Pie:
 
