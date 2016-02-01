@@ -20,7 +20,7 @@ This action removes a reference to some other record (the "foreign" record) from
  id | ((string)) | The desired target record's primary key value<br/><br/>e.g. `'16'` (in `/store/16/employeesOfTheMonth/7`)
  association       | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
  fk  | ((string))    | The id of the foreign record to remove from the collection association.<br/><br/>e.g. `7`
- _`callback`_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ _callback_                         | ((string))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
 ### Example
