@@ -23,16 +23,15 @@ _Attributes to change should be sent in the HTTP body as form-encoded values or 
 
 Change Applejack's hobby to "kickin":
 
-```
-PUT /pony/47
-```
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+`PUT /pony/47`
 
 ```json
 {
   "hobby": "kickin"
 }
 ```
+
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ##### Expected Response
 ```json
