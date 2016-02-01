@@ -28,6 +28,10 @@ If the `options` dictionary is provided, and it contains a `previous` property, 
 
 For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if `Pet.publishDestroy(8)` was called, and that pet (`8`) has an `owner: 11`, then an additional `publishRemove()` call would be made to inform client sockets subscribed to the associated user (`11`) that one of its pets has been lost.
 
+|          Option             | Type                       | Details                                           |
+|:--------------------------- | -------------------------- |:--------------------------------------------------|
+|        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
+|        `previous`           | ((dictionary))             | If provided, this dictionary will be understood as a set of previous values of updated attributes; from _before_ they were updated, and it may be used to determine whether or not to broadcast additional messages as described above.  It will also be included in the message broadcasted to subscribed client sockets.
 
 ##### Behavior
 
