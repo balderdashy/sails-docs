@@ -35,7 +35,7 @@ In a controller+action...  Find a user by username and broadcast a message back 
 ```js
 User.findOne({username: 'bob'}).exec(function(err, foundUser){
   if (err) return res.serverError(err);
-  if (!founduser) return res.notFound();
+  if (!foundUser) return res.notFound();
   
   // This message can contain anything you want!
   User.message(foundUser.id, {count: 12, hairColor: 'red'});
