@@ -1,4 +1,4 @@
-# Many-to-Many
+# Many-to-Many (Has and Belongs To Many)
 ### Overview
 
 A many-to-many association states that a model can be associated with many other models and vice-versa.
