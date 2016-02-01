@@ -3,8 +3,12 @@
 Broadcast a custom message about the record with the specified `id` to all sockets currently subscribed to it.
 
 ```js
-Something.message( id, data, req )
+Something.message( id, data )
 ```
+
+
+_Or:_
+- `SomeModel.message(id, data, req);`
 
 
 ### Purpose
