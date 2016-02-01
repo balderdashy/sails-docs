@@ -1,4 +1,4 @@
-# leave()
+# .leave()
 
 Unsubscribe a socket from a room.
 
