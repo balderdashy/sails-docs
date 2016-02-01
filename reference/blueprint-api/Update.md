@@ -1,6 +1,6 @@
 # Update (Blueprint)
 
-Update an existing record in the database.
+Update an existing record in the database and notify subscribed sockets that it has changed.
 
 ```
 PUT /:model/:id
