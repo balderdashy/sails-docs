@@ -18,7 +18,7 @@ io.socket.on('<model identity>', function (event) {
 });
 ```
 
-> The _model identity_ is typically the lowercased version of the model name, unless it has been manually configured in the model file.
+> The _[model identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity)_ is typically the lowercased version of the model name, unless it has been manually configured in the model file.
 
 
 ### Example
