@@ -21,8 +21,8 @@ io.socket.get(url, data, function (data, jwres){
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `resData` | ((*))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
+| 1 | `resData` | ((json))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
+| 2 | `jwres`   | ((JWR))  | The [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has a ((dictionary)) of `headers`, a ((json)) `body`, and a `statusCode` ((number)).
 
 
 ### Example
@@ -35,7 +35,8 @@ io.socket.get('/users/9', function (resData) {
 </script>
 ```
 
-
+### Notes
+> + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request) method, or to set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](http://next.sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails).
 
 <docmeta name="displayName" value="io.socket.get()">
 
