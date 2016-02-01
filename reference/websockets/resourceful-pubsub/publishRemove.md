@@ -50,11 +50,11 @@ To suppress automatic broadcasts for reflexive associations, provide an `options
 
 ### Example
 
-In a controller+action...  Find a user by username and broadcast a message back to all of its subscribers:
+Find Elixabeth by her username and steal her favorite cat, then broadcast a message about it to all of her subscribers:
 
 ```js
 User.findOne({username: 'elizabeth'})
-.populate('pets')
+.populate('pets', { limit: 30 })
 .exec(function(err, liz){
   if (err) return res.serverError(err);
   if (!liz) return res.notFound();
@@ -67,7 +67,7 @@ User.findOne({username: 'elizabeth'})
     // Broadcast a message telling anyone subscribed to Liz that Humphrey ran away.
     // Note that we exclude the requesting socket from the broadcast.
     // Also note that, since we set `noReverse`, no "pet" events will be broadcasted
-    // to Humphrey's subscribers (Liz doesn't want to worry them).
+    // to Humphrey's subscribers (Liz wouldn't want us to worry them).
     User.publishRemove(30, 'pets', 3, req, { noReverse: true });
     
     return res.ok();
