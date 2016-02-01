@@ -27,17 +27,22 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - binary
 - array
 - json
-- email
 
 ###### defaultsTo
 
-When a record is created, if no value was supplied, the record will be created with the specified `defaultsTo` value.
+When a record is created, if no value was supplied, the record will be created with the specified `defaultsTo` value. The supplied value can also be a function that waterline will run while creating the record.
 
 ```javascript
 attributes: {
   phoneNumber: {
     type: 'string',
     defaultsTo: '111-222-3333'
+  },
+  orderNumber: {
+    type: 'text',
+    defaultsTo: function() {
+      return uuid.v4();
+    }
   }
 }
 ```
@@ -171,10 +176,15 @@ Let's say you have a `User` model in your Sails app that looks like this:
 module.exports = {
   connection: 'shinyNewMySQLDatabase',
   attributes: {
-    name: 'string',
-    password: 'string',
+    name: {
+      type: 'string'
+    },
+    password: {
+      type: 'string'
+    },
     email: {
-      type: 'email',
+      type: 'string',
+      email: true
       unique: true
     }
   }
