@@ -17,9 +17,9 @@ _Or:_
 
 ### Usage
 
-|   |     Argument        | Type                | Details    |
-|---|:--------------------|---------------------|:-----------|
-| 1 | `id`                |  ((string))         |   The `id` of the record whose subscribers will receive this message.       
+|   |     Argument        | Type                   | Details    |
+|---|:--------------------|------------------------|:-----------|
+| 1 | `id`                |  ((string)),((number)) |   The `id` of the record whose subscribers will receive this broadcast. <br/><br/> e.g. `4`
 | 2 | `changes`           |  ((dictionary))     |   The dictionary of changed attributes and their new values to announce.  This may consist of any JSON--serializable data you like, but must _at-minimum_ contain the `id` (primary key) of the record.
 | 3 | _`req`_             |  ((req?))            |   If provided, then the requesting socket _will be excluded_ from the broadcast.
 | 4 | _`options`_         |  ((dictionary?))     | A dictionary of additional options.  See below.
