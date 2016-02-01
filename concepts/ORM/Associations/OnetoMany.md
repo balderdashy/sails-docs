@@ -1,4 +1,6 @@
-# One-to-Many (Has Many)
+# One-to-Many
+
+**AKA "Has Many"**
 
 ### Overview
 
