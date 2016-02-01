@@ -1,15 +1,15 @@
 # io.socket.get()
 
-Sends a virtual GET request to a Sails server using Socket.io.
-
-
-### Usage
+Send a socket request (virtual GET) to a Sails server using Socket.io.
 
 ```js
-io.socket.get(url, data, function (data, jwres){
+io.socket.get(url, data, function (resData, jwres){
   // ...
 });
 ```
+
+### Usage
+
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|:--------|
