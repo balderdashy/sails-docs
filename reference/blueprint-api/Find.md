@@ -35,7 +35,9 @@ Find up to 30 of the newest purchases in our database:
 GET /purchase?sort=createdAt DESC&limit=30
 ```
 
-##### Expected Response  &nbsp; [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+
+##### Expected Response
 
 e.g. 
 ```json
