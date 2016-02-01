@@ -1,16 +1,14 @@
 # Destroy (Blueprint)
 
-Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
+Delete an existing record specified by `id` from the database forever, and respond with the deleted record.
 
 ```
 DELETE /:model/:record
 ```
 
-Destroys the model instance which matches the **id** parameter. Responds with a JSON object representing the newly destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
+This destroys the record which matches the **id** parameter and responds with a JSON dictionary representing the destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
-
-Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
+Additionally, a `destroy` event will be published to all sockets subscribed to the record room.  And all sockets currently subscribed to the record will be unsubscribed from it.
 
 
 ### Parameters
@@ -24,17 +22,16 @@ Consequently, all sockets currently subscribed to the instance will be unsubscri
 
 #### Destroy (REST)
 
-Delete Pinkie Pie.
+Delete Pinkie Pie:
 
-##### Route
 `DELETE /pony`
 
-##### JSON Request Body
 ```json
 {
   "id": 4
 }
 ```
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ##### Expected Response
 
@@ -47,15 +44,6 @@ Delete Pinkie Pie.
   "updatedAt": "2013-11-26T22:55:19.951Z"
 }
 ```
-
-#### Destroy (Shortcuts)
-
-##### Route
-`GET /pony/destroy/4`
-
-##### Expected Response
-
-Same as above.
 
 
 
