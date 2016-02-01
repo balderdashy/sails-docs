@@ -1,4 +1,4 @@
-# sails.sockets.emit( `socketIds`, [`event`], `data`)
+# sails.sockets.emit()
 
 > _**This method is deprecated**.  Use  [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) instead._
 
