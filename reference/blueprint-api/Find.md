@@ -17,13 +17,14 @@ _All parameters are optional._
 
  Parameter      | Type         | Details
  -------------- | ------------ |:---------------------------------
- _*_              | ((string))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
- _where_          | ((string))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
- _limit_          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
- _skip_           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
- _sort_           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
+ model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `PUT /purchase/5`)
+ _*_              | ((string?))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
+ _where_          | ((string?))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
+ _limit_          | ((number?))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
+ _skip_           | ((number?))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
+ _sort_           | ((string?))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
  _populate_       | ((string))   | If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See [here](http://sailsjs.org/documentation/reference/waterline-orm/populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
- _callback_       | ((string))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
+ _callback_       | ((string?))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
 
 
 
