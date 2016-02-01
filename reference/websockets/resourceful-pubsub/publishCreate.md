@@ -16,9 +16,8 @@ _Or:_
 
 |   |     Argument        | Type                | Details    |
 |---|:--------------------|---------------------|:-----------|
-| 1 | `id`                |  ((string)),((number))         | The `id` of the record whose subscribers will receive this broadcast (e.g. `4`).
-| 2 | `data`           |  ((dictionary))     |   A dictionary of the new record's attributes and their values to announce.  This may consist of any JSON-serializable data you like, but must _at-minimum_ contain the primary key of the record (usually `id`).
-| 3 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
+| 1 | `data`           |  ((dictionary))     |   A dictionary of the new record's attributes and their values to announce.  This may consist of any JSON-serializable data you like, but must _at-minimum_ contain the primary key of the record (usually `id`).
+| 2 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
 
 
 ##### Behavior
