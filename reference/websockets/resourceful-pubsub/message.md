@@ -20,10 +20,7 @@ _Or:_
 | 3 | _`req`_               |  ((req?))            |   If provided, then the requesting socket will *not* receive the broadcast.
 
 
-`message()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.
-
-
-The event data received by the subscribed sockets will be a dictionary with the following properties:
+`message()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
 + **verb**  - a ((string)) constant: `'messaged'`
 + **id** - the record's `id` which is a ((string)) or ((number))
