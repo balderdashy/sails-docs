@@ -12,17 +12,17 @@ io.socket.get(url, data, function (data, jwres){
 ```
 
 |   | Argument   | Type         | Details |
-|---|------------|:------------:|---------|
+|---|------------|:------------:|:--------|
 | 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
-| 2 | `data`     | ((*))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
-| 3 | `callback` | ((function)) | Optional callback- if provided, will be called when the server responds.
+| 2 | _`data`_     | ((json?))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
+| 3 | _`callback`_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
-|---|-----------|:------------:|---------|
+|---|-----------|:------------:|:--------|
 | 1 | `resData` | ((json))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((JWR))  | The [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has a ((dictionary)) of `headers`, a ((json)) `body`, and a `statusCode` ((number)).
+| 2 | `jwres`   | ((dictionary))  | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object consisting of `headers` (a ((dictionary))), `body` (((json))), and `statusCode` (a ((number))).
 
 
 ### Example
