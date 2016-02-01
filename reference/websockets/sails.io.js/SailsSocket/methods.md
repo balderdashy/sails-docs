@@ -36,5 +36,16 @@ io.socket.reconnect();
 
 > While an instance is in a disconnected state, all of its properties may be changed.  This allows you to disconnect an instance from one server and reconnect it to another without losing its event bindings or queued requests.
 
+
+##### .removeAllListeners()
+
+Stop listening for all server-related events on a SailsSocket instance.  Note that this includes `connect` and `disconnect` events!
+
+```js
+io.socket.removeAllListeners();
+```
+
+
+
 <docmeta name="displayName" value="Methods">
 
