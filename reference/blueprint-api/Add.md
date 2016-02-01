@@ -17,11 +17,11 @@ This action pushes a reference to some other record (the "foreign" record) onto 
 ### Parameters
 
  Parameter                          | Type                                    | Details
-:---------------------------------- | --------------------------------------- |:---------------------------------
- `model`          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
- `id`                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
- `association`       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
- `fk` | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection association.<br/><br/>e.g. `47`
+-----------------------------------:| --------------------------------------- |:---------------------------------
+ model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
+ id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
+ association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
+ fk | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection association.<br/><br/>e.g. `47`
  _callback_                         | ((string?))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
