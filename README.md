@@ -34,10 +34,10 @@ That depends on what kind of edit you are making.  Most often, you'll be making 
 On the other hand, if you are making an edit related to an unreleased feature in an upcoming version; most commonly as an accompaniment a feature proposal or open pull request to Sails or a related project, then you will want to edit the branch for the next, unreleased version of Sails (sometimes called "edge").
 
 
-| `sails-docs` Branch    | Documentation for Sails Version...                                   | Preview At...      |
+| Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
 |-------------------------------------------------------------------------------------|------------------------|--------------------|
 | [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.org](http://preview.sailsjs.org)
-| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | [Upcoming 0.12 release](https://github.com/balderdashy/sails/tree/master)           | [next.sailsjs.org](http://preview.sailsjs.org)
+| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Upcoming v0.12 Release           | [next.sailsjs.org](http://preview.sailsjs.org)
 
 
 #### How are these docs compiled and pushed to the website?
