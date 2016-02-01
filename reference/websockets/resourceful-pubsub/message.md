@@ -25,8 +25,8 @@ _Or:_
 
 The event data received by the subscribed sockets will be a dictionary with the following properties:
 
-+ **verb**  - a constant: `'messaged'` (a ((string)))
-+ **id** - the record's `id` (((string)) or ((number)))
++ **verb**  - a ((string)) constant: `'messaged'`
++ **id** - the record's `id` which is a ((string)) or ((number))
 + **data** - the ((dictionary)) of custom data that was provided when calling `.message()` on the backend
 
 
