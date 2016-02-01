@@ -31,7 +31,7 @@ By default, when `publishRemove()` is called, it checks whether any associated r
 
 For example, let's say a `User` model has a `pets` association (a _plural_, or "collection" association) which connects each User record with none, one, or several distinct Pet records.  On the other side, let's say each Pet record has an `owner` association (a _singular_ or "model" association), which means it can have exactly zero or one owners.  If `User.publishRemove(4, 'pets', 9)` is called under these circumstances, then not only will it broadcast the normal "removedFrom" message to user 4, it will also broadcast a "updated" message to pet 9 (indicating that its `owner` has changed).
 
-To suppress automatic broadcasts for reflexive associations, provide an `options` dictionary and set the `options.noReverse` flag to `true`.  In general, you should not have to set the `options.noReverse` flag unless you are writing your own implementation of `publishRemove` for a model.
+To suppress automatic broadcasts for reflexive associations, provide an `options` dictionary and set the `options.noReverse` flag to `true`.
 
 
 ##### Behavior
