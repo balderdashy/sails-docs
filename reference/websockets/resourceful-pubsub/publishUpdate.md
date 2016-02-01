@@ -34,8 +34,8 @@ To suppress automatic broadcasts for reflexive associations, set the `options.no
 
 |          Option             | Type                       | Details                                           |
 |:--------------------------- | -------------------------- |:--------------------------------------------------|
-|        `previous`           | ((dictionary))             | If provided, this dictionary will be understood as a set of previous values of updated attributes; from _before_ they were updated.  It may also be used to determine whether or not to broadcast additional messages, as described above.
 |        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
+|        `previous`           | ((dictionary))             | If provided, this dictionary will be understood as a set of previous values of updated attributes; from _before_ they were updated, and it may be used to determine whether or not to broadcast additional messages as described above.  It will also be included in the message broadcasted to subscribed client sockets.
 
 ##### Behavior
 
