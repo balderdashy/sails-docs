@@ -16,7 +16,7 @@ _Or:_
 |---|:-----------|:------------:|---------|
 | 1 | `req`      | ((req))      | The request object (`req`).
 | 2 | `ids`      | ((array))    | An array of record ids (primary keys).
-| 3 | `contexts` | ((array))    | An optional array of change-type strings ("contexts").  If provided, the subscribing client socket will only receive messages involving the specified types of changes (e.g. if a "destroy" context is specified, the socket will receive notifications from `publishDestroy()` calls involving this record).  Otherwise, if left unspecified, the socket will hear about any published events involving this record.
+| 3 | _`contexts`_ | ((array?))    | An optional array of change-type strings ("contexts").  If provided, the subscribing client socket will only receive messages involving the specified types of changes (e.g. if a "destroy" context is specified, the socket will receive notifications from `publishDestroy()` calls involving this record).  Otherwise, if left unspecified, the socket will hear about any published events involving this record.
 
 
 
