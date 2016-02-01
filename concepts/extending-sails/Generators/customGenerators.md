@@ -179,7 +179,7 @@ scope.whatIsThis = 'an example file created at '+scope.createdAt;
 ...
 ```
 
-####Configuring the targets dictionary
+#### Configuring the targets dictionary
 
 Now, let's take a look at the `targets` dictionary in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated. 
 
