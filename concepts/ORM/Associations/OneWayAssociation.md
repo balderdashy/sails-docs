@@ -11,34 +11,34 @@ A one way association is where a model is associated with another model.  You co
 In this example, we are associating a `User` with a `Pet` but not a `Pet` with a `User`.
 
 ```javascript
-// myApp/api/models/pet.js
+// myApp/api/models/Pet.js
 module.exports = {
-	attributes: {
-		name: {
-		  type: 'string'
-		},
-		color: {
-		  type: 'string'
-	}
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    color: {
+      type: 'string'
+    }
+  }
 }
 ```
 
 ```javascript
-// myApp/api/models/user.js
+// myApp/api/models/User.js
 module.exports = {
-	attributes: {
-		name: {
-		  type: 'string'
-		},
-		age: {
-		  type: 'integer'
-		},
-		pony:{
-			model: 'pet'
-		}
-	}
+  attributes: {
+    name: {
+      type: 'string'
+    },
+    age: {
+      type: 'integer'
+    },
+    pony:{
+      model: 'pet'
+    }
+  }
 }
-
 ```
 
 Now that the association is setup, you can populate the pony association.
