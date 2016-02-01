@@ -1,6 +1,6 @@
 # One-to-One
 
-**AKA "Has One"
+**AKA "Has One"**
 
 ### Overview
 
