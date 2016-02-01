@@ -11,7 +11,7 @@ SomeModel.unsubscribe(req, ids);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
-| 2 | `ids`      | ((array))    | An array of record ids (strings).
+| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
 
 
 
