@@ -16,7 +16,7 @@ _Attributes to change should be sent in the HTTP body as form-encoded values or 
  Parameter                          | Type                                                    | Details
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
  id<br/>*(required)*                | ((number))<br/>*-or-*<br/>((string))                    | The primary key value of the record to update.<br/><br/>e.g. `PUT /product/5`
- *                                  | ((string))<br/>((number))<br/>((object))<br/>((array))  | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
+ *                                  | ((json))                                                | For `POST` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
  _callback_                         | ((string))                                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 ### Example
