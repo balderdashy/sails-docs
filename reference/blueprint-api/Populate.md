@@ -1,14 +1,46 @@
 # Populate (Blueprint)
 
-If the specified association is plural ("collection"), this action returns the list of associated records as a JSON array of objects.  If the specified association is singular ("model"), this action returns the associated record as a JSON object.
+Populate and return foreign record(s) for the given association of this record.
+
 
 ```
-GET /:model/:record/:association
+GET /:model/:id/:association
 ```
+
+If the specified association is plural ("collection"), this action returns the list of associated records as a JSON array of dictionaries.  If the specified association is singular ("model"), this action returns the associated record as a JSON dictionaries.
+
+
+  Parameter      | Type         | Details
+ :-------------- | ------------ |:---------------------------------
+ model           | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
+ id              | ((string))   | The primary key of the parent record.<br/><br/>e.g. `'47'` (in `GET /purchase/47/cashier`)
+ association     | ((string))   | The name of the association.<br/><br/>e.g. `'cashier'` (in `GET /purchase/47/cashier`) or `'products'` (in `GET /purchase/47/products`)
+
 
 ### Example
 
-Populate the `cashier` who conducted purchase #47.
+Populate the `cashier` who conducted purchase #47:
+
+`GET /purchase/47/cashier`
+
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+
+##### Expected response
+
+```json
+{
+  "amount": 99.99,
+  "id": 47,
+  "cashier": {
+    "name": "Dolly",
+    "id": 7,
+    "createdAt": "2012-05-14T01:21:05.000Z",
+    "updatedAt": "2013-01-15T01:18:40.000Z"
+  },
+  "createdAt": "2013-10-14T01:22:00.000Z",
+  "updatedAt": "2013-10-15T01:20:54.000Z"
+}
+```
 
 **Using [jQuery](http://jquery.com/):**
 
@@ -42,23 +74,6 @@ curl http://localhost:1337/purchase/47/cashier
 ```
 
 
-Should return:
-
-```json
-{
-  "amount": 99.99,
-  "id": 47,
-  "cashier": {
-    "name": "Dolly",
-    "id": 7,
-    "createdAt": "2012-05-14T01:21:05.000Z",
-    "updatedAt": "2013-01-15T01:18:40.000Z"
-  },
-  "createdAt": "2013-10-14T01:22:00.000Z",
-  "updatedAt": "2013-10-15T01:20:54.000Z"
-}
-
-```
 
 
 ### Notes
