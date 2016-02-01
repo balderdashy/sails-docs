@@ -16,8 +16,8 @@ This action pushes a reference to some other record (the "foreign" record) onto 
 
 ### Parameters
 
- Parameter                          | Type                                    | Details
-------------------------------------| --------------------------------------- |:---------------------------------
+ Parameter                          | Type                                    | Details                          
+:-----------------------------------| --------------------------------------- |:---------------------------------
  model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
  id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
