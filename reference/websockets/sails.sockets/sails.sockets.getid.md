@@ -1,4 +1,4 @@
-# getId()
+# .getId()
 
 Parse the socket ID from an incoming socket request (`req`).
 
