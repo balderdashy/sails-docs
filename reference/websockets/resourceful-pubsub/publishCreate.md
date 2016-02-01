@@ -1,90 +1,122 @@
-# .publishCreate( `data`,[`request`] )
-### Purpose
-PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.  PublishCreate is called automatically by the [blueprint `create` action](https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record).
+# .publishCreate()
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Data to Send        |   `object`              |   Yes       |
-| 2 | Request      |   `Request object` |   No       |
+Broadcast a conventional message indicating that a new record has been created in this model.
 
-The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the `watch` method.  It also subscribes all sockets "watching" the model class to the new instance.  The socket message to subscribers will include the following properties:
 
-+ **id** - the `id` attribute of the new model instance
-+ **verb**  - `"created"` (a string)
-+ **data** - an object-- the attributes and values of the new model instance
+```js
+Something.publishCreate( data )
+```
 
-#### `data`
-An object containing the attributes and values of the new model instance.
+_Or:_
+- `Something.publishCreate(data, req);`
 
-#### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
 
-### Example Usage
-UsersController.js
+
+### Usage
+
+|   |     Argument        | Type                | Details    |
+|---|:--------------------|---------------------|:-----------|
+| 1 | `id`                |  ((string)),((number))         | The `id` of the record whose subscribers will receive this broadcast (e.g. `4`).
+| 2 | `data`           |  ((dictionary))     |   A dictionary of the new record's attributes and their values to announce.  This may consist of any JSON-serializable data you like, but must _at-minimum_ contain the primary key of the record (usually `id`).
+| 3 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
+
+
+##### Behavior
+
+`publishCreate()` broadcasts to all sockets "watching" this model-- that is, those client sockets which have joined the model's "class room" via [`.watch()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch))-- and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  `publishCreate()` also subscribes these "watching" client sockets to the new record using `.subscribe()` in order to be notified of future broadcasts from `publishUpdate()`, `publishDestroy()`, etc.
+
+The broadcasted event data received on the client is a dictionary with the following properties:
+
++ **verb**  - a ((string)) constant: `'created'`
++ **id** - the new record's `id` which is a ((string)) or ((number))
++ **data** - a ((dictionary)) containing the values provided as `data` when `publishCreate()` was called from your Sails backend.
+
+
+
+
+### Example
+
+In a controller action which processes signups:
+
 ```javascript
-module.exports = {
-    
-  testSocket: function(req,res){
+var Passwords = require('machinepack-passwords');
 
-        var nameSent = req.param('name');
-    
-        if (nameSent && req.isSocket){
-    
-          User.create({name:nameSent}).exec(function created(err,newGuy){
-            User.publishCreate({id:newGuy.id,name:newGuy.name});
-            console.log('A new user called '+newGuy.name+' has been created');
-          });
-    
-        } else if (req.isSocket){
-    
-          User.watch(req);
-          console.log('User with socket id '+sails.sockets.id(req)+' is now subscribed to the model class \'users\'.');
-        
-        } else {
-    
-          res.view();
-        
-        }
-    }
-}
-
-    // Don't forget to handle your errors
- 
-```
-
-views/users/testSocket.ejs
-```html
-
-<script type="text/javascript">
-window.onload = function subscribeAndListen(){
-    // When the document loads, send a request to users.testSocket
-    // The controller code will subscribe you to the model 'users'
-    io.socket.get('/users/testSocket/');
-
-    // Listen for the event called 'user' emited by the publishCreate() method.
-    io.socket.on('user',function(obj){
-      if (obj.verb == 'created') {
-         var data = obj.data;
-         console.log('User '+data.name+' has been created.');
+// Encrypt a string using the BCrypt algorithm.
+Passwords.encryptPassword({
+  password: req.param('password'),
+}).exec({
+  error: function (err){ return res.serverError(err); },
+  success: function (encryptedPassword){
+    User.create({
+      username: req.param('username'),
+      passsword: encryptedPassword,
+      securityQuestion: {
+        whichQuestion: req.param('securityQuestionId'),
+        answer: req.param('securityAnswer')
       }
-    });
-};
+    }).exec(function (err, newUser){
+      if (err) return res.negotiate(err);
+      
+      // Inform logged-in administrators (if there are any) that a new user has signed up.
+      // (note that we deliberately exclude the security question and encrypted password,
+      //  but send everything else through.  We know this will only be received by client
+      //  sockets which were allowed to `.watch()`.)
+      User.publishCreate(_.omit(newUser, 'password'), req );
+      
+      // Log in.
+      req.session.me = newUser.id;
+      
+      // Signup completed successfully!
+      return res.ok();
+    });//</User.create()>
+  }
+});//</Passwords.encryptPassword()>
+```
 
-function makeNew(){
+The endpoint will respond with a simple 200 (because of `res.ok()`), but all "watching" client sockets (in this scenario, open browser tabs of admin users) will receive a `user` event:
 
-    // Send the new users name to the 'testSocket' action on the 'users' controller
+```js
+// e.g. in the browser...
+io.socket.on('user', function (event){
+  switch (event.verb) {
+    'created':
+      // This is where code that handles this socket event should go.
+      // (e.g. to update the user interface)
+      console.log(event);
+      // => see below for the contents of `event`
+      break;
+    default: 
+      console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
+  }
+});
+```
 
-    io.socket.get('/users/testSocket/',{name:'Walter'});
+In this case, the logged message would look something like this:
+
+```js
+{
+  verb: 'created',
+  id: 4,
+  data: {
+    username: 'lizzy',
+    createdAt: '1808-01-19T13:00:00.000Z',
+    updatedAt: '1808-01-19T13:00:00.000Z'
+  }
 }
-
-</script>
-<div class="addButton" onClick="makeNew()">Click Me to add a new 'Walter' ! </div>
 ```
 
 
 
+### Notes
 
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
+> + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
+> + It is important to understand that this method **does not actually do anything to your database**-- it is purely a conventional way of _announcing_ that changes have occurred.  Underneath the covers, the resourceful pubsub methods are just using combinations of `sails.sockets` methods.
+> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
+> + See also [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch) for some important security considerations.
+
+
+
+
 <docmeta name="displayName" value=".publishCreate()">
+
 
