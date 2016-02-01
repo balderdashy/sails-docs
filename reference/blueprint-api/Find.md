@@ -15,7 +15,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
  Parameter      | Type         | Details
  -------------- | ------------ |:---------------------------------
- model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `PUT /purchase/5`)
+ model          | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase`)
  _*_              | ((string?))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
  _where_          | ((string?))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
  _limit_          | ((number?))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
