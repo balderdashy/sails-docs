@@ -30,7 +30,7 @@ If the `options` dictionary is provided, and it contains a `previous` property, 
 
 For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` association changed (e.g. from `4` to `7`), then an additional `publishRemove` call would be made to inform client sockets subscribed to user `4` that this user has lost one of its pets.  Similarly, a `publishAdd` call would be made to inform client sockets subscribed to user `7` that this user has gained a new pet.
 
-To suppress automatic broadcasts for reflexive associations, set the `options.noReverse` flag to `true`.  In general, you should not have to set the `options.noReverse` flag unless you are writing your own implementation of `publishUpdate` for a model.
+To suppress automatic broadcasts for reflexive associations, set the `options.noReverse` flag to `true`.
 
 
 ##### Behavior
