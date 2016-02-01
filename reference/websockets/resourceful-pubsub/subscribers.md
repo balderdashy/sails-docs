@@ -39,6 +39,5 @@ Controller Code
     });
 
 ```
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
+
 <docmeta name="displayName" value=".subscribers()">
