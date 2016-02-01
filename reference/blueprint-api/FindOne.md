@@ -1,6 +1,6 @@
 # Find One (Blueprint)
 
-Look up a single record from the database.
+Look up the record with the specified `id` from the database and (if possible) subscribe to the record to hear about any future changes.
 
 ```
 GET /:model/:id
