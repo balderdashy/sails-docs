@@ -6,8 +6,7 @@ Subscribes the requesting client socket to one or more database records (i.e. mo
 SomeModel.subscribe(req, ids);
 ```
 
-_Or_
-
+_Or:_
 - `SomeModel.subscribe(req, ids, contexts);`
 
 
