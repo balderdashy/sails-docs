@@ -24,7 +24,7 @@ io.socket.request(options, function (resData, jwres)){
 |------------|:------------:|:--------|
 | `method`      | ((string))   | The HTTP request method; e.g. `'GET'`.
 | `url`         | ((string))   | The destination URL path; e.g. "/checkout".
-| _`data`_    | ((dictionary?))        | Optional. If provided, this request data will be JSON-encoded and included as the virtual HTTP body.
+| _`data`_    | ((json?))        | Optional. If provided, this request data will be JSON-encoded and included as the virtual HTTP body.
 | _`headers`_ | ((dictionary?))        | Optional. If provided, this dictionary of string headers will be sent as virtual request headers.
 
 
