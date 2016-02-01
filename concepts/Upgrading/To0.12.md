@@ -44,7 +44,8 @@ Without question, the biggest change in Sails v0.12 is to the API of the low-lev
 
 ## SQL Adapter Performance
 
-> TODO: add summary of improvements to sails-mysql and sails-postgresql
+[Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
+
 
 
 
