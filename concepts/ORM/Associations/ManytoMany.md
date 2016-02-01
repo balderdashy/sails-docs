@@ -15,7 +15,133 @@ association is used to populate the records.
 Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
 `Pet` records and a `Pet` may have multiple owners.
 
+```javascript
+// myApp/api/models/user.js
+// A user may have many pets
+module.exports = {
+  attributes: {
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    },
 
+    // Add a reference to Pet
+    pets: {
+      collection: 'pet',
+      via: 'owners',
+      dominant: true
+    }
+  }
+};
+```
+```javascript
+// myApp/api/models/pet.js
+// A pet may have many owners
+module.exports = {
+  attributes: {
+    breed: {
+      type: 'string'
+    },
+    type: {
+      type: 'string'
+    },
+    name: {
+      type: 'string'
+    },
+
+    // Add a reference to User
+    owners: {
+      collection: 'user',
+      via: 'pets'
+    }
+  }
+};
+```
+
+Now that the `User` and `Pet` models have been created and the join table has been setup
+automatically, we can start associating records and querying the join table. To do this lets add a
+`User` and `Pet` and then associate them together.
+
+There are two ways of creating associations when a many-to-many association is used. You can associate
+two existing records together or you can associate a new record to the existing record. To show how
+this is done we will introduce the special methods attached to a `collection` attribute: `add` and `remove`.
+
+Both these methods are sync methods that will queue up a set of operations to be run when an instance
+is saved. If a primary key is used for the value on an `add`, a new record in the join table will be
+created linking the current model to the record specified in the primary key. However if an object
+is used as the value in an `add`, a new model will be created and then the primary key of that model
+will be used in the new join table record. You can also use an array of previous values.
+
+> When using `.save()` a populate call will be performed to return the newly saved data to you. If you would prefer this not to happen you can use an optional config flag in the `.save()` command. Example: `.save({ populate: false }, function(err) {})`
+
+## When Both Records Exist
+
+```javascript
+// Given a User with ID 2 and a Pet with ID 20
+
+User.findOne(2).exec(function(err, user) {
+  if(err) // handle error
+
+  // Queue up a record to be inserted into the join table
+  user.pets.add(20);
+
+  // Save the user, creating the new associations in the join table
+  user.save(function(err) {});
+});
+```
+
+## With A New Record
+
+```javascript
+User.findOne(2).exec(function(err, user) {
+  if(err) // handle error
+
+  // Queue up a new pet to be added and a record to be created in the join table
+  user.pets.add({ breed: 'labrador', type: 'dog', name: 'fido' });
+
+  // Save the user, creating the new pet and associations in the join table
+  user.save(function(err) {});
+});
+```
+
+## With An Array of Existing Records
+
+```javascript
+// Given a User with ID 2 and a Pet with ID 20, 24, 31
+
+User.findOne(2).exec(function(err, user) {
+  if(err) // handle error
+
+  // Queue up a record to be inserted into the join table
+  user.pets.add([ 20, 24, 31 ]);
+
+  // Save the user, creating the new pet and associations in the join table
+  user.save(function(err) {});
+});
+```
+
+Removing associations is just as easy using the `remove` method. It works the same as the `add`
+method except it only accepts primary keys as a value. The two methods can be used together as well.
+
+```javascript
+User.findOne(2).exec(function(err, user) {
+  if(err) // handle error
+
+  // Queue up a new pet to be added and a record to be created in the join table
+  user.pets.add({ breed: 'labrador', type: 'dog', name: 'fido' });
+
+  // Queue up a join table record to remove
+  user.pets.remove(22);
+
+  // Save the user, creating the new pet and syncing the associations in the join table
+  user.save(function(err) {});
+});
+```
+
+
+<!--
 ### Many-to-Many Example
 
 In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the `Pets` with all of the `Users`.  If everything worked properly, we should be able to query any `User` and see that they 'own' all of the `Pets`.  Furthermore, we should be able to query any `Pet` and see that it is 'owned' by every `User`.
@@ -324,6 +450,7 @@ sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisU
 
 
 ```
+-->
 ### Notes
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
 
