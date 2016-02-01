@@ -20,8 +20,6 @@ _Or:_
 | 2 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
 
 
-##### Behavior
-
 `publishCreate()` broadcasts to all sockets "watching" this model-- that is, those client sockets which have joined the model's "class room" via [`.watch()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch))-- and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  `publishCreate()` also subscribes these "watching" client sockets to the new record using `.subscribe()` in order to be notified of future broadcasts from `publishUpdate()`, `publishDestroy()`, etc.
 
 The broadcasted event data received on the client is a dictionary with the following properties:
