@@ -69,9 +69,16 @@ module.exports = {
 ```
 
 
-### Blueprints and `.subscribe()`
+### Blueprints and Resourcful Pubsub
+
+##### Blueprints and `.subscribe()`
 
 By default, the **Find** and **Find One** blueprint actions will call [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) automatically when a socket request is used. This subscribes the requesting socket to each of the returned records.  However, the **Update** and **Destroy** actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
+
+
+##### Blueprints and `.watch()`
+
+By default, the **Find** blueprint action will call [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch) on the model.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
 
 
 ### Notes
