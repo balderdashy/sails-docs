@@ -1,9 +1,6 @@
 # io.socket.delete()
 
-Sends a virtual DELETE request to a Sails server using Socket.io.
-
-
-### Usage
+Send a virtual DELETE request to a Sails server using Socket.io.
 
 ```js
 io.socket.delete(url, data, function (data, jwres){
@@ -11,11 +8,14 @@ io.socket.delete(url, data, function (data, jwres){
 });
 ```
 
+
+### Usage
+
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
 | 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
 | 2 | `data`     | ((*))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
-| 3 | `callback` | ((function)) | Optional callback- if provided, will be called when the server responds.
+| 3 | _`callback`_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 
