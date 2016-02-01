@@ -15,7 +15,7 @@ This action removes a reference to some other record (the "foreign" record) from
 ### Parameters
 
  Parameter                          | Type                                    | Details
-:---------------------------------- | --------------------------------------- |:---------------------------------
+ ----------------------------------:| --------------------------------------- |:---------------------------------
  `model` | ((string)) | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'store'` (in `/store/16/employeesOfTheMonth/7`)
  `id` | ((string)) | The desired target record's primary key value<br/><br/>e.g. `'16'` (in `/store/16/employeesOfTheMonth/7`)
  `association`       | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
