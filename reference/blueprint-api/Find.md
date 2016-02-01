@@ -35,9 +35,7 @@ Find up to 30 of the newest purchases in our database:
 GET /purchase?sort=createdAt DESC&limit=30
 ```
 
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
-
-##### Expected Response
+##### Expected Response  &nbsp; [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 e.g. 
 ```json
@@ -78,10 +76,6 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
   console.log(purchases);
 });
 ```
-
-##### Using POSTman
-
-[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ##### Using Angular
 
