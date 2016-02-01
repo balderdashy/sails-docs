@@ -4,7 +4,6 @@
 ### Table of Contents
 
 1. **Assets**
-  0. Making an arbitrary change so the docs on the preview site get refreshed.
   1. Default Tasks
   2. Disabling Grunt
   3. Task Automation
