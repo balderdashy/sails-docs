@@ -9,9 +9,9 @@ Using the automatically-created [`io.socket`] instance:
 ```js
 io.socket.request(options, function (resData, jwres)){
   // ...
-  // jwr.headers
-  // jwr.statusCode
-  // jwr.body === data
+  // jwres.headers
+  // jwres.statusCode
+  // jwres.body === resData
   // ...
 });
 ```
