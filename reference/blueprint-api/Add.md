@@ -22,7 +22,7 @@ This action pushes a reference to some other record (the "foreign" record) onto 
  `id`                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  `association`       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
  `fk` | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection association.<br/><br/>e.g. `47`
- _`callback`_                         | ((string?))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
+ _callback_                         | ((string?))                              | If specified, a JSONP response will be sent (instead of JSON). This is the name of the client-side javascript function to call, passing results as the first (and only) argument<br/> <br/> e.g. `?callback=myJSONPHandlerFn`
 
 
 ### Example
