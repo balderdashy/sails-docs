@@ -1,4 +1,4 @@
-# join()
+# .join()
 
 Subscribe a socket to a room.
 
