@@ -14,7 +14,8 @@ Something.subscribe(req, ids);
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
 | 2 | `ids`      | ((array))    | An array of record ids (primary key values).
 
-When a client socket is subscribed to a record, it will receive all messages about it which are broadcasted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()` and `.publishRemove()`.
+
+When a client socket is subscribed to a record, it is a member of its "record room" aka "instance room".  That means it will receive all messages about that record which are broadcasted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()`, `.publishRemove()`, and `.message()`.
 
 
 ### Example
