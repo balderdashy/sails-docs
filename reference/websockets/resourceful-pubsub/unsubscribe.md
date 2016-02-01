@@ -3,7 +3,7 @@
 Unsubscribe the requesting client socket from one or more database records.
 
 ```js
-SomeModel.unsubscribe(req, ids);
+Something.unsubscribe(req, ids);
 ```
 
 ### Usage
