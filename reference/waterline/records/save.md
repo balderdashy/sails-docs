@@ -40,10 +40,9 @@ User.find().exec(
 
 ```
 ### Notes
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+> + This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+> + If you have any associations on the model they will currently be populated when you call `.save()`. This could cause issues with memory so to prevent this, you can take advantage of an experimental feature: passing in an options argument with `populate: false` set. Example: `.save({ populate: false }, function() {})`. 
 
 
-<docmeta name="methodType" value="association">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".save()">
 
