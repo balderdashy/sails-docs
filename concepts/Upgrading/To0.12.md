@@ -33,6 +33,15 @@ Without question, the biggest change in Sails v0.12 is to the API of the low-lev
 > TODO: expand
 
 
+## Resourceful Pubsub Methods
+
+
++  `.subscribers()` has been deprecated (for same reasons as above)
+
+> TODO: expand
+
+
+
 ## SQL Adapter Performance
 
 > TODO: add summary of improvements to sails-mysql and sails-postgresql
