@@ -33,6 +33,10 @@ For example, let's say a `User` model has a `pets` association (a _plural_, or "
 
 To suppress automatic broadcasts for reflexive associations, provide an `options` dictionary and set the `options.noReverse` flag to `true`.
 
+|          Option             | Type                       | Details                                           |
+|:--------------------------- | -------------------------- |:--------------------------------------------------|
+|        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
+
 
 ##### Behavior
 
