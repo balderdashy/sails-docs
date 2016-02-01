@@ -1,6 +1,6 @@
 # sails.sockets.emit( `socketIds`, [`event`], `data`)
 
-> ### _**This method is deprecated**.  Use  [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) instead._
+> _**This method is deprecated**.  Use  [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) instead._
 
 ### Purpose
 Send a message to one or more sockets by id.
