@@ -9,8 +9,8 @@ Something.publishDestroy( id )
 
 
 _Or:_
-- `SomeModel.publishDestroy(id, req);`
-- `SomeModel.publishDestroy(id, req, options);`
+- `Something.publishDestroy(id, req);`
+- `Something.publishDestroy(id, req, options);`
 
 
 
@@ -18,50 +18,47 @@ _Or:_
 
 |   |     Argument        | Type                | Details    |
 |---|:--------------------|---------------------|:-----------|
-| 1 | `id`                |  ((string)),((number))         |   The `id` of the record whose subscribers will receive this broadcast (e.g. `4`).
-| 2 | _`req`_             |  ((req?))           |   If provided, then the requesting socket _will be excluded_ from the broadcast.
+| 1 | `id`                |  ((string)),((number))         | The `id` of the record whose subscribers will receive this broadcast (e.g. `4`).
+| 2 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
 | 3 | _`options`_         |  ((dictionary?))    | A dictionary of additional options.  See below.
 
 ##### Additional Options
 
-If the `options` dictionary is provided, and it contains a `previous` property, then that property is expected to be a representation of the record's values *before* they were updated.  This may be used to determine whether or not to broadcast additional messages.  See, by default if `options.previous` is provided, `publishDestroy()` will check whether any associated records were affected by the update, and possibly send out additional notifications (if a reflexive association was changed).
+If the `options` dictionary is provided, and it contains a `previous` property, then that property is expected to be a representation of choice values in the record from *before* it was destroyed.  This may be used to determine whether or not to broadcast additional messages.  See, by default if `options.previous` is provided, `publishDestroy()` will check whether any associated records were affected by the destruction, and possibly send out additional notifications (if a reflexive association was changed).
 
-For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if the data sent with the call to `publishDestroy` indicates that the value of a pet's `owner` association changed (e.g. from `4` to `7`), then an additional `publishRemove` call would be made to inform client sockets subscribed to user `4` that this user has lost one of its pets.  Similarly, a `publishAdd` call would be made to inform client sockets subscribed to user `7` that this user has gained a new pet.
-
-To suppress automatic broadcasts for reflexive associations, set the `options.noReverse` flag to `true`.  In general, you should not have to set the `options.noReverse` flag unless you are writing your own implementation of `publishDestroy` for a model.
+For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if `Pet.publishDestroy(8)` was called, and that pet (`8`) has an `owner: 11`, then an additional `publishRemove()` call would be made to inform client sockets subscribed to the associated user (`11`) that one of its pets has been lost.
 
 
 ##### Behavior
 
 `publishDestroy()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
-+ **verb**  - a ((string)) constant: `'updated'`
++ **verb**  - a ((string)) constant: `'destroyed'`
 + **id** - the record's `id` which is a ((string)) or ((number))
-+ **data** - the ((dictionary)) of changed properties that was provided as `changes` when calling `.publishDestroy()` on the backend
-+ **previous** - if present, this ((dictionary)) contains the previous values of the now-updated attributes for convenience
++ **previous** - if present, this ((dictionary)) contains the values provided as `previous` when `publishDestroy()` was called from your Sails back-end.
 
 
 
 ### Example
 
-In a controller+action...  Find a user by username and broadcast a message back to all of its subscribers:
+In a controller+action...  Destroy a pet and broadcast a message to all of its subscribers:
 
 ```js
-// Dye Bob's hair red.
-User.update({username: 'bob'}).set({
-  hairColor: 'red'
-}).exec(function(err, bobs){
+// Destroy Hermione the cat.
+Pet.destroy({id: 78}).exec(function(err, hermiones){
   if (err) return res.serverError(err);
-  if (bobs.length > 1) return res.serverError('Consistency violation: somehow multiple users exist with the same username? There must be a bug elsewhere in the code base.');
-  if (bobs.length < 1) return res.notFound();
+  if (hermiones.length < 1) return res.notFound();
   
-  // Broadcast a message telling anyone subscribed to Bob that his hair is now red.
-  // (note that we exclude the requesting socket from the broadcast, and also include Bob's previous hair color)
-  User.publishUpdate(bobs[0].id, {
-    hairColor: 'red'
-  }, req, {
+  // Broadcast a message telling anyone subscribed to Hermione the cat that, sadly, she has been destroyed.
+  // (note that she _did_ live a long, full life, and also that _we DO NOT exclude_ the requesting socket
+  //  from the broadcast because we pass in `undefined`.  Also note that we do include a few relevant properties
+  //  from Hermione's remains via the `previous` option; e.g. for use in updating our client-side code.)
+  Pet.publishDestroy(hermiones[0].id, undefined, {
     previous: {
-      hairColor: bobs[0].hairColor
+      name: hermiones[0].name,
+      age: hermiones[0].age,
+      coatColor: hermiones[0].coatColor,
+      species: hermiones[0].species,
     }
   });
   
@@ -69,13 +66,13 @@ User.update({username: 'bob'}).set({
 });
 ```
 
-The endpoint will respond with a simple 200 (because of `res.ok()`), but all subscribed client sockets will receive a `user` event:
+The endpoint will respond with a simple 200 (because of `res.ok()`), but all subscribed client sockets will receive a `pet` event:
 
 ```js
 // e.g. in the browser...
-io.socket.on('user', function (event){
+io.socket.on('pet', function (event){
   switch (event.verb) {
-    'updated':
+    'destroyed':
       console.log(event);
       // => see below
       break;
@@ -89,13 +86,13 @@ In this case, the logged message would look something like this:
 
 ```js
 {
-  verb: 'updated',
-  id: 49,
-  data: {
-    hairColor: 'red'
-  },
+  verb: 'destroyed',
+  id: 78,
   previous: {
-    hairColor: 'pink'
+    name: 'Hermione',
+    age: 24,
+    coatColor: 'pink',
+    species: 'Felis catus',
   }
 }
 ```
@@ -110,108 +107,4 @@ In this case, the logged message would look something like this:
 
 
 
-
-
-
-
-
-
-# .publishDestroy( `{id}`, [`request`], [`options`] )
-### Purpose
-Publish the destruction of a model
-
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
-| 2 | Request      |   `request object` |   No       |
-| 3 | Additional options | `object` | No |
-
-`publishDestroy()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
-
-The socket message is an object with the following properties:
-
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"destroyed"` (a string)
-+ **previous** - an object--if present, contains the attributes and values of the object that was destroyed.
-
-#### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
-
-#### `options.previous` 
-If this is set, it is expected to be a representation of the model before it was destroyed.  This may be used to send out additional notifications to associated records.
-
-### Example Usage
-
-UsersController.js
-```javascript
-module.exports = {
-    
-  testSocket: function(req,res){
-
-        var nameSent = req.param('name');
-    
-        if (nameSent && req.isSocket){
-    
-          User.findOne({name:nameSent}).exec(function findIt(err,foundHim){
-            User.destroy({id:foundHim.id}).exec(function destroy(err){
-              User.publishDestroy(foundHim.id);
-            });
-          });
-    
-        } else if (req.isSocket){
-    
-        User.find({}).exec(function(e,listOfUsers){
-          User.subscribe(req.socket,listOfUsers);
-        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
-        });
-    
-        } else {
-    
-          res.view();
-        
-        }
-
-  }
-}
-
-    // Don't forget to handle your errors
- 
-```
-
-views/users/testSocket.ejs
-```html
-
-<script type="text/javascript">
-window.onload = function subscribeAndListen(){
-    // When the document loads, send a request to users.testSocket
-    // The controller code will subscribe you to all of the 'users' model instances (records)
-    socket.get('/users/testSocket/');
-
-    // Listen for the event called 'message' emited by the publishDestroy() method.
-    socket.on('message',function(obj){
-      if (obj.verb == 'destroyed') {
-        console.log('User '+obj.previous.name+' has been destroyed .');
-      }
-    });
-};
-
-function destroy(){
-
-    // Send the name to the testSocket action on the 'Users' contoller
-    socket.get('/users/testSocket/',{name:'Walter'});
-}
-
-</script>
-<div class="addButton" onClick="destroy()">Click Me to destroy user 'Walter' ! </div>
-
-
-```
-
-### Notes
-> Any string arguments passed must be the ID of the record.
-
-
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".publishDestroy()">
-
