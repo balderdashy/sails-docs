@@ -10,8 +10,6 @@ _Or:_
 + `Something.publishAdd(id, association, added, req);`
 
 
-By convention, this message indicates that a new child record has been added to the specified collection association of this parent record (and that client-side sockets receiving the message should update their user interface to match).  In other words, if a `Tutorial` model has an associated collection of "comments" (referring to records of the `Comment` model), then you might call `Tutorial.publishAdd()` to notify connected clients that a new comment has been added to the tutorial.
-
 
 ### Usage
 
@@ -21,7 +19,20 @@ By convention, this message indicates that a new child record has been added to 
 | 2 |        `association`          | ((string))                | The name of the association that the child record was added to (e.g. `"comments"`)
 | 3 |        `added`                | ((number)),((string)),((dictionary))    | Either a number or string to represent the id (primary key) of the child record being added, **or a dictionary** of properties describing it (must contain an `id` key!).  Either way, this information will be bundled in the socket message which is broadcasted.
 | 4 | _`req`_             |  ((req?))              | If provided, then the requesting socket _will be excluded_ from the broadcast. 
+| 5 | _`options`_         |  ((dictionary?))       | A dictionary of additional options.  See below.
 
+##### Additional Options
+
+By default, when `publishAdd()` is called, it checks whether any associated records were also affected by the addition, and possibly sends out additional notifications (if a reflexive association was changed).
+
+For example, let's say a `User` model has a `pets` association (a _plural_ aka "collection" association) which connects each User record with none, one, or several distinct Pet records.  On the other side, let's say each Pet record has an `owner` association (a _singular_ or "model" association), which means it can have exactly zero or one owners.  If `User.publishAdd(4, 'pets', 9)` is called under these circumstances, then not only will it broadcast the normal "addedTo" message to user 4, it will also broadcast an "updated" message to pet 9 (indicating that its `owner` has changed).
+
+To suppress automatic broadcasts for reflexive associations, provide an `options` dictionary and set the `options.noReverse` flag to `true`.
+
+
+##### Behavior
+
+By convention, this message indicates that a new child record has been added to the specified collection association of this parent record (and that client-side sockets receiving the message should update their user interface to match).  In other words, if a `Tutorial` model has an associated collection of "comments" (referring to records of the `Comment` model), then you might call `Tutorial.publishAdd()` to notify connected clients that a new comment has been added to the tutorial.
 
 When your app calls `publishAdd()`, a socket message is broadcasted to all sockets subscribed to the record's room (i.e. via the `subscribe()` resourceful pubsub method) and the model identity is used as the event name.
 
@@ -110,7 +121,6 @@ Whereas in the latter case, note that `added` is also present thanks to the ((di
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
 > + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
 > + If you are using [Sails' blueprint API](http://sailsjs.org/documentation/reference/blueprint-api), this resourceful pubsub method is called automatically by built-in code within the blueprints hook in Sails core.  The cleanest way to customize this, or any other behavior bundled in a blueprint API, is to override it with a custom action.
-> + If you are looking for information about the `noReverse` flag, see the documentation for `publishUpdate`.  In general, you should not have to set this argument unless you are writing your own implementation of `publishAdd` for a model.
 
 
 <docmeta name="displayName" value=".publishAdd()">
