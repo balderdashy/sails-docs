@@ -35,6 +35,8 @@ Find up to 30 of the newest purchases in our database:
 GET /purchase?sort=createdAt DESC&limit=30
 ```
 
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+
 ##### Expected Response
 
 e.g. 
@@ -55,6 +57,7 @@ e.g.
 ]
 ```
 
+
 ##### Using jQuery
 
 > See [jquery.com](http://jquery.com/) for more documentation.
@@ -64,6 +67,21 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
   console.log(purchases);
 });
 ```
+
+
+##### Using sails.io.js
+
+> See [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js) for more documentation.
+
+```javascript
+io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
+  console.log(purchases);
+});
+```
+
+##### Using POSTman
+
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ##### Using Angular
 
@@ -77,15 +95,6 @@ $http.get('/purchase?sort=createdAt DESC')
 });
 ```
 
-##### Using sails.io.js
-
-> See [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js) for more documentation.
-
-```javascript
-io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
-  console.log(purchases);
-});
-```
 
 ##### Using cURL
 
