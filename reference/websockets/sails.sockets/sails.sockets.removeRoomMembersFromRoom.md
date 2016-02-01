@@ -1,4 +1,4 @@
-# removeRoomMembersFromRooms()
+# .removeRoomMembersFromRooms()
 
 Unsubscribe all members of a room from one or more other rooms.
 
