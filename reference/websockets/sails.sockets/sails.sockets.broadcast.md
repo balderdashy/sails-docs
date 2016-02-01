@@ -1,4 +1,4 @@
-# broadcast()
+# .broadcast()
 
 Broadcast a message to all sockets in a room.
 
