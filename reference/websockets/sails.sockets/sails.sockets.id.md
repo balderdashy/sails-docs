@@ -1,22 +1,22 @@
 # sails.sockets.id()
 
-Gets the ID of a request socket object.
+リクエストのソケットオブジェクトのIDを取得します。
 
 ```javascript
 sails.sockets.id(socket);
 ```
 
-### Usage
+### 使い方
 
-|   |          Argument           | Type                | Details
+|   |          引数           | 型                | 詳細
 | - | --------------------------- | ------------------- | -----------
-| 1 |           socket            | ((Socket))          | A request socket (WebSocket/Socket.io) object <br/> e.g. `req.socket`.
+| 1 |           socket            | ((Socket))          | リクエストのソケット(WebSocket/Socket.io)オブジェクト<br/> 例: `req.socket`.
 
 
-Once acquired, the socket object's ID can be used to send direct messages to that socket (see [sails.sockets.emit](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html)) or get information about the rooms that the socket is subscribed to (see [sails.sockets.socketRooms](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.rooms.html)).
+ソケットオブジェクトのIDを一旦取得すると、それを使ってそのソケットへのダイレクトメッセージを送信（[sails.sockets.emit](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html)を御覧ください）したり、そのソケットがサブスクライブしているルームの情報を取得（(see [sails.sockets.socketRooms](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.rooms.html)を御覧ください）できます。
 
 
-### Example
+### 使用例
 ```javascript
 // Controller action
 
@@ -31,8 +31,8 @@ getSocketID: function(req, res) {
 ```
 
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+### 備考
+> + ここでの"request socket"はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。`req.socket`はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で`req.socket`を使う前に`req.isSocket == true`であることを確認して下さい。
 
 <docmeta name="uniqueID" value="sailssocketsid240053">
 <docmeta name="displayName" value="sails.sockets.id()">

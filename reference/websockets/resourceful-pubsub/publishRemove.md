@@ -1,29 +1,29 @@
 # .publishRemove( `{id}`,`attribute`, `idRemoved`, [`request`], [`options`] )
-### Purpose
-Publishes a notification when an associated record is removed to a model's collection.  For example, if a `User` model has an association with the `Pet` model so that a user can have one or more pets available in its `pets` attribute, then any time a pet is removed from a user's `pets` collection, `publishRemove` may be called.
+### 目的
+関連付けられたレコードにモデルコレクションが削除された時に通知を発行します。例えば、`User`モデルが`Pet`モデルへの関連付けを持っていて、ユーザが１つまたは複数のペットを`pets`属性に持てるような場合で、ユーザとペットの関連付けが削除された時に`publishRemove`がコールされます。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
-| 2 | Attribute of associated collection       |   `string`              |   Yes      |
-| 3 | ID of associated record that was removed      |   `int`, `string` |   Yes       |
-| 4 | Request      |   `request object` |   No       |
-| 5 | Additional Options |   `object` | No |
+| 1 | 更新されたレコードのID|   `int`, `string`    |   はい      |
+| 2 | 関連付けられたレコードの属性       |   `string`              |   はい      |
+| 3 | 関連付けを削除された関連レコードのID      |   `int`, `string` |   はい       |
+| 4 | リクエスト      |   `request object` |   いいえ       |
+| 5 | 追加のオプション |   `object` | いいえ |
 
-`publishRemove()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+`publishRemove()`はモデル識別子をイベント名として利用し、ソケットメッセージを送信します。メッセージは`.subscribe`モデルメソッドにを経由してサブスクライブをした全てのソケットに送信されます。
 
-The socket message is an object with the following properties:
+ソケットメッセージは以下のプロパティを含むオブジェクトです。:
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"removedFrom"` (a string)
-+ **attribute** - the name of the model attribute that was removed from
-+ **removedId** - the ID of the record that was removed
++ **id** - モデルインスタンスの`id`属性
++ **verb**  - `"removedFrom"` (文字列)
++ **attribute** - 削除されたモデルあ属性の名前
++ **removedId** - 削除されたレコードのID
 
 #### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
+この引数が含まれていればそのリクエストに結びついているソケットは通知を*受け取りません*。
 
 #### `options.noReverse`
-See the documentation for `publishUpdate` for information about `options.noReverse`.  In general, you should not have to set this argument unless you are writing your own implementation of `publishRemove` for a model.
+`options.noReverse`に関しては`publishUpdate`のドキュメントをご覧ください。一般的にモデルに対してど記事の`publishRemove`実装を行っていないかぎりはこの引数を使うべきではありません。
 
 
 <docmeta name="uniqueID" value="publishRemove468150">

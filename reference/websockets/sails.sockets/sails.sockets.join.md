@@ -1,22 +1,22 @@
 # sails.sockets.join()
 
-Subscribes a socket to a generic room.
+一般的なroomをsocketでサブスクライブします。
 
-### Usage
+### 使い方
 
 ```js
 sails.sockets.join(socket, roomName);
 ```
 
 
-|   | Argument   | Type        | Details |
+|   | 引数   | 型        | 詳細 |
 |---|------------|:-----------:|---------|
-| 1 | `socket`   | ((string)) -or- ((socket)) | The socket to be subscribed.  May be specified by the socket's id or a raw socket object.
-| 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
+| 1 | `socket`   | ((string)) あるいは ((socket)) | サブスクライブするソケットソケットのIDまたはソケットオブジェクトで特定可能。
+| 2 | `roomName` | ((string))  | ソケットがサブスクライブするroomの名前。roomが存在しなければ新規作成されます。
 
-### Example
+### 使用例
 
-In a controller action:
+コントローラアクションで:
 
 ```javascript
 subscribeToFunRoom: function(req, res) {
@@ -28,10 +28,10 @@ subscribeToFunRoom: function(req, res) {
 }
 ```
 
-*Note: `req.socket` is only valid if the action is triggered via a socket request, e.g. `socket.get('/subscribeToFunRoom/someRoomName')`*
+*備考:`req.socket`はアクションがソケットリクエストによってトリガーされた時にのみ有効です。例：`socket.get('/subscribeToFunRoom/someRoomName')`*
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+### 備考
+> + ここでの"request socket"はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。`req.socket`はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で`req.socket`を使う前に`req.isSocket == true`であることを確認して下さい。
 
 <docmeta name="uniqueID" value="sailssocketsjoin958690">
 <docmeta name="displayName" value="sails.sockets.join()">

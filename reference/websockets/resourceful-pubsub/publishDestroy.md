@@ -1,28 +1,28 @@
 # .publishDestroy( `{id}`, [`request`], [`options`] )
-### Purpose
-Publish the destruction of a model
+### 目的
+モデルの削除を通知します。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Destroyed Record |`int`, `string`  |   Yes  |
-| 2 | Request      |   `request object` |   No       |
-| 3 | Additional options | `object` | No |
+| 1 | 削除されたレコードのID |`int`, `string`  |   はい  |
+| 2 | リクエスト      |   `request object` |   いいえ       |
+| 3 | 追加のオプション | `object` | いいえ |
 
-`publishDestroy()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+`publishDestroy()`はモデルの識別子をイベント名として利用します。このメッセージは`.subscribe`モデルメソッドを通じてモデルインスタンスをサブスクライブした全てのソケットに送信されます。
 
-The socket message is an object with the following properties:
+ソケットメッセージは以下の属性を含んだオブジェクトです:
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"destroyed"` (a string)
-+ **previous** - an object--if present, contains the attributes and values of the object that was destroyed.
++ **id** - モデルインスタンスの`id`属性
++ **verb**  - `"destroyed"` (文字列)
++ **previous** - オブジェクト。もし存在したら削除されたオブジェクトの属性と値を持っています。
 
 #### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
+この引数が含まれていればそのリクエストに結びついているソケットは通知を*受け取りません*。
 
 #### `options.previous` 
-If this is set, it is expected to be a representation of the model before it was destroyed.  This may be used to send out additional notifications to associated records.
+もしセットされていれば削除前の、モデルを表しています。これは関連付けられているレコードに関して追加の通知を送るのに使えます。
 
-### Example Usage
+### 使用例
 
 UsersController.js
 ```javascript
@@ -56,7 +56,7 @@ module.exports = {
   }
 }
 
-    // Don't forget to handle your errors
+    // エラーのハンドリングを忘れずに
  
 ```
 
@@ -89,8 +89,8 @@ function destroy(){
 
 ```
 
-### Notes
-> Any string arguments passed must be the ID of the record.
+### 備考
+> 渡される全ての母子列はレコードのIDでなければいけません。
 
 <docmeta name="uniqueID" value="publishDestroy732227">
 <docmeta name="methodType" value="pubsub">

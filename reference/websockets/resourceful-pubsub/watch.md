@@ -1,16 +1,16 @@
 # .watch(`request`)
 
-### Purpose
-This subscribes a client to publishCreate events for the model.  Any connections that are "watching" the model class will be automatically subscribed to new model instances that are created using the blueprint `create` method.
+### 目的
+モデルに対するpublishCreateイベントをサブスクライブさせます。モデルクラスを「ウオッチ」している全てのソケットはblueprintの`create`メソッドを利用して作成された新しいモデルインスタンスを自動的にサブスクライブします。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | Request   | `request object`  | Yes        |
+| 1 | リクエスト   | `request object`  | はい        |
 
-*Note*: `watch` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
+*備考*:`watch`はsocket.ioでの接続 (例：`io.socket.get()`など)のみで有効であり、HTTPでの接続(例：`jQuery.get()`)では*無効*です。
 
-### Blueprints and .watch()
-> By default, the blueprint `find` and `findOne` actions will call `.watch()` on the model class.  This behavior can be changed for all models by setting the `sails.config.blueprints.autoWatch` to `false`, or for a specific model by setting `autoWatch` to `false` in the model's class file.
+### Blueprintsと.watch()
+> デフォルトではblueprintの`find`と`findOne`アクションがモデルクラスの`.watch()`をコールします。この振る舞いはモデル設定で`sails.config.blueprints.autoWatch`を`false`にすることや、特定のモデルのモデルクラスファイルの`autoWatch`を`false`にすることで変更ができます。 
 
 
 <docmeta name="uniqueID" value="watch67265">

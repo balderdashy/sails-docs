@@ -1,13 +1,13 @@
 # io.socket.request()
 
-Sends a virtual request to a Sails server using Socket.io.
+Socket.ioを使ってSailsサーバに仮想的なリクエストを送信します。
 
-This function is very similar to `io.socket.get()`, `io.socket.post()`, etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
+リクエストのヘッダーやパラメータ、メソッド、URLへの低レベルなアクセスが提供されているところ以外は`io.socket.get()`や`io.socket.post()`などと極めて似ています。
 
-> This function is provided by the `sails.io.js` JavaScript client, and is accessible in the **browser**.
+この関数は`sails.io.js`のJavaScriptクライアントによって提供されており、**ブラウザ** からアクセス可能です。
 
 
-### Usage
+### 使い方
 
 ```js
 io.socket.request(options, function (data, jwr)){
@@ -20,7 +20,7 @@ io.socket.request(options, function (data, jwr)){
 ```
 
 
-### Example
+### 使用例
 
 ```javascript
 io.socket.request({

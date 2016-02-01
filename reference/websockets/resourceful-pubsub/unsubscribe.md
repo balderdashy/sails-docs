@@ -1,21 +1,21 @@
 # .unsubscribe(`request`,`records`,[`contexts`])
-### Purpose
-This method will unsubscribe a socket from one or more model instances.
+### 目的
+そのメソッド一つまたは複数のモデルインスタンスに対するソケットのサブスクライブを解除します。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か  |
 |---|---------------------|---------------------|------------|
-| 1 | Request             | `Request object`    | Yes        |
-| 2 | Records             | `[]`, `object`      | Yes        |
-| 3 | Contexts to unsubscribe from | `string`, `array` |  No |
+| 1 | リクエスト             | `Request object`    | はい        |
+| 2 | レコード             | `[]`, `object`      | はい        |
+| 3 | 寒サブスクライブ解除をするコンテキスト | `string`, `array` |  いいえ |
 
-*Note*: `unsubscribe` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
+*備考*:`unsubscribe`はsocket.ioでの接続 (例：`io.socket.get()`など)のみで有効であり、HTTPでの接続(例：`jQuery.get()`)では*無効*です。
 
 #### `context`
 
-See `.subscribe()` for a discussion of pubsub contexts.  Omit this argument to unsubscribe a socket from all contexts.
+Pubsubのコンテキストに関しての議論は`.subscribe()`を御覧ください。この引数を省略すると全てのコンテキストに関してサブスクライブを解除します。
 
-### Example Usage
-Controller Code
+### 使用例
+コントローラコード
 ```javascript
 User.findOne({id: 123}).exec(function(err, userInstance) {
     User.unsubscribe(req.socket, userInstance);

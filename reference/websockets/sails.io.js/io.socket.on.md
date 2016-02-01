@@ -1,9 +1,9 @@
 # io.socket.on()
 
-Starts listening for server-sent events from Sails with the specified `eventIdentity`.  Will trigger the provided callback function when a matching event is received.
+指定された`eventIdentity`でSailsから発信されたサーバー側送信のイベントをリッスンし始めます。これは対応するイベントがトリガーされた時にコールバック関数をトリガーします。
 
 
-### Usage
+### 使い方
 
 ```js
 io.socket.on(eventIdentity, function (msg) {
@@ -11,34 +11,34 @@ io.socket.on(eventIdentity, function (msg) {
 });
 ```
 
-|   | Argument   | Type         | Details |
+|   | 引数   | 型         | 詳細 |
 |---|------------|:------------:|---------|
-| 1 | `eventIdentity`      | ((string))   | The unique identity of a server-sent event, e.g. "recipe"
-| 2 | `callback` | ((function)) | Will be called when the server emits a message to this socket.
+| 1 | `eventIdentity`      | ((string))   | サーバ側送信イベントのユニークな識別子。（例："recipe"）
+| 2 | `callback` | ((function)) | このソケットにサーバがメッセージを送った時に呼び出されるコールバック
 
-##### Callback
+##### コールバック
 
-|   | Argument  | Type         | Details |
+|   | 引数  | 型         | 詳細 |
 |---|-----------|:------------:|---------|
-| 1 | `msg`     | ((object))        | Message sent from the Sails server
+| 1 | `msg`     | ((object))        | Sailsサーバから送られたメッセージ
 
 
-Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
+バックエンドのコントローラやモデル、サービスなどがメッセージをソケットに送信しないかぎりこのコールバックは呼び出されないということにご注意下さい。一般的にこれは以下の方法によって実現します。:
 
-###### Resourceful Pubsub Methods
-+ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
-+ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html))
+###### リソースフルなPubsubメソッド
++ サーバはSubscribeしているソケットにレコードに関してのメッセージをPublishします。([Model.publishUpdate()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html)と[Model.publishDestroy()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html)、[Model.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html)を御覧ください)
++ サーバは許可されている全てのウォッチャーに対してモデルに`eventIdentity`と同じ識別子のレコードがツッカされた旨を通知します。([Model.publishCreate(http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) と [Model.watch()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html)を御覧ください)
 
-###### Low-Level Socket Methods
-+ server emits a message to all known sockets (see [sails.sockets.blast()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html))
-+ server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html))
-+ server [broadcasts](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html) to a room in which this socket (`io.socket`) has been allowed to [join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
+###### 低レベルでのソケットメソッド
++ サーバは既知のすべてのソケットに対してメッセージを送信します。([sails.sockets.blast()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html)を御覧ください。)
++ サーバはソケットのユニーク識別子を使って特定のソケット(`io.socket`)にメッセージを送信します([sails.sockets.emit()](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html)を御覧ください。)
++ サーバはソケット(`io.socket`)が[join](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) することを許可されているroomに対してメッセージを[ブロードキャスト](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html)します。（ソケットは接続中に限り、つまりブラウザのタブが開いている間に限りサブスクライブするということを覚えておいて下さい）
 
 
 
-### Example
+### 例
 
-Listen for new orders and updates to existing orders:
+既存のorderへの変更と新規のorderをListenする。:
 
 ```javascript
 io.socket.on('order', function onServerSentEvent (msg) {
@@ -46,9 +46,9 @@ io.socket.on('order', function onServerSentEvent (msg) {
 });
 ```
 
-##### Another example, this time using Angular:
+##### 別の例。今回はAngularを使って。:
 
-> Note that this Angular example assumes the backend calls `publishCreate()` at some point.
+> 備考:このAngularの例は同じポイントの`publishCreate()`をコールすることを想定しています。
 
 ```javascript
 angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
@@ -74,12 +74,12 @@ angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
 });
 ```
 
-### Notes
->+ When listening for resourceful pubsub calls, the `eventIdentity` is the same as the identity of the calling model (e.g. if you have a model "UserComment", the identity is "usercomment".)
->+ For context-- these types of server-sent events are sometimes referred to as ["comet"](http://en.wikipedia.org/wiki/Comet_(programming)) messages.
+### 備考
+>+ リソースフルなPubsubコースをListenしている時、`eventIdentity`はコールされているモデルのIdentityと一緒です。（例："UserComment"というモデルが有る場合、識別子は"usercomment"です。）
+>+ コンテキストに関して。このようなサーバ側送信のイベントは["comet"](http://en.wikipedia.org/wiki/Comet_(programming))を参考にしていることがあります。
 
-### Handle Socket 'Connect' and 'Disconnect' events
-If connection to server was interrupted - server was restarted or some network issue - it is possible to handle these events and subscribe to sockets again.
+### ソケットの'Connect'と'Disconnect'イベントをハンドルする
+サーバへのコネクションが阻害された時、つまりはサーバがリスタートしたりネットワークに問題が生じた時、これらのイベントをハンドルしてソケットをサブスクライブし直すことができます。
 ```javascript
   io.socket.on('connect', function(){
       io.socket.get('/messages');

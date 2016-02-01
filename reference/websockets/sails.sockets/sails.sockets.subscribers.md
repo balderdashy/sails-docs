@@ -1,18 +1,18 @@
 # sails.sockets.subscribers()
 
-Get the IDs of all sockets subscribed to a room.
+roomをサブスクライブしている全てのソケットのIDを取得します。
 
 ```javascript
 sails.sockets.subscribers(roomName);
 ```
 
-### Usage
+### 使い方
 
-|   |          Argument           | Type                | Details
+|   |          引数           | 型                | 詳細
 | - | --------------------------- | ------------------- | -----------
-| 1 |        roomName             | ((string))          | The name of the room whose socket ids should be retrieved. <br/> e.g. `'supportchat'`
+| 1 |        roomName             | ((string))          | ソケットのIDを取得したいroomの名前。<br/>例: `'supportchat'`
 
-### Example
+### 使用例
 
 ```javascript
 sails.sockets.subscribers('supportchat');
@@ -21,8 +21,8 @@ sails.sockets.subscribers('supportchat');
 
 <!--
 
-  Wrote this, then took this out because it's needlessly complex.
-  See sails101/low-level-sockets for more like it.
+　書いてはみたものの取り除くことにしました。なぜならこれは不必要に複雑なので。
+  これに関して詳しくはsails101/low-level-socketsを見てください。
   ~mike
 
 ```javascript

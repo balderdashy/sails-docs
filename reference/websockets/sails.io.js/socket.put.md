@@ -1,9 +1,9 @@
 # socket.put()
 
-Sends a virtual PUT request to a Sails server using Socket.io.
+仮想的なPUTリクエストをSocket.ioを使っているサーバに送信します。
 
 
-### Usage
+### 使い方
 
 ```js
 io.socket.put(url, data, function (data, jwres){
@@ -11,21 +11,21 @@ io.socket.put(url, data, function (data, jwres){
 });
 ```
 
-|   | Argument   | Type         | Details |
+|   | 引数   | 型         | 詳細 |
 |---|------------|:------------:|---------|
-| 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
-| 2 | `data`     | ((*))        | Optional request data- if provided, will be JSON-encoded and included as the virtual HTTP body
-| 3 | `callback` | ((function)) | Optional callback- if provided, will be called when the server responds.
+| 1 | `url`      | ((string))   | 宛先のURLパス。（例："/checkout"）
+| 2 | `data`     | ((*))        | （オプションのリクエストデータ）存在する場合、JSONエンコードされ、仮想的なHTTPボディーにインクルードされます。
+| 3 | `callback` | ((function)) | （オプションのコールバック）存在する場合、サーバがレスポンスを返した時にコールされます。
 
-##### Callback
+##### コールバック
 
-|   | Argument  | Type         | Details |
+|   | 引数  | 型         | 詳細 |
 |---|-----------|:------------:|---------|
-| 1 | `resData` | ((*))        | Data received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((JWR))      | The [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
+| 1 | `resData` | ((*))        | Sailsサーバから返されたデータ(=== `jwres.body`、HTTPレスポンスボディと同等)
+| 2 | `jwres`   | ((JWR))      | [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) オブジェクト。`headers`と`body`、`statusCode`を持っています。
 
 
-### Example
+### 使用例
 
 ```html
 <script>

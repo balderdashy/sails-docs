@@ -1,18 +1,18 @@
 # sails.sockets.emit( `socketIds`, [`event`], `data`)
-### Purpose
-Send a message to one or more sockets by ID.
+### 目的
+IDを使って、一つもしくは複数のソケットにメッセージを送信します。
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
+### 概要
+#### パラメータ
+|   |          記述        | 入力できるデータ型 | 必須か |
 |---|-----------------------------|---------------------|------------|
-| 1 |           IDs of sockets to receive message        | `string`, `array`            | Yes         |
-| 2 |           Event name        | `string`            | No         |
-| 3 |           Message data        | `object`            | Yes         |
+| 1 |          メッセージを受け取るソケットのID       | `string`, `array`            | はい         |
+| 2 |           イベント名        | `string`            | いいえ         |
+| 3 |           メッセージのデータ        | `object`            | はい         |
 
-### Example Usage
+### 使用例
 ```javascript
-// Controller action
+// コントローラアクション
 
 sayHiToFriend: function(req, res) {
     var friendId = req.param('friendId');
@@ -23,8 +23,8 @@ sayHiToFriend: function(req, res) {
 }
 ```
 
-### Notes
-> + If the event name is not specified then the "message" event will be used by default. This would allow the target sockets to listen on the "message" event in order to react to the emit.
+### 備考
+> + イベント名が指定されていない時、"message"イベントがデフォルトで使われます。これによって対象のソケットが"message"イベントをリッスンすることで送信されたメッセージに反応することができます。
 
 
 

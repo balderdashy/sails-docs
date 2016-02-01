@@ -1,25 +1,25 @@
 # .publishCreate( `data`,[`request`] )
-### Purpose
-PublishCreate doesn't actually create anything.  It simply publishes information about the creation of a model instance via websockets.  PublishCreate is called automatically by the [blueprint `create` action](https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record).
+### 目的
+PublishCreate自体は実際には何も作成しません。これはただ単にモデルインスタンスが生成されたことをWebsocket経由で通知するだけです。PublishCreateは[blueprint `create` アクション](https://github.com/balderdashy/sails-docs/blob/0.10/reference/Blueprints.md#create-a-record)によって自動的に呼びだされます
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | Data to Send        |   `object`              |   Yes       |
-| 2 | Request      |   `Request object` |   No       |
+| 1 | 送信するデータ        |   `object`              |   はい       |
+| 2 | リクエスト      |   `Request object` |   いいえ       |
 
-The default implementation of publishCreate only publishes messages to the firehose, and to sockets subscribed to the model class using the `watch` method.  It also subscribes all sockets "watching" the model class to the new instance.  The socket message to subscribers will include the following properties:
+publishCreateのデフォルトの実装は `watch`メソッドを使ってサブスクライブしているソケットfirehoseにメッセージを発行するだけです。同様に、該当するモデルに対する新規インスタンスの作成をウォッチしているソケットもサブスクライブしています。サブスクライバへのメッセージは以下の内容を含みます。:
 
-+ **id** - the `id` attribute of the new model instance
-+ **verb**  - `"created"` (a string)
-+ **data** - an object-- the attributes and values of the new model instance
++ **id** - 新しいモデルインスタンスの`id`属性
++ **verb**  - `"created"` (文字列)
++ **data** - 新規モデルインスタンスの属性と値からなるオブジェクト
 
 #### `data`
-An object containing the attributes and values of the new model instance.
+新規モデルインスタンスの属性と値からなるオブジェクト
 
 #### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
+この引数が含まれていればそのリクエストに結びついているソケットは通知を*受け取りません*。
 
-### Example Usage
+### 使用例
 UsersController.js
 ```javascript
 module.exports = {

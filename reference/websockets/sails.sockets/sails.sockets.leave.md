@@ -1,15 +1,15 @@
 # sails.sockets.leave( `socket`, `roomName` )
-### Purpose
-Unsubscribe a socket from a generic room.
+### 目的
+一般的なroomからのサブスクライブ解除をします。
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
+### 概要
+#### パタメータ
+|   |          説明        | 受け入れ可能なデータ型 | 必須か |
 |---|-----------------------------|---------------------|------------|
-| 1 | Socket object |      `object`       | Yes        |
-| 2 |           Room Name        | `string`            | Yes         |
+| 1 | ソケットオブジェクト |      `object`       | はい        |
+| 2 |           room名        | `string`            | はい         |
 
-### Example Usage
+### 使用例
 ```javascript
 // Controller action
 
@@ -22,10 +22,10 @@ leaveFunRoom: function(req, res) {
 }
 ```
 
-*Note: `req.socket` is only valid if the action is triggered via a socket request, e.g. `socket.get('/leaveFunRoom/someRoomName')`*
+*備考:`req.socket`はアクションがソケットリクエストによってトリガーされた時にのみ有効です。例：`socket.get('/subscribeToFunRoom/someRoomName')`*
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+### 備考
+> + ここでの"request socket"はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。`req.socket`はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で`req.socket`を使う前に`req.isSocket == true`であることを確認して下さい。
 
 <docmeta name="uniqueID" value="sailssocketsleave425459">
 <docmeta name="displayName" value="sails.sockets.leave()">
