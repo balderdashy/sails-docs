@@ -2,11 +2,13 @@
 
 Unbind the specified `eventIdentity` from the given handler (opposite of [`.on()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on))
 
-### Usage
-
 ```js
 io.socket.off(eventIdentity, callback);
 ```
+
+
+### Usage
+
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
