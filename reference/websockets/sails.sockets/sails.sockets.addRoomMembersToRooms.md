@@ -1,4 +1,4 @@
-# addRoomMembersToRooms()
+# .addRoomMembersToRooms()
 
 Subscribe all members of a room to one or more additional rooms.
 
