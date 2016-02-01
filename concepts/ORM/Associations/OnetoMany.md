@@ -1,4 +1,5 @@
 # One-to-Many
+
 ### Overview
 
 A one-to-many association states that a model can be associated with many other models. To build this
@@ -10,107 +11,87 @@ Because you may want a model to have multiple one-to-many associations on anothe
 is needed on the `collection` attribute. This states which `model` attribute on the one side of the
 association is used to populate the records.
 
-### One-to-Many Example
-
-`myApp/api/models/Pet.js`
-
 ```javascript
-
+// myApp/api/models/user.js
+// A user may have many pets
 module.exports = {
+  attributes: {
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    },
 
-	attributes: {
-		name:'STRING',
-		color:'STRING',
-		owner:{
-			model:'user'
-		}
-	}
+    // Add a reference to Pets
+    pets: {
+      collection: 'pet',
+      via: 'owner'
+    }
+  }
+};
+```
+```javascript
+// myApp/api/models/pet.js
+// A pet may only belong to a single user
+module.exports = {
+  attributes: {
+    breed: {
+      type: 'string'
+    },
+    type: {
+      type: 'string'
+    },
+    name: {
+      type: 'string'
+    },
 
-}
-
+    // Add a reference to User
+    owner: {
+      model: 'user'
+    }
+  }
+};
 ```
 
-`myApp/api/models/User.js`
+Now that the pets and users know about each other, they can be associated. To do this we can create
+or update a pet with the user's primary key for the `owner` value.
 
 ```javascript
+Pet.create({
+  breed: 'labrador',
+  type: 'dog',
+  name: 'fido',
 
-module.exports = {
-
-	attributes: {
-		name:'STRING',
-		age:'INTEGER',
-		pets:{
-			collection: 'pet',
-			via: 'owner'
-		}
-	}
-
-}
-
+  // Set the User's Primary Key to associate the Pet with the User.
+  owner: 123
+})
+.exec(function(err, pet) {});
 ```
 
-Using `sails console`
+Now that the `Pet` is associated with the `User`, all the pets belonging to a specific user can
+be populated by using the `populate` method.
 
-```sh
+```javascript
+User.find()
+.populate('pets')
+.exec(function(err, users) {
+  if(err) // handle error
 
-sails> User.create({name:'Mike',age:'21'}).exec(console.log)
-null { pets: [Getter/Setter],
-  name: 'Mike',
-  age: 21,
-  createdAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST),
-  updatedAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST),
-  id: 1 }
-
-sails> Pet.create({name:'Pinkie Pie',color:'pink',owner:1}).exec(console.log)
-null { name: 'Pinkie Pie',
-	color: 'pink',
-	owner: 1,
-	createdAt: Tue Feb 11 2014 17:58:04 GMT-0600 (CST),
-	updatedAt: Tue Feb 11 2014 17:58:04 GMT-0600 (CST),
-	id: 2 }
-
-sails> Pet.create({name:'Applejack',color:'orange',owner:1}).exec(console.log)
-null { name: 'Applejack',
-	color: 'orange',
-	owner: 1,
-	createdAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-	updatedAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-	id: 4 }
-
-sails> User.find().populate('pets').exec(function(err,r){console.log(r[0].toJSON())});
-{ pets: 
-   [ { name: 'Pinkie Pie',
-       color: 'pink',
-       id: 2,
-       createdAt: Tue Feb 11 2014 17:58:04 GMT-0600 (CST),
-       updatedAt: Tue Feb 11 2014 17:58:04 GMT-0600 (CST),
-       owner: 1 },
-     { name: 'Applejack',
-       color: 'orange',
-       id: 4,
-       createdAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-       updatedAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-       owner: 1 } ],
-  name: 'Mike',
-  age: 21,
-  createdAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST),
-  updatedAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST),
-  id: 1 }
-
-sails> Pet.find(4).populate('owner').exec(console.log)
-null [ { name: 'Applejack',
-    color: 'orange',
-    owner: 
-     { pets: [Getter/Setter],
-       name: 'Mike',
-       age: 21,
-       id: 1,
-       createdAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST),
-       updatedAt: Tue Feb 11 2014 17:49:04 GMT-0600 (CST) },
-    createdAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-    updatedAt: Tue Feb 11 2014 18:02:58 GMT-0600 (CST),
-    id: 4 } ]
-
+  // The users object would look something like the following
+  // [{
+  //   id: 123,
+  //   firstName: 'Foo',
+  //   lastName: 'Bar',
+  //   pets: [{
+  //     id: 1,
+  //     breed: 'labrador',
+  //     type: 'dog',
+  //     name: 'fido',
+  //     user: 123
+  //   }]
+  // }]
+});
 ```
 
 ### Notes
