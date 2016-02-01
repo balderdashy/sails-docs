@@ -8,6 +8,7 @@ Something.publishAdd(id, association, added);
 
 _Or:_
 + `Something.publishAdd(id, association, added, req);`
++ `Something.publishAdd(id, association, added, req, options);`
 
 
 
@@ -28,6 +29,10 @@ By default, when `publishAdd()` is called, it checks whether any associated reco
 For example, let's say a `User` model has a `pets` association (a _plural_ aka "collection" association) which connects each User record with none, one, or several distinct Pet records.  On the other side, let's say each Pet record has an `owner` association (a _singular_ or "model" association), which means it can have exactly zero or one owners.  If `User.publishAdd(4, 'pets', 9)` is called under these circumstances, then not only will it broadcast the normal "addedTo" message to user 4, it will also broadcast an "updated" message to pet 9 (indicating that its `owner` has changed).
 
 To suppress automatic broadcasts for reflexive associations, provide an `options` dictionary and set the `options.noReverse` flag to `true`.
+
+|          Option             | Type                       | Details                                           |
+|:--------------------------- | -------------------------- |:--------------------------------------------------|
+|        `noReverse`          | ((boolean))                | If set, automatic broadcasts for reflexive associations will be suppressed.
 
 
 ##### Behavior
