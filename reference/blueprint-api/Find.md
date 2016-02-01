@@ -1,6 +1,6 @@
 # Find (Blueprint)
 
-Find a list of records that match the specified criteria.  If request came from a socket, also subscribe to each of them.
+Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
 
 ```
 GET /:model
