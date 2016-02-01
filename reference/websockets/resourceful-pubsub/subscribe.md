@@ -1,6 +1,6 @@
 # .subscribe()
 
-Subscribes the requesting client socket to one or more database records (i.e. model instances).  
+Subscribes the requesting client socket to changes/deletions of one or more database records.
 
 ```js
 SomeModel.subscribe(req, ids);
