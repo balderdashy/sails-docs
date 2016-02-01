@@ -74,7 +74,7 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
-Depending on the adapter in use, it's also possible to use unix sockets, without port and host. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
+Depending on the adapter in use, it's also possible to use unix sockets, without port and host or a URL. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
 
 ```javascript
 // in config/local.js
@@ -86,6 +86,20 @@ connections:{
     password: 'root',
     database: 'sailstest1',
     socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
+  }
+}
+// ...
+```
+
+And another showing an example of configuring the adapter using a url:
+
+```javascript
+// in config/local.js
+// ...
+connections:{
+  local_mysql:{ //arbitrary name
+    module: 'sails-mysql',
+    url: 'mysql://root:root@localhost:3306/sailstest1'
   }
 }
 // ...
