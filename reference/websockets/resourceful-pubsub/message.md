@@ -14,8 +14,8 @@ _Or:_
 ### Usage
 
 |   |     Argument        | Type                | Details    |
-|---|:--------------------|---------------------|------------|
-| 1 | `id`                |  ((string))         |   The `id` of the record whose subscribers will receive this message.       
+|---|:--------------------|---------------------|:-----------|
+| 1 | `id`                |  ((string)),((number)) |   The `id` of the record whose subscribers will receive this broadcast. <br/><br/> e.g. `4`
 | 2 | `data`              |  ((dictionary))     |   Arbitrary data to send to the subscribed sockets; i.e. a dictionary containing any JSON-serializable data you would like to broadcast to all sockets subscribed to this record.  Must be JSON-serializable.
 | 3 | _`req`_               |  ((req?))            |   If provided, then the requesting socket will *not* receive the broadcast.
 
