@@ -1,103 +1,114 @@
-# .publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )
-### Purpose
-PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
+# .publishUpdate()
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
-| 2 | Updated values        |   `{}`              |   No      |
-| 3 | Request      |   `request object` |   No       |
-| 4 | Additional Options | `object` | No |
-
-`publishUpdate()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
-
-The socket message is an object with the following properties:
-
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"updated"` (a string)
-+ **data** - an object-- the attributes that were updated
-+ **previous** - an object--if present, the previous values of the updated attributes
-
-#### `changes`
-This should be an object containing any changed attributes and their new values.  
-
-#### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
-
-#### `options.previous`
-If the `options` object contains a `previous` property, it is expected to be a representation of the model instance's attributes *before* they were updated.  This may be used to determine whether or not to publish additional messages (see the `options.noReverse` flag below for more info).
-
-#### `options.noReverse`
-
-The default implementation of `publishUpdate` will, if `options.previous` is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a `Pet` model has an `owner` attribute that is associated with the `User` model so that a user may own several pets, and the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` changed, then an additional `publishAdd` or `publishRemove` call may be made.  To suppress these notifications, set the `options.noReverse` flag to `true`.  In general, you should not have to set this flag unless you are writing your own implementation of `publishUpdate` for a model.
+Broadcast a conventional message indicating that the record with the specified `id` has been updated.
 
 
-### Example Usage
+```js
+Something.publishUpdate( id, changes )
+```
 
-UsersController.js
-```javascript
-module.exports = {
-    
-  testSocket: function(req,res){
 
-        var nameSent = req.param('name');
-    
-        if (nameSent && req.isSocket){
-    
-          User.update({name:nameSent},{name:'Heisenberg'}).exec(function update(err,updated){
-            User.publishUpdate(updated[0].id,{ name:updated[0].name });
-          });
-    
-        } else if (req.isSocket){
-    
-        User.find({}).exec(function(e,listOfUsers){
-          User.subscribe(req.socket,listOfUsers);
-        console.log('User with socket id '+req.socket.id+' is now subscribed to all of the model instances in \'users\'.');
-        });
-        
-        } else {
-    
-          res.view();
-        
-        }
+_Or:_
+- `SomeModel.publishUpdate(id, changes, req);`
+
+
+
+
+### Usage
+
+|   |     Argument        | Type                | Details    |
+|---|:--------------------|---------------------|------------|
+| 1 | `id`                |  ((string))         |   The `id` of the record whose subscribers will receive this message.       
+| 2 | `changes`           |  ((dictionary))     |   The dictionary of changed attributes and their new values to announce.  This may consist of any JSON--serializable data you like, but must _at-minimum_ contain the `id` (primary key) of the record.
+| 3 | _`req`_             |  ((req?))            |   If provided, then the requesting socket _will be excluded_ from the broadcast.
+| 4 | _`options`_         |  ((dictionary?))     | A dictionary of additional options.  See below.
+
+##### Additional Options
+
+If the `options` dictionary is provided, and it contains a `previous` property, then that property is expected to be a representation of the record's values *before* they were updated.  This may be used to determine whether or not to broadcast additional messages.  See, by default if `options.previous` is provided, `publishUpdate()` will check whether any associated records were affected by the update, and possibly send out additional notifications (if a reflexive association was changed).
+
+For example, let's say a `Pet` model has an `owner` association (a _singular_, or "model" association) which connects each Pet record with up to one distinct User record.  Conversely, this means any User record could own several pets (or none).  So if the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` association changed (e.g. from `4` to `7`), then an additional `publishRemove` call would be made to inform client sockets subscribed to user `4` that this user has lost one of its pets.  Similarly, a `publishAdd` call would be made to inform client sockets subscribed to user `7` that this user has gained a new pet.
+
+To suppress automatic broadcasts for reflexive associations, set the `options.noReverse` flag to `true`.  In general, you should not have to set the `options.noReverse` flag unless you are writing your own implementation of `publishUpdate` for a model.
+
+
+##### Behavior
+
+`publishUpdate()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
+
++ **verb**  - a ((string)) constant: `'updated'`
++ **id** - the record's `id` which is a ((string)) or ((number))
++ **data** - the ((dictionary)) of changed properties that was provided as `changes` when calling `.publishUpdate()` on the backend
++ **previous** - if present, this ((dictionary)) contains the previous values of the now-updated attributes for convenience
+
+
+
+### Example
+
+In a controller+action...  Find a user by username and broadcast a message back to all of its subscribers:
+
+```js
+// Dye Bob's hair red.
+User.update({username: 'bob'}).set({
+  hairColor: 'red'
+}).exec(function(err, bobs){
+  if (err) return res.serverError(err);
+  if (bobs.length > 1) return res.serverError('Consistency violation: somehow multiple users exist with the same username? There must be a bug elsewhere in the code base.');
+  if (bobs.length < 1) return res.notFound();
+  
+  // Broadcast a message telling anyone subscribed to Bob that his hair is now red.
+  // (note that we exclude the requesting socket from the broadcast, and also include Bob's previous hair color)
+  User.publishUpdate(bobs[0].id, {
+    hairColor: 'red'
+  }, req, {
+    previous: {
+      hairColor: bobs[0].hairColor
     }
-}
-
-    // Don't forget to handle your errors
+  });
+  
+  return res.ok();
+});
 ```
 
-views/users/testSocket.ejs
-```html
-<script type="text/javascript">
-window.onload = function subscribeAndListen(){
-    // When the document loads, send a request to users.testSocket
-    // The controller code will subscribe you to all of the 'users' model instances (records)
-    socket.get('/users/testSocket/');
+The endpoint will respond with a simple 200 (because of `res.ok()`), but all subscribed client sockets will receive a `user` event:
 
-    // Listen for the event called 'user'
-    socket.on('user',function(obj){
-      if (obj.verb == 'updated') {
-        var previous = obj.previous;
-        var data = obj.data;
-        console.log('User '+previous.name+' has been updated to '+data.name);
-      }
-    });
-};
+```js
+// e.g. in the browser...
+io.socket.on('user', function (event){
+  switch (event.verb) {
+    'updated':
+      console.log(event);
+      // => see below
+      break;
+    default: 
+      console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
+  }
+});
+```
 
-function doEdit(){
+In this case, the logged message would look something like this:
 
-    // Send the name to the testSocket action on the 'Users' contoller
-
-    socket.get('/users/testSocket/',{name:'Walter'});
+```js
+{
+  verb: 'updated',
+  id: 49,
+  data: {
+    hairColor: 'red'
+  },
+  previous: {
+    hairColor: 'pink'
+  }
 }
-
-</script>
-<div class="addButton" onClick="doEdit()">Click Me to add a new User! </div>
-
 ```
 
 
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
+
+### Notes
+
+> + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
+> + It is important to understand that this method **does not actually do anything to your database**-- it is purely a conventional way of _announcing_ that changes have occurred.  Underneath the covers, the resourceful pubsub methods are just using combinations of `sails.sockets` methods.
+
+
+
 <docmeta name="displayName" value=".publishUpdate()">
 
