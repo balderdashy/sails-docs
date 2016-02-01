@@ -90,3 +90,4 @@ Below are the Grunt tasks that are included in your Sails project as well as a s
 
 
 <docmeta name="displayName" value="Default Tasks">
+<docmeta name="isDeprecated" value="true">
