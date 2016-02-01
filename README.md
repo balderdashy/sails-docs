@@ -35,9 +35,9 @@ On the other hand, if you are making an edit related to an unreleased feature in
 
 
 | Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
-|-------------------------------------------------------------------------------------|------------------------|--------------------|
+|-------------------------------------------------------------------------------------|------------------------|:-------------------|
 | [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.org](http://preview.sailsjs.org)
-| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Upcoming v0.12 Release           | [next.sailsjs.org](http://preview.sailsjs.org)
+| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Upcoming v0.12 release           | [next.sailsjs.org](http://preview.sailsjs.org)
 
 
 #### How are these docs compiled and pushed to the website?
