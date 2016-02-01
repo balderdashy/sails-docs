@@ -1,39 +1,48 @@
-# .message( `models`,`data`, [`request`] )
+# .message()
+
+Broadcast a custom message about the record with the specified `id` to all sockets currently subscribed to it.
+
+```js
+Something.message( id, data, req )
+```
+
+
 ### Purpose
-Publishes a custom message to a model&rsquo;s subscribers.
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Record (or ID of record) to send message to |   `int`, `string`, `object`    |   Yes      |
-| 2 | Message payload       |   `object`              |   Yes      |
-| 3 | Request      |   `request object` |   No       |
-
-`message()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
-
-The socket message is an object with the following properties:
-
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"messaged"` (a string)
-+ **data** - the message payload
-
-#### `data`
-Arbitrary data to send to the subscribed sockets.
-
-#### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
+|   |     Argument        | Type                | Details    |
+|---|:--------------------|---------------------|------------|
+| 1 | `id`                |  ((string))         |   The `id` of the record whose subscribers will receive this message.       
+| 2 | `data`              |  ((dictionary))     |   Arbitrary data to send to the subscribed sockets; i.e. a dictionary containing any JSON-serializable data you would like to broadcast to all sockets subscribed to this record.      
+| 3 | _`req`_               |  ((req))            |   If provided, then the requesting socket will *not* receive the notification.  
 
 
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
-<docmeta name="displayName" value=".message()">
+`message()` uses the model's identity as the event name, and the message is broadcast to all sockets subscribed to the record, e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe).
+
+The event data received by the  socket clients will be a dictionary with the following properties:
+
++ **id** - the `id` attribute of the record
++ **verb**  - will always be the string: `"messaged"`
++ **data** - the dictionary of custom data provided when calling `.message()`
+
+
+
 
 ### Example
 
-Find a user in the sails controller by name and send a socket message back to the client. This object can contain any data you want.
+In a controller+action...  Find a user by username and broadcast a message back to all of its subscribers:
 
 ```
-User.findOne({name: 'Bob'}).then(function(foundUser){
-  User.message(foundUser, {count: 12, hairColor: 'red'});
+User.findOne({username: 'bob'}).exec(function(err, foundUser){
+  if (err) return res.serverError(err);
+  if (!founduser) return res.notFound();
+  
+  // This message can contain anything you want!
+  User.message(foundUser.id, {count: 12, hairColor: 'red'});
+  
+  return res.ok();
 });
 ```
 
+
+
+<docmeta name="displayName" value=".message()">
