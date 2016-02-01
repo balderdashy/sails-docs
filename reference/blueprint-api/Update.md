@@ -1,15 +1,17 @@
 # Update (Blueprint)
 
-Updates an existing record.
-Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
+Update an existing record in the database.
 
 ```
 PUT /:model/:id
 ```
 
-Updates the model instance which matches the **id** parameter. Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+This updates the record in the model which matches the **id** parameter and responds with the newly updated record as a JSON dictionary.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+
 
 ### Parameters
+
+_Attributes to change should be sent in the HTTP body as form-encoded values or JSON._
 
  Parameter                          | Type                                                    | Details
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
@@ -21,7 +23,10 @@ Updates the model instance which matches the **id** parameter. Responds with a J
 
 Change Applejack's hobby to "kickin":
 
-`PUT /pony/47`
+```
+PUT /pony/47
+```
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ```json
 {
