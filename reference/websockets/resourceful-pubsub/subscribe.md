@@ -12,7 +12,7 @@ SomeModel.subscribe(req, ids);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
-| 2 | `ids`      | ((array))    | An array of record ids (primary keys).
+| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
 
 When a client socket is subscribed to a record, it will receive all messages about it which are broadcasted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()` and `.publishRemove()`.
 
