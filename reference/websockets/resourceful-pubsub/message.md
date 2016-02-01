@@ -17,7 +17,7 @@ _Or:_
 |---|:--------------------|---------------------|------------|
 | 1 | `id`                |  ((string))         |   The `id` of the record whose subscribers will receive this message.       
 | 2 | `data`              |  ((dictionary))     |   Arbitrary data to send to the subscribed sockets; i.e. a dictionary containing any JSON-serializable data you would like to broadcast to all sockets subscribed to this record.      
-| 3 | _`req`_               |  ((req))            |   If provided, then the requesting socket will *not* receive the notification.  
+| 3 | _`req`_               |  ((req?))            |   If provided, then the requesting socket will *not* receive the notification.  
 
 
 `message()` uses the model's identity as the event name, and the message is broadcast to all sockets subscribed to the record, e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe).
