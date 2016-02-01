@@ -9,8 +9,8 @@ Something.publishUpdate( id, changes )
 
 
 _Or:_
-- `SomeModel.publishUpdate(id, changes, req);`
-- `SomeModel.publishUpdate(id, changes, req, options);`
+- `Something.publishUpdate(id, changes, req);`
+- `Something.publishUpdate(id, changes, req, options);`
 
 
 
