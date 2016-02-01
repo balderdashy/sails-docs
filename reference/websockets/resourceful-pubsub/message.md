@@ -8,7 +8,7 @@ Something.message( id, data )
 
 
 _Or:_
-- `SomeModel.message(id, data, req);`
+- `Something.message(id, data, req);`
 
 
 ### Usage
