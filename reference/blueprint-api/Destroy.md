@@ -24,13 +24,8 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 
 Delete Pinkie Pie:
 
-`DELETE /pony`
+`DELETE /pony/4`
 
-```json
-{
-  "id": 4
-}
-```
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
 ##### Expected Response
