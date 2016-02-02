@@ -42,4 +42,4 @@ io.socket.delete('/users/9', function (resData) {
 
 
 <docmeta name="displayName" value="io.socket.delete()">
-
+<docmeta name="pageType" value="method">
