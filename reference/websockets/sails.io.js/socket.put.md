@@ -44,4 +44,4 @@ io.socket.put('/users/9', { occupation: 'psychic' }, function (resData, jwr) {
 
 
 <docmeta name="displayName" value="io.socket.put()">
-
+<docmeta name="pageType" value="method">
