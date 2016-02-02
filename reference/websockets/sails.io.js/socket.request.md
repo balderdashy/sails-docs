@@ -65,4 +65,4 @@ io.socket.request({
 > + Need to set custom headers for _all_ outgoing requests?  Check out [`io.sails.headers`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails).
 
 <docmeta name="displayName" value="io.socket.request()">
-
+<docmeta name="pageType" value="method">
