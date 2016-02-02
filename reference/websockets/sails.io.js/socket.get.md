@@ -40,4 +40,5 @@ io.socket.get('/users/9', function (resData) {
 > + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request) method, or to set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails).
 
 <docmeta name="displayName" value="io.socket.get()">
+<docmeta name="pageType" value="method">
 
