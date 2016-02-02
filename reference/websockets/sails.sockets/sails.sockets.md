@@ -26,3 +26,4 @@ These methods are implemented using a built-in instance of [Socket.io](http://so
 
 
 <docmeta name="displayName" value="sails.sockets">
+<docmeta name="pageType" value="property">
