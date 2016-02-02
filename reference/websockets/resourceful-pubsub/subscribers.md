@@ -41,3 +41,4 @@ Controller Code
 ```
 
 <docmeta name="displayName" value=".subscribers()">
+<docmeta name="isDeprecated" value="true">
