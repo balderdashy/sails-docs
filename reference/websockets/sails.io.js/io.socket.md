@@ -28,3 +28,4 @@ See the [SailsSocket properties reference](http://sailsjs.org/documentation/refe
 For basic server communication and event listening methods, see the other `io.socket.*` pages in this section.  For advanced methods involving server connection, see the [SailsSocket advanced methods reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/methods).
 
 <docmeta name="displayName" value="io.socket">
+<docmeta name="pageType" value="singleton">
