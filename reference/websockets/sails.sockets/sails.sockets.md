@@ -10,7 +10,7 @@ These methods are implemented using a built-in instance of [Socket.io](http://so
 ### Methods
 
 | Method                             | Description                                              |
-|------------------------------------|:---------------------------------------------------------|
+|:-----------------------------------|:---------------------------------------------------------|
 | [`.addRoomMembersToRooms()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/add-room-members-to-rooms)        | Subscribe all members of a room to one or more additional rooms.
 | [`.blast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/blast)        | Broadcast a message to all sockets connected to the server.
 | [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast)        | Broadcast a message to all sockets in a room.
