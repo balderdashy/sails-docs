@@ -28,4 +28,4 @@ getMyRooms: function(req, res) {
 
 
 <docmeta name="displayName" value="sails.sockets.socketRooms()">
-
+<docmeta name="isDeprecated" value="true">
