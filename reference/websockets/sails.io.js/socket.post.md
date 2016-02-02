@@ -42,4 +42,5 @@ io.socket.post('/users', { name: 'Timmy Mendez' }, function (resData, jwres) {
 
 
 <docmeta name="displayName" value="io.socket.post()">
+<docmeta name="pageType" value="method">
 
