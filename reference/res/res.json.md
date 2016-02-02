@@ -26,4 +26,4 @@ res.json(500, { error: 'message' })
 
 
 <docmeta name="displayName" value="res.json()">
-
+<docmeta name="pageType" value="method">

@@ -24,4 +24,4 @@ res.attachment('path/to/logo.png');
 
 
 <docmeta name="displayName" value="res.attachment()">
-
+<docmeta name="pageType" value="method">

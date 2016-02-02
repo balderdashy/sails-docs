@@ -54,3 +54,5 @@ So that in the rendered view...
 > - If you only need the URL for a route (e.g. to use as an `href` from within one of your views), you may want to use [`sails.getUrlFor()`](http://sailsjs.org/documentation/reference/application/sails-get-url-for) instead of this function.
 
 <docmeta name="displayName" value="sails.getRouteFor()">
+<docmeta name="pageType" value="method">
+

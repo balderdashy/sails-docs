@@ -90,3 +90,5 @@ curl http://localhost:1337/purchase/47/cashier
 
 
 <docmeta name="displayName" value="populate where">
+<docmeta name="pageType" value="endpoint">
+

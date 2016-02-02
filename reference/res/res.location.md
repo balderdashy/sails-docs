@@ -27,4 +27,4 @@ res.location('back');
 
 
 <docmeta name="displayName" value="res.location()">
-
+<docmeta name="pageType" value="method">

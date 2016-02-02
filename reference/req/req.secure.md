@@ -13,4 +13,4 @@ req.secure;
 
 
 <docmeta name="displayName" value="req.secure">
-
+<docmeta name="pageType" value="property">

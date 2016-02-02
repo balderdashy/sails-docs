@@ -44,3 +44,5 @@ return res.ok();
 
 
 <docmeta name="displayName" value="sails.log()">
+<docmeta name="pageType" value="method">
+

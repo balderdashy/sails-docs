@@ -26,4 +26,4 @@ req.get('myField');
 
 
 <docmeta name="displayName" value="req.get()">
-
+<docmeta name="pageType" value="method">

@@ -27,4 +27,4 @@ res.send('oops');
 
 
 <docmeta name="displayName" value="res.status()">
-
+<docmeta name="pageType" value="method">

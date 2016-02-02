@@ -71,3 +71,5 @@ return res.redirect('back');
 
 
 <docmeta name="displayName" value="res.redirect()">
+<docmeta name="pageType" value="method">
+

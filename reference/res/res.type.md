@@ -24,4 +24,4 @@ res.type('png');
 
 
 <docmeta name="displayName" value="res.type()">
-
+<docmeta name="pageType" value="method">

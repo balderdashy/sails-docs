@@ -1,6 +1,6 @@
 # .blast()
 
-Broadcast a message to all sockets connected to the server.
+Broadcast a message to all sockets connected to the server (or any server in the cluster, if you have a multi-server deployment using Redis).
 
 ```javascript
 sails.sockets.blast(data);
@@ -43,4 +43,4 @@ sails.sockets.blast('user_logged_in', {
 
 
 <docmeta name="displayName" value="blast()">
-
+<docmeta name="pageType" value="method">

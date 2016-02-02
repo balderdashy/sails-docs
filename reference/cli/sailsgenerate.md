@@ -46,3 +46,5 @@ Thats it, now you can write your code using Coffeescript!
 
 
 <docmeta name="displayName" value="sails generate">
+<docmeta name="pageType" value="command">
+

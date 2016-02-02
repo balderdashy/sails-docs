@@ -29,7 +29,7 @@ getSocketID: function(req, res) {
   // => "BetX2G-2889Bg22xi-jy"
 
   sails.log('My socket ID is: ' + socketId);
-  
+
   return res.json(socketId);
 }
 ```
@@ -40,3 +40,5 @@ getSocketID: function(req, res) {
 
 
 <docmeta name="displayName" value="getId()">
+<docmeta name="pageType" value="method">
+

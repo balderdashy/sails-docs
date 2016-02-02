@@ -31,3 +31,5 @@ res.get('Content-Type');
 
 
 <docmeta name="displayName" value="res.get()">
+<docmeta name="pageType" value="method">
+

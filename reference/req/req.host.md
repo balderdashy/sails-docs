@@ -25,4 +25,4 @@ req.host;
 
 
 <docmeta name="displayName" value="req.host">
-
+<docmeta name="pageType" value="property">

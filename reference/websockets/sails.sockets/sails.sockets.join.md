@@ -34,7 +34,7 @@ subscribeToFunRoom: function(req, res) {
     if (err) {
       return res.serverError(err);
     }
-    
+
     return res.json({
       message: 'Subscribed to a fun room called '+roomName+'!'
     });
@@ -49,4 +49,4 @@ subscribeToFunRoom: function(req, res) {
 
 
 <docmeta name="displayName" value="join()">
-
+<docmeta name="pageType" value="method">

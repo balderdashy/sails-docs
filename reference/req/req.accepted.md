@@ -32,4 +32,4 @@ req.accepted;
 
 
 <docmeta name="displayName" value="req.accepted">
-
+<docmeta name="pageType" value="property">

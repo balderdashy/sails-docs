@@ -29,4 +29,4 @@ if (req.fresh) {
 
 
 <docmeta name="displayName" value="req.fresh">
-
+<docmeta name="pageType" value="property">

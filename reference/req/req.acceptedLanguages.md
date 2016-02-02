@@ -30,3 +30,4 @@ req.acceptedLanguages;
 
 
 <docmeta name="displayName" value="req.acceptedLanguages">
+<docmeta name="pageType" value="property">

@@ -12,4 +12,5 @@ $ sails version
 
 
 <docmeta name="displayName" value="sails version">
+<docmeta name="pageType" value="command">
 

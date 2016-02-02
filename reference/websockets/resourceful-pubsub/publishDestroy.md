@@ -51,7 +51,7 @@ In a controller+action...  Destroy a pet and broadcast a message to all of its s
 Pet.destroy({id: 78}).exec(function(err, hermiones){
   if (err) return res.serverError(err);
   if (hermiones.length < 1) return res.notFound();
-  
+
   // Broadcast a message telling anyone subscribed to Hermione the cat that, sadly, she has been destroyed.
   // (note that she _did_ live a long, full life, and also that _we DO NOT exclude_ the requesting socket
   //  from the broadcast because we pass in `undefined`.  Also note that we do include a few relevant properties
@@ -64,7 +64,7 @@ Pet.destroy({id: 78}).exec(function(err, hermiones){
       species: hermiones[0].species,
     }
   });
-  
+
   return res.ok();
 });
 ```
@@ -79,7 +79,7 @@ io.socket.on('pet', function (event){
       console.log(event);
       // => see below
       break;
-    default: 
+    default:
       console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
   }
 });
@@ -111,3 +111,5 @@ In this case, the logged message would look something like this:
 
 
 <docmeta name="displayName" value=".publishDestroy()">
+<docmeta name="pageType" value="method">
+

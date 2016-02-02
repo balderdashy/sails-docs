@@ -53,3 +53,5 @@ DELETE /store/16/employeesOfTheMonth/7
 > + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
 
 <docmeta name="displayName" value="remove from">
+<docmeta name="pageType" value="endpoint">
+

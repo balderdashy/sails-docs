@@ -52,4 +52,4 @@ res.cookie('rememberme', '1', {
 
 
 <docmeta name="displayName" value="res.cookie()">
-
+<docmeta name="pageType" value="method">

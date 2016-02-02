@@ -44,3 +44,5 @@ GET /purchase/1
 
 
 <docmeta name="displayName" value="find one">
+<docmeta name="pageType" value="endpoint">
+

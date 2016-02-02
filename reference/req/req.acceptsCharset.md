@@ -42,4 +42,4 @@ req.acceptsCharset('utf-8');
 
 
 <docmeta name="displayName" value="req.acceptsCharset()">
-
+<docmeta name="pageType" value="method">

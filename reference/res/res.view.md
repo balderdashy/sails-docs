@@ -86,3 +86,5 @@ Oven.find().sort('heat ASC').exec(function (err, ovens){
 
 
 <docmeta name="displayName" value="res.view()">
+<docmeta name="pageType" value="method">
+

@@ -36,10 +36,10 @@ In a controller+action...  Find a user by username and broadcast a message back 
 User.findOne({username: 'bob'}).exec(function(err, foundUser){
   if (err) return res.serverError(err);
   if (!foundUser) return res.notFound();
-  
+
   // This message can contain anything you want!
   User.message(foundUser.id, {count: 12, hairColor: 'red'});
-  
+
   return res.ok();
 });
 ```
@@ -75,3 +75,5 @@ In this case, the `event` dictionary would look the same for every client socket
 
 
 <docmeta name="displayName" value=".message()">
+<docmeta name="pageType" value="method">
+

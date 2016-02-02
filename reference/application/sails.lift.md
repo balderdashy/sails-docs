@@ -48,3 +48,5 @@ sailsApp.lift(
 > - When a Sails app is fully lifted, it also emits the `lifted` event.
 
 <docmeta name="displayName" value="sails.lift()">
+<docmeta name="pageType" value="method">
+

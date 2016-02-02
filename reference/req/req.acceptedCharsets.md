@@ -38,4 +38,4 @@ req.acceptedCharsets;
 
 
 <docmeta name="displayName" value="req.acceptedCharsets">
-
+<docmeta name="pageType" value="property">

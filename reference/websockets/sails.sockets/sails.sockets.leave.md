@@ -29,11 +29,11 @@ leaveFunRoom: function(req, res) {
   if ( _.isUndefined(req.param('roomName')) ) {
     return res.badRequest('`roomName` is required.');
   }
-  
+
   if (!req.isSocket) {
     return res.badRequest('This endpoints only supports socket requests.');
   }
-  
+
   var roomName = req.param('roomName');
   sails.sockets.leave(req, roomName, function(err) {
     if (err) {return res.serverError(err);}
@@ -50,7 +50,7 @@ kickSocketFromRoom: function(req, res) {
   if ( _.isUndefined(req.param('socketId')) || _.isUndefined(req.param('roomName')) ) {
     return res.badRequest('`socketId` and `roomName` are required.');
   }
-  
+
   // Since this is using a socket id explicitly, instead of inferring one from `req`,
   // we don't have to check `isSocket`.  Note that `req` is not passed in-- instead we use a string socket id.
   sails.sockets.leave(req.param('socketId'), req.param('roomName'), function(err) {
@@ -69,4 +69,4 @@ kickSocketFromRoom: function(req, res) {
 
 
 <docmeta name="displayName" value="leave()">
-
+<docmeta name="pageType" value="method">

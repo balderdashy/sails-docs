@@ -3,8 +3,14 @@
 Make a virtual request to a running Sails instance.
 
 ```javascript
-sails.request(request, [body], [callback]);
+sails.request(request);
 ```
+
+_Or:_
+
++ `sails.request(url, body)`
++ `sails.request(url, callback)`
++ `sails.request(url, body, callback)`
 
 This method can be used on a instances that have been started with [`sails.load()`](http://sailsjs.org/documentation/reference/application/sails-load), which are not actively listening for HTTP requests on a server port.  This makes it useful for testing scenarios where running [`sails.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) is not necessary.  However, it should be noted that the data may not be processed in exactly the same way as an HTTP request; in particular, a much simpler body parser will be employed, and Express middleware such as the static asset server will not be used.
 
@@ -13,9 +19,9 @@ This method can be used on a instances that have been started with [`sails.load(
 
 |   |       Argument             | Type                | Details
 |---|--------------------------- | ------------------- |:-----------:
-| 1 |      request                | ((string)) -or- ((dictionary))          | The virtual request to make.  If specified as a string, this should be an address containing an optional method and a path, e.g. `/foo` or `PUT /user/friend`.  If specified as an object, it should have one or more of the properties described in the "request argument" section below.
-| 2 |      body                  | ((json)) | (optional) A JSON-serializable value to use as the request body.  This argument will override the `data` property of the `request` argument, if provided.
-| 3 |      callback              | ((function)) | (optional) A callback to be called with the virtual response.
+| 1 |      request (or url)      | ((string)) -or- ((dictionary))          | The virtual request to make.  If specified as a string, this should be an address containing an optional method and a path, e.g. `/foo` or `PUT /user/friend`.  If specified as an object, it should have one or more of the properties described in the "request argument" section below.
+| 2 |      _body_                  | ((json?)) | (optional) A JSON-serializable value to use as the request body.  This argument will override the `data` property of the `request` argument, if provided.
+| 3 |      _callback_              | ((function?)) | (optional) A callback to be called with the virtual response.
 
 #### Request object
 
@@ -41,6 +47,8 @@ If the `request` argument is specified as an object, it can have the following p
 
 **Type:** ((stream))
 
-The full virtual request stream object.
+The full virtual request stream object.  This is a readable stream.
 
 <docmeta name="displayName" value="sails.request()">
+<docmeta name="pageType" value="method">
+

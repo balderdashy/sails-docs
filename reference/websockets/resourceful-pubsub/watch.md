@@ -26,24 +26,24 @@ User.find({
   sort: 'name ASC'
 }).exec(function(err, users) {
   if (err) return res.serverError(err);
-  
+
   if (req.isSocket) {
     // If this code is running, it's made it past the `isAdmin` policy, so we can safely
     // watch for `.publishCreate()` calls about this model and inform this socket, since we're
     // confident it belongs to a logged-in administrator.
     User.watch( req );
   }
-  
+
   // If this is request wants JSON (i.e. AJAX), then send a JSON response.
   if (req.wantsJSON) {
     return res.json(users);
   }
-  
+
   // Otherwise serve an HTML page.
   return res.view('admin/user-dashboard', {
     users: users
   });
-  
+
 });
 ```
 
@@ -57,4 +57,4 @@ User.find({
 
 
 <docmeta name="displayName" value=".watch()">
-
+<docmeta name="pageType" value="method">

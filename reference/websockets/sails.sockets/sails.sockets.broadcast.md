@@ -34,3 +34,5 @@ sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { msg: 'Hola!
 
 
 <docmeta name="displayName" value="broadcast()">
+<docmeta name="pageType" value="method">
+

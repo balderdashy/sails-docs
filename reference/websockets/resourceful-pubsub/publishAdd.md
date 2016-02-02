@@ -19,7 +19,7 @@ _Or:_
 | 1 |        `id`                   | ((number)),((string))  | The id (primary key) of the parent record.
 | 2 |        `association`          | ((string))                | The name of the association that the child record was added to (e.g. `"comments"`)
 | 3 |        `added`                | ((number)),((string)),((dictionary))    | Either a number or string to represent the id (primary key) of the child record being added, **or a dictionary** of properties describing it (must contain an `id` key!).  Either way, this information will be bundled in the socket message which is broadcasted.
-| 4 | _`req`_             |  ((req?))              | If provided, then the requesting socket _will be excluded_ from the broadcast. 
+| 4 | _`req`_             |  ((req?))              | If provided, then the requesting socket _will be excluded_ from the broadcast.
 | 5 | _`options`_         |  ((dictionary?))       | A dictionary of additional options.  See below.
 
 ##### Additional Options
@@ -47,7 +47,7 @@ The socket message is an object with the following properties:
 + **verb**  - always provided as the string: `"addedTo"`
 + **attribute** - the name of the model attribute (collection association) that was added to
 + **addedId** - the id of the newly added child record
-+ **added** -  Not guaranteed.  Will only be present if a dictionary of properties for the newly added child record was provided, rather than just its id. 
++ **added** -  Not guaranteed.  Will only be present if a dictionary of properties for the newly added child record was provided, rather than just its id.
 
 
 
@@ -57,7 +57,7 @@ The socket message is an object with the following properties:
 
 ```javascript
 // Broadcast a message to all client-side sockets subscribed to the tutorial record w/ id=3
-// letting them know that a new child record with id=17 has been associated and is now one of the 
+// letting them know that a new child record with id=17 has been associated and is now one of the
 // tutorial's "comments".
 Tutorial.publishAdd(3, 'comments', 17);
 ```
@@ -67,7 +67,7 @@ Tutorial.publishAdd(3, 'comments', 17);
 // letting them know that a new child record with the specified properties has been associated
 // and is now one of the tutorial's "comments".
 // (Note that we also pass in `req` to prevent the requesting socket from receiving the broadcast.)
-Tutorial.publishAdd(3, 'comments', { 
+Tutorial.publishAdd(3, 'comments', {
   id: 17,
   message: 'I love this show!'
 }, req);
@@ -84,7 +84,7 @@ io.socket.on('tutorial', function (event){
       console.log(event);
       // => see below
       break;
-    default: 
+    default:
       console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
   }
 });
@@ -129,5 +129,5 @@ Whereas in the latter case, note that `added` is also present thanks to the ((di
 
 
 <docmeta name="displayName" value=".publishAdd()">
-
+<docmeta name="pageType" value="method">
 

@@ -26,4 +26,4 @@ req.ips;
 
 
 <docmeta name="displayName" value="req.ips">
-
+<docmeta name="pageType" value="property">

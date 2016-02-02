@@ -25,4 +25,4 @@ debugger listening on port 5858
 
 
 <docmeta name="displayName" value="sails debug">
-
+<docmeta name="pageType" value="command">

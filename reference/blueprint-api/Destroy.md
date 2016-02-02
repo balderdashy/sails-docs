@@ -45,3 +45,5 @@ Delete Pinkie Pie:
 
 
 <docmeta name="displayName" value="destroy">
+<docmeta name="pageType" value="endpoint">
+

@@ -48,3 +48,5 @@ Change Applejack's hobby to "kickin":
 
 
 <docmeta name="displayName" value="update">
+<docmeta name="pageType" value="endpoint">
+

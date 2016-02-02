@@ -42,3 +42,5 @@ In a view...
 > - If more than one route matches the specified target, the first match is returned.
 
 <docmeta name="displayName" value="sails.getUrlFor()">
+<docmeta name="pageType" value="method">
+

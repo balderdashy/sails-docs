@@ -22,4 +22,4 @@ req.accepts('json');
 
 
 <docmeta name="displayName" value="req.accepts()">
-
+<docmeta name="pageType" value="method">

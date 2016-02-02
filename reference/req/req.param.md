@@ -44,3 +44,5 @@ We can get the expected result by sending the `sku` parameter any of the followi
 
 
 <docmeta name="displayName" value="req.param()">
+<docmeta name="pageType" value="method">
+

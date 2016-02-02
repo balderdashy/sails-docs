@@ -38,7 +38,7 @@ GET /purchase?sort=createdAt DESC&limit=30
 
 ##### Expected Response
 
-e.g. 
+e.g.
 ```json
 [
  {
@@ -115,3 +115,5 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 
 
 <docmeta name="displayName" value="find where">
+<docmeta name="pageType" value="endpoint">
+

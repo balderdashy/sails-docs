@@ -24,4 +24,4 @@ if (req.xhr) {
 
 
 <docmeta name="displayName" value="req.xhr">
-
+<docmeta name="pageType" value="property">

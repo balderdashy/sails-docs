@@ -21,4 +21,4 @@ req.params;
 
 
 <docmeta name="displayName" value="req.params">
-
+<docmeta name="pageType" value="property">

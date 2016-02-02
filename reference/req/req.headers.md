@@ -28,9 +28,9 @@ console.log(req.headers);
   'accept-language': 'en-US,en;q=0.8,hi;q=0.6',
   cookie: 'sdfkslddklfk; sails.sid=s%3skdlfjkj1231lsdfnsc,m' }
 ```
-  
-  
-### Example 
+
+
+### Example
 
 And if you want to access any specific, custom or pre-defined header, it can be done with bracket notation:
 
@@ -44,3 +44,4 @@ or dot notation:
 req.headers.host;
 ```
 <docmeta name="displayName" value="req.headers">
+<docmeta name="pageType" value="property">

@@ -13,3 +13,4 @@
 
 
 <docmeta name="displayName" value="sails new">
+<docmeta name="pageType" value="command">

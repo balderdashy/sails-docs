@@ -83,3 +83,5 @@ return res.ok({
 
 
 <docmeta name="displayName" value="res.ok()">
+<docmeta name="pageType" value="method">
+

@@ -34,4 +34,4 @@ User.find({name: 'Lenny'}).exec(function(err, lennies) {
 
 
 <docmeta name="displayName" value=".unsubscribe()">
-
+<docmeta name="pageType" value="method">

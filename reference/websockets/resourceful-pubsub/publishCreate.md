@@ -53,16 +53,16 @@ Passwords.encryptPassword({
       }
     }).exec(function (err, newUser){
       if (err) return res.negotiate(err);
-      
+
       // Inform logged-in administrators (if there are any) that a new user has signed up.
       // (note that we deliberately exclude the security question and encrypted password,
       //  but send everything else through.  We know this will only be received by client
       //  sockets which were allowed to `.watch()`.)
       User.publishCreate(_.omit(newUser, 'password'), req );
-      
+
       // Log in.
       req.session.me = newUser.id;
-      
+
       // Signup completed successfully!
       return res.ok();
     });//</User.create()>
@@ -82,7 +82,7 @@ io.socket.on('user', function (event){
       console.log(event);
       // => see below for the contents of `event`
       break;
-    default: 
+    default:
       console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
   }
 });
@@ -115,5 +115,5 @@ In this case, the logged message would look something like this:
 
 
 <docmeta name="displayName" value=".publishCreate()">
-
+<docmeta name="pageType" value="method">
 

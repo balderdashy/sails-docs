@@ -50,3 +50,5 @@ Create a new pony named "AppleJack" with a hobby of "pickin":
 
 
 <docmeta name="displayName" value="create">
+<docmeta name="pageType" value="endpoint">
+

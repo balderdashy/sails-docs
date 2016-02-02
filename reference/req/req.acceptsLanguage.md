@@ -18,10 +18,10 @@ This method is used by Sails internally for its implementation of internationali
 
 ### Example
 
-If a request is sent with a `"Accept-Charset: utf-8"` header:
+If a request is sent with a `"Accept-Language: da, en-gb;"` header:
 
 ```js
-req.acceptsCharset('utf-8');
+req.acceptsLanguage('en-gb');
 // -> true
 ```
 
@@ -42,6 +42,6 @@ req.acceptsCharset('utf-8');
 
 
 
-
-
 <docmeta name="displayName" value="req.acceptsLanguage()">
+<docmeta name="pageType" value="method">
+

@@ -59,4 +59,4 @@ req.file('avatar').upload(function (err, uploadedFiles){
 
 
 <docmeta name="displayName" value="req.file()">
-
+<docmeta name="pageType" value="method">

@@ -32,4 +32,4 @@ req.path;
 
 
 <docmeta name="displayName" value="req.path">
-
+<docmeta name="pageType" value="property">

@@ -50,3 +50,5 @@ Pet.update({name: 'fido'})
 
 
 <docmeta name="displayName" value="res.negotiate()">
+<docmeta name="pageType" value="method">
+

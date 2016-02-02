@@ -22,4 +22,4 @@ req.subdomains;
 
 
 <docmeta name="displayName" value="req.subdomains">
-
+<docmeta name="pageType" value="property">

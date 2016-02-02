@@ -54,3 +54,5 @@ res.jsonp(500, { error: 'message' })
 
 
 <docmeta name="displayName" value="res.jsonp()">
+<docmeta name="pageType" value="method">
+

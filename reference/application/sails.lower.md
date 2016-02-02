@@ -40,3 +40,5 @@ sailsApp.lower(
 > - Lowered apps cannot be lifted again.
 
 <docmeta name="displayName" value="sails.lower()">
+<docmeta name="pageType" value="method">
+

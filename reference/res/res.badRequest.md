@@ -74,3 +74,5 @@ if ( req.param('amount') < 500 )
 
 
 <docmeta name="displayName" value="res.badRequest()">
+<docmeta name="pageType" value="method">
+

@@ -56,3 +56,5 @@ return res.serverError(
 
 
 <docmeta name="displayName" value="res.serverError()">
+<docmeta name="pageType" value="method">
+

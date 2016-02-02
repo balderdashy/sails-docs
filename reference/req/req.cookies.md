@@ -24,4 +24,4 @@ req.cookies.chocolatechip;
 
 
 <docmeta name="displayName" value="req.cookies">
-
+<docmeta name="pageType" value="property">

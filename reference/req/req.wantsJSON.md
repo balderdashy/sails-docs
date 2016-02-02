@@ -48,3 +48,5 @@ A request "wantsJSON" if:
 
 
 <docmeta name="displayName" value="req.wantsJSON">
+<docmeta name="pageType" value="property">
+

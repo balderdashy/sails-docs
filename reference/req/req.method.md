@@ -28,4 +28,4 @@ req.method;
 
 
 <docmeta name="displayName" value="req.method">
-
+<docmeta name="pageType" value="property">

@@ -60,7 +60,7 @@ User.update({username: 'bob'}).set({
   if (err) return res.serverError(err);
   if (bobs.length > 1) return res.serverError('Consistency violation: somehow multiple users exist with the same username? There must be a bug elsewhere in the code base.');
   if (bobs.length < 1) return res.notFound();
-  
+
   // Broadcast a message telling anyone subscribed to Bob that his hair is now red.
   // (note that we exclude the requesting socket from the broadcast, and also include Bob's previous hair color)
   User.publishUpdate(bobs[0].id, {
@@ -70,7 +70,7 @@ User.update({username: 'bob'}).set({
       hairColor: bobs[0].hairColor
     }
   });
-  
+
   return res.ok();
 });
 ```
@@ -85,7 +85,7 @@ io.socket.on('user', function (event){
       console.log(event);
       // => see below
       break;
-    default: 
+    default:
       console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
   }
 });
@@ -116,4 +116,4 @@ In this case, the logged message would look something like this:
 
 
 <docmeta name="displayName" value=".publishUpdate()">
-
+<docmeta name="pageType" value="method">

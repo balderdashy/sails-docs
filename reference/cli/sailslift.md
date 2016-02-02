@@ -9,7 +9,7 @@ Run the Sails app in the current dir (if `node_modules/sails` exists, it will be
   * `--port <portNum>` - on the port specified by `portNum` instead of the default (1337)
   * `--verbose` - with verbose logging enabled
   * `--silly` - with insane logging enabled
-  
+
 
 ### Example
 
@@ -18,18 +18,18 @@ $ sails lift
 
 info: Starting app...
 
-info: 
-info: 
+info:
+info:
 info:    Sails              <|
 info:    v0.10.3             |\
 info:                       /|.\
 info:                      / || \
 info:                    ,'  |'  \
 info:                 .-'.-==|/_--'
-info:                 `--'-------' 
+info:                 `--'-------'
 info:    __---___--___---___--___---___--___
 info:  ____---___--___---___--___---___--___-__
-info: 
+info:
 info: Server lifted in `/Users/mikermcneil/code/sandbox/second`
 info: To see your app, visit http://localhost:1337
 info: To shut down Sails, press <CTRL> + C at any time.
@@ -50,4 +50,4 @@ debug: --------------------------------------------------------
 
 
 <docmeta name="displayName" value="sails lift">
-
+<docmeta name="pageType" value="command">

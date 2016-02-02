@@ -71,3 +71,5 @@ Pet.findOne()
 
 
 <docmeta name="displayName" value="res.notFound()">
+<docmeta name="pageType" value="method">
+

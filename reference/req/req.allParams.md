@@ -50,3 +50,5 @@ Product.update({sku: sku})
 
 
 <docmeta name="displayName" value="req.allParams()">
+<docmeta name="pageType" value="method">
+

@@ -64,3 +64,5 @@ if ( !req.session.canEditSalesforceLeads ) {
 
 
 <docmeta name="displayName" value="res.forbidden()">
+<docmeta name="pageType" value="method">
+

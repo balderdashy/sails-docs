@@ -24,3 +24,5 @@ The querystring parser in Express/Connect removes the query string from the stan
 
 
 <docmeta name="displayName" value="req.url">
+<docmeta name="pageType" value="property">
+

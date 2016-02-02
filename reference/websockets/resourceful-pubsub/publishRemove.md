@@ -58,18 +58,18 @@ User.findOne({username: 'elizabeth'})
 .exec(function(err, liz){
   if (err) return res.serverError(err);
   if (!liz) return res.notFound();
-  
+
   // The Pet with id=3 is Liz's favorite cat, Humphrey.
   liz.pets.remove(3);
   liz.pets.save(function (err){
     if (err) return res.serverError(err);
-    
+
     // Broadcast a message telling anyone subscribed to Liz that Humphrey ran away.
     // Note that we exclude the requesting socket from the broadcast.
     // Also note that, since we set `noReverse`, no "pet" events will be broadcasted
     // to Humphrey's subscribers (Liz wouldn't want us to worry them).
     User.publishRemove(liz.id, 'pets', 3, req, { noReverse: true });
-    
+
     return res.ok();
   });
 });
@@ -85,7 +85,7 @@ io.socket.on('user', function (event){
       console.log(event);
       // => see below
       break;
-    default: 
+    default:
       console.warn('Unrecognized socket event (`%s`) from server:',event.verb, event);
   }
 });
@@ -113,4 +113,4 @@ In this case, the logged message would look like this:
 
 
 <docmeta name="displayName" value=".publishRemove()">
-
+<docmeta name="pageType" value="method">

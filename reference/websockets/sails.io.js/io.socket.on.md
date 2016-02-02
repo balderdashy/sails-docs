@@ -12,19 +12,19 @@ io.socket.on(eventIdentity, function (msg) {
 ### Usage
 
 |   | Argument   | Type         | Details |
-|---|------------|:------------:|---------|
+|---|------------|:------------:|:--------|
 | 1 | `eventIdentity`      | ((string))   | The unique identity of a server-sent event, e.g. "recipe"
-| 2 | _`callback`_ | ((function?)) | Will be called when the server emits a message to this socket.
+| 2 | `handlerFn` | ((function)) | Will be called when the server emits a message to this socket.
 
 
-##### Callback
+##### Event handler
 
 |   | Argument  | Type         | Details |
-|---|-----------|:------------:|---------|
+|---|-----------|:------------:|:--------|
 | 1 | `msg`     | ((json))        | The message broadcasted from the Sails server.
 
 
-Note that the callback will NEVER trigger until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
+Note that the event handler will NEVER be called until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 ###### Resourceful Pubsub Methods
 + server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
@@ -98,3 +98,5 @@ If a socket's connection to the server was interrupted-- perhaps because the ser
 
 
 <docmeta name="displayName" value="io.socket.on()">
+<docmeta name="pageType" value="method">
+

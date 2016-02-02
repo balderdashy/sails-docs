@@ -22,3 +22,4 @@ var newSailsSocket = io.sails.connect();
 
 
 <docmeta name="displayName" value="SailsSocket">
+<docmeta name="pageType" value="class">

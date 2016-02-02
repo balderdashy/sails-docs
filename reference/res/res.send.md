@@ -58,3 +58,5 @@ res.send(200);
 
 <docmeta name="displayName" value="res.send()">
 
+<docmeta name="pageType" value="method">
+

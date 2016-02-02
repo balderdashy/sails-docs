@@ -93,3 +93,5 @@ sails>
 
 
 <docmeta name="displayName" value="sails console">
+<docmeta name="pageType" value="command">
+

@@ -23,4 +23,4 @@ switch (req.protocol) {
 
 
 <docmeta name="displayName" value="req.protocol">
-
+<docmeta name="pageType" value="property">

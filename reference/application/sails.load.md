@@ -50,3 +50,5 @@ sailsApp.load(
 > - Even though a Sails app does not listen for requests on an HTTP port, you can make "virtual" requests to it using [`sails.request`](http://sailsjs.org/documentation/reference/application/sails-request)
 
 <docmeta name="displayName" value="sails.load()">
+<docmeta name="pageType" value="method">
+
