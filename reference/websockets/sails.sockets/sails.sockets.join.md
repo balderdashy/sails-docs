@@ -48,5 +48,5 @@ subscribeToFunRoom: function(req, res) {
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
 
 
-<docmeta name="displayName" value="join()">
+<docmeta name="displayName" value=".join()">
 <docmeta name="pageType" value="method">

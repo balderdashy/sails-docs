@@ -42,5 +42,5 @@ sails.sockets.blast('user_logged_in', {
 > + Be sure and check `req.isSocket === true` before passing in `req` to this method. For the socket to be omitted, the current `req`  must be from a socket request, not just any HTTP request.
 
 
-<docmeta name="displayName" value="blast()">
+<docmeta name="displayName" value=".blast()">
 <docmeta name="pageType" value="method">

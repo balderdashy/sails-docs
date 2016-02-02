@@ -68,5 +68,5 @@ kickSocketFromRoom: function(req, res) {
 
 
 
-<docmeta name="displayName" value="leave()">
+<docmeta name="displayName" value=".leave()">
 <docmeta name="pageType" value="method">

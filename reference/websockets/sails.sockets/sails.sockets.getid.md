@@ -39,6 +39,6 @@ getSocketID: function(req, res) {
 > + Be sure and check `req.isSocket === true` before passing in `req`. This method does not work for HTTP requests!
 
 
-<docmeta name="displayName" value="getId()">
+<docmeta name="displayName" value=".getId()">
 <docmeta name="pageType" value="method">
 

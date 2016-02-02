@@ -33,6 +33,6 @@ sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { msg: 'Hola!
 > + Be sure and check `req.isSocket === true` before passing in `req` as `socketToOmit`. For the socket to be omitted, the provided `req` must be from a socket request, not just any HTTP request.
 
 
-<docmeta name="displayName" value="broadcast()">
+<docmeta name="displayName" value=".broadcast()">
 <docmeta name="pageType" value="method">
 
