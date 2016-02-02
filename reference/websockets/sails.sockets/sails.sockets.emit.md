@@ -36,4 +36,5 @@ sayHiToFriend: function(req, res) {
 
 
 <docmeta name="displayName" value="sails.sockets.emit()">
+<docmeta name="isDeprecated" value="true">
 
