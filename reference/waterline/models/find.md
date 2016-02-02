@@ -4,7 +4,7 @@ Find records in your database that match the given criteria.
 
 ```javascript
 Something.find(criteria).exec(function (err, records) {
-  
+
 });
 ```
 
@@ -38,4 +38,4 @@ User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
 
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".find()">
-
+<docmeta name="pageType" value="method">

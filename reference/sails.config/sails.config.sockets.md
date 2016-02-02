@@ -35,3 +35,5 @@ These configuration options provide lower-level access to the underlying Socket.
 
 
 <docmeta name="displayName" value="sails.config.sockets">
+<docmeta name="pageType" value="property">
+

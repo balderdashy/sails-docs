@@ -21,7 +21,5 @@ _See usage in .toJSON()_
 
 
 
-<docmeta name="methodType" value="instance">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".toObject()">
-
+<docmeta name="pageType" value="method">

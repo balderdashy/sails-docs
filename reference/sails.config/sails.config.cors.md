@@ -35,3 +35,5 @@ The following will allow cross-origin AJAX GET, PUT and POST requests to `/foo/b
 
 
 <docmeta name="displayName" value="sails.config.cors">
+<docmeta name="pageType" value="property">
+

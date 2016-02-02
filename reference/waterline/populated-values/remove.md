@@ -49,7 +49,5 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 > + `.remove()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
 
 
-<docmeta name="methodType" value="association">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".remove()">
-
+<docmeta name="pageType" value="method">

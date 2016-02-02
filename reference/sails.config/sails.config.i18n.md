@@ -17,3 +17,5 @@ Configuration for Sails' built-in internationalization & localization features. 
 
 
 <docmeta name="displayName" value="sails.config.i18n">
+<docmeta name="pageType" value="property">
+

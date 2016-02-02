@@ -76,3 +76,4 @@ module.exports.connections = {
 
 
 <docmeta name="displayName" value="sails.config.connections">
+<docmeta name="pageType" value="property">

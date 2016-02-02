@@ -1,6 +1,6 @@
 # .populate( `foreignKey`, [`query`] )
 ### Purpose
-This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.  
+This chainable method is used between .find()/.update() and .exec() in order to retrieve records associated with the model being queried.  You must supply the Foreign Key specified in your model config.
 
 ### Overview
 #### Parameters
@@ -12,13 +12,13 @@ This chainable method is used between .find()/.update() and .exec() in order to 
 
 ### Example Usage
 
-```javascript 
+```javascript
 
 User.find({name:'Mike'}).exec(function(e,r){
   console.log(r[0].toJSON())
 })
 
-/* 
+/*
 { name: 'Mike',
   age: 16,
   createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
@@ -31,7 +31,7 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 });
 
 /*
-{ pets: 
+{ pets:
    [ { name: 'Pinkie Pie',
        color: 'pink',
        id: 7,
@@ -59,7 +59,7 @@ User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
 });
 
 /*
-{ pets: 
+{ pets:
    [ { name: 'Pinkie Pie',
        color: 'pink',
        id: 7,
@@ -79,7 +79,6 @@ User.find({name:'Mike'}).populate('pets',{color:'pink'}).exec(function(e,r){
 
 
 
-<docmeta name="methodType" value="association">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".populate()">
+<docmeta name="pageType" value="method">
 

@@ -1,5 +1,5 @@
 # sails.config.policies
-<!-- 
+<!--
 > TODO:
 >
 > Merge most of the contents of this file into the main reference section on policies.
@@ -111,7 +111,7 @@ module.exports = {
 
 ##### Multiple Policies
 
-To apply two or more policies to a given action, (order matters!) you can specify an array, each referring to a specific policy. 
+To apply two or more policies to a given action, (order matters!) you can specify an array, each referring to a specific policy.
 
 ```javascript
 UserController: {
@@ -125,4 +125,4 @@ In each of the policies, the next policy in the chain will only be run if `next(
 
 
 <docmeta name="displayName" value="sails.config.policies">
-
+<docmeta name="pageType" value="property">

@@ -37,6 +37,5 @@ User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(e
 
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".findOrCreate()">
+<docmeta name="pageType" value="method">

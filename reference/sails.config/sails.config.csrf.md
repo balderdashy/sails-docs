@@ -18,3 +18,5 @@ This allows you to have certainty that your users' requests haven't been hijacke
 
 
 <docmeta name="displayName" value="sails.config.csrf">
+<docmeta name="pageType" value="property">
+

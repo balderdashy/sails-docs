@@ -23,8 +23,5 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 
 
 
-
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".query()">
-
+<docmeta name="pageType" value="method">

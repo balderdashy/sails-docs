@@ -19,3 +19,5 @@ By default, Sails controllers automatically bind routes for each of their functi
 
 
 <docmeta name="displayName" value="sails.config.blueprints">
+<docmeta name="pageType" value="property">
+

@@ -46,3 +46,5 @@ module.exports.log = {
 
 
 <docmeta name="displayName" value="sails.config.log">
+<docmeta name="pageType" value="property">
+

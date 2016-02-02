@@ -36,8 +36,8 @@ sailsApp.lower(
 ```
 
 ### Notes
-> - After an app is successfully lowered, it will emit the `lowered` event.
-> - Lowered apps cannot be lifted again.
+> + After an app is successfully lowered, it will emit the `lowered` event.
+> + Lowered apps cannot be lifted again.
 
 <docmeta name="displayName" value="sails.lower()">
 <docmeta name="pageType" value="method">

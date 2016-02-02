@@ -20,5 +20,5 @@ module.exports.bootstrap = function (cb) {
 
 
 
-<docmeta name="displayName" value="sails.config.bootstrap">
-
+<docmeta name="displayName" value="sails.config.bootstrap()">
+<docmeta name="pageType" value="property">

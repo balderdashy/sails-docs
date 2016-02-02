@@ -4,7 +4,7 @@ Destroy records in your database that match the given criteria.
 
 ```javascript
 Something.destroy(criteria).exec(function (err) {
-  
+
 });
 ```
 
@@ -22,7 +22,7 @@ Something.destroy(criteria).exec(function (err) {
 
 
 
-<!-- 
+<!--
 | 2 |    deletedRecords   | ((array))           | An array containing any records which were deleted.
 -->
 
@@ -75,7 +75,5 @@ User.destroy({
 > - If you want to confirm that one or more records exist before destroying them, you should first perform a `find()`.  However, keep in mind it is generally a good idea to _try to do things_ rather than _checking first_, lest you end up with a [race condition](http://people.cs.umass.edu/~emery/classes/cmpsci377/f07/scribe/scribe8-1.pdf).
 
 
-<docmeta name="methodType" value="instance">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".destroy()">
-
+<docmeta name="pageType" value="method">

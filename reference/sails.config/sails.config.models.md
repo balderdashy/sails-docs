@@ -23,4 +23,4 @@ sails.config.models;
 
 
 <docmeta name="displayName" value="sails.config.models">
-<docmeta name="stabilityIndex" value="3">
+<docmeta name="pageType" value="property">

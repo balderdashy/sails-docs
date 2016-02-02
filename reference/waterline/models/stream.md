@@ -63,7 +63,5 @@ window.onload = function startListening(){
 > Any string arguments passed must be the ID of the record.
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".stream()">
-
+<docmeta name="pageType" value="method">

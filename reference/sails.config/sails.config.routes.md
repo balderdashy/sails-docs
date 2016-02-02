@@ -15,3 +15,5 @@ Please see the [routes concept overview](http://sailsjs.org/documentation/concep
 
 
 <docmeta name="displayName" value="sails.config.routes">
+<docmeta name="pageType" value="property">
+

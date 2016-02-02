@@ -21,3 +21,6 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 
 
 <docmeta name="displayName" value="sails.config.views">
+<docmeta name="pageType" value="property">
+
+

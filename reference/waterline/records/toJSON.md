@@ -66,14 +66,12 @@ module.exports = {
 ```
 ### Notes
 > The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-> Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
+> Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.
 > You would use this to keep private data like email addresses and passwords from being sent back to every client.
 
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.
 
 
 
-<docmeta name="methodType" value="instance">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".toJSON()">
-
+<docmeta name="pageType" value="method">

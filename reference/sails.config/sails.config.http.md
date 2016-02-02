@@ -26,20 +26,4 @@ Most middleware compatible with [Express](https://github.com/expressjs/), [Conne
 
 
 <docmeta name="displayName" value="sails.config.http">
-
-
-
-
-
-
-<!--
-# Express
-### What is this?
-If you want to use custom middleware or add local variables and helpers to templates you can do so by configuring express in this config file.
-
-### Description
-
-
-This configuration file lets you easily add [Express](https://github.com/expressjs/) middleware, local variables and helpers for templates and directly access the application instance before it starts.
-
- -->
+<docmeta name="pageType" value="property">

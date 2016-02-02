@@ -10,7 +10,7 @@
 
 ### Example Usage
 
-```javascript 
+```javascript
 var myQuery = User.find();
 myQuery.where({'name':{startsWith:'W'}});
 
@@ -24,8 +24,5 @@ myQuery.exec(function callBack(err,results){
 
 
 
-
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".where()">
-
+<docmeta name="pageType" value="method">

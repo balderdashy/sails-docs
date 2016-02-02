@@ -31,8 +31,8 @@ io.socket.on('user', function(event){console.log(event);})
 
 This will log any notifications about `User` models to the console.  However, we won&rsquo;t receive any such messages until we *subscribe* to the existing `User` records (aka model instances).  If your app currently has the blueprint API enabled, you can use the sails.io.js client to watch the User model for new records, as well as subscribing to the returned set of records by making a socket `GET` request from the client to `/user`:
 
-```
-io.socket.get("/user", function(resData, jwres) {console.log(resData);})
+```js
+io.socket.get('/user', function(resData, jwres) {console.log(resData);})
 ```
 
 This requests the current list of users from the Sails server, and subscribes the client to events about each user.  Additionally, if the [`autoWatch` setting](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html?q=properties) is on (the default), the client will also be notified whenever a new `User` is created, and will automatically be subscribed to the new user.  The callback in this example simply logs the user list to the console.  See the [socket.get](http://sailsjs.org/documentation/reference/websockets/sails.io.js/socket.get.html) reference for more info about this method.
@@ -43,20 +43,20 @@ It&rsquo;s important to note that in order for the subscription to take place, t
 
 You would see something like the following in the console of the first window:
 
-```
+```js
 {
-	data: {
-		createdAt: "2014-08-01T05:50:19.855Z"
-		id: 1
-		name: "joe"
-		updatedAt: "2014-08-01T05:50:19.855Z"
-	},
-	id: 1,
-	verb: "created"
+	verb: 'created',
+  id: 1,
+  data: {
+    id: 1,
+    name: 'joe',
+    createdAt: '2014-08-01T05:50:19.855Z'
+    updatedAt: '2014-08-01T05:50:19.855Z'
+  }
 }
 ```
 
-The `verb` indicates the kind of action that occurred.  The `id` refers to the instance that the action occurred on, and `data` contains more information about the `User` that was acted upon.  Each event type sends back slightly different information; see the individual resourceful pubsub method reference documents for more info.
+The `verb` indicates the kind of action that occurred.  The `id` refers to the record that the alleged action occurred on, and `data` contains new/modified information about the `User` that was acted upon.  Each event type sends back slightly different information; see the individual resourceful pubsub method reference documents for more info.
 
 
 <docmeta name="displayName" value="Resourceful PubSub">

@@ -4,7 +4,7 @@ Attempt to find a particular record in your database that matches the given crit
 
 ```javascript
 Something.findOne(criteria).exec(function (err, record) {
-  
+
 });
 ```
 
@@ -38,7 +38,7 @@ User.findOne({
   if (!finn) {
     return res.notFound('Could not find Finn, sorry.');
   }
-  
+
   sails.log('Found "%s"', finn.fullName);
   return res.json(finn);
 });
@@ -47,11 +47,11 @@ User.findOne({
 
 
 ### Notes
-> - Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the value of `record` in the callback will be `undefined`. 
+> - Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the value of `record` in the callback will be `undefined`.
 
 
 
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".findOne()">
-
+<docmeta name="pageType" value="method">
 

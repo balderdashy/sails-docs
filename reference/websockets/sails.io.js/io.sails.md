@@ -30,4 +30,4 @@ The other properties of `io.sails` are used as defaults when creating new socket
 
 
 <docmeta name="displayName" value="io.sails">
-<docmeta name="pageType" value="singleton">
+<docmeta name="pageType" value="property">

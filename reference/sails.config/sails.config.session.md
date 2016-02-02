@@ -4,7 +4,7 @@ Configuration for Sails built-in session store.
 
 Sails session integration leans heavily on the great work already done by Express and Connect, but also adds
 a bit of its own special sauce to unify Socket.io with the Connect session store. It uses Connect&rsquo;s
-cookie parser to normalize configuration differences between Express and Socket.io and hooks into Sails&rsquo; 
+cookie parser to normalize configuration differences between Express and Socket.io and hooks into Sails&rsquo;
 request interpreter to allow Sails to automatically access and auto-save changes your code makes to `req.session`
 when handling a virtual request from Socket.io. That means that you can just write code that uses `req.session`
 in the way you might be used to from Express or Connect.
@@ -88,4 +88,4 @@ Sessions are enabled by default in Sails.  To disable sessions in your app, disa
 
 
 <docmeta name="displayName" value="sails.config.session">
-
+<docmeta name="pageType" value="property">

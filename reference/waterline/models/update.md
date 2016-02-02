@@ -40,7 +40,5 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, upd
 
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".update()">
-
+<docmeta name="pageType" value="method">

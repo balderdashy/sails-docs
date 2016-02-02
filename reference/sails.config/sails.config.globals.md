@@ -23,3 +23,5 @@ Configuration for the [global variables](http://sailsjs.org/documentation/refere
 
 
 <docmeta name="displayName" value="sails.config.globals">
+<docmeta name="pageType" value="property">
+

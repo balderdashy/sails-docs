@@ -19,14 +19,14 @@ Returns the number of records in your database that meet the given search criter
 
 ### Example Usage
 
-```javascript 
+```javascript
 User.count({name:'Flynn'}).exec(function countCB(error, found) {
   console.log('There are ' + found + ' users called "Flynn"');
 
   // There are 1 users called 'Flynn'
   // Don't forget to handle your errors
 });
-  
+
 
 ```
 ### Notes
@@ -35,7 +35,5 @@ User.count({name:'Flynn'}).exec(function countCB(error, found) {
 
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".count()">
-
+<docmeta name="pageType" value="method">

@@ -25,6 +25,4 @@ These methods are implemented using a built-in instance of [Socket.io](http://so
 > Don't see a method you're looking for above?  A number of `sails.sockets` methods were deprecated in Sails v0.12, either because a more performant alias was already available, or for performance and scalability reasons.  Please see the [v0.12 migration guide](http://sailsjs.org/documentation/concepts/upgrading/to-v-0-12) for more information.
 
 
-
 <docmeta name="displayName" value="sails.sockets">
-<docmeta name="stabilityIndex" value="3">

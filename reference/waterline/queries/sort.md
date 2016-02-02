@@ -8,14 +8,14 @@
 
 ### Example Usage
 
-```javascript 
+```javascript
 var myQuery = User.find();
 
 var sortString= 'name ASC';
 
 // Sort strings look like this
 
-// '<Model Attribute> <sort type>' 
+// '<Model Attribute> <sort type>'
 
 myQuery.sort('name ASC');
 
@@ -32,7 +32,5 @@ myQuery.exec(function callBack(err,results){
   - DESC
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".sort()">
-
+<docmeta name="pageType" value="method">

@@ -1,6 +1,6 @@
 # .exec(`callback`)
 ### Purpose
-This is run at the end of a chain of stringable methods.  It signals the adapter to run the query. 
+This is run at the end of a chain of stringable methods.  It signals the adapter to run the query.
 #### Parameters
 |     |     Description     | Accepted Data Types | Required ? |
 |-----|---------------------|---------------------|------------|
@@ -11,7 +11,7 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 | 1 |  Error              | `Error`             |
 | 2 |  Data Returned      | `{}`, `[{}]`, `int` |
 ### Example Usage
-```javascript 
+```javascript
 // refer to any of the examples above
 ```
 ### Notes
@@ -22,7 +22,6 @@ This is run at the end of a chain of stringable methods.  It signals the adapter
 
 
 
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".exec()">
+<docmeta name="pageType" value="method">
 

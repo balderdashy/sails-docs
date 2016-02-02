@@ -57,8 +57,5 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 > + Attempting to add an association that already exists will throw an error. [See here for an example.](https://github.com/balderdashy/waterline/issues/352)
 
 
-
-<docmeta name="methodType" value="instance">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".add()">
-
+<docmeta name="pageType" value="method">
