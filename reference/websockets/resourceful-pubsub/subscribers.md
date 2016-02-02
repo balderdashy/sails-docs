@@ -42,4 +42,4 @@ Controller Code
 
 <docmeta name="displayName" value=".subscribers()">
 <docmeta name="pageType" value="method">
-
+<docmeta name="isDeprecated" value="true">

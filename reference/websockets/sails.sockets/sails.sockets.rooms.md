@@ -25,4 +25,5 @@ getRoomsList: function(req, res) {
 
 
 <docmeta name="displayName" value="sails.sockets.rooms()">
+<docmeta name="isDeprecated" value="true">
 
