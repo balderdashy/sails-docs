@@ -69,4 +69,4 @@ getRoomSubscribers: function(req, res) {
 
 
 <docmeta name="displayName" value="sails.sockets.subscribers()">
-
+<docmeta name="isDeprecated" value="true">
