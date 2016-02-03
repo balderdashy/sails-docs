@@ -10,7 +10,7 @@ Configuration for the instance of the [Sails logger](http://sailsjs.org/document
 |-----------|-------------|-------------|--------------------------------------------------------------------------------------------------------------------------|
 | `level`   | ((string))  | `'info'`    | Set the level of detail to be shown in your app's log                                                                    |
 | `inspect` | ((boolean)) | `true`      | Set to false to disable captain's log's handling of logging, logs will instead be passed to the configured custom logger |
-| `custom`  | ((object))  | `undefined` | Set to the instance of a custom logger (such as [winston](https://github.com/winstonjs/winston)) logs will be passed through to the custom logger
+| `custom`  | ((dictionary))  | `undefined` | Set to the instance of a custom logger (such as [winston](https://github.com/winstonjs/winston)) logs will be passed through to the custom logger
 
 ### Using a Custom Logger
 

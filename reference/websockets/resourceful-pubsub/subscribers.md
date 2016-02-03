@@ -16,7 +16,7 @@ Returns an array of sockets that are subscribed to `record`.  This can be used i
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 | Record   | ((object)), ((integer)), ((string))  | Yes        |
+| 1 | Record   | ((dictionary)), ((integer)), ((string))  | Yes        |
 | 2 | Contexts to subscribe to | ((string)), ((array)) |  No |
 
 *Note*: `record` can be either an instance of a model, or a model&rsquo;s primary key.

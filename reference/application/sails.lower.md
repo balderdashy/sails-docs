@@ -19,7 +19,7 @@ sails.lower([callback]);
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `err`     | ((object))   | An error object, if any errors occurred while lowering
+| 1 | `err`     | ((dictionary))   | An error object, if any errors occurred while lowering
 
 
 ### Example

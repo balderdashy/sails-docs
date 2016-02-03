@@ -11,15 +11,15 @@ sails.lift([options], [callback]);
 
 |   |          Argument           | Type                | Details
 |---| --------------------------- | ------------------- | -----------
-| 1 |        options              | ((object))          | (optional) A dictionary of configuration options that will override all options present on the command line or in config files
+| 1 |        options              | ((dictionary))          | (optional) A dictionary of configuration options that will override all options present on the command line or in config files
 | 2 |        callback             | ((function))        | (optional) A function to call when lifting is complete (or if an error occurs)
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `err`     | ((object))   | An error object, if any errors occurred while lifting
-| 2 | `sails`   | ((object))   | A reference to the lifted Sails instance
+| 1 | `err`     | ((dictionary))   | An error object, if any errors occurred while lifting
+| 2 | `sails`   | ((dictionary))   | A reference to the lifted Sails instance
 
 
 ### Example

@@ -24,7 +24,7 @@ The other properties of `io.sails` are used as defaults when creating new socket
  ------------------ |----------| --------- | :-------:
  `url`              | ((string)) | Value of [`io.sails.url`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | The URL that the socket is connected to, or will attempt to connect to.
  `transports`       | ((array))  | Value of [`io.sails.transports`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | The transports that the socket will attempt to connect using.  Transports will be tried in order, with upgrades allowed: that is, if you list both "polling" and "websocket", then after establishing a long-polling connection the server will attempt to upgrade it to a websocket connection.  This setting should match the value of `sails.config.sockets.transports` in your Sails app.
-`headers` | ((object)) | Value of [`io.sails.headers`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | Dictionary of headers to be sent by default with every request from this socket.  Can be overridden via the `headers` option in [`.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request).
+`headers` | ((dictionary)) | Value of [`io.sails.headers`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | Dictionary of headers to be sent by default with every request from this socket.  Can be overridden via the `headers` option in [`.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request).
 
 
 
