@@ -77,9 +77,12 @@ The following values are optional, and should only be used if relevant for your 
 ```
 
 
-### Notes
+> **Note:**
+> If you run into kerberos-related issues when using the MongoDB as your session store or the database for one or more of your app's models, be sure and have a look at the relevant [troubleshooting page](http://mongodb.github.io/node-mongodb-native/2.0/getting-started/installation-guide/#troubleshooting) in the Mongo docs.  Also see [#3362](https://github.com/balderdashy/sails/issues/3362) for more diagnostic information about using Kerberos with Mongo in your Sails app.
 
-###### Disabling sessions
+
+
+### Disabling sessions
 
 Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook.  Note that tthe process for disabling any hook is identical to the process for [disabling the Grunt hook](http://sailsjs.org/documentation/concepts/assets/disabling-grunt) (just type `grunt` instead of `session`).
 
