@@ -13,18 +13,18 @@ The sections below provide a high level overview of what's changed, major bug fi
 
 ## Socket Methods
 
-Without question, the biggest change in Sails v0.12 is to the API of the low-level `sails.sockets` methods exposed by the `sockets` hook.
+Without question, the biggest change in Sails v0.12 is to the API of the low-level `sails.sockets` methods exposed by the `sockets` hook.  In order to ensure that Sails apps perform flawlessly in a [multi-server (aka "multi-node" or "clustered") environment](http://sailsjs.org/documentation/concepts/realtime/multi-server-environments), several [low-level methods](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets) have been deprecated, and some new ones have been added.
 
 > TODO finish intro
 
 ```
  + Sockets hook
    + Clean up the API for `sails.socket.*` methods, normalizing overloaded functions and deprecating methods which cause problems in a multi-node setting.
-   + Generally improve multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and make additional adjustments and improvements related to latest sio upgrade.  Add additional custom logic for when socket.io-redis is being used, using a redis client to implement the admin bus, instead of an additional socket client.
-   + Add a few brand new sails.sockets methods: `.leaveAllRooms()`, `.union()`, and `.difference()`
-   + `id()` -> `parseSocketId()` (backwards compatible w/ deprecation message)
+   + Generally improve multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and make additional adjustments and improvements related to latest socket.io upgrade.  Add additional custom logic for when socket.io-redis is being used, using a redis client to implement the admin bus, instead of an additional socket client.
+   + Add a few brand new sails.sockets methods: `.leaveAll()`, `.addRoomMembersToRooms()`, and `.removeRoomMembersFromRooms()`
+   + `id()` -> `getId()` (backwards compatible w/ deprecation message)
  + Generators
-   + Upgrade sails.io.js dependency in new generators (includes sio upgrades and the ability to specify common headers for socket requests from `sails.io.js`)
+   + Upgrade sails.io.js dependency in new generators (includes socket.io-client upgrades and the ability to specify common headers for socket requests from `sails.io.js`)
    + Deal with copying vs. symlinking dependencies in new projects for NPM 3
    + Upgrade to latest trusted versions of `grunt-contrib-*` dependencies (eliminates many NPM deprecation warnings and provides better error messages from NPM)
  + Waterline improvements (see https://github.com/balderdashy/waterline)
