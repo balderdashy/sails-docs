@@ -6,7 +6,10 @@ Sails v0.12 comes with an upgrade to Socket.io v1.4.5, Express 3.21.2, as well a
 
 The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.11.x Sails app to v0.12.
 
+## Things to immediately after upgrading to v0.12
 
+ + If your app uses the `socket.io-redis` adapter, upgrade to at least version 1.0.0 (`npm install --save socket.io-redis@^1.0.0`).
+ + If your app uses sails.io.js on the front end, install the newest version (`sails generate sails.io.js --force`)
 
 ## Socket Methods
 
