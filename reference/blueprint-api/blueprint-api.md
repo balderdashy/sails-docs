@@ -2,63 +2,46 @@
 
 ### Overview
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
+For a conceptual overview of Blueprints, see the [Blueprints concept section](http://sailsjs.org/documentation/concepts/blueprints).
 
-For example, if you create a `User.js` model and `UserController.js` controller file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
+### Activating/Deactivating Blueprints in your App
 
-Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
+The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://next.sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
-#### Blueprint Routes
+##### RESTful routes
 
-When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](http://sailsjs.org/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-There are three types of blueprint routes in Sails:
+Sails will create RESTful routes whenever it loads a [controller](http://sailsjs.org/documentation/concepts/controllers) and [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file with the same identity.  For example, `api/controllers/PetController.js` and `api/models/Pet.js` would both have the identity `pet`.  If both of those files were added to a Sails app (manually or by running [`sails generate api pet`](http://next.sailsjs.org/documentation/reference/command-line-interface/sails-generate#?sails-generate-api-foo)), then Sails would automatically create RESTful routes accessible at the URL `/pet` whenever the app was loaded.
 
-+ **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](http://sailsjs.org/documentation/concepts/Policies) to avoid unauthorized access.
-+ **Shortcut routes**, where the action to take is encoded in the path.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.  Shortcut routes are very handy for development, but generally should be disabled in a production environment.
-+ **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
+##### Shortcut routes
 
+Shortcut routes are activated by defaul in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-See the [blueprints subsection of the configuration reference](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+Like RESTful routes (see above), Sails creates shortcut routes for any controller/model pair with the same identity.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/controllers/UserController.js` and `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.org/documentation/reference/blueprint-api#?overriding-blueprints))
 
+##### Action routes
 
-#### Blueprint Actions
+Actions routes are activated by defaul in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
-
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own custom blueprint action. (e.g. `api/blueprints/create.js`).
-
-The current version of Sails ships with the following blueprint actions:
-
-+ [find](http://sailsjs.org/documentation/reference/blueprint-api/Find.html)
-+ [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne.html)
-+ [create](http://sailsjs.org/documentation/reference/blueprint-api/Create.html)
-+ [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html)
-+ [destroy](http://sailsjs.org/documentation/reference/blueprint-api/Destroy.html)
-+ [populate](http://sailsjs.org/documentation/reference/blueprint-api/Populate.html)
-+ [add](http://sailsjs.org/documentation/reference/blueprint-api/Add.html)
-+ [remove](http://sailsjs.org/documentation/reference/blueprint-api/Remove.html)
-
-Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
-
-### Overriding Blueprints
-
-( taken from https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs )
-
-To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.
-
-**Note:** Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)
-
-Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
-
-    GET /myRoute: {blueprint: 'foo'}
-
-
-### Disabling blueprints on a per-controller basis
-
-You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller definition, and assigning it a configuration object with overrides for the settings in this file.
+While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/PetController.js` contains:
 
 ```javascript
+module.exports {
+  adore: function (req, res) {
+    res.send("I adore pets!");
+  }
+}
+```
+
+then a route `/pet/adore` will automatically be created.  Note that action routes respond to _all_ HTTP verbs (GET, PUT, POST, etc.).  You can use `req.method` inside an action to determine which method was used.
+
+##### Disabling Blueprints on a Per-Controller Basis
+
+You may also override any of the settings from [`config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
+
+```javascript
+// In /api/controllers/PetController.js
 module.exports = {
   _config: {
     actions: false,
@@ -68,6 +51,32 @@ module.exports = {
 }
 ```
 
+
+### Overriding Blueprints
+
+##### RESTful / Shortcut Routes and Actions
+
+To override a RESTful blueprint route for a single controller, simply create an action in that controller with the appropriate name: [_find_](http://sailsjs.org/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.org/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.org/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.org/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.org/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.org/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.org/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.org/documentation/reference/blueprint-api/remove).
+
+To override the default _action_ that _all_ controllers use, create an `api/blueprints` folder and add files to it with names matching the actions to override (e.g. `find.js`, `findone.js`, `create.js`, etc.). You can take a look at [the code for the default actions](https://github.com/balderdashy/sails/tree/master/lib/hooks/blueprints/actions) in the Sails blueprints hook for a head start.
+
+> **Note:** All blueprint action files must be lowercase! (The default actions contains `findOne.js`, but in `/api/blueprints` it needs to be `findone.js`).
+
+##### Action Routes
+
+In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://next.sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://next.sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
+
+```
+'POST /user': {response: 'notFound'}
+```
+
+### Custom Blueprints
+
+Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your [`/config/routes.js`](http://next.sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://next.sailsjs.org/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
+
+```
+GET /myRoute: {blueprint: 'foo'}
+```
 
 ### Blueprints and Resourcful Pubsub
 
