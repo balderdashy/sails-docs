@@ -6,7 +6,7 @@ Sails app instances inherit Node's [`EventEmitter` interface](https://nodejs.org
 
 ### Should I use events?
 
-Most Sails developers never have a use case for working with application events. several apps before they even encounter application events.  Events emitted by the Sails app instance are designed to be used when building your own custom hooks, and while you _could_ technically use them anywhere, in most cases you _should not_.  Never use events_ in your controllers, models, services, configuration, or anywhere else in the userland code in your Sails app (unless you are building a custom app-level hook in `api/hooks/`).
+Most Sails developers never have a use case for working with application events. several apps before they even encounter application events.  Events emitted by the Sails app instance are designed to be used when building your own custom hooks, and while you _could_ technically use them anywhere, in most cases you _should not_.  Never use events in your controllers, models, services, configuration, or anywhere else in the userland code in your Sails app (unless you are building a custom app-level hook in `api/hooks/`).
 
 ### Events emitted by Sails
 
@@ -28,35 +28,4 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 
 > In addition to `.on()`, Sails also exposes a useful helper function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/master/lib/EVENTS.md#usage) in Sails core for more information.
 
-
-<!--
-### Using `sails.emit` for virtual requests
-
-You may occasionally wish to simulate requests to a Sails app without starting an actual http server--this is often useful in testing environments.  You can do this by loading the app with [`sails.load()`](http://sailsjs.org/documentation/reference/application/sails-load) rather than [`sails.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) and then sending a `router:request` event to the app:
-
-```javascript
-sails.emit('router:request', requestObj, responseObj)
-```
-
-When using this method to make requests, you are responsible for supplying appropriate values for the [request object]() (such as the URL, method and body) and the [response object]() (such as implementations for the `send` method).
-
-##### Example
-
-Send a virtual request to the `POST /user` route and log the response
-
-```javascript
-sails.emit('router:request', {
-  url: '/user',
-  method: 'post',
-  body: {
-     name: 'joe',
-     age: 25
-  }
-}, {
-  send: function(data) {
-     console.log("Server responded with: ", data);
-  }
-});
-```
--->
 <docmeta name="displayName" value="Events">
