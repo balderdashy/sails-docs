@@ -1,15 +1,15 @@
 # myApp/assets/robots.txt
 ### Purpose
-This file tells web crawlers and search bots about your app.  It tells them what kind of content to expect as well as how to index it.
+This file tells search engines and roving packs of robot spiders about whether or not the content in your app should be indexed.
 
-Learn all about robots.txt [right here](http://www.robotstxt.org/robotstxt.html).
+You can read more about robots.txt [here](http://www.robotstxt.org/robotstxt.html), or about how it is parsed by Google [here](https://support.google.com/webmasters/answer/6062608).
 
 
-<docmeta name="displayName" value="robots.txt">
+
 
 ```
 # The robots.txt file is used to control how search engines index your live URLs.
-# See http://www.robotstxt.org/wc/norobots.html for more information.
+# See http://sailsjs.org/documentation/anatomy/my-app/assets/robots-txt for more information.
 
 
 
@@ -18,3 +18,6 @@ Learn all about robots.txt [right here](http://www.robotstxt.org/robotstxt.html)
 # Disallow: /
 
 ```
+
+
+<docmeta name="displayName" value="robots.txt">
