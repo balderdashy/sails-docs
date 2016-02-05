@@ -10,16 +10,10 @@ Most Sails developers never have a use case for working with application events.
 
 ### Events emitted by Sails
 
-The following are the most commonly used built-in events emitted by Sails instances.  You can listen for these events with:
+The following are the most commonly used built-in events emitted by Sails instances.  Like any EventEmitter in Node, you can listen for these events with `sails.on()`:
 
 ```javascript
 sails.on(eventName, eventHandlerFn);
-```
-
-or:
-
-```javascript
-sails.after(eventName, eventHandlerFn);
 ```
 
 None of the events are emitted with extra information, so your `eventHandlerFn` should not have any arguments.
@@ -30,6 +24,10 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 | `lifted`   | The app has been lifted and is listening for requests. |
 | `lowered`  | The app has been lowered and is no longer listening for requests. |
 | `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
+
+
+> In addition to `.on()`, Sails also exposes a useful helper function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/master/lib/EVENTS.md#usage) in Sails core for more information.
+
 
 <!--
 ### Using `sails.emit` for virtual requests
