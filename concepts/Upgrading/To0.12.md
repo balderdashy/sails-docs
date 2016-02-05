@@ -26,7 +26,7 @@ The `--force` flag will override the existing Sails dependency installed in your
 > For a full list of changes, see the changelog file for [Sails](https://github.com/balderdashy/sails/blob/master/CHANGELOG.md), as well as those for [Waterline](https://github.com/balderdashy/waterline/blob/master/CHANGELOG.md), [sails-hook-sockets](https://github.com/balderdashy/sails-hook-sockets/blob/master/CHANGELOG.md) and [sails.io.js](https://github.com/balderdashy/sails.io.js/blob/master/CHANGELOG.md).
 
  + Security enhancements: updated several dependencies with potential vulnerabilities
- + Reverse routing functionality is now built in to Sails core via the new [`sails.getRouteFor()`](http://next.sailsjs.org/documentation/reference/application/sails-get-route-for) and [`sails.getUrlFor()`](http://next.sailsjs.org/documentation/reference/application/sails-get-url-for) methods
+ + Reverse routing functionality is now built in to Sails core via the new [`sails.getRouteFor()`](http://sailsjs.org/documentation/reference/application/sails-get-route-for) and [`sails.getUrlFor()`](http://sailsjs.org/documentation/reference/application/sails-get-url-for) methods
 + Generally improved multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and made additional adjustments and improvements related to the latest socket.io upgrade.  Added a much tighter Redis integration that sits on top of `socket.io-redis`, using a redis client to implement cross-server communication rather than an additional socket client.
 + Cleaned up the API for `sails.socket.*` methods, normalizing overloaded functions and deprecating methods which cause problems in multiserver deployments (more on that below).
 + Added a few brand new sails.sockets methods: `.leaveAll()`, `.addRoomMembersToRooms()`, and `.removeRoomMembersFromRooms()`
@@ -38,21 +38,21 @@ The `--force` flag will override the existing Sails dependency installed in your
 
 ## Socket Methods
 
-Without question, the biggest change in Sails v0.12 is to the API of the low-level `sails.sockets` methods exposed by the `sockets` hook.  In order to ensure that Sails apps perform flawlessly in a [multi-server (aka "multi-node" or "clustered") environment](http://sailsjs.org/documentation/concepts/realtime/multi-server-environments), several [low-level methods](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets) have been deprecated, and some new ones have been added.
+Without question, the biggest change in Sails v0.12 is to the API of the low-level `sails.sockets` methods exposed by the `sockets` hook.  In order to ensure that Sails apps perform flawlessly in a [multi-server (aka "multi-node" or "clustered") environment](http://sailsjs.org/documentation/concepts/realtime/multi-server-environments), several [low-level methods](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) have been deprecated, and some new ones have been added.
 
 The following `sails.sockets` methods have been deprecated:
 
- + [`.emit()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-emit)
- + [`.id()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-id) (renamed to [`.getId()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/get-id))
- + [`.socketRooms()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-socket-rooms)
- + [`.rooms()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-rooms)
- + [`.subscribers()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers)
+ + [`.emit()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-emit)
+ + [`.id()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-id) (renamed to [`.getId()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/get-id))
+ + [`.socketRooms()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-socket-rooms)
+ + [`.rooms()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-rooms)
+ + [`.subscribers()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers)
 
 If you are using any of those methods in your app, they will still work in v0.12 but _you should replace them as soon as possible_ as they may be removed from Sails in the next version.  See the individual doc pages for each method for more information.
 
 ## Resourceful PubSub Methods
 
-The [`.subscribers()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribers) resourceful pubsub method has been deprecated for the same reasons as [`sails.sockets.subscribers()`](http://next.sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers).  Follow the guidelines in the docs for replacing this method if you are using it in your code.
+The [`.subscribers()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribers) resourceful pubsub method has been deprecated for the same reasons as [`sails.sockets.subscribers()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers).  Follow the guidelines in the docs for replacing this method if you are using it in your code.
 
 
 ## SQL Adapter Performance
