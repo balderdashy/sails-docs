@@ -39,7 +39,7 @@ To suppress automatic broadcasts for reflexive associations, set the `options.no
 
 ##### Behavior
 
-`publishUpdate()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
+`publishUpdate()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
 + **verb**  - a ((string)) constant: `'updated'`
 + **id** - the record's `id` which is a ((string)) or ((number))

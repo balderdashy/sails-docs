@@ -40,7 +40,7 @@ To suppress automatic broadcasts for reflexive associations, provide an `options
 
 ##### Behavior
 
-`publishRemove()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://next.sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
+`publishRemove()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
 + **verb**  - a ((string)) constant: `'removedFrom'`
 + **id** - the parent record's `id` which is a ((string)) or ((number))

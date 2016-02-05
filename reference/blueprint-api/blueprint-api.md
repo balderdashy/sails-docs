@@ -6,13 +6,13 @@ For a conceptual overview of Blueprints, see the [Blueprints concept section](ht
 
 ### Activating/Deactivating Blueprints in your App
 
-The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://next.sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
+The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
 ##### RESTful routes
 
 RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-Sails will create RESTful routes whenever it loads a [controller](http://sailsjs.org/documentation/concepts/controllers) and [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file with the same identity.  For example, `api/controllers/PetController.js` and `api/models/Pet.js` would both have the identity `pet`.  If both of those files were added to a Sails app (manually or by running [`sails generate api pet`](http://next.sailsjs.org/documentation/reference/command-line-interface/sails-generate#?sails-generate-api-foo)), then Sails would automatically create RESTful routes accessible at the URL `/pet` whenever the app was loaded.
+Sails will create RESTful routes whenever it loads a [controller](http://sailsjs.org/documentation/concepts/controllers) and [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file with the same identity.  For example, `api/controllers/PetController.js` and `api/models/Pet.js` would both have the identity `pet`.  If both of those files were added to a Sails app (manually or by running [`sails generate api pet`](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate#?sails-generate-api-foo)), then Sails would automatically create RESTful routes accessible at the URL `/pet` whenever the app was loaded.
 
 ##### Shortcut routes
 
@@ -64,7 +64,7 @@ To override the default _action_ that _all_ controllers use, create an `api/blue
 
 ##### Action Routes
 
-In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://next.sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://next.sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
+In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
 
 ```
 'POST /user': {response: 'notFound'}
@@ -72,7 +72,7 @@ In production apps, you may often wish to turn action routes off completely for 
 
 ### Custom Blueprints
 
-Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your [`/config/routes.js`](http://next.sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://next.sailsjs.org/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
+Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
 
 ```
 GET /myRoute: {blueprint: 'foo'}
