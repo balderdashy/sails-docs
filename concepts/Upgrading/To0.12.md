@@ -1,8 +1,6 @@
 # Upgrading to Sails v0.12
 
-> Note: If you are reading this, note that it is a _very early_ draft of the migration guide which is currently under construction.
-
-Sails v0.12 comes with an upgrade to Socket.io and Express, as well as many bug fixes and performance enhancements. v0.12 is mostly backwards compatible with Sails v0.11, however there are some major changes to `sails.sockets.*` methods which may or may not affect your app. Most of the migration guide below deals with those changes, so if you are upgrading an existing app from v0.11 and are using `sails.sockets` methods, please be sure and carefully read the information below in case it affects your app.  Other than that, running `sails lift` in an existing project should just work.
+Sails v0.12 comes with an upgrade to Socket.io and Express, as well as many bug fixes and performance enhancements. You will find that this version is mostly backwards compatible with Sails v0.11, however there are some major changes to `sails.sockets.*` methods which may or may not affect your app. Most of the migration guide below deals with those changes, so if you are upgrading an existing app from v0.11 and are using `sails.sockets` methods, please be sure and carefully read the information below in case it affects your app.  Other than that, running `sails lift` in an existing project should just work.
 
 The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.11.x Sails app to v0.12.
 
@@ -35,7 +33,7 @@ The `--force` flag will override the existing Sails dependency installed in your
 + `sails.sockets.id()` is now `sails.sockets.getId()` (backwards compatible w/ deprecation message)
 + New Sails apps are now generated with the updated version of `sails.io.js` (the JavaScript Sails socket client).  This upgrade bundles the latest version of `socket.io-client`, as well as some more advanced functionality (including the ability to specify common headers for all virtual socket requests)
 + Upgraded to latest trusted versions of `grunt-contrib-*` dependencies (eliminates many NPM deprecation warnings and provides better error messages from NPM).
-+ If you are using NPM v3, running `sails new` will now run `npm install` instead of symlinking your new app's initial dependencies.  This is slower than you may be used to, but is a necessary change due to changes in the way NPM handles nested dependencies.  The core maintainers are [working on](https://github.com/npm/npm/issues/10013#issuecomment-178238596) a better long-term solution.  If you run `sails new` a lot and the slowdown is bugging you, consider downgrading to an earlier version of NPM (v2.x) for the time being.  If NPM is <v3, Sails will take advantage of the classic symlinking strategy.
++ If you are using NPM v3, running `sails new` will now run `npm install` instead of symlinking your new app's initial dependencies.  This is slower than you may be used to, but is a necessary change due to changes in the way NPM handles nested dependencies.  The core maintainers are [working on](https://github.com/npm/npm/issues/10013#issuecomment-178238596) a better long-term solution, but in the mean time if you run `sails new` a lot and the slowdown is bugging you, consider temporarily downgrading to an earlier version of NPM (v2.x).  If the installed version of NPM is < version 3, Sails will continue to take advantage of the classic symlinking strategy.
 
 
 ## Socket Methods
@@ -59,29 +57,22 @@ The [`.subscribers()`](http://next.sailsjs.org/documentation/reference/web-socke
 
 ## SQL Adapter Performance
 
-[Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
+[Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters, upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
 
 
 ## Contributing
 
-While not technically part of the release, Sails v0.12 is accompanied with some major cleanup of the official reference documentation. The entire Sails website is now available in [Japanese](http://sailsjs.jp/), and four other [translation projects](https://github.com/balderdashy/sails-docs#in-other-languages) are underway for Korean, Brazillian Portugese, Taiwanese Mandarin, and Spanish.
+While not technically part of the release, Sails v0.12 is accompanied by some major improvements to the tools and resources available to contributors.  More core hooks are now fully documented ([controllers](https://github.com/balderdashy/sails/tree/master/lib/hooks/controllers)|[grunt](https://github.com/balderdashy/sails/tree/master/lib/hooks/grunt)|[logger](https://github.com/balderdashy/sails/tree/master/lib/hooks/logger)|[cors](https://github.com/balderdashy/sails/tree/master/lib/hooks/cors)|[responses](https://github.com/balderdashy/sails/tree/master/lib/hooks/responses)|[orm](https://github.com/balderdashy/sails/tree/master/lib/hooks/orm)), and the team has put together a [Code of Conduct](https://github.com/balderdashy/sails/blob/master/CODE-OF-CONDUCT.md) for contributing to the Sails project.
 
-There were also some major improvements to the tools and resources available to contributors.  More core hooks are now fully documented ([controllers](https://github.com/balderdashy/sails/tree/master/lib/hooks/controllers)|[grunt](https://github.com/balderdashy/sails/tree/master/lib/hooks/grunt)|[logger](https://github.com/balderdashy/sails/tree/master/lib/hooks/logger)|[cors](https://github.com/balderdashy/sails/tree/master/lib/hooks/cors)|[responses](https://github.com/balderdashy/sails/tree/master/lib/hooks/responses)|[orm](https://github.com/balderdashy/sails/tree/master/lib/hooks/orm)), and the team has put together a [Code of Conduct](https://github.com/balderdashy/sails/blob/master/CODE-OF-CONDUCT.md) for contributing to the Sails project.  The biggest change for contributors is the [updated contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md), which contains the new, streamlined process for feature/enhancement proposals and for merging features, enhancements, and patches into core.  As the Sails framework has grown (both the code base and the user base), it's become necessary to establish clearer processes for how issue contributions, code contributions, and contributions to the documentation are reviewed and merged.
+The biggest change for contributors is the [updated contribution guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md), which contains the new, streamlined process for feature/enhancement proposals and for merging features, enhancements, and patches into core.  As the Sails framework has grown (both the code base and the user base), it's become necessary to establish clearer processes for how issue contributions, code contributions, and contributions to the documentation are reviewed and merged.
 
 
-```text
- + New guide for contributing to Sails docs, as well as a few tweaks to the process for starting or contributing to translation projects (see http://blog.sailsjs.org/post/137189916152/updates-to-how-we-contribute-to-the-sails-docs)
- + [Improved docs](https://github.com/balderdashy/sails-docs/pull/615) for log configuration (thanks @kevinob11 and @felixmc)
- + Contributor documentation for more of Sails' core hooks
-   + [Grunt hook](https://github.com/balderdashy/sails/tree/master/lib/hooks/grunt)
-   + [Responses hook](https://github.com/balderdashy/sails/tree/master/lib/hooks/responses)
-   + ORM hook _(esp. example documentation for implementing a custom override)_
- + Added [Code of Conduct](https://github.com/balderdashy/sails/blob/master/CODE-OF-CONDUCT.md)
- + Created updated contribution guide with a streamlined process for feature/enhancement proposals (also added much more extensive guide to issue and code contributions)
- + Set up http://blog.sailsjs.org
-```
+## Documentation
 
-> TODO: expand
+This release also comes with a deep clean of the official reference documentation, and some minor usability improvements to the online docs at [http://sailsjs.org/documentation](http://sailsjs.org/documentation). The entire Sails website is now available in [Japanese](http://sailsjs.jp/), and four other [translation projects](https://github.com/balderdashy/sails-docs#in-other-languages) are underway for Korean, Brazillian Portugese, Taiwanese Mandarin, and Spanish.
+
+In addition, the Sails.js project (finally) has an [official blog](http://blog.sailsjs.org).  The Sails.js blog is the new source for all longform updates and announcements about Sails, as well as for our related projects like Waterline, Skipper and the machine specification.
+
 
 
 <docmeta name="displayName" value="To v0.12">
