@@ -1,19 +1,25 @@
-# Sails application events
+# Application Events
 
 ### Overview
 
-Sails instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible), events can be very useful when extending Sails (via [hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks) or [adapters](http://sailsjs.org/documentation/concepts/extending-sails/adapters)) and in a testing environment.
+Sails app instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible to facilitate scalability), events can be very useful when extending Sails (via [hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks) or [adapters](http://sailsjs.org/documentation/concepts/extending-sails/adapters)) and in a testing environment.
 
 ### Should I use events?
 
-You _**should not** use events_ in your controllers, models, services, configuration, or anywhere else in your Sails app.  Events emitted by the Sails app instance are designed to be used when building your own custom hooks.
+Most Sails developers never have a use case for working with application events. several apps before they even encounter application events.  Events emitted by the Sails app instance are designed to be used when building your own custom hooks, and while you _could_ technically use them anywhere, in most cases you _should not_.  Never use events_ in your controllers, models, services, configuration, or anywhere else in the userland code in your Sails app (unless you are building a custom app-level hook in `api/hooks/`).
 
 ### Events emitted by Sails
 
-The following are common events emitted by Sails instances.  You can listen for these events with:
+The following are the most commonly used built-in events emitted by Sails instances.  You can listen for these events with:
 
 ```javascript
 sails.on(eventName, eventHandlerFn);
+```
+
+or:
+
+```javascript
+sails.after(eventName, eventHandlerFn);
 ```
 
 None of the events are emitted with extra information, so your `eventHandlerFn` should not have any arguments.
