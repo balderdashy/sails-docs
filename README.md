@@ -37,7 +37,8 @@ On the other hand, if you are making an edit related to an unreleased feature in
 | Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
 |-------------------------------------------------------------------------------------|------------------------|:-------------------|
 | [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.org](http://preview.sailsjs.org)
-| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Upcoming v0.12 release           | [next.sailsjs.org](http://preview.sailsjs.org)
+| [`1.0`](https://github.com/balderdashy/sails-docs/tree/1.0) | Upcoming v1.0 release _(branch not available yet)_           | [next.sailsjs.org](http://next.sailsjs.org)
+| [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11) | Sails v0.11.x           | [0.11.sailsjs.org](http://0.11.sailsjs.org)
 
 
 #### How are these docs compiled and pushed to the website?
@@ -52,7 +53,7 @@ Each .md file has its own page on the website (i.e. all reference, concepts, and
 
 #### When will my change appear on the Sails website?
 
-Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.11). We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org, and content is only merged just before redeploying the sails website.
+Documentation changes go live when they are merged onto a special branch corresponding with the current stable version of Sails (e.g. 0.12). We cannot merge pull requests sent directly to this branch-- its sole purpose is to reflect the content currently hosted on sailsjs.org, and content is only merged just before redeploying the sails website.
 
 If you want to see how documentation changes will appear on sailsjs.org, you can visit [preview.sailsjs.org](http://preview.sailsjs.org). The preview site updates itself automatically as changes are merged into the master branch of sails-docs.
 
