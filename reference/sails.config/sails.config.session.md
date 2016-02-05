@@ -49,7 +49,7 @@ Any session adapter written for Connect/Express works in Sails, as long as you u
 For example to use Mongo as your session store, you should use version 0.8.4 of `connect-mongo`.  First, run the following from your project's directory:
 
 ```
-npm install sails-mongo@0.8.4 --save
+npm install connect-mongo@0.8.4 --save
 ```
 
 Then add the following lines to your session configuration dictionary in `config/session.js`:
