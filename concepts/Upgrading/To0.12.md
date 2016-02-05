@@ -55,6 +55,50 @@ If you are using any of those methods in your app, they will still work in v0.12
 The [`.subscribers()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribers) resourceful pubsub method has been deprecated for the same reasons as [`sails.sockets.subscribers()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers).  Follow the guidelines in the docs for replacing this method if you are using it in your code.
 
 
+## Waterline (ORM) Updates
+
+Sails v0.12 comes with the latest version of the Waterline ORM (v0.11.0).  There are two API changes to be aware of:
+
+##### `.save()` no longer provides a second argument to its callback
+
+The callback to the `.save()` instance method no longer receives a second argument.  While convenient, the requirement of providing this second argument made `.save()` less performant, especially for apps working with millions of records.  This change resolves those issues by eliminating the need to build redundant queries, and preventing your database from having to process them.
+
+If there are places in your app where you have code like this:
+```javascript
+sierra.save(function (err, modifiedSierra){
+  if (err) { /* ... */  return; }
+  
+  // ...
+});
+```
+
+You should replace it with:
+```javascript
+sierra.save(function (err){
+  if (err) { /* ... */  return; }
+  
+  // ...
+});
+```
+
+
+
+##### Custom column/field names for built-in timestamps
+
+You can now configure a custom column name (i.e. field name for Mongo/Redis folks) for the built-in `createdAt` and `updatedAt` attributes.  In the past, the top-level `autoCreatedAt` and `autoUpdatedAt` model settings could be specified as `false` to disable the automatic injection of `createdAt` and `updatedAt` altogether.  That _still works as it always has_, but now you can also specify string values for one or both of these settings instead.  If a string is specified, it will be understood as the custom column (/field) name to use for the automatic timestamp.
+
+```javascript
+{
+  attributes: {},
+  autoCreatedAt: 'my_cool_created_when_timestamp',
+  autoUpdatedAt: 'my_cool_updated_at_timestamp'
+}
+```
+
+If you were using the [workaround suggested by @sgress454 here](http://stackoverflow.com/a/24562385/486547), you may want to take advantage of this simpler approach instead.
+
+
+
 ## SQL Adapter Performance
 
 [Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters, upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
