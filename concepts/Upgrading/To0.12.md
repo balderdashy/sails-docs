@@ -119,4 +119,10 @@ In addition, the Sails.js project (finally) has an [official blog](http://blog.s
 
 
 
+## Need Help?
+
+If you run into an unexpected issue upgrading your Sails app to v0.12.0, please review our contribution guide and [submit an issue in the Sails GitHub repo](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
+
+
+
 <docmeta name="displayName" value="To v0.12">
