@@ -2,37 +2,41 @@
 
 > Note: If you are reading this, note that it is a _very early_ draft of the migration guide which is currently under construction.
 
-Sails v0.12 comes with an upgrade to Socket.io v1.4.5, Express 3.21.2, as well as many bug fixes and performance enhancements. v0.12 is mostly backwards compatible with Sails v0.11, however there are some major changes to `sails.sockets.*` methods. Most of the migration guide below deals with those changes, so if you are upgrading an existing app from v0.11 and are using `sails.sockets` methods, please be sure and carefully read the information below in case it affects your app.  Other than that, running `sails lift` in an existing project should just work.
+Sails v0.12 comes with an upgrade to Socket.io and Express, as well as many bug fixes and performance enhancements. v0.12 is mostly backwards compatible with Sails v0.11, however there are some major changes to `sails.sockets.*` methods which may or may not affect your app. Most of the migration guide below deals with those changes, so if you are upgrading an existing app from v0.11 and are using `sails.sockets` methods, please be sure and carefully read the information below in case it affects your app.  Other than that, running `sails lift` in an existing project should just work.
 
 The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.11.x Sails app to v0.12.
+
+## Upgrading to Sails v0.12
+
+Run the following command from the root of your Sails app:
+
+```bash
+npm install sails@0.12.0 --force --save
+```
+
+The `--force` flag will override the existing Sails dependency installed in your `node_modules/` folder with Sails v0.12, and the `--save` flag will update your package.json file so that future npm installs will also use the new version.
+
 
 ## Things to immediately after upgrading to v0.12
 
  + If your app uses the `socket.io-redis` adapter, upgrade to at least version 1.0.0 (`npm install --save socket.io-redis@^1.0.0`).
- + If your app uses sails.io.js on the front end, install the newest version (`sails generate sails.io.js --force`)
+ + If your app is using the Sails socket client (e.g. `assets/js/dependencies/sails.io.js`) on the front end, also install the newest version (`sails generate sails.io.js --force`)
+
 
 ## Overview of changes in v0.12
 
 > For a full list of changes, see the changelog file for [Sails](https://github.com/balderdashy/sails/blob/master/CHANGELOG.md), as well as those for [Waterline](https://github.com/balderdashy/waterline/blob/master/CHANGELOG.md), [sails-hook-sockets](https://github.com/balderdashy/sails-hook-sockets/blob/master/CHANGELOG.md) and [sails.io.js](https://github.com/balderdashy/sails.io.js/blob/master/CHANGELOG.md).
 
- + Security enhancements: updated several dependencies with vulnerabilities
- + Reverse routing via new `sails.getRouteFor()` and `sails.getUrlFor()` methods
- + Sockets hook
-   + Clean up the API for `sails.socket.*` methods, normalizing overloaded functions and deprecating methods which cause problems in a multi-node setting.
-   + Generally improve multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and make additional adjustments and improvements related to latest socket.io upgrade.  Add additional custom logic for when socket.io-redis is being used, using a redis client to implement the admin bus, instead of an additional socket client.
-   + Add a few brand new sails.sockets methods: `.leaveAll()`, `.addRoomMembersToRooms()`, and `.removeRoomMembersFromRooms()`
-   + `id()` -> `getId()` (backwards compatible w/ deprecation message)
- + Generators
-   + Upgrade sails.io.js dependency in new generators (includes socket.io-client upgrades and the ability to specify common headers for socket requests from `sails.io.js`)
-   + Deal with copying vs. symlinking dependencies in new projects for NPM 3
-   + Upgrade to latest trusted versions of `grunt-contrib-*` dependencies (eliminates many NPM deprecation warnings and provides better error messages from NPM)
- + Waterline improvements (see https://github.com/balderdashy/waterline)
- + Skipper improvements (see https://github.com/balderdashy/skipper)
- + Captains Log improvements (see https://github.com/balderdashy/captains-log)
+ + Security enhancements: updated several dependencies with potential vulnerabilities
+ + Reverse routing functionality is now built in to Sails core via the new [`sails.getRouteFor()`](http://next.sailsjs.org/documentation/reference/application/sails-get-route-for) and [`sails.getUrlFor()`](http://next.sailsjs.org/documentation/reference/application/sails-get-url-for) methods
++ Generally improved multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and made additional adjustments and improvements related to the latest socket.io upgrade.  Added a much tighter Redis integration that sits on top of `socket.io-redis`, using a redis client to implement cross-server communication rather than an additional socket client.
++ Cleaned up the API for `sails.socket.*` methods, normalizing overloaded functions and deprecating methods which cause problems in multiserver deployments (more on that below).
++ Added a few brand new sails.sockets methods: `.leaveAll()`, `.addRoomMembersToRooms()`, and `.removeRoomMembersFromRooms()`
++ `sails.sockets.id()` is now `sails.sockets.getId()` (backwards compatible w/ deprecation message)
++ New Sails apps are now generated with the updated version of `sails.io.js` (the JavaScript Sails socket client).  This upgrade bundles the latest version of `socket.io-client`, as well as some more advanced functionality (including the ability to specify common headers for all virtual socket requests)
++ Upgraded to latest trusted versions of `grunt-contrib-*` dependencies (eliminates many NPM deprecation warnings and provides better error messages from NPM).
++ If you are using NPM v3, running `sails new` will now run `npm install` instead of symlinking your new app's initial dependencies.  This is slower than you may be used to, but is a necessary change due to changes in the way NPM handles nested dependencies.  The core maintainers are [working on](https://github.com/npm/npm/issues/10013#issuecomment-178238596) a better long-term solution.  If you run `sails new` a lot and the slowdown is bugging you, consider downgrading to an earlier version of NPM (v2.x) for the time being.  If NPM is <v3, Sails will take advantage of the classic symlinking strategy.
 
- > TODO - expand above list
-
-For more detailed migration notes, see the following sections.
 
 ## Socket Methods
 
