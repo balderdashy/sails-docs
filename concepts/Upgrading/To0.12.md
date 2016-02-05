@@ -4,7 +4,7 @@ Sails v0.12 comes with an upgrade to Socket.io and Express, as well as many bug 
 
 The sections below provide a high level overview of what's changed, major bug fixes, enhancements and new features, as well as a basic tutorial on how to upgrade your v0.11.x Sails app to v0.12.
 
-## Upgrading to Sails v0.12
+## Installing the update
 
 Run the following command from the root of your Sails app:
 
@@ -15,7 +15,7 @@ npm install sails@0.12.0 --force --save
 The `--force` flag will override the existing Sails dependency installed in your `node_modules/` folder with Sails v0.12, and the `--save` flag will update your package.json file so that future npm installs will also use the new version.
 
 
-## Things to immediately after upgrading to v0.12
+## Things to do immediately after upgrading
 
  + If your app uses the `socket.io-redis` adapter, upgrade to at least version 1.0.0 (`npm install --save socket.io-redis@^1.0.0`).
  + If your app is using the Sails socket client (e.g. `assets/js/dependencies/sails.io.js`) on the front end, also install the newest version (`sails generate sails.io.js --force`)
