@@ -5,7 +5,7 @@ Shut down a lifted Sails app and have it cease listening for / responding to any
 
 
 ```javascript
-sails.lower([callback]);
+sails.lower(callback);
 ```
 
 
@@ -13,13 +13,13 @@ sails.lower([callback]);
 
 |   |          Argument           | Type                | Details
 |---| --------------------------- | ------------------- | -----------
-| 1 |        callback             | ((function))        | (optional) A function to call when lowering is complete (or if an error occurs)
+| 1 |        _`callback`_         | ((function?))       | Optional. A function to call when lowering is complete (or if an error occurs)
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `err`     | ((dictionary))   | An error object, if any errors occurred while lowering
+| 1 | _`err`_     | ((Error?))   | An error instance will be sent as the first argument of the callback if any fatal errors occurred while lowering.
 
 
 ### Example
