@@ -4,6 +4,10 @@
 
 Sails instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible), events can be very useful when extending Sails (via [hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks) or [adapters](http://sailsjs.org/documentation/concepts/extending-sails/adapters)) and in a testing environment.
 
+### Should I use events?
+
+You _should not use events_ in your Sails app unless you are building a custom hook.
+
 ### Events emitted by Sails
 
 The following are common events emitted by Sails instances.  You can listen for these events with:
