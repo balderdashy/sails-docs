@@ -40,7 +40,7 @@ Node.js is pretty darn fast.  For many apps, one server is enough to handle the 
 + [Enable CSRF protection](http://sailsjs.org/documentation/concepts/Security/CSRF.html?q=enabling-csrf-protection) for your POST, PUT, and DELETE requests
 + Enable SSL
 + IF YOU'RE USING SOCKETS:
-  + Configure `config/sockets.js` to use socket.io's recommended production settings [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO#recommended-production-settings)
+  + Configure `config/sockets.js`
     + e.g. enable the `flashsocket` transport
 
 ##### Deploy
