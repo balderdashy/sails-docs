@@ -64,6 +64,37 @@ module.exports = {
 }
 
 ```
+
+Usage with custom attribute methods
+
+```javascript
+module.exports = {
+  attributes: {
+    // Primitive attributes
+    firstName: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    lastName: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    
+    // Attribute methods
+    getFullName: function (){
+      return this.firstName + ' ' + this.lastName;
+    },
+    
+    // Override the default toJSON method
+    toJSON: function() {
+      var obj = this.toObject();
+      obj.fullName = this.getFullName();
+      return obj;
+    }
+  }
+}
+
+```
 ### Notes
 > The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
 > Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.
