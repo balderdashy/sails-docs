@@ -1,21 +1,21 @@
 # res.status()
 
-Set the status code of this response.
+レスポンスのステータスコードを設定します。
 
-### Usage
+### 使い方
 ```js
 res.status(200);
 ```
 
-### Example
+### 例
 ```javascript
 res.status(404);
 res.send('oops');
 ```
 
-### Notes
->+ The status code may be set up until the response is sent.
->+ `res.status()` is effectively just a chainable alias of node's '`res.statusCode=`.
+### 備考
+>+ ステータスコードはレスポンスを送信する前にセットすることが出来ます。
+>+ `res.status()`は実際上、チェーン可能な'`res.statusCode=`のエイリアスです。
 
 
 

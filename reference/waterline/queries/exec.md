@@ -1,23 +1,23 @@
 # .exec(`callback`)
-### Purpose
-This is run at the end of a chain of stringable methods.  It signals the adapter to run the query. 
-#### Parameters
-|     |     Description     | Accepted Data Types | Required ? |
-|-----|---------------------|---------------------|------------|
-| 1   |  Callback           |      `function`     | Yes        |
-#### Callback Parameters
-|   |     Description     | Possible Data Types |
+### 目的
+stringableなメソッドのチェーンの最後に実行されます。これがアダプタへクエリを発行するように知られます。
+#### パラメータ
+| # | 説明          | 受け入れられるデータ型           | 必須か |
+|---|---------------------|---------------------|------------|
+| 1 |     コールバック        | `function`          | はい        |
+#### コールバックパラメータ
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Data Returned      | `{}`, `[{}]`, `int` |
-### Example Usage
+| 1 |  エラー              | `Error`             |
+| 2 |  返されたデータ    | `{}`, `[{}]`, `int`     |
+### 使用例
 ```javascript 
 // refer to any of the examples above
 ```
-### Notes
-> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+### 備考
+> .find()メソッドはコールバックが与えられない時はチェーン可能なオブジェクトを返します。このメソッドはさらなるフィルタ結果のために.find()にチェーンすることが出来ます。
 
-> If you don't run .exec(), your query will not execute.
+> .exec()を実行しなければクエルは実行されません。
 
 
 

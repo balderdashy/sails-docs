@@ -1,38 +1,38 @@
 # .publishUpdate( `{id}`,[`changes`],[`request`],[`options`] )
-### Purpose
-PublishUpdate updates nothing.  It publishes information about the update of a model instance via websockets.
+### 目的
+PublishCreate自体は実際には何も更新しません。これはただ単にモデルインスタンスが更新されたことをWebsocket経由で通知するだけです。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | ID of Updated Record|   `int`, `string`    |   Yes      |
-| 2 | Updated values        |   `{}`              |   No      |
-| 3 | Request      |   `request object` |   No       |
-| 4 | Additional Options | `object` | No |
+| 1 | 更新されたレコードのID|   `int`, `string`    |   はい      |
+| 2 | 更新された値       |    `{}`               |   いいえ      |
+| 3 | リクエスト      |   `request object` |   いいえ       |
+| 4 | 追加のオプション |   `object` | いいえ |
 
-`publishUpdate()` emits a socket message using the model identity as the event name.  The message is broadcast to all sockets subscribed to the model instance via the `.subscribe` model method.
+`publishUpdate()`はモデル識別子をイベント名として利用し、ソケットメッセージを送信します。メッセージは`.subscribe`モデルメソッドにを経由してサブスクライブをした全てのソケットに送信されます。
 
-The socket message is an object with the following properties:
+ソケットメッセージは以下のプロパティを含むオブジェクトです。:
 
-+ **id** - the `id` attribute of the model instance
-+ **verb**  - `"updated"` (a string)
-+ **data** - an object-- the attributes that were updated
-+ **previous** - an object--if present, the previous values of the updated attributes
++ **id** - モデルインスタンスの`id`属性
++ **verb**  - `"updated"` (文字列)
++ **data** - 更新された属性のオブジェクト
++ **previous** - オブジェクト。もし存在すれば更新された属性の、前の値
 
 #### `changes`
-This should be an object containing any changed attributes and their new values.  
+変更された属性とその新しい値を含むオブジェクトです。
 
 #### `request`
-If this argument is included then the socket attached to that request will *not* receive the notification.
+この引数が含まれていればそのリクエストに結びついているソケットは通知を*受け取りません*。
 
 #### `options.previous`
-If the `options` object contains a `previous` property, it is expected to be a representation of the model instance's attributes *before* they were updated.  This may be used to determine whether or not to publish additional messages (see the `options.noReverse` flag below for more info).
+`options`オブジェクトに`previous`プロパティが含まれていた場合、それは変更する*前の*モデルインスタンスを表します。これは追加のメッセージを発行するかどうかを判断するのに使うことができます。(詳しくは以下の`options.noReverse`フラグに関してをご覧下さい。)
 
 #### `options.noReverse`
 
-The default implementation of `publishUpdate` will, if `options.previous` is present, check whether any associated records were affected by the update, and possibly send out additional notifications.  For example, if a `Pet` model has an `owner` attribute that is associated with the `User` model so that a user may own several pets, and the data sent with the call to `publishUpdate` indicates that the value of a pet's `owner` changed, then an additional `publishAdd` or `publishRemove` call may be made.  To suppress these notifications, set the `options.noReverse` flag to `true`.  In general, you should not have to set this flag unless you are writing your own implementation of `publishUpdate` for a model.
+`publishUpdate`のデフォルト実装は、もし`options.previous`が存在すれば関連付けられたレコードがその更新により影響を受けるかを確認し、追加の通知を発行することがあります。例えば、`Pet`モデルが`User`モデルに関連付けられた`owner`属性を持っており、ユーザが特定のペットを所有することが出来る場合で、`publishUpdate`がコールされて送信されたデータがぺっとの`owner`変更を示していた場合、追加の`publishAdd`あるいは`publishRemove`コールがなされます。これらの通知を抑制するには`options.noReverse`フラグを`true`に設定します。一般的にモデルに対して独自の`publishUpdate`実装を行っていないかぎりはこの引数をっかうべきではありません。
 
 
-### Example Usage
+### 使用例
 
 UsersController.js
 ```javascript
@@ -63,7 +63,7 @@ module.exports = {
     }
 }
 
-    // Don't forget to handle your errors
+    // エラーハンドリングを忘れずに
 ```
 
 views/users/testSocket.ejs
@@ -86,13 +86,13 @@ window.onload = function subscribeAndListen(){
 
 function doEdit(){
 
-    // Send the name to the testSocket action on the 'Users' contoller
+    //  'Users'コントローラでのnameをtestSocketアクションに送る
 
     socket.get('/users/testSocket/',{name:'Walter'});
 }
 
 </script>
-<div class="addButton" onClick="doEdit()">Click Me to add a new User! </div>
+<div class="addButton" onClick="doEdit()">ユーザの新規作成はここをクリック！</div>
 
 ```
 

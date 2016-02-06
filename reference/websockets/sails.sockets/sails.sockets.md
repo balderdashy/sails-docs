@@ -1,12 +1,12 @@
 # Sockets (sails.sockets)
 
-### Overview
+### 概要
 
-Sails exposes several low-level methods for realtime communication with the client via `sails.sockets`.  These methods are implemented using a [Socket.io](http://socket.io) connection which is available as `sails.io`; however, using the `sails.sockets` methods instead will future-proof your app against possible changes in underlying implementation.  If your app is mainly sending messages to the client regarding changes in your models, you should try and use the [model PubSub methods](https://github.com/balderdashy/sails-docs/blob/0.10/reference/ModelMethods.md#publishcreate-datasocket-) instead.
+Sailsは`sails.sockets`を使ったリアルタイム通信のためのいくつかの低レベルのメソッドを露出させています。これらのメソッドは `sails.io`として利用可能な[Socket.io](http://socket.io)を使って実装されています。しかしながら`sails.sockets`を代わりに使うことにより、より低レイヤーの実装の将来的な変更に対応することができます。もしあなたのアプリケーションが主にモデルの変更に関してクライアントに送信しているのであれば[モデルPubSubメソッド](https://github.com/balderdashy/sails-docs/blob/0.10/reference/ModelMethods.md#publishcreate-datasocket-) を代わりに使うべきです。
 
-### Looking for `sails.io`?
+### `sails.io`を探していますか。
 
-For raw access to the underlying [socket.io](http://socket.io/) singleton, you can still access `sails.io`.  But starting with Sails v0.10, you should use `sails.sockets` for most low-level use-cases involving sockets, since `sails.io` may be deprecated in an upcoming release to allow for more flexibility/extensibility in the underlying socket implementation.
+下層レイヤーの[socket.io](http://socket.io/)シングルトンにアクセスするためには`sails.io`を使うこともできます。しかし、今後のリリースでは低レイヤー実装をよりフレキスブルかつ拡張可能にするために`sails.io`が廃止される可能性がありますので、Sails v0.10からはソケット関連の低レベルアクセスの多くの場合に関して`sails.sockets`を使うべきです。
 
 
 <docmeta name="uniqueID" value="Sockets505826">

@@ -1,16 +1,16 @@
 # * .add( `primary key` )
-### Purpose
-Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.
+### 目的
+多対多のアソシエーションにおいて自動的に生成されたジョインテーブルに対してレコードを追加するのに使います。これはモデルインスタンスの主キー（デフォルトではレコードのID）と作成し、アソシエートしたい新規レコード（オブジェクト）でも受け入れることが出来ます。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Records    | `{}`, `string`, `int`  | Yes |
+| 1 |    レコード   | `{}`, `string`, `int`| はい |
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.find({name:'Mike'}).populate('pets').exec(function(e,r){
@@ -50,11 +50,11 @@ User.find({name:'Mike'}).populate('pets').exec(function(e,r){
 
 
 
-### Notes
-> + .add() does not accept arrays of any kind.  Don't try it.
-> + Any string arguments passed must be the primary key of the record.
-> + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
-> + Attempting to add an association that already exists will throw an error. [See here for an example.](https://github.com/balderdashy/waterline/issues/352)
+### 備考
+> + .add()は配列を受け入れられません。試さないで下さい。
+> + 全ての文字列引数はレコードのIDである必要があります。
+> + `.add()`だけではアソシエーションに対する変更のデータベースへの永続化をしません。`.add()`や`.remove()`のあとに`.save()`を行って下さい。
+> + すでに存在するアソシエーションの追加はエラーになります。[こちらの例を御覧ください](https://github.com/balderdashy/waterline/issues/352)
 
 
 <docmeta name="uniqueID" value="add574043">

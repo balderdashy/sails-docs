@@ -1,27 +1,27 @@
 # .subscribers(`record`,[`contexts`])
 
-### Purpose
-Returns an array of sockets that are subscribed to `record`.  This can be used in conjunction with lower-level methods like [`sails.sockets.emit`](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html) to send custom messages to a collection of sockets, or with [`.subscribe`](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html) to subscribe one group of sockets to a new instance.
+### 目的
+`record`を購読しているソケットの配列を返します。これは[`sails.sockets.emit`](http://sailsjs.org/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html)のような低レベルのメソッドと一緒に使ってカスタムメッセージを特定のソケット群に送信したり、 [`.subscribe`](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/subscribe.html)と一緒に使ってソケット群に新しいインスタンスをサブスクライブさせることができます。
 
-|   |     Description     | Accepted Data Types | Required ? |
+|   |     説明     | 受け入れ可能なデータ型 | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 | Record   | ((object)), ((integer)), ((string))  | Yes        |
-| 2 | Contexts to subscribe to | ((string)), ((array)) |  No |
+| 1 | レコード   | ((object)), ((integer)), ((string))  | はい        |
+| 2 | サブスクライブしているコンテキスト | ((string)), ((array)) |  いいえ |
 
-*Note*: `record` can be either an instance of a model, or a model&rsquo;s primary key.
+*備考*: `record`にはモデルのインスタンスか主キーが利用できます。
 
 #### `context`
 
-If you specify a specific context (or array of contexts), you will only get sockets that are subscribed to the specified contexts for the record.
+特定のコンテキスト（あるいはコンテキストの配列）を指定した場合、レコードに関してそのコンテキストをサブスクライブしているソケットのみを取得できます。
 
-### Example Usage
-Controller Code
+### 利用例
+コントローラのコード
 ```javascript
-    // Find user #1
+    // ユーザ#1を探す
     User.findOne(1).exec(function(e,userOne){
-        // Get all of the sockets that are subscribed to user #1
+        // ユーザ#1をサブスクライブしている全てのソケットを取得する
         var subscribers = User.subscribers(userOne);
-        // Subscribe them all to userOne's best friend, too
+        // ユーザ#1の親友も同様にサブスクライブする。
         _.each(subscribers, function(subscriber) {
            User.subscribe(subscriber, userOne.bestFriendId);
         });

@@ -1,6 +1,6 @@
 # res.forbidden()
 
-This method is used to send a [403](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
+このメソッドは[403](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error)("Forbidden")レスポンスを返してクライアントにれクエストが許可されていないことを伝えます。これは通常ユーザエージェントが、例えば他人のパスワードを変えるような、なにか許可されていないことを行ったということを意味します。
 
 
 ### Usage
@@ -9,28 +9,28 @@ This method is used to send a [403](http://en.wikipedia.org/wiki/List_of_HTTP_st
 return res.forbidden();
 ```
 
-_Or:_
+_あるいは:_
 + `return res.forbidden(data);`
 + `return res.forbidden(data, pathToView);`
 
 
-### Details
+### 詳細
 
-Like the other built-in custom response modules, the behavior of this method is customizable.
+ほかのカスタムレスポンスモジュールと同じようにこのメソッドはカスタマイズ可能です。
 
-By default, it works as follows:
+デフォルトでこれは以下のように動作します:
 
-+ If the request "[wants JSON](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Forbidden"`).
-+ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
-  + If a specific `pathToView` was provided, Sails will attempt to use that view.
-  + Alternatively if `pathToView` was _not_ provided, Sails will serve a default error page (the view located at [`views/403.ejs`](http://sailsjs.org/documentation/anatomy/myApp/views/403.ejs.html)).  If that view does not exist, Sails will just send JSON.
-  + If Sails serves a view, the `data` argument will be accessible as a [view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`.
++ リクエストが"[JSONを望んでいる](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)"場合（例えはリクエストがAJAXやWebSocketsその他cURLなどのRESTクライアントからのものである場合）、Sailsは与えられたエラーの`data`をJSONで返します。もし何の`data`も与えられていない時はデフォルトのレスポンスボディ（文字列の`"Forbidden"`）が送信されます。
++ リクエストがJSONを望んで _いない場合_ （例:URLがブラウザに打ち込まれた場合）、Sailsはビューのうち1つを返そうとします。
+  + 特定の`pathToView`が与えられているときはSailsはそのビューを返そうとします。
+  + そうではなく`pathToView`が与えられて_いない時_Sailsは適切なviewを推測しようとします。（詳しくは[`views/403.ejs`](http://sailsjs.org/documentation/anatomy/myApp/views/403.ejs.html)を御覧ください。）、もし適切なビューを見つけられない時Sailsは単にJSONを返します。
+  + Sailsがビューを返すとき、`data`引数は[view local](http://sailsjs.org/documentation/concepts/Views/Locals.html): `data`としてアクセス可能です。
 
 
 
-### Example
+### 例
 
-Using the default view:
+デフォルトのビューを使って:
 
 ```javascript
 if ( !req.session.canEditSalesforceLeads ) {
@@ -38,7 +38,7 @@ if ( !req.session.canEditSalesforceLeads ) {
 }
 ```
 
-With a custom view:
+カスタムビューで:
 
 ```javascript
 if ( !req.session.canEditSalesforceLeads ) {
@@ -51,11 +51,11 @@ if ( !req.session.canEditSalesforceLeads ) {
 
 
 
-### Notes
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
->+ `res.forbidden()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/forbidden.js`, which is bundled automatically in newly generated Sails apps.  If a `forbidden.js` response method does not exist in your app, Sails will implicitly use the default behavior.
->+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
->+By default, the specified error (`err`) will be excluded if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
+### 備考
+> + このメソッドは **ターミナル**であり、リクエストを処理するための一般的に最後の1行であるべきです。（そのためこれらのドキュメントの使用方法では`return`を使うと考えるべきです。）。
+>+ `res.forbidden()`は（ほかのユーザ側のレスポンスメソッドと同様に）編集や上書きが可能です。`/responses/forbidden.js`で定義されたレスポンスメソッドが実行されますが、これはSailsアプリケーションを生成する際に自動的に作成されます。`forbidden.js`が無いときはSailsは暗黙でデフォルトの振る舞いを利用します。
+>+ `pathToView`がっ存在しないビューを示している場合、このメソッドはリクエストが「JSONを望んでいる」ように振る舞います。
+>+　デフォルトではアプリケーションが本番環境で実行されている時(すなわち`process.env.NODE_ENV === 'production'`)に於いては特定のエラー(`err`)は除外されます。
 
 
 

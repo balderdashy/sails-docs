@@ -1,20 +1,20 @@
 # res.set()
-Sets specified response header (`header`) to the specified value (`value`).  
+特定のレスポンスヘッダ(`header`) に特定の値(`value`)をセットします
+ 
+代わりに、キーをフィールド名、値を設定したい値にする形の複数のヘッダフィールドを含む一つオブジェクトの引数(`headers`)を渡すことも可能です。
 
-Alternatively, you can pass in a single object argument (`headers`) to set multiple header fields at once, where the keys are the header field names, and the corresponding values are the desired values.
-
-### Usage
+### 使い方
 ```js
 res.set(header, value);
 ```
 
--or-
+-または-
 
 ```js
 res.set(headers);
 ```
 
-### Example
+### 例
 ```javascript
 
 res.set('Content-Type', 'text/plain');

@@ -1,26 +1,26 @@
 # sails generate
 
-Sails ships with several *generators* to help you scaffold new projects.  You can also [create your own generators](http://sailsjs.org/documentation/concepts/extending-sails/Generators/customGenerators.html) to handle frequent tasks, or extend functionality (for example, by creating a generator that outputs view files for your [favorite templating language](https://github.com/balderdashy/sails-generate-views-jade)).
+Sailsには幾つかの*ジェネレータ*があり、新しいプロジェクトをスキャッフォールドするのに有用です。また、 よく行う作業のために[自分のジェネレータを作成](http://sailsjs.org/documentation/concepts/extending-sails/Generators/customGenerators.html)したり、機能を追加したり（例えば[好きなテンプレート言語](https://github.com/balderdashy/sails-generate-views-jade)のためにビューファイルを出力したり）することが出来ます。
 
-The following generators are bundled with Sails:
+Sailsには以下のジェネレータがあります:
 
 #### `sails generate new <appName>`
-Create a new Sails project in a folder called **appName**.  See [`sails new`](http://sailsjs.org/documentation/reference/cli/sailsnew.html) for usage options.
+**appName**と名づけられたフォルダにSailsプロジェクトを新規作成します。使い方のオプション日刊しては[`sails new`](http://sailsjs.org/documentation/reference/cli/sailsnew.html)をご覧ください。
 
 #### `sails generate api <foo>`
-Generate **api/models/Foo.js** and **api/controllers/FooController.js**
+**api/models/Foo.js** と **api/controllers/FooController.js** を生成します。
 
 #### `sails generate model <foo> [attribute1:type1, attribute2:type2 ... ]`
-Generate **api/models/Foo.js**, optionally include attributes with the specified types.
+**api/models/Foo.js** を生成し、オプションとして属性を指定した型とともに含むことが出来ます。
 
 #### `sails generate controller <foo> [action1, action2, ...]`
-Generate **api/controllers/FooController.js**, optionally include actions with the specified names.
+**api/controllers/FooController.js** を生成し、オプションとしてアクションをを指定した名前とともに含むことが出来ます。
 
 #### `sails generate adapter <foo>`
-Generate a **api/adapters/foo** folder containing the files necessary for building a new adapter.
+**api/adapters/foo** フォルダを新しいアダプタを作成するのに必要なファイルとともに生成します。
 
 #### `sails generate generator <foo>`
-Generate a **foo** folder containing the files necessary for building a new generator.
+**foo** フォルダを新しいジェネレータを作成するのに必要なファイルとともに生成します。
 
 
 

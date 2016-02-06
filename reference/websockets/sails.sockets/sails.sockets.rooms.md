@@ -1,13 +1,13 @@
 # sails.sockets.rooms()
-### Purpose
-Get the list of all current socket rooms
+### 目的
+現在の全てのソケットroomの一覧を取得します。
 
-### Overview
-#### Parameters
-None.
-### Example Usage
+### 概要
+#### パラメータ
+なし。
+### 使用例
 ```javascript
-// Controller action
+// コントローラアクション
 
 getRoomsList: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.rooms());
@@ -17,7 +17,7 @@ getRoomsList: function(req, res) {
 }
 ```
 
-*Note: In Socket.io, all sockets are automatically subscribed to a global room with an empty name ('').  This room is not returned as part of the array in `sails.sockets.rooms`* 
+*備考：Socket.ioでは全てのソケットが自動的に空白の名前('')と名付けられたグローバルなroomをサブスクライブします。このroomは`sails.sockets.rooms`で返される配列には含まれません* 
 
 
 <docmeta name="uniqueID" value="sailssocketsrooms183984">

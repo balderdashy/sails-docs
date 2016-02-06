@@ -1,13 +1,13 @@
 # req.ips
-If "trust proxy" is enabled, this variable contains the IP addresses in this request's "X-Forwarded-For" header as an array of the IP address strings. Otherwise an empty array is returned.
+"trust proxy"が有効の時、この値にはリクエストの"X-Forwarded-For"の中身がIPアドレス文字列の配列として与えられます。そうでない時は空の配列を返します
 
-### Usage
+### 使い方
 ```js
 req.ips;
 ```
 
-### Example
-If a request contains a header: "X-Forwarded-For: client, proxy1, proxy2":
+### 例
+リクエストがヘッダー"X-Forwarded-For: client, proxy1, proxy2"を含むとき:
 
 ```js
 req.ips;

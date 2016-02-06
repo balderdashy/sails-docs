@@ -1,16 +1,16 @@
 # req.is()
-Returns true if this request's declared "Content-Type" matches the specified media/mime `type`.  
+リクエストの"Content-Type"が指定されたmedia/mime `type`に合った時にTrueを返します。
 
-Specifically, this method matches the given `type` against this request's "Content-Type" header.
+細かく言うと、このメソッドは与えられた`type`と"Content-Type"ヘッダのマッチを確認します。
 
-### Usage
+### 使い方
 ```js
 req.is(type);
 ```
 
 
-### Example
-Assuming the request contains a "Content-Type" header, "text/html; charset=utf-8":
+### 例
+リクエストが"Content-Type" header, "text/html; charset=utf-8"を持っていると仮定すると:
 ```javascript
 req.is('html');
 // -> true

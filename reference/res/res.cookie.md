@@ -1,39 +1,39 @@
 # res.cookie()
 
-Sets a cookie with name (`name`) and value (`value`) to be sent along with the response.
+レスポンスに加えて (`name`)の名前と(`value`)の値を持つクッキーをセットするよう送信します。
 
 
-### Usage
+### 使い方
 ```js
 res.cookie(name, value [,options]);
 ```
 
 
-### Details
+### 詳細
 
-The "path" option defaults to "/".
+"path"オプションのデフォルトは"/"です。
 
-The "maxAge" option is a convenience option for setting "expires" relative to the current time in milliseconds. The following is equivalent to the previous example.
+"maxAge"オプションは「有効期限」を現在時刻との相対値で設定する便利なオプションです。以下の例は上記の例と同じ意味です。
 
 ```javascript
 res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true })
 ```
 
-An object may be passed which is then serialized as JSON, which is automatically parsed by the bodyParser() middleware.
+オブジェクトはシリアライズされたJSONで渡すことが出来、bodyParser()によって自動的にパースされます。
 
 ```javascript
 res.cookie('cart', { items: [1,2,3] });
 res.cookie('cart', { items: [1,2,3] }, { maxAge: 900000 });
 ```
 
-Signed cookies are also supported through this method. Simply pass the signed option. When given res.cookie() will use the secret passed to express.cookieParser(secret) to sign the value.
+このメソッドではサイン済みのクッキーもサポートされています。単にsignedオプションを追加して下さい。express.cookieParser(secret)で渡された秘密鍵を使ってres.cookie()が値にサインをします。
 
 ```javascript
 res.cookie('name', 'tobi', { signed: true });
 ```
 
 
-### Example
+### 例
 ```javascript
 res.cookie('name', 'tobi', {
   domain: '.example.com',

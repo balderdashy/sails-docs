@@ -1,14 +1,14 @@
 # req.isSocket
 
-A flag indicating whether or not this request (`req`) originated from a Socket.io connection.
+リクエスト (`req`)がSocket.ioのコネクションから来るかどうかを識別するフラグです。
 
 
-### Usage
+### 使い方
 ```js
 req.isSocket;
 ```
 
-### Example
+### 例
 ```javascript
 if (req.isSocket){
   // You're a socket.  Do cool socket stuff.
@@ -18,10 +18,10 @@ else {
 }
 ```
 
-### Notes
+### 備考
 
-> + Useful for allowing HTTP requests to skip calls to pubsub or WebSocket-centric methods like `subscribe()` or `watch()`  that depend on an actual Socket.io request.  This allows you to reuse backend code, using it for both WebSocket and HTTP clients.
-> + As you might expect, `req.isSocket` doesn't need to be checked before running methods which **publish to other** connected sockets.  Those methods don't depend on the request, so they work either way.
+> + HTTPリクエストに対してSocket.ioリクエスト依存のpubsubや`subscribe()`や`watch()`などのWebSocket中心のメソッドをスキップさせるのに便利です。これによりHTTPリスエストとWebSocketリクエストに関してバックエンドのコードの再利用が出来ます。
+> + お気付きの通り、`req.isSocket`はソケットに接続されている **他者に送信する** コードを実行する前に確認する必要がありません。それらのメソッドはリクエスト依存ではないので、どちらにせよ動作します。
 
 
 

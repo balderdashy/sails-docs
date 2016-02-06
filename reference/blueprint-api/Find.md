@@ -1,35 +1,35 @@
-# Find Records
+# レコードを検索する
 
-Returns a list of records from the model as a JSON array of objects.
+モデル上のレコードのリストをオブジェクトのJSON配列として返します。
 
 ```
 GET /:model
 ```
 
-Results may be filtered, paginated, and sorted based on the blueprint configuration and/or parameters sent in the request.
+結果に対してはリクエストとして送られたパラメータとblueprintの設定（のずれかまたは両方）によってフィルター、ページ分け、並び替えが行われます。
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to all records returned. If any of the returned records are subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the [docs for Model.subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for details.
+アクションがリクエストを通じて呼びされた場合、リクエストを行ったソケットは返された全てのレコードをサブスクライブします。レコードが付加的に編集、削除された場合その旨を伝えるメッセージがソケットのクライアントに送られます。詳しくは[Model.subscribe()のドキュメント](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts)を御覧ください。
 
 
-### Parameters
+### パラメータ
 
-_All parameters are optional._
+_ 全てのパラメータはオプショナルです。 _
 
- Parameter      | Type         | Details
+ パラメータ       | 型           | 詳細
  -------------- | ------------ |:---------------------------------
- *              | ((string))   | To filter results based on a particular attribute, specify a query parameter with the same name as the attribute defined on your model. <br/> <br/> For instance, if our `Purchase` model has an **amount** attribute, we could send `GET /purchase?amount=99.99` to return a list of $99.99 purchases.
- where          | ((string))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with a Waterline WHERE criteria object, _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
- limit          | ((number))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
- skip           | ((number))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
- sort           | ((string))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
- populate       | ((string))   | If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See [here](http://sailsjs.org/documentation/reference/waterline-orm/populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
- callback       | ((string))   | If specified, a JSONP response will be sent (instead of JSON).  This is the name of a client-side javascript function to call, to which results will be passed as the first (and only) argument <br/> <br/> e.g. ?callback=my_JSONP_data_receiver_fn
+ *              | ((string))   | モデルで定義されたものと同名の属性を指定することで属性に応じて結果をフィルターします。<br/> <br/> 例えば`Purchase`モデルが **amount** 属性を持っていた場合、`GET /purchase?amount=99.99` と送信することで$99.99の購入のリストが取得できます。
+ where          | ((string))   | 特定の属性でフィルタする代わりに`where`パラメータを _JSON文字列にエンコードされた_ Waterline WHERE条件オブジェクトで与えることが出来ます。 これによって`contains`、`startsWith`などのサブ属性の強みを活かして更に強力な`find()`を実現することが出来ます。 <br/> <br/> 例: `?where={"name":{"contains":"theodore"}}`
+ limit          | ((number))   | 返すレコード数の最大値(ページ分けに便利です)。デフォルトは30です。<br/> <br/> 例:`?limit=100`
+ skip           | ((number))   | スキップしたいページ数(ページ分けに便利です)。 <br/> <br/> 例: `?skip=30`
+ sort           | ((string))   | 並べ替えをします。デフォルトでは返されたレコードは主キーの昇順で並べられます。<br/> <br/> 例:`?sort=lastName%20ASC`
+ populate       | ((string))   | 指定されていればデフォルトの自動ポピュレーションプロセスを上書きします。ポピュレートしたいレコード値をコンマ区切りの属性名で受け付けます。返されたレコードのリストに対してモデルに設定されたアソシエーションに応じてどのように値を満たしていくのかに関して更に詳しくは[こちら](http://sailsjs.org/documentation/reference/waterline-orm/populated-values)をご覧ください。
+ callback       | ((string))   | 指定されていればJSONPレスポンスが（JSONの代わりに）送信されます。この名前のJavascript関数を、結果を一つ目の（そして唯一の）引数として実行します。<br/> <br/> 例:`?callback=myJSONPHandlerFn`
 
 
 
-### `find` Example
+### `find` の例
 
-Find the 30 newest purchases in our database.
+データベースの中から最新30件の購入を検索する。
 
 ```json
 [
@@ -48,7 +48,7 @@ Find the 30 newest purchases in our database.
 ]
 ```
 
-**Using [jQuery](http://jquery.com/):**
+**[jQuery](http://jquery.com/)を使う:**
 
 ```javascript
 $.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -56,7 +56,7 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
 });
 ```
 
-**Using [Angular](https://angularjs.org/):**
+**[Angular](https://angularjs.org/)を使う:**
 
 ```javascript
 $http.get('/purchase?sort=createdAt DESC')
@@ -66,7 +66,7 @@ $http.get('/purchase?sort=createdAt DESC')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
+**[sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)を使う:**
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
@@ -74,15 +74,15 @@ io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {
 });
 ```
 
-**Using [cURL](http://en.wikipedia.org/wiki/CURL):**
+**[cURL](http://en.wikipedia.org/wiki/CURL)を使う:**
 
 ```bash
 curl http://localhost:1337/purchase?sort=createdAt%20DESC
 ```
 
-### Notes
+### 備考
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains a `Purchase` model and an empty `PurchaseController`.  You can quickly achieve this by running:
+> + 上記の例では"rest"blueprintが有効であると仮定します。それに加えてあなたのプロジェクトが`PurchaseController`と`Purchase`モデルを持っているべきです。これを簡単に行うには以下を実行します:
 >
 >   ```bash
 >   $ sails new foo

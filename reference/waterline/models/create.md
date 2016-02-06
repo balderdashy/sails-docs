@@ -1,25 +1,25 @@
 # .create( `values`, [`callback`] )
-### Purpose
-Creates a new instance of this model in the database.
+### 目的
+データベースに新しいモデルのインスタンスを作成します。
 
-### Overview
+### 概要
 
-#### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
+#### パラメータ
+| # | 説明          | 受け入れられるデータ型           | 必須か |使用例
 |---|---------------------|---------------------|------------|
-| 1 |  Record(s) to Create  |      `{}`, `[{}]`   | Yes      |
-| 2 |     Callback        | `function`          | No         |
+| 1 |  作例したいレコード  |      `{}`, `[{}]`   | はい      |
+| 2 |     コールバック        | `function`          | いいえ        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Created    | `{}`, `[{}]`        |
+| 1 |  エラー              | `Error`             |
+| 2 |  作成されたレコード    | `{}`, `[{}]`        |
 
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 // create a new record with name 'Walter Jr'

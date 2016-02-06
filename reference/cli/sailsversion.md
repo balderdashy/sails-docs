@@ -1,8 +1,8 @@
 # sails version
 
-Get the current globally installed Sails version.
+現在グローバルにインストールされているSailsのバージョンを取得します。
 
-### Example
+### 例
 
 ```sh
 $ sails version

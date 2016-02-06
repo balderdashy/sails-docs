@@ -1,23 +1,23 @@
 # .find(`criteria` , [`callback`])
-### Purpose
-Finds and returns all records that meet the criteria object(s) that you pass it.
+### 目的
+渡した条件オブジェクトに合うレコードを検索して返します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |    Find Criteria    | `{}`,`[{}]`, `string`, `int`| Yes |
-| 2 |     Callback        | `function`          | Yes        |
+| 1 |    検索条件   | `{}`,`[{}]`, `string`, `int`  | はい |
+| 2 |     コールバック        | `function`          | はい        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Found Records      | `[{}]`              |
+| 1 |  エラー              | `Error`             |
+| 2 |  見つかったレコード    | `[{}]`        |
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.find({}).exec(function findCB(err, found){
@@ -31,10 +31,10 @@ User.find({}).exec(function findCB(err, found){
 // Don't forget to handle your errors
 
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
-> This method will ALWAYS return records in an array.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+### 備考
+> 全ての文字列引数はレコードのIDである必要があります。
+> このメソッドは結果を常に配列で返します。
+> 配列である属性探したい場合、追加のカッコで囲まなければWaterlineはinQueryを行いたいと解釈してしまいます。
 
 
 

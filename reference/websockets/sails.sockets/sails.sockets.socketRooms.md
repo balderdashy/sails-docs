@@ -1,16 +1,16 @@
 # sails.sockets.socketRooms( `socket` )
-### Purpose
-Get the list of rooms a socket is subscribed to
+### 目的
+ソケットがサブスクライブしているroomのリストを取得します。
 
-### Overview
-#### Parameters
-|   |          Description        | Accepted Data Types | Required ? |
+### 概要
+#### パラメータ
+|   |          説明        | 受け入れ可能なデータ型 | 必須か |
 |---|-----------------------------|---------------------|------------|
-| 1 |           Socket        | `object` | Yes         |
+| 1 |           ソケット        | `object` | はい         |
 
-### Example Usage
+### 利用例
 ```javascript
-// Controller action
+// コントローラアクション
 
 getMyRooms: function(req, res) {
     var roomNames = JSON.stringify(sails.sockets.socketRooms(req.socket));
@@ -20,8 +20,8 @@ getMyRooms: function(req, res) {
 }
 ```
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+### 備考
+> + ここでの"request socket"はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。`req.socket`はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で`req.socket`を使う前に`req.isSocket == true`であることを確認して下さい。
 
 <docmeta name="uniqueID" value="sailssocketssocketRooms270469">
 <docmeta name="displayName" value="sails.sockets.socketRooms()">

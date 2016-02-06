@@ -1,12 +1,12 @@
 # req.protocol
-The protocol used to send this request (`req`).
+リクエスト(`req`)に使われたプロトコルです。
 
-### Usage
+### 使い方
 ```javascript
 req.protocol;
 ```
 
-### Example
+### 例
 
 ```js
 switch (req.protocol) {

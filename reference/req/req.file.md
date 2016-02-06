@@ -1,31 +1,31 @@
 # req.file()
 
-Returns a [readable Node stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) of incoming multipart file uploads (an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js)) from the specified `field`.
+特定の`field`のマルチパートアップロード入力([`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js))からの[読み込み可能なNodeストリーム](http://nodejs.org/api/stream.html#stream_class_stream_readable) を返します。
 
 
-### Usage
+### 使い方
 ```js
 req.file(field);
 ```
 
-### Details
+### 詳細
 
-`req.file()` comes from [Skipper](https://github.com/balderdashy/skipper), an opinionated variant of the original Connect body parser that allows you to take advantage of high-performance, streaming file uploads without any dramatic changes in your application logic.
+`req.file()`はオリジナルのConnectのbodyパーサーとは違う考え方でアプリケーションロジックに動的な変更を加えることなくストリーミングアップロードのハイパフォーマンスさを利用できる[Skipper](https://github.com/balderdashy/skipper)から来ています。
 
-This is a great simplification, but comes with a minor caveat:  **Text parameters must be included before files in the request body.**  Typically, these text parameters contain string metadata which provides additional information about the file upload.
+これは非常な簡易化ですが、ちょっと注意しなければならいこともあります。: **文字列のパラメータはリクエストボディー中のファイルより前になかればいけません** 一般的にこれらのテキストパラメータはファイルアップロードに関する追加情報を提供するメタデータの文字列を含んでいます。
 
-Multipart requests to Sails should send all of their **text parameters**. before sending _any_ **file parameters**.  For instance, if you're building a web frontend that communicates with Sails, you should include text parameters _first_ in any form upload or AJAX file upload requests.  The term "text parameters" refers to the metadata parameters you might send along with the file(s) providing some additional information about this upload.
+Sailsに対するマルチパートのリクエストは _いかなる_ **ファイルパラメータより前に** 全ての　**テキストパラメータ** を送る必要があります。例えば、Sails通信するWebフロントエンドの作成している場合、いかなるファイルアップロードを行うフォームに関してもテキストのパラメータを _最初に_ 含める必要があります。ここにおける「テキストパラメータ」とは、ファイルのアップロードに際して一緒に何かの情報を送るメタデータパラメータを指します。
 
 
-### How It Works
+### どのように動作するのか
 
-Skipper treats _all_ file uploads as streams.  This allows users to upload monolithic files with minimal performance impact and no disk footprint, all the while protecting your app against nasty denial-of-service attacks involving tmp files.
+Skipperは _全ての_ ファイルアップロードをストリームとして扱います。これによってユーザは大きなファイルアップロードをディスクのフットプリントに影響をあたえることがなくなるので、tmpファイル関連の醜いDOSアタックから守ることが出来ます。
 
-When a multipart request hits your server, instead of writing temporary files to disk, Skipper buffers the request just long enough to run your app code, giving you an opportunity to "plug in" to a compatible blob receiver.  If you don't "plug in" the data from a particular field, the Upstream hits its "high water mark", the buffer is flushed, and subsequent incoming bytes on that field are ignored.
+マルチパートのリクエストがサーバに来た場合、一時ファイルに書き込むことなくSkipperはリクエストをアプリケーションコードが実行されるに十分な長さに渡りバッファーし、適切なBLOBレシーバをプラグインする機会を与えます。特定のフィールドに適切なデータフォームがプラグインされなかった場合、アップストリームは"high water mark"を呼び出し、バッファはクリアーされ、そのフィールドに対するその後の入力は無視されます。
 
-### Example
+### 例
 
-In a controller action or policy:
+コントローラアクションかポリシーで:
 
 ```javascript
 var SomeReceiver = require('../services/SomeReceiver');
@@ -41,10 +41,10 @@ req.file('avatar').upload( SomeReceiver(), function (err, files) {
 ```
 
 
-### Notes
-> + Remember that the client request's **text parameters must be sent first**, before the file parameters.
-> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files).
-> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
+### 備考
+> + クライアントのリクエストの **テキストパラメータは先に送られなければならず** 、その後ファイルパラメータを送るべきということを覚えておいて下さい。
+> + `req.file()`は同一のフィールドに対する複数のファイル送信をサポートしていますが、それはそれほど大事なことではありませんので、その結果Upstreamとして実際に返されるものはバイナリーストリーム（ファイル）の候補となるストリーム（バッファされたイベントエミッタ）です。
+> + ストリームのストリームとしてのUpstreamを直接扱いたいときは`.upload()`メソッドを省いて代わりに"finish"か"error"のイベントをバインドして (あるいは`.pipe()`を使って) 下さい。 events (or use `.pipe()`) instead.
 
 
 

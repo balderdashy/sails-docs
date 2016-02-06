@@ -1,15 +1,15 @@
 # .native()
 
-`.native()` is only available when using Sails/Waterline with MongoDB.
+`.native()` はSails/WaterlineをMongoDBと使っている時のみ利用可能です。
 
-Returns a raw Mongo collection instance representing the specified model, allowing you to perform raw Mongo queries.
+与えられたモデルを示すMongoコレクションを生で返し、これにより生のMongoクエリーを実行することが出来ます。
 
-For full documentation and usage examples, check out the [native Node Mongo driver](https://github.com/mongodb/node-mongodb-native#introduction).
+完全なドキュメントや利用例は[ネイティブのMongoドライバ](https://github.com/mongodb/node-mongodb-native#introduction)を御覧ください
 
 
-Note that `sails-mongo` maintains a single Mongo connection for each of your configured connections/datastores.  Consequently, when using `.native()`, you don't need to close or open `db` manually.  For lower-level usage, you can `require('mongodb')` directly.
+`sails-mongo`は設定されたコネクション・データストアごとに一つだけのMongoコネクションを持つことが出来ます。この結果、`.native()`を使っている時に`db`を手動で閉会する必要はありません。低レベルの利用方法では`require('mongodb')`を直接行うこともできます。
 
-### Example
+### 例
 
 ```js
 Pet.native(function(err, collection) {
@@ -24,11 +24,11 @@ Pet.native(function(err, collection) {
 });
 ```
 
-Source: https://gist.github.com/mikermcneil/483987369d54512b6104
+ソース: https://gist.github.com/mikermcneil/483987369d54512b6104
 
-### Notes
+### 備考
 
-> + This method only works with Mongo! For raw functionality in SQL databases, use [`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html).
+> + このメソッドはMongoでのみ動作します。SQLデータベースの生機能に関しては[`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html)をご利用下さい。
 
 
 <docmeta name="uniqueID" value="native900002">

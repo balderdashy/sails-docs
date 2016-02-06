@@ -1,53 +1,53 @@
 # res.view()
 
-Respond with an HTML page.
+HTMLページでレスポンスする。
 
 
-### Usage
+### 使い方
 
 ```js
 return res.view(pathToView, locals);
 ```
 
-_Or:_
+_あるいは:_
 + `return res.view(pathToView);`
 + `return res.view(locals);`
 + `return res.view();`
 
 
-Uses the [configured view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to compile the [view template](http://sailsjs.org/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
+[設定されたビューエンジン](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html)を使って`pathToView`にある[view template](http://sailsjs.org/documentation/concepts/Views/Partials.html)をHTMLにコンパイルします。`pathToView`が与えられない場合、現在のコントローラとアクションに応じて慣習的にビューを提供します。
 
-The specified [`locals`](http://sailsjs.org/documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
+与えられた、[`locals`](http://sailsjs.org/documentation/reference/Views/Locals.html) はアプリケーション横断的なローカルやSailsやビューエンジンによって挿入されたローカルと統合された後にdataとしてビューエンジンに渡されます。
 
 
-### Arguments
+### 引数
 
-|   | Argument       | Type        | Details |
+|   | 引数       | 型        | 詳細 |
 |---|----------------|:-----------:|---------|
-| 1 | `pathToView`   | ((string))  | The path to the desired view file relative to your app's [`views` folder](http://sailsjs.org/documentation/anatomy/myApp/views) (usually `views/`), without the file extension (e.g. `.ejs`), and with no trailing slash.<br/>Defaults to "identityOfController/nameOfAction".
-| 2 | `locals`       | ((object))  | Data to pass to the view template.  These explicitly specified locals will be merged in to Sails' [built-in locals](http://sailsjs.org/documentation/concepts/Views/Locals.html) and your [configured app-wide locals](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).<br/>Defaults to `{}`.
+| 1 | `pathToView`   | ((string))  | 目的のビューファイルに対する[`views` フォルダ](http://sailsjs.org/documentation/anatomy/myApp/views) (usually `views/`)に相対的なパスを拡張子(例:`.ejs`)と最後のスラッシュ無しで。<br/>デフォルトは"identityOfController/nameOfAction".
+| 2 | `locals`       | ((object))  | ビューテンプレートに渡すデータ。ここで明示的に渡されたローカルがSailsの[ビルドインのlocal](http://sailsjs.org/documentation/concepts/Views/Locals.html)とアプリケーションの[アプリ内で全体的に使えると設定したlocal](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)と統合されます。<br/>デフォルトは`{}`です。
 
 
 
-### Example
+### 例
 
-Consider a conventionally configured Sails app with a call to `res.view()` in the `cook()` action of its `OvenController.js`.
+慣習通りに設定されたSailsアプリケーションの`OvenController.js`の`cook()`アクションで`res.view()`を呼び出すとします。
 
-With no `pathToView` argument, `res.view()` will decide the path by combining the identity of the controller (`oven`) and the name of the action (`cook`):
+`pathToView`引数なしには`res.view()`はコントローラの識別子(`oven`)とアクションの名前(`cook`)を合わせて判断します:
 
 ```js
 return res.view();
 // -> responds with `views/oven/cook.ejs`
 ```
 
-Here's how you would load the same view using an explicit `pathToView`:
+以下は明示的な`pathToView`を使って同じビューをロードする方法です:
 
 ```js
 return res.view('oven/cook');
 // -> responds with `views/oven/cook.ejs`
 ```
 
-Finally, here's a more involved example demonstrating how `res.view` can be combined with Waterline queries:
+最後に`res.view`がどのようにWaterlineと組み合わさるのか関してのもう少し踏み込んだデモです。:
 
 ```js
 // Find the 5 hottest oven brands on the market
@@ -73,7 +73,8 @@ Oven.find().sort('heat ASC').exec(function (err, ovens){
 
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
-> + `res.view()` reads a view file from disk, compiles it into HTML, then streams it back to the client.  If you already have the view in memory, or don't want to stream the compiled HTML directly back to the client, use `sails.hooks.views.render()` instead.
+> + `res.view()`はビューファイルをディスクから読み出し、HTMLにコンパイルし、クライアントに返送します。ビューがすでにメモリ上にある場合や直接クライアントにコンパイルされたHTMLを送信したくない場合、代わりに`sails.hooks.views.render()`を使って下さい。
+> + `res.view()` は常にビューファイル名の _小文字版_ 探します。例えばコントローラが`FooBarController`でアクションが`Baz`なら`res.view()`は`views/foobar/baz.ejs`を見つけようとします。_大文字と小文字を区別する_ ファイルシステム(例:Ubuntu Linux)では大文字を入れてこれらが命名されていた場合、思わぬエラーを発生させる場合があります。この理由からビューとビューフォルダは常に小文字で命名することをおすすめします。
 
 
 

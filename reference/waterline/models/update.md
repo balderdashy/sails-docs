@@ -1,24 +1,24 @@
 # .update()
-### Purpose
-Updates existing records in the database that match the specified criteria.
+### 目的
+データベースにある、与えられた条件に合う既存レコードを更新します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |   Find Criteria     |   `{}`,`[{}]`, `string`, `int`  |   Yes     |
-| 2 |   Updated Records   |   `{}`,`[{}]`       |   Yes     |
-| 3 |     Callback        | `function`          | No        |
+| 1 |    検索条件   | `{}`,`[{}]`, `string`, `int`| はい |
+| 2 |  更新するレコード  | `{}`,`[{}]`          |  はい  |
+| 3 |     コールバック        | `function`          | いいえ        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Sucessfully Updated Records    | `[{}]`        |
+| 1 |  エラー              | `Error`             |
+| 2 |  更新に成功したレコード    | `{}`, `[{}]`          |
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, updated){
@@ -32,11 +32,11 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, upd
 });
 
 ```
-### Notes
-> + An array of primary key values passed to `.update()` for a `collection` association will set the association to contain **only** the records with those primary key values provided.  That is- it **unlinks all other** records from the association.
-> + Although you may pass .update() an object or an array of objects, it will always return an array of objects.
-> + If you specify a primary key (e.g. `7` or `"50c9b254b07e040200000028"`) instead of a criteria object, any `.where()` filters will be ignored.
-> + Currently, calling `.populate()` on an `.update()` query has no effect.  To populate attributes on the results, you should follow up your update with a `find().populate()` query.
+### 備考
+`.update()`に`collection`のアソシエーションのために与えられた主キーの値の配列は主キーの値が与えられたレコード **のみ** が含むようなアソシエーションのコレクションを設定します。つまり、これはアソシエーションにおいて **他のすべてをリンク解除する** ということです。
+> + .update()にはオブジェクトまたはオブジェクトの配列を渡せますが、返り値は常に配列です。
+> + 検索オブジェクトの代わりに(例:`7` や `"50c9b254b07e040200000028"`)主キーを指定した時、全ての`.where()`フィルタは無視されます。
+> + 現在、`.update()`で`.populate()`を呼び出すクエリは効果がありません。結果の属性をpopulateしたい時にはupdateのあとに`find().populate()`クエリを行わなければなりません。
 
 
 <docmeta name="uniqueID" value="update727440">

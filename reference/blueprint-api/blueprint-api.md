@@ -1,34 +1,34 @@
 # Blueprint API
 
-### Overview
+### 概要
 
-Together, blueprint routes and blueprint actions constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
+blueprintルートとblueprintアクションは一体となって**blueprint API**を構成し、このビルトインロジックはモデルとコントローラを作成する度にいつでも[RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) を用意します。
 
-For example, if you create a `User.js` model and `UserController.js` controller file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
+例えば`User.js`モデルと`UserController.js`コントローラファイルをプロジェクト内に作った時、blueprintのおかげですぐに`/user/create?name=joe`にアクセスしユーザを作成し、`/user`アクセスしてユーザの配列を参照できるようになります。これらは全てコーディングなしで実現可能です。
 
-Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
+Blueprintsはプロトタイピングに最適ですが、オーバーライトやプロテクション、拡張や無効化が出来るためプロダクション環境においてもとてもパワフルです。
 
-#### Blueprint Routes
+#### Blueprintルート
 
-When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](http://sailsjs.org/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+Blueprintが有効な状態で`sails lift`を実行した時にフレームワークはコントローラとモデル、コンフィグを確認し、[特定のルート](http://sailsjs.org/documentation/concepts/Routes)を自動的にバインドします。これらの暗黙のblueprintルート(sadowsとも呼びます)は`config/routes.js`ファイルで手動で設定することなくアプリケーションが特定のルートに反応できるようにします。デフォルトではblueprintルートはblueprint*アクション*(下記の「Blueprintアクション」をご覧ください。)と一致しますが全てはカスタムのコードによって上書き可能です。
 
-There are three types of blueprint routes in Sails:
+Sailsでは3種類のblueprintルートがあります:
 
-+ **RESTful routes**, where the path is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take; for example a `POST` request to `/user` will create a new user, and a `DELETE` request to `/user/123` will delete the user whose primary key is 123.  In a production environment, RESTful routes should generally be protected by [policies](http://sailsjs.org/documentation/concepts/Policies) to avoid unauthorized access.
-+ **Shortcut routes**, where the action to take is encoded in the path.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.  Shortcut routes are very handy for development, but generally should be disabled in a production environment.
-+ **Action routes**, which automatically create routes for your custom controller actions.  For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
-
-
-See the [blueprints subsection of the configuration reference](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
++ **RESTfulルート**, パスは常に`/:modelIdentity`または`/:modelIdentity/:id`です。これらのルートはHTTPの「動詞」を使い、取るべきアクションを決めます。例えば、`/user`に対する`POST`リクエストはユーザを新規作成し、`/user/123` に対する`DELETE`リクエストは主キーが123のユーザを削除します。本番環境ではRESTfulルートは一般的には[policies](http://sailsjs.org/documentation/concepts/Policies)で保護して許可無いアクセスを防止しなければなりません。
++ **Shortcutルート**, 取るべきアクションはパスにエンコードされています。例えば`/user/create?name=joe`ショートカットはユーザを新規作成し、`/user/update/1?name=mike`はユーザ１を更新します。これらのルートは`GET` リクエストのみに反応します。ショートカットルートを使うと非常に開発しやすいですが一般的に本番環境では無効化されるべきです。
++ **Actionルート**, カスタムコントローラアクションに対して自動的に作成されるものです。例えば`FooController.js`ファイルに`bar`メソッドがあった場合、blueprintアクションルートが有効な限り`/foo/bar`ルートは自動的に作成されます。RESTfulとショートカットルートとは違い、アクションルートはコントローラファイルは対応するモデルを持つ必要は*ありません*。
 
 
-#### Blueprint Actions
+blueprintの設定オプションや異なるタイプのblueprintルートをどのように有効化、無効化するのかに関しては[コンフィグレーションリファレンスのblueprint部分](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html)をご覧ください。
 
-Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own custom blueprint action. (e.g. `api/blueprints/create.js`).
+#### Blueprintアクション
 
-The current version of Sails ships with the following blueprint actions:
+Blueprintアクション（blueprintアクション*ルート*と混同しないように気をつけてください。）は同名のモデルを持つコントローラ(例:`ParrotController`は`Parrot`モデルを必要とします。)が使うことの出来る一般的なアクションです。これはいわばアプリ―ケーションのデフォルトの振る舞いです。例えば`User.js`モデル空の`UserController.js`コントローラがあった場合、`find`、`create`、`update`、`destroy`、`populate`、`add`、`remove`のアクションがコードを書くことなく暗示的に存在します。
+
+デフォルトではblueprint RESTfulルートやshortcutルートはそれぞれの対応するblueprintアクションに転送されます。しかしながら、全ての全てのblueprintアクションはそのコントローラファイルにカスタムアクションを作成することによって(例:`ParrotController.find`)特定のコントローラによって上書きされることが出来ます。別の方法としては 自分のカスタムblueprintアクション(例:`api/blueprints/create.js`)を作成することで_アプリケーションの中のどこでも_ blueprintアクションをオーバーライドすることが出来ます。
+
+現在のバージョンのSailsは以下のblueprintアクションを提供します:
 
 + [find](http://sailsjs.org/documentation/reference/blueprint-api/Find.html)
 + [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne.html)
@@ -39,24 +39,24 @@ The current version of Sails ships with the following blueprint actions:
 + [add](http://sailsjs.org/documentation/reference/blueprint-api/Add.html)
 + [remove](http://sailsjs.org/documentation/reference/blueprint-api/Remove.html)
 
-Consequently, the blueprint API methods covered in this section of the documentation correspond one-to-one with the blueprint actions above.
+結果的に、ドキュメントの中のこのセクションでカバーするblueprint APIメソッドは上記のアクションに1対1対応します。
 
-### Overriding Blueprints
+### Blueprintsをオーバーライドする
 
-( taken from https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs )
+(https://stackoverflow.com/questions/22273789/crud-blueprint-overriding-in-sailsjs より)
 
-To override blueprints in Sails v0.10, you create an api/blueprints folder and add your blueprint files (e.g. find.js, create.js, etc.) within. You can take a look at the code for the default actions in the Sails blueprints hook for a head start.
+Sails v0.10でblueprint をオーバライドするにはapi/blueprintsフォルダを作り、その中にblueprintファイル(例: find.js, create.jsなど)を作成します。手始めにデフォルトのアクションにあるコードを見て進めてください。
 
-**Note:** Currently all files must be lowercase! (The default actions contains findOne.js, but in /api/blueprints it needs to be findone.js)
+**備考:** 現在全てのファイルは小文字である必要があります。(デフォルトのアクションはfindOne.jsを含みますが/api/blueprintsではこのファイルはfindone.jsである必要があります)
 
-Adding custom blueprints is also supported, but they currently do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your /config/routes.js file with (for example):
+カスタムのblueprintを作成することも同様にサポートされていますが、現在自動的にルートの転送は行われません。もし/blueprints/foo.jsファイルを作った場合/config/routes.jsでルートのバインドを行う必要があります。（例えば）:
 
     GET /myRoute: {blueprint: 'foo'}
 
 
-### Disabling blueprints on a per-controller basis
+### コントローラごとにblueprintを無効化する
 
-You may also override any of the settings from `config/blueprints.js` on a per-controller basis by defining a '_config' key in your controller definition, and assigning it a configuration object with overrides for the settings in this file.
+すべての設定は`config/blueprints.js`で コントローラの定義に'_config' キーを設定し、上書きしたい設定オブジェクトをアサインすることで、コントローラごとに上書きすることが出来ます。
 
 ```javascript
 module.exports = {
@@ -69,9 +69,9 @@ module.exports = {
 
 ```
 
-### Notes
+### 備考
 
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](http://sailsjs.org/documentation/reference/websockets/sails.io.js) for example usage.
+> + 以下のドキュメントはHTTPにフォーカスしていますがblueprint APIはリクエスト変換機能のおかげで（カスタムアクションやポリシーと同じように）WebSocketにも使うことが出来ます。使用例に関しては[browser SDK](http://sailsjs.org/documentation/reference/websockets/sails.io.js)のリファレンスセクションをご覧ください。
 >
 
 <docmeta name="uniqueID" value="blueprintapi170785">

@@ -1,25 +1,25 @@
 # req.signedCookies
-An object containing all the signed cookies from the request object. A signed cookie is protected against modification by the client. This protection is provided by a base64 encoded HMAC of the cookie value. When retrieving the cookie, if the HMAC signature does not match based on the cookie's value, then the cookie is not available as a member of the `req.signedCookies` object
+リクエストに含まれる全てのサイン済クッキー含むオブジェクトです。サイン済クッキーはクライアントサイドでの変更を防ぎます。この保護はクッキー値のHMACハッシュをBase64エンコードしたもので提供されます。クッキーを取得した時、HMACシグネチャがクッキー値を元にしたものとマッチしない時、そのクッキーは`req.signedCookies`オブジェクトの一員としては使えません。
 
-### Purpose
-An object containing all of the signed cookies from this request (`req`).
+### 目的
+リクエスト(`req`)のサイン済みのクッキーをすべて持つオブジェクト
 
 
-### Usage
+### 使い方
 ```javascript
 req.signedCookies;
 ```
 
 
 
-### Example
-Adding a signed cookie named "chocolatechip" with value "Yummy:
+### 例
+"chocolatechip"という名前で"Yummy"の値を持つサイン済クッキーを追加:
 
 ```javascript
 res.cookie('chocolatechip', 'Yummy', {signed:true});
 ```
 
-Retrieving the cookie:
+クッキーを取得:
 ```javascript
 req.signedCookies.chocolatechip;
 // "Yummy"

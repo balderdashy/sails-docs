@@ -1,13 +1,13 @@
 # req.accepted
 
-Contains an array of the "media types" this request (`req`) can accept (e.g. `text/html` or `application/json`), ordered from highest to lowest quality.
+リクエスト(`req`)が受け入れられるメディアタイプ(例: `text/html` や `application/json`)の配列をクオリティ順に持っています。
 
-### Usage
+### 使いかた
 ```javascript
 req.accepted;
 ```
 
-### Example
+### 例
 
 ```javascript
 req.accepted;
@@ -24,8 +24,8 @@ req.accepted;
 */
 ```
 
-### Notes
-> + See the [`accepts` module](https://github.com/expressjs/accepts) for the finer details of the header parsing algorithm used in Sails/Express/Koa/Connect.
+### 備考
+> + Sails/Express/Koa/Connectでのヘッダーパースアルゴリズムの詳細に関しては[`accepts` module](https://github.com/expressjs/accepts)を御覧ください。
 
 
 

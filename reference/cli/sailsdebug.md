@@ -1,9 +1,9 @@
 # sails debug
 
-Attach the node debugger and lift the sails app; similar to running `node --debug app.js`.  Takes the same options as `sails lift`.  You can then use [node-inspector](https://github.com/node-inspector/node-inspector) to debug your app as it runs.
+nodeデバッガを接続した状態でSailsアプリケーションを起動します。`node --debug app.js`と似ています。`sails lift`の用意幾つかのオプションを取ります。これから[node-inspector](https://github.com/node-inspector/node-inspector)を使ってアプリケーションが動くのをデバッグできます。
 
 
-### Example
+### 例
 
 ```sh
 $ sails debug
@@ -21,7 +21,7 @@ debugger listening on port 5858
 
 
 
-> To use the standard (command-line) node debugger with sails, you can always just run `node debug app.js`.
+> 通常の（コマンドラインの）nodeデバッガをSailsで使うには常に`node debug app.js`を単に実行するだけで事足ります。
 
 <docmeta name="uniqueID" value="sailsdebug521538">
 <docmeta name="displayName" value="sails debug">

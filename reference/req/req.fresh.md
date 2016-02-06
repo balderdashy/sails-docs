@@ -1,15 +1,15 @@
 # req.fresh
 
-A flag indicating the user-agent sending this request (`req`) wants "fresh" data (as indicated by the "[if-none-match](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)", "[cache-control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)", and/or "[if-modified-since](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25)" request headers.)
+このフラグはユーザエージェントがこのリクエスト(`req`)に関してデータをフラッシュすることを求めているということを意味します。（これは"[if-none-match](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.26)"、"[cache-control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)"、あるいは"[if-modified-since](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.25)"リクエストヘッダーによって示されています。）
 
-If the request wants "fresh" data, usually you'll want to `.find()` fresh data from your models and send it back to the client.
+リクエストがデータをフラッシュして欲しい時には通常最新のデータをデータ・モデルから`.find()`してクライアントに送り返さなければなりません。
 
-### Usage
+### 使い方
 ```js
 req.fresh;
 ```
 
-### Example
+### 例
 ```js
 if (req.fresh) {
   // The user-agent is asking for a more up-to-date version of the requested resource.
@@ -17,8 +17,8 @@ if (req.fresh) {
 }
 ```
 
-### Notes
-> + See the [`node-fresh`](https://github.com/visionmedia/node-fresh) module for details specific to the implementation in Sails/Express/Koa/Connect.
+### 備考
+> + Sails/Express/Koa/Connectの実際の実装に関しては[`node-fresh`](https://github.com/visionmedia/node-fresh) モジュールを御覧ください。
 
 
 

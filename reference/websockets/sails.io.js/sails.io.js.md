@@ -1,33 +1,33 @@
 # Socket Client (`sails.io.js`)
 
-> This section of the docs is about the Sails socket client SDK for the browser.  It is written in JavaScript and is also usable on the server.
+> ドキュメントのこのセクションはブラウザ向けのSailsソケットクライアントSDKに関して触れています。これはJavascriptで書かれていますのでサーバでも利用可能です。
 >
-> There are also a handful of community projects implementing Sails/Socket.io clients for native iOS, Android, and Windows Phone.
+> コミュニティプロジェクトとして、ネイティブのiOS、AndroidやWindows Phone向けのっSails/Socket.io実装もあり、これは非常に有用です。
 
 
-### Overview
+### 概要
 
-The Sails socket client ([`sails.io.js`](https://github.com/balderdashy/sails.io.js)) is a tiny browser library that is bundled by default in new Sails apps.  It is a lightweight wrapper that sits on top of the Socket.IO client whose purpose is to make sending and receiving messages from your Sails backend as simple as possible.
+Sailsのソケットクライアント([`sails.io.js`](https://github.com/balderdashy/sails.io.js))は新規のSailsアプリケーションにデフォルトでバンドルされている小型のブラウザライブラリです。これはSailsバックエンドとの間でできるだけ簡単にメッレージをやり取りすることを目的として作られたSocket.ioクライアントの上に存在する軽量なラッパーです。
 
-The main responsibility of `sails.io.js` is to provide a familiar ajax-like interface for communicating with your Sails app using WebSockets/Socket.io.  That basically means providing `.get()`, `.post()`, `.put()`, and `.delete()` methods that let you take advantage of realtime features while still reusing the same backend routes you're using for the rest of your app.  In other words, running `io.socket.post('/user')` in your browser will be routed within your Sails app exactly the same as an HTTP POST request to the same route.
-
-
-### Can I use this with...
-
-Yes.  The Sails socket client can be used to great effect with any front-end framework-- no matter whether it's angular, backbone, ember, knockout, etc.
+`sails.io.js`の主な役割は WebSockets/Socket.ioを使ったSailsアプリケーションとの遣り取りをするために親しみやすいajax風のインタフェースを提供することです。これは基本的には `.get()`、`.post()`、`.put()`、`.delete()`のメソッドを提供して、アプリケーションの他の部分と同じルートを再利用しながらリアルタイム機能の恩恵に預かれるようにするということを意味します。言い換えれば、ブラウザの中で`io.socket.post('/user')`を実行することはSailsアプリ―ケーションの中の同じルートへの同じHTTP POSTリクエストと全く同じようにルーティングされるということです。
 
 
-### Do I have to use this?
+### これは何かと一緒に使えますか
 
-No. The Sails socket client is extremely helpful when building realtime/chat features in a browser-based UI, but like the rest of the `assets/` directory, it is probably not particularly useful if you are building a native Android app, or an API with no user interface.
+はい。Sailsのソケットクライアントは（それが、angularであれ、backboneであれ、emberやknockoutなどであれ）フロントエンドフレームワークの特徴を最大限良いかして一緒に使えます。
 
-Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete `assets/js/depencencies/sails.io.js`.
+
+### これは使わなければいけないものですか
+
+いいえ。Sailsのソケットクライアントはリアルタイムやチャットのアプリケーションを作成するのに極めて便利ですが、その他の `assets/`ディレクトリに関してはAndroidのネイティブアプリケーションやインタフェースを含まないAPIを作っている時にはおそらく特に便利ではないでしょう。
+
+幸い、Sailsにおける他の全てのboilerplateファイルやフォルダーと同様にソケットクライアントは完全に任意項目です。この機能の削除は単に`assets/js/dependencies/sails.io.js`を削除するだけでできます。
 
 <!--
 
-  TODO: add a bit more of a technical description in here at some point
+  TODO: 幾つかの点に関してもう少し技術的な説明が必要です。
 
-Under the covers, sails.io.js emits Socket.io messages with reserved names that, when interpreted by Sails, are routed to the appropriate policies/controllers/etc. according to your app's routes and blueprint configuration.
+内部的にはsails.io.jsはSocket.ioメッセージをSailsによって解釈された際にはblueprintやルーティング設定にしたがって適切なポリシーやコントローラにルーティングされるように予約された名前を使って行うものです。
 -->
 
 

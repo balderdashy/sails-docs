@@ -1,22 +1,22 @@
 # .toObject()
 
-### Purpose
-The toObject method returns a cloned model instance (record) but stripped of all instance methods.
+### 目的
+toObjectメソッドはクローンされたモデルインスタンス（レコード）を全てのインスタンスメソッドに分けて返します。
 
-### Overview
+### 概要
 
-#### Return Value
+#### 返り値
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-|   |   Cloned Record     |        `{ }`        |
+| 1 |  クローンされたレコード    | `{}`     |
 
-### Example Usage
-_See usage in .toJSON()_
+### 仕様例 
+_.toJSON()_ の使用例をご覧ください。
 
 
-### Notes
-> You will only want to use .toObject when overriding the default .toJSON instance method.
+### 備考
+> デフォルトの.toJSONインスタンスメソッドを上書きする時にのみ.toObjectを使うべきです。
 
 
 

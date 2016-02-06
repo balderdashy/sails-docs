@@ -1,19 +1,19 @@
 # req.ip
-### Purpose
-The IP address of the client who sent this request (`req`).
+### 目的
+リクエスト(`req`)の送信元のIPアドレス。
 
-> **Note:**
+> **備考:**
 >
-> If the `trust proxy` option is disabled in Express, this is the "remote address". Otherwise, if `trust proxy` is enabled, this is the "upstream address".
-> See Express docs for [app.set()](http://expressjs.com/api.html#app.set) - in Sails
-> this can be accomplished by adding the line `sails.hooks.http.app.set('trust proxy', true);` to `config/bootstrap.js`. 
+> Expressの`trust proxy`オプションが無効の際、これは「リモートアドレス」です。`trust proxy`オプションが有効の際、これは「アップストリームアドレス」です。
+> [app.set()](http://expressjs.com/api.html#app.set)に関してはExpressドキュメントをご覧ください。
+> Sailsでは`config/bootstrap.js`で`sails.hooks.http.app.set('trust proxy', true);`の行を追加することで可能です。
 
-### Usage
+### 使い方
 ```javascript
 req.ip;
 ```
 
-### Example
+### 例
 ```javascript
 req.ip;
 // -> "127.0.0.1"

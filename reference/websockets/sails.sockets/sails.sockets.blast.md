@@ -1,32 +1,32 @@
 # sails.sockets.blast()
 
-Broadcast a message to all sockets connected to the server.
+サーバに接続された全てのソケットにメッセージを送信します。
 
 ```javascript
 sails.sockets.blast(data);
 ```
 
-_Or:_
+_あるいは:_
 + `sails.sockets.blast(eventName, data);`
 + `sails.sockets.blast(data, socketToOmit);`
 + `sails.sockets.blast(eventName, data, socketToOmit);`
 
 
 
-### Usage
+### 使い方
 
-|   |          Argument           | Type                | Details
+|   |          引数           | 型                | 詳細
 | - | --------------------------- | ------------------- | -----------
-| 1 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
-| 2 |        data                 | ((*))               | The data to send in the message.
-| 3 |        socketToOmit         | ((Socket))          | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
+| 1 |        eventName            | ((string))          | オプション、デフォルトでは`'message'`
+| 2 |        data                 | ((*))               | メッセージとして送信されるデータ。
+| 3 |        socketToOmit         | ((Socket))          | オプション。存在する場合、リクエストメソッドは他からblastされたメッセージを受信 **しません**。ブロードキャストに値するデータが、それらを再び受信する必要のないユーザによってトリガーされた時に便利です。 
 
 
 
 
-### Example
+### 使用例
 
-In a controller action...
+コントローラアクションで。。。
 
 ```javascript
 sails.sockets.blast('user_logged_in', {
@@ -38,8 +38,8 @@ sails.sockets.blast('user_logged_in', {
 }, req.socket);
 ```
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+### 備考
+> + ここでの"request socket"はアプリケーションレイヤーのWebSocket/Socket.ioコネクションを意味します。`req.socket`はHTTPリクエストにも存在しますが、これはその下のトランスポートレイヤーに存在するTCPソケットを表すものでこれとは違います。この方法で`req.socket`を使う前に`req.isSocket == true`であることを確認して下さい。
 
 <docmeta name="uniqueID" value="sailssocketsblast345475">
 <docmeta name="displayName" value="sails.sockets.blast()">

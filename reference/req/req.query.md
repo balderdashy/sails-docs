@@ -1,15 +1,15 @@
 # req.query
 
-An object containing the parsed query-string, defaulting to `{}`.
+パース済みのクエリ文字列です。デフォルトは`{}`です。
 
-### Usage
+### 使い方
 ```js
 req.query;
 ```
 
-### Example
+### 例
 
-If the request is `GET /search?q=mudslide`:
+リクエストが`GET /search?q=mudslide`だった場合:
 
 ```js
 req.query.q

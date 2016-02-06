@@ -1,23 +1,23 @@
 # * .validate(`callback`)
 
-### Purpose
-Checks the current keys/values on the record against the validations specified in the attributes object of your model. 
+### 目的
+現在のキーと値がモデルで指定された属性オブジェクトに適合するかを確認します。
 
-### Overview
-#### Parameters
+### 概要
+#### パラメータ
 
-|   |     Description     | Accepted Data Types | Required ? |
+| # | 説明          | 受け入れられるデータ型           | 必須か |
 |---|---------------------|---------------------|------------|
-| 1 |     Callback        | `function`          | Yes        |
+| 1 |     コールバック        | `function`          | はい        |
 
-#### Callback Parameters
+#### コールバックパラメータ
 
-|   |     Description     | Possible Data Types |
+| # | 説明              | 想定されるデータ型 |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
+| 1 |  エラー              | `Error`             |
 
 
-### Example Usage
+### 使用例
 
 ```javascript
 User.find().exec(
@@ -37,7 +37,7 @@ User.find().exec(
 
 ```
 
-For model
+モデルで
 
 ```javascript
 module.exports = {
@@ -50,14 +50,14 @@ module.exports = {
 };
 ```
 
-### Notes
-> This is shorthand for `Model.validate({ attributes }, cb)`
-> If you `.save()` without first validating, Waterline tries to convert.  If it can't, it will throw an error.
-> In this case, it would have converted the array to the string 'Marie,Hank'
+### 備考
+> これは`Model.validate({ attributes }, cb)`の短縮版です。
+> バリデーション無しで`.save()`した場合、Waterlineはまずコンバートを試みて、それでも出来なければエラーを返します。
+> このケースでは、配列は'Marie,Hank'のような文字列に置き換えられます。
 
-> There will be no parameters in the callback unless there is an error.  No news is good news.
+> エラー長い限り、コールバックのパラメータはありません。便りがないのは良い便りです。
 
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
+> これはインスタンスメソッドです。現在、インスタンスメソッドはトランザクション出来ません。そのため、同じ意味を持つモデルメソッドを使うことをおすすめします。  
 
 <docmeta name="uniqueID" value="validate76690">
 <docmeta name="methodType" value="instance">

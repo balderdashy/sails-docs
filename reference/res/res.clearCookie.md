@@ -1,19 +1,19 @@
 # res.clearCookie()
 
-Clears cookie (`name`) in the response.
+レスポンス中のクッキー(`name`)を削除する。
 
-### Usage
+### 使い方
 
 ```js
 res.clearCookie(name [,options]);
 ```
 
-### Details
+### 詳細
 
-The path option defaults to "/".
+パスのオプションのデフォルトは"/"です。
 
 
-### Example
+### 例
 ```javascript
 res.cookie('name', 'tobi', { path: '/admin' });
 res.clearCookie('name', { path: '/admin' });

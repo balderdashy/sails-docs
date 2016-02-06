@@ -1,21 +1,21 @@
 # Response (`res`)
 
 
-### Overview
+### 概要
 
-Sails is built on [Express](https://github.com/expressjs/), and uses [Node's HTTP server](http://nodejs.org/api/http.html#http_http_createserver_requestlistener) conventions.  Because of this, you can access all of the Node and Express methods and properties on the `res` object whereever it is accessible (i.e. in your controllers, policies, and custom responses.)
+Sailsは[Node's HTTP server](http://nodejs.org/api/http.html) 慣習のもと[Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)上で構築されています。そのため、`req`がアクセス出来る場所からなら全て（すなわちコントローラやポリシー、カスタムレスポンス上から）その上にあるNodeとExpressのメソッドにアクセスすることが出来ます。
 
-A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
+この互換性の良い副作用としては多くのケースで既存のNode.jsをSailsアプリケーションにペーストするだけで動作させることが出来ます。また、Sailsはトランスポートを気にしないリクエストインタプリタを実装していますのでSailsアプリケーションのコードはWeb Sockets対応なのです。
 
-Sails adds a few methods of its own to the `res` object, like [`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
-
-
-### Protocol Support
-
-The chart below describes support for the methods and properties on the Sails [Request](http://sailsjs.org/documentation/reference/req) object (`req`) across multiple transports:
+Sailsでは`res`オブジェクトに[`res.view()`](http://sailsjs.org/documentation/reference/res/res.view.html)のような幾つかのプロパティとメソッドを追加しています。これらの機能は基礎となる実装の上の糖衣構文であり、同様にHTTP と WebSocketsをサポートします。
 
 
-The chart below describes support for the methods and properties on the Sails [Response](http://sailsjs.org/documentation/reference/res) object (`res`) across multiple transports:
+### プロトコルのサポート
+
+以下の表は複数のプロトコルにおいてSailsの[Request](http://sailsjs.org/documentation/reference/req)オブジェクト(`req`)でサポートされているメソッドとパラメータを示しています:
+
+
+以下の表は複数のプロトコルにおいてSailsの[Response](http://sailsjs.org/documentation/reference/res)オブジェクト(`res`)でサポートされているメソッドとパラメータを示しています:
 
 
 |                |  HTTP   | WebSockets |
@@ -44,9 +44,9 @@ The chart below describes support for the methods and properties on the Sails [R
 
 ### Legend
 
-  - :white_check_mark: - fully supported
-  - :white_large_square: - feature not yet implemented
-  - :heavy_multiplication_x: - unsupported due to protocol restrictions
+  - :white_check_mark: - 完全対応
+  - :white_large_square: - 実装未完
+  - :heavy_multiplication_x: - プロトコルの制約により未サポート
 
 
 <docmeta name="uniqueID" value="res550242">
