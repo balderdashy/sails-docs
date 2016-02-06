@@ -23,7 +23,7 @@ Before you launch any web application, you should ask yourself a few questions:
 
 
 
-### Configuring Your App For Prroduction
+### Configuring Your App For Production
 
 You can provide configuration which only applies in production in a [few different ways]().  Most apps find themselves using a mix of environment variables and `config/env/production.js`.  But regardless of how you go about it, this section and the [Scalability section]() of the documentation cover the configuration settings you should review and/or change before going to production.
 
