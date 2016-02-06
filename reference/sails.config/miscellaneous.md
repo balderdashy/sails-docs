@@ -2,7 +2,7 @@
 
 For a conceptual overview of configuration in Sails, see http://sailsjs.org/documentation/concepts/Configuration.
 
-This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.org/documentation/anatomy/myApp/config/env), or in your [config/local.js](http://sailsjs.org/documentation/concepts/Configuration?q=the-config%2Flocaljs-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
+This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.org/documentation/anatomy/my-app/config/env), or in your [config/local.js](http://sailsjs.org/documentation/concepts/configuration/the-local-js-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
 
 ### `sails.config.port`
 
