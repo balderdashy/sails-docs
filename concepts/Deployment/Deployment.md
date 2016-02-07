@@ -46,12 +46,13 @@ Many teams decide to deploy their production app behind a load balancer or proxy
 
 ##### Set the `NODE_ENV` environment variable to `'production'`
 
-Configuring your app's environment to `'production'` is the easiest (yet most important) thing you need to do before deploying. If you only have the time to change one setting before deploying your Sails app, _this should be it_!
+Configuring your app's environment config to `'production'` tells Sails to get its game face on; i.e. that your app is running in a production environment.  This is, hands down, the most important step. If you only have the time to change _one setting_ before deploying your Sails app, _this should be that setting_!
 
-Here's what happens when you tell Sails your app is running in a production environment:
+When your app is running in a production environment:
+  + Middleware and other dependencies baked into Sails switch to using more efficient code.
   + All of your [models' migration settings]() are forced to `migrate: 'safe'`.  This is a failsafe to protect against inadvertently damaging your production data during deployment.
   + Your asset pipeline runs in production mode (if relevant).  Out of the box, that means your Sails app will compile all stylesheets, client-side scripts, and precompiled JST templates into minified `.css` and `.js` files to decrease page load times and reduce bandwidth consumption.
-  + Dependencies and built-in middleware in Sails switch to use more efficient settings designed for production.
+  + Error messages and stack traces from `res.serverError()` will still be logged, but will not be sent in the response (this is to prevent a would-be attacker from accessing any sensitive information, such as encrypted passwords or the path where your Sails app is located on the server's file system)
 
 
 >**Note:**
