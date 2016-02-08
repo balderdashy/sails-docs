@@ -4,6 +4,13 @@
 
 The `io.sails` object exposes global configuration options for the `sails.io.js` library.  Most of the options are used as settings when connecting a client socket to the server.  `io.sails` also provides a `.connect()` method used for creating new socket connections.
 
+> The `sails.io.js` library waits for one cycle of the event loop before automatically connecting a socket (if `autoConnect` is enabled; [see below](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect)).  This is to allow any `io.sails` global properties that you specify to be set before the socket connects.  However, in order to ensure that the `io.sails` properties are read before connection, you should put the code setting those properties immediately after the `sails.io.js` script include:
+```
+<script src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">io.sails.url="http://myapp.com"</script>
+...other scripts...
+```
+
 ### The `.connect()` method
 
 If [`io.sails.autoconnect`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect) is `false`, or if you need to create more than one socket connection with the `sails.io.js` library, you do so via `io.sails.connect([url], [options])`.  Both arguments are optional, and the value of the `io.sails` properties (like `url`, `transports`, etc.) are used as defaults.  See the [SailsSocket properties reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties) for options.
