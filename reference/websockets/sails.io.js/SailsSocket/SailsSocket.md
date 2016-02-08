@@ -1,8 +1,8 @@
 # SailsSocket
 
-In most cases, you only need to connect a single socket from your client-side application.  By default in Sails applications, the `sails.io.js` client library automatically connects a socket (`io.socket`).  This is the recommended choice for 99% of apps.
+By default, [`sails.io.js`](http://sailsjs.org/documentation/reference/web-sockets/socket-client) automatically connects a single socket (`io.socket`) almost immediately after it loads.  This allows your client-side code to send socket requests to a particular Sails server, and to be able to receive events and data sent from that server.  For 99% of apps, this is all you need.
 
-However, for certain advanced use cases, it can be helpful to connect additional sockets from the same instance of the socket client (e.g. browser tab).  For this reason, Sails exposes the `SailsSocket` class.
+However, for certain advanced use cases (including automated tests), it can be helpful to connect additional sockets from the same instance of the socket client (e.g. browser tab).  For this reason, Sails exposes the `SailsSocket` class.
 
 
 ### Overview
