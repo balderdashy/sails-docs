@@ -10,8 +10,11 @@ Sails also comes with built-in support for creating your own custom configuratio
 
 ### Where do I put my production database credentials?  Other settings?
 
-For your other deployment/machine-specific settings, namely any kind of credentials, you should use `config/local.js`.  
-It's included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
+The easiest way to add configuration to your Sails app is by modifying the files in `config/` or adding new ones. Sails supports environment-specific configuration loading out of the box, so you can use `config/env/production.js`.  Again, see the conceptual documentation on [Configuration](http://sailsjs.org/documentation/concepts/configuration) for details.
+
+For development, using environment variables is awkward
+
+For your other deployment/machine-specific settings, namely any kind of credentials you want to keep private, you should use either environment variables or your `config/local.js` file.  This file is included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
 
 **config/local.js**
 ```javascript
@@ -34,6 +37,8 @@ module.exports = {
 }
 ```
 
+
+
 ### How do I get my Sails app on the server?
 
 If you are using a Paas like Heroku or Modulus, this is easy:  just follow their instructions.
@@ -45,7 +50,7 @@ Otherwise get the IP address of your server and `ssh` onto it.  Then `npm instal
 
 Baseline performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails core, but primarily our focus is not messing up what we get for free from our dependencies.  For a quick and dirty benchmark, see [http://serdardogruyol.com/?p=111](http://serdardogruyol.com/?p=111).
 
-The most common performance bottleneck in production Sails applications is the database.  Over the lifetime of an application with a growing user base, it becomes increasingly important to set up good indexes on your tables/collections, and to use queries which return paginated results.  Eventually as your production database grows to contain tens of millions of records, you will start to locate and optimize slow queries by hand (either by calling [`.query()`](http://preview.sailsjs.org/documentation/reference/waterline-orm/models/query) or [`.native()`](http://preview.sailsjs.org/documentation/reference/waterline-orm/models/native), or by using the underlying database driver from NPM).  
+The most common performance bottleneck in production Sails applications is the database.  Over the lifetime of an application with a growing user base, it becomes increasingly important to set up good indexes on your tables/collections, and to use queries which return paginated results.  Eventually as your production database grows to contain tens of millions of records, you will start to locate and optimize slow queries by hand (either by calling [`.query()`](http://sailsjs.org/documentation/reference/waterline-orm/models/query) or [`.native()`](http://sailsjs.org/documentation/reference/waterline-orm/models/native), or by using the underlying database driver from NPM).  
 
 
 ### What's this warning about the connect session memory store?
