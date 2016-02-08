@@ -7,19 +7,16 @@ Before you launch any web application, you should ask yourself a few questions:
 + What is your expected traffic?
 + Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
 + What sorts of front-end apps will be "hitting" your infrastructure?
-  + Android apps
-  + iOS apps
+  + Android/iOS/Windows Phone apps
   + desktop web browsers
   + mobile web browsers (tablets, phones, iPad minis?)
+  + Cordova/Electron apps
   + tvs, watches, toasters..?
-+ And what kinds of things will they be requesting?
-  + JSON?
-  + HTML?
-  + XML?
++ And what kinds of things will they be requesting? (e.g. HTML? JSON? XML?)
 + Will you be taking advantage of realtime pubsub features with Socket.io?
   + e.g. chat, realtime analytics, in-app notifications/messages
 + How are you tracking crashes and errors?
-  + Take a look at Sails' log config
+  + Are you using `sails.log()`? Or are you using a custom logger from NPM like [Winston](https://github.com/winstonjs/winston)?
 
 
 
