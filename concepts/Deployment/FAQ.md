@@ -35,26 +35,29 @@ module.exports = {
 ```
 
 ### How do I get my Sails app on the server?
-Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
 
-Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
+If you are using a Paas like Heroku or Modulus, this is easy:  just follow their instructions.
+
+Otherwise get the IP address of your server and `ssh` onto it.  Then `npm install -g sails` and `npm install -g forever` to install Sails and `forever` globally from NPM for the first time on the server. Finally `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server, `cd` into it, and then run `forever start app.js`.
 
 
 ### What should I expect as far as performance?
 
-Performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.
+Baseline performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails core, but primarily our focus is not messing up what we get for free from our dependencies.  For a quick and dirty benchmark, see [http://serdardogruyol.com/?p=111](http://serdardogruyol.com/?p=111).
 
-+ http://serdardogruyol.com/?p=111
+The most common performance bottleneck in production Sails applications is the database.  Over the lifetime of an application with a growing user base, it becomes increasingly important to set up good indexes on your tables/collections, and to use queries which return paginated results.  Eventually as your production database grows to contain tens of millions of records, you will start to locate and optimize slow queries by hand (either by calling [`.query()`](http://preview.sailsjs.org/documentation/reference/waterline-orm/models/query) or [`.native()`](http://preview.sailsjs.org/documentation/reference/waterline-orm/models/native), or by using the underlying database driver from NPM).  
 
-Issues [#3099](https://github.com/balderdashy/sails/issues/3099) and [#2779](https://github.com/balderdashy/sails/issues/2779) are about a memory leak. It resides in the `express-session` module used by default, which stores sessions in-memory.
-To disable it, make sure that you disable sessions in the `.sailsrc`:
-```
+
+### What's this warning about the connect session memory store?
+
+If you are using sessions in your Sails app, you should not use the built-in memory store in production.  The memory session store is a development-only tool that does not scale to multiple servers; and even if you only have one server it is not particularly performant (see [#3099](https://github.com/balderdashy/sails/issues/3099) and [#2779](https://github.com/balderdashy/sails/issues/2779)).
+
+For instructions on configuring a production session store, see [sails.config.session](http://sailsjs.org/documentation/reference/configuration/sails-config-session).  If you want to disable session support altogether, turn off the `session` hook in your app's `.sailsrc` file:
+```javascript
 "hooks": {
   "session": false
 }
 ```
-
-You may also use an alternative (redis/mongo/cookies) to store sessions.
 
 
 <docmeta name="displayName" value="FAQ">
