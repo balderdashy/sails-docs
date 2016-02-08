@@ -73,6 +73,17 @@ sails_cors__origin="http://somedomain.com" sails lift
 This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 
 
+> There are a couple of notable special cases:
+> + `NODE_ENV` (a convention for any Node.js app, this environment variable should be set to `'production'`)
+> + `PORT` (for convenience and backwards compatibility; this is just another way to set [`sails.config.port`](http://preview.sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigport))
+>
+> For example, to configure the `port` AND `environment` settings in Sails using these special-case environment variables:
+>
+> ```bash
+> PORT=443 NODE_ENV=production sails lift
+> ```
+
+
 ### Custom Configuration
 Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`).  However you can also use `sails.config` for your own custom configuration (e.g. `sails.config.someProprietaryAPI.secret`).
 
