@@ -1,13 +1,14 @@
 # FAQ
 
 
-##### Can I use environment variables?
+### Can I use environment variables?
 
-Yes! You can also configure the `port` and `environment` settings in Sails using environment variables.
-`NODE_ENV=production sails lift`
-`PORT=443 sails lift`
+Yes! Like any Node app, your environment variables are available as `process.env`.
 
-##### Where do I put my production database credentials?  Other settings?
+Sails also comes with built-in support for creating your own custom configuration settings that will be exposed directly on `sails.config`.  And whether custom or built-in, any of the configuration properties in `sails.config` can be overridden using environment variables.  See the conceptual documentation on [Configuration](http://sailsjs.org/documentation/concepts/configuration) for details.
+
+
+### Where do I put my production database credentials?  Other settings?
 
 For your other deployment/machine-specific settings, namely any kind of credentials, you should use `config/local.js`.  
 It's included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
@@ -33,13 +34,13 @@ module.exports = {
 }
 ```
 
-##### How do I get my Sails app on the server?
+### How do I get my Sails app on the server?
 Is your Node.js instance already spun up?  When you have the ip address, you can go ahead and ssh onto it, then `sudo npm install -g forever` to install Sails and forever for the first time.  
 
 Then `git clone` your project (or `scp` it onto the server if it's not in a git repo) into a new folder on the server and cd into it, and `forever start app.js`
 
 
-### Performance Benchmarks
+### What should I expect as far as performance?
 
 Performance in Sails is comparable to what you'd expect from a standard Node.js/Express application.  In other words, fast!  We've done some optimizations ourselves in Sails and Waterline, but primarily, our focus has been on not messing up what was already really fast.  Above all, we have @ry, @visionmedia, @isaacs, #v8, @joyent and the rest of the Node.js core team to thank.
 
