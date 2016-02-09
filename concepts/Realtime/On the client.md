@@ -6,7 +6,7 @@ The sails.io.js library is automatically added to the default [layout template](
 
 ### Examples
 
-Include the sails.io.js library, and make a request to the `/hello` route of a Sails app using the automatically-connected socket:
+Include the `sails.io.js` library, and make a request to the `/hello` route of a Sails app using the automatically-connected socket:
 
 ```html
 <script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
@@ -17,18 +17,18 @@ io.socket.get('/hello', function responseFromServer (body, response) {
 </script>
 ```
 
-Create a new client socket manually and log a message when it connects to the server:
+Now consider this more advanced (and much rarer) use case: Let's disable the eager (auto-connecting) socket, and instead create a new client socket manually.  When it successfully connects to the server, we'll make it log a message:
 ```html
-<script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
+<script type"text/javascript" src="/js/dependencies/sails.io.js" autoConnect="false"></script>
 <script type"text/javascript">
 var mySocket = io.sails.connect();
-io.socket.on('connect', function onConnect () {
+mySocket.on('connect', function onConnect () {
   console.log("Socket connected!");
 });
 </script>
 ```
 
-### Socket requests vs AJAX requests
+### Socket requests vs traditional AJAX requests
 
 You may have noticed that a client socket `.get()` is very similar to making an AJAX request, for example by using jQuery's `$.get()` method.  This is intentional&mdash;the goal is for you to be able to get the same response from Sails no matter where the request originated from.  The benefit to making the request using a client socket is that the [controller action](http://sailsjs.org/documentation/concepts/controllers#?actions) in your Sails app will have access to the socket which made the request, allowing it to _subscribe_ that socket to realtime notifications (see [sending realtime messages from the server](http://sailsjs.org/documentation/concepts/realtime/sending-realtime-messages-from-the-server-to-one-or-more-clients)).
 
