@@ -2,25 +2,25 @@
 
 ### Overview
 
-The `io.sails` object exposes global configuration options for the `sails.io.js` library.  Most of the options are used as settings when connecting a client socket to the server.  `io.sails` also provides a `.connect()` method used for creating new socket connections.
+The `io.sails` object is the home of global configuration options for the `sails.io.js` library, as well as any sockets it creates.  Most of the properties on `io.sails` are used as settings when connecting a client socket to the server, or as top-level configuration for the client library itself.  `io.sails` also provides a `.connect()` method used for creating new socket connections manually.
 
 See [Socket Client](http://sailsjs.org/documentation/reference/web-sockets/socket-client) for information about your different options for configuring `io.sails`.
 
 ### The `.connect()` method
 
-If [`io.sails.autoconnect`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect) is `false`, or if you need to create more than one socket connection with the `sails.io.js` library, you do so via `io.sails.connect([url], [options])`.  Both arguments are optional, and the value of the `io.sails` properties (like `url`, `transports`, etc.) are used as defaults.  See the [SailsSocket properties reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties) for options.
+If [`io.sails.autoConnect`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect) is `false`, or if you need to create more than one socket connection with the `sails.io.js` library, you do so via `io.sails.connect([url], [options])`.  Both arguments are optional, and the value of the `io.sails` properties (like `url`, `transports`, etc.) are used as defaults.  See the [SailsSocket properties reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties) for options.
 
-### `autoConnect`
+### `io.sails.autoConnect`
 
 When the `io.sails.autoConnect` is set to `true` (the default), the library will wait one cycle of the event loop after loading and then attempt to create a new [`SailsSocket`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket) and connect it to the URL specified by `io.sails.url`.  When used in the browser, the new socket will be exposed as `io.socket`.  When used in a Node.js script, the new socket will be attached as the `socket` property of the variable used to initialize the `sails.io.js` library.
 
-### `environment`
+### `io.sails.environment`
 
 Use `io.sails.environment` to set an environment for `sails.io.js`, which affects how much information is logged to the console.  Valid values are `development` (full logs) and `production` (minimal logs).
 
 ### Other properties and defaults
 
-The other properties of `io.sails` are used as defaults when creating new sockets (either via autoconnect or [`io.sails.connect()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method)).  See the [SailsSocket properties reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties) for a full list, as well as a table of the default `io.sails` values.  Here are the most commonly used properties:
+The other properties of `io.sails` are used as defaults when creating new sockets (either the eager socket or via [`io.sails.connect()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method)).  See the [SailsSocket properties reference](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties) for a full list of available options, as well as a table of the default `io.sails` values.  Here are the most commonly used properties:
 
   Property          | Type       | Default   | Details
  ------------------ |----------| --------- | :-------:
