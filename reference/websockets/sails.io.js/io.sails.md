@@ -4,12 +4,45 @@
 
 The `io.sails` object exposes global configuration options for the `sails.io.js` library.  Most of the options are used as settings when connecting a client socket to the server.  `io.sails` also provides a `.connect()` method used for creating new socket connections.
 
-> The `sails.io.js` library waits for one cycle of the event loop before automatically connecting a socket (if `autoConnect` is enabled; [see below](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect)).  This is to allow any `io.sails` global properties that you specify to be set before the socket connects.  However, in order to ensure that the `io.sails` properties are read before connection, you should put the code setting those properties immediately after the `sails.io.js` script include:
+
+### Configuring the `sails.io.js` library
+
+There are two ways to configure Sails' socket client in the browser; feel free to mix and match.
+
+> See the [`sails.io.js`](github.com/balderdashy/sails.io.js) repository for help configuring `sails.io.js` when it is being used to connect client sockets from a Node.js script.
+
+##### Basic configuration using HTML attributes
+
+The easiest way to configure the socket client is by sticking one or more HTML attributes on the script tag:
+
+```html
+<script src="/js/dependencies/sails.io.js"
+  autoConnect="false"
+  environment="production"
+  headers='{ "x-csrf-token": "<%- typeof _csrf === 'undefined' ? _csrf : '' %>" }'
+></script>
 ```
+
+This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that comoposite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names.  
+
+
+##### Programmatic configuration using `io.sails`
+
+As of Sails v0.12.x, only the most basic configuration options may be set using HTML attributes.  If you want to configure any of the other options not mentioned above, you will need to interact with `io.sails` programmatically.  Fortunately, the approach described above is really just a convenient shortcut for doing just that!  Heres how it works:
+
+When you load it on the page in a `<script>` tag, the `sails.io.js` library waits for one cycle of the event loop before _automatically connecting_ a socket (if `io.sails.autoConnect` is enabled; [see below](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect)).  This is to allow any properties that you specify on `io.sails` to be set before the socket begins connecting.  However, in order to ensure that the `io.sails` properties are read before connection, you should put the code setting those properties immediately after the `<script>` tag that includes `sails.io.js`:
+
+```html
 <script src="/js/dependencies/sails.io.js"></script>
-<script type="text/javascript">io.sails.url="http://myapp.com"</script>
-...other scripts...
+<script type="text/javascript">
+  io.sails.url = 'https://myapp.com';
+</script>
+<!-- ...other scripts... -->
 ```
+
+Normally, the socket client always connects to the server where the script is being served.  This example will cause the eager (auto-connecting) socket to attempt a (cross-domain) socket connection to the Sails server running at `https://myapp.com` instead.
+
+
 
 ### The `.connect()` method
 
