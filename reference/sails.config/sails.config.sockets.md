@@ -8,10 +8,19 @@ These configuration options provide transparent access to Socket.io, the WebSock
 | Property      | Type       | Default  | Details |
 |:--------------|------------|----------|:--------|
  `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@0.1.4 --save --save-exact`.
- `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using `'socket.io-redis'`)
- `port`         |((integer)) |`6379`   | Port of your redis instance (only applicable if using `'socket.io-redis'`)
+  `transports`  |((array))  | `['polling', 'websocket']`     | An array of allowed transport strategies.  This should _always_ match your configuration in your socket client (i.e. `sails.io.js`). For help, see [Configuring the `sails.io.js` Library](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library). |
+ 
+ 
+ ### Multi-Server Configuration
+ 
+ If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your redis instance, and then use the following config to point at it from your app:
+ 
+| Property      | Type       | Default  | Details |
+|:--------------|------------|----------|:--------|
  `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance (only applicable if using `'socket.io-redis'`)
- `pass`         | ((string)) | ((undefined)) | The password for your redis instance (only applicable if using `'socket.io-redis'`)
+ `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using `'socket.io-redis'`)
+ `pass`         | ((string)) | `undefined` | The password for your redis instance (only applicable if using `'socket.io-redis'`)
+ `port`         |((number)) |`6379`   | Port of your redis instance (only applicable if using `'socket.io-redis'`)
 
 
 ### Advanced Configuration
@@ -31,8 +40,7 @@ These configuration options provide lower-level access to the underlying Socket.
 | `pubClient` | ((object)) | `undefined` | When using the socket.io-redis adapter, this option allows you to specify a custom Redis client (typically created with `Redis.createClient`) used for _publishing_ on channels used by Socket.io.  If unspecified, Sails will create a client for you. |
 | `sendResponseHeaders`|((boolean))  | `true`     | Whether to include response headers in the JWR (JSON WebSocket Response) originated for each socket request (e.g. `io.socket.get()` in the browser) This doesn't affect direct socket.io usage-- only if you're communicating with Sails via the request interpreter (e.g. making normal calls with the sails.io.js browser SDK).  This can be useful for squeezing out more performance when tuning high-traffic apps, since it reduces total bandwidth usage.  However, since Sails v0.10, response headers are trimmed whenever possible, so this option should almost never need to be used, even in extremely high-scale applications. |
 | `serveClient`|((boolean))  | `false`     | Whether to serve the default Socket.io client at `/socket.io/socket.io.js`.  Occasionally useful for advanced debugging. |
-| `subClient` | ((object)) | `undefined` | When using the socket.io-redis adapter, this option allows you to specify a custom Redis client (typically created with `Redis.createClient`) used for _subscribing_ to channels used by Socket.io.  If unspecified, Sails will create a client for you. |
-| `transports`|((array))  | `['polling', 'websocket']`     | An array of allowed transport methods which the clients will try to use. |
+| `subClient` | ((ref)) | `undefined` | When using the socket.io-redis adapter, this option allows you to specify a custom Redis client (typically created with `Redis.createClient`) used for _subscribing_ to channels used by Socket.io.  If unspecified, Sails will create a client for you. |
 
 
 
