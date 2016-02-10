@@ -45,7 +45,7 @@ More examples of `sails.sockets.brodcast()` usage are [available here](https://g
 
 
 ### Notes
-> + This function is more or less equivalent to the functionality of `.emit()` and `.broadcast()` in Socket.io.
+> + `sails.sockets.broadcast()` is more or less equivalent to the functionality of `.emit()` and `.broadcast()` in Socket.io.
 > + Every socket is automatically subscribed to a room with its ID as the name, allowing direct messaging to a socket via [`sails.sockets.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast)
 > + Be sure and check `req.isSocket === true` before passing in `req` as `socketToOmit`. For the requesting socket to be omitted, the request (`req`) must be from a socket request, not just any old HTTP request.
 > + `data` must be JSON-serializable; i.e. it's best to use plain dictionaries/arrays, and make sure your data does not contain any circular references. If you aren't sure, build your broadcast `data` manually, or call something like [`rttc.dehydrate(data,true,true)`](https://github.com/node-machine/rttc/blob/master/README.md#dehydratevalue-allownullfalse-dontstringifyfunctionsfalse) on it first.
