@@ -7,8 +7,9 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|----------|:--------|
-| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@0.1.4 --save --save-exact`.
+| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@0.1.4 --save --save-exact`. |
 | `transports`  |((array))  | `['polling', 'websocket']`     | An array of allowed transport strategies.  This should _always_ match your configuration in your socket client (i.e. `sails.io.js`). For help, see [Configuring the `sails.io.js` Library](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library). |
+ 
  
  
  ### Redis Configuration
