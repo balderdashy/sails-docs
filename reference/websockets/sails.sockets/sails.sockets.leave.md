@@ -45,65 +45,10 @@ leaveFunRoom: function(req, res) {
 ```
 
 
-You can also unsubscribe other sockets by id.  For example, in a service:
+##### Additional Examples
 
-```javascript
-/**
- * @required {Number} userId  [the user to ban]
- */
-banUser: function(options, cb) {
-  options = options || {};
-  
-  if ( _.isUndefined(options.userId) ) {
-    return cb(new Error('`userId` is required.'));
-  }
+More examples of `sails.sockets.leave()` usage are [available here](https://gist.github.com/mikermcneil/971b4e92d833211a0243), including unsubscribing other sockets by id, deeper integration with the database, usage within a service, and usage with the `async` library.
 
-  User.findOne({id: options.userId}).exec(function (err, user) {
-    if (err) { return cb(err); }
-    if (!user) { return cb(new Error('Failed to ban user-- no such user (`'+options.userId+'`) exists!'); }
-    
-    User.update({id: options.userId}, {
-      banned: true
-    }).exec(function (err) {
-      if (err) { return cb(err); }
-      
-      // If this user record does not currently have any connected sockets tracked, then that means he or she
-      // does not have a live connection to our Sails app (via open browser tabs, iPhone apps, etc.).
-      // So we can skip unsubscribing his or her sockets (since there aren't any).
-      if (user.connectedSocketIds.length === 0) {
-        return cb();
-      }
-      
-      // On the other hand, if the user does have connected sockets, we will call `.leave()` for each one
-      // to prevent it from receiving any messages from the "privateAdminRoom".
-      async.each(user.connectedSocketIds, function eachSocketId (socketId, next) {
-      
-        // Note that `req` is not passed in-- instead we use a string socket id.
-        // Since this is using a socket id explicitly, instead of inferring one from `req`,
-        // we obviously don't have to check `isSocket`.
-        sails.sockets.leave(socketId, 'privateAdminRoom', function(err) {
-          if (err) {
-            // If a socket cannot be unsubscribed, ignore it and continue on (but log a warning)
-            sails.log.warn('Could not unsubscribe socket `'+socketId+'`.  Error:',err);
-            return next();
-          }
-          
-          return next();
-        });
-      }, function afterwards(err) {
-        if (err) { return cb(err); }
-        
-        sails.log.info(
-        'Sockets:`'user.connectedSocketIds+'` (probably open browser tabs) were kicked ',
-        'from "privateAdminRoom" as a result of banning user (`'+options.userId+'`). '+
-        'No more fun, ever!');
-        
-        return cb();
-      });//</async.each>
-    });//</User.update>
-  });//</User.find>
-}
-```
 
 ### Notes
 > + `sails.sockets.leave()` is more or less equivalent to the functionality of `.leave()` in Socket.io, but with additional built-in support for multi-server deployments.  With [recommended production settings](http://sailsjs.org/documentation/concepts/deployment/scaling), `sails.sockets.leave()` works as documented no matter what server the code happens to be running on, or the server the target socket is connected to.
