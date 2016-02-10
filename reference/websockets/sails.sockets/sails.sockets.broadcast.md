@@ -39,7 +39,7 @@ io.socket.on('message', function (data){
 ```
 
 
-##### With multiple rooms
+###### With multiple rooms
 
 In an action, service, or arbitrary script on the server:
 
@@ -47,10 +47,18 @@ In an action, service, or arbitrary script on the server:
 sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { greeting: 'Hola!' });
 ```
 
-_Client-side usage is exactly the same.  Remember that the **event name** is purely for identifying this message on the client; whereas **room names** are not visible on the client at all, and instead control which client sockets receive the message._
+Client-side usage is exactly the same regardless which rooms are specified:
+
+```javascript
+io.socket.on('message', function (data){
+  console.log(data.greeting);
+});
+```
+
+_Remember that the **event name** is purely for identifying this message on the client; whereas **room names** are not visible on the client at all, and instead control which client sockets receive the message._
 
 
-##### With a custom event name
+###### With a custom event name
 
 In an action, service, or arbitrary script on the server:
 
@@ -67,7 +75,7 @@ io.socket.on('foo', function (data){
 ```
 
 
-##### Omitting the requesting socket
+###### Omitting the requesting socket
 
 If `req` is passed in as the last argument, the requesting socket will not receive the broadcasted message:
 
