@@ -8,7 +8,7 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
  _cookieParser_ *          | Parses the cookie header into a clean object for use in subsequent middleware and your application code.
  _session_ *               | Sets up a unique session object using your [session configuration](http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html).
  **bodyParser**            | Parses parameters and binary upstreams (for streaming file uploads) from the HTTP request body using [Skipper](https://github.com/balderdashy/skipper).
- **compress**              | Compresses response data using gzip/deflate.
+ **compress**              | Compresses response data using gzip/deflate. See [`compression`](https://github.com/expressjs/compression) for details.
  **methodOverride**        | Provides faux HTTP method support, letting you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it (e.g. legacy versions of Internet Explorer.)  If a request has a `_method` parameter set to `"PUT"`, the request will be routed as if it was a proper PUT request.  See [Connect's methodOverride docs](http://www.senchalabs.org/connect/methodOverride.html) for more information if you need it.
  **poweredBy**             | Attaches an `X-Powered-By` header to outgoing responses.
  **$custom**               | Provides backwards compatibility for a configuration option from Sails v0.9.x.  Since Sails v0.10 offers much more configuration flexibility for HTTP middleware, as long as you are not using `sails.config.express.customMiddleware`, you can confidently remove this item from the list.
