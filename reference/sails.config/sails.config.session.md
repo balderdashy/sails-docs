@@ -23,7 +23,7 @@ in the way you might be used to from Express or Connect.
 
 ### Production Config
 
-In production, you should set up and configure a session store that can be shared across multiple servers.  To do so, you will need to set `sails.config.session.adapter`, and add any other configuration specific to the Connect session adapter you are using.
+In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Connect session adapter you are using.
 
 
 ##### Configuring Redis as Your Session Store
@@ -54,6 +54,16 @@ The following settings are optional, since if no redis configuration other than 
 ```
 
 
+| Property      | Type       | Default  | Details |
+|:--------------|------------|----------|:--------|
+| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.
+| `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.
+| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.
+| `port`         | ((number)) |`6379`   | Port of your redis instance.
+
+
+
+
 
 ##### Using Other Connect-Compatible Session Stores
 
@@ -70,7 +80,6 @@ Then set the your `adapter` in `config/session.js`:
 ```javascript
   adapter: 'connect-mongo',
 ```
-
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
 ```
