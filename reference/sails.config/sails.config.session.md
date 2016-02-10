@@ -15,9 +15,9 @@ in the way you might be used to from Express or Connect.
 
 | Property    | Type       | Default   | Details |
 |-------------|:----------:|-----------|---------|
-| `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the cookies of your users, forcing them to log in again.
+| `adapter` | ((string)) | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.   In production, you should specify the package name of a scalable session store instead (e.g. `connect-redis`).  See below for details. 
 | `key`        | ((string))       | `sails.sid`      | Session key is set as `sails.sid` by default. This is the name of the key which is added to the cookie of visitors to your site when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used (like crossing streams)
-| `adapter` | ((string)) |        | If specified, the name of a Connect session adapter to use.  More details below.
+| `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 
 
 
@@ -97,7 +97,8 @@ The following values are optional, and should only be used if relevant for your 
 
 Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook by changing your `.sailsrc` file.  The process for disabling `session` is identical to the process for [disabling the Grunt hook](http://sailsjs.org/documentation/concepts/assets/disabling-grunt) (just type `session: false` instead of `grunt: false`).
 
-
+> **Note:**
+> If the session hook is disabled, the session secret configured as `sails.config.session.secret` will still be used to support signed cookies, if relevant.  If the session hook is disabled _AND_ no session secret configuration exists for your app (e.g. because you deleted `config/session.js`), then signed cookies will not be usable in your application.  To make more advanced changes to this behavior, you can customize any of your app's HTTP middleware manually using [`sails.config.http`](http://sailsjs.org/documentation/reference/configuration/sails-config-http).
 
 
 
