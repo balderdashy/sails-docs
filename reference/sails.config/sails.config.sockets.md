@@ -11,16 +11,16 @@ These configuration options provide transparent access to Socket.io, the WebSock
 | `transports`  |((array))  | `['polling', 'websocket']`     | An array of allowed transport strategies.  This should _always_ match your configuration in your socket client (i.e. `sails.io.js`). For help, see [Configuring the `sails.io.js` Library](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library). |
  
  
- ### Multi-Server Configuration
+ ### Redis Configuration
  
  If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your redis instance, and then use the following config to point at it from your app:
  
 | Property      | Type       | Default  | Details |
 |:--------------|------------|----------|:--------|
- `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance (only applicable if using `'socket.io-redis'`)
- `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using `'socket.io-redis'`)
- `pass`         | ((string)) | `undefined` | The password for your redis instance (only applicable if using `'socket.io-redis'`)
- `port`         |((number)) |`6379`   | Port of your redis instance (only applicable if using `'socket.io-redis'`)
+| `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance (only applicable if using `'socket.io-redis'`)
+| `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using `'socket.io-redis'`)
+| `pass`         | ((string)) | `undefined` | The password for your redis instance (only applicable if using `'socket.io-redis'`)
+| `port`         |((number)) |`6379`   | Port of your redis instance (only applicable if using `'socket.io-redis'`)
 
 
 ### Advanced Configuration
