@@ -1,6 +1,6 @@
 # sails.sockets.emit()
 
-> _**This method is deprecated**.  Use  [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) instead._
+> _**This method is deprecated**.  Call  [`.broadcast()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) instead, using the desired socket id(s) as room names._
 
 ### Purpose
 Send a message to one or more sockets by id.
