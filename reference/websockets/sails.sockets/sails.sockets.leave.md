@@ -22,7 +22,7 @@ _Or:_
 
 ### Example
 
-In a controller action:
+In a controller action, unsubscribe the requesting socket from the specified room:
 
 ```javascript
 leaveFunRoom: function(req, res) {
@@ -45,7 +45,7 @@ leaveFunRoom: function(req, res) {
 ```
 
 
-You can also use a socket id.  For example, in a service:
+You can also unsubscribe other sockets by id.  For example, in a service:
 
 ```javascript
 /**
@@ -67,6 +67,15 @@ banUser: function(options, cb) {
     }).exec(function (err) {
       if (err) { return cb(err); }
       
+      // If this user record does not currently have any connected sockets tracked, then that means he or she
+      // does not have a live connection to our Sails app (via open browser tabs, iPhone apps, etc.).
+      // So we can skip unsubscribing his or her sockets (since there aren't any).
+      if (user.connectedSocketIds.length === 0) {
+        return cb();
+      }
+      
+      // On the other hand, if the user does have connected sockets, we will call `.leave()` for each one
+      // to prevent it from receiving any messages from the "privateAdminRoom".
       async.each(user.connectedSocketIds, function eachSocketId (socketId, next) {
       
         // Note that `req` is not passed in-- instead we use a string socket id.
