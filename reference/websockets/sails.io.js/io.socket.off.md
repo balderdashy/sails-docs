@@ -1,12 +1,12 @@
 # io.socket.off()
 
-> **This method is here for completeness, but most apps should not need to use it.**  See below for more information.
-
 Unbind the specified event handler (opposite of [`.on()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on)).
 
 ```js
 io.socket.off(eventIdentity, handlerFn);
 ```
+
+> **This method is here for completeness, but most apps should not need to use it.**  See below for more information.
 
 
 ### Usage
