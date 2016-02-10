@@ -39,54 +39,9 @@ io.socket.on('message', function (data){
 ```
 
 
-###### With multiple rooms
+##### Additional Examples
 
-In an action, service, or arbitrary script on the server:
-
-```
-sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { greeting: 'Hola!' });
-```
-
-Client-side usage is exactly the same regardless which rooms are specified:
-
-```javascript
-io.socket.on('message', function (data){
-  console.log(data.greeting);
-});
-```
-
-_Remember that the **event name** is purely for identifying this message on the client; whereas **room names** are not visible on the client at all, and instead control which client sockets receive the message._
-
-
-###### With a custom event name
-
-In an action, service, or arbitrary script on the server:
-
-```javascript
-sails.sockets.broadcast('artsAndEntertainment', 'foo', { greeting: 'Hola!' });
-```
-
-On the client:
-
-```javascript
-io.socket.on('foo', function (data){
-  console.log(data.greeting);
-});
-```
-
-
-###### Omitting the requesting socket
-
-If `req` is passed in as the last argument, the requesting socket will not receive the broadcasted message:
-
-```javascript
-if (req.isSocket) {
-  sails.sockets.broadcast('artsAndEntertainment', {
-    greeting: 'Hola!'
-  }, req);
-}
-```
-
+More examples of `sails.sockets.brodcast()` usage are [available here](https://gist.github.com/mikermcneil/0a4d05750768a99b4fcb), including broadcasting to multiple rooms, using a custom event name, and omitting the requesting socket.
 
 
 ### Notes
