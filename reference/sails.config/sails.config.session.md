@@ -20,16 +20,29 @@ in the way you might be used to from Express or Connect.
 | `adapter` | ((string)) |        | If specified, the name of a Connect session adapter to use.  More details below.
 
 
-### Configuring Redis as Your Session Store
 
-In production, uncomment the following line to set up a shared redis session store
-that can be shared across multiple Sails.js servers:
+### Production Config
+
+In production, you should set up and configure a session store that can be shared across multiple servers.  To do so, you will need to set `sails.config.session.adapter`, and add any other configuration specific to the Connect session adapter you are using.
+
+
+##### Configuring Redis as Your Session Store
+
+The most popular session store for production Sails applications is Redis.  It works great as a session database since it is inherently good at ephemeral storage, but Redis' popularity probably has more to do with the fact that, if you are using sockets and plan to scale your app to multiple servers, you will [need a Redis instance](http://sailsjs.org/documentation/concepts/deployment/scaling) anyway.
+
+The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
 
 ```javascript
-adapter: 'redis',
+adapter: 'connect-redis',
 ```
 
-The following values are optional, if no options are set a redis instance running on `localhost` is expected.  Read more about these options at: https://github.com/visionmedia/connect-redis
+Then install the [connect-redis](https://github.com/tj/connect-redis) session adapter as a dependency of your app:
+
+```bash
+npm install connect-redis@~3.0.2 --save --save-exact
+```
+
+The following settings are optional, since if no redis configuration other than `adapter` is provided, Sails assumes you want it to use a redis instance running on `localhost`.
 
 ```javascript
   host: 'localhost',
@@ -42,38 +55,36 @@ The following values are optional, if no options are set a redis instance runnin
 
 
 
-### Using Other Connect-Compatible Session Stores
+##### Using Other Connect-Compatible Session Stores
 
 Any session adapter written for Connect/Express works in Sails, as long as you use a compatible version.
 
-For example to use Mongo as your session store, you should use version 0.8.4 of `connect-mongo`.  First, run the following from your project's directory:
+For example, to use Mongo as your session store, install [connect-mongo](https://github.com/kcbanner/connect-mongo):
 
-```
-npm install connect-mongo@0.8.4 --save
+```bash
+npm install connect-mongo@0.8.4 --save --save-exact
 ```
 
-Then add the following lines to your session configuration dictionary in `config/session.js`:
+Then set the your `adapter` in `config/session.js`:
 
 ```javascript
-  adapter: 'mongo',
+  adapter: 'connect-mongo',
+```
+
+
+The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
+```
+  // Note: if provided, `url` will override other connection settings.
+  // url: 'mongodb://user:pass@host:port/database/collection',
   host: 'localhost',
   port: 27017,
   db: 'sails',
   collection: 'sessions',
-```
-
-The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo).
-
-```javascript
-        // Note: url will override other connection settings
-        // url: 'mongodb://user:pass@host:port/database/collection',
-
-        username: '',
-        password: '',
-        auto_reconnect: false,
-        ssl: false,
-        stringify: true
-
+  username: '',
+  password: '',
+  auto_reconnect: false,
+  ssl: false,
+  stringify: true
 ```
 
 
@@ -84,7 +95,7 @@ The following values are optional, and should only be used if relevant for your 
 
 ### Disabling sessions
 
-Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook.  Note that tthe process for disabling any hook is identical to the process for [disabling the Grunt hook](http://sailsjs.org/documentation/concepts/assets/disabling-grunt) (just type `grunt` instead of `session`).
+Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook by changing your `.sailsrc` file.  The process for disabling `session` is identical to the process for [disabling the Grunt hook](http://sailsjs.org/documentation/concepts/assets/disabling-grunt) (just type `session: false` instead of `grunt: false`).
 
 
 
