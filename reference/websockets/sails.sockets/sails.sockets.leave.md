@@ -63,8 +63,9 @@ kickSocketFromRoom: function(req, res) {
 ```
 
 ### Notes
+> + For context, this function is more or less equivalent to the functionality of `.leave()` in Socket.io, but with additional built-in support for multi-server deployments.  With [recommended production settings](http://sailsjs.org/documentation/concepts/deployment/scaling), `sails.sockets.leave()` works as documented no matter what server the code happens to be running on, or the server the target socket is connected to.
 > + In a multi-server environment, when calling `.leave()` with a socket ID argument, the callback function (`cb`) will be executed when the `.leave()` call completes _on the current server_.  This does not guarantee that other servers in the cluster have already finished running the operation.
-> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
+> + Be sure and check `req.isSocket === true` before passing in `req` as the socket to be unsubscribed.  For that to work, the provided `req` must be from a socket request, not just any old HTTP request.
 
 
 
