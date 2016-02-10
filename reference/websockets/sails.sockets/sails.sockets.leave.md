@@ -44,22 +44,55 @@ leaveFunRoom: function(req, res) {
 }
 ```
 
-Or, using a socket id:
+
+You can also use a socket id.  For example, in a service:
 
 ```javascript
-kickSocketFromRoom: function(req, res) {
-  if ( _.isUndefined(req.param('socketId')) || _.isUndefined(req.param('roomName')) ) {
-    return res.badRequest('`socketId` and `roomName` are required.');
+/**
+ * @required {Number} userId  [the user to ban]
+ */
+banUser: function(options, cb) {
+  options = options || {};
+  
+  if ( _.isUndefined(options.userId) ) {
+    return cb(new Error('`userId` is required.'));
   }
 
-  // Since this is using a socket id explicitly, instead of inferring one from `req`,
-  // we don't have to check `isSocket`.  Note that `req` is not passed in-- instead we use a string socket id.
-  sails.sockets.leave(req.param('socketId'), req.param('roomName'), function(err) {
-    if (err) {return res.serverError(err);}
-    return res.json({
-      message: 'Socket:`'+req.param('socketId')+'` was kicked from room: `'+req.param('roomName')+'`.  No more fun, ever!'
-    });
-  });
+  User.findOne({id: options.userId}).exec(function (err, user) {
+    if (err) { return cb(err); }
+    if (!user) { return cb(new Error('Failed to ban user-- no such user (`'+options.userId+'`) exists!'); }
+    
+    User.update({id: options.userId}, {
+      banned: true
+    }).exec(function (err) {
+      if (err) { return cb(err); }
+      
+      async.each(user.connectedSocketIds, function eachSocketId (socketId, next) {
+      
+        // Note that `req` is not passed in-- instead we use a string socket id.
+        // Since this is using a socket id explicitly, instead of inferring one from `req`,
+        // we obviously don't have to check `isSocket`.
+        sails.sockets.leave(socketId, 'privateAdminRoom', function(err) {
+          if (err) {
+            // If a socket cannot be unsubscribed, ignore it and continue on (but log a warning)
+            sails.log.warn('Could not unsubscribe socket `'+socketId+'`.  Error:',err);
+            return next();
+          }
+          
+          return next();
+        });
+      }, function afterwards(err) {
+        if (err) { return cb(err); }
+        
+        sails.log.info(
+        'Sockets:`'user.connectedSocketIds+'` (probably open browser tabs) were kicked ',
+        'from "privateAdminRoom" as a result of banning user (`'+options.userId+'`). '+
+        'No more fun, ever!');
+        
+        return cb();
+      });//</async.each>
+    });//</User.update>
+  });//</User.find>
 }
 ```
 
