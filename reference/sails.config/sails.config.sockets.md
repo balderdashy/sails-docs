@@ -9,10 +9,9 @@ These configuration options provide transparent access to Socket.io, the WebSock
 |:--------------|------------|----------|:--------|
 | `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@0.1.4 --save --save-exact`. |
 | `transports`  |((array))  | `['polling', 'websocket']`     | An array of allowed transport strategies.  This should _always_ match your configuration in your socket client (i.e. `sails.io.js`). For help, see [Configuring the `sails.io.js` Library](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library). |
- 
- 
- 
- ### Redis Configuration
+
+
+### Redis Configuration
  
  If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your redis instance, and then use the following config to point at it from your app:
  
