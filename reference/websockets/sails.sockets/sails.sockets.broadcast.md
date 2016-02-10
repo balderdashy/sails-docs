@@ -1,6 +1,6 @@
 # .broadcast()
 
-Broadcast a message to all sockets in a room.
+Broadcast a message to all sockets in a room (or emit to a particular socket; see below).
 
 ```javascript
 sails.sockets.broadcast(roomNames, data);
@@ -31,6 +31,7 @@ sails.sockets.broadcast(['artsAndEntertainment', 'currentEvents'], { msg: 'Hola!
 
 ### Notes
 > + Be sure and check `req.isSocket === true` before passing in `req` as `socketToOmit`. For the socket to be omitted, the provided `req` must be from a socket request, not just any HTTP request.
+> + For context, this function is more or less equivalent to the functionality `.emit()` and `.broadcast()` in Socket.io.
 
 
 <docmeta name="displayName" value=".broadcast()">
