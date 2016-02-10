@@ -17,10 +17,10 @@ These configuration options provide transparent access to Socket.io, the WebSock
  
 | Property      | Type       | Default  | Details |
 |:--------------|------------|----------|:--------|
-| `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance (only applicable if using `'socket.io-redis'`)
-| `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance (only applicable if using `'socket.io-redis'`)
-| `pass`         | ((string)) | `undefined` | The password for your redis instance (only applicable if using `'socket.io-redis'`)
-| `port`         |((number)) |`6379`   | Port of your redis instance (only applicable if using `'socket.io-redis'`)
+| `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance.
+| `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance.
+| `pass`         | ((string)) | `undefined` | The password for your redis instance.
+| `port`         |((number)) |`6379`   | Port of your redis instance.
 
 
 ### Advanced Configuration
