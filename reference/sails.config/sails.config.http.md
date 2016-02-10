@@ -6,7 +6,7 @@ Configuration for your app's underlying HTTP server.  These properties are conve
 ### Properties
 
   Property          | Type       | Default   | Details
- ------------------ |:----------:| --------- | -------
+:------------------ |:----------:|:--------- |:-------
  `middleware`       | ((dictionary)) | See [conventional defaults for HTTP middleware](http://sailsjs.org/documentation/concepts/Middleware?q=conventional-defaults) | A dictionary of all HTTP middleware functions your app will run on every incoming HTTP request.<br/>[Example](https://gist.github.com/mikermcneil/9cbd68c95839da480e97)
  `middleware.order` | ((array))  | See [conventional defaults for HTTP middleware order](https://github.com/balderdashy/sails/blob/master/lib/hooks/http/index.js#l51-66) | An array of middleware names (strings) indicating the order in which middleware should be run for all incoming HTTP requests.
  `cache`            | ((number)) | `cache: 31557600000` _(1 year)_ | The number of milliseconds to cache static assets when your app is running in a ['production' environment](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment).<br/>These are any flat files like images, scripts, stylesheets, etc. that are served by Express' static middleware (by default,  these files are served from `.tmp/public`, a hidden folder compiled by Grunt).
