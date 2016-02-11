@@ -14,7 +14,7 @@ In production, Sails performs like any Connect, Express or Socket.io app ([examp
 ```
                              ....                 
                     /  Sails.js server  \      /  Database (e.g. Mongo, Postgres, etc)
-Load Balancer  <-->    Sails.js server    <-->    Message queue (Redis)
+Load Balancer  <-->    Sails.js server    <-->    Socket.io message queue (Redis)
                     \  Sails.js server  /      \  Session store (Redis, Mongo, etc.)
                              ....                 
 ```
@@ -26,9 +26,9 @@ The most important thing to remember about scaling a server-side application is 
 
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) are scalable (e.g. sharding/cluster)
-+ IF YOU'RE USING SESSIONS:
++ **If your app uses sessions:**
   + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.0.2 --save --save-exact`).
-+ IF YOU'RE USING SOCKETS:
++ **If your app uses sockets:**
   + Configure your app to use Redis as a shared message queue for delivering socket.io messages (uncomment the `adapter` option in `config/sockets.js`)
   + Install the socket.io-redis adapter as a dependency of your app (e.g. `npm install socket.io-redis@~1.0.0 --save --save-exact`)
 
