@@ -51,13 +51,9 @@ See the [sails.io.js GitHub repo](http://github.com/balderdashy/sails.io.js) for
 
 There are two ways to configure Sails' socket client in the browser: using HTML attributes on the `<script>` tag or by programmatically modifying the `io.sails` object.
 
-> **Note:**
-> As of Sails v0.12.0, only the four most configuration options are supported via HTML attributes: `autoConnect`, `environment`, `headers`, and `url`.
-
-
 ##### Basic configuration using HTML attributes
 
-The easiest way to configure the most common settings for the socket client is by sticking one or more HTML attributes on the script tag:
+The easiest way to configure the four most common settings for the socket client (`autoConnect`, `environment`, `headers`, and `url`) is by sticking one or more HTML attributes on the script tag:
 
 ```html
 <script src="/js/dependencies/sails.io.js"
