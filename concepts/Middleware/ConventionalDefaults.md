@@ -1,6 +1,6 @@
 # Conventional Defaults
 
-Sails comes bundled with a suite of conventional HTTP middleware, ready to use.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  Below is a list of the standard HTTP middleware functions that comes bundled in Sails in the order they execute every time the server receives an incoming HTTP request:
+Sails comes bundled with a suite of conventional HTTP middleware, ready to use.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  Below is a list of the standard HTTP middleware functions that come bundled in Sails, in the order they execute every time the server receives an incoming HTTP request:
 
  HTTP Middleware Key       | Purpose
  :------------------------ |:------------
