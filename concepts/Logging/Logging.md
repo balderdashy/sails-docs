@@ -3,8 +3,16 @@
 ### Overview
 Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](https://nodejs.org/api/console.html#console_console_log_data), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
+The logger serves two purposes:
++ writing warnings, errors messages, and other console output from within Sails
++ logging events/messages from within your application code
+
+
 ### Configuration
-The Sails logger's configuration is located in [`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log), for which a conventional configuration file ([`config/log.js`](http://sailsjs.org/documentation/anatomy/my-app/config/log-js)) is bundled in new Sails projects out of the box.
+Sails' log configuration is determined by [`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log), which is conventionally set by a generated configuration file ([`config/log.js`](http://sailsjs.org/documentation/anatomy/my-app/config/log-js)) in new Sails projects out of the box.
+
+
+### Behavior
 
 Using the built-in logger, Sails will write output (to stdout/stderr) for log function calls that are _at_ or _above_ the priority of the currently-configurd log level.  This log level is normalized and also applied to generated output from Grunt, Socket.io, Waterline, Express, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
 
@@ -21,7 +29,7 @@ Using the built-in logger, Sails will write output (to stdout/stderr) for log fu
 
 #### Notes
 + The default log level is "info".  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
-+ When building automated tests for your app, it is often helpful to set the log level to "error" or "silent".
++ When running automated tests for your app, it is often helpful to set the log level to "error" or "silent".
 + When the log level is set to "verbose", Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
 + When the log level is set to "silly", Sails outputs everything from "verbose" as well as internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
 
