@@ -22,7 +22,7 @@ Before you launch any web application, you should ask yourself a few questions:
 
 ### Configuring Your App For Production
 
-You can provide configuration which only applies in production in a [few different ways]().  Most apps find themselves using a mix of environment variables and `config/env/production.js`.  But regardless of how you go about it, this section and the [Scalability section](http://sailsjs.org/documentation/concepts/deployment/scaling) of the documentation cover the configuration settings you should review and/or change before going to production.
+You can provide configuration which only applies in production in a [few different ways](http://sailsjs.org/documentation/reference/configuration).  Most apps find themselves using a mix of environment variables and `config/env/production.js`.  But regardless of how you go about it, this section and the [Scaling section](http://sailsjs.org/documentation/concepts/deployment/scaling) of the documentation cover the configuration settings you should review and/or change before going to production.
 
 
 
@@ -30,7 +30,7 @@ You can provide configuration which only applies in production in a [few differe
 
 Node.js is pretty darn fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
 
-> This section focuses on _single-server Sails deployment_.  This kind of deployment is inherently limited in scale.  See [Scalability]() for information about deploying your Sails/Node app behind a load balancer.
+> This section focuses on _single-server Sails deployment_.  This kind of deployment is inherently limited in scale.  See [Scaling](http://sailsjs.org/documentation/concepts/deployment/scaling) for information about deploying your Sails/Node app behind a load balancer.
 
 Many teams decide to deploy their production app behind a load balancer or proxy (e.g. in a PaaS like Heroku or Modulus, or behind an nginx server).  This is often the right approach since it helps future-proof your app in case your scalability needs change and you need to add more servers.  If you are using a load balancer or proxy, there are a few things in the list below that you can ignore:
 
@@ -46,13 +46,13 @@ Configuring your app's environment config to `'production'` tells Sails to get i
 
 When your app is running in a production environment:
   + Middleware and other dependencies baked into Sails switch to using more efficient code.
-  + All of your [models' migration settings]() are forced to `migrate: 'safe'`.  This is a failsafe to protect against inadvertently damaging your production data during deployment.
+  + All of your [models' migration settings](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings) are forced to `migrate: 'safe'`.  This is a failsafe to protect against inadvertently damaging your production data during deployment.
   + Your asset pipeline runs in production mode (if relevant).  Out of the box, that means your Sails app will compile all stylesheets, client-side scripts, and precompiled JST templates into minified `.css` and `.js` files to decrease page load times and reduce bandwidth consumption.
   + Error messages and stack traces from `res.serverError()` will still be logged, but will not be sent in the response (this is to prevent a would-be attacker from accessing any sensitive information, such as encrypted passwords or the path where your Sails app is located on the server's file system)
 
 
 >**Note:**
->If you set [`sails.config.environment`]() to `'production'` some other way, that's totally cool.  Just note that Sails will set the `NODE_ENV` environment variable to `'production'` for you automatically.  The reason this environment variable is so important is that it is a universal convention in Node.js, regardless of the framework you are using.  Built-in middleware and dependencies in Sails _expect_ `NODE_ENV` to be set in production-- otherwise they use their less efficient code paths that were designed for development use only.
+>If you set [`sails.config.environment`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment) to `'production'` some other way, that's totally cool.  Just note that Sails will set the `NODE_ENV` environment variable to `'production'` for you automatically.  The reason this environment variable is so important is that it is a universal convention in Node.js, regardless of the framework you are using.  Built-in middleware and dependencies in Sails _expect_ `NODE_ENV` to be set in production-- otherwise they use their less efficient code paths that were designed for development use only.
 
 
 
@@ -71,13 +71,13 @@ port: 80
 
 ##### Set up production database(s) for your models
 
-To set up one or more production databases, configure them in [`sails.config.connections`](), and then refer to them from [`sails.config.models.connection`]() and/or from individual models.  For most apps, your production config changes are pretty simple:
+To set up one or more production databases, configure them in [`sails.config.connections`](http://sailsjs.org/documentation/reference/configuration/sails-config-connections), and then refer to them from [`sails.config.models.connection`](http://sailsjs.org/documentation/reference/configuration/sails-config-models) and/or from individual models.  For most apps, your production config changes are pretty simple:
 1. add a connection representing your production database (e.g. `productionPostgresql: { ... }`)
-2. override the default connection ([`sails.config.models.connection`]()) to point to your production database (e.g. `productionPostgresql`)
+2. override the default connection (`sails.config.models.connection`) to point to your production database (e.g. `productionPostgresql`)
 
 If your app is using more than one database, your process will be similar.  However, you will probably find that it's easier to override existing connection settings rather than adding new connections and changing individual models to point at them. Regardless how you go about it, if you are using multiple databases you should be sure your models are pointed at the right connections when you deploy to production.
 
-Keep in mind that if you are using version control (e.g. git), then any sensitive credentials (such as database passwords) will be checked in to the repo if you include them in your app's configuration files.  A common solution to this problem is to provide certain sensitive configuration settings as environment variables.  See [Configuration]() for more information.
+Keep in mind that if you are using version control (e.g. git), then any sensitive credentials (such as database passwords) will be checked in to the repo if you include them in your app's configuration files.  A common solution to this problem is to provide certain sensitive configuration settings as environment variables.  See [Configuration](http://sailsjs.org/documentation/concepts/configuration) for more information.
 
 If you are using a relational database such as MySQL, there is an additional step.  Remember how Sails sets all your models to `migrate:safe` when run in production?  That means no auto-migrations are run when lifting the app...which means by default your tables won't exist.  A common approach to deal with this during the first-time setup of a relational database for your Sails app goes as follows:
   + Create the database on the production database server (e.g. `frenchfryparty`)
@@ -89,13 +89,13 @@ If this makes you nervous or if you can't connect to the production database rem
 
 ##### Enable CSRF protection
 
-Protecting against CSRF is an important security measure for Sails apps.  If you haven't already been developing with CSRF protection enabled (see [`sails.config.csrf`]()), be sure to [enable CSRF protection](http://sailsjs.org/documentation/concepts/Security/CSRF.html?q=enabling-csrf-protection) before going to production.
+Protecting against CSRF is an important security measure for Sails apps.  If you haven't already been developing with CSRF protection enabled (see [`sails.config.csrf`](http://sailsjs.org/documentation/reference/configuration/sails-config-csrf)), be sure to [enable CSRF protection](http://sailsjs.org/documentation/concepts/Security/CSRF.html?q=enabling-csrf-protection) before going to production.
 
 
 
 ##### Enable SSL
 
-If your API or website does anything that requires authentication, you should use SSL in prouduction.  To configure your Sails app to use an SSL certificate, use [`sails.config.ssl`]().
+If your API or website does anything that requires authentication, you should use SSL in prouduction.  To configure your Sails app to use an SSL certificate, use [`sails.config.ssl`](http://sailsjs.org/documentation/reference/configuration/sails-config).
 
 > As mentioned above, ignore this step if your app will be running behind a load balancer or proxy.
 
