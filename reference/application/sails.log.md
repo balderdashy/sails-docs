@@ -10,12 +10,13 @@ sails.log(...);
 
 ### Usage
 
-While this function is also called internally by Sails, the primary purpose of `sails.log()` is to provide a configurable alternative to calling [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data) directly in your application code.  Its usage is purposely very similar to Node's console.log, but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
+This function's usage is purposely very similar to Node's [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
 Note that standard `console.log()` conventions from Node.js apply:
  - an [unlimited number](https://en.wikipedia.org/wiki/Variadic_function) of arguments, separated by commas
  - printf-style parameterization (a la [`util.format()`](https://nodejs.org/api/util.html#util_util_format_format))
- - if you log an object with a custom `inspect()` method, that method will run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
+ - objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
+ - if you log an object with a custom `inspect()` method, that method will run automatically, and the string that it returns will be written to the console.
 
 
 
