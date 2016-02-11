@@ -1,9 +1,6 @@
 # Logging
 
-### Overview
-Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](https://nodejs.org/api/console.html#console_console_log_data), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
-
-The logger serves two purposes:
+Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](https://nodejs.org/api/console.html#console_console_log_data), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output. The logger serves two purposes:
 + it emits warnings, errors, and other console output from inside the Sails framework
 + it can be used to emit [custom events/messages](http://sailsjs.org/documentation/concepts/logging/custom-log-messages) from within your application code
 
