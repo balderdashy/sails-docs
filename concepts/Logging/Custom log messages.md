@@ -12,7 +12,7 @@ Each of the log methods below accepts an infinite number of arguments of any dat
 > See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more information and examples.
 
 
-### `sails.log.error()`
+### sails.log.error()
 
 Writes log output to `stderr` at the "error" log level.
 Useful for tracking major errors.
@@ -22,7 +22,7 @@ sails.log.error('Sending 500 ("Server Error") response.');
 // -> error: Sending 500 ("Server Error") response.
 ```
 
-### `sails.log.warn()`
+### sails.log.warn()
 
 Writes log output to `stderr` at the "warn" log level.
 Useful for tracking information about operations that failed silently.
@@ -33,7 +33,7 @@ sails.log.warn('File upload quota exceeded for user #%d.  Request aborted.', use
 ```
 
 
-### `sails.log()`
+### sails.log()
 
 _aka sails.log.debug()_
 
@@ -47,7 +47,7 @@ sails.log('This endpoint (`POST /accounts`) will be deprecated in the next few d
 
 
 
-### `sails.log.info()`
+### sails.log.info()
 
 Writes log output to `stdout` at the "info" log level.
 Useful for capturing information about your app's business logic.
@@ -58,7 +58,7 @@ sails.log.info('A new user (', newUser.emailAddress, ') just signed up!');
 ```
 
 
-### `sails.log.verbose()`
+### sails.log.verbose()
 
 Writes log output to `stdout` at the "verbose" log level.
 Useful for capturing detailed information about your app that you only need on rare occasions.
@@ -69,7 +69,7 @@ sails.log.verbose('A user (IP adddress: `%s`) initiated an account transfer...',
 ```
 
 
-### `sails.log.silly()`
+### sails.log.silly()
 
 Writes log output to `stdout` at the "silly" log level.
 Useful for capturing technical about your app that is useful on rare occasions for diagnostics and/or troubleshooting.
