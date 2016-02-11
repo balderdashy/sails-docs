@@ -40,13 +40,12 @@ Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
 
 Deploying your app to a PaaS like Heroku or Modulus is dead simple. Depending on your situation, there may still be a few devils in the details, but Node support with hosting providers has gotten _really good_ over the last couple of years.  Take a look at [Hosting](http://sailsjs.org/documentation/concepts/deployment/Hosting) for more platform-specific information.
 
-### Deploying your own Sails cluster on multiple servers
+### Deploying your own cluster
 
-+ Deploy multiple instances (aka servers running a copy of your app) behind a load balancer
-  + Start up Sails on each instance using `forever`
-  + More on load balancers: <https://en.wikipedia.org/wiki/Load_balancing_(computing)>
-+ Configure your load balancer to terminate SSL requests
-  + Because of this, you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted by the time they reach Sails.
++ Deploy multiple instances (aka servers running a copy of your app) behind a [load balancer](https://en.wikipedia.org/wiki/Load_balancing_(computing)) (e.g. nginx)
+  + Configure your load balancer to terminate SSL requests
+  + But remember that you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted by the time it reaches Sails.
+  + Lift your app on each instance using a daemon like `forever` or `pm2` (see http://sailsjs.org/documentation/concepts/deployment for more about daemonology)
 
 
 ### Optimization
@@ -57,7 +56,7 @@ But remember:
 
 > Premature optimization is the root of all evil.  -[Donald Knuth](http://c2.com/cgi/wiki?PrematureOptimization)
 
-No matter what tool you're using, it is important to spend your focus and time on writing high quality, well documented, readable code.  That way, when you need to optimize some code path in your application, you'll find it is much easier to do so.
+No matter what tool you're using, it is important to spend your focus and time on writing high quality, well documented, readable code.  That way, if/when you are forced to optimize a code path in your application, you'll find it is much easier to do so.
 
 
 
