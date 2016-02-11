@@ -15,31 +15,34 @@ Each of the log methods below accepts an infinite number of arguments of any dat
 ### `sails.log.error()`
 
 Writes log output to `stderr` at the "error" log level.
+Useful for tracking major errors.
 
 ```js
-sails.log.error('Unexpected error occurred.');
-// -> error: Unexpected error occurred.
+sails.log.error('Sending 500 ("Server Error") response.');
+// -> error: Sending 500 ("Server Error") response.
 ```
 
 ### `sails.log.warn()`
 
 Writes log output to `stderr` at the "warn" log level.
+Useful for tracking information about operations that failed silently.
 
 ```js
-sails.log.warn('File upload quota exceeded for user','request aborted.');
-// -> warn: File upload quota exceeded for user- request aborted.
+sails.log.warn('File upload quota exceeded for user #%d.  Request aborted.', user.id);
+// -> warn: File upload quota exceeded for user #94271.  Request aborted.
 ```
 
 
 ### `sails.log()`
 
-_Or: sails.log.debug()_
+_aka sails.log.debug()_
 
 The default log function, which writes console output to `stderr` at the "debug" log level.
+Useful for passing around important technical information amongst your team; or as a general alternative to `console.log()`.
 
 ```js
-sails.log('hello');
-// -> debug: hello.
+sails.log('This endpoint (`POST /accounts`) will be deprecated in the next few days.  Please use `POST /signup` instead. ');
+// -> debug: This endpoint (`POST /accounts`) will be deprecated in the next few days.  Please use `POST /signup` instead.
 ```
 
 
@@ -47,20 +50,21 @@ sails.log('hello');
 ### `sails.log.info()`
 
 Writes log output to `stdout` at the "info" log level.
+Useful for capturing information about your app's business logic.
 
 ```js
-sails.log.info('A new user (', 'mike@foobar.com', ') just signed up!');
-// -> info: A new user ( mike@foobar.com ) just signed up!
+sails.log.info('A new user (', newUser.emailAddress, ') just signed up!');
+// -> info: A new user ( irl@foobar.com ) just signed up!
 ```
 
 
 ### `sails.log.verbose()`
 
 Writes log output to `stdout` at the "verbose" log level.
-Useful for capturing detailed information about your app that you might only want to enable on rare occasions.
+Useful for capturing detailed information about your app that you only need on rare occasions.
 
 ```js
-sails.log.verbose('A user initiated an account transfer...')
+sails.log.verbose('A user (IP adddress: `%s`) initiated an account transfer...', req.ip);
 // -> verbose: A user initiated an account transfer...
 ```
 
@@ -68,11 +72,11 @@ sails.log.verbose('A user initiated an account transfer...')
 ### `sails.log.silly()`
 
 Writes log output to `stdout` at the "silly" log level.
-Useful for capturing utterly ridiculous information about your app you only need on rare occasions.
+Useful for capturing technical about your app that is useful on rare occasions for diagnostics and/or troubleshooting.
 
 ```js
-sails.log.silly('A user probably clicked on something..?');
-// -> silly: A user probably clicked on something..?
+sails.log.silly('Successfully fetched Account record for requesting (authenticated) user (`%d`).', req.param('id'));
+// -> silly: Successfully fetched Account record for authenticated user (`49722`).
 ```
 
 
