@@ -59,7 +59,7 @@ The easiest way to configure the four most common settings for the socket client
 <script src="/js/dependencies/sails.io.js"
   autoConnect="false"
   environment="production"
-  headers='{ "x-csrf-token": "<%- typeof _csrf === 'undefined' ? _csrf : '' %>" }'
+  headers='{ "x-csrf-token": "<%= typeof _csrf === 'undefined' ? _csrf : '' %>" }'
 ></script>
 ```
 
