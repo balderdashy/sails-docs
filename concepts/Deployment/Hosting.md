@@ -1,6 +1,6 @@
 # Hosting
 
-Here is a non-comprehensive list of Sails.js hosting providers.
+Here is a non-comprehensive list of Node/Sails hosting providers and available community tutorials.
 
 ##### Deploying to Modulus?
 
@@ -68,12 +68,6 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 
 + https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs
 
-
-
-##### Getting professional help
-
-These days, it's getting easier and easier to deploy powerful applications at scale.  That said, there isn't always time to do these things yourself.
-Sails.js is maintained by my company, [Balderdash](http://balderdash.co), a Node.js consultancy in Austin, TX. If your company needs professional support, reach out and we're happy to help.  The deployment part really isn't that hard, and in most cases, it shouldn't take more than a couple of hours tops.
 
 
 
