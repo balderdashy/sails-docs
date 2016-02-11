@@ -7,15 +7,6 @@ Log a message or some data at the "debug" [log level](http://preview.sailsjs.org
 sails.log(...);
 ```
 
-_Or:_
-+ `sails.log.error(...);`
-+ `sails.log.warn(...);`
-+ `sails.log.debug(...);`
-+ `sails.log.info(...);`
-+ `sails.log.verbose(...);`
-+ `sails.log.silly(...);`
-
-
 
 ### Usage
 
