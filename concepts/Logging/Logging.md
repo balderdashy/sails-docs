@@ -27,11 +27,11 @@ Using the built-in logger, Sails will write output (to stdout/stderr) for log fu
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
-> #### Notes
-> + The default log level is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
-> + When running automated tests for your app, it is often helpful to set the log level to **error**.
-> + When the log level is set to **verbose**, Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
-> + When the log level is set to **silly**, Sails outputs everything from **verbose** as well as internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
+#### Notes
+ + The default log level is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
+ + When running automated tests for your app, it is often helpful to set the log level to **error**.
+ + When the log level is set to **verbose**, Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
+ + When the log level is set to **silly**, Sails outputs everything from **verbose** as well as internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
 
 
 
