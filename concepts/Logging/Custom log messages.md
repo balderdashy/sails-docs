@@ -11,15 +11,6 @@ Each of the log methods below accepts an infinite number of arguments of any dat
 
 > See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more information and examples.
 
-### `sails.log()`
-
-The default log function, which writes console output to `stderr` at the "debug" log level.
-
-```js
-sails.log('hello');
-// -> debug: hello.
-```
-
 
 ### `sails.log.error()`
 
@@ -39,8 +30,20 @@ sails.log.warn('File upload quota exceeded for user','request aborted.');
 // -> warn: File upload quota exceeded for user- request aborted.
 ```
 
-### `sails.log.debug()`
-_Alias for `sails.log()`_
+
+### `sails.log()`
+
+_Or:_
++ `sails.log.debug()`
+
+The default log function, which writes console output to `stderr` at the "debug" log level.
+
+```js
+sails.log('hello');
+// -> debug: hello.
+```
+
+
 
 ### `sails.log.info()`
 
