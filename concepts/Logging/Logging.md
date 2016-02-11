@@ -9,7 +9,7 @@ Sails comes with a simple, built-in logger called [`captains-log`](https://githu
 Sails' log configuration is determined by [`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log), which is conventionally set by a generated configuration file ([`config/log.js`](http://sailsjs.org/documentation/anatomy/my-app/config/log-js)) in new Sails projects out of the box.
 
 
-### Behavior
+### Log levels
 
 Using the built-in logger, Sails will write output (to stdout/stderr) for log function calls that are _at_ or _above_ the priority of the currently-configurd log level.  This log level is normalized and also applied to generated output from Grunt, Socket.io, Waterline, Express, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
 
@@ -25,7 +25,7 @@ Using the built-in logger, Sails will write output (to stdout/stderr) for log fu
 
 
 #### Notes
- + The default log level is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
+ + The [default log level]((http://sailsjs.org/documentation/reference/configuration/sails-config-log)) is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
  + When running automated tests for your app, it is often helpful to set the log level to **error**.
  + When the log level is set to **verbose**, Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
  + When the log level is set to **silly**, Sails outputs everything from **verbose** as well as internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
