@@ -4,7 +4,7 @@ It is often useful to emit custom log messages or events from your application c
 
 For convenience, Sails exposes its internal logging interface as `sails.log`.  Its usage is purposely very similar to Node's `console.log()`, but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
-See [`sails.log()`](http://sailsjs.org/documentation/reference/application/sails-log) for more information and examples, or  [sails.config.log](http://sailsjs.org/documentation/reference/configuration/sails-config-log) for configuration options.
+See [sails.log()](http://sailsjs.org/documentation/reference/application/sails-log) for more information and examples, or  [sails.config.log](http://sailsjs.org/documentation/reference/configuration/sails-config-log) for configuration options.
 
 
 ## Available methods
