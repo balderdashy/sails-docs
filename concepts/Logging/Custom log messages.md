@@ -33,8 +33,7 @@ sails.log.warn('File upload quota exceeded for user','request aborted.');
 
 ### `sails.log()`
 
-_Or:_
-+ `sails.log.debug()`
+_Or: `sails.log.debug()`_
 
 The default log function, which writes console output to `stderr` at the "debug" log level.
 
