@@ -1,9 +1,10 @@
 # Custom log messages
 
-### Overview
+It is often useful to emit custom log messages or events from your application code; whether you are tracking the status of outbound emails sent in the background, or just looking for a configurable alternative to `console.log()`.
 
 Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
 
+See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more detailed usage information and examples.
 
 
 ### `sails.log()`
@@ -14,9 +15,6 @@ The default log function, which writes console output to `stderr` at the "debug"
 sails.log('hello');
 // -> debug: hello.
 ```
-
-See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more detailed usage information and examples.
-
 
 
 ### `sails.log.error()`
