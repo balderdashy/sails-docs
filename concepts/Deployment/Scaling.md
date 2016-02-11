@@ -12,13 +12,11 @@ In production, Sails performs like any Connect, Express or Socket.io app ([examp
 ### Example architecture
 
 ```
-                       Sails.js server
                              ....                 
                     /  Sails.js server  \      /  Database (e.g. Mongo, Postgres, etc)
 Load Balancer  <-->    Sails.js server    <-->    Socket store (Redis)
                     \  Sails.js server  /      \  Session store (Redis)
                              ....                 
-                       Sails.js server
 ```
 
 
