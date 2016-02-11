@@ -47,13 +47,17 @@ See the [sails.io.js GitHub repo](http://github.com/balderdashy/sails.io.js) for
 
 ### Configuring the `sails.io.js` library
 
-> This section focuses on the most common runtime environment for the socket client: the browser.  See the [`sails.io.js` GitHub repository](github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
+> This section focuses on the most common runtime environment for the JavaScript socket client: the browser.  See the [`sails.io.js` GitHub repository](github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
 
 There are two ways to configure Sails' socket client in the browser: using HTML attributes on the `<script>` tag or by programmatically modifying the `io.sails` object.
 
+> **Note:**
+> As of Sails v0.12.0, only the four most configuration options are supported via HTML attributes: `autoConnect`, `environment`, `headers`, and `url`.
+
+
 ##### Basic configuration using HTML attributes
 
-The easiest way to configure the socket client is by sticking one or more HTML attributes on the script tag:
+The easiest way to configure the most common settings for the socket client is by sticking one or more HTML attributes on the script tag:
 
 ```html
 <script src="/js/dependencies/sails.io.js"
@@ -63,7 +67,10 @@ The easiest way to configure the socket client is by sticking one or more HTML a
 ></script>
 ```
 
-This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that comoposite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names.  
+This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that comoposite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names. 
+
+> **Note:**
+> Any configuration which may be provided as an HTML attribute may alternately be provided prefixed with `data-` (e.g. `data-autoConnect`, `data-environment`, `data-headers`, `data-url`).  This is for folks who need to support browsers that have issues with nonstandard HTML attributes (or if the idea of using nonstandard HTML attributes just creeps you out). If both the standard HTML attribute and the `data-` prefixed HTML attribute are provided, the latter takes precendence.
 
 
 ##### Programmatic configuration using `io.sails`
