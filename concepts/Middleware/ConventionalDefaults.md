@@ -3,7 +3,7 @@
 Sails comes bundled with a suite of conventional HTTP middleware, ready to use.  You can, of course, disable, override, rearrange, or append to it, but the pre-installed stack is perfectly acceptable for most apps in development or production.  Below is a list of the standard HTTP middleware functions that comes bundled in Sails in the order they execute every time the server receives an incoming HTTP request:
 
  HTTP Middleware Key       | Purpose
- ------------------------- | ------------
+ :------------------------ |:------------
  **startRequestTimer**     | Allocates a variable in memory to hold the timestamp when the request began.  This can be accessed and used by your app to provide diagnostic information about slow requests.
  _cookieParser_ *          | Parses the cookie header into a clean object for use in subsequent middleware and your application code.
  _session_ *               | Sets up a unique session object using your [session configuration](http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html).
