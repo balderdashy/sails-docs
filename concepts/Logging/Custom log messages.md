@@ -1,11 +1,15 @@
 # Custom log messages
 
-It is often useful to emit custom log messages or events from your application code; whether you are tracking the status of outbound emails sent in the background, or just looking for a configurable alternative to [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data).
+It is often useful to emit custom log messages or events from your application code; whether you are tracking the status of outbound emails sent in the background, or just looking for a configurable alternative to calling [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data) in your application code.
 
-Each of the methods below accepts an infinite number of arguments of any data type, seperated by commas. Like `console.log`, data passed as arguments to the Sails logger is automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply- i.e. if you log an object with an `inspect()` method, it will be run automatically, and the string that it returns will be written to the console.  Similarly, objects, dates, arrays, and most other data types are pretty-printed using the built-in logic in `util.inspect()` (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)
+For convenience, Sails exposes its internal logging interface as `sails.log`.  Its usage is purposely very similar to Node's `console.log()`, but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
 
-See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more detailed usage information and examples.
 
+## Available methods
+
+Each of the log methods below accepts an infinite number of arguments of any data type, seperated by commas.  Like `console.log`, data passed as arguments to the Sails logger are automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply; _any_ dictionaries, errors, dates, arrays, or other data types are pretty-printed using the built-in logic in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)  Also, if you log an object that has a custom `inspect()` method, the logger will run that method automatically and write the string it returns to the console.
+
+> See the [`sails.log()`](http://sailsjs.org/documentation/reference/configuration/sails-config-log) reference page for more information and examples.
 
 ### `sails.log()`
 
