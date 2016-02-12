@@ -2,32 +2,24 @@
 
 The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
 
-#### res.serverError(errors)
+#### res.ok()
 
-This response normalizes the error/errors of `errors` into an array of proper, readable `Error` objects. `errors` can be one or more strings or `Error` objects.  It then logs all Errors to the Sails logger (usually the console), and responds with the `views/500.*` view file if the client is expecting HTML, or a JSON object if the client is expecting JSON.  In development mode, the list of errors is included in the response.  In production mode, the actual errors are suppressed.
+This method is used to send a 200 ("Ok") response back down to the client indicating that everything worked out a-okay. 👍 See the [`res.ok()` reference page](http://sailsjs.org/documentation/reference/response-res/res-ok) for usage info.
 
-#### res.badRequest(validationErrors, redirectTo)
+#### res.serverError()
 
-For requesters expecting JSON, this response includes the 400 status code and any relevant data sent as `validationErrors`.
+This method is used to send a 500 ("Server Error") response back down to the client indicating that some kind of server error occurred. 💣 See the [`res.serverError()` reference page](http://sailsjs.org/documentation/reference/response-res/res-server-error) for usage info.
 
-For traditional (not-AJAX) web forms, this middleware follows best-practices for when a user submits invalid form data:
+#### res.badRequest()
 
- - First, a one-time-use flash variable is populated, probably a string message or an array of semantic validation error objects.
- - Then the  user is redirected back to `redirectTo`, i.e. the URL where the bad request originated.
- - There, the controller and/or view might use the flash `errors` to either display a message or highlight the invalid HTML form fields.
-
+This method is used to send a 400 ("Bad Request") response back down to the client indicating that the request is invalid. 👎 See the [`res.badRequest()` reference page](http://sailsjs.org/documentation/reference/response-res/res-bad-request) for usage info.
 
 #### res.notFound()
 
-If the requester is expecting JSON, this response simply sends a 404 status code and a `{status: 404}` object. 
+This method is used to send a 404 ("Not Found") response back down to the client indicating that the requested URL doesn&rsquo; match any routes in the app. 💔 See the [`res.notFound()` reference page](http://sailsjs.org/documentation/reference/response-res/res-not-found) for usage info.
 
-Otherwise the view located in `myApp/views/404.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
+#### res.forbidden()
 
-#### res.forbidden(message)
-
-If the requester is expecting JSON, this response sends the 403 status code along with the contents of `message`.
-
-Otherwise the view located in `myApp/views/403.*` will be served.  If that view can't be found, then the client is just sent the JSON response.
-
+This method is used to send a 403 ("Forbidden") response back down to the client indicating that the request is not allowed. 🚫 See the [`res.forbidden()` reference page](http://sailsjs.org/documentation/reference/response-res/res-forbidden) for usage info.
 
 <docmeta name="displayName" value="Default Responses">
