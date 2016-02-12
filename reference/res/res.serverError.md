@@ -1,9 +1,9 @@
 # res.serverError()
 
-This method is used to send a [500](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error) ("Server Error") response back down to the client indicating that some kind of server error occurred.
-
+Send a [500](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error) ("Server Error") response back down to the client indicating that some kind of server error occurred (i.e. the error is not the requesting user agent's fault).
 
 ### Usage
+
 
 ```js
 return res.serverError();
@@ -51,7 +51,6 @@ return res.serverError(
 >+ `res.serverError()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `/responses/serverError.js`, which is bundled automatically in newly generated Sails apps.  If a `serverError.js` response method does not exist in your app, Sails will implicitly use the default behavior.
 >+ If `pathToView` refers to a missing view, this method will respond as if the request "wants JSON".
 >+By default, the specified error (`err`) **will be excluded from the JSON response and view locals** if the app is running in the "production" environment (i.e. `process.env.NODE_ENV === 'production'`).
->+ This method is used as the default handler for uncaught errors in Sails.  That means it is called automatically if an error is thrown in _any_ request handling code, _but only within the initial step of the event loop_.  You should always specifically handle errors that might arise in callbacks/promises from asynchronous code.
 
 
 
