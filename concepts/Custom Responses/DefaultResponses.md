@@ -16,7 +16,7 @@ This method is used to send a 400 ("Bad Request") response back down to the clie
 
 #### res.notFound()
 
-This method is used to send a 404 ("Not Found") response back down to the client indicating that the requested URL doesn&rsquo; match any routes in the app. 💔 See the [`res.notFound()` reference page](http://sailsjs.org/documentation/reference/response-res/res-not-found) for usage info.
+This method is used to send a 404 ("Not Found") response back down to the client indicating that the requested URL doesn&rsquo;t match any routes in the app. 💔 See the [`res.notFound()` reference page](http://sailsjs.org/documentation/reference/response-res/res-not-found) for usage info.
 
 #### res.forbidden()
 
