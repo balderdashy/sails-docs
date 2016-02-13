@@ -27,7 +27,7 @@ createdOrFoundRecords              | `{}`, `[{}]`                              |
 
 ```javascript
 User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(error, createdOrFoundRecords){
-  console.log('What\'s cookin\' '+record.name+'?');
+  console.log('What\'s cookin\' '+createdOrFoundRecords.name+'?');
 });
 ```
 
