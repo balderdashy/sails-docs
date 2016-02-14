@@ -11,7 +11,7 @@ Note that this means the query parameter does not work for one-to-one associatio
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |     Foreign Key     |      `string`       |     Yes    |
+| 1 |     Foreign Key     |      `string`, `array`       |     Yes    |
 | 2 |     Query           |      `object`       |     No     |
 
 ### Example Usage
