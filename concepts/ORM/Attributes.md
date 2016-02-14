@@ -184,7 +184,7 @@ module.exports = {
     },
     email: {
       type: 'string',
-      email: true
+      email: true,
       unique: true
     }
   }
