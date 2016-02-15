@@ -22,11 +22,18 @@ in the way you might be used to from Express or Connect.
 
 ### Configuring Redis as Your Session Store
 
+
 In production, uncomment the following line to set up a shared redis session store
 that can be shared across multiple Sails.js servers:
 
 ```javascript
 adapter: 'redis',
+```
+
+
+And install the connect-redis Session adapter as a dependency of your project:
+```
+npm install connect-redis@1.4.5 --save --save-exact
 ```
 
 The following values are optional, if no options are set a redis instance running on `localhost` is expected.  Read more about these options at: https://github.com/visionmedia/connect-redis
@@ -49,7 +56,7 @@ Any session adapter written for Connect/Express works in Sails, as long as you u
 For example to use Mongo as your session store, you should use version 0.8.4 of `connect-mongo`.  First, run the following from your project's directory:
 
 ```
-npm install connect-mongo@0.8.4 --save
+npm install connect-mongo@0.8.2 --save --save-exact
 ```
 
 Then add the following lines to your session configuration dictionary in `config/session.js`:
