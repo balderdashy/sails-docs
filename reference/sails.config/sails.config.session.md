@@ -83,22 +83,18 @@ Then set the your `adapter` in `config/session.js`:
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
 ```
-  // Note: if provided, `url` will override other connection settings.
-  // url: 'mongodb://user:pass@host:port/database/collection',
-  host: 'localhost',
-  port: 27017,
-  db: 'sails',
+  // Note: user, pass and port are optional
+  url: 'mongodb://user:pass@host:port/database',
   collection: 'sessions',
-  username: '',
-  password: '',
   auto_reconnect: false,
   ssl: false,
   stringify: true
 ```
 
 
-> **Note:**
-> If you run into kerberos-related issues when using the MongoDB as your session store or the database for one or more of your app's models, be sure and have a look at the relevant [troubleshooting page](http://mongodb.github.io/node-mongodb-native/2.0/getting-started/installation-guide/#troubleshooting) in the Mongo docs.  Also see [#3362](https://github.com/balderdashy/sails/issues/3362) for more diagnostic information about using Kerberos with Mongo in your Sails app.
+> **Notes:**
+> * When using Node version <= 0.12.x, install `connect-mongo` version 0.8.2.  For Node version >= 4.0, install `connect-mongo` >= 1.0
+> * If you run into kerberos-related issues when using the MongoDB as your session store or the database for one or more of your app's models, be sure and have a look at the relevant [troubleshooting page](http://mongodb.github.io/node-mongodb-native/2.0/getting-started/installation-guide/#troubleshooting) in the Mongo docs.  Also see [#3362](https://github.com/balderdashy/sails/issues/3362) for more diagnostic information about using Kerberos with Mongo in your Sails app.
 
 
 
