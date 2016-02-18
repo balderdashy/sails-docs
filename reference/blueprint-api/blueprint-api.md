@@ -16,13 +16,13 @@ Sails will create RESTful routes whenever it loads a [controller](http://sailsjs
 
 ##### Shortcut routes
 
-Shortcut routes are activated by defaul in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
+Shortcut routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
 Like RESTful routes (see above), Sails creates shortcut routes for any controller/model pair with the same identity.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/controllers/UserController.js` and `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.org/documentation/reference/blueprint-api#?overriding-blueprints))
 
 ##### Action routes
 
-Actions routes are activated by defaul in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
+Actions routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
 While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/PetController.js` contains:
 
