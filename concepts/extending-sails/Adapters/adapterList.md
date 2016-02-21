@@ -100,6 +100,18 @@ https://github.com/geistinteractive/sails-filemaker
 ###### Interfaces implemented:
 + Semantic
 
+##### sails-derby
+
+https://github.com/dash-/node-sails-derby
+
+[Apache Derby](https://db.apache.org/derby/) is an open source relational database implemented entirely in Java and available under the Apache License, Version 2.0.
+
+###### Interfaces implemented:
++ Semantic
++ Queryable
++ Associations
++ SQL
+
 Have you written a Sails adapter? Submit a PR to this file and add it here!
 
 

@@ -8,7 +8,7 @@
  * Tracked this way so the data here can be augmented using npm,
  * then a JSON snapshot taken.  That JSON snapshot can be used
  * for visualizations and tracking the status of the currently-available
- * Saisl community projects, and provide better visibility for
+ * Sails community projects, and provide better visibility for
  * versioning and updates of core modules.
  *
  * @type {Object}
@@ -96,7 +96,11 @@ module.exports = {
 	'sails-filemaker': {
 		repo: 'https://github.com/geistinteractive/sails-filemaker',
 		status: 'edge'
-	}
+	},
+	'sails-derby': {
+		repo: 'https://github.com/dash-/node-sails-derby',
+		status: 'stable'
+	},
 
 
 
