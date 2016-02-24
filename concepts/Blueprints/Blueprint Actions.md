@@ -8,7 +8,7 @@ The current version of Sails ships with the following blueprint actions:
 
 + [find](http://sailsjs.org/documentation/reference/blueprint-api/Find.html)
 + [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne.html)
-+ [create](http://sailsjs.org/documentation/reference/blueprint-api/Create.html)
++ [create](http://sailsjs.org/documentation/reference/blueprint-api/create)
 + [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html)
 + [destroy](http://sailsjs.org/documentation/reference/blueprint-api/Destroy.html)
 + [populate](http://sailsjs.org/documentation/reference/blueprint-api/Populate.html)
