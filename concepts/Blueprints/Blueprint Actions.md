@@ -6,14 +6,14 @@ By default, the blueprint RESTful routes and shortcut routes are bound to their 
 
 The current version of Sails ships with the following blueprint actions:
 
-+ [find](http://sailsjs.org/documentation/reference/blueprint-api/Find.html)
-+ [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne.html)
++ [find](http://sailsjs.org/documentation/reference/blueprint-api/Find)
++ [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne)
 + [create](http://sailsjs.org/documentation/reference/blueprint-api/create)
-+ [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html)
-+ [destroy](http://sailsjs.org/documentation/reference/blueprint-api/Destroy.html)
-+ [populate](http://sailsjs.org/documentation/reference/blueprint-api/Populate.html)
-+ [add](http://sailsjs.org/documentation/reference/blueprint-api/Add.html)
-+ [remove](http://sailsjs.org/documentation/reference/blueprint-api/Remove.html)
++ [update](http://sailsjs.org/documentation/reference/blueprint-api/Update)
++ [destroy](http://sailsjs.org/documentation/reference/blueprint-api/Destroy)
++ [populate](http://sailsjs.org/documentation/reference/blueprint-api/Populate)
++ [add](http://sailsjs.org/documentation/reference/blueprint-api/Add)
++ [remove](http://sailsjs.org/documentation/reference/blueprint-api/Remove)
 
 For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.org/documentation/reference/blueprint-api)
 
