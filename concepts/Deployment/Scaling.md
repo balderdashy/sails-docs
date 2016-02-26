@@ -31,7 +31,9 @@ The most important thing to remember about scaling a server-side application is 
 + **If your app uses sockets:**
   + Configure your app to use Redis as a shared message queue for delivering socket.io messages (uncomment the `adapter` option in `config/sockets.js`)
   + Install the socket.io-redis adapter as a dependency of your app (e.g. `npm install socket.io-redis@~1.0.0 --save --save-exact`)
-
++ **If your cluster is on a single server (for instance, using [pm2 cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/))**
+  + To avoid file conflict issues due to Grunt tasks, always start your apps in `production` environment, and/or consider [turning Grunt off completely](http://sailsjs.org/documentation/concepts/assets/disabling-grunt).  See [here](https://github.com/balderdashy/sails/issues/3577#issuecomment-184786535) for more details on Grunt issues in single-server clusters
+  + Be careful with [`config/bootstrap.js` code](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap) that persists data in a database, to avoid conflicts when the bootstrap runs multiple times (once per node in the cluster)
 
 ### Deploying a Node/Sails app to a PaaS
 
