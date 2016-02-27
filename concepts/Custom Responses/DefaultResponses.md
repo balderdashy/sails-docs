@@ -24,6 +24,6 @@ This method is used to send a 403 ("Forbidden") response back down to the client
 
 #### res.created()
 
-This method is used to send a 201 ("Created") response back down to the client indicating that one or more new resources have been created.
+This method is used to send a 201 ("Created") response back down to the client indicating that one or more new resources have been created. See the [`res.created()` reference page](http://sailsjs.org/documentation/reference/response-res/res-created) for usage info.
 
 <docmeta name="displayName" value="Default Responses">
