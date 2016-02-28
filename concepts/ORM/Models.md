@@ -33,6 +33,8 @@ module.exports = {
 }
 ```
 
+> For more types and attribute properties, check out [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/data-types-attributes.md).
+
 <!--
 
 // api/models/Product.js
