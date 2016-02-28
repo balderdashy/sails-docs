@@ -6,7 +6,7 @@ Hypothetically, one could create a service for
 
 - Sending emails
 - Automating tweets to celebrities
-- Retreiving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
+- Retrieving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
 
 Services are written in one or more .js file within this directory. 
 
