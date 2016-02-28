@@ -74,7 +74,7 @@ In sails console, type in `sails` to view a list of sails properties. You can us
 ```sh
 sails> sails
   |>   [a lifted Sails app on port 1337]
-\___/  For help, see: http://links.sailsjs.org/docs
+\___/  For help, see: http://sailsjs.org/documentation/concepts/
 
 Tip: Use `sails.config` to access your app's runtime configuration.
 
@@ -94,4 +94,3 @@ sails>
 
 <docmeta name="displayName" value="sails console">
 <docmeta name="pageType" value="command">
-

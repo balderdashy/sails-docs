@@ -16,7 +16,7 @@ This includes all HTTP-specific middleware, including the serving/caching of fla
  * Only applies to HTTP requests (not WebSockets)
  *
  * For more information on configuration, check out:
- * http://links.sailsjs.org/docs/config/http
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-http
  */
 
 module.exports.http = {

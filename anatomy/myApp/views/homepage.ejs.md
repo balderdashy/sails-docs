@@ -36,7 +36,7 @@ setTimeout(function sunrise () {
                     <div class="sprite one"></div>
                     <h3>Generate a REST API.</h3>
                     <p>
-                        Run <code>sails generate api user</code>.  This will create two files: a <a href="http://links.sailsjs.org/docs/models">model</a> <code class="pocket">api/models/User.js</code> and a <a href="http://links.sailsjs.org/docs/controllers">controller</a><code class="pocket">api/controllers/UserController.js</code>.
+                        Run <code>sails generate api user</code>.  This will create two files: a <a href="http://sailsjs.org/documentation/concepts/models-and-orm/models">model</a> <code class="pocket">api/models/User.js</code> and a <a href="http://sailsjs.org/documentation/concepts/controllers">controller</a><code class="pocket">api/controllers/UserController.js</code>.
                     </p>
                 </div>
             </li>
@@ -47,7 +47,7 @@ setTimeout(function sunrise () {
                         Lift your app.
                     </h3>
                     <p>
-                        Run <code>sails lift</code> to start up your app server.  If you visit <a target="_blank" href="http://localhost:1337/user"><code>http://localhost:1337/user</code></a> in your browser, you'll see a <a href="http://links.sailsjs.org/docs/blueprints">WebSocket-compatible</a> user API.
+                        Run <code>sails lift</code> to start up your app server.  If you visit <a target="_blank" href="http://localhost:1337/user"><code>http://localhost:1337/user</code></a> in your browser, you'll see a <a href="http://sailsjs.org/documentation/concepts/blueprints">WebSocket-compatible</a> user API.
                     </p>
                 </div>
             </li>
@@ -57,7 +57,7 @@ setTimeout(function sunrise () {
                     <h3>
                         Dive in.
                     </h3>
-                    <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://links.sailsjs.org/docs/routes">routes</a>, set up <a href="http://links.sailsjs.org/docs/policies">security policies</a>, configure your <a href="http://links.sailsjs.org/docs/config/connections">data sources</a>, and build custom <a target="_blank" href="http://links.sailsjs.org/docs/controllers">controller actions</a>. For more help getting started, check out the links on this page.</p>
+                    <p>Blueprints are just the beginning.  You'll probably also want to learn how to customize your app's <a href="http://sailsjs.org/documentation/concepts/routes">routes</a>, set up <a href="http://sailsjs.org/documentation/concepts/policies">security policies</a>, configure your <a href="http://sailsjs.org/documentation/reference/configuration/sails-config-connections">data sources</a>, and build custom <a target="_blank" href="http://sailsjs.org/documentation/concepts/controllers">controller actions</a>. For more help getting started, check out the links on this page.</p>
 
                 </div>
             </li>
@@ -69,11 +69,11 @@ setTimeout(function sunrise () {
                 <h4>Docs</h4>
                 <a target="_blank" href="http://sailsjs.org/documentation/anatomy"><li>App Structure</li></a>
                 <a target="_blank" href="http://sailsjs.org/documentation/reference"><li>Reference</li></a>
-                <a target="_blank" href="http://links.sailsjs.org/docs/faq"><li>FAQ</li></a>
+                <a target="_blank" href="http://sailsjs.org/documentation/concepts/deployment/faq"><li>FAQ</li></a>
                 <a target="_blank" href="http://sailsjs.org"><li>Supported Databases</li></a>
 
                 <h4>Tutorials</h4>
-                <a target="_blank" href="http://links.sailsjs.org/community/sails101"><li>Sails 101</li></a>
+                <a target="_blank" href="https://github.com/sails101"><li>Sails 101</li></a>
 
                 <h4>Community</h4>
                 <a target="_blank" href="http://stackoverflow.com/search?q=sails.js"><li>StackOverFlow</li></a>

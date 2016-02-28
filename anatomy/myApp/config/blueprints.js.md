@@ -16,7 +16,7 @@
  * a configuration object with overrides for the settings in this file.
  *
  * For more information on configuring the blueprint API, check out:
- * http://links.sailsjs.org/docs/config/blueprints
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints
  */
 
 module.exports.blueprints = {

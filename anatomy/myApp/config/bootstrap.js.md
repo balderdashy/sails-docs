@@ -17,7 +17,7 @@ This gives you an opportunity to set up your data model, run jobs, or perform so
  * This gives you an opportunity to set up your data model, run jobs, or perform some special logic.
  *
  * For more information on bootstrapping your app, check out:
- * http://links.sailsjs.org/docs/config/bootstrap
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap
  */
 
 module.exports.bootstrap = function(cb) {
