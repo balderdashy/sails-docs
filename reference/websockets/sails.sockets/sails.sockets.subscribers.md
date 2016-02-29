@@ -3,7 +3,7 @@
 
 > _**This method is deprecated**._
 >
-> If you absolutely need to retrieve the list of socket IDs in a room, you may use the lower-level `app.io.sockets.in(roomName).clients(cb)` method (see https://github.com/socketio/socket.io/#namespaceclientsfnfunction).
+> If you absolutely need to retrieve the list of socket IDs in a room, you may use the lower-level `sails.io.sockets.in(roomName).clients(cb)` method (see https://github.com/socketio/socket.io/#namespaceclientsfnfunction).
 >
 >However, be aware that in multi-server scenarios, that method will _not_ return IDs of sockets on other servers (at the time of writing, the current documentation on Socket.io's GitHub is out of date on that point).
 >
