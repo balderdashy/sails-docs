@@ -105,15 +105,17 @@ Assuming that your have a **api/controllers/UserController.js** file and a **api
 
 #### View target syntax
 
-Another common target is one that binds a route to a [view](http://sailsjs.org/documentation/concepts/Views).  The syntax for this is simple: it's the path to the view file relative to the **views** folder, without the file extension:
+Another common target is one that binds a route to a [view](http://sailsjs.org/documentation/concepts/Views).  This is particularly useful for binding static views to a custom URL, and it's how the default homepage for new projects is set up out of the box.
+
+The syntax for view targets is simple: it is just the path to the view file, without the file extension (e.g. `.ejs`) and relative to the **views/** folder :
 
 ```
-'GET /home': {view: 'home/index'}
+'GET /team': {view: 'brochure/about'}
 ```
 
-This maps the `GET /home` to the view stored in **views/home/index.ejs** (assuming the default EJS [template engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it.
+This tells Sails to handle `GET` requests to `/team` by serving the view template located at `views/brochure/about.ejs` (assuming the default EJS [template engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it. For consistency with Express/consolidate, if the specified relative path does not match a view file, then Sails will look for a sub-folder with the same name (e.g. `pages/brochure`) and serve the "index" view in that sub-folder (e.g. `pages/brochure/index.ejs`) if one exists.
 
-Note that since this route is bound directly to the view, none of your configured policies will be applied.  If you need to configure a policy, use `res.view()` from a controller action.  See [this StackOverflow question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more background information.
+> Note that since this route is bound directly to the view, none of your configured policies will be applied.  If you need to configure a policy, use `res.view()` from a controller action.  See [this StackOverflow question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more background information.
 
 #### Blueprint target syntax
 
