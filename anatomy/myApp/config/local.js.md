@@ -60,7 +60,7 @@ By default, Sails sets its environment using the `NODE_ENV` environment variable
  *
  *
  * For more information, check out:
- * http://links.sailsjs.org/docs/config/local
+ * http://sailsjs.org/documentation/concepts/configuration/the-local-js-file
  */
 
 module.exports = {

@@ -28,7 +28,7 @@ This file lets you create different global "saved settings" that you can mix and
  * (this is to prevent you from inadvertently pushing sensitive credentials up to your repository.)
  *
  * For more information on configuration, check out:
- * http://links.sailsjs.org/docs/config/connections
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-connections
  */
 
 module.exports.connections = {

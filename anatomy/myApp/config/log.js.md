@@ -21,7 +21,7 @@ Underneath the covers, Sails uses Winston for logging, which allows for some pre
  * allows for some pretty neat custom transports/adapters for log messages)
  *
  * For more information on the Sails logger, check out:
- * http://links.sailsjs.org/docs/config/log
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-log
  */
 
 module.exports = {

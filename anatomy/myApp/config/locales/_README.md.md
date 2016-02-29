@@ -6,7 +6,7 @@
 # Internationalization / Localization Settings
 
 > Also see the official docs on internationalization/localization:
-> http://links.sailsjs.org/docs/config/locales
+> http://sailsjs.org/documentation/concepts/internationalization
 
 ## Locales
 All locale files live under `config/locales`. Here is where you can add translations

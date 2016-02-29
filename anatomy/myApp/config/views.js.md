@@ -39,7 +39,7 @@ This file is where Sails looks to find out which templating engine to use when r
  * Sails' layout support.
  *
  * For more information on views and layouts, check out:
- * http://links.sailsjs.org/docs/config/views
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-views
  */
 
 module.exports.views = {

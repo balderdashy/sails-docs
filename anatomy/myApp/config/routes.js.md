@@ -32,7 +32,7 @@ You can even define routes in a way such that part of the requested URL is treat
  * CoffeeScript for the front-end.
  *
  * For more information on routes, check out:
- * http://links.sailsjs.org/docs/config/routes
+ * http://sailsjs.org/documentation/reference/configuration/sails-config-routes
  */
 
 module.exports.routes = {
