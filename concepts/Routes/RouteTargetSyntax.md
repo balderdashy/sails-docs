@@ -113,8 +113,7 @@ Another common target is one that binds a route to a [view](http://sailsjs.org/d
 
 This maps the `GET /home` to the view stored in **views/home/index.ejs** (assuming the default EJS [template engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it.
 
-> Note that this route will be bound directly to the view, no policies will be applied in this case.
-> See the StackOverflow [question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more information.
+Note that since this route is bound directly to the view, none of your configured policies will be applied.  If you need to configure a policy, use `res.view()` from a controller action.  See [this StackOverflow question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more background information.
 
 #### Blueprint target syntax
 
