@@ -1,12 +1,12 @@
 # myApp/api/services
 ### Purpose
-This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't nessecarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on `.req()` and `.res()` can be turned into a service if for no other reason than to keep your controllers clean and managable.  
+This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't necessarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on `.req()` and `.res()` can be turned into a service if for no other reason than to keep your controllers clean and manageable.  
 
 Hypothetically, one could create a service for
 
 - Sending emails
 - Automating tweets to celebrities
-- Retreiving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
+- Retrieving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
 
 Services are written in one or more .js file within this directory. 
 
