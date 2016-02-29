@@ -13,7 +13,8 @@ The primary purpose of Waterline query instances is to provide a convenient, cha
 
 ### Promises
 
-In addition to the `.exec()` method, Waterline queries implement a partial integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.then()` and `.catch()` methods.
+In addition to the `.exec()` method, Waterline queries implement a partial integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.toPromise()`, 
+`.then()` and `.catch()` methods.
 
 ```js
 Stuff.find()
@@ -21,6 +22,17 @@ Stuff.find()
 .catch(function (err) {...});
 ```
 
+`.toPromise()` is actually executing query. It is invoked implicitly by `.then()` or `.catch()`. Using `.toPromise()` itself
+is convenient if you want to utilize promise-based helper methods e.g. for running queries in parallel.
+
+```js
+require("bluebird").all([
+    Stuff.find().toPromise(),
+    OtherStuff.find().toPromise()
+])
+.spread(function (allTheStuff, allTheOtherStuff) {...})
+.catch(function (err) {...});
+```
 
 If you are a fan of promises, and have a reasonable amount of experience with them, you should have no problem working with this interface.  However if you are not very familiar with promises, or don't care one way or another, you will probably have an easier time working with `.exec()`, which uses standard Node.js callback conventions.
 
