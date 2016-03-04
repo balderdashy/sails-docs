@@ -2,7 +2,7 @@
 
 ### Overview
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically encrypt a password before creating or updating an `Account` model.
+Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically hash a password before creating or updating an `Account` model.
 
 Sails exposes a handful of lifecycle callbacks by default.
 
@@ -29,7 +29,7 @@ Sails exposes a handful of lifecycle callbacks by default.
 
 ### Example
 
-If you want to encrypt a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
+If you want to hash a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
 
 ```javascript
 var bcrypt = require('bcrypt');
@@ -47,7 +47,7 @@ module.exports = {
       type: 'string',
       minLength: 6,
       required: true,
-      columnName: 'encrypted_password'
+      columnName: 'hashed_password'
     }
 
   },
@@ -56,7 +56,7 @@ module.exports = {
   // Lifecycle Callbacks
   beforeCreate: function (values, cb) {
 
-    // Encrypt password
+    // Hash password
     bcrypt.hash(values.password, 10, function(err, hash) {
       if(err) return cb(err);
       values.password = hash;
