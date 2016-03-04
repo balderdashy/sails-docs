@@ -1,6 +1,6 @@
 # res.negotiate()
 
-Given an error (`err`), attempt to guess which error response should be called (`badRequest`, `forbidden`, `notFound`, or `serverError`) by inspecting the `status` property.  If `err` is not a dictionary, or the `status` property does not match a known HTTP status code, then defualt to `serverError`.
+Given an error (`err`), attempt to guess which error response should be called (`badRequest`, `forbidden`, `notFound`, or `serverError`) by inspecting the `status` property.  If `err` is not a dictionary, or the `status` property does not match a known HTTP status code, then default to `serverError`.
 
 Especially handy for handling potential validation errors from [Model.create()](http://sailsjs.org/documentation/reference/waterline/models/create.html) or [Model.update()](http://sailsjs.org/documentation/reference/waterline/models/update.html).
 
