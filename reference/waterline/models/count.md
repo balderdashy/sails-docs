@@ -7,7 +7,7 @@ Returns the number of records in your database that meet the given search criter
 
 | # | Description   | Accepted Data Types          | Required ? |
 |---|---------------|------------------------------|------------|
-| 1 | Find Criteria | `{}`,`[{}]`, `string`, `int` | No         |
+| 1 | Find Criteria | `{}`, `string`, `int` | No         |
 | 2 | Callback      | `function`                   | No         |
 
 #### Callback Parameters
