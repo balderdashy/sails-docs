@@ -67,6 +67,11 @@ Order.find()
   orders[1].buyers.add({ name: 'Jon Snow' });
   orders[1].seller = { corporateName: 'Wolf Orphanage' };
   orders[1].save(function (err) {
+    if (err) {
+      // handle error (e.g. `return res.serverError(err);` )
+      return;
+    }
+    
     // We successfully created a new Customer named Jon and added
     // him to `order[1]` as one of its "buyers".
     // We also created a new company and set it as `order[1]`'s "seller".
