@@ -128,10 +128,12 @@ Fortunately, like every other boilerplate file and folder in Sails, the socket c
 Under the covers, the socket client (`sails.io.js`) emits Socket.io messages with reserved names that, when interpreted by Sails, are routed to the appropriate policies/controllers/etc. according to your app's routes and blueprint configuration.
 
 
-##### Can I use Socket.io directly?
+##### Can I bypass this client and use Socket.io directly?
 
-While this is possible in your Sails app, it is not recommended since it breaks the convention over configuration philosophy used elsewhere in the framework.  If you do embark down this road, please do so only if you have extensive experience working directly with Socket.io-- and study the internals of the [`sockets` hook](https://github.com/balderdashy/sails-hook-sockets) beforehand (particularly the "admin bus" implementation which powers Sails' multi-server support for joining/leaving rooms.)
-In rare circumstances, it is necessary to communicate with Socket.io directly outside the context of the API exposed by the virtual request interpreter. For this reason, Sails exposes 
+It is possible to bypass the request interpreter in your Sails app and communicate with Socket.io directly.  However, it is not reccommended, since it breaks the convention over configuration philosophy used elsewhere in the framework.    The Sails socket client (`sails.io.js`) is unobtrusive:  it works by wrapping the native socket.io client and exposing a higher level API that takes advantage of the virtual request interpreter in Sails to send simulated HTTP requests.  This makes your backend code more reusable, reduces the barrier to entry for developers new to using WebSockets/Socket.io, and keeps your app easier to reason about.  
+
+> **Note:**
+> Under very rare circumstances (e.g. compatibility with an existing/legacy frontend using socket.io directly), bypassing the request interpreter is a _requirement_.  If you find yourself in this position, you can use the socket.io client SDK, and then use `sails.io` on the backend to access the raw Socket.io instance.  Please embark down this road only if you have extensive experience working directly with Socket.io; and only if you have first reviewed the internals of the [`sockets` hook](https://github.com/balderdashy/sails-hook-sockets) (particularly the "admin bus" implementation, a Redis integration that sits on top of socket.io-redis and powers Sails' multi-server support for joining/leaving rooms.)
 
 
 <docmeta name="displayName" value="Socket Client">
