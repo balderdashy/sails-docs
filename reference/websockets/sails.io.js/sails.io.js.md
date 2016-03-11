@@ -65,8 +65,13 @@ The easiest way to configure the four most common settings for the socket client
 
 This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that comoposite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names. 
 
-> **Note:**
-> Any configuration which may be provided as an HTML attribute may alternately be provided prefixed with `data-` (e.g. `data-autoConnect`, `data-environment`, `data-headers`, `data-url`).  This is for folks who need to support browsers that have issues with nonstandard HTML attributes (or if the idea of using nonstandard HTML attributes just creeps you out). If both the standard HTML attribute and the `data-` prefixed HTML attribute are provided, the latter takes precendence.
+Any configuration which may be provided as an HTML attribute may alternately be provided prefixed with `data-` (e.g. `data-autoConnect`, `data-environment`, `data-headers`, `data-url`).  This is for folks who need to support browsers that have issues with nonstandard HTML attributes (or if the idea of using nonstandard HTML attributes just creeps you out). If both the standard HTML attribute and the `data-` prefixed HTML attribute are provided, the latter takes precendence.
+
+
+> **Note:** 
+> In order to use this approach for configuring the socket client, if you are using the default Grunt asset pipeline (i.e. which automatically injects script tags), you will need to remove `sails.io.js` from your `pipeline.js` file, and instead include an explicit `<script>` tag which imports it.
+
+
 
 
 ##### Programmatic configuration using `io.sails`
@@ -85,6 +90,9 @@ When you load it on the page in a `<script>` tag, the `sails.io.js` library wait
 
 Normally, the socket client always connects to the server where the script is being served.  The example above will cause the eager (auto-connecting) socket to attempt a (cross-domain) socket connection to the Sails server running at `https://myapp.com` instead.
 
+> **Note:** 
+> If you are using the default Grunt asset pipeline (i.e. which automatically injects script tags), it is a good idea to exclude `sails.io.js` from your `pipeline.js` file, and instead explicitly add a `<script>` tag for it.  This ensures that your configuration will be applied _before_ the "eager" auto-connecting socket begins connecting-- since it means the inline `<script>` tag you are using for programmatic configuration (e.g. which sets `io.sais.url = 'https://myapp.com';`) is executed _immediately after_ the socket client.
+
 
 
 
@@ -97,12 +105,6 @@ You can also create and connect client sockets manually using [`io.sails.connect
 The `sails.io.js` library and its individual client sockets have a handful of configuration options.  Global configuration lives in [`io.sails`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails).  This includes the ability to disable the "eager" socket and default settings for new sockets.  Individual sockets can also be configured when they are manually connected-- see [`io.sails.connect()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method) for more information on that.
 
 
-<!--
-
-  TODO: add a bit more of a technical description in here at some point
-
-Under the covers, sails.io.js emits Socket.io messages with reserved names that, when interpreted by Sails, are routed to the appropriate policies/controllers/etc. according to your app's routes and blueprint configuration.
--->
 
 
 
@@ -120,6 +122,16 @@ No. The Sails socket client is extremely helpful when building realtime/chat fea
 
 Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete `assets/js/dependencies/sails.io.js`.
 
+
+##### How does this work?
+
+Under the covers, the socket client (`sails.io.js`) emits Socket.io messages with reserved names that, when interpreted by Sails, are routed to the appropriate policies/controllers/etc. according to your app's routes and blueprint configuration.
+
+
+##### Can I use Socket.io directly?
+
+While this is possible in your Sails app, it is not recommended since it breaks the convention over configuration philosophy used elsewhere in the framework.  If you do embark down this road, please do so only if you have extensive experience working directly with Socket.io-- and study the internals of the [`sockets` hook](https://github.com/balderdashy/sails-hook-sockets) beforehand (particularly the "admin bus" implementation which powers Sails' multi-server support for joining/leaving rooms.)
+In rare circumstances, it is necessary to communicate with Socket.io directly outside the context of the API exposed by the virtual request interpreter. For this reason, Sails exposes 
 
 
 <docmeta name="displayName" value="Socket Client">
