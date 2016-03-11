@@ -1,4 +1,4 @@
-#Understanding Sessions in Sails
+# Understanding Sessions in Sails
 
 For our purposes **sessions** are synonymous with a few components that together allow you to store information about a user agent between requests.
 
@@ -8,7 +8,7 @@ Sessions can be very useful because the request/response cycle is **stateless**.
 
 Note, we’re going to discuss sessions in the context of a browser user agent. While you can use sessions in Sails for whatever you like, it is generally a best practice to use it purely for storing the state of user agent authentication. Authentication is a process that allows a user agent to prove that they have a certain identity.  For example, in order to access some protected functionality, I might need to prove that my browser tab actually corresponds with a particular user record in a database.  If I provide you with a unique name and a password, you can look up the name and compare my password with a stored (hopefully encyrpted) password.  If there's a match, I'm authenticated. But how do you store that "authenticated-ness" between requests? That's where sessions come in.
 
-###What sessions are made of
+### What sessions are made of
 There are three main components to the implementation of sessions in Sails:
 1. the **session store** where information is retained
 2. the middleware that manages the session
@@ -16,7 +16,7 @@ There are three main components to the implementation of sessions in Sails:
 
 The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
 
-###A day in the life of a *request*, a *response*, and a *session* 
+### A day in the life of a *request*, a *response*, and a *session* 
 When a `request` is sent to Sails, the request header is parsed by the session middleware.  
 
 ##### Scenario 1: The request header has no *cookie property*
