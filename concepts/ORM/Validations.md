@@ -20,7 +20,7 @@ module.exports = {
 
 ### Validation Rules
 
-The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [node-validator](https://github.com/chriso/validator.js), a robust validation library for Node.js.
+The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [validator.js](https://github.com/chriso/validator.js), a robust validation library for Node.js.
 
 > In the table below, the "Compatible Attribute Type(s)" column shows what type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Coincidentally, the table below takes a few shortcuts:
 > - If compatible with ((string)), then the validation rule is also compatible with ((text)) and ((json)).
