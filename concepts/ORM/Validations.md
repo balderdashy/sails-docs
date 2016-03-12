@@ -82,7 +82,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 |truthy             | A value that would be considered truthy if used in a JavaScript `if` statement. | | ((json)) |
 |uppercase          | A value that is uppercase. | | ((string)) |
 |url                | A value that is a URL. | | ((string)) |
-|urlish             | A value that looks vaguely like a URL of some kind. | `/^\s([^\/]+\.)+.+\s*$/g` | ((string)) |
+|urlish             | A value that looks vaguely like a URL of some kind (i.e. `/^\s([^\/]+\.)+.+\s*$/g`). | `urlish: true` | ((string)) |
 |uuid               | A value that is a UUID (v3, v4, or v5) | | ((string)) |
 |uuidv3             | A value that is a UUID (v3) | | ((string)) |
 |uuidv4             | A value that is a UUID (v4) | | ((string)) |
