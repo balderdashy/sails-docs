@@ -23,7 +23,7 @@ Every attribute definition must have a built-in data type (or _typeclass_) speci
 
 
 | Data Type        | Usage                         | Description                                                  |
-| ---------------- | ----------------------------- | ------------------------------------------------------------ |
+|:----------------:|:----------------------------- |:------------------------------------------------------------ |
 | ((string))       | `type: 'string'`              | Any string (tolerates `null`).
 | ((number))       | `type: 'number'`              | Any number (tolerates `null`)
 | ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`)
