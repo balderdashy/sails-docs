@@ -17,10 +17,22 @@ module.exports = {
 };
 ```
 
+### Built-in Data Types
 
-### Validation Rules
+Every attribute definition must have a built-in data type (or _typeclass_) specified.  This is used for logical validation and coercion of results and criteria.
 
-The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [validator.js](https://github.com/chriso/validator.js), a robust validation library for Node.js.
+
+| Data Type        | Usage                         | Description                                                  |
+| ---------------- | ----------------------------- | ------------------------------------------------------------ |
+| ((string))       | `type: 'string'`              | Any string (tolerates `null`).
+| ((number))       | `type: 'number'`              | Any number (tolerates `null`)
+| ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`)
+| ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries, and `null`.
+| ((array))        | `type: 'array'`               | Any array consisting solelyof JSON-serializable contents.   |
+
+Different databases vary slightly in the way they handle edge cases and special values such as `Infinity`, `null`, strings of varying lengths, etc.  Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected typeclass.
+
+> Note that auto-migration also relies on the attribute's declared `type`. This is mainly relevant for schemaful databases (like MySQL or PostgreSQL), since the relevant adapter needs to use this information in order to alter/define tables during auto-migration.  Remember that in production, `migrate: 'safe'` will be enabled and auto-migration will be skipped.
 
 > In the table below, the "Compatible Attribute Type(s)" column shows what type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Coincidentally, the table below takes a few shortcuts:
 > - If compatible with ((string)), then the validation rule is also compatible with ((text)) and ((json)).
@@ -33,59 +45,60 @@ The following validation rules are handled by [Anchor](https://github.com/sailsj
 > - If compatible with ((array)), then the validation rule is also compatible with ((json)).
 
 
-| Name of Rule      | What It Checks      | Notes On Usage | Compatible Attribute Type(s) |
-|-------------------|---------------------|----------------|:----------------------------:|
-|after| Interpret incoming string as date and ensure that it refers to a moment _after_ the configured JavaScript `Date` instance. | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
-|alpha| Ensure incoming string contains only uppercase and/or lowercase letters.  | (i.e. `/a-z/i`) | ((string)) |
-|alphadashed|| does this `string` contain only letters and/or dashes? | ((string)) |
-|alphanumeric| check if `string` in this record contains only letters and numbers. | | ((string)) |
-|alphanumericdashed| does this `string` contain only numbers and/or letters and/or dashes? | | ((string)) |
-|array| is this a valid javascript `array` object? | strings formatted as arrays won't pass | ((array)) |
-|before| Only allow date strings that refer to a moment _before_ the configured JavaScript `Date` instance | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
-|binary| is this binary data? | If it's a string, it will always pass | ((string)) |
-|boolean| is this a valid javascript `boolean` ? | `string`s will fail | ((boolean)) |
-|contains| check if `string` in this record contains the seed | | ((string)) |
-|creditcard| check if `string` in this record is a credit card | | ((string)) |
-|date| check if `string` in this record is a date | takes both strings and javascript | ((string)) |
-|datetime| check if `string` in this record looks like a javascript `datetime`| | ((string)) |
-|decimal| | contains a decimal or is less than 1?| ((number)) |
-|email| check if `string` in this record looks like an email address | | ((string)) |
-|empty| Arrays, strings, or arguments objects with a length of 0 and objects with no own enumerable properties are considered "empty" | lo-dash _.isEmpty() | ((json)) |
-|equals| check if `string` in this record is equal to the specified value | `===` ! They must match in both value and type | ((json)) |
-|falsey| Would a Javascript engine register a value of `false` on this? | | ((json)) |
-|finite| Checks if given value is, or can be coerced to, a finite number | This is not the same as native isFinite which will return true for booleans and empty strings | ((number)) or ((string)) |
-|float| check if `string` in this record is of the number type float | | ((number)) or ((string)) |
-|hexadecimal| check if `string` in this record is a hexadecimal number | | ((number)) or ((string)) |
-|hexColor| check if `string` in this record is a hexadecimal color | | ((string)) |
-|in| check if `string` in this record is in the specified array of allowed `string` values | | ((string)) |
-|int| Ensure incoming value is an integer, or is a string that looks like one. | This is an alias for the `integer` rule below. | ((number)) or ((string)) |
-|integer| Ensure incoming value is an integer, or is a string that looks like one. | | ((number)) or ((string)) |
-|ip| check if `string` in this record is a valid IP (v4 or v6) | | ((string)) |
-|ipv4| check if `string` in this record is a valid IP v4 | | ((string)) |
-|ipv6| check if `string` in this record is a valid IP v6 | | ((string)) |
-|is| Ensure incoming value matches the configured regular expression. | | ((string)) |
-|json| does a try&catch to check for valid JSON. | | ((json)) |
-|lowercase| is this string in all lowercase? | | ((string)) |
-|max| | | ((number)) |
-|maxLength| |  | ((string)) |
-|min| | | ((number)) |
-|minLength| | | ((string)) |
-|not| Ensure incoming value **does not** match the configured regular expression. | | ((string)) |
-|notContains| | | ((string)) |
-|notEmpty| |  | ((string)) |
-|notIn| Ensure incoming value **is not in** the configured array. | | ((string)) |
-|notNull| Ensure incoming value **is not** equal to `null` | | ((json)) |
-|null| Ensure incoming value **is `null`**. | | ((json)) |
-|numeric| Ensure incoming value is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
-|required| Ensure incoming value is defined; that is, **not `undefined`**. | | ((json)) |
-|string| Ensure incoming value is a string. | | ((string)) |
-|truthy| Ensure a Javascript engine would consider the incoming value `false` if used in an `if` statement. | | ((json)) |
-|uppercase| checks if `string` in this record is uppercase | | ((string)) |
-|url| Ensure incoming value is a URL. | | ((string)) |
-|urlish| Ensure incoming value looks vaguely like a URL of some kind. | `/^\s([^\/]+\.)+.+\s*$/g` | ((string)) |
-|uuid| checks if `string` in this record is a UUID (v3, v4, or v5) | | ((string)) |
-|uuidv3| checks if `string` in this record is a UUID (v3) | | ((string)) |
-|uuidv4| checks if `string` in this record is a UUID (v4) | | ((string)) |
+### Validation Rules
+
+The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a thin layer on top of [validator.js](https://github.com/chriso/validator.js), a robust validation library for Node.js.
+
+> In the table below, the "Compatible Attribute Type(s)" column shows what data type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Coincidentally, the table below takes a few shortcuts:
+> - If compatible with ((string)), then the validation rule is also compatible with ((json)).
+> - If compatible with ((number)), then the validation rule is also compatible with ((json)).
+> - If compatible with ((boolean)), then the validation rule is also compatible with ((json)).
+> - If compatible with ((array)), then the validation rule is also compatible with ((json)).
+
+
+| Name of Rule      | What It Checks For                                                                                                  | Notes On Usage               | Compatible Attribute Type(s) |
+|-------------------|:--------------------------------------------------------------------------------------------------------------------|------------------------------|:----------------------------:|
+|after              | A value that, when parsed as a date, refers to moment _after_ the configured JavaScript `Date` instance.            | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|alpha              | A value that contains only uppercase and/or lowercase letters.                                                      | `alpha: true`                | ((string)) |
+|alphadashed        | A value that contains only letters and dashes.                                                                      |  | ((string)) |
+|alphanumeric       | A value that contains only letters and numbers.                                                                     | | ((string)) |
+|alphanumericdashed | A value that is a string consisting of only letters, numbers, and/or dashes.                                        | | ((string)) |
+|before             | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|contains           | A value that contains the specified substring.                                                                      | `contains: 'needle'`   | ((string)) |
+|creditcard         | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you are not sure, do not store credit card numbers and use a payment API like [Stripe](https://stripe.com). | ((string)) |
+|datetime           | A value that can be parsed as a timestamp; i.e. would construct a JavaScript Date with `new Date()`                 |    | ((string)) |
+|_decimal_          | _Alias for `float`._ | | _alias_ |
+|email              | A value that looks like an email address. | | ((string)) |
+|finite             | A value that is, or can be coerced to, a finite number. | This is not the same as native isFinite which will return true for booleans and empty strings | ((number)) or ((string)) |
+|float              | A value that is, or can be coerced to, a floating point (aka decimal) number. | | ((number)) or ((string)) |
+|hexadecimal        | A value that is a hexadecimal number. | | ((number)) or ((string)) |
+|hexColor           | A value that is a hexadecimal color. | | ((string)) |
+|in                 | A value that is in the specified array of allowed strings. | | ((string)) |
+|_int_              | _Alias for `integer`.       |  | _alias_ |
+|integer            | A value that is an integer, or a string that looks like one. | | ((number)) or ((string)) |
+|ip                 | A value that is a valid IP address (v4 or v6) | | ((string)) |
+|ipv4               | A value that is a valid IP v4 address. | | ((string)) |
+|ipv6               | A value that is a valid IP v6 address. | | ((string)) |
+|_is_               | _Alias for `regex`_                               | | _alias_ |
+|lowercase          | A value that consists only of lowercase characters. | | ((string)) |
+|max                | A value that is less than the configured number. | | ((number)) |
+|maxLength          | A value that has no more than the configured number of characters. |  | ((string)) |
+|min                | A value that is greater than the configured number. | | ((number)) |
+|minLength          | A value that has at least the configured number of characters. | | ((string)) |
+|notRegex           | A value that **does not** match the configured regular expression. | | ((string)) |
+|notContains        | A value that does not contain the configured substring. | e.g. `'-haystack-needle-haystack-'` would fail validation against `notContains: 'needle'` | ((string)) |
+|notIn              | A value that **is not in** the configured array. | | ((string)) |
+|notNull            | A value that **is not** equal to `null` | | ((json)) |
+|numeric            | A value that is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
+|required           | A value that is defined; that is, **not `undefined`**. | | ((json)) |
+|regex              | A value that matches the configured regular expression. | | ((string)) |
+|truthy             | A value that would be considered truthy if used in a JavaScript `if` statement. | | ((json)) |
+|uppercase          | A value that is uppercase. | | ((string)) |
+|url                | A value that is a URL. | | ((string)) |
+|urlish             | A value that looks vaguely like a URL of some kind. | `/^\s([^\/]+\.)+.+\s*$/g` | ((string)) |
+|uuid               | A value that is a UUID (v3, v4, or v5) | | ((string)) |
+|uuidv3             | A value that is a UUID (v3) | | ((string)) |
+|uuidv4             | A value that is a UUID (v4) | | ((string)) |
 
 
 
