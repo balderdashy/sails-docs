@@ -80,7 +80,6 @@ The following validation rules are handled by [Anchor](https://github.com/sailsj
 |required| Ensure incoming value is defined; that is, **not `undefined`**. | | ((json)) |
 |string| Ensure incoming value is a string. | | ((string)) |
 |truthy| Ensure a Javascript engine would consider the incoming value `false` if used in an `if` statement. | | ((json)) |
-|undefined| Ensure incoming value is `undefined`. | | ((json)) |
 |uppercase| checks if `string` in this record is uppercase | | ((string)) |
 |url| Ensure incoming value is a URL. | | ((string)) |
 |urlish| Ensure incoming value looks vaguely like a URL of some kind. | `/^\s([^\/]+\.)+.+\s*$/g` | ((string)) |
