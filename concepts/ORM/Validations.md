@@ -44,7 +44,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage               | Compatible Attribute Type(s) |
-|-------------------|:--------------------------------------------------------------------------------------------------------------------|------------------------------|:----------------------------:|
+|:------------------|:--------------------------------------------------------------------------------------------------------------------|:-----------------------------|:----------------------------:|
 |after              | A value that, when parsed as a date, refers to moment _after_ the configured JavaScript `Date` instance.            | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
 |alpha              | A value that contains only uppercase and/or lowercase letters.                                                      | `alpha: true`                | ((string)) |
 |alphadashed        | A value that contains only letters and dashes.                                                                      |  | ((string)) |
