@@ -54,19 +54,19 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 |contains           | A value that contains the specified substring.                                                                      | `contains: 'needle'`   | ((string)) |
 |creditcard         | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
 |datetime           | A value that can be parsed as a timestamp; i.e. would construct a JavaScript Date with `new Date()`                 |    | ((string)) |
-|_decimal_          | _Alias for `float`._ | | _alias_ |
+|_decimal_          | _Alias for `float`._ | |  |
 |email              | A value that looks like an email address. | | ((string)) |
 |finite             | A value that is, or can be coerced to, a finite number. | This is not the same as native isFinite which will return true for booleans and empty strings | ((number)) or ((string)) |
 |float              | A value that is, or can be coerced to, a floating point (aka decimal) number. | | ((number)) or ((string)) |
 |hexadecimal        | A value that is a hexadecimal number. | | ((number)) or ((string)) |
 |hexColor           | A value that is a hexadecimal color. | | ((string)) |
 |in                 | A value that is in the specified array of allowed strings. | | ((string)) |
-|_int_              | _Alias for `integer`._       |  | _alias_ |
+|_int_              | _Alias for `integer`._       |  |  |
 |integer            | A value that is an integer, or a string that looks like one. | | ((number)) or ((string)) |
 |ip                 | A value that is a valid IP address (v4 or v6) | | ((string)) |
 |ipv4               | A value that is a valid IP v4 address. | | ((string)) |
 |ipv6               | A value that is a valid IP v6 address. | | ((string)) |
-|_is_               | _Alias for `regex`._                               | | _alias_ |
+|_is_               | _Alias for `regex`._                               | |  |
 |lowercase          | A value that consists only of lowercase characters. | | ((string)) |
 |max                | A value that is less than the configured number. | | ((number)) |
 |maxLength          | A value that has no more than the configured number of characters. |  | ((string)) |
