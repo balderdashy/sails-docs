@@ -34,15 +34,6 @@ Different databases vary slightly in the way they handle edge cases and special 
 
 > Note that auto-migration also relies on the attribute's declared `type`. This is mainly relevant for schemaful databases (like MySQL or PostgreSQL), since the relevant adapter needs to use this information in order to alter/define tables during auto-migration.  Remember that in production, `migrate: 'safe'` will be enabled and auto-migration will be skipped.
 
-> In the table below, the "Compatible Attribute Type(s)" column shows what type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Coincidentally, the table below takes a few shortcuts:
-> - If compatible with ((string)), then the validation rule is also compatible with ((text)) and ((json)).
-> - If compatible with ((integer)), then the validation rule is also compatible with ((number)) and ((json)).
-> - If compatible with ((float)), then the validation rule is also compatible with ((number)) and ((json)).
-> - If compatible with ((number)), then the validation rule is also compatible with ((json)).
-> - If compatible with ((boolean)), then the validation rule is also compatible with ((json)).
-> - If compatible with ((date)), then the validation rule is also compatible with ((datetime)).
-> - If compatible with ((time)), then the validation rule is also compatible with ((datetime)).
-> - If compatible with ((array)), then the validation rule is also compatible with ((json)).
 
 
 ### Validation Rules
