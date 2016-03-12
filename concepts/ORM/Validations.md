@@ -61,12 +61,12 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 |hexadecimal        | A value that is a hexadecimal number. | | ((number)) or ((string)) |
 |hexColor           | A value that is a hexadecimal color. | | ((string)) |
 |in                 | A value that is in the specified array of allowed strings. | | ((string)) |
-|_int_              | _Alias for `integer`.       |  | _alias_ |
+|_int_              | _Alias for `integer`._       |  | _alias_ |
 |integer            | A value that is an integer, or a string that looks like one. | | ((number)) or ((string)) |
 |ip                 | A value that is a valid IP address (v4 or v6) | | ((string)) |
 |ipv4               | A value that is a valid IP v4 address. | | ((string)) |
 |ipv6               | A value that is a valid IP v6 address. | | ((string)) |
-|_is_               | _Alias for `regex`_                               | | _alias_ |
+|_is_               | _Alias for `regex`._                               | | _alias_ |
 |lowercase          | A value that consists only of lowercase characters. | | ((string)) |
 |max                | A value that is less than the configured number. | | ((number)) |
 |maxLength          | A value that has no more than the configured number of characters. |  | ((string)) |
