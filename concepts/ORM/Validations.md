@@ -52,7 +52,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 |alphanumericdashed | A value that is a string consisting of only letters, numbers, and/or dashes.                                        | | ((string)) |
 |before             | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
 |contains           | A value that contains the specified substring.                                                                      | `contains: 'needle'`   | ((string)) |
-|creditcard         | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you are not sure, do not store credit card numbers and use a payment API like [Stripe](https://stripe.com). | ((string)) |
+|creditcard         | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
 |datetime           | A value that can be parsed as a timestamp; i.e. would construct a JavaScript Date with `new Date()`                 |    | ((string)) |
 |_decimal_          | _Alias for `float`._ | | _alias_ |
 |email              | A value that looks like an email address. | | ((string)) |
