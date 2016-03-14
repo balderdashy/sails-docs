@@ -30,6 +30,10 @@ Sails runs some of these tasks (the ones in the `tasks/register` folder) automat
 
 Runs the `default` task (`tasks/register/default.js`).
 
+###### `sails lift --staging`
+
+Runs the `staging` task (`tasks/register/staging.js`).
+
 ###### `sails lift --prod`
 
 Runs the `prod` task (`tasks/register/prod.js`).
@@ -38,10 +42,19 @@ Runs the `prod` task (`tasks/register/prod.js`).
 
 Runs the `build` task (`tasks/register/build.js`).
 
+###### `sails www --staging` (staging)
+
+Runs the `buildStaging` task (`tasks/register/buildStaging.js`).
+
 ###### `sails www --prod` (production)
 
 Runs the `buildProd` task (`tasks/register/buildProd.js`).
 
+NOTE: You can also run these tasks with NODE_ENV set.
+
+- NODE_ENV=staging sails lift (runs the app in staging mode)
+- NODE_ENV=production sails lift --staging (runs the app in staging mode with NODE_ENV set to production)
+  - You may want to do this to access the production features of the sails pipleine while still using the your config/env/staging.js configuration.
 
 ### Can I customize this for SASS, Angular, client-side Jade templates, etc?
 
