@@ -56,7 +56,7 @@ initialize: function(cb) {
       // Then call cb()
       return cb();
 
-   }
+   });
 }
 ```
 
@@ -72,7 +72,7 @@ initialize: function(cb) {
       // Then call cb()
       return cb();
 
-   }
+   });
 }
 ```
 
