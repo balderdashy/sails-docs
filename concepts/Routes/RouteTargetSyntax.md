@@ -174,6 +174,22 @@ However, you will always want to chain the policy to at least one other type of 
 
 This will apply the **myPolicy** policy to the route and, if it passes, continue by running the **find** blueprint for the **User** model.
 
+#### Function target syntax
+
+For quick-and-dirty jobs (useful for quick tests), you can assign a route directly to a function:
+```
+'/foo': function(req, res) {res.send("FOO!");}
+```
+
+You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
+```
+'/foo/*': {
+   fn: function(req, res) {res.send("FOO!");},
+   skipAssets: true
+```
+
+Best practice is to use the function syntax only for temporary routes, since it goes against the MVC structure that makes Sails useful!
+
 ### Route target options
 
 In addition to the options discussed in the various route target syntaxes above, any other property you add to a route target object will be passed through to the route handler in the `req.options` object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.
