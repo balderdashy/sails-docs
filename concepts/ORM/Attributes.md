@@ -27,6 +27,9 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - binary
 - array
 - json
+- mediumtext
+- longtext
+- objectid
 
 ###### defaultsTo
 
