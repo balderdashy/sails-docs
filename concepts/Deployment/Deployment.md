@@ -95,7 +95,7 @@ Protecting against CSRF is an important security measure for Sails apps.  If you
 
 ##### Enable SSL
 
-If your API or website does anything that requires authentication, you should use SSL in prouduction.  To configure your Sails app to use an SSL certificate, use [`sails.config.ssl`](http://sailsjs.org/documentation/reference/configuration/sails-config).
+If your API or website does anything that requires authentication, you should use SSL in production.  To configure your Sails app to use an SSL certificate, use [`sails.config.ssl`](http://sailsjs.org/documentation/reference/configuration/sails-config).
 
 > As mentioned above, ignore this step if your app will be running behind a load balancer or proxy.
 
