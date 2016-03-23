@@ -17,7 +17,7 @@ These methods are implemented using a built-in instance of [Socket.io](http://so
 | [`.getId()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/get-id)        | Parse the socket ID from an incoming socket request (`req`).
 | [`.join()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/join)        | Subscribe a socket to a room.
 | [`.leave()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/leave)        | Unsubscribe a socket from a room.
-| [`.leaveAll()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast)        | Unsubscribe all members of one room from that room _and_ from every other room they are currently subscribed to; except the automatic room with the same name as each socket ID.
+| [`.leaveAll()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/leave-all)        | Unsubscribe all members of one room from that room _and_ from every other room they are currently subscribed to; except the automatic room with the same name as each socket ID.
 | [`.removeRoomMembersFromRooms()`](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/remove-room-members-from-rooms)        | Unsubscribe all members of a room from one or more other rooms.
 
 
