@@ -28,7 +28,7 @@ Zookeeper.find().exec(function afterFind(err, zookeepers) {
 ```
 
 
-In this example, the call to `Zookeeper.find()` returns a query instance, but _doesn't actually do anything yet_.  The query will not actually run until you call the `.exec()` method (or `.then()` and `.catch()` methods) of that query instance.
+In this example, the call to `Zookeeper.find()` returns a query instance, but _doesn't actually do anything yet_.  The query is not actually executed until its `.exec()` method is called.
 
 
 
