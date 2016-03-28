@@ -25,7 +25,7 @@ query.exec(function afterwards(err, result) {
 
 
 
-### Example Usage
+### Example
 
 ```javascript
 Zookeeper.find().exec(function (err, zookeepers) {
