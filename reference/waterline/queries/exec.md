@@ -1,23 +1,51 @@
-# .exec(`callback`)
-### Purpose
-This is run at the end of a chain of stringable methods.  It signals the adapter to run the query.
-#### Parameters
-|     |     Description     | Accepted Data Types | Required ? |
-|-----|---------------------|---------------------|------------|
-| 1   |  Callback           |      `function`     | Yes        |
-#### Callback Parameters
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Data Returned      | `{}`, `[{}]`, `int` |
-### Example Usage
-```javascript
-// refer to any of the examples above
-```
-### Notes
-> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+# .exec()
 
-> If you don't run .exec(), your query will not execute.
+Execute a Waterline [query instance](http://sailsjs.org/documentation/reference/waterline-orm/queries).
+
+```javascript
+query.exec(function (err, result) {
+
+});
+```
+
+### Usage
+
+|   |     Argument        | Type                                         | Details                            |
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
+| 1 |    callback         | ((function))                                 | The Node-style callback that will be called when the query completes; successfully or otherwise.
+
+##### Callback
+
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 2 |    result           | ((JSON))            | The result from the database.  Exact data type depends on the query.  If an error occurred (i.e. `err` is truthy), then this result argument should be ignored.
+
+
+
+
+
+### Example Usage
+
+```javascript
+Zookeeper.find().exec(function (err, zookeepers) {
+  if (err) {
+    // uh oh
+    // (handle error; e.g. `return res.negotiate()`)
+    return;
+  }
+
+  // would you look at all those zookeepers?
+  // (now let's do the next thing;
+  //  e.g. `_.reduce(zookeepers, ...)` and/or `return res.json(zookeepers)`)
+});
+//
+// (don't put code out here)
+```
+
+
+### Notes
+> If you don't run `.exec()` or use promises, your query will not execute. For help using `.exec()` with model methods like `.find()`, read more about the [chainable query object](http://sailsjs.org/documentation/reference/waterline-orm/queries).
 
 
 
