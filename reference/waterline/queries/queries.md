@@ -1,12 +1,13 @@
 # Working with Queries
 
-**Query objects** (aka _query instances_) are the chainable deferred objects returned from model methods like `.find()` and `.create()`.
+**Query objects** (aka _query instances_) are the chainable deferred objects returned from model methods like `.find()` and `.create()`.  They represent a not-quite-yet-fulfilled intent to fetch or modify records from the database.
+
 
 ```js
 var query = Zookeeper.find();
 ```
 
-The purpose of query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire. Then, when you're ready to fire the query off to the database(s), you can just call [`.exec()`](http://sailsjs.org/documentation/reference/waterline/queries/exec.html) (or if you are using promises, `.then()`).
+The purpose of query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire. Then, when you're ready to fire the query off to the database, you can just call [`.exec()`](http://sailsjs.org/documentation/reference/waterline/queries/exec.html) (or if you are using promises, `.then()`).
 
 Most of the time, you won't think about query instances as objects _per se_, rather as just another part of the syntax for communicating with the database.  In fact, you may already be using these objects in your Sails app! If so, the following syntax should look familiar:
 
