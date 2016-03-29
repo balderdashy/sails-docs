@@ -6,7 +6,7 @@ For a conceptual overview of Blueprints, see the [Blueprints concept section](ht
 
 ### Activating/Deactivating Blueprints in your App
 
-The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.Resourcful
+The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
 ##### RESTful routes
 
