@@ -179,7 +179,7 @@ module.exports = {
   attributes: {
 
     firstName: {
-      // Note that a base type (in this case "json") still has to be defined, even though validation rules are in use.
+      // Note that a base type (in this case "string") still has to be defined, even though validation rules are in use.
       type: 'string',
       required: true,
       minLength: 5,
