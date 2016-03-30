@@ -78,7 +78,7 @@ Along with the built-in RESTful actions provided by Sails, you can create your o
 GET /myRoute: {blueprint: 'foo'}
 ```
 
-### Blueprints and Resourcful Pubsub
+### Blueprints and Resourceful Pubsub
 
 ##### Blueprints and `.subscribe()`
 
