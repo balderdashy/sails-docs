@@ -14,7 +14,7 @@ The easiest way to add configuration to your Sails app is by modifying the files
 
 But sometimes, you don't want to check certain configuration information in to your repository.  **The best place to put this kind of configuration is in environment variables.**
 
-That said, for development, using environment variables can sometimes be kind of awkward.  So for your other deployment/machine-specific settings, namely any kind of credentials you want to keep private, you should use either environment variables or your `config/local.js` file.  This file is included in your `.gitignore` file by default so you don't inadvertently commit your credentials to your code repository.
+That said, for development (e.g. on your laptop) using environment variables can sometimes be kind of awkward.  So for your other deployment/machine-specific settings, namely any kind of credentials you want to keep private, you can also use your `config/local.js` file.  This file is included in your `.gitignore` file by default-- this helps prevent you from inadvertently commiting your credentials to your code repository.
 
 **config/local.js**
 ```javascript
