@@ -49,11 +49,10 @@ module.exports.http = {
 
   },
 
-  // The number of seconds to cache flat files on disk being served by
-  // Express static middleware (by default, these files are in `.tmp/public`)
-  //
-  // The HTTP static cache is only active in a 'production' environment,
-  // since that's the only time Express will cache flat-files.
+  // The number of milliseconds to cache static assets in production.
+  // These are any flat files like images, scripts, styleshseets, etc.
+  // that are served by the static middleware.  By default, these files
+  // are served from `.tmp/public`, a hidden folder compiled by Grunt.
   cache: 31557600000
 };
 
