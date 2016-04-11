@@ -72,7 +72,7 @@ Any session adapter written for Connect/Express works in Sails, as long as you u
 For example, to use Mongo as your session store, install [connect-mongo](https://github.com/kcbanner/connect-mongo):
 
 ```bash
-npm install connect-mongo@0.8.2 --save --save-exact
+npm install connect-mongo@1.1.0 --save --save-exact
 ```
 
 Then set the your `adapter` in `config/session.js`:
@@ -93,7 +93,7 @@ The following values are optional, and should only be used if relevant for your 
 
 
 > **Notes:**
-> * When using Node version <= 0.12.x, install `connect-mongo` version 0.8.2.  For Node version >= 4.0, install `connect-mongo` >= 1.0
+> * When using Node version <= 0.12.x, install `connect-mongo` version 0.8.2.  For Node version >= 4.0, install `connect-mongo` version `1.1.0`.
 > * If you run into kerberos-related issues when using the MongoDB as your session store or the database for one or more of your app's models, be sure and have a look at the relevant [troubleshooting page](http://mongodb.github.io/node-mongodb-native/2.0/getting-started/installation-guide/#troubleshooting) in the Mongo docs.  Also see [#3362](https://github.com/balderdashy/sails/issues/3362) for more diagnostic information about using Kerberos with Mongo in your Sails app.
 
 
