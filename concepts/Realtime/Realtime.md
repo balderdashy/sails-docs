@@ -83,8 +83,8 @@ module.exports = {
 ### Reference
 
 * See the full reference for the [sails.io.js library](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-on) to learn how to use sockets on the client side to communicate with your Sails app.
-* See the [sails.sockets](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) reference to learn how to send messages from the server to connected sockets
-* See the [resourceful pub-sub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub) reference to learn how to use Sails blueprints to automatically send realtime messages about changes to your [models](http://sailsjs.org/documentation/concepts/models-and-orm/models).
+* See the [sails.sockets](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets) reference to learn how to send custom messages from the server to connected sockets.
+* See the [resourceful pub-sub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub) reference to learn how Sails' blueprint API automatically sends realtime messages about changes to your [models](http://sailsjs.org/documentation/concepts/models-and-orm/models).
 * Visit the [Socket.io](http://socket.io) website to learn more about the underlying library Sails uses for realtime communication
 
 <docmeta name="displayName" value="Realtime">
