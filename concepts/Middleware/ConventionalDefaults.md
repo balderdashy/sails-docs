@@ -6,7 +6,7 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
  :------------------------ |:------------
  **startRequestTimer**     | Allocates a variable in memory to hold the timestamp when the request began.  This can be accessed and used by your app to provide diagnostic information about slow requests.
  _cookieParser_ *          | Parses the cookie header into a clean object for use in subsequent middleware and your application code.
- _session_ *               | Sets up a unique session object using your [session configuration](http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html).
+ _session_ *               | Creates or loads a unique session object (`req.session`) for the requesting user agent based on their cookies and your [session configuration](http://sailsjs.org/documentation/reference/sails.config/sails.config.session.html).
  **bodyParser**            | Parses parameters and binary upstreams (for streaming file uploads) from the HTTP request body using [Skipper](https://github.com/balderdashy/skipper).
  **compress**              | Compresses response data using gzip/deflate. See [`compression`](https://github.com/expressjs/compression) for details.
  **methodOverride**        | Provides faux HTTP method support, letting you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it (e.g. legacy versions of Internet Explorer.)  If a request has a `_method` parameter set to `"PUT"`, the request will be routed as if it was a proper PUT request.  See [Connect's methodOverride docs](http://www.senchalabs.org/connect/methodOverride.html) for more information if you need it.
