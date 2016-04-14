@@ -113,7 +113,7 @@ In the above example we upload the file to .tmp/uploads. So how do we configure 
 
 ```javascript
 req.file('avatar').upload({
-  dirname: require('path').resolve(sails.config.appPath, '/assets/images')
+  dirname: require('path').resolve(sails.config.appPath, 'assets/images')
 },function (err, uploadedFiles) {
   if (err) return res.negotiate(err);
 
