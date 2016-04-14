@@ -10,11 +10,6 @@ Sails also utilizes an additional [configurable middleware stack](http://sailsjs
 > Note that this HTTP middleware stack is only used for "true" HTTP requests-- it is ignored for **virtual requests** (e.g. requests from a live Socket.io connection.)
 
 
-###### Legend:
-
-+ `*` - The middleware with an asterisk (*) above should _almost never_ need to be modified or removed. Please only do so if you really understand what you're doing.
-
-
 
 #### Adding or Overriding HTTP Middleware
 
