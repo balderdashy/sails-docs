@@ -53,6 +53,6 @@ sails.models.kitten.find.then(function(alltheKittens) {
 }).catch(function(err){
   //....
 });
-
+```
 
 <docmeta name="displayName" value="Models">
