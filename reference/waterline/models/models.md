@@ -48,7 +48,7 @@ sails.models.kitten.find().exec(function (err, allTheKittens) {
 ```
 `Using promises`
 ```javascript
-sails.models.kitten.find.then(function(alltheKittens) {
+sails.models.kitten.find().then(function(alltheKittens) {
   //.... 
 }).catch(function(err){
   //....
