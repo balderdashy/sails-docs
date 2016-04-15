@@ -9,10 +9,10 @@ The sections below provide a high level overview of what's changed, major bug fi
 Run the following command from the root of your Sails app:
 
 ```bash
-npm install sails@0.12.0 --force --save
+npm install sails@~0.12.0 --force --save
 ```
 
-The `--force` flag will override the existing Sails dependency installed in your `node_modules/` folder with Sails v0.12, and the `--save` flag will update your package.json file so that future npm installs will also use the new version.
+The `--force` flag will override the existing Sails dependency installed in your `node_modules/` folder with the latest patch release of Sails v0.12, and the `--save` flag will update your package.json file so that future npm installs will also use the new version.
 
 
 ## Things to do immediately after upgrading
