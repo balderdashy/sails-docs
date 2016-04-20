@@ -7,7 +7,7 @@ To create a new project hook:
 1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js).
 2. Create a folder with that name in your app&rsquo;s `api/hooks` folder.
 3. Add an `index.js` file to that folder.
-4. Write your hook code in `index.js` in accordance with the [hook specification](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec).
+4. Write your hook code in `index.js` in accordance with the [hook specification](http://sailsjs.org/documentation/concepts/extending-sails/hooks/hook-specification).
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.
 
