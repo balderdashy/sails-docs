@@ -4,3 +4,4 @@ Services can be thought of as libraries which contain functions that you might w
 
 <docmeta name="displayName" value="Services">
 
+For additional reference <a href="https://blog.sergiocruz.me/sailsjs-services-how-to-use-them-in-your-controllers/">https://blog.sergiocruz.me/sailsjs-services-how-to-use-them-in-your-controllers/</a>
