@@ -23,6 +23,26 @@ debugger listening on port 5858
 
 > To use the standard (command-line) node debugger with sails, you can always just run `node debug app.js`.
 
+### Use node-inspector
+
+To use node-inspector to debug Sails app, install node-inspector and launch it
+
+```sh
+$ npm install -g node-inspector
+$ node-inspector
+```
+
+Now you can lift your Sails app in debug mode 
+
+```sh
+$ sails debug
+```
+
+One the application is launched, visit the page http://127.0.0.1:8080?port=5858. Now you can request your app as usally on port 1337 and debug your code from the browser.
+
+> If you don't see your files in the browser at http://127.0.0.1:8080?port=5858 or if it's very slow to load, try to run node-inspector with --no-preload argument see [node-inspector](https://github.com/node-inspector/node-inspector) for more details
+
+
 
 <docmeta name="displayName" value="sails debug">
 <docmeta name="pageType" value="command">
