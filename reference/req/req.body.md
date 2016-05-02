@@ -11,6 +11,7 @@ req.body;
 
 ### Notes
 >+ If a request contains one or more file uploads, only the text parameters sent _**before**_ the first file parameter will be available in `req.body`.
+>+ When using the default [Skipper](https://github.com/balderdashy/skipper) body parser, this property will be `undefined` for GET requests.
 
 
 
