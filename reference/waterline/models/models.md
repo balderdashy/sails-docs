@@ -46,7 +46,13 @@ sails.models.kitten.find().exec(function (err, allTheKittens) {
   // if we'd left the global variable exposed.
 });
 ```
-
-
+### Using Promises
+```javascript
+sails.models.kitten.find().then(function(alltheKittens) {
+  //.... 
+}).catch(function(err){
+  //....
+});
+```
 
 <docmeta name="displayName" value="Models">
