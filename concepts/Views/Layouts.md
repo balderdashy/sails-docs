@@ -2,7 +2,7 @@
 
 When building an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout.  This [reduces the total amount of code](http://en.wikipedia.org/wiki/Don't_repeat_yourself) in your project and helps you avoid making the same changes in multiple files down the road.
 
-In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
+In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `pug` has its own layout system, with its own syntax.
 
 For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
 
@@ -41,7 +41,7 @@ privacy: function (req, res) {
 >
 > Sails supports the legacy `layouts` feature for convenience, backwards compatibility with Express 2.x and Sails 0.8.x apps, and in particular, familiarity for new community members coming from other MVC frameworks. As a result, layouts have only been tested with the default view engine (ejs).
 >
-> If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. Jade, handlebars, haml, dust) you&rsquo;ll want to set `layout:false` in [`sails.config.views`](http://sailsjs.org/documentation/reference/sails.config/sails.config.views.html), then rely on your view engine&rsquo;s custom layout/partial support.
+> If layouts aren&rsquo;t your thing, or (for now) if you&rsquo;re using a server-side view engine other than ejs, (e.g. pug, handlebars, haml, dust) you&rsquo;ll want to set `layout:false` in [`sails.config.views`](http://sailsjs.org/documentation/reference/sails.config/sails.config.views.html), then rely on your view engine&rsquo;s custom layout/partial support.
 
 
 
