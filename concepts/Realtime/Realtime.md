@@ -18,7 +18,7 @@ Connect a client-side socket to the server, subscribe to the `user` event, and r
 ```html
 <!-- Simply include the sails.io.js script, and a client socket will be created for you -->
 <script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
-<script type"text/javascript">
+<script type="text/javascript">
 // The automatically-created socket is exposed as io.socket.
 // Use .on() to subscribe to the 'user' event on the client.
 // This event is sent by the Sails "create", "update",
