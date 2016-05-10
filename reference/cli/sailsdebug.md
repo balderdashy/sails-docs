@@ -40,10 +40,9 @@ $ sails debug
 
 Once the application is launched, visit http://127.0.0.1:8080?port=5858. Now you can request your app as usual on port 1337 and debug your code from the browser.
 
-@TODO Add explanations about the role of the differents components
+> How it works? Node.js includes a debugger based on TCP protocol. When you're start your application using `sails debug`, Node.js runs your app and opens a socket on port `5858`. This socket allows external tool to interact with itself to control the debugger. Node-inspector, accessible via the port `8080`, is this kind of tool. 
 
-> If you don't see your files in the browser at http://127.0.0.1:8080?port=5858 or if it's very slow to load, try to run node-inspector with the `--no-preload` argument see [node-inspector](https://github.com/node-inspector/node-inspector) for more details
-
+> If you don't see your files in the browser at http://127.0.0.1:8080?port=5858 or if it's very slow to load, try to run node-inspector with the `--no-preload` argument. [See the node-inspector repo](https://github.com/node-inspector/node-inspector) for more details
 
 
 <docmeta name="displayName" value="sails debug">
