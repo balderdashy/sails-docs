@@ -10,7 +10,7 @@ To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`ta
 }
 ```
 
-### Can I customize this for SASS, Angular, client-side Jade templates, etc?
+### Can I customize this for SASS, Angular, client-side templates, etc?
 
 Yep! Just replace the relevant grunt task in your `tasks/` directory, or add a new one.  Like [SASS](https://github.com/sails101/using-sass) for example.
 
