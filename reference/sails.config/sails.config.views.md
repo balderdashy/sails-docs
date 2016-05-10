@@ -14,7 +14,7 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 
 ### Notes
 
-> + If your app is NOT using `ejs` (the default view engine) Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts when using a custom view engine like Jade or Handlebars, check out [that view engine's documentation](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
+> + If your app is NOT using `ejs` (the default view engine) Sails will function as if the `layout` option was set to `false`.  To take advantage of layouts when using a custom view engine like Pug or Handlebars, check out [that view engine's documentation](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
 > + As of Sails 0.12.0, app-wide locals from `sails.config.views.locals` are combined with any one-off locals you use with `res.view()` using a **shallow merge strategy**.  That is, if your app-wide locals configuration is `{foo: 3, bar: { baz: 'beep' } }`, and then you use `res.view({bar: 'boop'})`, your view will have access to `foo` (`3`) and `bar` (`'boop'`).
 
 
@@ -22,5 +22,3 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 
 <docmeta name="displayName" value="sails.config.views">
 <docmeta name="pageType" value="property">
-
-
