@@ -5,7 +5,7 @@ Sails is fully compatible with Express / Connect middleware - in fact, it's all 
 
 ### HTTP Middleware
 
-Sails also utilizes an additional [configurable middleware stack](http://sailsjs.org/documentation/concepts/Middleware?q=adding-or-overriding-http-middleware) just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
+Sails also utilizes an additional [configurable middleware stack](http://sailsjs.org/documentation/concepts/Middleware#adding-or-overriding-http-middleware) just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
 
 > Note that this HTTP middleware stack is only used for "true" HTTP requests-- it is ignored for **virtual requests** (e.g. requests from a live Socket.io connection.)
 
