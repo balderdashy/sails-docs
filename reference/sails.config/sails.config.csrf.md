@@ -14,7 +14,7 @@ This allows you to have certainty that your users' requests haven't been hijacke
 | `csrf`      | ((boolean)) or ((dictionary))| false     | CSRF protection is disabled by default to facilitate development.  To turn it on, just set `sails.config.csrf` to true, or for more flexibility, specify a dictionary with any of the properties described below.
 | `csrf.grantTokenViaAjax`      | ((boolean))| true     | Whether to activate the **/csrfToken** route, which will return the current CSRF token value which can then be used in AJAX requests.
 | `csrf.origin`| ((string)) | '' | Comma-delimited list of origins that are allowed to access the CSRF token via the **/csrfToken** shadow route.  This is separate from the other [CORS](http://sailsjs.org/documentation/reference/sails.config/sails.config.cors.html) settings, which *do not apply* to **/csrfToken**.
-| `csrf.routesDisabled`| ((string)) | '' | Comma-delimited list of routes where CSRF protection is disabled.
+| `csrf.routesDisabled`| ((string)) or ((regexp)) or ((array)) | '' | Comma-delimited list of routes or array of regexp/express-style-path where CSRF protection is disabled.
 
 
 <docmeta name="displayName" value="sails.config.csrf">
