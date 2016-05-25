@@ -8,6 +8,12 @@ Sails comes with a simple, built-in logger called [`captains-log`](https://githu
 ### Configuration
 Sails' log configuration is determined by [`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log), which is conventionally set by a generated configuration file ([`config/log.js`](http://sailsjs.org/documentation/anatomy/my-app/config/log-js)) in new Sails projects out of the box.
 
+### Usage
+
+```
+sails.log.error(new Error("Doh, got an error :/"));
+sails.log.debug("I am a debug message");
+```
 
 ### Log levels
 
