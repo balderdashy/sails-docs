@@ -75,18 +75,23 @@ In most cases, the answer is to install the Express middleware as a custom HTTP 
 You can also include Express middleware as a policy- just configure it in [`config/policies.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
 
 ```js
-{
+var auth = require('http-auth');
+var basic = auth.basic({
+        realm: "admin area"
+    }, function (username, password, onwards) {
+        onwards(username === "Tina" && password === "Bullock");
+    }
+});
+
+//...
+module.exports.policies = {
   '*': true,
 
   ProductController: {
 
     // Prevent end users from doing CRUD operations on products reserved for admins
     // (uses HTTP basic auth)
-    '*': require('http-auth')({
-      realm: 'admin area'
-    }, function customAuthMethod (username, password, onwards) {
-      return onwards(username === "Tina" && password === "Bullock");
-    }),
+    '*': auth.connect(basic),
 
     // Everyone can view product pages
     show: true
