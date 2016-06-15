@@ -44,7 +44,6 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 
 ##### Deploying to Heroku?
 
-+ [Sails.js and Heroku](http://pburtchaell.com/2015/sails/)
 + [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
 + [Sails.js on Heroku](http://vort3x.me/sailsjs-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
