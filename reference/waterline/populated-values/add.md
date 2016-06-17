@@ -1,58 +1,46 @@
-# * .add( `primary key` )
-### Purpose
-Used to add records to the join table that is automatically generated during a Many-to-Many association.  It accepts either the primary key of the model instance (defaults to record ID) or a new record (object) that you want created and to be associated with.
+# .add()
 
-### Overview
-#### Parameters
+Add one or more records to a collection in your database.
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |    Records    | `{}`, `string`, `int`  | Yes |
-
-
-### Example Usage
+This adds record(s) to the join table that is automatically generated for a collection association (i.e. Many-to-Many).  It accepts either the primary key of the record (string or number) or the data for a new record (dictionary/object).  If a dictionary is specified, it will be used to create a new record and automatically associate it as a member of this collection association.
 
 ```javascript
-User.find({name:'Mike'}).populate('pets').exec(function(e,r){
-  r[0].pets.add(7);
-  r[0].save(function(err,res){
-    console.log(res);
-  }
-});
+.add(recordsToAdd);
+// Don't forget to call `.save()`!
+```
 
-/*
+### Usage
 
-{ pets:
-   [ { name: 'Pinkie Pie',
-       color: 'pink',
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Rainbow Dash',
-       color: 'blue',
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Applejack',
-       color: 'orange',
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Mike',
-  age: 16,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 19:30:54 GMT-0600 (CST),
-  id: 7 }
+|   |     Argument        | Type                                                  | Details                            |
+|---|:--------------------|-------------------------------------------------------|:-----------------------------------|
+| 1 | recordsToAdd        | ((number)), ((string)), ((dictionary)), ((array))     | The primary key of the record to add, an array of primary keys of records to add, or a dictionary of data representing a new record to create and then add.
 
-*/
 
+### Example
+
+To give a user named Finn in the database a pet named Jake:
+
+```javascript
+User.findOne({name:'Finn'}).populate('pets').exec(function(err, finn){
+  if (err) { return res.serverError(err); }
+  if (!finn) { return res.notFound('Could not find a user named Finn.'); }
+  
+  Pet.findOne({name:'Jake'}).exec(function (err, jake){
+    if (err) { return res.serverError(err); }
+    if (!jake) { return res.notFound('Could not find a pet named Jake.'); }
+    
+    finn.pets.add(jake.id);
+    finn.save(function(err){
+      if (err) { return res.serverError(err); }
+      return res.ok();
+    });//</save()>
+  });//</Pet.findOne()>
+});//</User.findOne()>
 ```
 
 
-
 ### Notes
-> + Any string arguments passed must be the primary key of the record.
-> + `.add()` alone won't actually persist the change in associations to the databse.  You should call `.save()` after using `.add()` or `.remove()`.
+> + `.add()` alone won't actually persist the change in associations to the database.  You should call `.save()` after using `.add()` or `.remove()`.
 > + Attempting to add an association that already exists will throw an error. [See here for an example.](https://github.com/balderdashy/waterline/issues/352)
 
 
