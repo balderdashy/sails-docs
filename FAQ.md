@@ -106,7 +106,7 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 ================================================================================
 
 
-###### <img height="30" title="appendTo: Full Stack JavaScript on Sails" alt="appendTo logo" src="http://appendto.com/wp-content/uploads/2013/10/appendTo-logo.png"/>
+###### <img height="30" title="appendTo: Full Stack JavaScript on Sails" alt="appendTo logo" src="http://appendto.com/wp-content/themes/academy/images/logo.png"/>
 
 <!-- Social media links - I'll leave these here for you guys to fill in later -->
 <!--
@@ -139,8 +139,14 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 
 > + If you are the author of a tutorial or guide about Sails, please send us a pull request editing this file.  We'll check it out!
 
++ [The busy JavaScript developer's guide to Sails.js](https://www.ibm.com/developerworks/library/wa-build-deploy-web-app-sailsjs-1-bluemix/index.html) -- 4-part series from IBM developerWorks. (Also available in [Chinese](http://www.ibm.com/developerworks/cn/web/wa-build-deploy-web-app-sailsjs-1-bluemix/) and [Japanese](http://www.ibm.com/developerworks/jp/web/library/wa-build-deploy-web-app-sailsjs-1-bluemix/).)
++ [Guest Post on Segment.io Blog: Webhooks with Slack, Segment, and Sails.js/Treeline](https://segment.com/blog/segment-webhooks-slack/)
++ [Twitter Dev Blog: Guest Post: Twitter Sign-In with Sails.js/Treeline](https://blog.twitter.com/2015/guest-post-twitter-sign-in-with-treelineio)
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC.
++ [Jorge Casar: Introduccion a Sails.js](https://www.youtube.com/watch?v=7_zUNTtXtcg)
++ [Postman Blog: Manage your Sails.js server bootstrap code](http://blog.getpostman.com/2015/08/28/manage-your-sailsjs-server-bootstrap-code/)
 + [Sails.js Development channel on Medium](https://medium.com/sails-js-development/)
++ [Sails.js Course on Plurasight](https://www.pluralsight.com/courses/two-tier-enterprise-app-api-development-angular-sails)
 + [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
 + [Intro to Sails.js](https://www.youtube.com/watch?v=GK-tFvpIR7c) screencast
 + Intro to Sails.js - talk @ NodePDX
@@ -161,20 +167,49 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 
 ### How can I convince the other girls/guys on my team?
 
-###### Articles / interviews / press releases / whitepapers
+###### Articles / interviews / press releases / whitepapers / talks
 
 > + If you are the author of an article about Sails, please send us a pull request editing this file.  We'll check it out!
 > + If you are a company interested in doing a press release about Sails, please contact @mikermcneil on Twitter (and er.. remind him if necessary!)  We'll do what we can to help.
 
++ [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
++ [InfoWorld: Why Node.js beats Java and .Net for web, mobile, and IoT apps](http://www.infoworld.com/article/2975233/javascript/why-node-js-beats-java-net-for-web-mobile-iot-apps.html) _(Speed, scalability, productivity, and developer politics all played a role in [AnyPresence](http://anypresence.com)’s selection of Sails.js/Node.js for its enterprise development platform)_
++ [Anypresence & Node.js](http://www.anypresence.com/blog/2015/03/06/anypresence-nodejs/)
++ [TechCrunch: Sails.js Funded by Y-Combinator](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/)
++ [TechRepublic: Build Robust Applications with the Node.js MVC framework](http://www.techrepublic.com/article/build-robust-node-applications-with-the-sails-js-mvc-framework/)
++ [Mike's interview w/ @freddier and @cvander from Platzi](https://www.youtube.com/watch?v=WN0YgPdPbRE)
++ [Smashing Magazine: Sailing with Sails.js](https://www.smashingmagazine.com/2015/11/sailing-sails-js-mvc-style-framework-node-js/)
++ [Presentation at Smart City Conference & Expo 2015](http://www.goodxense.com/blog/post/our-presentation-at-smart-city-conference-expo-2015/) (George Lu & YJ Yang)
++ Sails.js, Treeline and the future of programming  ([Article](https://courses.platzi.com/blog/sails-js-creator-mike-mcneil-on-treeline-and-frameworks/) | [Video](https://www.youtube.com/watch?v=nZKG7hLhbRs) | [Deck](https://speakerdeck.com/mikermcneil/what-even-is-software))
++ [Radio interview with Mike McNeil w/ ComputerAmerica's Craig Crossman](https://www.youtube.com/watch?v=ERIvf2iUj5U&feature=youtu.be)
++ [UI-First API Design & Development: Apigee's I <3 APIs, San Francisco, 2015](https://speakerdeck.com/mikermcneil/i-love-apis)
++ [Choosing the right framework for Node.js development](https://jaxenter.com/choosing-the-right-framework-for-node-js-development-126432.html)
++ [TechCrunch: Our 10 Favorite Companies From Y Combinator Demo Day](https://techcrunch.com/gallery/our-10-favorite-companies-from-y-combinator-demo-day-day-1/slide/11/)
++ [Sails.js used on the website for the city of Paris](https://twitter.com/parisnumerique/status/617999231182176256)
++ [Pulling the Plug: dotJS (Paris, 2014)](http://www.thedotpost.com/2014/11/mike-mcneil-pulling-the-plug)
++ [From Rags to Open Source](https://speakerdeck.com/mikermcneil/all-things-open) (All Things Open, Raleigh, 2014)
++ SxSW Conference, Austin, TX: ([2014](https://speakerdeck.com/mikermcneil/2014-intro-to-sails-v0-dot-10-dot-x) | [2015](https://speakerdeck.com/mikermcneil/sxsw-2015))
++ [Scott Gress at NYC Code Camp: United Nations, 2015]()
++ [More talks by Mike and the Sails.js core team](http://lanyrd.com/profile/mikermcneil/)
++ [Dessarolo Web: Interview w/ Mike McNeil](https://www.youtube.com/watch?v=XMpf44oV2Og) (Spanish & English--English starts at 1:30)
++ [CapitalOne blog: Contrasting Enterprise Node.js Frameworks](http://www.capitalone.io/blog/contrasting-enterprise-nodejs-frameworks/) (by [Azat Mardan](https://www.linkedin.com/in/azatm), author of the book "Pro Express.js")
++ [Alternatives to MongoDB (Chinese article)](http://www.infoq.com/cn/news/2015/07/never-ever-mongodb)
++ [Introducción a Sails.js, un framework para crear aplicaciones realtime](https://abalozz.es/introduccion-a-sails-js-un-framework-para-crear-aplicaciones-realtime/)
 + [Austin startup finds success in responsive design](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html?ana=twt)
 + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
++ [Intro to Sails.js :: Node.js Conf: Italy, 2014](http://2014.nodejsconf.it/)
 + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
++ [Recent tweets about Sails.js](https://twitter.com/search?f=realtime&q=treelinehq%20OR%20%40treelinehq%20OR%20%23treelinehq%20OR%20%23treeline%20OR%20treeline.io%20OR%20sailsjs.org%20OR%20github.com%2Fbalderdashy%2Fsails%20OR%20sailsjs%20OR%20sails.js%20OR%20%23sailsjs%20OR%20%40sailsjs&src=typd)
++ [How to use more open source](https://18f.gsa.gov/2014/11/26/how-to-use-more-open-source/) _(18F is an office inside the U.s. General Services Administration that helps other federal agencies build, buy, and share efficient and easy-to-use digital services.)_
++ [18f Open Source Hack Series: Midas](https://18f.gsa.gov/2014/10/01/open-source-hack-series-midas/)
 + [Sails.js featured in 5 Minutes of JavaScript](http://five-js.envylabs.com/episodes/8-episode-8-december-19th-2013/stories/52-sails-js)
++ [Express Web Server Advances in Node.js Ecosystem](https://adtmag.com/articles/2016/02/11/express-joins-node.aspx) ([auch auf Deutsch](http://www.heise.de/developer/meldung/IBM-uebergibt-JavaScript-Webframework-Express-an-Node-js-Foundation-3099223.html))
 + [Sails.js - Awesome MVC for Node.js] (http://sethetter.com/sails-js/)
 + Interview w/ Tim Heckel [on InfoQ](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [Case Technical Blog](http://casestaffingsolutions.com/wordpress/?tag=sails-js)
 + [Sails.js - Une Architecture MVC pour applications real-time Node.js] (http://www.lafermeduweb.net/billet/sails-js-une-architecture-mvc-pour-applications-real-time-node-js-1528.html)
 + [Hacker News](https://news.ycombinator.com/item?id=5373342)
++ [Intro to Sails.js :: Node PDX, Portland, 2014](https://compositecode.com/2013/05/15/node-pdx-introducing-adam-baldwin-james-halliday-ryan-jarvinen-mike-mcneil-and-horse-js/) ([Slides](http://www.slideshare.net/michaelrmcneil/node-pdx))
 + [Sail.js : un framework MVC pour Node.js](http://javascript.developpez.com/actu/52729/Sail-js-un-framework-MVC-pour-Node-js/)
 + [Sails.js — Build custom, enterprise-level Node.js apps](http://codevisually.com/sails-js-build-custom-enterprise-level-node-js-apps/)
 + [Build Custom & Enterprise Node.js Apps with Sails.js](http://www.webappers.com/2013/03/29/build-custom-enterprise-node-js-apps-with-sails-js/)
@@ -182,6 +217,7 @@ Sails was built by the team behind [Balderdash](http://balderdash.co/), an inter
 + [Sails 0.8.9: A Rails-Inspired Real-Time Node MVC Framework](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [30 Fresh jQuery Tools and Plugins](http://www.splashnology.com/article/30-fresh-jquery-tools-and-plugins/8865/)
 + [Node.js の MVCフレームワーク Sails.js が良さげなので少し試してみた] (http://nantokaworks.com/?p=1101)
++ [InfoWorld: 13 fabulous frameworks for Node.js](http://www.infoworld.com/article/3064653/application-development/13-fabulous-frameworks-for-nodejs.html#slide9)
 + [New web design tools that you need to check out](http://www.designyourway.net/blog/resources/new-web-design-tools-that-you-need-to-check-out/)
 + [Live code Sails.js avec Mike McNeil](http://www.weezevent.com/live-code-sailsjs-avec-mike-mcneil)
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
