@@ -1,10 +1,10 @@
 # Blueprint Actions
 
-Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Blueprint actions (não confunda com blueprint action *routes*) são ações genéricas desenvolvidas para funcionar com qualquer um dos seus controllers que tenham um model com o mesmo nome (ex: `AnimalController` precisaria de um `Animal` model). Pense neles como um comportamento padrão para sua aplicação. For exemplo, se você tem um model `Usuario.js` e um controller `UsuarioController.js` vazio, as ações `find`, `create`, `update`, `destroy`, `populate`, `add` e `remove` existiriam implicitamente, sem que você tenha que codificá-las.
 
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own custom blueprint action. (e.g. `api/blueprints/create.js`).
+Por padrão, as rotas RESTful blueprint e as shortcut routes (rotas atalho) estão conectadas a uma ação blueprint correspondente. De qualquer forma, qualquer blueprint action pode ser sobrescrita por um controller apenas criando uma ação customizada no arquivo do controller (ex: `AnimalController.find`). Como alternativa você pode sobrescrever a blueprint action _algumaCoisa na sua aplicação simplesmente criando suas próprias blueprint actions customizadas. (ex: `api/blueprints/create.js`).
 
-The current version of Sails ships with the following blueprint actions:
+A versão atual do Sails vem com as seguintes blueprint actions:
 
 + [find](http://sailsjs.org/documentation/reference/blueprint-api/Find)
 + [findOne](http://sailsjs.org/documentation/reference/blueprint-api/FindOne)
@@ -15,6 +15,6 @@ The current version of Sails ships with the following blueprint actions:
 + [add](http://sailsjs.org/documentation/reference/blueprint-api/Add)
 + [remove](http://sailsjs.org/documentation/reference/blueprint-api/Remove)
 
-For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.org/documentation/reference/blueprint-api)
+Para mais informações sobre blueprints, inclusive como desabilitar ou sobrescrevê-las, veja [Blueprint API reference](http://sailsjs.org/documentation/reference/blueprint-api)
 
 <docmeta name="displayName" value="Blueprint Actions">
