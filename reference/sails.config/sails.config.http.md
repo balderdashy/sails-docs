@@ -15,10 +15,10 @@ Configuration for your app's underlying HTTP server.  These properties are conve
 
 ### Configuring Skipper
 
-To customize Skipper, the default body parser and file uploader, you can uncomment the direct call to `require('skipper')`:
+To customize Skipper, the default body parser and file uploader, you can uncomment the direct call to `require('skipper')(...)`:
 
 ```javascript
-
+// bodyParser: require('skipper')({strict: true})
 ```
 
 Then pass in any of the following options from the table below.
