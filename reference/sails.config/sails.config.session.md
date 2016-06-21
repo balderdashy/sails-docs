@@ -14,7 +14,7 @@ in the way you might be used to from Express or Connect.
 ### Properties
 
 | Property    | Type       | Default   | Details |
-|-------------|:----------:|-----------|---------|
+|:------------|:----------:|:----------|:--------|
 | `adapter` | ((string)) | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.   In production, you should specify the package name of a scalable session store instead (e.g. `connect-redis`).  See below for details. 
 | `key`        | ((string))       | `sails.sid`      | Session key is set as `sails.sid` by default. This is the name of the key which is added to the cookie of visitors to your site when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used (like crossing streams)
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
