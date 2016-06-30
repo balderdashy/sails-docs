@@ -18,7 +18,7 @@ return res.redirect(url);
 
 ### Details
 
-Sails/Express/Koa/Connect support a few forms of redirection, first being a fully qualified URI for redirecting to a different domain:
+Sails/Express support a few forms of redirection, first being a fully qualified URI for redirecting to a different domain:
 
 ```javascript
 return res.redirect('http://google.com');
@@ -29,17 +29,6 @@ The second form is the domain-relative redirect.  For example, if you were on ht
 ```javascript
 return res.redirect('/checkout');
 ```
-
-<!--
-Probably more confusing than helpful:
-
-This next redirect is relative to the mount point of the application. For example if you have a blog application mounted at /blog, ideally it has no knowledge of where it was mounted, so where a redirect of /admin/post/new would simply give you http://example.com/admin/post/new, the following mount-relative redirect would give you http://example.com/blog/admin/post/new:
-
-```javascript
-return res.redirect('admin/post/new');
-```
--->
-
 
 Pathname relative redirects are also possible. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
 
