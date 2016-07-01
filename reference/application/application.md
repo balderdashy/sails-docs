@@ -42,7 +42,7 @@ A set of convenience methods for low-level interaction with connected websockets
 
 A dictionary of all loaded [Sails hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails; for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](http://sailsjs.org/documentation/concepts/extending-sails/hooks#?types-of-hooks), for advanced usage.
 
-By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](http://sailsjs.org/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
+By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](http://sailsjs.org/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
 
 See the [hooks concept documentation](http://sailsjs.org/documentation/concepts/extending-sails/hooks) for more info about hooks.
 
