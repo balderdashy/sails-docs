@@ -18,6 +18,8 @@ Open up `config/local.js` in your app folder. In here, you'll need to add the fo
 You will also need to install `grunt-cli` with `npm i --save grunt-cli`.
 
 After doing that, create the file `.openshift/action_hooks/pre_start_nodejs` with the following contents. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6))
+This action_hook tells OpenShift's supervisor to run all 'prod' grunt tasks, before Sails lifted.
+
 
 ```
 #!/bin/bash
@@ -27,12 +29,28 @@ if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
     (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
 fi
 ```
+Then disable Sails Grunt integration hook. 
+To do this set the `grunt` property to `false` in `.sailsrc` hooks like this:
+
+```json
+{
+    "hooks": {
+        "grunt": false
+    }
+}
+```
+### NOTE:
+Do not remove Gruntfile.js to disable Grunt hook, this file still using by OpenShift's supervisor.
+
 
 Then create the file `/supervisor_opts` with the following contents. This tells OpenShift's supervisor to ignore Sails' `.tmp` directory for the hot reload functionality. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
 
 ```
 -i .tmp
 ```
+### NOTE:
+This deployment guide work only on Openshift`s "SCALABLE" gears, nodejs v0.10 
+If you using non-scalable gear `/supervisor_opts` file will be ignored and Sails will not lift on it. 
 
 You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
 
