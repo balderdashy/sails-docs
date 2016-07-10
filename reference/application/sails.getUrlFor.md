@@ -21,6 +21,8 @@ sails.getUrlFor(target);
 
 **Type:** ((string))
 
+**e.g.**
+
 ```javascript
 '/login'
 ```
