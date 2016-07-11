@@ -5,8 +5,8 @@ Cross-site scripting (XSS) is a type of attack in which a malicious agent manage
 
 
 ### Additional Resources
-+ [XSS (OWasp)][https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)]
-+ [XSS Prevention Cheatsheet][https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet]
++ [XSS (OWasp)](https://www.owasp.org/index.php/Cross-site_Scripting_(XSS))
++ [XSS Prevention Cheatsheet](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet)
 
 
 <docmeta name="displayName" value="XSS">
