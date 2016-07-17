@@ -16,7 +16,7 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 
 ```js
 Pet.query({
-  text: 'SELECT pet.name FROM pet WHERE pet.name = $1',
+  sql: 'SELECT pet.name FROM pet WHERE pet.name = ?',
   values: [ "dog" ]
 }, function(err, results) {
   if (err) return res.serverError(err);
