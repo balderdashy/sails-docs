@@ -22,7 +22,7 @@ To customize this behavior to fit your needs, just edit your Gruntfile.
 For example, here are a few things you could do:
 
 - Import templates from other directories
-- Use a different template engine (handlebars, jade, dust, etc) 
+- Use a different template engine (handlebars, pug, dust, etc) 
 - Internationalize your client-side templates using a server-side stringfile before they're served.
 
 
