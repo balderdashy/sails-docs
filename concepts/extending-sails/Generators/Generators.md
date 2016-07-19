@@ -4,7 +4,7 @@ Sails' generators allow you to completely customize what happens when you run `s
 - to standardize conventions and boilerplate logic for all new apps across your organization
 - to override the default Gruntfile with a set of custom tasks
 - to completely replace Grunt with [Gulp](http://gulpjs.com/) or [webpack](https://webpack.github.io/)
-- to use another view engine like Jade, Dust or Nunjucks by default (instead of EJS)
+- to use another view engine like Pug, Dust or Nunjucks by default (instead of EJS)
 - to automate custom deployments (e.g. white label apps with one server per-customer)
 - to generate files as Coffeescript or Typescript
 - to include ASCII pictures of cats at the top of every code file (or license headers, whatever)
