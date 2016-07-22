@@ -1,6 +1,6 @@
 # Content Security Policy
 
-Content Security Policy (CSP) is a W3C specification for instructing the client browser as to which location and/or which type of resources are allowed to be loaded. This spec uses "directives" to define a loading behaviors for target resource types. Directives can be specified using HTTP response headers or or HTML Meta tags.
+Content Security Policy (CSP) is a W3C specification for instructing the client browser as to which location and/or which type of resources are allowed to be loaded. This spec uses "directives" to define loading behaviors for target resource types. Directives can be specified using HTTP response headers or HTML `<meta>` tags.
 
 #### HTTP Headers
 | Header                    | Browsers                                                                               |
