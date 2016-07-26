@@ -10,7 +10,7 @@ module.exports = {
     
         var opts = {"type":"messages","call":"send","message":
             {
-                "subject": "YourIn!",
+                "subject": "You're In!",
                 "from_email": "info@balderdash.co",
                 "from_name": "AmazingStartupApp",
                 "to":[
