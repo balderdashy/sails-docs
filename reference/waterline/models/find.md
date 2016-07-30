@@ -28,7 +28,7 @@ To find any users named Finn in the database:
 ```javascript
 User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
   if (err) {
-    return res.negotiate(err);
+    return res.serverError(err);
   }
   sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
   return res.json(usersNamedFinn);
