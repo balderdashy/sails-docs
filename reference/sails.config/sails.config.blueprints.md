@@ -5,7 +5,7 @@ By default, Sails controllers automatically bind routes for each of their functi
 ### Properties
 
 | Property    | Type       | Default   | Details |
-|:------------|:----------:|-----------|---------|
+|:------------|:----------:|:----------|:--------|
 | `actions`| ((boolean))|`true`|Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
 |`rest`|((boolean))|`true`|Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
 |`shortcuts`|((boolean))|`true`|These CRUD shortcuts exist for your convenience during development, but you'll want to disable them in production.: `'/:controller/find/:id?'`, `'/:controller/create'`, `'/:controller/update/:id'`, and `'/:controller/destroy/:id'`
