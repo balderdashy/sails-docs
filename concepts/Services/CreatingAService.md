@@ -1,4 +1,4 @@
-# Creating a service
+# Creating a Service
 
 To build a service, start by creating a JavaScript file in your `api/services/` folder.  This file's job is to export a dictionary of functions, called **helpers**.
 
@@ -74,6 +74,9 @@ module.exports = {
 };
 ```
 
+
+
+### Using a Service
 
 You can then call the helpers from this `EmailService` anywhere in your app, such as inside a controller action, or from within another service helper:
 
