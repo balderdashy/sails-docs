@@ -1,37 +1,41 @@
-# .create( `values`, [`callback`] )
-### Purpose
-Creates a new instance of this model in the database.
+# .create()
 
-### Overview
-
-#### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Record(s) to Create  |      `{}`, `[{}]`   | Yes      |
-| 2 |     Callback        | `function`          | No         |
-
-#### Callback Parameters
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Records Created    | `{}`, `[{}]`        |
-
-
-
-### Example Usage
+Create a record in the database.
 
 ```javascript
-User.create({ name:'Walter Jr' }).exec(function (err, newUser){
+Something.create(values).exec(function (err, records) {
+
+});
+```
+
+### Usage
+
+|   |     Argument        | Type                                         | Details                            |
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
+| 1 |    values           | ((dictionary))                               | The attributes that the new record should have.
+
+##### Callback
+
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See below for an example of how to negotiate validation errors (e.g. attempting to insert a record that would violate a uniqueness constraint)
+| 2 |    newRecord        | ((array))           | The newly-created record, with its primary key (usually `id`) set.
+
+
+### Example
+
+To create a user named Finn in the database:
+```javascript
+User.create({name:'Finn'}).exec(function (err, finn){
   if (err) { return res.serverError(err); }
-  
-  console.log('Created user with name ' + created.name);
-  return res.ok(); 
+    
+  sails.log('Finn\'s id is:', finn.id);
+  return res.ok();
 });
 ```
 
 
-##### Negotiating validation errors
+##### Negotiating Validation Errors
 
 > Originally posted in [#3459](https://github.com/balderdashy/sails/issues/3459#issuecomment-170155680)
 
