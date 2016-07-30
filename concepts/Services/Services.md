@@ -1,8 +1,8 @@
 # Services
 
-**Services** are stateless libraries of functions (called **helpers**) that you can use from anywhere in your Sails app.  For example, you might have an `EmailService` which tidily wraps up one or more helper functions so you can use them in more than one place within your application.
+**Services** are stateless libraries of functions (called **helpers**) that you can use from anywhere in your Sails app.  For example, you might have an `EmailService` which tidily wraps up one or more helper functions so you can use them in more than one place within your application.  Services and their helpers are the best and simplest way to build reusable code in a Sails app.
 
-The main benefit of using services in Sails is that they are *globalized*--you don't have to use `require()` to access them (although you can if you prefer.)   You can access a service and call its helpers (e.g. `EmailService.sendHtmlEmail()` or `EmailService.sendPasswordRecoveryEmail()`) from anywhere: within controller actions, from inside other services, in custom model methods, or even from command-line scripts.
+Another benefit of using services in Sails is that they are *globalized*--you don't have to use `require()` to access them (although you can if you prefer.  And you can disable the automatic exposure of global variables in your app's configuration.)   By default, you can access a service and call its helpers (e.g. `EmailService.sendHtmlEmail()` or `EmailService.sendPasswordRecoveryEmail()`) from anywhere: within controller actions, from inside other services, in custom model methods, or even from command-line scripts.
 
 
 ### Building a service
