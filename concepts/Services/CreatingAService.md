@@ -27,7 +27,7 @@ module.exports = {
    * @required {String} firstName
    *   The first name of the recipient.
    */
-  sendWelcomeEmail: function(options, done) {
+  sendWelcomeEmail: function (options, done) {
     // Send an html email.
     Mailgun.sendHtmlEmail({
       apiKey: 'key-3432afa32e9401482aba183c13f3',
