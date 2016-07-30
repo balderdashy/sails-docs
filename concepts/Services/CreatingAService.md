@@ -1,6 +1,6 @@
 # Creating a service
 
-Start by simply creating a JavaScript file in your `api/services/` folder.  This file, also known as a "module", will export a dictionary of functions, called **helpers**.
+To build a service, start by creating a JavaScript file in your `api/services/` folder.  This file's job is to export a dictionary of functions, called **helpers**.
 
 > Make sure your service's filename ends in `Service.js`.  The first part of this filename (e.g. `EmailService`) will be used as the globally-accessible variable name for the service.  We'll come back to that in a bit.
 
