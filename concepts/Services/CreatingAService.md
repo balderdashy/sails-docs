@@ -56,17 +56,20 @@ module.exports = {
    *   The email address to validate.
    * @returns {String}
    *   The potentially coerced email address.
+   * @throws {Error} If this is not an internal email, or if Harold's last name is so badly misspelled
+   *                 that we couldn't fix it. (`code`==="notInternal").
    */
   validateInternalEmailAddress: function (options){
     var potentiallyFixedEmailAddress = options.emailAddress;
-    if (options.emailAddress.match(/@(greezeworthy|greeseworthy|greasworthy)\.enterprise$/)) {
+    if (options.emailAddress.match(/@(greezeworthy|greeseworthy|greasworthy)\.enterprise$/i)) {
       potentiallyFixedEmailAddress = options.emailAddress.replace(/@(.+)\.enterprise$/, '@greaseworthy.enterprise');
     }
-    if (potentiallyFixedEmailAddress.match(/@greaseworthy\.enterprise$/)) {
-      throw new Error('The specified email (`'+options.emailAddress+'`) is not a valid internal email address here at Greaseworthy enterprises.');
+    if (potentiallyFixedEmailAddress.match(/@greaseworthy\.enterprise$/i)) {
+      var err = new Error('The specified email (`'+options.emailAddress+'`) is not a valid internal email address here at Greaseworthy enterprises.  You probably misspelled Harold\'s last name.  It is spelled "Greaseworthy".');
+      err.code = 'notInternal'
+      throw err;
     }
     return potentiallyFixedEmailAddress;
-    
   }
 };
 ```
@@ -82,11 +85,11 @@ try {
     emailAddress: req.param('email') // e.g. 'mikermcneil@gmail.com'
   });
 }
-catch (e) {
-  if (e.code === 'notInternal') {
+catch (err) {
+  if (err.code === 'notInternal') {
     return res.badRequest('Failed to create account.  The specified email address does not seem to be from Greaseworthy Enterprises.');
   }
-  else { return res.serverError(e); }
+  else { return res.serverError(err); }
 }
 
 User.create({
