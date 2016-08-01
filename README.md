@@ -75,3 +75,8 @@ If your language is not represented in the table above, and you are interested i
 
 For more information on contributing to Sails in general, see the [Contribution Guide](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md).
 
+
+
+## License
+
+[MIT](./LICENSE.md)

@@ -1,11 +1,12 @@
 # sails.config.blueprints
 
-By default, Sails controllers automatically bind routes for each of their functions. Additionally, each controller will automatically bind routes for a CRUD API controlling the model which matches its name, if one exists.
+These configurable settings allow you to configure the blueprint API in Sails.  Some settings (like `sails.config.blueprints.populate`) control the behavior of built-in blueprint actions, whereas others (like `sails.config.blueprints.shortcuts`) tweak the behavior of blueprint routing and/or determine whether Sails automatically binds certain kinds of blueprint routes at all.
+
 
 ### Properties
 
 | Property    | Type       | Default   | Details |
-|:------------|:----------:|-----------|---------|
+|:------------|:----------:|:----------|:--------|
 | `actions`| ((boolean))|`true`|Whether routes are automatically generated for every action in your controllers (also maps `index` to `/:controller`) '/:controller', '/:controller/index', and '/:controller/:action'
 |`rest`|((boolean))|`true`|Automatic REST blueprints enabled? e.g. `'get /:controller/:id?'` `'post /:controller'` `'put /:controller/:id'` `'delete /:controller/:id'`
 |`shortcuts`|((boolean))|`true`|These CRUD shortcuts exist for your convenience during development, but you'll want to disable them in production.: `'/:controller/find/:id?'`, `'/:controller/create'`, `'/:controller/update/:id'`, and `'/:controller/destroy/:id'`
