@@ -21,18 +21,17 @@ sails>
 
 
 
+### Global variables in `sails console`
 
-### Global variables in sails console
-
-Sails exposes the same [global variables](http://sailsjs.org/documentation/reference/Globals) in the console as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance, your models, and your services, as well as Lo-Dash (`sails.util._`) and async (`async`).
+Sails exposes [the same global variables](http://sailsjs.org/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance, your models, and your services; as well as lodash (`sails.util._`) and async (`async`).
 
 
 > **Warning**
 >
-> Be careful when using `_` as a variable name in the Node REPL- and when possible, don't.
-> (It doesn't work quite like you'd expect.)
+> Avoid using `_` as a variable name in the Node REPL.
+> (It [doesn't work quite like you might expect](https://github.com/balderdashy/sails/issues/3795)-- although that is [improving in Node v6](http://stackoverflow.com/questions/17073290/in-the-node-js-repl-why-does-this-happen/17073313#comment61417858_17073313).)
 >
-> Instead, use lodash as `sails.util._`, e.g.:
+> Instead, use Sails' version of lodash as `sails.util._`.  For example:
 > ```sh
 > sails> sails.util._.keys(sails.config)
 > ```
@@ -40,14 +39,11 @@ Sails exposes the same [global variables](http://sailsjs.org/documentation/refer
 > Or alternatively, build yourself a local variable to use for familiarity:
 >
 > ```sh
-> sails> var lodash = _;
-> ```
->
-> Then you can do:
->
-> ```sh
+> sails> var lodash = sails.util._;
 > sails> lodash.keys(sails.config);
 > ```
+>
+> Finally, note that this warning isn't limited to the `_` exposed by Sails as a global variable.  When in the REPL, it's best to avoid using `var _ = ...` for any reason (again, unless you're running Node v6.0 or later.)
 
 ### More Examples
 
