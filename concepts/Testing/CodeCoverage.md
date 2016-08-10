@@ -6,7 +6,7 @@ You can use [mocha](http://mochajs.org/) and [istanbul](https://github.com/gotwa
 
 To test your code and prepare a simple HTML report run the following commands:
 ```bash
-istanbul cover -x "**/config/**" _mocha -- --timeout 5000
+istanbul cover _mocha -- test/bootstrap.test.js test/**/*.js
 istanbul report html
 ```
 
