@@ -30,6 +30,26 @@ Using the built-in logger, Sails will write output (to stdout/stderr) for log fu
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
+### Externalize a log file
+The Sails logging system provide the possibility to externalize the log messages according to the settings located
+in the Sails logger's configuration file [`sails.config.log`]().
+
+So there is an Example of settings located in the log.js:
+
+log: {
+
+level: 'info',   // here you specify your logging level
+
+maxSize: 2500,   // max size that a log-file can reach until to switch to another file
+
+maxFiles: 2,     // max number of file 
+
+filePath: 'c://serverlogs/server.txt',  
+
+timestamp:  'YYYY-MM-DD HH:MM:SS'  // format of the timestamp that precede each log-messages (if not specified the timestamp will not appear)
+
+}
+
 #### Notes
  + The [default log level]((http://sailsjs.org/documentation/reference/configuration/sails-config-log)) is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
  + When running automated tests for your app, it is often helpful to set the log level to **error**.
