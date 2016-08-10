@@ -2,7 +2,7 @@
 
 ###Contents:
 ####[404](https://github.com/balderdashy/sails-wiki/blob/0.9/config.404.md)
->The default 404 handler.
+>The default 404 error handler.
 
 ####[500](https://github.com/balderdashy/sails-wiki/blob/0.9/config.500.md)
 >The default 500 error handler.
@@ -44,4 +44,4 @@
 >These configuration options provide transparent access to Sails’ encapsulated pubsub/socket server for complete customizability.
 
 ####[Views](https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md)
->Server-sent views are a classic and effective way to get your app up and running. Views are normally served from controllers, but by default, Sails also exposes routes to allow you to preview your viewsn in a browser.
+>Server-sent views are a classic and effective way to get your app up and running. Views are normally served from controllers, but by default, Sails also exposes routes to allow you to preview your views in a browser.
