@@ -3,7 +3,7 @@
 
 ###Contents:
 ####[404](https://github.com/balderdashy/sails-wiki/blob/0.9/config.404.md)
-The default 404 handler.
+The default 404 error handler.
 
 ####[500](https://github.com/balderdashy/sails-wiki/blob/0.9/config.500.md)
 The default 500 error handler.
