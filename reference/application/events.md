@@ -6,7 +6,7 @@ Sails app instances inherit Node's [`EventEmitter` interface](https://nodejs.org
 
 ### Should I use events?
 
-Most Sails developers never have a use case for working with application events. several apps before they even encounter application events.  Events emitted by the Sails app instance are designed to be used when building your own custom hooks, and while you _could_ technically use them anywhere, in most cases you _should not_.  Never use events in your controllers, models, services, configuration, or anywhere else in the userland code in your Sails app (unless you are building a custom app-level hook in `api/hooks/`).
+Most Sails developers never have a use case for working with application events. Events emitted by the Sails app instance are designed to be used when building your own custom hooks, and while you _could_ technically use them anywhere, in most cases you _should not_.  Never use events in your controllers, models, services, configuration, or anywhere else in the userland code in your Sails app (unless you are building a custom app-level hook in `api/hooks/`).
 
 ### Events emitted by Sails
 
