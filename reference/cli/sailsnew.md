@@ -1,9 +1,12 @@
 # sails new
 
-`sails new <appName>` creates a new Sails project in a folder called **appName**.
+`sails new <path/to/folder>` creates a new Sails project in a folder called **folder**.
+
+`sails new .` create a new Sails project in current folder.
 
 ##### Options:
 
+  * `--appName` Application name (will be used as `name` in `package.json`). By default it is the same as the specified `folder`.
   * `--no-linker` Disable automatic asset linking in your view and static HTML files (the relevant grunt tasks will not be created)
   * `--no-frontend` Disable the generation of the `assets` folder and files. Views will be created with hardcopied linked resources  off of sailsjs.org.
   * `--template=[template language]` Use a different template language than the default (e.g. `jade`).  Requires that a views generator for that language (e.g. `sails-generate-views-jade`) be installed in your global node path (e.g. `~/node_modules/` works).

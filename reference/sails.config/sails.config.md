@@ -7,11 +7,12 @@ More specifically, when you load your app, whether that's using `node app`, [pro
 + an optional object of configuration overrides passed-in programmatically
 + a local `.sailsrc` file in your app's directory, or the first found looking in `../`, `../../` etc.
 + a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`)
-+ command-line arguments (parsed by minimist)
++ command-line options (parsed by minimist; e.g. `sails lift --mailgun.apiToken='token_would_be_here'`)
 + environment variables (prefixed with `sails_`, using double underlines to indicate dots: e.g. `sails_port=1492`, `sails_models__connection=somePostgresqlServer`, and/or `sails_connections__somePostgresqlServer__password=l0lguyz`)
 + files in your app's `config/` directory (if one exists), with `config/local.js` taking priority.  Remember that, other than `local.js` (which takes priority), the file names are just for convention: the configuration you export from each file gets deep-merged together with everything else into one big dictionary (`sails.config`).
 
-> #### The recommended solution for production
+
+> #### The recommended solution for setting production config
 > Environment variables are one of the most powerful ways to configure your Sails app.  Since you can customize just about any setting (as long as it's JSON-serializable), this approach solves a number of problems, and is our core team's recommended strategy for production deployments.  Here are a few:
 > + Using environment variables means you don't have to worry about checking in your production database credentials, API tokens, etc.
 > + This makes changing Postgresql hosts, Mailgun accounts, S3 credentials, and other maintenance straightforward, fast, and easy; plus you don't need to change any code or worry about merging in downstream commits from other people on your team

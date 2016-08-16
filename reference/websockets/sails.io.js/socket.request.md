@@ -45,6 +45,9 @@ io.socket.request(options, function (resData, jwres)){
 io.socket.request({
   method: 'get',
   url: '/user/3/friends',
+  data: {
+    limit: 15
+  },
   headers: {
     'x-csrf-token': 'ji4brixbiub3'
   }
