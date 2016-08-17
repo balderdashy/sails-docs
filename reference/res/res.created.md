@@ -39,7 +39,7 @@ return res.created('New widget created.');
 With a custom view:
 
 ```javascript
-return res.forbidden(
+return res.created(
     'New widget created.',
     'widgets/created'
   );
