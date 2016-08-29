@@ -14,6 +14,11 @@ The paths are relative to the view that loads the partial. So if you have a a us
 <%- partial ('../partials/widget.ejs') %> 
 ```
 
+You can pass variables as a second parameter to you partial view:
+```
+<%- partial ('../partials/widget.ejs', {messages: user.messages}) %> 
+```
+
 One thing to note: partials are rendered synchronously, so they will block Sails from serving more requests until they're done loading. It's something to keep in mind while developing your app, especially if you anticipate a large number of connections.
 
 > NOTE: When using other templating languages than ejs, their syntax for loading partials or block, etc. will be used. Please refer to their documentation for more information on their syntax and conventions
