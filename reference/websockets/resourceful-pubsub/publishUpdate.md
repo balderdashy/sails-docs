@@ -81,7 +81,7 @@ The endpoint will respond with a simple 200 (because of `res.ok()`), but all sub
 // e.g. in the browser...
 io.socket.on('user', function (event){
   switch (event.verb) {
-    'updated':
+    case 'updated':
       console.log(event);
       // => see below
       break;
