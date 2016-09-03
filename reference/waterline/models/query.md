@@ -8,7 +8,7 @@
 ```js
 Pet.query('SELECT pet.name FROM pet', function(err, results) {
   if (err) return res.serverError(err);
-  return res.ok(results.rows);
+  return res.json(results.rows);
 });
 ```
 
@@ -20,7 +20,7 @@ Pet.query({
   values: [ "dog" ]
 }, function(err, results) {
   if (err) return res.serverError(err);
-  return res.ok(results.rows);
+  return res.json(results.rows);
 });
 ```
 
