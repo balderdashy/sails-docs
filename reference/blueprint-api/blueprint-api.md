@@ -90,6 +90,19 @@ By default, the **Find** and **Find One** blueprint actions will call [`.subscri
 By default, the **Find** blueprint action will call [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch) on the model.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
 
 
+### Disabling blueprints on a per-route basis
+
+You may also override any of the actions for a model by naming your function method the same name as the blueprint action.
+
+```javascript
+module.exports = {
+  findOne: function (req, res) {
+    return res.json(403, 'Single model lookup is denied.');
+  }
+}
+
+```
+
 ### Notes
 
 > + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the request interpreter.  Check out the reference section on the [browser SDK](http://sailsjs.org/documentation/reference/websockets/sails.io.js) for example usage.
