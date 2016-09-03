@@ -68,6 +68,12 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 + https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs
 
 
+##### Deploying to RoseHosting?
+
+ + [Install Sails.js with Apache as a reverse proxy on CentOS 7](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
+ + [Install Sails.js on Ubuntu](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
+ + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
+
 
 
 
