@@ -73,9 +73,13 @@ module.exports = {
     // Broadcast a "hello" message to all the fun sockets.
     // This message will be sent to all sockets in the "funSockets" room,
     // but will be ignored by any client sockets that are not listening-- i.e. that didn't call `io.socket.on('hello', ...)`
-    sails.sockets.broadcast('funSockets', 'hello', req);
+    // The data of the message ({} object) is the "data" in io.socket.on('hello', function gotHelloMessage (data)
+    sails.sockets.broadcast('funSockets', 'hello', {id: 'my id'}, req);
     // Respond to the request with an a-ok message
-    return res.ok();
+    // The object returned here is "body" in io.socket.get('/say/hello', function gotResponse(body, response)
+    return res.ok({
+        message: "OK"
+    });
   }
 }
 ```
