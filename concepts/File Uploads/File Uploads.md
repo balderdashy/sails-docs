@@ -87,6 +87,9 @@ avatar: function (req, res){
 
     var SkipperDisk = require('skipper-disk');
     var fileAdapter = SkipperDisk(/* optional opts */);
+    
+    // set the filename to the same file as the user uploaded
+    res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
     // Stream the file down
     fileAdapter.read(user.avatarFd)

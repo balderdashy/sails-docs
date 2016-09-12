@@ -313,12 +313,12 @@ From within the `myProject\awesome` folder at the terminal type:
 ```sh
 ~/ $ npm publish
 ```
->**Note:**  If don't already have an NPM account, go to (npmjs.org)[https://www.npmjs.org/] and create one.
+>**Note:**  If you don't already have an NPM account, go to [npmjs.org](https://www.npmjs.org/) and create one.
 
 To unpublish the module, type: 
 
 ```sh
-~/ $  npm unpublish` --force
+~/ $  npm unpublish --force
 ```
 Change the `myProject\.sailsrc` to:
 

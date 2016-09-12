@@ -5,7 +5,7 @@
 The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](http://sailsjs.org/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
 <!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
 
-Here are a few things that the default Grunt configuration in Sails does to help you out:  
+Here are a few things that the default Grunt configuration in Sails does to help you out:
 - Automatic LESS compilation
 - Automatic JST compilation
 - Automatic Coffeescript compilation
@@ -14,9 +14,9 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - File watching and syncing
 - Optimization of assets in production
 
-### Default Grunt Task Behavior.
+### Default Grunt tasks
 
-Below are the Grunt tasks that are included in your Sails project as well as a small description of exactly what each does in your project. Also included are a link to the usage docs for each task.
+Below is a list of the Grunt tasks that are included by default in new Sails projects:
 
 ##### clean
 

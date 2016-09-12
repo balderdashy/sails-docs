@@ -15,7 +15,6 @@ The `save()` method updates your record in the database using the current attrib
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
 | 1 |  Error              | `Error`             |
-| 2 |  Sucessfully Saved Record | `{}`          
 
 
 ### Example Usage
