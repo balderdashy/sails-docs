@@ -84,6 +84,10 @@ Order.find()
 });
 ```
 
+```js
+Order.find()
+.populate('buyers').count()
+.exec(function (err, orders){
 
 
 
