@@ -25,7 +25,7 @@ Pet.query({
 ```
 
 ### Notes
-> This method only works with PostgreSQL and mySQL! use .native() for Mongo.
+> This method only works with PostgreSQL and mySQL! use [`.native()`](./native.md) for Mongo.
 
 > This method does not return a promise. [Refer here](http://stackoverflow.com/questions/21886630/how-to-use-model-query-with-promises-in-sailsjs-waterline) to promisify .query().
 
