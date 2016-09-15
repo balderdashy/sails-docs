@@ -18,7 +18,7 @@ Something.find(criteria).exec(function (err, records) {
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 1 |    err              | ((Error?))          | The error that occurred, or `null` if there were no errors.
 | 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
 
 
