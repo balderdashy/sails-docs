@@ -12,7 +12,7 @@ This allows us to have certainty that our users' requests haven't been hijacked,
 
 This token has a short-lived expiration timeline, and must be acquired by either:
 
-#####A) For traditional view-driven web apps:
+##### A) For traditional view-driven web apps:
  - Fetching it from one of your views, where it may be accessed as a local variable, e.g.
 ```html
 <form>
@@ -20,7 +20,7 @@ This token has a short-lived expiration timeline, and must be acquired by either
 </form>
 ```
 
-#####B)	For AJAX/Socket-heavy and/or single-page apps: 
+##### B)	For AJAX/Socket-heavy and/or single-page apps: 
  - Sending a GET request to the `/csrfToken` route, where it will be returned as JSON, e.g.
 ```javascript
 { _csrf: 'ajg4JD(JGdajhLJALHDa' }
