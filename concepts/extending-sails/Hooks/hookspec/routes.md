@@ -8,9 +8,8 @@ module.exports = function (sails) {
     return {
 
         initialize: function (cb) {
-            const self = sails.hooks['count-requests'];
-            self.numRequestsSeen = 0;
-            self.numUnhandledRequestsSeen = 0;
+            this.numRequestsSeen = 0;
+            this.numUnhandledRequestsSeen = 0;
             return cb();
         },
 
