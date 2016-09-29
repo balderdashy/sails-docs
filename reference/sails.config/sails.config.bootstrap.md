@@ -55,7 +55,7 @@ module.exports.bootstrap = function (done) {
       return done();
       
     });//</Clinic.create()>
-  });//</Clinic.findOne()>
+  });//</Clinic.count()>
 
 };
 ```
