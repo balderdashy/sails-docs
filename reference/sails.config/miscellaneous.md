@@ -39,11 +39,14 @@ When you lift your app with the NODE_ENV environment variable to "production", S
 
 > Prior to Sails v1.0, the opposite was also true (Sails set the NODE_ENV environment variable to "production" automatically when lifting with `sails.config.environment` set to "production).  In Sails v1.0, that [is changing](https://github.com/balderdashy/sails/blob/c4d6991ef1e63d1cab984bc635289d208e602b23/ROADMAP.md#v10) to provide better support for custom staging and sandbox environments.
 
+> For more background on configuring your Sails app for production, see [Concepts > Deployment](http://sailsjs.org/documentation/concepts/deployment).
+
 
 ### `sails.config.hookTimeout`
 
 Set a global timeout for Sails hooks, in milliseconds.  Sails will give up trying to lift if any hook takes longer than this to load.  Defaults to `20000`.
 
+> The most common use for this setting is to tolerate slow production Grunt tasks.  For example, if your app is using uglify, and you have lots and lots of client-side JavaScript files in your assets folder, then you might need Sails to wait longer than 20 seconds to compile all of those client-side assets.  For more tips about the production asset pipeline, see [Concepts > Deployment](http://sailsjs.org/documentation/concepts/deployment).
 
 
 ### `sails.config.keepResponseErrors`
