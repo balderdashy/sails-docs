@@ -55,11 +55,34 @@ By default, convenience functions `badRequest`, `forbidden`, `notFound`, and `se
 
 Set `keepResponseErrors` to `true` to ensure Sails preserves the response body for these functions.
 
+> The default behavior of responses will be [changing a bit in Sails v1.0](https://github.com/balderdashy/sails/blob/c4d6991ef1e63d1cab984bc635289d208e602b23/ROADMAP.md#v10).
+
 ### `sails.config.ssl`
 
-Use this config to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+SSL/TLS (transport-layer security) is critical for preventing potential man-in-the-middle attacks.  Without a protocol like SSL/TLS, web basics like securely transmitting login credentials and credit card numbers would be much more complicated and troublesome.  SSL/TLS is not only important for HTTP requests (`https://`); it's also necessary for WebSockets (over `wss://`).  Fortunately, you only need to worry configuring SSL settings in once place: `sails.config.ssl`.
 
-If `sails.config.ssl` is set to an object, it should contain both `key` _and_ `cert` keys, _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `sails.config.ssl` to `true` and specify your advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+> #### SSL and Load Balancers
+>
+> The `sails.config.ssl` setting is only relevant if you want your _Sails process_ to manage SSL.  This isn't always true.  For example, if you plan for your Sails app to get more and more traffic, it will need to scale to multiple servers, which means you'll need a load balancer.  Most of the time, for performance and simplicity, it is a good idea to terminate SSL at your load balancer.  If you do that, then since SSL/TLS will have already been dealt with _before packets reach your Sails app_, you actually won't need to use the `sails.config.ssl` setting at all.  (This is also true if you're using a PaaS like Heroku, or almost any other host with a built-in load balancer.)
+> 
+> If you're satisfied this configuration setting applies to your app, then please continue below for more details.
 
+Use `sails.config.ssl` to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+
+If you specify a dictionary, it should contain both `key` _and_ `cert` keys, _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `sails.config.ssl` to `true` and specify your advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
+
+#### SSL Configuration Example
+
+For this example, we'll assume you created a folder in your project, `config/ssl/` and dumped your certificate/key files inside.  Then, in one of your config files, include the following:
+
+```javascript
+// Assuming this is in `config/env/production.js`, and your folder of SSL cert/key files is in `config/ssl/`:
+
+ssl: {
+  ca: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/my-gd-bundle.crt')),
+  key: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/my-ssl.key')),
+  cert: require('fs').readFileSync(require('path').resolve(__dirname,'../ssl/my-ssl.crt'))
+}
+```
 
 <docmeta name="displayName" value="sails.config.*">
