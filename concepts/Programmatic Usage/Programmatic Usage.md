@@ -48,7 +48,7 @@ mySailsApp.lift({
   // Note that you still must have an `api/controllers/FooController.js` file
   // under the current working directory, or a `/foo` or `POST /foo` route
   // set up in `config/routes.js`.
-  request.post("/foo", function (err, response) {
+  request.post('/foo', function (err, response) {
     if (err) {
       console.log('Could not send HTTP request.  Details:', err);
     }
@@ -74,7 +74,7 @@ mySailsApp.lift({
 
 #### .load()
 
-Here's an alternative to the previous example:  Starting a Sails app with `.load()` and making the same POST request-- but this time as a virtual request:
+Here's an alternative to the previous example:  Starting a Sails app with `.load()` and sending what is _semantically_ the same POST request-- but this time, under the covers we'll use a virtual request instead of HTTP:
 
 ```javascript
 mySailsApp.load({
@@ -90,7 +90,7 @@ mySailsApp.load({
   // Note that you still must have an `api/controllers/FooController.js` file
   // under the current working directory, or a `/foo` or `POST /foo` route
   // set up in `config/routes.js`.
-  mySailsApp.request({url:"/foo", method: "post"}, function (err, response) {
+  mySailsApp.request({url:'/foo', method: 'post'}, function (err, response) {
     if (err) {
       console.log('Could not send virtual request.  Details:', err);
     }
