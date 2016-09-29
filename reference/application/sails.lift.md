@@ -1,25 +1,28 @@
-# sails.lift()
+# .sails.lift()
 
-Load a Sails app, run its bootstrap and have it start listening for requests.
+Load a Sails app, run its bootstrap, and have it start listening for requests.
 
 ```javascript
-sails.lift([options], [callback]);
+sailsApp.lift(configOverrides, function (err) {
+  
+});
 ```
 
+> This does exactly what you might be used to seeing by now when you run `sails lift`.
 
-### Usage
+#### Usage
 
-|   |          Argument           | Type                | Details
-|---| --------------------------- | ------------------- | -----------
-| 1 |        options              | ((dictionary))          | (optional) A dictionary of configuration options that will override all options present on the command line or in config files
-| 2 |        callback             | ((function))        | (optional) A function to call when lifting is complete (or if an error occurs)
+|   |     Argument        | Type                                         | Details                            |
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
+| 1 |    configOverrides  | _((dictionary?))_                            | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
 
 ##### Callback
 
-|   | Argument  | Type         | Details |
-|---|-----------|:------------:|---------|
-| 1 | `err`     | ((dictionary))   | An error object, if any errors occurred while lifting
-| 2 | `sails`   | ((dictionary))   | A reference to the lifted Sails instance
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    err              | ((Error?))          | An error encountered while lifting, or `undefined` if there were no errors.
+
+
 
 
 ### Example
@@ -27,26 +30,28 @@ sails.lift([options], [callback]);
 ```javascript
 var Sails = require('sails').constructor;
 var sailsApp = new Sails();
-sailsApp.lift(
-  {
-    log: {
-      level: 'error'
-    }
-  },
-  function (err, liftedApp) {
-    if (err) {
-      return console.log("Error occurred lifting Sails app: ", err);
-    }
-    // Note that liftedApp === sailsApp
-    console.log("Sails app lifted successfully in port", sailsApp.config.port);
+
+sailsApp.lift({
+  log: {
+    level: 'warn'
   }
-)
+}, function (err) {
+  if (err) {
+    console.log('Error occurred lifting Sails app:', err);
+    return;
+  }
+
+  // --•
+  console.log('Sails app lifted successfully!');
+ 
+));
 ```
 
+
 ### Notes
-> - The difference between `.lift()` and [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
+> - The difference between [`.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) and [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
 > - When a Sails app is fully lifted, it also emits the `lifted` event.
+
 
 <docmeta name="displayName" value="sails.lift()">
 <docmeta name="pageType" value="method">
-
