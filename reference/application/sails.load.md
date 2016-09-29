@@ -1,4 +1,4 @@
-# .sails.load()
+# sails.load()
 
 Load a Sails app into memory-- but without lifting an HTTP server.
 
