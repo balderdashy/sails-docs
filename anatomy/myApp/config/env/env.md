@@ -1,6 +1,6 @@
 # myApp/config/env
 ### Purpose
-This folder contains various environment settings such as API keys or remote database passwords. The environment file used is determined by the environment Sails is going to be running in. Sails loads environments settings into the `sails.config.environment` global object. To switch between different environments, see the [Sails CLI docs](http://sailsjs.org/documentation/reference/cli/sailslift.html).
+This folder contains various environment-specific settings such as API keys or remote database passwords. Depending on the environment Sails is lifted in, the appropriate configuration file in this folder will load.  To read more about environent-specific config in Sails, see [**Concepts > Configuration**](http://sailsjs.org/documentation/concepts/configuration#?environmentspecific-files-config-env).
 
 
 <docmeta name="displayName" value="env">
