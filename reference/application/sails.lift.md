@@ -1,4 +1,4 @@
-# .sails.lift()
+# sails.lift()
 
 Load a Sails app, run its bootstrap, and have it start listening for requests.
 
@@ -14,7 +14,7 @@ sailsApp.lift(configOverrides, function (err) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    configOverrides  | _((dictionary?))_                            | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
+| 1 | configOverrides     | _((dictionary?))_                            | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
 
 ##### Callback
 
