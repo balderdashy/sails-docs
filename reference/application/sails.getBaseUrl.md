@@ -37,3 +37,4 @@ For more information, visit <a href="<%=sails.getBaseUrl()%>">our web site</a>.
 
 <docmeta name="displayName" value="sails.getBaseUrl()">
 <docmeta name="pageType" value="method">
+<docmeta name="isDeprecated" value="true">
