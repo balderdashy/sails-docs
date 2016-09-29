@@ -2,13 +2,13 @@
 
 Load a Sails app into memory-- but without lifting an HTTP server.
 
-> This involves loading configuration files, initializing hooks (including the ORM), and binding routes.
-
 ```javascript
 sailsApp.load(configOverrides, function (err) {
   
 });
 ```
+
+> This takes care of loading configuration files, initializing hooks (including the ORM), and binding routes.
 
 #### Usage
 
