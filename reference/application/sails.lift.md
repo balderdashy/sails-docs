@@ -10,6 +10,7 @@ sailsApp.lift(configOverrides, function (err) {
 
 > This does exactly what you might be used to seeing by now when you run `sails lift`.
 > It [loads](http://preview.sailsjs.org/documentation/reference/application/sails-load) the app, runs its bootstrap, then starts listening for HTTP requests and WebSocket connections.
+> Useful for building top-to-bottom integration tests that rely on HTTP requests, and for building higher-level tooling on top of Sails.
 
 #### Usage
 
