@@ -32,23 +32,20 @@ sailsApp.load(configOverrides, function (err) {
 var Sails = require('sails').constructor;
 var sailsApp = new Sails();
 
-sailsApp.load(
-  {
-    log: {
-      level: 'error'
-    }
-  },
-  function onLoad(err) {
-    if (err) {
-      console.log('Error occurred loading Sails app:', err);
-      return;
-    }
-    
-    // --•
-    console.log('Sails app loaded successfully!');
-    
+sailsApp.load({
+  log: {
+    level: 'error'
   }
-)
+}, function (err) {
+  if (err) {
+    console.log('Error occurred loading Sails app:', err);
+    return;
+  }
+
+  // --•
+  console.log('Sails app loaded successfully!');
+
+});
 ```
 
 ### Notes
