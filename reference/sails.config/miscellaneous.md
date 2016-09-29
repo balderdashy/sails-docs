@@ -6,13 +6,11 @@ This page is a quick reference of assorted configuration topics that don't fit e
 
 ### `sails.config.port`
 
-The `port` setting determines which TCP port your app will be deployed on.
-Ports are a transport-layer concept designed to allow many different networking applications to run at the same time on a single computer.
+The `port` setting determines which [TCP port](http://en.wikipedia.org/wiki/Port_(computer_networking)) your Sails app will use to listen for incoming requests.  Ports are a [transport-layer](https://en.wikipedia.org/wiki/Transport_layer) concept designed to allow many different networking applications to run at the same time on a single computer.
 
-By default, if it&rsquo;s set, Sails uses the `PORT` environment variable. Otherwise it falls back to port 1337. In production, you&rsquo;ll probably want to change this setting to 80 (http://) or 443 (https://) if you have an SSL certificate.
+By default, if it&rsquo;s set, Sails uses the port configured in your app (`sails.config.port`).  If not, it checks to see if the `PORT` environment variable is set, and uses that if possible.  Otherwise it falls back to port 1337.
 
-More about ports: http://en.wikipedia.org/wiki/Port_(computer_networking)
-
+> In production, you will probably want Sails to listen on port 80 (or 443, if you have an SSL certificate and are serving your site via `https://`.)  But depending on where your app is deployed, you may or may not need to actually modify this setting.  For example, if you are deploying to a PaaS like [Heroku](http://heroku.com), [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/), or [Deis](http://deis.io/), you may not need to configure `sails.config.port`, since in most cases it is handled automatically.  For more guidance and tips related to deploying, scaling, and maintaining Sails in production, see [Concepts > Deployment](http://sailsjs.org/documentation/concepts/deployment).
 
 
 ### `sails.config.explicitHost`
