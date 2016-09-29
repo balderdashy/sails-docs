@@ -1,6 +1,6 @@
 # sails.lift()
 
-Load a Sails app, run its bootstrap, and have it start listening for requests.
+Lift a Sails app programmatically.
 
 ```javascript
 sailsApp.lift(configOverrides, function (err) {
@@ -9,6 +9,7 @@ sailsApp.lift(configOverrides, function (err) {
 ```
 
 > This does exactly what you might be used to seeing by now when you run `sails lift`.
+> It [loads](http://preview.sailsjs.org/documentation/reference/application/sails-load) the app, runs its bootstrap, and then starts listening for requests.
 
 #### Usage
 
