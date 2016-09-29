@@ -8,7 +8,7 @@ Gather the set of configuration values passed in on the command line, in environ
 
 ### (2) Load User Configuration
 
-Unless the `userconfiguration` hook is explicitly disabled, Sails will next load the configuration files in the `config` folder (and subfolders) underneath the current working directory.  See the [configuration concept section](http://sailsjs.org/documentation/concepts/configuration) for more details about user configuration.  Configuration from step 1 will be merged on top of these values to form the `sails.config` object.
+Unless the `userconfiguration` hook is explicitly disabled, Sails will next load the configuration files in the `config` folder (and subfolders) underneath the current working directory.  See [**Concepts > Configuration**](http://sailsjs.org/documentation/concepts/configuration) for more details about user configuration.  Configuration settings from step 1 will be merged on top of these values to form the `sails.config` object.
 
 ### (3) Load Hooks
 
