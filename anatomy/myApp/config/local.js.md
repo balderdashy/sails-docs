@@ -51,7 +51,7 @@ module.exports = {
    * SSL/TLS is not only important for HTTP requests (`https://`); it's also *
    * necessary for WebSockets (over `wss://`).  Fortunately, you only need   *
    * to worry configuring SSL settings in once place: `sails.config.ssl`     *
-   *
+   *                                                                         *
    * This is only relevant if you want your Sails server to manage SSL.      *
    * As your app gains traffic, you will probably want to scale to multiple  *
    * servers, and set up a load balancer.  Most of the time, you will end up *
