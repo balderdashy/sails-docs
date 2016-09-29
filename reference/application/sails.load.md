@@ -13,13 +13,13 @@ sailsApp.load(configOverrides, function (err) {
 #### Usage
 
 |   |     Argument        | Type                                         | Details                            |
-|---|:--------------------|----------------------------------------------|------------------------------------|
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |    configOverrides  | _((dictionary?))_                            | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|----------------------------------------------------------------------------------|
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | An error encountered while loading, or `undefined` if there were no errors.
 
 
