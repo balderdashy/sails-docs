@@ -8,6 +8,9 @@ sailsApp.load(configOverrides, function (err) {
 });
 ```
 
+_Or:_
++ `sailsApp.load(function (err) { });`
+
 > Useful for writing tests, command-line scripts, and scheduled jobs.
 
 
