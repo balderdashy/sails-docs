@@ -25,18 +25,20 @@ If your site will ultimately be served by a proxy, you may want to set `proxyHos
 
 ### `sails.config.environment`
 
-> **Important**
->
-> The NODE_ENV environment variable is usually a better idea than setting `sails.config.environment` manually, since it's a generic Node convention.  The `sails.config.environment` setting may be deprecated in Sails v1.0.
-
-The runtime &ldquo;environment&rdquo; of your Sails app is either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
+The runtime &ldquo;environment&rdquo; of your Sails app is usually either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
 
 In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
 
-In production, Sails configures itself (and its dependencies) to optimize performance.
-You should always put your app in production mode before you deploy it to a server -- this helps ensure that your Sails app remains stable, performant, and scalable.
+In production, Sails configures itself (and its dependencies) to optimize performance.  You should always put your app in production mode before you deploy it to a server -- this helps ensure that your Sails app remains stable, performant, and scalable.
 
-By default, Sails sets its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will run in the &lsquo;development&rsquo; environment.
+#### Using the "production" environment
+
+By default, Sails determines its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will look to see if you provided a `sails.config.environment` setting, and use it if possible.  Otherwise, it runs in the &lsquo;development&rsquo; environment.
+
+When you lift your app with the NODE_ENV environment variable to "production", Sails automatically sets `sails.config.environment` to "production" too.  In fact, the reccommended way of switching to production mode is by _setting the NODE_ENV environment variable_ to "production".  This is usually a better idea than configuring `sails.config.environment` manually, since the NODE_ENV environment variable is relied upon by some of Sails' dependencies, and automatically set by most Sails/Node.js hosting services.
+
+> Prior to Sails v1.0, the opposite was also true (Sails set the NODE_ENV environment variable to "production" automatically when lifting with `sails.config.environment` set to "production).  In Sails v1.0, that [is changing](https://github.com/balderdashy/sails/blob/c4d6991ef1e63d1cab984bc635289d208e602b23/ROADMAP.md#v10) to provide better support for custom staging and sandbox environments.
+
 
 ### `sails.config.hookTimeout`
 
