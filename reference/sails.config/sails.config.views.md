@@ -6,7 +6,7 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 ### Properties
 
 | Property    | Type       | Default   | Details |
-|-------------|:----------:|-----------|---------|
+|:------------|:----------:|:----------|:--------|
 | `layout`    | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](http://sailsjs.org/documentation/concepts/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.  Built-in support for layouts is only relevant when using `ejs` (see below)
 | `engine`    | ((string)) | `"ejs"` | The [view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
 | `extension` | ((string)) | Same as `engine` | The file extension for view files. |
