@@ -2,6 +2,8 @@
 
 Load a Sails app into memory-- but without lifting an HTTP server.
 
+> Useful for writing tests, command-line scripts, and scheduled jobs.
+
 ```javascript
 sailsApp.load(configOverrides, function (err) {
   
@@ -11,7 +13,7 @@ sailsApp.load(configOverrides, function (err) {
 _Or:_
 + `sailsApp.load(function (err) { });`
 
-> Useful for writing tests, command-line scripts, and scheduled jobs.
+
 
 
 #### Usage
