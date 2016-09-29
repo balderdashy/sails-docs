@@ -8,7 +8,7 @@ sailsApp.load(configOverrides, function (err) {
 });
 ```
 
-> This takes care of loading configuration files, initializing hooks (including the ORM), and binding routes.
+> This takes care of loading configuration files, initializing hooks (including the ORM), and binding routes.  It **does not** run the bootstrap, and it **does not** start listening for HTTP requests and WebSocket connections.
 
 #### Usage
 
