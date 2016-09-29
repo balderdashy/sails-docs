@@ -61,7 +61,7 @@ localesDirectory: '/config/locales'
 
 
 
-### Disabling or customizating Sails' default internationalization support
+### Disabling or customizing Sails' default internationalization support
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
