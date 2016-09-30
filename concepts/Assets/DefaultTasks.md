@@ -78,7 +78,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### uglify
 
-> Minifies client-side javascript assets.
+> Minifies client-side javascript assets.  Note that by default, this task will "mangle" all of your function and variable names (either by changing them to a much shorter name, or stripping them entirely).  This is usually desirable as it makes your code significantly smaller, but in some cases can lead to unexpected results (particularly when you expect an object's constructor to have a certain name).  To turn off or modify this behavior, [use the `mangle` option](https://github.com/gruntjs/grunt-contrib-uglify#no-mangling) when setting up this task.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
 
