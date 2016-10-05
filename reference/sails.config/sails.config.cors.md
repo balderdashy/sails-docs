@@ -7,7 +7,7 @@ These options are conventionally set in the **config/cors.js** configuration fil
 ### Properties
 
 | Property    | Type       | Default   | Details |
-|-------------|:----------:|-----------|---------|
+|:------------|:----------:|:----------|:--------|
 | `allRoutes` | ((boolean))| false     | Indicates whether the other CORS configuration settings should apply to every route in the app by default.
 | `origin`        | ((string))       | `*`      | Comma-delimited list of default hosts (beginning with http:// or https://) to give access to, or `*` to allow all domains CORS access.  If `allRoutes` is `true` and `origin` is `*`, then your app will be fully accessible to sites hosted on foreign domains (except for routes which have their own CORS settings).
 | `methods`|((string))|GET, POST, PUT, DELETE, OPTIONS, HEAD|Comma-delimited list of methods that are allowed to be used in CORS requests.  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests), so the inclusion of GET, POST, OPTIONS and HEAD, although customary, is not necessary.
