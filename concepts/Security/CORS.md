@@ -19,6 +19,8 @@ To allow cross-origin requests from _any_ domain to _any_ route in your app, sim
 allRoutes: true
 ```
 
+> Note that if this is all you do, your app will not be protected against attacks that exploit CORS.  To prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app, you should either set `credentials: false` (for requests that don't require a session) or set `origin` to a specific set of trusted domains.  You can also configure these settings on a per-route basis (see below).
+
 See [`sails.config.cors`](http://sailsjs.org/documentation/reference/sails.config/sails.config.cors.html) for a comprehensive reference of all available options.
 
 
