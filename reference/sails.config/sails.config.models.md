@@ -10,7 +10,7 @@ sails.config.models;
 
 
   Property             | Type         | Default                         | Details
- ----------------------|:------------:|-------------------------------- | --------
+ :---------------------|:------------:|:------------------------------- |:--------
  `attributes`          | ((dictionary))   | `{}`                            | The basic pieces of information to store about a model. See [Attributes](http://sailsjs.org/documentation/concepts/models-and-orm/attributes).
  `migrate`             | ((string))   | _see [Model Settings](http://sailsjs.org/documentation/concepts/ORM/model-settings.html)_        | How & whether Sails will attempt to automatically rebuild the tables/collections/etc. in your schema
  `connection`          | ((string))   | `"localDiskDb"`                 | The default database [connection](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html) any given model will use without a configured override

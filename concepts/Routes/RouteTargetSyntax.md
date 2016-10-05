@@ -40,16 +40,18 @@ will match all paths that *start* with **/user/foo**.
 You can capture the parts of the address that are matched by wildcards into named parameters by using the `:paramName` wildcard syntax instead of the `*`:
 
 ```
-'/user/foo/:name/bar/:age'
+'/user/foo/bar/:name'
 ```
 
-Will match the same URLs as:
+Will match _almost_ the same URLs as:
 
 ```
-'/user/foo/*/bar/*'
+'/user/foo/bar/*'
 ```
 
-but will provide the values of the wildcard portions of the route to the route handler as `req.param('name')` and `req.param('age')`, respectively.
+but will provide the value of the dynamic portions of the route URL to the route handler as parameter values.  In this case: `req.param('name')`.
+
+> Note that the wildcard (`*`) syntax matches slashes, where the URL pattern variable (`:`) syntax does not.  So in the example above, given the route address `GET /user/foo/bar/*`, incoming requests with URLs like `/user/foo/bar/baz/bing/bong/bang` would match (whereas if you used the `:name` syntax, the same URL would not match.)
 
 #### Regular expressions in addresses
 

@@ -16,12 +16,12 @@ Here is an example locale file (`config/locales/es.json`):
 
 Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
 
-For example, here's another pass at `config/locales/es.json`:
+For example, here's another way you could approach `config/locales/es.json`:
 
 ```json
 {
-    "hello": "Hola!",
-    "hello-how-are-you-today": "Hola %s, ¿cómo estás?"
+    "hello": "hola",
+    "howAreYouToday": "cómo estás"
 }
 ```
 
@@ -29,17 +29,19 @@ And here's `config/locales/en.json`:
 
 ```json
 {
-    "hello": "Hello!",
-    "hello-how-are-you-today": "Hello, how are you today?"
+    "hello": "hello",
+    "howAreYouToday": "how are you today"
 }
 ```
 
-You can also nest locale strings. But a better approach would be to use `.` to represent nested strings. For example, here's the list of labels for the index page of a user controller:
+To represent nested strings, use `.` in keys.  For example, here's some of the strings for an app's "Edit profile" page:
 
 ``` json
 {
-    "user.index.label.id": "User ID",
-    "user.index.label.name": "User Name"
+  "editProfile.heading": "Edit your profile",
+  "editProfile.username.label": "Username",
+  "editProfile.username.description": "Choose a new unique username.",
+  "editProfile.username.placeholder": "callmethep4rtysquid"
 }
 ```
 
