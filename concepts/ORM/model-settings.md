@@ -155,7 +155,7 @@ If set to `false`, this disables the automatic definition of a `createdAt` attri
 ```javascript
 autoUpdatedAt: true
 ```
-If set to `false`, this disables the automatic definition of a `updatedAt` attribute in your model.  By default, `updatedAt` is an attribute which will be automatically set with the current (timezone-agnostic) timestamp every time a record is updated.  If set to a string, that string will be used as the custom field/column name for the `updatedAt` attribute.
+If set to `false`, this disables the automatic definition of an `updatedAt` attribute in your model.  By default, `updatedAt` is an attribute which will be automatically set with the current (timezone-agnostic) timestamp every time a record is updated.  If set to a string, that string will be used as the custom field/column name for the `updatedAt` attribute.
 
 ### tableName
 
