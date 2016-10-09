@@ -1,13 +1,12 @@
 # Adapters
-### Status
-
-##### Stability: [3](http://nodejs.org/api/documentation.html#documentation_stability_index) - Stable
-
-The API has proven satisfactory, but cleanup in the underlying code may cause minor changes.  Backwards-compatibility is guaranteed.
 
 ### What is an adapter?
 
- Adapters expose **interfaces**, which imply a contract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are useful for integrating with databases, open APIs, internal/proprietary web services, or even hardware.
+In Sails and Waterline, database adapters (often simply called "adapters", for short) allow the models in your Sails app to communicate with your database(s). In other words, when your code in a controller action or helper calls a model method (e.g. `User.find()`), what happens next is determined by the adapter configured for that model (e.g. `User`).
+
+An adapter is defined as a dictionary (aka JavaScript object, like `{}`) with methods like `find`, `create`, etc.  Based on which methods it implements, and the completeness with which they are implemented, adapters are said to implement one or more **interface layers**.  Each interface layer implies a contract to implement certain functionality.  This allows Sails and Waterline to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  
+
+> In previous versions of Sails, adapters were sometimes used for other purposes, like communicating with certain kinds of RESTful web APIs, internal/proprietary web services, or even hardware.  But _truly_ RESTful APIs are very rare, and so, in most cases, writing a database adapter to integrate with a _non-database API_ can be limiting.  Luckily, there is now a [more straightforward way](http://node-machine.org/machinepacks) to build these types of integrations.
 
 
 ### What kind of things can I do in an adapter?
@@ -15,18 +14,6 @@ The API has proven satisfactory, but cleanup in the underlying code may cause mi
 Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods `create()`, `find()`, `update()`, and `destroy()`.
 
 For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection information and runs an `INSERT ...` SQL query.
-
-In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.
-
-
-##### Class methods
-Below, `class methods` refer to the static, or collection-oriented, functions available on the model itself, e.g. `User.create()` or `Menu.update()`.  To add custom class methods to your model (beyond what is provided in the adapters it implements), define them as top-level key/function pairs in the model object.
-
-##### Instance methods
-`instance methods` on the other hand, (also known as object, or model, methods) refer to methods available on the individual result models themselves, e.g. `User.findOne(7).done(function (err, user) { user.someInstanceMethod(); });`.  To add custom instance methods to your model (beyond what is provided in the adapters it implements), define them as key/function pairs in the `attributes` object of the model's definition.
-
-##### DDL and auto-migrations
-`DDL` stands for data-definition language, and is a common fixture of schema-oriented databases.  In Sails, auto-migrations are supported out of the box.  Since adapters for the most common SQL databases support `alter()`, they also support automatic schema migration!  In your own adapter, if you write the `alter()` method, the same behavior will take effect.  The feature is configurable using the `migrate` property, which can be set to `safe` (don't touch the schema, period), `drop` (recreate the tables every time the app starts), or `alter` (the default-- merge the schema in the apps' models with what is currently in the database).
 
 
 
