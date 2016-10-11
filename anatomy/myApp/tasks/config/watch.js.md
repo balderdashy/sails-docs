@@ -1,42 +1,20 @@
-# myApp/tasks/config/watch.js
+# tasks/config/watch.js
+
+### Purpose
+
+This file configures a Grunt task called "watch".
+
+It runs predefined tasks whenever watched file patterns are added, changed or deleted.
+
+Specifically, this watches for changes to:
+- files in the `assets` folder
+- the `tasks/pipeline.js` file
+
+...and then re-runs the appropriate tasks.
+
+### Usage
+
+For additional usage documentation, see [`grunt-contrib-watch`](https://npmjs.com/package/grunt-contrib-watch).
 
 
 <docmeta name="displayName" value="watch.js">
-
-```
-/**
- * Run predefined tasks whenever watched file patterns are added, changed or deleted.
- *
- * ---------------------------------------------------------------
- *
- * Watch for changes on
- * - files in the `assets` folder
- * - the `tasks/pipeline.js` file
- * and re-run the appropriate tasks.
- *
- * For usage docs see:
- * 		https://github.com/gruntjs/grunt-contrib-watch
- *
- */
-module.exports = function(grunt) {
-
-	grunt.config.set('watch', {
-		api: {
-
-			// API files to watch:
-			files: ['api/**/*']
-		},
-		assets: {
-
-			// Assets to watch:
-			files: ['assets/**/*', 'tasks/pipeline.js'],
-
-			// When assets are changed:
-			tasks: ['syncAssets' , 'linkAssets']
-		}
-	});
-
-	grunt.loadNpmTasks('grunt-contrib-watch');
-};
-
-```

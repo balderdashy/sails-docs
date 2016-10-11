@@ -1,6 +1,6 @@
 # Generating controllers
 
-You can use the [Sails command line tool](http://sailsjs.org/documentation/reference/cli) to quickly generate a controller, by typing:
+You can use the [Sails command line tool](http://sailsjs.org/documentation/reference/command-line-interface) to quickly generate a controller, by typing:
 
 ```sh
 $ sails generate controller <controller name> [action names separated by spaces...]

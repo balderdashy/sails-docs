@@ -1,9 +1,12 @@
-# register
+# tasks/register/
+
 ### Purpose
-Halp!  Make this document better!!
 
-To run a custom task list, create a file in this directory and set NODE_ENV to match this file name.  For example, if NODE_ENV is QA, sails will run tasks/register/QA.js if it exists.
+This folder contains the Grunt tasks that Sails runs by default.
 
+For more information, see [Assets > Task Automation > Task Triggers](http://sailsjs.com/documentation/concepts/assets/task-automation#?task-triggers).
+
+> To run a custom task list, create a file in this directory and set [`sails.config.environment`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment) to match this file name.  For example, if the Sails `environment` config is set to "qa", then when you lift, instead of `tasks/register/default.js` or `tasks/register/prod.js`, Sails will _instead_ run `tasks/register/qa.js`. (If it does not exist, then `default.js` will be run instead.)
 
 <docmeta name="displayName" value="register">
 

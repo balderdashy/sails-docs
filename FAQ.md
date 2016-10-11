@@ -64,10 +64,10 @@ Aside from the [official documentation](http://sailsjs.org/documentation), be su
 > Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature). This small list is definitely not authoritative, so if you're using Sails in your app/product/service, we'd love to hear about it!  Click the `edit` button in GitHub's UI to submit a pull request updating this list.
 
 + [The City of Paris](http://paris.fr)
-+ [18F (United States)](https://18f.gsa.gov/)
-+ [Postman](https://www.getpostman.com/)
-+ [BeyondSoft](https://beyondsoft.com/)
-+ [The Broad Institute / Human Genome Project](https://www.broadinstitute.org/)
++ [18F (United States)](http://18f.gsa.gov/)
++ [Postman](http://www.getpostman.com/)
++ [BeyondSoft](http://beyondsoft.com/)
++ [The Broad Institute / Human Genome Project](http://www.broadinstitute.org/)
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [Insight Replay](http://insightreplay.com) - Instant replay for [athletes](http://insightreplay.com/insight-replay-at-sochi-winter-olympics/) and coaches

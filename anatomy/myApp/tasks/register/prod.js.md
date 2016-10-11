@@ -7,18 +7,18 @@ The production grunt task list.  sails will run this if there is no task list fi
 
 ```
 module.exports = function (grunt) {
-	grunt.registerTask('prod', [
-		'compileAssets',
-		'concat',
-		'uglify',
-		'cssmin',
-		'sails-linker:prodJs',
-		'sails-linker:prodStyles',
-		'sails-linker:devTpl',
-		'sails-linker:prodJsJade',
-		'sails-linker:prodStylesJade',
-		'sails-linker:devTplJade'
-	]);
+  grunt.registerTask('prod', [
+    'compileAssets',
+    'concat',
+    'uglify',
+    'cssmin',
+    'sails-linker:prodJs',
+    'sails-linker:prodStyles',
+    'sails-linker:devTpl',
+    'sails-linker:prodJsJade',
+    'sails-linker:prodStylesJade',
+    'sails-linker:devTplJade'
+  ]);
 };
 
 ```

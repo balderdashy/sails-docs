@@ -32,7 +32,7 @@ See the Response section of Reference Documentation for more info.
 
 module.exports = function sendOK (data, viewOrRedirect) {
 
-	// Get access to `req` & `res`
+  // Get access to `req` & `res`
   var req = this.req;
   var res = this.res;
 
@@ -59,10 +59,10 @@ module.exports = function sendOK (data, viewOrRedirect) {
     this.req._sails.log.verbose(data);
   }
 
-	// Serve JSON (with optional JSONP support)
-	if (req.wantsJSON) {
-		return sendJSON(data);
-	}
+  // Serve JSON (with optional JSONP support)
+  if (req.wantsJSON) {
+    return sendJSON(data);
+  }
 
   // Make data more readable for view locals
   var locals;

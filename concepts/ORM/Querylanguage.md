@@ -1,22 +1,36 @@
 # Waterline Query Language
 
-The Waterline Query language is an object-based criteria used to retrieve the records from any of the supported database adapters. This means that you can use the same query on MySQL as you do on Redis or MongoDb. This allows you to change your database without changing your code.
+The Waterline Query language is an object-based syntax used to retrieve the records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
 
-> All queries inside of Waterline are case insensitive. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
+> All queries inside of Waterline are case-insensitive. While this allows for more consistent querying across databases, depending on the database you're using, it can make indexing strings tough.  This is something to be aware of if you plan to create indexes in your database to optimize the performance of searching on string fields.
 
 ### Query Language Basics
 
 The criteria objects are formed using one of four types of object keys. These are the top level
 keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or if `where` is excluded the entire object will be treated as a `where` criteria.
+Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or, if `where` is excluded, the entire object will be treated as a `where` criteria.
 
 ```javascript
-Model.find({ where: { name: 'foo' }, skip: 20, limit: 10, sort: 'name DESC' });
+
+Model.find({
+  name: 'mary'
+}).exec(function (err, peopleNamedMary){
+
+});
+
 
 // OR
 
-Model.find({ name: 'foo' })
+
+Model.find({
+  where: { name: 'mary' },
+  skip: 20,
+  limit: 10,
+  sort: 'createdAt DESC'
+}).exec(function(err, thirdPageOfRecentPeopleNamedMary){
+
+});
 ```
 
 #### Key Pairs
@@ -24,13 +38,22 @@ Model.find({ name: 'foo' })
 A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
 
 ```javascript
-Model.find({ name: 'walter' })
+Model.find({
+  name: 'lyra'
+}).exec(function (err, peopleNamedLyra) {
+
+});
 ```
 
 They can be used together to search multiple attributes.
 
 ```javascript
-Model.find({ name: 'walter', state: 'new mexico' })
+Model.find({
+  name: 'walter',
+  state: 'new mexico'
+}).exec(function (err, waltersFromNewMexico) {
+  
+});
 ```
 
 #### Modified Pairs
@@ -40,35 +63,42 @@ Modified pairs also have model attributes for keys but they also use any of the 
 ```javascript
 Model.find({
   name : {
-    'contains' : 'alt'
+    'contains' : 'yra'
   }
 })
 ```
 
 #### In Pairs
 
-IN queries work similarly to mysql 'in queries'. Each element in the array is treated as 'or'.
+Provide an array to find records whose value for this attribute exactly matches (case-insensitive) _any_ of the specified search terms.
+
+> This is more or less equivalent to "IN" queries in SQL, and the `$in` operator in MongoDB.
 
 ```javascript
 Model.find({
-  name : ['Walter', 'Skyler']
+  name : ['walter', 'skyler']
+}).exec(function (err, waltersAndSkylers){
+
 });
 ```
 
 #### Not-In Pairs
 
-Not-In queries work similar to `in` queries, except for the nested object criteria.
+Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches (case-insensitive) for any of the specified search terms.
+
+> This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
 ```javascript
 Model.find({
-  name: { '!' : ['Walter', 'Skyler'] }
+  name: { '!' : ['walter', 'skyler'] }
+}).exec(function (err, everyoneExceptWaltersAndSkylers){
+
 });
 ```
 
 #### Or Pairs
 
-Performing `OR` queries is done by using an array of query pairs. Results will be returned that
-match any of the criteria objects inside the array.
+Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query pairs in the `or` array.
 
 ```javascript
 Model.find({
@@ -76,7 +106,9 @@ Model.find({
     { name: 'walter' },
     { occupation: 'teacher' }
   ]
-})
+}).exec(function(waltersAndTeachers){
+
+});
 ```
 
 ### Criteria Modifiers
@@ -131,7 +163,45 @@ Model.find({ age: { '>=': 21 }})
 Searches for records where the value is not equal to the value specified.
 
 ```javascript
-Model.find({ name: { '!': 'foo' }})
+Model.find({
+  name: { '!': 'foo' }
+})
+```
+
+#### 'contains'
+
+Searches for records where the value for this attribute _contains_ the given string. (Case insensitive.)
+
+```javascript
+Model.find({
+  subject: { contains: 'music' }
+}).exec(function (err, musicCourses){
+  
+});
+```
+
+#### 'startsWith'
+
+Searches for records where the value for this attribute _starts with_ the given string. (Case insensitive.)
+
+```javascript
+Model.find({
+  subject: { startsWith: 'american' }
+}).exec(function (err, coursesAboutAmerica){
+
+});
+```
+
+#### 'endsWith'
+
+Searches for records where the value for this attribute _ends with_ the given string. (Case insensitive.)
+
+```javascript
+Model.find({
+  subject: { endsWith: 'history' }
+}).exec(function (err, historyCourses) {
+
+})
 ```
 
 #### 'like'
@@ -140,45 +210,6 @@ Searches for records using pattern matching with the `%` sign. (Case insensitive
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
-```
-
-#### 'contains'
-
-A shorthand for pattern matching both sides of a string. Will return records where the value
-contains the string anywhere inside of it. (Case insensitive.)
-
-```javascript
-Model.find({ class: { 'contains': 'history' }})
-
-// The same as
-
-Model.find({ class: { 'like': '%history%' }})
-```
-
-#### 'startsWith'
-
-A shorthand for pattern matching the right side of a string. Will return records where the value
-starts with the supplied string value. (Case insensitive.)
-
-```javascript
-Model.find({ class: { 'startsWith': 'american' }})
-
-// The same as
-
-Model.find({ class: { 'like': 'american%' }})
-```
-
-#### 'endsWith'
-
-A shorthand for pattern matching the left side of a string. Will return records where the value
-ends with the supplied string value. (Case insensitive.)
-
-```javascript
-Model.find({ class: { 'endsWith': 'can' }})
-
-// The same as
-
-Model.find({ class: { 'like': '%can' }})
 ```
 
 #### 'Date Ranges'
