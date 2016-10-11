@@ -1,9 +1,17 @@
-# myApp/tasks/config/clean.js
+# tasks/config/clean.js
+
+Prepare for a new pass through the asset pipeline by removing the files and folders in your Sails app's web root.
+
+> (Conventionally, this is a hidden directory called `.tmp/public`.)
+
+### Usage
+
+For usage documentation, see https://github.com/gruntjs/grunt-contrib-clean.
 
 
-<docmeta name="displayName" value="clean.js">
+### Example
 
-```
+```js
 /**
  * Clean files and folders.
  *
@@ -26,3 +34,6 @@ module.exports = function(grunt) {
 };
 
 ```
+
+
+<docmeta name="displayName" value="clean.js">
