@@ -22,7 +22,7 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 |:-----------|:----------------|
 | `ready`    | The app has been loaded and the bootstrap has run, but it is not yet listening for requests |
 | `lifted`   | The app has been lifted and is listening for requests. |
-| `lowered`  | The app has been lowered and is no longer listening for requests. |
+| `lower`  | The app has is lowering and will stop listening for requests. |
 | `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
 
 
