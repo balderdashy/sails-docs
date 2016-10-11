@@ -7,7 +7,7 @@ The default grunt task list.  sails will run this if there is no task list file 
 
 ```
 module.exports = function (grunt) {
-	grunt.registerTask('default', ['compileAssets', 'linkAssets',  'watch']);
+  grunt.registerTask('default', ['compileAssets', 'linkAssets',  'watch']);
 };
 
 ```

@@ -1,39 +1,17 @@
 # tasks/config/clean.js
 
-Prepare for a new pass through the asset pipeline by removing the files and folders in your Sails app's web root.
+### Purpose
 
-> (Conventionally, this is a hidden directory called `.tmp/public`.)
+This file configures a Grunt task called "clean".
+
+This task is used when preparing for a new pass through the asset pipeline. Its job is to remove any existing temporary files and folders in your Sails app's web root.
+
+> (By default, the [web root in a Sails app](http://sailsjs.com/documentation/concepts/assets) is a hidden directory called `.tmp/public`.)
 
 ### Usage
 
-For usage documentation, see https://github.com/gruntjs/grunt-contrib-clean.
+For additional usage documentation, see [`grunt-contrib-clean`](https://npmjs.com/package/grunt-contrib-clean).
 
-
-### Example
-
-```js
-/**
- * Clean files and folders.
- *
- * ---------------------------------------------------------------
- *
- * This grunt task is configured to clean out the contents in the .tmp/public of your
- * sails project.
- *
- * For usage docs see:
- * 		https://github.com/gruntjs/grunt-contrib-clean
- */
-module.exports = function(grunt) {
-
-	grunt.config.set('clean', {
-		dev: ['.tmp/public/**'],
-		build: ['www']
-	});
-
-	grunt.loadNpmTasks('grunt-contrib-clean');
-};
-
-```
 
 
 <docmeta name="displayName" value="clean.js">

@@ -15,9 +15,9 @@ Services are written in one or more .js file within this directory.
 
 ```
 module.exports = {
-	send: function(to,from,body){
-		// fancy code that sends an email
-	}
+  send: function(to,from,body){
+    // fancy code that sends an email
+  }
 }
 
 ```

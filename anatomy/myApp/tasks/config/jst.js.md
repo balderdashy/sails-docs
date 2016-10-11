@@ -1,53 +1,35 @@
-# myApp/tasks/config/jst.js
+# tasks/config/jst.js
+
+### Purpose
+
+This file configures a Grunt task called "jst".
+
+It precompiles HTML templates using Underscore/Lodash notation into functions, creating a `.jst` file.  This can be brought into your HTML via a `<script>` tag in order to expose your templates as `window.JST` for use in your client-side JavaScript.
+
+In other words, this takes HTML files in `assets/templates/` and turns them into tiny little javascript functions that return HTML strings when you pass a data dictionary into them.  This approach is called "precompiling", and it can considerably speed up template rendering on the client, and even reduce bandwidth usage and related expenses.)
+
+> Note that, by default, Underscore/Lodash/JST notation is _opposite_ from EJS (`<%=` is `<%-`, and vice versa).
+> If this bothers you, it can be easily configured in this file. (See inline comments for details.)
+
+### But I'm not using Lodash/Underscore/JST templates...
+
+No problem!
+
+If you aren't using any kind of precompiled client-side templates, then just ignore this file.
+
+If you want to use a _different_ pre-processor like [Handlebars](http://handlebarsjs.com/) or [Dust](http://www.dustjs.com/), and you want Sails to process your client-side templates automatically as you work, then you're in luck.  In most cases, this is as easy as installing the appropriate Grunt plugin as a dependency of your Sails app, and then configuring it to output the precompiled templates (condensed into a single JavaScript file) to the same path as in this default task.
+
+Here are a couple of popular examples:
+
++ [grunt-contrib-handlebars](https://www.npmjs.com/package/grunt-contrib-handlebars)
++ [grunt-dust](https://www.npmjs.com/package/grunt-dust)
+
+
+### Usage
+
+For additional usage documentation, see [`grunt-contrib-jst`](https://www.npmjs.com/package/grunt-contrib-jst).
+
 
 
 <docmeta name="displayName" value="jst.js">
 
-```
-/**
- * Precompiles Underscore templates to a `.jst` file.
- *
- * ---------------------------------------------------------------
- *
- * (i.e. basically it takes HTML files and turns them into tiny little
- *  javascript functions that you pass data to and return HTML. This can
- *  speed up template rendering on the client, and reduce bandwidth usage.)
- *
- * For usage docs see:
- * 		https://github.com/gruntjs/grunt-contrib-jst
- *
- */
-
-module.exports = function(grunt) {
-
-	var templateFilesToInject = [
-		'templates/**/*.html'
-	];
-
-	grunt.config.set('jst', {
-		dev: {
-
-			// To use other sorts of templates, specify a regexp like the example below:
-			// options: {
-			//   templateSettings: {
-			//     interpolate: /\{\{(.+?)\}\}/g
-			//   }
-			// },
-
-			// Note that the interpolate setting above is simply an example of overwriting lodash's
-			// default interpolation. If you want to parse templates with the default _.template behavior
-			// (i.e. using <div></div>), there's no need to overwrite `templateSettings.interpolate`.
-
-
-			files: {
-				// e.g.
-				// 'relative/path/from/gruntfile/to/compiled/template/destination'  : ['relative/path/to/sourcefiles/**/*.html']
-				'.tmp/public/jst.js': require('../pipeline').templateFilesToInject
-			}
-		}
-	});
-
-	grunt.loadNpmTasks('grunt-contrib-jst');
-};
-
-```

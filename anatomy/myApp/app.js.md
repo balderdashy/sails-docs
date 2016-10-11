@@ -1,63 +1,14 @@
-# myApp/app.js
+# app.js
+
 ### Purpose
-This file exists only to tell Node how to start your app when you are not running `sails lift`.  It is only relevant when you start the server from the command line with `npm start` (i.e. `node app`).  In most cases, you can safely ignore this file.
+
+This file is the conventional entry point for a _production_ Sails/Node.js app.
+
+When developing on your local computer, and you run `sails lift`, the code in `app.js` is not executed.  Instead, this file exists to provide an easy, out-of-the-box way to run your app _without_ typing `sails lift`.  This is most likely how you'll start your app in production (i.e. `node app`, or `npm start`).
+
+For example, when you deploy to most PaaS vendors like [Heroku](http://heroku.com), they will automatically detect that you're running a Sails/Node.js app and execute this file with the `NODE_ENV` environment variable set to production.
+
+> Whatever stage of the development lifecycle you're at, you can safely ignore `app.js`.  It's good to go out of the box for most apps.  But the code in `app.js` also serves as an easy-to-reference example of how to use Sails programmatically.  So you might want to take a look at it if you plan on writing automated tests, scheduled jobs, manual database migrations, or administration scripts.
 
 
 <docmeta name="displayName" value="app.js">
-
-```
-/**
- * app.js
- *
- * Use `app.js` to run your app without `sails lift`.
- * To start the server, run: `node app.js`.
- * 
- * This is handy in situations where the sails CLI is not relevant or useful.
- *
- * For example:
- *   => `node app.js`
- *   => `forever start app.js`
- *   => `node debug app.js`
- *   => `modulus deploy`
- *   => `heroku scale`
- * 
- *
- * The same command-line arguments are supported, e.g.:
- * `node app.js --silent --port=80 --prod`
- */
-
-// Ensure a "sails" can be located:
-var sails;
-try {
-	sails = require('sails');
-} catch (e) {
-	console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
-	console.error('To do that, run `npm install sails`');
-	console.error('');
-	console.error('Alternatively, if you have sails installed globally (i.e. you did `npm install -g sails`), you can use `sails lift`.');
-	console.error('When you run `sails lift`, your app will still use a local `./node_modules/sails` dependency if it exists,');
-	console.error('but if it doesn\'t, the app will run with the global sails instead!');
-	return;
-}
-
-// Try to get `rc` dependency
-var rc;
-try {
-	rc = require('rc');
-} catch (e0) {
-	try {
-		rc = require('sails/node_modules/rc');
-	} catch (e1) {
-		console.error('Could not find dependency: `rc`.');
-		console.error('Your `.sailsrc` file(s) will be ignored.');
-		console.error('To resolve this, run:');
-		console.error('npm install rc --save');
-		rc = function () { return {}; };
-	}
-}
-
-
-// Start server
-sails.lift(rc('sails'));
-
-```

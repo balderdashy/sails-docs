@@ -1,35 +1,17 @@
-# myApp/tasks/config/sync.js
+# tasks/config/sync.js
+
+### Purpose
+
+This file configures a Grunt task called "sync".
+
+This task synchronizes one directory with another (like rsync).  In the default Sails asset pipeline, it plays very similar role to `grunt-contrib-copy`, but copies only those files that have actually changed since the last time the task was run.
+
+Specifically, its job is to synchronize files from the `assets/` folder to `.tmp/public`, smashing anything that's already there.
+
+
+### Usage
+
+For additional usage documentation, see [`grunt-sync`](https://www.npmjs.com/package/grunt-sync).
 
 
 <docmeta name="displayName" value="sync.js">
-
-```
-/**
- * A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy
- * but tries to copy only those files that has actually changed.
- *
- * ---------------------------------------------------------------
- *
- * Synchronize files from the `assets` folder to `.tmp/public`,
- * smashing anything that's already there.
- *
- * For usage docs see:
- * 		https://github.com/tomusdrw/grunt-sync
- *
- */
-module.exports = function(grunt) {
-
-	grunt.config.set('sync', {
-		dev: {
-			files: [{
-				cwd: './assets',
-				src: ['**/*.!(coffee)'],
-				dest: '.tmp/public'
-			}]
-		}
-	});
-
-	grunt.loadNpmTasks('grunt-sync');
-};
-
-```
