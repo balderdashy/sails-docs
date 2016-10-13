@@ -29,7 +29,7 @@ io.socket.post(url, data, function (resData, jwres){
 
 ```html
 <script>
-io.socket.post('/users', { name: 'Timmy Mendez' }, function (resData, jwres) {
+io.socket.post('/users', { name: 'Timmy Mendez' }, function (resData, jwRes) {
   jwRes.statusCode; // => 200
 });
 </script>
