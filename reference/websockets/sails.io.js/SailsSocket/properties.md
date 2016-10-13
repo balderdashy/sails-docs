@@ -9,7 +9,7 @@ If the socket becomes disconnected (either involuntarily or as a result of a cal
 ### Common properties
 
   Property          | Type       | Default   | Details
- ------------------ |----------| --------- | :-------:
+ ------------------ |----------| --------- | :-------
  `url`              | ((string)) | Value of [`io.sails.url`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | The URL that the socket is connected to, or will attempt to connect to.
  `transports`       | ((array))  | Value of [`io.sails.transports`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | The transports that the socket will attempt to connect using.  Transports will be tried in order, with upgrades allowed: that is, if you list both "polling" and "websocket", then after establishing a long-polling connection the server will attempt to upgrade it to a websocket connection.  This setting should match the value of `sails.config.sockets.transports` in your Sails app.
 `headers` | ((dictionary)) | Value of [`io.sails.headers`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | Dictionary of headers to be sent by default with every request from this socket.  Can be overridden via the `headers` option in [`.request()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-request).
@@ -17,7 +17,7 @@ If the socket becomes disconnected (either involuntarily or as a result of a cal
 ### Advanced properties
 
   Property          | Type       | Default   | Details
- ------------------ |----------| --------- | :-------:
+ ------------------ |----------| --------- | :-------
  `query`              | ((string)) | Value of [`io.sails.query`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults)    | Query string to use with the initial connection to the server.  In server code, this can be accessed via `req.socket.handshake.query` in controller actions or `socket.handshake.query` in [socket lifecycle callbacks](http://sailsjs.org/documentation/reference/configuration/sails-config-sockets).  Note that information about the sails.io.js SDK version will be tacked onto whatever query string you specify.
  `initialConnectionHeaders` | ((dictionary)) | Value of [`io.sails.initialConnectionHeaders`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | _Node.js only--not available in browser._ Dictionary of headers to be sent with the initial connection to the server.  In server code, these can be accessed via `req.socket.handshake.headers` in controller actions or `socket.handshake.headers` in [socket lifecycle callbacks](http://sailsjs.org/documentation/reference/configuration/sails-config-sockets).  This is useful for (for example) sending a `cookie` header with the initial handshake, allowing a socket to connect to a previously-established Sails session.
  `useCORSRouteToGetCookie` | ((boolean)) -or- ((string)) | Value of [`io.sails.useCORSRouteToGetCookie`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/sails-socket/properties#?iosails-defaults) | For cross-origin socket connections, use this property to choose a route to send an initial JSONP request (in browser environments) or HTTP request (in Node.js environments) in order to retrieve a cookie, so that a session can be established.  The route should return the string `_sailsIoJSConnect()`, which will allow the connection to continue.  If `useCORSRouteToGetCookie` is `true`, the default `/__getcookie` route on the Sails server will be used.  If it is `false`, no attempt will be made to contact the remote server before continuing the socket connection.
@@ -29,7 +29,7 @@ The `io.sails` object can be used to provide default values for new client socke
 The following are the default values for properties in `io.sails`.
 
   Property          | Default
-  ------------------ | -------
+  ------------------ |:-------
  `url`              | In browser, the URL of the page that loaded the sails.io.js script.  In Node.js, no default.
  `transports`       | `['polling', 'websocket']`
 `headers` | `{}`
