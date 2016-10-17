@@ -12,7 +12,7 @@ Sails adds a few methods of its own to the `res` object, like [`res.view()`](htt
 
 ### Protocol Support
 
-The chart below describes support for the methods and properties on the Sails [Response](http://sailsjs.org/documentation/reference/res) object (`res`) across multiple transports:
+The chart below describes support for the methods and properties on the Sails Response object (`res`) across multiple transports:
 
 
 |                |  HTTP   | WebSockets |
