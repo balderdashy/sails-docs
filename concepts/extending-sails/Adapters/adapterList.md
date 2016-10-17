@@ -1,7 +1,9 @@
-# List of Available Adapters
-This file is meant to be an up to date, comprehensive list of all of the adapters available for the Sails.js framework.  If we missed one or you would like to add an adapter you made, just submit a Pull Request to this file, adding to the list.
+# Available Database Adapters
 
-### Officially Supported Adapters
+This file is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the community adapters out there.  If you see out of data information on this page, or if you want to add an adapter you made, please just submit a pull request to this file, adding to the list of community adapters below.
+
+
+### Officially supported database adapters
 
 ##### sails-disk
 
@@ -77,7 +79,22 @@ https://github.com/balderdashy/sails-redis/
 + Queryable
 
 
-### Community Supported Adapters
+
+
+### Can I contribute to a core adapter?
+
+Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/contributing). 
+
+
+
+
+### Community supported database adapters
+
+Is your database not supported by one of the core adapters?  Good news!  There are many different community database adapters for Sails.js and Waterline [available on NPM](https://www.npmjs.com/search?q=sails+adapter).
+
+> Learn [how to install and configure community adapters](http://sailsjs.com/docs/concepts/extending-sails/adapters).
+
+Here are a few highlights:
 
 ##### sails-orientdb
 
@@ -111,6 +128,9 @@ https://github.com/dash-/node-sails-derby
 + Queryable
 + Associations
 + SQL
+
+
+### Add your custom adapter to this list
 
 Have you written a Sails adapter? Submit a PR to this file and add it here!
 

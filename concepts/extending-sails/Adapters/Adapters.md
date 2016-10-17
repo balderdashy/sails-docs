@@ -16,6 +16,10 @@ Adapters are mainly focused on providing model-contextualized CRUD methods.  CRU
 For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection information and runs an `INSERT ...` SQL query.
 
 
+### Next steps
+
+Read about [available adapters](http://sailsjs.com/docs/concepts/extending-sails/adapters/available-adapters), or how to make your own [custom adapter](http://sailsjs.com/docs/concepts/extending-sails/adapters/custom-adapters).
+
 
 <docmeta name="displayName" value="Adapters">
 <docmeta name="stabilityIndex" value="3">
