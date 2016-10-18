@@ -1,6 +1,14 @@
-# Reporting Security Issues in Sails
+# Security policy
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  <em>Please don't file a public issue</em>.
+Sails is committed to providing a secure framework, and quickly responding to any suspected security vulnerabilities.  Contributors work carefully to ensure best practices, but we also rely heavily on the community when it comes to discovering, reporting, and remediating security issues.
+
+### Subscribe to announcements
+
+Security announcements are sent to the Sails [newsgroup](https://groups.google.com/forum/#!forum/sailsjs), and are released roughly at the same time NSP advisories are issued.
+
+### Reporting a security issue in Sails
+
+If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at treeline dot io**.  In the spirit of [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure), we ask that you privately report any security vulnerability at that email address, and give us time to patch the issue before publishing the details</em>.
 
 ### What is a security vulnerability?
 
@@ -12,7 +20,7 @@ For example, an issue where Sails crashes in a development environment when usin
 
 ### What should be included in the email?
 
-- Identify the module where you found the security vulnerability (e.g. Sails, Waterline, other core module).
+- The name and NPM version string of the module where you found the security vulnerability (e.g. Sails, Waterline, other core module).
 - A summary of the vulnerability
 - The code you used when you discovered the vulnerability or a code example of the vulnerability (whichever is shorter).
 - Whether you want us to make your involvement public.  If you want such a reference the name and link you wish to be referred (e.g. Jane Doe's link to her GitHub account)
@@ -20,18 +28,23 @@ For example, an issue where Sails crashes in a development environment when usin
 > Please respect the core team's privacy and do not send bugs resulting from undocumented usage, questions, or feature requests to this email address.
 
 ### The process
-When you report a vulnerability, one of the project members will respond to you within a maximum of 14 days.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.  Our target patching timeframe for serious security vulnerabilities is 14 days - however, we cannot guarantee that this is possible in all cases (more on that below).
+When you report a vulnerability, one of the project members will respond to you within a maximum of 72 hours.  This response will most likely be an acknowledgement that we've received the report and will be investigating it immediately.  Our target patching timeframe for most security vulnerabilities is 14 days.
 
 Based upon the nature of the vulnerability, and the amount of time it would take to fix, we'll either send out a patch that disables the broken feature, provide an estimate of the time it will take to fix, and/or document best practices to follow to avoid production issues.
 
 You can expect follow-up emails outlining the progression of a solution to the vulnerability along with any other questions we may have regarding your experience.
 
 ##### When a solution is achieved we do the following:
+
 - notify you
-- release a patch on the module's main repo
-- provide a link to the patch here along with an explanation of it's origin and crediting you (if you have chosen to be identified)
-- publicize the release via our various mailing lists.
+- release a patch on NPM
+- coordinate with [Node Security](http://nodesecurity.io) to issue an [advisory](https://nodesecurity.io/advisories?search=sails), crediting you (unless you expressly asked not to be identified)
+- publicize the release via our [newsgroup](https://groups.google.com/forum/#!forum/sailsjs)
 
 ### Is this an SLA?
 
-No. Like any open-source project, we're run by volunteers, and we can't legally guarantee any kind of service level agreement (see the MIT license for details).  However, the core team cares deeply about Sails, and all of us have at least a few different websites and APIs running on Sails in production.  We will always publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
+No. The Sails framework is available under the [MIT license](http://sailsjs.com/license), which does not include a service level agreement.  However, the core team and contributors care deeply about Sails, and all of us have websites and APIs running on Sails in production.  We will _always_ publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
+
+> For more support options, see http://sailsjs.com/support.
+
+
