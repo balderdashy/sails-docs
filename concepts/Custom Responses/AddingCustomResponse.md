@@ -45,6 +45,7 @@ module.exports = function(message) {
 
     // Otherwise, serve the `views/mySpecialView.*` page
     res.render(viewFilePath);
-  });   
+  });
+}
 ```
 <docmeta name="displayName" value="Adding a Custom Response">
