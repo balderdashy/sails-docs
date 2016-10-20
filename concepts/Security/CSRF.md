@@ -4,11 +4,13 @@ Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Re
 
 ### Enabling CSRF Protection
 
-Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.csrf](http://sailsjs.com/docs/reference/configuration/sails-config-csrf) (conventionally located in your project's [`config/csrf.js`](http://sailsjs.com/anatomy/config/csrf-js) file):
+Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.security.csrf](http://sailsjs.com/docs/reference/configuration/sails-config-security-csrf) (conventionally located in your project's [`config/security.js`](http://sailsjs.com/anatomy/config/security-js) file):
 
 ```js
 csrf: true
 ```
+
+You can also turn CSRF protection on or off on a per-route basis by adding `csrf: true` or `csrf: false` to any route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file.
 
 Note that if you have existing code that communicates with your Sails backend via POST, PUT, or DELETE requests, you'll need to acquire a CSRF token and include it as a parameter or header in those requests.  More on that in a sec.
 
@@ -45,7 +47,15 @@ If you are doing a `multipart/form-data` upload with the form, be sure to place 
 
 ##### Using AJAX/WebSockets
 
-In AJAX/Socket-heavy apps, you might prefer to send a GET request to the built-in `/csrfToken` route, where it will be returned as JSON, e.g.:
+In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `csrftoken` action:
+
+```json
+{
+  "GET /csrfToken": { action: "csrftoken" }
+}
+```
+
+Then send a GET request to the route you defined, and you'll get CSRF token returned as JSON, e.g.:
 
 ```json
 {
