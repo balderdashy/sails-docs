@@ -2,7 +2,45 @@
 
 Cross-site request forgery ([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery)) is a type of attack which forces an end user to execute unwanted actions on a web application backend with which he/she is currently authenticated.  In other words, without protection, cookies stored in a browser like Google Chrome can be used to send requests to Chase.com from a user's computer whether that user is currently visiting Chase.com or Horrible-Hacker-Site.com.
 
-### Enabling CSRF Protection
+### About CSRF tokens
+
+CSRF tokens are like limited-edition swag.  While a session tells the server that a user "is who they say they are", a csrf token tells the server they "were where they say they were".  When CSRF protection is enabled in your Sails app, all non-GET requests to the server must be accompanied by a special "CSRF token", which can be included as either the '_csrf' parameter or the 'X-CSRF-Token' header.
+
+Using tokens protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.  This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
+
+Enabling CSRF protection requires managing the token in your front-end app.  In traditional form submissions, this can be easily accomplished by sending along the CSRF token as a hidden input in your `<form>`.  Or better yet, include the CSRF token as a request param or header when you send AJAX requests.  To do that, you can either fetch the token by sending a request to the route where you mounted `security/grantCsrfToken`, or better yet, harvest the token from view locals using the `exposeLocalsToBrowser` partial.
+
+Here are some examples:
+
+#### (a) For modern, view-driven hybrid apps that submit forms with AJAX:
+Use the `exposeLocalsToBrowser` partial to provide access to the token from
+your client-side JavaScript, e.g.:
+```html
+<%- exposeLocalsToBrowser() %>
+<script>
+  $.post({
+    foo: 'bar',
+    _csrf: window.SAILS_LOCALS._csrf
+  })
+</script>
+```
+
+#### (b) For single-page apps with static HTML:
+Fetch the token by sending a GET request to the route where you mounted
+the `security.grantCsrfToken`.  It will respond with JSON, e.g.:
+```js
+{ _csrf: 'ajg4JD(JGdajhLJALHDa' }
+```
+
+#### (c) For traditional HTML form submissions:
+Render the token directly into a hidden form input element in your HTML, e.g.:
+```html
+<form>
+  <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
+```
+
+### Enabling CSRF protection
 
 Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.security.csrf](http://sailsjs.com/docs/reference/configuration/sails-config-security-csrf) (conventionally located in your project's [`config/security.js`](http://sailsjs.com/anatomy/config/security-js) file):
 
