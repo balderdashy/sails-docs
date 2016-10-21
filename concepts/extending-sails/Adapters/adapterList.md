@@ -100,10 +100,10 @@ Here are a few highlights:
 |------|------------|------------------------|-----------------------|
 | [Sails-MSsqlserver](https://github.com/misterGF/sails-mssqlserver) | [misterGF](https://github.com/misterGF)|  | [![NPM version](https://img.shields.io/npm/v/sails-sqlserver.svg?style=flat-square)](https://npmjs.org/package/sails-sqlserver) |
 | [Sails-OrientDB](https://github.com/appscot/sails-orientdb) | [appscot](https://github.com/appscot) | Semantic, Queryable, Associations, Migratable | [![npm version](https://badge.fury.io/js/sails-orientdb.svg)](http://badge.fury.io/js/sails-orientdb) |
-| [Sails-REST](https://github.com/zohararad/sails-rest) | [zohararad](https://github.com/zohararad) | | |
+| [Sails-REST](https://github.com/zohararad/sails-rest) | [zohararad](https://github.com/zohararad) | Semantic | |
 | [Sails-Oracle](https://github.com/atiertant/sails-oracle) | [atiertant](https://github.com/atiertant) | | |
-| [Sails-Cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | | [![npm version](https://badge.fury.io/js/sails-cassandra.svg)](http://badge.fury.io/js/sails-cassandra) |
-| [Sails-Solr](https://github.com/sajov/sails-solr) | [sajov](https://github.com/sajov) | | [![npm version](https://badge.fury.io/js/sails-solr.svg)](http://badge.fury.io/js/sails-solr) |
+| [Sails-Cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | Semantic, Migratable, Iterable | [![npm version](https://badge.fury.io/js/sails-cassandra.svg)](http://badge.fury.io/js/sails-cassandra) |
+| [Sails-Solr](https://github.com/sajov/sails-solr) | [sajov](https://github.com/sajov) | Semantic, Migratable, Queryable | [![npm version](https://badge.fury.io/js/sails-solr.svg)](http://badge.fury.io/js/sails-solr) |
 | [Sails-Filemaker](https://github.com/geistinteractive/sails-filemaker) | [toddgeist](https://github.com/toddgeist) | Semantic | [![npm version](https://badge.fury.io/js/sails-filemaker.svg)](http://badge.fury.io/js/sails-filemaker) |
 | [Sails-Derby](https://github.com/dash-/node-sails-derby) | [dash-](https://github.com/dash-) | Semantic, Queryable, Associations, SQL | |
 
