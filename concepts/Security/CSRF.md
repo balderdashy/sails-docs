@@ -85,11 +85,11 @@ If you are doing a `multipart/form-data` upload with the form, be sure to place 
 
 ##### Using AJAX/WebSockets
 
-In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `csrftoken` action:
+In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `security/grantcsrftoken` action:
 
 ```json
 {
-  "GET /csrfToken": { action: "csrftoken" }
+  "GET /csrfToken": { action: "security/grantcsrftoken" }
 }
 ```
 
