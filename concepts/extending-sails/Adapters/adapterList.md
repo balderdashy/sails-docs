@@ -47,7 +47,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 https://github.com/balderdashy/sails-postgresql/
 
-[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 
 ###### Interfaces implemented:
 + Semantic
@@ -62,7 +62,7 @@ https://github.com/balderdashy/sails-mongo/
 
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
-  
+
 ###### Interfaces implemented:
 + Semantic
 + Queryable
@@ -83,7 +83,7 @@ https://github.com/balderdashy/sails-redis/
 
 ### Can I contribute to a core adapter?
 
-Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/contributing). 
+Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/contributing).
 
 
 
@@ -96,39 +96,16 @@ Is your database not supported by one of the core adapters?  Good news!  There a
 
 Here are a few highlights:
 
-##### sails-orientdb
-
-https://github.com/appscot/sails-orientdb
-
-[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
-
-###### Interfaces implemented:
-+ Semantic
-+ Queryable
-+ Associations
-+ Migratable
-
-##### sails-filemaker
-
-https://github.com/geistinteractive/sails-filemaker
-
-[FileMaker](https://en.wikipedia.org/wiki/FileMaker), is cross platform relational database and development platform. It has been owned and published by Apple since 1988.
-
-###### Interfaces implemented:
-+ Semantic
-
-##### sails-derby
-
-https://github.com/dash-/node-sails-derby
-
-[Apache Derby](https://db.apache.org/derby/) is an open source relational database implemented entirely in Java and available under the Apache License, Version 2.0.
-
-###### Interfaces implemented:
-+ Semantic
-+ Queryable
-+ Associations
-+ SQL
-
+|    Name                                                                         | Maintainer                                    | Interfaces implemented | Latest stable version                                                                                     |
+|---------------------------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| [Sails-MSsqlserver](https://github.com/misterGF/sails-mssqlserver)              | [misterGF](https://github.com/misterGF)|  | [![NPM version](https://img.shields.io/npm/v/sails-sqlserver.svg?style=flat-square)](https://npmjs.org/package/sails-sqlserver)|
+| [Sails-OrientDB](https://github.com/appscot/sails-orientdb)                     | [appscot](https://github.com/appscot)         | Semantic, Queryable, Associations, Migratable | [![npm version](https://badge.fury.io/js/sails-orientdb.svg)](http://badge.fury.io/js/sails-orientdb)|
+| [Sails-REST](https://github.com/zohararad/sails-rest)                           | [zohararad](https://github.com/zohararad)     |  | |
+| [Sails-Oracle](https://github.com/atiertant/sails-oracle)                       | [atiertant](https://github.com/atiertant)     |  | |
+| [Sails-Cassandra](https://github.com/dtoubelis/sails-cassandra)                 | [dtoubelis](https://github.com/dtoubelis)     |  | [![npm version](https://badge.fury.io/js/sails-cassandra.svg)](http://badge.fury.io/js/sails-cassandra) |
+| [Sails-Solr](https://github.com/sajov/sails-solr)                               | [sajov](https://github.com/sajov)             |  | [![npm version](https://badge.fury.io/js/sails-solr.svg)](http://badge.fury.io/js/sails-solr) |
+| [Sails-Filemaker](https://github.com/geistinteractive/sails-filemaker)          | [toddgeist](https://github.com/toddgeist)     | Semantic |  [![npm version](https://badge.fury.io/js/sails-filemaker.svg)](http://badge.fury.io/js/sails-filemaker) |
+| [Sails-Derby](https://github.com/dash-/node-sails-derby)                        | [dash-](https://github.com/dash-)             | Semantic, Queryable, Associations, SQL |  |
 
 ### Add your custom adapter to this list
 
