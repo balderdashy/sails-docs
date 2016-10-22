@@ -45,12 +45,14 @@ console.log(window.SAILS_LOCALS);
 //   },
 //   projects: [
 //     {
-//       slug: 'my-neat-stuff',
-//       friendlyName: 'My neat stuff'
+//       slug: 'my-neat-stuff-n-things',
+//       friendlyName: 'My neat stuff & things',
+//       description: 'Yet another project.'
 //     },
 //     {
 //       slug: 'kind-of-neat-stuff-but-not-that-great',
-//       friendlyName: 'Kind of neat stuff, but not that great...'
+//       friendlyName: 'Kind of neat stuff, but not that great...',
+//       description: 'I am so sick and tired of these project. <script>alert(\'attack\');</script>'
 //     }
 //   ],
 //   _csrf: 'oon95Uac-wKfWQKC5pHx1rP3HsiN9tjqGMyE'
@@ -58,6 +60,10 @@ console.log(window.SAILS_LOCALS);
 </script>
 ```
 
+> Note that, when you use this strategy, the strings in your view locals are no longer HTML unescaped after being exposed to client-side JavaScript.
+> That's because you'll want to escape them _again_ when you stick them in the DOM.  If you always escape at the point of injection, this stuff is a
+> lot easier to keep track of.  This way, you know you can safely escape _any_ string you inject into the DOM from your client-side JavaScript.
+> (More on that below.)
 
 
 #### On the client
