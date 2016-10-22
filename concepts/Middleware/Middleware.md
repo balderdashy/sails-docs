@@ -79,10 +79,9 @@ You can also include Express middleware as a policy- just configure it in [`conf
 ```js
 var auth = require('http-auth');
 var basic = auth.basic({
-        realm: "admin area"
-    }, function (username, password, onwards) {
-        onwards(username === "Tina" && password === "Bullock");
-    }
+  realm: 'admin area'
+}, function (username, password, onwards) {
+  return onwards(username === 'Tina' && password === 'Bullock');
 });
 
 //...
