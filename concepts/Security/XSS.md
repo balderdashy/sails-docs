@@ -16,11 +16,18 @@ Use `<%= %>` to HTML-encode data:
 
 ```html
 <h3 is="welcome-msg">Hello <%= me.username %>!</h3>
+
+<h4><%= owner.username %>'s projects:</h4>
+<ul><% _.each(projects, function (project) { %>
+  <li>
+    <a href="/<%= owner.username %>/<%= project.slug %>"><%= project.friendlyName %></a>
+  </li>
+<% }); %></ul>
 ```
 
 ##### When exposing view locals to client-side JavaScript...
 
-Use `exposeLocalsToBrowser` to safely expose some or all of your view locals to client-side JavaScript:
+Use the `exposeLocalsToBrowser` helper to safely expose some or all of your view locals to client-side JavaScript:
 
 ```html
 <%- exposeLocalsToBrowser(); %>
@@ -31,6 +38,10 @@ console.log(window.SAILS_LOCALS);
 //   me: {
 //     username: 'eleven',
 //     memberSince: '1982-08-01T05:00:00.000Z'
+//   },
+//   owner: {
+//     username: 'joyce',
+//     memberSince: '1987-11-03T05:00:00.000Z'
 //   },
 //   projects: [
 //     {
@@ -53,11 +64,9 @@ console.log(window.SAILS_LOCALS);
 
 A lot of XSS prevention is about what you do in your client-side code.  Here are a few examples:
 
-##### When injecting data into a client-side template...
+##### When injecting data into a client-side JST template...
 
 Use `<%- %>` to HTML-encode data:
-
-> This example assumes you are using JST templates from the default asset pipeline.
 
 ```html
 <div data-template-id="welcome-box">
@@ -70,19 +79,26 @@ Use `<%- %>` to HTML-encode data:
 
 Use something like `$(...).text()` to HTML-encode data:
 
-> This example assumes you are using jQuery.
-
 ```js
 var $welcomeMsg = $('#signup').find('[is="welcome-msg"]');
 welcomeMsg.text('Hello, '+window.SAILS_LOCALS.me.username+'!');
+
+// Avoid using `$(...).html()` to inject untrusted data.
+// Even if you know an XSS is not possible under particular circumstances,
+// accidental escaping issues can cause really, really annoying client-side bugs.
 ```
 
-> Avoid using `$(...).html()` to inject untrusted data.  Even if you know an XSS is not possible under particular circumstances, accidental escaping issues can cause really, really annoying client-side bugs.
+> As you've probably figured out, the example above assumes you are using jQuery- but the same concepts apply regardless of what front-end library you are using.
 
 
 ### Additional Resources
 + [XSS (OWasp)](https://www.owasp.org/index.php/XSS)
 + [XSS Prevention Cheatsheet](https://www.owasp.org/index.php/XSS_Prevention_Cheat_Sheet)
+
+
+### Notes
+
+> + The examples above assume you are using the default view engine (EJS) and client-side JST/Lodash templates from the default asset pipeline.
 
 
 <docmeta name="displayName" value="XSS">
