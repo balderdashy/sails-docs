@@ -1,16 +1,47 @@
 # Content Security Policy
 
-Content Security Policy (CSP) is a W3C specification for instructing the client browser as to which location and/or which type of resources are allowed to be loaded. This spec uses "directives" to define loading behaviors for target resource types. Directives can be specified using HTTP response headers or HTML `<meta>` tags.
-
-#### HTTP Headers
-| Header                    | Browsers                                                                               |
-|:------------------------- |:-------------------------------------------------------------------------------------- |
-| Content-Security-Policy   | (W3C Standard header) Chrome version >= 25, Firefox version >= 23, Opera version >= 19 |
-| X-Content-Security-Policy | Firefox version < 23, IE version 10                                                    |
-| X-WebKit-CSP              | Chrome version < 25                                                                    |
+[Content Security Policy (CSP)](https://www.owasp.org/index.php/Clickjacking) is a [W3C specification](https://w3c.github.io/webappsec/specs/content-security-policy) for instructing the client browser as to which location and/or which type of resources are allowed to be loaded.  This spec uses "directives" to define loading behaviors for target resource types. Directives can be specified using HTTP response headers or HTML `<meta>` tags.
 
 
-#### Supported Directives
+### Enabling CSP
+
+##### Using [lusca](https://github.com/krakenjs/lusca#luscacspoptions)
+
+> `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
+
+```sh
+# In your sails app
+npm install lusca --save --save-exact
+```
+
+Then add `csp` in [`config/http.js`](http://sailsjs.com/anatomy/config/http-js):
+
+```js
+
+  // ...
+
+  csp: require('lusca').csp({
+    policy: {
+      'default-src': '*'
+    }
+  }),
+
+  // ...
+
+  order: [
+    // ...
+    'csp',
+    // ...
+  ]
+
+```
+
+
+
+##### Supported directives
+
+To give you an idea how this works, here's a snapshot of supported CSP directives, as of 2016:
+
 | Directive       | |
 |:--------------- |:-------------------------- |
 | default-src     | Loading policy for all resources type in case a resource type dedicated directive is not defined (fallback) |
@@ -33,7 +64,15 @@ Content Security Policy (CSP) is a W3C specification for instructing the client 
 
 
 
+##### Browser compatibility
 
+Different CSP response headers are supported by different browsers.  For example, `Content-Security-Policy` is the W3C standard, but various versions of Chrome, Firefox, and IE use `X-Content-Security-Policy` or `X-WebKit-CSP`.  For the latest information on browser support, see [OWasp](https://www.owasp.org/index.php/Content_Security_Policy).
+
+
+
+### Additional Resources
++ [Content Security Policy (OWasp)](https://www.owasp.org/index.php/Content_Security_Policy)
++ Learn more about installing HTTP middleware in [Concepts > Middleware](http://sailsjs.com/docs/concepts/middleware).
 
 <docmeta name="displayName" value="Content Security Policy">
-
+<docmeta name="tags" value="csp,content security policy">
