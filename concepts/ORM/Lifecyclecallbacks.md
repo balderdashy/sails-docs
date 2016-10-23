@@ -6,6 +6,7 @@ Lifecycle callbacks are functions that are automagically called before or after 
 
 Sails exposes a handful of lifecycle callbacks by default.
 
+Lifecycle callbacks may be provided as array of functions to be invoked sequentially, too.
 
 ##### Callbacks on `create`
 
