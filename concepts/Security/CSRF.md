@@ -89,7 +89,7 @@ In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically ra
 
 ```json
 {
-  "GET /csrfToken": { action: "security/grantcsrftoken" }
+  "GET /csrfToken": { action: "security/grant-csrf-token" }
 }
 ```
 

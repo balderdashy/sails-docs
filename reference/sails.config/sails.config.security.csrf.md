@@ -14,7 +14,7 @@ This option protects your Sails app against cross-site request forgery (or CSRF)
 
 ### Notes
 
-> + In Sails v1.0, `sails.config.csrf.grantTokenViaAjax` and `sails.config.csrf.origin` were removed in favor of the [built-in `security/grantcsrftoken`](http://sailsjs.com/docs/concepts/security/csrf) action.
+> + In Sails v1.0, `sails.config.csrf.grantTokenViaAjax` and `sails.config.csrf.origin` were removed in favor of the [built-in `security/grant-csrf-token`](http://sailsjs.com/docs/concepts/security/csrf) action.
 
 
 <docmeta name="displayName" value="sails.config.security.csrf">
