@@ -4,8 +4,8 @@
 Sails allows you to explicitly route URLs in several different ways in your **config/routes.js** file.  Every route configuration consists of an **address** and a **target**, for example:
 
 ```
-'GET /foo/bar': 'FooController.bar'
-^^^address^^^^  ^^^^^^target^^^^^^^
+'GET /foo/bar': 'user/subscribe'
+^^^address^^^^  ^^^^^target^^^^^
 ```
 
 ### Route Address
@@ -64,28 +64,44 @@ In addition to the wildcard address syntax, you may also use Regular Expressions
 
 That's the letter "**r**", followed by a pipe character `|`, a regular expression string *without delimiters*, another pipe, and a list of parameter names that should be mapped to parenthesized groups in the regular expression.  For example:
 
-`"r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "MessageController.myaction"`
+`"r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "message/my-action"`
 
-Will match `/123/abc/def`, running the `myaction` action of `MessageController` and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
+Will match `/123/abc/def`, running the action in **api/controllers/message/my-action.js** and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
 
 Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the regular expression to work correctly!
 
 #### About route ordering
 
-When using wildcards or regular expressions in your addresses, keep in mind that the ordering of your routes in **config/routes.js** matters; URLs are matched against addresses in the list from the top down.  If you have two configurations in this order:
+While you are free to add items to your **config/routes.js** file in any order, be aware that Sails will internally sort your routes by _inclusiveness_, a measure of how many potential requests an address can handle.  In general, routes with addresses containing no dynamic components will be matched first, followed by routes with dynamic parameters, followed by those with wildcards.  This prevents routes from blocking each other (for example, a `/*` route, if left at the top of the list, would respond to all requests and no other routes would ever be matched).
 
-    '/user': 'UserController.doSomething',
-    '/*'   : 'CatchallController.doSomethingElse'
-
-then a request to `/user` will not be matched by the second configuration unless the first configuration's handler calls `next()` in its code, which is discouraged (only [policies](http://sailsjs.org/documentation/concepts/Policies) should call `next()`).  Unless you're doing something very advanced, it is safe to assume that every request will be handled by at most one route in your **config/routes.js** file.
+If you have any [regular expression addresses](http://sailsjs.com/documentation/concepts/routes/custom-routes#?regular-expressions-in-addresses), they will be left in the order you specify.  For example, if your **config/routes.js** file contains a `GET /foo/bar` route followed by a `GET r|^/foo/\\d+$|` route, the second route will always be sorted to appear immediately after `GET /foo/bar`.  This is due to the extreme difficulty of determining the inclusiveness of a regular expression route.  Take care when specifying these routes that you order them so that they won't match more requests than intended.
 
 ### Route Target
 
 The address portion of a custom route specifies which URLs the route should match.  The *target* portion specifies what Sails should do after the match is made.  A target can take one of several different forms.  In some cases you may want to chain multiple targets to a single address by placing them in an array, but in most cases each address will have only one target.  The different types of targets are discussed below, followed by a discussion of the various options that can be applied to them.
 
+#### Action target syntax
+
+This is the recommended syntax for binding an address to a Sails action.  Simply specify the identity (as a string) of the action you wish to handle requests to the given address:
+
+```
+'GET /': 'index'         // Use the action in api/controllers/index.js
+
+'GET /foo/go': 'foo/go-action'  // Use the action in api/controllers/foo/go-action.js OR
+                                // the "go-action" action in api/controllers/FooController.js
+```
+
+Note that the [blueprint API](http://sailsjs.org/documentation/reference/blueprint-api) adds several actions to your controllers by default (like "find", "create", "update" and "delete"), all of which are available for routing:
+
+```
+'GET /foo/go': 'user/find'    // Return a list of users
+```
+
+If you have a [custom action](http://sailsjs.org/documentation/concepts/Controllers?q=actions) in **api/controllers/user/find.js**, that action will be run instead of the default blueprint `find`.
+
 #### Controller / action target syntax
 
-The most common type of target is one which binds a route to a custom [controller action](http://sailsjs.org/documentation/concepts/Controllers?q=actions).  The following four routes are equivalent:
+This was the most common type of target in previous versions of Sails.  It binds a route to a traditional  [controller action](http://sailsjs.org/documentation/concepts/Controllers?q=actions).  The following four routes are equivalent:
 
 ```
 'GET /foo/go': 'FooController.myGoAction',
@@ -95,18 +111,9 @@ The most common type of target is one which binds a route to a custom [controlle
 
 ```
 
-Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **api/controllers/FooController.js**.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a **GET** request to **/foo/go** is made, the code in that action will be run.
+Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **api/controllers/FooController.js**, or to the action in **api/controllers/foo/mygoaction.js**.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a **GET** request to **/foo/go** is made, the code in that action will be run.
 
 The controller and action names in this syntax are case-insensitive.
-
-Note that the [blueprint API](http://sailsjs.org/documentation/reference/blueprint-api) adds several actions to your controllers by default (like "find", "create", "update" and "delete"), all of which are available for routing:
-
-```
-'GET /foo/go': 'UserController.find'
-```
-
-Assuming that your have a **api/controllers/UserController.js** file and a **api/models/User.js** file, browsing to **/foo/go** in a browser will, using the above config, run the default "find* blueprint action which displays a list of all `User` models.  If you have a [custom action](http://sailsjs.org/documentation/concepts/Controllers?q=actions) named `find` in UserController, that action will be run instead.
-
 
 #### View target syntax
 
@@ -122,26 +129,7 @@ This tells Sails to handle `GET` requests to `/team` by serving the view templat
 
 > Note that since this route is bound directly to the view, none of your configured policies will be applied.  If you need to configure a policy, use `res.view()` from a controller action.  See [this StackOverflow question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more background information.
 
-#### Blueprint target syntax
 
-In some cases you may want to map a non-standard address to one of the Sails [blueprint actions](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-actions).  For example, if you have a controller and model named **UserController** and **User** respectively, then Sails will automatically map **GET /user** to the "find" blueprint action which returns a list of User records.  If you'd like to map a different address to that action, you can use the blueprint target syntax:
-
-```
-'GET /findAllUsers': {model: 'user', blueprint: 'find'},
-'GET /user/findAll': {blueprint: 'find'}
-```
-
-Note that in the configuration, both the `model` and `blueprint` properties are set, while in the second one, only `blueprint` is used.  In the second configuration, leaving off the `model` property causes Sails to examine the address and guess that the model is `User`.  You could override this by explicitly setting `model` to something else:
-
-```
-'GET /user/findAll': {blueprint: 'find', model: 'pet'}
-```
-
-although you will rarely if ever want to do this, as it makes for a messy and confusing API for your app.
-
-If you specify a non-existent model or blueprint in your configuration, Sails will output an error and ignore the route.
-
-You can also use this syntax to map a route to one of the default blueprint actions even if you've overridden that action in a controller.
 
 #### Redirect target syntax
 You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
@@ -166,18 +154,18 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 #### Policy target syntax
 
-In most cases, you will want to apply [policies](http://sailsjs.org/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) or [blueprint]((http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) target syntax.  The policy target syntax is:
+In most cases, you will want to apply [policies](http://sailsjs.org/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
 
 ```
-'/foo': {policy: 'myPolicy'}
+'/foo': {policy: 'my-policy'}
 ```
 However, you will always want to chain the policy to at least one other type of target, using an array:
 
 ```
-'/foo': [{policy: 'myPolicy'}, {blueprint: 'find', model: 'user'}]
+'/foo': [{policy: 'my-policy'}, {view: 'dashboard'}]
 ```
 
-This will apply the **myPolicy** policy to the route and, if it passes, continue by running the **find** blueprint for the **User** model.
+This will apply the **my-policy** policy to the route and, if it passes, continue by displaying the **views/dashboard.ejs** view.
 
 #### Function target syntax
 
@@ -205,6 +193,7 @@ In addition to the options discussed in the various route target syntaxes above,
 |`skipRegex`|all|((regexp))|If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual [RegExp objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*, not strings.|
 |`locals`|[controller](http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((dictionary))|Sets default [local variables](http://sailsjs.org/documentation/reference/res/res.view.html?q=arguments) to pass to any view that is rendered while handling the request.|
 |`cors`|all|((dictionary)) or ((boolean)) or ((string))|Specifies how to handle requests for this route from a different origin.  See the [main CORS documentation](http://sailsjs.org/documentation/concepts/CORS) for more info.|
+|`csrf`|all|((boolean))|Indicate whether the route should be protected by requiring a CSRF token to be passed with the request.  See the [main CSRF documentation](http://sailsjs.com/documentation/concepts/CSRF) for more info.
 |`populate`|[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((boolean))|Indicates whether the results in a "find" or "findOne" blueprint action should have associated model fields [populated](http://sailsjs.org/documentation/reference/waterline/populated-values).  Defaults to the value set in [**config/blueprints.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html).
 |`skip`, `limit`, `sort`, `where`|[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((dictionary))|Set criteria for "find" blueprint.  See the [queries reference](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md) for more info.
 
