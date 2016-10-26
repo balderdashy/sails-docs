@@ -85,7 +85,7 @@ The address portion of a custom route specifies which URLs the route should matc
 This is the recommended syntax for binding an address to a Sails action.  Simply specify the identity (as a string) of the action you wish to handle requests to the given address:
 
 ```
-'GET /': 'index'         // Use the action in api/controllers/index.js
+'GET /': 'index',         // Use the action in api/controllers/index.js
 
 'GET /foo/go': 'foo/go-action'  // Use the action in api/controllers/foo/go-action.js OR
                                 // the "go-action" action in api/controllers/FooController.js
@@ -135,7 +135,7 @@ This tells Sails to handle `GET` requests to `/team` by serving the view templat
 You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
 
 ```
-'/alias' : '/some/other/route'
+'/alias' : '/some/other/route',
 'GET /google': 'http://www.google.com'
 ```
 
@@ -179,6 +179,7 @@ You can also use a dictionary with an `fn` key to assign a function.  This allow
 '/foo/*': {
    fn: function(req, res) {res.send("FOO!");},
    skipAssets: true
+}
 ```
 
 Best practice is to use the function syntax only for temporary routes, since it goes against the MVC structure that makes Sails useful!
