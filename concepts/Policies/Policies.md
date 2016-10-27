@@ -5,14 +5,14 @@ Policies in Sails are versatile tools for authorization and access control-- the
 
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
-> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.
+> NOTE: policies apply **only** to actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an  action which displays your view, and point your route to that action.
 
 
 ### Writing Your First Policy
 
 Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
 
-When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your controllers.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
+When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your actions.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
 
 For example, the `canWrite` policy mentioned above might look something like this:
 
@@ -42,24 +42,22 @@ module.exports = function canWrite (req, res, next) {
 ```
 
 
-### Protecting Controllers with Policies
+### Protecting Actions with Policies
 
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your actions.
 
 This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
-Your `config/policies.js` file should export a Javascript object whose keys are controller names (or `'*'` for  global policies), and whose values are objects mapping action names to one or more policies.  See below for more details and examples.
+Your `config/policies.js` file should export a Javascript object whose keys are action names, and whose values are arrays of one or more policies.  See below for more details and examples.
 
-##### To apply a policy to a specific controller action:
+##### To apply a policy to a specific action:
 
 ```js
 {
-  ProfileController: {
-      // Apply the 'isLoggedIn' policy to the 'edit' action of 'ProfileController'
-      edit: 'isLoggedIn'
-      // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'create' action
-      create: ['isAdmin', 'isLoggedIn']
-  }
+  // Apply the 'isLoggedIn' policy to the 'profile/edit' action
+  'profile/edit': ['isLoggedIn'],
+  // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'profile/create' action
+  'profile/create': ['isAdmin', 'isLoggedIn']
 }
 ```
 
@@ -67,13 +65,11 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 
 ```js
 {
-  ProfileController: {
-    // Apply 'isLoggedIn' by default to all actions that are NOT specified below
-    '*': 'isLoggedIn',
-    // If an action is explicitly listed, its policy list will override the default list.
-    // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
-    edit: ['isAdmin', 'isLoggedIn']
-  }
+  // Apply 'isLoggedIn' by default to all 'profile/*' actions that are NOT specified below
+  'profile/*: 'isLoggedIn',
+  // If an action is explicitly listed, its policy list will override the default list.
+  // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
+  'profile/edit': ['isAdmin', 'isLoggedIn']
 }
 ```
 
@@ -85,10 +81,8 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 {
   // Apply 'isLoggedIn' to all actions by default
   '*': 'isLoggedIn',
-  ProfileController: {
-      // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
-      'foo': 'isAdmin'
-  }
+  // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
+  'foo': 'isAdmin'
 }
 ```
 
@@ -106,21 +100,21 @@ Sails provides two built-in policies that can be applied globally, or to a speci
 ```javascript
   // in config/policies.js
 
+  '*': false,
   // ...
-  RabbitController: {
+  // Apply the `false` policy as the default for all of RabbitController's actions
+  // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
 
-    // Apply the `false` policy as the default for all of RabbitController's actions
-    // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
-    '*': false,
+  'rabbit/*': [false],
 
-    // For the action `nurture`, apply the 'isRabbitMother' policy
-    // (this overrides `false` above)
-    nurture : 'isRabbitMother',
+  // For the action `nurture`, apply the 'isRabbitMother' policy
+  // (this overrides `false` above)
+  'rabbit/nurture' : ['isRabbitMother'],
 
-    // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
-    // before letting any users feed our rabbits
-    feed : ['isNiceToAnimals', 'hasRabbitFood']
-  }
+  // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
+  // before letting any users feed our rabbits
+  'rabbit/feed' : ['isNiceToAnimals', 'hasRabbitFood']
+
   // ...
 ```
 
