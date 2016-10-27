@@ -20,15 +20,15 @@ allRoutes: true,
 allowOrigins: 'example.com,api.example.com,blog.example.com,foo.com'
 ```
 
-To allow cross-origin requests from _any_ domain to _any_ route in your app, use `origin: '*'`:
+To allow cross-origin requests from _any_ domain to _any_ route in your app, use `allowOrigins: '*'`:
 
 ```javascript
 allRoutes: true,
-origin: '*',
-credentials: false
+allowOrigins: '*',
+allowCredentials: false
 ```
 
-Note that when using `origin: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](http://sailsjs.com/docs/reference/configuration/sails-config-security-cors) setting.
+Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](http://sailsjs.com/docs/reference/configuration/sails-config-security-cors) setting.
 
 
 See [`sails.config.security.cors`](http://sailsjs.com/docs/reference/configuration/sails-config-security-cors) for a comprehensive reference of all available options.
