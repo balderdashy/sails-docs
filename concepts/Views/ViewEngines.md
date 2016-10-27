@@ -6,7 +6,7 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` in [`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html).
 
-For example, to switch to jade, run `npm install jade --save-dev`, then set `engine: 'jade'` in [`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html).
+For example, to switch to _pug_ (the view engine formerly known as jade), run `npm install pug --save`, then set `engine: 'pug'` in [`config/views.js`](http://sailsjs.com/anatomy/config/views-js).
 
 
 
@@ -21,7 +21,7 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
   - [haml-coffee](https://github.com/9elements/haml-coffee) [(website)](http://haml.info/)
   - [handlebars](https://github.com/wycats/handlebars.js/) [(website)](http://handlebarsjs.com/) (.hbs)
   - [hogan](https://github.com/twitter/hogan.js) [(website)](http://twitter.github.com/hogan.js/)
-  - [jade](https://github.com/visionmedia/jade) [(website)](http://jade-lang.com/) (.jade)
+  - [pug](https://github.com/pugjs/pug) [(website)](http://jade-lang.com/) _([formerly](https://github.com/pugjs/pug/issues/2184) known as "jade")_
   - [jazz](https://github.com/shinetech/jazz)
   - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](https://github.com/kof/jqtpl)
   - [JUST](https://github.com/baryshev/just)
