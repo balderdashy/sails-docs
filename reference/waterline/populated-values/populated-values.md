@@ -19,7 +19,7 @@ Order.find()
 
   // this array is a snapshot of the Customers who are associated with the first Order as "buyers"
   orders[0].buyers;
-  // => [ {id: 1, name: 'Rob Stark'}, {id: 6, name: 'Arya Stark'} ]
+  // => [ {id: 1, name: 'Robb Stark'}, {id: 6, name: 'Arya Stark'} ]
 
   // this object is a snapshot of the Company that is associated with the first Order as the "seller"
   orders[0].seller;
