@@ -2,7 +2,7 @@
 
 クロスサイトのリクエスト強制([CSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)))はすでに認証されているWebアプリケーションに対してエンドユーザが意図しないリク絵イストを強制するものです。言い換えればこの防御なしにはChase.comで使うためにChromeに保存されたクッキーのデータを今アクセスしているHorrible-Hacker-Site.comのために使われてしまうということです。 
 
-### SCRF防御を有効にする
+### CSRF防御を有効にする
 
 Sailsは設定するだけで簡単に使えるオプショナルなCSRF防御策を用意しています。これを有効化するためには[sails.config.csrf](http://sailsjs.org/documentation/reference/Configuration/CSRF.html)(通常プロジェクトの中の[`config/csrf.js`](http://sailsjs.org/documentation/anatomy/myApp/config/csrf.js.html)ファイルに保管されています。)に以下の編集を加えます。:
 
@@ -83,7 +83,7 @@ $.post('/checkout', {
 > + 多くの組織や開発者にとってCSRF防御はユーザがブラウザからログインしたりセキュアなアクセスをするときにのみ必要になるでしょう。もし _そうでない_ 場合、（例えばユーザがネイティブのiOSアプリケーションやAndroidアプリケーションからのみセキュアなアクセスが出来る場合）CSRF防御は必要ないとみなすこともできます。なぜでしょうか？それは厳密にはこのページで取り上げられている一般的なCSRF攻撃は　_同じアプリケーション_  (例えばChromeなど)をから異なるサイトにアクセスが使うシナリオ（例えばChase.comとHorrible-Hacker-Site.comのような）でのみ _可能とされている_ からです。
 > + CSRFに関してのさらなる情報は[Wikipedia](http://en.wikipedia.org/wiki/Cross-site_request_forgery)をご覧ください。
 > + CSRFトークンを従来のフォーム送信で利用する方法は上の例をご覧下さい。("Using View Locals"の項目)
-> + CSRFトークンはパラメータの代わりにヘッダーとして送信できます。最新情報に関しては[Connect documentation](http://www.senchalabs.org/connect/csrf.html)をご覧ください。 次の（v0.10以降の）マイナーリリースではおそらくSailsはExpress 4を採用します。これで新しいExpressのSCRFミドルウエアが内蔵されることになりますが、後方互換性は確保されます。
+> + CSRFトークンはパラメータの代わりにヘッダーとして送信できます。最新情報に関しては[Connect documentation](http://www.senchalabs.org/connect/csrf.html)をご覧ください。 次の（v0.10以降の）マイナーリリースではおそらくSailsはExpress 4を採用します。これで新しいExpressのCSRFミドルウエアが内蔵されることになりますが、後方互換性は確保されます。
 
 <docmeta name="uniqueID" value="CSRF300312">
 <docmeta name="displayName" value="CSRF">
