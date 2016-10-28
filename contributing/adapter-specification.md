@@ -59,25 +59,20 @@ If query modifiers are enabled, the adapter must support `Model.find()`, as well
 > All officially supported Sails.js database adapters implement this interface.
 
 ###### Query modifiers
-Query modifiers include filters:
+Query modifiers include normalized syntax:
 + `where`
 + `limit`
 + `skip`
 + `sort`
 + `select`
-+ `distinct`
+
+And WHERE supports: 
 
 Boolean logic:
 + `and`
 + `or`
 + `not`
 
-As well as `groupBy` and the aggregators:
-+ `count`
-+ `sum`
-+ `min`
-+ `max`
-+ `average`
 
 `IN` queries:
 Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.  
@@ -89,8 +84,6 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 + `'<' `
 + `'>='`
 + `'<='`
-+ TODO: range queries (e.g. `{ '<':4, >= 2 }`)
-
 
 
 ## Migratable (interface)
@@ -112,6 +105,7 @@ Adapters which implement the Migratable interface are usually interacting with S
 + `Adapter.alterAttribute()` (rename column, add or remove uniquness constraint to column)
 + `Adapter.addIndex()`
 + `Adapter.removeIndex()`
+
 
 ###### Auto-migration strategies
 + `"safe"` (default in production env)
@@ -136,7 +130,7 @@ Adapters which implement the SQL interface interact with databases supporting th
 + `Adapter.query(query,[ data,] cb)`
 
 
-
+<!--
 ## Iterable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
@@ -217,6 +211,8 @@ When a subscriber needs to be informed of an incoming notifiation, the subscriba
 
 (#3 is where I'd like this head in the future, since it provides the most normalized, extensible interface)
 
+-->
+
 <!--
 deprecated:
 
@@ -224,9 +220,12 @@ They should call Sails' `Model.publishUpdate()`, `Model.publishCreate()`, and `M
 `Model.subscribe()` should still be called at the app layer, not in our adapter.
 We don't want to force users to handle realtime events-- we don't know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.
 -->
-
+<!--
 Examples:
 + Twitter streaming API (see new tweets as they come in)
 + IRC (see new chats as they come in)
 + Stock prices (visualize the latest market data as soon as it is available)
 + Hardware scanners (see new data as it comes in)
+
+-->
+
