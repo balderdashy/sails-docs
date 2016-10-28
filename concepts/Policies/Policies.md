@@ -66,7 +66,7 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```js
 {
   // Apply 'isLoggedIn' by default to all 'profile/*' actions that are NOT specified below
-  'profile/*: 'isLoggedIn',
+  'profile/*': 'isLoggedIn',
   // If an action is explicitly listed, its policy list will override the default list.
   // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
   'profile/edit': ['isAdmin', 'isLoggedIn']
