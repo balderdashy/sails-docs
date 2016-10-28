@@ -12,3 +12,35 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 ```
 'POST /some-thing': { action: 'do-a-thing', csrf: false },
 ```
+
+## Views
+
+For maximum flexibility, Consolidate is no longer bundled within Sails.  If you are using a view engine besides EJS, you'll probably want to install Consolidate as a direct dependency of your app.  Then you can configure the view engine in `config/views.js` like so:
+
+```javascript
+'ext': 'swig',
+'getRenderFn': function() {
+  // Import `consolidate`.
+  var cons = require('consolidate');
+  // Return the rendering function for Swig.
+  return cons.swig;
+}
+```
+
+Adding custom configuration to your view engine is a lot easier in Sails 1.0:
+
+```javascript
+'ext': 'swig',
+'getRenderFn': function() {
+  // Import `consolidate`.
+  var cons = require('consolidate');
+  // Import `swig`.
+  var swig = require('swig');
+  // Configure `swig`.
+  swig.setDefaults({tagControls: ['{?', '?}']});
+  // Set the module that Consolidate uses for Swig.
+  cons.requires.swig = swig;
+  // Return the rendering function for Swig.
+  return cons.swig;
+}
+```
