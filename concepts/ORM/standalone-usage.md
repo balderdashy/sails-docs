@@ -30,7 +30,11 @@ To get started with Waterline, we need main two ingredients - adapters and model
 The simplest adapter to use is the `sails-memory` adapter, so let's install it and Waterline in an empty directory.
 
 ```sh
-$ npm install waterline sails-memory
+mkdir my-tool
+cd my-tool
+npm init
+# ...
+npm install waterline sails-memory
 ```
 
 Now we want some sample code. Copy the code from the [`getting-started`](../examples/src/getting-started.js) into a file in the same directory where you installed the `waterline` and `sails-memory` packages.
