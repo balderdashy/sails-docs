@@ -6,10 +6,8 @@
 
 ##### Options:
 
-  * `--appName` Application name (will be used as `name` in `package.json`). By default it is the same as the specified `folder`.
-  * `--no-linker` Disable automatic asset linking in your view and static HTML files (the relevant grunt tasks will not be created)
-  * `--no-frontend` Disable the generation of the `assets` folder and files. Views will be created with hardcopied linked resources  off of sailsjs.org.
-  * `--template=[template language]` Use a different template language than the default (e.g. `jade`).  Requires that a views generator for that language (e.g. `sails-generate-views-jade`) be installed in your global node path (e.g. `~/node_modules/` works).
+  * `--appName` - Application name (will be used as `name` in `package.json`). By default it is the same as the specified `folder`.
+  * `--no-frontend` - Useful when generating a new Sails app that will not be used to serve any front-end assets.  Disable the generation of the `assets/` folder, `tasks/` folder, and related files. 
 
 > `sails new` is really just a special [generator](http://sailsjs.org/documentation/concepts/extending-sails/Generators) which runs [`sails-generate-new`](http://github.com/balderdashy/sails-generate-new).  In other words, running `sails new foo` is an alias for running `sails generate new foo`, and like any Sails generator, the actual generator module which gets run can be overridden in your global `~/.sailsrc` file.
 
