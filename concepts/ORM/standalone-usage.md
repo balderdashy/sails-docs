@@ -1,5 +1,7 @@
 # Standalone Waterline Usage
 
+In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.  If you aren't planning to use Waterline outside of your Sails app, you might want to skip this page and head back to [Models and ORM](http://sailsjs.org/documentation/concepts/models-and-orm) instead.
+
 ### Installation
 
 Waterline is available via NPM.
