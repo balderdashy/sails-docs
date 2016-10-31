@@ -15,7 +15,26 @@ In addition to the basic communication / event listening methods, each SailsSock
 Determines whether the SailsSocket instance is currently connected to a server, returning `true` if a connection has been established.
 
 ```js
-io.socket.isConnected();
+io.socket.isConnecting();
+```
+
+##### .isConnecting()
+
+Determines whether the SailsSocket instance is currently in the process of connecting to a server, returning `true` if a connection is being attempted.
+
+```js
+io.socket.isConnecting();
+```
+
+
+##### .mightBeAboutToAutoConnect()
+
+Determines whether the SailsSocket instance is loaded, but has not yet fully configured and started its automatic connection attempt.
+
+The `sails.io.js` library waits one tick of the event loop before checking whether [`autoConnect`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?iosailsautoconnect) is enabled and, if so, trying to connect.  This allows you to configure the `SailsSocket` instance (for example, by setting `io.sails.url`) before an attempt is made to estabilish a connection.  The `mightBeAboutToAutoConnect()` method allows you to detect the situation where `sails.io.js` has loaded, but the requisite tick of the event loop has not yet elapsed.
+
+```js
+io.socket.mightBeAboutToAutoConnect();
 ```
 
 ##### .disconnect()
