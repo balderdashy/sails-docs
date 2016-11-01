@@ -5,7 +5,7 @@ Policies in Sails are versatile tools for authorization and access control-- the
 
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
-> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.org/documentation/reference/sails.config/sails.config.routes.html) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action.
+> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action. &nbsp;
 
 
 ### Writing Your First Policy
@@ -20,23 +20,38 @@ For example, the `canWrite` policy mentioned above might look something like thi
 // policies/canWrite.js
 module.exports = function canWrite (req, res, next) {
   var targetFolderId = req.param('id');
-  var userId = req.session.user.id;
 
-  Permission
-  .findOneByFolderId( targetFolderId )
-  .exec( function foundPermission (err, permission) {
+  // If the requesting user is not logged in, then they are _never_ allowed to write.
+  // No reason to continue-- we can go ahead and bail out now.
+  if (!req.session.me) {
+    return res.redirect('/login');
+  }
 
-    // Unexpected error occurred-- skip to the app's default error (500) handler
-    if (err) return next(err);
+  // Check the database to see if a permission record exists which matches both the
+  // target folder id, the appropriate "type", and the id of the logged-in user.
+  Permission.findOne({
+    folder: targetFolderId,
+    user: req.session.me,
+    type: 'write'
+  })
+  .exec(function (err, permission) {
 
-    // No permission exists linking this user to this folder.  Maybe they got removed from it?  Maybe they never had permission in the first place?  Who cares?
-    if ( ! permission ) return res.redirect('/notAllowed');
+    // Unexpected error occurred-- use the app's default error (500) handler.
+    //
+    // > We do this because this should never happen, and if it does, it means there
+    // > is probably something wrong with our database, and we want to know about it!)
+    if (err) { return res.serverError(err); }
 
-    // OK, so a permission was found.  Let's be sure it's a "write".
-    if ( permission.type !== 'write' ) return res.redirect('/notAllowed');
+    // No "write" permission record exists linking this user to this folder.
+    // Maybe they got removed from it?  Or maybe they never had permission in the first place...
+    if (!permission) {
+      return res.redirect('/login');
+    }
 
-    // If we made it all the way down here, looks like everything's ok, so we'll let the user through
-    next();
+    // If we made it all the way down here, looks like everything's ok, so we'll let the user through.
+    // (from here, the next policy or the controller action will run)
+    return next();
+
   });
 };
 ```
@@ -44,7 +59,7 @@ module.exports = function canWrite (req, res, next) {
 
 ### Protecting Controllers with Policies
 
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.
 
 This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
@@ -93,6 +108,21 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```
 
 > Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
+
+
+##### Using policies with blueprint actions
+
+Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
+
+To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
+```js
+{
+  UserController: {
+    // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
+    update: 'isLoggedIn'
+  }
+}
+```
 
 
 ### Built-in policies

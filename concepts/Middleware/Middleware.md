@@ -7,6 +7,8 @@ Sails is fully compatible with Express / Connect middleware - in fact, it's all 
 
 Sails also utilizes an additional [configurable middleware stack](http://sailsjs.org/documentation/concepts/Middleware#adding-or-overriding-http-middleware) just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
 
+Read about the default middleware stack [here](http://sailsjs.org/documentation/concepts/middleware/conventional-defaults).
+
 > Note that this HTTP middleware stack is only used for "true" HTTP requests-- it is ignored for **virtual requests** (e.g. requests from a live Socket.io connection.)
 
 
@@ -79,10 +81,9 @@ You can also include Express middleware as a policy- just configure it in [`conf
 ```js
 var auth = require('http-auth');
 var basic = auth.basic({
-        realm: "admin area"
-    }, function (username, password, onwards) {
-        onwards(username === "Tina" && password === "Bullock");
-    }
+  realm: 'admin area'
+}, function (username, password, onwards) {
+  return onwards(username === 'Tina' && password === 'Bullock');
 });
 
 //...
