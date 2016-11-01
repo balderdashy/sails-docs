@@ -33,7 +33,7 @@ Something.subscribe(req, ids);
       }
 
       // Now we'll subscribe our client socket to each of these records.
-      User.subscribe(req, usersNamedLouie);
+      User.subscribe(req, _.pluck(usersNamedLouie, 'id'));
 
       // Now any time a user named "louie" or "louis" is modified or destroyed, our client socket
       // will receive a notification (as long as it stays connected anyways).

@@ -35,7 +35,7 @@ Something.publish(ids, data, req);
       // except for the client that made this request in the first place.
       // Note that the secret is wrapped in a dictionary with a `verb` property -- this is not
       // required, but helpful if you'll also be listening for events from Sails blueprints.
-      User.publish(bobs, {
+      User.publish(_.pluck(bobs, 'id'), {
         verb: 'messaged',
         data: secret
       }, req);
