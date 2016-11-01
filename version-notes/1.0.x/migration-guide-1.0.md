@@ -55,7 +55,7 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
   * `.publishDestroy()`
   * `.publishRemove()`
   * `.publishUpdate()`
+  * `.watch()`
+  * `.unwatch()`
   * `.message()`
-  In their place, you should use the new `.publish()` method.  Keep in mind that unlike
-  `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record
-  ID, so you'll need to include that as part of the data if it's important.
+  In their place, you should use the new `.publish()` method, or the low-level [sails.sockets](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include that as part of the data if it's important.
