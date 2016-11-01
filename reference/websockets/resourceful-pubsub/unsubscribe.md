@@ -11,8 +11,7 @@ Something.unsubscribe(req, ids);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
-| 2 | `records`  | ((array))    | An array of records or record ids (primary key values).
-| 3 | `event`    | ((string))   | _Optional._ A custom event name to unsubscribe this socket from.
+| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
 
 
 
@@ -24,7 +23,7 @@ User.find({name: 'Lenny'}).exec(function(err, lennies) {
   if (req.isSocket) {
     User.unsubscribe( req, _.pluck(lennies, 'id') );
   }
-  return res.ok();
+  return res.send();
 });
 ```
 

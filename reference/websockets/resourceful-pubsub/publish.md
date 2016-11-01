@@ -1,9 +1,9 @@
 # .publish()
 
-Publish an arbitrary message to clients subscribed to a particular event for one or more model instances.
+Publish an arbitrary message to clients subscribed to one or more model instances.
 
 ```js
-Something.publish(records, event, data, req);
+Something.publish(ids, data, req);
 ```
 
 
@@ -11,10 +11,9 @@ Something.publish(records, event, data, req);
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
-| 1 | `records`  | ((array))    | An array of records or record ids (primary key values).
-| 2 | `event`    | ((string))   | The event name to broadcast.
-| 3 | `data`     | ((anything)) | The data to broadcast.
-| 4 | `req`      | ((req))      | If provided, then the requesting socket will *not* receive the broadcast.
+| 1 | `ids`      | ((array))    | An array of record ids (primary key values).
+| 2 | `data`     | ((anything)) | The data to broadcast.
+| 3 | `req`      | ((req))      | If provided, then the requesting socket will *not* receive the broadcast.
 
 
 
@@ -32,11 +31,16 @@ Something.publish(records, event, data, req);
     User.find({name: 'bob'}, function(err, bobs) {
       if (err) {return res.serverError(err);}
 
-      // Tell the secret to every client who is subscribed to the 'secret' event for these users,
+      // Tell the secret to every client who is subscribed to these users,
       // except for the client that made this request in the first place.
-      User.publish(bobs, 'secret', 'Pssst: ' + secret, req);
+      // Note that the secret is wrapped in a dictionary with a `verb` property -- this is not
+      // required, but helpful if you'll also be listening for events from Sails blueprints.
+      User.publish(bobs, {
+        verb: 'messaged',
+        data: secret
+      }, req);
 
-      return res.status(200).send();
+      return res.send();
     });
 
   }
@@ -49,8 +53,14 @@ Something.publish(records, event, data, req);
   // http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe
   io.socket.get('/subscribeToBobSecrets');
 
-  // Whenever a `secret` event is received, say something.
-  io.socket.on('secret', function(msg) {console.log('Got a secret:', msg);});
+  // Whenever a `user` event is received, do something.
+  io.socket.on('user', function(msg) {
+     if (msg.verb === 'messaged') {
+       console.log('Got a secret:', msg);
+     }
+     // else if (msg.verb === 'created') { ... }
+     // else if (msg.verb === 'updated') { ... }
+  });
 ```
 
 ### Notes

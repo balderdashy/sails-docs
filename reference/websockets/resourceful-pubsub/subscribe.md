@@ -12,10 +12,7 @@ Something.subscribe(req, ids);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
-| 2 | `records`  | ((array))    | An array of records or record ids (primary key values).
-| 3 | `event`    | ((string))   | _Optional._ A custom event name to subscribe this socket to.
-
-The `event` defaults to the identity of the model.  The blueprint actions broadcast messages with this event name when a model instance is updated or destroyed.
+| 2 | `ids`  | ((array))    | An array of record ids (primary key values).
 
 ### Example
 
@@ -45,7 +42,7 @@ The `event` defaults to the identity of the model.  The blueprint actions broadc
       // (although we're ok telling this vengeful client socket when our users get
       //  destroyed, it seems ill-advised to send him our Louies' sensitive user data.
       //  We don't want to help this guy to hunt them down in real life.)
-      return res.ok();
+      return res.send();
     });
   }
 ```
