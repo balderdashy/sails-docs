@@ -1,6 +1,6 @@
 # req.allParams()
 
-Returns the value of _all_ parameters sent in the request, merged together into a single object. Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](http://sailsjs.org/documentation/reference/req.param) for details.
+Returns the value of _all_ parameters sent in the request, merged together into a single dictionary (plain JavaScript object). Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](http://sailsjs.com/documentation/reference/req.param) for details.
 
 ### Usage
 
@@ -25,7 +25,7 @@ delete values.isAvailable;
 
 Product.update({sku: sku})
 .set(values)
-.then(function (newProduct) {
+.exec(function (err, newProduct) {
   // ...
 });
 ```
@@ -33,18 +33,6 @@ Product.update({sku: sku})
 ### Notes
 
 >+ This method can also be called as `req.params.all()` - they are synonyms.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
