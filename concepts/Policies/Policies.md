@@ -51,7 +51,7 @@ module.exports = function canWrite (req, res, next) {
     // If we made it all the way down here, looks like everything's ok, so we'll let the user through.
     // (from here, the next policy or the controller action will run)
     return next();
-    
+
   });
 };
 ```
@@ -59,7 +59,7 @@ module.exports = function canWrite (req, res, next) {
 
 ### Protecting Controllers with Policies
 
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.  
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your controllers.
 
 This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
@@ -108,6 +108,21 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```
 
 > Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
+
+
+##### Using policies with blueprint actions
+
+Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
+
+To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
+```js
+{
+  UserController: {
+    // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
+    update: 'isLoggedIn'
+  }
+}
+```
 
 
 ### Built-in policies
