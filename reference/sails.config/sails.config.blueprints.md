@@ -15,8 +15,7 @@ These configurable settings allow you to configure the blueprint API in Sails.  
 |`pluralize`|((boolean))|false|Optionally use plural controller names in blueprint routes, e.g. `/users` for `api/controllers/UserController.js`.
 |`populate`|((boolean))|`true`|Whether the blueprint controllers should populate model fetches with data from other models which are linked by associations.  If you have a lot of data in one-to-many associations, leaving this on may result in very heavy api calls.
 |`defaultLimit`|((integer))|`30`|The default number of records to show in the response from a "find" action.  Doubles as the default size of populated arrays if `populate` is `true`.
-|`autoWatch`|((boolean))|`true`|Whether to run [`Model.watch()`](http://sailsjs.org/documentation/reference/websockets/resourceful-pubsub/watch.html) in the `find` and `findOne` blueprint actions.  Can be overridden on a per-model basis.
-|`jsonp`|((boolean))|`false`|Optionally wrap blueprint JSON responses in a JSONP callback using `res.jsonp()` from Express 3.
+|`autoWatch`|((boolean))|`true`| Whether to subscribe the requesting socket in the `find` and `findOne` blueprint actions to notifications about newly _created_ records via the blueprint API.
 
 
 <docmeta name="displayName" value="sails.config.blueprints">
