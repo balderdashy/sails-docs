@@ -31,7 +31,7 @@ The following are the default values for properties in `io.sails`.
   Property          | Default
   ------------------ |:-------
  `url`              | In browser, the URL of the page that loaded the sails.io.js script.  In Node.js, no default.
- `transports`       | `['polling', 'websocket']`
+ `transports`       | `['websocket']`
 `headers` | `{}`
 `query` | `''`
 `initialConnectionHeaders` | `{}`

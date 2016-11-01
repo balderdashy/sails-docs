@@ -12,11 +12,11 @@ In production, Sails performs like any Connect, Express or Socket.io app ([examp
 ### Example architecture
 
 ```
-                             ....                 
+                             ....
                     /  Sails.js server  \      /  Database (e.g. Mongo, Postgres, etc)
 Load Balancer  <-->    Sails.js server    <-->    Socket.io message queue (Redis)
                     \  Sails.js server  /      \  Session store (Redis, Mongo, etc.)
-                             ....                 
+                             ....
 ```
 
 
@@ -62,9 +62,6 @@ No matter what tool you're using, it is important to spend your focus and time o
 ### Notes
 
 > + You don't have to use Redis for your sessions-- you can actually use any Connect or Express-compatible session store.  See [sails.config.session](sailsjs.org/documentation/reference/configuration/sails-config-session) for more information.
-> + The default Socket.io configuration initially attempts to connect to the server using [long-polling](http://en.wikipedia.org/wiki/Push_technology#Long_polling).  In order for this to work, your server environment [must support](http://socket.io/blog/introducing-socket-io-1-0/#scalability) sticky load-balancing (aka sticky sessions), otherwise the handshake will fail until the connection is upgraded to use Websockets (and only if Websockets are available).
->   + On **Heroku**, you must have the sticky load-balancing beta feature [explicitly enabled](https://devcenter.heroku.com/articles/session-affinity).
->   + In an environment without stickky load balancing, you will need to set the `transports` setting in [config/sockets.js](https://github.com/balderdashy/sails-docs/blob/v0.11/reference/sails.config/sails.config.sockets.md) to `['websocket']`, forcing it to use websockets only and avoid long-polling.  You'll also need to set the transports in your socket client--if you're using `sails.io.js`, this is as easy as adding a `<script>io.sails.transports=['websocket']</script>` immediately after the `sails.io.js` script include.  For a rather dramatic read on the issue, see [this thread](https://github.com/Automattic/engine.io/issues/261).
 
 
 <docmeta name="displayName" value="Scaling">

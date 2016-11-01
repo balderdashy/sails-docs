@@ -1,6 +1,6 @@
 # myApp/config/sockets.js
 ### Purpose
-This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO. 
+This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO.
 
 It provides transparent access to Sails' encapsulated pubsub/socket server for complete customizability. In it you can do things on the list below (and more!).
 
@@ -139,7 +139,7 @@ module.exports.sockets = {
   * To achieve it's function run a request from the client when socket       *
   * connects instead                                                         *
   ***************************************************************************/
-  
+
   /***************************************************************************
   *                                                                          *
   * `afterDisconnect`                                                        *
@@ -163,7 +163,7 @@ module.exports.sockets = {
   * transport should be disabled.                                            *
   *                                                                          *
   ***************************************************************************/
-  // transports: ["polling", "websocket"]
+  // transports: ["websocket"]
 
 };
 
