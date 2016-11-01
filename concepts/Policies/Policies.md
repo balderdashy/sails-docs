@@ -104,6 +104,21 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 > Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
 
 
+##### Using policies with blueprint actions
+
+Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
+
+To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
+```js
+{
+  UserController: {
+    // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
+    update: 'isLoggedIn'
+  }
+}
+```
+
+
 ### Built-in policies
 Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
   + `true`: public access  (allows anyone to get to the mapped controller/action)

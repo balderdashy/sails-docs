@@ -25,6 +25,8 @@ To apply a policy to a specific action in particular, you should specify it on t
 }
 ```
 
+> Note: Mapping a policy to a blueprint action works the same way. See [Concepts > Policies](http://sailsjs.com/docs/concepts/policies#?using-policies-with-blueprint-actions) for more info.
+
 
 ##### To an Entire Controller
 
