@@ -12,15 +12,16 @@ Something.subscribe(req, ids);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
-| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
+| 2 | `records`  | ((array))    | An array of records or record ids (primary key values).
+| 3 | `event`    | ((string))   | _Optional._ A custom event name to subscribe this socket to.
 
-
-When a client socket is subscribed to a record, it is a member of its "record room" aka "instance room".  That means it will receive all messages about that record which are broadcasted by `.publishUpdate()`, `.publishDestroy()`, `.publishAdd()`, `.publishRemove()`, and `.message()`.
-
+The `event` defaults to the identity of the model.  The blueprint actions broadcast messages with this event name when a model instance is updated or destroyed.
 
 ### Example
 
 ```javascript
+  // On the server:
+
   subscribeToLouies: function (req, res) {
     if (!req.isSocket) {
       return res.badRequest('Only a client socket can subscribe to Louies.  You, sir or madame, appear to be an HTTP request.');
@@ -34,8 +35,8 @@ When a client socket is subscribed to a record, it is a member of its "record ro
         return res.serverError(err);
       }
 
-      // Now we'll use the ids we found to subscribe our client socket to each of these records.
-      User.subscribe(req, _.pluck(usersNamedLouie, 'id'));
+      // Now we'll subscribe our client socket to each of these records.
+      User.subscribe(req, usersNamedLouie);
 
       // Now any time a user named "louie" or "louis" is modified or destroyed, our client socket
       // will receive a notification (as long as it stays connected anyways).
@@ -47,6 +48,16 @@ When a client socket is subscribed to a record, it is a member of its "record ro
       return res.ok();
     });
   }
+```
+
+```javascript
+  // On the client:
+
+  // Subscribe this client socket to events about Louies.
+  io.socket.get('/subscribeToLouies');
+
+  // Whenever a `user` event is received, say something.
+  io.socket.on('user', function(msg) {console.log('Got a message about a Louie: ', msg);});
 ```
 
 

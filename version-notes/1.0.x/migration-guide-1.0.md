@@ -44,3 +44,18 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
   return cons.swig;
 }
 ```
+
+## Pubsub
+
+* Removed deprecated `backwardsCompatibilityFor0.9SocketClients` setting.
+* Removed deprecated `.subscribers()` method.
+* The following resourceful pubsub methods have been removed:
+  * `.publishAdd()`
+  * `.publishCreate()`
+  * `.publishDestroy()`
+  * `.publishRemove()`
+  * `.publishUpdate()`
+  * `.message()`
+  In their place, you should use the new `.publish()` method.  Keep in mind that unlike
+  `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record
+  ID, so you'll need to include that as part of the data if it's important.
