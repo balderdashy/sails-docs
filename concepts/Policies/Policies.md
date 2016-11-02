@@ -23,7 +23,7 @@ module.exports = function canWrite (req, res, next) {
 
   // If the requesting user is not logged in, then they are _never_ allowed to write.
   // No reason to continue-- we can go ahead and bail out now.
-  if (!req.session.me) {
+  if (!req.session.userId) {
     return res.redirect('/login');
   }
 
@@ -31,7 +31,7 @@ module.exports = function canWrite (req, res, next) {
   // target folder id, the appropriate "type", and the id of the logged-in user.
   Permission.findOne({
     folder: targetFolderId,
-    user: req.session.me,
+    user: req.session.userId,
     type: 'write'
   })
   .exec(function (err, permission) {
