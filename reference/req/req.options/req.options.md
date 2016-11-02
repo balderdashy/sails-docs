@@ -27,10 +27,10 @@ For example, `req.options` can be modified in a [policy](http://sailsjs.com/docs
 // `config/policies/filterByUser.js`
 module.exports = function filterByUser (req, res, next) {
 
-  if (req.session.me) {  
+  if (req.session.userId) {  
 
     req.options.where = {
-      userId: req.session.me
+      userId: req.session.userId
     }
     
   }
