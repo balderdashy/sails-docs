@@ -9,11 +9,11 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 
 | Property    | Type       | Default   | Details |
 |:-----------|:----------:|:----------|:--------|
-| `sails` | ((boolean)) | `true` | Expose the `sails` instance representing your app.  If this is disabled, you can still get access in your controller actions via `req._sails`.
-| `models` | ((boolean)) | `true` | Expose each of your app's models as global variables (using their "globalId").  E.g. a model defined in `api/models/User.js` would have a globalId of `User` by default.   If this is disabled, you can still access your models via `sails.models.*`.
-| `services` | ((boolean)) | `true` | Expose each of your app's services as global variables (using their "globalId").  E.g. a service defined in `api/services/NaturalLanguage.js` would have a globalId of `NaturalLanguage` by default.  If this is disabled, you can still access your services via `sails.services.*`.
 | `_` _(underscore)_  | ((ref))<br/>_or_<br/>((boolean))     | `require('lodash')`  | Expose the specified `lodash` as a global variable (`_`).  Or set this to `false` to disable the `_` global altogether.  _(More on that below.)_
 | `async`  | ((ref))<br/>_or_<br/>((boolean)) | `require('async')` | Expose the specified `async` as a global variable (`async`).  Or set this to `false` to disable the `async` global altogether. _(More on that below.)_
+| `models` | ((boolean)) | `true` | Expose each of your app's models as global variables (using their "globalId").  E.g. a model defined in `api/models/User.js` would have a globalId of `User` by default.   If this is disabled, you can still access your models via `sails.models.*`.
+| `sails` | ((boolean)) | `true` | Expose the `sails` instance representing your app.  Even if this is disabled, you can still get access to it in your actions via `env.sails`, or in your policies via `req._sails`.
+| `services` | ((boolean)) | `true` | Expose each of your app's services as global variables (using their "globalId").  E.g. a service defined in `api/services/NaturalLanguage.js` would have a globalId of `NaturalLanguage` by default.  If this is disabled, you can still access your services via `sails.services.*`.
 
 
 
