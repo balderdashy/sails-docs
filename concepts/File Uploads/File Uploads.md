@@ -18,7 +18,7 @@ req.file('avatar').upload(function (err, uploadedFiles) {
 });
 ```
 
-Files should be uploaded inside of an `action` in one of your controllers.  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.me`.
+Files should be uploaded inside of an `action` in one of your controllers.  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.userId`.
 
 ```javascript
 // api/controllers/UserController.js
@@ -46,12 +46,15 @@ uploadAvatar: function (req, res) {
       return res.badRequest('No file was uploaded');
     }
 
+    // Get the base URL for our deployed application from our custom config
+    // (e.g. this might be "http://foobar.example.com:1339" or "https://example.com")
+    var baseUrl = sails.config.custom.baseUrl;
 
     // Save the "fd" and the url where the avatar for a user can be accessed
-    User.update(req.session.me, {
+    User.update(req.session.userId, {
 
       // Generate a unique URL where the avatar can be downloaded.
-      avatarUrl: require('util').format('%s/user/avatar/%s', sails.getBaseUrl(), req.session.me),
+      avatarUrl: require('util').format('%s/user/avatar/%s', baseUrl, req.session.userId),
 
       // Grab the first file and use it's `fd` (file descriptor)
       avatarFd: uploadedFiles[0].fd
