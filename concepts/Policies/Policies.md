@@ -1,11 +1,11 @@
 # Policies
 ### Overview
 
-Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your controllers down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
+Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your actions down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
 
 Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
 
-> NOTE: policies apply **only** to controller actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action. &nbsp;
+> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action. &nbsp;
 
 
 ### Writing Your First Policy
@@ -63,7 +63,7 @@ Sails has a built in ACL (access control list) located in `config/policies.js`. 
 
 This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
-Your `config/policies.js` file should export a Javascript object whose keys are action names, and whose values are arrays of one or more policies.  See below for more details and examples.
+Your `config/policies.js` file should export a Javascript object whose keys are [action identities](http://sailsjs.com/documentation/concepts/actions-and-controllers#?where-are-actions-defined), and whose values are arrays of one or more policies.  See below for more details and examples.
 
 ##### To apply a policy to a specific action:
 
