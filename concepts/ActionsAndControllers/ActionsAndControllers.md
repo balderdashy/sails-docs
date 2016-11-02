@@ -100,24 +100,6 @@ At first, using a function may seem simpler and easier than declaring an action 
 
 In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.
 
-
-
-### What does a controller file look like?
-A controller file defines a Javascript dictionary (aka "plain object") whose keys are action names, and whose values are the corresponding action methods.  Here&rsquo;s a simple example of a full controller file:
-
-```javascript
-module.exports = {
-  hi: function (req, res) {
-    return res.send('Hi there!');
-  },
-  bye: function (req, res) {
-    return res.redirect('http://www.sayonara.com');
-  }
-};
-```
-
-This controller defines two actions: `hi` and `bye`.  The `hi` action responds to a request with a string message, while the `bye` action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is technically possible to use `next` in an action method, you are strongly encouraged to use [policies](http://sailsjs.org/documentation/concepts/Policies) instead wherever possible.
-
 ### Controllers
 
 Actions that share a common purpose are often organized into _controllers_ to make apps easier to maintain.  In Sails, controllers are especially useful when using [policies](http://next.sailsjs.org/documentation/concepts/policies), as you can easily apply a single policy to all of the actions in a controller.
