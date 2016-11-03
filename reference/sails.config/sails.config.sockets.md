@@ -6,7 +6,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
 ### Commonly-Used Options
 
 | Property      | Type       | Default  | Details |
-|:--------------|------------|----------|:--------|
+|:--------------|------------|:---------|:--------|
 | `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@~1.0.0 --save --save-exact`. |
 | `transports`  |((array))  | `['websocket']`     | An array of allowed transport strategies.  This should _always_ match your configuration in your socket client (i.e. `sails.io.js`). For help, see [Configuring the `sails.io.js` Library](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library). |
 
@@ -16,7 +16,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
  If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your redis instance, and then use the following config to point at it from your app:
 
 | Property      | Type       | Default  | Details |
-|:--------------|------------|----------|:--------|
+|:--------------|------------|:---------|:--------|
 | `db`           |((string))  |`'sails'`   | The name of the database to use within your redis instance.
 | `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance.
 | `pass`         | ((string)) | `undefined` | The password for your redis instance.
@@ -28,7 +28,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
 These configuration options provide lower-level access to the underlying Socket.io server settings for complete customizability.
 
 | Property   | Type      | Default  | Details |
-|:-----------|:---------:|:--------:|:--------|
+|:-----------|:---------:|:---------|:--------|
 | `afterDisconnect`| ((function)) | `undefined` | A function to run when a client-side socket disconnects from the server.  To define your own custom logic, specify a function like `afterDisconnect: function (session, socket, cb) {}`.
 | `allowUpgrades` | ((boolean)) | `true` | This is a raw configuration option exposed from Engine.io.  It indicates whether to allow Socket.io clients to upgrade the transport that they are using (e.g. start with polling, then upgrade to a true WebSocket connection).  |
 | `beforeConnect`|((boolean)), ((function)) | `undefined` | A function to run every time a new client-side socket attempts to connect to the server which can be used to reject or allow the incoming connection.  Useful for tweaking your production environment to prevent [DoS](http://sailsjs.com/docs/concepts/security/ddos) attacks, or reject socket.io connections based on business-specific heuristics (e.g. if stooges from a competing business create bots to post spam links about their commercial product in your chat room).  To define your own custom logic, specify a function like: `beforeConnect: function (handshake, cb) { /* pass back true to allow, false to deny */ return cb(null, true); }`  As of Sails v0.11, Sails no longer blocks incoming socket connections without cookies-- instead, cookies (and by corollary- sessions) are granted automatically.  If a requesting socket.io client cannot receive a cookie (i.e. making a cross-origin socket.io connection) the `sails.io.js` socket client will automatically send a CORS+JSONP request to try and obtain one **BEFORE CONNECTING** (refer to the `grant3rdPartyCookie` option for details).  In the antagonistic scenario where even this fails, Sails will still grant a new cookie upon connection, which allows for a one-time session. |
