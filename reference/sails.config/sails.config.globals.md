@@ -50,7 +50,7 @@ Finally, just like you'd import [any other Node.js module](https://soundcloud.co
 
 As of Sails v1.0, to use your own version of Lodash or async, you just need to `npm install` the version you want.  For example, to install the latest version of Lodash 4.x.x:
 
-```js
+```sh
 npm install lodash@^4.x.x --save --save-exact
 ```
 
