@@ -15,7 +15,7 @@ in the way you might be used to from Express or Connect.
 
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
-| `adapter` | ((string)) | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.   In production, you should specify the package name of a scalable session store instead (e.g. `connect-redis`).  See below for details. 
+| `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](#?production-config) below for details. 
 | `key`        | ((string))       | `sails.sid`      | Session key is set as `sails.sid` by default. This is the name of the key which is added to the cookie of visitors to your site when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used (like crossing streams)
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 | `cookie` | ((dictionary)) | `{ path: '/', httpOnly: true, secure: false, maxAge: null }` | Options for the session cookie.  See the [express-session docs](https://github.com/expressjs/session#cookie) for more info.
@@ -35,7 +35,7 @@ The most popular session store for production Sails applications is Redis.  It w
 The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
 
 ```javascript
-adapter: 'connect-redis',
+adapter: require('connect-redis'),
 ```
 
 Then install the [connect-redis](https://github.com/tj/connect-redis) session adapter as a dependency of your app:
@@ -52,16 +52,16 @@ port: 6379,
 ttl: <redis session TTL in seconds>,
 db: 0,
 pass: <redis auth password>
- prefix: 'sess:'
+prefix: 'sess:'
 ```
 
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer between 0 and 1,000,000.  _(On most Redis setups, this will be a number between 0 and 15.)_
 | `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.
-| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.
 | `port`         | ((number)) |`6379`   | Port of your redis instance.
+| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.
+| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer between 0 and 1,000,000.  _(On most Redis setups, this will be a number between 0 and 15.)_
 
 
 
@@ -77,20 +77,20 @@ For example, to use Mongo as your session store, install [connect-mongo](https:/
 npm install connect-mongo@1.1.0 --save --save-exact
 ```
 
-Then set the your `adapter` in `config/session.js`:
+Then require it and pass it in as your `adapter` in `config/session.js`:
 
 ```javascript
-  adapter: 'connect-mongo',
+  adapter: require('connect-mongo'),
 ```
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
 ```
-  // Note: user, pass and port are optional
-  url: 'mongodb://user:pass@host:port/database',
-  collection: 'sessions',
-  auto_reconnect: false,
-  ssl: false,
-  stringify: true
+// Note: in this URL, `user`, `pass` and `port` are all optional.
+url: 'mongodb://user:pass@host:port/database',
+collection: 'sessions',
+auto_reconnect: false,
+ssl: false,
+stringify: true
 ```
 
 
