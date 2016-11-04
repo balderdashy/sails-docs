@@ -59,7 +59,7 @@ npm install lodash@^4 --save --save-exact
 ### Notes
 
 > + As a shortcut to disable _all_ of the above global variables, you can set `sails.config.globals` itself to `false`.  This does the same thing as if you had manually disabled each of the settings above.
-> + In previous versions of Sails, when `sails.config.globals._` or `sails.config.globals.async` was set to `true`, Sails would expose its own internal `lodash` and/or `async` dependency.  If you are migrating an app built before Sails v1.0 and want to use the same lodash and async version as before, run `npm install lodash@3.10.1 async@1.5.2 --save --save-exact`, then modify `config/globals.js` to pass in `_: require('lodash')` and `async: require('async')`.
+> + In previous versions of Sails, when `sails.config.globals._` or `sails.config.globals.async` was set to `true`, Sails would expose its own internal `lodash` and/or `async` dependency.  If you are migrating an app built before Sails v1.0 and want to use the same lodash and async version as before, run `npm install lodash@3.10.1 async@1.5.2 --save --save-exact`, then modify `config/globals.js` to pass in `_: require('lodash')` and `async: require('async')`.  See [lodash/lodash#2768](https://github.com/lodash/lodash/issues/2768) for more background.
 
 
 
