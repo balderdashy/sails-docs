@@ -32,8 +32,7 @@ Product.update({sku: sku})
 
 ### Notes
 
->+ This method can also be called as `req.params.all()` - they are synonyms.
-
+>+ In past versions of Sails, this method was known as `req.params.all()`.  But this was confusing-- what if you had a route path parameter named "all"?  So in apps built on Sails v1 and above, you should always use `req.allParams()` instead.
 
 
 
