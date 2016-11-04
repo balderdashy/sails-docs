@@ -23,12 +23,12 @@ in the way you might be used to from Express or Connect.
 
 
 
-### Production Config
+### Production config
 
 In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Connect session adapter you are using.
 
 
-##### Configuring Redis as Your Session Store
+##### Configuring Redis as your session store
 
 The most popular session store for production Sails applications is Redis.  It works great as a session database since it is inherently good at ephemeral storage, but Redis' popularity probably has more to do with the fact that, if you are using sockets and plan to scale your app to multiple servers, you will [need a Redis instance](http://sailsjs.org/documentation/concepts/deployment/scaling) anyway.
 
@@ -47,18 +47,18 @@ npm install connect-redis@~3.0.2 --save --save-exact
 The following settings are optional, since if no redis configuration other than `adapter` is provided, Sails assumes you want it to use a redis instance running on `localhost`.
 
 ```javascript
-  host: 'localhost',
-  port: 6379,
-  ttl: <redis session TTL in seconds>,
-  db: 0,
-  pass: <redis auth password>
-  prefix: 'sess:'
+host: 'localhost',
+port: 6379,
+ttl: <redis session TTL in seconds>,
+db: 0,
+pass: <redis auth password>
+ prefix: 'sess:'
 ```
 
 
 | Property      | Type       | Default  | Details |
-|:--------------|------------|----------|:--------|
-| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.
+|:--------------|------------|:---------|:--------|
+| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer between 0 and 1,000,000.  _(On most Redis setups, this will be a number between 0 and 15.)_
 | `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.
 | `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.
 | `port`         | ((number)) |`6379`   | Port of your redis instance.
@@ -67,7 +67,7 @@ The following settings are optional, since if no redis configuration other than 
 
 
 
-##### Using Other Connect-Compatible Session Stores
+##### Using other session stores
 
 Any session adapter written for Connect/Express works in Sails, as long as you use a compatible version.
 
