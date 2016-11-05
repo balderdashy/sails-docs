@@ -42,44 +42,84 @@ Sails exposes a rich API on both the client and the server for sending custom re
 
 ##### Example
 
-Connect a client-side socket to the server, subscribe to the `hello` event, and contact the server.
+Here's the client-side code to connect a socket to the Sails/Node.js server and listen for an socket event named "hello":
 
 ```html
-<!-- Simply include the sails.io.js script, and a client socket will be created for you -->
+<!-- Simply include the sails.io.js script, and a client socket will be created and auto-connected for you -->
 <script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
 <script type"text/javascript">
-// The automatically-created socket is exposed as io.socket.
-// Use .on() to subscribe to the 'hello' event on the client
-io.socket.on('hello', function gotHelloMessage (data) {
+
+// The auto-connecting socket is exposed as `io.socket`.
+
+// Use `io.socket.on()` to listen for the 'hello' event:
+io.socket.on('hello', function (data) {
   console.log('Socket `' + data.id + '` joined the party!');
 });
-// Use .get() to contact the server
-io.socket.get('/say/hello', function gotResponse(body, response) {
-  console.log('Server responded with status code ' + response.statusCode + ' and data: ', body);
-})
 </script>
 ```
 
-Respond to a `/say/hello` request on the server by subscribing the requesting socket to the "funSockets" room, then broadcast a "hello" message to all sockets in that room (including the new one)
+Then, also on the client, we can send a _socket request_.  In this case, we'll wire up the browser to send a socket request when a particular button is clicked:
+
+```js
+$('button#say-hello').click(function (){
+
+  // And use `io.socket.get()` to send a request to the server:
+  io.socket.get('/say/hello', function gotResponse(data, jwRes) {
+    console.log('Server responded with status code ' + jwRes.statusCode + ' and data: ', data);
+  });
+
+});
+
+```
+
+
+Meanwhile, on the server...
+
+To respond to requests to `GET /say/hello`, we use an action.  In our action, we'll subscribe the requesting socket to the "funSockets" room, then broadcast a "hello" message to all sockets in that room (excluding the new one).
 
 ```javascript
 // In /api/controllers/SayController.js
 module.exports = {
+
   hello: function(req, res) {
+  
     // Make sure this is a socket request (not traditional HTTP)
-    if (!req.isSocket) {return res.badRequest();}
-    // Have the socket which made the request join the "funSockets" room
+    if (!req.isSocket) {
+      return res.badRequest();
+    }
+    
+    // Have the socket which made the request join the "funSockets" room.
     sails.sockets.join(req, 'funSockets');
-    // Broadcast a "hello" message to all the fun sockets.
-    // This message will be sent to all sockets in the "funSockets" room,
-    // but will be ignored by any client sockets that are not listening-- i.e. that didn't call `io.socket.on('hello', ...)`
-    // The data of the message ({} object) is the "data" in io.socket.on('hello', function gotHelloMessage (data)
-    sails.sockets.broadcast('funSockets', 'hello', {id: 'my id'}, req);
-    // Respond to the request with an a-ok message
-    // The object returned here is "body" in io.socket.get('/say/hello', function gotResponse(body, response)
-    return res.ok({
-        message: "OK"
+    
+    // Broadcast a notification to all the sockets who have joined
+    // the "funSockets" room, excluding our newly added socket:
+    sails.sockets.broadcast('funSockets', 'hello', { howdy: 'hi there!'}, req);
+    
+    // ^^^
+    // At this point, we've blasted out a socket message to all sockets who have
+    // joined the "funSockets" room.  But that doesn't necessarily mean they
+    // are _listening_.  In other words, to actually handle the socket message,
+    // connected sockets need to be listening for this particular event (in this
+    // case, we broadcasted our message with an event name of "hello").  The
+    // client-side you'd need to write looks like this:
+    // ```
+    // io.socket.on('hello', function (broadcastedData){
+    //   console.log(data.howdy);
+    //   // => 'hi there!'
+    // }
+    // ```
+    
+    // Now that we've broadcasted our socket message, we still have to continue on
+    // with any other logic we need to take care of in our action, and then send a
+    // response.  In this case, we're just about wrapped up, so we'll continue on
+    
+    // Respond to the request with a 200 OK.
+    // The data returned here is what we received back on the client as `data` in:
+    // `io.socket.get('/say/hello', function gotResponse(data, jwRes) { /* ... */ });`
+    return res.json({
+      anyData: 'we want to send back'
     });
+    
   }
 }
 ```
