@@ -15,10 +15,7 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 ### Prepared Statement Example
 
 ```js
-Pet.query({
-  text: 'SELECT pet.name FROM pet WHERE pet.name = $1',
-  values: [ "dog" ]
-}, function(err, results) {
+Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?',[ "dog" ]} ,function(err, results) {
   if (err) return res.serverError(err);
   return res.json(results.rows);
 });
