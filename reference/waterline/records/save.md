@@ -1,7 +1,7 @@
 # * .save(`callback`)
 
 ### Purpose
-The `save()` method updates your record in the database using the current attributes.  It then returns the newly saved object in the callback.
+The `save()` method updates your record in the database using the current attributes.
 
 ### Overview
 #### Parameters
