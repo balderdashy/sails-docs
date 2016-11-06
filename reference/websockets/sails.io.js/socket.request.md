@@ -21,7 +21,7 @@ io.socket.request(options, function (resData, jwres)){
 
 
 | Option   | Type         | Details |
-|------------|:------------:|:--------|
+|:-----------|:------------:|:--------|
 | `method`      | ((string))   | The HTTP request method; e.g. `'GET'`.
 | `url`         | ((string))   | The destination URL path; e.g. "/checkout".
 | _`data`_    | ((json?))        | Optional. If provided, this request data will be JSON-encoded and included as the virtual HTTP body.
@@ -31,7 +31,7 @@ io.socket.request(options, function (resData, jwres)){
 ##### Callback
 
 |   | Argument  | Type         | Details |
-|---|-----------|:------------:|---------|
+|---|:----------|:------------:|:--------|
 | 1 | `resData` | ((json))     | Data received in the response from the Sails server (=== `jwres.body`, and also equivalent to the HTTP response body.)
 | 2 | `jwres`   | ((dictionary))      | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
 
@@ -56,7 +56,9 @@ io.socket.request({
     console.log(jwres.statusCode); // => e.g. 403
     return;
   }
+  
   console.log(jwres.statusCode); // => e.g. 200
+  
 });
 ```
 
