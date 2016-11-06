@@ -10,9 +10,9 @@ Something.subscribe(req, ids);
 ### Usage
 
 |   | Argument   | Type         | Details |
-|---|:-----------|:------------:|---------|
+|---|:-----------|:------------:|:--------|
 | 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
-| 2 | `ids`  | ((array))    | An array of record ids (primary key values).
+| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
 
 
 When a client socket is subscribed to a record, it is a member of its dynamic "record room".  That means it will receive all messages broadcasted to that room by [`.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publish).
