@@ -12,7 +12,7 @@ Something.publish(ids, data, req);
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
 | 1 | `ids`      | ((array))    | An array of record ids (primary key values).
-| 2 | `data`     | ((anything)) | The data to broadcast.
+| 2 | `data`     | ((json)) | The data to broadcast.
 | 3 | `req`      | ((req))      | If provided, then the requesting socket will *not* receive the broadcast.
 
 
