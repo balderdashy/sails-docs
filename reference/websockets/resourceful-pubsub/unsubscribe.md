@@ -17,6 +17,8 @@ Something.unsubscribe(req, ids);
 
 ### Example
 
+On the server:
+
 ```javascript
 unsubscribeFromUsersNamedLenny: function (req, res) {
 
