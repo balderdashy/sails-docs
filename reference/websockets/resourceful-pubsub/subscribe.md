@@ -27,7 +27,7 @@ On the server, in a controller action:
 
   subscribeToLouies: function (req, res) {
     if (!req.isSocket) {
-      return res.badRequest('Only a client socket can subscribe to Louies.  You, sir or madame, appear to be an HTTP request.');
+      return res.badRequest('Only a client socket can subscribe to Louies.  But you look like an HTTP request to me.');
     }
 
     // Let's say our client socket has a problem with people named "louie".
