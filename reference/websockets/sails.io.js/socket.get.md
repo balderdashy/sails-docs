@@ -30,7 +30,7 @@ io.socket.get(url, data, function (resData, jwres){
 
 ```html
 <script>
-io.socket.get('/users/9', function (resData, jwr) {
+io.socket.get('/users/9', function (resData) {
   resData; // => {id:9, name: 'Timmy Mendez'}
 });
 </script>
