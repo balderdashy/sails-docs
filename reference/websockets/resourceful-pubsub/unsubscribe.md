@@ -18,13 +18,23 @@ Something.unsubscribe(req, ids);
 ### Example
 
 ```javascript
-User.find({name: 'Lenny'}).exec(function(err, lennies) {
-  if (err) return res.serverError(err);
-  if (req.isSocket) {
-    User.unsubscribe( req, _.pluck(lennies, 'id') );
+unsubscribeFromUsersNamedLenny: function (req, res) {
+
+  if (!req.isSocket) {
+    return res.badRequest();
   }
-  return res.send();
-});
+
+  User.find({name: 'Lenny'}).exec(function(err, lennies) {
+    if (err) { return res.serverError(err); }
+
+    var lennyIds = _.pluck(lennies, 'id');
+
+    User.unsubscribe(req, lennyIds);
+
+    return res.ok();
+    
+  });
+},
 ```
 
 
