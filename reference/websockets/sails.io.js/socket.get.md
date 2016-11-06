@@ -19,10 +19,11 @@ io.socket.get(url, data, function (resData, jwres){
 
 ##### Callback
 
-|   | Argument  | Type         | Details |
-|---|:----------|:------------:|:--------|
-| 1 | `resData` | ((json))   | Data, if any, received in the response from the Sails server (=== `jwres.body`, equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((dictionary))  | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object consisting of `headers` (a ((dictionary))), `body` (((json))), and `statusCode` (a ((number))).
+|   | Argument  | Type            | Details |
+|---|:----------|:---------------:|:--------|
+| 1 | `resData` | ((json))        | Data, if any, sent in the response from the Sails server.  This is the same thing as `jwres.body`.
+| 2 | `jwres`   | ((dictionary))  | A JSON WebSocket response, which consists of `headers` (a ((dictionary))), `body` (((json))), and `statusCode` (a ((number))).
+
 
 
 ### Example
