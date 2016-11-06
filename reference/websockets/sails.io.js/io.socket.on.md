@@ -14,14 +14,14 @@ io.socket.on(eventName, function (msg) {
 |   | Argument    | Type         | Details |
 |---|-------------|:------------:|:--------|
 | 1 | `eventName` | ((string))   | The name of the socket event, e.g. `'recipe'` or `'welcome'`
-| 2 | `handlerFn` | ((function)) | An event handler that will be called when the server emits a message to this socket.
+| 2 | `handlerFn` | ((function)) | An event handler that will be called when the server broadcasts a notification to this socket.  Will only be called if the incoming socket notification matches `eventName`.
 
 
 ##### Event handler
 
 |   | Argument  | Type            | Details |
 |---|:----------|:---------------:|:--------|
-| 1 | `msg`     | ((json))        | The socket message broadcasted from the Sails server.
+| 1 | `msg`     | ((json))        | The data from the socket notification.
 
 
 
@@ -32,8 +32,7 @@ This event handler is called when the client receives an incoming socket notific
 
 ###### Low-Level Socket Methods (`sails.sockets`)
 + server blasts out a message to all connected sockets (see [sails.sockets.blast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/blast))
-+ server broadcasts a message directly to a particular socket using its unique id (see [sails.sockets.broadcast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast))
-+ server broadcasts a message to an entire room full of sockets (see [sails.sockets.broadcast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast)
++ server broadcasts a message directly to a particular socket using its unique id, or to an entire room full of sockets (see [sails.sockets.broadcast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast))
 
 
 ###### Resourceful Pubsub Methods
