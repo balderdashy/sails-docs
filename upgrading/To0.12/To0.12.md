@@ -126,3 +126,4 @@ If you run into an unexpected issue upgrading your Sails app to v0.12.0, please 
 
 
 <docmeta name="displayName" value="To v0.12">
+<docmeta name="version" value="0.12.0">
