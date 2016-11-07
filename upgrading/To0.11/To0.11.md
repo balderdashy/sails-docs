@@ -42,11 +42,11 @@ If you were using `onDisconnect` previously, you might have had to change the `s
 > Rename your `onDisconnect` function in `config/sockets.js` with the following:
 >
 > ```
-> afterDisconnect: function (session, socket, cb) {
->   // Be sure to call the callback
->   return cb();
-> }
-> ```
+ afterDisconnect: function (session, socket, cb) {
+   // Be sure to call the callback
+   return cb();
+ }
+ ```
 
 
 
@@ -203,3 +203,4 @@ Thanks.
 
 
 <docmeta name="displayName" value="To v0.11">
+<docmeta name="version" value="0.11.0">
