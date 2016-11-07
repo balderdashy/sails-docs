@@ -217,3 +217,4 @@ return res.view('auth/login', {
 
 
 <docmeta name="displayName" value="To v.0.10">
+<docmeta name="version" value="0.10.0">
