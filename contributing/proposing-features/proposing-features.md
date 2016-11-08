@@ -6,4 +6,4 @@ If suggestions, requests, or pleas for features or enhancements are submitted as
 
 Please **do not propose _changes to the established conventions or default settings_ of Sails**. These types of discussions tend to start "religious wars" about topics like EJS vs. Jade, Grunt vs. Gulp, Express vs. Hapi, etc., and managing those arguments creates rifts and consumes an inordinate amount of contributors' time.  Instead, if you have concerns about the opinions, conventions or default configuration in Sails, please [contact the core maintainers directly](mailto:inquiries@treeline.io).
 
-<docmeta name="displayName" value="Proposing Features and Enhancements">
+<docmeta name="displayName" value="Proposing Features & Enhancements">
