@@ -1,26 +1,5 @@
 # Writing Tests
 
-# Sails tests
-
-
-## Run the tests
-
-From the root directory of Sails core, run:
-
-```bash
-npm test
-```
-
-## Goals
-
-1. Identify latent inconsistencies or issues that we don't know about yet.
-2. Provide low-level coverage of functionality that is difficult or time-consuming to QA / notice.
-3. Protect the core from any future breaking changes.
-4. Prevent regression.
-5. Make merging pull requests easier by removing me (@mikermcneil) as the bottleneck for merging pull requests. (we can just run the tests to see if a change broke anything)
-6. Make it easier for folks to contribute more tests, and help unify the style and structure of our existing tests.
-
-
 ## What To Test
 In an ideal world, any possible action you could perform with Sails as a user, whether programatically or via the command-line tool, would have a test. However the combinatoric scale of configuration variations in Sails, along with the fact that userland code can override just about any key piece of core, means we'll never _quite_ get to this point.  And that's ok.
 
@@ -60,3 +39,4 @@ Contains sample data/files/templates used for testing (e.g. a dummy Sails app or
 #### `helpers` directory
 Logic to help setup or teardown Sails, read fixtures, and otherwise simplify the logic in our tests.
 
+<docmeta name="displayName" value="Writing Tests">
