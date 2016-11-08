@@ -205,3 +205,4 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 
 > Want to see your adapter listed here?  Send a pull request with a link and we'll merge it!
+<docmeta name="notShownOnWebsite" value="true">
