@@ -1,4 +1,4 @@
-## II. Issue Contributions
+# Issue Contributions
 
 When opening new issues or commenting on existing issues in any of the repositories in this GitHub organization, please make sure discussions are related to concrete technical issues of the Sails.js software.  Feature requests and ideas are always welcome; but they should not be submitted as GitHub issues.  See [Requesting Features](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#requesting-features) below for submission guidelines.
 
