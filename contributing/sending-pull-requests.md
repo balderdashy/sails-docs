@@ -73,4 +73,4 @@ $ sails lift
 
 ### *Thanks for your contributions!*
 
-<docmeta name="displayName" value="Submitting Pull Requests">
+<docmeta name="displayName" value="Sending Pull Requests">
