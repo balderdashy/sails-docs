@@ -42,7 +42,7 @@ git merge core/master
 additional details, see [github](https://help.github.com/articles/fork-a-repo)
 
 ## Code
-Make your enhancements, fix bugs, do your `thang`.
+Make your enhancements, fix bugs, do your thang.
 
 
 ## Test
