@@ -1,11 +1,7 @@
-# myApp
+# Anatomy of a Sails App
 
-### Purpose
+This is an interactive guide to the structure of the default app that is generated when you do `sails new`. Choose from any of the files or folders in the list to learn more about its purpose.
 
-This is your Sails app's root directory.  All the files and subfolders it contains by default were generated upon running `sails new`.
-
-As you build out your app, the models, controller actions, helpers, and other modules you create will all live somewhere within this folder.
-
-
-<docmeta name="displayName" value="myApp">
+<docmeta name="displayName" value="Anatomy of a Sails App">
+<docmeta name="notShownInWebsiteNav" value="true">
 
