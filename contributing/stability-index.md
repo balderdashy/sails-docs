@@ -24,3 +24,5 @@ This hook/feature/etc. will not undergo any future API changes, except as demand
 
 ### Notes
 > - Sails' stability index, and much of the verbiage of this file, is based on [the Stability Index used by Node.js core](https://nodejs.org/api/documentation.html#documentation_stability_index).
+
+<docmeta name="notShownOnWebsite" value="true">
