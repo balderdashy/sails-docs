@@ -1,4 +1,4 @@
-# myApp/tasks/register/default.js
+# tasks/register/default.js
 
 
 <docmeta name="displayName" value="default.js">

@@ -1,4 +1,4 @@
-# myApp/tasks/register/buildProd.js
+# tasks/register/buildProd.js
 
 
 <docmeta name="displayName" value="buildProd.js">

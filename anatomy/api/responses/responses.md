@@ -1,4 +1,4 @@
-# myApp/api/responses
+# api/responses/
 ### Purpose
 
 This folder holds the logic for issuing server responses to your clients.

@@ -1,4 +1,4 @@
-# myApp/config/blueprints.js
+# config/blueprints.js
 
 
 <docmeta name="displayName" value="blueprints.js">
@@ -125,8 +125,8 @@ module.exports.blueprints = {
   // PUT    /foos/:id?
   // DELETE /foos/:id?
   pluralize: false,
-  
-  
+
+
   // Whether to send pub/sub socket (or 'comet') events to the client they originated from.
   //
   // If `mirror` is false, then the client making the requests (for example, to update a record)

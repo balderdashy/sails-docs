@@ -1,4 +1,4 @@
-# myApp/assets/js/dependencies/sails.io.js
+# assets/js/dependencies/sails.io.js
 ### Purpose
 
 This file adds a few custom methods to socket.io which provide the "built-in" websockets functionality for Sails.

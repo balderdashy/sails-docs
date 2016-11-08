@@ -1,4 +1,4 @@
-# myApp/config/routes.js
+# config/routes.js
 ### Purpose
 This file is where you can define explicit routes to connect clients with the resources that they request.
 

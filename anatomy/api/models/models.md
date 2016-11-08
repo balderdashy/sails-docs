@@ -1,4 +1,4 @@
-# myApp/api/models
+# api/models/
 ### Purpose
 This is the directory that holds your models.  In Sails, models are the structures that contain data for your Sails App.
 

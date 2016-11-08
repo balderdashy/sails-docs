@@ -1,4 +1,4 @@
-# myApp/config/bootstrap.js
+# config/bootstrap.js
 ### Purpose
 This is a server-side javascript file that is executed by Sails just before your app is lifted.
 

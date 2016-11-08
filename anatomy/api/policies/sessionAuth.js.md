@@ -1,4 +1,4 @@
-# api/policies/sessionAuth.js
+# policies/sessionAuth.js
 
 ### Purpose
 This is a policy file.  Like any policy, you can apply it to any of your controller actions.  (See [config/policies.js](http://sailsjs.com/anatomy/config/policies-js) for more information on how to configure policies to apply to controller actions.)

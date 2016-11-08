@@ -1,4 +1,4 @@
-# myApp/config/views.js
+# config/views.js
 ### Purpose
 This file is where Sails looks to find out which templating engine to use when rendering server side HTML templates.  By default Sails uses ejs but it supports all view engines which implement TJ Holowaychuk's `consolidate.js`, including, but not limited to:
 
@@ -59,7 +59,7 @@ module.exports.views = {
   // https://github.com/balderdashy/sails-wiki/blob/0.9/config.views.md#engine
 
   engine: 'ejs',
-  
+
 
 
   // Layouts are simply top-level HTML templates you can use as wrappers
@@ -99,7 +99,7 @@ module.exports.views = {
   // But you might override that in some of your controllers with:
   // layout: 'layouts/internal'
 
-  
+
 };
 
 ```

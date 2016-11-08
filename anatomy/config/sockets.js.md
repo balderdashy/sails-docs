@@ -1,4 +1,4 @@
-# myApp/config/sockets.js
+# config/sockets.js
 ### Purpose
 This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO.
 

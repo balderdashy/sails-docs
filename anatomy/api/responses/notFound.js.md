@@ -1,4 +1,4 @@
-# myApp/api/responses/notFound.js
+# api/responses/notFound.js
 ### Purpose
 
 This is one of the default Server Responses included in a new Sails project.

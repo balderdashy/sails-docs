@@ -1,4 +1,4 @@
-# myApp/tasks/register/build.js
+# tasks/register/build.js
 
 
 <docmeta name="displayName" value="build.js">

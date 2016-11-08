@@ -1,4 +1,4 @@
-# myApp/tasks/register/linkAssetsBuildProd.js
+# tasks/register/linkAssetsBuildProd.js
 
 
 <docmeta name="displayName" value="linkAssetsBuildProd.js">

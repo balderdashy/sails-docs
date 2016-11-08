@@ -1,4 +1,4 @@
-# myApp/assets/styles/importer.less
+# assets/styles/importer.less
 
 
 <docmeta name="displayName" value="importer.less">

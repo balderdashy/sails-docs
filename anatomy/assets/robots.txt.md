@@ -1,4 +1,4 @@
-# myApp/assets/robots.txt
+# assets/robots.txt
 ### Purpose
 This file tells search engines and roving packs of robot spiders about whether or not the content in your app should be indexed.
 

@@ -1,4 +1,4 @@
-# myApp/api/hooks/myHook/index.js
+# api/hooks/myHook/index.js
 ### Purpose
 
 This is an example of a [project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html), which adds functionality to Sails for `myApp`.  See the [hooks](http://sailsjs.org/documentation/concepts/extending-sails/Hooks) concepts section for more details.

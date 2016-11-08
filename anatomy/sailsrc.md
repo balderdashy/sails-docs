@@ -1,4 +1,4 @@
-# myApp/.sailsrc
+# .sailsrc
 ### Purpose
 
 This file is useful for setting configuration for ALL Sails apps on a computer.  You can also use it to extend the functionality of the Sails CLI tool.

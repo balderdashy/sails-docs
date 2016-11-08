@@ -1,4 +1,4 @@
-# myApp/tasks/register/syncAssets.js
+# tasks/register/syncAssets.js
 
 
 <docmeta name="displayName" value="syncAssets.js">

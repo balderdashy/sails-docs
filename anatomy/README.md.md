@@ -1,4 +1,4 @@
-# myApp/README
+# README
 ### Purpose
 
 This is a generic README that you can edit to describe your app.

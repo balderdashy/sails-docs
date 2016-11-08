@@ -1,4 +1,4 @@
-# myApp/config/locales/en.json
+# config/locales/en.json
 
 
 <docmeta name="displayName" value="en.json">

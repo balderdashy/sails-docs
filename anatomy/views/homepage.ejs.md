@@ -1,4 +1,4 @@
-# myApp/views/homepage.ejs
+# views/homepage.ejs
 ### Purpose
 This is the actual template that is rendered by default when a user visits the base URL of your lifted app.  Notice the file extension?  It stands for [Embedded JavaScript](http://embeddedjs.com/).  EJS is what Sails uses by default to render server side HTML views.  This can be changed in `myApp/config/views.js`.
 

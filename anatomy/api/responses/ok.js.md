@@ -1,4 +1,4 @@
-# myApp/api/responses/ok.js
+# api/responses/ok.js
 ### Purpose
 
 This is one of the default Server Responses included in a new Sails project.

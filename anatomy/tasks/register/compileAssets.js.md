@@ -1,4 +1,4 @@
-# myApp/tasks/register/compileAssets.js
+# tasks/register/compileAssets.js
 
 
 <docmeta name="displayName" value="compileAssets.js">

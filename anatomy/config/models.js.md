@@ -1,4 +1,4 @@
-# myApp/config/models.js
+# config/models.js
 
 
 <docmeta name="displayName" value="models.js">

@@ -1,6 +1,6 @@
-# myApp/config/locales/fr.json
+# config/locales/fr.json
 ### Purpose
-This tells French browsers sexy things in JSON. 
+This tells French browsers sexy things in JSON.
 
 
 

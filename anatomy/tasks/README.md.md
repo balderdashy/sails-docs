@@ -1,4 +1,4 @@
-# myApp/README.md
+# README.md
 ### Purpose
 If you want to create a [README file](http://en.wikipedia.org/wiki/README) for your app, this is a good place to put it.  If you host your app on Github, the contents of this file will be displayed at the bottom of the Github repo page.
 

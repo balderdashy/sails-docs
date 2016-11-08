@@ -1,9 +1,9 @@
-# myApp/config/log.js
+# config/log.js
 ### Purpose
 
-This file contains the logger configuration for your Sails app. 
+This file contains the logger configuration for your Sails app.
 
-Configure the log level for your app, as well as the transport. 
+Configure the log level for your app, as well as the transport.
 
 Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages.
 

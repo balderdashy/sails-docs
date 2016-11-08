@@ -1,4 +1,4 @@
-# myApp/config/policies.js
+# config/policies.js
 ### Purpose
 This file contains the default policies for your app.
 

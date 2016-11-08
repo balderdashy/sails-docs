@@ -1,4 +1,4 @@
-# myApp/tasks/register/prod.js
+# tasks/register/prod.js
 
 
 <docmeta name="displayName" value="prod.js">
