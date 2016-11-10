@@ -17,7 +17,7 @@ To allow cross-origin requests from a whitelist of trusted domains to _any_ rout
 
 ```javascript
 allRoutes: true,
-allowOrigins: 'example.com,api.example.com,blog.example.com,foo.com'
+allowOrigins: ['http://example.com','https://api.example.com','http://blog.example.com:1337','https://foo.com:8888']
 ```
 
 To allow cross-origin requests from _any_ domain to _any_ route in your app, use `allowOrigins: '*'`:
@@ -52,7 +52,7 @@ To enable or override global CORS configuration for a particular route, provide 
 'GET /videos': {
    action: 'video/find',
    cors: {
-     allowOrigins: 'example.com,api.example.com,blog.example.com,foo.com',
+     allowOrigins: ['http://example.com','https://api.example.com','http://blog.example.com:1337','https://foo.com:8888'],
      allowCredentials: false
    }
 }
