@@ -60,11 +60,11 @@ but will provide the value of the dynamic portions of the route URL to the route
 
 In addition to the wildcard address syntax, you may also use Regular Expressions to define the URLs that a route should match.  The syntax for defining an address with a regular expression is:
 
-`"r|<regular expression string>|<comma-delimited list of param names>"`
+`'r|<regular expression string>|<comma-delimited list of param names>'`
 
 That's the letter "**r**", followed by a pipe character `|`, a regular expression string *without delimiters*, another pipe, and a list of parameter names that should be mapped to parenthesized groups in the regular expression.  For example:
 
-`"r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "message/my-action"`
+`'r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "message/my-action'`
 
 Will match `/123/abc/def`, running the action in **api/controllers/message/my-action.js** and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
 
@@ -101,14 +101,13 @@ If you have a [custom action](http://sailsjs.org/documentation/concepts/Controll
 
 #### Controller / action target syntax
 
-This was the most common type of target in previous versions of Sails.  It binds a route to a traditional  [controller action](http://sailsjs.org/documentation/concepts/Controllers?q=actions).  The following four routes are equivalent:
+This was the most common type of target in previous versions of Sails.  It binds a route to a traditional [controller action](http://sailsjs.org/documentation/concepts/Controllers?q=actions).  The following four routes are equivalent:
 
 ```
 'GET /foo/go': 'FooController.myGoAction',
-'GET /foo/go': 'Foo.myGoAction',
-'GET /foo/go': {controller: "Foo", action: "myGoAction"},
-'GET /foo/go': {controller: "FooController", action:"myGoAction"},
-
+'GET /foo/go': 'foo.myGoAction',
+'GET /foo/go': { controller: 'foo', action: 'myGoAction' },
+'GET /foo/go': { controller: 'FooController', action:'myGoAction' },
 ```
 
 Each one maps `GET /foo/go` to the `myGoAction` action of the controller in **api/controllers/FooController.js**, or to the action in **api/controllers/foo/mygoaction.js**.  If no such controller or action exists, Sails will output an error message and ignore the route.  Otherwise, whenever a **GET** request to **/foo/go** is made, the code in that action will be run.
@@ -122,7 +121,7 @@ Another common target is one that binds a route to a [view](http://sailsjs.org/d
 The syntax for view targets is simple: it is just the path to the view file, without the file extension (e.g. `.ejs`) and relative to the **views/** folder :
 
 ```
-'GET /team': {view: 'brochure/about'}
+'GET /team': { view: 'brochure/about' }
 ```
 
 This tells Sails to handle `GET` requests to `/team` by serving the view template located at `views/brochure/about.ejs` (assuming the default EJS [template engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it. For consistency with Express/consolidate, if the specified relative path does not match a view file, then Sails will look for a sub-folder with the same name (e.g. `pages/brochure`) and serve the "index" view in that sub-folder (e.g. `pages/brochure/index.ejs`) if one exists.
@@ -147,7 +146,7 @@ Note that when redirecting, the HTTP method of the original request (and any ext
 You can map an address directly to a default or custom [response](http://sailsjs.org/documentation/concepts/Custom-Responses) using this syntax:
 
 ```
-'/foo': {response: 'notFound'}
+'/foo': { response: 'notFound' }
 ```
 
 Simply specify the name of the response file in your **api/responses** folder, without the **.js** extension.  The response name in this syntax is case-sensitive.  If you attempt to bind a route to a non-existent response, Sails will output an error and ignore the route.
@@ -157,12 +156,15 @@ Simply specify the name of the response file in your **api/responses** folder, w
 In most cases, you will want to apply [policies](http://sailsjs.org/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
 
 ```
-'/foo': {policy: 'my-policy'}
+'/foo': { policy: 'my-policy' }
 ```
 However, you will always want to chain the policy to at least one other type of target, using an array:
 
 ```
-'/foo': [{policy: 'my-policy'}, {view: 'dashboard'}]
+'/foo': [
+  { policy: 'my-policy' },
+  { view: 'dashboard' }
+]
 ```
 
 This will apply the **my-policy** policy to the route and, if it passes, continue by displaying the **views/dashboard.ejs** view.
@@ -171,13 +173,17 @@ This will apply the **my-policy** policy to the route and, if it passes, continu
 
 For quick-and-dirty jobs (useful for quick tests), you can assign a route directly to a function:
 ```
-'/foo': function(req, res) {res.send("FOO!");}
+'/foo': function(req, res) {
+  return res.send('FOO!');
+}
 ```
 
-You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
+You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
 ```
 '/foo/*': {
-   fn: function(req, res) {res.send("FOO!");},
+   fn: function(req, res) {
+     return res.send("FOO!");
+   },
    skipAssets: true
 }
 ```
