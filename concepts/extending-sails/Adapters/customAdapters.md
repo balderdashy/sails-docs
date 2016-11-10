@@ -3,6 +3,19 @@
 Sails makes it fairly easy to write your own database adapter.  Custom adapters can be built directly in your app (`api/adapters/`) or published as NPM packages.  Check out [Intro to Custom Adapters](https://github.com/balderdashy/sails-docs/blob/master/contributing/intro-to-custom-adapters.md), the [Adapter Interface Reference](https://github.com/balderdashy/sails-docs/blob/master/contributing/adapter-specification.md), and [sails-adapter-boilerplate](https://github.com/balderdashy/sails-adapter-boilerplate) for more information about creating your own adapter.
 
 
+### Where does my adapter go?
+
+There are two different places you can build an adapter:
+
+##### In your app's `api/adapters/` folder
+
+If an adapter is only going to be used in one app (e.g. a short-term fork of an existing adapter) you can put it in `api/adapters/`.  This is what you get out of the box when you run `sails generate adapter`.  In this case, the name of the adapter is determined by the name of the folder inside `api/adapters/`.  (By convention, the entry point for your adapter should be `index.js`.)
+
+##### In a separate repo
+
+Go with this option if you plan to share your adapter between multiple Sails apps, whether that's within your organization or as an open-source package for other members of the Sails/Node.js community at large.  To use an externalized adapter like this, you'll need to do `npm install your-adapter-package-name` or `npm link your-adapter-package-name`.
+
+
 ### What goes in a custom adapter?
 
 In Sails, database adapters expose **interfaces**, which imply a conract to implemnt certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are primarily useful for integrating with databases, but they can also be used to support any open API or internal/proprietary web service that is _purely_ RESTful.
@@ -25,14 +38,14 @@ Check out the [Sails docs](http://sailsjs.com/documentation), or see [`config/da
 
 #### Running the tests
 
-Configure the interfaces you plan to support (and targeted version of Sails/Waterline) in the adapter's `package.json` file:
+Configure the interfaces you plan to support (and the targeted version of Sails) in the adapter's `package.json` file:
 
 ```javascript
 {
   //...
   "sails": {
   	"adapter": {
-	    "sailsVersion": "~0.10.0",
+	    "sailsVersion": "^1.0.0",
 	    "implements": [
 	      "semantic",
 	      "queryable"
