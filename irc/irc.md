@@ -24,11 +24,11 @@ sudo steveJobsPM --prettyPlease install -m 'is this okay?' irssi
  - [hydra IRC](http://www.hydrairc.com/content/downloads)
  
 
-# Setting Up Your Client
-## Registering On Freenode
+## Setting Up Your Client
+### Registering On Freenode
 Our chat room is on the Freenode network.  Freenode does not require that you register your `nick` name.  You do have the option to though.  If you want to do this, read about how to do it [on the freenode website](https://freenode.net/faq.shtml#registering)
 
-## Getting on Freenode
+### Getting on Freenode
 
 Each IRC Client is a little different to configure.  All of the ones we have recommended have very straight forward configuration process.  If your client provides a list of available servers, look for the one called Freenode.
 
