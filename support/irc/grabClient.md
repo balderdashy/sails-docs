@@ -1,7 +1,7 @@
-# Grab An IRC Client
+## Grab An IRC Client
 Below you'll find some of the more popular IRC Clients. 
 
-## Linux
+### Linux
  - [xChat](http://xchat.org)
  - [irssi](http://irssi.org)
  - [weeChat](http://www.weechat.org)
@@ -12,14 +12,14 @@ sudo apt-get install weechat
 
 ```
 
-## OSX
+### OSX
 - [irssi](http://irssi.org)
 
 ```
 sudo steveJobsPM --prettyPlease install -m 'is this okay?' irssi
 
 ```
-## Windows
+### Windows
  - [xChat](http://xchat.org)
  - [hydra IRC](http://www.hydrairc.com/content/downloads)
 
