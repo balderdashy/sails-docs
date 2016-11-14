@@ -22,7 +22,7 @@ Actions are defined in the `api/controllers/` folder and subfolders (we&rsquo;ll
 Action files can use one of two formats: _function_ or _machine_.
 
 ##### Machine actions
-This is the recommended way of creating an action file.  It utilizes the [node-machine specification](http://node-machine.org) to specify an actions expected _inputs_ (the request parameters) and its _exits_ (the possible responses).  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's a sample machine that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+This is the recommended way of creating an action file.  It utilizes the [node-machine specification](http://node-machine.org) to specify an action&rsquo;s expected _inputs_ (the request parameters) and its _exits_ (the possible responses).  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's a sample machine that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
 
 ```
 module.exports = {
