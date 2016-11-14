@@ -17,50 +17,59 @@ Read about the default middleware stack [here](http://sailsjs.org/documentation/
 
 To configure a custom HTTP middleware function, define a new HTTP key `sails.config.http.middleware.foobar` and set it to the configured middleware function, then add the string name ("foobar") to your `sails.config.http.middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before "cookieParser"):
 
-E.g. in `config/http.js`:
+For example, in `config/http.js`:
 
 ```js
-  // ...
   middleware: {
-
-    // Define a custom HTTP middleware fn with the key `foobar`:
-    foobar: function (req,res,next) { /*...*/ next(); },
-
-    // Define another couple of custom HTTP middleware fns with keys `passportInit` and `passportSession`
-    // (notice that this time we're using an existing middleware library from npm)
-    passportInit    : require('passport').initialize(),
-    passportSession : require('passport').session(),
-
-    // Override the conventional cookie parser:
-    cookieParser: function (req, res, next) { /*...*/ next(); },
-
 
     // Now configure the order/arrangement of our HTTP middleware
     order: [
-      'startRequestTimer',
       'cookieParser',
       'session',
       'passportInit',            // <==== passport HTTP middleware should run after "session"
       'passportSession',         // <==== (see https://github.com/jaredhanson/passport#middleware)
       'bodyParser',
       'compress',
-      'foobar',                  // <==== we can put this stuff wherever we want
+      'foobar',                  // <==== we can put other, custom HTTP middleware like this wherever we want
       'methodOverride',
       'poweredBy',
-      '$custom',
       'router',
       'www',
       'favicon',
-      '404',
-      '500'
-    ]
-  },
+    ],
+    
+    
+    // Define a custom HTTP middleware fn with the key `foobar`:
+    foobar: (function (){
+      console.log('Setting up `foobar` (HTTP middleware)...');
+      return function (req,res,next) {
+        console.log('Received HTTP request: '+req.method+' '+req.path);
+        return next();
+      };
+    })(),
 
-  customMiddleware: function(app){
-     //Intended for other middleware that doesn't follow 'app.use(middleware)' convention
-     require('other-middleware').initialize(app);
-  }
-  // ...
+    // Define another couple of custom HTTP middleware fns with keys `passportInit` and `passportSession`
+    // (notice that this time we're using an existing middleware library from npm)
+    passportInit    : (function (){
+      var passport = require('passport');
+      var reqResNextFn = passport.initialize();
+      return reqResNextFn;
+    })(),
+   
+    passportSession : (function (){
+      var passport = require('passport');
+      var reqResNextFn = passport.session();
+      return reqResNextFn;
+    })(),
+
+    // Override the built-in HTTP body parser:
+    bodyParser: (function (){
+      var skipper = require('skipper');
+      var reqResNextFn = skipper({ strict: true });
+      return reqResNextFn;
+    })(),
+    
+  },
 ```
 
 
