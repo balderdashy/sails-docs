@@ -14,8 +14,8 @@ For details about changes between versions, as well as a migration guide to assi
 ### Notes
 
 > - Once Sails v1.0 is released, minor version bumps will aim to not cause breaking changes either-- e.g. upgrading from v1.1.0 to v1.2.0 should not force you to make changes to your code; whereas upgrading to v2.0.0 might.
-> - If you are more than one minor version behind the latest and run into difficulties, consider updating your app one step at a time. The migration guides are written with a particular version diff in mind and as you probably are well aware, when in doubt, it's best to isolate as many variables as possible.  For instance, if you are running Sails v0.9 and trying to upgrade to Sails v0.12 but having trouble, first upgrade to Sails v0.10, then v0.11, _then_ v0.12.  
+> - If you are more than one minor version behind the latest and run into difficulties, consider updating your app one step at a time. The migration guides are written with a particular version diff in mind and as you probably are well aware, when in doubt, it's best to isolate as many variables as possible.  For instance, if you are running Sails v0.9 and trying to upgrade to Sails v0.12 but having trouble, first upgrade to Sails v0.10, then v0.11, _then_ v0.12.
 
 
 <docmeta name="displayName" value="Upgrading">
-<docmeta name="notShownInWebsiteNav" value="true">
+<docmeta name="isOverviewPage" value="true">

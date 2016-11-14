@@ -3,4 +3,4 @@
 > The contents of this file are overridden automatically during compilation (please do not edit manually!)
 
 <docmeta name="displayName" value="API Reference: Table of Contents">
-<docmeta name="notShownOnWebsite" value="true">
+<docmeta name="isTableOfContents" value="true">
