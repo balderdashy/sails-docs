@@ -7,5 +7,23 @@ If you are working on a pull request, **please carefully read this section in it
 > Note that unless otherwise specified, the content in this section is either straight from the hearts of the Sails.js core team, or based on the [Node.js contribution guide](https://github.com/joyent/node/blob/master/CONTRIBUTING.md#contributing).
 
 
+
+| **Contents**                                                      |
+| ----------------------------------------------------------------- |
+| I. [Code of Conduct](http://sailsjs.com/documentation/contributing/code-of-conduct)
+| II. [Submitting an Issue](http://sailsjs.com/documentation/contributing/issue-contributions)
+| III. [Contributing to the Documentation](http://sailsjs.com/documentation/contributing/contributing-to-the-docs)
+| IV. [Writing Tests](http://sailsjs.com/documentation/contributing/writing-tests)
+| V. [Proposing Features and Enhancements](http://sailsjs.com/documentation/contributing/proposing-features-enhancements)
+| VI. [Code Submission Guidelines](http://sailsjs.com/documentation/contributing/code-submission-guidelines)
+| VII. [Best Practices](TODO)
+| VIII. [Core Maintainers](TODO)
+| IX. [Contributor's Pledge](TODO)
+
+
+
+
+
+
 <docmeta name="displayName" value="Contributing to Sails">
 <docmeta name="isOverviewPage" value="true">
