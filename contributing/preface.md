@@ -8,17 +8,19 @@ If you are working on a pull request, **please carefully read this section in it
 
 
 
-| **Contents**                                                      |
+### Contents
+
+|                                                       |
 | ----------------------------------------------------------------- |
-| I. [Code of Conduct](http://sailsjs.com/documentation/contributing/code-of-conduct)
-| II. [Submitting an Issue](http://sailsjs.com/documentation/contributing/issue-contributions)
-| III. [Contributing to the Documentation](http://sailsjs.com/documentation/contributing/contributing-to-the-docs)
-| IV. [Writing Tests](http://sailsjs.com/documentation/contributing/writing-tests)
-| V. [Proposing Features and Enhancements](http://sailsjs.com/documentation/contributing/proposing-features-enhancements)
-| VI. [Code Submission Guidelines](http://sailsjs.com/documentation/contributing/code-submission-guidelines)
-| VII. [Best Practices](TODO)
-| VIII. [Core Maintainers](TODO)
-| IX. [Contributor's Pledge](TODO)
+| [Code of Conduct](http://sailsjs.com/documentation/contributing/code-of-conduct)
+| [Submitting an Issue](http://sailsjs.com/documentation/contributing/issue-contributions)
+| [Contributing to the Documentation](http://sailsjs.com/documentation/contributing/contributing-to-the-docs)
+| [Writing Tests](http://sailsjs.com/documentation/contributing/writing-tests)
+| [Proposing Features and Enhancements](http://sailsjs.com/documentation/contributing/proposing-features-enhancements)
+| [Code Submission Guidelines](http://sailsjs.com/documentation/contributing/code-submission-guidelines)
+| [Best Practices](TODO)
+| [Core Maintainers](TODO)
+| [Contributor's Pledge](TODO)
 
 
 
