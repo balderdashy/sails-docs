@@ -8,4 +8,4 @@ If you are working on a pull request, **please carefully read this section in it
 
 
 <docmeta name="displayName" value="Contributing to Sails">
-<docmeta name="notShownInWebsiteNav" value="true">
+<docmeta name="isOverviewPage" value="true">
