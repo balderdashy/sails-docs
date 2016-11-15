@@ -81,7 +81,7 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```js
 {
   // Apply 'isLoggedIn' by default to all 'profile/*' actions that are NOT specified below
-  'profile/*': 'isLoggedIn',
+  'profile/*': ['isLoggedIn'],
   // If an action is explicitly listed, its policy list will override the default list.
   // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
   'profile/edit': ['isAdmin', 'isLoggedIn']
@@ -95,9 +95,9 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 ```js
 {
   // Apply 'isLoggedIn' to all actions by default
-  '*': 'isLoggedIn',
+  '*': ['isLoggedIn'],
   // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
-  'foo': 'isAdmin'
+  'foo': ['isAdmin']
 }
 ```
 
@@ -113,7 +113,7 @@ To apply your policies to blueprint actions, set up your policy mappings just li
 {
   UserController: {
     // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
-    update: 'isLoggedIn'
+    update: ['isLoggedIn']
   }
 }
 ```
@@ -124,7 +124,7 @@ Sails provides two built-in policies that can be applied globally, or to a speci
   + `true`: public access  (allows anyone to get to the mapped controller/action)
   +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
 
- `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
+ `'*': [true]` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
 ##### Adding some policies to a controller:
 ```javascript
