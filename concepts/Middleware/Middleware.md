@@ -98,17 +98,14 @@ var basic = auth.basic({
 
 //...
 module.exports.policies = {
-  '*': true,
+  '*': [true],
 
-  ProductController: {
+  // Prevent end users from doing CRUD operations on products reserved for admins
+  // (uses HTTP basic auth)
+  'product/*': [auth.connect(basic)],
 
-    // Prevent end users from doing CRUD operations on products reserved for admins
-    // (uses HTTP basic auth)
-    '*': auth.connect(basic),
-
-    // Everyone can view product pages
-    show: true
-  }
+  // Everyone can view product pages
+  'product/show': [true]
 }
 ```
 
