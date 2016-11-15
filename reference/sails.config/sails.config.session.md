@@ -87,10 +87,18 @@ The following values are optional, and should only be used if relevant for your 
 ```
 // Note: in this URL, `user`, `pass` and `port` are all optional.
 url: 'mongodb://user:pass@host:port/database',
-collection: 'sessions',
-auto_reconnect: false,
-ssl: false,
-stringify: true
+//--------------------------------------------------------------------------
+// The following additional options may also be used, if needed:
+// (See http://bit.ly/mongooptions for more about `mongoOptions`.)
+//--------------------------------------------------------------------------
+// collection: 'sessions',
+// stringify: true,
+// auto_reconnect: false,
+// mongoOptions: {
+//   server: {
+//     ssl: true
+//   }
+// }
 ```
 
 
