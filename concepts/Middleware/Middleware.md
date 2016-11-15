@@ -37,8 +37,8 @@ For example, in `config/http.js`:
       'www',
       'favicon',
     ],
-    
-    
+
+
     // Define a custom HTTP middleware fn with the key `foobar`:
     foobar: (function (){
       console.log('Setting up `foobar` (HTTP middleware)...');
@@ -55,7 +55,7 @@ For example, in `config/http.js`:
       var reqResNextFn = passport.initialize();
       return reqResNextFn;
     })(),
-   
+
     passportSession : (function (){
       var passport = require('passport');
       var reqResNextFn = passport.session();
@@ -68,10 +68,11 @@ For example, in `config/http.js`:
       var reqResNextFn = skipper({ strict: true });
       return reqResNextFn;
     })(),
-    
+
   },
 ```
 
+Every value assigned to a `sails.config.middleware.*` key should be a function which takes three arguments: `req`, `res` and `next`.  You&rsquo;; note in the above example that rather than setting the value to a "req, res, next" function directly, a self-calling (aka ["immediately-invoked"](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)) function is used that both configures and returns the final middleware.
 
 ### Express Middleware In Sails
 
