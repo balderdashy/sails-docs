@@ -8,8 +8,8 @@ Configuration for your app's server-side [views](http://sailsjs.org/documentatio
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
 | `layout`    | ((string)) -or- ((boolean))     | `"layout"`  | Set the default [layout](http://sailsjs.org/documentation/concepts/Views/Layouts.html) for your app by specifying the relative path to the desired layout file from your views folder (i.e. `views/`.)  Or disable layout support altogether with `false`.  Built-in support for layouts is only relevant when using `ejs` (see below)
-| `engine`    | ((string)) | `"ejs"` | The [view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) your app will use to compile server-side markup into HTML.
-| `extension` | ((string)) | Same as `engine` | The file extension for view files. |
+| `extension` | ((string)) | "ejs" | The file extension for view files. |
+| `getRenderFn` | ((function)) | none | A function that Sails will call to get the rendering function for your desired view engine.  See the [view engine documentation](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) for more info about specifying a `getRenderFn` value.  If this setting is undefined, Sails will use the built-in EJS renderer.
 | `locals`    | ((dictionary)) | `{}` | Default data to be included as [view locals](http://sailsjs.org/documentation/concepts/Views/Locals.html) every time a server-side view is compiled anywhere in this app.  If an optional `locals` argument was passed in directly via `res.view()`, its properties take precedence when both dictionaries are merged and provided to the view (more on that below) |
 
 ### Notes

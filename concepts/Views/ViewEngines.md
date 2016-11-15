@@ -4,45 +4,34 @@ The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 ##### Swapping out the view engine
 
-To use a different view engine, you should use npm to install it in your project, then set `sails.config.views.engine` in [`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html).
+To use a different view engine, you should use npm to install it in your project, then in [`config/views.js`](http://sailsjs.org/documentation/anatomy/myApp/config/views.js.html) `sails.config.views.extension` to your desired file extension and `sails.config.views.getRenderFn` to a function that returns your view engine's rendering function.  If your view engine is supported by [Consolidate](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api), you can use that in your `getRenderFn` to easily get access to the rendering function.  For example, to use [Swig](https://github.com/paularmstrong/swig) templates:
 
-For example, to switch to _pug_ (the view engine formerly known as jade), run `npm install pug --save`, then set `engine: 'pug'` in [`config/views.js`](http://sailsjs.com/anatomy/config/views-js).
+```javascript
+'extension': 'swig',
+'getRenderFn': function() {
+  // Import `consolidate`.
+  var cons = require('consolidate');
+  // Return the rendering function for Swig.
+  return cons.swig;
+}
+```
 
+The `getRenderFn` allows you to configure your view engine before plugging it into Sails:
 
-
-##### Supported view engines
-
-  - [atpl](https://github.com/soywiz/atpl.js)
-  - [dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) (.dust)
-  - [eco](https://github.com/sstephenson/eco)
-  - [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
-  - [ejs](https://github.com/visionmedia/ejs) (.ejs)
-  - [haml](https://github.com/visionmedia/haml.js) [(website)](http://haml.info/)
-  - [haml-coffee](https://github.com/9elements/haml-coffee) [(website)](http://haml.info/)
-  - [handlebars](https://github.com/wycats/handlebars.js/) [(website)](http://handlebarsjs.com/) (.hbs)
-  - [hogan](https://github.com/twitter/hogan.js) [(website)](http://twitter.github.com/hogan.js/)
-  - [pug](https://github.com/pugjs/pug) [(website)](http://jade-lang.com/) _([formerly](https://github.com/pugjs/pug/issues/2184) known as "jade")_
-  - [jazz](https://github.com/shinetech/jazz)
-  - [jqtpl](https://github.com/kof/node-jqtpl) [(website)](https://github.com/kof/jqtpl)
-  - [JUST](https://github.com/baryshev/just)
-  - [liquor](https://github.com/chjj/liquor)
-  - [lodash](https://github.com/bestiejs/lodash) [(website)](http://lodash.com/)
-  - [mustache](https://github.com/janl/mustache.js)
-  - [QEJS](https://github.com/jepso/QEJS)
-  - [ractive](https://github.com/Rich-Harris/Ractive)
-  - [swig](https://github.com/paularmstrong/swig) [(website)](http://paularmstrong.github.com/swig/)
-  - [templayed](http://archan937.github.com/templayed.js/)
-  - [toffee](https://github.com/malgorithms/toffee)
-  - [underscore](https://github.com/documentcloud/underscore) [(website)](http://documentcloud.github.com/underscore/)
-  - [walrus](https://github.com/jeremyruppel/walrus) [(website)](http://documentup.com/jeremyruppel/walrus/)
-  - [whiskers](https://github.com/gsf/whiskers.js)
-
-
-
-##### Adding new custom view engines
-
-For instructions on adding support for a view engine not listed above, check out the [consolidate project](https://github.com/visionmedia/consolidate.js/blob/master/Readme.md#api) repository.
-
-
+```javascript
+'extension': 'swig',
+'getRenderFn': function() {
+  // Import `consolidate`.
+  var cons = require('consolidate');
+  // Import `swig`.
+  var swig = require('swig');
+  // Configure `swig`.
+  swig.setDefaults({tagControls: ['{?', '?}']});
+  // Set the module that Consolidate uses for Swig.
+  cons.requires.swig = swig;
+  // Return the rendering function for Swig.
+  return cons.swig;
+}
+```
 
 <docmeta name="displayName" value="View Engines">
