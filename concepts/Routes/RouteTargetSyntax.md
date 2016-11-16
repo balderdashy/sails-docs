@@ -146,8 +146,7 @@ You can also use this syntax to map a route to one of the default blueprint acti
 You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
 
 ```
-'/alias' : '/some/other/route'
-'GET /google': 'http://www.google.com'
+'/alias' : '/some/other/url'
 ```
 
 Be careful to avoid redirect loops when redirecting within your Sails app!
