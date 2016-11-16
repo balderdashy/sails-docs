@@ -1,19 +1,20 @@
 # .publish()
 
-Publish an arbitrary message to clients subscribed to one or more model instances.
+Broadcast an arbitrary message to socket client subscribed to one or more of this model's [records](http://sailsjs.com/documentation/concepts/models-and-orm).
 
 ```js
 Something.publish(ids, data, req);
 ```
 
+> The event name for this broadcast is the same as the model's identity.
 
 ### Usage
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|---------|
 | 1 | `ids`      | ((array))    | An array of record ids (primary key values).
-| 2 | `data`     | ((json)) | The data to broadcast.
-| 3 | `req`      | ((req))      | If provided, then the requesting socket will *not* receive the broadcast.
+| 2 | `data`     | ((json))     | The data to broadcast.
+| 3 | _`req`_    | ((req?))     | Optional.  If provided, then the requesting socket will *not* receive the broadcast.
 
 
 
@@ -36,8 +37,8 @@ Something.publish(ids, data, req);
       // Note that the secret is wrapped in a dictionary with a `verb` property -- this is not
       // required, but helpful if you'll also be listening for events from Sails blueprints.
       User.publish(_.pluck(bobs, 'id'), {
-        verb: 'messaged',
-        data: secret
+        verb: 'published',
+        theSecret: secret
       }, req);
 
       return res.send();
@@ -49,14 +50,15 @@ Something.publish(ids, data, req);
 ```javascript
   // On the client:
 
-  // Subscribe this client socket to Bob secrets (see the `.subscribe()` documentation for more info about subscribing to events:
-  // http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe
+  // Subscribe this client socket to Bob-only secrets
+  // > See the `.subscribe()` documentation for more info about subscribing to records:
+  // > http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe
   io.socket.get('/subscribeToBobSecrets');
 
   // Whenever a `user` event is received, do something.
   io.socket.on('user', function(msg) {
-     if (msg.verb === 'messaged') {
-       console.log('Got a secret:', msg);
+     if (msg.verb === 'published') {
+       console.log('Got a secret only Bobs can hear:', msg.theSecret);
      }
      // else if (msg.verb === 'created') { ... }
      // else if (msg.verb === 'updated') { ... }
