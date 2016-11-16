@@ -45,8 +45,7 @@ io.socket.on('user', function(data){
 })
 ```
 
-This will log any notifications about `User` models to the console.  However, we won&rsquo;t receive any such messages until we *subscribe* to one or more existing `User` records.
-
+This will log any notifications that our client socket receives to the console, so long as those socket notifications have "user" as their event name.  However, we won&rsquo;t receive any such messages in the first place until we *subscribe* this client socket to one or more existing `User` records (in our server-side code).
 
 If your app has the blueprint API enabled, then this is really easy.  In addition to fetching data, if the ["Find" blueprint action](http://sailsjs.org/documentation/reference/blueprint-api/find-where) is accessed via a [socket request](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-get), then it calls [`User.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) (a resourceful pubsub method) automatically.
 
