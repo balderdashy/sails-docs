@@ -48,4 +48,3 @@ If your language is not represented in the table above, and you are interested i
 
 
 <docmeta name="displayName" value="Contributing to the Docs">
-<docmeta name="isDeprecated" value="true">
