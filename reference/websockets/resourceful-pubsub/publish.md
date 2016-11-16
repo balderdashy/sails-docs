@@ -11,7 +11,7 @@ Something.publish(ids, data, req);
 ### Usage
 
 |   | Argument   | Type         | Details |
-|---|:-----------|:------------:|---------|
+|---|:-----------|:------------:|:--------|
 | 1 | `ids`      | ((array))    | An array of record ids (primary key values).
 | 2 | `data`     | ((json))     | The data to broadcast.
 | 3 | _`req`_    | ((req?))     | Optional.  If provided, then the requesting socket will *not* receive the broadcast.
