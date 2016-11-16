@@ -167,13 +167,16 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 In most cases, you will want to apply [policies](http://sailsjs.org/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) or [blueprint]((http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax) target syntax.  The policy target syntax is:
 
-```
-'/foo': {policy: 'myPolicy'}
+```js
+'/foo': { policy: 'myPolicy' }
 ```
 However, you will always want to chain the policy to at least one other type of target, using an array:
 
-```
-'/foo': [{policy: 'myPolicy'}, {blueprint: 'find', model: 'user'}]
+```js
+'/foo': [
+  { policy: 'myPolicy' },
+  { controller: 'user', action: 'find' }
+]
 ```
 
 This will apply the **myPolicy** policy to the route and, if it passes, continue by running the **find** blueprint for the **User** model.
@@ -181,18 +184,33 @@ This will apply the **myPolicy** policy to the route and, if it passes, continue
 #### Function target syntax
 
 For quick-and-dirty jobs (useful for quick tests), you can assign a route directly to a function:
+```js
+'/foo': function(req, res) { return res.send('hello!'); }
 ```
-'/foo': function(req, res) {res.send("FOO!");}
+
+You can also combine this syntax with others using an array, allowing you to define quick, inline middleware:
+
+```js
+'/foo': [
+  function(req, res, next) {
+    sails.log('Quick and dirty test:', req.allParams());
+    return next();
+  },
+  { controller: 'user', action: 'find' }
+]
 ```
 
 You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
-```
-'/foo/*': {
-   fn: function(req, res) {res.send("FOO!");},
-   skipAssets: true
+```js
+'GET /*': {
+  fn: function(req, res) {
+    return res.send('hello!');
+  },
+  skipAssets: true
+}
 ```
 
-Best practice is to use the function syntax only for temporary routes, since it goes against the MVC structure that makes Sails useful!
+> Best practice is to use the function syntax only for temporary routes, since it goes against the structural conventions that make Sails useful!  (Plus, the less cluttered your routes.js file, the better.)
 
 ### Route target options
 
