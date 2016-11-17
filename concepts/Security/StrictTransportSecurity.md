@@ -1,6 +1,6 @@
 # HTTP Strict Transport Security
 
-Strict Transport Security (STS) is an opt-in security enhancement that forces usage of `HTTPS` instead of `HTTP`.
+Strict Transport Security (STS) is an opt-in security enhancement that forces usage of `HTTPS` instead of `HTTP` (in modern browsers, anyway.)
 
 ### Enabling STS
 
