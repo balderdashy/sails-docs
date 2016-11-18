@@ -133,8 +133,8 @@ This tells Sails to handle `GET` requests to `/team` by serving the view templat
 #### Redirect target syntax
 You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
 
-```
-'/alias' : '/some/other/route',
+```js
+'/alias' : '/some/other/route/url',
 'GET /google': 'http://www.google.com'
 ```
 
@@ -155,12 +155,13 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 In most cases, you will want to apply [policies](http://sailsjs.org/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
 
-```
+```js
 '/foo': { policy: 'my-policy' }
 ```
+
 However, you will always want to chain the policy to at least one other type of target, using an array:
 
-```
+```js
 '/foo': [
   { policy: 'my-policy' },
   { view: 'dashboard' }
@@ -172,23 +173,35 @@ This will apply the **my-policy** policy to the route and, if it passes, continu
 #### Function target syntax
 
 For quick-and-dirty jobs (useful for quick tests), you can assign a route directly to a function:
-```
+```js
 '/foo': function(req, res) {
-  return res.send('FOO!');
-}
+  return res.send('hello!');
+},
 ```
 
-You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
-```
-'/foo/*': {
-   fn: function(req, res) {
-     return res.send("FOO!");
-   },
-   skipAssets: true
-}
+You can also combine this syntax with others using an array, allowing you to define quick, inline middleware:
+
+```js
+'/foo': [
+  function(req, res, next) {
+    sails.log('Quick and dirty test:', req.allParams());
+    return next();
+  },
+  { controller: 'user', action: 'find' }
+],
 ```
 
-Best practice is to use the function syntax only for temporary routes, since it goes against the MVC structure that makes Sails useful!
+You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](http://sailsjs.org/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
+```js
+'GET /*': {
+  skipAssets: true,
+  fn: function(req, res) {
+    return res.send('hello!');
+  }
+},
+```
+
+> Best practice is to use the function syntax only for temporary routes, since it goes against the structural conventions that make Sails useful!  (Plus, the less cluttered your routes.js file, the better.)
 
 ### Route target options
 
