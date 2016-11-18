@@ -7,7 +7,7 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 
 ### Properties
 
-| Property    | Type       | Default   | Details |
+| Property    | Type       | Convention  | Details |
 |:-----------|:----------:|:----------|:--------|
 | `_` _(underscore)_  | ((ref))<br/>_or_<br/>((boolean))     | `require('lodash')`  | Expose the specified `lodash` as a global variable (`_`).  Or set this to `false` to disable the `_` global altogether.  _(More on that below.)_
 | `async`  | ((ref))<br/>_or_<br/>((boolean)) | `require('async')` | Expose the specified `async` as a global variable (`async`).  Or set this to `false` to disable the `async` global altogether. _(More on that below.)_
