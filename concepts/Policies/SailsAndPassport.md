@@ -11,7 +11,7 @@ In most cases, Passport is overkill for Sails apps, since it is straightforward 
 Passport is, however, quite useful if you plan on integrating with many different social login providers (~4 or more).  For example:
 
 + [Sails 101: Sails with Passport.js](https://github.com/sails101/using-passport)
-+ [Tutorial on how to implement passport.js with sails.js](http://iliketomatoes.com/implement-passport-js-authentication-with-sails-js-0-10-2/).
++ [Another tutorial on how to implement Passport.js with Sails](http://iliketomatoes.com/implement-passport-js-authentication-with-sails-js-0-10-2/).
 + [Waterlock](http://waterlock.ninja/): A user authentication/json web token (JWT) management tool, built for Sails.  Supports Twitter, Facebook, and Google Auth.
 
 
