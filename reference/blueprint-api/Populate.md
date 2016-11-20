@@ -28,10 +28,7 @@ Populate the `cashier` who conducted purchase #47:
 ##### Expected response
 
 ```json
-{
-  "amount": 99.99,
-  "id": 47,
-  "cashier": {
+[{
     "name": "Dolly",
     "id": 7,
     "createdAt": "2012-05-14T01:21:05.000Z",
@@ -39,7 +36,7 @@ Populate the `cashier` who conducted purchase #47:
   },
   "createdAt": "2013-10-14T01:22:00.000Z",
   "updatedAt": "2013-10-15T01:20:54.000Z"
-}
+}]
 ```
 
 **Using [jQuery](http://jquery.com/):**
