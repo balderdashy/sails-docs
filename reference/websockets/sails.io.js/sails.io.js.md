@@ -91,7 +91,7 @@ When you load it on the page in a `<script>` tag, the `sails.io.js` library wait
 Normally, the socket client always connects to the server where the script is being served.  The example above will cause the eager (auto-connecting) socket to attempt a (cross-domain) socket connection to the Sails server running at `https://myapp.com` instead.
 
 > **Note:** 
-> If you are using the default Grunt asset pipeline (i.e. which automatically injects script tags), it is a good idea to exclude `sails.io.js` from your `pipeline.js` file, and instead explicitly add a `<script>` tag for it.  This ensures that your configuration will be applied _before_ the "eager" auto-connecting socket begins connecting-- since it means the inline `<script>` tag you are using for programmatic configuration (e.g. which sets `io.sais.url = 'https://myapp.com';`) is executed _immediately after_ the socket client.
+> If you are using the default Grunt asset pipeline (i.e. which automatically injects script tags), it is a good idea to exclude `sails.io.js` from your `pipeline.js` file, and instead explicitly add a `<script>` tag for it.  This ensures that your configuration will be applied _before_ the "eager" auto-connecting socket begins connecting-- since it means the inline `<script>` tag you are using for programmatic configuration (e.g. which sets `io.sails.url = 'https://myapp.com';`) is executed _immediately after_ the socket client.
 
 
 
