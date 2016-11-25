@@ -24,7 +24,7 @@ Pet.query(query: {'SELECT pet.name FROM pet WHERE pet.name = ?', values: [ "dog"
 ### Prepared Statement Example for PostgreSQL adapter
 
 ```js
-Pet.query(query: {'SELECT pet.name FROM pet WHERE pet.name = $1', values: [ "dog" ]} ,function(err, results) {
+Pet.query(text: {'SELECT pet.name FROM pet WHERE pet.name = $1', values: [ "dog" ]} ,function(err, results) {
   if (err) return res.serverError(err);
   return res.json(results.rows);
 });
