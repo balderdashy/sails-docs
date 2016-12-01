@@ -74,10 +74,6 @@ uploadAvatar: function (req, res) {
  */
 avatar: function (req, res){
 
-  req.validate({
-    id: 'string'
-  });
-
   User.findOne(req.param('id')).exec(function (err, user){
     if (err) return res.negotiate(err);
     if (!user) return res.notFound();
@@ -90,7 +86,7 @@ avatar: function (req, res){
 
     var SkipperDisk = require('skipper-disk');
     var fileAdapter = SkipperDisk(/* optional opts */);
-    
+
     // set the filename to the same file as the user uploaded
     res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
