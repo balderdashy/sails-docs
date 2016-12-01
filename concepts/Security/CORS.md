@@ -60,7 +60,7 @@ To enable or override global CORS configuration for a particular route, provide 
 
 ### Notes
 
-> + CORS support is only relevant for HTTP requests.  Requests made via sockets are not subject to cross-origin restrictions.  To ensure that your app is secure via sockets, you can define an `authorization` function in [`config/sockets.js`](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html).
+> + CORS support is only relevant for HTTP requests.  Requests made via sockets are not subject to cross-origin restrictions.  To ensure that your app is secure via sockets, configure the [`onlyAllowOrigins`](http://sailsjs.org/documentation/reference/configuration/sails-config-sockets) setting in [`config/sockets.js`](http://sailsjs.org/documentation/anatomy/myApp/config/sockets.js.html).
 > + CORS is not supported in Internet Explorer 7.  Fortunately, it is supported in IE8 and up, as well as in all other modern browsers.
 > + Read [more about CORS from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 > + Read the [CORS spec](https://www.w3.org/TR/cors/)
