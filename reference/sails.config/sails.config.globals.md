@@ -19,7 +19,7 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 
 ### Using Lodash (`_`) and async without globals
 
-If you have to disable globals, but would still like to use Lodash and/or async, you're in luck.  With Node.js and NPM, importing modules is very straightforward.
+If you have to disable globals, but would still like to use Lodash and/or async, you're in luck.  With Node.js and NPM, importing packages is very straightforward.
 
 To use your own version of Lodash or async without relying on globals, first modify the relevant settings in `config/globals.js`:
 
