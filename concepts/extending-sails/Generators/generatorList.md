@@ -24,6 +24,7 @@
 
 There are over 100 community-supported generators [available on NPM](https://www.npmjs.com/search?q=sails+generate):
 
++ [sails-inverse-model](https://github.com/juliandavidmr/sails-inverse-model)
 + [sails-generate-new-gulp](https://github.com/Karnith/sails-generate-new-gulp)
 + [sails-generate-archive](https://github.com/jaumard/sails-generate-archive)
 + [sails-generate-scaffold](https://github.com/irlnathan/sails-generate-scaffold)
