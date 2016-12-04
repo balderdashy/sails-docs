@@ -118,7 +118,7 @@ BlogPost.stream()
 
 
 
-### With `.populate()`
+##### With `.populate()`
 
 A snippet of a command-line script that searches for creepy comments from someone named "Bailey Bitterbumps" and reports them to the authorities:
 
@@ -184,8 +184,7 @@ Comment.stream({
 
 
 
-
-### Batch-at-a-time
+##### Batch-at-a-time
 
 If we ran the code in the previous example, we'd be sending one email per creepy comment... which could be a lot!  Not only would this be slow, it could mean sending _thousands_ of individual API requests to our [transactional email provider](https://documentation.mailgun.com/faqs.html#why-not-just-use-sendmail-postfix-courier-imap), quickly overwhelming our API rate limit.
 
