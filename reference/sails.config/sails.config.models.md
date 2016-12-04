@@ -2,10 +2,6 @@
 
 Your default project-wide **model settings**. Can also be overridden on a per-model basis by providing a top-level property with the same name in that model definition.  For more details, see the conceptual docs on [Model Settings](http://sailsjs.org/documentation/concepts/ORM/model-settings.html).  These options are conventionally specified in the [config/models.js](http://sailsjs.org/documentation/anatomy/myApp/config/models.js.html) configuration file.
 
-```js
-sails.config.models;
-```
-
 ### Properties
 
 
