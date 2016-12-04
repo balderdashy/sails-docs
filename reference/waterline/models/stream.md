@@ -4,6 +4,8 @@ Stream records from your database one at a time or in batches, without first hav
 
 > This approach is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, if you try to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors:  Preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 
+The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
+
 ```javascript
 Something.stream(criteria)
 .eachRecord(function(record, next) { ... })
@@ -15,10 +17,6 @@ Something.stream(criteria)
 _Or:_
 
 + `.eachBatch(function(batch, next) { ... })`
-
-
-
-The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
 
 ### Usage
 
