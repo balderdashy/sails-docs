@@ -1,6 +1,6 @@
 # .stream()
 
-Stream back records (or batches of records) from your database as they are retrieved, without first having to buffer all of the results to memory.
+Stream records from your database one at a time or in batches, without first having to buffer the entire result set in memory.
 
 ```javascript
 Something.stream(criteria)
@@ -141,11 +141,6 @@ Comment.stream({
 .populate('fromBlogPost')
 .eachRecord(function (comment, next){
 
-  if (!comment.fromBlogPost) {
-    sails.log.warn('Skipping corrupted/orphaned comment (`'+comment.id+'`).\nHas someone been messing with the database?');
-    return next();
-  }
-
   var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/beanie weenies/) && comment.attachedFiles.length > 1;
   if (!isCreepyEnoughToWorryAbout) {
     return next();
@@ -153,9 +148,8 @@ Comment.stream({
 
   Mailgun.sendPlaintextEmail({
     toEmail: 'authorities@cannedmeat.gov',
-    message:
-      'Yeah, there\'s a creepy thing going on at:\n'+
-      'https://blog.example.com/' + comment.fromBlogPost.slug + '/comments/' + comment.slug + '.',
+    message: 'Yeah, there\'s a creepy thing going on at:\n'+
+              'https://blog.example.com/' + comment.fromBlogPost.slug + '/comments/' + comment.slug + '.',
     apiKey: sails.config.custom.mailgunApiKey,
     domain: sails.config.custom.mailgunDomain
   }).exec(function (err) {
@@ -170,7 +164,7 @@ Comment.stream({
 })
 .exec(function (err) {
   if (err) {
-    sails.log.error(new Error('An unexpected error occurred when reporting a creepy comment: '+ err.stack));
+    sails.log.error('An unexpected error occurred when reporting a creepy comment: '+ err.stack);
     return process.exit(1);
   }
 
@@ -217,10 +211,6 @@ Comment.stream({
   _.remove(someCreepyComments, function (comment){
     var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/beanie weenies/) && comment.attachedFiles.length > 1;
     if (!isCreepyEnoughToWorryAbout) { return true; }//<< not creepy enough, remove it.
-    else if (!comment.fromBlogPost) {
-      sails.log.warn('Skipping corrupted/orphaned comment (`'+comment.id+'`).\nHas someone been messing with the database?');
-      return true;//<< looks corrupted, remove it.
-    }
     else { return false; }//<< this is creepy enough, keep it.
   });
   
@@ -259,7 +249,7 @@ Comment.stream({
 })//~∞%°
 .exec(function (err) {
   if (err) {
-    sails.log.error(new Error('An unexpected error occurred when reporting a batch of creepy comments: '+ err.stack));
+    sails.log.error('An unexpected error occurred when reporting a batch of creepy comments: '+ err.stack);
     return process.exit(1);
   }
 
@@ -273,11 +263,11 @@ Comment.stream({
 
 ### Notes
 > This method is useful for working with data from very large result sets; the kinds of result sets that might overflow your server's available memory if held in memory all at the same time.  You can use it to do the kinds of things you might be familiar with from Mongo cursors, or from `async.eachSeries()`.  For example: preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
+> + Prior to Sails v1.0/Waterline 0.13, this method had a lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters or any particular flavor of Node streams.  But with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" from `eachRecord()`/`eachBatch()`, if you need that.
+> + You can read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, motivations, background information, and implementation details.
 > + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
 > + Just like async.eachSeries(), this method bails and calls the `.exec()` callback with an error _immediately_ after the first time it  receives an error from an iteratee.
-> + Internally, Waterline grabs pages of 30 records at a time (whether or not you're using `eachBatch` or `eachRecord`).
-> + Prior to Sails v1.0/Waterline 0.13, this method had a much lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters or any particular flavor of Node streams.  (But with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" from `eachRecord()`/`eachBatch()`, if you need that.)
-> + You can read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, motivations, background information, and implementation details.
+> + Internally, regardless whether you're using `.eachBatch()` or `.eachRecord()`, Waterline grabs pages of 30 records at a time.
 
 <docmeta name="displayName" value=".stream()">
 <docmeta name="pageType" value="method">
