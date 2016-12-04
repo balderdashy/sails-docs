@@ -27,10 +27,12 @@ _Or:_
 
 ##### Iteratee ("each record" or "each batch")
 
-_Use one of the following iteratees:_
+_Use one of the following:_
 
 + `.eachRecord(function(record, next) { ... })`
 + `.eachBatch(function(batch, next) { ... })`
+
+<br/>
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
@@ -40,7 +42,7 @@ _Use one of the following iteratees:_
 
 ##### Callback
 
-After iterating over all records/batches that match the criteria...
+After iterating over all matching records/batches...
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
