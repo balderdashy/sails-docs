@@ -2,10 +2,6 @@
 
 Stream records from your database one at a time or in batches, without first having to buffer the entire result set in memory.
 
-> This approach is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, if you try to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors:  Preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
-
-The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
-
 ```javascript
 Something.stream(criteria)
 .eachRecord(function(record, next) { ... })
@@ -18,6 +14,7 @@ _Or:_
 
 + `.eachBatch(function(batch, next) { ... })`
 
+
 ### Usage
 
 |   |     Argument        | Type              | Details                            |
@@ -25,7 +22,7 @@ _Or:_
 | 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
 
-##### Iteratee ("each record" or "each batch")
+##### Iteratee
 
 _Use one of the following:_
 
@@ -47,6 +44,14 @@ After iterating over all matching records/batches...
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 | err                 | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+
+
+
+### When should I use this?
+
+The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
+
+This is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, they would if you tried to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors:  Preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 
 
 ### Examples
