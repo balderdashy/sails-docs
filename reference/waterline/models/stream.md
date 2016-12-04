@@ -2,11 +2,11 @@
 
 Stream records from your database one at a time or in batches, without first having to buffer the entire result set in memory.
 
+> This approach is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, if you try to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors:  Preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
+
 ```javascript
 Something.stream(criteria)
-.eachRecord(function (record, next) {
-  return next();
-})
+.eachRecord(function(record, next) { ... })
 .exec(function (err) {
 
 });
@@ -14,17 +14,11 @@ Something.stream(criteria)
 
 _Or:_
 
-```javascript
-Something.stream(criteria)
-.eachBatch(function (upToThirtyRecords, next) {
-  return next();
-})
-.exec(function (err) {
++ `.eachBatch(function(batch, next) { ... })`
 
-});
-```
 
-> `.stream()` is exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.
+
+The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
 
 ### Usage
 
@@ -35,9 +29,14 @@ Something.stream(criteria)
 
 ##### Iteratee ("each record" or "each batch")
 
+_Use one of the following iteratees:_
+
++ `.eachRecord(function(record, next) { ... })`
++ `.eachBatch(function(batch, next) { ... })`
+
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | record _or_ batch   | ((dictionary)) _or_ ((array))      | The current record, or the current batch of records.
+| 1 | record _or_ batch   | ((dictionary)) _or_ ((array))      | The current record, or the current batch of records.  _A batch will always contain at least one (and no more than thirty) records._
 | 2 | next                | ((function))        | A callback function that the iteratee should invoke when it is finished processing the current record or batch.  Like any Node callback, if your code in the iteratee calls `next()` with a truthy first argument (conventionally an Error instance), then Waterline understands that to mean an error occurred, and that it should stop processing records/batches.  Otherwise, it is assumed that everything went according to plan.
 
 
@@ -266,7 +265,6 @@ Comment.stream({
 
 
 ### Notes
-> This method is useful for working with data from very large result sets; the kinds of result sets that might overflow your server's available memory if held in memory all at the same time.  You can use it to do the kinds of things you might be familiar with from Mongo cursors, or from `async.eachSeries()`.  For example: preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 > + Prior to Sails v1.0/Waterline 0.13, this method had a lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters or any particular flavor of Node streams.  But with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" from `eachRecord()`/`eachBatch()`, if you need that.
 > + You can read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, motivations, background information, and implementation details.
 > + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
