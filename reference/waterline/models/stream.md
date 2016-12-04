@@ -56,13 +56,16 @@ There are 4 examples below.
 
 ##### Basic usage
 
-To iterate, one at a time, over users named Finn in the database:
+An action that iterates over users named Finn in the database, one at a time:
+
 ```javascript
 User.stream({name:'Finn'}).eachRecord(function (user, next){
 
   if (Math.random() > 0.5) {
     return next(new Error('Oops!  This is a simulated error.'));
   }
+  
+  sails.log('Found a user (`'+user.id+'`) named Finn.');
 
   return next();
   
