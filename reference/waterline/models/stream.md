@@ -270,11 +270,12 @@ Comment.stream({
 
 
 ### Notes
-> + Prior to Sails v1.0/Waterline 0.13, this method had a lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters or any particular flavor of Node streams.  But with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" from `eachRecord()`/`eachBatch()`, if you need that.
-> + You can read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, motivations, background information, and implementation details.
-> + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
-> + Just like async.eachSeries(), this method bails and calls the `.exec()` callback with an error _immediately_ after the first time it  receives an error from an iteratee.
 > + Internally, regardless whether you're using `.eachBatch()` or `.eachRecord()`, Waterline grabs pages of 30 records at a time.
+> + Just like async.eachSeries(), this method bails and calls its .exec() callback with an error _immediately_ upon receiving the first error from any iteratee.
+> + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
+> + Prior to Sails v1.0 / Waterline 0.13, this method had a lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters, or any particular flavor of Node streams.  (Need to get it working the old way?  Don't worry, with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" using the new interface.)
+> + Read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, background information, and implementation details.
+
 
 <docmeta name="displayName" value=".stream()">
 <docmeta name="pageType" value="method">
