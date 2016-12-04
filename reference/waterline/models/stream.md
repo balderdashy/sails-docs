@@ -43,7 +43,7 @@ Something.stream(criteria)
 
 ##### Callback
 
-After iterating over all records that match the criteria...
+After iterating over all records/batches that match the criteria...
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
