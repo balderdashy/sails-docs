@@ -10,9 +10,9 @@ Something.find(criteria).exec(function (err, records) {
 
 ### Usage
 
-|   |     Argument        | Type                                         | Details                            |
-|---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) to use for matching records in the database.
+|   |     Argument        | Type              | Details                            |
+|---|:--------------------|-------------------|:-----------------------------------|
+| 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
 ##### Callback
 
