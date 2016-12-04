@@ -33,14 +33,32 @@ Something.stream(criteria)
 |---|:--------------------|-------------------|:-----------------------------------|
 | 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
+
+##### "Each record" (iteratee)
+
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 | record              | ((dictionary))      | The current record.
+
+_Or:_
+
+##### "Each batch" (alternative iteratee)
+
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 | batch               | ((array))           | The current batch of records.
+
+
 ##### Callback
+
+After iterating over all records that match the criteria...
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 | err                 | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 
 
-## Examples
+### Examples
 
 There are 4 examples below.
 
