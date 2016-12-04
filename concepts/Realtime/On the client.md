@@ -9,8 +9,8 @@ The sails.io.js library is automatically added to the default [layout template](
 Include the `sails.io.js` library, and make a request to the `/hello` route of a Sails app using the automatically-connected socket:
 
 ```html
-<script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
-<script type"text/javascript">
+<script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">
 io.socket.get('/hello', function responseFromServer (body, response) {
   console.log("The server responded with status " + response.statusCode + " and said: ", body);
 });
@@ -19,8 +19,8 @@ io.socket.get('/hello', function responseFromServer (body, response) {
 
 Now consider this more advanced (and much rarer) use case: Let's disable the eager (auto-connecting) socket, and instead create a new client socket manually.  When it successfully connects to the server, we'll make it log a message:
 ```html
-<script type"text/javascript" src="/js/dependencies/sails.io.js" autoConnect="false"></script>
-<script type"text/javascript">
+<script type="text/javascript" src="/js/dependencies/sails.io.js" autoConnect="false"></script>
+<script type="text/javascript">
 var mySocket = io.sails.connect();
 mySocket.on('connect', function onConnect () {
   console.log("Socket connected!");

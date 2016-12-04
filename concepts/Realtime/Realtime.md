@@ -46,8 +46,8 @@ Here's the client-side code to connect a socket to the Sails/Node.js server and 
 
 ```html
 <!-- Simply include the sails.io.js script, and a client socket will be created and auto-connected for you -->
-<script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
-<script type"text/javascript">
+<script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">
 
 // The auto-connecting socket is exposed as `io.socket`.
 
@@ -82,19 +82,19 @@ To respond to requests to `GET /say/hello`, we use an action.  In our action, we
 module.exports = {
 
   hello: function(req, res) {
-  
+
     // Make sure this is a socket request (not traditional HTTP)
     if (!req.isSocket) {
       return res.badRequest();
     }
-    
+
     // Have the socket which made the request join the "funSockets" room.
     sails.sockets.join(req, 'funSockets');
-    
+
     // Broadcast a notification to all the sockets who have joined
     // the "funSockets" room, excluding our newly added socket:
     sails.sockets.broadcast('funSockets', 'hello', { howdy: 'hi there!'}, req);
-    
+
     // ^^^
     // At this point, we've blasted out a socket message to all sockets who have
     // joined the "funSockets" room.  But that doesn't necessarily mean they
@@ -108,18 +108,18 @@ module.exports = {
     //   // => 'hi there!'
     // }
     // ```
-    
+
     // Now that we've broadcasted our socket message, we still have to continue on
     // with any other logic we need to take care of in our action, and then send a
     // response.  In this case, we're just about wrapped up, so we'll continue on
-    
+
     // Respond to the request with a 200 OK.
     // The data returned here is what we received back on the client as `data` in:
     // `io.socket.get('/say/hello', function gotResponse(data, jwRes) { /* ... */ });`
     return res.json({
       anyData: 'we want to send back'
     });
-    
+
   }
 }
 ```
