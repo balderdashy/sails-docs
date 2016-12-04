@@ -10,10 +10,6 @@ Something.stream(criteria)
 });
 ```
 
-_Or:_
-
-+ `.eachBatch(function(batch, next) { ... })`
-
 
 ### Usage
 
