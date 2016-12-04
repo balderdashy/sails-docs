@@ -2,8 +2,6 @@
 
 Stream back records (or batches of records) from your database as they are retrieved, without first having to buffer all of the results to memory.
 
-> `.stream()` is exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.
-
 ```javascript
 Something.stream(criteria)
 .eachRecord(function (record, next) {
@@ -26,6 +24,7 @@ Something.stream(criteria)
 });
 ```
 
+> `.stream()` is exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `eachBatch()` to provide an iteratee function which receives one record or batch at a time.
 
 ### Usage
 
@@ -34,19 +33,11 @@ Something.stream(criteria)
 | 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
 
-##### "Each record" (iteratee)
+##### Iteratee ("each record" or "each batch")
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | record              | ((dictionary))      | The current record.
-
-_Or:_
-
-##### "Each batch" (alternative iteratee)
-
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | batch               | ((array))           | The current batch of records.
+| 1 | record _or_ batch   | ((dictionary)) _or_ ((array))      | The current record, or the current batch of records.
 
 
 ##### Callback
