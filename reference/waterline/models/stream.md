@@ -38,6 +38,7 @@ Something.stream(criteria)
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 | record _or_ batch   | ((dictionary)) _or_ ((array))      | The current record, or the current batch of records.
+| 2 | next                | ((function))        | A callback function that the iteratee should invoke when it is finished processing the current record or batch.  Like any Node callback, if your code in the iteratee calls `next()` with a truthy first argument (conventionally an Error instance), then Waterline understands that to mean an error occurred, and that it should stop processing records/batches.  Otherwise, it is assumed that everything went according to plan.
 
 
 ##### Callback
