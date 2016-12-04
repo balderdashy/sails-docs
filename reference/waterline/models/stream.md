@@ -178,10 +178,9 @@ Comment.stream({
 
 ### Batch-at-a-time
 
-In the previous example, we'd be sending one email PER RECORD!  Not only is this slow, it sends tons of API requests to our transactional email provider.  Plus, it probably didn't need to send separate emails for each creepy comment (we could have ended up sending a thousand different emails!)
+If we ran the code in the previous example, we'd be sending one email per creepy comment... which could be a lot!  Not only would this be slow, it could mean sending _thousands_ of individual API requests to our [transactional email provider](https://documentation.mailgun.com/faqs.html#why-not-just-use-sendmail-postfix-courier-imap), quickly overwhelming our API rate limit.
 
-
-So instead, let's try again, but this time do it one batch at a time:
+Fortunately, there are a few easy changes we can make to our script to solve this.  Let's try again; but this go-round, instead of processing individual records one at a time, we'll receive and process them as batches:
 
 ```js
 // e.g. in a cmdline script, batch at a time
