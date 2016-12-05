@@ -11,6 +11,8 @@ return res.jsonp(data);
 
 ### Example
 
+In an action:
+
 ```js
 return res.jsonp([
   {
@@ -24,7 +26,7 @@ return res.jsonp([
 ```
 
 
-Given `?callback=gotStuff`, the example above would send a response body like:
+Given `?callback=gotStuff`, the code above would send back a response body like:
 
 ```
 gotStuff([{name: 'Thelma', id: 1}, {name: 'Louise', id: 2}])
