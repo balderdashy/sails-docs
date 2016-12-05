@@ -49,6 +49,8 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 
 * Removed deprecated `backwardsCompatibilityFor0.9SocketClients` setting.
 * Removed deprecated `.subscribers()` method.
+* Removed deprecated "firehose" functionality.
+* Removed support for 0.9.x socket client API.
 * The following resourceful pubsub methods have been removed:
   * `.publishAdd()`
   * `.publishCreate()`
@@ -62,10 +64,20 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 
 ## Blueprints
 
-## `dontFlattenConfig`
 
 ## Express 4
-
-## `req.validate()`
+ ### Middleware changes
 
 ## Policies
+
+## Miscellaneous deprecated features removed in 1.0
+
+* `req.validate()`
+* `sails.config.dontFlattenConfig`
+* `sails.getBaseUrl`
+* `req.params.all()`
+
+## Globals
+
+## Responses
+ * `.jsonx()` is deprecated -- if you haven't customized a response, just delete it.  Otherwise, replace `res.jsonx()` with `res.json()`.
