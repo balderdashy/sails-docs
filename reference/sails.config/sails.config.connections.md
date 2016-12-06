@@ -21,7 +21,7 @@ For example, imagine you edited the default datastore configuration in `config/d
 default: {
   adapter: require('sails-postgresql'),
   host: 'localhost',
-  database 'foo'
+  database: 'foo'
 }
 ```
 
