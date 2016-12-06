@@ -15,7 +15,7 @@ in the way you might be used to from Express or Connect.
 
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
-| `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details. 
+| `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
 | `key`        | ((string))       | `sails.sid`      | Session key is set as `sails.sid` by default. This is the name of the key which is added to the cookie of visitors to your site when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used (like crossing streams)
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 | `cookie` | ((dictionary)) | `{ path: '/', httpOnly: true, secure: false, maxAge: null }` | Options for the session cookie.  See the [express-session docs](https://github.com/expressjs/session#cookie) for more info.
@@ -58,10 +58,12 @@ prefix: 'sess:'
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.
-| `port`         | ((number)) |`6379`   | Port of your redis instance.
-| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.
-| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer between 0 and 1,000,000.  _(On most Redis setups, this will be a number between 0 and 15.)_
+| `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion.
+| `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.  If a `url` setting is configured, this setting will be ignored.
+| `port`         | ((number)) |`6379`   | Port of your redis instance.  If a `url` setting is configured, this setting will be ignored.
+| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.  If a `url` setting is configured that includes a password, this setting will override the password in `url`.
+| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer.  _(On typical Redis setups, this will be a number between 0 and 15.)_  If a `url` setting is configured that includes a db, this setting will override the db in `url`.
+| `client`       | ((ref))  | `undefined` | An already-connected Redis client to use.  If provided, any `url`, `host` and `port` settings will be ignored.  This setting is useful if you have a Redis Sentinel setup and need to connect using a module like <a href="https://www.npmjs.com/package/ioredis" target="_blank">`ioredis`</a>
 
 
 
