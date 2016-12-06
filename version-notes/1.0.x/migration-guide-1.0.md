@@ -1,5 +1,23 @@
 # Migration guide:
 
+To get started upgrading your existing Sails app to version 1.0, follow the checklist below, which covers the changes most likely to affect the majority of apps.  If your app still has errors or warnings on startup after following the checklist, come back to this document and follow the applicable guides to upgrading various app components.
+
+## tl;dr checklist -- things you simply _must_ do when upgrading to version 1.0
+
+* Install the `sails-hook-orm` module into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
+* Install the `sails-hook-sockets` module into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
+* Install the `sails-hook-grunt` module into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
+* If your app doesn't have `sails.config.globals` set to `false`, update your `config/globals.js` file so that `models` and `sails` have boolean values (`true` or `false`), and `async` and `lodash` either have `require('async')` and `require('lodash')` respectively, or else `false`.  You may need to `npm install --save lodash` and `npm install --save async` as well.
+* If your app uses CoffeeScript or TypeScript see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
+* If your app uses a view engine other than EJS, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
+
+## Breaking changes to lesser-used functionality
+
+* `sails.getBaseUrl`, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
+* `req.params.all()`, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
+* `req.validate()` has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2-aka-machine-actions) instead.
+
+
 ## Security
 
 New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files, but apps migrating from earlier versions don&rsquo;t can keep their existing files as long as they perform the following upgrades:
@@ -72,9 +90,6 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 
 ## Miscellaneous deprecated features removed in 1.0
 
-* `req.validate()`
-* `sails.config.dontFlattenConfig`
-* `sails.getBaseUrl`
 * `req.params.all()`
 
 ## Globals
