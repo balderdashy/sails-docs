@@ -16,7 +16,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * `sails.getBaseUrl`, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
 * `req.params.all()`, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
 * `req.validate()` has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2-aka-machine-actions) instead.
-
+* The default `res.created()` response has been removed.  If you&rsquo;re calling `res.created()` directly in your app, and you don't have an `api/responses/created.js` file, you&rsquo;ll need to create one.  On a related note, the [Blueprint create action](http://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
 
 ## Security
 
