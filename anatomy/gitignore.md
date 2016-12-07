@@ -1,7 +1,5 @@
 # .gitignore
 
-### Purpose
-
 This file is only relevant if you are using git.
 
 It informs `git` of any files that you don't want `pushed` to the remote server.

@@ -1,6 +1,5 @@
 # tasks/config/less.js
 
-### Purpose
 
 This file configures a Grunt task called "less".
 

@@ -1,7 +1,5 @@
 # tasks/config/cssmin.js
 
-### Purpose
-
 This file configures a Grunt task called "cssmin".
 
 Minify the intermediate, concatenated CSS stylesheet which was prepared by the `concat` task at `.tmp/public/concat/production.css`.  Together with the `concat` task, this is the final step that minifies

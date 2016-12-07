@@ -8,21 +8,3 @@ One of the best parts about Sails is it uses [Waterline](https://github.com/bald
 
 
 <docmeta name="displayName" value="User.js">
-
-```
-/**
-* User.js
-*
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/documentation/concepts/ORM/Models.html
-*/
-
-module.exports = {
-
-  attributes: {
-
-  }
-};
-
-
-```

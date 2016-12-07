@@ -1,6 +1,5 @@
 # tasks/config/jst.js
 
-### Purpose
 
 This file configures a Grunt task called "jst".
 

@@ -1,6 +1,5 @@
 # Gruntfile.js
 
-### Purpose
 
 Sails uses [Grunt](http://gruntjs.com) for asset management. This file contains the entry point for the default asset pipeline in Sails; that is, the code that does stuff like compiling LESS stylesheets, minifying scripts for production, and precompiling and injecting client-side templates.
 

@@ -1,24 +1,6 @@
 # config/models.js
 
+Unless you override them, the properties contained in this file will be included in each of your models.
 
 <docmeta name="displayName" value="models.js">
 
-```
-/**
- * Default model configuration
- * (sails.config.models)
- *
- * Unless you override them, the following properties will be included
- * in each of your models.
- */
-
-module.exports.models = {
-
-  // Your app's default connection.
-  // i.e. the name of one of your app's connections (see `config/connections.js`)
-  //
-  // (defaults to localDiskDb)
-  connection: 'localDiskDb'
-};
-
-```

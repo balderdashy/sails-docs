@@ -1,7 +1,5 @@
 # tasks/config/copy.js
 
-### Purpose
-
 This file configures a Grunt task called "copy".
 
 Copy files and/or folders from your `assets/` directory into the web root (`.tmp/public`) so they can be served via HTTP, and also for further pre-processing by other Grunt tasks.

@@ -1,7 +1,5 @@
 # app.js
 
-### Purpose
-
 This file is the conventional entry point for a _production_ Sails/Node.js app.
 
 When developing on your local computer, and you run `sails lift`, the code in `app.js` is not executed.  Instead, this file exists to provide an easy, out-of-the-box way to run your app _without_ typing `sails lift`.  This is most likely how you'll start your app in production (i.e. `node app`, or `npm start`).

@@ -1,7 +1,5 @@
 # tasks/config/sails-linker.js
 
-### Purpose
-
 This file configures a Grunt task called "sails-linker".
 
 Automatically inject `<script>` tags and `<link>` tags into the specified

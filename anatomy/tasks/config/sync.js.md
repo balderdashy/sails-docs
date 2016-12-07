@@ -1,6 +1,5 @@
 # tasks/config/sync.js
 
-### Purpose
 
 This file configures a Grunt task called "sync".
 

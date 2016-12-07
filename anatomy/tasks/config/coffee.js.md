@@ -1,7 +1,5 @@
 # tasks/config/coffee.js
 
-### Purpose
-
 This file configures a Grunt task called "coffee".
 
 By default, this compiles CoffeeScript files located in [`assets/js/`](http://sailsjs.com/anatomy/assets/js/) into JavaScript, then generates new `.js` files in `.tmp/public/js/`.

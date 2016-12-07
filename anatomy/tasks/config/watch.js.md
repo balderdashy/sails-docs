@@ -1,7 +1,5 @@
 # tasks/config/watch.js
 
-### Purpose
-
 This file configures a Grunt task called "watch".
 
 It runs predefined tasks whenever watched file patterns are added, changed or deleted.

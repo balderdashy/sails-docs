@@ -7,18 +7,3 @@ This is where you will put "controller actions" that send data to your clients a
 
 
 <docmeta name="displayName" value="UserController.js">
-
-```
-/**
- * UserController
- *
- * @description :: Server-side logic for managing users
- * @help        :: See http://sailsjs.org/documentation/concepts/Controllers
- */
-
-module.exports = {
-
-};
-
-
-```

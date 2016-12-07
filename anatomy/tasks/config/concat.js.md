@@ -1,7 +1,5 @@
 # tasks/config/concat.js
 
-### Purpose
-
 This file configures a Grunt task called "concat".
 
 Concatenates the contents of multiple JavaScript and/or CSS files into two new files, each located at `concat/production.js` and `concat/production.css` respectively in `.tmp/public/concat`.

@@ -1,14 +1,5 @@
 # config/locales/fr.json
-### Purpose
-This tells French browsers sexy things in JSON.
 
-
+This file is where French locale settings are stored.
 
 <docmeta name="displayName" value="fr.json">
-
-```
-{
-  "Welcome": "Bienvenue"
-}
-
-```
