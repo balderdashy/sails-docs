@@ -4,7 +4,7 @@
 This is a generic README that you can edit to describe your app.
 
 
-<docmeta name="displayName" value="README">
+<docmeta name="displayName" value="README.md">
 
 ```
 # myApp
