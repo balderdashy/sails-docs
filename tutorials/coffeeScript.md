@@ -4,7 +4,7 @@ Sails supports using CoffeeScript to write your custom app code (like [actions](
 
 1. Run `npm install coffee-script` in your app folder.
 2. Add the following line at the top of your app's `app.js` file:
-```
+```javascript
 require('coffee-script/register');
 ```
 3. Start your app with `node app.js` instead of `sails lift`.
