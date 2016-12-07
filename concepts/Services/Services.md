@@ -4,6 +4,12 @@
 
 Another benefit of using services in Sails is that they are *globalized*--you don't have to use `require()` to access them (although you can if you prefer.  And you can disable the automatic exposure of global variables in your app's configuration.)   By default, you can access a service and call its helpers (e.g. `EmailService.sendHtmlEmail()` or `EmailService.sendPasswordRecoveryEmail()`) from anywhere: within controller actions, from inside other services, in custom model methods, or even from command-line scripts.
 
+Hypothetically, one could create a service for:
+
+- Sending an email
+- Blasting tweets to celebrities
+- Retrieving data from a third party API
+
 
 ### Building a service
 
