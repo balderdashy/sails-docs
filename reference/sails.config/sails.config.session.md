@@ -1,13 +1,9 @@
 # sails.config.session
 
-Configuration for Sails built-in session store.
+Configuration for Sails's built-in session support.
 
-Sails session integration leans heavily on the great work already done by Express and Connect, but also adds
-a bit of its own special sauce to unify Socket.io with the Connect session store. It uses Connect&rsquo;s
-cookie parser to normalize configuration differences between Express and Socket.io and hooks into Sails&rsquo;
-request interpreter to allow Sails to automatically access and auto-save changes your code makes to `req.session`
-when handling a virtual request from Socket.io. That means that you can just write code that uses `req.session`
-in the way you might be used to from Express or Connect.
+Sails's default session integration leans heavily on the great work already done by Express and Connect, but also adds
+a bit of its own special sauce by hooking into the request interpreter.  This allows Sails to access and auto-save any changes your code makes to `req.session` when handling a virtual request from Socket.io.  Most importantly, it means you can just write code that uses `req.session` in the way you might be used to from Express or Connect; whether your controller actions are designed to handle HTTP requests, WebSocket messages, or both.
 
 
 
@@ -25,7 +21,7 @@ in the way you might be used to from Express or Connect.
 
 ### Production config
 
-In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Connect session adapter you are using.
+In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Express/Connect session adapter you are using.
 
 
 ##### Configuring Redis as your session store
