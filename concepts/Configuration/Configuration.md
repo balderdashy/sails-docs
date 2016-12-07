@@ -32,14 +32,14 @@ For an exhaustive reference of individual configuration options, and the file th
 Settings specified in the standard configuration files will generally be available in all environments (i.e. development, production, test, etc.).  If you'd like to have some settings take effect only in certain environments, you can use the special environment-specific files and folders:
 
 * Any files saved under the `/config/env/<environment-name>` folder will be loaded *only* when Sails is lifted in the `<environment-name>` environment.  For example, files saved under `config/env/production` will only be loaded when Sails is lifted in production mode.
-* Any files saved as `config/env/<environment-name>.js` will be loaded *only* when Sails is lifted in the `<environment-name>` environment, and will be merged on top of any settings loaded from the environment-specific subfolder.  For example, settings in `config/env/production.js` will take precedence over those in the files in the  `config/env/production` folder.  
+* Any files saved as `config/env/<environment-name>.js` will be loaded *only* when Sails is lifted in the `<environment-name>` environment, and will be merged on top of any settings loaded from the environment-specific subfolder.  For example, settings in `config/env/production.js` will take precedence over those in the files in the  `config/env/production` folder.
 
 By default, your app runs in the "development" environment.  The recommended approach for changing your app's environment is by using the `NODE_ENV` environment variable:
 ```
 NODE_ENV=production node app.js
 ```
 
-> The `production` environment is special-- depending on your configuration, it enables compression, caching, minification, etc. 
+> The `production` environment is special-- depending on your configuration, it enables compression, caching, minification, etc.
 >
 > Also note that if you are using `config/local.js`, the configuration exported in that file takes precedence over environment-specific configuration files.
 
@@ -66,17 +66,19 @@ if (sails.config.environment === 'production' && !sails.config.csrf) {
 
 ### Setting `sails.config` values directly using environment variables
 
-In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  For example, you could do the following to set the [CORS origin](http://sailsjs.org/documentation/concepts/security/cors) (`sails.config.cors.origin`) to "http://somedomain.com" on the command line:
+In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  Any environment variable formatted this way will be parsed as JSON (if possible). For example, you could do the following to set the [allowed CORS origins](http://sailsjs.org/documentation/concepts/security/cors) (`sails.config.security.cors.allowOrigins`) to `["http://somedomain.com","https://anotherdomain.com:1337"]` on the command line:
 
 ```javascript
-sails_cors__origin="http://somedomain.com" sails lift
+sails_security__cors__allowOrigins='["http://somedomain.com","https://anotherdomain.com:1337"]' sails console sails lift
 ```
+
+> Note the use of double-quotes to indicate strings, and the single quotes surrounding the whole value so that it is passed correctly to Sails.
 
 This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 
 
 > There are a couple of special exceptions to the rule: `NODE_ENV` and `PORT`.
-> + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment). 
+> + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
 > + Similarly, `PORT` is just another way to set [`sails.config.port`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigport).  This is strictly for convenience and backwards compatibility.
 >
 > Here's a relatively common example where you might use both of these environment variables at the same time:

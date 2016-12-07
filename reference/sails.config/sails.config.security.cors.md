@@ -1,6 +1,6 @@
 # sails.config.security.cors
 
-Configuration for Sails' [built-in support for Cross-Origin Resource Sharing](http://sailsjs.org/documentation/concepts/CORS).  CORS specifies how HTTP requests to your app originating from foreign domains should be treated.  It is primarily used to allow third-party sites to make AJAX requests to your app, which are normally blocked by browsers following the [same-origin policy](http://en.wikipedia.org/wiki/Same-origin_policy).
+Configuration for Sails' [built-in support for Cross-Origin Resource Sharing](http://sailsjs.com/documentation/concepts/security/cors).  CORS specifies how HTTP requests to your app originating from foreign domains should be treated.  It is primarily used to allow third-party sites to make AJAX requests to your app, which are normally blocked by browsers following the <a href="http://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">same-origin policy</a>.
 
 These options are conventionally set in the **config/security.js** configuration file.  Note that these settings (with the exception of `allRoutes`) can be changed on a per-route basis in the [**config/routes.js** file](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
 
@@ -24,7 +24,7 @@ The following will allow cross-origin AJAX GET, PUT and POST requests to `/foo/b
 '/foo/bar': {
   action: 'foo/bar',
   cors: {
-    allowOrigins: 'http://foobar.com,https://owlhoot.com',
+    allowOrigins: ['http://foobar.com','https://owlhoot.com'],
     allowRequestMethods: 'GET,PUT,POST,OPTIONS,HEAD'
   }
 }
