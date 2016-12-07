@@ -9,8 +9,8 @@ The documentation is compiled from the markdown files in the [`sails-docs` repo 
 The [documentation on the main website](http://sailsjs.org/documentation) is for the latest stable npm release of Sails, and is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs) (Master is sometimes a few commits ahead, but any critical documentation updates make it onto the website within a day or two.)
 
 For older releases of Sails that are still widely used, the documentation is compiled from the relevant `sails-docs` branches and hosted on the following subdomains:
-+ v0.12.x: [0.12.sailsjs.com](http://0.12.sailsjs.com/)
-+ v0.11.x: [0.11.sailsjs.com](http://0.11.sailsjs.com/)
++ [0.12.sailsjs.com](http://0.12.sailsjs.com/)
++ [0.11.sailsjs.com](http://0.11.sailsjs.com/)
 
 
 ### How do I get involved?
