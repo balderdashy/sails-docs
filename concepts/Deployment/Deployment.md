@@ -17,7 +17,8 @@ Before you launch any web application, you should ask yourself a few questions:
   + e.g. chat, realtime analytics, in-app notifications/messages
 + How are you tracking crashes and errors?
   + Are you using `sails.log()`? Or are you using a custom logger from NPM like [Winston](https://github.com/winstonjs/winston)?
-
++ Have you tried running in production mode locally in production mode (with the `NODE_ENV` environment variable set to "production")?
+  + A quick way to test this out is to run `sails lift --prod`.
 
 
 ### Configuring Your App For Production
