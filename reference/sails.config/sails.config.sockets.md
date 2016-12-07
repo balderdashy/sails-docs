@@ -48,10 +48,10 @@ By default, Sails will create new Redis clients in the background when using the
 
 | Property   | Type      | Default  | Details |
 |:-----------|:---------:|:---------|:--------|
-| `pubClient` | ((object)) | `undefined` | A custom Redis client used for _publishing_ on channels used by Socket.io.  If unspecified, Sails will create a client for you. |
+| `pubClient` | ((ref))  | `undefined` | A custom Redis client used for _publishing_ on channels used by Socket.io.  If unspecified, Sails will create a client for you. |
 | `subClient` | ((ref)) | `undefined` | A custom Redis client used for _subscribing_ to channels used by Socket.io.  If unspecified, Sails will create a client for you. |
-| `adminPubClient`| ((function)) | `undefined` | A custom Redis client for _publishing_ on the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `pubClient`, you'll likely need to provide a client for this setting as well.
-| `adminSubClient`| ((function)) | `undefined` | A custom Redis client for _subscribing_ to the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `subClient`, you'll likely need to provide a client for this setting as well.
+| `adminPubClient`| ((ref)) | `undefined` | A custom Redis client for _publishing_ on the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `pubClient`, you'll likely need to provide a client for this setting as well.
+| `adminSubClient`| ((ref)) | `undefined` | A custom Redis client for _subscribing_ to the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `subClient`, you'll likely need to provide a client for this setting as well.
 | `subEvent` | ((string)) | `message` | The redis client event name to subscribe to.  When using clients created with `ioredis`, you&rsquo;ll likely need to set this to `messageBuffer` |
 
 
