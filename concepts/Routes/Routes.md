@@ -54,7 +54,6 @@ In addition to your custom routes, Sails binds many routes for you automatically
 
 * [Blueprint routes](http://sailsjs.org/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](http://sailsjs.org/documentation/concepts/Controllers) and [models](http://sailsjs.org/documentation/concepts/ORM/Models.html) with a full REST API.
 * [Assets](http://sailsjs.org/documentation/concepts/Assets), such as images, Javascript and stylesheet files.
-* [CSRF](http://sailsjs.org/documentation/concepts/Security/CSRF.html), if turned on, provides a **/csrfToken** route to your app that can be used to retrieve the CSRF token.
 
 
 ### Supported Protocols
