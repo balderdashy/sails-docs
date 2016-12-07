@@ -1,12 +1,7 @@
-# assets/js/dependencies/
+# assets/dependencies/
 ### Purpose
-This directory allows grunt to load javascript files in index.ejs before the rest of the javascript files in the js directory.
+This directory allows grunt to load javascript dependencies in index.ejs before the rest of the javascript files in the js directory.
 
-    js/
-    | main.js
-    | apple.js
-    | dependencies/
-    | | sails.io.js
 
 This setup will create
 
