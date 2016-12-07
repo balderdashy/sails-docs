@@ -1,7 +1,5 @@
 # tasks/register/
 
-### Purpose
-
 This folder contains the Grunt tasks that Sails runs by default.
 
 For more information, see [Assets > Task Automation > Task Triggers](http://sailsjs.com/documentation/concepts/assets/task-automation#?task-triggers).

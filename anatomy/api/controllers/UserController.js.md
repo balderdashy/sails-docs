@@ -1,5 +1,4 @@
 # api/controllers/UserController.js
-### Purposes
 
 This file was created when you ran 'sails generate api User'.  It contains all of the controller logic for the model called 'User'.
 

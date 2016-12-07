@@ -1,5 +1,5 @@
 # config/sockets.js
-### Purpose
+
 This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO.
 
 It provides transparent access to Sails' encapsulated pubsub/socket server for complete customizability. In it you can do things on the list below (and more!).

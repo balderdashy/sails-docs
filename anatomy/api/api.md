@@ -1,5 +1,5 @@
 # api/
-### Purpose
+
 This folder contains the vast majority of your app's back-end logic.  It is home to the 'M' and 'C' in [MVC Framework](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
 
 In it you will find the following.

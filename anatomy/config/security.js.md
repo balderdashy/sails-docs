@@ -1,7 +1,5 @@
 # config/security.js
 
-### Purpose
-
 This file is the conventional home of your Sails app's global security settings.  For a complete reference of available security configuration in Sails, see:
 
 * CORS settings reference: [sails.config.security.cors](http://sailsjs.com/docs/reference/configuration/sails-config-security-cors)

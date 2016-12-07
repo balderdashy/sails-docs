@@ -1,6 +1,6 @@
 # policies/sessionAuth.js
 
-### Purpose
+
 This is a policy file.  Like any policy, you can apply it to any of your controller actions.  (See [config/policies.js](http://sailsjs.com/anatomy/config/policies-js) for more information on how to configure policies to apply to controller actions.)
 
 The main purpose of `sessionAuth.js` is as an example.  But for many apps, this simple session authentication policy will actually be the only policy you need.  Use it to protect actions that _should never_ allow unauthenticated users.

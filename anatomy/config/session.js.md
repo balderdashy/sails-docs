@@ -1,5 +1,5 @@
 # config/session.js
-### Purpose
+
 This file contains information that tells Sails where to store your sessions.
 
 Sails session integration leans heavily on the great work already done by Express, but also unifies socket.io with the Connect session store. It uses Connect's cookie parser to normalize configuration differences between Express and socket.io and hooks into Sails' middleware interpreter to allow you to access and auto-save to `req.session` with Socket.io the same way you would with Express.

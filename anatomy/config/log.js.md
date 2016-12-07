@@ -1,5 +1,4 @@
 # config/log.js
-### Purpose
 
 This file contains the logger configuration for your Sails app.
 
