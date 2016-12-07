@@ -94,8 +94,6 @@ Thanks!
 ##### Multi-part guides:
 + [The busy JavaScript developer's guide to Sails.js](https://www.ibm.com/developerworks/library/wa-build-deploy-web-app-sailsjs-1-bluemix/index.html) -- 4-part series from IBM developerWorks. (Also available in [Chinese](http://www.ibm.com/developerworks/cn/web/wa-build-deploy-web-app-sailsjs-1-bluemix/) and [Japanese](http://www.ibm.com/developerworks/jp/web/library/wa-build-deploy-web-app-sailsjs-1-bluemix/).)
 <!-- 7-12-2016 -->
-+ [Postman Blog: Manage your Sails.js server bootstrap code](http://blog.getpostman.com/2015/08/28/manage-your-sailsjs-server-bootstrap-code/)
-<!-- 8-28-2015 -->
 + [SailsCasts](http://irlnathan.github.io/sailscasts/) - Short screencasts that take you through the basics of building traditional websites, single-page/mobile apps, and APIs using Sails.  Perfect for both novice and tenured developers, but does assume some background on MVC.
 <!-- 4-4-2015 -->
 + [Sails.js Development channel on Medium](https://medium.com/sails-js-development/)
@@ -112,8 +110,6 @@ Thanks!
   + [Auth](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth/)
   + [Auth con Passport](http://jorgecasar.github.io/blog/desarrollar-webapps-realtime-auth-con-passport/)
 <!-- 1-19-2014 -->
-+ [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
-<!-- 8-19-2013 -->
 
 
 ##### Articles & blog posts:
@@ -121,10 +117,14 @@ Thanks!
 <!-- 3-25-2015 -->
 + [Guest Post on Segment.io Blog: Webhooks with Slack, Segment, and Sails.js/Treeline](https://segment.com/blog/segment-webhooks-slack/)
 <!-- 3-15-2015 -->
++ [Postman Blog: Manage your Sails.js server bootstrap code](http://blog.getpostman.com/2015/08/28/manage-your-sailsjs-server-bootstrap-code/)
+<!-- 8-28-2015 -->
 + [Sails.js on Heroku](https://vort3x.me/sailsjs-heroku/)
 <!-- 5-19-2015 -->
 + [Angular + Sails.js (0.10.0-rc5) with angular-sails socket.io](https://github.com/maartendb/angular-sails-scrum-tutorial/blob/master/README.md)
 <!-- 4-14-2014 -->
++ [Angular + Sails!  Help!](https://github.com/xdissent/spinnaker) - Sails Resources Service for AngularJS
+<!-- 8-19-2013 -->
 + [How to Create a Node.js App using Sails.js on an Ubuntu VPS](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
 <!-- 7-16-2013 -->
 + [Working With Data in Sails.js](http://net.tutsplus.com/tutorials/javascript-ajax/working-with-data-in-sails-js/) tutorial on NetTuts
