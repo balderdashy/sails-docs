@@ -1,4 +1,4 @@
-# FAQ
+# Frequently Asked Questions
 
 ### How does the documentation end up on the Sails website?
 
@@ -141,7 +141,7 @@ Thanks!
 
 ### How can I convince the other girls/guys on my team?
 
-###### Articles / interviews / press releases / whitepapers / talks
+##### Articles / interviews / press releases / whitepapers / talks
 
 > + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md).  We'll check it out!
 > + If you are a company interested in doing a press release about Sails, please contact @mikermcneil on Twitter (and er.. remind him if necessary!)  We'll do what we can to help.
