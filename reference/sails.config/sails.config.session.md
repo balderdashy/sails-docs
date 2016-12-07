@@ -12,16 +12,16 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
 | `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
-| `key`        | ((string))       | `sails.sid`      | Session key is set as `sails.sid` by default. This is the name of the key which is added to the cookie of visitors to your site when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used (like crossing streams)
+| `name`        | ((string))       | `sails.sid`      | The name of the session ID cookie to set in the response (and read from in the request) when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used.
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
-| `cookie` | ((dictionary)) | `{ path: '/', httpOnly: true, secure: false, maxAge: null }` | Options for the session cookie.  See the [express-session docs](https://github.com/expressjs/session#cookie) for more info.
+| `cookie` | ((dictionary)) | _see [express-session](https://github.com/expressjs/session#cookie)_ | Additional options for the session ID cookie.  See the [express-session docs](https://github.com/expressjs/session#cookie) for more info.
 | `routesDisabled` | ((array)) | `[]` | An array of [route address strings](http://sailsjs.com/documentation/concepts/routes) for which built-in session support will be skipped.  Useful for performance tuning; particularly preventing the unnecessary creation of sessions in requests for assets (e.g. `['GET /js/*', 'GET /styles/*', 'GET /images/*']`).
 
 
 
 ### Production config
 
-In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Express/Connect session adapter you are using.
+In production, you should configure a stateless session adapter which uses a store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session store, and then add any other configuration specific to the Express/Connect session adapter you are using.  Fortunately, this is easier than it sounds.
 
 
 ##### Configuring Redis as your session store
