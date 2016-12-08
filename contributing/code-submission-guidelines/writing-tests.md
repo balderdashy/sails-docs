@@ -19,7 +19,7 @@ If, on the other hand, our strategy for testing the behavior of the blueprints i
 
 ### Structural Conventions
 
-Sails' tests are broken up into three distinct types- `unit`, `integration`, and `benchmark` tests.  See the README.md file in each directory for more information about the distinction and purpose of each type of test, as well as a shortlist of ways you can get involved.
+Sails's tests are broken up into three distinct types- `unit`, `integration`, and `benchmark` tests.  See the README.md file in each directory for more information about the distinction and purpose of each type of test, as well as a shortlist of ways you can get involved.
 
 The following conventions are true for all three types of tests:
 
