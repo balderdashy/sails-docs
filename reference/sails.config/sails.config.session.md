@@ -14,7 +14,7 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 | `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
 | `name`        | ((string))       | `sails.sid`      | The name of the session ID cookie to set in the response (and read from in the request) when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used.
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
-| `cookie` | ((dictionary)) | _see [express-session](https://github.com/expressjs/session#cookie)_ | Additional options for the session ID cookie.  See the [express-session docs](https://github.com/expressjs/session#cookie) for more info.
+| `cookie` | ((dictionary)) | _see [below](#?the-session-id-cookie)_ | Configuration for the session ID cookie, including `maxAge`, `secure`, and more.  See [below](#?the-session-id-cookie) for more info.
 | `routesDisabled` | ((array)) | `[]` | An array of [route address strings](http://sailsjs.com/documentation/concepts/routes) for which built-in session support will be skipped.  Useful for performance tuning; particularly preventing the unnecessary creation of sessions in requests for assets (e.g. `['GET /js/*', 'GET /styles/*', 'GET /images/*']`).
 
 
@@ -103,6 +103,48 @@ url: 'mongodb://user:pass@host:port/database',
 > **Notes:**
 > * When using Node version <= 0.12.x, install `connect-mongo` version 0.8.2.  For Node version >= 4.0, install `connect-mongo` version `1.1.0`.
 > * If you run into kerberos-related issues when using the MongoDB as your session store or the database for one or more of your app's models, be sure and have a look at the relevant [troubleshooting page](http://mongodb.github.io/node-mongodb-native/2.0/getting-started/installation-guide/#troubleshooting) in the Mongo docs.  Also see [#3362](https://github.com/balderdashy/sails/issues/3362) for more diagnostic information about using Kerberos with Mongo in your Sails app.
+
+
+
+### The session ID cookie
+
+The built-in session integration in Sails works by using a session ID cookie.  This cookie is [HTTP-only](https://www.owasp.org/index.php/HttpOnly) (as safeguard against [XSS exploits](http://sailsjs.com/documentation/concepts/security/xss)), and by default, is set with the name "sails.sid".
+
+##### Expiration
+
+The maximum age / expiration of your app's session ID cookie can be set as a number of milliseconds.
+
+For example, to log users out after 24 hours:
+
+```js
+session: {
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000
+  }
+}
+```
+
+Otherwise, by default, this option is set as `null` -- meaning that session ID cookies will not any kind of ["Expires" or "Max Age" header](https://en.wikipedia.org/wiki/HTTP_cookie), and will last only for as long as a user's web browser is open.
+
+
+##### The "secure" flag
+
+If you are using HTTPS, then you can use the "secure" flag (`sails.config.session.cookie.secure`) to instruct web browsers that they should refuse to send back the session ID cookie except over a secure (`https://`) protocol.
+
+```js
+session: {
+  cookie: {
+    secure: true
+  }
+}
+```
+
+> **WARNING:** If you are using HTTPS, but behind a proxy/load balancer - for example, on a PaaS like Heroku - then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](http://sailsjs.com/documentation/reference/configuration/sails-config-http).
+
+
+##### Advanced options
+
+For implementation details and all available options for configuring the session ID cookie in Sails, see [express-session#cookie](https://github.com/expressjs/session#cookie).
 
 
 
