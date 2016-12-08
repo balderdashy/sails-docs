@@ -55,7 +55,9 @@ When your app is running in a production environment:
 >**Note:**
 >If you set [`sails.config.environment`](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment) to `'production'` some other way, that's totally cool.  Just note that Sails will set the `NODE_ENV` environment variable to `'production'` for you automatically.  The reason this environment variable is so important is that it is a universal convention in Node.js, regardless of the framework you are using.  Built-in middleware and dependencies in Sails _expect_ `NODE_ENV` to be set in production-- otherwise they use their less efficient code paths that were designed for development use only.
 
+##### Set a `sails.config.sockets.onlyAllowOrigins` value
 
+If you have sockets enabled for your app (that is, you have the `sails-hook-sockets` module installed), then for security reasons you'll need to set `sails.config.sockets.onlyAllowOrigins` to the array of origins that should be allowed to connect to your app via websockets.  You&rsuqo;ll likely set this in your app&rsquo;s `config/env/production.js` file.  See the [socket configuration documentation](http://next.sailsjs.com/documentation/reference/configuration/sails-config-sockets) for more info on `onlyAllowOrigins`.
 
 
 ##### Configure your app to run on port 80
