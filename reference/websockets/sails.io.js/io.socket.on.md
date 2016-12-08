@@ -27,7 +27,7 @@ io.socket.on(eventName, function (msg) {
 
 ### When is the event handler called?
 
-This event handler is called when the client receives an incoming socket notification that matches the specified event name (e.g. `'welcome'`).  This happens when the server broadcasts a message to this socket directly, or to a room of which it is a member.  To broadcast a socket notification, you either need to use the [blueprint API]() or write some server-side code (e.g. in an action, helper, or even in a command-line script).  This is typically achieved in one of the following ways:
+This event handler is called when the client receives an incoming socket notification that matches the specified event name (e.g. `'welcome'`).  This happens when the server broadcasts a message to this socket directly, or to a room of which it is a member.  To broadcast a socket notification, you either need to use the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) or write some server-side code (e.g. in an action, helper, or even in a command-line script).  This is typically achieved in one of the following ways:
 
 
 ###### Low-Level Socket Methods (`sails.sockets`)
@@ -52,54 +52,62 @@ io.socket.on('order', function onServerSentEvent (msg) {
 ```
 
 
+##### Realtime cafeteria
 
-##### Another example, this time using Angular:
-
-> Note that this Angular example assumes the backend calls `publishCreate()` at some point.
-
+Imagine you're building an ordering system for a chain of restaurants:
+  
 ```javascript
-angular.module('cafeteria').controller('CheckoutCtrl', function ($scope) {
+// In your front-end code...
 
-  $scope.orders = $scope.orders || [];
+var ORDER_IN_LIST = _.template('<li data-id="<%- order.id %>"><p><%- order.summary %></p></li>');
 
-  if (!io.socket.alreadyListeningToOrders) {
-    io.socket.alreadyListeningToOrders = true;
-    
-    io.socket.on('order', function (msg) {
+$(function whenDomIsReady(){
+  
+  io.socket.on('order', function (msg) {
 
       // Let's see what the server has to say...
       switch(msg.verb) {
 
         case 'created':
-          $scope.orders.push(msg.data); // (add the new order to the DOM)
-          $scope.$apply();              // (re-render)
-          break;
+          // Render the new order in the DOM.
+          // (we make this idempotent by removing any existing order w/ the same id)
+          var $preExistingOrder = $('#orders').find('[data-id="'+msg.data.id+'"]');
+          $preExistingOrder.remove();
+          $('#orders').append(ORDER_IN_LIST);
+          return;
 
         default: return; // ignore any unrecognized messages
         
       }//< / switch >
-      
-    });//< / io.socket.on() >
-    
-  }//< / if not already listening to orders >-
-  
-});
+        
+  });//< / io.socket.on() >
+
+});//< / when DOM is ready >
 ```
 
-### Handle Socket 'Connect' and 'Disconnect' events
-If a socket's connection to the server was interrupted-- perhaps because the server was restarted, or the client had some kind of network issue-- it is possible to handle `connect` and `disconnect` events and manually reconnect the socket again.
+> Note that this example assumes the backend calls [`.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) or [`.broadcast()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) at some point.  That might be through custom code, or via the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints).
 
-`sails.io.js` connects a socket for you automatically, so direct usage like this **is not recommended for 99% of apps**.  But in the spirit of completeness, it is worth mentioning that you can also bind your own handlers:
+
+### The 'connect' event
+The Sails socket client connects a socket for you automatically, so direct usage like this **is not recommended for 99% of apps**.  But in the spirit of completeness, it is worth mentioning that you can also bind your own "connect" handler:
 
 ```javascript
 io.socket.on('connect', function onConnect(){
   console.log('This socket is now connected to the Sails server.');
 });
+```
 
+### The 'disconnect' event
+
+If a socket's connection to the server was interrupted-- perhaps because the server was restarted, or the client had some kind of network issue-- it is possible to handle `disconnect` events in order to display an error message, or even to manually reconnect the socket again.
+
+```javascript
 io.socket.on('disconnect', function onDisconnect(){
   console.log('This socket lost connection to the Sails server');
 });
 ```
+
+> Sockets can be configured to reconnect automatically.  But, as of Sails v1, the Sails socket client disables this behavior by default.  In practice, since your user interface might have missed socket notifications while disconnected, you'll almost always want to handle any related custom logic by hand.  (For example, a "Check your internet connection" error message).
 
 
 
