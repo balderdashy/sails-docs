@@ -124,12 +124,12 @@ session: {
 }
 ```
 
-Otherwise, by default, this option is set as `null` -- meaning that session ID cookies will not any kind of ["Expires" or "Max Age" header](https://en.wikipedia.org/wiki/HTTP_cookie), and will last only for as long as a user's web browser is open.
+Otherwise, by default, this option is set as `null` -- meaning that session ID cookies will not send any kind of ["Expires" or "Max Age" header](https://en.wikipedia.org/wiki/HTTP_cookie), and will last only for as long as a user's web browser is open.
 
 
 ##### The "secure" flag
 
-If you are using HTTPS, then you can use the "secure" flag (`sails.config.session.cookie.secure`) to instruct web browsers that they should refuse to send back the session ID cookie except over a secure (`https://`) protocol.
+If you are using HTTPS, then you can use the "secure" flag (`sails.config.session.cookie.secure`) to instruct web browsers that they should refuse to send back the session ID cookie except over the secure (`https://`) protocol.
 
 ```js
 session: {
