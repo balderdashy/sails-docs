@@ -39,7 +39,7 @@ git remote add core https://github.com/balderdashy/sails.git
 git fetch core
 git merge core/master
 ```
-additional details, see [github](https://help.github.com/articles/fork-a-repo)
+For additional details, see [github](https://help.github.com/articles/fork-a-repo).
 
 ## Code
 Make your enhancements, fix bugs, do your thang.
