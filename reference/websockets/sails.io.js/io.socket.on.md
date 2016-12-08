@@ -57,29 +57,46 @@ io.socket.on('order', function onServerSentEvent (msg) {
 Imagine you're building an ordering system for a chain of restaurants:
   
 ```javascript
-// In your front-end code...
+// In your frontend code...
+// (This example uses jQuery and Lodash for simplicity. But you can use any library or framework you like.)
 
 var ORDER_IN_LIST = _.template('<li data-id="<%- order.id %>"><p><%- order.summary %></p></li>');
 
 $(function whenDomIsReady(){
   
+  // Every time we receive a relevant socket event...
   io.socket.on('order', function (msg) {
 
-      // Let's see what the server has to say...
-      switch(msg.verb) {
+    // Let's see what the server has to say...
+    switch(msg.verb) {
 
-        case 'created':
-          // Render the new order in the DOM.
-          // (we make this idempotent by removing any existing order w/ the same id)
-          var $preExistingOrder = $('#orders').find('[data-id="'+msg.data.id+'"]');
-          $preExistingOrder.remove();
-          $('#orders').append(ORDER_IN_LIST);
-          return;
+      case 'created': (function(){
 
-        default: return; // ignore any unrecognized messages
-        
-      }//< / switch >
-        
+        // Render the new order in the DOM.
+        var newOrderHtml = ORDER_IN_LIST(msg.data);
+        $('#orders').append(newOrderHtml);
+
+      })(); return;
+
+      case 'destroyed': (function(){
+
+        // Find any existing orders w/ this id in the DOM.
+        //
+        // > Remember: To prevent XSS attacks and bugs, never build DOM selectors
+        // > using untrusted provided by users.  (In this case, we know that "id" 
+        // > did not come from a user, so we can trust it.)
+        var $deletedOrders = $('#orders').find('[data-id="'+msg.id+'"]');
+
+        // Then, if there are any, remove them from the DOM.
+        $deletedOrders.remove();
+
+      })(); return;
+
+      // Ignore any unrecognized messages
+      default: return;
+
+    }//< / switch >
+
   });//< / io.socket.on() >
 
 });//< / when DOM is ready >
@@ -112,8 +129,8 @@ io.socket.on('disconnect', function onDisconnect(){
 
 
 ### Notes
->+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open.
->+ When listening for socket messages from resourceful pubsub calls, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
+>+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](http://next.sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
+>+ When listening for socket messages from resourceful pubsub calls and blueprints, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
 >+ For context-- socket notifications are also sometimes referred to as "server-sent events" or "[comet](http://en.wikipedia.org/wiki/Comet_(programming)) messages".
 
 
