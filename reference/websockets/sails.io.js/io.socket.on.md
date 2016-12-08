@@ -106,7 +106,9 @@ $(function whenDomIsReady(){
 
 
 ### The 'connect' event
-The Sails socket client connects a socket for you automatically, so direct usage like this **is not recommended for 99% of apps**.  But in the spirit of completeness, it is worth mentioning that you can also bind your own "connect" handler:
+When the Sails socket client is loaded on a page, by default, it begins connecting a socket for you automatically.  When using the default, auto-connecting socket (`io.socket`), you don't have to wait for the socket to connect before using it.  In other words, you can listen for other socket events or call methods like [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get) immediately.  The Sails socket client will queue up anything you do in the mean time, and then replay it automatically once the connection is live.
+
+Consequently, direct usage of the "connect" event **is not necessary for most apps**.  But in the spirit of completeness, it is worth mentioning that you can also bind your own "connect" handler:
 
 ```javascript
 io.socket.on('connect', function onConnect(){
@@ -132,7 +134,6 @@ io.socket.on('disconnect', function onDisconnect(){
 >+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](http://next.sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
 >+ When listening for socket messages from resourceful pubsub calls and blueprints, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
 >+ For context-- socket notifications are also sometimes referred to as "server-sent events" or "[comet](http://en.wikipedia.org/wiki/Comet_(programming)) messages".
-
 
 
 <docmeta name="displayName" value="io.socket.on()">
