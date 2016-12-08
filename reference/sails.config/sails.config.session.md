@@ -42,15 +42,6 @@ npm install connect-redis@~3.0.2 --save --save-exact
 
 The following settings are optional, since if no redis configuration other than `adapter` is provided, Sails assumes you want it to use a redis instance running on `localhost`.
 
-```javascript
-host: 'localhost',
-port: 6379,
-ttl: <redis session TTL in seconds>,
-db: 0,
-pass: <redis auth password>
-prefix: 'sess:'
-```
-
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
