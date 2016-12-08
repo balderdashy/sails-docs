@@ -1,6 +1,6 @@
 # io.socket.on()
 
-Start listening for server-sent events from Sails with the specified `eventName`.  Will trigger the provided callback function when a matching event is received.
+Start listening for socket events from Sails with the specified `eventName`.  Will trigger the provided callback function when a matching event is received.
 
 ```js
 io.socket.on(eventName, function (msg) {
