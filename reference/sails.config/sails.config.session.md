@@ -139,6 +139,8 @@ session: {
 }
 ```
 
+If you _are not_ using HTTPS, then you should leave the `secure` flag undefined, or set it to `false`.
+
 > **WARNING:** If you are using HTTPS, but behind a proxy/load balancer - for example, on a PaaS like Heroku - then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](http://sailsjs.com/documentation/reference/configuration/sails-config-http).
 
 
