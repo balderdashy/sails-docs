@@ -40,16 +40,16 @@ Then install the [connect-redis](https://github.com/tj/connect-redis) session ad
 npm install connect-redis@~3.0.2 --save --save-exact
 ```
 
-The following settings are optional, since if no redis configuration other than `adapter` is provided, Sails assumes you want it to use a redis instance running on `localhost`.
+The following settings are optional, since if no Redis configuration other than `adapter` is provided, Sails assumes you want it to use a Redis instance running on `localhost`.
 
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
 | `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion.
-| `host`         | ((string))  |`'127.0.0.1'` | Hostname of your redis instance.  If a `url` setting is configured, this setting will be ignored.
-| `port`         | ((number)) |`6379`   | Port of your redis instance.  If a `url` setting is configured, this setting will be ignored.
-| `pass`         | ((string)) | `undefined` | The password for your redis instance. Leave blank if you are not using a password.  If a `url` setting is configured that includes a password, this setting will override the password in `url`.
-| `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer.  _(On typical Redis setups, this will be a number between 0 and 15.)_  If a `url` setting is configured that includes a db, this setting will override the db in `url`.
+| `host`         | ((string))  |`'127.0.0.1'` | Hostname of your Redis instance.  If a `url` setting is configured, this setting will be ignored.
+| `port`         | ((number)) |`6379`   | Port of your Redis instance.  If a `url` setting is configured, this setting will be ignored.
+| `pass`         | ((string)) | `undefined` | The password for your Redis instance. Leave blank if you are not using a password.  If a `url` setting is configured that includes a password, this setting will override the password in `url`.
+| `db`           | ((number))  |`undefined`   | The index of the database to use within your Redis instance.  If specified, must be an integer.  _(On typical Redis setups, this will be a number between 0 and 15.)_  If a `url` setting is configured that includes a db, this setting will override the db in `url`.
 | `client`       | ((ref))  | `undefined` | An already-connected Redis client to use.  If provided, any `url`, `host` and `port` settings will be ignored.  This setting is useful if you have a Redis Sentinel setup and need to connect using a module like <a href="https://www.npmjs.com/package/ioredis" target="_blank">`ioredis`</a>
 
 

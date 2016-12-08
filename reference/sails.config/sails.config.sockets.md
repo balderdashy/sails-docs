@@ -13,15 +13,15 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
 ### Redis Configuration
 
- If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your redis instance, and then use the following config to point at it from your app:
+ If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your Redis instance, and then use the following config to point at it from your app:
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
 | `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion (the `url` setting will override all of the settings below).
 | `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer.  _(On most Redis setups, this will be a number between 0 and 15.)_
-| `host`         |((string))  |`'127.0.0.1'` | Hostname of your redis instance.
-| `pass`         | ((string)) | `undefined` | Password for your redis instance.
-| `port`         |((number)) |`6379`   | Port of your redis instance.
+| `host`         |((string))  |`'127.0.0.1'` | Hostname of your Redis instance.
+| `pass`         | ((string)) | `undefined` | Password for your Redis instance.
+| `port`         |((number)) |`6379`   | Port of your Redis instance.
 
 
 ### Advanced Configuration
@@ -52,7 +52,7 @@ By default, Sails will create new Redis clients in the background when using the
 | `subClient` | ((ref)) | `undefined` | A custom Redis client used for _subscribing_ to channels used by Socket.io.  If unspecified, Sails will create a client for you. |
 | `adminPubClient`| ((ref)) | `undefined` | A custom Redis client for _publishing_ on the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `pubClient`, you'll likely need to provide a client for this setting as well.
 | `adminSubClient`| ((ref)) | `undefined` | A custom Redis client for _subscribing_ to the internal Sails admin bus, which allows for inter-server communication.  If you provide a client for `subClient`, you'll likely need to provide a client for this setting as well.
-| `subEvent` | ((string)) | `message` | The redis client event name to subscribe to.  When using clients created with `ioredis`, you&rsquo;ll likely need to set this to `messageBuffer` |
+| `subEvent` | ((string)) | `message` | The Redis client event name to subscribe to.  When using clients created with `ioredis`, you&rsquo;ll likely need to set this to `messageBuffer` |
 
 
 ### Notes

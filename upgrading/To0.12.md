@@ -27,7 +27,7 @@ The `--force` flag will override the existing Sails dependency installed in your
 
  + Security enhancements: updated several dependencies with potential vulnerabilities
  + Reverse routing functionality is now built in to Sails core via the new [`sails.getRouteFor()`](http://sailsjs.org/documentation/reference/application/sails-get-route-for) and [`sails.getUrlFor()`](http://sailsjs.org/documentation/reference/application/sails-get-url-for) methods
-+ Generally improved multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and made additional adjustments and improvements related to the latest socket.io upgrade.  Added a much tighter Redis integration that sits on top of `socket.io-redis`, using a redis client to implement cross-server communication rather than an additional socket client.
++ Generally improved multi-node support (and therefore scalability) of low-level `sails.socket.*` methods, and made additional adjustments and improvements related to the latest socket.io upgrade.  Added a much tighter Redis integration that sits on top of `socket.io-redis`, using a Redis client to implement cross-server communication rather than an additional socket client.
 + Cleaned up the API for `sails.socket.*` methods, normalizing overloaded functions and deprecating methods which cause problems in multiserver deployments (more on that below).
 + Added a few brand new sails.sockets methods: `.leaveAll()`, `.addRoomMembersToRooms()`, and `.removeRoomMembersFromRooms()`
 + `sails.sockets.id()` is now `sails.sockets.getId()` (backwards compatible w/ deprecation message)
@@ -67,7 +67,7 @@ If there are places in your app where you have code like this:
 ```javascript
 sierra.save(function (err, modifiedSierra){
   if (err) { /* ... */  return; }
-  
+
   // ...
 });
 ```
@@ -76,7 +76,7 @@ You should replace it with:
 ```javascript
 sierra.save(function (err){
   if (err) { /* ... */  return; }
-  
+
   // ...
 });
 ```
