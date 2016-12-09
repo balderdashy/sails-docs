@@ -10,4 +10,6 @@ This generates a folder containing your compiled (and usually minified)
 assets.  The most common use case for this is bundling up files to
 deploy to a CDN.
 
+> This is also useful for building standalone applications with tools like PhoneGap or Electron.
+
 <docmeta name="displayName" value="buildProd.js">
