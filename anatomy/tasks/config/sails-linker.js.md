@@ -18,11 +18,18 @@ as well.
 
 #### Production (`NODE_ENV=production`)
 
-In production, all stylesheets are minified into a single `.css` file (see
-`tasks/config/cssmin.js` task) and all client-side scripts are minified into
-a single `.js` file (see `tasks/config/uglify.js` task).  Any client-side HTML
-templates, CoffeeScript, or LESS files are bundled into these same two minified
-files as well.
+In production, all stylesheets (including all .css files and `assets/styles/importer.less`) are
+minified into a single `.css` file (see `tasks/config/cssmin.js` task) and
+all client-side scripts (including `.js` and `.coffee` files) are minified
+into a single `.js` file (see `tasks/config/uglify.js` task).  Any precompiled,
+client-side HTML templates (JST) can calso be minified alongside the other
+scripts when `sails-linker:prodJs` runs-- but since this could change the
+behavior of your front-end code, it is not included by default.
+
+> If you're using JST templates and you'd like to them to included in the
+> minified bundle, remove `clientSideTemplates` from the tasklist array in
+> `tasks/register/prod.js`, and then modify `tasks/config/uglify.js` to include
+> the compiled `jst.js` file from `.tmp/public/` in its `src` array.
 
 ### Usage
 
