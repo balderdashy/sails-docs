@@ -8,12 +8,11 @@ SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 });
 ```
 
-`.query()` is only available on Sails/Waterline models using a SQL database (e.g. PostgreSQL or mySQL).  Its purpose is to perform raw SQL queries.  Note that exact usage and result format varies between adapters, so you'll need to refer to the documentation for the underlying database driver.  (See below for a couple of simple examples to help get you started.)
-
+> **WARNING:** Unlike other Waterine model methods, `.query()` supports neither promise-based usage nor the use of `.exec()`.  In other words, it does not utilize Waterline's normal deferred object mechanism.  Instead, it provides raw access directly to the underlying database driver.
 
 ### Usage
 
-> **WARNING:** Unlike other Waterine model methods, `.query()` supports neither promise-based usage nor the use of `.exec()`.  In other words, it does not utilize Waterline's normal deferred object mechanism.  Instead, it provides raw access directly to the underlying database driver.
+`.query()` is only available on Sails/Waterline models that are configured to use a SQL database (e.g. PostgreSQL or mySQL).  Its purpose is to perform raw SQL queries.  Note that exact usage and result format varies between adapters, so you'll need to refer to the documentation for the underlying database driver.  (See below for a couple of simple examples to help get you started.)
 
 
 |   |     Argument        | Type              | Details                            |
