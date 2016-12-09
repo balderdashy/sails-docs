@@ -12,10 +12,19 @@ Pet.query('SELECT pet.name FROM pet', function(err, results) {
 });
 ```
 
-### Prepared Statement Example
+### Prepared Statement Example for MySQL adapter
 
 ```js
-Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?',[ "dog" ]} ,function(err, results) {
+Pet.query(query: {'SELECT pet.name FROM pet WHERE pet.name = ?', values: [ "dog" ]} ,function(err, results) {
+  if (err) return res.serverError(err);
+  return res.json(results.rows);
+});
+```
+
+### Prepared Statement Example for PostgreSQL adapter
+
+```js
+Pet.query(text: {'SELECT pet.name FROM pet WHERE pet.name = $1', values: [ "dog" ]} ,function(err, results) {
   if (err) return res.serverError(err);
   return res.json(results.rows);
 });
