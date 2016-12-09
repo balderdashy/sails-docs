@@ -1,6 +1,6 @@
 # Code of Conduct
 
-> The Code of Conduct explains the *bare minimum* behavior expectations the Sails project requires of its contributors.  This Code of Conduct is adapted from the version used by the [Node.js core team](http://www.rust-lang.org/conduct.html).  Their version was originally borrowed from [Rust lang's excellent CoC](http://www.rust-lang.org/conduct.html).
+> The Code of Conduct explains the *bare minimum* behavior expectations the Sails project requires of its contributors.  This Code of Conduct is adapted from the version used by the [Node.js core team](https://github.com/nodejs/node/blob/master/CODE_OF_CONDUCT.md).  Their version was originally borrowed from [Rust lang's excellent CoC](http://www.rust-lang.org/conduct.html).
 
 - We are committed to providing a friendly, safe and welcoming environment for all, regardless of gender, sexual orientation, disability, ethnicity, religion, or similar personal characteristic.
 - Please avoid using overtly sexual, racial, or political nicknames, or any other nicknames that might detract from a friendly, safe and welcoming environment for all.
