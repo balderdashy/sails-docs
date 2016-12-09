@@ -77,7 +77,7 @@ module.exports.datastores = {
   default: {
     adapter: require('sails-mysql'),
     host: 'localhost',
-    port: '3306',                  //<< only include if needed
+    port: 3306,                    //<< only include if needed
     user: 'root',                  //<< only include if needed
     password: 't4m3rOFsn0wfl4kez', //<< only include if needed
     database: 'my_dev_db_name'
