@@ -13,7 +13,7 @@ CSS stylesheets, and precompiled client-side HTML templates in the `templates/`
 directory (see the `jst` task for more info on that).  In addition, if a LESS
 stylesheet exists at `assets/styles/importer.less`, it will be compiled to CSS
 and a `<link>` tag will be inserted for it.  Similarly, if any Coffeescript
-files exists in `assets/js/`, they will be compiled into JavaScript and injected
+files exist in `assets/js/`, they will be compiled into JavaScript and injected
 as well.
 
 #### Production (`NODE_ENV=production`)
