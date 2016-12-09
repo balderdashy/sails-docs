@@ -1,13 +1,11 @@
 # config/routes.js
 
-This file is where you can define explicit routes to connect clients with the resources that they request.
+This file contains custom routes.  Sails uses these routes to determine what to do each time it receives a request.
 
-When a user tries to access a resource on your app, Sails uses this file (and a few other things) in order to map the URL requested to it's appropriate controller action which upon authentication, will respond to the client with the requested resource.
+If Sails receives a URL that doesn't match any of the [custom routes](http://sailsjs.com/docs/concepts/routes/custom-routes) in this file, it will check for matching [assets](http://sailsjs.com/documentation/concepts/assets) (images, scripts, stylesheets, etc.). Finally, if those don't match either, the [default 404 handler](http://sailsjs.com/documentation/reference/response-res/res-not-found) is triggered.
 
-By default, there is only one explicitly defined route.  Its purpose is to point users that try to access the base URL `http://localhost:1337/` to the view located in `myApp/views/home/index.ejs`. Feel free to add as many routes as you'd like to this file.
+When you first generate your Sails app, there is only one route in this file.  Its job is to serve the home page.
 
-You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, `http://localhost:1337/ponies/PinkiePie` would request the resource with the 'id' parameter equal to 'PinkiePie'.
-
-
+You'll probably want to add some more.
 
 <docmeta name="displayName" value="routes.js">
