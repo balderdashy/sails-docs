@@ -26,6 +26,8 @@ The following core adapters are maintained, tested, and used by the Sails.js cor
 [MySQL](http://en.wikipedia.org/wiki/MySQL) is the world's most popular relational database.
 
 
+[![NPM package info for sails-mysql](https://img.shields.io/npm/dm/sails-mysql.svg?style=plastic)](http://npmjs.com/package/sails-mysql)
+
 ```bash
 npm install sails-mysql --save
 ```
@@ -35,37 +37,27 @@ adapter: require('sails-mysql'),
 url: 'mysql://user:password@host:port/database',
 ```
 
-[![NPM package info](https://nodei.co/npm/sails-mysql.png?downloads=true)](http://npmjs.com/package/sails-mysql)
-
 
 ### sails-postgresql
 
 [PostgreSQL](http://en.wikipedia.org/wiki/postgresql) is a modern relational database with powerful features.
 
-[![NPM package info](https://nodei.co/npm/sails-postgresql.png?downloads=true)](http://npmjs.com/package/sails-postgresql)
+[![NPM package info for sails-postgresql](https://img.shields.io/npm/dm/sails-postgresql.svg?style=plastic)](http://npmjs.com/package/sails-postgresql)
 
-##### Install
 ```bash
 npm install sails-postgresql --save
 ```
 
-##### Configure
 ```javascript
 adapter: require('sails-postgresql'),
 url: 'postgresql://user:password@host:port/database',
 ```
 
-##### sails-mongo
-
-https://npmjs.com/package/sails-mongo
+### sails-mongo
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
 
-###### Interfaces implemented:
-+ Semantic
-+ Queryable
-+ Streaming
-
+[![NPM package info for sails-mongo](https://img.shields.io/npm/dm/sails-mongo.svg?style=plastic)](http://npmjs.com/package/sails-mongo)
 
 
 ### sails-disk
@@ -85,7 +77,7 @@ adapter: undefined,
 
 Pretty much like disk... but doesn't actually write to disk, so it's not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.
 
-[![NPM package info](https://nodei.co/npm/sails-memory.png?downloads=true)](http://npmjs.com/package/sails-memory)
+[![NPM package info for sails-memory](https://img.shields.io/npm/dm/sails-memory.svg?style=plastic)](http://npmjs.com/package/sails-memory)
 
 ### Install
 ```bash
@@ -108,17 +100,22 @@ Is your database not supported by one of the core adapters?  Good news!  There a
 
 Here are a few highlights:
 
-| Database technology      | Adapter                | Maintainer | Interfaces implemented | Latest stable version |
-|:-------------------------|:-----------------------|------------|------------------------|-----------------------|
-| Redis                    | [sails-redis](https://github.com/misterGF/sails-mssqlserver) | [misterGF](https://github.com/misterGF)|  | [![NPM version](https://img.shields.io/npm/v/sails-sqlserver.svg?style=flat-square)](https://npmjs.org/package/sails-sqlserver) |
-| MS SQL Server            | [Sails-MSsqlserver](https://github.com/misterGF/sails-mssqlserver) | [misterGF](https://github.com/misterGF)|  | [![NPM version](https://img.shields.io/npm/v/sails-sqlserver.svg?style=flat-square)](https://npmjs.org/package/sails-sqlserver) |
-| OrientDB                 | [Sails-OrientDB](https://github.com/appscot/sails-orientdb) | [appscot](https://github.com/appscot) | Semantic, Queryable, Associations, Migratable | [![npm version](https://badge.fury.io/js/sails-orientdb.svg)](http://badge.fury.io/js/sails-orientdb) |
-| External REST API (HTTP) | [Sails-REST](https://github.com/zohararad/sails-rest) | [zohararad](https://github.com/zohararad) | Semantic | [![npm version](https://badge.fury.io/js/sails-rest.svg)](http://badge.fury.io/js/sails-rest) |
-| Oracle                   | [Sails-Oracle](https://github.com/atiertant/sails-oracle) | [atiertant](https://github.com/atiertant) | | |
-| Cassandra                | [Sails-Cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | Semantic, Migratable, Iterable | [![npm version](https://badge.fury.io/js/sails-cassandra.svg)](http://badge.fury.io/js/sails-cassandra) |
-| Solr                     | [Sails-Solr](https://github.com/sajov/sails-solr) | [sajov](https://github.com/sajov) | Semantic, Migratable, Queryable | [![npm version](https://badge.fury.io/js/sails-solr.svg)](http://badge.fury.io/js/sails-solr) |
-| FileMaker Database       | [Sails-Filemaker](https://github.com/geistinteractive/sails-filemaker) | [toddgeist](https://github.com/toddgeist) | Semantic | [![npm version](https://badge.fury.io/js/sails-filemaker.svg)](http://badge.fury.io/js/sails-filemaker) |
-| Apache Derby             | [Sails-Derby](https://github.com/dash-/node-sails-derby) | [dash-](https://github.com/dash-) | Semantic, Queryable, Associations, SQL | [![npm version](https://badge.fury.io/js/sails-derby.svg)](http://badge.fury.io/js/sails-derby) |
+| Database-like technology   | Adapter                | Maintainer | Interfaces implemented | Latest stable version |
+|:---------------------------|:-----------------------|------------|------------------------|-----------------------|
+| Redis                      | [sails-redis](https://npmjs.com/package/sails-redis) | _Looking for maintainer_ | Semantic, Queryable                                               | [![NPM package info for sails-redis](https://img.shields.io/npm/dm/sails-redis.svg?style=plastic)](http://npmjs.com/package/sails-redis) |
+| MS SQL Server              | [Sails-MSsqlserver](https://github.com/misterGF/sails-mssqlserver) | [misterGF](https://github.com/misterGF) | Semantic, Queryable                  | [![NPM package info for sails-sqlserver](https://img.shields.io/npm/dm/sails-sqlserver.svg?style=plastic)](http://npmjs.com/package/sails-sqlserver)
+| OrientDB                   | [Sails-OrientDB](https://github.com/appscot/sails-orientdb) | [appscot](https://github.com/appscot) | Semantic, Queryable, Associations, Migratable | [[![NPM package info for sails-orientdb](https://img.shields.io/npm/dm/sails-orientdb.svg?style=plastic)](http://npmjs.com/package/sails-orientdb)
+| Oracle (original)          | [Sails-Oracle](https://npmjs.com/package/sails-oracledb) | [atiertant](https://github.com/atiertant) | Semantic, Queryable | [![NPM package info for sails-oracledb](https://img.shields.io/npm/dm/sails-oracledb.svg?style=plastic)](http://npmjs.com/package/sails-oracledb) |
+| Oracle (AnyPresence)       | [waterline-oracle-adapter](https://github.com/AnyPresence/waterline-oracle-adapter) | [AnyPresence](http://anypresence.com) | Semantic, Queryable     | [![NPM package info for waterline-oracledb](https://img.shields.io/npm/dm/waterline-oracledb.svg?style=plastic)](http://npmjs.com/package/waterline-oracledb)
+| Oracle (stored procedures) | [sails-oracle-sp](https://npmjs.com/sails-oracle-sp) | [Buto](http://github.com/buto) and [nethoncho](http://github.com/nethoncho) | Semantic, Queryable     | [![NPM package info for sails-oracle-sp](https://img.shields.io/npm/dm/sails-oracle-sp.svg?style=plastic)](http://npmjs.com/package/sails-oracle-sp)
+| SAP HANA DB                | [sails-hana](https://npmjs.com/sails-hana) | [Digital Rockers](http://www.digitalrockers.it/) &amp; [Enrico Battistella](http://github.com/battishaar) | Semantic, Queryable     | [![NPM package info for sails-hana](https://img.shields.io/npm/dm/sails-hana.svg?style=plastic)](http://npmjs.com/package/sails-hana)
+| IBM DB2                    | [sails-db2](https://npmjs.com/sails-db2) | [ibuildings Italia](https://github.com/IbuildingsItaly) &amp; [Vincenzo Ferrari](https://github.com/wilk) | Semantic, Queryable     | [![NPM package info for sails-db2](https://img.shields.io/npm/dm/sails-hana.svg?style=plastic)](http://npmjs.com/package/sails-hana)
+| ServiceNow SOAP            | [waterline-servicenow-soap](https://npmjs.com/waterline-servicenow-soap) | [Sungard Availability Services](http://www.sungardas.com/) | Semantic, Queryable     | [![NPM package info for waterline-servicenow-soap](https://img.shields.io/npm/dm/waterline-servicenow-soap.svg?style=plastic)](http://npmjs.com/package/waterline-servicenow-soap)
+| Cassandra                  | [Sails-Cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | Semantic, Migratable, Iterable | [![NPM package info for sails-cassandra](https://img.shields.io/npm/dm/sails-cassandra.svg?style=plastic)](http://npmjs.com/package/sails-cassandra)
+| Solr                       | [Sails-Solr](https://github.com/sajov/sails-solr) | [sajov](https://github.com/sajov) | Semantic, Migratable, Queryable | [![NPM package info for sails-solr](https://img.shields.io/npm/dm/sails-solr.svg?style=plastic)](http://npmjs.com/package/sails-solr)
+| FileMaker Database         | [Sails-Filemaker](https://github.com/geistinteractive/sails-filemaker) | [Geist Interactive](https://www.geistinteractive.com/) | Semantic | [![NPM package info for sails-filemaker](https://img.shields.io/npm/dm/sails-filemaker.svg?style=plastic)](http://npmjs.com/package/sails-filemaker)
+| Apache Derby               | [Sails-Derby](https://github.com/dash-/node-sails-derby) | [dash-](https://github.com/dash-) | Semantic, Queryable, Associations, SQL | [![NPM package info for sails-derby](https://img.shields.io/npm/dm/sails-derby.svg?style=plastic)](http://npmjs.com/package/sails-derby)
+| REST API (Generic)         | [Sails-REST](https://github.com/zohararad/sails-rest) | [zohararad](https://github.com/zohararad) | Semantic                                        | [![NPM package info for sails-rest](https://img.shields.io/npm/dm/sails-rest.svg?style=plastic)](http://npmjs.com/package/sails-rest)
 
 > Learn [how to install and configure community adapters](http://sailsjs.com/docs/concepts/extending-sails/adapters).
 
