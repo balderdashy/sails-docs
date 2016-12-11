@@ -5,8 +5,6 @@ Configuration for Sails's built-in session support.
 Sails's default session integration leans heavily on the great work already done by Express and Connect, but also adds
 a bit of its own special sauce by hooking into the request interpreter.  This allows Sails to access and auto-save any changes your code makes to `req.session` when handling a virtual request from Socket.io.  Most importantly, it means you can just write code that uses `req.session` in the way you might be used to from Express or Connect; whether your controller actions are designed to handle HTTP requests, WebSocket messages, or both.
 
-
-
 ### Properties
 
 | Property    | Type       | Default   | Details |
@@ -120,7 +118,7 @@ Otherwise, by default, this option is set as `null` -- meaning that session ID c
 
 ##### The "secure" flag
 
-If you are using HTTPS, then you can use the "secure" flag (`sails.config.session.cookie.secure`) to instruct web browsers that they should refuse to send back the session ID cookie except over the secure (`https://`) protocol.
+Whether to set the ["Secure" flag](https://www.owasp.org/index.php/SecureFlag) on the session ID cookie.
 
 ```js
 session: {
@@ -130,9 +128,20 @@ session: {
 }
 ```
 
-If you _are not_ using HTTPS, then you should leave the `secure` flag undefined, or set it to `false`.
+During development, when you are not using HTTPS, you should leave `sails.config.session.cookie.secure` as undefined (the default).
 
-> **WARNING:** If you are using HTTPS, but behind a proxy/load balancer - for example, on a PaaS like Heroku - then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](http://sailsjs.com/documentation/reference/configuration/sails-config-http).
+But in production, you'll want to set it to `true`.  This instructs web browsers that they should refuse to send back the session ID cookie _except_ over a secure protocol (`https://`).
+
+> **Note:** If you are using HTTPS, but behind a proxy/load balancer - for example, on a PaaS like Heroku - then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](http://sailsjs.com/documentation/reference/configuration/sails-config-http).
+
+
+##### Do I need an SSL certificate?
+
+In production?  Yes.
+
+If you are relying on Sails's built-in session integration, please **always use an SSL certificate in production.**  Otherwise, the session ID cookie (or any other secure data) could be transmitted in plain-text, which would make it possible for an attacker in a coffee shop to eavesdrop on one of your authenticated user's HTTP requests, intercept their session ID cookie, then masquerade as them to wreak havoc.
+
+Also realize that, even if you have an SSL certificate, and you always redirect `http://` to `https://`, for _all_ of your subdomains, it is still important to set `secure: true`.  (Because without it, even if you redirect all HTTP traffic immediately, that _very first request_ will  still have been made over `http://`, and thus would have transmitted the session ID cookie in plain text.)
 
 
 ##### Advanced options
