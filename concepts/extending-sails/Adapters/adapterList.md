@@ -100,7 +100,7 @@ adapter: require('sails-memory'),
 
 Is your database not supported by one of the core adapters?  Good news!  There are many different community database adapters for Sails.js and Waterline [available on NPM](https://www.npmjs.com/search?q=sails+adapter).
 
-> Learn how to install and configure community adapters [here](http://sailsjs.com/docs/concepts/extending-sails/adapters).
+Here are a few highlights:
 
 
 | Database technology             | Adapter                | Maintainer | Interfaces implemented | Stable release |
@@ -112,6 +112,7 @@ Is your database not supported by one of the core adapters?  Good news!  There a
 | **Oracle (AnyPresence)**        | [waterline-oracle-adapter](https://github.com/AnyPresence/waterline-oracle-adapter) | [AnyPresence](http://anypresence.com) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-oracle-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-oracle-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-oracle-adapter)
 | **Oracle (stored procedures)**  | [sails-oracle-SP](https://npmjs.com/sails-oracle-sp) | [Buto](http://github.com/buto) and [nethoncho](http://github.com/nethoncho) | Semantic, Queryable     | [![NPM package info for sails-oracle-sp](https://img.shields.io/npm/dm/sails-oracle-sp.svg?style=plastic)](http://npmjs.com/package/sails-oracle-sp)
 | **SAP HANA DB**                 | [sails-HANA](https://npmjs.com/sails-hana) | [Digital Rockers](http://www.digitalrockers.it/) &amp; [Enrico Battistella](http://github.com/battishaar) | Semantic, Queryable     | [![NPM package info for sails-hana](https://img.shields.io/npm/dm/sails-hana.svg?style=plastic)](http://npmjs.com/package/sails-hana)
+| **SAP HANA (AnyPresence)**      | [waterline-SAP-HANA-adapter](https://github.com/AnyPresence/waterline-sap-hana-adapter) | [AnyPresence](http://anypresence.com) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-sap-hana-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-sap-hana-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-sap-hana-adapter)
 | **IBM DB2**                     | [sails-DB2](https://npmjs.com/sails-db2) | [ibuildings Italia](https://github.com/IbuildingsItaly) &amp; [Vincenzo Ferrari](https://github.com/wilk) | Semantic, Queryable     | [![NPM package info for sails-db2](https://img.shields.io/npm/dm/sails-db2.svg?style=plastic)](http://npmjs.com/package/sails-db2)
 | **ServiceNow SOAP**             | [waterline-ServiceNow-SOAP](https://npmjs.com/waterline-servicenow-soap) | [Sungard Availability Services](http://www.sungardas.com/) | Semantic, Queryable     | [![NPM package info for waterline-servicenow-soap](https://img.shields.io/npm/dm/waterline-servicenow-soap.svg?style=plastic)](http://npmjs.com/package/waterline-servicenow-soap)
 | **Cassandra**                   | [sails-cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | Semantic, Migratable, Iterable | [![NPM package info for sails-cassandra](https://img.shields.io/npm/dm/sails-cassandra.svg?style=plastic)](http://npmjs.com/package/sails-cassandra)
