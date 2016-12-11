@@ -100,7 +100,8 @@ adapter: require('sails-memory'),
 
 Is your database not supported by one of the core adapters?  Good news!  There are many different community database adapters for Sails.js and Waterline [available on NPM](https://www.npmjs.com/search?q=sails+adapter).
 
-Here are a few highlights:
+> Learn how to install and configure community adapters [here](http://sailsjs.com/docs/concepts/extending-sails/adapters).
+
 
 | Database technology             | Adapter                | Maintainer | Interfaces implemented | Stable release |
 |:--------------------------------|:-----------------------|:-----------|:-----------------------|-----------------------|
@@ -119,7 +120,6 @@ Here are a few highlights:
 | **Apache Derby**                | [sails-derby](https://github.com/dash-/node-sails-derby) | [dash-](https://github.com/dash-) | Semantic, Queryable, Associations, SQL | [![NPM package info for sails-derby](https://img.shields.io/npm/dm/sails-derby.svg?style=plastic)](http://npmjs.com/package/sails-derby)
 | **REST API (Generic)**          | [sails-REST](https://github.com/zohararad/sails-rest) | [zohararad](https://github.com/zohararad) | Semantic                                        | [![NPM package info for sails-rest](https://img.shields.io/npm/dm/sails-rest.svg?style=plastic)](http://npmjs.com/package/sails-rest)
 
-> Learn [how to install and configure community adapters](http://sailsjs.com/docs/concepts/extending-sails/adapters).
 
 
 ##### Add your custom adapter to this list
