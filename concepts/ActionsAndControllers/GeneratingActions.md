@@ -1,19 +1,40 @@
-# Generating controllers
+# Generating controllers or standalone actions
 
-You can use the [Sails command line tool](http://sailsjs.org/documentation/reference/command-line-interface) to quickly generate a controller, by typing:
+You can use [`sails-generate`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate) from the Sails command line tool to quickly generate a controller, or even just an individual action.
+
+
+### Generating controllers
+
+For example, to generate a controller:
 
 ```sh
-$ sails generate action <action identity>
+$ sails generate controller user
 ```
 
-For example, if you run the following command:
+Sails will generate `api/controllers/UserController.js`:
+
+```javascript
+/**
+ * UserController.js
+ *
+ * @description :: Server-side controller action for manging users.
+ * @help        :: See http://sailsjs.com/docs/concepts/controllers
+ */
+module.exports = {
+
+}
+```
+
+### Generating standalone actions
+
+Or run the following command to generate a standalone action, using the higher-level _actions2_ interface:
 
 ```sh
 $ sails generate action user/signup
 info: Created a new action!
 ```
 
-Sails will generate `api/controllers/user/sign-up.js`:
+Sails will create `api/controllers/user/sign-up.js`:
 
 ```javascript
 /**
