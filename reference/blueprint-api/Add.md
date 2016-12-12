@@ -6,12 +6,12 @@ Add a foreign record (e.g. a comment) to one of this record's collection associa
 POST /:model/:id/:association/:fk
 ```
 
-This action pushes a reference to some other record (the "foreign" record) onto a collection attribute of this record (the "primary" record).
+This action adds a reference to some other record (the "foreign", or "child" record) onto a particular collection attribute of this record (the "primary", or "parent" record).
 
-+ If `:fk` of an existing foreign record is supplied, it will be associated with the primary record.
-+ If no `:fk` is supplied, and the body of the **POST** contains values for a new record, that record will be created and associated with the primary record.
-+ If the collection association within the primary record already contains a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
++ If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
++ If the collection association within the primary record _already_ contains a reference to the foreign record, this action will be ignored.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
++ Note that, if the association is "shared" -- a plural ("collection") association with "via", or a singular ("model") association that has a "via" on the _other side_ -- then the association on the foreign record will also be updated.
 
 
 ### Parameters
@@ -94,7 +94,7 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
+> + This action is for adding foreign records to _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
 > + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
 >
 >   ```shell
