@@ -49,8 +49,10 @@ The following settings are optional, since if no Redis configuration other than 
 | `pass`         | ((string)) | `undefined` | The password for your Redis instance. Leave blank if you are not using a password.  If a `url` setting is configured that includes a password, this setting will override the password in `url`.
 | `db`           | ((number))  |`undefined`   | The index of the database to use within your Redis instance.  If specified, must be an integer.  _(On typical Redis setups, this will be a number between 0 and 15.)_  If a `url` setting is configured that includes a db, this setting will override the db in `url`.
 | `client`       | ((ref))  | `undefined` | An already-connected Redis client to use.  If provided, any `url`, `host` and `port` settings will be ignored.  This setting is useful if you have a Redis Sentinel setup and need to connect using a module like <a href="https://www.npmjs.com/package/ioredis" target="_blank">`ioredis`</a>
+| `onRedisDisconnect` | ((function)) | `undefined` | An optional function for Sails to call if the Redis connection is dropped.  Useful for placing your site in a temporary maintenance mode or "panic mode" (see [sails-hook-panic-mode](https://www.npmjs.com/package/sails-hook-panic-mode) for an example).
+| `onRedisReconnect` | ((function)) | `undefined` | An optional function for Sails to call if a previously-dropped Redis connection is restored (see `onDisconnect` above).
 
-
+> Note: `onRedisDisconnect` and `onRedisReconnect` will only be called for Redis clients that are created by Sails for you; if you provide your own Redis client (see the `client` option above), these functions will _not_ be called automatically in the case of a disconnect or reconnect.
 
 
 
