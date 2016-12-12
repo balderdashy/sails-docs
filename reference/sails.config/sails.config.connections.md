@@ -62,6 +62,7 @@ protocol  user     password     host          port     database
 
 Technically, configuration of individual settings (`user`, `password`, `host`, `port`, and `database`) is also supported.  You should, however, always use one approach or the other-- either the `url` or the individual properties.  Mixing the two configuration strategies may confuse the adapter, or cause the underlying database driver to reject your configuration.
 
+> In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.
 
 ### Production datastore configuration
 
