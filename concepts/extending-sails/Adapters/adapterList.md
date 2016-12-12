@@ -4,6 +4,7 @@ This page is meant to be an up to date, comprehensive list of all of the core ad
 
 All supported adapters can be configured in roughly the same way: by passing in a Sails/Waterline adapter (`adapter`), as well as a       connection URL (`url`).  For more information on configuring datastores, see [sails.config.datastores](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
+> Having trouble connecting?  Be sure to check your connection URL for typos.  If that doesn't work, review the documentation for your database provider, or [get help](http://sailsjs.com/support).
 
 ### Officially-supported database adapters
 
@@ -37,6 +38,8 @@ adapter: require('sails-mysql'),
 url: 'mysql://user:password@host:port/database',
 ```
 
+> + The default port for MySQL is `3306`.
+
 
 ### sails-postgresql
 
@@ -53,6 +56,9 @@ adapter: require('sails-postgresql'),
 url: 'postgresql://user:password@host:port/database',
 ```
 
+> + The default port for PostgreSQL is `5432`.
+> + In addition to `adapter` and `url`, you might also need to set `ssl: true`.  (This depends on where your PostgreSQL database server is hosted.  For example, `ssl: true` is required when connecting to Heroku's hosted PostgreSQL service.)
+
 ### sails-mongo
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
@@ -65,8 +71,11 @@ npm install sails-mongo --save
 
 ```javascript
 adapter: require('sails-mongo'),
-url: 'mongo://user:password@host:port/database',
+url: 'mongodb://user:password@host:port/database',
 ```
+
+> + The default port for MongoDB is `27017`.
+
 
 ### sails-disk
 
