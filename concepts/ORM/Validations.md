@@ -19,18 +19,19 @@ module.exports = {
 
 ### Built-in Data Types
 
-Every attribute definition must have a built-in data type (or _typeclass_) specified.  This is used for logical validation and coercion of results and criteria.
+Every attribute definition must have a built-in data type specified.  (Okay, not associations.  But every _other_ attribute!)
 
+This data type is used for logical validation and coercion of results and criteria.  Here is a list of the data types supported by Sails and Waterline:
 
 | Data Type        | Usage                         | Description                                                  |
 |:----------------:|:----------------------------- |:------------------------------------------------------------ |
 | ((string))       | `type: 'string'`              | Any string (tolerates `null`).
-| ((number))       | `type: 'number'`              | Any number (tolerates `null`)
-| ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`)
-| ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries, and `null`.
-| ((array))        | `type: 'array'`               | Any array consisting solelyof JSON-serializable contents.   |
+| ((number))       | `type: 'number'`              | Any number (tolerates `null`).
+| ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`).
+| ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries (plain JavaScript objects), and `null`.
+| ((ref))          | `type: 'ref'`                 | Any JavaScript value except `undefined`. (Should only be used when taking advantage of adapter-specific behavior.)    |
 
-Different databases vary slightly in the way they handle edge cases and special values such as `Infinity`, `null`, strings of varying lengths, etc.  Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected typeclass.
+Different databases vary slightly in the way they handle edge cases and special values such as `Infinity`, `null`, strings of varying lengths, etc.  Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected data type.
 
 > Note that auto-migration also relies on the attribute's declared `type`. This is mainly relevant for schemaful databases (like MySQL or PostgreSQL), since the relevant adapter needs to use this information in order to alter/define tables during auto-migration.  Remember that in production, `migrate: 'safe'` will be enabled and auto-migration will be skipped.
 
