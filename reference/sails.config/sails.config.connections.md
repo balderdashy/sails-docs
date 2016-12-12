@@ -134,7 +134,14 @@ module.exports = {
 
 ##### Using sails-postgresql in production
 
-> TODO (show example using `url`)
+The configuration of the `url` is `mongodb://<username>:<password>@<host>:<port>/<database name>
+```
+  myMongodbServer: {
+    adapter: 'sails-mongo',
+    url: 'mongodb://heroku_234vg8ba:a22bn8wieru3asd4asd24po64t@deg5345434.mlab.com:27958/heroku_234vg8ba',
+  },
+```
+Note that the `username` and `database name` are the same values.
 
 
 ##### Using sails-mongo in production
