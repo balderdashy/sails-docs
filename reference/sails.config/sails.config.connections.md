@@ -134,8 +134,13 @@ module.exports = {
 
 ##### Using sails-postgresql in production
 
-The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port>/<database name>`
+> TODO (show example using `url`)
 
+##### Using sails-mongo in production
+
+> TODO (show example using `url`)
+
+The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port>/<database name>`
 ```
   myMongodbServer: {
     adapter: 'sails-mongo',
@@ -143,15 +148,6 @@ The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port
   },
 ```
 Note that the `username` and `database name` are the same values.
-
-
-##### Using sails-mongo in production
-
-> TODO (show example using `url`)
-
-
-
-
 
 ### Multiple datastores pointed at the same adapter
 
