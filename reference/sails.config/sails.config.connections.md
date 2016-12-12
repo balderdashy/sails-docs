@@ -131,23 +131,33 @@ module.exports = {
 };
 ```
 
+##### Using sails-mysql in production
+```
+  myPosgreSQLdbServer: {
+    adapter: require('sails-posgresql'),
+    url: '  mysql://lkjdsf4a23d9xf4:kkwer4l8adsfasd@u23jrsdfsdf0sad.aasdfsdfsafd.us-west-2.ere.amazonaws.com:3306/ke9944a4x23423g',
+```
 
 ##### Using sails-postgresql in production
 
-> TODO (show example using `url`)
+```
+  myPosgreSQLdbServer: {
+    adapter: require('sails-posgresql'),
+    url: 'postgres://alkjdwoeire:23821b3e234ae23432234f234234234b234h7544wwad6a32jhc@ec2-23-345-23-324.compute-3.amazonaws.com:5432/k34534k3ljk3434',
+    ssl: true,
+  },
+```
+The `ssl` property is required when you are using an SSL-enabled Postgresql host like Heroku.
 
 ##### Using sails-mongo in production
 
-> TODO (show example using `url`)
-
-The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port>/<database name>`
 ```
   myMongodbServer: {
-    adapter: 'sails-mongo',
+    adapter: require('sails-mongo'),
     url: 'mongodb://heroku_234vg8ba:a22bn8wieru3asd4asd24po64t@deg5345434.mlab.com:27958/heroku_234vg8ba',
   },
 ```
-Note that the `username` and `database name` are the same values.
+The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port>/<database name>`. Note: `sails-mongo` differs from `sails-postgresql` and `sails-mysql` urls in that `sails-mongo` uses the same value for `username` and `database name`.
 
 ### Multiple datastores pointed at the same adapter
 
