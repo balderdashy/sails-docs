@@ -14,180 +14,123 @@ While this [can be overridden](http://sailsjs.com/documentation/concepts/orm/mod
 ##### The default development database
 As a convenience during development, Sails provides a built-in database adapter called `sails-disk`.  This adapter simulates a real database by reading and writing database records to a JSON file on your computer's hard drive.  And while `sails-disk` makes it easy to run your Sails/Node.js app in almost any environment, with minimal setup-- it is not designed for production use.  Before deploying your app and exposing it to real users, you'll want to choose a proper database such as PostgreSQL, MySQL, MongoDB, etc.  To do that, you'll need to customize your app's default datastore.
 
-##### Setting the default datastore
-Unsurprisingly, the default datastore shared by all of your app's models is named "default".  So to hook up a different database, that's the datastore you'll want to change.
-
-For example, imagine you edited the default datastore configuration in `config/datastores.js` so that it looks something like this:
-
-```js
-default: {
-  adapter: require('sails-postgresql'),
-  host: 'localhost',
-  database: 'foo'
-}
-```
-
-This tells Sails and Waterline that you must have [sails-postgresql](http://npmjs.com/package/sails-postgresql) installed, and that you're running a local PostgreSQL server with a database named "foo".  The next time you lift your app, all of your models will try to communicate with that PostgreSQL database any time built-in model methods like `.create()` or `.find()` are executed.
-
-##### Best practices
-Besides the `config/datastores.js` file, you can configure datastores in [the same way you configure anything else in Sails](http://sailsjs.com/documentation/concepts/configuration).
-
-Some general rules of thumb:
-
-+ To change the database you're using in development, edit the `default` key in `config/datastores.js` (or use `config/local.js` if you'd rather not check in your credentials)
-+ In production, configure your database using `config/env/production.js` (or set environment variables if you'd rather not check in your credentials)
-+ To override the database for a particular model, [set its `datastore`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore).
-
-
-
-### Development datastore configuration
-
-##### Using sails-memory in development
-
-To switch to `sails-memory` adapter in development, first install the package from NPM using:
-
-```bash
-npm install sails-memory --save --save-exact
-```
-
-Then change `config/datastores.js`:
-
-```javascript
-// config/datastores.js
-module.exports.datastores = {
-  default: {
-    adapter: require('sails-memory')
-  }
-};
-```
-
 ##### Using a local MySQL database in development
+Unsurprisingly, the default datastore shared by all of your app's models is named "default".  So to hook up a different database, that's the key you'll want to change.  For example, imagine you want to develop against a MySQL server installed locally on your laptop:
 
-To develop locally against a MySQL database, first install the MySQL adapter for Sails and Waterline:
+First, install the [MySQL adapter](http://npmjs.com/package/sails-mysql) for Sails and Waterline:
 
 ```bash
 npm install sails-mysql --save --save-exact
 ```
 
-Then change `config/datastores.js`:
+Then edit your default datastore configuration in `config/datastores.js` so that it looks something like this:
 
 ```javascript
 // config/datastores.js
 module.exports.datastores = {
   default: {
     adapter: require('sails-mysql'),
-    host: 'localhost',
-    port: 3306,                    //<< only include if needed
-    user: 'root',                  //<< only include if needed
-    password: 't4m3rOFsn0wfl4kez', //<< only include if needed
-    database: 'my_dev_db_name'
+    url: 'mysql://root:squ1ddy@localhost:3306/my_dev_db_name',
   }
 };
 ```
 
+That's it!  The next time you lift your app, all of your models will communicate with the specified MySQL database whenever your code executes built-in model methods like `.create()` or `.find()`.
 
-##### The connection URL
+> Want to use a different database?  Don't worry, MySQL is just an example -- your can use any [supported database adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters) in your Sails app.
 
-You might have noticed that we used `url` here, instead of the individual settings for `host`, `port`, `user`, `password`, and `database`.  This is just another, more concise way, to tell Sails and Waterline about your datastore configuration.  It's especially good for production, because you can change it by swapping out a single config key-- for example, allowing you to set your production database credentials simply by changing an environment variable.
 
-Best of all , the format of connection URLs is the same across various types of databases:
+### The connection URL
+
+You might have noticed that we used `url` here, instead of specifying individual settings like `host`, `port`, `user`, `password`, and `database`.  This is called a _connection URL_, and it's just another, more concise way, to tell Sails and Waterline about your datastore configuration.
+
+One major benefit to this style of configuration is that the format of a connection URL is the same across various types of databases. In other words, whether you're using MySQL, PostgreSQL, MongoDB, or almost any other common database technology, you can specify basic configuration using a URL that looks roughly the same:
 
 ```
 protocol://user:password@host:port/database
 ```
 
-> You should always use one approach or the other-- either the `url` or the individual properties.  Mixing the two configuration strategies may confuse the adapter, or cause the underlying database driver to reject your configuration.
+The `protocol://` chunk of the URL is always based on the adapter you're using (`mysql://`, `mongo://`, etc.), and the rest of the URL is composed of the credentials and network information that your app needs to locate and connect to the database.  Here's a deconstructed version of the `url` from the MySQL example above that shows what each section is called:
+
+```
+mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
+|         |        |            |             |        |
+|         |        |            |             |        |
+protocol  user     password     host          port     database
+```
 
 
-
+Technically, configuration of individual settings (`user`, `password`, `host`, `port`, and `database`) is also supported.  You should, however, always use one approach or the other-- either the `url` or the individual properties.  Mixing the two configuration strategies may confuse the adapter, or cause the underlying database driver to reject your configuration.
 
 
 ### Production datastore configuration
 
-Remember, in production, you should use `config/env/production.js` and/or environment variables, etc.
-
-##### Using sails-mysql in production
-
-To use the `sails-mysql` adapter in production, first install the module with:
-
-```bash
-npm install sails-mysql --save --save-exact
-```
-
-Then change `config/env/production.js`:
+When configuring your app for a production deployment, you won't actually use the `config/datastores.js` file.  Instead, you can take advantage of `config/env/production.js`, a special file of configuration overrides that only get applied in a production environment.  This allows you to override the `url` and `adapter` (or just the `url`) that you set in `config/datastores.js`:
 
 ```javascript
 // config/env/production.js
 module.exports = {
   // ...
-  // Set default production datastore.
+  // Override the default datastore settings in production.
   datastores: {
     default: {
-      adapter: require('sails-mysql'),
-      host: 'mysql://root:t4m3rOFsn0wfl4kez@prod.example.com:3306/my_prod_db_name'
+      // No need to set `adapter` again, because we already configured it in `config/datastores.js`.
+      url: 'mysql://lkjdsf4a23d9xf4:kkwer4l8adsfasd@u23jrsdfsdf0sad.aasdfsdfsafd.us-west-2.ere.amazonaws.com:3306/ke9944a4x23423g',
     }
   },
   // ...
 };
 ```
 
-##### Using sails-mysql in production
-```
-  myPosgreSQLdbServer: {
-    adapter: require('sails-posgresql'),
-    url: '  mysql://lkjdsf4a23d9xf4:kkwer4l8adsfasd@u23jrsdfsdf0sad.aasdfsdfsafd.us-west-2.ere.amazonaws.com:3306/ke9944a4x23423g',
-```
+Connection URLs really shine in production, because you can change them by swapping out a single config key.  Not only does this make your production settings easier to understand, if desired, it also allows you to swap out your production database credentials simply by setting an [environment variable](http://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables) (`sails_datastores__default__url`).  This is a handy way to avoid immortalizing sensitive database credentials as commits in your version control system.
 
-##### Using sails-postgresql in production
 
-```
-  myPosgreSQLdbServer: {
-    adapter: require('sails-posgresql'),
-    url: 'postgres://alkjdwoeire:23821b3e234ae23432234f234234234b234h7544wwad6a32jhc@ec2-23-345-23-324.compute-3.amazonaws.com:5432/k34534k3ljk3434',
-    ssl: true,
-  },
-```
-The `ssl` property is required when you are using an SSL-enabled Postgresql host like Heroku.
+### Supported databases
 
-##### Using sails-mongo in production
+Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and [local memory](http://npmjs.com/package/sails-memory), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
 
-```
-  myMongodbServer: {
-    adapter: require('sails-mongo'),
-    url: 'mongodb://heroku_234vg8ba:a22bn8wieru3asd4asd24po64t@deg5345434.mlab.com:27958/heroku_234vg8ba',
-  },
-```
-The configuration of the `url` is: `mongodb://<username>:<password>@<host>:<port>/<database name>`. Note: `sails-mongo` differs from `sails-postgresql` and `sails-mysql` urls in that `sails-mongo` uses the same value for `username` and `database name`.
+You can find an up-to-date list of supported database adapters [here](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
-### Multiple datastores pointed at the same adapter
+> Still can't find the adapter for your database?  You can also create a [custom adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/custom-adapters).  Or if you'd like to modify/update an existing adapter, get in touch with its maintainer.  (Need help?  Click [here](http://sailsjs.com/support) for additional resources.)
 
-You can set up multiple datastores that use the same adapter.
 
-For example, you might be using MySQL as your primary database, but also need to integrate with a _second_ MySQL database that contains data from an existing Java or PHP app.
+### Multiple datastores
+
+You can set up more than one datastore pointed at the same adapter, or at different adapters.
+
+For example, you might be using MySQL as your primary database, but also need to integrate with a _second_ MySQL database that contains data from an existing Java or PHP app.  Meanwhile, you might also need to integrate with a _third_ MongoDB database that was left over from a promotional campaign a few months ago.
 
 You could set up `config/datastores.js` as follows:
 
 ```javascript
-
+// config/datastores.js
 module.exports.datastores = {
   default: {
     adapter: require('sails-mysql'),
-    user: 'root',
-    host: 'localhost',
-    database: 'some_cool_db'
+    url: 'mysql://root@localhost:3306/dev',
   },
   existingEcommerceDb: {
     adapter: require('sails-mysql'),
-    user: 'djbluegrass',
-    password: '0ldy3ll3ry3ll3ry3ll3r3h3h3h',
-    host: 'legacy.example.com',
-    database: 'some_slightly_less_cool_db'
+    url: 'mysql://djbluegrass:0ldy3ll3r@legacy.example.com:3306/store',
+  },
+  q3PromoDb: {
+    adapter: require('sails-mongo'),
+    url: 'mongo://djbluegrass:0ldy3ll3r@seasonal-pet-sweaters-promo.example.com:27017/promotional',
   }
 };
 
 ```
 
 > **Note:** If a datastore is using a particular adapter, then _all_ datastores that share that adapter will be loaded on `sails.lift`, whether or not models are actually using them.  In the example above, if a model was configured to use the `existingEcommerceDb` datastore, then at runtime, Waterline will create two MySQL connection pools: one for `existingEcommerceDb` and one for `default`.  Because of this behavior, we recommend commenting out or removing any "aspirational" datastore configurations that you're not actually using.
+
+
+### Summary
+Some general rules of thumb:
+
++ To change the datastore you're using _during development_, edit the `default` key in `config/datastores.js` (or use `config/local.js` if you'd rather not check in your credentials)
++ To configure your default _production_ datastore, use `config/env/production.js` (or set environment variables if you'd rather not check in your credentials)
++ To override the datastore for a particular model, [set its `datastore`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore).
++ Besides the `config/datastores.js` and `config/env/production.js` files, you can configure datastores in [the same way you configure anything else in Sails](http://sailsjs.com/documentation/concepts/configuration), including environment variables, command-line options, and more.
 
 
 
