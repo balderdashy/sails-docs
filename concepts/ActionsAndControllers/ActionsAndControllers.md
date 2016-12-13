@@ -135,7 +135,7 @@ api/
    signup.js
 ```
 
-then you can consider the **api/controllers/user** folder the "User controller".
+where each of the three Javascript files exports a `req, res` function or an Actions2 definition, then you can consider the **api/controllers/user** folder the "User controller".
 
 For compatibility with previous versions of Sails, you can also create traditional _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions (which can be declared as either functions or machines).  For example, you could get the same "User controller" shown above by creating a `api/controllers/UserController.js` file containing:
 
