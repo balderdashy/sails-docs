@@ -112,7 +112,7 @@ Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-acti
 
 > Note that machine-as-action provides actions with access to the [request object](http://sailsjs.com/documentation/reference/request-req) as `env.req`, and to the Sails application object (in case you don&rsquo;t have [globals](http://sailsjs.com/documentation/concepts/globals) turned on) as `env.sails`.
 
-At first, using a function may seem simpler and easier than declaring an action as a machine.  But using a machine provides several advantages:
+Using classic `req, res` functions for your actions is the quickest way to start out with a new app.  However, using Actions2 provides several advantages:
 
  * The code you write is not directly dependent on `res` and `res`, making it easier to re-use or abstract into a [helper](http://sailsjs.com/documentation/concepts/helpers).
  * You guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run.
@@ -122,9 +122,21 @@ In a nutshell, your code will be standardized in a way that makes it easier to r
 
 ### Controllers
 
-Actions that share a common purpose are often organized into _controllers_ to make apps easier to maintain.  In Sails, controllers are especially useful when using [policies](http://next.sailsjs.org/documentation/concepts/policies), as you can easily apply a single policy to all of the actions in a controller.
+The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User controller" could be created at `api/controllers/UserController.js` file containing:
 
-The recommended way to organize action is to simply group the action files into folders.  For example, if your app has the following files:
+```
+module.exports = {
+   login: function (req, res) { ... },
+   logout: function (req, res) { ... },
+   signup: function (req, res) { ... },
+};
+```
+
+You can use [`sails generate controller`](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate#?sails-generate-controller-foo-action-1-action-2) to quickly create a controller file.
+
+### Standalone actions
+
+For larger, more mature apps, _standalone actions_ may be a better approach than controller files.  In this scheme, rather than having multiple actions living in a single file, each action is in its own file in an appropriate subfolder of `api/controllers`.  For example, the following file structure would be equivalent to the  `UserController.js` file:
 
 ```
 api/
@@ -135,19 +147,16 @@ api/
    signup.js
 ```
 
-where each of the three Javascript files exports a `req, res` function or an Actions2 definition, then you can consider the **api/controllers/user** folder the "User controller".
+where each of the three Javascript files exports a `req, res` function or an Actions2 definition.
 
-For compatibility with previous versions of Sails, you can also create traditional _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions (which can be declared as either functions or machines).  For example, you could get the same "User controller" shown above by creating a `api/controllers/UserController.js` file containing:
+Using standalone actions has several advantages over controller files:
 
-```
-module.exports = {
-   login: ...,
-   logout: ...,
-   signup: ...
-};
-```
+* It's easier to keep track of the actions that your app contains, by simply looking at the files contained in a folder rather than scanning through the code in a controller file.
+* Each action file is small and easy to maintain, whereas controller files tend to grow as your app grows.
+* [Routing to standalone actions](http://next.sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than with nested controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`).
 
-where `login`, `logout` and `signup` are functions or machine definitions.
+* Blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to having to create an arbitrary controller file to hold the root action).
+
 
 ### Keeping it lean
 
