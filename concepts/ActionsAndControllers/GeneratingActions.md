@@ -27,7 +27,7 @@ module.exports = {
 
 ### Generating standalone actions
 
-Or run the following command to generate a standalone action, using the higher-level _actions2_ interface:
+Run the following command to generate a standalone action, using the higher-level _actions2_ interface:
 
 ```sh
 $ sails generate action user/signup
@@ -74,4 +74,4 @@ module.exports = {
 ```
 
 
-<docmeta name="displayName" value="Generating Actions">
+<docmeta name="displayName" value="Generating Actions and Controllers">
