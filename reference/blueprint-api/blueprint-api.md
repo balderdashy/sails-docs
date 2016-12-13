@@ -12,23 +12,22 @@ The process for activating/deactivating blueprints varies slightly with the kind
 
 RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-Sails will create RESTful routes whenever it loads a [controller](http://sailsjs.org/documentation/concepts/controllers) and [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file with the same identity.  For example, `api/controllers/PetController.js` and `api/models/Pet.js` would both have the identity `pet`.  If both of those files were added to a Sails app (manually or by running [`sails generate api pet`](http://sailsjs.org/documentation/reference/command-line-interface/sails-generate#?sails-generate-api-foo)), then Sails would automatically create RESTful routes accessible at the URL `/pet` whenever the app was loaded.
+Sails will create RESTful routes whenever it loads a [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file.
 
 ##### Shortcut routes
 
 Shortcut routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-Like RESTful routes (see above), Sails creates shortcut routes for any controller/model pair with the same identity.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/controllers/UserController.js` and `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.org/documentation/reference/blueprint-api#?overriding-blueprints))
+Like RESTful routes (see above), Sails creates shortcut routes for every model.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.org/documentation/reference/blueprint-api#?overriding-blueprints))
 
 ##### Action routes
 
 Actions routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
 
-While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/PetController.js` contains:
+While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/pet/adore.js` contains:
 
 ```javascript
-module.exports {
-  adore: function (req, res) {
+module.exports = function adore(req, res) {
     res.send("I adore pets!");
   }
 }

@@ -8,13 +8,12 @@ Any additional properties provided in a [route target](http://sailsjs.com/docs/c
 
 ```js
 'GET /foo': {
-  controller: 'UserController',
-  action: 'login',
+  action: 'user/login',
   owl: 'hoot'
 }
 ```
 
-In this example, `req.options.owl` will be available in our `UserController.login` action.
+In this example, `req.options.owl` will be available in our `user/login` action.
 
 
 ### With the blueprint API
@@ -40,7 +39,7 @@ module.exports = function filterByUser (req, res, next) {
 }
 ```
 
-> Making the transition between the blueprint API and writing custom actions?  Check out [Concepts > Controllers](http://sailsjs.com/docs/concepts/controllers).
+> Making the transition between the blueprint API and writing custom actions?  Check out [Concepts > Actions and Controllers](http://sailsjs.com/docs/concepts/controllers).
 
 
 <docmeta name="displayName" value="req.options">

@@ -17,20 +17,20 @@ Every Sails project comes with [`config/routes.js`](http://sailsjs.org/documenta
 // config/routes.js
 module.exports.routes = {
   'get /signup': { view: 'conversion/signup' },
-  'post /signup': 'AuthController.processSignup',
+  'post /signup': { action: 'auth/process-signup' },
   'get /login': { view: 'portal/login' },
-  'post /login': 'AuthController.processLogin',
-  '/logout': 'AuthController.logout',
+  'post /login': 'auth/process-login',
+  '/logout': { controller: 'auth', action: 'logout' },
   'get /me': 'UserController.profile'
 }
 ```
 
 
-Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `{ action: 'user/profile' }`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html)).  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
 
-For example, we might read `'get /me': 'UserController.profile'` as:
+For example, we might read `'get /me': { action: 'user/profile' }` as:
 
-> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
+> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run action located at `api/controllers/user/profile.js`, would'ya?"
 
 What if I want to change the view layout within the route itself?  No problem we could:
 
