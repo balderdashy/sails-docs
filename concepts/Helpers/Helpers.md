@@ -70,7 +70,7 @@ Inputs for a helper are defined in the `inputs` dictionary, with each input bein
 * `boolean` - the value `true` or `false`
 * `ref` - a Javascript variable reference.  Technically this can be _any_ value, but typically it refers to an object like a dictionary or an array.
 
-You can provide a default value for an input by setting its `defaultsTo` key.
+You can provide a default value for an input by setting its `defaultsTo` property.
 
 ##### Exits
 
