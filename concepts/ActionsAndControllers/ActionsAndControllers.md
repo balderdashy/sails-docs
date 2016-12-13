@@ -19,10 +19,43 @@ Actions are defined in the `api/controllers/` folder and subfolders (we&rsquo;ll
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _function_ or _machine_.
+Action files can use one of two formats: _classic_ or _Actions2_.
 
-##### Actions 2 (aka `machine actions`)
-This is the recommended way of creating an action file.  It utilizes the [node-machine specification](http://node-machine.org) to specify an action&rsquo;s expected _inputs_ (the request parameters) and its _exits_ (the possible responses).  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's a sample machine that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+##### Classic actions
+
+The quickest way to get started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [request object](http://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [response object](http://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+
+```
+module.exports = function welcomeUser (req, res) {
+
+   // Get the `userId` parameter from the request.
+   // This could have been set on the querystring, in
+   // the request body, or as part of the URL used to
+   // make the request.
+   var userId = req.param('userId');
+
+   // If no `userId` was specified, or it wasn't a number, return an error.
+   if (!_.isNumeric(userId)) {
+      return res.badRequest(new Error('No user ID specified!'));
+   }
+
+   // Look up the user whose ID was specified in the request.
+   User.findOne(userId).exec(function (err, user) {
+      // Handle unknown errors.
+      if (err) {return res.serverError(err);}
+      // If no user was found, redirect to signup.
+      if (!user) {return res.redirect('/signup');
+      // Display the welcome view, setting the view variable
+      // named "name" to the value of the user's name.
+      return res.view('welcome', {name: user.name});
+   });
+
+}
+```
+
+##### Actions2
+
+Another, more structured way to create an action is by writing it as a _machine_, in much the same way that Sails [helpers](http://sailsjs.com/documentation/concepts/helpers) are created.  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's the same actions as above, rewritten using the machine format:
 
 ```
 module.exports = {
@@ -36,7 +69,7 @@ module.exports = {
          description: 'The ID of the user to look up.',
          // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
          // if the `userId` parameter is not a number.
-         example: 123,
+         type: 'number',
          // By making the `userId` parameter required, Sails will automatically respond with
          // `res.badRequest` if it's left out.
          required: true
@@ -54,14 +87,20 @@ module.exports = {
       }
    },
 
-   fn: function (inputs, exits) {
+   fn: function (inputs, exits, env) {
 
       // Look up the user whose ID was specified in the request.
+      // Note that we don't have to validate that `userId` is a number;
+      // the machine runner does this for us and returns `badRequest`
+      // if validation fails.
       User.findOne(inputs.userId).exec(function (err, user) {
+
          // Handle unknown errors.
          if (err) {return exits.error(err);}
+
          // If no user was found, redirect to signup.
          if (!user) {return exits.notFound('/signup');
+
          // Display the welcome view.
          return exits.success({name: user.name});
       });
@@ -71,30 +110,7 @@ module.exports = {
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
-##### Function actions
-
-You can also specify actions by declaring a function with `req` and `res` parameters.  Here's the same action as above, specified as a function:
-
-```
-module.exports = function welcomeUser (req, res) {
-
-   // If no `userId` was specified, return an error.
-   if (!req.param('userId')) {
-      return res.serverError('No user ID specified!');
-   }
-
-   // Look up the user whose ID was specified in the request.
-   User.findOne(inputs.userId).exec(function (err, user) {
-      // Handle unknown errors.
-      if (err) {return res.serverError(err);}
-      // If no user was found, redirect to signup.
-      if (!user) {return res.redirect('/signup');
-      // Display the welcome view.
-      return res.view('welcome', {name: user.name});
-   });
-
-}
-```
+> Note that machine-as-action provides actions with access to the [request object](http://sailsjs.com/documentation/reference/request-req) as `env.req`, and to the Sails application object (in case you don&rsquo;t have [globals](http://sailsjs.com/documentation/concepts/globals) turned on) as `env.sails`.
 
 At first, using a function may seem simpler and easier than declaring an action as a machine.  But using a machine provides several advantages:
 
