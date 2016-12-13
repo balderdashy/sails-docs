@@ -1,6 +1,6 @@
 # Routing to Actions
 
-By default, Sails will create a [blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api) for each action, so that a `GET` request to `/:actionIdentity` will trigger the action.  For example, an action saved as `api/controllers/user/sign-up` would be bound to a `/user/sign-up` route.  See the [blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
+By default, Sails will create a [blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api) for each action, so that a `GET` request to `/:actionIdentity` will trigger the action.  For example, a `signup` action saved in `api/controllers/UserController.js` or `api/controllers/user/signup.js` would be bound to a `/user/signup` route.  See the [blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
 
 Besides the default routing, Sails allows you to manually bind routes to actions using the [`config/routes.js`](http://sailsjs.org/documentation/concepts/Routes) file.  Some examples of when you might want to use explicit routes are:
 
@@ -10,10 +10,16 @@ Besides the default routing, Sails allows you to manually bind routes to actions
 
 To manually bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
 
-For example, the following manual route will cause your app to trigger the action in `api/controllers/sandwich/make-it.js` whenever it receives a POST request to `/make/a/sandwich`:
+For example, the following manual route will cause your app to trigger the `makeIt` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
 
 ```js
-  'POST /make/a/sandwich': 'sandwich/make-it'
+  'POST /make/a/sandwich': 'SandwichController.make'
+```
+
+If you&rsquo;re using standalone actions, so that you had an `api/controllers/sandwich/make.js` file, a more intuitive syntax exists which uses the path to the action (relative to `api/controllers`):
+
+```js
+  'POST /make/a/sandwich': 'sandwich/make'
 ```
 
 For a full discussion of manual routing, please see the [routes documentation](http://sailsjs.org/documentation/concepts/Routes).
