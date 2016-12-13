@@ -1,6 +1,6 @@
 # sails.getUrlFor()
 
-Look up the first route pointing at the specified target (e.g. `MeController.login`) and return its URL.
+Look up the first route pointing at the specified target (e.g. `user/signup` or `MeController.login`) and return its URL.
 
 
 
@@ -14,7 +14,7 @@ sails.getUrlFor(target);
 
 |   |          Argument           | Type                | Details
 |---|---------------------------- | ------------------- |:-----------
-| 1 |        target               | ((string))          | The route target string; e.g. `MeController.login`
+| 1 |        target               | ((string))          | The route target string; e.g. `user/signup` or `MeController.login`
 
 
 #### Returns

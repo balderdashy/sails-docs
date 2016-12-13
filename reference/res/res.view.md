@@ -31,7 +31,7 @@ The specified [`locals`](http://sailsjs.org/documentation/reference/Views/Locals
 
 ### Example
 
-Consider a conventionally configured Sails app with a call to `res.view()` in the `cook()` action of its `OvenController.js`.
+Consider a conventionally configured Sails app with a call to `res.view()` in the `api/controllers/oven/cook.js` action.
 
 With no `pathToView` argument, `res.view()` will decide the path by combining the identity of the controller (`oven`) and the name of the action (`cook`):
 

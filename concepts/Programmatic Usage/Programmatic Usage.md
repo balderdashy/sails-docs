@@ -42,10 +42,10 @@ mySailsApp.lift({
     console.error('Failed to lift app.  Details:', err);
     return;
   }
-  
+
   // --•
   // Make a request using the "request" library and display the response.
-  // Note that you still must have an `api/controllers/FooController.js` file
+  // Note that you still must have an `api/controllers/foo.js` file
   // under the current working directory, or a `/foo` or `POST /foo` route
   // set up in `config/routes.js`.
   request.post('/foo', function (err, response) {
@@ -66,7 +66,7 @@ mySailsApp.lift({
 
       // --•
       console.log('Successfully lowered Sails app.');
-      
+
     });//</lower sails app>
   });//</request.post() :: send http request>
 });//</lift sails app>
@@ -84,10 +84,10 @@ mySailsApp.load({
     console.error('Failed to load app.  Details:', err);
     return;
   }
-  
+
   // --•
   // Make a request using the "request" method and display the response.
-  // Note that you still must have an `api/controllers/FooController.js` file
+  // Note that you still must have an `api/controllers/foo.js` file
   // under the current working directory, or a `/foo` or `POST /foo` route
   // set up in `config/routes.js`.
   mySailsApp.request({url:'/foo', method: 'post'}, function (err, response) {
@@ -108,7 +108,7 @@ mySailsApp.load({
 
       // --•
       console.log('Successfully lowered Sails app.');
-      
+
     });//</lower sails app>
   });//</send virtual request to sails app>
 });//</load sails app (but not lift!)>
@@ -124,10 +124,10 @@ mySailsApp.lower(function(err) {
      console.log('An error occured when attempting to stop app:', err);
      return;
   }
-  
+
   // --•
   console.log('Lowered app successfully.');
-  
+
 });
 ```
 
