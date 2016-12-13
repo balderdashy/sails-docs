@@ -1,6 +1,6 @@
 ### An example helper
 
-A common use of helpers is to encapsulate some commonly-used database queries.  For example, suppose our app had a `User` model which included a field `lastActiveAt` which tracked the time of their last login.  A common task in such an app might be to retrieve the list of most-recently-online users.  Rather than hard-coding this query into multiple locations, we could write a helper instead:
+A common use of helpers is to encapsulate some repeated database queries.  For example, suppose our app had a `User` model which included a field `lastActiveAt` which tracked the time of their last login.  A common task in such an app might be to retrieve the list of most-recently-online users.  Rather than hard-coding this query into multiple locations, we could write a helper instead:
 
 ```Javascript
 // api/helpers/get-recent-users.js
@@ -86,11 +86,10 @@ sails.helpers.getRecentUsers({ numUsers: 10, activeSince: (new Date('2014-03-17'
 ```
 
 A key advantage to using helpers comes from the ability to update functionality that touches many parts of an app, all by changing code in one place.  For example, by changing the default value of `numUsers` from `5` to `15`, we update the size of the default list returned in _any_ place that uses the helper.  Also, by using well-defined inputs like `numUsers` and `activeSince`, we guarantee we&rsquo;ll get helpful errors if we accidentally use an invalid (i.e. non-numeric) value.
- 
+
 A few more notes about the example `get-recent-users` helper above:
 
 * Many of the fields such as `description` and `friendlyName` are not strictly required, but are immensely helpful in keeping the code maintainable, especially when sharing the helper across multiple apps.
-* Having a strict `outputExample` for the `success` exit (in this case, an array of dictionaries with `id`, `lastName` and `lastLogin` keys) is a good way to ensure that you get a standard data set back from your helper.  However, it can be tedious to keep up-to-date if your model schema changes often during development.  To make the output less strict, we could set it to an array of generic dictionaries using the notation `[{}]`.  This would allow the dictionaries in the array to contain arbitrary data.
 * The `noUsersFound` exit may or may not be helpful, depending on your app.  If you always wanted to perform some specific action whenever no users were returned (for example, redirecting to a different page), the exit would be a good idea.  If on the other hand you simply wanted to tweak some text in a view based on whether or not users were returned, it might be better to just have the `success` exit and check the `length` of the returned array in your action or view code.
 
 <docmeta name="displayName" value="Example Helper">
