@@ -1,9 +1,9 @@
-# policies/sessionAuth.js
+# policies/isLoggedIn.js
 
 
 This is a policy file.  Like any policy, you can apply it to any of your controller actions.  (See [config/policies.js](http://sailsjs.com/anatomy/config/policies-js) for more information on how to configure policies to apply to controller actions.)
 
-The main purpose of `sessionAuth.js` is as an example.  But for many apps, this simple session authentication policy will actually be the only policy you need.  Use it to protect actions that _should never_ allow unauthenticated users.
+The main purpose of `isLoggedIn.js` is as an example.  But for many apps, this simple session authentication policy will actually be the only policy you need.  Use it to protect actions that _should never_ allow unauthenticated users.
 
 ### How it works
 This policy prevents access for all but authenticated users.  It simply checks `req.session.userId`, and if it is [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy), then it interprets that to mean this request came from a logged-in user.  So in that case, it proceeds to the next policy-- or, if this is the last policy, the relevant action.  Otherwise, if `req.session.userId` is _not_ truthy, the policy sends a 403 response using [`res.forbidden()`](http://sailsjs.org/documentation/reference/response-res/res-forbidden).
@@ -41,4 +41,4 @@ For more information about policies and how to use them in your app, see [Concep
 > For example, if you need to implement user-level or role-based permissions in your application, the most straightforward approach is to take care of the relevant checks at the top of your controller action-- either inline, or by calling out to a helper.  Following this best practice will significantly enhance the maintainability of your code.
 
 
-<docmeta name="displayName" value="sessionAuth.js">
+<docmeta name="displayName" value="isLoggedIn.js">

@@ -1,108 +1,52 @@
 # Policies
 ### Overview
 
-Policies in Sails are versatile tools for authorization and access control-- they let you allow or deny access to your actions down to a fine level of granularity.  For example, if you were building Dropbox, before letting a user upload a file to a folder, you might check that she `isAuthenticated`, then ensure that she `canWrite` (has write permissions on the folder.)  Finally, you'd want to check that the folder she's uploading into `hasEnoughSpace`.
+Policies in Sails are versatile tools for authorization and access control-- they let you execute some logic _before_ an action is run, to determine whether or not to continue processing the request.  The most common use-case for policies is to restrict certain actions to _logged-in users only_.
 
-Policies can be used for anything: HTTP BasicAuth, 3rd party single-sign-on, OAuth 2.0, or your own custom authorization/authentication scheme.
+> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
 
-> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define a controller action which displays your view, and point your route to that action. &nbsp;
+### Protecting Actions and Controllers with Policies
 
-
-### Writing Your First Policy
-
-Policies are files defined in the `api/policies` folder in your Sails app.  Each policy file should contain a single function.
-
-When it comes down to it, policies are really just Connect/Express middleware functions which run **before** your actions.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
-
-For example, the `canWrite` policy mentioned above might look something like this:
-
-```javascript
-// policies/canWrite.js
-module.exports = function canWrite (req, res, next) {
-  var targetFolderId = req.param('id');
-
-  // If the requesting user is not logged in, then they are _never_ allowed to write.
-  // No reason to continue-- we can go ahead and bail out now.
-  if (!req.session.userId) {
-    return res.redirect('/login');
-  }
-
-  // Check the database to see if a permission record exists which matches both the
-  // target folder id, the appropriate "type", and the id of the logged-in user.
-  Permission.findOne({
-    folder: targetFolderId,
-    user: req.session.userId,
-    type: 'write'
-  })
-  .exec(function (err, permission) {
-
-    // Unexpected error occurred-- use the app's default error (500) handler.
-    //
-    // > We do this because this should never happen, and if it does, it means there
-    // > is probably something wrong with our database, and we want to know about it!)
-    if (err) { return res.serverError(err); }
-
-    // No "write" permission record exists linking this user to this folder.
-    // Maybe they got removed from it?  Or maybe they never had permission in the first place...
-    if (!permission) {
-      return res.redirect('/login');
-    }
-
-    // If we made it all the way down here, looks like everything's ok, so we'll let the user through.
-    // (from here, the next policy or the controller action will run)
-    return next();
-
-  });
-};
-```
-
-
-### Protecting Actions with Policies
-
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your actions.
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your actions and controllers.
 
 This file is  *declarative*, meaning it describes *what* the permissions for your app should look like, not *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
 
-Your `config/policies.js` file should export a Javascript object whose keys are [action identities](http://sailsjs.com/documentation/concepts/actions-and-controllers#?where-are-actions-defined), and whose values are arrays of one or more policies.  See below for more details and examples.
+The `config/policies.js` file is a dictionary whose properties and values differ depending on whether you are applying policies to [controllers](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?controllers) or [standalone actions](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions).
 
-##### To apply a policy to a specific action:
+##### Applying policies to a controller
 
-```js
-{
-  // Apply the 'isLoggedIn' policy to the 'profile/edit' action
-  'profile/edit': ['isLoggedIn'],
-  // Apply the 'isAdmin' AND 'isLoggedIn' policies, in that order, to the 'profile/create' action
-  'profile/create': ['isAdmin', 'isLoggedIn']
-}
-```
-
-##### To apply a policy to an entire controller:
+To apply policies to a controller, use the controller name as the name of a property in the  `config/policies.js` dictionary, and set its value to a dictionary mapping actions in that controller to policies that should be applied to them.  Use `*` to represent &ldquo;all unmapped actions&rdquo;.
 
 ```js
 {
-  // Apply 'isLoggedIn' by default to all 'profile/*' actions that are NOT specified below
-  'profile/*': ['isLoggedIn'],
-  // If an action is explicitly listed, its policy list will override the default list.
-  // So, we have to list 'isLoggedIn' again for the 'edit' action if we want it to be applied.
-  'profile/edit': ['isAdmin', 'isLoggedIn']
+  UserController: {
+     '*': 'isLoggedIn', // By default, require requests to come from a logged-in user
+     'delete': 'isAdmin', // Only allow admin users to delete other users
+     'login': true // Allow anyone to access the login action, even if they're not logged in.
 }
 ```
 
-> **Note:** Default policy mappings do not "cascade" or "trickle down."  Specified mappings for the controller's actions will override the default mapping.
+##### Applying policies to standalone actions
 
-##### To apply a policy to all actions that are not explicitly mapped:
+To apply policies to one or more standalone actions, use the action path (relative to `api/controllers`) as a property name in the `config/policies.js` dictionary, and set the value to the policy or policies that should apply to those actions.  By using a wildcard `*` in the action path, you can apply policies to all actions that begin with that path.  Here's the same set of policies as above, rewritten to apply to standalone actions:
 
 ```js
 {
-  // Apply 'isLoggedIn' to all actions by default
-  '*': ['isLoggedIn'],
-  // Apply 'isAdmin' to the 'foo' action.  'isLoggedIn' will NOT be applied!
-  'foo': ['isAdmin']
+  'user/*': 'isLoggedIn',
+  'user/delete': 'isAdmin',
+  'user/login': true
 }
 ```
 
-> Remember, default policies will not be applied to any controller / action that is given an explicit mapping.
+> Note that this example differs slightly from that of the controller-based policies, in that the `isLoggedIn` policy will apply to all actions in the `api/controllers/user` folder _and subfolders_ (except for `user/delete` and `user/login`, as is explained in the next section).
 
+##### Policy ordering and precedence
+
+It is important to note that policies do _not_ &ldquo;cascade&rdquo;.  In the examples above, the `isLoggedIn` policy will be applied to all actions in the `UserController.js` file (or standalone actions living under `api/controllers/user` ) _except for `delete` and `login`_.  If you wish to apply multiple policies to an action, list the policies in an array, for example:
+
+```
+'getEncryptedData': ['isLoggedIn', 'isInValidRegion']
+```
 
 ##### Using policies with blueprint actions
 
@@ -113,73 +57,69 @@ To apply your policies to blueprint actions, set up your policy mappings just li
 {
   UserController: {
     // Apply the 'isLoggedIn' policy to the 'update' action of 'UserController'
-    update: ['isLoggedIn']
+    update: 'isLoggedIn'
   }
 }
 ```
-
+or
+```js
+{
+  'user/update': 'isLoggedIn'
+}
+```
 
 ### Built-in policies
 Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
   + `true`: public access  (allows anyone to get to the mapped controller/action)
   +  `false`: **NO** access (allows **no-one** to access the mapped controller/action)
 
- `'*': [true]` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
+ `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
-##### Adding some policies to a controller:
-```javascript
-  // in config/policies.js
+In addition to `true` and `false`, all Sails apps generated with [`sails new`](http://sailsjs.com/documentation/reference/command-line-interface/sails-new) include the [`isLoggedIn` policy](http://sailsjs.com/documentation/anatomy/api/policies/is-logged-in-js) in `api/policies`.  This policy checks the session for a `userId` property, and if it doesn&rsquo;t find one, sends the default [`forbidden` response](http://next.sailsjs.com/documentation/concepts/custom-responses/default-responses#?resforbidden).  It can be used as an easy way to restrict actions to logged-in-users only, and modified to suit your needs (for example, to [redirect](http://sailsjs.com/documentation/reference/response-res/res-redirect) to `/login` instead of returning `res.forbidden()`).
 
-  '*': false,
-  // ...
-  // Apply the `false` policy as the default for all of RabbitController's actions
-  // (`false` prevents all access, which ensures that nothing bad happens to our rabbits)
+### Writing Your First Policy
 
-  'rabbit/*': [false],
+For many apps, the `isLoggedIn` policy that is added to new Sails apps will be all that is needed.  However, if you find the need to add your own policies, you can do so by saving them in the `api/policies` folder.  Each policy file should export a single function with `req`, `res` and `next` arguments.
 
-  // For the action `nurture`, apply the 'isRabbitMother' policy
-  // (this overrides `false` above)
-  'rabbit/nurture' : ['isRabbitMother'],
+When it comes down to it, policies are really just middleware functions which run **before** your actions.  You can chain as many of them together as you like-- in fact they're designed to be used this way.  Ideally, each middleware function should really check just *one thing*.
 
-  // Apply the `isNiceToAnimals` AND `hasRabbitFood` policies
-  // before letting any users feed our rabbits
-  'rabbit/feed' : ['isNiceToAnimals', 'hasRabbitFood']
-
-  // ...
-```
-
-Here&rsquo;s what the `isNiceToAnimals` policy from above might look like (this file would be located at `policies/isNiceToAnimals.js`):
+For example, the `isAdmin` policy mentioned above might look something like this:
 
 ```javascript
-module.exports = function isNiceToAnimals (req, res, next) {
+// policies/isAdmin.js
+module.exports = function isAdmin (req, res, next) {
 
-  // `req.session` contains a set of data specific to the user making this request.
-  // It's kind of like our app's "memory" of the current user.
-
-  // If our user has a history of animal cruelty, not only will we
-  // prevent her from going even one step further (`return`),
-  // we'll go ahead and redirect her to PETA (`res.redirect`).
-  if ( req.session.user.hasHistoryOfAnimalCruelty ) {
-    return res.redirect('http://PETA.org');
+  // If there's no `userId` in the session, then the user is not logged in
+  // (so we can't tell if they're an admin or not!)
+  // In that case, don't allow access.
+  if (!req.session.userId) {
+    return res.forbidden();
   }
 
-  // If the user has been seen frowning at puppies, we have to assume that
-  // they might end up being mean to them, so we'll
-  if ( req.session.user.frownsAtPuppies ) {
-    return res.redirect('http://www.dailypuppy.com/');
-  }
+  // Attempt to look the user up in the database.
+  User.findOne(req.session.userId).exec(function(err, user) {
 
-  // Finally, if the user has a clean record, we'll call the `next()` function
-  // to let them through to the next policy or our controller
-  next();
+    // Handle unknown errors
+    if (err) { return res.serverError(err); }
+
+    // If the user couldn't be found, forbid access.
+    // (this handles the rare case of a logged-in user being deleted)
+    if (!user) { return res.forbidden(); }
+
+    // If the user isn't an admin, forbid access.
+    if (!user.isAdmin) { return res.forbidden(); }
+
+    // If we made it all the way down here, looks like everything's ok, so we'll let the user through.
+    // (from here, the next policy or the action will run)
+    return next();
+
+  });
+
 };
 ```
 
-Besides protecting rabbits (while a noble cause, no doubt), here are a few other use cases for policies:
-+ cookie-based authentication
-+ role-based access control
-+ limiting file uploads based on MB quotas
-+ any other kind of authentication scheme you can imagine
+
+
 
 
 
