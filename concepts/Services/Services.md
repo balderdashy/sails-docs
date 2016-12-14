@@ -1,6 +1,6 @@
 # Services
 
-> _**Note**_: Although Services are still fully supported in Sails 1.0, it is recommended that you use [helpers](http://next.sailsjs.com/documentation/concepts/helpers) instead.
+> _**Note**_: Although Services are still fully supported in Sails 1.0, it is recommended that you use [helpers](http://sailsjs.com/documentation/concepts/helpers) instead.
 
 **Services** are stateless libraries of functions that you can use from anywhere in your Sails app.  For example, you might have an `EmailService` which tidily wraps up one or more utility functions so you can use them in more than one place within your application.
 
