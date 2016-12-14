@@ -56,11 +56,7 @@ module.exports = {
 
 ##### RESTful / shortcut routes and actions
 
-To override a RESTful blueprint route for a single controller, simply create an action in that controller with the appropriate name: [_find_](http://sailsjs.org/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.org/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.org/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.org/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.org/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.org/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.org/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.org/documentation/reference/blueprint-api/remove).
-
-To override the default _action_ that _all_ controllers use, create an `api/blueprints` folder and add files to it with names matching the actions to override (e.g. `find.js`, `findone.js`, `create.js`, etc.). You can take a look at [the code for the default actions](https://github.com/balderdashy/sails/tree/master/lib/hooks/blueprints/actions) in the Sails blueprints hook for a head start.
-
-> **Note:** All blueprint action files must be lowercase! (The default actions contains `findOne.js`, but in `/api/blueprints` it needs to be `findone.js`).
+To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a [standalone action](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) in the relevant folder) with the appropriate name: [_find_](http://sailsjs.org/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.org/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.org/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.org/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.org/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.org/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.org/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.org/documentation/reference/blueprint-api/remove).
 
 ##### Action routes
 
@@ -70,15 +66,9 @@ In production apps, you may often wish to turn action routes off completely for 
 'POST /user': {response: 'notFound'}
 ```
 
-### Custom blueprints
-
-Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
-
-```
-GET /myRoute: {blueprint: 'foo'}
-```
-
 ### Blueprints and resourceful pubsub
+
+The blueprint API (just like any of your custom actions and policies) is compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)) for example usage.
 
 ##### Blueprints and `.subscribe()`
 
@@ -87,12 +77,7 @@ By default, the **Find** and **Find One** blueprint actions will call [`.subscri
 
 ##### Blueprints and `.watch()`
 
-By default, the **Find** blueprint action will call [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch) on the model.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
-
-
-### Notes
-
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)) for example usage.
+By default, the **Find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
 
 
 <docmeta name="displayName" value="Blueprint API">
