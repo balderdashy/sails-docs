@@ -28,7 +28,7 @@ To apply policies to a controller, use the controller name as the name of a prop
 
 ##### Applying policies to standalone actions
 
-To apply policies to one or more standalone actions, use the action path (relative to `api/controllers`) as a property name in the `config/policies.js` dictionary, and set the value to the policy or policies that should apply to those actions.  By using a wildcard `*` in the action path, you can apply policies to all actions that begin with that path.  Here's the same set of policies as above, rewritten to apply to standalone actions:
+To apply policies to one or more standalone actions, use the action path (relative to `api/controllers`) as a property name in the `config/policies.js` dictionary, and set the value to the policy or policies that should apply to those actions.  By using a wildcard `*` at the end of the action path, you can apply policies to all actions that begin with that path.  Here's the same set of policies as above, rewritten to apply to standalone actions:
 
 ```js
 {
@@ -67,6 +67,18 @@ or
   'user/update': 'isLoggedIn'
 }
 ```
+
+##### Global policies
+
+You can apply a policy to _all_ actions that are not otherwise explicitly mapped by using the `*` property.  For example:
+
+```js
+{
+  '*': 'isLoggedIn',
+  'user/login': true
+}
+```
+This would apply the `isLoggedIn` policy to every action except the `login` action in `api/controllers/user/login.js` (or in `api/controllers/UserController.js`).
 
 ### Built-in policies
 Sails provides two built-in policies that can be applied globally, or to a specific controller or action.
