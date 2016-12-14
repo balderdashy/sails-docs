@@ -58,6 +58,8 @@ module.exports = {
 
 To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a [standalone action](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) in the relevant folder) with the appropriate name: [_find_](http://sailsjs.org/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.org/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.org/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.org/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.org/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.org/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.org/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.org/documentation/reference/blueprint-api/remove).
 
+>  It's important to realize that, even if you haven't defined these yourself, as long as a model exists with the same name as the controller, Sails will respond with built-in CRUD logic in the form of a JSON API, including support for sort, pagination, and filtering.
+
 ##### Action routes
 
 In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
