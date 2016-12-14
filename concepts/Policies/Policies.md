@@ -50,9 +50,9 @@ It is important to note that policies do _not_ &ldquo;cascade&rdquo;.  In the ex
 
 ##### Using policies with blueprint actions
 
-Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
+Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails actions.  The only difference is that blueprint actions are implicit.
 
-To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
+To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at the name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller (or as a standalone action).  For example:
 ```js
 {
   UserController: {
