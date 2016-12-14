@@ -2,7 +2,7 @@
 
 This file contains the default policies for your app.
 
-Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies to a given controller, or protect just one of it's actions. Any policy file (e.g. `myApp/api/policies/sessionAuth.js`) can be dropped into the `myApp/api/policies/` folder, at which point it can be accessed by it's filename, minus the extension, (e.g. `sessionAuth`).
+Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies to a given controller, or protect just one of it's actions. Any policy file (e.g. `api/policies/isLoggedIn.js`) can be dropped into the `api/policies/` folder, at which point it can be accessed by it's filename, minus the extension, (e.g. `isLoggedIn`).
 
 
 
