@@ -31,7 +31,7 @@ One of the big challenges of scaling an application is that these sorts of clust
 + **If your app uses sessions:**
   + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.0.2 --save --save-exact`).
 + **If your app uses sockets:**
-  + Configure your app to use Redis as a shared message queue for delivering socket.io messages (uncomment the `adapter` option in `config/sockets.js`)
+  + Configure your app to use Redis as a shared message queue for delivering socket.io messages. Socket.io (and consequently Sails.js) apps support Redis for sockets by default, so to enable a remote redis pubsub server, uncomment the relevant lines in `config/env/production.js`.
   + Install the socket.io-redis adapter as a dependency of your app (e.g. `npm install socket.io-redis@~1.0.0 --save --save-exact`)
 + **If your cluster is on a single server (for instance, using [pm2 cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/))**
   + To avoid file conflict issues due to Grunt tasks, always start your apps in `production` environment, and/or consider [turning Grunt off completely](http://sailsjs.org/documentation/concepts/assets/disabling-grunt).  See [here](https://github.com/balderdashy/sails/issues/3577#issuecomment-184786535) for more details on Grunt issues in single-server clusters
