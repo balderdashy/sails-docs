@@ -14,6 +14,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 ## Breaking changes to lesser-used functionality
 
+* Custom blueprints and the associated blueprint route syntax have been removed.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
 * `sails.getBaseUrl`, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
 * `req.params.all()`, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
 * `req.validate()` has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2-aka-machine-actions) instead.
@@ -84,7 +85,13 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
   * `.message()`
   In their place, you should use the new `.publish()` method, or the low-level [sails.sockets](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include that as part of the data if it's important.
 
-## Blueprints
+## Replacing custom blueprints
+
+While it is no longer possible to add a file to `api/blueprints` that will automatically be used as a blueprint action for all models, this behavior can be replicated in several ways.
+
+One way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
+
+Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see the Helpers docs at http://sailsjs.com/docs/concepts/helpers), and call that helper from the related action for each model (e.g. `UserController.create`).
 
 
 ## Express 4
