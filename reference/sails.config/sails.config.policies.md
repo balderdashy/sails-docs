@@ -27,6 +27,7 @@ module.exports.policies = {
 
 
 }
+```
 
 <docmeta name="displayName" value="sails.config.policies">
 <docmeta name="pageType" value="property">
