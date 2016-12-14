@@ -21,7 +21,7 @@ req.param(name[, defaultValue]);
 
 ### Example
 
-Consider a route (`POST /product/:sku`) which points to a blueprint, controller, or policy with the following code:
+Consider a route (`POST /product/:sku`) which points to a blueprint, custom action, or policy with the following code:
 
 ```javascript
 req.param('sku');
