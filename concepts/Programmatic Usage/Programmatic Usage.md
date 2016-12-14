@@ -25,7 +25,7 @@ Once you have a reference to a new Sails app, you can use [`.load()`](http://sai
 The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.org/documentation/reference/application/sails-request) method of the loaded app.
 
 
-#### .lift()
+##### .lift()
 
 Starting an app with .lift() on port 1338 and sending a POST request via HTTP:
 
@@ -72,7 +72,7 @@ mySailsApp.lift({
 });//</lift sails app>
 ```
 
-#### .load()
+##### .load()
 
 Here's an alternative to the previous example:  Starting a Sails app with `.load()` and sending what is _semantically_ the same POST request-- but this time, under the covers we'll use a virtual request instead of HTTP:
 
@@ -114,7 +114,7 @@ mySailsApp.load({
 });//</load sails app (but not lift!)>
 ```
 
-#### .lower()
+##### .lower()
 
 To stop an app programmatically, use `.lower()`:
 
@@ -130,6 +130,20 @@ mySailsApp.lower(function(err) {
 
 });
 ```
+
+##### Using `moduleDefinitions` to add actions, models and more
+
+Whenever a Sails app starts, it typically loads and initializes all modules stored in `api/*` (e.g. models from `api/models`, policies from `api/policies`, etc.).  You can add _additional_ modules by specifying them in the runtime configuration passed in as the first argument to `.load()` or `.lift()`, using the `moduleDefinitions` key.  This is mainly useful when running tests.
+
+The following Sails modules can be added programmatically:
+
+  Module type          | Config key        | Details
+ :------------------   |:----------        |:-------
+ Actions | `controllers.moduleDefinitions` | A dictionary mapping [standalone action](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) paths to action definitions ([classic](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) or [Actions2](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).
+ Helpers | `helpers.moduleDefinitions` | A dictionary mapping helper names to helper definitions.
+ Models  | `orm.moduleDefinitions.models` | A dictionary mapping model identities (lower-cased model names) to model definitions.
+ Policies | `policies.moduleDefinitions` | A dictionary mapping policy names (e.g. `isAdmin`) to policy functions.
+
 
 ### Reference
 
