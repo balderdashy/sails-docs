@@ -15,13 +15,15 @@ The `config/policies.js` file is a dictionary whose properties and values differ
 
 ##### Applying policies to a controller
 
-To apply policies to a controller, use the controller name as the name of a property in the  `config/policies.js` dictionary, and set its value to a dictionary mapping actions in that controller to policies that should be applied to them.  Use `*` to represent &ldquo;all unmapped actions&rdquo;.
+To apply policies to a controller, use the controller name as the name of a property in the  `config/policies.js` dictionary, and set its value to a dictionary mapping actions in that controller to policies that should be applied to them.  Use `*` to represent &ldquo;all unmapped actions&rdquo;.  A policy's _name_ is the same as its filename, minus the file extension.
 
 ```js
 {
   UserController: {
      '*': 'isLoggedIn', // By default, require requests to come from a logged-in user
+                        // (runs the policy in api/policies/isLoggedIn.js)
      'delete': 'isAdmin', // Only allow admin users to delete other users
+                          // (runs the policy in api/policies/isAdmin.js)
      'login': true // Allow anyone to access the login action, even if they're not logged in.
 }
 ```
