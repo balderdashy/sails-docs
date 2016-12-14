@@ -95,13 +95,13 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
 > + This action is for adding foreign records to _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
->   $ sails generate api employee
+>   $ sails generate model purchase
+>   $ sails generate model employee
 >   ```
 >
 > ...then editing `api/models/Purchase.js` and `api/models/Employee.js`.

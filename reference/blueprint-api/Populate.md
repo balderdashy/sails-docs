@@ -78,13 +78,13 @@ curl http://localhost:1337/purchase/47/cashier
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model with an association attribute: `cashier: {model: 'Employee'}`.  You'll also need at least an empty `PurchaseController` and `EmployeeController`.  You can quickly achieve this by running:
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model with an association attribute: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
->   $ sails generate api employee
+>   $ sails generate model purchase
+>   $ sails generate model employee
 >   ```
 > ...then editing `api/models/Purchase.js`.
 

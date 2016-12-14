@@ -101,12 +101,12 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains a `Purchase` model and an empty `PurchaseController`.  You can quickly achieve this by running:
+> + The example above assumes "rest" blueprints are enabled, and that your project contains a `Purchase` model.  You can quickly achieve this by running:
 >
 >   ```bash
 >   $ sails new foo
 >   $ cd foo
->   $ sails generate api purchase
+>   $ sails generate model purchase
 >   $ sails lift
 >     # You will see a prompt about database auto-migration settings.
 >     # Just choose 2 (alter) and press <ENTER>.
