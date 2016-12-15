@@ -6,7 +6,7 @@ Your custom configuration file. This is useful for one-off settings specific to 
 
 To access these values from your actions and helpers, use `sails.config.custom`.
 
-For example:
+### For example:
 
 ```javascript
 module.exports.custom = {
