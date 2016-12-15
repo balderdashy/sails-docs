@@ -14,13 +14,13 @@ Configuration for your app's underlying HTTP server.  These properties are conve
   `trustProxy`      | ((boolean)) _or_ ((function)) | `undefined`      | This tells Sails/Express how it should interpret "X-Forwarded" headers.  Only use this setting if you are using HTTPS _and_ if you are deploying behind a proxy (for example, a PaaS like Heroku).  If your app does not fit that description, then leave this as undefined.  Otherwise, you might start by setting this to `true`, which works for many deployments.  But if that doesn't work, see [here](https://expressjs.com/en/guide/behind-proxies.html) for all available options.
 
 
-### Configuring the body parser
+### Customizing the body parser
 
 The _body parser_ is what Sails/Express apps use to read and understand the body of incoming HTTP requests.  Many different body parsers are available, with different strengths and weaknesses.  By default, Sails apps use [Skipper](http://github.com/balderdashy/skipper), a general purpose solution that knows how to parse most kinds of HTTP request bodies, while also providing support for streaming, multipart file uploads.
 
 > You can also specify a different body parser or a custom function with req, res and next parameters (just like any other [HTTP middleware function](http://sailsjs.com/documentation/concepts/middleware).)
 
-### Configuring Skipper
+##### Configuring Skipper
 
 To customize Skipper, the default body parser and file uploader, first make sure to `npm install skipper --save` in your app.  Then uncomment the following code in your `config/http.js` file:
 
@@ -46,7 +46,7 @@ Then pass in any of the following options from the table below.
  `extended`         | ((boolean)) | `true`    | Whether or not to understand multiple text parameters in square bracket notation in the URL-encoded request body (e.g. `courseId[]=ARY%20301&courseId[]=PSY%20420`) encoded  the HTTP body as an array (e.g. `courseId: ['ARY 301', 'PSY 420'], ...`).  Enabled by default.  See https://github.com/expressjs/body-parser#extended for more details.
  `onBodyParserError` | ((function)) | (see details) | An optional function to be called if Skipper encounters an error while parsing the request body (for example, if it encounters malformed JSON).  The function accepts four arguments: `err`, `req`, `res` and `next`.  Sails provides a default implementation that responds to the request with a 400 status and a message detailing the error encountered.  If no `onBodyParserError` function is provided, parser errors will be passed to `next()` and handled by the next available [error-handling middleware](https://expressjs.com/en/guide/error-handling.html).
 
-> Note that for performance tuning and other advanced configuration, the options you pass in to Skipper this way are also passed through to the underlying Express body parser.  See the [body-parser repo](https://github.com/expressjs/body-parser) for a full list of options.
+> Note that, to allow for performance tuning and other advanced configuration, the options you pass in to Skipper this way are also passed through to the underlying Express body parser.  See the [body-parser repo](https://github.com/expressjs/body-parser) for a full list of lower-level options.
 
 
 ### Compatibility
