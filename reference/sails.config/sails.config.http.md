@@ -14,12 +14,25 @@ Configuration for your app's underlying HTTP server.  These properties are conve
   `trustProxy`      | ((boolean)) _or_ ((function)) | `undefined`      | This tells Sails/Express how it should interpret "X-Forwarded" headers.  Only use this setting if you are using HTTPS _and_ if you are deploying behind a proxy (for example, a PaaS like Heroku).  If your app does not fit that description, then leave this as undefined.  Otherwise, you might start by setting this to `true`, which works for many deployments.  But if that doesn't work, see [here](https://expressjs.com/en/guide/behind-proxies.html) for all available options.
 
 
+### Configuring the body parser
+
+The _body parser_ is what Sails/Express apps use to read and understand the body of incoming HTTP requests.  Many different body parsers are available, with different strengths and weaknesses.  By default, Sails apps use [Skipper](http://github.com/balderdashy/skipper), a general purpose solution that knows how to parse most kinds of HTTP request bodies, while also providing support for streaming, multipart file uploads.
+
+> You can also specify a different body parser or a custom function with req, res and next parameters (just like any other [HTTP middleware function](http://sailsjs.com/documentation/concepts/middleware).)
+
 ### Configuring Skipper
 
-To customize Skipper, the default body parser and file uploader, you can uncomment the direct call to `require('skipper')(...)`:
+To customize Skipper, the default body parser and file uploader, first make sure to `npm install skipper --save` in your app.  Then uncomment the following code in your `config/http.js` file:
 
 ```javascript
-// bodyParser: require('skipper')({strict: true})
+bodyParser: (function _configureBodyParser(){
+  var skipper = require('skipper');
+  var middlewareFn = skipper({
+    strict: true,
+    // ... more Skipper options here ...
+  });
+  return middlewareFn;
+})(),
 ```
 
 Then pass in any of the following options from the table below.
@@ -29,7 +42,7 @@ Then pass in any of the following options from the table below.
  `maxWaitTimeBeforePassingControlToApp`  | ((number))  | `500`     | The maximum number of miliseconds to wait when processing an incoming multipart request before passing control to your app's policies and controllers.  If this number of miliseconds goes by, and no incoming file uploads have arrived yet, and the request hasn't finished sending other data like text parameters (i.e. the form emits "close"), then control will be passed without further delay.  For apps running behind particular combinations of load balancers, proxies, and/or SSL, it may be necessary to increase this delay (see https://github.com/balderdashy/skipper/issues/71#issuecomment-217556631).
  `maxTimeToWaitForFirstFile`             | ((number))  | `10000`   | The maximum number of miliseconds to wait for the first file upload to arrive in any given upstream before triggering `.upload()`'s callback.  If the first file upload on a given upstream does not arrive before this number of miliseconds have elapsed, then an `ETIMEOUT` error will fire.
  `maxBufferTime`                         | ((number))  | `4500`    | The maximum number of miliseconds to wait for any given live [upstream](https://github.com/balderdashy/skipper#what-are-upstreams) to be plugged in to a receiver after it begins receiving an incoming file upload.  Skipper pauses upstreams to allow custom code in your app's policies and controller actions to run (e.g. doing database lookups) before you "plug in" the incoming file uploads (e.g. `req.file('avatar').upload(...)`) into your desired upload target (local disk, S3, gridfs, etc).  Incoming bytes are managed using [a combination of buffering and TCP backpressure](https://howtonode.org/streams-explained) built in to Node.js streams.  The max buffer time is a configurable layer of defense to protect against denial of service attacks that attempt to flood servers with pending file uploads.  If the timeout is exceeded, an EMAXBUFFER error will fire.  The best defense against these types of attacks is to plug incoming file uploads into receivers as early as possible at the top of your controller actions.
- `strict`           | ((boolean)) | `true`    | When enabled, only arrays and dictionaries (i.e. JavaScript objects) will be interpeted and parsed as JSON when sent in the HTTP request body.  Other values (including `null`, `true`, `false`, numbers, and double-quote-wrapped strings) which are technically JSON compatible, but uncommon in practice, are not interpreted as JSON.  Enabled by default.
+ `strict`           | ((boolean)) | `true`    | When enabled, the body of incoming HTTP requests will only be parsed as JSON if it appears to be an array or dictionary (i.e. plain JavaScript object).  Otherwise, if _disabled_, then the body parser will accept anything `JSON.parse()` accepts (including `null`, `true`, `false`, numbers, and double-quote-wrapped strings).  Since these other types of data are technically JSON compatible, but uncommon in practice, this setting is enabled by default.
  `extended`         | ((boolean)) | `true`    | Whether or not to understand multiple text parameters in square bracket notation in the URL-encoded request body (e.g. `courseId[]=ARY%20301&courseId[]=PSY%20420`) encoded  the HTTP body as an array (e.g. `courseId: ['ARY 301', 'PSY 420'], ...`).  Enabled by default.  See https://github.com/expressjs/body-parser#extended for more details.
  `onBodyParserError` | ((function)) | (see details) | An optional function to be called if Skipper encounters an error while parsing the request body (for example, if it encounters malformed JSON).  The function accepts four arguments: `err`, `req`, `res` and `next`.  Sails provides a default implementation that responds to the request with a 400 status and a message detailing the error encountered.  If no `onBodyParserError` function is provided, parser errors will be passed to `next()` and handled by the next available [error-handling middleware](https://expressjs.com/en/guide/error-handling.html).
 
