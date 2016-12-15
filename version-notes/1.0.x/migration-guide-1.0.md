@@ -15,6 +15,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 ## Breaking changes to lesser-used functionality
 
 * Custom blueprints and the associated blueprint route syntax have been removed.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
+* Blueprint action routes no longer include `/:id?` at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
 * `sails.getBaseUrl`, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
 * `req.params.all()`, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
 * `req.validate()` has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2-aka-machine-actions) instead.
