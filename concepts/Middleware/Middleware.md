@@ -13,7 +13,7 @@ Read about the default middleware stack [here](http://sailsjs.org/documentation/
 
 
 
-#### Adding or Overriding HTTP Middleware
+##### Adding or overriding HTTP middleware
 
 To configure a custom HTTP middleware function, define a new HTTP key `sails.config.http.middleware.foobar` and set it to the configured middleware function, then add the string name ("foobar") to your `sails.config.http.middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before "cookieParser"):
 
@@ -74,7 +74,8 @@ For example, in `config/http.js`:
 
 Every value assigned to a `sails.config.middleware.*` key should be a function which takes three arguments: `req`, `res` and `next`.  You&rsquo;; note in the above example that rather than setting the value to a "req, res, next" function directly, a self-calling (aka ["immediately-invoked"](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)) function is used that both configures and returns the final middleware.
 
-### Express Middleware In Sails
+
+### Express middleware in Sails
 
 One of the really nice things about Sails apps is that they can take advantage of the wealth of already-existing Express/Connect middleware out there.  But a common question that arises when people _actually_ try to do this is:
 
@@ -84,9 +85,12 @@ In most cases, the answer is to install the Express middleware as a custom HTTP 
 
 > You should never override or remove the `router` HTTP middleware.  It is built-in to Sails, and without it, your app's explicit routes and blueprint routes will not work.
 
-### Express Routing Middleware In Sails
 
-You can also include Express middleware as a policy- just configure it in [`config/policies.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
+##### Express middleware as policies
+
+To make Express middleware apply only to a particular action, you can also include Express middleware as a policy-- just be sure that you actually want it to run for both HTTP _and_ virtual socket requests.
+
+To do this, edit [`config/policies.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.policies.html).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
 
 ```js
 var auth = require('http-auth');
