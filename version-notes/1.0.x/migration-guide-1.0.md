@@ -108,3 +108,4 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 
 ## Responses
  * `.jsonx()` is deprecated -- if you haven't customized a response, just delete it.  Otherwise, replace `res.jsonx()` with `res.json()`.
+ * `res.negotiate()` is deprecated -- use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
