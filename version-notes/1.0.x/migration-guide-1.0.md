@@ -109,3 +109,8 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 ## Responses
  * `.jsonx()` is deprecated -- if you haven't customized a response, just delete it.  Otherwise, replace `res.jsonx()` with `res.json()`.
  * `res.negotiate()` is deprecated -- use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
+
+
+## WebSockets
+
+The `sails-hook-sockets` hook that is installed by default with new Sails apps now uses a newer version of Socket.io.  See the [Socket.io changelog](https://github.com/socketio/socket.io/blob/master/History.md#150--2016-10-06) for a full update, but one thing to keep in mind is that socket IDs no longer have `/#` prepended to them by default.
