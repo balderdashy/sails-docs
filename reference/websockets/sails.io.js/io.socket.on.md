@@ -55,7 +55,7 @@ io.socket.on('order', function onServerSentEvent (msg) {
 ##### Realtime cafeteria
 
 Imagine you're building an ordering system for a chain of restaurants:
-  
+
 ```javascript
 // In your frontend code...
 // (This example uses jQuery and Lodash for simplicity. But you can use any library or framework you like.)
@@ -63,7 +63,7 @@ Imagine you're building an ordering system for a chain of restaurants:
 var ORDER_IN_LIST = _.template('<li data-id="<%- order.id %>"><p><%- order.summary %></p></li>');
 
 $(function whenDomIsReady(){
-  
+
   // Every time we receive a relevant socket event...
   io.socket.on('order', function (msg) {
 
@@ -83,7 +83,7 @@ $(function whenDomIsReady(){
         // Find any existing orders w/ this id in the DOM.
         //
         // > Remember: To prevent XSS attacks and bugs, never build DOM selectors
-        // > using untrusted provided by users.  (In this case, we know that "id" 
+        // > using untrusted provided by users.  (In this case, we know that "id"
         // > did not come from a user, so we can trust it.)
         var $deletedOrders = $('#orders').find('[data-id="'+msg.id+'"]');
 
@@ -131,7 +131,7 @@ io.socket.on('disconnect', function onDisconnect(){
 
 
 ### Notes
->+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](http://next.sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
+>+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
 >+ When listening for socket messages from resourceful pubsub calls and blueprints, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
 >+ For context-- socket notifications are also sometimes referred to as "server-sent events" or "[comet](http://en.wikipedia.org/wiki/Comet_(programming)) messages".
 
