@@ -4,25 +4,26 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 ## tl;dr checklist -- things you simply _must_ do when upgrading to version 1.0
 
-* Install the `sails-hook-orm` module into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
-* Install the `sails-hook-sockets` module into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
-* Install the `sails-hook-grunt` module into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
-* If your app doesn't have `sails.config.globals` set to `false`, update your `config/globals.js` file so that `models` and `sails` have boolean values (`true` or `false`), and `async` and `lodash` either have `require('async')` and `require('lodash')` respectively, or else `false`.  You may need to `npm install --save lodash` and `npm install --save async` as well.
-* The `/csrfToken` route is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grantCsrfToken' }`.
-* If your app uses CoffeeScript or TypeScript see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
-* If your app uses a view engine other than EJS, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
+* **Install the `sails-hook-orm` module** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
+* **Install the `sails-hook-sockets` module** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
+* **Install the `sails-hook-grunt` module** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
+* **update your `config/globals.js` file** (if your app doesn't have `sails.config.globals` set to `false`) so that `models` and `sails` have boolean values (`true` or `false`), and `async` and `lodash` either have `require('async')` and `require('lodash')` respectively, or else `false`.  You may need to `npm install --save lodash` and `npm install --save async` as well.
+* **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grantCsrfToken' }`.
+* **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
+* **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 
 ## Breaking changes to lesser-used functionality
 
-* Custom blueprints and the associated blueprint route syntax have been removed.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
-* Blueprint action routes no longer include `/:id?` at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
-* `sails.getBaseUrl`, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
-* `req.params.all()`, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
-* `req.validate()` has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2-aka-machine-actions) instead.
-* The default `res.created()` response has been removed.  If you&rsquo;re calling `res.created()` directly in your app, and you don't have an `api/responses/created.js` file, you&rsquo;ll need to create one.  On a related note, the [Blueprint create action](http://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
-* The <a href="https://www.npmjs.com/package/connect-flash" target="_blank">`connect-flash`</a> middleware has been removed (so `req.flash()` will no longer be available by default).  If you wish to continue using `req.flash()`, run `npm install --save connect-flash` in your app folder and [add the middleware manually](http://sailsjs.com/documentation/concepts/middleware).
-* The `POST /:model/:id` blueprint RESTful route has been removed.  If your app is relying on this route, you&rsquo;ll need to add it manually to `config/routes.js` and bind it to a custom action.
-* The `handleBodyParserError` middleware has been removed -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.  If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.  If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
+* **Many resourceful pubsub methods have changed** (see the PubSub section below for the full list).  If your app only uses the automatic RPS functionality provided by blueprints (and doesn&rsquo;t call RPS methods directly), no updates are required.
+* **Custom blueprints and the associated blueprint route syntax have been removed**.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
+* **Blueprint action routes no longer include `/:id?`** at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
+* **`sails.getBaseUrl`**, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
+* **`req.params.all()`**, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
+* **`req.validate()`** has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2) instead.
+* **The default `res.created()` response has been removed.**  If you&rsquo;re calling `res.created()` directly in your app, and you don't have an `api/responses/created.js` file, you&rsquo;ll need to create one.  On a related note, the [Blueprint create action](http://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
+* **The <a href="https://www.npmjs.com/package/connect-flash" target="_blank">`connect-flash`</a> middleware has been removed** (so `req.flash()` will no longer be available by default).  If you wish to continue using `req.flash()`, run `npm install --save connect-flash` in your app folder and [add the middleware manually](http://sailsjs.com/documentation/concepts/middleware).
+* **The `POST /:model/:id` blueprint RESTful route has been removed.**  If your app is relying on this route, you&rsquo;ll need to add it manually to `config/routes.js` and bind it to a custom action.
+* **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.  If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.  If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
 
 ## Security
 
@@ -69,7 +70,7 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 }
 ```
 
-## Pubsub
+## PubSub
 
 * Removed deprecated `backwardsCompatibilityFor0.9SocketClients` setting.
 * Removed deprecated `.subscribers()` method.
@@ -84,7 +85,8 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
   * `.watch()`
   * `.unwatch()`
   * `.message()`
-  In their place, you should use the new `.publish()` method, or the low-level [sails.sockets](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include that as part of the data if it's important.
+
+In place of the removed methods, you should use the new `.publish()` method, or the low-level [sails.sockets](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include that as part of the data if it's important.
 
 ## Replacing custom blueprints
 
@@ -96,15 +98,11 @@ Another option would be to add a `api/helpers/create.js` helper which takes a mo
 
 
 ## Express 4
- ### Middleware changes
 
-## Policies
+Sails 1.0 comes with an update to the internal Express server from version 3 to version 4 (thanks to some great work by [@josebaseba](http://github.com/josebaseba)).  This change is mainly about maintainability for the Sails framework, and should be transparent to your app.  However, there are a couple of differences worth noting
 
-## Miscellaneous deprecated features removed in 1.0
-
-* `req.params.all()`
-
-## Globals
+* The `404`, `500` and `startRequestTimer` middleware are now built-in to every Sails app, and have been removed from the `sails.config.http.middleware.order` array.  If your app has an overridden `404` or `500` handler, you should instead override `api/responses/notFound.js` and `api/responses/serverError.js` respectively.
+* Session middleware that was designed specifically for Express 3 (e.g. very old versions of `connect-redis` or `connect-mongo`) will no longer work, so you&rsquo;ll need to upgrade to more recent versions.
 
 ## Responses
  * `.jsonx()` is deprecated -- if you haven't customized a response, just delete it.  Otherwise, replace `res.jsonx()` with `res.json()`.
