@@ -1,15 +1,34 @@
 # Models
 
-A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
+A model represents a set of structured data, called records.  Models usually correspond to a table/collection in a database, attributes correspond to columns/fields, and records correspond to rows/documents.  
 
+### Defining models
+
+By convention, models are defined by creating a file in a Sails app's `api/models/` folder:
+
+```
+// api/models/Product.js
+module.exports = {
+  attributes: {
+    nameOnMenu: { type: 'string', required: true },
+    price: { type: 'string', required: true },
+    percentRealMeat: { type: 'float', defaultsTo: 20 },
+    numCalories: { type: 'integer' },
+  },
+};
+```
+
+For a complete walkthrough of available options when setting up a model definition, see [Model Settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings), [Attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes), and [Associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).
+
+<!--
 ```javascript
-// Parrot.js
+// api/models/Parrot.js
 // The set of parrots registered in our app.
 module.exports = {
   attributes: {
     // e.g., "Polly"
     name: {
-      type: 'string'
+      type: 'string',
     },
 
     // e.g., 3.26
@@ -27,11 +46,13 @@ module.exports = {
 
     // e.g., [{...}, {...}, ...]
     knownDialects: {
-      collection: 'Dialect'
+      collection: 'Dialect',
+      via: 'knownByParrots'
     }
   }
 }
 ```
+-->
 
 <!--
 
@@ -47,38 +68,68 @@ module.exports = {
 -->
 
 
+
 ### Using models
 
+Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.org/documentation/reference/waterline/models/find.html), [create](http://sailsjs.org/documentation/reference/waterline/models/create.html), [update](http://sailsjs.org/documentation/reference/waterline/models/update.html), and [destroy](http://sailsjs.org/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
-
-
-Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
-
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
+There are many built-in methods available on models, the most important of which are the query methods like [.find()](http://sailsjs.org/documentation/reference/waterline/models/find) and [.create()](http://sailsjs.org/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
+### Query methods
+
+Since they have to send a query to the database and wait for a response, query methods are **asynchronous functions**.  That is, they don't come back with an answer right away.  Like other asynchronous functions in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
+
+In Node.js, Sails, and JavaScript in general, the classic way to support this paradigm is by using _callbacks_.
+
+For convenience, built-in model methods return a _deferred object_ known as a "query":
+
+```javascript
+var query = User.findOne({ name: 'Rose' });
+```
+
+##### Deferred object
+
+To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
+
+```javascript
+query.exec(function (err, rose) {
+  if (err) { return res.serverError(err); }
+  if (!rose) { return res.notFound(); }
+  return res.json(rose);
+});
+```
+
+> Click [here](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3) for a version of this sample code that also includes comments.
 
 
+##### Promises
 
-### Model methods
-
-Model class methods are functions built into the model itself.  This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
-
-### Built-in model methods
-
-Most built-in model methods in Sails are provided by Waterline.  You can find detailed usage documentation for these methods in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
-
-Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifically designed for performing simple realtime operations using dynamic rooms.  For more information about RPS methods, see [Reference > WebSockets > Resourceful PubSub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
+As an alternative to callbacks, Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 
-##### Custom model methods
+This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.  But you can also
 
-Waterline allows you to define custom methods on your models.  This feature takes advantage of the fact that Waterline models ignore unrecognized keys, so you do need to be careful about inadvertently overriding built-in methods and dynamic finders (don't define methods named "create", etc.)  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
 
-Model methods are generally asynchronous functions.  By convention, asynchronous model methods should be 2-ary functions, which accept an object of inputs as their first argument (usually called `opts` or `options`) and a Node callback as the second argument.  Alternatively, you might opt to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
+There are many built-in methods available on models, the most important of which are the query methods like [find](http://sailsjs.org/documentation/reference/waterline/models/find.html) and [create](http://sailsjs.org/documentation/reference/waterline/models/create.html).
 
-A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+
+### Resourceful pubsub methods
+
+Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifically designed for performing simple realtime operations using dynamic rooms.  For more information about those methods, see [Reference > WebSockets > Resourceful PubSub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
+
+
+### Custom model methods
+
+In addition to the built-in functionality provided by Sails, you can also define your own custom model methods.  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
+
+> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods and dynamic finders (don't define methods named "create", etc.)  
+
+Model methods can be synchronous or asynchronous functions, but more often than not, they're _asynchronous_.  By convention, asynchronous model methods should be 2-ary functions, which accept `options` as their first argument, and a Node-style callback as the second argument.  Alternatively, instead of a callback, you might choose to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
+
+##### Best practices
+
+One best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
 
 For example:
 
