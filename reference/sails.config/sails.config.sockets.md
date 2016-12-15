@@ -52,7 +52,7 @@ To define your own custom logic, specify a function like:
 ```
 beforeConnect: function (handshake, cb) { 
   /* pass back true to allow, false to deny */ 
-  return cb(null, true); 
+  return cb(null, true);
 }
 ```
 By default, when a socket tries to connect, Sails allows it, every time. (much in the same way any HTTP request is allowed to reach your routes.  If no valid cookie was sent, a temporary session will be created for the connecting socket.
