@@ -82,15 +82,15 @@ Since they have to send a query to the database and wait for a response, query m
 
 In Node.js, Sails, and JavaScript in general, the classic way to support this paradigm is by using _callbacks_.
 
+##### Callbacks
+
 For convenience, built-in model methods return a _deferred object_ known as a "query":
 
 ```javascript
 var query = User.findOne({ name: 'Rose' });
 ```
 
-##### Deferred object
-
-To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
+After running [the code above](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), our app has not _actually_ talked to the database yet.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
 
 ```javascript
 query.exec(function (err, rose) {
@@ -100,19 +100,14 @@ query.exec(function (err, rose) {
 });
 ```
 
-> Click [here](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3) for a version of this sample code that also includes comments.
+> In addition to `.exec()`, many Sails apps benefit from using the [async](https://www.npmjs.com/package/async) library.  In fact, to facilitate this, Sails provides an [easy way](http://sailsjs.com/documentation/reference/configuration/sails-config-globals) to access `async` throughout your app.
 
 
 ##### Promises
 
-As an alternative to callbacks, Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
+As an alternative to callbacks, Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query, you can choose to call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
-
-This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.  But you can also
-
-
-There are many built-in methods available on models, the most important of which are the query methods like [find](http://sailsjs.org/documentation/reference/waterline/models/find.html) and [create](http://sailsjs.org/documentation/reference/waterline/models/create.html).
-
+> If you are not already an avid user of promises, don't worry-- [just stick with `.exec()`](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  The decision of whether to use callbacks or promises is a question of style, so don't feel pressured one way or the other.
 
 ### Resourceful pubsub methods
 
