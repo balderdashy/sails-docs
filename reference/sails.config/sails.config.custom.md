@@ -22,8 +22,8 @@ var mailgunApiKey = sails.config.custom.mailgunApiKey;
 var mailgunDomain = sails.config.custom.mailgunDomain;
 // ...
 ```
-
-> Note that the contents of this file can be overridden via environment variables, or using any of the other configuration mechanisms provided by Sails.     
+### Notes
+> The contents of this file can be overridden via environment variables, or using any of the other configuration mechanisms provided by Sails.     
 
 
 <docmeta name="displayName" value="sails.config.custom">
