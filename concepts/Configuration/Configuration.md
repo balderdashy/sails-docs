@@ -89,26 +89,8 @@ This value will be in effect _only_ for the lifetime of this particular Sails in
 
 
 ### Custom Configuration
-Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`).  However you can also use `sails.config` for your own custom configuration (e.g. `sails.config.someProprietaryAPI.secret`).
 
-##### Example
-
-```javascript
-// config/linkedin.js
-module.exports.linkedin = {
-  apiKey: '...',
-  apiSecret: '...'
-};
-```
-
-```javascript
-// In your controller/service/model/hook/whatever:
-// ...
-var apiKey = sails.config.linkedin.apiKey;
-var apiSecret = sails.config.linkedin.apiSecret;
-// ...
-```
-
+You can also leverage Sails's configuration loader to manage your own custom settings.  See [sails.config.custom](http://sailsjs.com/config/sails-config-custom) for more information.
 
 
 
