@@ -30,7 +30,7 @@ These configuration options provide lower-level access to the underlying Socket.
 
 | Property   | Type      | Default  | Details |
 |:-----------|:---------:|:---------|:--------|
-| `beforeConnect`|((boolean)), ((function)) | `undefined` | A function to run every time a new client-side socket attempts to connect to the server which can be used to reject or allow the incoming connection.  Useful for tweaking your production environment to prevent [DoS](http://sailsjs.com/docs/concepts/security/ddos) attacks, or reject socket.io connections based on business-specific heuristics (e.g. if stooges from a competing business create bots to post spam links about their commercial product in your chat room).  To define your own custom logic, specify a function like: `beforeConnect: function (handshake, cb) { /* pass back true to allow, false to deny */ return cb(null, true); }`  As of Sails v0.11, Sails no longer blocks incoming socket connections without cookies-- instead, cookies (and by corollary- sessions) are granted automatically.  If a requesting socket.io client cannot receive a cookie (i.e. making a cross-origin socket.io connection) the `sails.io.js` socket client will automatically send a CORS+JSONP request to try and obtain one **BEFORE CONNECTING** (refer to the `grant3rdPartyCookie` option for details).  In the antagonistic scenario where even this fails, Sails will still grant a new cookie upon connection, which allows for a one-time session. |
+| `beforeConnect`|((boolean)), ((function)) | `undefined` | A function to run every time a new client-side socket attempts to connect to the server which can be used to reject or allow the incoming connection.  Useful for tweaking your production environment to prevent [DoS](http://sailsjs.com/docs/concepts/security/ddos) attacks, or reject socket.io connections based on business-specific heuristics. See "beforeConfig" below for more info. |
 | `afterDisconnect`| ((function)) | `undefined` | A function to run when a client-side socket disconnects from the server.  To define your own custom logic, specify a function like `afterDisconnect: function (session, socket, cb) {}`.
 | `allowUpgrades` | ((boolean)) | `true` | This is a raw configuration option exposed from Engine.io.  It indicates whether to allow Socket.io clients to upgrade the transport that they are using (e.g. start with polling, then upgrade to a true WebSocket connection).  |
 | `cookie` | ((string)), ((boolean)) | `false` | This is a raw configuration option exposed from Engine.io.  It indicates the name of the HTTP cookie that contains the connecting socket.io client's socket id.  The cookie will be set when responding to the initial Socket.io "handshake".  Alternatively, may be set to `false` to disable the cookie altogether.  Note that the `sails.io.js` client does not rely on this cookie, so it is disabled (set to `false`) by default for enhanced security.  If you are using socket.io directly and need to re-enable this cookie, keep in mind that the conventional setting is `"io"`.  |
@@ -45,6 +45,26 @@ These configuration options provide lower-level access to the underlying Socket.
 | `onRedisReconnect` | ((function)) | `undefined` | An optional function for Sails to call if a previously-dropped Redis connection is restored (see `onDisconnect` above).
 
 > Note: `onRedisDisconnect` and `onRedisReconnect` will only be called for Redis clients that are created by Sails for you; if you provide your own Redis clients (see below), these functions will _not_ be called automatically in the case of a disconnect or reconnect.
+
+##### beforeConnect
+
+To define your own custom logic, specify a function like: 
+```
+beforeConnect: function (handshake, cb) { 
+  /* pass back true to allow, false to deny */ 
+  return cb(null, true); 
+}
+```
+By default, when a socket tries to connect, Sails allows it, every time. (much in the same way any HTTP request is allowed to reach your routes.  If no valid cookie was sent, a temporary session will be created for the connecting socket.
+
+If the cookie sent as part of the socket connection request doesn't match any known user session, a new user session is created for it. In most cases, the user would already have a cookie since they loaded the socket.io client and the initial HTML page you're building.   
+
+However, in the case of cross-domain requests, it is possible to receive a connection upgrade request WITHOUT A COOKIE (for certain transports). In this case, there is no way to keep track of the requesting user between requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.                                 
+
+You can also pass along a ?cookie query parameter in the url when connecting the socket (either by hand or when configuring sails.io.js), which Sails will use instead of the cookie that was sent in the HTTP request header. e.g.: io.sails.connect('http://localhost:1337?cookie=smokeybear')                                                                             
+
+> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security. 
+
 
 ### Providing Your Own Redis Clients
 
