@@ -1,5 +1,11 @@
 # res.negotiate()
 
+> _**This method is deprecated**._
+>
+> You should use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
+>
+> To handle errors from [Waterline model methods](http://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](#) for more details).
+
 Given an error (`err`), attempt to guess which error response should be called (`badRequest`, `forbidden`, `notFound`, or `serverError`) by inspecting the `status` property.  If `err` is not a dictionary, or the `status` property does not match a known HTTP status code, then default to `serverError`.
 
 Especially handy for handling potential validation errors from [Model.create()](http://sailsjs.org/documentation/reference/waterline/models/create.html) or [Model.update()](http://sailsjs.org/documentation/reference/waterline/models/update.html).
@@ -44,7 +50,7 @@ Pet.update({name: 'fido'})
 >+ `res.negotiate()` (like other userland response methods) can be overridden - just define a response module (`/responses/negotiate.js`) and export a function definition.
 >+ This method is used as the default handler for uncaught errors in Sails.  That means it is called automatically if an error is thrown in _any_ request handling code, _but only within the initial step of the event loop_.  You should always specifically handle errors that might arise in callbacks/promises from asynchronous code.
 
-
+<docmeta name="isDeprecated" value="true">
 
 
 
