@@ -1,6 +1,6 @@
 # res.badRequest()
 
-This method is used to send a [400](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Bad Request") response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">400</a> ("Bad Request") response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.
 
 
 

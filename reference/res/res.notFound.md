@@ -1,6 +1,6 @@
 # res.notFound()
 
-Sends a [404](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Not Found") response using either [res.json()](http://sailsjs.org/documentation/reference/res/res.json.html) or [res.view()](http://sailsjs.org/documentation/reference/res/res.view.html). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> ("Not Found") response using either [res.json()](http://sailsjs.org/documentation/reference/res/res.json.html) or [res.view()](http://sailsjs.org/documentation/reference/res/res.view.html). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
 
 When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn't exist.
 

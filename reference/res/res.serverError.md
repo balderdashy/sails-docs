@@ -1,6 +1,6 @@
 # res.serverError()
 
-Send a [500](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error) ("Server Error") response back down to the client indicating that some kind of server error occurred (i.e. the error is not the requesting user agent's fault).
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error" target="_blank">500</a> ("Server Error") response back down to the client indicating that some kind of server error occurred (i.e. the error is not the requesting user agent's fault).
 
 ### Usage
 

@@ -1,6 +1,6 @@
 # res.forbidden()
 
-This method is used to send a [403](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error) ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">403</a> ("Forbidden") response back down to the client indicating that the request is not allowed.  This usually means the user-agent tried to do something it was not allowed to do, like change the password of another user.
 
 
 ### Usage

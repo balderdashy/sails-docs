@@ -1,6 +1,6 @@
 # res.ok()
 
-Send a 200 ("OK") response back down to the client.
+This method is used to send a <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success" target="_blank">200</a> ("OK") response back down to the client.
 
 
 ### Usage
