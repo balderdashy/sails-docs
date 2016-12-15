@@ -31,7 +31,7 @@ query.exec(function afterwards(err, result) {
 Zookeeper.find().exec(function (err, zookeepers) {
   if (err) {
     // uh oh
-    // (handle error; e.g. `return res.negotiate()`)
+    // (handle error; e.g. `return res.serverError(err)`)
     return;
   }
 

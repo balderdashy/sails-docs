@@ -34,7 +34,7 @@ To delete any users named Finn from the database:
 
 User.destroy({name:'Finn'}).exec(function (err){
   if (err) {
-    return res.negotiate(err);
+    return res.serverError(err);
   }
   sails.log('Any users named Finn have now been deleted, if there were any.');
   return res.ok();
@@ -48,7 +48,7 @@ Book.destroy({
   id: 4
 }).exec(function (err){
   if (err) {
-    return res.negotiate(err);
+    return res.serverError(err);
   }
   sails.log('Deleted book with `id: 4`, if it existed.');
   return res.ok();
@@ -63,7 +63,7 @@ User.destroy({
   id: [ 3, 97 ]
 }).exec(function (err){
   if (err) {
-    return res.negotiate(err);
+    return res.serverError(err);
   }
   sails.log('The records for troublesome users (3 and 97) have been deleted, if they still existed.');
   return res.ok();

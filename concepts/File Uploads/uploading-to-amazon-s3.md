@@ -1,6 +1,6 @@
 # Uploading to Amazon S3
 
->Please note that your Amazon S3 bucket must be created in the 'US Standard' region. 
+>Please note that your Amazon S3 bucket must be created in the 'US Standard' region.
 >If you fail to do so, you will get a 'TypeError('Uncaught, unspecified "error" event.').
 
 With Sails, you can stream file uploads to Amazon S3 with very little additional configuration.
@@ -21,7 +21,7 @@ Then use it in one of your controllers:
       secret: 'S3 Secret'
       bucket: 'Bucket Name'
     }, function (err, filesUploaded) {
-      if (err) return res.negotiate(err);
+      if (err) return res.serverError(err);
       return res.ok({
         files: filesUploaded,
         textParams: req.params.all()

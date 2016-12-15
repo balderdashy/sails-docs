@@ -16,7 +16,7 @@ Then use it in one of your controllers:
       adapter: require('skipper-gridfs'),
       uri: 'mongodb://[username:password@]host1[:port1][/[database[.bucket]]'
     }, function (err, filesUploaded) {
-      if (err) return res.negotiate(err);
+      if (err) return res.serverError(err);
       return res.ok();
     });
   }

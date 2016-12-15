@@ -38,7 +38,7 @@ uploadAvatar: function (req, res) {
     maxBytes: 10000000
   },function whenDone(err, uploadedFiles) {
     if (err) {
-      return res.negotiate(err);
+      return res.serverError(err);
     }
 
     // If no files were uploaded, respond with an error.
@@ -60,7 +60,7 @@ uploadAvatar: function (req, res) {
       avatarFd: uploadedFiles[0].fd
     })
     .exec(function (err){
-      if (err) return res.negotiate(err);
+      if (err) return res.serverError(err);
       return res.ok();
     });
   });
@@ -75,7 +75,7 @@ uploadAvatar: function (req, res) {
 avatar: function (req, res){
 
   User.findOne(req.param('id')).exec(function (err, user){
-    if (err) return res.negotiate(err);
+    if (err) return res.serverError(err);
     if (!user) return res.notFound();
 
     // User has no avatar image uploaded.
@@ -117,7 +117,7 @@ In the above example we upload the file to .tmp/uploads. So how do we configure 
 req.file('avatar').upload({
   dirname: require('path').resolve(sails.config.appPath, 'assets/images')
 },function (err, uploadedFiles) {
-  if (err) return res.negotiate(err);
+  if (err) return res.serverError(err);
 
   return res.json({
     message: uploadedFiles.length + ' file(s) uploaded successfully!'
@@ -186,7 +186,7 @@ In the above example we could upload the file to .tmp/uploads . So how do we con
 req.file('avatar').upload({
   dirname: './assets/images'
 },function (err, uploadedFiles) {
-  if (err) return res.negotiate(err);
+  if (err) return res.serverError(err);
 
   return res.json({
     message: uploadedFiles.length + ' file(s) uploaded successfully!'
