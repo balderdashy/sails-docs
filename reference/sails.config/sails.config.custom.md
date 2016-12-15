@@ -1,5 +1,7 @@
 # sails.config.custom
 
+### What is this?
+
 Your custom configuration file. This is useful for one-off settings specific to your application-- things like the domain to use when sending emails, or 3rd party API keys for Stripe, Mailgun, Twitter, Facebook, etc. These values may also be overridden in `config/env/production.js`.
 
 To access these values from your actions and helpers, use `sails.config.custom`.
