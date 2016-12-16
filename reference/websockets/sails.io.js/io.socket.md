@@ -13,8 +13,8 @@ Like any [SailsSocket](http://sailsjs.org/documentation/reference/web-sockets/so
 Changing the server that `io.socket` connects to
 
 ```html
-<script type"text/javascript" src="/js/dependencies/sails.io.js"></script>
-<script type"text/javascript">
+<script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">
 io.sails.url = "http://somesailsapp.com";
 </script>
 ```
