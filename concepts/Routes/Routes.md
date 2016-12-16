@@ -57,6 +57,14 @@ In addition to your custom routes, Sails binds many routes for you automatically
 * [Assets](http://sailsjs.org/documentation/concepts/Assets), such as images, Javascript and stylesheet files.
 
 
+##### Unhandled Requests
+
+If no custom or automatic route matches a request URL, Sails will send back a default 404 response.  This response can be customized by adding a `api/responses/notFound.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) for more info.
+
+##### Unhandled Errors in Request Handlers
+
+If an unhandled error is thrown during the processing of a request (for instance, in some [action code](http://sailsjs.com/documentation/concepts/actions-and-controllers), Sails will send back a default 500 response. This response can be customized by adding a `api/responses/serverError.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) for more info.
+
 ### Supported Protocols
 
 The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) and messages sent via [WebSockets](http://en.wikipedia.org/wiki/Websockets). It accomplishes this by listening for Socket.io messages sent to reserved event handlers in a simple format, called JWR (JSON-WebSocket Request/Response).  This specification is implemented and available out of the box in the [client-side socket SDK](http://sailsjs.org/documentation/reference/websockets/sails.io.js).
