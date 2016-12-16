@@ -75,6 +75,8 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 }
 ```
 
+Note that the [built-in support for layouts](http://sailsjs.com/documentation/concepts/views/layouts) still works for the default EJS views, but layout support for other view engines (e.g. Handlebars or Ractive) is not bundled with Sails 1.0.
+
 ## PubSub
 
 * Removed deprecated `backwardsCompatibilityFor0.9SocketClients` setting.
