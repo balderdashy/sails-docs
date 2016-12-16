@@ -23,7 +23,10 @@ getProfile: function(req, res) {
        res.status(500);
        return res.view('500', {data: err});
      }
-   ...
+     
+    // ...
+    
+  });
 }
 ```
 
@@ -45,9 +48,12 @@ getProfile: function(req, res) {
 
      // Handle a database error.
      if (err) {
-       res.serverError(err);
+       return res.serverError(err);
      }
-   ...
+     
+     // ...
+     
+   });
 }
 ```
 
