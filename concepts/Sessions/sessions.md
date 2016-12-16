@@ -16,8 +16,8 @@ There are three main components to the implementation of sessions in Sails:
 
 The **session store** can either be in memory (e.g. the default Sails session store) or in a database (e.g. Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session; which includes using a **cookie** to store a session id (`sid`) on theuser agent.
 
-### A day in the life of a *request*, a *response*, and a *session* 
-When a `request` is sent to Sails, the request header is parsed by the session middleware.  
+### A day in the life of a *request*, a *response*, and a *session*
+When a `request` is sent to Sails, the request header is parsed by the session middleware.
 
 ##### Scenario 1: The request header has no *cookie property*
 
@@ -25,7 +25,7 @@ If the header does not contain a cookie property, a `sid` is created in the sess
 
 ```javascript
 module.exports = {
-  
+
   login: function(req, res) {
 
     // Authentication code here
@@ -40,11 +40,11 @@ module.exports = {
 }
 ```
 
-Here we added a `userId` property to `req.session`.  
+Here we added a `userId` property to `req.session`.
 
 > **Note:** The property will not be stored in the *session store* nor available to other requests until the response is sent.
 
-Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header a cookie will be established for us.  
+Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header a cookie will be established for us.
 
 ##### Scenario 2: The request header has a cookie *property* with a `Sails.sid`
 
@@ -56,7 +56,7 @@ During development, the Sails session store is *in memory*.  Therefore, when you
 >The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
 
 
-### Using *Redis* as the session store 
+### Using *Redis* as the session store
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
@@ -77,10 +77,30 @@ For more information on configuring these properties go to [https://github.com/t
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
 
->You can change the session `secret` property in `projectName/config/session.js`. 
+>You can change the session `secret` property in `projectName/config/session.js`.
 
-The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combine and hash to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header. 
+The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combine and hash to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header.
 
 **What does this prevent?** It prevents a user from guessing the `sid` as well as prevents a evil doer from spoofing a user into making an authetication request with a `sid` that the evil doer knows.  This could allow the evil doer to use the `sid` to do bad things while the user is authenticated via the session.
+
+### Disabling sessions
+
+While sessions are a powerful tool in app development, they are not always necessary (e.g. apps that are completely stateless) or preferable (e.g. when using a different authentication scheme, like <a href="https://github.com/sails101/jwt-login" target="_blank">JWT</a>.  In these cases, you can disable sessions on an app-wide or per-route basis.
+
+##### Disabling sessions for your entire app
+
+To entirely turn off session support for your app, add the following to your `.sailsrc` file:
+
+```
+"hooks": {
+  "session": false
+}
+```
+
+This disables the core Sails session hook.  You can also accomplish this by setting the `sails_hooks__session` environment variable to `false`.
+
+##### Disabling sessions for one or more routes
+
+To turn off session support on a per-route basis, use the [`sails.config.session.routesDisabled` setting](http://next.sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  The default setting turns off session support for all [assets](http://next.sailsjs.com/documentation/concepts/assets).
 
 <docmeta name="displayName" value="Sessions">
