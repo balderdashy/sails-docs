@@ -20,7 +20,7 @@ By default, Sails will assume `localhost` as the host that will be listening for
 
 ### `sails.config.environment`
 
-The runtime &ldquo;environment&rdquo; of your Sails app is usually either &lsquo;development&rsquo; or &lsquo;production&rsquo;.
+The runtime &ldquo;environment&rdquo; of your Sails app is usually either `development` or `production`.
 
 In development, your Sails app will go out of its way to help you (for instance you will receive more descriptive error and debugging output).
 
@@ -28,11 +28,11 @@ In production, Sails configures itself (and its dependencies) to optimize perfor
 
 #### Using the "production" environment
 
-By default, Sails determines its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will look to see if you provided a `sails.config.environment` setting, and use it if possible.  Otherwise, it runs in the &lsquo;development&rsquo; environment.
+By default, Sails determines its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will look to see if you provided a `sails.config.environment` setting, and use it if possible.  Otherwise, it runs in the development environment.
 
-When you lift your app with the NODE_ENV environment variable to "production", Sails automatically sets `sails.config.environment` to "production" too.  In fact, the reccommended way of switching to production mode is by _setting the NODE_ENV environment variable_ to "production".  This is usually a better idea than configuring `sails.config.environment` manually, since the NODE_ENV environment variable is relied upon by some of Sails' dependencies, and automatically set by most Sails/Node.js hosting services.
+When you lift your app with the NODE_ENV environment variable to `production`, Sails automatically sets `sails.config.environment` to `production` too.  This is the recommended way of switching to production mode.  This is usually a better idea than configuring `sails.config.environment` manually, since the NODE_ENV environment variable is relied upon by some of Sails&rsquo; dependencies, and automatically set by most Sails/Node.js hosting services.
 
-> Prior to Sails v1.0, the opposite was also true (Sails set the NODE_ENV environment variable to "production" automatically when lifting with `sails.config.environment` set to "production).  In Sails v1.0, that [is changing](https://github.com/balderdashy/sails/blob/c4d6991ef1e63d1cab984bc635289d208e602b23/ROADMAP.md#v10) to provide better support for custom staging and sandbox environments.
+If you attempt to lift a Sails app in the production environment _without_ setting `NODE_ENV` to `production` (for example, by running `sails lift --prod`), Sails will automatically set `NODE_ENV` to `production` for you.  If you attempt to lift a Sails app in production while `NODE_ENV` is set to a _different_ value (for example `NODE_ENV=development sails lift --prod`), the app will fail to start.
 
 > For more background on configuring your Sails app for production, see [Concepts > Deployment](http://sailsjs.org/documentation/concepts/deployment).
 
@@ -52,7 +52,7 @@ SSL/TLS (transport-layer security) is critical for preventing potential man-in-t
 > ##### SSL and load balancers
 >
 > The `sails.config.ssl` setting is only relevant if you want your _Sails process_ to manage SSL.  This isn't always true.  For example, if you plan for your Sails app to get more and more traffic, it will need to scale to multiple servers, which means you'll need a load balancer.  Most of the time, for performance and simplicity, it is a good idea to terminate SSL at your load balancer.  If you do that, then since SSL/TLS will have already been dealt with _before packets reach your Sails app_, you actually won't need to use the `sails.config.ssl` setting at all.  (This is also true if you're using a PaaS like Heroku, or almost any other host with a built-in load balancer.)
-> 
+>
 > If you're satisfied this configuration setting applies to your app, then please continue below for more details.
 
 Use `sails.config.ssl` to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.org/documentation/reference/configuration/sails-config-http#?properties).
