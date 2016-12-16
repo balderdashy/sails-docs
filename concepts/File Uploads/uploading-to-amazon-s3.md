@@ -24,7 +24,7 @@ Then use it in one of your controllers:
       if (err) return res.serverError(err);
       return res.ok({
         files: filesUploaded,
-        textParams: req.params.all()
+        textParams: req.allParams()
       });
     });
   }

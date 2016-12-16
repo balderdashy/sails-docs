@@ -34,7 +34,7 @@ The chart below describes support for the methods and properties on the Sails [R
 | req.acceptsCharset() | :white_check_mark: | :white_large_square: |
 | req.acceptsLanguage() | :white_check_mark: | :white_large_square: |
 | req.isSocket | :white_check_mark: | :white_check_mark: |
-| req.params.all() | :white_check_mark: | :white_check_mark: |
+| req.allParams() | :white_check_mark: | :white_check_mark: |
 | req.socket.id | :heavy_multiplication_x: | :white_check_mark: |
 | req.socket.join | :heavy_multiplication_x: | :white_check_mark: |
 | req.socket.leave | :heavy_multiplication_x: | :white_check_mark: |
