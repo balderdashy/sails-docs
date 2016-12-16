@@ -1,6 +1,6 @@
 # req.allParams()
 
-Returns the value of _all_ parameters sent in the request, merged together into a single dictionary (plain JavaScript object). Includes parameters parsed from the url path, the query string, and the request body. See [`req.param()`](http://sailsjs.org/documentation/reference/request-req/req-param) for details.
+Returns the value of _all_ parameters sent in the request, merged together into a single dictionary (plain JavaScript object). Includes parameters parsed from the url path, the request body and the query string _in that order_. See [`req.param()`](http://sailsjs.org/documentation/reference/request-req/req-param) for details.
 
 ### Usage
 
@@ -32,6 +32,7 @@ Product.update({sku: sku})
 
 ### Notes
 
+>+ The order of precedence means that url path params will override request body params, which will override query string params.
 >+ In past versions of Sails, this method was known as `req.params.all()`.  But this was confusing-- what if you had a route path parameter named "all"?  So in apps built on Sails v1 and above, you should always use `req.allParams()` instead.
 
 
