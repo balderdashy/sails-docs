@@ -87,7 +87,7 @@ avatar: function (req, res){
 
     var SkipperDisk = require('skipper-disk');
     var fileAdapter = SkipperDisk(/* optional opts */);
-    
+
     // set the filename to the same file as the user uploaded
     res.set("Content-disposition", "attachment; filename='" + file.name + "'");
 
@@ -108,7 +108,7 @@ avatar: function (req, res){
 
 
 #### Where do the files go?
-When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can override this using the `dirname` option.  Note that you'll need to provide this option both when you call the `.upload()` function AND when you invoke the skipper-disk adapter (so that you are uploading to and downloading from the same place.)
+When using the default `receiver`, file uploads go to the `.tmp/uploads/` directory.  You can override this using the `dirname` option.  Note that you'll need to provide this option both when you call the `.upload()` function AND when you invoke the skipper-disk adapter (so that you are uploading to and downloading from the same place.)
 
 
 #### Uploading to a custom folder
@@ -147,7 +147,7 @@ Lets make an `index` action to initiate the file upload and an `upload` action t
 
 ```javascript
 
-// myApp/api/controllers/FileController.js
+// api/controllers/FileController.js
 
 module.exports = {
 
@@ -178,7 +178,7 @@ module.exports = {
 ```
 
 #### Where do they go?
-When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can do whatever you want with it in the `upload` action.
+When using the default `receiver`, file uploads go to the `.tmp/uploads/` directory.  You can do whatever you want with it in the `upload` action.
 
 #### Uploading to a custom folder
 In the above example we could upload the file to .tmp/uploads . So how do we configure it with a custom folder , say ‘assets/images’. We can achieve this by adding options to upload function as shown below.

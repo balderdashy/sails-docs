@@ -1,6 +1,6 @@
 # Disabling Grunt
 
-To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](http://sailsjs.org/documentation/anatomy/myApp/tasks) folder). You can also disable the Grunt hook. Just set the `grunt` property to `false` in `.sailsrc` hooks like this:
+To disable Grunt integration in Sails, simply delete your Gruntfile (and/or [`tasks/`](http://sailsjs.org/documentation/anatomy/tasks) folder). You can also disable the Grunt hook. Just set the `grunt` property to `false` in `.sailsrc` hooks like this:
 
 ```json
 {
