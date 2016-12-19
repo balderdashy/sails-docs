@@ -13,7 +13,7 @@ Model settings allow you to customize the behavior of the models in your Sails a
 
 To modify the [default model settings](http://sailsjs.org/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.org/documentation/anatomy/my-app/config/models-js).
 
-For example, when you generate a new app, Sails automatically includes three different default attributes in your `config/models.js` file:  `id`, `createdAt`, and `updatedAt`.  Let's say that, for one of your models (`api/models/User.js`), you wanted to use a slightly different, customized `id` attribute.  To do so, you could just override `attributes: {  id: {...}  }` in your User model definition.
+For example, when you generate a new app, Sails automatically includes three different default attributes in your `config/models.js` file:  `id`, `createdAt`, and `updatedAt`.  Let's say that, for all of your models, you wanted to use a slightly different, customized `id` attribute. To do so, you could just override `attributes: {  id: {...}  }` in your `config/models.js` definition.
 
 
 ##### Overriding settings for a particular model
@@ -23,9 +23,9 @@ To further customize these settings for a particular model, you can specify them
 For example, if you add `autoUpdatedAt: false` to one of your model definitions (`api/models/UploadedFile.js`), then that model will no longer have an implicit `updatedAt` attribute.  But the rest of your models will be unaffected; they will still use the default setting (which is `autoUpdatedAt: true`, unless you've changed it).
 
 
-##### Which approach should I use?
+##### Best practice approach
 
-In your day to day development, the model setting you'll interact with most often is "attributes".   Attributes are used in almost every model definition, _and_ some default attributes are included in `config/models.js`.  But for future reference, here are a few additional tips:
+In your day to day development, the model setting you'll interact with most often is `attributes`. Attributes are used in almost every model definition, _and_ some default attributes are included in `config/models.js`.  But for future reference, here are a few additional tips:
 
 + If you are specifying a `tableName`, you should always do so on a per-model basis.  (An app-wide table name wouldn't make sense!)
 + There is no reason to specify an app-wide datastore since you already have one out of the box (named "default").  But you still might want to override `datastore` for a particular model; for example, if your default datastore is PostgreSQL, but you have an `CachedBloodworkReport` model that you want to live in Redis.
@@ -61,7 +61,7 @@ For a complete introduction to model attributes, including how to define and use
 tableName: 'some_preexisting_table'
 ```
 
-.  By default, this is the same as the model's identity.    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
+By default, this is the same as the model's identity.    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
 
 The **tableName** setting gives you the ability to customize the name of the underlying _physical model_ that a particular model should use.  In other words, it lets you control where a model stores and retrieves records within the database, _without_ affecting the code in your controller actions / helpers.
 
