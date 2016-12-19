@@ -49,8 +49,8 @@ Then create the file `/supervisor_opts` with the following contents. This tells 
 -i .tmp
 ```
 ### NOTE:
-This deployment guide work only on Openshift`s "SCALABLE" gears, nodejs v0.10 
-If you using non-scalable gear `/supervisor_opts` file will be ignored and Sails will not lift on it. 
+This deployment guide works only on Openshift's "SCALABLE" gears, nodejs v0.10.
+If you're using non-scalable gear, the `/supervisor_opts` file will be ignored and Sails will not lift on it. 
 
 You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
 
