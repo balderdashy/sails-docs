@@ -18,7 +18,7 @@ Something.findOne(criteria).exec(function (err, record) {
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|----------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 1 |    err              | ((Error?))          | The error that occurred, or `null` if there were no errors.
 | 2 |    record           | ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
 
 
