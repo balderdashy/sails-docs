@@ -8,7 +8,7 @@ CSRF tokens are like limited-edition swag.  While a session tells the server tha
 
 Using tokens protects your Sails app against cross-site request forgery (or CSRF) attacks. A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.  This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
 
-Enabling CSRF protection requires managing the token in your front-end app.  In traditional form submissions, this can be easily accomplished by sending along the CSRF token as a hidden input in your `<form>`.  Or better yet, include the CSRF token as a request param or header when you send AJAX requests.  To do that, you can either fetch the token by sending a request to the route where you mounted `security/grantCsrfToken`, or better yet, harvest the token from view locals using the `exposeLocalsToBrowser` partial.
+Enabling CSRF protection requires managing the token in your front-end app.  In traditional form submissions, this can be easily accomplished by sending along the CSRF token as a hidden input in your `<form>`.  Or better yet, include the CSRF token as a request param or header when you send AJAX requests.  To do that, you can either fetch the token by sending a request to the route where you mounted `security/grant-csrf-token`, or better yet, harvest the token from view locals using the `exposeLocalsToBrowser` partial.
 
 Here are some examples:
 
@@ -27,7 +27,7 @@ your client-side JavaScript, e.g.:
 
 #### (b) For single-page apps with static HTML:
 Fetch the token by sending a GET request to the route where you mounted
-the `security.grantCsrfToken`.  It will respond with JSON, e.g.:
+the `security/grant-csrf-token`.  It will respond with JSON, e.g.:
 ```js
 { _csrf: 'ajg4JD(JGdajhLJALHDa' }
 ```
@@ -85,7 +85,7 @@ If you are doing a `multipart/form-data` upload with the form, be sure to place 
 
 ##### Using AJAX/WebSockets
 
-In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `security/grantcsrftoken` action:
+In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `security/grant-csrf-token` action:
 
 ```json
 {
