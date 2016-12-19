@@ -23,7 +23,7 @@ To further customize these settings for a particular model, you can specify them
 For example, if you add `autoUpdatedAt: false` to one of your model definitions (`api/models/UploadedFile.js`), then that model will no longer have an implicit `updatedAt` attribute.  But the rest of your models will be unaffected; they will still use the default setting (which is `autoUpdatedAt: true`, unless you've changed it).
 
 
-##### Best practice approach
+##### Choosing an approach
 
 In your day to day development, the model setting you'll interact with most often is `attributes`. Attributes are used in almost every model definition, _and_ some default attributes are included in `config/models.js`.  But for future reference, here are a few additional tips:
 
