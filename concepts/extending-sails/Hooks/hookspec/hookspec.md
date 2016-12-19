@@ -23,6 +23,7 @@ The following features are available to implement in your hook.  All features ar
 * [.configure()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/configure.html)
 * [.initialize()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html)
 * [.routes](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/routes.html)
+* [.registerActions()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/register-actions.html)
 
 ## Custom hook data and functions
 
