@@ -3,7 +3,7 @@
 > ##### Stability: Varies
 
 ## Reference
- 
+
 Please see the [adapter interface specification](https://github.com/balderdashy/sails-docs/blob/0.9/adapter-specification.md).
 
 
@@ -26,7 +26,7 @@ In practice, your adapter can really do anything it likes-- any method you write
 
 ## Why would I need a custom adapter?
 
-When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) 
+When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations)
 
 > **From Wikipedia:**
 > *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
@@ -109,7 +109,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 ### PostgreSQL
 
-[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 
 ###### Interfaces implemented:
 + Semantic
@@ -121,7 +121,7 @@ http://en.wikipedia.org/wiki/MySQL
 ### MongoDB
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
-  
+
 ###### Interfaces implemented:
 + Semantic
 + Queryable
@@ -188,7 +188,7 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 ### [OrientDB](https://github.com/appscot/sails-orientdb)
 
-[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
+[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs.
 
 ###### Interfaces implemented:
 + Semantic
@@ -205,3 +205,5 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 
 > Want to see your adapter listed here?  Send a pull request with a link and we'll merge it!
+
+<docmeta name="notShownOnWebsite" value="true">
