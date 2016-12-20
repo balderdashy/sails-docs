@@ -3,7 +3,7 @@
 ### What is this?
 These configuration options provide transparent access to Socket.io, the WebSocket/pubsub server encapsulated by Sails.
 
-### Commonly-Used Options
+### Commonly-used options
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
@@ -11,20 +11,20 @@ These configuration options provide transparent access to Socket.io, the WebSock
 | `transports`  |((array))  | `['websocket']`     | An array of allowed transport strategies that Sails/Socket.io will use when connecting clients.  This should _always_ match the [configuration in your socket client (i.e. `sails.io.js`)](http://sailsjs.org/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library) -- if you change transports here, you need to configure them there, and vice versa.<br/><br/> <em>Note that if you opt to modify the default transports, then you may need to do additional configuration in production.  (For example, if you add the `polling` transport, and your app is running on multiple servers behind a load balancer like nginx, then you will need to configure that load balancer to support TCP sticky sessions.  However, that _should not_ be necessary out of the box with only the `websocket` transport enabled.)  See [Deployment > Scaling](http://sailsjs.com/documentation/concepts/deployment/scaling) for more tips and best practices.</em> |
 | `onlyAllowOrigins` | ((array)) | `undefined` | Array of hosts (beginning with http:// or https://) from which sockets will be allowed to connect.  Leaving this undefined will allow sockets from _any_ origin to connect, which is useful for testing but is not allowed in production mode (so you should at least set this in [config/env/production.js](http://sailsjs.com/documentation/anatomy/config/env/production-js)).  Note that as the name implies (and in contrast to the similar [CORS setting](http://ailsjs.com/documentation/reference/configuration/sails-config-security-cors)), _only_ the origins listed will be allowed to connect.  For testing locally, you&rsquo;ll probably want to add `http://localhost:1337` to the list.
 
-### Redis Configuration
+### Redis configuration
 
  If you are configuring your Sails app for production and plan to [scale to more than one server](http://sailsjs.org/documentation/concepts/deployment/scaling), then you should set `sails.config.sockets.adapter` to `'socket.io-redis'`, set up your Redis instance, and then use the following config to point at it from your app:
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion (the `url` setting will override all of the settings below).
+| `url`          | ((string)) | `undefined` | The connection URL for the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion (the `url` setting will override all of the settings below).
 | `db`           | ((number))  |`undefined`   | The index of the database to use within your redis instance.  If specified, must be an integer.  _(On most Redis setups, this will be a number between 0 and 15.)_
 | `host`         |((string))  |`'127.0.0.1'` | Hostname of your Redis instance.
 | `pass`         | ((string)) | `undefined` | Password for your Redis instance.
 | `port`         |((number)) |`6379`   | Port of your Redis instance.
 
 
-### Advanced Configuration
+### Advanced configuration
 
 These configuration options provide lower-level access to the underlying Socket.io server settings for complete customizability.
 
@@ -48,25 +48,40 @@ These configuration options provide lower-level access to the underlying Socket.
 
 ### beforeConnect
 
-To define your own custom logic, specify a function like: 
+During development, when a socket tries to connect, Sails allows it, every time (much in the same way any HTTP request is allowed to reach your routes.)  Then, in production, the `onlyAllowOrigins` array ensures that only incoming socket connections that originate from the base URLs on the whitelist will be permitted to connect to your app.
+
+If your app needs more flexibility, then as an additional precaution, you can define your own custom logic to allow or deny socket connections.  To do so, specify a `beforeConnect` function:
+```javascript
+beforeConnect: function(handshake, proceed) {
+  
+  // Send back `true` to allow the socket to connect.
+  // (Or send back `false` to reject the attempt.)
+  return proceed(undefined, true);
+
+},
 ```
-beforeConnect: function (handshake, cb) { 
-  /* pass back true to allow, false to deny */ 
-  return cb(null, true);
-}
-```
-By default, when a socket tries to connect, Sails allows it, every time. (much in the same way any HTTP request is allowed to reach your routes.  If no valid cookie was sent, a temporary session will be created for the connecting socket.
 
-If the cookie sent as part of the socket connection request doesn't match any known user session, a new user session is created for it. In most cases, the user would already have a cookie since they loaded the socket.io client and the initial HTML page you're building.   
+### Sockets & sessions
 
-However, in the case of cross-domain requests, it is possible to receive a connection upgrade request WITHOUT A COOKIE (for certain transports). In this case, there is no way to keep track of the requesting user between requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.                                 
-
-You can also pass along a ?cookie query parameter in the url when connecting the socket (either by hand or when configuring sails.io.js), which Sails will use instead of the cookie that was sent in the HTTP request header. e.g.: io.sails.connect('http://localhost:1337?cookie=smokeybear')                                                                             
+By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.  
 
 > A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security. 
 
+##### Cross-origin sockets
+The sails.io.js client is usually initiated from an HTML page that was already fetched via HTTP.  So in most cases, sockets that connect from this sort of a browser environment will automatically provide a valid session cookie.  And thus everything will work normally; and `req.session` will be available.
 
-### Providing Your Own Redis Clients
+However, in the case of cross-origin sockets, it is possible to receive a connection upgrade request _without a cookie_ (for certain transports anyway).  In this case, there is no way to keep track of the requesting user between virtual requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.                           
+
+##### Non-browser clients
+Similarly, if a socket connects _without_ providing a session cookie, or with a corrupted cookie, then a temporary, throwaway session entry will be created for it.  The same thing happens if the provided session cookie doesn't match any known session entry.
+
+You can also configure sails.io.js to pass along an override for the session cookie, in the form of a `?cookie` query parameter in the [url when connecting the socket](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).  Sails will use this instead of the actual session cookie that may or may not have been sent in the initial connection upgrade request.  For example, if you were building a standalone Electron app, and you disabled `autoConnect` in favor of connecting a socket manually, you might do:
+
+```javascript
+var hotSocket = io.sails.connect('http://localhost:1337?cookie=smokeybear');
+```
+
+### Providing your own Redis clients
 
 By default, Sails will create new Redis clients in the background when using the `socket.io-redis` adapter.  In some cases, you may instead need to create your own Redis clients for PubSub (typically using the <a href="https://www.npmjs.com/package/node-redis" target="_blank">node-redis</a> or <a href="https://www.npmjs.com/package/ioredis">ioredis</a> modules), and provide them to Sails for use in PubSub.  This often comes up when using a <a href="https://redis.io/topics/sentinel" target="_blank">Redis Sentinel</a> setup, which requires that clients connect using a module like <a href="https://www.npmjs.com/package/ioredis" target="_blank">ioredis</a>.  The following advanced configuration options allow you to pass already-connected Redis clients and related config info to Sails.
 
