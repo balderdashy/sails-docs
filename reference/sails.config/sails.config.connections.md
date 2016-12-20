@@ -9,7 +9,7 @@ In Sails, [database adapters](http://sailsjs.com/documentation/concepts/extendin
 While this [can be overridden](http://sailsjs.com/documentation/concepts/orm/model-settings) on a per-model basis, out of the box, every model in your app uses a datastore named "default".
 
 
-### The default dataastore
+### The default datastore
 
 ##### The default development database
 As a convenience during development, Sails provides a built-in database adapter called `sails-disk`.  This adapter simulates a real database by reading and writing database records to a JSON file on your computer's hard drive.  And while `sails-disk` makes it easy to run your Sails/Node.js app in almost any environment, with minimal setup-- it is not designed for production use.  Before deploying your app and exposing it to real users, you'll want to choose a proper database such as PostgreSQL, MySQL, MongoDB, etc.  To do that, you'll need to customize your app's default datastore.
