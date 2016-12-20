@@ -46,22 +46,22 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | `custom: function (val) { if (val < 0) { throw new Error('Must be a positive number!'); } }`          |  ((string)), ((number)), ((boolean))   | 
-| isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
-| isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
+| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | [Example](https://gist.github.com/mikermcneil/9999a70c6deb77814601c0658d502fae)            |  _Any_   | 
+| isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
+| isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
 | isCreditCard      | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
 | isEmail           | A value that looks like an email address.                                                                           | `isEmail: true`                                         | ((string)) |
 | isHexColor        | A string that is a hexadecimal color.                                                                               | `isHexColor: true`                                      | ((string)) |
 | isIn              | A value that is in the specified array of allowed strings.                                                          | `isIn: ['paid', 'delinquent']`                          | ((string)) |
 | isInteger         | A number that is an integer (a whole number)                                                                        | `isInteger: true`                                       | ((number)) |
-| isIP              | A value that is a valid IP address (v4 or v6)                                                                       | isIP: true                                              | ((string)) |
-| isNotIn           | A value that **is not in** the configured array.                                                                    | isNotIn: ['profanity1', 'profanity2']                   | ((string)) |
+| isIP              | A value that is a valid IP address (v4 or v6)                                                                       | `isIP: true`                                              | ((string)) |
+| isNotIn           | A value that **is not in** the configured array.                                                                    | `isNotIn: ['profanity1', 'profanity2']`                   | ((string)) |
 | isURL             | A value that looks like a URL. | `isURL: true` | ((string)) |
-| max               | A number that is less than or equal to the configured number. | | ((number)) |
-| min               | A number that is greater than or equal to the configured number. | | ((number)) |
-| maxLength         | A string that has no more than the configured number of characters. |  | ((string)) |
-| minLength         | A string that has at least the configured number of characters. | | ((string)) |
-| regex             | A value that matches the configured regular expression. | | ((string)) |
+| max               | A number that is less than or equal to the configured number. | `max: 10000` | ((number)) |
+| min               | A number that is greater than or equal to the configured number. | `min: 0` | ((number)) |
+| maxLength         | A string that has no more than the configured number of characters. |  `maxLength: 144` | ((string)) |
+| minLength         | A string that has at least the configured number of characters. | `minLength: 8` | ((string)) |
+| regex             | A string that matches the configured regular expression. | `regex: /^[a-z0-9]$/i` | ((string)) |
 
 
 
