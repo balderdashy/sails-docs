@@ -46,7 +46,7 @@ These configuration options provide lower-level access to the underlying Socket.
 
 > Note: `onRedisDisconnect` and `onRedisReconnect` will only be called for Redis clients that are created by Sails for you; if you provide your own Redis clients (see below), these functions will _not_ be called automatically in the case of a disconnect or reconnect.
 
-##### beforeConnect
+### beforeConnect
 
 To define your own custom logic, specify a function like: 
 ```
