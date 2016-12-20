@@ -24,6 +24,8 @@ Something.find(criteria).exec(function (err, records) {
 
 ### Example
 
+##### A basic find query
+
 To find any users named Finn in the database:
 ```javascript
 User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
@@ -33,6 +35,39 @@ User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
   sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
   return res.json(usersNamedFinn);
 });
+```
+
+
+##### Using projection
+
+Projection selectively omits the fields returned on found records. This can be done, for example, for faster performance, or for greater security when passing found records to the client. The select clause in a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) takes an array of strings that correspond with attribute names. The record ID is always returned.
+```javascript
+User.find({where:{name:'Finn'}, select: ['name', 'email']}).exec(function (err, usersNamedFinn){
+  if (err) {
+    return res.serverError(err);
+  }
+
+  return res.json(usersNamedFinn);
+});
+```
+
+
+Might yield:
+
+```javascript
+[
+  {
+    id: 7392,
+    name: 'Finn',
+    email: 'finn_2016@gmail.com'
+  },
+  {
+    id: 4427,
+    name: 'Finn',
+    email: 'walkingfinn@outlook.com'
+  }
+  // ...more users named Finn and their email addresses
+]
 ```
 
 
