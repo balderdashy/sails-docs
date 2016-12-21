@@ -4,7 +4,7 @@
 
 The i18n hook reads JSON-formatted translation files from your project's "locales" directory (`config/locales` by default).  Each file corresponds with a [locale](http://en.wikipedia.org/wiki/Locale) (usually a language) that your Sails backend will support.
 
-These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc.
+These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc. The name of the file should match the language that you are supporting. This allows for automatic language detection based on request headers.
 
 Here is an example locale file (`config/locales/es.json`):
 ```json
