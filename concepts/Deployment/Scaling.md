@@ -29,7 +29,7 @@ One of the big challenges of scaling an application is that these sorts of clust
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) are scalable (e.g. sharding/cluster)
 + **If your app uses sessions:**
-  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.0.2 --save --save-exact`).
+  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.0.2 --save --save-exact`). For more information about configuring your session store for production, see the [sails.config.session](http://sailsjs.org/documentation/reference/configuration/sails-config-session#?production-config) docs.
 + **If your app uses sockets:**
   + Configure your app to use Redis as a shared message queue for delivering socket.io messages. Socket.io (and consequently Sails.js) apps support Redis for sockets by default, so to enable a remote redis pubsub server, uncomment the relevant lines in `config/env/production.js`.
   + Install the socket.io-redis adapter as a dependency of your app (e.g. `npm install socket.io-redis@~1.0.0 --save --save-exact`)
