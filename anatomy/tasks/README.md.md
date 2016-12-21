@@ -4,7 +4,7 @@ If you want to create a [README file](http://en.wikipedia.org/wiki/README) for y
 
 
 
-<docmeta name="displayName" value="README">
+<docmeta name="displayName" value="README.md">
 
 ```
 # About the `tasks` folder
