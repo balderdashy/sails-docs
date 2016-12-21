@@ -14,6 +14,14 @@ Here is an example locale file (`config/locales/es.json`):
 }
 ```
 
+Locales can be accessed in controller actions and policies through `res.i18n()`, or in views through the `__(key)` or `i18n(key)` functions.
+
+```ejs
+<h1> <%= __('Welcome to PencilPals!') %> </h1>
+<h2> <%= i18n('Hello %s, how are you today?', 'Pencil Maven') %> </h2>
+<p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
+```
+
 Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
 
 For example, here's another way you could approach `config/locales/es.json`:
