@@ -1,6 +1,6 @@
 # Standalone Waterline Usage
 
-In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.  
+In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.
 
 > **Warning:** This section of the documentation is for fairly advanced Node.js users.  If you aren't planning to use Waterline outside of your Sails app (e.g. to build your own framework), you might want to skip this page and head back to [Models and ORM](http://sailsjs.org/documentation/concepts/models-and-orm) instead.
 
@@ -209,6 +209,172 @@ $ node getting-started.js
 Interesting. There are the attributes we gave the models, and we can also see the primary keys that were automatically generated for us. We can also see that waterline has thrown in some default `createdAt` and `updatedAt` timestamps too. Cool!
 
 > You can turn off the timestamps with other global or per-model configuration options.
+
+
+### Testing
+
+This section will walk you through running integration tests for Waterline models. For documentation on testing in Sails apps, see [Concepts > Testing](http://sailsjs.com/documentation/concepts/testing).
+
+##### The testing framework
+
+To run the tests we need a testing framework. There are a few around but for our examples we will be using [Mocha](mochajs.org). It's best to install this on the command line like so:
+
+```js
+$ npm install -g mocha
+```
+
+If you are interested in code coverage, you might also like to research a tool called [Istanbul](https://www.npmjs.com/package/istanbul). For spying, stubbing, and mocking [Sinon](http://sinonjs.org) is a good choice. For simulating HTTP requests, [nock](https://www.npmjs.com/package/nock) is worth a look.
+
+##### Testing a Waterline model
+
+The following example illustrates how you might attempt to test a Waterline model. It assumes the following, and extremely simple, application structure:
+
+```none
+root
+|- models
+|  |- Pet.js
+|  `- User.js
+`- test
+   |- mocha.opts
+   `- UserModelTest.js
+```
+
+##### `Pet.js`
+
+Our standard example Pet model.
+
+```js
+module.exports = {
+
+  identity: 'pet',
+  connection: 'default',
+
+  attributes: {
+    breed: 'string',
+    type: 'string',
+    name: 'string',
+
+    // Add a reference to User
+    owner: {
+      model: 'user'
+    }
+  }
+};
+```
+
+##### `User.js`
+
+Our standard example User model.
+
+```js
+module.exports = {
+
+  identity: 'user',
+  connection: 'default',
+
+  attributes: {
+    firstName: 'string',
+    lastName: 'string',
+
+    // Add a reference to Pets
+    pets: {
+      collection: 'pet',
+      via: 'owner'
+    }
+  }
+};
+```
+
+##### `UserModelTest.js`
+
+Here's how we test our `User` model.
+
+The `setup` function wires up the Waterline instance with our models, then initializes it. The models are using the `default` adapter and here the test is overriding the configuration to use the memory adapter. We do this because it's fast, and it might also pick up where we are trying to use "magic" in our models that might not be portable across database storages.
+
+The `teardown` function annihilates the adapters so that future tests can start with a clean slate (it allows you to safely use the `-w` option with Mocha). It does assume you are using Node 0.12. If you aren't, you'll need to use a Promise library like Bluebird or convert the method to use `async` or similar.
+
+Finally we get to our test method that is just trying to create a user and make some basic assertions.
+
+Obviously there is a lot of scope to refactor the code into a utility library as you at more and more test files for your models.
+
+```js
+var assert = require('assert');
+var Waterline = require('waterline');
+var sailsMemoryAdapter = require('sails-memory');
+
+suite('UserModel', function () {
+  var waterline = new Waterline();
+  var config = {
+    adapters: {
+      'sails-memory': sailsMemoryAdapter
+    },
+    connections: {
+      default: {
+        adapter: 'sails-memory'
+      }
+    }
+  }
+
+  setup(function (done) {
+    waterline.loadCollection(
+      Waterline.Collection.extend(require('../models/User.js'))
+    );
+    waterline.loadCollection(
+      Waterline.Collection.extend(require('../models/Pet.js'))
+    );
+    waterline.initialize(config, function  (err, ontology) {
+      if (err) {
+        return done(err);
+      }
+      done();
+    });
+  });
+
+  teardown(function () {
+    var adapters = config.adapters || {};
+    var promises = [];
+
+    Object.keys(adapters)
+      .forEach(function (adapter) {
+        if (adapters[adapter].teardown) {
+          var promise = new Promise(function (resolve) {
+            adapters[adapter].teardown(null, resolve);
+          });
+          promises.push(promise);
+        }
+      });
+
+    return Promise.all(promises);
+  });
+
+  test('should be able to create a user', function () {
+    var User = waterline.collections.user;
+
+    return User.create({
+        firstName: 'Neil',
+        lastName: 'Armstrong'
+      })
+      .then(function (user) {
+        assert.equal(user.firstName, 'Neil', 'should have set the first name');
+        assert.equal(user.lastName, 'Armstrong', 'should have set the last name');
+        assert.equal(user.pets.length, 0, 'should have no pets');
+      });
+  });
+});
+```
+
+Now all we have to to is run the tests:
+
+```sh
+$ mocha
+
+
+  UserModel
+    ✓ should be able to create a user
+
+
+  1 passing (83ms)
+```
 
 
 
