@@ -17,11 +17,11 @@ This method is useful primarily in development scenarios.
 
 ### Usage
 
-|   |       Argument             | Type                | Details
-|---|--------------------------- | ------------------- |:-----------:
+| &nbsp;  |       Argument             | Type                | Details
+|---|--------------------------- | ------------------- |:-----------
 | 1 |      options      | ((dictionary?))          | Currently accepts one key, `hooksToSkip`, which if given should be an array of names of hooks that should _not_ call their `reloadActions` method.
 argument will override the `data` property of the `request` argument, if provided.
-| 3 |      _callback_              | ((function)) | A callback to be called with the virtual response.
+| 2 |      _callback_              | ((function)) | A callback to be called with the virtual response.
 
 
 <docmeta name="displayName" value="sails.reloadActions()">
