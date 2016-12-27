@@ -30,7 +30,8 @@ Something.avg(numericAttrName, criteria)
 Get the average balance of bank accounts owned by people between the ages of 35 and 45.
 
 ```javascript
-BankAccount.avg('balance', {
+BankAccount.avg('balance')
+.where({
   ownerAge: { '>=': 35, '<=': 45 }
 })
 .exec(function (err, averageBalance){
