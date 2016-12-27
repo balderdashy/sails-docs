@@ -1,6 +1,6 @@
 # .publish()
 
-Broadcast an arbitrary message to socket client subscribed to one or more of this model's [records](http://sailsjs.com/documentation/concepts/models-and-orm).
+Broadcast an arbitrary message to socket clients [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) to one or more of this model's [records](http://sailsjs.com/documentation/concepts/models-and-orm).
 
 ```js
 Something.publish(ids, data, req);
