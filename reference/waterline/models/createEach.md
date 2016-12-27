@@ -35,7 +35,6 @@ User.create([{name:'Finn'}, {name: 'Jake'}])
   return res.ok();
 });
 ```
-```
 
 
 <docmeta name="displayName" value=".createEach()">
