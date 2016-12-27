@@ -112,8 +112,8 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 * The `404`, `500` and `startRequestTimer` middleware are now built-in to every Sails app, and have been removed from the `sails.config.http.middleware.order` array.  If your app has an overridden `404` or `500` handler, you should instead override `api/responses/notFound.js` and `api/responses/serverError.js` respectively.
 * Session middleware that was designed specifically for Express 3 (e.g. very old versions of `connect-redis` or `connect-mongo`) will no longer work, so you&rsquo;ll need to upgrade to more recent versions.
 
-## Responses
- * `.jsonx()` is deprecated -- if you haven't customized a response, just delete it.  Otherwise, replace `res.jsonx()` with `res.json()`.
+## Custom responses
+ * `.jsonx()` is deprecated -- if you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any instances of `res.jsonx()` in those file with `res.json()`.
  * `res.negotiate()` is deprecated -- use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
 
 
