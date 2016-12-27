@@ -13,7 +13,7 @@ Something.createEach(newRecords)
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |  newRecords    | ((array?))                                   | An array of dictionaries with attributes for the new records.
+| 1 |  _newRecords_    | ((array?))                                   | An array of dictionaries with attributes for the new records.
 
 ##### Callback
 
