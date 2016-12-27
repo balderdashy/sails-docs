@@ -1,4 +1,4 @@
-# Custom Generators
+# Custom generators
 ### Overview
 
 Sails is all about automating repetitive tasks to make your programming easier and **Generators** are no exception.  _Generators_ are command line utilities within Sails that automate the generation of files through templates within your Sails projects.  In fact, Sails core uses _generators_ to create Sails projects.  So when you type...

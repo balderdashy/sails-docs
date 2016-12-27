@@ -1,4 +1,4 @@
-# Through Associations
+# Through associations
 
 **AKA "Has Many Through"**
 

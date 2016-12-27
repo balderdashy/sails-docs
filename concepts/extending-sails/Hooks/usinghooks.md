@@ -1,4 +1,4 @@
-# Using Hooks in a Sails App
+# Using hooks in a Sails app
 
 ## Using a project hook
 To use a project hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html) or copy the folder for the hook you want to use into `api/hooks`.

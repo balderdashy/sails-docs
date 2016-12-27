@@ -1,4 +1,4 @@
-# Model Settings
+# Model settings
 
 In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
 

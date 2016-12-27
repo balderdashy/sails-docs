@@ -1,4 +1,4 @@
-# One Way Association
+# One way association
 
 **AKA "Belongs To"**
 

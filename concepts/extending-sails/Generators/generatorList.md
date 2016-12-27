@@ -1,4 +1,4 @@
-# Available Generators
+# Available generators
 
 ### Core Generators
 

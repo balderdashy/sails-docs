@@ -1,4 +1,4 @@
-# Socket Client (`sails.io.js`)
+# Socket client (`sails.io.js`)
 
 > This section of the docs is about the Sails socket client SDK for the browser.  It is written in JavaScript and is also usable on the server.
 >

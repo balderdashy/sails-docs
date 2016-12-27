@@ -1,4 +1,4 @@
-# One-to-Many
+# One-to-many
 
 **AKA "Has Many"**
 

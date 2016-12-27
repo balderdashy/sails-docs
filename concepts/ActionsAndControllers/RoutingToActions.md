@@ -1,4 +1,4 @@
-# Routing to Actions
+# Routing to actions
 
 By default, Sails will create a [blueprint action route](http://sailsjs.org/documentation/reference/blueprint-api) for each action, so that a `GET` request to `/:actionIdentity` will trigger the action.  For example, a `signup` action saved in `api/controllers/UserController.js` or `api/controllers/user/signup.js` would be bound to a `/user/signup` route.  See the [blueprints documentation](http://sailsjs.org/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
 

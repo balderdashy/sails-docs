@@ -1,4 +1,4 @@
-# The Hook Specification
+# The hook specification
 
 ## Overview
 

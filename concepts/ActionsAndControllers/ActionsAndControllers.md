@@ -1,4 +1,4 @@
-# Actions and Controllers
+# Actions and controllers
 
 ### Overview
 

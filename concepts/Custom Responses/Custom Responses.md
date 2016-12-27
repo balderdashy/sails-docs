@@ -1,4 +1,4 @@
-# Custom Responses
+# Custom responses
 
 ### Overview
 

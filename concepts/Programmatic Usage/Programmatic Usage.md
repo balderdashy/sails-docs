@@ -1,4 +1,4 @@
-# Using Sails Programmatically
+# Using Sails programmatically
 
 ### Overview
 

@@ -1,4 +1,4 @@
-# Standalone Waterline Usage
+# Standalone Waterline usage
 
 In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.
 

@@ -1,4 +1,4 @@
-# Blueprint Actions
+# Blueprint actions
 
 Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with your models.  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model then `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 

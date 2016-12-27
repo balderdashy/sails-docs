@@ -1,4 +1,4 @@
-# Command Line Interface (CLI)
+# Command-line interface (CLI)
 
 ### Overview
 Sails comes with a convenient command line tool to quickly get your app scaffolded and running.

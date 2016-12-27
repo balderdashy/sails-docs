@@ -1,4 +1,4 @@
-# Default Tasks
+# Default tasks
 
 ### Overview
 

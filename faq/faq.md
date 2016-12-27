@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# Frequently-asked questions
 
 ### How does the documentation end up on the Sails website?
 

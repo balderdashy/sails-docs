@@ -1,4 +1,4 @@
-# Available Database Adapters
+# Available database adapters
 
 This page is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.
 

@@ -1,4 +1,4 @@
-# Many-to-Many
+# Many-to-many
 
 **AKA "Has and Belongs To Many"**
 

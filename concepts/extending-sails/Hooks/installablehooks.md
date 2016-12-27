@@ -1,4 +1,4 @@
-# Creating an Installable Hook
+# Creating an installable hook
 
 Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
 
