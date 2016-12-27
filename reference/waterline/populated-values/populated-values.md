@@ -71,7 +71,7 @@ Order.find()
       // handle error (e.g. `return res.serverError(err);` )
       return;
     }
-    
+
     // We successfully created a new Customer named Jon and added
     // him to `order[1]` as one of its "buyers".
     // We also created a new company and set it as `order[1]`'s "seller".
@@ -89,4 +89,4 @@ Order.find()
 
 
 
-<docmeta name="displayName" value="Populated Values">
+<docmeta name="displayName" value="Populated values">

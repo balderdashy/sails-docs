@@ -171,4 +171,4 @@ Using standalone actions has several advantages over controller files:
 
 In the tradition of most MVC frameworks, Sails recommends that your apps contain "thin" controllers -- that is, your action code should be as lean as possible, with any re-usable code moved into [helpers](http://sailsjs.com/documentation/concepts/helpers) or even extracted into node modules.  This makes your apps easier to maintain in the long term!
 
-<docmeta name="displayName" value="Actions and Controllers">
+<docmeta name="displayName" value="Actions and controllers">

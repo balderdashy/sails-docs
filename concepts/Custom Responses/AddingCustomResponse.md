@@ -3,17 +3,17 @@
 To add your own custom response method, simply add a file to `/api/responses` with the same name as the method you would like to create.  The file should export a function, which can take any parameters you like.
 
 ```
-/** 
+/**
  * api/responses/myResponse.js
  *
  * This will be available in controllers as res.myResponse('foo');
  */
 
 module.exports = function(message) {
-   
+
   var req = this.req;
   var res = this.res;
-   
+
   var viewFilePath = 'mySpecialView';
   var statusCode = 200;
 
@@ -48,4 +48,4 @@ module.exports = function(message) {
   });
 }
 ```
-<docmeta name="displayName" value="Adding a Custom Response">
+<docmeta name="displayName" value="Adding a custom response">

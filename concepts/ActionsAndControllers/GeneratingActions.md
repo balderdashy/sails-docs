@@ -74,4 +74,4 @@ module.exports = {
 ```
 
 
-<docmeta name="displayName" value="Generating Actions and Controllers">
+<docmeta name="displayName" value="Generating actions and controllers">

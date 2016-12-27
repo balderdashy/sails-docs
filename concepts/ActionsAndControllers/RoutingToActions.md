@@ -25,4 +25,4 @@ If you&rsquo;re using standalone actions, so that you had an `api/controllers/sa
 For a full discussion of manual routing, please see the [routes documentation](http://sailsjs.org/documentation/concepts/Routes).
 
 
-<docmeta name="displayName" value="Routing to Actions">
+<docmeta name="displayName" value="Routing to actions">

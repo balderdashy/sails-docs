@@ -22,4 +22,4 @@ This method is used to send a 404 ("Not Found") response back down to the client
 
 This method is used to send a 403 ("Forbidden") response back down to the client indicating that the request is not allowed. 🚫 See the [`res.forbidden()` reference page](http://sailsjs.org/documentation/reference/response-res/res-forbidden) for usage info.
 
-<docmeta name="displayName" value="Default Responses">
+<docmeta name="displayName" value="Default responses">

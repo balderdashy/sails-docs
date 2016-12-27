@@ -6,6 +6,6 @@ Sails comes with a convenient command line tool to quickly get your app scaffold
 
 
 
-<docmeta name="displayName" value="Command Line Interface">
+<docmeta name="displayName" value="Command-line interface">
 <docmeta name="stabilityIndex" value="3">
 

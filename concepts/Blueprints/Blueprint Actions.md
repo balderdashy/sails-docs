@@ -17,4 +17,4 @@ The current version of Sails ships with the following blueprint actions:
 
 For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.org/documentation/reference/blueprint-api)
 
-<docmeta name="displayName" value="Blueprint Actions">
+<docmeta name="displayName" value="Blueprint actions">

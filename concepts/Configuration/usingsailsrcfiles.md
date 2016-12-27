@@ -10,5 +10,5 @@ When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in eith
 
 
 
-<docmeta name="displayName" value="Using `.sailsrc` Files">
+<docmeta name="displayName" value="Using `.sailsrc` files">
 

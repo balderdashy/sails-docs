@@ -89,4 +89,4 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 > [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
 
-<docmeta name="displayName" value="Default Tasks">
+<docmeta name="displayName" value="Default tasks">
