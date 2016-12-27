@@ -202,4 +202,4 @@ req.file('avatar').upload({
 
 
 
-<docmeta name="displayName" value="File Uploads">
+<docmeta name="displayName" value="File uploads">

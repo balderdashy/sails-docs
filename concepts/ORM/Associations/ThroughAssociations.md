@@ -64,5 +64,5 @@ By using the `PetUser` model we can use `.populate()` on both the `User` model a
 
 
 
-<docmeta name="displayName" value="Through Associations">
+<docmeta name="displayName" value="Through associations">
 

@@ -116,5 +116,5 @@ Assuming your hook is tested and looks good, and assuming that the hook name isn
 
 
 
-<docmeta name="displayName" value="Installable Hooks">
+<docmeta name="displayName" value="Installable hooks">
 <docmeta name="stabilityIndex" value="3">

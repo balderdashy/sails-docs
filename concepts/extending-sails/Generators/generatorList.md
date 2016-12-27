@@ -30,9 +30,9 @@ There are over 100 community-supported generators [available on NPM](https://www
 + [sails-generate-scaffold](https://github.com/irlnathan/sails-generate-scaffold)
 + [sails-generate-directive](https://github.com/balderdashy/sails-generate-directive)
 + [sails-generate-bower](https://github.com/smies/sails-generate-bower)
-+ [sails-generate-angular-gulp](https://github.com/Karnith/sails-generate-angular-gulp) 
++ [sails-generate-angular-gulp](https://github.com/Karnith/sails-generate-angular-gulp)
 + [sails-generate-ember-blueprints](https://github.com/mphasize/sails-generate-ember-blueprints)
 + And [many more](https://www.npmjs.com/search?q=sails+generate)...
 
 
-<docmeta name="displayName" value="Available Generators">
+<docmeta name="displayName" value="Available generators">

@@ -1,4 +1,4 @@
-# Understanding Sessions in Sails
+# Understanding sessions in Sails
 
 For our purposes **sessions** are synonymous with a few components that together allow you to store information about a user agent between requests.
 

@@ -378,4 +378,4 @@ $ mocha
 
 
 
-<docmeta name="displayName" value="Standalone Waterline Usage">
+<docmeta name="displayName" value="Standalone Waterline usage">

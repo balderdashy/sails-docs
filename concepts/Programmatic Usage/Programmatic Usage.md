@@ -149,4 +149,4 @@ The following Sails modules can be added programmatically:
 
 The full reference for Sails' programmatic interface is available in [**Reference > Application**](http://sailsjs.org/documentation/reference/application).
 
-<docmeta name="displayName" value="Programmatic Usage">
+<docmeta name="displayName" value="Programmatic usage">

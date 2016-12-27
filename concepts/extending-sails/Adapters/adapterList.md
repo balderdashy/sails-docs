@@ -1,6 +1,6 @@
 # Available Database Adapters
 
-This page is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.  
+This page is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.
 
 All supported adapters can be configured in roughly the same way: by passing in a Sails/Waterline adapter (`adapter`), as well as a       connection URL (`url`).  For more information on configuring datastores, see [sails.config.datastores](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
@@ -147,4 +147,4 @@ If you find that any of these conventions are not true for any of the community 
 
 
 
-<docmeta name="displayName" value="Available Adapters">
+<docmeta name="displayName" value="Available adapters">

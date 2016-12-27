@@ -227,4 +227,4 @@ In addition to the options discussed in the various route target syntaxes above,
 |`skip`, `limit`, `sort`, `where`|[blueprint](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((dictionary))|Set criteria for "find" blueprint.  See the [queries reference](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md) for more info.
 
 
-<docmeta name="displayName" value="Custom Routes">
+<docmeta name="displayName" value="Custom routes">

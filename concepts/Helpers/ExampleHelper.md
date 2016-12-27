@@ -92,4 +92,4 @@ A few more notes about the example `get-recent-users` helper above:
 * Many of the fields such as `description` and `friendlyName` are not strictly required, but are immensely helpful in keeping the code maintainable, especially when sharing the helper across multiple apps.
 * The `noUsersFound` exit may or may not be helpful, depending on your app.  If you always wanted to perform some specific action whenever no users were returned (for example, redirecting to a different page), the exit would be a good idea.  If on the other hand you simply wanted to tweak some text in a view based on whether or not users were returned, it might be better to just have the `success` exit and check the `length` of the returned array in your action or view code.
 
-<docmeta name="displayName" value="Example Helper">
+<docmeta name="displayName" value="Example helper">

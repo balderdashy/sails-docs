@@ -101,5 +101,5 @@ User.find()
 
 
 
-<docmeta name="displayName" value="One-to-Many">
+<docmeta name="displayName" value="One-to-many">
 

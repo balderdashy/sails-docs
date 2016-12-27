@@ -1,4 +1,4 @@
-# Socket Hijacking
+# Socket hijacking
 
 Unfortunately, cross-site request forgery attacks are not limited to the HTTP protocol.  WebSocket hijacking (sometimes known as [CSWSH](http://www.christian-schneider.net/CrossSiteWebSocketHijacking.html)) is a commonly overlooked vulnerability in most realtime applications.  Fortunately, since Sails treats both HTTP and WebSocket requests as first-class citizens, its built-in [CSRF protection](http://sailsjs.org/documentation/concepts/Security/CSRF.html) and [configurable CORS rulesets](http://sailsjs.org/documentation/concepts/Security/CORS.html) apply to both protocols.
 
@@ -11,4 +11,4 @@ You can prepare your Sails app against CSWSH attacks by enabling the built-in pr
 
 
 
-<docmeta name="displayName" value="Socket Hijacking">
+<docmeta name="displayName" value="Socket hijacking">

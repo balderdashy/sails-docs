@@ -98,5 +98,5 @@ module.exports = {
 
 
 
-<docmeta name="displayName" value="One-to-One">
+<docmeta name="displayName" value="One-to-one">
 

@@ -49,19 +49,19 @@ User.find({ name:'Mike' })
 .exec(function(err, users) {
 
   // The users object would look something like:
-  // [{ 
+  // [{
   //  name: 'Mike',
   //  age: 21,
-  //  pony: { 
+  //  pony: {
   //    name: 'Pinkie Pie',
   //    color: 'pink',
   //    id: 5,
   //    createdAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST),
-  //    updatedAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST) 
+  //    updatedAt: Tue Feb 11 2014 15:45:33 GMT-0600 (CST)
   //  },
   //  createdAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
   //  updatedAt: Tue Feb 11 2014 15:48:53 GMT-0600 (CST),
-  //  id: 1 
+  //  id: 1
   // }]
 ```
 ### Notes
@@ -71,5 +71,5 @@ User.find({ name:'Mike' })
 > Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
 
 
-<docmeta name="displayName" value="One Way Association">
+<docmeta name="displayName" value="One way association">
 

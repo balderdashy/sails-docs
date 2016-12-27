@@ -122,4 +122,4 @@ An active community of Sails and Waterline users exists on GitHub, Stack Overflo
 
 
 
-<docmeta name="displayName" value="Custom Adapters">
+<docmeta name="displayName" value="Custom adapters">

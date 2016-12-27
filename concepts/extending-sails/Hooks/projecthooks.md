@@ -27,5 +27,5 @@ in the logs.
 * [Creating an installable hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
 
-<docmeta name="displayName" value="Project Hooks">
+<docmeta name="displayName" value="Project hooks">
 <docmeta name="stabilityIndex" value="3">

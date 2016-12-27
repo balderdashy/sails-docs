@@ -10,7 +10,7 @@ module.exports = function myBasicHook(sails) {
 }
 ```
 
-It wouldn't do much, but it would work!  
+It wouldn't do much, but it would work!
 
 Each hook should be saved in its own folder with the filename `index.js`.  The folder name should uniquely identify the hook, and the folder can contain any number of additional files and subfolders.  Extending the previous example, if you saved the file containing `myBasicHook` in a Sails project as `index.js` in the folder `api/hooks/my-basic-hook` and then lifted your app with `sails lift --verbose`, you would see the following in the output:
 
@@ -59,5 +59,5 @@ module.exports = function myHook(sails) {
 The public var and function above would be available as `sails.hooks.myhook.abc` and `sails.hooks.myhook.sayHi`, respectively.
 
 
-<docmeta name="displayName" value="Hook Specification">
+<docmeta name="displayName" value="Hook specification">
 <docmeta name="stabilityIndex" value="3">

@@ -108,7 +108,7 @@ Whenever you need to apply breaking changes to your _production database_, you s
 
 ##### How auto-migrations work
 
-When you lift your Sails app in a development environment (e.g. running `sails lift` in a brand new Sails app), the configured auto-migration strategy will run.  If you are using `migrate: 'safe'`, then nothing extra will happen at all.  But if you are using `drop` or `alter`, Sails will load every record in your development database into memory, then drop and recreate the physical layer representation of the data (i.e. tables/collections/sets/etc.)  This allows any breaking changes you've made in your model definitions, lik removing a uniqueness constraint, to be automatically applied to your development database.  Finally, if you are using `alter`, Sails will then attempt to re-seed the freshly generated tables/collections/sets with the records it saved earlier.  
+When you lift your Sails app in a development environment (e.g. running `sails lift` in a brand new Sails app), the configured auto-migration strategy will run.  If you are using `migrate: 'safe'`, then nothing extra will happen at all.  But if you are using `drop` or `alter`, Sails will load every record in your development database into memory, then drop and recreate the physical layer representation of the data (i.e. tables/collections/sets/etc.)  This allows any breaking changes you've made in your model definitions, lik removing a uniqueness constraint, to be automatically applied to your development database.  Finally, if you are using `alter`, Sails will then attempt to re-seed the freshly generated tables/collections/sets with the records it saved earlier.
 
 
 | Auto-migration strategy  | Description |
@@ -124,7 +124,7 @@ The `drop` and `alter` auto-migration strategies in Sails exist as a feature for
 
 In many cases, hosting providers automatically set the `NODE_ENV` environment variable to "production" when they detect a Node.js app.  Even so, please don't rely only on that failsafe, and take the usual precautions to keep your users' data safe.  Any time you connect Sails (or any other tool or framework) to a database with pre-existing production data, **do a dry run**.  Especially the very first time.  Production data is sensitive, valuable, and in many cases irreplaceable.  Customers, users, and their lawyers are not cool with it getting flushed.
 
-As a best practice, make sure to never lift or [deploy](http://sailsjs.org/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](http://sailsjs.org/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.) 
+As a best practice, make sure to never lift or [deploy](http://sailsjs.org/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](http://sailsjs.org/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
 
 
 ##### Are auto-migrations slow?
@@ -151,7 +151,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 datastore: 'legacyEcommerceDb'
 ```
 
-The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) indicating the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model. 
+The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) indicating the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
 
 For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
@@ -195,4 +195,4 @@ globalId: 'Purchase'
 This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/documentation/concepts/globals?q=disabling-globals).
 
 
-<docmeta name="displayName" value="Model Settings">
+<docmeta name="displayName" value="Model settings">

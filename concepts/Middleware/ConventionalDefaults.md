@@ -19,4 +19,4 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
 + `*` - The middleware with an asterisk (*) should _almost never_ need to be modified or removed. Please only do so if you really understand what you're doing.
 
 
-<docmeta name="displayName" value="Conventional Defaults">
+<docmeta name="displayName" value="Conventional defaults">

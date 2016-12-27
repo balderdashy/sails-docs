@@ -52,7 +52,7 @@ Model.find({
   name: 'walter',
   state: 'new mexico'
 }).exec(function (err, waltersFromNewMexico) {
-  
+
 });
 ```
 
@@ -176,7 +176,7 @@ Searches for records where the value for this attribute _contains_ the given str
 Model.find({
   subject: { contains: 'music' }
 }).exec(function (err, musicCourses){
-  
+
 });
 ```
 
@@ -297,4 +297,4 @@ Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 > Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.org/documentation/reference/waterline/models/native.html) or [`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html) method.
 
 
-<docmeta name="displayName" value="Query Language">
+<docmeta name="displayName" value="Query language">

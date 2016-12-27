@@ -1,4 +1,4 @@
-# Content Security Policy
+# Content security policy
 
 [Content Security Policy (CSP)](https://www.owasp.org/index.php/Clickjacking) is a [W3C specification](https://w3c.github.io/webappsec/specs/content-security-policy) for instructing the client browser as to which location and/or which type of resources are allowed to be loaded.  This spec uses "directives" to define loading behaviors for target resource types. Directives can be specified using HTTP response headers or HTML `<meta>` tags.
 
@@ -74,5 +74,5 @@ Different CSP response headers are supported by different browsers.  For example
 + [Content Security Policy (OWasp)](https://www.owasp.org/index.php/Content_Security_Policy)
 + Learn more about installing HTTP middleware in [Concepts > Middleware](http://sailsjs.com/docs/concepts/middleware).
 
-<docmeta name="displayName" value="Content Security Policy">
+<docmeta name="displayName" value="Content security policy">
 <docmeta name="tags" value="csp,content security policy">

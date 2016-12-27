@@ -1,4 +1,4 @@
-# Many-to-Many 
+# Many-to-Many
 
 **AKA "Has and Belongs To Many"**
 
@@ -147,5 +147,5 @@ User.findOne(2).exec(function(err, user) {
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
 
 
-<docmeta name="displayName" value="Many-to-Many">
+<docmeta name="displayName" value="Many-to-many">
 

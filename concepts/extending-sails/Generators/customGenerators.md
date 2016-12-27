@@ -16,14 +16,14 @@ myProject
        |_config
        |_node_modules
        |_tasks
-       |_views                
+       |_views
 .gitignore
 .sailsrc
 app.js
 Gruntfile.js
 package.json
 README.md
-                
+
 ```
 
 Other examples of _generators_ in Sails core (meaning they are built into Sails) include:
@@ -38,9 +38,9 @@ Other examples of _generators_ in Sails core (meaning they are built into Sails)
 - sails-generate-views-jade
 - Although not a stand-alone module there's one other _generator_ accessed via `sails generate api`
 
-To begin the process of generating a generator you can use `sails-generate-generator`. 
+To begin the process of generating a generator you can use `sails-generate-generator`.
 
->**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust us it will not create a worm hole to an evil alternate universe. 
+>**Note:** The idea of creating a _generator_ by invoking a _generator_ may seem like some kind of demented infinite loop but trust us it will not create a worm hole to an evil alternate universe.
 
 ### Creating a Generator
 
@@ -53,7 +53,7 @@ First we need a Sails project.  If you haven't already created one go to your te
 `cd` into `myProject` or from any existing Sails project and create a _generator_ from the terminal named **awesome** by typing:
 
 ```sh
-~/ $ sails generate generator awesome 
+~/ $ sails generate generator awesome
 ```
 
 You'll know the generator was created if you see the message: `info: Created a new generator!`.
@@ -62,13 +62,13 @@ You'll know the generator was created if you see the message: `info: Created a n
 
 To enable the _generator_ you need to tell Sails about it via `\myProject\.sailsrc`. If you were using an existing generator you would link to an npm module in `.sailsrc` and then just install it with `npm install`.  Since you're developing a generator, you'll link to it directly.  To create the link go back to the terminal and `cd` into the `awesome` _generator_ folder and type:
 
-```sh 
+```sh
 ~/ $  pwd
 ```
 
 The `pwd` command will return a fully resolved path to the _generator_ (e.g. `/Users/irl/sails_projects/myProject/awesome`).
 
-Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property add an `awesome` key and paste the path to the `awesome` _generator_ as the value. 
+Copy the path and then open `myProject/.sailsrc`.  Within the `modules` property add an `awesome` key and paste the path to the `awesome` _generator_ as the value.
 
 > **Note:** you can name the _generator_ anything you want, for now let's stick with `awesome`:
 
@@ -91,7 +91,7 @@ Back at the terminal type: `sails generate awesome example`. Let's take a look a
 
 #### What did the Generator create?
 
-Open up your project in a text editor you'll notice that a folder called `hey_look_a_folder` was created and a file named `example` was also created: 
+Open up your project in a text editor you'll notice that a folder called `hey_look_a_folder` was created and a file named `example` was also created:
 
 
 ```javascript
@@ -104,7 +104,7 @@ Open up your project in a text editor you'll notice that a folder called `hey_lo
 module.exports = function () {
   // ...
 };
-``` 
+```
 
 The folder and file illustrate the power of the _generator_ not only to create elements but to use `arguments` from the command-line to influence their content. For example, the file name, `example`, used an element from the command line argument `sails generate awesome example`.
 
@@ -181,7 +181,7 @@ scope.whatIsThis = 'an example file created at '+scope.createdAt;
 
 #### Configuring the targets dictionary
 
-Now, let's take a look at the `targets` dictionary in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated. 
+Now, let's take a look at the `targets` dictionary in `myProject\awesome\Generator.js` to better understand how the folder (e.g. hey_look_a_folder) and file (e.g. example) were generated.
 
 ```javascript
 ...
@@ -235,7 +235,7 @@ module.exports = function () {
 
 ##### The _folder_ helper
 
-The _folder_ helper generates folders.  
+The _folder_ helper generates folders.
 
 ```javascript
 ...
@@ -259,7 +259,7 @@ You can also use the `--force` parameter from the command-line when executing th
 ```
 
 ### Using a generator within a generator
-To leverage the work of other programmers, _generators_ were designed to be used by other _generators_.  This is where the scope dictionary being passed down to all _generators_ becomes really powerful. 
+To leverage the work of other programmers, _generators_ were designed to be used by other _generators_.  This is where the scope dictionary being passed down to all _generators_ becomes really powerful.
 
 For example, Sails core has a _generator_ called `sails-generate-model`.  Since it's built into Sails core, there's no installation necessary.  To add it to our awesome _generator_ example is simple.  Within the `myProject\awesome\Generator.js` include it by inserting `./': ['model'],`
 
@@ -315,7 +315,7 @@ From within the `myProject\awesome` folder at the terminal type:
 ```
 >**Note:**  If you don't already have an NPM account, go to [npmjs.org](https://www.npmjs.org/) and create one.
 
-To unpublish the module, type: 
+To unpublish the module, type:
 
 ```sh
 ~/ $  npm unpublish --force
@@ -342,4 +342,4 @@ And you're all set!
 
 
 
-<docmeta name="displayName" value="Custom Generators">
+<docmeta name="displayName" value="Custom generators">

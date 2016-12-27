@@ -19,4 +19,4 @@ mySailsApp.load({
 
 Finally, note that while you can use the Sails constructor to create and start as many Sails apps programmtically as you like, each app can only be started once.  Once you call `.lower()` on an app, it cannot be started again.
 
-<docmeta name="displayName" value="Tips and Tricks">
+<docmeta name="displayName" value="Tips and tricks">

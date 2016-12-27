@@ -14,4 +14,4 @@ In your `RepoController`'s `show` action, we'd use `req.param('account')` and `r
 
 
 
-<docmeta name="displayName" value="URL Slugs">
+<docmeta name="displayName" value="URL slugs">

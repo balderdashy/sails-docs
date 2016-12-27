@@ -1,4 +1,4 @@
-# View Engines
+# View engines
 
 The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
@@ -34,4 +34,4 @@ The `getRenderFn` allows you to configure your view engine before plugging it in
 }
 ```
 
-<docmeta name="displayName" value="View Engines">
+<docmeta name="displayName" value="View engines">

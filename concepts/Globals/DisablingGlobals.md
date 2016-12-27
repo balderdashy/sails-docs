@@ -26,7 +26,7 @@ module.exports.globals = {
 > + Bear in mind that none of the globals, including `sails`, are accessible until _after_ sails has loaded.  In other words, you won't be able to use `sails.models.user` or `User` outside of a function (since `sails` will not have finished loading yet.)
 
 <!-- not true anymore:
-Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.  
+Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.
 -->
 
-<docmeta name="displayName" value="Disabling Globals">
+<docmeta name="displayName" value="Disabling globals">
