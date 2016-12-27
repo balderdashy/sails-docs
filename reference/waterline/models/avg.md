@@ -13,8 +13,8 @@ Something.avg(numericAttrName, criteria)
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |  numericAttrName           | ((string))                   | The name of the attribute whose mean will be calculated.
-| 2 |  criteria        | _((dictionary?))_                                   | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the average will be computed across _all_ of this model's records.
+| 1 |  numericAttrName    | ((string))                                   | The name of the numeric attribute whose mean will be calculated.
+| 2 |  _criteria_         | ((dictionary?                                | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the average will be computed across _all_ of this model's records.
 
 
 ##### Callback
