@@ -15,7 +15,7 @@ Once you&rsquo;ve added an installable hook to your app, you can configure it us
 ## Changing the way Sails loads an installable hook
 On rare occassions, you may need to change the name that Sails uses for an installable hook, or change the configuration key that the hook uses.  This may be the case if you already have a project hook with the same name as an installable hook, or if you&rsquo;re already using a configuration key for something else.  To avoid these conflicts, Sails provides the `sails.config.installedHooks.<hook-identity>` configuration option.  The hook identity is *always* the name of the folder that the hook is installed in.
 
-```
+```javascript
 // config/installedHooks.js
 module.exports.installedHooks = {
    "sails-hook-email": {

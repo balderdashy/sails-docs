@@ -7,7 +7,7 @@ To create a new installable hook:
 1. Choose a name for your new hook.  It must not conflict with any of the [core hook names](https://github.com/balderdashy/sails/blob/master/lib/app/configuration/default-hooks.js).
 1. Create a new folder on your system with the name `sails-hook-<your hook name>`.  The `sails-hook-` prefix is optional but recommended for consistency; it is stripped off by Sails when the hook is loaded.
 1. Create a `package.json` file in the folder.  If you have `npm` installed on your system, you can do this easily by running `npm init` and following the prompts.  Otherwise, you can create the file manually, and ensure that it contains at a minimum the following:
-```
+```json
 {
     "name": "sails-hook-your-hook-name",
     "version": "0.0.0",
@@ -27,7 +27,7 @@ Your new folder may contain other files as well, which can be loaded in your hoo
 
 In certain cases, especially when using a [scoped NPM package](https://docs.npmjs.com/misc/scope) to override a core Sails hook, you will want to change the name that Sails uses internally when it loads your hook.  You can use the `sails.hookName` configuration option in your `package.json` file for this.  The value should be the name you want to be loaded into the `sails.hooks` dictionary, so you generally will _not_ want a `sails-hooks-` prefix.  For example, if you have a module `@mycoolhooks/sails-hook-sockets` that you wish to use to override the core `sails-hook-sockets` module, the `package.json` might look like:
 
-```
+```json
 {
     "name": "@mycoolhooks/sails-hook-sockets",
     "version": "0.0.0",
@@ -45,7 +45,7 @@ In certain cases, especially when using a [scoped NPM package](https://docs.npmj
 Before you distribute your installable hook to others, you&rsquo;ll want to write some tests for it.  This will help ensure compatibility with future Sails versions and significantly reduce hair-pulling and destruction of nearby objects in fits of rage.  While a full guide to writing tests is outside the scope of this doc, the following steps should help get you started:
 
 1. Add Sails as a `devDependency` in your hook&rsquo;s `package.json` file:
-```
+```json
 "devDependencies": {
       "sails": "~0.11.0"
 }
@@ -54,7 +54,7 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 1. Install [Mocha](http://mochajs.org/) on your system with `npm install -g mocha`, if you haven&rsquo;t already.
 1. Add a `test` folder inside your hook&rsquo;s main folder.
 2. Add a `basic.js` file with the following basic test:
-```
+```javascript
 	var Sails = require('sails').Sails;
 
 	describe('Basic tests ::', function() {
