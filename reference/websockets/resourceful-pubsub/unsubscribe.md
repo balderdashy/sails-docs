@@ -10,8 +10,8 @@ Something.unsubscribe(req, ids);
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
-| 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
-| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
+| 1 | req        | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
+| 2 | ids        | ((array))    | An array of record ids (primary key values).
 
 
 
@@ -34,7 +34,7 @@ unsubscribeFromUsersNamedLenny: function (req, res) {
     User.unsubscribe(req, lennyIds);
 
     return res.ok();
-    
+
   });
 },
 ```

@@ -11,8 +11,8 @@ Something.subscribe(req, ids);
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
-| 1 | `req`      | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
-| 2 | `ids`      | ((array))    | An array of record ids (primary key values).
+| 1 | req        | ((req))      | The incoming socket request (`req`) containing the socket to subscribe.
+| 2 | ids        | ((array))    | An array of record ids (primary key values).
 
 
 When a client socket is subscribed to a record, it is a member of its dynamic "record room".  That means it will receive all messages broadcasted to that room by [`.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publish).
@@ -42,12 +42,12 @@ On the server, in a controller action:
       User.subscribe(req, _.pluck(usersNamedLouie, 'id'));
 
       // All done!  We could send down some data, but instead, we just send an empty 200 (OK) response.
-      // 
+      //
       // > Although we're ok telling this vengeful client socket when our users get
       // > destroyed, it seems ill-advised to send him our Louies' sensitive user data.
       // > (We don't want to help this guy to hunt them down in real life!)
       return res.ok();
-      
+
     });//</ User.find() >
   }
 ```
