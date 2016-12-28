@@ -9,9 +9,9 @@ Something.validate(attrName, value);
 #### Usage
 
 | # | Description   | Accepted Data Types          | Required ? |
-|---|---------------|------------------------------|------------|
-| 1 | attrName      | ((string))                   |: The name of the attribute to validate against. |
-| 2 | value         | ((ref))                      |: The value to validate/normalize. |
+|---|---------------|------------------------------|:-----------|
+| 1 | attrName      | ((string))                   | The name of the attribute to validate against. |
+| 2 | value         | ((ref))                      | The value to validate/normalize. |
 
 
 ### Example

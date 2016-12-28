@@ -20,7 +20,7 @@ Something.sum(numericAttrName, criteria)
 ##### Callback
 
 |   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+|---|:--------------------|:--------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    total            | ((number))          | The aggregate sum of the specified attribute across all matching records.
 
