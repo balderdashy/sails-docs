@@ -2,6 +2,14 @@
 
 Update all records matching criteria.
 
+```javascript
+Something.update(criteria, values)
+.exec(function(err, updatedRecord) {
+  //...
+});
+```
+
+
 #### Usage
 
 |   |     Argument        | Type              | Details                            |
