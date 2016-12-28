@@ -6,7 +6,7 @@ _This does exactly what you might be used to seeing by now when you run `sails l
 
 ```javascript
 sailsApp.lift(configOverrides, function (err) {
-  
+
 });
 ```
 
@@ -18,13 +18,13 @@ _Or:_
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 | configOverrides     | ((dictionary?))                              | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
+| 1 | _configOverrides_   | ((dictionary?))                              | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | An error encountered while lifting, or `undefined` if there were no errors.
+| 1 |    _err_            | ((Error?))          | An error encountered while lifting, or `undefined` if there were no errors.
 
 
 
@@ -47,7 +47,7 @@ sailsApp.lift({
 
   // --•
   console.log('Sails app lifted successfully!');
- 
+
 ));
 ```
 
