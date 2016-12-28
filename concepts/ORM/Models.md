@@ -6,7 +6,7 @@ A model represents a set of structured data, called records.  Models usually cor
 
 By convention, models are defined by creating a file in a Sails app's `api/models/` folder:
 
-```
+```javascript
 // api/models/Product.js
 module.exports = {
   attributes: {
