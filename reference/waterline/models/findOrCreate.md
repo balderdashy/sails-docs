@@ -22,7 +22,7 @@ Something.findOrCreate(criteria, values)
 #### Callback
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
 | 3 | wasCreatedOrFound   | ((boolean))         | Whether a record could be found or created.
 

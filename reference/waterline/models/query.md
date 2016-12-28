@@ -1,5 +1,7 @@
 # .query()
 
+> **This method is deprecated.**
+
 Execute a raw SQL query using the specified model's datastore.
 
 ```javascript
@@ -25,8 +27,8 @@ SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
-| 2 |    rawResult        | ((Ref?))            | The raw result from the adapter.  _(The exact format of this raw result data varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
+| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
+| 2 |    _rawResult_      | ((Ref?))            | The raw result from the adapter.  _(The exact format of this raw result data varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
 
 
 
@@ -41,14 +43,14 @@ Communicate directly with [`pg`](http://npmjs.com/package/pg), an NPM package us
 ```js
 Pet.query('SELECT pet.name FROM pet WHERE pet.name = $1', [ 'dog' ] ,function(err, rawResult) {
   if (err) { return res.serverError(err); }
-  
+
   sails.log(rawResult);
   // (result format depends on the SQL query that was passed in, and the adapter you're using)
-  
+
   // Then parse the raw result and do whatever you like with it.
-  
+
   return res.ok();
-  
+
 });
 ```
 
@@ -59,15 +61,15 @@ Assuming the `Pet` model is configured to use the `sails-mysql` adapter, the fol
 ```js
 Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?', [ 'dog' ] ,function(err, rawResult) {
   if (err) { return res.serverError(err); }
-  
+
   sails.log(rawResult);
   // ...grab appropriate data...
   // (result format depends on the SQL query that was passed in, and the adapter you're using)
-  
+
   // Then parse the raw result and do whatever you like with it.
-  
+
   return res.ok();
-  
+
 });
 ```
 
@@ -79,3 +81,4 @@ Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?', [ 'dog' ] ,function(err
 
 <docmeta name="displayName" value=".query()">
 <docmeta name="pageType" value="method">
+<docmeta name="isDeprecated" value="true">

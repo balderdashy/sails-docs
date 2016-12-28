@@ -28,7 +28,7 @@ return res.jsonp([
 
 Given `?callback=gotStuff`, the code above would send back a response body like:
 
-```
+```javascript
 gotStuff([{name: 'Thelma', id: 1}, {name: 'Louise', id: 2}])
 ```
 

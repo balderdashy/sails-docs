@@ -1,5 +1,7 @@
 # .native()
 
+> **This method is deprecated.**
+
 `.native()` is only available when using Sails/Waterline with MongoDB.
 
 Returns a raw Mongo collection instance representing the specified model, allowing you to perform raw Mongo queries.
@@ -33,3 +35,4 @@ Source: https://gist.github.com/mikermcneil/483987369d54512b6104
 
 <docmeta name="displayName" value=".native()">
 <docmeta name="pageType" value="method">
+<docmeta name="isDeprecated" value="true">

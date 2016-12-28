@@ -12,7 +12,7 @@ return res.redirect(url);
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | url            | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
 
 
 
