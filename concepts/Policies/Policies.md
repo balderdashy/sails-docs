@@ -46,7 +46,7 @@ To apply policies to one or more standalone actions, use the action path (relati
 
 It is important to note that policies do _not_ &ldquo;cascade&rdquo;.  In the examples above, the `isLoggedIn` policy will be applied to all actions in the `UserController.js` file (or standalone actions living under `api/controllers/user` ) _except for `delete` and `login`_.  If you wish to apply multiple policies to an action, list the policies in an array, for example:
 
-```
+```javascript
 'getEncryptedData': ['isLoggedIn', 'isInValidRegion']
 ```
 
