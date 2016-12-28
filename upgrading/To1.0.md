@@ -12,6 +12,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
+* **If your app relies on getting records back from `.update()` or `.destroy()` calls, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` for more info](#).
 
 ### Breaking changes to lesser-used functionality
 
@@ -30,6 +31,41 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.  If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.  If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
 * **The `methodOverride` middleware has been removed** -- if your app utilizes this middleware, simply `npm install --save method-override`, make sure your `sails.config.http.middleware.order` array (in `config/http.js`) includes `methodOverride` somewhere before `router` and add `methodOverride: require('method-override')()` to `sails.config.http.middleware`.
 * **The `router` middleware is no longer overrideable.**  The Express 4 router is used for routing both external and internal (aka &ldquo;virtual&rdquo;) requests.  It&rsquo;s still important to have a `router` entry in `sails.config.http.middleware.order`, to delimit which middleware should be added _before_ the router, and which should be added after.
+
+### Changes to `.update()` and `.destroy()`
+
+As of Sails v1.0 / Waterline 0.13, the default result from `.update()` and `.destroy()` has changed.
+
+To encourage better performance and easier scalability, `.update()` no longer sends back an array of updated records.  Similarly, `.destroy()` no longer sends back _destroyed_ records.  Instead, the second argument to the .exec() callback is now `undefined` (or the first argument to `.then()`, if you're using promises).
+
+This makes your app more efficient by removing unnecessary `find` queries, and it makes it possible to use `.update()` and `.destroy()` to modify many different records in large datasets-- rather than falling back to lower-level native queries.
+
+You can still instruct the adapter to send back updated records for a single query by using the `fetch` meta key.  For example:
+
+```js
+Article.update({
+  category: 'health-and-wellness',
+  status: 'draft'
+})
+.set({
+  status: 'live'
+})
+.meta({fetch: true})
+.exec(function(err, updatedRecords){
+
+});
+```
+
+
+> If the prospect of changing all of your app's queries look daunting, there is a temporary convenience you might want to take advantage of.
+> To ease the process of upgrading an existing app, you can tell Sails/Waterline to fetch updated/destroyed records for ALL of your app's `.update()`/`.destroy()` queries.  Just edit your app-wide model settings in `config/models.js`:
+>
+> ```js
+> fetchRecordsOnUpdate: true,
+> fetchRecordsOnDestroy: true,
+> ```
+>
+> That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.update()` and `.destroy()` calls and add `.meta({fetch:true})` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
 ### Security
 
