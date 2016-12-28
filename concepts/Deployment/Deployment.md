@@ -114,7 +114,7 @@ NODE_ENV=production node app.js
 
 Or if you're more comfortable with command-line options you can use `--prod`:
 
-```
+```bash
 node app.js --prod
 # (Sails will set `NODE_ENV` automatically)
 ```
