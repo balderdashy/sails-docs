@@ -73,8 +73,14 @@ For instance, if your app allows users to pick their preferred language, you mig
 ```js
 // api/policies/localize.js
 module.exports = function(req, res, next) {
-  req.setLocale(req.session.languagePreference);
-  next();
+  // If no user is logged in, continue with the default locale.
+  if (!req.session.userId) {return next();}
+  // Load the user from the database
+  User.findOne(req.session.userId).exec(function(err, user) {
+    if (err) {return res.serverError(err);}
+    // Set the locale to the user's preference
+    req.setLocale(user.languagePreference);
+  });
 };
 ```
 

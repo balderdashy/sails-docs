@@ -12,7 +12,12 @@ To default to finding only records where `userId` matches the logged-in user&rsq
 // In config/policies/filterByUser.js
 module.exports = function filterByUser (req, res, next) {
 
-  if (req.session.user) {
+  // If no user is logged in, continue on.
+  if (!req.session.userId) { return next(); }
+
+  // Load the user from the database
+  User.findOne(req.session.userId).exec(function(err, user) {
+    if (err) {return res.serverError(err);}
 
     // Use existing req.options.where, or initialize it to an empty object
     req.options.where = req.options.where || {};
@@ -20,9 +25,9 @@ module.exports = function filterByUser (req, res, next) {
     // Set the default `userId` for "find" and "update" blueprints
     req.options.where.userId = req.session.user.id;
 
-  }
+    return next();
 
-  return next();
+  });
 
 }
 ```

@@ -30,10 +30,10 @@ In a controller action...
 
 ```javascript
 sails.sockets.blast('user_logged_in', {
-  msg: 'User #' + req.session.userId + ' just logged in.',
+  msg: 'User #' + user.id + ' just logged in.',
   user: {
-    id: req.session.userId,
-    username: req.session.username
+    id: user.id,
+    username: user.username
   }
 }, req);
 ```

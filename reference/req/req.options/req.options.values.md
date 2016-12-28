@@ -12,17 +12,23 @@ To default to using the logged-in user&rsquo;s name when creating a new record:
 // In config/policies/createWithUserName.js
 module.exports = function createWithUserName (req, res, next) {
 
-  if (req.session.user) {
+  // If no user is logged in, continue on.
+  if (!req.session.userId) { return next(); }
+
+  // Load the user from the database
+  User.findOne(req.session.userId).exec(function(err, user) {
+    if (err) {return res.serverError(err);}
 
     // Use existing req.options.values, or initialize it to an empty object
     req.options.values = req.options.values || {};
 
     // Set the default `name` for "create" and "updates" blueprints
-    req.options.values.name = req.session.user.name;
+    req.options.values.name = user.name;
 
-  }
+    return next();
 
-  return next();
+  });
+
 
 }
 ```
