@@ -1,4 +1,4 @@
-# Core Maintainers
+# Core maintainers
 
 The Sails.js core maintainers are a small team of individuals located in Austin, TX who are passionate about making it easier for everyone to develop scalable, secure, custom web applications.  We fell in love with Node.js at first sight and are firm believers in the continued, unprecedented dominance of JavaScript as a unifying force for good.  We see Node.js as the logical continuation of the web standards movement into the world of server-side development.
 
@@ -14,4 +14,4 @@ Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcnei
 
 Today, Sails.js is financially supported by [Treeline](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/) (YC W15), a code automation platform built on Sails founded by the Sails.js core team in 2015.  Please feel free to [contact us directly](mailto:mission@treeline.io) with questions about the company, our [team](https://github.com/balderdashy/sails#team), or our mission.
 
-<docmeta name="displayName" value="Core Maintainers">
+<docmeta name="displayName" value="Core maintainers">

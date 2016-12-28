@@ -1,4 +1,4 @@
-# Adapter Interface Reference
+# Adapter interface reference
 
 > The adapter interface specification is currently under active development and may change.
 
@@ -24,7 +24,7 @@ Deprecated-- should be moved to the pubsub hook docs:
 + automatic socket.io pubsub support is provided by Sails-- it manages "rooms" for every class (collection) and each instance (model)
   + As soon as a socket subscribes to the "class room" using `Foo.subscribe()`, it starts receiving `Foo.publishCreate()` notifications any time they're fired for `Foo`.
 -->
-  
+
 
 > All officially supported Sails.js database adapters implement the `Semantic` interface.
 
@@ -66,7 +66,7 @@ Query modifiers include normalized syntax:
 + `sort`
 + `select`
 
-And WHERE supports: 
+And WHERE supports:
 
 Boolean logic:
 + `and`
@@ -75,7 +75,7 @@ Boolean logic:
 
 
 `IN` queries:
-Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.  
+Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.
 
 Sub-attribute modifiers:
 You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 } }`) with the notable exception of `contains`, `startsWith`, and `endsWith`, since support for those modifiers can be derived programatically by leveraging your definition of  `like`.
@@ -137,10 +137,10 @@ Adapters which implement the SQL interface interact with databases supporting th
 
 #### Background
 
-> Communicating with another server via messages/packets is the gold standard of performance-- 
+> Communicating with another server via messages/packets is the gold standard of performance--
 > network latency is the slowest I/O operation computers deal with, yet ironically, the standard methodology
 > used by most developers/frameworks/libraries outside of Node.js is detrimental to performance.
-> 
+>
 > In the Node community, you might say we're in the midst of a bit of an I/O renaissance.
 >
 > The standard approach to communicating with another server (or a disk) involves loading a message into memory
@@ -153,13 +153,13 @@ Adapters which implement the SQL interface interact with databases supporting th
 > Using Node streams is a different ball game.  It's like splitting up the big bag into smaller containers, then
 > floating them across one by one.  This way, no matter how much gold you end up with, you never drown.
 
-A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.  
+A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.
 
 The most common use case is taking advantage of the available HTTP response stream to pipe the output byte stream from the database directly back to the user.  i.e. to generate a dynamic sitemap, you might need to respond with a huge set of data (far too large to fit in memory on a commodity server) and simultaneously transform it into XML.
 
-#### Implementation 
+#### Implementation
 
-Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don't have all the data at once.  
+Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don't have all the data at once.
 
 
 

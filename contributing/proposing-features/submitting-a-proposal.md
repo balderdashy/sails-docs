@@ -1,4 +1,4 @@
-# Submitting a Proposal
+# Submitting a proposal
 
 Before submitting a new proposal, please consider the following:
 
@@ -20,11 +20,10 @@ Over the first year of Sails's life, the **configurability** requirement became 
 
 It is important to realize that today, most (but certainly not all) new features in Sails can be implemented using one or more of the existing plugin interfaces, rather than making a change to core.  If the feature you are requesting is an exception to that rule, then please proceed-- but realize that perhaps the most important part of your proposal is a clear explanation of why what you're suggesting is not possible today.
 
-The core maintainers of Sails review all feature proposals, and we do our best to participate in the discussion in these PRs.  However, many of these proposals can sometimes involve back and forth discussion that could require them to be open for months at a time.  So it is important to understand going in that if you are proposing a feature, the onus is on you to fully specify how that feature would work; i.e. how it would be used, how it would be configured, and in particular its implementation-- that is, which modules would need to change to make it a reality, how it would be tested, whether it would be a major or minor-version breaking change, and the additions and/or modifications that would be necessary to the official Sails documentation.  
+The core maintainers of Sails review all feature proposals, and we do our best to participate in the discussion in these PRs.  However, many of these proposals can sometimes involve back and forth discussion that could require them to be open for months at a time.  So it is important to understand going in that if you are proposing a feature, the onus is on you to fully specify how that feature would work; i.e. how it would be used, how it would be configured, and in particular its implementation-- that is, which modules would need to change to make it a reality, how it would be tested, whether it would be a major or minor-version breaking change, and the additions and/or modifications that would be necessary to the official Sails documentation.
 
 With that in mind, to submit a proposal for a new feature, or an extension to an existing feature, please take the following steps:
 
-<a name="pr-instructions"></a>
 
 0. First, look at the `backlog` table in [ROADMAP.MD](https://github.com/balderdashy/sails/blob/master/ROADMAP.md) and also search open pull requests in that file to make sure your change hasn't already been proposed.
   - If the PR (pull request) has been merged, it means that a core maintainer has (A) looked over the proposal and discussion in the pull request, (B) personally agreed to him or herself that the feature would be a good fit for Sails core, and (C) confirmed the decision with [@mikermcneil](https://github.com/mikermcneil).  It also means that the proposal is now in the backlog in ROADMAP.md, which means that the core team would be willing to merge a pull request with code changes adding the feature to Sails core (assuming that pull request follows our coding style conventions and the guidelines in this section).
@@ -44,4 +43,4 @@ Proposals which do not meet these guidelines will be closed with a response aski
 > ###### If your feature proposal is merged...
 > Having your proposal merged does not necessarily mean that you are responsible for _implementing_ the feature; and you certainly won't be responsible for _maintaining_ future changes which might affect that feature for all eternity.  _That_ privilege is reserved for Mike and the rest of the core team; which is why it is so important to spec out the vision for the usage, configuration, and implementation of your proposed feature from day 1.  Working out this sort of a detailed proposal is not an easy task, and often involves more effort than the actual implementation.  But if a proposal is accepted, it becomes part of the project's mission: which means once it is implemented and merged, the core team is committed to maintaining it as a part of Sails.
 
-<docmeta name="displayName" value="Submitting a Proposal">
+<docmeta name="displayName" value="Submitting a proposal">

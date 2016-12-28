@@ -1,4 +1,4 @@
-# Code of Conduct
+# Code of conduct
 
 > The Code of Conduct explains the *bare minimum* behavior expectations the Sails project requires of its contributors.  This Code of Conduct is adapted from the version used by the [Node.js core team](https://github.com/nodejs/node/blob/master/CODE_OF_CONDUCT.md).  Their version was originally borrowed from [Rust lang's excellent CoC](http://www.rust-lang.org/conduct.html).
 
@@ -30,4 +30,4 @@
   and will result in your exclusion.
 
 
-<docmeta name="displayName" value="Code of Conduct">
+<docmeta name="displayName" value="Code of conduct">

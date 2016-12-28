@@ -1,4 +1,4 @@
-# Stability Index
+# Stability index
 
 Throughout the documentation and in README files in Sails, you will see indications of a section's stability. The Sails framework is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 

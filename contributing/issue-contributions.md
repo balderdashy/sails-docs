@@ -1,4 +1,4 @@
-# Issue Contributions
+# Issue contributions
 
 When opening new issues or commenting on existing issues in any of the repositories in this GitHub organization, please make sure discussions are related to concrete technical issues of the Sails.js software.  Feature requests and ideas are always welcome; but they should not be submitted as GitHub issues.  See [Requesting Features](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#requesting-features) below for submission guidelines.
 
@@ -53,4 +53,4 @@ Issues which do not meet these guidelines will usually be closed without being r
 
 > You might think of these rules as guardrails on a beautiful mountain road-- they may not always be pretty, and if you run into them you may get banged up a little bit; but collectively, they keep us all from sliding off a turn and into the abyss.
 
-<docmeta name="displayName" value="Issue Contributions">
+<docmeta name="displayName" value="Issue contributions">

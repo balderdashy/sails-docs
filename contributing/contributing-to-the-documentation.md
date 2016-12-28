@@ -1,4 +1,4 @@
-# Contributing to the Documentation
+# Contributing to the documentation
 The official documentation on the Sails website is compiled from markdown files in the [sails-docs](https://github.com/balderdashy/sails-docs) repo. Please send a pull request to the **master** branch with corrections/additions and they'll be double-checked and merged as soon as possible.
 
 We are open to suggestions about the process we're using to manage our documentation, and to work with the community in general.  Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @fancydoilies, @rudeboot, or @mikermcneil on Twitter.
@@ -47,4 +47,4 @@ If your language is not represented in the table above, and you are interested i
 + When you are satisfied with the first complete version of your translation, open an issue and someone from our docs team will be happy to help you get preview it in the context of the Sails website, get it live on a domain (yours, or a subdomain of sailsjs.org, whichever makes the most sense), and share it with the rest of the Sails community.
 
 
-<docmeta name="displayName" value="Contributing to the Docs">
+<docmeta name="displayName" value="Contributing to the docs">

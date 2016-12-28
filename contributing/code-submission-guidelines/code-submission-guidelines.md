@@ -1,4 +1,4 @@
-# Code Submission Guidelines
+# Code submission guidelines
 
 There are two types of code contributions we can accept in Sails core:  patches and new features.
 
@@ -13,8 +13,8 @@ In case of doubt about whether a change you would like to make would be consider
 - **No CoffeeScript**.  For consistency, all imperative code in Sails core, including core hooks and core generators, must be written in JavaScript, not CoffeeScript, TypeScript, or any other pre-compiled language.  We cannot merge a pull request written in CoffeeScript.
 - Do not auto-format code, or attempt to fix perceived style problems in existing files in core.
 - Do not change more than 3 files in a single pull request-- it makes it very hard to tell what's going on.
-- Do not submit pull requests which implement new features or enhance existing features unless you are working from a very clearly-defined proposal and spec from a merged feature request.  As stated above, nothing is more frustrating than seeing your hard work go to waste because your vision does not align with a project's roadmap. 
-- Before beginning work on a feature, you should be sure to leave a comment telling other contributors that you are working on the feature.  Note that if you do not actively keep other contributors informed about your progress, your silence may be taken as inactivity, and you may end up working on the same feature as someone else in parallel.  
+- Do not submit pull requests which implement new features or enhance existing features unless you are working from a very clearly-defined proposal and spec from a merged feature request.  As stated above, nothing is more frustrating than seeing your hard work go to waste because your vision does not align with a project's roadmap.
+- Before beginning work on a feature, you should be sure to leave a comment telling other contributors that you are working on the feature.  Note that if you do not actively keep other contributors informed about your progress, your silence may be taken as inactivity, and you may end up working on the same feature as someone else in parallel.
 
 
 #### Contributing to core
@@ -53,4 +53,4 @@ If the generator is part of core (code base is located in the Sails repo), pleas
 
 The custom generator API is not 100% stable yet, but it is settling.  Feel free to start work on a new custom generator, just make sure and do a thorough search on npm, Google and Github to make sure someone else hasn't already started working on the same thing.  A custom generator is a great way to get your feet wet with contributing to the Sails code base.
 
-<docmeta name="displayName" value="Code Submission Guidelines">
+<docmeta name="displayName" value="Code submission guidelines">

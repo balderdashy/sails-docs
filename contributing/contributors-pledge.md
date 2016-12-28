@@ -1,4 +1,4 @@
-# Contributor's Pledge
+# Contributor's pledge
 
 By making a contribution to this project, I certify that:
 
@@ -15,4 +15,4 @@ By making a contribution to this project, I certify that:
 
 > The certificate of origin above is based on the "[Developer's Certificate of Origin 1.0](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md#developers-certificate-of-origin-10)" used by Node.js core.
 
-<docmeta name="displayName" value="Contributor's Pledge">
+<docmeta name="displayName" value="Contributor's pledge">

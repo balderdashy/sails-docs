@@ -1,4 +1,4 @@
-# Upgrading to v0.10
+# Upgrading to Sails v0.10
 
 For the most part, running sails lift in an existing v0.9 project should just work. The core contributors have taken a number of steps to make the upgrade as easy as possible, and if you follow the deprecation messages in the console, you should do just fine.
 
