@@ -1,8 +1,6 @@
 # .native()
 
-> **This method is deprecated.**
->hgjgh
->
+**This method is deprecated.**
 
 `.native()` is only available when using Sails/Waterline with MongoDB.
 
