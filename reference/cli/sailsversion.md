@@ -5,7 +5,7 @@ Get the version of your computer's _globally_ installed Sails command-line tool 
 
 ### Example
 
-```sh
+```bash
 $ sails version
 0.12.0
 ```

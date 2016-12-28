@@ -5,7 +5,7 @@ Attach the node debugger and lift the sails app; similar to running `node --debu
 
 ### Example
 
-```
+```bash
 $ sails debug
 
 info: Running node-inspector on this app...
@@ -27,19 +27,19 @@ debugger listening on port 5858
 
 To debug your Sails app using node-inspector, first install it over npm
 
-```sh
+```bash
 $ npm install -g node-inspector
 ```
 
 Then, launch it with the `node-inspector` command
 
-```sh
+```bash
 $ node-inspector
 ```
 
 Now, you can lift your Sails app in debug mode
 
-```sh
+```bash
 $ sails debug
 ```
 

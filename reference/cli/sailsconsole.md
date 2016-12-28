@@ -4,7 +4,7 @@ Quietly lift your sails app (i.e. with logging silenced), and enter the [node RE
 
 ### Example
 
-```sh
+```bash
 $ sails console
 
 info: Starting app in interactive mode...
@@ -32,13 +32,13 @@ Sails exposes [the same global variables](http://sailsjs.org/documentation/refer
 > (It [doesn't work quite like you might expect](https://github.com/balderdashy/sails/issues/3795)-- although that is [improving in Node v6](http://stackoverflow.com/questions/17073290/in-the-node-js-repl-why-does-this-happen/17073313#comment61417858_17073313).)
 >
 > Instead, use Sails' version of lodash as `sails.util._`.  For example:
-> ```sh
+> ```bash
 > sails> sails.util._.keys(sails.config)
 > ```
 >
 > Or alternatively, build yourself a local variable to use for familiarity:
 >
-> ```sh
+> ```bash
 > sails> var lodash = sails.util._;
 > sails> lodash.keys(sails.config);
 > ```
@@ -51,7 +51,7 @@ Sails exposes [the same global variables](http://sailsjs.org/documentation/refer
 
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
-```sh
+```bash
 sails> User.create({name: 'Brian', password: 'sailsRules'}).exec(console.log)
 undefined
 sails> null { name: 'Brian',
@@ -67,7 +67,7 @@ Pretty cool, it inserts it into the database. However, you might be noticing the
 
 In sails console, type in `sails` to view a list of sails properties. You can use this to learn more about sails, override properties, or check to see if you disabled globals.
 
-```sh
+```bash
 sails> sails
   |>   [a lifted Sails app on port 1337]
 \___/  For help, see: http://sailsjs.org/documentation/concepts/

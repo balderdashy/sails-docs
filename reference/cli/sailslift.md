@@ -13,7 +13,7 @@ Run the Sails app in the current dir (if `node_modules/sails` exists, it will be
 
 ### Example
 
-```sh
+```bash
 $ sails lift
 
 info: Starting app...
