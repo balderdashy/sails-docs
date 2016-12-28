@@ -5,7 +5,8 @@ With Sails and Waterline, you can associate models across multiple data stores. 
 > **IMPORTANT NOTE**
 >
 > In the examples in the used throughout the associations concepts guide, note that all references to Sails model classes are in _lowercase_.  For example, in:
-```
+
+```javascript
 // User.js
 module.exports = {
   connection: 'ourMySQL',
