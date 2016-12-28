@@ -1,37 +1,32 @@
-# .count( [`criteria`, ] `callback` )
-### Purpose
-Returns the number of records in your database that meet the given search criteria.
+# .count()
 
-### Overview
-#### Parameters
+Get the number of records matching a criteria.
 
-| # | Description   | Accepted Data Types          | Required ? |
-|---|---------------|------------------------------|------------|
-| 1 | Find Criteria | `{}`, `string`, `int` | No         |
-| 2 | Callback      | `function`                   | No         |
+#### Usage
 
-#### Callback Parameters
+| # | Argument      | Type                  | Details    |
+|---|---------------|-----------------------|------------|
+| 1 | _criteria_    | ((dictionary?))       |: The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
-| # | Description       | Possible Data Types |
-|---|-------------------|---------------------|
-| 1 | Error             | `Error`             |
-| 2 | Number of Records | `int`               |
+#### Callback
 
-### Example Usage
+| # | Description       | Type                | Details      |
+|---|-------------------|---------------------|--------------|
+| 1 | _err_             | ((error?))          |: The error that occurred, or `undefined` if there were no errors.
+| 2 | numRecords        | ((number))          |: The number of records from your database which match the given criteria.
+
+### Example
 
 ```javascript
-User.count({name:'Flynn'}).exec(function countCB(error, found) {
-  console.log('There are ' + found + ' users called "Flynn"');
+User.count({name:'Flynn'})
+.exec(function (err, numRecords) {
+  if (err) { return res.serverError(err); }
 
-  // There are 1 users called 'Flynn'
-  // Don't forget to handle your errors
+  sails.log('There are ' + numRecords + ' users called "Flynn"');
+
+  return numRecords;
 });
-
-
 ```
-### Notes
-> Any string arguments passed must be the ID of the record.
-
 
 
 
