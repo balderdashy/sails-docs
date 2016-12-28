@@ -12,10 +12,12 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
-* **If your app relies on getting records back from `.update()` or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` for more info](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy).
+* **If your app relies on getting records back from `.update()` or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` ](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy) for more info.
 
-### Breaking changes to lesser-used functionality
+### Breaking changes to lesser-used features
 
+* **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
+* **Dynamic finders** are no longer supported.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
 * **Many resourceful pubsub methods have changed** (see the PubSub section below for the full list).  If your app only uses the automatic RPS functionality provided by blueprints (and doesn&rsquo;t call RPS methods directly), no updates are required.
 * **Custom blueprints and the associated blueprint route syntax have been removed**.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
 * **Blueprint action routes no longer include `/:id?`** at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
@@ -31,6 +33,29 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.  If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.  If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
 * **The `methodOverride` middleware has been removed** -- if your app utilizes this middleware, simply `npm install --save method-override`, make sure your `sails.config.http.middleware.order` array (in `config/http.js`) includes `methodOverride` somewhere before `router` and add `methodOverride: require('method-override')()` to `sails.config.http.middleware`.
 * **The `router` middleware is no longer overrideable.**  The Express 4 router is used for routing both external and internal (aka &ldquo;virtual&rdquo;) requests.  It&rsquo;s still important to have a `router` entry in `sails.config.http.middleware.order`, to delimit which middleware should be added _before_ the router, and which should be added after.
+
+### Changes to model configuration
+
+##### tl;dr
+
+Remove any `autoPK`, `autoCreatedAt` and `autoUpdatedAt` properties from your models, and add the following to your `config/models.js` file:
+
+```
+  attributes: {
+    createdAt: { type: 'number', autoCreatedAt: true, },
+    updatedAt: { type: 'number', autoUpdatedAt: true, },
+    id: { type: 'number', autoIncrement: true}, // <-- for SQL databases
+    id: { type: 'string', columnName: '_id'}, // <-- for MongoDB
+  }
+```
+
+##### The `autoPK` top-level property is no longer supported
+
+This property was formerly used to indicate whether or not Waterline should create an `id` attribute as the primary key for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create any attributes in the background.  Instead, the `id` attribute must be defined explicitly.  There is also a new top-level model property called `primaryKey`, which can be set to the name of the attribute that should be used as the model's primary key.  This value defaults to `id` for every model, so in general you won't have to set it yourself.
+
+##### The `autoUpdatedAt` and `autoCreatedAt` top-level properties are now attribute-level properties
+
+These properties were formerly used to indicate whether or not Waterline should create `createdAt` and `updatedAt` timestamps for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create any attributes in the background.  Instead, the `createdAt` and `updatedAt` attribute must be defined explicitly if you want to use them.  By adding `autoCreatedAt: true` or `autoUpdatedAt: true` to an attribute definition, you can instruct Waterline to set that attribute to the current timestamp whenever a model instance is created or updated.
 
 ### Changes to `.update()` and `.destroy()`
 
