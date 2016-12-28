@@ -10,7 +10,7 @@ Sails' log configuration is determined by [`sails.config.log`](http://sailsjs.or
 
 ### Usage
 
-```
+```javascript
 sails.log.error(new Error("Doh, got an error :/"));
 sails.log.debug("I am a debug message");
 ```

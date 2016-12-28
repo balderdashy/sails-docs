@@ -2,7 +2,7 @@
 
 A common use of helpers is to encapsulate some repeated database queries.  For example, suppose our app had a `User` model which included a field `lastActiveAt` which tracked the time of their last login.  A common task in such an app might be to retrieve the list of most-recently-online users.  Rather than hard-coding this query into multiple locations, we could write a helper instead:
 
-```Javascript
+```javascript
 // api/helpers/get-recent-users.js
 module.exports = {
 
@@ -70,7 +70,7 @@ module.exports = {
 
 To call this helper from app code using the default options, we would use:
 
-```
+```javascript
 sails.helpers.getRecentUsers().exec({
    error: function(err) {...handle the error...},
    noUsersFound: function() {...handle the case of no users found...},
@@ -80,7 +80,7 @@ sails.helpers.getRecentUsers().exec({
 
 To alter the criteria for the returned users, we would set the options in the initial call to the helper, before `exec()`:
 
-```
+```javascript
 // Get ten most recent users since St. Patrick's Day, 2014:
 sails.helpers.getRecentUsers({ numUsers: 10, activeSince: (new Date('2014-03-17')).getTime() }).exec(...)
 ```

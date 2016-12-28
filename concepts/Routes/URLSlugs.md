@@ -3,9 +3,9 @@ A common use case for explicit routes is the design of slugs or [vanity URLs](ht
 
 ```javascript
 'get /:account/:repo': {
-controller: 'RepoController',
-action: 'show',
-skipAssets: true
+  controller: 'RepoController',
+  action: 'show',
+  skipAssets: true
 }
 ```
 
