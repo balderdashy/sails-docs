@@ -1,41 +1,43 @@
 # findOrCreate
 
-- Checks for the existence of the record in the first parameter.  If it can't be found, the record in the second parameter is created.
-- If no parameters are passed, it will return the first record that exists.
-- If no `record` is provided, it will either find a record with matching `criteria` or create the record if the object can not be found.
-
-Eg. `Model.findOrCreate( findCriteria , recordToCreate , [callback] )`
-
-### Overview
-
-#### Parameters
-
-Parameter                          | Type                                    | Details
----------------------------------- | --------------------------------------- |:---------------------------------
-findCriteria<br/>*(required)*                |  `{}`,`[{}]`, `string`, `int`    | The criteria used to find the record. If not found and no recordToCreate is provided, it is also the record that will be created.
-recordToCreate                      | `{}`, `[{}]`                              | The object, or array of objects, that you would like to create
-callback                           | `function(error, createdOrFoundRecords)`                             |  The function that will be called after the command is executed
-
-
-#### Callback Parameters
-Parameter                          | Type                                    | Details
----------------------------------- | --------------------------------------- |:---------------------------------
-error                              |  `Error'                                 | An error is returned if the request is unsuccessful
-createdOrFoundRecords              | `{}`, `[{}]`                              | The object, or array of objects, that were found or created
-
-### Example Usage
+Find the record matching the specified criteria. If no record exists or more than one record matches the criteria, an error will be returned.
 
 ```javascript
-User.findOrCreate({name:'Walter'}, {name:'Jessie'}).exec(function createFindCB(error, createdOrFoundRecords){
-  console.log('What\'s cookin\' '+createdOrFoundRecords.name+'?');
+Something.findOrCreate(criteria, values)
+.exec(function(err, attr, createdOrFound) {
+  // ...
 });
 ```
 
-### Notes
-> Any string arguments passed must be the ID of the record.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+
+#### Usage
+
+| # | Argument      | Type                  | Details    |
+|---|---------------|:----------------------|:-----------|
+| 1 | _criteria_    | ((dictionary?))       | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
+| 2 |    values     | ((dictionary))                               | The attributes that the new record should have, if one is created.
 
 
+
+#### Callback
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
+| 3 | wasCreatedOrFound   | ((boolean))         | Whether a record could be found or created.
+
+### Example
+
+Ensure an a pet with `type: 'dog'` exists:
+```javascript
+Pet.findOrCreate({ type: 'dog' }, { type: 'dog' })
+.exec(function(err, pet, wasCreatedOrFound) {
+  if (err) { return res.serverError(err); }
+
+  sails.log('Found or created a pet with type:', pet.type);
+  return wasCreatedOrFound;
+});
+```
 
 <docmeta name="displayName" value=".findOrCreate()">
 <docmeta name="pageType" value="method">
