@@ -8,7 +8,7 @@ In the course of creating the [actions](http://sailsjs.com/documentation/concept
 
 Helpers follow the <a href="http://node-machine.org" target="_blank">node-machine specification</a> (like [Actions2-style actions](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).  Here's an example of a small, well-defined helper:
 
-```
+```javascript
 module.exports = {
 
   friendlyName: 'Say hello',
@@ -38,7 +38,7 @@ module.exports = {
 
 Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.  You might call this helper from an action like this:
 
-```
+```javascript
 sails.helpers.sayHello({ name: 'Bubba'}).exec(function(err, greeting) {
   if (err) { ... handle error ... }
   // `greeting` is now "Hello, Bubba!"
@@ -47,7 +47,7 @@ sails.helpers.sayHello({ name: 'Bubba'}).exec(function(err, greeting) {
 
 or, since the helper declares the `sync` property:
 
-```
+```javascript
 var greeting;
 try {
   greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
@@ -76,7 +76,7 @@ You can provide a default value for an input by setting its `defaultsTo` propert
 
 Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to provide custom exits to handle specific error cases.  This adds to your code&rsquo;s maintainability.  For example, a helper called &ldquo;Create User&rdquo; could include a special `usernameConflict` exit to be called if the provided username already exists, allowing you to handle this scenario after calling the helper without having to resort to `try/catch` blocks or examining complex return values.
 
-```
+```javascript
 sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com'}).exec({
   success: function(newUser) { ... continue action with new user ... },
   usernameConflict: function() { ... return 409 status code to client ... }
@@ -96,7 +96,7 @@ By default, all helpers are considered _asynchronous_.  If the code inside your 
 
 Sails provides an easy generator to create a new helper:
 
-```
+```bash
 sails generate helper foo-bar
 ```
 
@@ -106,7 +106,7 @@ This will create a file `api/helpers/foo-bar.js` that can be accessed in your co
 
 Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Helpers can then be invoked by calling them with a dictionary of inputs as the sole argument, and then calling `.exec()` on the returned value, with the set of exits to handle as the argument.  This typically happens in a chain:
 
-```
+```javascript
 sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
    error: function(err) { ... },
    success: function(someOutput) { ... },
@@ -118,7 +118,7 @@ sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
 
 If your helper only has the default `error` and `success` exits, you can use a classic Node callback function as the argument to `exec`, instead of a dictionary of exit handlers:
 
-```
+```javascript
 sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err, result) {
   if (err) {...handle error and return...}
   ...process result...
@@ -129,7 +129,7 @@ sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err,
 
 If you&rsquo;re calling a helper from an action, the simplest way to pass along the [request object](http://sailsjs.com/documentation/reference/request-req) is to define it as an input:
 
-```
+```javascript
 inputs: {
   req: {
     friendlyName: 'Request',
