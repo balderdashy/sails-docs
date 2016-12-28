@@ -23,7 +23,6 @@ User.count({name:'Flynn'})
   if (err) { return res.serverError(err); }
 
   sails.log('There are ' + numRecords + ' users called "Flynn"');
-
   return numRecords;
 });
 ```
