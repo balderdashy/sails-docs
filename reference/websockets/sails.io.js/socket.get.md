@@ -13,16 +13,16 @@ io.socket.get(url, data, function (resData, jwres){
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
-| 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
-| 2 | _`data`_     | ((json?))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
-| 3 | _`callback`_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
+| 1 | url        | ((string))   | The destination URL path, e.g. "/checkout".
+| 2 | _data_     | ((json?))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
+| 3 | _callback_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 
 |   | Argument  | Type            | Details |
 |---|:----------|:---------------:|:--------|
-| 1 | `resData` | ((json))        | Data, if any, sent in the response from the Sails server.  This is the same thing as `jwres.body`.
-| 2 | `jwres`   | ((dictionary))  | A JSON WebSocket response, which consists of `headers` (a ((dictionary))), `body` (((json))), and `statusCode` (a ((number))).
+| 1 | resData   | ((json))        | Data, if any, sent in the response from the Sails server.  This is the same thing as `jwres.body`.
+| 2 | jwres     | ((dictionary))  | A JSON WebSocket response, which consists of `headers` (a ((dictionary))), `body` (((json))), and `statusCode` (a ((number))).
 
 
 

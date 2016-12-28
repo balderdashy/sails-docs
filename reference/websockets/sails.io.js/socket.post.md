@@ -13,16 +13,16 @@ io.socket.post(url, data, function (resData, jwres){
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|---------|
-| 1 | `url`      | ((string))   | The destination URL path, e.g. "/checkout".
-| 2 | _`data`_     | ((json?))        | Optional request data- if provided, will be JSON-encoded and included as the virtual HTTP body.
-| 3 | _`callback`_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
+| 1 | url        | ((string))   | The destination URL path, e.g. "/checkout".
+| 2 | _data_     | ((json?))        | Optional request data- if provided, will be JSON-encoded and included as the virtual HTTP body.
+| 3 | _callback_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
 |---|-----------|:------------:|---------|
-| 1 | `resData` | ((json))        | Data received in the response from the Sails server (=== `jwres.body`, and also equivalent to the HTTP response body.)
-| 2 | `jwres`   | ((dictionary))      | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
+| 1 | resData   | ((json))        | Data received in the response from the Sails server (=== `jwres.body`, and also equivalent to the HTTP response body.)
+| 2 | jwres     | ((dictionary))      | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
 
 
 ### Example

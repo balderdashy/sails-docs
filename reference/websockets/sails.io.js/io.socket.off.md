@@ -14,8 +14,8 @@ io.socket.off(eventIdentity, handlerFn);
 
 |   | Argument   | Type         | Details |
 |---|------------|:------------:|:--------|
-| 1 | `eventIdentity`      | ((string))   | The unique event identity associated with a server-sent message, e.g. "recipe"
-| 2 | `handlerFn` | ((function)) | The event handler function to unbind from the specified event.
+| 1 | eventIdentity | ((string))   | The unique event identity associated with a server-sent message, e.g. "recipe"
+| 2 | handlerFn     | ((function)) | The event handler function to unbind from the specified event.
 
 
 

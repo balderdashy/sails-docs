@@ -13,15 +13,15 @@ io.socket.on(eventName, function (msg) {
 
 |   | Argument    | Type         | Details |
 |---|-------------|:------------:|:--------|
-| 1 | `eventName` | ((string))   | The name of the socket event, e.g. `'recipe'` or `'welcome'`
-| 2 | `handlerFn` | ((function)) | An event handler that will be called when the server broadcasts a notification to this socket.  Will only be called if the incoming socket notification matches `eventName`.
+| 1 | eventName   | ((string))   | The name of the socket event, e.g. `'recipe'` or `'welcome'`
+| 2 | handlerFn   | ((function)) | An event handler that will be called when the server broadcasts a notification to this socket.  Will only be called if the incoming socket notification matches `eventName`.
 
 
 ##### Event handler
 
 |   | Argument  | Type            | Details |
 |---|:----------|:---------------:|:--------|
-| 1 | `msg`     | ((json))        | The data from the socket notification.
+| 1 | msg       | ((json))        | The data from the socket notification.
 
 
 

@@ -16,7 +16,7 @@ Any web page which loads the `sails.io.js` will create a new SailsSocket instanc
 
 Additional SailsSocket instances can be created via calls to [`io.sails.connect`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method):
 
-```
+```javascript
 var newSailsSocket = io.sails.connect();
 ```
 
