@@ -1,44 +1,34 @@
 # .update()
-### Purpose
-Updates existing records in the database that match the specified criteria.
 
-### Overview
-#### Parameters
+Update all records matching criteria.
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |   Find Criteria     |   `{}`,`[{}]`, `string`, `int`  |   Yes     |
-| 2 |   Updated Records   |   `{}`,`[{}]`       |   Yes     |
-| 3 |     Callback        | `function`          | No        |
+#### Usage
 
-#### Callback Parameters
+|   |     Argument        | Type              | Details                            |
+|---|:--------------------|-------------------|:-----------------------------------|
+| 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
+| 2 |    values           | ((dictionary))    | The attributes that the record should be updated to have.
+
+#### Callback
 
 |   |     Description     | Possible Data Types |
 |---|---------------------|---------------------|
-| 1 |  Error              | `Error`             |
-| 2 |  Sucessfully Updated Records    | `[{}]`        |
+| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 2 |    updatedRecord     | ((array))     | The updated record(s).
 
-### Example Usage
+### Example
 
 ```javascript
-User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, updated){
+User.update({name:'Pen'}, {name:'Finn'})
+.exec(function (err, updatedRecord){
 
-  if (err) {
-    // handle error here- e.g. `res.serverError(err);`
-    return;
-  }
+  if (err) { return res.serverError(err); }
 
-  console.log('Updated user to have name ' + updated[0].name);
+  sails.log('Updated user to have name ' + updated[0].name);
+  return res.ok();
 });
 
 ```
-### Notes
-> + An array of primary key values passed to `.update()` for a `collection` association will set the association to contain **only** the records with those primary key values provided.  That is- it **unlinks all other** records from the association.
-> + Although you may pass .update() an object or an array of objects, it will always return an array of objects.
-> + If you specify a primary key (e.g. `7` or `"50c9b254b07e040200000028"`) instead of a criteria object, any `.where()` filters will be ignored.
-> + Currently, calling `.populate()` on an `.update()` query has no effect.  To populate attributes on the results, you should follow up your update with a `find().populate()` query.
-
-
 
 <docmeta name="displayName" value=".update()">
 <docmeta name="pageType" value="method">
