@@ -10,8 +10,8 @@ Something.validate(attrName, value);
 
 | # | Description   | Accepted Data Types          | Required ? |
 |---|---------------|------------------------------|------------|
-| 1 | Find Criteria | `{}`, `string`, `int`        | No         |
-| 2 | Callback      | `function`                   | No         |
+| 1 | attrName      | ((string))                   |: The name of the attribute to validate against. |
+| 2 | value         | ((ref))                      |: The value to validate/normalize. |
 
 
 ### Example
