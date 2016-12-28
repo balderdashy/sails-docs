@@ -12,7 +12,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
-* **If your app relies on getting records back from `.update()` or `.destroy()` calls, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` for more info](#).
+* **If your app relies on getting records back from `.update()` or `.destroy()` calls, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` for more info](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy).
 
 ### Breaking changes to lesser-used functionality
 
