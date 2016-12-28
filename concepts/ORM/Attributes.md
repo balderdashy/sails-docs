@@ -94,19 +94,7 @@ For a complete list of high-level validation rules, see [Validations](http://sai
 
 TODO: need ot move primary key out to the top-level (it's a model setting now)
 
-##### primaryKey
-
-Use this attribute as the the primary key for the record. Only one attribute per model can be the `primaryKey`.  Note: This should never be used unless [autoPK](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=autopk) is set to false.
-
-```javascript
-attributes: {
-  uuid: {
-    type: 'string',
-    primaryKey: true,
-    required: true
-  }
-}
-```
+commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#1
 -->
 
 
@@ -252,82 +240,20 @@ attributes: {
 
 <!--
 
-Move this into automigrations
-
-###### size
-
-If supported in the adapter, can be used to define the size of the attribute. For example in MySQL, `size` can be specified as a number (`n`) to create a column with the SQL data type: `varchar(n)`.
-
-```javascript
-attributes: {
-  name: {
-    type: 'string',
-    size: 24
-  }
-}
-```
-
--->
+commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#2
 
 
-<!--
-
-Omitting `index` from docs for now, because it is not officially supported in Sails v1 / Waterline 0.13.  This could change in a future minor version release of Waterline (To get involved, please see http://sailsjs.com/contribute)
-
-###### index
-
-Will create a simple index in the underlying datastore for faster queries if available. This is only for simple indexes and currently dosn't support compound indexes. For these you will need to create them yourself or use a migration.
-
-There is currently an issue with adding indexes to string fields. Because Waterline performs its queries in a case insensitive manner we are unable to use the index on a string attribute. There are some workarounds being discussed but nothing is implemented so far. This will be updated in the near future to fully support indexes on strings.
-
-javascript
-attributes: {
-  email: {
-    type: 'string',
-    index: true
-  }
-}
-
--->
-
-
-
-
-
-
-
-
-
-
-<!-- 
+commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#3
 
 
 TODO: move enum to validations page
 
-##### enum
 
-A special validation property which only saves data which matches a whitelisted set of values.
-
-```javascript
-attributes: {
-  state: {
-    type: 'string',
-    enum: ['pending', 'approved', 'denied']
-  }
-}
-```
-
-<!--
-These are not ready for prime-time yet, but listing them here so they're easy to reference and add to official docs later:
-
-###### example
-
-An example value for this attribute, e.g. "Albus Dumbledore".
+commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#4
 
 
-###### validationMessage
+commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#5
 
-A custom validation message to use when any validations fail for this attribute.
 
 -->
 
