@@ -3,7 +3,7 @@
 Populate and return foreign record(s) for the given association of this record.
 
 
-```
+```javascript
 GET /:model/:id/:association
 ```
 

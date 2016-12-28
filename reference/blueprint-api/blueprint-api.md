@@ -64,7 +64,7 @@ To override a RESTful blueprint route for a single model, simply create an actio
 
 In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
 
-```
+```javascript
 'POST /user': {response: 'notFound'}
 ```
 

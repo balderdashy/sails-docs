@@ -2,7 +2,7 @@
 
 Create a new record in your database.
 
-```
+```javascript
 POST /:model
 ```
 

@@ -2,7 +2,7 @@
 
 Look up the record with the specified `id` from the database and (if possible) subscribe to the record to hear about any future changes.
 
-```
+```javascript
 GET /:model/:id
 ```
 
@@ -24,7 +24,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 ### Example
 Find the purchase with id #1:
 
-```
+```javascript
 GET /purchase/1
 ```
 

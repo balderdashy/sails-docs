@@ -2,7 +2,7 @@
 
 Update an existing record in the database and notify subscribed sockets that it has changed.
 
-```
+```javascript
 PUT /:model/:id
 ```
 

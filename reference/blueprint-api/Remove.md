@@ -2,7 +2,7 @@
 
 Remove a foreign record (e.g. a comment) from one of this record's collection associations (e.g. "comments").
 
-```
+```javascript
 DELETE /:model/:id/:association/:fk
 ```
 

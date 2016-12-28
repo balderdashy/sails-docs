@@ -2,7 +2,7 @@
 
 Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
 
-```
+```javascript
 GET /:model
 ```
 
@@ -29,7 +29,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 Find up to 30 of the newest purchases in our database:
 
-```
+```javascript
 GET /purchase?sort=createdAt DESC&limit=30
 ```
 
