@@ -4,21 +4,15 @@ With Sails and Waterline, you can associate models across multiple data stores. 
 
 > **IMPORTANT NOTE**
 >
-> In the examples in the used throughout the associations concepts guide, note that all references to Sails model classes are in _lowercase_.  For example, in:
-
-```javascript
-// User.js
-module.exports = {
-  connection: 'ourMySQL',
-  attributes: {
-    email: 'string',
-    wishlist: {
-      collection: 'product',
-      via: 'wishlistedBy'
-    }
-  }
-};
-```
-the `collection` key is set to `product`--this is the _identity_ of the Sails model called `Product`.  Whenever models are referenced in `collection`, `via`, `model` or `through` keys, their lowercased identity names should be used.
+> In tutorials and example code, you might sometimes see associations' `collection`, `model`, or `through` properties reference models in either lowercase (the _identity_) or capitalized (the _global ID_).  For example, in the following association, the `collection` property is set to `product`-- the identity of the Sails model called `Product`:
+>
+>```javascript
+>wishlist: {
+>  collection: 'product',
+>  via: 'wishlistedBy'
+>}
+>```
+>
+> In the Sails docs, we always use the global ID approach for consistency's sake.  But realize that either approach will work.
 
 <docmeta name="displayName" value="Associations">
