@@ -4,16 +4,16 @@
 
 Sails allows you to explicitly route URLs in several different ways in your **config/routes.js** file.  Every route configuration consists of an **address** and a **target**, for example:
 
-```
+```js
 'GET /foo/bar': 'UserController.subscribe'
-^^^address^^^^  ^^^^^^^^^^target^^^^^^^^^^
+^^^address^^^  ^^^^^^^^^^target^^^^^^^^^^
 ```
 
 ### Route Address
 
 The route address indicates what URL should be matched in order to apply the handler and options defined by the target.  A route consists of an optional verb and a mandatory path:
 
-```
+```js
 'POST  /foo/bar'
 ^verb^ ^^path^^
 ```
@@ -27,13 +27,13 @@ Note the initial `/` in the path--all paths should start with one in order to wo
 
 In addition to specifying a static path like **foo/bar**, you can use `*` as a wildcard:
 
-```
+```js
 '/*'
 ```
 
 will match all paths, where as:
 
-```
+```js
 '/user/foo/*'
 ```
 
@@ -43,13 +43,13 @@ will match all paths that *start* with **/user/foo**.
 
 You can capture the parts of the address that are matched by wildcards into named parameters by using the `:paramName` wildcard syntax instead of the `*`:
 
-```
+```js
 '/user/foo/bar/:name'
 ```
 
 Will match _almost_ the same URLs as:
 
-```
+```js
 '/user/foo/bar/*'
 ```
 
@@ -85,7 +85,7 @@ The address portion of a custom route specifies which URLs the route should matc
 
 This syntax binds a route to an action in a [controller file](http://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers).  The following four routes are equivalent:
 
-```
+```js
 'GET /foo/go': 'FooController.myGoAction',
 'GET /foo/go': 'foo.myGoAction',
 'GET /foo/go': { controller: 'foo', action: 'myGoAction' },
@@ -100,7 +100,7 @@ The controller and action names in this syntax are case-insensitive.
 
 This syntax binds an address to a [standalone Sails action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions).  Simply specify the path of the action (relative to `api/controllers`):
 
-```
+```js
 'GET /': { action: 'index' },   // Use the action in api/controllers/index.js
 
 'GET /foo/go': { action: 'foo/go-action' } // Use the action in api/controllers/foo/go-action.js OR
@@ -113,11 +113,11 @@ This syntax binds an address to a [standalone Sails action](http://sailsjs.com/d
 
 The [blueprint API](http://sailsjs.org/documentation/reference/blueprint-api) adds several actions for each of your models, all of which are available for routing.  For example, if you have a model defined in `api/models/User.js`, you&rsquo;ll automatically be able to do:
 
-```
+```js
 'GET /foo/go': 'user/find'              // Return a list of users
 ```
 or
-```
+```js
 'GET /foo/go': 'UserController.find'    // Same as above
 ```
 
@@ -129,7 +129,7 @@ Another common target is one that binds a route to a [view](http://sailsjs.org/d
 
 The syntax for view targets is simple: it is just the path to the view file, without the file extension (e.g. `.ejs`) and relative to the **views/** folder :
 
-```
+```js
 'GET /team': { view: 'brochure/about' }
 ```
 
@@ -154,7 +154,7 @@ Note that when redirecting, the HTTP method of the original request (and any ext
 ##### Response target syntax
 You can map an address directly to a default or custom [response](http://sailsjs.org/documentation/concepts/Custom-Responses) using this syntax:
 
-```
+```js
 '/foo': { response: 'notFound' }
 ```
 
