@@ -26,7 +26,7 @@ The biggest difference between these methods and their counterparts in `sails.so
 
 While you are free to use any Javascript library to listen for socket events on the client, Sails provides its own socket client called [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the Sails server from any web browser or Node.js process that supports Socket.io.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
-```
+```javascript
 io.socket.on('<model identity>', function (data) {
 
 });
@@ -39,7 +39,7 @@ io.socket.on('<model identity>', function (data) {
 
 Let&rsquo;s say you have a model named `User` in your app, with a single &ldquo;name&rdquo; attribute.  First, we&rsquo;ll add a listener for &ldquo;user&rdquo; events:
 
-```
+```javascript
 io.socket.on('user', function(data){
   console.log(data);
 })
@@ -57,7 +57,7 @@ io.socket.get('/user', function(resData) {
 });
 ```
 
-When that runs, it will hit the "Find" blueprint action, which returns the current list of users from the Sails server.  And if we'd sent a normal HTTP request (like `jQuery.get('/user')`), then that's all that would happen.  But because we sent a _socket request_, the server _also_ subscribed our client socket to future notifications (calls to [`.publish()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/publish))) about the user records that were returned.  
+When that runs, it will hit the "Find" blueprint action, which returns the current list of users from the Sails server.  And if we'd sent a normal HTTP request (like `jQuery.get('/user')`), then that's all that would happen.  But because we sent a _socket request_, the server _also_ subscribed our client socket to future notifications (calls to [`.publish()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/publish))) about the user records that were returned.
 
 > See [io.socket.get()](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-get) for more info about using the sails.io.js client to send virtual requests.
 

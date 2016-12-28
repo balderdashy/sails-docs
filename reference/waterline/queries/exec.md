@@ -18,7 +18,7 @@ query.exec(function afterwards(err, result) {
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    result           | ((JSON))            | The result from the database.  Exact data type depends on the query.  If an error occurred (i.e. `err` is truthy), then this result argument should be ignored.
 
 
