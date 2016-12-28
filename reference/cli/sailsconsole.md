@@ -15,7 +15,7 @@ info: ( to exit, type <CTRL>+<C> )
 sails>
 ```
 
-> Note that `sails console` still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)
+> Note that `sails console` still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)  If you&rsquo;d rather not lift the server, run `sails console --dontLift`.
 
 
 
