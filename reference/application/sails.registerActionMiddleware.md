@@ -21,7 +21,7 @@ sails.registerActionMiddleware(actionMiddlewareFns, actionIdentities);
 
 As an example of action middleware that might be applied in a custom hook, imagine a page view counter (this code might be added to the `initialize` method of the hook):
 
-```
+```javascript
 // Declare a local var to hold the number of views for each URL.
 var pageViews = {};
 

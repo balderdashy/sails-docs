@@ -38,7 +38,7 @@ If the `request` argument is specified as an object, it can have the following p
 
 |   |       Argument             | Type                | Details
 |---|--------------------------- | ------------------- |:-----------
-| 1 |       err                  | ((Error))           | If the response was unsuccessful (status code was not in the 200-399 range) this will be an object containing `status` and `body` properties.  If the response was successful, this will be `null`.
+| 1 |       _err_                | ((Error?))           | If the response was unsuccessful (status code was not in the 200-399 range) this will be an object containing `status` and `body` properties.  If the response was successful, this will be `null`.
 | 2 |       response             | ((dictionary))          | If the response was successful, this will be an object containing the full server response.
 | 3 |       body                 | ((json))            | If the response was successful, this will be the value of `response.body`.
 
