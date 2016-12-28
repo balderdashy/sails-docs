@@ -14,9 +14,9 @@ _Or:_
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
-| 1 | `socket`   | ((string)), ((req)) | The socket to be subscribed.  May be specified by the socket's id or an incoming socket request (`req`).
-| 2 | `roomName` | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
-| 3 | _`cb`_       | ((function?))| An optional callback which will be called when the operation is complete on the current server (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
+| 1 | socket     | ((string)), ((req)) | The socket to be subscribed.  May be specified by the socket's id or an incoming socket request (`req`).
+| 2 | roomName   | ((string))  | The name of the room to which the socket will be subscribed.  If the room does not exist yet, it will be created.
+| 3 | _cb_       | ((function?))| An optional callback which will be called when the operation is complete on the current server (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
 
 
 ### Example
