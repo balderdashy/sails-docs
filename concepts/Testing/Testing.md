@@ -83,7 +83,7 @@ This file is optional.  You can use it to hold mocha configuration as described 
 
 The default timeout for test cases in Mocha is 2 seconds. Increase the timeout value in mocha.opts to make sure your app lifts with enough time to finish your first test.  For example:
 
-```
+```bash
 --timeout 10000
 ```
 

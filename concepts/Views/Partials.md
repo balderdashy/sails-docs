@@ -4,18 +4,18 @@ When using the default view engine (`ejs`), Sails supports the use of _partials_
 
 They are particularly useful for reusing the same markup between different views, layouts, and even other partials.
 
-```
-<%- partial('./partials/navbar.ejs') %> 
+```ejs
+<%- partial('./partials/navbar.ejs') %>
 ```
 
 Depending on where this  render the partial located at `views/partials/navbar.ejs`, which might look something like this:
 
-```
+```ejs
 <%
 /**
  * views/partials/navbar.ejs
  *
- * > Note: This EJS comment won't show up in the HTML served to the browser.
+ * > Note: This EJS comment won't show up in the ejs served to the browser.
  * > So you can be as verbose as you like.  Just be careful not to inadvertently
  * > type a percent sign followed by a greater-than sign (it'll bust you out of
  * > the EJS block).
@@ -30,8 +30,8 @@ Depending on where this  render the partial located at `views/partials/navbar.ej
 
 The target path that you pass in as the first argument to `partial()` should be relative from the view, layout, or partial where you call it.  So if you are calling `partial()` from within a view file located at `views/pages/dashboard/user-profile.ejs`, and want to load `views/partials/widget.ejs` then you would use:
 
-```
-<%- partial('../../partials/navbar.ejs') %> 
+```ejs
+<%- partial('../../partials/navbar.ejs') %>
 ```
 
 ### Partials and view locals
@@ -60,7 +60,7 @@ Partials automatically inherit the view locals that are available wherever they 
   %><span>
     You are signed in as <a href="/<%= currentUser.username %>"><%= currentUser.username %></a>.
   </span><%
-  } 
+  }
   // Otherwise the user accessing this page must be a visitor:
   else {
   %><span>
@@ -116,10 +116,10 @@ Here's our example from above, refactored to take advantage of this:
 
 And finally, here is our new partial representing an individual inbox message:
 
-```
+```ejs
 /**
  * views/partials/inbox-message.ejs
- * 
+ *
  * An individual inbox message.
  *
  * @needs {Dictionary} message

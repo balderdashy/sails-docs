@@ -23,7 +23,7 @@ There are three kinds of template tags in EJS:
 
 Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `user` and `corndogs`:
 
-```html
+```ejs
 <div>
   <h1><%= user.name %>'s first view</h1>
   <h2>My corndog collection:</h2>
@@ -81,13 +81,13 @@ It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsq
 
 To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS views, you would do:
 
-```
+```ejs
 <%- exposeLocalsToBrowser() %>
 ```
 
 By default, the exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
 
-```
+```javascript
 res.view('myView', {
   someString: 'hello',
   someNumber: 123,
