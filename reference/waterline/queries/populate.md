@@ -19,7 +19,7 @@ Something.find()
 | 1 |    association         | ((string))                                   | The name of the association to populate.  e.g. `snacks`
 | 2 |    _subcriteria_       | ((dictionary?))                              | Optional.  When populating `collection` associations between two models which reside in the same database, a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) may be specified as a second argument to populate.  This will be used for filtering, sorting, and limiting the array of associated records (e.g. snacks) associated with each primary record.
 
-> **Important:** While experimental support exists, the `subcriteria` argument should only be used in production on queries involving a single database.  Do not use the `subcriteria` argument when performing cross-adapter queries involving multiple databases.
+> **Important:** While experimental support exists, the `subcriteria` argument should only be used in production on queries involving a single database that supports native joins (e.g. MySQL or PostgreSQL).  Do not use the `subcriteria` argument when performing cross-adapter queries involving multiple databases.  Attempting to do so will display a warning message at runtime.
 
 
 ### Example
