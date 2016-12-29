@@ -98,12 +98,26 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 
 * Change `module.exports.cors` to `module.exports.security.cors` in `config/cors.js`
 * Change CORS config settings names to match the newly documented names in http://sailsjs.com/documentation/reference/configuration/sails-config-security-cors
-* Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`
+* Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`.  This value is now simply `true` or `false`; no other CSRF options are supported (see below).
 * `sails.config.csrf.routesDisabled` is no longer supported -- instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
 
 ```
 'POST /some-thing': { action: 'do-a-thing', csrf: false },
 ```
+
+* `sails.config.csrf.origin` is no longer supported -- instead, you can add any custom CORS settings directly to your CSRF token route configuration, for example:
+
+```
+'GET /csrfToken': {
+  action: 'security/grant-csrf-token',
+  cors: {
+    allowOrigins: ['http://foobar.com','https://owlhoot.com']
+  }
+}
+```
+
+* `sails.config.csrf.grantTokenViaAjax` is no longer supported.  This setting was used to turn the CSRF token-granting route on or off.  In Sails 1.0, you add that route manually in your `config/routes.js` file (see above), so if you don&rsquo;t want to grant CSRF tokens via AJAX, you can simply not add the route for it!
+
 
 ### Views
 
