@@ -2,7 +2,7 @@
 
 For our purposes **sessions** are synonymous with a few components that together allow you to store information about a user agent between requests.
 
->A **user agent** is the software (e.g. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
+> A **user agent** is the software (e.g. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
 
 Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore the lifecycle of a request/response ends when a response is made to the requesting user agent (e.g. `res.send()`).
 
@@ -62,13 +62,13 @@ Redis is a key-value database package that can be used as a session store that i
 
 To enable Redis as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a Redis instance running on the same machine as your Sails instance your session store will use Redis.  You can point to a different Redis instance by configuring the following optional properties in `projectName/config/session.js`:
 
-```
-  // host: 'localhost',
-  // port: 6379,
-  // ttl: <redis session TTL in seconds>,
-  // db: 0,
-  // pass: <redis auth password>,
-  // prefix: 'sess:',
+```javascript
+// host: 'localhost',
+// port: 6379,
+// ttl: <redis session TTL in seconds>,
+// db: 0,
+// pass: <redis auth password>,
+// prefix: 'sess:',
 
 ```
 
@@ -77,7 +77,7 @@ For more information on configuring these properties go to [https://github.com/t
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
 
->You can change the session `secret` property in `projectName/config/session.js`.
+> You can change the session `secret` property in `projectName/config/session.js`.
 
 The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combine and hash to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header.
 
@@ -91,7 +91,7 @@ While sessions are a powerful tool in app development, they are not always neces
 
 To entirely turn off session support for your app, add the following to your `.sailsrc` file:
 
-```
+```javascript
 "hooks": {
   "session": false
 }

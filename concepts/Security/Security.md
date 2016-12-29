@@ -10,6 +10,7 @@ Sails and Express provide built-in, easily configurable protection against most 
 ### Security topics
 
 Learn about several different types of attacks that Node.js/Sails helps prevent out of the box, and how to enable and configure security settings in your app:
+
 + [CORS](http://sailsjs.com/docs/concepts/security/content-security-policy)
 + [DDOS](http://sailsjs.com/docs/concepts/security/ddos)
 + [CSRF](http://sailsjs.com/docs/concepts/security/csrf)
