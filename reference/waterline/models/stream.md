@@ -39,7 +39,7 @@ After iterating over all matching records/batches...
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | err                 | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+| 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 
 
 
