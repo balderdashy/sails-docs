@@ -19,7 +19,7 @@ module.exports = {
 
 ### Built-in Data Types
 
-Every attribute definition must have a built-in data type specified.  (Okay, not associations.  But every _other_ attribute!)
+In Sails/Waterline, model attributes always have some kind of data type guarantee.  This is above and beyond any physical-layer constraints which might exist in your underlying database-- it's more about providing a way for developers to maintain reasonable assumptions about the data that goes in or comes out of a particular model.
 
 This data type is used for logical validation and coercion of results and criteria.  Here is a list of the data types supported by Sails and Waterline:
 
@@ -31,15 +31,42 @@ This data type is used for logical validation and coercion of results and criter
 | ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries (plain JavaScript objects), and `null`.
 | ((ref))          | `type: 'ref'`                 | Any JavaScript value except `undefined`. (Should only be used when taking advantage of adapter-specific behavior.)    |
 
-Different databases vary slightly in the way they handle edge cases and special values such as `Infinity`, `null`, strings of varying lengths, etc.  Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected data type.
+Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected data type.
 
-> Note that auto-migration also relies on the attribute's declared `type`. This is mainly relevant for schemaful databases (like MySQL or PostgreSQL), since the relevant adapter needs to use this information in order to alter/define tables during auto-migration.  Remember that in production, `migrate: 'safe'` will be enabled and auto-migration will be skipped.
 
+##### Null and empty string
+
+Since `null` is neither a string, number, nor boolean, the most specific data type that accurately describes it is ((json)).  So for example, if you want to describe a normal attribute whose values are sometimes numbers and sometimes `null`, you'll want to use `type: 'json'`.
+
+
+Since empty string ("") is a string, it is normally supported by `type: 'string'` attributes.  There are a couple of exceptions though:  primary keys (because primary keys never support empty string) and any attribute which has `required: true`.
+
+
+##### Required
+
+If an attribute is `required: true`, then a value must always be specified for it when calling `.create()`.  It also prevents explicitly trying to create (or update) this value as `null` or empty string (""),
+
+
+##### Default values
+
+In addition to the five data types, there are also a couple of other basic guarantees that you can define for an attribute, including the ability to ensure a default value.
+
+The default value (`defaultsTo`) for an attribute only applies on `.create()`, and only when the key is omitted entirely.
+
+##### Associations
+
+...
+
+Neither `required`, `defaultsTo`, nor any of the validation rules may be used with associations.
 
 
 ### Validation Rules
 
 The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a robust validation library for Node.js.
+
+_None_ of the following validation impose any _additional_ restrictions against `null`.  That is, if `null` would be allowed normally, then enabling the `isEmail` validation rule will not cause `null` to be rejected as invalid.
+
+Similarly, _most_ of the following validation rules don't impose any additional restrictions against empty string ("").  There are a few exceptions (`isNotEmptyString`, and non-string-related rules like `isBoolean`, `isNumber`, `max`, and `min`), but otherwise, for any attribute where empty string ("") would normally be allowed, adding a validation rule will not cause it to be rejected.
 
 In the table below, the "Compatible Attribute Type(s)" column shows what data type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Note that coincidentally, the table below takes a shortcut:  If compatible with ((string)), ((number)), or ((boolean)), then the validation rule is also compatible with ((json)) and ((ref)), even if it doesn't explicitly say so.
 
@@ -64,6 +91,49 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 | regex             | A string that matches the configured regular expression. | `regex: /^[a-z0-9]$/i` | ((string)) |
 
 
+##### Example: Optional email address
+
+For example, imagine you have an attribute defined as follows:
+
+```javascript
+workEmail: {
+  type: 'string',
+  isEmail: true,
+}
+```
+
+Then when you call `.create()` _or_ `.update()`, this value can be set to any valid email address (like "santa@clause.com") OR as empty string ("").  However, you wouldn't be able to set it to `null`, because that would violate the type safety restriction imposed by `type: 'string'`.
+
+
+##### Example: Required star rating
+
+If we wanted to indicate that an attribute supports certain numbers, like a star rating, we might do something like the following:
+
+```javascript
+starRating: {
+  type: 'number',
+  min: 1,
+  max: 5,
+  required: true,
+}
+```
+
+
+##### Example: Optional star rating
+
+If we wanted to make our star rating optional, the easiest thing to do is just to remove the `required: true` flag.  If omitted, the starRating will default to zero.
+
+But if we wanted to indicate that this attribute supports certain numbers _or_ `null`, we'd need to change its type from `number` to `json`.  But since the `json` type allows other data like booleans, arrays, etc., and since we might want to explicitly protect against that, we can also add the `isNumber: true` validation rule:
+
+
+```javascript
+starRating: {
+  type: 'json',
+  isNumber: true,
+  min: 1,
+  max: 5,
+}
+```
 
 
 ### Unique
