@@ -304,11 +304,11 @@ Model.find({ where: { name: 'foo' }, sort: 'name DESC' });
 // Sort by name in ascending order
 Model.find({ where: { name: 'foo' }, sort: 'name ASC' });
 
-// Sort by binary notation
-Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
+// Sort by object notation
+Model.find({ where: { name: 'foo' }, sort: [{ 'name': 'ASC' }});
 
 // Sort by multiple attributes
-Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
+Model.find({ where: { name: 'foo' }, sort: [{ name:  'ASC'}, { age: 'DESC' }]);
 ```
 
 
