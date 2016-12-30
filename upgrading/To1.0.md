@@ -35,7 +35,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.
   + If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.
   + If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
-* **The `methodOverride` middleware has been removed** -- if your app utilizes this middleware:
+* **The `methodOverride` middleware has been removed.** If your app utilizes this middleware:
   + `npm install --save method-override`
   + make sure your `sails.config.http.middleware.order` array (in `config/http.js`) includes `methodOverride` somewhere before `router`
   + add `methodOverride: require('method-override')()` to `sails.config.http.middleware`.
@@ -104,7 +104,7 @@ Article.update({
 New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files, but apps migrating from earlier versions can keep their existing files as long as they perform the following upgrades:
 
 * Change `module.exports.cors` to `module.exports.security.cors` in `config/cors.js`
-* Change CORS config settings names to match the newly documented names in http://sailsjs.com/documentation/reference/configuration/sails-config-security-cors
+* Change CORS config settings names to match the newly documented names in [Reference > Configuration > sails.config.security](http://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors)
 * Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`.  This value is now simply `true` or `false`; no other CSRF options are supported (see below).
 * `sails.config.csrf.routesDisabled` is no longer supported -- instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
 
