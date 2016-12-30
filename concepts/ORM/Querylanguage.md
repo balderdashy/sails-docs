@@ -2,7 +2,6 @@
 
 The Waterline Query language is an object-based syntax used to retrieve the records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
 
-> All queries inside of Waterline are case-insensitive. While this allows for more consistent querying across databases, depending on the database you're using, it can make indexing strings tough.  This is something to be aware of if you plan to create indexes in your database to optimize the performance of searching on string fields.
 
 ### Query Language Basics
 
@@ -70,7 +69,7 @@ Model.find({
 
 #### In Pairs
 
-Provide an array to find records whose value for this attribute exactly matches (case-insensitive) _any_ of the specified search terms.
+Provide an array to find records whose value for this attribute exactly matches _any_ of the specified search terms.
 
 > This is more or less equivalent to "IN" queries in SQL, and the `$in` operator in MongoDB.
 
@@ -84,7 +83,7 @@ Model.find({
 
 #### Not-In Pairs
 
-Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches (case-insensitive) for any of the specified search terms.
+Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
 
 > This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
@@ -170,7 +169,7 @@ Model.find({
 
 #### 'contains'
 
-Searches for records where the value for this attribute _contains_ the given string. (Case insensitive.)
+Searches for records where the value for this attribute _contains_ the given string.
 
 ```javascript
 Model.find({
@@ -182,7 +181,7 @@ Model.find({
 
 #### 'startsWith'
 
-Searches for records where the value for this attribute _starts with_ the given string. (Case insensitive.)
+Searches for records where the value for this attribute _starts with_ the given string.
 
 ```javascript
 Model.find({
@@ -194,7 +193,7 @@ Model.find({
 
 #### 'endsWith'
 
-Searches for records where the value for this attribute _ends with_ the given string. (Case insensitive.)
+Searches for records where the value for this attribute _ends with_ the given string.
 
 ```javascript
 Model.find({
@@ -206,7 +205,7 @@ Model.find({
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign. (Case insensitive.)
+Searches for records using pattern matching with the `%` sign.
 
 ```javascript
 Model.find({ food: { 'like': '%beans' }})
@@ -289,12 +288,6 @@ Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
 // Sort by multiple attributes
 Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 ```
-
-> **Case-sensitivity**
->
-> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
->
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.org/documentation/reference/waterline/models/native.html) or [`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html) method.
 
 
 <docmeta name="displayName" value="Query language">
