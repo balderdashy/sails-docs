@@ -42,24 +42,6 @@ Since `null` is neither a string, number, nor boolean, the most specific data ty
 Since empty string ("") is a string, it is normally supported by `type: 'string'` attributes.  There are a couple of exceptions though:  primary keys (because primary keys never support empty string) and any attribute which has `required: true`.
 
 
-##### Required
-
-If an attribute is `required: true`, then a value must always be specified for it when calling `.create()`.  It also prevents explicitly trying to create (or update) this value as `null` or empty string (""),
-
-
-##### Default values
-
-In addition to the five data types, there are also a couple of other basic guarantees that you can define for an attribute, including the ability to ensure a default value.
-
-The default value (`defaultsTo`) for an attribute only applies on `.create()`, and only when the key is omitted entirely.
-
-##### Associations
-
-...
-
-Neither `required`, `defaultsTo`, nor any of the validation rules may be used with associations.
-
-
 ### Validation Rules
 
 The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a robust validation library for Node.js.

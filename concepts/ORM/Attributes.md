@@ -48,26 +48,23 @@ This is the type of data that will be stored for this attribute -- used for logi
 
 
 
-##### Required?
+##### Required
 
-TODO
+If an attribute is `required: true`, then a value must always be specified for it when calling `.create()`.  It also prevents explicitly trying to create (or update) this value as `null` or empty string (""),
 
 
-##### Defaults to...
+##### Default values
 
-When a record is created, if no value was supplied, the record will be created with the specified `defaultsTo` value. The supplied value can also be a function that waterline will run while creating the record.
+In addition to the five data types, there are also a couple of other basic guarantees that you can define for an attribute, including the ability to ensure a default value.
+
+The default value (`defaultsTo`) for an attribute only applies on `.create()`, and only when the key is omitted entirely.
+
 
 ```javascript
 attributes: {
   phoneNumber: {
     type: 'string',
-    defaultsTo: '111-222-3333'
-  },
-  orderNumber: {
-    type: 'string',
-    defaultsTo: function() {
-      return uuid.v4();
-    }
+    defaultsTo: '111-222-3333
   }
 }
 ```
