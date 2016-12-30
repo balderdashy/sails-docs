@@ -71,7 +71,7 @@ As of Sails v1.0 / Waterline 0.13, the default result from `.update()` and `.des
 
 To encourage better performance and easier scalability, `.update()` no longer sends back an array of updated records.  Similarly, `.destroy()` no longer sends back _destroyed_ records.  Instead, the second argument to the .exec() callback is now `undefined` (or the first argument to `.then()`, if you're using promises).
 
-This makes your app more efficient by removing unnecessary `find` queries, and it makes it possible to use `.update()` and `.destroy()` to modify many different records in large datasets-- rather than falling back to lower-level native queries.
+This makes your app more efficient by removing unnecessary `find` queries, and it makes it possible to use `.update()` and `.destroy()` to modify many different records in large datasets, rather than falling back to lower-level native queries.
 
 You can still instruct the adapter to send back updated records for a single query by using the `fetch` meta key.  For example:
 
@@ -85,12 +85,12 @@ Article.update({
 })
 .meta({fetch: true})
 .exec(function(err, updatedRecords){
-
+  //...
 });
 ```
 
 
-> If the prospect of changing all of your app's queries look daunting, there is a temporary convenience you might want to take advantage of.
+> If the prospect of changing all of your app's queries looks daunting, there is a temporary convenience you might want to take advantage of.
 > To ease the process of upgrading an existing app, you can tell Sails/Waterline to fetch updated/destroyed records for ALL of your app's `.update()`/`.destroy()` queries.  Just edit your app-wide model settings in `config/models.js`:
 >
 > ```js
