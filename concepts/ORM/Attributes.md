@@ -205,7 +205,16 @@ module.exports = {
 
 ##### columnType
 
-TODO
+Sends down the type of physical level column data type to use in the adapter. This allows you to specify types that are tied directly to how your underlying database will create them. For example, you may have an attribute that sets it's `type` property to `number` and to store that in the database you want to use the column type `float`. Your attribute definition would look like:
+
+```javascript
+attributes: {
+  placeInLine: {
+    type: 'number',
+    columnType: 'float'
+  }
+}
+```
 
 ##### autoIncrement
 
