@@ -9,8 +9,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **Install the `sails-hook-grunt` module** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
 * **Update your `config/globals.js` file** (if your app doesn't have `sails.config.globals` set to `false`)
   + Set `models` and `sails` to have boolean values (`true` or `false`)
-  + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`.
-    - You may need to `npm install --save lodash` and `npm install --save async` as well.
+  + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
