@@ -1,6 +1,6 @@
 # Working with Queries
 
-**Query objects** (aka _query instances_) are the chainable deferred objects returned from model methods like `.find()` and `.create()`.  They represent a not-quite-yet-fulfilled intent to fetch or modify records from the database.
+**Queries** (aka _query instances_) are the chainable deferred objects returned from model methods like `.find()` and `.create()`.  They represent a not-quite-yet-fulfilled intent to fetch or modify records from the database.
 
 
 ```js
@@ -62,7 +62,7 @@ When you **execute** a query (using `.exec()` or `.then()`), a lot happens:
 query.exec(function (err, zookeepers) {...});
 ```
 
-First, it is "shaken out" by Waterline core into a normalized [criteria object](http://sailsjs.org/documentation/concepts/ORM/Querylanguage.html?q=query-language-basics).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
+First, it is "shaken out" by Waterline core into a normalized [Waterline criteria dictionary](http://sailsjs.com/documentation/concepts/models-and-orm/query-language).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
 
 When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to the callback you provided to `.exec()` for consumption by your app.
 
