@@ -14,11 +14,11 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
-* **If your app relies on getting records back from `.update()` or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` ](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy) for more info.
+* **If your app relies on getting records back from `.update()` or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` ](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy) for more info.
 
 ### Breaking changes to lesser-used features
 
-* **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sails.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
+* **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
 * **Dynamic finders** are no longer supported.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
 * **Many resourceful pubsub methods have changed** (see the PubSub section below for the full list).  If your app only uses the automatic RPS functionality provided by blueprints (and doesn&rsquo;t call RPS methods directly), no updates are required.
 * **Custom blueprints and the associated blueprint route syntax have been removed**.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
