@@ -67,7 +67,7 @@ These properties were formerly used to indicate whether or not Waterline should 
   + For `type: 'number'`, these timestamps are stored as JS timestamps (the number of milliseconds since Jan 1, 1970 at midnight UTC).
   + For `type: 'string'`, these timestamps are stored in the same way as they were in Sails 0.12: as timezone-agnostic ISO 8601 JSON timestamp strings (e.g. `'2016-12-30T12:51:10Z'`)
 
-Furthermore, for any attribute, if you pass `new Date()` as a constraing within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
+Furthermore, for any attribute, if you pass `new Date()` as a constraint within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
 
 
 ### Changes to `.update()` and `.destroy()`
