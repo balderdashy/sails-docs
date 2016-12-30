@@ -32,7 +32,7 @@ module.exports = {
       type: 'string'
     },
     age: {
-      type: 'integer'
+      type: 'number'
     },
     pony:{
       model: 'pet'

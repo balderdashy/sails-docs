@@ -42,7 +42,7 @@ module.exports = {
       type: 'string'
     },
     age: {
-      type: 'integer'
+      type: 'number'
     },
     pet: {
       collection:'pet',
@@ -83,7 +83,7 @@ module.exports = {
       type: 'string'
     },
     age: {
-      type: 'integer'
+      type: 'number'
     },
     pet: {
       model:'pet'

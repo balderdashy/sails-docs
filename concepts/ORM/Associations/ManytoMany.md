@@ -67,81 +67,50 @@ Now that the `User` and `Pet` models have been created and the join table has be
 automatically, we can start associating records and querying the join table. To do this lets add a
 `User` and `Pet` and then associate them together.
 
-There are two ways of creating associations when a many-to-many association is used. You can associate
-two existing records together or you can associate a new record to the existing record. To show how
-this is done we will introduce the special methods attached to a `collection` attribute: `add` and `remove`.
-
-Both these methods are sync methods that will queue up a set of operations to be run when an instance
-is saved. If a primary key is used for the value on an `add`, a new record in the join table will be
-created linking the current model to the record specified in the primary key. However if an object
-is used as the value in an `add`, a new model will be created and then the primary key of that model
-will be used in the new join table record. You can also use an array of previous values.
-
-> When using `.save()` a populate call will be performed to return the newly saved data to you. If you would prefer this not to happen you can use an optional config flag in the `.save()` command. Example: `.save({ populate: false }, function(err) {})`
-
-## When Both Records Exist
+To associate records together, the Model method [.addToCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) is used. This allows you to set the primary keys of the records that will be associated.
 
 ```javascript
-// Given a User with ID 2 and a Pet with ID 20
-
-User.findOne(2).exec(function(err, user) {
-  if(err) // handle error
-
-  // Queue up a record to be inserted into the join table
-  user.pets.add(20);
-
-  // Save the user, creating the new associations in the join table
-  user.save(function(err) {});
+// To add a Pet to a user's collection of adoptedPets where the User has an id of
+// 10 and the adoptedPet has an id of 300.
+User.addToCollection(10, 'adoptedPets', [300]).exec(function(err) {
+  if (err) {
+    // handle error
+  }
 });
 ```
 
-## With A New Record
+You can also add multiple pets at once:
 
 ```javascript
-User.findOne(2).exec(function(err, user) {
-  if(err) // handle error
-
-  // Queue up a new pet to be added and a record to be created in the join table
-  user.pets.add({ breed: 'labrador', type: 'dog', name: 'fido' });
-
-  // Save the user, creating the new pet and associations in the join table
-  user.save(function(err) {});
+User.addToCollection(10, 'adoptedPets', [300, 301]).exec(function(err) {
+  if (err) {
+    // handle error
+  }
 });
 ```
 
-## With An Array of Existing Records
+Removing associations is just as easy using the [.removeFromCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) method. It works the same as the `addToCollection`.
 
 ```javascript
-// Given a User with ID 2 and a Pet with ID 20, 24, 31
-
-User.findOne(2).exec(function(err, user) {
-  if(err) // handle error
-
-  // Queue up a record to be inserted into the join table
-  user.pets.add([ 20, 24, 31 ]);
-
-  // Save the user, creating the new pet and associations in the join table
-  user.save(function(err) {});
+// To remove a Pet from a user's collection of adoptedPets where the User has an id of
+// 10 and the adoptedPet has an id of 300.
+User.removeFromCollection(10, 'adoptedPets', [300]).exec(function(err) {
+  if (err) {
+    // handle error
+  }
 });
 ```
 
-Removing associations is just as easy using the `remove` method. It works the same as the `add`
-method except it only accepts primary keys as a value. The two methods can be used together as well.
+And you can remove multiple pets at once:
 
 ```javascript
-User.findOne(2).exec(function(err, user) {
-  if(err) // handle error
-
-  // Queue up a new pet to be added and a record to be created in the join table
-  user.pets.add({ breed: 'labrador', type: 'dog', name: 'fido' });
-
-  // Queue up a join table record to remove
-  user.pets.remove(22);
-
-  // Save the user, creating the new pet and syncing the associations in the join table
-  user.save(function(err) {});
+User.removeFromCollection(10, 'adoptedPets', [300, 301]).exec(function(err) {
+  if (err) {
+    // handle error
+  }
 });
 ```
+
 
 ### Notes
 > For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
