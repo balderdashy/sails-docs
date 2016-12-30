@@ -1,6 +1,6 @@
 # Validations
 
-Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s). 
+Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
 
 Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.org/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types ('string', 'number', json', etc).
 
@@ -46,7 +46,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | [Example](https://gist.github.com/mikermcneil/9999a70c6deb77814601c0658d502fae)            |  _Any_   | 
+| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | [Example](https://gist.github.com/mikermcneil/9999a70c6deb77814601c0658d502fae)            |  _Any_   |
 | isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
 | isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
 | isCreditCard      | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
@@ -143,9 +143,7 @@ Finally, here are a few tips:
 
 ### Custom Validation Rules
 
-> **Warning:** Support for custom validation rules as documented here will very likely be ending in Waterline 1.0.  To future-proof your app, use a function from one of your [services](http://sailsjs.org/documentation/concepts/services) or a [model class method](http://sailsjs.org/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods) for custom validation instead.
-
-You can define your own custom validation rules by specifying a `types` dictionary as a top level property of your model, then use them in your attribute definitions just like you could any other validation rule above:
+You can define your own custom validation rules by specifying a `custom` function in your attributes.
 
 ```javascript
 // api/models/User.js
@@ -164,45 +162,31 @@ module.exports = {
 
     location: {
       type: 'json',
-      isPoint: true // << defined below
+      custom: function(value) {
+        return _.isObject(value) &&
+        _.isNumber(value.x) && _.isNumber(value.y) &&
+        value.x !== Infinity && value.x !== -Infinity &&
+        value.y !== Infinity && value.y !== -Infinity;
+      }
     },
 
     password: {
       type: 'string',
-      password: true // << defined below
+      custom: function(value) {
+        // • be a string
+        // • be at least 6 characters long
+        // • contain at least one number
+        // • contain at least one letter
+        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+      }
     }
 
-  },
-
-  // Custom types / validation rules
-  // (available for use in this model's attribute definitions above)
-  types: {
-    isPoint: function(value){
-      // For all creates/updates of `User` records that specify a value for an attribute
-      // which declares itself `isPoint: true`, that value must:
-      // • be a dictionary with numeric `x` and `y` properties
-      // • both `x` and `y` must be neither `Infinity` nor `-Infinity`
-      return _.isObject(value) &&
-      _.isNumber(value.x) && _.isNumber(value.y) &&
-      value.x !== Infinity && value.x !== -Infinity &&
-      value.y !== Infinity && value.y !== -Infinity;
-    },
-    password: function(value) {
-      // For all creates/updates of `User` records that specify a value for an attribute
-      // which declares itself `type: 'password'`, that value must:
-      // • be a string
-      // • be at least 6 characters long
-      // • contain at least one number
-      // • contain at least one letter
-      return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
-    }
   }
+
 }
 ```
 
-Custom validation functions receive the incoming value being validated as their first argument, and are expected to return `true` if it is valid, `false` otherwise.  Once set up, these custom validation rules can be used in one or more attributes in the model where they are defined by setting an extra property with the same name in relevant attribute definitions; e.g. `someCustomValidationRuleOrType: true`.
-
-Note that custom validation rules are not namespaced from built-in validations and types-- they are all merged together. So be careful not to define a custom validation that collides with any of the base types or validations in Waterline (e.g. don't name your custom validation rule `string` or `minLength`).
+Custom validation functions receive the incoming value being validated as their first argument, and are expected to return `true` if it is valid, `false` otherwise.
 
 
 
