@@ -113,13 +113,13 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 'POST /some-thing': { action: 'do-a-thing', csrf: false },
 ```
 
-* `sails.config.csrf.origin` is no longer supported -- instead, you can add any custom CORS settings directly to your CSRF token route configuration, for example:
+* `sails.config.csrf.origin` is no longer supported. Instead, you can add any custom CORS settings directly to your CSRF token route configuration, for example:
 
 ```js
 'GET /csrfToken': {
   action: 'security/grant-csrf-token',
   cors: {
-    allowOrigins: ['http://foobar.com','https://owlhoot.com']
+    allowOrigins: ['http://foobar.com', 'https://owlhoot.com']
   }
 }
 ```
