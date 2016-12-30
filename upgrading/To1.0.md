@@ -61,9 +61,14 @@ Remove any `autoPK`, `autoCreatedAt` and `autoUpdatedAt` properties from your mo
 
 This property was formerly used to indicate whether or not Waterline should create an `id` attribute as the primary key for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create any attributes in the background.  Instead, the `id` attribute must be defined explicitly.  There is also a new top-level model property called `primaryKey`, which can be set to the name of the attribute that should be used as the model's primary key.  This value defaults to `id` for every model, so in general you won't have to set it yourself.
 
-##### The `autoUpdatedAt` and `autoCreatedAt` top-level properties are now attribute-level properties
+##### The `autoUpdatedAt` and `autoCreatedAt` model settings are now attribute-level properties
 
-These properties were formerly used to indicate whether or not Waterline should create `createdAt` and `updatedAt` timestamps for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create any attributes in the background.  Instead, the `createdAt` and `updatedAt` attribute must be defined explicitly if you want to use them.  By adding `autoCreatedAt: true` or `autoUpdatedAt: true` to an attribute definition, you can instruct Waterline to set that attribute to the current timestamp whenever a model instance is created or updated.
+These properties were formerly used to indicate whether or not Waterline should create `createdAt` and `updatedAt` timestamps for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create these attributes in the background.  Instead, the `createdAt` and `updatedAt` attributes must be defined explicitly if you want to use them.  By adding `autoCreatedAt: true` or `autoUpdatedAt: true` to an attribute definition, you can instruct Waterline to set that attribute to the current timestamp whenever a record is created or updated. Depending on the type of these attributes, the timestamps will be generated in one of two formats:
+  + For `type: 'number'`, these timestamps are stored as JS timestamps (the number of milliseconds since Jan 1, 1970 at midnight UTC).
+  + For `type: 'string'`, these timestamps are stored in the same way as they were in Sails 0.12: as timezone-agnostic ISO 8601 JSON timestamp strings (e.g. `'2016-12-30T12:51:10Z'`)
+
+Furthermore, for any attribute, if you pass `new Date()` as a constraing within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
+
 
 ### Changes to `.update()` and `.destroy()`
 
@@ -161,7 +166,7 @@ Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 
 Note that the [built-in support for layouts](http://sailsjs.com/documentation/concepts/views/layouts) still works for the default EJS views, but layout support for other view engines (e.g. Handlebars or Ractive) is not bundled with Sails 1.0.
 
-### PubSub
+### Resourceful PubSub
 
 * Removed deprecated `backwardsCompatibilityFor0.9SocketClients` setting.
 * Removed deprecated `.subscribers()` method.
@@ -195,8 +200,8 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 * The `404`, `500` and `startRequestTimer` middleware are now built-in to every Sails app, and have been removed from the `sails.config.http.middleware.order` array.  If your app has an overridden `404` or `500` handler, you should instead override `api/responses/notFound.js` and `api/responses/serverError.js` respectively.
 * Session middleware that was designed specifically for Express 3 (e.g. very old versions of `connect-redis` or `connect-mongo`) will no longer work, so you&rsquo;ll need to upgrade to more recent versions.
 
-### Custom responses
- * `.jsonx()` is deprecated. If you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any instances of `res.jsonx()` in those file with `res.json()`.
+### Response methods
+ * `.jsonx()` is deprecated. If you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any occurences of `res.jsonx()` in those files with `res.json()`.
  * `res.negotiate()` is deprecated. Use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
 
 
