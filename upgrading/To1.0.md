@@ -16,6 +16,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
 * **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` ](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy) for more info.
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
+* Waterline queries will now rely on the database for case sensitivity. This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries.
 
 ### Breaking changes to lesser-used features
 
