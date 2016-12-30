@@ -147,7 +147,7 @@ A controller can have any file extension besides `.md` (Markdown) and `.txt` (te
 
 For larger, more mature apps, _standalone actions_ may be a better approach than controller files.  In this scheme, rather than having multiple actions living in a single file, each action is in its own file in an appropriate subfolder of `api/controllers`.  For example, the following file structure would be equivalent to the  `UserController.js` file:
 
-```javascript
+```
 api/
  controllers/
   user/
