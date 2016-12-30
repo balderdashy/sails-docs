@@ -1,4 +1,27 @@
-# Populated values
+# Records
+
+A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is a uniquely identifiable object that corresponds 1-to-1 with a physical database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
+
+```js
+Order.find().exec(function (err, records){
+  if (err) {
+    return exits.error(err);
+  }
+
+  console.log('Found %d records', records.length);
+  if (records.length > 0) {
+    console.log('Found at least one record, and its `id` is:',records[0].id);
+  }
+
+  return exits.success();
+
+});
+```
+
+In Sails, records are just dictionaries (plain JavaScript objects).
+
+
+## Populated values
 
 In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](http://sailsjs.org/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
 
@@ -39,54 +62,7 @@ Order.find()
 
 ### Modifying populated values
 
-Changes to populated values are persisted (i.e. saved to the database) by calling `.save()` on the record they are attached to.  You cannot call `.save()` directly on a populated value.
-
-Changing or remove the linked record of a "model" association can be accomplished by simply setting the property directly on the original record:
-
-```js
-orders[1].seller = { corporateName: 'Wolf Orphanage' };
-```
-
-"collection" associations, on the other hand, _do_ have a couple of special (non-enumerable) methods for associating and disassociating linked records.  However, `.save()` must still be called on the original record in order for changes to be persisted to the database.
-
-```js
-orders[1].buyers.add({ name: 'Jon Snow' });
-orders[1].save(function (err) { ... });
-```
+Changes to populated values are persisted (i.e. saved to the database) by calling [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) on a Model.
 
 
-### Example
-
-Finally, to put it all together:
-
-```js
-Order.find()
-.populate('buyers')
-.exec(function (err, orders){
-
-  orders[1].buyers.add({ name: 'Jon Snow' });
-  orders[1].seller = { corporateName: 'Wolf Orphanage' };
-  orders[1].save(function (err) {
-    if (err) {
-      // handle error (e.g. `return res.serverError(err);` )
-      return;
-    }
-
-    // We successfully created a new Customer named Jon and added
-    // him to `order[1]` as one of its "buyers".
-    // We also created a new company and set it as `order[1]`'s "seller".
-    //
-    // If we had provided only a primary key value instead of an object,
-    // in both cases Waterline would have tried to associate existing
-    // Customer and Company records rather than creating new ones.
-  });
-
-});
-```
-
-
-
-
-
-
-<docmeta name="displayName" value="Populated values">
+<docmeta name="displayName" value="Records">
