@@ -2,7 +2,7 @@
 
 To get started upgrading your existing Sails app to version 1.0, follow the checklist below, which covers the changes most likely to affect the majority of apps.  If your app still has errors or warnings on startup after following the checklist, come back to this document and follow the applicable guides to upgrading various app components.
 
-### tl;dr checklist -- things you simply _must_ do when upgrading to version 1.0
+### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
 * **Install the `sails-hook-orm` module** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
 * **Install the `sails-hook-sockets` module** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
