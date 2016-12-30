@@ -4,10 +4,10 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
-* **Install the `sails-hook-orm` module** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
-* **Install the `sails-hook-sockets` module** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
-* **Install the `sails-hook-grunt` module** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
-* **Update your `config/globals.js` file** (if your app doesn't have `sails.config.globals` set to `false`)
+* **Install the `sails-hook-orm` package** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
+* **Install the `sails-hook-sockets` package** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
+* **Install the `sails-hook-grunt` package** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
+* **Update your `config/globals.js` file** (unless your app has `sails.config.globals` set to `false`)
   + Set `models` and `sails` to have boolean values (`true` or `false`)
   + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
@@ -176,8 +176,8 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 For maximum flexibility, Consolidate is no longer bundled within Sails.  If you are using a view engine besides EJS, you'll probably want to install Consolidate as a direct dependency of your app.  Then you can configure the view engine in `config/views.js` like so:
 
 ```javascript
-'extension': 'swig',
-'getRenderFn': function() {
+extension: 'swig',
+getRenderFn: function() {
   // Import `consolidate`.
   var cons = require('consolidate');
   // Return the rendering function for Swig.
@@ -188,8 +188,8 @@ For maximum flexibility, Consolidate is no longer bundled within Sails.  If you 
 Adding custom configuration to your view engine is a lot easier in Sails 1.0:
 
 ```javascript
-'extension': 'swig',
-'getRenderFn': function() {
+extension: 'swig',
+getRenderFn: function() {
   // Import `consolidate`.
   var cons = require('consolidate');
   // Import `swig`.
@@ -241,7 +241,7 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 
 ### Response methods
  * `.jsonx()` is deprecated. If you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any occurences of `res.jsonx()` in those files with `res.json()`.
- * `res.negotiate()` is deprecated. Use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
+ * `res.negotiate()` is deprecated. Use `res.serverError()`, `res.badRequest()`, or a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
 
 
 ### i18n
