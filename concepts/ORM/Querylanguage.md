@@ -55,9 +55,9 @@ Model.find({
 });
 ```
 
-#### Modified Pairs
+#### Complex Constaints
 
-Modified pairs also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
+Complex constraints also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
 
 ```javascript
 Model.find({
@@ -67,7 +67,7 @@ Model.find({
 })
 ```
 
-#### In Pairs
+#### In Modifier
 
 Provide an array to find records whose value for this attribute exactly matches _any_ of the specified search terms.
 
@@ -81,7 +81,7 @@ Model.find({
 });
 ```
 
-#### Not-In Pairs
+#### Not-In Modifier
 
 Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
 
@@ -95,9 +95,9 @@ Model.find({
 });
 ```
 
-#### Or Pairs
+#### Or Predicate
 
-Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query pairs in the `or` array.
+Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query modifiers in the `or` array.
 
 ```javascript
 Model.find({
