@@ -64,7 +64,7 @@ attributes: {
     defaultsTo: '111-222-3333'
   },
   orderNumber: {
-    type: 'text',
+    type: 'string',
     defaultsTo: function() {
       return uuid.v4();
     }
@@ -109,7 +109,7 @@ To store/fetch your model's `numberOfWheels` attribute into/from the `number_of_
   // An attribute in one of your models:
   // ...
   numberOfWheels: {
-    type: 'integer',
+    type: 'number',
     columnName: 'number_of_round_rotating_things'
   }
   // ...
@@ -132,7 +132,7 @@ module.exports = {
       type: 'string'
     },
     email: {
-      type: 'email',
+      type: 'string',
       unique: true
     }
   }
@@ -176,7 +176,7 @@ module.exports = {
   tableName: 'our_users',
   attributes: {
     id: {
-      type: 'integer',
+      type: 'number',
       unique: true,
       columnName: 'the_primary_key'
     },
@@ -189,7 +189,7 @@ module.exports = {
       columnName: 'seriously_encrypted_password'
     },
     email: {
-      type: 'email',
+      type: 'string',
       unique: true,
       columnName: 'email_address'
     }
@@ -217,7 +217,7 @@ Sets up the attribute as an auto-increment key.  When a new record is added to t
 ```javascript
 attributes: {
   placeInLine: {
-    type: 'integer',
+    type: 'number',
     autoIncrement: true
   }
 }
