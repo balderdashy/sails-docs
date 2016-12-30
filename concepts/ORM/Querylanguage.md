@@ -114,18 +114,20 @@ Model.find({
 
 The following modifiers are available to use when building queries.
 
-* `'<'` / `'lessThan'`
-* `'<='` / `'lessThanOrEqual'`
-* `'>'` / `'greaterThan'`
-* `'>='` / `'greaterThanOrEqual'`
-* `'!'` / `'not'`
+* `'<'`
+* `'<='`
+* `'>'`
+* `'>='`
+* `'!='`
+* `'nin'`
+* `'in'`
 * `'like'`
 * `'contains'`
 * `'startsWith'`
 * `'endsWith'`
 
 
-#### '<' / 'lessThan'
+#### '<'
 
 Searches for records where the value is less than the value specified.
 
@@ -133,7 +135,7 @@ Searches for records where the value is less than the value specified.
 Model.find({ age: { '<': 30 }})
 ```
 
-#### '<=' / 'lessThanOrEqual'
+#### '<='
 
 Searches for records where the value is less or equal to the value specified.
 
@@ -141,7 +143,7 @@ Searches for records where the value is less or equal to the value specified.
 Model.find({ age: { '<=': 21 }})
 ```
 
-#### '>' / 'greaterThan'
+#### '>'
 
 Searches for records where the value is more than the value specified.
 
@@ -149,7 +151,7 @@ Searches for records where the value is more than the value specified.
 Model.find({ age: { '>': 18 }})
 ```
 
-#### '>=' / 'greaterThanOrEqual'
+#### '>='
 
 Searches for records where the value is more or equal to the value specified.
 
@@ -157,13 +159,33 @@ Searches for records where the value is more or equal to the value specified.
 Model.find({ age: { '>=': 21 }})
 ```
 
-#### '!' / 'not'
+#### '!='
 
 Searches for records where the value is not equal to the value specified.
 
 ```javascript
 Model.find({
-  name: { '!': 'foo' }
+  name: { '!=': 'foo' }
+})
+```
+
+#### 'in'
+
+Searches for records where the value is in the list of values.
+
+```javascript
+Model.find({
+  name: { 'in': ['foo', 'bar'] }
+})
+```
+
+#### 'nin'
+
+Searches for records where the value is NOT in the list of values.
+
+```javascript
+Model.find({
+  name: { 'nin': ['foo', 'bar'] }
 })
 ```
 

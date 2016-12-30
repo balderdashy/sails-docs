@@ -44,6 +44,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
   + make sure your `sails.config.http.middleware.order` array (in `config/http.js`) includes `methodOverride` somewhere before `router`
   + add `methodOverride: require('method-override')()` to `sails.config.http.middleware`.
 * **The `router` middleware is no longer overrideable.**  The Express 4 router is used for routing both external and internal (aka &ldquo;virtual&rdquo;) requests.  It&rsquo;s still important to have a `router` entry in `sails.config.http.middleware.order`, to delimit which middleware should be added _before_ the router, and which should be added after.
+* The query modifiers `lessThan`, `lessThanOrEqual`, `greaterThan`, and `greaterThanOrEqual` have been removed. Use the shorthand versions instead. i.e. `<`, `<=`, `>`, `>=`.
 
 ### Changes to model configuration
 
