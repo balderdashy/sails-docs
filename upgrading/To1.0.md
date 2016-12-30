@@ -185,7 +185,7 @@ While it is no longer possible to add a file to `api/blueprints` that will autom
 
 One way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
 
-Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see the Helpers docs at http://sailsjs.com/docs/concepts/helpers), and call that helper from the related action for each model (e.g. `UserController.create`).
+Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see [Concepts > Helpers](http://sailsjs.com/docs/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
 
 
 ### Express 4
@@ -196,8 +196,8 @@ Sails 1.0 comes with an update to the internal Express server from version 3 to 
 * Session middleware that was designed specifically for Express 3 (e.g. very old versions of `connect-redis` or `connect-mongo`) will no longer work, so you&rsquo;ll need to upgrade to more recent versions.
 
 ### Custom responses
- * `.jsonx()` is deprecated -- if you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any instances of `res.jsonx()` in those file with `res.json()`.
- * `res.negotiate()` is deprecated -- use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
+ * `.jsonx()` is deprecated. If you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any instances of `res.jsonx()` in those file with `res.json()`.
+ * `res.negotiate()` is deprecated. Use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
 
 
 ### i18n
