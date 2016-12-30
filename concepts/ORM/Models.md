@@ -40,8 +40,6 @@ There are many built-in methods available on models, the most important of which
 
 Every model in Waterline will have a set of query methods exposed on it to allow you to interact with the database in a normalized fashion. These are known as the CRUD (Create-Read-Update-Delete) methods and is the primary way of interacting with your data.
 
-There are also a special set of queries known as dynamic queries. These are special class methods that are dynamically generated when you initialize Waterline. We call them dynamic finders. They perform many of the same functions as the other class methods but you can call them directly on an attribute in your model.
-
 Since they have to send a query to the database and wait for a response, query methods are **asynchronous functions**.  That is, they don't come back with an answer right away.  Like other asynchronous functions in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
 
 In Node.js, Sails, and JavaScript in general, the classic way to support this paradigm is by using _callbacks_.
@@ -82,7 +80,7 @@ Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifi
 
 In addition to the built-in functionality provided by Sails, you can also define your own custom model methods.  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
 
-> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods and dynamic finders (don't define methods named "create", etc.)
+> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods (don't define methods named "create", etc.)
 
 Model methods can be synchronous or asynchronous functions, but more often than not, they're _asynchronous_.  By convention, asynchronous model methods should be 2-ary functions, which accept `options` as their first argument, and a Node-style callback as the second argument.  Alternatively, instead of a callback, you might choose to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
 
