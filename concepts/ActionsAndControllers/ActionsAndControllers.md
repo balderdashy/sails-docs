@@ -29,7 +29,7 @@ Action files can use one of two formats: _classic_ or _Actions2_.
 
 The quickest way to get started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [request object](http://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [response object](http://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
 
-```
+```javascript
 module.exports = function welcomeUser (req, res) {
 
    // Get the `userId` parameter from the request.
@@ -61,7 +61,7 @@ module.exports = function welcomeUser (req, res) {
 
 Another, more structured way to create an action is by writing it as a _machine_, in much the same way that Sails [helpers](http://sailsjs.com/documentation/concepts/helpers) are created.  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's the same actions as above, rewritten using the machine format:
 
-```
+```javascript
 module.exports = {
 
    friendlyName: 'Welcome user',
@@ -128,7 +128,7 @@ In a nutshell, your code will be standardized in a way that makes it easier to r
 
 The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User controller" could be created at `api/controllers/UserController.js` file containing:
 
-```
+```javascript
 module.exports = {
    login: function (req, res) { ... },
    logout: function (req, res) { ... },
@@ -147,7 +147,7 @@ A controller can have any file extension besides `.md` (Markdown) and `.txt` (te
 
 For larger, more mature apps, _standalone actions_ may be a better approach than controller files.  In this scheme, rather than having multiple actions living in a single file, each action is in its own file in an appropriate subfolder of `api/controllers`.  For example, the following file structure would be equivalent to the  `UserController.js` file:
 
-```
+```javascript
 api/
  controllers/
   user/
