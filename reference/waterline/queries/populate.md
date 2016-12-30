@@ -49,8 +49,8 @@ Might yield:
     id: 7392,
     age: 13,
     name: 'Finn',
-    createdAt: Wed Dec 25 2003 18:00:00 GMT-0600 (CST),
-    updatedAt: Wed Feb 12 2016 18:06:50 GMT-0600 (CST),
+    createdAt: '2003-12-26T00:00:00.000Z',
+    updatedAt: '2012-12-26T00:00:00.000Z',
     dad: {
       id: 108,
       age: 47,
@@ -70,8 +70,10 @@ Might yield:
 > This example uses the optional subcriteria argument.
 
 To find any users named Finn in the database and, for each one, also populate their 3 hippest purple swords, sorted most hip to least hip:
+
 ```javascript
-// Warning: This only works if both models are in the same database.
+// Warning: This is only safe to use on large datasets if both models are in the same database,
+// and the adapter supports optimized populates.
 // (e.g. cannot do this with the `User` model in PostgreSQL and the `Sword` model in MongoDB)
 User.find({
   name:'Finn'
@@ -102,16 +104,16 @@ Might yield:
     id: 7392,
     age: 13,
     name: 'Finn',
-    createdAt: Wed Dec 25 2003 18:00:00 GMT-0600 (CST),
-    updatedAt: Wed Feb 12 2016 18:06:50 GMT-0600 (CST),
+    createdAt: '2003-12-26T00:00:00.000Z',
+    updatedAt: '2016-02-13T00:06:50.000Z',
     dad: 108,//<< not populated
     swords: [//<< populated
       {
         id: 9,
         title: 'Grape Soda Sword',
         color: 'purple',
-        createdAt: Wed Mar 19 2014 18:06:50 GMT-0600 (CST),
-        updatedAt: Wed Feb 11 2016 18:06:50 GMT-0600 (CST)
+        createdAt: '2014-03-20T00:06:50.000Z',
+        updatedAt: '2016-02-12T00:06:50.000Z'
       },
       // ...more swords
     ]
