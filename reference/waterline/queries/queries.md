@@ -15,7 +15,7 @@ Most of the time, you won't think about query instances as objects _per se_, rat
 Zookeeper.find().exec(function afterFind(err, zookeepers) {
   if (err) {
     // uh oh
-    // (handle error; e.g. `return res.negotiate()`)
+    // (handle error; e.g. `return res.serverError(err)`)
     return;
   }
   
@@ -44,7 +44,7 @@ Zookeeper.find()
 // (don't put code out here)
 ```
 
-In this example, the callback passed in to `.catch()` is equivalent to the contents of the `if(err) {}` block from the `.exec()` example above (e.g. `res.negotiate()`).  Similarly, the `.then()` callback is equivalent to the 
+In this example, the callback passed in to `.catch()` is equivalent to the contents of the `if(err) {}` block from the `.exec()` example above (e.g. `res.serverError()`).  Similarly, the `.then()` callback is equivalent to the code below the `if(err) {}` and early return.
 
 If you are a fan of promises, and have a reasonable amount of experience with them, you should have no problem working with this interface.  However if you are not very familiar with promises, or don't care one way or another, you will probably have an easier time working with `.exec()`, since it uses standard Node.js callback conventions.
 
