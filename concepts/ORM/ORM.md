@@ -23,7 +23,7 @@ _You ask the business what database they would like to use:_
 
 The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
 
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration](http://sailsjs.org/documentation/reference/configuration/sails-config-connections).
+Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [datastore configuration](http://sailsjs.org/documentation/reference/configuration/sails-config-connections).
 
 
 
@@ -57,12 +57,12 @@ Waterline builds on this flexibility with its concept of adapters.  An adapter i
 Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations; anything from a proprietary enterprise account system, to a cache, to a traditional database.
 
 
-### Connections
+### Datastores
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
+A **datastore** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Datastores are defined in the Sails config [`config/datastores.js`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
 
 ```javascript
-// in config/connections.js
+// in config/datastores.js
 // ...
 {
   adapter: 'sails-mysql',
@@ -73,41 +73,6 @@ A **connection** represents a particular database configuration.  This configura
 }
 // ...
 ```
-
-Depending on the adapter in use, it's also possible to use unix sockets, without port and host or a URL. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
-
-```javascript
-// in config/local.js
-// ...
-connections:{
-  local_mysql:{ //arbitrary name
-    module: 'sails-mysql',
-    user: 'root',
-    password: 'root',
-    database: 'sailstest1',
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock'
-  }
-}
-// ...
-```
-
-And another showing an example of configuring the adapter using a url:
-
-```javascript
-// in config/local.js
-// ...
-connections:{
-  local_mysql:{ //arbitrary name
-    module: 'sails-mysql',
-    url: 'mysql://root:root@localhost:3306/sailstest1'
-  }
-}
-// ...
-```
-
-
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.org/documentation/reference/sails.config/sails.config.connections.html).
-Often it is also useful override the connections object in [`config/local.js`](http://sailsjs.org/documentation/concepts/configuration/the-local-js-file)
 
 
 ### Analogy
