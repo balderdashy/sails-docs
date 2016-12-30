@@ -14,7 +14,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
-* **If your app relies on getting records back from `.update()` or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` ](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-update-and-destroy) for more info.
+* **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `.update()` and `.destroy()` ](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy) for more info.
 
 ### Breaking changes to lesser-used features
 
@@ -70,15 +70,15 @@ These properties were formerly used to indicate whether or not Waterline should 
 Furthermore, for any attribute, if you pass `new Date()` as a constraing within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
 
 
-### Changes to `.update()` and `.destroy()`
+### Changes to `.create()`, `.createEach()`, `.update()`, and `.destroy()`
 
-As of Sails v1.0 / Waterline 0.13, the default result from `.update()` and `.destroy()` has changed.
+As of Sails v1.0 / Waterline 0.13, the default result from `.create()`, `.createEach()`, `.update()`, and `.destroy()` has changed.
 
-To encourage better performance and easier scalability, `.update()` no longer sends back an array of updated records.  Similarly, `.destroy()` no longer sends back _destroyed_ records.  Instead, the second argument to the .exec() callback is now `undefined` (or the first argument to `.then()`, if you're using promises).
+To encourage better performance and easier scalability, `.create()` no longer sends back the created record. Similarly, `.createEach() ` no longer sends back an array of created records, `.update()` no longer sends back an array of _updated_ records, and `.destroy()` no longer sends back _destroyed_ records.  Instead, the second argument to the .exec() callback is now `undefined` (or the first argument to `.then()`, if you're using promises).
 
 This makes your app more efficient by removing unnecessary `find` queries, and it makes it possible to use `.update()` and `.destroy()` to modify many different records in large datasets, rather than falling back to lower-level native queries.
 
-You can still instruct the adapter to send back updated records for a single query by using the `fetch` meta key.  For example:
+You can still instruct the adapter to send back created or modified records for a single query by using the `fetch` meta key.  For example:
 
 ```js
 Article.update({
@@ -96,14 +96,16 @@ Article.update({
 
 
 > If the prospect of changing all of your app's queries looks daunting, there is a temporary convenience you might want to take advantage of.
-> To ease the process of upgrading an existing app, you can tell Sails/Waterline to fetch updated/destroyed records for ALL of your app's `.update()`/`.destroy()` queries.  Just edit your app-wide model settings in `config/models.js`:
+> To ease the process of upgrading an existing app, you can tell Sails/Waterline to fetch created/updated/destroyed records for ALL of your app's `.create()`/`.createEach()`/`.update()`/`.destroy()` queries.  Just edit your app-wide model settings in `config/models.js`:
 >
 > ```js
 > fetchRecordsOnUpdate: true,
 > fetchRecordsOnDestroy: true,
+> fetchRecordsOnCreate: true,
+> fetchRecordsOnCreateEach: true,
 > ```
 >
-> That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.update()` and `.destroy()` calls and add `.meta({fetch:true})` when you can.  Support for these model settings will eventually be removed in Sails v2.
+> That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.create()`, `.createEach()`, `.update()`, and `.destroy()` calls and add `.meta({fetch:true})` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
 ### Changes to Waterline criteria usage
 * As of Sails v1.0 / Waterline 0.13, for performance, criteria passed in to Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case.)
