@@ -40,7 +40,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 Remove any `autoPK`, `autoCreatedAt` and `autoUpdatedAt` properties from your models, and add the following to your `config/models.js` file:
 
-```
+```javascript
   attributes: {
     createdAt: { type: 'number', autoCreatedAt: true, },
     updatedAt: { type: 'number', autoUpdatedAt: true, },
@@ -101,13 +101,13 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 * Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`.  This value is now simply `true` or `false`; no other CSRF options are supported (see below).
 * `sails.config.csrf.routesDisabled` is no longer supported -- instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
 
-```
+```js
 'POST /some-thing': { action: 'do-a-thing', csrf: false },
 ```
 
 * `sails.config.csrf.origin` is no longer supported -- instead, you can add any custom CORS settings directly to your CSRF token route configuration, for example:
 
-```
+```js
 'GET /csrfToken': {
   action: 'security/grant-csrf-token',
   cors: {
