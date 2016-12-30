@@ -105,6 +105,38 @@ Article.update({
 >
 > That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.update()` and `.destroy()` calls and add `.meta({fetch:true})` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
+### Changes to Waterline criteria usage
+* As of Sails v1.0 / Waterline 0.13, for performance, criteria passed in to Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case.)
+* Aggregation clauses (`sum`, `average`, `min`, `max`, and `groupBy`) are no longer supported in criteria.  Instead, see new model methods [.sum()](http://sailsjs.com/documentation/reference/waterline-orm/models/sum) and [.avg()](http://sailsjs.com/documentation/reference/waterline-orm/models/avg).
+* Changes to limit and skip:
+  + `limit: 0` **no longer does the same thing as `limit: undefined`**.  Instead of matching ∞ results, it now matches 0 results.
+  + Avoid specifying a limit of < 0.  It is still ignored, and acts like `limit: undefined`, but it now logs a deprecation warning to the console.
+  + `skip: -20` **no longer does the same thing as `skip: undefined`**.  Instead of skipping zero results, it now refuses to run with an error.
+  + Limit must be < Number.MAX_SAFE_INTEGER (...with one exception: for compatibility/convenience, `Infinity` is tolerated and normalized to `Number.MAX_SAFE_INTEGER` automatically.)
+  + Skip must be < Number.MAX_SAFE_INTEGER
+
+
+##### Change in support for mixed `where` clauses
+Criteria dictionaries with a mixed `where` clause are no longer supported. For example, instead of:
+```javascript
+{
+  username: 'santaclaus',
+  limit: 4,
+  select: ['beardLength', 'lat', 'long']
+}
+```
+You should use:
+```javascript
+{
+  where: { username: 'santaclaus' },
+  limit: 4,
+  select: ['beardLength', 'lat', 'long']
+}
+```
+> Note that you can still do `{ username: 'santaclaus' }` as shorthand for `{ where: { username: 'santaclaus' } }` -- it's just that you can't mix other top-level criteria clauses (like `limit`) alongside constraints (e.g. `username`).
+>
+> And as for anywhere you're building criteria using Waterline's chainable deferred object, then don't worry about this-- it's taken care of for you.
+
 ### Security
 
 New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files, but apps migrating from earlier versions can keep their existing files as long as they perform the following upgrades:
