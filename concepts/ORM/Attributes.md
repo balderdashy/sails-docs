@@ -30,11 +30,11 @@ A model's `attributes` [setting](http://sailsjs.com/documentation/concepts/model
 Within each attribute, there are one or more keys, or options, which are used to provide additional direction to Sails and Waterline.  These attribute keys tell the model how to go about ensuring type safety, enforcing high-level validation rules, and (if you have automigrations enabled) how it should go about setting up tables or collections in your database.
 
 
-##### Global attributes
+##### Default attributes
 
-You can also define global attributes that will appear in _all_ of your models, by defining `attributes` as a global model setting (e.g. in `config/models.js`.)  For example, new Sails apps come with three global attributes out of the box: `id`, `createdAt`, and `updatedAt`.
+You can also define default attributes that will appear in _all_ of your models, by defining `attributes` as a [default model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) (e.g. in `config/models.js`.)  For example, new Sails apps come with three default attributes out of the box: `id`, `createdAt`, and `updatedAt`.
 
-These attributes will be available in all models, unless they are overridden or disabled.  To override a global attribute, define an attribute with the same name in the model definition.  To _disable_ a global attribute, define it as `false`.  For instance, to disable the global `updatedAt` attribute for a particular model:
+These attributes will be available in all models, unless they are overridden or disabled.  To override a default attribute, define an attribute with the same name in the model definition.  To _disable_ a default attribute, define it as `false`.  For instance, to disable the default `updatedAt` attribute for a particular model:
 
 ```javascript
 // api/models/ProductCategory.js
