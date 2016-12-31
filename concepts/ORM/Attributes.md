@@ -64,7 +64,7 @@ The default value (`defaultsTo`) for an attribute only applies on `.create()`, a
 attributes: {
   phoneNumber: {
     type: 'string',
-    defaultsTo: '111-222-3333
+    defaultsTo: '111-222-3333'
   }
 }
 ```
