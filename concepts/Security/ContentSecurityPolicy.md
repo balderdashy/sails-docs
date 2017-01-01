@@ -40,7 +40,7 @@ Then add `csp` in [`config/http.js`](http://sailsjs.com/anatomy/config/http-js):
 
 ##### Supported directives
 
-To give you an idea how this works, here's a snapshot of supported CSP directives, as of 2016:
+To give you an idea how this works, here's a snapshot of supported CSP directives, as of 2017:
 
 | Directive       | |
 |:--------------- |:-------------------------- |
