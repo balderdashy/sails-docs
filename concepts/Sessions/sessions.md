@@ -101,6 +101,6 @@ This disables the core Sails session hook.  You can also accomplish this by sett
 
 ##### Disabling sessions for one or more routes
 
-To turn off session support on a per-route basis, use the [`sails.config.session.routesDisabled` setting](http://next.sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  The default setting turns off session support for all [assets](http://next.sailsjs.com/documentation/concepts/assets).
+To turn off session support on a per-route basis, use the [`sails.config.session.routesDisabled` setting](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  The default setting turns off session support for all [assets](http://sailsjs.com/documentation/concepts/assets).
 
 <docmeta name="displayName" value="Sessions">

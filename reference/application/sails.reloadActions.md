@@ -10,7 +10,7 @@ _Or:_
 
 + `sails.reloadActions(options, cb)`
 
-This method causes hooks to run their `registerActions()` methods if they have them.  After the hooks are finished reloading / re-registering their actions, actions in the `api/controllers` folder (including those stored in [controller files](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?controllers)) are reloaded and merged on top of those loaded via hooks.
+This method causes hooks to run their `registerActions()` methods if they have them.  After the hooks are finished reloading / re-registering their actions, actions in the `api/controllers` folder (including those stored in [controller files](http://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers)) are reloaded and merged on top of those loaded via hooks.
 
 This method is useful primarily in development scenarios.
 

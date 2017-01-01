@@ -139,7 +139,7 @@ The following Sails modules can be added programmatically:
 
   Module type          | Config key        | Details
  :------------------   |:----------        |:-------
- Actions | `controllers.moduleDefinitions` | A dictionary mapping [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) paths to action definitions ([classic](http://next.sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) or [Actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).
+ Actions | `controllers.moduleDefinitions` | A dictionary mapping [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) paths to action definitions ([classic](http://sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) or [Actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).
  Helpers | `helpers.moduleDefinitions` | A dictionary mapping helper names to helper definitions.
  Models  | `orm.moduleDefinitions.models` | A dictionary mapping model identities (lower-cased model names) to model definitions.
  Policies | `policies.moduleDefinitions` | A dictionary mapping policy names (e.g. `isAdmin`) to policy functions.
