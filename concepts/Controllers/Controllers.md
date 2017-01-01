@@ -2,10 +2,10 @@
 
 ### Overview
 
-Controllers (the **C** in **MVC**) are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.org/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.org/documentation/concepts/Views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+Controllers (the **C** in **MVC**) are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
 
 ### Actions
-Controllers are comprised of a set of methods called **actions** (or sometimes "controller actions").  Actions are bound to [routes](http://sailsjs.org/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
+Controllers are comprised of a set of methods called **actions** (or sometimes "controller actions").  Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
 
 ```javascript
 function (req, res) {
@@ -34,7 +34,7 @@ module.exports = {
 };
 ```
 
-This controller defines two actions: `hi` and `bye`.  The `hi` action responds to a request with a string message, while the `bye` action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is technically possible to use `next` in an action method, you are strongly encouraged to use [policies](http://sailsjs.org/documentation/concepts/Policies) instead wherever possible.
+This controller defines two actions: `hi` and `bye`.  The `hi` action responds to a request with a string message, while the `bye` action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is technically possible to use `next` in an action method, you are strongly encouraged to use [policies](http://sailsjs.com/documentation/concepts/Policies) instead wherever possible.
 
 
 
@@ -47,7 +47,7 @@ Controller code is inherently dependent on some sort of trigger or event.  In a 
 
 So the goal of the "thin controller" philosophy is to encourage decoupling of reusable code from any related scope entanglements.  In Sails, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:
 
-+ Write a helper function or machine and expose it as a [service](http://sailsjs.org/documentation/concepts/services).  This is a good go-to strategy for encapsulating code that performs any particular application-specific task.
++ Write a helper function or machine and expose it as a [service](http://sailsjs.com/documentation/concepts/services).  This is a good go-to strategy for encapsulating code that performs any particular application-specific task.
 + Write a custom model method to encapsulate some code that performs a particular task relating to one particular model
 + If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm](https://docs.npmjs.com/getting-started/publishing-npm-packages) under a permissive open-source license for other developers to use and help maintain.
 

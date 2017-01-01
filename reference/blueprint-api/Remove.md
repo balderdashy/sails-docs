@@ -16,7 +16,7 @@ This action removes a reference to some other record (the "foreign" record) from
 
  Parameter                          | Type                                    | Details
 :---------------------------------- | --------------------------------------- |:---------------------------------
- model | ((string)) | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'store'` (in `/store/16/employeesOfTheMonth/7`)
+ model | ((string)) | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'store'` (in `/store/16/employeesOfTheMonth/7`)
  id | ((string)) | The desired target record's primary key value<br/><br/>e.g. `'16'` (in `/store/16/employeesOfTheMonth/7`)
  association       | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
  fk  | ((string))    | The id of the foreign record to remove from the collection association.<br/><br/>e.g. `7`
@@ -50,7 +50,7 @@ DELETE /store/16/employeesOfTheMonth/7
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough for the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.org/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
 
 <docmeta name="displayName" value="remove from">
 <docmeta name="pageType" value="endpoint">

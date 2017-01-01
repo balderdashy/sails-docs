@@ -1,7 +1,7 @@
 # api/hooks/myHook/index.js
 ### Purpose
 
-This is an example of a [project hook](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/projecthooks.html), which adds functionality to Sails for this app.  See the [hooks](http://sailsjs.org/documentation/concepts/extending-sails/Hooks) concepts section for more details.
+This is an example of a [project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html), which adds functionality to Sails for this app.  See the [hooks](http://sailsjs.com/documentation/concepts/extending-sails/Hooks) concepts section for more details.
 
 ```js
 

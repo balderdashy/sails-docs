@@ -7,7 +7,7 @@ Another benefit of using services in Sails is that they are *globalized*--you do
 
 ### Building a service
 
-Services are simple to work with, and you can do almost anything with them.  To help keep code maintainable, Sails apps use a set of strong conventions.  To learn more about service and helpers, **[start here](http://sailsjs.org/documentation/concepts/services/creating-a-service)**.
+Services are simple to work with, and you can do almost anything with them.  To help keep code maintainable, Sails apps use a set of strong conventions.  To learn more about service and helpers, **[start here](http://sailsjs.com/documentation/concepts/services/creating-a-service)**.
 
 
 

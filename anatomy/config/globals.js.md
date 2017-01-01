@@ -1,6 +1,6 @@
 # config/globals.js
 
-Configuration for the global variables Sails exposes to its Node process.  See [`sails.config.globals`](http://sailsjs.org/documentation/reference/configuration/sails-config-globals) for a detailed overview of all available options.
+Configuration for the global variables Sails exposes to its Node process.  See [`sails.config.globals`](http://sailsjs.com/documentation/reference/configuration/sails-config-globals) for a detailed overview of all available options.
 
 
 ```javascript
@@ -12,7 +12,7 @@ Configuration for the global variables Sails exposes to its Node process.  See [
  * automatically by Sails.
  *
  * For more information on configuration, check out:
- * http://sailsjs.org/documentation/reference/configuration/sails-config-globals
+ * http://sailsjs.com/documentation/reference/configuration/sails-config-globals
  */
 
 module.exports.globals = {

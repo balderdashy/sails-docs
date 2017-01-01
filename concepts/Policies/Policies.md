@@ -112,9 +112,9 @@ Your `config/policies.js` file should export a Javascript object whose keys are 
 
 ##### Using policies with blueprint actions
 
-Sails' built-in [blueprint API](http://sailsjs.org/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
+Sails' built-in [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) is implemented using regular Sails controller actions.  The only difference is that blueprint actions are implicit.
 
-To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.org/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
+To apply your policies to blueprint actions, set up your policy mappings just like we did in the example above, but pointed at name of the relevant implicit [blueprint action](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) in your controller.  For example:
 ```js
 {
   UserController: {

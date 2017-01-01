@@ -9,7 +9,7 @@ You can read more about robots.txt [here](http://www.robotstxt.org/robotstxt.htm
 
 ```
 # The robots.txt file is used to control how search engines index your live URLs.
-# See http://sailsjs.org/documentation/anatomy/my-app/assets/robots-txt for more information.
+# See http://sailsjs.com/documentation/anatomy/my-app/assets/robots-txt for more information.
 
 
 
