@@ -1,7 +1,7 @@
 # Upgrading to v1.0
 
 ### Note:
-> Sails version 1.0 has not officially been released, but is available for preview for those who want to try out the coming release or get a head start on upgrading. Please note that this version is not intended for use in production applications: instead, we recommend production Sails apps use the [latest stable version from NPM](https://www.npmjs.com/package/sails) until v1.0 has been formally released.
+> Sails version 1.0 has not officially been released, but is available for preview for those who want to try out the bleeding edge or get a head start and see what the upgrade process will look like. Please note that this version is not intended for use in production applications and still has some known issues.  We recommend Sails apps use the [latest stable version from NPM](https://www.npmjs.com/package/sails) until v1.0 has been formally released.
 
 ### Installing the 1.0 preview
 
