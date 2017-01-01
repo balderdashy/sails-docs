@@ -1,6 +1,6 @@
 # sails.log()
 
-Log a message or some data at the "debug" [log level](http://preview.sailsjs.org/documentation/reference/configuration/sails-config-log) using Sails' [built-in logger](http://sailsjs.org/documentation/concepts/logging).
+Log a message or some data at the "debug" [log level](http://preview.sailsjs.com/documentation/reference/configuration/sails-config-log) using Sails' [built-in logger](http://sailsjs.com/documentation/concepts/logging).
 
 
 ```javascript
@@ -37,8 +37,8 @@ return res.ok();
 
 
 ### Notes
-> - For a deeper conceptual exploration of logging in Sails, see [concepts/logging](http://sailsjs.org/documentation/concepts/logging).
-> - Remember: in addition to being exposed as an alternative to calling `console.log` directly, the built-in logger in Sails is called internally by the framework.  The Sails logger can be configured, or completely overridden using built-in log configuration settings ([`sails.config.log`](http://sailsjs.org/documentation/reference/configuration/sails-config-log)).
+> - For a deeper conceptual exploration of logging in Sails, see [concepts/logging](http://sailsjs.com/documentation/concepts/logging).
+> - Remember: in addition to being exposed as an alternative to calling `console.log` directly, the built-in logger in Sails is called internally by the framework.  The Sails logger can be configured, or completely overridden using built-in log configuration settings ([`sails.config.log`](http://sailsjs.com/documentation/reference/configuration/sails-config-log)).
 > - Keep in mind that, like any part of Sails, using `sails.log` is completely optional.  Most Sails apps take advantage of the built-in logger; while some users prefer to stick with `console.log()`, while still others `require()` more feature-rich libraries like [Winston](https://www.npmjs.com/package/winston). If you aren't sure what your app needs yet, start with the built-in logger and go from there.
 
 <docmeta name="displayName" value="sails.log()">

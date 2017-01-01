@@ -1,17 +1,17 @@
 # Model settings
 
-In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
+In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
 
 The majority of this page is devoted to a complete tour of the model settings supported by Sails.  But before we begin, let's look at how to actually apply these settings in a Sails app.
 
 
 ### Overview
 
-Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](http://sailsjs.org/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](http://sailsjs.org/documentation/reference/configuration/sails-config-models).
+Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
 
 ##### Changing default model settings
 
-To modify the [default model settings](http://sailsjs.org/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.org/documentation/anatomy/my-app/config/models-js).
+To modify the [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
 
 For example, when you generate a new app, Sails automatically includes three different default attributes in your `config/models.js` file:  `id`, `createdAt`, and `updatedAt`.  Let's say that, for all of your models, you wanted to use a slightly different, customized `id` attribute. To do so, you could just override `attributes: {  id: {...}  }` in your `config/models.js` definition.
 
@@ -51,7 +51,7 @@ attributes: {
 
 Most of the time, you'll define attributes in your individual model definitions (in `api/models/`).  But you can also specify **default attributes** in `config/models.js`.  This allows you to define a set of global attributes in one place, and then rely on Sails to make them available to all of your models implicitly, without repeating yourself.  Default attributes can also be overridden on a per-model basis by defining a replacement attribute with the same name in the relevant model definition.
 
-For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.org/documentation/concepts/orm/attributes).
+For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
 
 
 
@@ -120,11 +120,11 @@ When you lift your Sails app in a development environment (e.g. running `sails l
 
 ##### Can I use auto-migrations in production?
 
-The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](http://sailsjs.org/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
+The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
 
 In many cases, hosting providers automatically set the `NODE_ENV` environment variable to "production" when they detect a Node.js app.  Even so, please don't rely only on that failsafe, and take the usual precautions to keep your users' data safe.  Any time you connect Sails (or any other tool or framework) to a database with pre-existing production data, **do a dry run**.  Especially the very first time.  Production data is sensitive, valuable, and in many cases irreplaceable.  Customers, users, and their lawyers are not cool with it getting flushed.
 
-As a best practice, make sure to never lift or [deploy](http://sailsjs.org/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](http://sailsjs.org/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
+As a best practice, make sure to never lift or [deploy](http://sailsjs.com/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](http://sailsjs.com/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
 
 
 ##### Are auto-migrations slow?
@@ -192,7 +192,7 @@ The lowercase, unique identifier for this model, e.g. `user`.  By default, a mod
 globalId: 'Purchase'
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.org/documentation/concepts/globals?q=disabling-globals).
+This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).
 
 
 <docmeta name="displayName" value="Model settings">

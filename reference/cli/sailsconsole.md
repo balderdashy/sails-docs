@@ -23,7 +23,7 @@ sails>
 
 ### Global variables in `sails console`
 
-Sails exposes [the same global variables](http://sailsjs.org/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance, your models, and your services; as well as lodash (`sails.util._`) and async (`async`).
+Sails exposes [the same global variables](http://sailsjs.com/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance, your models, and your services; as well as lodash (`sails.util._`) and async (`async`).
 
 
 > **Warning**
@@ -70,7 +70,7 @@ In sails console, type in `sails` to view a list of sails properties. You can us
 ```bash
 sails> sails
   |>   [a lifted Sails app on port 1337]
-\___/  For help, see: http://sailsjs.org/documentation/concepts/
+\___/  For help, see: http://sailsjs.com/documentation/concepts/
 
 Tip: Use `sails.config` to access your app's runtime configuration.
 

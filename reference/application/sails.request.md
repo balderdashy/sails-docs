@@ -12,7 +12,7 @@ _Or:_
 + `sails.request(url, callback)`
 + `sails.request(url, body, callback)`
 
-This method can be used on a instances that have been started with [`sails.load()`](http://sailsjs.org/documentation/reference/application/sails-load), which are not actively listening for HTTP requests on a server port.  This makes it useful for testing scenarios where running [`sails.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) is not necessary.  However, it should be noted that the data may not be processed in exactly the same way as an HTTP request; in particular, a much simpler body parser will be employed, and Express middleware such as the static asset server will not be used.
+This method can be used on a instances that have been started with [`sails.load()`](http://sailsjs.com/documentation/reference/application/sails-load), which are not actively listening for HTTP requests on a server port.  This makes it useful for testing scenarios where running [`sails.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) is not necessary.  However, it should be noted that the data may not be processed in exactly the same way as an HTTP request; in particular, a much simpler body parser will be employed, and Express middleware such as the static asset server will not be used.
 
 
 ### Usage

@@ -2,7 +2,7 @@
 
 In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.
 
-> **Warning:** This section of the documentation is for fairly advanced Node.js users.  If you aren't planning to use Waterline outside of your Sails app (e.g. to build your own framework), you might want to skip this page and head back to [Models and ORM](http://sailsjs.org/documentation/concepts/models-and-orm) instead.
+> **Warning:** This section of the documentation is for fairly advanced Node.js users.  If you aren't planning to use Waterline outside of your Sails app (e.g. to build your own framework), you might want to skip this page and head back to [Models and ORM](http://sailsjs.com/documentation/concepts/models-and-orm) instead.
 
 ### Installation
 
@@ -22,7 +22,7 @@ You can install any number of adapters into your application.
 
 The `sails-disk` and `sails-memory` adapters are common choices for development and testing.
 
-> If you are new to Node, hop on over to [Getting Started](http://sailsjs.org/get-started) to learn about installing Node on your preferred platform.
+> If you are new to Node, hop on over to [Getting Started](http://sailsjs.com/get-started) to learn about installing Node on your preferred platform.
 
 
 ### Getting Started

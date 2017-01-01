@@ -211,7 +211,7 @@ module.exports = {
 };
 ```
 
-> You might have noticed that we also used the [`tableName`](http://sailsjs.org/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
+> You might have noticed that we also used the [`tableName`](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
 
 
 

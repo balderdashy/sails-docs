@@ -31,13 +31,13 @@ This event handler is called when the client receives an incoming socket notific
 
 
 ###### Low-Level Socket Methods (`sails.sockets`)
-+ server blasts out a message to all connected sockets (see [sails.sockets.blast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/blast))
-+ server broadcasts a message directly to a particular socket using its unique id, or to an entire room full of sockets (see [sails.sockets.broadcast()](http://sailsjs.org/documentation/reference/web-sockets/sails-sockets/broadcast))
++ server blasts out a message to all connected sockets (see [sails.sockets.blast()](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/blast))
++ server broadcasts a message directly to a particular socket using its unique id, or to an entire room full of sockets (see [sails.sockets.broadcast()](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast))
 
 
 ###### Resourceful Pubsub Methods
-+ server broadcasts a message about a record, which multiple sockets might be subscribed to (see [Model.publish()](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/publish)
-+ server broadcasts a message as part of the "Create" blueprint action _(only relevant if using [blueprints](http://sailsjs.org/documentation/concepts/blueprints))_
++ server broadcasts a message about a record, which multiple sockets might be subscribed to (see [Model.publish()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish)
++ server broadcasts a message as part of the "Create" blueprint action _(only relevant if using [blueprints](http://sailsjs.com/documentation/concepts/blueprints))_
 
 
 

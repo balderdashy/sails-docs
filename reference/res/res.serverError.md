@@ -19,7 +19,7 @@ Like the other built-in custom response modules, the behavior of this method is 
 By default, it works as follows:
 
 + The status code of the response will be set to 500.
-+ If the request "[wants JSON](http://sailsjs.org/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Internal Server Error"`).
++ If the request "[wants JSON](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Internal Server Error"`).
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve the view located at `views/500.ejs` (assuming the default EJS [view engine](http://sailsjs.com/documentation/concepts/views/view-engines)).  If no such view is found, or an error occurs attempting to serve it, a default response body will be sent with the string `"Internal Server Error"`.
 
 

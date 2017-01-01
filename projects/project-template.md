@@ -1,4 +1,4 @@
-![Screenshot or image for project](http://sailsjs.org/images/img_squiddy@2x.png)
+![Screenshot or image for project](http://sailsjs.com/images/img_squiddy@2x.png)
 
 ## [Name of Project](http://omfgdogs.com)
 

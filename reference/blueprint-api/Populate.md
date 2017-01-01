@@ -12,7 +12,7 @@ If the specified association is plural ("collection"), this action returns the l
 
   Parameter      | Type         | Details
  :-------------- | ------------ |:---------------------------------
- model           | ((string))   | The [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
+ model           | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
  id              | ((string))   | The primary key of the parent record.<br/><br/>e.g. `'47'` (in `GET /purchase/47/cashier`)
  association     | ((string))   | The name of the association.<br/><br/>e.g. `'cashier'` (in `GET /purchase/47/cashier`) or `'products'` (in `GET /purchase/47/products`)
 
@@ -53,7 +53,7 @@ $http.get('/purchase/47/cashier')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js):**
 
 ```javascript
 io.socket.get('/purchase/47/cashier', function (cashier) {

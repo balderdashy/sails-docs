@@ -19,11 +19,11 @@ Each hook should be saved in its own folder with the filename `index.js`.  The f
 ## Hook features
 The following features are available to implement in your hook.  All features are optional, and can be implemented by adding them to the object returned by your hook function.
 
-* [.defaults](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html)
-* [.configure()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/configure.html)
-* [.initialize()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html)
-* [.routes](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/routes.html)
-* [.registerActions()](http://sailsjs.org/documentation/concepts/extending-sails/Hooks/hookspec/register-actions.html)
+* [.defaults](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html)
+* [.configure()](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/configure.html)
+* [.initialize()](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html)
+* [.routes](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/routes.html)
+* [.registerActions()](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/register-actions.html)
 
 ## Custom hook data and functions
 

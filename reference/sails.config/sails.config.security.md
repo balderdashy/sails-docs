@@ -5,7 +5,7 @@ Configuration for your app's security settings, including how it deals with cros
 ## sails.config.security.cors
 Configuration for Sails' [built-in support for Cross-Origin Resource Sharing](http://sailsjs.com/documentation/concepts/security/cors).  CORS specifies how HTTP requests to your app originating from foreign domains should be treated.  It is primarily used to allow third-party sites to make AJAX requests to your app, which are normally blocked by browsers following the <a href="http://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">same-origin policy</a>.
 
-These options are conventionally set in the **config/security.js** configuration file.  Note that these settings (with the exception of `allRoutes`) can be changed on a per-route basis in the [**config/routes.js** file](http://sailsjs.org/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
+These options are conventionally set in the **config/security.js** configuration file.  Note that these settings (with the exception of `allRoutes`) can be changed on a per-route basis in the [**config/routes.js** file](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
 
 ### Properties
 
@@ -35,7 +35,7 @@ The following will allow cross-origin AJAX GET, PUT and POST requests to `/foo/b
 
 ## sails.config.security.csrf
 
-Configuration for Sails' built-in [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) protection middleware.  CSRF options are conventionally set in the [`config/security.js`](http://sailsjs.org/documentation/anatomy/myApp/config/security.js.html) configuration file.  For detailed usage instructions, see [Concepts > Security > Cross-Site Request Forgery](http://sailsjs.com/documentation/concepts/security/csrf).
+Configuration for Sails' built-in [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) protection middleware.  CSRF options are conventionally set in the [`config/security.js`](http://sailsjs.com/documentation/anatomy/myApp/config/security.js.html) configuration file.  For detailed usage instructions, see [Concepts > Security > Cross-Site Request Forgery](http://sailsjs.com/documentation/concepts/security/csrf).
 
 This setting protects your Sails app against cross-site request forgery (or CSRF) attacks.  A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.  This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
 

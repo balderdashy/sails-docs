@@ -291,7 +291,7 @@ If you take a look in `myProject\api\models` you'll see a new file named `User.j
 * User
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
+* @docs        :: http://sailsjs.com/#!documentation/models
 */
 
 module.exports = {

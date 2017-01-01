@@ -1,6 +1,6 @@
 # Sails.js Projects
 
-This is the content for the page showcasing projects built with Sails. (This page is not yet implemented on sailsjs.org, but will be once we've gathered up enough projects.)
+This is the content for the page showcasing projects built with Sails. (This page is not yet implemented on sailsjs.com, but will be once we've gathered up enough projects.)
 
 If you want to submit a project for this page, send a pull request adding a new file to this folder called [your-project-name].md. The formatting of the page should follow the [example template](https://github.com/balderdashy/sails-docs/blob/master/projects/project-template.md), which has the following:
 

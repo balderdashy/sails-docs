@@ -2,27 +2,27 @@
 
 ### Overview
 
-For a conceptual overview of blueprints, see [Concepts > Blueprints](http://sailsjs.org/documentation/concepts/blueprints).
+For a conceptual overview of blueprints, see [Concepts > Blueprints](http://sailsjs.com/documentation/concepts/blueprints).
 
 ### Activating/deactivating blueprints in your app
 
-The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.org/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
+The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.com/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
 ##### RESTful routes
 
-RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
+RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
 
-Sails will create RESTful routes whenever it loads a [model](http://sailsjs.org/documentation/concepts/models-and-orm/models) file.
+Sails will create RESTful routes whenever it loads a [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) file.
 
 ##### Shortcut routes
 
-Shortcut routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
+Shortcut routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
 
-Like RESTful routes (see above), Sails creates shortcut routes for every model.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.org/documentation/reference/blueprint-api#?overriding-blueprints))
+Like RESTful routes (see above), Sails creates shortcut routes for every model.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.com/documentation/reference/blueprint-api#?overriding-blueprints))
 
 ##### Action routes
 
-Actions routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js).
+Actions routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.actions`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
 
 While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/PetController.js` contains:
 
@@ -38,7 +38,7 @@ then a route `/pet/adore` will automatically be created.  Note that action route
 
 ##### Disabling blueprints on a per-controller basis
 
-You may also override any of the settings from [`config/blueprints.js`](http://sailsjs.org/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
+You may also override any of the settings from [`config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
 
 ```javascript
 // In /api/controllers/PetController.js
@@ -56,13 +56,13 @@ module.exports = {
 
 ##### RESTful / shortcut routes and actions
 
-To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) in the relevant folder) with the appropriate name: [_find_](http://sailsjs.org/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.org/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.org/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.org/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.org/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.org/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.org/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.org/documentation/reference/blueprint-api/remove).
+To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) in the relevant folder) with the appropriate name: [_find_](http://sailsjs.com/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.com/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.com/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.com/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.com/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.com/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.com/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.com/documentation/reference/blueprint-api/remove).
 
 >  It's important to realize that, even if you haven't defined these yourself, as long as a model exists with the same name as the controller, Sails will respond with built-in CRUD logic in the form of a JSON API, including support for sort, pagination, and filtering.
 
 ##### Action routes
 
-In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.org/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.org/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
+In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.com/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.com/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
 
 ```javascript
 'POST /user': {response: 'notFound'}
@@ -70,16 +70,16 @@ In production apps, you may often wish to turn action routes off completely for 
 
 ### Blueprints and resourceful pubsub
 
-The blueprint API (just like any of your custom actions and policies) is compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.org/documentation/reference/websockets/sails.io.js)) for example usage.
+The blueprint API (just like any of your custom actions and policies) is compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js)) for example usage.
 
 ##### Blueprints and `.subscribe()`
 
-By default, the **Find** and **Find One** blueprint actions will call [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) automatically when a socket request is used. This subscribes the requesting socket to each of the returned records.  However, the **Update** and **Destroy** actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
+By default, the **Find** and **Find One** blueprint actions will call [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) automatically when a socket request is used. This subscribes the requesting socket to each of the returned records.  However, the **Update** and **Destroy** actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
 
 
 ##### Blueprints and `.watch()`
 
-By default, the **Find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.org/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
+By default, the **Find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false`, or for a specific model by setting the `autoWatch` property to `false` in the model's definition (e.g. in `api/models/Foo.js`).
 
 
 <docmeta name="displayName" value="Blueprint API">

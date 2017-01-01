@@ -1,6 +1,6 @@
 # Blueprint routes
 
-When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](http://sailsjs.org/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadow routes", or even just "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+When you run `sails lift` with blueprints enabled, the framework inspects your controllers, models, and configuration in order to [bind certain routes](http://sailsjs.com/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadow routes", or even just "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
 
 There are four types of blueprint routes in Sails:
 
@@ -15,7 +15,7 @@ For example, a BoatController with `rest` enabled generates the following routes
 + PUT /boat/:id -> BoatController.update
 + DELETE /boat/:id -> BoatController.destroy
 
-`rest` blueprint routes are enabled by default, and are suitable for use in a production scenario, as long as they are protected by [policies](http://sailsjs.org/documentation/concepts/Policies) to avoid unauthorized access.
+`rest` blueprint routes are enabled by default, and are suitable for use in a production scenario, as long as they are protected by [policies](http://sailsjs.com/documentation/concepts/Policies) to avoid unauthorized access.
 
 #### Shortcut routes
 Shortcut routes are simple helpers to provide access to a controller's CRUD methods from your browser's URL bar, where the action to take is encoded in the path.  When enabled, GET, POST, PUT, and DELETE routes will be generated for the controller's`find`, `create`, `update`, and `destroy` actions.  For example, the `/user/create?name=joe` shortcut creates a new user, while `/user/update/1?name=mike` updates user #1. These routes only respond to `GET` requests.
@@ -35,6 +35,6 @@ If an `index` action exists, additional naked routes will be created for it. Fin
 
 Index routes automatically create &ldquo;root&rdquo; routes for specific actions named `index`.  For example, if you have a `FooController.js` file with an `index` action in it, a `/foo` route will automatically be bound to that action.  If you have a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) at `api/controllers/index.js`, a `/` route will be bound to it.
 
-See the [blueprints subsection of the configuration reference](http://sailsjs.org/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+See the [blueprints subsection of the configuration reference](http://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
 
 <docmeta name="displayName" value="Blueprint routes">

@@ -6,7 +6,7 @@ The documentation is compiled from the markdown files in the [`sails-docs` repo 
 
 
 ### Where is the documentation for the different releases of Sails?
-The [documentation on the main website](http://sailsjs.org/documentation) is for the latest stable npm release of Sails, and is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs) (Master is sometimes a few commits ahead, but any critical documentation updates make it onto the website within a day or two.)
+The [documentation on the main website](http://sailsjs.com/documentation) is for the latest stable npm release of Sails, and is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs) (Master is sometimes a few commits ahead, but any critical documentation updates make it onto the website within a day or two.)
 
 For older releases of Sails that are still widely used, the documentation is compiled from the relevant `sails-docs` branches and hosted on the following subdomains:
 + [0.12.sailsjs.com](http://0.12.sailsjs.com/)
@@ -173,7 +173,7 @@ Thanks!
 + [Interact ATX](http://www.siliconhillsnews.com/2013/03/10/flying-high-with-interact-atx-adventures-in-austin-part-3-2-1/)
 + [Intro to Sails.js :: Node.js Conf: Italy, 2014](http://2014.nodejsconf.it/)
 + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
-+ [Recent tweets about Sails.js](https://twitter.com/search?f=realtime&q=treelinehq%20OR%20%40treelinehq%20OR%20%23treelinehq%20OR%20%23treeline%20OR%20treeline.io%20OR%20sailsjs.org%20OR%20github.com%2Fbalderdashy%2Fsails%20OR%20sailsjs%20OR%20sails.js%20OR%20%23sailsjs%20OR%20%40sailsjs&src=typd)
++ [Recent tweets about Sails.js](https://twitter.com/search?f=realtime&q=treelinehq%20OR%20%40treelinehq%20OR%20%23treelinehq%20OR%20%23treeline%20OR%20treeline.io%20OR%20sailsjs.com%20OR%20github.com%2Fbalderdashy%2Fsails%20OR%20sailsjs%20OR%20sails.js%20OR%20%23sailsjs%20OR%20%40sailsjs&src=typd)
 + [How to use more open source](https://18f.gsa.gov/2014/11/26/how-to-use-more-open-source/) _(18F is an office inside the U.s. General Services Administration that helps other federal agencies build, buy, and share efficient and easy-to-use digital services.)_
 + [18f Open Source Hack Series: Midas](https://18f.gsa.gov/2014/10/01/open-source-hack-series-midas/)
 + [Express Web Server Advances in Node.js Ecosystem](https://adtmag.com/articles/2016/02/11/express-joins-node.aspx) ([auch auf Deutsch](http://www.heise.de/developer/meldung/IBM-uebergibt-JavaScript-Webframework-Express-an-Node-js-Foundation-3099223.html))

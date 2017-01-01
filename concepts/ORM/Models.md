@@ -33,7 +33,7 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 
 Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
 
-There are many built-in methods available on models, the most important of which are the query methods like [.find()](http://sailsjs.org/documentation/reference/waterline/models/find) and [.create()](http://sailsjs.org/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
+There are many built-in methods available on models, the most important of which are the query methods like [.find()](http://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](http://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
 ### Query methods
