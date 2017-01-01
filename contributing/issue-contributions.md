@@ -6,7 +6,7 @@ For general help using Sails, please refer to the [official Sails documentation]
 
 If you have found a security vulnerability in Sails or any of its dependencies, _do not report it in a public issue_.  Instead, you should promptly follow the instructions for alerting the core maintainers in the [Sails Security Policy](https://github.com/balderdashy/sails-docs/blob/master/security/SAILS-SECURITY-POLICY.md).  Please observe this request _even for  external dependencies the core Sails.js team does not directly maintain_ (such as Socket.io, Express, Node.js, or openssl)_.  Whether or not you believe the core team can do anything to fix an issue, please follow the instructions in our security policy to privately disclose the vulnerability as quickly as possible.
 
-Finally, discussion of a non-technical nature, including subjects like team membership, trademark, code of conduct and high-level questions or concerns about the project should be sent directly to the core maintainers by emailing [inquiries@treeline.io](inquiries@treeline.io).
+Finally, discussion of a non-technical nature, including subjects like team membership, trademark, code of conduct and high-level questions or concerns about the project should be sent directly to the core maintainers by emailing [inquiries@sailsjs.com](inquiries@sailsjs.com).
 
 #### Opening an issue
 

@@ -7,11 +7,11 @@ The Sails core team maintains the framework and its related sub-projects, includ
 
 #### History
 
-Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcneil) with the help of his company [Balderdash](http://balderdash.co), a small development and design studio in Austin, TX.  The first stable version of Sails was released in 2012.  Today, it is still actively maintained by the same core team ([@mikermcneil](https://github.com/mikermcneil), [@particlebanana](https://github.com/particlebanana), [@sgress454](https://github.com/sgress454), [@irlnathan](https://github.com/irlnathan), and [@rachaelshaw](https://github.com/rachaelshaw)), along with the support of many amazing [contributors](https://github.com/balderdashy/sails/network/members).
+Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcneil) with the help of his company [Balderdash](http://balderdash.co), a small development and design studio in Austin, TX.  The first stable version of Sails was released as open-source in 2012.  Today, it is still actively maintained by the same core team members ([@mikermcneil](https://github.com/mikermcneil), [@particlebanana](https://github.com/particlebanana), [@sgress454](https://github.com/sgress454), [@irlnathan](https://github.com/irlnathan), and [@rachaelshaw](https://github.com/rachaelshaw)), along with the help of many amazing [contributors](https://github.com/balderdashy/sails/network/members).
 
 
 #### Financial Support
 
-Today, Sails.js is financially supported by [Treeline](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/) (YC W15), a code automation platform built on Sails founded by the Sails.js core team in 2015.  Please feel free to [contact us directly](mailto:mission@treeline.io) with questions about the company, our [team](https://github.com/balderdashy/sails#team), or our mission.
+Today, Sails.js is financially supported by [The Sails Company](http://sailsjs.com/about) ([YC W15](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/)).  Please feel free to [contact us directly](http://sailsjs.com/contact) with questions about the company, our [team](http://sailsjs.com/about), or our mission.
 
 <docmeta name="displayName" value="Core Maintainers">

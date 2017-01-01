@@ -114,7 +114,7 @@ Thanks!
 
 
 ##### Articles & blog posts:
-+ [Twitter Dev Blog: Guest Post: Twitter Sign-In with Sails.js/Treeline](https://blog.twitter.com/2015/guest-post-twitter-sign-in-with-treelineio)
++ [Twitter Dev Blog: Guest Post: Twitter Sign-In with Sails.js](https://blog.twitter.com/2015/guest-post-twitter-sign-in-with-treelineio)
 <!-- 3-25-2015 -->
 + [Guest Post on Segment.io Blog: Webhooks with Slack, Segment, and Sails.js/Treeline](https://segment.com/blog/segment-webhooks-slack/)
 <!-- 3-15-2015 -->
