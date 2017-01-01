@@ -21,7 +21,7 @@
 - Private harassment is also unacceptable. No matter who you are, if
   you feel you have been or are being harassed or made uncomfortable
   by a community member, please contact one of the core maintainers immediately
-  via private message on Twitter or by emailing [inquiries@treeline.io](inquiries@treeline.io).
+  via private message on Twitter or by emailing [inquiries@sailsjs.com](inquiries@sailsjs.com).
   In either case, include a capture (screenshot, log, photo, email) of
   the harassment if possible. Whether you're a regular contributor or
   a newcomer, we care about making this community a safe, comfortable
