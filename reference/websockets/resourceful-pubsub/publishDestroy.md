@@ -34,7 +34,7 @@ For example, let's say a `Pet` model has an `owner` association (a _singular_, o
 
 ##### Behavior
 
-`publishDestroy()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
+`publishDestroy()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
 + **verb**  - a ((string)) constant: `'destroyed'`
 + **id** - the record's `id` which is a ((string)) or ((number))
@@ -104,7 +104,7 @@ In this case, the logged message would look something like this:
 
 ### Notes
 
-> + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
+> + This method works much in the same way as [`.message()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
 > + It is important to understand that this method **does not actually do anything to your database**-- it is purely a conventional way of _announcing_ that changes have occurred.  Underneath the covers, the resourceful pubsub methods are just using combinations of `sails.sockets` methods.
 
 

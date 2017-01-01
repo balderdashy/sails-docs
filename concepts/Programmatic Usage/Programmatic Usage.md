@@ -2,7 +2,7 @@
 
 ### Overview
 
-The majority of the time, you will interact with Sails through its [command-line interface](http://sailsjs.org/documentation/reference/command-line-interface), starting servers with [`sails lift`](http://sailsjs.org/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](http://sailsjs.org/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
+The majority of the time, you will interact with Sails through its [command-line interface](http://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](http://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
 
 ### Creating a Sails app programmatically
 
@@ -16,13 +16,13 @@ var myOtherSailsApp = new Sails();
 
 ### Configuring, starting and stopping Sails apps programmatically
 
-Once you have a reference to a new Sails app, you can use [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) or [`.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
+Once you have a reference to a new Sails app, you can use [`.load()`](http://sailsjs.com/documentation/reference/application/sails-load) or [`.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
 
 > When Sails is started programmatically, it will still use the `api`, `config` and other folders underneath the current working directory to load controllers, models, and configuration options.  One notable exception is that `.sailsrc` files will _not_ be loaded when starting apps this way.
 
 > Any configuration options sent as arguments to `.load()` or `.lift()` will take precedence over options loaded from anywhere else.
 
-The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.org/documentation/reference/application/sails-request) method of the loaded app.
+The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.com/documentation/reference/application/sails-request) method of the loaded app.
 
 
 #### .lift()
@@ -133,6 +133,6 @@ mySailsApp.lower(function(err) {
 
 ### Reference
 
-The full reference for Sails' programmatic interface is available in [**Reference > Application**](http://sailsjs.org/documentation/reference/application).
+The full reference for Sails' programmatic interface is available in [**Reference > Application**](http://sailsjs.com/documentation/reference/application).
 
 <docmeta name="displayName" value="Programmatic Usage">

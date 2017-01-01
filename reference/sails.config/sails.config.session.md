@@ -25,12 +25,12 @@ in the way you might be used to from Express or Connect.
 
 ### Production Config
 
-In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.org/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Connect session adapter you are using.
+In production, you should configure a session store that can be [shared across multiple servers](http://sailsjs.com/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session database, and then add any other configuration specific to the Connect session adapter you are using.
 
 
 ##### Configuring Redis as Your Session Store
 
-The most popular session store for production Sails applications is Redis.  It works great as a session database since it is inherently good at ephemeral storage, but Redis' popularity probably has more to do with the fact that, if you are using sockets and plan to scale your app to multiple servers, you will [need a Redis instance](http://sailsjs.org/documentation/concepts/deployment/scaling) anyway.
+The most popular session store for production Sails applications is Redis.  It works great as a session database since it is inherently good at ephemeral storage, but Redis' popularity probably has more to do with the fact that, if you are using sockets and plan to scale your app to multiple servers, you will [need a Redis instance](http://sailsjs.com/documentation/concepts/deployment/scaling) anyway.
 
 The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
 
@@ -102,10 +102,10 @@ The following values are optional, and should only be used if relevant for your 
 
 ### Disabling sessions
 
-Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook by changing your `.sailsrc` file.  The process for disabling `session` is identical to the process for [disabling the Grunt hook](http://sailsjs.org/documentation/concepts/assets/disabling-grunt) (just type `session: false` instead of `grunt: false`).
+Sessions are enabled by default in Sails.  To disable sessions in your app, disable the `session` hook by changing your `.sailsrc` file.  The process for disabling `session` is identical to the process for [disabling the Grunt hook](http://sailsjs.com/documentation/concepts/assets/disabling-grunt) (just type `session: false` instead of `grunt: false`).
 
 > **Note:**
-> If the session hook is disabled, the session secret configured as `sails.config.session.secret` will still be used to support signed cookies, if relevant.  If the session hook is disabled _AND_ no session secret configuration exists for your app (e.g. because you deleted `config/session.js`), then signed cookies will not be usable in your application.  To make more advanced changes to this behavior, you can customize any of your app's HTTP middleware manually using [`sails.config.http`](http://sailsjs.org/documentation/reference/configuration/sails-config-http).
+> If the session hook is disabled, the session secret configured as `sails.config.session.secret` will still be used to support signed cookies, if relevant.  If the session hook is disabled _AND_ no session secret configuration exists for your app (e.g. because you deleted `config/session.js`), then signed cookies will not be usable in your application.  To make more advanced changes to this behavior, you can customize any of your app's HTTP middleware manually using [`sails.config.http`](http://sailsjs.com/documentation/reference/configuration/sails-config-http).
 
 
 

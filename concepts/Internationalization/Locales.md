@@ -4,7 +4,7 @@
 
 The i18n hook reads JSON-formatted translation files from your project's "locales" directory (`config/locales` by default).  Each file corresponds with a [locale](http://en.wikipedia.org/wiki/Locale) (usually a language) that your Sails backend will support.
 
-These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc.
+These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc. The name of the file should match the language that you are supporting. This allows for automatic language detection based on request headers.
 
 Here is an example locale file (`config/locales/es.json`):
 ```json
@@ -60,7 +60,7 @@ req.setLocale('de');
 
 By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.
 
-For instance, if your app allows users to pick their preferred language, you might create a [policy](http://sailsjs.org/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
+For instance, if your app allows users to pick their preferred language, you might create a [policy](http://sailsjs.com/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
 
 ```js
 // api/policies/localize.js

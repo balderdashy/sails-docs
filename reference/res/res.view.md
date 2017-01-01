@@ -15,17 +15,17 @@ _Or:_
 + `return res.view();`
 
 
-Uses the [configured view engine](http://sailsjs.org/documentation/concepts/Views/ViewEngines.html) to compile the [view template](http://sailsjs.org/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
+Uses the [configured view engine](http://sailsjs.com/documentation/concepts/Views/ViewEngines.html) to compile the [view template](http://sailsjs.com/documentation/concepts/Views/Partials.html) at `pathToView` into HTML.  If `pathToView` is not provided, serves the conventional view based on the current controller and action.
 
-The specified [`locals`](http://sailsjs.org/documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
+The specified [`locals`](http://sailsjs.com/documentation/reference/Views/Locals.html) are merged with your configured app-wide locals, as well as certain built-in locals from Sails and/or your view engine, then passed to the view engine as data.
 
 
 ### Arguments
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | `pathToView`   | ((string))  | The path to the desired view file relative to your app's [`views` folder](http://sailsjs.org/documentation/anatomy/myApp/views) (usually `views/`), without the file extension (e.g. `.ejs`), and with no trailing slash.<br/>Defaults to "identityOfController/nameOfAction".
-| 2 | `locals`       | ((dictionary))  | Data to pass to the view template.  These explicitly specified locals will be merged in to Sails' [built-in locals](http://sailsjs.org/documentation/concepts/Views/Locals.html) and your [configured app-wide locals](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).<br/>Defaults to `{}`.
+| 1 | `pathToView`   | ((string))  | The path to the desired view file relative to your app's [`views` folder](http://sailsjs.com/documentation/anatomy/myApp/views) (usually `views/`), without the file extension (e.g. `.ejs`), and with no trailing slash.<br/>Defaults to "identityOfController/nameOfAction".
+| 2 | `locals`       | ((dictionary))  | Data to pass to the view template.  These explicitly specified locals will be merged in to Sails' [built-in locals](http://sailsjs.com/documentation/concepts/Views/Locals.html) and your [configured app-wide locals](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).<br/>Defaults to `{}`.
 
 
 

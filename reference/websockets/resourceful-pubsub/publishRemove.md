@@ -40,7 +40,7 @@ To suppress automatic broadcasts for reflexive associations, provide an `options
 
 ##### Behavior
 
-`publishRemove()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
+`publishRemove()` broadcasts to all sockets subscribed to the record (e.g. via [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe)) and uses the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  The broadcasted event data received by the subscribed sockets will be a dictionary with the following properties:
 
 + **verb**  - a ((string)) constant: `'removedFrom'`
 + **id** - the parent record's `id` which is a ((string)) or ((number))
@@ -106,7 +106,7 @@ In this case, the logged message would look like this:
 
 ### Notes
 
-> + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
+> + This method works much in the same way as [`.message()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
 > + It is important to understand that this method **does not actually do anything to your database**-- it is purely a conventional way of _announcing_ that changes have occurred.  Underneath the covers, the resourceful pubsub methods are just using combinations of `sails.sockets` methods.
 

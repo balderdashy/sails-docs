@@ -2,11 +2,11 @@
 
 Lift a Sails app programmatically.
 
-_This does exactly what you might be used to seeing by now when you run `sails lift`.  It [loads](http://preview.sailsjs.org/documentation/reference/application/sails-load) the app, runs its bootstrap, then starts listening for HTTP requests and WebSocket connections.  Useful for building top-to-bottom integration tests that rely on HTTP requests, and for building higher-level tooling on top of Sails._
+_This does exactly what you might be used to seeing by now when you run `sails lift`.  It [loads](http://sailsjs.com/documentation/reference/application/sails-load) the app, runs its bootstrap, then starts listening for HTTP requests and WebSocket connections.  Useful for building top-to-bottom integration tests that rely on HTTP requests, and for building higher-level tooling on top of Sails._
 
 ```javascript
 sailsApp.lift(configOverrides, function (err) {
-  
+
 });
 ```
 
@@ -18,7 +18,7 @@ _Or:_
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 | configOverrides     | ((dictionary?))                              | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.org/documentation/reference/configuration).
+| 1 | configOverrides     | ((dictionary?))                              | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.com/documentation/reference/configuration).
 
 ##### Callback
 
@@ -47,13 +47,13 @@ sailsApp.lift({
 
   // --•
   console.log('Sails app lifted successfully!');
- 
+
 ));
 ```
 
 
 ### Notes
-> - The difference between [`.lift()`](http://sailsjs.org/documentation/reference/application/sails-lift) and [`.load()`](http://sailsjs.org/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.org/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
+> - The difference between [`.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) and [`.load()`](http://sailsjs.com/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
 > - When a Sails app is fully lifted, it also emits the `lifted` event.
 
 

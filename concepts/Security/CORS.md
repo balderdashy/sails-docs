@@ -71,7 +71,7 @@ If you want to completely prevent Sails from processing requests from disallowed
 ```javascript
 module.exports.cors = {
   allRoutes: true,
-  origin: "http://sailsjs.org",
+  origin: "http://sailsjs.com",
   securityLevel: 1
 }
 ```

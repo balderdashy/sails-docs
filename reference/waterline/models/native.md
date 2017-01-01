@@ -28,7 +28,7 @@ Source: https://gist.github.com/mikermcneil/483987369d54512b6104
 
 ### Notes
 
-> + This method only works with Mongo! For raw functionality in SQL databases, use [`.query()`](http://sailsjs.org/documentation/reference/waterline/models/query.html).
+> + This method only works with Mongo! For raw functionality in SQL databases, use [`.query()`](http://sailsjs.com/documentation/reference/waterline/models/query.html).
 
 
 <docmeta name="displayName" value=".native()">

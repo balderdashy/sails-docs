@@ -11,6 +11,9 @@ Content Security Policy (CSP) is a W3C specification for instructing the client 
 
 
 #### Supported Directives
+
+To give you an idea how this works, here's a snapshot of supported CSP directives, as of 2017:
+
 | Directive       | |
 |:--------------- |:-------------------------- |
 | default-src     | Loading policy for all resources type in case a resource type dedicated directive is not defined (fallback) |

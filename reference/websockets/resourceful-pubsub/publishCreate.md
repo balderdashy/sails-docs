@@ -20,7 +20,7 @@ _Or:_
 | 2 | _`req`_             |  ((req?))           | If provided, then the requesting socket _will be excluded_ from the broadcast.
 
 
-`publishCreate()` broadcasts to all sockets "watching" this model-- that is, those client sockets which have joined the model's "class room" via [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch))-- and uses the model's [identity](http://sailsjs.org/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  `publishCreate()` also subscribes these "watching" client sockets to the new record using `.subscribe()` in order to be notified of future broadcasts from `publishUpdate()`, `publishDestroy()`, etc.
+`publishCreate()` broadcasts to all sockets "watching" this model-- that is, those client sockets which have joined the model's "class room" via [`.watch()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/watch))-- and uses the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) as the event name.  `publishCreate()` also subscribes these "watching" client sockets to the new record using `.subscribe()` in order to be notified of future broadcasts from `publishUpdate()`, `publishDestroy()`, etc.
 
 The broadcasted event data received on the client is a dictionary with the following properties:
 
@@ -106,10 +106,10 @@ In this case, the logged message would look something like this:
 
 ### Notes
 
-> + This method works much in the same way as [`.message()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub).
+> + This method works much in the same way as [`.message()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/message)-- it just represents a more specific use case and has a few special features as described above.  For more conceptual background, see the overview on [resourceful pubsub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
 > + It is important to understand that this method **does not actually do anything to your database**-- it is purely a conventional way of _announcing_ that changes have occurred.  Underneath the covers, the resourceful pubsub methods are just using combinations of `sails.sockets` methods.
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
-> + See also [`.watch()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/watch) for some important security considerations.
+> + See also [`.watch()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/watch) for some important security considerations.
 
 
 

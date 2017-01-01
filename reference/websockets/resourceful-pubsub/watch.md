@@ -1,6 +1,6 @@
 # .watch()
 
-Enroll the requesting client socket in the "class room" for this model, causing it to receive broadcasts every time [`publishCreate()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/publish-create) is called on this model.  In addition, this client socket will be subscribed _every new record_ it hears about automatically.
+Enroll the requesting client socket in the "class room" for this model, causing it to receive broadcasts every time [`publishCreate()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish-create) is called on this model.  In addition, this client socket will be subscribed _every new record_ it hears about automatically.
 
 ```js
 Something.watch(req);
@@ -50,9 +50,9 @@ User.find({
 
 
 ### Notes
-> + Much like the default blueprint API, `.watch()` should be used with care.  Client sockets allowed to `.watch()` will receive broadcasted messages _every time `publishCreate()` is called_, and then be subscribed to future notifications (like [`publishUpdate()`](http://sailsjs.org/documentation/reference/web-sockets/resourceful-pub-sub/publish-update)) about those new records.  This method is a great fit for use cases where access control is "all or nothing"-- e.g. something like an admin dashboard, or a publicly-available endpoint.
+> + Much like the default blueprint API, `.watch()` should be used with care.  Client sockets allowed to `.watch()` will receive broadcasted messages _every time `publishCreate()` is called_, and then be subscribed to future notifications (like [`publishUpdate()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish-update)) about those new records.  This method is a great fit for use cases where access control is "all or nothing"-- e.g. something like an admin dashboard, or a publicly-available endpoint.
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
-> + `watch()` will only work when the request is made over a socket connection (e.g. using [`io.socket.get()`](http://sailsjs.org/documentation/reference/web-sockets/socket-client/io-socket-get)), *not* over HTTP (e.g. using [`jQuery.get()`](https://api.jquery.com/jquery.get/)).
+> + `watch()` will only work when the request is made over a socket connection (e.g. using [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get)), *not* over HTTP (e.g. using [`jQuery.get()`](https://api.jquery.com/jquery.get/)).
 
 
 
