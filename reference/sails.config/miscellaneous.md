@@ -6,7 +6,7 @@ This page is a quick reference of assorted configuration topics that don't fit e
 
 ### `sails.config.port`
 
-The `port` setting determines which [TCP port](http://en.wikipedia.org/wiki/Port_(computer_networking)) your Sails app will use to listen for incoming requests.  Ports are a [transport-layer](https://en.wikipedia.org/wiki/Transport_layer) concept designed to allow many different networking applications to run at the same time on a single computer.
+The `port` setting determines which <a href="http://en.wikipedia.org/wiki/Port_(computer_networking)">TCP port</a> your Sails app will use to listen for incoming requests.  Ports are a [transport-layer](https://en.wikipedia.org/wiki/Transport_layer) concept designed to allow many different networking applications to run at the same time on a single computer.
 
 By default, if it&rsquo;s set, Sails uses the port configured in your app (`sails.config.port`).  If not, it checks to see if the `PORT` environment variable is set, and uses that if possible.  Otherwise it falls back to port 1337.
 
