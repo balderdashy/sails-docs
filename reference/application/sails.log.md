@@ -1,6 +1,6 @@
 # sails.log()
 
-Log a message or some data at the "debug" [log level](http://preview.sailsjs.com/documentation/reference/configuration/sails-config-log) using Sails' [built-in logger](http://sailsjs.com/documentation/concepts/logging).
+Log a message or some data at the "debug" [log level](http://sailsjs.com/documentation/reference/configuration/sails-config-log) using Sails' [built-in logger](http://sailsjs.com/documentation/concepts/logging).
 
 
 ```javascript
