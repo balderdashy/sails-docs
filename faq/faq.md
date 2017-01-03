@@ -35,12 +35,12 @@ If you are looking to install a pre-release version of Sails, you can install fr
 
 Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
 
-For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](http://sailsjs.com/contribute).
+For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](http://sailsjs.com/documentation/contributing).
 
 
 ### I'm having trouble installing Sails. What should I do?
 
-Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](http://sailsjs.com/contribute) and then create a GitHub issue in the Sails repo.
+Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](http://sailsjs.com/documentation/contributing) and then create a GitHub issue in the Sails repo.
 
 
 
