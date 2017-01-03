@@ -15,12 +15,12 @@ For older releases of Sails that are still widely used, the documentation is com
 
 ### How do I get involved?
 
-There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/contribute) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
+There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/documentation/contributing) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
 
 
 ### Where do I submit ideas?  Report issues?
 
-The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](http://sailsjs.com/contribute) before you create an issue, submit a proposal, or begin working on pull request.
+The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](http://sailsjs.com/documentation/contributing) before you create an issue, submit a proposal, or begin working on pull request.
 
 
 ### What version of Sails should I use?
