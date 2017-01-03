@@ -1,18 +1,19 @@
 # res.redirect()
 
-Redirect the requesting user-agent to the given absolute or relative url.
+Redirect the requesting user-agent to the given absolute or relative url. And optionally choose the status code sent.
 
 
 ### Usage
 ```js
-return res.redirect(url);
+return res.redirect([statusCode,] url);
 ```
 
 ### Arguments
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | `statusCode`   | ((number))  | A StatusCode (see [`res.status()`](http://sailsjs.com/documentation/reference/response-res/res-status) for complete specification).<br/> Optional parameter (default: 302)
+| 2 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
 
 
 
@@ -39,6 +40,12 @@ The final special-case is a back redirect, which allows you to redirect a reques
 
 ```javascript
 return res.redirect('back');
+```
+
+You can also used the optional parameter 'statusCode' to send custom status code and give the new path to the resource (i.e. SEO errors (404) can be corrected if a resource has changed path):
+
+```javascript
+return res.redirect(301, '/new/ressource/path');
 ```
 
 ### Notes
