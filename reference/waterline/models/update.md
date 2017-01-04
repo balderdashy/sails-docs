@@ -37,11 +37,26 @@ Something.update(criteria, valuesToSet)
 ```javascript
 User.update({name:'Pen'})
 .set({name:'Finn'})
+.exec(function (err){
+  if (err) { return res.serverError(err); }
+
+  sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
+  return res.ok();
+});
+```
+
+##### Fetching updated records
+
+```javascript
+User.update({name:'Finn'})
+.set({name:'Jake'})
 .meta({fetch: true})
 .exec(function (err, updatedUsers){
   if (err) { return res.serverError(err); }
 
-  sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
+  sails.log('Updated all '+updatedUsers.length+' user(s) named "Finn" so that their new name is "Jake".  Here they are now:');
+  sails.log(updatedUsers);
+  
   return res.ok();
 });
 ```
