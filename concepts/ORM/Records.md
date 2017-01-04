@@ -58,6 +58,14 @@ Order.find()
 });
 ```
 
+### Expected types / values for association attributes
+
+The table below shows what values you can expect in records returned from a `.find()` or `.findOne()` call under different circumstances.  
+
+| &nbsp; |  without a `.populate()` added for the association | with `.populate()`, but no associated records found | with `.populate()`, with associated records found
+| --- | --- | --- | --- |
+| Singular association (e.g. `seller`) | Whatever is in the database record for this attribute (typically `null` or a foreign key value) | `null` | A POJO representing a child record |
+| Plural association (e.g. `buyers`) |  `undefined` (the key will not be present) | `[]` (an empty array) | An array of POJOs representing child records
 
 
 ### Modifying populated values
