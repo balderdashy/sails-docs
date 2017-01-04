@@ -8,7 +8,7 @@ Something.destroy(criteria).exec(function (err) {
 });
 ```
 
-#### Usage
+### Usage
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
@@ -19,6 +19,13 @@ Something.destroy(criteria).exec(function (err) {
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:-----------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+
+
+##### Meta keys
+
+| Key                 | Type              | Details                                                        |
+|:--------------------|-------------------|:---------------------------------------------------------------|
+| fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.
 
 
 
@@ -69,14 +76,14 @@ Book.destroy({
   if (err) {
     return res.serverError(err);
   }
-  
+
   if (burnedBooks.length === 0) {
     sails.log('No book found with `id: 4`.');
   }
   else {
     sails.log('Deleted book with `id: 4`:', burnedBooks[0]);
   }
-  
+
   return res.ok();
 });
 ```
