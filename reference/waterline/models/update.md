@@ -27,7 +27,7 @@ Something.update(criteria, valuesToSet)
 
 ##### Meta keys
 
-| Argument            | Type              | Details                                                        |
+| Key                 | Type              | Details                                                        |
 |:--------------------|-------------------|:---------------------------------------------------------------|
 | fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.
 
