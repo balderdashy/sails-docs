@@ -20,8 +20,8 @@ Something.update(criteria, valuesToSet)
 
 ##### Callback
 
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
+|   | Argument            | Type                | Details
+|---|:--------------------|---------------------|:----------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    _updatedRecords_ | ((array?))          | By default, for better performance, the updated records are not provided to this callback.  But if you enable `.meta({fetch: true})`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
 
