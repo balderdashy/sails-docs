@@ -42,7 +42,7 @@ User.create({name:'Finn'})
 });
 ```
 
-##### Fetching newly-created records
+##### Fetching the newly-created record
 ```javascript
 User.create({name:'Finn'})
 .meta({fetch: true})
