@@ -3,7 +3,8 @@
 Create a record in the database.
 
 ```javascript
-Something.create(values).exec(function (err, records) {
+Something.create(values)
+.exec(function (err) {
 
 });
 ```
@@ -19,20 +20,42 @@ Something.create(values).exec(function (err, records) {
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See below for an example of how to negotiate validation errors (e.g. attempting to insert a record that would violate a uniqueness constraint)
-| 2 |    newRecord        | ((dictionary))      | The newly-created record, with its primary key (usually `id`) set.
+
+##### Meta keys
+
+| Key                 | Type              | Details                                                        |
+|:--------------------|-------------------|:---------------------------------------------------------------|
+| fetch               | ((boolean))       | If set to `true`, then the created record will be provided as the second argument of the callback.
 
 
 ### Example
 
 To create a user named Finn in the database:
 ```javascript
-User.create({name:'Finn'}).exec(function (err, finn){
-  if (err) { return res.serverError(err); }
+User.create({name:'Finn'})
+.exec(function (err){
+  if (err) {
+    return res.serverError(err);
+  }
 
-  sails.log('Finn\'s id is:', finn.id);
   return res.ok();
 });
 ```
+
+##### Fetching newly-created records
+```javascript
+User.create({name:'Finn'})
+.meta({fetch: true})
+.exec(function (err, createdUser){
+  if (err) {
+    return res.serverError(err);
+  }
+
+  sails.log('Finn\'s id is:', createdUser.id);
+  return res.ok();
+});
+```
+
 
 
 ##### Negotiating Validation Errors
