@@ -4,18 +4,19 @@ Update all records matching criteria.
 
 ```javascript
 Something.update(criteria, values)
-.exec(function(err, updatedRecords) {
+.exec(function(err) {
   //...
 });
 ```
 
 
-##### Usage
+### Usage
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
 | 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 | 2 |    values           | ((dictionary))    | The attributes that the record should be updated to have.
+
 
 ##### Callback
 
@@ -23,6 +24,13 @@ Something.update(criteria, values)
 |---|---------------------|---------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    _updatedRecords_ | ((array?))          | By default, the updated records are not provided to this callback.  But if you enable `.meta({fetch: true})`, then the array of updated record(s) will be sent back.
+
+##### Meta keys
+
+| Argument            | Type              | Details                                                        |
+|:--------------------|-------------------|:---------------------------------------------------------------|
+| fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.
+
 
 ### Example
 
