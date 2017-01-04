@@ -31,7 +31,6 @@ Something.destroy(criteria).exec(function (err) {
 
 To delete any users named Finn from the database:
 ```javascript
-
 User.destroy({name:'Finn'}).exec(function (err){
   if (err) {
     return res.serverError(err);
@@ -42,25 +41,11 @@ User.destroy({name:'Finn'}).exec(function (err){
 ```
 
 
-To delete a particular book which is no longer available:
-```javascript
-Book.destroy({
-  id: 4
-}).exec(function (err){
-  if (err) {
-    return res.serverError(err);
-  }
-  sails.log('Deleted book with `id: 4`, if it existed.');
-  return res.ok();
-});
-```
-
-
 To delete two particular users who have been causing trouble:
 
 ```javascript
 User.destroy({
-  id: [ 3, 97 ]
+  id: { in: [ 3, 97 ] }
 }).exec(function (err){
   if (err) {
     return res.serverError(err);
@@ -69,6 +54,34 @@ User.destroy({
   return res.ok();
 });
 ```
+
+
+##### Fetching destroyed records
+
+To delete a particular book, and also fetch the destroyed record:
+
+```javascript
+Book.destroy({
+  id: 4
+})
+.meta({ fetch: true })
+.exec(function (err, burnedBooks){
+  if (err) {
+    return res.serverError(err);
+  }
+  
+  if (burnedBooks.length === 0) {
+    sails.log('No book found with `id: 4`.');
+  }
+  else {
+    sails.log('Deleted book with `id: 4`:', burnedBooks[0]);
+  }
+  
+  return res.ok();
+});
+```
+
+
 
 
 ### Notes
