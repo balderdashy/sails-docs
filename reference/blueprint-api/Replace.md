@@ -26,7 +26,7 @@ This action adds one or more reference to some other record (the "foreign", or "
 
 Add purchases #47 and #65 to the list of purchases that Dolly (employee #7) has been involved in:
 
-`POST /employee/7/involvedInPurchases`
+`PUT /employee/7/involvedInPurchases`
 
 ```json
 [47, 65]
