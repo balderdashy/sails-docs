@@ -3,7 +3,7 @@
 Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
 
 ```
-POST /:model/:id/:association/:fk
+PUT /:model/:id/:association/:fk
 ```
 
 This action adds a reference to some other record (the "foreign", or "child" record) onto a particular collection attribute of this record (the "primary", or "parent" record).
@@ -29,7 +29,7 @@ This action adds a reference to some other record (the "foreign", or "child" rec
 Add purchase #47 to the list of purchases that Dolly (employee #7) has been involved in:
 
 ```
-POST /employee/7/involvedInPurchases/47
+PUT /employee/7/involvedInPurchases/47
 ```
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
@@ -60,7 +60,7 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 ##### Using jQuery
 
 ```javascript
-$.post('/employee/7/involvedInPurchases/47', function (purchases) {
+$.put('/employee/7/involvedInPurchases/47', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -68,7 +68,7 @@ $.post('/employee/7/involvedInPurchases/47', function (purchases) {
 ##### Using Angular
 
 ```javascript
-$http.post('/employee/7/involvedInPurchases/47')
+$http.put('/employee/7/involvedInPurchases/47')
 .then(function (purchases) {
   console.log(purchases);
 });
@@ -77,7 +77,7 @@ $http.post('/employee/7/involvedInPurchases/47')
 ##### Using sails.io.js
 
 ```javascript
-io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
+io.socket.put('/employee/7/involvedInPurchases/47', function (purchases) {
   console.log(purchases);
 });
 ```
@@ -85,7 +85,7 @@ io.socket.post('/employee/7/involvedInPurchases/47', function (purchases) {
 ##### Using [cURL](http://en.wikipedia.org/wiki/CURL)
 
 ```bash
-curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "POST"
+curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "PUT"
 ```
 
 
