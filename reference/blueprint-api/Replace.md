@@ -30,6 +30,7 @@ Add purchases #47 and #65 to the list of purchases that Dolly (employee #7) has 
 
 ```json
 [47, 65]
+```
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
