@@ -14,9 +14,10 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your app relies on views for the `badRequest` or `forbidden` responses**, you&rsquo;ll need add your own custom `api/responses/badRequest.js` or `api/responses/forbidden.js` files.  Those default responses no longer use views.
-* **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` ](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy) for more info.
+* **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` results](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy-results) for more info.
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
-* Waterline queries will now rely on the database for case sensitivity. This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries.
+* **Waterline queries will now rely on the database for case sensitivity.** This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries.
+* **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  See the [migration guide section on nested creates and updates] for more info.(https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates)
 
 ### Breaking changes to lesser-used features
 
@@ -47,6 +48,12 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **The `router` middleware is no longer overrideable.**  The Express 4 router is used for routing both external and internal (aka &ldquo;virtual&rdquo;) requests.  It&rsquo;s still important to have a `router` entry in `sails.config.http.middleware.order`, to delimit which middleware should be added _before_ the router, and which should be added after.
 * The query modifiers `lessThan`, `lessThanOrEqual`, `greaterThan`, and `greaterThanOrEqual` have been removed. Use the shorthand versions instead. i.e. `<`, `<=`, `>`, `>=`.
 
+### Nested creates and updates
+
+* The [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.add()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find) model methods no longer support creating a new &ldquo;child&rdquo; record to link immediately to a new or existing parent.  For example, given a `User` model with a singular association to an `Animal` model through an attribute called `pet`, it is not possible to set `pet` to a dictionary representing values for a brand new `Animal` (aka a &ldquo;nested create&rdquo;).  Instead, create the new `Animal` first and use its primary key to set `pet` when creating the new `User`.
+* Similarly, the [create](http://sailsjs.com/documentation/reference/blueprint-api/create), [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to) blueprint actions no longer support nested creates.
+* The [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) model method and its associated [blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/update) no longer support replacing an entire plural association.  If a record is linked to one or more other records via a [&ldquo;one-to-many&rdquo;](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [&ldquo;many-to-many&rdquo;](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association and you wish to link it to an entirely different set of records, use the [`.replaceCollection()` model method](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) or the [replace blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/replace).
+
 ### Changes to model configuration
 
 ##### tl;dr
@@ -75,7 +82,7 @@ These properties were formerly used to indicate whether or not Waterline should 
 Furthermore, for any attribute, if you pass `new Date()` as a constraint within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
 
 
-### Changes to `.create()`, `.createEach()`, `.update()`, and `.destroy()`
+### Changes to `.create()`, `.createEach()`, `.update()`, and `.destroy()` results
 
 As of Sails v1.0 / Waterline 0.13, the default result from `.create()`, `.createEach()`, `.update()`, and `.destroy()` has changed.
 
