@@ -62,5 +62,11 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 }
 ```
 
+### Notes
+
+> + If you have [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) turned on, you can replace the existing collection by using the collection attribute name as a query string parameter, and setting the value to an array, e.g. `http://localhost:1337/user/3/pets/replace?pets=[3,4]`
+> + Remember, this blueprint replaces the _entire_ set of associated records for the given attribute.  To add or remove a single associated record from the collection, leaving the rest of the collection unchanged, use the [&ldquo;add&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/add-to) or [&ldquo;remove&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
+
+
 <docmeta name="displayName" value="replace">
 <docmeta name="pageType" value="endpoint">
