@@ -39,7 +39,7 @@ before(function(done) {
 
   sails.lift({
     // configuration for testing purposes
-  }, function(err, sails) {
+  }, function(err) {
     if (err) return done(err);
     // here you can load fixtures, etc.
     done(err, sails);
