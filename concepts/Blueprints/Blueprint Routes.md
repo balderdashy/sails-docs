@@ -33,23 +33,22 @@ Shortcut routes are simple helpers to provide access to a CRUD methods for a mod
 
 The shortcut routes are as follows:
 
-| Route | Blueprint |
-| ----- | --------- |
-| GET /:modelIdentity/find | [find](http://sailsjs.com/documentation/reference/blueprint-api/find-where)
-| GET /:modelIdentity/find/:id | [findOne](http://sailsjs.com/documentation/reference/blueprint-api/find-one)
-| GET /:modelIdentity/create | [create](http://sailsjs.com/documentation/reference/blueprint-api/create)
-| GET /:modelIdentity/update/:id | [update](http://sailsjs.com/documentation/reference/blueprint-api/update)
-| GET /:modelIdentity/destroy/:id | [destroy](http://sailsjs.com/documentation/reference/blueprint-api/destroy)
-| GET /:modelIdentity/:id/:association/add/:fk | [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to)
-| GET /:modelIdentity/:id/:association/remove/:fk | [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)
-| GET /:modelIdentity/:id/:association/replace?association=[1,2...] | [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace)
+| Route | Blueprint | Example URL |
+| ----- | --------- | ------- |
+| GET /:modelIdentity/find | [find](http://sailsjs.com/documentation/reference/blueprint-api/find-where) | `http://localhost:1337/user/find?name=bob`
+| GET /:modelIdentity/find/:id | [findOne](http://sailsjs.com/documentation/reference/blueprint-api/find-one) | `http://localhost:1337/user/find/123`
+| GET /:modelIdentity/create | [create](http://sailsjs.com/documentation/reference/blueprint-api/create) | `http://localhost:1337/user/create?name=bob&age=18`
+| GET /:modelIdentity/update/:id | [update](http://sailsjs.com/documentation/reference/blueprint-api/update) | `http://localhost:1337/user/update/123?name=joe`
+| GET /:modelIdentity/destroy/:id | [destroy](http://sailsjs.com/documentation/reference/blueprint-api/destroy) | `http://localhost:1337/user/destroy/123`
+| GET /:modelIdentity/:id/:association/add/:fk | [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to) | `http://localhost:1337/user/123/pets/add/3`
+| GET /:modelIdentity/:id/:association/remove/:fk | [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) | `http://localhost:1337/user/123/pets/remove/3`
+| GET /:modelIdentity/:id/:association/replace?association=[1,2...] | [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) | `http://localhost:1337/user/123/pets/replace?pets=[3,4]`
 
 Shortcut routes are enabled by default, and are very handy for development, but generally should be disabled in a production environment.
 
 ##### Notes
 
 > + Like RESTful routes, shortcut routes can be overridden by providing an action in a matching controller, or by providing a route in `config/routes.js`.
-> + When using the &ldquo;replace&rdquo; shortcut route, make sure to replace both instances of the association in the URL.  For example: `http://localhost:1337/user/3/pets/replace?pets=[3,4]`
 
 ### Action routes
 
