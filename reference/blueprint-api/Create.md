@@ -23,14 +23,15 @@ Parameters should be sent in the [request body](https://www.getpostman.com/docs/
 
 ### Example
 
-Create a new pony named "AppleJack" with a hobby of "pickin":
+Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends with ponies #13 and #25:
 
 `POST /pony`
 
 ```json
 {
   "name": "AppleJack",
-  "hobby": "pickin"
+  "hobby": "pickin",
+  "friends": [13,25]
 }
 ```
 
@@ -39,14 +40,29 @@ Create a new pony named "AppleJack" with a hobby of "pickin":
 ##### Example Response
 ```json
 {
+  "id": 47,
   "name": "AppleJack",
   "hobby": "pickin",
-  "id": 47,
+  "friends": [
+    {
+      "id": 13,
+      "name": "Sparkle",
+      "hobby": "hoppin",
+      "createdAt": "2012-06-12T03:01:45.000Z",
+      "updatedAt": "2013-09-25T21:23:08.000Z"
+    },
+    {
+      "id": 25,
+      "name": "Lollipop",
+      "hobby": "winkin",
+      "createdAt": "2011-01-03T22:54:53.000Z",
+      "updatedAt": "2012-04-13T08:08:12.000Z"
+    }
+  ],
   "createdAt": "2013-10-18T01:23:56.000Z",
   "updatedAt": "2013-11-26T22:55:19.951Z"
 }
 ```
-
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">
