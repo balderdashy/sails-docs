@@ -83,7 +83,7 @@ https://github.com/balderdashy/sails-redis/
 
 ### Can I contribute to a core adapter?
 
-Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/contributing). 
+Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/documentation/contributing). 
 
 
 

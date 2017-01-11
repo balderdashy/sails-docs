@@ -15,6 +15,19 @@ The current version of Sails ships with the following blueprint actions:
 + [add](http://sailsjs.com/documentation/reference/blueprint-api/Add)
 + [remove](http://sailsjs.com/documentation/reference/blueprint-api/Remove)
 
+##### Overriding blueprint actions
+
+You may also override any of the actions for a model by naming your function method the same name as the blueprint action.
+
+```javascript
+module.exports = {
+  findOne: function (req, res) {
+    return res.json(403, 'Single model lookup is denied.');
+  }
+}
+
+```
 For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.com/documentation/reference/blueprint-api)
+
 
 <docmeta name="displayName" value="Blueprint Actions">

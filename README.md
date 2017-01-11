@@ -74,7 +74,7 @@ If your language is not represented in the table above, and you are interested i
 
 #### How else can I help?
 
-For more information on contributing to Sails in general, see the [Contribution Guide](sailsjs.com/contributing).
+For more information on contributing to Sails in general, see the [Contribution Guide](sailsjs.com/documentation/contributing).
 
 
 
