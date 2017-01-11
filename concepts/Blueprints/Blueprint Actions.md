@@ -15,10 +15,7 @@ The current version of Sails ships with the following blueprint actions:
 + [add](http://sailsjs.com/documentation/reference/blueprint-api/Add)
 + [remove](http://sailsjs.com/documentation/reference/blueprint-api/Remove)
 
-For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.com/documentation/reference/blueprint-api)
-
-
-### Overriding blueprint actions
+##### Overriding blueprint actions
 
 You may also override any of the actions for a model by naming your function method the same name as the blueprint action.
 
@@ -30,5 +27,7 @@ module.exports = {
 }
 
 ```
+For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.com/documentation/reference/blueprint-api)
+
 
 <docmeta name="displayName" value="Blueprint Actions">
