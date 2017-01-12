@@ -74,7 +74,7 @@ The blueprint API (just like any of your custom actions and policies) is compati
 
 ##### Blueprints and `.subscribe()`
 
-By default, the **Find** and **Find One** blueprint actions will call [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) automatically when a socket request is used. This subscribes the requesting socket to each of the returned records.  However, the **Update** and **Destroy** actions will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected sockets.  This is intended to allow the caller of `io.socket.update()` (for example) to use the client-side SDK's callback to handle the server response separately.  To force the blueprint actions to send messages to all sockets, *including the requesting socket*, set `sails.config.blueprints.mirror` to `true`.
+By default, the **Find** and **Find One** blueprint actions will call [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) automatically when a socket request is used. This subscribes the requesting socket to each of the returned records.  However, if the _same_ socket sends a request to the **Update** or **Destroy** actions with `io.socket.put()` (for example) this will *not* cause a message to be sent to the requesting socket by default--only to the *other* connected, subscribed sockets.  This is intended to allow UI code to use the client-side SDK's callback to handle the server response separately; e.g. to replace a loading spinner.
 
 
 ##### Blueprints and `.watch()`
