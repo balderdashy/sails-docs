@@ -1,5 +1,7 @@
 # Upgrading to Sails v1.0
 
+> ## Note: the links in this guide are not currently active (the 1.0 docs have not been published yet!)
+
 To get started upgrading your existing Sails app to version 1.0, follow the checklist below, which covers the changes most likely to affect the majority of apps.  If your app still has errors or warnings on startup after following the checklist, come back to this document and follow the applicable guides to upgrading various app components.
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
@@ -17,7 +19,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to chain a `.meta({fetch: true})` to those calls.  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` results](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy-results) for more info.
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
 * **Waterline queries will now rely on the database for case sensitivity.** This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries.
-* **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates] for more info.(https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates)
+* **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates) for more info.
 * **If your app uses the [&ldquo;add&rdquo; blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/add-to) to update the items in a plural association, be aware that the HTTP verb for that blueprint has changed from `POST` to `PUT`.
 
 ### Breaking changes to lesser-used features
@@ -38,7 +40,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
  + On a related note, the [Blueprint create action](http://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
 * **The default `notFound` and `serverError` responses no longer accept a `pathToView` argument.** They will only attempt to serve a `404` or `500` view.  If you need to be able to call these responses with different views, you can customize the responses by adding `api/responses/notFound.js` or `api/responses/serverError.js` files to your app.
 * **The <a href="https://www.npmjs.com/package/connect-flash" target="_blank">`connect-flash`</a> middleware has been removed** (so `req.flash()` will no longer be available by default).  If you wish to continue using `req.flash()`, run `npm install --save connect-flash` in your app folder and [add the middleware manually](http://sailsjs.com/documentation/concepts/middleware).
-* **The `POST /:model/:id` blueprint RESTful route has been removed.**  If your app is relying on this route, you&rsquo;ll need to add it manually to `config/routes.js` and bind it to an action, e.g. `'POST /user/:id': 'UserController.update'`.
+* **The `POST /:model/:id` blueprint RESTful route has been removed.**  If your app is relying on this route, you&rsquo;ll need to add it manually to `config/routes.js` and bind it to a custom action.
 * **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.
   + If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.
   + If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
