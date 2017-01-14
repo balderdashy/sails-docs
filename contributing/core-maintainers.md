@@ -7,7 +7,7 @@ The Sails core team maintains the framework and its related sub-projects, includ
 
 #### History
 
-Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcneil) with the help of his company [Balderdash](http://balderdash.co), a small development and design studio in Austin, TX.  The first stable version of Sails was released as open-source in 2012.  Today, it is still actively maintained by the same core team members ([@mikermcneil](https://github.com/mikermcneil), [@particlebanana](https://github.com/particlebanana), [@sgress454](https://github.com/sgress454), [@irlnathan](https://github.com/irlnathan), and [@rachaelshaw](https://github.com/rachaelshaw)), along with the help of many amazing [contributors](https://github.com/balderdashy/sails/network/members).
+Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcneil) with the help of his company [Balderdash](http://www.bizjournals.com/sanantonio/blog/socialmadness/2013/03/sxsw-2013-Balderdash-startup-web-app.html), a small development and design studio in Austin, TX.  The first stable version of Sails was released as open-source in 2012.  Today, it is still actively maintained by the same core team members ([@mikermcneil](https://github.com/mikermcneil), [@particlebanana](https://github.com/particlebanana), [@sgress454](https://github.com/sgress454), [@irlnathan](https://github.com/irlnathan), and [@rachaelshaw](https://github.com/rachaelshaw)), along with the help of many amazing [contributors](https://github.com/balderdashy/sails/network/members).
 
 
 #### Financial Support
