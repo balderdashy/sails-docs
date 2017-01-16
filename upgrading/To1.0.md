@@ -53,6 +53,12 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * The [`add`](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and [`remove`](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) blueprint actions now require that the primary key of the child record to add or remove be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
 * The [`destroy`](http://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
 
+### Changes to database configuration
+
+* The `sails.config.connections` setting has been deprecated in favor of `sails.config.datastores`.  If you lift an app that still has `sails.config.connections` configured, you&rsquo;ll get a warning which you can avoid by simply changing `module.exports.connections` in `config/connections.js` to `module.exports.datastores`.  For your own sanity you it&rsquo;s recommended that you also change the filename to `config/datastores.js`.
+* The `sails.config.models.connection` setting has been deprecated in favor of `sails.config.models.datastore`.  As above, simply changing the name of the property in `config/models.js` is enough to turn off any warnings.
+* Every app now has a default datastore (appropriated named `default`) that is configured to use a built-in version of the [`sails-disk` adapter](https://github.com/balderdashy/sails-disk).  In Sails 1.0, the default value of `sails.config.models.datastore is `default` (rather than `localDiskDb`).
+
 ### Nested creates and updates
 
 * The [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.add()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find) model methods no longer support creating a new &ldquo;child&rdquo; record to link immediately to a new or existing parent.  For example, given a `User` model with a singular association to an `Animal` model through an attribute called `pet`, it is not possible to set `pet` to a dictionary representing values for a brand new `Animal` (aka a &ldquo;nested create&rdquo;).  Instead, create the new `Animal` first and use its primary key to set `pet` when creating the new `User`.
