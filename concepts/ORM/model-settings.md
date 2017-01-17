@@ -13,7 +13,7 @@ Model settings allow you to customize the behavior of the models in your Sails a
 
 To modify the [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
 
-For example, if you edit `config/models.js` so that it contains `connection: 'somePostgresqlDb'`, then, assuming you've defined a connection named `somePostgresqlDb`, you'll set PostgreSQL as your default database.  In other words, unless overridden, all of your app's models will use that PostgreSQL datastore any time built-in model methods like `.create()` or `.find()` are executed.
+For example, if you edit `config/models.js` so that it contains `connection: 'somePostgresqlDb'`, then, assuming you've defined a connection named `somePostgresqlDb`, you'll set PostgreSQL as your default database.  In other words, unless overridden, all of your app's models will use that PostgreSQL datastore anytime built-in model methods like `.create()` or `.find()` are executed.
 
 
 ##### Overriding settings for a particular model
