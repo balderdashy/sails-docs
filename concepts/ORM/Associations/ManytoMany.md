@@ -16,7 +16,7 @@ is needed on the `collection` attribute. This states which `model` attribute on 
 association is used to populate the records.
 
 Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
-`Pet` records and a `Pet` may have multiple owners.
+`Pet` records and a `Pet` may have multiple owners. In this case, both sides of the association have a `via` modifier specified, which requires that we specify which one is [the dominant collection](http://sailsjs.com/documentation/concepts/models-and-orm/associations/dominance).
 
 ```javascript
 // myApp/api/models/User.js
