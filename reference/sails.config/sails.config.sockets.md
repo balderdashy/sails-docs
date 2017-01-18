@@ -7,7 +7,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@^1.0.0 --save --save-exact`. |
+| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@^3.0.0 --save --save-exact`. |
 | `transports`  |((array))  | `['websocket']`     | An array of allowed transport strategies that Sails/Socket.io will use when connecting clients.  This should _always_ match the [configuration in your socket client (i.e. `sails.io.js`)](http://sailsjs.com/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library) -- if you change transports here, you need to configure them there, and vice versa.<br/><br/> <em>Note that if you opt to modify the default transports, then you may need to do additional configuration in production.  (For example, if you add the `polling` transport, and your app is running on multiple servers behind a load balancer like nginx, then you will need to configure that load balancer to support TCP sticky sessions.  However, that _should not_ be necessary out of the box with only the `websocket` transport enabled.)  See [Deployment > Scaling](http://sailsjs.com/documentation/concepts/deployment/scaling) for more tips and best practices.</em> |
 | `onlyAllowOrigins` | ((array)) | `undefined` | Array of hosts (beginning with http:// or https://) from which sockets will be allowed to connect.  Leaving this undefined will allow sockets from _any_ origin to connect, which is useful for testing but is not allowed in production mode (so you should at least set this in [config/env/production.js](http://sailsjs.com/documentation/anatomy/config/env/production-js)).  Note that as the name implies (and in contrast to the similar [CORS setting](http://ailsjs.com/documentation/reference/configuration/sails-config-security-cors)), _only_ the origins listed will be allowed to connect.  For testing locally, you&rsquo;ll probably want to add `http://localhost:1337` to the list.
 
@@ -53,7 +53,7 @@ During development, when a socket tries to connect, Sails allows it, every time 
 If your app needs more flexibility, then as an additional precaution, you can define your own custom logic to allow or deny socket connections.  To do so, specify a `beforeConnect` function:
 ```javascript
 beforeConnect: function(handshake, proceed) {
-  
+
   // Send back `true` to allow the socket to connect.
   // (Or send back `false` to reject the attempt.)
   return proceed(undefined, true);
@@ -63,14 +63,14 @@ beforeConnect: function(handshake, proceed) {
 
 ### Sockets & sessions
 
-By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.  
+By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.
 
-> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security. 
+> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security.
 
 ##### Cross-origin sockets
 The sails.io.js client is usually initiated from an HTML page that was already fetched via HTTP.  So in most cases, sockets that connect from this sort of a browser environment will automatically provide a valid session cookie.  And thus everything will work normally; and `req.session` will be available.
 
-However, in the case of cross-origin sockets, it is possible to receive a connection upgrade request _without a cookie_ (for certain transports anyway).  In this case, there is no way to keep track of the requesting user between virtual requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.                           
+However, in the case of cross-origin sockets, it is possible to receive a connection upgrade request _without a cookie_ (for certain transports anyway).  In this case, there is no way to keep track of the requesting user between virtual requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.
 
 ##### Non-browser clients
 Similarly, if a socket connects _without_ providing a session cookie, or with a corrupted cookie, then a temporary, throwaway session entry will be created for it.  The same thing happens if the provided session cookie doesn't match any known session entry.
