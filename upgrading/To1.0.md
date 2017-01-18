@@ -52,6 +52,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * The query modifiers `lessThan`, `lessThanOrEqual`, `greaterThan`, and `greaterThanOrEqual` have been removed. Use the shorthand versions instead. i.e. `<`, `<=`, `>`, `>=`.
 * The [`add`](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and [`remove`](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) blueprint actions now require that the primary key of the child record to add or remove be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
 * The [`destroy`](http://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
+* The experimental `create` auto-migration scheme is no longer supported.  It is highly recommended that you use a migration tool such as [Knex](http://knexjs.org/#Migrations) to handle migrations of your production database.
 
 ### Changes to database configuration
 
