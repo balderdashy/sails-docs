@@ -92,11 +92,5 @@ module.exports = {
 }
 ```
 
-
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/one-to-one.md)
-
-
-
 <docmeta name="displayName" value="One-to-one">
 
