@@ -56,17 +56,22 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | [Example](http://next.sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
+| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](http://next.sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
 | isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
 | isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
+| isBoolean         | A value that is `true` or `false` | isBoolean: true | ((json)), ((ref)) |
 | isCreditCard      | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
 | isEmail           | A value that looks like an email address.                                                                           | `isEmail: true`                                         | ((string)) |
 | isHexColor        | A string that is a hexadecimal color.                                                                               | `isHexColor: true`                                      | ((string)) |
 | isIn              | A value that is in the specified array of allowed strings.                                                          | `isIn: ['paid', 'delinquent']`                          | ((string)) |
 | isInteger         | A number that is an integer (a whole number)                                                                        | `isInteger: true`                                       | ((number)) |
 | isIP              | A value that is a valid IP address (v4 or v6)                                                                       | `isIP: true`                                              | ((string)) |
+| isNotEmptyString  | A value that is _not_ an empty string | `isNotEmptyString: true` | ((json)), ((ref))
 | isNotIn           | A value that **is not in** the configured array.                                                                    | `isNotIn: ['profanity1', 'profanity2']`                   | ((string)) |
+| isNumber          | A value that is a Javascript number | `isNumber: true` | ((json)), ((ref))
+| isString          | A value that is a string (i.e. `typeof(value) === 'string'`) | `isString: true` | ((json)), ((ref))
 | isURL             | A value that looks like a URL. | `isURL: true` | ((string)) |
+| isUUID            | A value that looks like a UUID (v3, v4 or v5) | `isUUID: true` | ((string))
 | max               | A number that is less than or equal to the configured number. | `max: 10000` | ((number)) |
 | min               | A number that is greater than or equal to the configured number. | `min: 0` | ((number)) |
 | maxLength         | A string that has no more than the configured number of characters. |  `maxLength: 144` | ((string)) |
