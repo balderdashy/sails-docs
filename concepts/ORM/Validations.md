@@ -36,7 +36,7 @@ Sails' ORM (Waterline) and its adapters perform loose validation to ensure that 
 
 ##### Null and empty string
 
-The `string`, `number` and `boolean` data types do _not_ accept `null` as value when creating or updating records.  Since `null` is neither a string, number, nor boolean, the most specific data type that accurately describes it is ((json)).  So for example, if you want to describe a normal attribute whose values are sometimes numbers and sometimes `null`, you'll want to use `type: 'json'`.
+The `string`, `number` and `boolean` data types do _not_ accept `null` as a value when creating or updating records.  Since `null` is neither a string, number, nor boolean, the most specific data type that accurately describes it is ((json)).  So for example, if you want to describe a normal attribute whose values are sometimes numbers and sometimes `null`, you'll want to use `type: 'json'`.
 
 Since empty string ("") is a string, it is normally supported by `type: 'string'` attributes.  There are a couple of exceptions though:  primary keys (because primary keys never support empty string) and any attribute which has `required: true`.
 
