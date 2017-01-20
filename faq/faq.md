@@ -55,8 +55,7 @@ Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, and buil
 
 ### Where do I get help?
 
-Aside from the [official documentation](http://sailsjs.com/documentation), be sure and check out the [Support page on the Sails website](http://sailsjs.com/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action).
-
+Aside from the [official documentation](http://sailsjs.com/documentation), be sure and check out the [Support page on the Sails website](http://sailsjs.com/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action). If you're a [Flagship support](http://sailsjs.com/flagship) member, you can submit a ticket [here](http://flagship.sailsjs.com/new-ticket).
 
 ### Who else is using Sails.js?
 
@@ -75,6 +74,11 @@ Aside from the [official documentation](http://sailsjs.com/documentation), be su
 + [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
 + [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
 + [Taskboard](http://tarlepp.github.io/Taskboard/) - a Sails application to mimic "scrum-ban" taskboard
+
+
+### Are there professional support options?
+
+The Sails Company (the core maintainers of the framework) offers professional support subscriptions through Sails Flagship. You can learn more about our plans at [sailsjs.com/flagship](http://sailsjs.com/flagship).
 
 
 ### What are some good community tutorials?
