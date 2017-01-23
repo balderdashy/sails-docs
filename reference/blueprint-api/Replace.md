@@ -19,7 +19,7 @@ This action adds one or more reference to some other record (the "foreign", or "
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
  id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
- fk | ((array))    | The primary keys (e.g. `id`) of the foreign records to use in this collection association.<br/><br/>e.g. [`47`,`65`]
+ fks | ((array))    | The primary keys (e.g. `id`) of the foreign records to use in this collection association.<br/><br/>e.g. [`47`,`65`]
 
 
 ### Example
@@ -65,7 +65,7 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 
 ### Resourceful PubSub (RPS)
 
-If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the data &ldquo;payload&rdquo; has the following format:
+If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the data &ldquo;payload&rdquo; has the following format:
 
 ```
 id: <the parent record primary key>,
@@ -74,7 +74,7 @@ attribute: <the parent record collection attribute name>,
 addedId: <the child record primary key>
 ```
 
-for instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two notifications:
+For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two notifications:
 
 ```
 id: 7,

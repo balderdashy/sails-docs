@@ -74,7 +74,7 @@ data: <a dictionary of the attribute values of the new record (without associati
 id: <the new record primary key>,
 ```
 
-for instance, continuing the example above, all clients subscribed to the Pony model (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
+For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
 
 ```
 id: 47,
@@ -87,7 +87,7 @@ data: {
 }
 ```
 
-Similarly, if the new record included values for attributes representing a [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `addedTo` notifications will be sent to any clients subscribed to the records on the other side of the relationship.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
+Similarly, if the new record included values for attributes representing [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `addedTo` notifications would be sent to any clients subscribed to the records on the other side of the relationship.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">
