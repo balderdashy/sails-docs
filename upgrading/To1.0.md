@@ -59,6 +59,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * The `sails.config.connections` setting has been deprecated in favor of `sails.config.datastores`.  If you lift an app that still has `sails.config.connections` configured, you&rsquo;ll get a warning which you can avoid by simply changing `module.exports.connections` in `config/connections.js` to `module.exports.datastores`.  For your own sanity you it&rsquo;s recommended that you also change the filename to `config/datastores.js`.
 * The `sails.config.models.connection` setting has been deprecated in favor of `sails.config.models.datastore`.  As above, simply changing the name of the property in `config/models.js` is enough to turn off any warnings.
 * Every app now has a default datastore (appropriated named `default`) that is configured to use a built-in version of the [`sails-disk` adapter](https://github.com/balderdashy/sails-disk).  In Sails 1.0, the default value of `sails.config.models.datastore is `default` (rather than `localDiskDb`).
+* _All_ datastores that are configured in an app will be loaded at runtime (rather than only loading datastores that were being used by at least one model).  This has the benefit of allowing the use of a datastore outside the context of an individual model, but it does mean that if you don&rsquo;t want to connect to a certain database when Sails lifts, you should comment out that datastore connection config!
 
 ### Nested creates and updates
 
