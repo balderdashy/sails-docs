@@ -45,6 +45,27 @@ DELETE /store/16/employeesOfTheMonth/7
 }
 ```
 
+### Resourceful PubSub (RPS)
+
+If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification for the new child, where the notification event name is that of the parent model identity (e.g. `store`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+id: <the parent record primary key>,
+verb: 'removedFrom',
+attribute: <the parent record collection attribute name>,
+removedId: <the child record primary key>
+```
+
+for instance, continuing the example above, all clients subscribed to employee #16 (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
+
+```
+id: 16,
+verb: 'removedFrom',
+attribute: 'employeesOfTheMonth',
+removedId: 7
+```
+
+Similarly, if the relationship between the parent and child models is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to the child record will receive `removedFrom` notifications as well (with the `id` and `removedId` values reversed).  If the relationship is [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to the child will receive an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
 
 ### Notes
 

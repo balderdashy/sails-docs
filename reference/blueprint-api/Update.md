@@ -44,6 +44,35 @@ Change Applejack's hobby to "kickin":
 }
 ```
 
+### Resourceful PubSub (RPS)
+
+If you have websockets enabled for your app, then every client subscribed to the updated record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+id: <the record primary key>,
+verb: 'updated',
+data: <a dictionary of changes made to the record>,
+previous: <a dictionary of the record attribute values prior to the update>
+```
+
+for instance, continuing the example above, all clients subscribed to pony #47 (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
+
+```
+id: 47,
+verb: 'updated',
+changes: { hobby: 'kickin' },
+previous: {
+  'hobby': 'pickin',
+  'id': 47,
+  'name': 'AppleJack',
+  'createdAt': '2013-10-18T01:23:56.000Z',
+  'updatedAt': '2013-11-26T22:55:19.951Z'
+}
+```
+
+Similarly, if the update included changes to an attribute representing the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then `addedTo` and `removedFrom` notifications will be sent to any clients subscribed to the new (if any) and former (if any) _parent_ record.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.
+
+
 ### Notes
 
 > + This action can be used to update any attribute in a record _except_ for attributes representing a plural ("collection") association.  To update a plural association of a record, use the [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to), [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) or [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) actions.

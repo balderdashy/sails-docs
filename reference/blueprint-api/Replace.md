@@ -63,6 +63,37 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 }
 ```
 
+### Resourceful PubSub (RPS)
+
+If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+id: <the parent record primary key>,
+verb: 'addedTo',
+attribute: <the parent record collection attribute name>,
+addedId: <the child record primary key>
+```
+
+for instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two notifications:
+
+```
+id: 7,
+verb: 'addedTo',
+attribute: 'involvedInPurchases',
+addedId: 47
+```
+
+and
+
+```
+id: 7,
+verb: 'addedTo',
+attribute: 'involvedInPurchases',
+addedId: 65
+```
+
+Similarly, any clients subscribed to the _child_ records would receive either an `addedTo` notification like the ones above (if the assocatiation is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)) or an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+
 ### Notes
 
 > + If you have [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) turned on, you can replace the existing collection by using the collection attribute name as a query string parameter, and setting the value to an array, e.g. `http://localhost:1337/user/3/pets/replace?pets=[3,4]`

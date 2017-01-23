@@ -40,7 +40,39 @@ Delete Pinkie Pie:
 }
 ```
 
+### Resourceful PubSub (RPS)
 
+If you have websockets enabled for your app, then every client subscribed to the destroyed record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+verb: 'destroyed',
+id: <the record primary key>,
+previous: <a dictionary of the attribute values of the destroyed record (including associations)>
+```
+
+for instance, continuing the example above, all clients subscribed to pony #4 (_except_ for the client making the request, if the request was made via websocket) might receive the following notification:
+
+```
+id: 47,
+verb: 'destroyed',
+data: {
+  name: 'AppleJack',
+  hobby: 'pickin',
+  friends: [
+    {
+      id: 13,
+      name: 'Sparkle',
+      hobby: 'hoppin',
+      createdAt: '2012-06-12T03:01:45.000Z',
+      updatedAt: '2013-09-25T21:23:08.000Z'
+    }
+  ]
+  createdAt: '2013-10-18T01:23:56.000Z',
+  updatedAt: '2013-11-26T22:55:19.951Z'
+}
+```
+
+Similarly, if the new record included values for attributes representing a [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `addedTo` notifications will be sent to any clients subscribed to the records on the other side of the relationship.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
 <docmeta name="displayName" value="destroy">
 <docmeta name="pageType" value="endpoint">
