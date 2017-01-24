@@ -80,10 +80,10 @@ For instance, continuing the example above, all clients subscribed to the `Pony`
 id: 47,
 verb: 'created',
 data: {
-  'name': 'AppleJack',
-  'hobby': 'pickin',
-  'createdAt': '2013-10-18T01:23:56.000Z',
-  'updatedAt': '2013-11-26T22:55:19.951Z'
+  name: 'AppleJack',
+  hobby: 'pickin',
+  createdAt: '2013-10-18T01:23:56.000Z',
+  updatedAt: '2013-11-26T22:55:19.951Z'
 }
 ```
 
