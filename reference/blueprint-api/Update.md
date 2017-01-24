@@ -62,11 +62,11 @@ id: 47,
 verb: 'updated',
 changes: { hobby: 'kickin' },
 previous: {
-  'hobby': 'pickin',
-  'id': 47,
-  'name': 'AppleJack',
-  'createdAt': '2013-10-18T01:23:56.000Z',
-  'updatedAt': '2013-11-26T22:55:19.951Z'
+  hobby: 'pickin',
+  id: 47,
+  name: 'AppleJack',
+  createdAt: '2013-10-18T01:23:56.000Z',
+  updatedAt: '2013-11-26T22:55:19.951Z'
 }
 ```
 
