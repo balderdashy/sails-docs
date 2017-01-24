@@ -19,14 +19,15 @@ module.exports = function (sails) {
                this.numRequestsSeen++;
                return next();
             }
-        },
-        after: {
+         },
+         after: {
             'GET /*': function (req, res, next) {
                this.numUnhandledRequestsSeen++;
                return next();
             }
-        }
-    };
+         }
+      }
+   };
 };
 ```
 
