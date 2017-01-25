@@ -72,7 +72,7 @@ Pet.create({
 ```
 
 Now that the `Pet` is associated with the `User`, all the pets belonging to a specific user can
-be populated by using the `populate` method.
+be populated by using the [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
 
 ```javascript
 User.find()
@@ -95,10 +95,6 @@ User.find()
   // }]
 });
 ```
-
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
-
 
 
 <docmeta name="displayName" value="One-to-many">

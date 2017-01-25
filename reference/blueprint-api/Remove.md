@@ -45,11 +45,32 @@ DELETE /store/16/employeesOfTheMonth/7
 }
 ```
 
+### Resourceful PubSub (RPS)
+
+If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification about the removed child, where the notification event name is that of the parent model identity (e.g. `store`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+id: <the parent record primary key>,
+verb: 'removedFrom',
+attribute: <the parent record collection attribute name>,
+removedId: <the child record primary key>
+```
+
+For instance, continuing the example above, all clients subscribed to employee #16 (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
+
+```
+id: 16,
+verb: 'removedFrom',
+attribute: 'employeesOfTheMonth',
+removedId: 7
+```
+
+Similarly, if the relationship between the parent and child models is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to the child record will receive `removedFrom` notifications as well (with the `id` and `removedId` values reversed).  If the relationship is [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to the child will receive an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
 
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough for the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/Update.html) and set the model association to the id of the new foreign record (or `null` to clear the association).
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the model association to the id of the new foreign record (or `null` to clear the association). If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
 
 <docmeta name="displayName" value="remove from">
 <docmeta name="pageType" value="endpoint">

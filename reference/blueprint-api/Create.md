@@ -23,14 +23,15 @@ Parameters should be sent in the [request body](https://www.getpostman.com/docs/
 
 ### Example
 
-Create a new pony named "AppleJack" with a hobby of "pickin":
+Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends with ponies #13 and #25:
 
 `POST /pony`
 
 ```json
 {
   "name": "AppleJack",
-  "hobby": "pickin"
+  "hobby": "pickin",
+  "friends": [13,25]
 }
 ```
 
@@ -39,14 +40,54 @@ Create a new pony named "AppleJack" with a hobby of "pickin":
 ##### Example Response
 ```json
 {
+  "id": 47,
   "name": "AppleJack",
   "hobby": "pickin",
-  "id": 47,
+  "friends": [
+    {
+      "id": 13,
+      "name": "Sparkle",
+      "hobby": "hoppin",
+      "createdAt": "2012-06-12T03:01:45.000Z",
+      "updatedAt": "2013-09-25T21:23:08.000Z"
+    },
+    {
+      "id": 25,
+      "name": "Lollipop",
+      "hobby": "winkin",
+      "createdAt": "2011-01-03T22:54:53.000Z",
+      "updatedAt": "2012-04-13T08:08:12.000Z"
+    }
+  ],
   "createdAt": "2013-10-18T01:23:56.000Z",
   "updatedAt": "2013-11-26T22:55:19.951Z"
 }
 ```
 
+### Resourceful PubSub (RPS)
+
+If you have websockets enabled for your app, then every client subscribed to the model (due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+
+```
+verb: 'created',
+data: <a dictionary of the attribute values of the new record (without associations)>
+id: <the new record primary key>,
+```
+
+For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
+
+```
+id: 47,
+verb: 'created',
+data: {
+  name: 'AppleJack',
+  hobby: 'pickin',
+  createdAt: '2013-10-18T01:23:56.000Z',
+  updatedAt: '2013-11-26T22:55:19.951Z'
+}
+```
+
+Similarly, if the new record included values for attributes representing [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `addedTo` notifications would be sent to any clients subscribed to the records on the other side of the relationship.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">

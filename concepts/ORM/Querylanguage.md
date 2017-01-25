@@ -258,6 +258,8 @@ Limits the number of results returned from a query.
 Model.find({ where: { name: 'foo' }, limit: 20 })
 ```
 
+> Note: if you set `limit` to 0, the query will always return an empty array.  
+
 #### Skip
 
 Returns all the results excluding the number of items to skip.
