@@ -16,7 +16,7 @@ The following core adapters are maintained, tested, and used by the Sails.js cor
 |:------------------------|:---------------------------------------------------------------|:----------------------------------------------|:--------------------|
 |  MySQL                  | [require('sails-mysql')](http://npmjs.com/package/sails-mysql)            | `mysql://user:password@host:port/database`      | Yes
 |  PostgreSQL             | [require('sails-postgresql')](http://npmjs.com/package/sails-postgresql)  | `postgresql://user:password@host:port/database` | Yes
-|  MongoDB                | [require('sails-mongo')](http://npmjs.com/package/sails-mongo)            | `mongo://user:password@host:port/database`      | Yes
+|  MongoDB                | [require('sails-mongo')](http://npmjs.com/package/sails-mongo)            | `mongodb://user:password@host:port/database`      | Yes
 |  Local disk             | _(built-in, see [sails-disk](http://npmjs.com/package/sails-disk))_          | _n/a_                                         | **No!**
 |  Local memory           | [require('sails-memory')](http://npmjs.com/package/sails-memory)          | _n/a_                                         | **No!**
 

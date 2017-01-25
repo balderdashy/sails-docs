@@ -50,7 +50,7 @@ One major benefit to this style of configuration is that the format of a connect
 protocol://user:password@host:port/database
 ```
 
-The `protocol://` chunk of the URL is always based on the adapter you're using (`mysql://`, `mongo://`, etc.), and the rest of the URL is composed of the credentials and network information that your app needs to locate and connect to the database.  Here's a deconstructed version of the `url` from the MySQL example above that shows what each section is called:
+The `protocol://` chunk of the URL is always based on the adapter you're using (`mysql://`, `mongodb://`, etc.), and the rest of the URL is composed of the credentials and network information that your app needs to locate and connect to the database.  Here's a deconstructed version of the `url` from the MySQL example above that shows what each section is called:
 
 ```
 mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
@@ -116,7 +116,7 @@ module.exports.datastores = {
   },
   q3PromoDb: {
     adapter: require('sails-mongo'),
-    url: 'mongo://djbluegrass:0ldy3ll3r@seasonal-pet-sweaters-promo.example.com:27017/promotional',
+    url: 'mongodb://djbluegrass:0ldy3ll3r@seasonal-pet-sweaters-promo.example.com:27017/promotional',
   }
 };
 
