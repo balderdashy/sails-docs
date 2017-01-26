@@ -70,7 +70,7 @@ In production apps, you may often wish to turn action routes off completely for 
 
 ### Blueprints and resourceful pubsub
 
-The blueprint API (just like any of your custom actions and policies) is compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js)) for example usage.
+The blueprint API (just like any of your custom actions and policies) is compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/sails.io.js)) for example usage.
 
 ##### Blueprints and `.subscribe()`
 
