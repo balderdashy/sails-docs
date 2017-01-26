@@ -76,7 +76,7 @@ id: <the new record primary key>,
 
 For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
 
-```
+```js
 id: 47,
 verb: 'created',
 data: {
