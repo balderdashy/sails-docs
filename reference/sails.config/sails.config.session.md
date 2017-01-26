@@ -29,7 +29,7 @@ The most popular session store for production Sails applications is Redis.  It w
 The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
 
 ```javascript
-adapter: require('connect-redis'),
+adapter: 'connect-redis',
 ```
 
 Then install the [connect-redis](https://github.com/tj/connect-redis) session adapter as a dependency of your app:
@@ -69,7 +69,7 @@ npm install connect-mongo@1.1.0 --save --save-exact
 Then require it and pass it in as your `adapter` in `config/session.js`:
 
 ```javascript
-  adapter: require('connect-mongo'),
+  adapter: 'connect-mongo',
 ```
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
