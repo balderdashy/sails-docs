@@ -41,14 +41,14 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 ```json
 {
   "id": 7,
-  "createdAt": "2014-08-03T01:16:35.440Z",
   "name": "Dolly",
-  "updatedAt": "2014-08-03T01:51:41.567Z",
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873,
   "involvedInPurchases": [
     {
       "amount": 10000,
-      "createdAt": "2014-08-03T01:50:33.898Z",
-      "updatedAt": "2014-08-03T01:51:08.227Z",
+      "createdAt": 1485476060873,
+      "updatedAt": 1485476060873,
       "id": 47,
       "cashier": 7
     }
@@ -91,7 +91,7 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "PUT"
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification, where the notification event name is that of the parent model identity (e.g. `'employee'`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 id: <the parent record primary key>,
@@ -116,7 +116,7 @@ Similarly, if the relationship between the parent and child models is [many-to-m
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for adding a foreign record to a _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the model association to the id of the new foreign record (or `null` to clear the association).  If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
+> + This action is for adding a foreign record to a _plural_ ("collection") association.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the model association to the id of the new foreign record (or `null` to clear the association).  If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
 > + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell

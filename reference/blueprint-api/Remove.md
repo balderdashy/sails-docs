@@ -39,8 +39,8 @@ DELETE /store/16/employeesOfTheMonth/7
 {
   "id": 16,
   "name": "Parmer and N. Lamar",
-  "createdAt": "2014-08-03T01:16:35.440Z",
-  "updatedAt": "2014-08-03T01:51:41.567Z",
+  "createdAt": 1485552033435,
+  "updatedAt": 1485552048794,
   "employeesOfTheMonth": []
 }
 ```

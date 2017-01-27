@@ -36,8 +36,8 @@ GET /purchase/1
  {
    "amount": 49.99,
    "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-10-18T01:22:56.000Z"
+   "createdAt": 1485551132315,
+   "updatedAt": 1485551132315
  }
  ```
 

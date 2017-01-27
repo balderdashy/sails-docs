@@ -31,8 +31,8 @@ Populate the `cashier` who conducted purchase #47:
 {
   "name": "Dolly",
   "id": 7,
-  "createdAt": "2012-05-14T01:21:05.000Z",
-  "updatedAt": "2013-01-15T01:18:40.000Z"
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873,
 }
 ```
 

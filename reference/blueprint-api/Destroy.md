@@ -35,8 +35,8 @@ Delete Pinkie Pie:
   "name": "Pinkie Pie",
   "hobby": "kickin",
   "id": 4,
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
+  "createdAt": 1485550644076,
+  "updatedAt": 1485550644076
 }
 ```
 
@@ -53,22 +53,13 @@ previous: <a dictionary of the attribute values of the destroyed record (includi
 For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request, if the request was made via websocket) might receive the following message:
 
 ```
-id: 47,
+id: 4,
 verb: 'destroyed',
 data: {
-  name: 'AppleJack',
-  hobby: 'pickin',
-  friends: [
-    {
-      id: 13,
-      name: 'Sparkle',
-      hobby: 'hoppin',
-      createdAt: '2012-06-12T03:01:45.000Z',
-      updatedAt: '2013-09-25T21:23:08.000Z'
-    }
-  ]
-  createdAt: '2013-10-18T01:23:56.000Z',
-  updatedAt: '2013-11-26T22:55:19.951Z'
+  name: 'Pinkie Pie',
+  hobby: 'kickin',
+  createdAt: 1485550644076,
+  updatedAt: 1485550644076
 }
 ```
 

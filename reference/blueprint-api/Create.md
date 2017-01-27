@@ -48,19 +48,19 @@ Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends w
       "id": 13,
       "name": "Sparkle",
       "hobby": "hoppin",
-      "createdAt": "2012-06-12T03:01:45.000Z",
-      "updatedAt": "2013-09-25T21:23:08.000Z"
+      "createdAt": 1485550525451,
+      "updatedAt": 1485550544901
     },
     {
       "id": 25,
       "name": "Lollipop",
       "hobby": "winkin",
-      "createdAt": "2011-01-03T22:54:53.000Z",
-      "updatedAt": "2012-04-13T08:08:12.000Z"
+      "createdAt": 1485550561340,
+      "updatedAt": 1485550561340
     }
   ],
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
+  "createdAt": 1485550575626,
+  "updatedAt": 1485550603847
 }
 ```
 
@@ -82,8 +82,8 @@ verb: 'created',
 data: {
   name: 'AppleJack',
   hobby: 'pickin',
-  createdAt: '2013-10-18T01:23:56.000Z',
-  updatedAt: '2013-11-26T22:55:19.951Z'
+  createdAt: 1485550575626,
+  updatedAt: 1485550603847
 }
 ```
 

@@ -39,8 +39,8 @@ Change Applejack's hobby to "kickin":
   "hobby": "kickin",
   "id": 47,
   "name": "AppleJack",
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873
 }
 ```
 

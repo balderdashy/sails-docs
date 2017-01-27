@@ -41,21 +41,21 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 ```json
 {
   "id": 7,
-  "createdAt": "2014-08-03T01:16:35.440Z",
   "name": "Dolly",
-  "updatedAt": "2014-08-03T01:51:41.567Z",
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873,
   "involvedInPurchases": [
     {
       "amount": 10000,
-      "createdAt": "2014-08-03T01:50:33.898Z",
-      "updatedAt": "2014-08-03T01:51:08.227Z",
+      "createdAt": 1485551132315,
+      "updatedAt": 1485551132315
       "id": 47,
       "cashier": 7
     },
     {
       "amount": 5667,
-      "createdAt": "2014-08-03T01:50:33.898Z",
-      "updatedAt": "2014-08-03T01:51:08.227Z",
+      "createdAt": 1485551158349,
+      "updatedAt": 1485551158349
       "id": 65,
       "cashier": 7
     }
