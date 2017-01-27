@@ -66,7 +66,7 @@ Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends w
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the model will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the model will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 verb: 'created',
@@ -74,7 +74,7 @@ data: <a dictionary of the attribute values of the new record (without associati
 id: <the new record primary key>,
 ```
 
-For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request, if the request was made via websocket) would receive the following message:
+For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request) would receive the following message:
 
 ```js
 id: 47,

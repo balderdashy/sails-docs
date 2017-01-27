@@ -47,7 +47,7 @@ DELETE /store/16/employeesOfTheMonth/7
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification about the removed child, where the notification event name is that of the parent model identity (e.g. `store`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification about the removed child, where the notification event name is that of the parent model identity (e.g. `store`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 id: <the parent record primary key>,

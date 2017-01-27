@@ -69,7 +69,7 @@ $.get('/purchase?sort=createdAt DESC', function (purchases) {
 
 ##### Using sails.io.js
 
-> See [sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js) for more documentation.
+> See [sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/socket-client) for more documentation.
 
 ```javascript
 io.socket.get('/purchase?sort=createdAt DESC', function (purchases) {

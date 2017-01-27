@@ -53,7 +53,7 @@ $http.get('/purchase/47/cashier')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js):**
+**Using [sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/socket-client):**
 
 ```javascript
 io.socket.get('/purchase/47/cashier', function (cashier) {

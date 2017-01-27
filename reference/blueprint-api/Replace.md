@@ -65,7 +65,7 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 id: <the parent record primary key>,
@@ -74,7 +74,7 @@ attribute: <the parent record collection attribute name>,
 addedId: <the child record primary key>
 ```
 
-For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two messages:
+For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following two messages:
 
 ```
 id: 7,

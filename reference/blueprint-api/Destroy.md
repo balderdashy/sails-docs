@@ -42,7 +42,7 @@ Delete Pinkie Pie:
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 verb: 'destroyed',
@@ -50,7 +50,7 @@ id: <the record primary key>,
 previous: <a dictionary of the attribute values of the destroyed record (including associations)>
 ```
 
-For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request, if the request was made via websocket) might receive the following message:
+For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request) might receive the following message:
 
 ```
 id: 4,
