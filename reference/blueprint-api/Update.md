@@ -49,24 +49,30 @@ Change Applejack's hobby to "kickin":
 If you have websockets enabled for your app, then every client subscribed to the updated record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
 
 ```
-id: <the record primary key>,
 verb: 'updated',
+id: <the record primary key>,
 data: <a dictionary of changes made to the record>,
-previous: <a dictionary of the record attribute values prior to the update>
+previous: <the record prior to the update>
 ```
 
 For instance, continuing the example above, all clients subscribed to `Pony` #47 (_except_ for the client making the request, if the request was made via websocket) would receive the following notification:
 
-```
-id: 47,
-verb: 'updated',
-changes: { hobby: 'kickin' },
-previous: {
-  hobby: 'pickin',
+```js
+{
   id: 47,
-  name: 'AppleJack',
-  createdAt: '2013-10-18T01:23:56.000Z',
-  updatedAt: '2013-11-26T22:55:19.951Z'
+  verb: 'updated',
+  data: { 
+    id: 47,
+    hobby: 'kickin'
+    updatedAt: 1485476060873
+  },
+  previous: {
+    hobby: 'pickin',
+    id: 47,
+    name: 'AppleJack',
+    createdAt: 1485462079725,
+    updatedAt: 1485462079725
+  }
 }
 ```
 
