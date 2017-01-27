@@ -44,9 +44,9 @@ Change Applejack's hobby to "kickin":
 }
 ```
 
-### Resourceful PubSub (RPS)
+### Socket notifications
 
-If you have websockets enabled for your app, then every client subscribed to the updated record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
 
 ```
 verb: 'updated',
@@ -61,7 +61,7 @@ For instance, continuing the example above, all clients subscribed to `Pony` #47
 {
   id: 47,
   verb: 'updated',
-  data: { 
+  data: {
     id: 47,
     hobby: 'kickin'
     updatedAt: 1485476060873

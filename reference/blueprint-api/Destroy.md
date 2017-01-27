@@ -40,9 +40,9 @@ Delete Pinkie Pie:
 }
 ```
 
-### Resourceful PubSub (RPS)
+### Socket notifications
 
-If you have websockets enabled for your app, then every client subscribed to the destroyed record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 verb: 'destroyed',
@@ -50,7 +50,7 @@ id: <the record primary key>,
 previous: <a dictionary of the attribute values of the destroyed record (including associations)>
 ```
 
-For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request, if the request was made via websocket) might receive the following notification:
+For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request, if the request was made via websocket) might receive the following message:
 
 ```
 id: 47,

@@ -63,9 +63,9 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 }
 ```
 
-### Resourceful PubSub (RPS)
+### Socket notifications
 
-If you have websockets enabled for your app, then every client subscribed to the parent record (either via a call to [`.subscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) or due to a previous socket request to the [`find`](http://sailsjs.com/documentation/reference/blueprint-api/find) or [`findOne`](http://sailsjs.com/documentation/reference/blueprint-api/find-one) blueprints) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the data &ldquo;payload&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](/documentation/reference/web-sockets/resourceful-pub-sub) will receive one notification for each new child, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 id: <the parent record primary key>,
@@ -74,7 +74,7 @@ attribute: <the parent record collection attribute name>,
 addedId: <the child record primary key>
 ```
 
-For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two notifications:
+For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following two messages:
 
 ```
 id: 7,
