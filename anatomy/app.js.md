@@ -1,14 +1,13 @@
 # app.js
 
-### Purpose
+### Objectif
 
-This file is the conventional entry point for a _production_ Sails/Node.js app.
+Ce fichier est le point d'entrée classique pour une application _production_ Sails/Node.js.
 
-When developing on your local computer, and you run `sails lift`, the code in `app.js` is not executed.  Instead, this file exists to provide an easy, out-of-the-box way to run your app _without_ typing `sails lift`.  This is most likely how you'll start your app in production (i.e. `node app`, or `npm start`).
+Lors du développement sur votre machine local, et que vous exécutez `sails lift`, le code de` app.js` n'est pas exécuté. Au lieu de cela, ce fichier existe pour fournir un moyen simple et rapide de lancer votre application _sans_ taper `sails lift`. C'est très probablement la façon dont vous démarrez votre application en production (c'est-à-dire `node app` ou` npm start`).
 
-For example, when you deploy to most PaaS vendors like [Heroku](http://heroku.com), they will automatically detect that you're running a Sails/Node.js app and execute this file with the `NODE_ENV` environment variable set to production.
+Par exemple, lorsque vous déployez chez la plupart des fournisseurs PaaS comme [Heroku] (http://heroku.com), ils détecteront automatiquement que vous exécutez une application Sails/Node.js avec la variable d'environnement `NODE_ENV` mis à `production`.
 
-> Whatever stage of the development lifecycle you're at, you can safely ignore `app.js`.  It's good to go out of the box for most apps.  But the code in `app.js` also serves as an easy-to-reference example of how to use Sails programmatically.  So you might want to take a look at it if you plan on writing automated tests, scheduled jobs, manual database migrations, or administration scripts.
-
+> Peu importe le stade du cycle de développement dans lequel vous êtes, vous pouvez ignorer le fichier `app.js`. Il est bon de sortir de l'ordinaire pour la plupart des applications. Mais le code de `app.js` sert également d'exemple facile sur la façon d'utiliser Sails. Ainsi, vous pouvez jeter un coup d'oeil sur ce fichier si vous prévoyez d'écrire des tests automatisés, des tâches planifiés, des migrations manuelles de base de données ou des scripts d'administration.
 
 <docmeta name="displayName" value="app.js">
