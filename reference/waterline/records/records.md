@@ -8,7 +8,7 @@ Order.findOne().exec(function (err, order){
 });
 ```
 
-For the most part, records are just plain old JavaScript objects (aka POJOs).  However they do have a few protected (non-enumerable) methods for formatting their wrapped data, as well as a special method ([`.save()`](http://sailsjs.com/documentation/reference/waterline/records/save.html)) for persisting [programmatic changes](http://en.wikipedia.org/wiki/Active_record_pattern) to the database.
+For the most part, records are just plain old JavaScript objects (aka POJOs) and should be treated that way.  You may customize the way that a record is _stringified_ by adding a [`customToJSON` method](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) to the settings for the record&rsquo;s model (for example, to have it always omit the `password` attribute when sending a record via [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json).
 
 
 
