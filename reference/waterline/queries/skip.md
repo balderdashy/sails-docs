@@ -1,5 +1,7 @@
 # .skip(`integer`)
-### Purpose
+
+Indicate a number of records to skip before returning the results from executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+
 
 ### Parameters
 |   |     Description     | Accepted Data Types | Required ? |
@@ -18,6 +20,7 @@ myQuery.exec(function callBack(err,results){
 
 ```
 ### Notes
+> If the &ldquo;skip&rdquo; value is greater than the number of records matching the query criteria, the query will return an empty array.
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
 
