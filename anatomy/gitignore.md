@@ -1,17 +1,16 @@
 # .gitignore
 
-### Purpose
+### Objectif
 
-This file is only relevant if you are using git.
+Ce fichier n'est pertinent que si vous utilisez git.
 
-It informs `git` of any files that you don't want `pushed` to the remote server.
+Il informe `git` de tous les fichiers que vous ne voulez pas pousser vers le serveur distant.
 
-Files which match the splat patterns seen in the code below will be ignored by git.  This keeps random crap and and sensitive credentials from being uploaded to  your repository.  It allows you to configure your app for your machine without accidentally committing settings which will smash the local settings of other developers on your team.
+Les fichiers qui correspondent aux motifs splat affichés dans le code ci-dessous seront ignorés par git. Cela permet d'éviter que les données aléatoires et les informations sensibles d'être poussées vers votre dépôt. Il vous permet de configurer votre application pour votre machine sans engager de paramètres accidentels qui vont briser les paramètres locaux des autres développeurs de votre équipe.
 
-Some reasonable defaults are included, but, of course, you should modify/extend/prune to fit your needs!
+Certains défauts raisonnables sont inclus, mais, bien sûr, vous devez modifier/ajuster pour répondre à vos besoins!
 
-[Read more about .gitignore](https://help.github.com/articles/ignoring-files)
-
+[Voir plus sur .gitignore](https://help.github.com/articles/ignoring-files)
 
 
 <docmeta name="displayName" value=".gitignore">
