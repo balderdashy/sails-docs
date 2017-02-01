@@ -1,0 +1,11 @@
+# .toJSON()
+
+### Purpose
+Whenever Waterline retrieves a record, it checks whether or not the record&rsquo;s model has a [`customToJSON`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) method defined, and if so, adds it to the record as its `toJSON` property.  It is _**not intended to be called directly in your code**_, but instead is used automatically when a record is serialized via a call to `JSON.stringify()`.  The [`res.json()` method](http://sailsjs.com/documentation/reference/response-res/res-json) in particular stringifies objects in this way.
+
+When a `customToJSON` is defined for a model, the `.toJSON()` method will be added to records retrieved via [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), [`.findOne()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find-one), [`.findOrCreate()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find-or-create) and [`.stream()`](http://sailsjs.com/documentation/reference/waterline-orm/models/stream), as well as those retrieved by setting the [`fetch` meta key](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta) to `true` in calls to [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.createEach()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each), [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.destroy()`](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy).
+
+See the [customToJSON documentation](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) for more info on how to customize the way your records are presented.
+
+<docmeta name="displayName" value=".toJSON()">
+<docmeta name="pageType" value="method">
