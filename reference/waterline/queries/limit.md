@@ -1,11 +1,11 @@
-# .limit(`integer`)
+# .limit()
 
 Set the maximum number of records to retrieve when executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ### Parameters
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Number to Return   |      `int`         | Yes         |
+| 1 |  Number to Return   |      ((number))         | Yes         |
 
 ### Example Usage
 

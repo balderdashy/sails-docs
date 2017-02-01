@@ -1,4 +1,4 @@
-# .skip(`integer`)
+# .skip()
 
 Indicate a number of records to skip before returning the results from executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
@@ -6,7 +6,7 @@ Indicate a number of records to skip before returning the results from executing
 ### Parameters
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |  Number to Skip     |      `int`          | Yes        |
+| 1 |  Number to Skip     |      ((number))          | Yes        |
 
 ### Example Usage
 
