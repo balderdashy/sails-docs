@@ -58,15 +58,43 @@ User.create({name:'Finn'})
 ```
 
 
+### Negotiating errors
 
-##### Negotiating errors
+It's important to always handle errors from model methods.  But sometimes, you need to look at errors in a more granular way.
+
+> The exact strategy you use to do this in your Sails app depends on whether you're using [callbacks or promises](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  Remember: use whatever you're most comfortable with.  If you aren't sure, start with callbacks.
+
+##### Negotiating errors with callbacks
 
 ```javascript
 User.create({
   email: req.param('email')
 })
-.then(function(){
+.exec(function(err){
+  if (err){
+    // Uniqueness constraint violation
+    if (err.code === 'E_UNIQUE') {
+      return res.status(401).json(err);
+    }
+    // Some other kind of usage / validation error
+    else if (err.name === 'UsageError') {
+      return res.badRequest(err);
+    }
+    // If something completely unexpected happened.
+    else {
+      return res.serverError(err);
+    }
+  }
+  
   return res.ok();
+})
+```
+
+##### Negotiating errors with promises
+
+```javascript
+User.create({
+  email: req.param('email')
 })
 // Uniqueness constraint violation
 .catch({ code: 'E_UNIQUE' }, function (err) {
@@ -81,6 +109,7 @@ User.create({
   return res.serverError(err);
 });
 ```
+
 
 > For a more complex example, see https://gist.github.com/mikermcneil/801e827948d5de7e26b2420ff39d3c68.
 
