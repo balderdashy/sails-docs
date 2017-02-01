@@ -55,7 +55,7 @@ data: <a dictionary of changes made to the record>,
 previous: <the record prior to the update>
 ```
 
-For instance, continuing the example above, all clients subscribed to `Pony` #47 (_except_ for the client making the request) would receive the following notification:
+For instance, continuing the example above, all clients subscribed to `Pony` #47 (_except_ for the client making the request) would receive the following message:
 
 ```js
 {
