@@ -1,9 +1,9 @@
 # sails-docs/anatomy
 
-This section contains the "Anatomy" documentation which is eventually available at http://sailsjs.com/documentation/anatomy.
+Cette section contient la documentation «Anatomie» qui est éventuellement disponible au http://sailsjs.com/documentation/anatomy.
 
 ### Notes
-> - This README file **is not compiled to HTML** for the website.  It is just here to explain what you're looking at.
-> - Depending on what branch of `sails-docs` you are currently viewing, the domain may vary.  Documentation pages in this section may actually be for a past version of Sails (e.g. the `0.11` branch compiles to http://0.11.sailsjs.com) or for an upcoming release (e.g. the branch for the upcoming release of Sails compiles to http://next.sailsjs.com).  See the top-level README file in the `sails-docs` repo for information about working with the markdown files in this repo, and to understand the branching/versioning strategy.
+> - Ce fichier README **n'est pas compilé en HTML** pour le site Web. C'est juste ici pour expliquer ce que vous regardez.
+> - Selon la branche de `sails-docs` que vous visualisez actuellement, le domaine peut varier. Les pages de documentation de cette section peuvent être pour une version antérieure de Sails (par exemple, la branche `0.11` compile à http://0.11.sailsjs.com) ou pour une version à venir (par exemple, la branche pour la prochaine version de Sails compile Http://next.sailsjs.com). Reportez-vous au fichier README de niveau supérieur dans le repo `sails-docs` pour obtenir des informations sur le travail avec les fichiers markdown dans ce dépôt et pour comprendre la stratégie de braching / versioning.
 
 <docmeta name="notShownOnWebsite" value="true">
