@@ -59,6 +59,7 @@ customToJSON: function() {
   // Return a copy of this record with the password and ssn removed.
   return _.omit(this, ['password', 'ssn'])
 }
+```
 
 Adding a `customToJSON` method to a model changes the way that the model&rsquo;s records are _stringified_.  This is particularly relevant when using [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json), which stringifies data before sending it in a response.  The typical use case (shown above) is to omit sensitive properties like `password` from a record before sending it in a response.  The method takes no arguments, but provides the record object as the `this` variable.  The value returned from the method is what will be used in calls to `JSON.stringify()`.
 
