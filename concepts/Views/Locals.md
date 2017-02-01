@@ -85,7 +85,7 @@ To use `exposeLocalsToBrowser`, simply call it from within your view using the _
 <%- exposeLocalsToBrowser() %>
 ```
 
-By default, the exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
+By default, this exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
 
 ```javascript
 res.view('myView', {
