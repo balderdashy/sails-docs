@@ -1,15 +1,14 @@
 # Records
 
-A record is a uniquely identifiable object that corresponds 1-to-1 with a database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
+In Sails, [records](http://sailsjs.com/documentation/concepts/models-and-orm/records) come from model methods like `.find()`, and represent data from your database. You can work with records just like you would any other data.
 
 ```js
-Order.findOne().exec(function (err, order){
-  var record = order;
+Order.find().exec(function (err, orders){
+  // `orders` is an array of records
 });
 ```
 
-For the most part, records are just plain old JavaScript objects (aka POJOs) and should be treated that way.  You may customize the way that a record is _stringified_ by adding a [`customToJSON` method](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) to the settings for the record&rsquo;s model (for example, to have it always omit the `password` attribute when sending a record via [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json).
-
+> If a record came from a query that used `.populate()`, it may contain populated values (or "child records") which represent the associated data. To add, remove, or replace these child records, use [model methods](http://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
 <docmeta name="displayName" value="Records">
