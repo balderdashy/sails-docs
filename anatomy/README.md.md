@@ -1,14 +1,13 @@
 # README
-### Purpose
+### Objectif
 
-This is a generic README that you can edit to describe your app.
-
+Il s'agit d'un README générique que vous pouvez modifier pour décrire votre application.
 
 <docmeta name="displayName" value="README.md">
 
 ```
 # myApp
 
-a [Sails](http://sailsjs.com) application
+Une application [Sails](http://sailsjs.com)
 
 ```
