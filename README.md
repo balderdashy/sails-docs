@@ -31,7 +31,7 @@ Deuxièmement, nous sommes ouverts aux suggestions sur le processus que nous uti
 
 #### Quelle branche dois-je modifier?
 
-Cela dépend du genre d'édition que vous voulez faire.  Le plus souvent, vous allez faire une modification pertinente pour la dernière version stable de Sails (exp. la version sur [NPM](npmjs.org/package/sails)) et donc vous allez éditer la branche `master` de _this_ dépôt (Ce que vous voyez dans le repo sails-docs par défaut).  L'équipe de documentation fusionne la branche master dans la branche appropriée pour la dernière version stable de Sails, puis déploie cela à sailsjs.com une fois par semaine environ.
+Cela dépend du genre d'édition que vous voulez faire. Le plus souvent, vous allez faire une modification pertinente pour la dernière version stable de Sails (exp. la version sur [NPM](npmjs.org/package/sails)) et donc vous allez éditer la branche `master` de _this_ dépôt (Ce que vous voyez dans le repo sails-docs par défaut).  L'équipe de documentation fusionne la branche master dans la branche appropriée pour la dernière version stable de Sails, puis déploie cela à sailsjs.com une fois par semaine environ.
 
 D'autre part, si vous faites une modification liée à une fonctionnalité inédite dans une prochaine version; Le plus souvent en tant qu'accompagnement d'une proposition de fonctionnalité ou d'une pull request à Sails ou à un autre projet associé, vous allez alors modifier la branche pour la prochaine version non publiée de Sails (parfois appelée «edge»).
 
@@ -45,7 +45,7 @@ D'autre part, si vous faites une modification liée à une fonctionnalité inéd
 
 #### Comment ces documents sont-ils compilés et envoyés sur le site Web?
 
-Nous utilisons un module appelé `doc-templater` Pour convertir les fichiers .md en html pour le site Web. Vous pouvez en apprendre davantage sur la façon dont ça fonctionne sur [le dépôt doc-templater](https://github.com/uncletammy/doc-templater).
+Nous utilisons un module appelé `doc-templater` pour convertir les fichiers .md en html pour le site Web. Vous pouvez en apprendre davantage sur la façon dont ça fonctionne sur [le dépôt doc-templater](https://github.com/uncletammy/doc-templater).
 
 Chaque fichier .md possède sa propre page sur le site (c-à-d. Tous les fichiers de référence, de concepts et d'anatomie) et doit inclure une balise spéciale `<docmeta name="displayName">` avec une propriété `value` spécifiant le titre de la page. Cela aura un impact sur la façon dont la page doc apparaîtra dans les résultats des moteurs de recherche, et il sera également utilisé dans le menu de navigation sur sailsjs.com. Par exemple:
 
