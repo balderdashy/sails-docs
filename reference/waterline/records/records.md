@@ -8,7 +8,8 @@ Order.find().exec(function (err, orders){
 });
 ```
 
-> If a record came from a query that used `.populate()`, it may contain populated values (or "child records") which represent the associated data. To add, remove, or replace these child records, use [model methods](http://sailsjs.com/documentation/reference/waterline-orm/models).
+### Working with populated records
+If a record came from a query that used `.populate()`, it may contain populated values (or "child records") which represent the associated data. To add, remove, or replace these child records, use [model methods](http://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
 <docmeta name="displayName" value="Records">
