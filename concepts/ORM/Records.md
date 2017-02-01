@@ -70,7 +70,7 @@ The table below shows what values you can expect in records returned from a `.fi
 
 ### Modifying populated values
 
-Changes to populated values are persisted (i.e. saved to the database) by calling [.addToCollection](http://sailsjs.com/documentation/reference/waterline/models/add-to-collection), [.removeFromCollection](http://sailsjs.com/documentation/reference/waterline/models/remove-from-collection), and [.replaceCollection](http://sailsjs.com/documentation/reference/waterline/models/replace-collection) on a Model.
+Changes to populated values are persisted (i.e. saved to the database) by calling [.addToCollection](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection), [.removeFromCollection](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection), and [.replaceCollection](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) on a Model.
 
 
 <docmeta name="displayName" value="Records">
