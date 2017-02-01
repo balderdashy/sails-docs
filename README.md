@@ -47,7 +47,6 @@ D'autre part, si vous faites une modification liée à une fonctionnalité inéd
 
 Nous utilisons un module appelé `doc-templater` Pour convertir les fichiers .md en html pour le site Web. Vous pouvez en apprendre davantage sur la façon dont ça fonctionne sur [le dépôt doc-templater](https://github.com/uncletammy/doc-templater).
 
-Each .md file has its own page on the website (i.e. all reference, concepts, and anatomy files), and should include a special `<docmeta name="displayName">` tag with a `value` property specifying the title for the page.  This will impact how the doc page appears in search engine results, and it will also be used as its display name in the navigation menu on sailsjs.com.  For example:
 Chaque fichier .md possède sa propre page sur le site (c-à-d. Tous les fichiers de référence, de concepts et d'anatomie) et doit inclure une balise spéciale `<docmeta name="displayName">` avec une propriété `value` spécifiant le titre de la page. Cela aura un impact sur la façon dont la page doc apparaîtra dans les résultats des moteurs de recherche, et il sera également utilisé dans le menu de navigation sur sailsjs.com. Par exemple:
 
 ```markdown
