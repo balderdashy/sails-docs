@@ -53,7 +53,16 @@ Most of the time, you'll define attributes in your individual model definitions 
 
 For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
 
+### customToJSON
+```js
+customToJSON: function() {
+  // Return a copy of this record with the password and ssn removed.
+  return _.omit(this, ['password', 'ssn'])
+}
 
+Adding a `customToJSON` method to a model changes the way that the model&rsquo;s records are _stringified_.  This is particularly relevant when using [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json), which stringifies data before sending it in a response.  The typical use case (shown above) is to omit sensitive properties like `password` from a record before sending it in a response.  The method takes no arguments, but provides the record object as the `this` variable.  The value returned from the method is what will be used in calls to `JSON.stringify()`.
+
+> Note that the `this` variable available in `customToJSON` method represents the _actual record object_, so be careful not to actually modify it using (for example) `delete this.password`.  Instead, use methods like `_.omit()`, `_.pick()` or `_.clone()` to get a _copy_ of the record, or construct a new dictionary (e.g. `return { foo: this.foo }`).
 
 ### tableName
 
