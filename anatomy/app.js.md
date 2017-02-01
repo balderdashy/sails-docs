@@ -2,7 +2,7 @@
 
 ### Objectif
 
-Ce fichier est le point d'entrée classique pour une application _production_ Sails/Node.js.
+Ce fichier est le point d'entrée classique pour une application Sails/Node.js.
 
 Lors du développement sur votre machine local, et que vous exécutez `sails lift`, le code de` app.js` n'est pas exécuté. Au lieu de cela, ce fichier existe pour fournir un moyen simple et rapide de lancer votre application _sans_ taper `sails lift`. C'est très probablement la façon dont vous démarrez votre application en production (c'est-à-dire `node app` ou` npm start`).
 
