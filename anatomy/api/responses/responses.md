@@ -1,11 +1,11 @@
 # api/responses
-### Purpose
+### Objectif
 
-This folder holds the logic for issuing server responses to your clients.
+Ce dossier contient la logique pour l'émission de réponses serveur à vos clients.
 
-When you generate a new Sails project, we include some of the more common ones for you. Feel free to edit them to suit your needs.  You can also create a custom response using our `sails-generate-custom-response` generator.
+N'hésitez pas à modifier ce fichier en fonction de vos besoins. Vous pouvez également créer une réponse personnalisée en utilisant notre générateur `sails-generate-custom-response`.
 
-See the Response section of Reference Documentation for more info.
+Pour plus d'informations, reportez-vous à la section Réponse de la documentation de référence.
 
 
 <docmeta name="displayName" value="responses">
