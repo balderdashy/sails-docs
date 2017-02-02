@@ -1,5 +1,8 @@
 # sails.request()
 
+> ##### _**This feature is still experimental.**_
+> This method is still under active development, and its interface could change at any time.
+
 Make a virtual request to a running Sails instance.
 
 ```javascript
@@ -51,4 +54,4 @@ The full virtual request stream object.  This is a readable stream.
 
 <docmeta name="displayName" value="sails.request()">
 <docmeta name="pageType" value="method">
-
+<docmeta name="isExperimental" value="true">

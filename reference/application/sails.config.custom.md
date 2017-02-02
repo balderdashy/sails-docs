@@ -1,8 +1,26 @@
 # sails.config.custom
 
-A dictionary of custom configuration settings for a Sails app. These are typically one-off settings specific to the application, and are usually defined in the [`config/custom.js`](http://sailsjs.com/documentation/reference/configuration/sails-config-custom) file.
+The runtime values of your app's [custom configuration settings](http://sailsjs.com/documentation/reference/configuration/sails-config-custom).
+
+### Usage
+
+```js
+sails.config.custom;
+```
+
+### Example
+
+In an action or helper:
+
+```javascript
+sails.config.custom.mailgunApiKey;
+// -> "key-testkeyb183848139913858e8abd9a3"
+```
+
+### Notes
+
+> + For information on how to set custom configuration in the first place, see [Reference > Config > sails.config.custom](http://sailsjs.com/documentation/reference/configuration/sails-config-custom).
 
 
 <docmeta name="displayName" value="sails.config.custom">
 <docmeta name="pageType" value="property">
-

@@ -88,13 +88,13 @@ This value will be in effect _only_ for the lifetime of this particular Sails in
 > ```
 
 
-### Custom Configuration
+### Custom configuration
 
 You can also leverage Sails's configuration loader to manage your own custom settings.  See [sails.config.custom](http://sailsjs.com/config/sails-config-custom) for more information.
 
 
 
-### Configuring the `sails` Command-Line Interface
+### Configuring the command-line interface
 
 When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetitive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.
 
