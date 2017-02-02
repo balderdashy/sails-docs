@@ -72,7 +72,7 @@ Different CSP response headers are supported by different browsers.  For example
 
 ### Additional Resources
 + [Content Security Policy (OWasp)](https://www.owasp.org/index.php/Content_Security_Policy)
-+ Learn more about installing HTTP middleware in [Concepts > Middleware](http://sailsjs.com/docs/concepts/middleware).
++ Learn more about installing HTTP middleware in [Concepts > Middleware](http://sailsjs.com/documentation/concepts/middleware).
 
 <docmeta name="displayName" value="Content security policy">
 <docmeta name="tags" value="csp,content security policy">

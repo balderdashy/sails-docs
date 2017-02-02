@@ -34,7 +34,7 @@ User.findOne({
 
 ### More about policies
 
-For more information about policies and how to use them in your app, see [Concepts > Policies](http://sailsjs.com/docs/concepts/policies).
+For more information about policies and how to use them in your app, see [Concepts > Policies](http://sailsjs.com/documentation/concepts/policies).
 
 > It's best to avoid implementing numerous or complex policies in your app.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](http://sailsjs.com/docs/concepts/controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
 >

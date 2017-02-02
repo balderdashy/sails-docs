@@ -18,7 +18,7 @@ Sails will generate `api/controllers/UserController.js`:
  * UserController.js
  *
  * @description :: Server-side controller action for manging users.
- * @help        :: See http://sailsjs.com/docs/concepts/controllers
+ * @help        :: See http://sailsjs.com/documentation/concepts/controllers
  */
 module.exports = {
 
@@ -41,7 +41,7 @@ Sails will create `api/controllers/user/sign-up.js`:
  * user/sign-up.js
  *
  * @description :: Server-side controller action for handling incoming requests.
- * @help        :: See http://sailsjs.com/docs/concepts/controllers
+ * @help        :: See http://sailsjs.com/documentation/concepts/controllers
  */
 module.exports = {
 

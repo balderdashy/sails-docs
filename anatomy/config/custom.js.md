@@ -4,7 +4,7 @@ This is your custom configuration file. It is useful for one-off settings specif
 
 > Use `sails.config.custom` to access these values from your actions and helpers.
 
-You can learn more about custom configuration [here](http://sailsjs.com/docs/concepts/configuration#?custom-configuration).
+You can learn more about custom configuration [here](http://sailsjs.com/documentation/concepts/configuration#?custom-configuration).
 
 
 <docmeta name="displayName" value="custom.js">

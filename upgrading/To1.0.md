@@ -252,7 +252,7 @@ While it is no longer possible to add a file to `api/blueprints` that will autom
 
 One way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
 
-Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see [Concepts > Helpers](http://sailsjs.com/docs/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
+Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see [Concepts > Helpers](http://sailsjs.com/documentation/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
 
 
 ### Express 4

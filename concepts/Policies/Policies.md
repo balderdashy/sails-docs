@@ -3,7 +3,7 @@
 
 Policies in Sails are versatile tools for authorization and access control-- they let you execute some logic _before_ an action is run, to determine whether or not to continue processing the request.  The most common use-case for policies is to restrict certain actions to _logged-in users only_.
 
-> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
+> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/documentation/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
 
 ### Protecting Actions and Controllers with Policies
 
