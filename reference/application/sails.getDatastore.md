@@ -1,8 +1,8 @@
 # sails.getDatastore()
-Access the datastore instance.
+Access a particular [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#?datastores), or the default datastore.
 
 ```javascript
-sails.getDatastore(dataStoreName);
+sails.getDatastore(datastoreName);
 ```
 
 ### Usage
@@ -10,16 +10,13 @@ sails.getDatastore(dataStoreName);
 
 |   |          Argument           | Type                | Details
 |---|---------------------------- | ------------------- |:-----------
-| 1 |        dataStoreName        | ((string?))         | Defaults to `'default'`.
+| 1 |        datastoreName        | ((string?))         |  If specified, this is the name of the datastore to look up. Otherwise, if you leave this blank, this `getDatastore()` will return the default datastore for your app.
 
 #### Returns
 
 **Type:** ((Dictionary))
 
-The registered datastore instance (RDI)
-
-### Notes
-> This can be used as an easy alias for when you don't know the name of the datastore and thus cannot simply do `sails.datastore('foo')`
+A [datastore instance](http://sailsjs.com/documentation/reference/waterline-orm).
 
 <docmeta name="displayName" value="sails.getDatastore()">
 <docmeta name="pageType" value="method">
