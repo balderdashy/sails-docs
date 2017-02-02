@@ -1,6 +1,6 @@
 # api/hooks/
-### Purpose
+### Objectif
 
-This is the folder where your project's hooks live. Hooks are Node modules that add functionality to the Sails core. For more information, see [Concepts > Extending Sails > Hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks).
+C'est le dossier où vivent les hooks (greffon) de votre projet. Les hooks sont des modules node qui ajoutent des fonctionnalités au coeur de Sails. Pour plus d'informations, voir [Concepts > Étendre Sails > Hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks).
 
 <docmeta name="displayName" value="hooks">
