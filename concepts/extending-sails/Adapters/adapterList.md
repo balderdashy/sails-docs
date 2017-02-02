@@ -17,8 +17,7 @@ The following core adapters are maintained, tested, and used by the Sails.js cor
 |  MySQL                  | [require('sails-mysql')](http://npmjs.com/package/sails-mysql)            | `mysql://user:password@host:port/database`      | Yes
 |  PostgreSQL             | [require('sails-postgresql')](http://npmjs.com/package/sails-postgresql)  | `postgresql://user:password@host:port/database` | Yes
 |  MongoDB                | [require('sails-mongo')](http://npmjs.com/package/sails-mongo)            | `mongodb://user:password@host:port/database`      | Yes
-|  Local disk             | _(built-in, see [sails-disk](http://npmjs.com/package/sails-disk))_          | _n/a_                                         | **No!**
-|  Local memory           | [require('sails-memory')](http://npmjs.com/package/sails-memory)          | _n/a_                                         | **No!**
+|  Local disk / memory           | _(built-in, see [sails-disk](http://npmjs.com/package/sails-disk))_          | _n/a_                                         | **No!**
 
 
 
@@ -81,28 +80,22 @@ url: 'mongodb://user:password@host:port/database',
 
 Write to your computer's hard disk, or a mounted network drive.  Not suitable for at-scale production deployments, but great for a small project, and essential for developing in environments where you may not always have a database set up.  This adapter is bundled with Sails and works out of the box with zero configuration.
 
+You can also operate `sails-disk` in _memory-only mode_.  See the settings table below for details.
+
 [![NPM package info for sails-disk](https://img.shields.io/npm/dm/sails-disk.svg?style=plastic)](http://npmjs.com/package/sails-disk) &nbsp; [![License info](https://img.shields.io/npm/l/sails-disk.svg?style=plastic)](http://npmjs.com/package/sails-disk)
 
 _Available out of the box in every Sails app._
 
 _Configured as the default database, by default._
 
+##### Optional datastore settings for `sails-disk`
 
-### sails-memory
+| Setting | Description | Type  | Default |
+|:--------|:------------|:------|:--------|
+| `dir`   | The directory to place database files in.  The adapter creates one file per model. | ((string)) | `.tmp/localDiskDb` |
+| `inMemoryOnly` | If `true`, no database files will be written to disk.  Instead, all data will be stored in memory (and will be lost when the app stops running). | ((boolean)) | `false` |
 
-Pretty much like disk... but doesn't actually write to disk, so it's not persistent.  Not suitable for at-scale production deployments, but useful when developing on systems with little or no disk space.
-
-[![NPM package info for sails-memory](https://img.shields.io/npm/dm/sails-memory.svg?style=plastic)](http://npmjs.com/package/sails-memory) &nbsp; [![License info](https://img.shields.io/npm/l/sails-memory.svg?style=plastic)](http://npmjs.com/package/sails-memory)
-
-```bash
-npm install sails-memory --save
-```
-
-```javascript
-adapter: require('sails-memory'),
-```
-
-
+> + You can configure the default `sails-disk` adapter by adding settings to the `default` datastore in `config/datastores.js`.
 
 
 ### Community-supported database adapters
