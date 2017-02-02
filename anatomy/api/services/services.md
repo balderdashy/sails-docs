@@ -1,15 +1,14 @@
 # api/services
-### Purpose
-This folder contains your services.  'Services' are similar to controller actions but are typically used for things that don't necessarily have to happen between the time when the user sends a request and when the server sends back a response.  Any logic that doesn't rely on `.req()` and `.res()` can be turned into a service if for no other reason than to keep your controllers clean and manageable.
+### Objectif
+Ce répertoire contient vos services. Les 'Services' sont similaires aux actions des contrôlleurs mais il sont utilisé pour des choses qui n'ont pas à être exécutés entre le moment où l'utilisateur envoie une requête et le moment où le serveur retourne une réponse. Toute logique qui n'utilise pas `.req()` et `.res()` peut être implémentée comme un service s'il n y'a aucune raison de garder les contrôlleurs propres et gérables.
 
-Hypothetically, one could create a service for
+En théorie, on pourrait créer un service pour
 
-- Sending emails
-- Automating tweets to celebrities
-- Retrieving data from a third party API then pushing that data to your client WHEN IT'S READY (over websockets)
+- Envoyer des emails
+- Automatiser des tweets vers des célébrités
+- Extraire des données d’une API (tierce partie)  puis en poussant ces données à votre client lorsqu’il est prêt (plus de websockets).
 
-Services are written in one or more .js file within this directory.
-
+Les services sont écrits dans un ou plusieurs fichier .js dans ce répertoire.
 
 ### Example Email.js
 
