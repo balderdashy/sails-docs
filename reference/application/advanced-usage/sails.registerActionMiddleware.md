@@ -55,4 +55,4 @@ sails.registerActionMiddleware(
 
 <docmeta name="displayName" value="sails.registerActionMiddleware()">
 <docmeta name="pageType" value="method">
-
+<docmeta name="isExperimental" value="true">
