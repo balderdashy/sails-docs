@@ -1,13 +1,13 @@
 # api/responses/notFound.js
-### Purpose
+### Objectif
 
-This is one of the default Server Responses included in a new Sails project.
+Il s'agit de l'une des réponses serveur par défaut incluses dans un nouveau projet Sails.
 
-It contains the logic for what should happen when you wish to issue an http 404 response. It can be issued from anywhere you have access to the express `res` object by calling res.notFound.
+Il contient la logique de ce qui devrait se produire lorsque vous souhaitez émettre une réponse http 404. La réponse peut être émise à partir de n'importe quel endroit où vous avez accès à l'objet express `res` en appelant res.notFound.
 
-Feel free to edit this file to suit your needs.  You can also create a custom response using our `sails-generate-custom-response` generator.
+N'hésitez pas à modifier ce fichier en fonction de vos besoins. Vous pouvez également créer une réponse personnalisée en utilisant notre générateur `sails-generate-custom-response`.
 
-See the Response section of Reference Documentation for more info.
+Pour plus d'informations, reportez-vous à la section Réponse de la documentation de référence.
 
 
 <docmeta name="displayName" value="notFound.js">
