@@ -56,7 +56,7 @@ Next, we define the specification for the user model, like so:
 ```js
 var userCollection = Waterline.Collection.extend({
   identity: 'user',
-  connection: 'default',
+  datastore: 'default',
   attributes: {
     firstName: 'string',
     lastName: 'string',
@@ -72,9 +72,9 @@ var userCollection = Waterline.Collection.extend({
 
 What's important here is the object that we are passing into that factory method.
 
-We need to give our model an `identity` that we can refer to later, and also declare which connection we are going to use.
+We need to give our model an `identity` that we can refer to later, and also declare which datastore we are going to use.
 
-> A connection is an instance of an adapter. For example, you could have one connection for each type of storage you are using (file, MySQL, etc), or you might even have more than one connection for the same type of adapter.
+> A datastore is an instance of an adapter. For example, you could have one datastore for each type of storage you are using (file, MySQL, etc), or you might even have more than one datastore for the same type of adapter.
 
 The `attributes` define the properties of the model. In a traditional database, these attributes would align with columns in a table. But `pets` is a little different because it is defining an association that allows a user to own a number of pets.
 
@@ -85,7 +85,7 @@ Obviously we now need to define what a pet is.
 ```js
 var petCollection = Waterline.Collection.extend({
   identity: 'pet',
-  connection: 'default',
+  datastore: 'default',
   attributes: {
     breed: 'string',
     type: 'string',
@@ -112,7 +112,7 @@ waterline.loadCollection(petCollection);
 
 Here we are adding the model specifications into the `waterline` instance itself.
 
-And last, but not least, we have to configure the storage connections.
+And last, but not least, we have to configure the datastores.
 
 ```js
 var config = {
@@ -120,7 +120,7 @@ var config = {
     'memory': sailsMemoryAdapter
   },
 
-  connections: {
+  datastores: {
     default: {
       adapter: 'memory'
     }
@@ -128,7 +128,7 @@ var config = {
 };
 ```
 
-So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `connections` which will usually contain connection details for the target storage system (login details, file paths, etc). Each connection can be named, and in this case we've simply settled on "default" to name the connection.
+So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.
 
 Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
 
@@ -167,7 +167,7 @@ waterline.initialize(config, function (err, ontology) {
 
 That's a fair chunk of code so let's unpack it slower.
 
-First we need to `initialize` the waterline instance. This wires up the connections (maybe logs into a database server or two) and parses all the models looking for associations as well as a heap of other whizbangery. When that is done, it defers to the callback we passed in the second argument.
+First we need to `initialize` the waterline instance. This wires up the datastores (maybe logs into a database server or two) and parses all the models looking for associations as well as a heap of other whizbangery. When that is done, it defers to the callback we passed in the second argument.
 
 After checking for an error, the `ontology` variable contains the collection objects for our users and our pets, so we add some shortcuts to them in the form of `User` and `Pet`.
 
@@ -247,7 +247,7 @@ Our standard example Pet model.
 module.exports = {
 
   identity: 'pet',
-  connection: 'default',
+  datastore: 'default',
 
   attributes: {
     breed: 'string',
@@ -270,7 +270,7 @@ Our standard example User model.
 module.exports = {
 
   identity: 'user',
-  connection: 'default',
+  datastore: 'default',
 
   attributes: {
     firstName: 'string',
@@ -308,7 +308,7 @@ suite('UserModel', function () {
     adapters: {
       'sails-memory': sailsMemoryAdapter
     },
-    connections: {
+    datastores: {
       default: {
         adapter: 'sails-memory'
       }

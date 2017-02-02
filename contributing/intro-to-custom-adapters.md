@@ -19,7 +19,7 @@ Adapters are mainly focused on providing model-contextualized CRUD methods.  CRU
 
 For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection information and runs an `INSERT ...` SQL query.
 
-In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.
+In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw datastore objects and any models which use them.
 
 
 

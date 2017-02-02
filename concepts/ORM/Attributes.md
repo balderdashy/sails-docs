@@ -114,7 +114,7 @@ commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d
 
 ### columnName
 
-Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured connection (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
+Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured datastore (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
 
 While the `columnName` property is primarily designed for working with existing/legacy databases, it can also be useful in situations where your database is being shared by other applications, or you don't have access permissions to change the schema.
 
@@ -137,7 +137,7 @@ Let's say you have a `User` model in your Sails app that looks like this:
 ```javascript
 // api/models/User.js
 module.exports = {
-  connection: 'shinyNewMySQLDatabase',
+  datastore: 'shinyNewMySQLDatabase',
   attributes: {
     name: {
       type: 'string'
@@ -157,17 +157,14 @@ module.exports = {
 Everything works great, but instead of using an existing MySQL database sitting on a server somewhere that happens to house your app's intended users:
 
 ```javascript
-// config/connections.js
+// config/datastores.js
 module.exports = {
   // ...
 
   // Existing users are in here!
   rustyOldMySQLDatabase: {
     adapter: 'sails-mysql',
-    user: 'bofh',
-    host: 'db.eleven.sameness.foo',
-    password: 'Gh19R!?had9gzQ#Q#Q#%AdsghaDABAMR>##G<ADMBOVRH@)$(HTOADG!GNADSGADSGNBI@(',
-    database: 'jonas'
+    url: 'mysql://ofh:Gh19R!?@db.eleven.sameness.foo/jonas'
   },
   // ...
 };
@@ -186,7 +183,7 @@ In order to use this from Sails, you'd change your `User` model to look like thi
 ```javascript
 // api/models/User.js
 module.exports = {
-  connection: 'rustyOldMySQLDatabase',
+  datastore: 'rustyOldMySQLDatabase',
   tableName: 'our_users',
   attributes: {
     id: {

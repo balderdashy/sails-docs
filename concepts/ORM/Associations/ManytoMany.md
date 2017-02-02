@@ -148,9 +148,9 @@ In this case, `User` and `Product` records exist in different databases.  By def
 Several factors may influence your decision of where to create the join table:
 
 + If one side is a SQL database, placing the join table on that side will allow your queries to be more efficient, since the relationship table can be joined before the other side is communicated with.  This reduces the number of total queries required from 3 to 2.
-+ If one connection is much faster than the other, all other things being equal, it probably makes sense to put the join table on that side.
-+ If you know that it is much easier to migrate one of the connections, you may choose to set that side as `dominant`.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between `Patient` and `Medicine`) you want to be sure that all relevant data is saved in one particular database over the other (in this case, `Patient` is likely to be `dominant`).
-+ Along the same lines, if one of your connections is read-only (perhaps `Medicine` in the previous example is connected to a read-only vendor database), you won't be able to write to it, so you'll want to make sure your relationship data can be persisted safely on the other side.
++ If one datastore is much faster than the other, all other things being equal, it probably makes sense to put the join table on that side.
++ If you know that it is much easier to migrate one of the datastores, you may choose to set that side as `dominant`.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between `Patient` and `Medicine`) you want to be sure that all relevant data is saved in one particular database over the other (in this case, `Patient` is likely to be `dominant`).
++ Along the same lines, if one of your datastores is read-only (perhaps `Medicine` in the previous example is connected to a read-only vendor database), you won't be able to write to it, so you'll want to make sure your relationship data can be persisted safely on the other side.
 
 <docmeta name="displayName" value="Many-to-many">
 
