@@ -4,6 +4,19 @@
 
 La documentation officielle de la version stable actuelle de Sails se trouve sur la [branche master](github.com/balderdashy/sails-docs) de ce dépôt. Le contenu de la plupart des sections [du site officiel de Sails](http://sailsjs.com) est compilé ici.
 
+## Progression de la traduction de la documentation FR
+anatomy : Traduction en cours (10%)
+concepts : Pas encore traduit
+contributing : Pas encore traduit
+faq : Pas encore traduit
+irc : Pas encore traduit
+reference : Pas encore traduit
+resources/styleguide : Pas encore traduit
+security : Pas encore traduit
+status : Pas encore traduit
+tutorials : Pas encore traduit
+upgrading : Pas encore traduit
+version-notes : Pas encore traduit
 
 ## Dans d'autres langues
 
