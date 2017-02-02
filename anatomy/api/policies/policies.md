@@ -1,8 +1,8 @@
 # api/policies
-### Purpose
-This is the folder you will store your `policy` files in.  A policy file is a .js file that contains what is essentially express middleware for authenticating access to controller actions in your app.
+### Objectif
+C'est le dossier dans lequel vous stockerez vos fichiers `policy`. Un fichier `policy` est un fichier .js qui contient ce qui est essentiellement un middleware express pour authentifier l'accès aux actions des contrôleurs dans votre application.
 
-If you want to make sure only the user `rick1983` can access `http://prism.gov/rick1983` , this is the folder you would put that logic in.
+Si vous voulez vous assurer que seul l'utilisateur `rick1983` peut accéder à `http://prism.gov/rick1983`, c'est le dossier dans lequel vous mettrez cette logique là.
 
 
 <docmeta name="displayName" value="policies">
