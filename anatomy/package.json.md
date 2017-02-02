@@ -1,9 +1,9 @@
 # package.json
-### Purpose
-This is a standard configuration file for [npm](https://npmjs.org/doc/json.html). Among other things, this file contains the name and version of all of the Node Modules that your app depends on to run.  You can change this manually but be careful to adhere to their rules or things might break.
+### Objectif
+Il s'agit du fichier de configuration pour [npm](https://npmjs.org/doc/json.html). Entre autres choses, ce fichier contient le nom et la version de tous les modules node sur lesquels dépend votre application. Vous pouvez le modifier manuellement, mais veillez à respecter ses règles au risque de briser des choses.
 
-### More Info
-> Check out [this awesome interactive guide by Nodejitsu](http://package.json.nodejitsu.com) explaining package.json
+### Plus d'infos
+> Découvrez [ce superbe guide interactif fait par Nodejitsu](http://package.json.nodejitsu.com) qui explique bien le fichier package.json
 
 
 
@@ -14,7 +14,7 @@ This is a standard configuration file for [npm](https://npmjs.org/doc/json.html)
   "name": "myApp",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "Une application Sails",
   "keywords": [],
   "dependencies": {
     "sails": "~0.10.0-rc7",
