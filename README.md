@@ -8,8 +8,8 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
 - anatomy : Traduction en cours (10%)
   - api
     - controllers (100%)
-    - hooks (0%)
-    - models (0%)
+    - hooks (100%)
+    - models (100%)
     - policies (0%)
     - responses (0%)
     - services (0%)
