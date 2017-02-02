@@ -6,6 +6,8 @@ use cases where multiple Sails app instances need to exist at once, or where glo
 are not an option. The application object can also always be accessed on an incoming
 request (`req._sails`), and inside of [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) and [service](http://sailsjs.com/documentation/concepts/services) modules via `this.sails`.
 
+> Most users of the framework will only need to know about the `sails` application object in order to access a few basic methods and their custom configuration; less commonly-used methods can be found in the [advanced usage](http://sailsjs.com/documentation/reference/application/advanced-usage) section.
+
 ### How does it work?
 
 An application instance is automatically created the first time you `require('sails')`.
