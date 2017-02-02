@@ -88,7 +88,7 @@ Connection URLs really shine in production, because you can change them by swapp
 
 ### Supported databases
 
-Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and [local memory](http://npmjs.com/package/sails-memory), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
+Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
 
 You can find an up-to-date list of supported database adapters [here](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 

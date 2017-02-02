@@ -24,11 +24,6 @@ module.exports = {
 		supported: true,
 		status: 'stable'
 	},
-	'sails-memory': {
-		repo: 'https://github.com/balderdashy/sails-memory',
-		supported: true,
-		status: 'stable'
-	},
 	'sails-mysql': {
 		repo: 'https://github.com/balderdashy/sails-mysql',
 		supported: true,
@@ -146,7 +141,7 @@ module.exports = {
 		repo: 'https://github.com/murilopolese/sails-parse',
 		status: 'unknown'
 	},
-	
+
 	//
 	// Tumblr
 	//
