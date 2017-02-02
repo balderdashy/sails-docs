@@ -1,6 +1,6 @@
 # api/hooks/myHook/
-### Purpose
+### Objectif
 
-This is the folder for the hook called `myHook`. For more information about the hook specification, see [Concepts > Extending Sails > Hooks > Hook Specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification).
+C'est le dossier pour le hook appelé `myHook`. Pour plus d'informations sur la spécification des hooks, voir [Concepts > Étendre Sails > Hooks > Spécifications des Hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification).
 
 <docmeta name="displayName" value="myHook">
