@@ -1,15 +1,14 @@
 # api
-### Purpose
-This folder contains the vast majority of your app's back-end logic.  It is home to the 'M' and 'C' in [MVC Framework](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller).
+### Objectif
+Ce dossier contient la grande majorité de la logique du backoffice de votre application. Il abrite le «M» et le «C» du [modèle MVC](https://fr.wikipedia.org/wiki/Mod%C3%A8le-vue-contr%C3%B4leur).
 
-In it you will find the following.
+Vous y trouverez ce qui suit.
 
-- Controllers: Controllers contain most of the back-end logic for your app.
-- Models: Models are the structures that contain data for your Sails App.
-- Policies: Policies are typically used to authenticate clients and restrict access to certain parts of your app.
-- Responses: Server response logic (404 - Not Found, 500 - Server Error, etc)
-- Services: Services are similar to controller actions.  They contain logic that used by your app that doesn't necessarily rely on `.req()` and `.res()`.
-
+- Controllers: les contrôleurs contiennent la plupart des logiques de backoffice pour votre application.
+- Models: Les modèles sont les structures qui contiennent des données pour votre application Sails.
+- Policies: les politiques sont généralement utilisées pour authentifier des clients et restreindre l'accès à certaines parties de votre application.
+- Responses: Logique de réponse serveur (404 - Non trouvé, 500 - Erreur serveur, etc)
+- Services: Les services sont similaires aux actions du contrôleur. Ils contiennent la logique utilisée par votre application qui ne s'appuie pas nécessairement sur `.req ()` et `.res ()`.
 
 
 <docmeta name="displayName" value="api">
