@@ -6,6 +6,17 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
 
 ## Progression de la traduction de la documentation FR
 - anatomy : Traduction en cours (10%)
+  - api
+    - controllers (100%)
+    - hooks (0%)
+    - models (0%)
+    - policies (0%)
+    - responses (0%)
+    - services (0%)
+  - assets (0%)
+  - config (0%)
+  - tasks (0%)
+  - views (0%)
 - concepts : Pas encore traduit
 - contributing : Pas encore traduit
 - faq : Pas encore traduit
