@@ -1,9 +1,8 @@
 # api/policies/sessionAuth.js
-### Purpose
-This is an example policy file against which all routes are checked before allowing a client access to any part of your app.  By default, it allows everyone to access everything but this can (and probably should) be changed before you switch into production mode.
+### Objectif
+Il s'agit d'un exemple de politique contre lequel toutes les routes sont vérifiées avant d'autoriser un accès client à n'importe quelle partie de votre application. Par défaut, il permet à tout le monde d'accéder à tout, mais cela peut (et devrait probablement) être modifié avant de passer en mode production.
 
-In Sails, a policy is simply express middleware that does something to authenticate users before they are allowed to access some part of your app.  For more information on creating policies, you'll probably want to check our guide on it.
-
+Dans Sails, une politique est simplement un middleware express qui fait quelque chose pour authentifier les utilisateurs avant qu'ils soient autorisés à accéder à une partie de votre application. Pour plus d'informations sur la création de politique, vous devriez probablement consulter notre guide sur ce sujet.
 
 <docmeta name="displayName" value="sessionAuth.js">
 
