@@ -1,5 +1,5 @@
 # api/responses/serverError.js
-### Purpose
+### Objectif
 
 Il s'agit de l'une des réponses serveur par défaut incluses dans un nouveau projet Sails.
 
