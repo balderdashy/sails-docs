@@ -1,10 +1,10 @@
 # api/models/User.js
-### Purpose
-This file was created when you ran 'sails generate api User'.  It contains the structure for the model called 'User'.
+### Objectif
+Ce fichier a été créé lorsque vous avez exécuté 'sails generate api Utilisateur'. Il contient la structure du modèle appelé 'Utilisateur'.
 
-In this file you will specify what attributes each model instance (record) should have.  You can also add custom model instance methods, as well as override the global settings for things like `policies` and `connections`.
+Dans ce fichier, vous spécifierez quels attributs chaque instance de modèle (enregistrement) doit avoir. Vous pouvez également ajouter des méthodes, ainsi que remplacer les paramètres globaux pour les `policies` et les `connections`.
 
-One of the best parts about Sails is it uses [Waterline](https://github.com/balderdashy/waterline).  This means you can start developing your data models long before you commit to a particular database.
+L'un des atouts de Sails est qu'il utilise [Waterline](https://github.com/balderdashy/waterline). Cela signifie que vous pouvez commencer à développer vos modèles de données bien avant de vous engager à une base de données particulière.
 
 
 <docmeta name="displayName" value="User.js">
