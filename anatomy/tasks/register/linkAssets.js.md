@@ -1,7 +1,5 @@
 # tasks/register/linkAssets.js
 
-This Grunt tasklist is not designed to be used directly-- rather
- it is a helper called by the `default` tasklist and the `watch` task
- (but only if the `grunt-sails-linker` package is in use).
+Cette liste de tâches Grunt n'est pas conçue pour être utilisée directement-- Il s'agit plutôt d'un assistant appelé par la list des tâches `default` et la tâche` watch` (Mais seulement si le paquet `grunt-sails-linker` est utilisé).
 
 <docmeta name="displayName" value="linkAssets.js">
