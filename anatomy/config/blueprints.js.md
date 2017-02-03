@@ -1,4 +1,11 @@
 # config/blueprints.js
+### Objectif
+
+Ces paramètres servent à la configuration globale des routes et des options des requêtes (qui influent sur le comportement des actions du blueprint).
+
+Vous pouvez également surcharger ces paramètres par contrôleur en définissant une clé '_config' dans la définition de votre contrôleur et en lui assignant un objet de configuration avec les surcharges des paramètres de ce fichier.
+
+Pour plus d'informations sur la configuration de l'API blueprint, consultez: http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints
 
 
 <docmeta name="displayName" value="blueprints.js">
