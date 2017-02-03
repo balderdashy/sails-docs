@@ -1,18 +1,17 @@
 # sconfig/sockets.js
-### Purpose
-This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO.
+### Objectif
+Il s'agit d'un fichier de configuration qui vous permet de personnaliser la façon dont votre application parle aux clients via Socket.IO.
 
-It provides transparent access to Sails' encapsulated pubsub/socket server for complete customizability. In it you can do things on the list below (and more!).
+Il fournit un accès transparent au serveur encapsulé pubsub/socket de Sails pour une personnalisation complète. Dans celui-ci vous pouvez faire des choses qui sont dans la liste ci-dessous (et plus!).
 
-- Override afterDisconnect function (server side)
-- Define custom authorization logic for client socket connections
-- Set transport method
-- Change Heartbeat Interval
-- Change socket store
+- Surcharger la fonction afterDisconnect (côté serveur)
+- Définir une logique d'autorisation personnalisée pour les connexions de socket client
+- Définir la méthode de transport
+- Modifier l'intervalle de pulsation
+- Changez de magasin de socket
 
-### More Info
-> Socket.IO configuration options can be found [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
-
+### Plus d'informations
+> Les options de configuration de Socket.IO peuvent être trouvées ici (https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
 
 
 <docmeta name="displayName" value="sockets.js">
