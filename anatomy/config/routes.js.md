@@ -1,13 +1,12 @@
 # config/routes.js
-### Purpose
-This file is where you can define explicit routes to connect clients with the resources that they request.
+### Objectif
+Ce fichier est l'endroit où vous pouvez définir des routes explicites pour connecter les clients avec les ressources qu'ils demandent.
 
-When a user tries to access a resource on your app, Sails uses this file (and a few other things) in order to map the URL requested to it's appropriate controller action which upon authentication, will respond to the client with the requested resource.
+Lorsqu'un utilisateur tente d'accéder à une ressource sur votre application, Sails utilise ce fichier (et d'autres) afin de mapper l'URL demandée à son action de contrôleur appropriée qui, lors de l'authentification, répond au client avec la ressource demandée.
 
-By default, there is only one explicitly defined route.  Its purpose is to point users that try to access the base URL `http://localhost:1337/` to the view located in `views/home/index.ejs`. Feel free to add as many routes as you'd like to this file.
+Par défaut, il n'existe qu'une seule route explicitement définie. Son but est de pointer les utilisateurs qui tentent d'accéder à l'URL de base `http://localhost:1337/` vers la vue située dans `views/home/index.ejs`. N'hésitez pas à ajouter autant de routes que vous le souhaitez dans ce fichier.
 
-You can even define routes in a way such that part of the requested URL is treated as a request parameter. For example, `http://localhost:1337/ponies/PinkiePie` would request the resource with the 'id' parameter equal to 'PinkiePie'.
-
+Vous pouvez même définir des routes d'une manière telle qu'une partie de l'URL demandée soit traitée comme un paramètre GET. Par exemple, `http://localhost:1337/chat/kitty` demanderait la ressource avec le paramètre 'id' égal à 'kitty'.
 
 
 <docmeta name="displayName" value="routes.js">
