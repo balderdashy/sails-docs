@@ -1,8 +1,8 @@
 # assets/favicon.ico
-### Purpose
-This file is the [Favicon](http://en.wikipedia.org/wiki/Favicon) for your app.
+### Objectif
+Ce fichier est le [Favicon](http://en.wikipedia.org/wiki/Favicon) de votre application.
 
-### More Info
+### Plus d'infos
 
 
 <docmeta name="displayName" value="favicon.ico">
