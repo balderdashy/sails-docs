@@ -63,7 +63,7 @@ Deuxièmement, nous sommes ouverts aux suggestions sur le processus que nous uti
 
 #### Quelle branche dois-je modifier?
 
-Cela dépend du genre d'édition que vous voulez faire. Le plus souvent, vous allez faire une modification pertinente pour la dernière version stable de Sails (exp. la version sur [NPM](npmjs.org/package/sails)) et donc vous allez éditer la branche `master` de _this_ dépôt (Ce que vous voyez dans le repo sails-docs par défaut).  L'équipe de documentation fusionne la branche master dans la branche appropriée pour la dernière version stable de Sails, puis déploie cela à sailsjs.com une fois par semaine environ.
+Cela dépend du genre d'édition que vous voulez faire. Le plus souvent, vous allez faire une modification pertinente pour la dernière version stable de Sails (exp. la version sur [NPM](npmjs.org/package/sails)) et donc vous allez éditer la branche `master` de _ce_ dépôt (Ce que vous voyez dans le repo sails-docs par défaut).  L'équipe de documentation fusionne la branche master dans la branche appropriée pour la dernière version stable de Sails, puis déploie cela à sailsjs.com une fois par semaine environ.
 
 D'autre part, si vous faites une modification liée à une fonctionnalité inédite dans une prochaine version; Le plus souvent en tant qu'accompagnement d'une proposition de fonctionnalité ou d'une pull request à Sails ou à un autre projet associé, vous allez alors modifier la branche pour la prochaine version non publiée de Sails (parfois appelée «edge»).
 
