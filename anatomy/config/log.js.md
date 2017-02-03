@@ -1,11 +1,11 @@
 # config/log.js
-### Purpose
+### Objectif
 
-This file contains the logger configuration for your Sails app.
+Ce fichier contient la configuration du logger (gestionnaire des fichiers journaux) pour votre application Sails.
 
-Configure the log level for your app, as well as the transport.
+Configurez le niveau du log pour votre application, ainsi que le transport.
 
-Underneath the covers, Sails uses Winston for logging, which allows for some pretty neat custom transports/adapters for log messages.
+En arriére plan, Sails utilise Winston pour la journalisation, ce qui permet de quelques jolis transports/adaptateurs personnalisés pour les messages log.
 
 
 
