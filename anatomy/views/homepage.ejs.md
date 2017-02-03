@@ -1,10 +1,10 @@
 # views/homepage.ejs
-### Purpose
-This is the actual template that is rendered by default when a user visits the base URL of your lifted app.  Notice the file extension?  It stands for [Embedded JavaScript](http://embeddedjs.com/).  EJS is what Sails uses by default to render server side HTML views.  This can be changed in `config/views.js`.
+### Objectif
+C'est le template qui est affiché par défaut lorsqu'un utilisateur visite l'URL de base de votre application. Avez-vous remarqué l'extension du fichier ? Il est synonyme de [Embedded JavaScript](http://embeddedjs.com/). EJS est ce que Sails utilise par défaut pour afficher les vues HTML côté serveur. Cela peut être changé dans `config/views.js`.
 
-If a new view you've created isn't rendering, make sure you've hooked it up in your `config/routes.js`.
+Si une nouvelle vue que vous avez créée ne s'affiche pas, assurez-vous que vous l'avez rattachée dans votre `config/routes.js`.
 
-If you're used to putting all your HTML in a single file, this might look funny.  You might be thinking "Where are the head and body tags"?  The answer is, `views/layout.ejs`.
+Si vous avez l'habitude de mettre tout votre HTML dans un seul fichier, cela pourrait paraître drôle. Vous pourriez penser «Où sont les balises head et body»? La réponse est, `views/layout.ejs`.
 
 
 <docmeta name="displayName" value="homepage.ejs">
