@@ -9,6 +9,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **Install the `sails-hook-orm` package** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
 * **Install the `sails-hook-sockets` package** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
 * **Install the `sails-hook-grunt` package** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
+* **Install the latest version of your database adapter**.  For example, if you're using `sails-mysql`, do `npm install --save sails-mysql@latest`.
 * **Update your `config/globals.js` file** (unless your app has `sails.config.globals` set to `false`)
   + Set `models` and `sails` to have boolean values (`true` or `false`)
   + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
