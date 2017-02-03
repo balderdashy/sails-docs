@@ -1,5 +1,7 @@
 # config/models.js
+### Objectif
 
+Ce fichier contient la configuration par défaut des modèles. À moins que vous les surchargez, ces propriétés seront incluses dans chacun de vos modèles.
 
 <docmeta name="displayName" value="models.js">
 
