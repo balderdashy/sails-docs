@@ -1,6 +1,6 @@
 # config/locales
-### Purpose
-This folder contains the information that is used by your app in supporting visiting client's different [locales](http://en.wikipedia.org/wiki/Locale).
+### Objectif
+Ce dossier contient les informations utilisées par votre application pour prendre en charge [les paramètres régionaux](https://fr.wikipedia.org/wiki/Param%C3%A8tres_r%C3%A9gionaux) des utilisateurs.
 
 
 
