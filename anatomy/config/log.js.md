@@ -1,11 +1,11 @@
 # config/log.js
 ### Objectif
 
-Ce fichier contient la configuration du logger (gestionnaire des fichiers journaux) pour votre application Sails.
+Ce fichier contient la configuration du gestionnaire du log pour votre application Sails.
 
 Configurez le niveau du log pour votre application, ainsi que le transport.
 
-En arriére plan, Sails utilise Winston pour la journalisation, ce qui permet de quelques jolis transports/adaptateurs personnalisés pour les messages log.
+En arriére plan, Sails utilise Winston pour le log, ce qui permet de quelques jolis transports/adaptateurs personnalisés pour les messages log.
 
 
 
