@@ -1,9 +1,8 @@
 # config/policies.js
-### Purpose
-This file contains the default policies for your app.
+### Objectif
+Ce fichier contient les politiques par défaut de votre application.
 
-Policies are simply Express middleware functions which run before your controllers. You can apply one or more policies to a given controller, or protect just one of it's actions. Any policy file (e.g. `api/policies/sessionAuth.js`) can be dropped into the `api/policies/` folder, at which point it can be accessed by it's filename, minus the extension, (e.g. `sessionAuth`).
-
+Les politiques sont simplement des fonctions middleware Express qui s'exécutent avant vos contrôleurs. Vous pouvez appliquer une ou plusieurs politiques à un contrôleur donné ou protéger une seule de ses actions. Tout fichier de politique (par exemple `api/policies/sessionAuth.js`) peut être supprimé dans le dossier `api/policies/`, et peut être invoqué par son nom de fichier (par exemple` sessionAuth`).
 
 
 <docmeta name="displayName" value="policies.js">
