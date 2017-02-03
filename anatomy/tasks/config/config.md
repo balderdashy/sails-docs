@@ -1,10 +1,10 @@
 # tasks/config/
 
-### Purpose
+### Objectif
 
-This folder contains the default Grunt task configuration used by the main entry points in [`tasks/register/`](http://sailsjs.com/anatomy/tasks/register).
+Ce dossier contient la configuration de tâches Grunt par défaut utilisée par les principaux points d'entrée de [`tasks/register/`](http://sailsjs.com/anatomy/tasks/register).
 
-For more about the files in this folder, see [Assets > Default Tasks](http://sailsjs.com/documentation/concepts/assets/default-tasks).
+Pour en savoir plus sur les fichiers de ce dossier, reportez-vous à la section [Assets > Tâches par défaut] (http://sailsjs.com/documentation/concepts/assets/default-tasks).
 
 
 <docmeta name="displayName" value="config">
