@@ -1,6 +1,6 @@
 # config/http.js
 
-This file is conventionally used for configuring the underlying HTTP server (see [`sails.config.http`](http://sailsjs.com/documentation/reference/configuration/sails-config-http) for all available options).
+Ce fichier est conventionellement utilisé pour configurer le serveur HTTP sous-jacent (voir [`sails.config.http`] (http://sailsjs.com/documentation/reference/configuration/sails-config-http) pour toutes les options disponibles).
 
 
 ```javascript
