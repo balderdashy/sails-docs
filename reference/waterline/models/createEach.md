@@ -58,6 +58,8 @@ User.createEach([{name:'Finn'}, {name: 'Jake'}])
 });
 ```
 
+### Notes
+> * The number of records you can add with `.createEach` is limited by the maximum query size of the particular database you&rsquo;re using.  MySQL has a 4MB limit by default, but this can be changed via the [`max_allowed_packet` setting](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_allowed_packet).  MongoDB imposes a 16MB limit on single documents, but essentially has no limit on the number of documents that can be created at once.  PostgreSQL also has no enforced limit on query size.  Consult your database&rsquo;s documentation for more information about query limitations.
 
 
 <docmeta name="displayName" value=".createEach()">
