@@ -1,11 +1,10 @@
 # views/layout.ejs
-### Purpose
-This [Embedded JavaScript file](http://embeddedjs.com/) acts as the default layout for all server side views rendered by your app.
+### Objectif
+Ce fichier [EJS](http://embeddedjs.com/) est la mise en page par défaut pour toutes les vues de votre application.
 
-Before one of your custom views is sent to the client, it is injected into this file.  It is this file that is actually sent to the client.
+Avant que l'une de vos vues ne soit envoyée au client, elle est injectée dans ce fichier. C'est ce fichier qui est effectivement envoyé au client.
 
-Feel free to change this as you see fit.  Its also a great place to include javascript and css that you plan on using in every view.  This keeps you from having to include them in all your custom .ejs files.  Note, this isnt an issue if you created your app with the `--linker` flag.  In this case, everything in your assets directory is minified and injected into every view rendered by your app.
-
+N'hésitez pas à changer ce fichier comme bon vous semble. C'est également un endroit idéal pour inclure du javascript et du css que vous envisagez utiliser dans chaque vue. Cela vous empêche d'avoir à les inclure dans tous vos fichiers .ejs . Notez que ce n'est pas un problème si vous avez créé votre application avec l'indicateur `--linker`. Dans ce cas, tout ce qu'il y'a dans votre répertoire des assets est minifié et injecté dans chacune des vues affichées par votre application.
 
 
 <docmeta name="displayName" value="layout.ejs">
