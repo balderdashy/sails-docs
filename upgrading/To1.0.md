@@ -25,7 +25,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 ### Breaking changes to lesser-used features
 
 * **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
-* **Dynamic finders** are no longer supported.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
+* **Dynamic finders** (such as `User.findById()`) are no longer added to your models automatically.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
 * **Model Instance Methods** are no longer supported. This allows records returned from find queries to be plain javascript objects instead of model record instances.
 * **Custom `.toJSON()`** instance methods are no longer supported.  Instead, add a [`customToJSON` method](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) to the model class (i.e. outside of the `attributes` dictionary).  See the [model settings documentation](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) for more info.
 * **The `.toObject()` instance method** is no longer added to every record.  When implementing [`customToJSON`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) for a model, be sure to clone the record using `_.omit()`, `_.pick()` or `_.clone()`.
