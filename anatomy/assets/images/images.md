@@ -1,9 +1,9 @@
 # assets/images
-### Purpose
+### Objectif
 
-This is where you should put image files that need to be statically hosted by your app.
+C'est là que vous devez placer les images qui doivent être hébergés statiquement par votre application.
 
-Upon lifting your app, an image called `omgCat.jpg` could be found at `http://localhost:1337/images/omgCat.jpg`
+Après le démarrage de votre application, une image appelée `omgCat.jpg` peut être trouvée à `http://localhost:1337/images/omgCat.jpg`
 
 
 
