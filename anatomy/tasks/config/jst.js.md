@@ -1,33 +1,33 @@
 # tasks/config/jst.js
 
-### Purpose
+### Objectif
 
-This file configures a Grunt task called "jst".
+Ce fichier configure une tâche Grunt appelée "jst".
 
-It precompiles HTML templates using Underscore/Lodash notation into functions, creating a `.jst` file.  This can be brought into your HTML via a `<script>` tag in order to expose your templates as `window.JST` for use in your client-side JavaScript.
+Il précompile des templates HTML en utilisant la notation Underscore/Lodash dans les fonctions, créant un fichier `.jst`. Cela peut être introduit dans votre HTML via une balise `<script>` afin d'exposer vos template comme `window.JST` à utiliser dans votre JavaScript côté-client.
 
-In other words, this takes HTML files in `assets/templates/` and turns them into tiny little javascript functions that return HTML strings when you pass a data dictionary into them.  This approach is called "precompiling", and it can considerably speed up template rendering on the client, and even reduce bandwidth usage and related expenses.)
+En d'autres termes, cela prend des fichiers HTML dans `assets/templates/` et les transforme en petites fonctions javascript qui renvoient des chaînes HTML lorsque vous leur passez un dictionnaire de données. Cette approche est appelée "précompilation", et elle peut considérablement accélérer le rendu du template pour le client, et même réduire l'utilisation de la bande passante et les dépenses connexes.)
 
-> Note that, by default, Underscore/Lodash/JST notation is _opposite_ from EJS (`<%=` is `<%-`, and vice versa).
-> If this bothers you, it can be easily configured in this file. (See inline comments for details.)
+> Notez que, par défaut, la notation Underscore/Lodash/JST est _l'opposé_ de EJS (`<% =` est `<% -`, et vice versa).
+> Si cela vous dérange, il peut être facilement configuré dans ce fichier. (Voir les commentaires en ligne pour plus de détails.)
 
-### But I'm not using Lodash/Underscore/JST templates...
+### Mais je n'utilise pas les modèles Lodash/Underscore/JST ...
 
-No problem!
+Pas de problème!
 
-If you aren't using any kind of precompiled client-side templates, then just ignore this file.
+Si vous n'utilisez pas de template précompilés côté-client, ignorez ce fichier.
 
-If you want to use a _different_ pre-processor like [Handlebars](http://handlebarsjs.com/) or [Dust](http://www.dustjs.com/), and you want Sails to process your client-side templates automatically as you work, then you're in luck.  In most cases, this is as easy as installing the appropriate Grunt plugin as a dependency of your Sails app, and then configuring it to output the precompiled templates (condensed into a single JavaScript file) to the same path as in this default task.
+Si vous souhaitez utiliser un pré-processeur _différent_ comme [Handlebars](http://handlebarsjs.com/) ou [Dust](http://www.dustjs.com/), et que vous souhaitez que Sails traite vos template côté-client automatiquement pendant que vous travaillez, alors vous avez de la chance. Dans la plupart des cas, c'est aussi simple que d'installer le plug-in Grunt approprié en tant que dépendance de votre application Sails, puis de le configurer pour sortir les templates précompilés (condensés en un seul fichier JavaScript) sur le même chemin que dans cette tâche par défaut.
 
-Here are a couple of popular examples:
+Voici quelques exemples populaires:
 
-+ [grunt-contrib-handlebars](https://www.npmjs.com/package/grunt-contrib-handlebars)
-+ [grunt-dust](https://www.npmjs.com/package/grunt-dust)
++ [Grunt-contrib-handlebars](https://www.npmjs.com/package/grunt-contrib-handlebars)
++ [Grunt-dust](https://www.npmjs.com/package/grunt-dust)
 
 
-### Usage
+### Utilisation
 
-For additional usage documentation, see [`grunt-contrib-jst`](https://www.npmjs.com/package/grunt-contrib-jst).
+Pour plus d'informations, consultez [`grunt-contrib-jst`](https://www.npmjs.com/package/grunt-contrib-jst).
 
 
 
