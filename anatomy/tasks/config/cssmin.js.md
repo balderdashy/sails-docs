@@ -1,15 +1,15 @@
 # tasks/config/cssmin.js
 
-### Purpose
+### Objectif
 
-This file configures a Grunt task called "cssmin".
+Ce fichier configure une tâche Grunt appelée "cssmin".
 
-Minify the intermediate, concatenated CSS stylesheet which was prepared by the `concat` task at `.tmp/public/concat/production.css`.  Together with the `concat` task, this is the final step that minifies
-all CSS files from `assets/styles/` (and potentially your LESS importer file from `assets/styles/importer.less`).
+Minifiez le CSS intermédiaire, concaténée qui a été préparée par la tâche `concat` à `.tmp/public/concat/production.css`. Avec la tâche `concat`, c'est l'étape finale qui minifie tous les fichiers CSS de `assets/styles/` (et potentiellement votre fichier d'importateur LESS `assets/styles/import.less`).
 
-### Usage
+### Utilisation
 
-For additional usage documentation, see [`grunt-contrib-cssmin`](https://npmjs.com/package/grunt-contrib-cssmin).
+Pour plus d'informations sur l'utilisation, consultez [`grunt-contrib-cssmin`](https://npmjs.com/package/grunt-contrib-cssmin).
+
 
 
 <docmeta name="displayName" value="cssmin.js">
