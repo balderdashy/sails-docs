@@ -18,7 +18,9 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
     - js (100%)
     - styles (100%)
     - templates (100%)
-  - config (0%)
+  - config (100%)
+    - env (100%)
+    - locales (100%)
   - tasks (0%)
   - views (0%)
 - concepts : Pas encore traduit
