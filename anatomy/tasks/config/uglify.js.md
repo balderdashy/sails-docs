@@ -1,14 +1,14 @@
 # tasks/config/uglify.js
 
-### Purpose
+### Objectif
 
-This file configures a Grunt task called "uglify".
+Ce fichier configure une tâche Grunt appelée "uglify".
 
-Its job is to [minify](https://en.wikipedia.org/wiki/Minification_(programming)) client-side JavaScript files.  Internally, it uses [UglifyJS](https://www.npmjs.com/package/uglifyjs).
+Son travail consiste à [minifier](https://fr.wikipedia.org/wiki/Minification) des fichiers JavaScript côté-client. En interne, il utilise [UglifyJS](https://www.npmjs.com/package/uglifyjs).
 
-### Usage
+### Utilisation
 
-For additional usage documentation, see [`grunt-contrib-uglify`](https://npmjs.com/package/grunt-contrib-uglify).
+Pour plus d'informations sur l'utilisation, consultez [`grunt-contrib-uglify`](https://npmjs.com/package/grunt-contrib-uglify).
 
 
 
