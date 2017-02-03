@@ -16,7 +16,7 @@ sails.getDatastore(datastoreName);
 
 **Type:** ((Dictionary))
 
-A [datastore instance](http://sailsjs.com/documentation/reference/waterline-orm).
+A [datastore instance](http://sailsjs.com/documentation/reference/waterline-orm/datastores).
 
 <docmeta name="displayName" value="sails.getDatastore()">
 <docmeta name="pageType" value="method">
