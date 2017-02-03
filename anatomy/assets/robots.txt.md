@@ -1,8 +1,8 @@
 # assets/robots.txt
-### Purpose
-This file tells search engines and roving packs of robot spiders about whether or not the content in your app should be indexed.
+### Objectif
+Ce fichier indique aux robots des moteurs de recherche si le contenu de votre application doit ou non être indexé.
 
-You can read more about robots.txt [here](http://www.robotstxt.org/robotstxt.html), or about how it is parsed by Google [here](https://support.google.com/webmasters/answer/6062608).
+Vous pouvez en savoir plus sur robots.txt [ici](http://www.robotstxt.org/robotstxt.html), Ou sur la façon dont il est analysé par Google [ici](https://support.google.com/webmasters/answer/6062608).
 
 
 
