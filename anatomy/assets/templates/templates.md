@@ -1,32 +1,28 @@
 # assets/templates
 ### Purpose
 
-Client-side HTML templates are important prerequisites for certain types of modern, rich client applications built for browsers; particularly [SPAs](https://en.wikipedia.org/wiki/Single-page_application). To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require that you load templates client-side; completely separate from your traditional [server-side views](http://sailsjs.com/documentation/concepts/views).  Out of the box, new Sails apps support the best of both worlds.
+Les templates HTML (côté client) sont des conditions préalables importantes pour certains types d'applications client modernes et riches conçues pour les navigateurs; Notamment les [SPAs](https://fr.wikipedia.org/wiki/Application_web_monopage). Pour travailler leur magie, les frameworks comme Backbone, Angular, Ember, et Knockout exigent que vous chargez des templates côté client; Complètement séparé de vos [vues côté serveur] (http://sailsjs.com/documentation/concepts/views). Les nouvelles applications Sails supportent le meilleur des deux mondes.
 
-Whether or not you use client-side templates in your app and where you put them is, of course, completely up to you.  But for the sake of convention, new apps generated with Sails include a `templates/` folder for you by default.
+Que vous utilisiez ou non des templates côté client dans votre application et peu importe où vous les placez, bien sûr, c'est à vous de voir. Mais pour des raisons de convention, les nouvelles applications générées avec Sails incluent un dossier `templates/` par défaut.
 
+### Comment puis-je utiliser ces templates ?
 
-### How do I use these templates?
-
-By default, your Gruntfile is configured to automatically load and precompile
-client-side JST templates in your `assets/templates` folder, then
-include them in your `layout.ejs` view automatically (between TEMPLATES and TEMPLATES END).
+Par défaut, votre GruntFile est configuré pour charger et précompiler automatiquement des modèles JST côté client dans votre dossier `assets/templates`, puis les inclure dans votre vue `layout.ejs` automatiquement (entre TEMPLATES et TEMPLATES END).
 
     <!--TEMPLATES-->
 
     <!--TEMPLATES END-->
 
-This exposes your HTML templates as precompiled functions on `window.JST` for use from your client-side JavaScript.
+Cela expose vos templates HTML comme des fonctions précompilées sur `window.JST` pour une utilisation à partir de votre  JavaScript (client côté).
 
-To customize this behavior to fit your needs, just edit your Gruntfile.
-For example, here are a few things you could do:
+Pour personnaliser ce comportement en fonction de vos besoins, il vous suffit de modifier votre fichier Grunt.
+Par exemple, voici quelques choses que vous pourriez faire:
 
-- Import templates from other directories
-- Use a different template engine (handlebars, jade, dust, etc)
-- Internationalize your client-side templates using a server-side stringfile before they're served.
+- Importer des modèles d'autres répertoires
+- Utiliser un moteur de template différent (handlebars, jade, dust, etc.)
+- Traduire vos templates en utilisant un stringfile côté serveur avant qu'ils soient servis.
 
-
-For more information, check out the conceptual documentation on the [default Grunt tasks](http://sailsjs.com/documentation/concepts/assets/default-tasks) that make up Sails' asset pipeline.
+Pour plus d'informations, consultez la documentation conceptuelle sur les [tâches Grunt par défaut] (http://sailsjs.com/documentation/concepts/assets/default-tasks) qui constitutent le pipeline d'assets de Sails.
 
 <docmeta name="displayName" value="templates">
 
