@@ -22,6 +22,33 @@ someDatastore.leaseConnection(during).exec(afterDisconnecting);
 ##### Callback
 `afterDisconnecting` is an optional explicit callback that can be run after the db connection is released. If not provided, `.leaseConnection()` will return a deferred object.
 
+### Example
+```javascript
+sails.getDatastore()
+.leaseConnection(function (db, proceed) {
+
+  Location.findOne({id: locationId})
+  .usingConnection(db)
+  .exec(function (err, location) {
+    if (err) {return proceed(err);}
+    if (!location) {return proceed.notFound();}
+
+    // Get all products at the location
+    ProductOffering.find({location: locationId})
+    .populate('productType')
+    .usingConnection(db)
+    .exec(function(err, productOfferings) {
+      if (err) {return proceed(err);}
+      var inventory = _.indexBy(productOfferings, 'id');
+      return proceed(undefined, inventory);
+    });
+  });
+}).exec(function (err, inventory) {
+  if (err) { return res.serverError(err); }
+  return res.ok();
+});
+```
+
 
 <docmeta name="displayName" value=".leaseConnection()">
 <docmeta name="pageType" value="method">

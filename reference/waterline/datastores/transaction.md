@@ -1,9 +1,9 @@
 # .transaction()
 
-Fetches a preconfigured deferred object hooked up to the sails-mysql adapter (and consequently the appropriate driver)
+Fetch a preconfigured deferred object hooked up to the sails-mysql adapter (and consequently the appropriate driver)
 
 ```
-someDatastore.transaction(during).meta(optionalMD).exec(afterCommittingOrRollingBack);
+someDatastore.transaction(during).exec(afterCommittingOrRollingBack);
 ```
 
 ### Usage
@@ -20,26 +20,29 @@ someDatastore.transaction(during).meta(optionalMD).exec(afterCommittingOrRolling
 
 ### Example
 ```javascript
-sails.datastore('larrysDbCluster')
-.meta({})
-.transaction(function during (T, done) {
-  Location.findOne({id: locationId})
-    .usingConnection(T.connection)
-    .exec(function (err, location) {
-      if (err) {return done(err);}
-      if (!location) {return done.notFound();}
+sails.getDatastore()
+.transaction(function (db, proceed) {
 
-      // Get all products at the location
-      ProductOffering.find({location: locationId})
-      .populate('productType')
-      .usingConnection(T.connection)
-      .exec(function(err, productOfferings) {
-        if (err) {return done(err);}
-        var mush = _.indexBy(productOfferings, 'id');
-        return done(undefined, mush);
-      });
+  Location.findOne({id: locationId})
+  .usingConnection(db)
+  .exec(function (err, location) {
+    if (err) {return proceed(err);}
+    if (!location) {return proceed.notFound();}
+
+    // Get all products at the location
+    ProductOffering.find({location: locationId})
+    .populate('productType')
+    .usingConnection(db)
+    .exec(function(err, productOfferings) {
+      if (err) {return proceed(err);}
+      var inventory = _.indexBy(productOfferings, 'id');
+      return proceed(undefined, inventory);
     });
-}).exec(/* … */);
+  });
+}).exec(function (err, inventory) {
+  if (err) { return res.serverError(err); }
+  return res.ok();
+});
 ```
 
 <docmeta name="displayName" value=".transaction()">
