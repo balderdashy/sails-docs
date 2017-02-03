@@ -1,11 +1,10 @@
 # config/connections.js
-### Purpose
-This file contains the settings for all of your adapters.
+### Objectif
+Ce fichier contient les paramètres de tous vos adaptateurs.
 
-In Sails, adapters act as the intermediary between the app and the database.  To put it another way, they act as plugins for [Waterline](https://github.com/balderdashy/waterline), the  [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping) that Sails uses to talk to databases.
+Dans Sails, les adaptateurs servent d'intermédiaire entre l'application et la base de données. En d'autres termes, ils agissent comme plugins pour [Waterline] (https://github.com/balderdashy/waterline), l'[ORM] (https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) que Sails utilise pour communiquer avec les bases de données.
 
-This file lets you create different global "saved settings" that you can mix and match in your models. The [`sails.models.connection`](http://sailsjs.com/documentation/anatomy/config/models.js.html) option indicates which connection should be used if a model doesn't have one [explicitly specified](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=connection).
-
+Ce fichier vous permet de créer différents paramètres globaux "d'enregistrement" que vous pouvez mixer et faire correspondre à vos modèles. L'option [`sails.models.connection`] (http://sailsjs.com/documentation/anatomy/config/models.js.html) indique quelle connexion doit être utilisée si un modèle n'a pas un [spécifié explicitement](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=connection).
 
 <docmeta name="displayName" value="connections.js">
 
