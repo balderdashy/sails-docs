@@ -1,7 +1,7 @@
 # sails.registerActionMiddleware()
 
 > ##### _**This feature is still experimental.**_
-> This method is still under development, and its interface could change at any time.
+> This method is still under development, and its interface and/or behavior could change at any time.
 
 Register a new action middleware function that will be applied to actions with the specified identities.
 
