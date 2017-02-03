@@ -1,7 +1,6 @@
 # assets/styles
-### Purpose
-This is where you will put all of the .css files that you would like to be statically hosted by your app.
-
+### Objectif
+C'est là que vous mettez tous les fichiers .css que vous souhaitez qu'ils soient statiquement hébergé par votre application.
 
 <docmeta name="displayName" value="styles">
 
