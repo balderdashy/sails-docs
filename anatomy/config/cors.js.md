@@ -1,8 +1,7 @@
 # config/cors.js
 
-### Purpose
+### Objectif
 
-This file is the conventional home of your Sails app's global CORS settings.  For a complete reference of available CORS configuration in Sails, see [sails.config.cors](http://sailsjs.com/docs/reference/configuration/sails-config-cors).  For a conceptual explanation of CORS in Sails, see [Security > CORS](http://sailsjs.com/docs/concepts/security/cors).
-
+Ce fichier est l'emplacement conventionnel des paramètres CORS globaux de l'application Sails. Pour une référence complète de la configuration CORS disponible dans Sails, voir [sails.config.cors] (http://sailsjs.com/docs/reference/configuration/sails-config-cors). Pour une explication conceptuelle de CORS dans Sails, voir [Sécurité > CORS] (http://sailsjs.com/docs/concepts/security/cors).
 
 <docmeta name="displayName" value="cors.js">
