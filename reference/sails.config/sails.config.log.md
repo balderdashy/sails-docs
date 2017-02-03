@@ -7,9 +7,9 @@ Configuration for the [logger](http://sailsjs.com/documentation/concepts/logging
 
 | Property  | Type        | Default     | Details                                                                             |
 |:----------|-------------|:------------|:------------------------------------------------------------------------------------|
-| `level`   | ((string))  | `'info'`    | Set the level of detail to be shown in your app's log
-| `inspect` | ((boolean)) | `true`      | Set to false to disable captain's log's handling of logging, logs will instead be passed to the configured custom logger  |
-| `custom`  | ((ref))     | `undefined` | Specify a reference to an instance of a custom logger (such as [winston](https://github.com/winstonjs/winston)).  If provided, instead of logging directly to the console, the functions exposed by the custom logger will be called, and log messages from Sails will be passed through.  For more information, see [captains-log](https://github.com/balderdashy/captains-log/blob/master/README.md#why-use-a-custom-logger).
+| level   | ((string))  | `'info'`    | Set the level of detail to be shown in your app's log
+| inspect | ((boolean)) | `true`      | Set to false to disable captain's log's handling of logging, logs will instead be passed to the configured custom logger  |
+| custom  | ((ref))     | `undefined` | Specify a reference to an instance of a custom logger (such as [winston](https://github.com/winstonjs/winston)).  If provided, instead of logging directly to the console, the functions exposed by the custom logger will be called, and log messages from Sails will be passed through.  For more information, see [captains-log](https://github.com/balderdashy/captains-log/blob/master/README.md#why-use-a-custom-logger).
 
 ### Using a Custom Logger
 
