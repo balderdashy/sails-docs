@@ -1,17 +1,17 @@
 # tasks/config/concat.js
 
-### Purpose
+### Objectif
 
-This file configures a Grunt task called "concat".
+Ce fichier configure une tâche Grunt appelée "concat".
 
-Concatenates the contents of multiple JavaScript and/or CSS files into two new files, each located at `concat/production.js` and `concat/production.css` respectively in `.tmp/public/concat`.
+Concatène le contenu de plusieurs fichiers JavaScript et/ou CSS en deux nouveaux fichiers, situés respectivement dans `concat/production.js` et `concat/production.css` dans `.tmp/public/concat`.
 
-This is used as an intermediate step to generate monolithic files that can then be passed in to `uglify` and/or `cssmin` for [minification](https://en.wikipedia.org/wiki/Minification_(programming)).
+Ceci est utilisé comme une étape intermédiaire pour générer des fichiers monolithiques qui peuvent ensuite être transmis à `uglify` et/ou` cssmin` pour la [minification](https://fr.wikipedia.org/wiki/Minification).
 
 
-### Usage
+### Utilisation
 
-For additional usage documentation, see [`grunt-contrib-concat`](https://npmjs.com/package/grunt-contrib-concat).
+Pour plus d'informations sur l'utilisation, consultez [`grunt-contrib-concat`](https://npmjs.com/package/grunt-contrib-concat).
 
 
 <docmeta name="displayName" value="concat.js">
