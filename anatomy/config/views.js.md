@@ -1,6 +1,6 @@
 # config/views.js
-### Purpose
-This file is where Sails looks to find out which templating engine to use when rendering server side HTML templates.  By default Sails uses ejs but it supports all view engines which implement TJ Holowaychuk's `consolidate.js`, including, but not limited to:
+### Objectif
+Ce fichier est l'endroit où Sails cherche savoir quel moteur de template à utiliser lors du rendu des templates HTML. Par défaut, Sails utilise ejs mais il prend en charge tous les moteurs de templates qui mettent en oeuvre `consolidate.js` de TJ Holowaychuk, y compris, mais sans s'y limiter à :
 
 - ejs
 - jade
