@@ -1,5 +1,5 @@
 # assets/templates
-### Purpose
+### Objectif
 
 Les templates HTML (côté client) sont des conditions préalables importantes pour certains types d'applications client modernes et riches conçues pour les navigateurs; Notamment les [SPAs](https://fr.wikipedia.org/wiki/Application_web_monopage). Pour travailler leur magie, les frameworks comme Backbone, Angular, Ember, et Knockout exigent que vous chargez des templates côté client; Complètement séparé de vos [vues côté serveur] (http://sailsjs.com/documentation/concepts/views). Les nouvelles applications Sails supportent le meilleur des deux mondes.
 
