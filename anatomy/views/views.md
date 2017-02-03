@@ -1,8 +1,8 @@
 # views
-### Purpose
-This is the directory that holds all of your custom views.
+### Objectif
+C'est le répertoire qui contient toutes vos vues.
 
-To create a custom view, create a new directory inside of this then create a new .ejs file.  In order for it to be rendered by a client, you must either set up a route in `config/routes.js` or use the `res.view()` method inside of a custom controller action.
+Pour créer une vue, créez un nouveau répertoire à l'intérieur de celui-ci puis créez un nouveau fichier .ejs. Pour qu'il soit affiché par un client, vous devez soit configurer une route dans `config/routes.js`, soit utiliser la méthode `res.view ()` à l'intérieur d'une action dans l'un de vos contrôleurs.
 
 
 
