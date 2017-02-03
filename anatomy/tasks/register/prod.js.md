@@ -3,7 +3,7 @@
 
 <docmeta name="displayName" value="prod.js">
 
-The production grunt task list.  sails will run this if there is no task list file matching NODE_ENV (eg. NODE_ENV = QA and QA.js exists).
+La liste de tâches grunt de production. Sails exécutera cette opération si aucun fichier de liste de tâches ne correspond à NODE_ENV (par exemple, NODE_ENV=QA et QA.js existent).
 
 ```
 module.exports = function (grunt) {
