@@ -13,19 +13,23 @@ someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 ### Usage
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 | during              | ((function))        | See parameters in the "`during` usage" table below. |
+| 1 | during              | ((function))        | A [procedural parameter](https://en.wikipedia.org/wiki/Procedural_parameter) which Sails will call automatically when a connection has been obtained and made ready for you.  It will receive the arguments specified in the "During" usage table below. |
 
-##### `during` usage
+##### During
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 |  db                 | ((ref))             | The leased database connection |
-| 2 | proceed             | ((function))        | Called when `during` is finished, or if a fatal error occurs, at which time `.leaseConnection()` will take care of releasing the db connection back to the manager (i.e. pool).|
+| 1 | db                  | ((ref))             | Your newly-leased database connection.  (See [`.usingConnection()`](http://sailsjs.com/documentation/reference/waterline-orm/models/using-connection) for more information on what to do with this.) |
+| 2 | proceed             | ((function))        | Call this function when your `during` code is finished, or if a fatal error occurs.<br/><br/>_Usage:_<br/>+ `return proceed();`<br/>+ `proceed(new Error('Oops))`<br/>+ `proceed(undefined, { some: 'arbitrary result'} )`
+
+
+> Like any Node callback, if you call `proceed(new Error('Oops'))` (i.e. with a truthy first argument; conventionally an Error instance), then Sails understands that to mean a fatal error occurred.  Otherwise, it is assumed that everything went according to plan.  In any case, when your code calls `proceed()`, the connection is automatically released back to the pool before calling the final callback.
+
 
 ##### Callback
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.
-| 2 |    _resultMaybe_    | ((Ref?))            |  |
+| 2 |    _resultMaybe_    | ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
 
 ### Example
 ```javascript
@@ -35,15 +39,15 @@ sails.getDatastore()
   Location.findOne({id: locationId})
   .usingConnection(db)
   .exec(function (err, location) {
-    if (err) {return proceed(err);}
-    if (!location) {return proceed.notFound();}
+    if (err) { return proceed(err); }
+    if (!location) { return proceed.notFound(); }
 
     // Get all products at the location
     ProductOffering.find({location: locationId})
     .populate('productType')
     .usingConnection(db)
     .exec(function(err, productOfferings) {
-      if (err) {return proceed(err);}
+      if (err) { return proceed(err); }
       var inventory = _.indexBy(productOfferings, 'id');
       return proceed(undefined, inventory);
     });
