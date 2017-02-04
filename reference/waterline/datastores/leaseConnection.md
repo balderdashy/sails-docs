@@ -36,14 +36,14 @@ someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 sails.getDatastore()
 .leaseConnection(function (db, proceed) {
 
-  Location.findOne({id: locationId})
+  Location.findOne({ id: locationId })
   .usingConnection(db)
   .exec(function (err, location) {
     if (err) { return proceed(err); }
     if (!location) { return proceed.notFound(); }
 
     // Get all products at the location
-    ProductOffering.find({location: locationId})
+    ProductOffering.find({ location: locationId })
     .populate('productType')
     .usingConnection(db)
     .exec(function(err, productOfferings) {
