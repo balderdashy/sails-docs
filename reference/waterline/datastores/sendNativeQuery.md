@@ -28,8 +28,15 @@ datastore.sendNativeQuery(sql, valuesToEscape)
 > Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  The standard [MySQL adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
 
 ```js
+// Build our SQL query template.
+var NAMES_OF_PETS_SQL =
+'SELECT pet.name '+
+'FROM pet '+
+'WHERE pet.species_label = $1 OR pet.species_label = $2';
+
+// Send it to the database.
 sails.getDatastore()
-.sendNativeQuery('SELECT pet.name FROM pet WHERE pet.species_label = $1 OR pet.species_label = $2', [ 'dog', 'cat' ])
+.sendNativeQuery(NAMES_OF_PETS_SQL, [ 'dog', 'cat' ])
 .exec(function(err, rawResult) {
   if (err) { return res.serverError(err); }
 
