@@ -26,12 +26,18 @@ someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 
 
 ##### Callback
+
+The final callback that you pass in to `.exec()`.
+
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.
 | 2 |    _resultMaybe_    | ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
 
 ### Example
+
+Lease a database connection from the default datastore, then use it to send two queries before releasing it back to the pool.
+
 ```javascript
 sails.getDatastore()
 .leaseConnection(function (db, proceed) {
@@ -57,6 +63,8 @@ sails.getDatastore()
   return res.ok();
 });
 ```
+
+
 
 
 <docmeta name="displayName" value=".leaseConnection()">
