@@ -3,7 +3,7 @@
 Lease a new connection from the datastore for use in running multiple queries on the same connection (i.e. so that the logic provided in `during` can reuse the db connection).
 
 
-```
+```js
 someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 
 });
