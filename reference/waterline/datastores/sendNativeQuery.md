@@ -14,7 +14,7 @@ datastore.sendNativeQuery(sql, valuesToEscape)
 ### Usage
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 | sql                 | ((string))          | A SQL string written in the appropriate dialect for this database.  Allows template syntax like `$1`, `$2`, etc. (See example below.)  |
+| 1 | sql                 | ((string))          | A SQL string written in the appropriate dialect for this database.  Allows template syntax like `$1`, `$2`, etc. (See example below.)  If you are using custom table names or column names, be sure to reference those directly (rather than model identities and attribute names).  |
 | 2 | valuesToEscape     | ((array?))           | An array of dynamic, untrusted strings to SQL-escape and inject within `sql`.  _(If you have no dynamic values to inject, then just omit this argument or pass in an empty array here.)_
 
 ##### Callback
@@ -29,7 +29,7 @@ datastore.sendNativeQuery(sql, valuesToEscape)
 
 ```js
 sails.getDatastore()
-.sendNativeQuery('SELECT pet.name FROM pet WHERE pet.name = $1 OR pet.name = $2', [ 'dog', 'cat' ])
+.sendNativeQuery('SELECT pet.name FROM pet WHERE pet.species_label = $1 OR pet.species_label = $2', [ 'dog', 'cat' ])
 .exec(function(err, rawResult) {
   if (err) { return res.serverError(err); }
 
@@ -45,8 +45,8 @@ sails.getDatastore()
 
 
 ### Notes
+> + The SQL query you write should refer to table names and column names, not model identities and attribute names.  If your models are defined with custom table names, or if their attributes are defined with custom column names, do take care.
 > + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client.
-
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">
