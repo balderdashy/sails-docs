@@ -12,7 +12,7 @@ Sails regroupe certaines [tâches par défaut](http://sailsjs.com/documentation/
 
 ### Pipeline d'assets
 
-Le pipeline d'actifs est l'endroit où vous allez organiser les éléments qui seront injectés dans vos vues et qui se trouvent dans le fichier `tasks/pipeline.js`. La configuration de ces éléments est simple et utilise la [configuration des tâches grunt](http://gruntjs.com/configuring-tasks#files) et [wildcard/glob/splat patterns] (http://gruntjs.com/configuring-tasks# Globbing-patterns). Ils sont répartis en trois sections.
+Le pipeline d'assets est l'endroit où vous allez organiser les éléments qui seront injectés dans vos vues et qui se trouvent dans le fichier `tasks/pipeline.js`. La configuration de ces éléments est simple et utilise la [configuration des tâches grunt](http://gruntjs.com/configuring-tasks#files) et [wildcard/glob/splat patterns] (http://gruntjs.com/configuring-tasks# Globbing-patterns). Ils sont répartis en trois sections.
 
 ##### Fichiers CSS à injecter
 Il s'agit d'un tableau des fichiers css à injecter dans votre html en tant que balises `<link>`. Ces balises seront injectées entre les commentaires de `<!--STYLES--><!--STYLES END-->` dans n'importe quelle vue dans laquelle ils apparaissent.
