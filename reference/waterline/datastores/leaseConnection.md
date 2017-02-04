@@ -40,18 +40,18 @@ Lease a database connection from the default datastore, then use it to send two 
 sails.getDatastore()
 .leaseConnection(function (db, proceed) {
 
-  Location.findOne({ id: locationId })
+  Location.findOne({ id: req.param('locationId') })
   .usingConnection(db)
   .exec(function (err, location) {
     if (err) { return proceed(err); }
     if (!location) {
-      err = new Error('Cannot find location with that id (`'+locationId+'`)');
+      err = new Error('Cannot find location with that id (`'+req.param('locationId')+'`)');
       err.code = 'E_NO_SUCH_LOCATION';
       return proceed(err);
     }
 
     // Get all products at the location
-    ProductOffering.find({ location: locationId })
+    ProductOffering.find({ location: req.param('locationId') })
     .populate('productType')
     .usingConnection(db)
     .exec(function(err, productOfferings) {
