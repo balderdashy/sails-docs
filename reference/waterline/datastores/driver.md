@@ -18,7 +18,8 @@ Imagine you're building your own structured data visualizer (e.g. phpMyAdmin).  
 var Driver = sails.getDatastore().driver;
 
 // Create our own dynamic connection manager (e.g. connection pool)
-Driver.createManager({ connectionString: req.param('connectionUrl') }).exec(function(err, managerReport){
+Driver.createManager({ connectionString: req.param('connectionUrl') })
+.exec(function(err, managerReport){
   if (err) { return res.serverError(err); }
   
   Driver.getConnection({ manager: managerReport.manager }).exec(function(err, connectionReport) {
