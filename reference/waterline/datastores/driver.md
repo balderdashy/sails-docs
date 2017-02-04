@@ -26,7 +26,7 @@ Driver.createManager({
   Driver.getConnection({ manager: managerReport.manager }).exec(function(err, connectionReport) {
     if (err) {
       Driver.destroyManager({ manager: managerReport.manager }).exec(function (secondaryErr) {
-        if (err) { return res.serverError(secondaryErr); }
+        if (secondaryErr) { return res.serverError(secondaryErr); }
         return res.serverError(err);
       });//_∏_
       return;
