@@ -44,7 +44,11 @@ sails.getDatastore()
   .usingConnection(db)
   .exec(function (err, location) {
     if (err) { return proceed(err); }
-    if (!location) { return proceed.notFound(); }
+    if (!location) {
+      err = new Error('Cannot find location with that id (`'+locationId+'`)');
+      err.code = 'E_NO_SUCH_LOCATION';
+      return proceed(err);
+    }
 
     // Get all products at the location
     ProductOffering.find({ location: locationId })
@@ -57,7 +61,8 @@ sails.getDatastore()
     });
   });
 }).exec(function (err, inventory) {
-  if (err) { return res.serverError(err); }
+  if (err && err.code === 'E_NO_SUCH_LOCATION') { return res.notFound(); }
+  else if (err) { return res.serverError(err); }
   
   // All done!  Whatever we were doing with that connection worked.
   // Now we can proceed with our business.
