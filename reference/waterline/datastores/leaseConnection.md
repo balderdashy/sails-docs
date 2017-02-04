@@ -4,7 +4,9 @@ Lease a new connection from the datastore for use in running multiple queries on
 
 
 ```
-someDatastore.leaseConnection(during).exec(afterDisconnecting);
+someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
+
+});
 ```
 
 
@@ -20,7 +22,10 @@ someDatastore.leaseConnection(during).exec(afterDisconnecting);
 | 2 | proceed             | ((function))        | Called when `during` is finished, or if a fatal error occurs, at which time `.leaseConnection()` will take care of releasing the db connection back to the manager (i.e. pool).|
 
 ##### Callback
-`afterDisconnecting` is an optional explicit callback that can be run after the db connection is released. If not provided, `.leaseConnection()` will return a deferred object.
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.
+| 2 |    _resultMaybe_    | ((Ref?))            |  |
 
 ### Example
 ```javascript

@@ -3,7 +3,9 @@
 Fetch a preconfigured deferred object hooked up to the sails-mysql adapter (and consequently the appropriate driver)
 
 ```
-someDatastore.transaction(during).exec(afterCommittingOrRollingBack);
+someDatastore.transaction(during).exec(function(err, resultMaybe) {
+
+});
 ```
 
 ### Usage
@@ -16,6 +18,12 @@ someDatastore.transaction(during).exec(afterCommittingOrRollingBack);
 |---|---------------------|---------------------|:------------|
 | 1 | db                  | ((ref))             | The leased (transactional) database connection. |
 | 2 | proceed             | ((function))        | Called when `during` is finished, or if a fatal error occurs.|
+
+##### Callback
+|   |     Argument        | Type                | Details |
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
+| 2 |    _resultMaybe_      | ((Ref?))            |  |
 
 
 ### Example
