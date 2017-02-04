@@ -1,12 +1,12 @@
 # .driver
 
-The generic, low-level [driver](https://github.com/node-machine/driver-interface) for this datastore.
+The generic, stateless, low-level driver for this datastore (if the adapter supports it).
 
 ```
 datastore.driver;
 ```
 
-> This property is not guaranteed to exist for all database adapters.  If the datastore's underlying adapter does not support the [standardized driver interface](), then `driver` will not exist.
+> This property is not guaranteed to exist for all database adapters.  If the datastore's underlying adapter does not support the [standardized driver interface](https://github.com/node-machine/driver-interface), then `driver` will not exist.
 
 
 ### Example
