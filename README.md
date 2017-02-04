@@ -25,7 +25,29 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
     - config (100%)
     - register (100%)
   - views (100%)
-- concepts : En cours de traduction
+- concepts : En cours de traduction (5%)
+  - Assets (100%)
+  - Blueprints
+  - Configuration
+  - Controllers
+  - Custom Responses
+  - Deployment
+  - File Uploads
+  - Globals
+  - Internationalization
+  - Logging
+  - Middleware
+  - ORM
+  - Policies
+  - Programmatic Usage
+  - Realtime
+  - Routes
+  - Security
+  - Services
+  - Sessions
+  - Testing
+  - Views
+  - extending- sails
 - contributing : Pas encore traduit
 - faq : Pas encore traduit
 - irc : Pas encore traduit
