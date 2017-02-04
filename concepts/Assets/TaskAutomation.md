@@ -1,78 +1,77 @@
-# Task Automation
+# Automatisation des tâches
 
-### Overview
+### Vue d'ensemble
 
-The [`tasks/`](http://sailsjs.com/documentation/anatomy/tasks) directory contains a suite of [Grunt tasks](http://gruntjs.com/creating-tasks) and their [configurations](http://gruntjs.com/configuring-tasks).
+Le répertoire [`tasks/`](http://sailsjs.com/documentation/anatomy/tasks) contient une suite de [tâches Grunt](http://gruntjs.com/creating-tasks) et leurs [configurations]( Http://gruntjs.com/configuring-tasks).
 
-Tasks are mainly useful for bundling front-end assets, (like stylesheets, scripts, & client-side markup templates) but they can also be used to automate all kinds of repetitive development chores, from [browserify](https://github.com/jmreidy/grunt-browserify) compilation to [database migrations](https://www.npmjs.org/package/grunt-db-migrate).
+Les tâches sont principalement utiles pour regrouper des ressources frontales (comme les feuilles de style, les scripts et les templates côté-client), mais elles peuvent également être utilisées pour automatiser toutes sortes de tâches de développement répétitives, de [browserify](https://github.com/jmreidy/grunt-browserify) jusqu'à la [migration de base de données](https://www.npmjs.org/package/grunt-db-migrate).
 
-Sails bundles some [default tasks](http://sailsjs.com/documentation/grunt/default-tasks) for convenience, but with [literally hundreds of plugins](http://gruntjs.com/plugins) to choose from, you can use tasks to automate just about anything with minimal effort.  If someone hasn't already built what you need, you can always [author](http://gruntjs.com/creating-tasks) and [publish your own Grunt plugin](http://gruntjs.com/creating-plugins) to [npm](http://npmjs.org)!
+Sails regroupe certaines [tâches par défaut](http://sailsjs.com/documentation/grunt/default-tasks) pour plus de commodité, mais avec la disponibilité d'une centaine de [plugins](http://gruntjs.com/plugins), Vous pouvez utiliser des tâches pour automatiser toute chose avec un effort minimal. Si quelqu'un n'a pas déjà développé ce dont vous avez besoin, vous pouvez toujours [créer](http://gruntjs.com/creating-tasks) et [publier votre propre plugin Grunt](http://gruntjs.com/creating-plugins ) À [npm](http://npmjs.org)!
 
-> If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins.
+> Si vous n'avez pas utilisé [Grunt](http://gruntjs.com/) avant, assurez-vous de consulter ce guide [Grunt] (http://gruntjs.com/getting-started), car il explique comment créer un [Gruntfile](http://gruntjs.com/sample-gruntfile), l'installer et utiliser les plugins Grunt.
 
+### Pipeline d'assets
 
-### Asset pipeline
+Le pipeline d'actifs est l'endroit où vous allez organiser les éléments qui seront injectés dans vos vues et qui se trouvent dans le fichier `tasks/pipeline.js`. La configuration de ces éléments est simple et utilise la [configuration des tâches grunt](http://gruntjs.com/configuring-tasks#files) et [wildcard/glob/splat patterns] (http://gruntjs.com/configuring-tasks# Globbing-patterns). Ils sont répartis en trois sections.
 
-The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
+##### Fichiers CSS à injecter
+Il s'agit d'un tableau des fichiers css à injecter dans votre html en tant que balises `<link>`. Ces balises seront injectées entre les commentaires de `<!--STYLES--><!--STYLES END-->` dans n'importe quelle vue dans laquelle ils apparaissent.
 
-##### CSS Files to Inject
-This is an array of css files to be injected into your html as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
+##### Fichiers Javascript à injecter
+Il s'agit d'un tableau des fichiers Javascript à injecter dans votre html en tant que balises `<script>`. Ces balises seront injectées entre les commentaires `<!--SCRIPTS--><!--SCRIPTS END-->` dans n'importe quelle vue dans laquelle ils apparaissent. Les fichiers sont injectés dans l'ordre dans lequel ils se trouvent dans le tableau (c'est-à-dire que vous devez placer le chemin des dépendances avant le fichier qui en dépend).
 
-##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependencies before the file that depends on them.)
+##### Fichiers de templates à injecter
+Il s'agit d'un tableau des fichiers html qui sera compilé dans une fonction jst et placé dans un fichier `jst.js`. Ce fichier est alors injecté comme une balise `<script>` entre les commentaires de `<!--TEMPLATES--><!--TEMPLATES END-->` dans votre html.
 
-##### Template Files to Inject
-This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+> Vous pouvez modifier également ces wildcard/glob/splat Grunt et le fichier de configuration des tâches qui sont utilisés eux même dans certains fichiers js de la configuration des tâches.
 
-> The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
+### Configuration des tâches
 
-### Task configuration
+Les tâches configurées sont l'ensemble de règles que votre fichier Gruntfile suivra lors de l'exécution. Ils sont entièrement personnalisables et se trouvent dans le répertoire [`tasks/config/`](http://sailsjs.com/documentation/anatomy/my-app/tasks/config). Vous pouvez modifier, omettre ou remplacer n'importe quelle tâche Grunt pour répondre à vos besoins. Vous pouvez également ajouter vos propres tâches Grunt - il suffit d'ajouter un fichier `maTache.js` dans ce répertoire pour configurer la nouvelle tâche, puis de l'enregistrer avec la/les tâche(s) parentale(s) appropriée(s) (voir les fichiers dans` tasks/register/*.js`). Rappelez-vous, Sails est livré avec un ensemble de tâches par défaut utiles qui sont conçus pour vous aider à travailler sans configuration requise.
 
-Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`](http://sailsjs.com/documentation/anatomy/my-app/tasks/config) directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `tasks/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
+##### Configuration d'une tâche personnalisée.
 
-##### Configuring a custom task.
+Configurer une tâche personnalisée dans votre projet est très simple et utilise Grunt & [config](http://gruntjs.com/api/grunt.config) et [task](http://gruntjs.com/api/grunt.) pour vous permettre de rendre votre tâche modulaire. Voici un petit exemple de création d'une nouvelle tâche qui remplace une tâche existante. Disons que nous voulons utiliser le moteur de template [Handlebars](http://handlebarsjs.com/) au lieu du moteur de template Underscore qui est configuré par défaut:
 
-Configuring a custom task into your project is very simple and uses Grunt&rsquo;s [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) APIs to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
-
-* The first step is to install the handlebars grunt plugin using the following command in your terminal:
+* La première étape consiste à installer le plugin grunt Handlebars en utilisant la commande suivante dans votre terminal :
 
 ```bash
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-* Create a configuration file at `tasks/config/handlebars.js`. This is where we&rsquo;ll put our handlebars configuration.
+* Créer un fichier de configuration dans `tasks/config/handlebars.js`. C'est là que nous allons mettre la configuration Handlebars.
 
 ```javascript
 // tasks/config/handlebars.js
 // --------------------------------
-// handlebar task configuration.
+// configuration de la tâche handlebar.
 
 module.exports = function(grunt) {
 
-  // We use the grunt.config api's set method to configure an
-  // object to the defined string. In this case the task
-  // 'handlebars' will be configured based on the object below.
+  // Nous utilisons la méthode `set` de l'api grunt.config pour configurer un
+  // objet de la chaîne définie. Dans ce cas la tâche 'handlebars' 
+  //  sera configurée en se basant sur l'objet ci-dessous.
   grunt.config.set('handlebars', {
     dev: {
-      // We will define which template files to inject
-      // in tasks/pipeline.js
+      // Nous allons définir quel fichier de template à injecter
+      // dans tasks/pipeline.js
       files: {
         '.tmp/public/templates.js': require('../pipeline').templateFilesToInject
       }
     }
   });
 
-  // load npm module for handlebars.
+  // Charger le module npm pour handlebars.
   grunt.loadNpmTasks('grunt-contrib-handlebars');
 };
 ```
 
-* Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* Remplacer le chemin aux fichiers sources dans le pipeline d'assets. Le seul changement ici sera que handelbars recherche les fichiers avec l'extension .hbs tandis que les templates Underscore peuvent être dans des simples fichiers html.
 
 ```javascript
 // tasks/pipeline.js
 // --------------------------------
-// asset pipeline
+// pipeline d'assets
 
 var cssFilesToInject = [
   'styles/**/*.css'
@@ -85,8 +84,8 @@ var jsFilesToInject = [
   'js/**/*.js'
 ];
 
-// We change this glob pattern to include all files in
-// the templates/ direcotry that end in the extension .hbs
+// On change le modèle de chemin pour inclure tous les fichiers dans
+// le dossier templates/ dont l'extension est .hbs
 var templateFilesToInject = [
   'templates/**/*.hbs'
 ];
@@ -104,17 +103,17 @@ module.exports = {
 };
 ```
 
-* Include the handlebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+* Inclure la tâche handlebars dans les tâches compileAssets et syncAssets. C'est là que la tâche jst a été utilisée et nous allons la remplacer par la nouvelle tâche Handlebars.
 
 ```javascript
 // tasks/register/compileAssets.js
 // --------------------------------
-// compile assets registered grunt task
+// compiler les assets enregistrés comme tâche grunt
 
 module.exports = function (grunt) {
   grunt.registerTask('compileAssets', [
     'clean:dev',
-    'handlebars:dev',       // changed jst task to handlebars task
+    'handlebars:dev',       // changer la tâche jst pour handlebars
     'less:dev',
     'copy:dev',
     'coffee:dev'
@@ -123,11 +122,11 @@ module.exports = function (grunt) {
 
 // tasks/register/syncAssets.js
 // --------------------------------
-// synce assets registered grunt task
+// Synchroniser les assets enregistrés comme tâche grunt
 
 module.exports = function (grunt) {
   grunt.registerTask('syncAssets', [
-    'handlebars:dev',      // changed jst task to handlebars task
+    'handlebars:dev',      // changer la tâche jst pour handlebars
     'less:dev',
     'sync:dev',
     'coffee:dev'
@@ -135,38 +134,37 @@ module.exports = function (grunt) {
 };
 ```
 
-* Remove jst task config file. We are no longer using it so we can get rid of `tasks/config/jst.js`. Simply delete it from your project.
+* Supprimer le fichier de configuration de la tâche jst. Nous n'allons pas l'utiliser, donc nous pouvons nous débarrasser de `tasks/config/jst.js`. Il suffit de le supprimer de votre projet.
 
-> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
+> Idéalement, vous devez le supprimer de votre projet et de ses dépendances. Cela peut être fait en exécutant cette commande dans votre terminal.
 ```bash
 npm uninstall grunt-contrib-jst --save-dev
 ```
+### Déclencheurs de tâches
 
-### Task triggers
+Dans [le mode développement](http://sailsjs.com/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails exécute la tâche `default` ([`tasks/register/default.js`](http://sailsjs.com/documentation/anatomy/tasks/register/default.js.html)). Ceci compile le LESS, CoffeeScript et les templates JST (côté-client), puis les lie automatiquement à partir des vues dynamiques et des pages HTML statiques de votre application.
 
-In [development mode](http://sailsjs.com/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](http://sailsjs.com/documentation/anatomy/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
+En production, Sails exécute la tâche `prod` ([`tasks/register/prod.js`](http://sailsjs.com/documentation/anatomy/tasks/register/prod.js.html)) qui agit comme `default`, mais minifie en plus les scripts et les feuilles de style de votre application. Cela réduit le temps de chargement de votre application et l'utilisation de la bande passante.
 
-In production, Sails runs the `prod` task ([`tasks/register/prod.js`](http://sailsjs.com/documentation/anatomy/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
-
-These task triggers are ["basic" Grunt tasks](http://gruntjs.com/creating-tasks#basic-tasks) located in the [`tasks/register/`](http://sailsjs.com/documentation/anatomy/tasks/register) folder.  Below, you'll find the complete reference of all task triggers in Sails, and the command which kicks them off:
+Ces déclencheurs de tâches sont [des tâches grunt basiques](http://gruntjs.com/creating-tasks#basic-tasks) situées dans le répertoire [`tasks/register/`](http://sailsjs.com/documentation/anatomy/tasks/register). Vous trouverez ci-dessous la référence complète de tous les déclencheurs de tâches dans Sails et la commande qui les exécute:
 
 ##### `sails lift`
 
-Runs the **default** task (`tasks/register/default.js`).
+Exécute la tâche **default** (`tasks/register/default.js`).
 
 ##### `sails lift --prod`
 
-Runs the **prod** task (`tasks/register/prod.js`).
+Exécute la tâche **prod** (`tasks/register/prod.js`).
 
 ##### `sails www`
 
-Runs the **build** task (`tasks/register/build.js`) that compiles all the assets to `www` subfolder instead of `.tmp/public` using relative paths in references. This allows serving static content with Apache or Nginx instead of relying on ['www middleware'](http://sailsjs.com/documentation/concepts/Middleware).
+Exécute la tâche **build** (`tasks/register/build.js`) qui compile tous les assets dans le sous-dossier `www` au lieu de `.tmp/public` en utilisant des chemins relatifs dans les références. Cela permet de diffuser des contenus statiques avec Apache ou Nginx au lieu de s'appuyer sur ['middleware'] (http://sailsjs.com/documentation/concepts/Middleware).
 
 ##### `sails www --prod` (production)
 
-Runs the **buildProd** task (`tasks/register/buildProd.js`) that does the same as **build** task but also optimizes assets.
+Exécute la tâche **buildProd** (`tasks/register/buildProd.js`) qui effectue la même tâche que **build** mais optimise également les ressources.
 
-You may run other tasks by specifying setting NODE_ENV and creating a task list in tasks/register/ with the same name.  For example, if NODE_ENV is QA, sails will run tasks/register/QA.js if it exists.
+Vous pouvez exécuter d'autres tâches en spécifiant le NODE_ENV et en créant une liste de tâches dans `tasks/register/` souss le même nom. Par exemple, si NODE_ENV est QA, sails exécutera `tasks/register/QA.js` si le fichier existe.
 
 
 <docmeta name="displayName" value="Task Automation">
