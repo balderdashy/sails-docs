@@ -1,13 +1,11 @@
-# Using .sailsrc Files
+# Utilisation des fichiers .sailsrc
 
 
-In addition to the other methods of configuring your app, as of version 0.10, you can now specify configuration for one or more apps in `.sailsrc` file(s) (thanks to Dominic Tarr's excellent [`rc` module](https://github.com/dominictarr/rc)).  `rc` files are most useful for configuring the command-line and/or applying configuration settings to ALL of the Sails apps you run on your computer.
+En plus des autres méthodes de configuration de votre application, à partir de la version 0.10, vous pouvez maintenant spécifier la configuration d'une ou plusieurs applications dans le fichier `.sailsrc` (grâce à l'excellent [module `rc`] de Dominic Tarr (https://github.com/dominictarr/rc)). Les fichiers `rc` sont très utiles pour configurer la ligne de commande et/ou appliquer les paramètres de configuration à TOUTES les applications Sails que vous exécutez sur votre ordinateur.
 
-When the Sails CLI runs a command, it first looks for  `.sailsrc` files (in either JSON or [.ini](http://en.wikipedia.org/wiki/INI_file) format) in the current directory and in your home folder (i.e. `~/.sailsrc`) (every newly generated Sails app comes with a boilerplate `.sailsrc` file).  Then it merges them in to its existing configuration.
+Lorsque la CLI Sails lance une commande, elle recherche d'abord les fichiers `.sailsrc` (en format JSON ou [.ini](http://en.wikipedia.org/wiki/INI_file)) dans le répertoire courant et dans votre répertoire (C'est-à-dire `~/.sailsrc`) (chaque nouvelle application Sails est livrée avec un fichier` .sailsrc`). Ensuite, il les fusionne à sa configuration existante.
 
-> Actually, Sails looks for `.sailsrc` files in a few other places (following [rc conventions](https://github.com/dominictarr/rc#standards)).  You can put a `.sailsrc` file at any of those paths.  That said, stick to convention when you can- the best place to put a global `.sailsrc` file is in your home directory (i.e. `~/.sailsrc`).
-
-
+> En fait, Sails recherche des fichiers `.sailsrc` dans quelques autres endroits (suivant [les conventions rc](https://github.com/dominictarr/rc#standards)). Vous pouvez mettre un fichier `.sailsrc` sur l'un de ces chemins. Cela dit, respectez les conventions lorsque vous le pouvez- le meilleur endroit pour mettre un fichier global `.sailsrc` est dans votre répertoire personnel (c'est-à-dire `~/.sailsrc`).
 
 
 
