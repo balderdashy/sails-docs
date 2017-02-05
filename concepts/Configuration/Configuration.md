@@ -1,95 +1,88 @@
 # Configuration
 
-### Overview
+### Vue d'ensemble
 
-While Sails dutifully adheres to the philosophy of [convention-over-configuration](http://en.wikipedia.org/wiki/Convention_over_configuration), it is important to understand how to customize those handy defaults from time to time.  For almost every convention in Sails, there is an accompanying set of configuration options that allow you to adjust or override things to fit your needs.
+Alors que Sails adhère scrupuleusement à la philosophie de [la convention plutôt que la configuration](https://fr.wikipedia.org/wiki/Convention_plut%C3%B4t_que_configuration), il est important de comprendre comment personnaliser ces valeurs par défaut de temps en temps. Dans Sails, il existe pratiquement dans toutes les conventions un ensemble d'options de configuration qui vous permettent d'ajuster ou de surcharger les choses en fonction de vos besoins.
 
-> Here looking for a particular setting?  Head over to [Reference > Configuration](sailsjs.com/docs/reference/configuration) to see a complete guide to all configuration options available in Sails.
+> Vous êtes ici à la recherche d'un configuration particuliére ? Rendez-vous sur [Référence > Configuration](sailsjs.com/docs/reference/configuration) pour afficher un guide complet de toutes les options de configuration disponibles dans Sails.
 
-Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](http://sailsjs.com/documentation/anatomy/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](http://sailsjs.com/documentation/anatomy/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
+Les applications Sails peuvent être [configurées par codage](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), en spécifiant [des variables d'environnement](https://fr.wikipedia.org/wiki/Variable_d%27environnement) ou des arguments de ligne de commande, en changeant les fichiers locaux ou globaux [`.sailsrc`](http://sailsjs.com/documentation/anatomy/sailsrc.html ), ou (le plus souvent) à l'aide des fichiers de configuration classiques situés dans le dossier [`config/`](http://sailsjs.com/documentation/anatomy/config) des nouveaux projets. La configuration finale (fusionnée) utilisée dans votre application est disponible comme variable globale `sails.config` pendant l'exécution de votre application Sails.
 
+### Les fichiers de configuration standard (`config/*`)
 
-### Standard configuration files (`config/*`)
+Par défaut, un certain nombre de fichiers de configuration sont générés dans toute nouvelle application Sails. Ces fichiers boilerplate incluent un certain nombre de commentaires, qui sont là pour vous servir de référence rapide et vous éviter à avoir à sauter entre les documents et votre éditeur de texte.
 
-A number of configuration files are generated in new Sails apps by default.  These boilerplate files include a number of inline comments, which are designed to provide a quick, on-the-fly reference without having to jump back and forth between the docs and your text editor.
+Dans la plupart des cas, les clés de niveau supérieur de l'objet `sails.config` (par exemple,` sails.config.views`) correspondent à un fichier de configuration particulier de votre application (par exemple `config/views.js`); Cependant les paramètres de configuration peuvent être arrangés comme vous le souhaitez dans les fichiers de votre répertoire `config/`. La partie importante est le nom (c'est-à-dire la clé) du paramètre, et non le fichier dont il provient.
 
-In most cases, the top-level keys on the `sails.config` object (e.g. `sails.config.views`) correspond to a particular configuration file (e.g. `config/views.js`) in your app; however configuration settings may be arranged however you like across the files in your `config/` directory.  The important part is the name (i.e. key) of the setting- not the file it came from.
-
-For instance, let's say you add a new file, `config/foo.js`:
+Par exemple, disons que vous ajoutez un nouveau fichier, `config/foo.js`:
 
 ```js
 // config/foo.js
-// The object below will be merged into `sails.config.blueprints`:
+// L'objet ci-dessous sera fusionné en `sails.config.blueprints`:
 module.exports.blueprints = {
   shortcuts: false
 };
 ```
+Pour obtenir une référence exhaustive des options de configuration individuelles et du fichier dans lequel elles se trouvent par défaut, consultez les pages de référence de cette section ou consultez ["`config/`"](http://sailsjs.com/documentation/anatomy/config) dans [L'anatomie d'une application Sails](http://sailsjs.com/documentation/anatomy) pour avoir une vue d'ensemble.
 
-For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](http://sailsjs.com/documentation/anatomy/config) in [The Anatomy of a Sails App](http://sailsjs.com/documentation/anatomy) for a higher-level overview.
+### Fichiers spécifiques à l'environnement (`config/env/*`)
 
-### Environment-specific files (`config/env/*`)
+Les paramètres spécifiés dans les fichiers de configuration standard sont généralement disponibles dans tous les environnements (développement, production, test, etc.). Si vous souhaitez que certains paramètres prennent effet uniquement dans certains environnements, vous pouvez utiliser les fichiers spéciaux et les dossiers spécifiques à l'environnement:
 
-Settings specified in the standard configuration files will generally be available in all environments (i.e. development, production, test, etc.).  If you'd like to have some settings take effect only in certain environments, you can use the special environment-specific files and folders:
+* Tous les fichiers sous le dossier `/config/env/<environment-name>` seront chargés *uniquement* lorsque Sails est démarrée dans l'environnement `<environment-name>`. Par exemple, les fichiers sauvegardés sous `config/env/production` ne seront chargés que lorsque Sails est démarrée en mode production.
+* Tous les fichiers sous `config/env/<environment-name>.js` seront chargés *uniquement* lorsque Sails est démarrée dans l'environnement `<environment-name>` et seront fusionnés au-dessus de tous les paramètres chargés depuis le sous-dossier spécifique à l'environnement. Par exemple, les paramètres de `config/env/production.js` auront une priorité sur ceux des fichiers du dossier `config/env/production`.
 
-* Any files saved under the `/config/env/<environment-name>` folder will be loaded *only* when Sails is lifted in the `<environment-name>` environment.  For example, files saved under `config/env/production` will only be loaded when Sails is lifted in production mode.
-* Any files saved as `config/env/<environment-name>.js` will be loaded *only* when Sails is lifted in the `<environment-name>` environment, and will be merged on top of any settings loaded from the environment-specific subfolder.  For example, settings in `config/env/production.js` will take precedence over those in the files in the  `config/env/production` folder.
-
-By default, your app runs in the "development" environment.  The recommended approach for changing your app's environment is by using the `NODE_ENV` environment variable:
+Par défaut, votre application s'exécute dans l'environnement de développement. L'approche recommandée pour modifier l'environnement de votre application consiste à utiliser la variable d'environnement `NODE_ENV`:
 ```
 NODE_ENV=production node app.js
 ```
 
-> The `production` environment is special-- depending on your configuration, it enables compression, caching, minification, etc.
+> L'environnement de `production` est spécial-- selon votre configuration, il permet la compression, la mise en cache, la minification, etc.
 >
-> Also note that if you are using `config/local.js`, the configuration exported in that file takes precedence over environment-specific configuration files.
+> Notez également que si vous utilisez `config/local.js`, la configuration exportée dans ce fichier a priorité sur les fichiers de configuration spécifiques à l'environnement.
 
+### Le fichier `config / local.js`
 
-### The `config/local.js` file
+Vous pouvez utiliser le fichier `config/local.js` pour configurer une application Sails pour votre environnement local (votre ordinateur portable, par exemple). Les paramètres de ce fichier ont priorité sur tous les autres fichiers de configuration à l'exception de [.sailsrc](http://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html). Comme ils sont destinés uniquement à une utilisation locale, ils ne doivent pas être mis sous contrôle de version (et sont inclus dans le fichier `.gitignore` par défaut pour cette raison). Utilisez `local.js` pour stocker les paramètres de la base de données locale, modifier le port utilisé lors du démarrage d'une application sur votre ordinateur, etc.
 
-You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+Pour plus d'informations, voir [http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html](http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html).
 
-See [http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html](http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html) for more information.
+### Accès à `sails.config` dans votre application
 
-
-### Accessing `sails.config` in your app
-
-The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](http://sailsjs.com/documentation/concepts/Globals) during lift, and therefore available from anywhere in your app.
+L'objet `config` est disponible sur l'instance de l'application Sails (`sails`). Par défaut, il est exposé sur [une portée globale](http://sailsjs.com/documentation/concepts/Globals) au cours du démarrage et, par conséquent, disponible partout dans votre application.
 
 ##### Example
 ```javascript
-// This example checks that, if we are in production mode, csrf is enabled.
-// It throws an error and crashes the app otherwise.
+// Cet exemple vérifie que, si nous sommes en mode production, csrf est activé.
+// Il lance une erreur et bloque l'application sinon.
 if (sails.config.environment === 'production' && !sails.config.csrf) {
-  throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
+  throw new Error('STOP ! CSRF doit toujours être activé en production !');
 }
 ```
 
-### Setting `sails.config` values directly using environment variables
+### Définition des valeurs `sails.config` directement à l'aide de variables d'environnement
 
-In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  For example, you could do the following to set the [CORS origin](http://sailsjs.com/documentation/concepts/security/cors) (`sails.config.cors.origin`) to "http://somedomain.com" on the command line:
+Outre l'utilisation des _fichiers_ de configuration, vous pouvez définir des valeurs de configuration individuelles en ligne de commande lorsque vous lancez Sails en préfixant les noms des clés de configuration avec `sails_` et en séparant les noms de clés imbriquées par des doubles soulignements (`__`). Par exemple, vous pouvez effectuer les opérations suivantes pour définir l'origine [CORS](http://sailsjs.com/documentation/concepts/security/cors) (`sails.config.cors.origin`) à "http://mondomaine.com" en ligne de commande :
 
 ```javascript
-sails_cors__origin="http://somedomain.com" sails lift
+sails_cors__origin="http://mondomaine.com" sails lift
 ```
+Cette valeur sera effective _seulement_ pendant la durée de vie de cette instance Sails en particulier et surchargera toutes les valeurs dans les fichiers de configuration.
 
-This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
-
-
-> There are a couple of special exceptions to the rule: `NODE_ENV` and `PORT`.
-> + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
-> + Similarly, `PORT` is just another way to set [`sails.config.port`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigport).  This is strictly for convenience and backwards compatibility.
+> Il existe quelques exceptions spéciales à la règle: `NODE_ENV` et` PORT`.
+> + `NODE_ENV` est une convention pour toute application Node.js. Lorsqu'elle est définie sur `'production'`, elle définit [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
+> + De même, `PORT` est juste une autre façon de définir [`sails.config.port`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigport). C'est strictement pour la commodité et la retro-compatibilité.
 >
-> Here's a relatively common example where you might use both of these environment variables at the same time:
+> Voici un exemple relativement courant où vous pouvez utiliser ces deux variables d'environnement en même temps :
 >
 > ```bash
 > PORT=443 NODE_ENV=production sails lift
 > ```
 
+### Configuration personnalisée
+Sails reconnaît de nombreux paramètres différents, les espaces de noms étant placés sous différentes clés de niveau supérieur (par exemple, `sails.config.sockets` et `sails.config.blueprints`). Cependant, vous pouvez également utiliser `sails.config` pour votre propre configuration personnalisée (par exemple, `sails.config.someProprietaryAPI.secret`).
 
-### Custom Configuration
-Sails recognizes many different settings, namespaced under different top level keys (e.g. `sails.config.sockets` and `sails.config.blueprints`).  However you can also use `sails.config` for your own custom configuration (e.g. `sails.config.someProprietaryAPI.secret`).
-
-##### Example
+##### Exemple
 
 ```javascript
 // config/linkedin.js
@@ -100,30 +93,22 @@ module.exports.linkedin = {
 ```
 
 ```javascript
-// In your controller/service/model/hook/whatever:
+// Dans votre controller/service/model/hook/whatever:
 // ...
 var apiKey = sails.config.linkedin.apiKey;
 var apiSecret = sails.config.linkedin.apiSecret;
 // ...
 ```
 
+### Configuration de l'interface de ligne de commande `sails` (CLI)
 
+Lorsqu'il s'agit de configuration, la plupart du temps, vous vous concentrez sur la gestion des paramètres d'exécution d'une application particulière: le port, les connexions à la base de données, etc. Cependant, il peut également être utile de personnaliser la CLI Sails elle-même; Pour simplifier votre flux de travail, réduire les tâches répétitives, effectuer l'automatisation de la construction personnalisée, etc. Heureusement, Sails v0.10 a ajouté un nouvel outil puissant pour le faire.
 
+Le fichier [`.sailsrc`](http://sailsjs.com/documentation/anatomy/sailsrc.html) est différent des autres fichiers de configuration de Sails car il peut également être utilisé pour configurer la CLI de Sails, soit pour le système en totalité, pour un groupe de répertoires, ou seulement lorsque vous êtes dans un dossier particulier. La raison principale pour cela est de personnaliser les [générateurs](http://sailsjs.com/documentation/concepts/extended-sails/Generators) qui sont utilisés lorsque `sails generate` et `sails new` sont exécutés, mais il peut également être utile d'installer vos propres générateurs personnalisés ou appliquer des surcharges de configuration codés en dur.
 
-### Configuring the `sails` Command-Line Interface
+Et puisque Sails recherchera le `.sailsrc` le plus proche dans les répertoires parents, vous pouvez utiliser ce fichier en toute sécurité pour configurer des paramètres sensibles que vous ne pouvez pas enregistrer dans votre référentiel de code (comme votre **mot de passe de base de données**_.) Il suffit d'inclure un fichier `.sailsrc` dans votre répertoire "$HOME". Pour plus d'informations, voir [la documentation de `.sailsrc`] (http://sailsjs.com/documentation/anatomy/sailsrc.html.
 
-When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database connections, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetitive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.
-
-The [`.sailsrc` file](http://sailsjs.com/documentation/anatomy/sailsrc.html) is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators](http://sailsjs.com/documentation/concepts/extending-sails/Generators) that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
-
-And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](http://sailsjs.com/documentation/anatomy/sailsrc.html) files for more information.
-
-
-
-
-### Notes
-> The built-in meaning of the settings in `sails.config` are, in some cases, only interpreted by Sails during the "lift" process.  In other words, changing some options at runtime will have no effect.  To change the port your app is running on, for instance, you can't just change `sails.config.port`-- you'll need to change or override the setting in a configuration file or as a command-line argument, etc., then restart the server.
-
-
+### Remarques
+> Les paramètres de `sails.config` ne sont, dans certains cas, interprétés que par Sails lors du processus "lift". En d'autres termes, la modification de certaines options au moment de l'exécution n'aura aucun effet. Pour changer le port sur lequel votre application s'exécute, par exemple, vous ne pouvez pas simplement changer `sails.config.port` - vous devrez modifier ou remplacer le paramètre dans un fichier de configuration ou en argument de ligne de commande, etc., puis redémarrez le serveur.
 
 <docmeta name="displayName" value="Configuration">
