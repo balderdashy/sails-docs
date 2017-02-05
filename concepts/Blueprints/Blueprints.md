@@ -1,13 +1,13 @@
 # Blueprints
 
-### Overview
+### Vue d'ensemble
 
-Like any good web framework, Sails aims to reduce both the amount of code you write and the time it takes to get a functional app up and running.  _Blueprints_ are Sails&rsquo; way of quickly generating API [routes](http://sailsjs.com/documentation/concepts/routes) and [actions](http://sailsjs.com/documentation/concepts/controllers#?actions) based on your application design.
+Comme tout bon framework Web, Sails vise à réduire à la fois la quantité de code que vous écrivez et le temps qu'il faut pour obtenir une application fonctionnelle et opérationnelle. Les _Blueprints_ sont la façon avec laquelle Sails permet de générer rapidement [les routes d'API](http://sailsjs.com/documentation/concepts/routes) et [les actions](http://sailsjs.com/documentation/concepts/controllers#?actions) en fonction de la conception de votre application.
 
-Together, [blueprint routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) and [blueprint actions](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) constitute the **blueprint API**, the built-in logic that powers the [RESTful JSON API](http://en.wikipedia.org/wiki/Representational_state_transfer) you get every time you create a model and controller.
+Ensemble, [les routes Blueprint] (http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) et [Les actions Blueprint](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) constituent L'API **Blueprint**, la logique intégrée qui alimente l'API JSON [RESTful](https://fr.wikipedia.org/wiki/Representational_state_transfer) que vous obtenez à chaque fois que vous créez un modèle et un contrôleur.
 
-For example, if you create a `User.js` model and `UserController.js` controller file in your project, then with blueprints enabled you will be able to immediately visit `/user/create?name=joe` to create a user, and visit `/user` to see an array of your app's users.  All without writing a single line of code!
+Par exemple, si vous créez un modèle `Utilisateur.js` et un contrôleur `UtilisateurController.js` dans votre projet, alors avec Blueprints, vous pourrez immédiatement visiter `/utilisateur/create?name=Julie` pour créer un utilisateur , et visitez `/user` pour voir la liste des utilisateurs de votre application. Tout cela sans écrire une seule ligne de code !!
 
-Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
+Les Blueprint sont excellents pour le prototypage, mais ils sont également un outil puissant dans la production en raison de leur capacité à être remplacé, protégé, étendu ou désactivé entièrement.
 
 <docmeta name="displayName" value="Blueprints">
