@@ -1,10 +1,10 @@
-# Blueprint Actions
+# Les actions Blueprint
 
-Blueprint actions (not to be confused with blueprint action *routes*) are generic actions designed to work with any of your controllers that have a model of the same name (e.g. `ParrotController` would need a `Parrot` model).  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model and an empty `UserController.js` controller, `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Les actions Blueprint (à ne pas confondre avec les *routes* des actions Blueprint) sont des actions génériques conçues pour fonctionner avec n'importe lequel de vos contrôleurs disposant d'un modèle ayant le même nom (par exemple `PatateController` aurait besoin d'un modèle `Patate`). Considérez-les comme le comportement par défaut de votre application. Par exemple, si vous avez un modèle `Utilisateur.js` et un contrôleur `UtilisateurController.js` vide, alors les actions `find`,` create`, `update`,` destroy`, `populate`,` add` et `remove` existeront implicitement, sans que vous ayez à les écrire.
 
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).  Alternatively, you can override the blueprint action _everywhere in your app_ by creating your own custom blueprint action. (e.g. `api/blueprints/create.js`).
+Par défaut, les routes RESTful du Blueprint et les routes de raccourci sont liés à leurs actions Blueprint correspondantes. Toutefois, toute action Blueprint peut être surchargée dans un contrôleur particulier en créant une action personnalisée (par exemple, `PatateController.find`). Sinon, vous pouvez remplacer l'action Blueprint _n'importe où dans votre application_ en créant votre propre action Blueprint personnalisée (Par exemple `api/blueprints/create.js`).
 
-The current version of Sails ships with the following blueprint actions:
+La version actuelle de Sails est livrée avec les actions Blueprint suivantes:
 
 + [find](http://sailsjs.com/documentation/reference/blueprint-api/Find)
 + [findOne](http://sailsjs.com/documentation/reference/blueprint-api/FindOne)
@@ -15,19 +15,19 @@ The current version of Sails ships with the following blueprint actions:
 + [add](http://sailsjs.com/documentation/reference/blueprint-api/Add)
 + [remove](http://sailsjs.com/documentation/reference/blueprint-api/Remove)
 
-##### Overriding blueprint actions
+##### Surcharger les actions blueprint
 
-You may also override any of the actions for a model by naming your function method the same name as the blueprint action.
+Vous pouvez également surcharger n'importe quelle action d'un modèle en nommant votre méthode avec le même nom que l'action Blueprint.
 
 ```javascript
 module.exports = {
   findOne: function (req, res) {
-    return res.json(403, 'Single model lookup is denied.');
+    return res.json(403, 'La recherche est désactivée !');
   }
 }
 
 ```
-For more information about blueprints, including how to disable and override them, see the [Blueprint API reference](http://sailsjs.com/documentation/reference/blueprint-api)
+Pour plus d'informations sur les actions Blueprint, y compris sur la façon de les désactiver et de les srucharger, voir [la référence de l'API Blueprint](http://sailsjs.com/documentation/reference/blueprint-api)
 
 
 <docmeta name="displayName" value="Blueprint Actions">
