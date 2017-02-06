@@ -13,17 +13,17 @@ someDatastore.transaction(during).exec(function(err, resultMaybe) {
 |---|---------------------|---------------------|:------------|
 | 1 | during              | ((function))        | See parameters in the "`during` usage" table below. |
 
-##### `during` usage
+##### During
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
 | 1 | db                  | ((ref))             | The leased (transactional) database connection. |
-| 2 | proceed             | ((function))        | Called when `during` is finished, or if a fatal error occurs.|
+| 2 | proceed             | ((function))        | Call this function when your `during` code is finished, or if a fatal error occurs.<br/><br/>_Usage:_<br/>&bull; `return proceed();`<br/>&bull; `proceed(new Error('Oops))`<br/>&bull; `proceed(undefined, { some: 'arbitrary result'} )`<br/><br/>_Like any Node callback, if you call `proceed(new Error('Oops'))` (i.e. with a truthy first argument; conventionally an Error instance), then Sails understands that to mean a fatal error occurred.  Otherwise, it is assumed that everything went according to plan.._
 
 ##### Callback
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
-| 2 |    _resultMaybe_      | ((Ref?))            |  |
+| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using._
+| 2 |    _resultMaybe_      | ((Ref?))          | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
 
 
 ### Example
