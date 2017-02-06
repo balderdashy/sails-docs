@@ -30,4 +30,4 @@ Par exemple, la route manuelle suivant entraînera votre application à déclenc
 Une discussion complète sur le routage manuel est hors de la portée de ce document-- veuillez consulter la [documentation sur le routage](http://sailsjs.com/documentation/concepts/Routes) pour un aperçu complet sur les options disponibles.
 
 
-<docmeta name="displayName" value="Routing to Controllers">
+<docmeta name="displayName" value="Routage vers les contrôleurs">
