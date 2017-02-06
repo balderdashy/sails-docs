@@ -1,15 +1,15 @@
-# Disabling Globals
+# Désactiver les variables globales
 
-Sails determines which globals to expose by looking at [`sails.config.globals`](http://sailsjs.com/documentation/reference/sails.config/sails.config.globals.html), which is conventionallly configured in [`config/globals.js`](http://sailsjs.com/documentation/anatomy/config/globals.js.html).
+Sails détermine quelles variables globales à exposer en vérifiant [`sails.config.globals`](http://sailsjs.com/documentation/reference/sails.config/sails.config.globals.html), qui est conventionnellement configuré dans [`config/globals.js`](http://sailsjs.com/documentation/anatomy/config/globals.js.html).
 
-To disable all global variables, just set the setting to `false`:
+Pour désactiver toutes les variables globales, il suffit de définir le paramètre `false`:
 
 ```js
 // config/globals.js
 module.exports.globals = false;
 ```
 
-To disable _some_ global variables, specify an object instead, e.g.:
+Pour désactiver _quelques_ variables globales, spécifiez un objet à la place, par exemple:
 
 ```js
 // config/globals.js
@@ -21,12 +21,12 @@ module.exports.globals = {
 };
 ```
 
-### Notes
+### Remarques
 
-> + Bear in mind that none of the globals, including `sails`, are accessible until _after_ sails has loaded.  In other words, you won't be able to use `sails.models.user` or `User` outside of a function (since `sails` will not have finished loading yet.)
+> + Gardez à l'esprit qu'aucun des variables globales, y compris `sails`, n'est accessible jusqu'à ce que sails soit chargé. En d'autres termes, vous ne pourrez pas utiliser `sails.models.utilisateur` ou `Utilisateur` en dehors d'une fonction (puisque `sails` n'aura pas encore fini de charger.)
 
-<!-- not true anymore:
-Most of this section of the docs focuses on the methods and properties of `sails`, the singleton object representing your app.
+<!-- Ce n'est plus le cas:
+La plupart de cette section de la documentation se concentre sur les méthodes et les propriétés de `sails`, l'objet singleton représentant votre application.
 -->
 
-<docmeta name="displayName" value="Disabling Globals">
+<docmeta name="displayName" value="Désactiver les variables globales">
