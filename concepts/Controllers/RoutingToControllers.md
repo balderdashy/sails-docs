@@ -1,33 +1,33 @@
-# Routing to Controllers
+# Routage vers les contrôleurs
 
-By default, Sails will create a [blueprint action route](http://sailsjs.com/documentation/reference/blueprint-api) for each action in a controller, so that a `GET` request to `/:controllerIdentity/:nameOfAction` will trigger the action.  If the example controller in the previous section was saved as `api/controllers/SayController.js`, then the `/say/hi` and `/say/bye` routes would be made available by default whenever the app was lifted.  If the controller was saved under the subfolder `/we`, then the routes would be `/we/say/hi` and `/we/say/bye`.  See the [blueprints documentation](http://sailsjs.com/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
+Par défaut, Sails créera une route d'action [Blueprint] (http://sailsjs.com/documentation/reference/blueprint-api) pour chaque action d'un contrôleur, de sorte qu'une requête `GET` à `/:MonControlleur/:monAction` déclenchera l'action. Si l'exemple de contrôleur de la section précédente était enregistré comme `api/controllers/MessageController.js`, les routes `/message/salut` et `/message/aurevoir` seraient mises à disposition par défaut chaque fois que l'application était démarrée. Si le contrôleur a été enregistré sous le sous-dossier `/mon`, alors les itinéraires seraient `/mon/message/salut` et `/mon/message/aurevoir`. Pour plus d'informations sur Sails & les routes Blueprint, reportez-vous à [la documentation de l'API Blueprint](http://sailsjs.com/documentation/reference/blueprint-api).
 
-Besides the default routing, Sails allows you to manually bind routes to controller actions using the [`config/routes.js`](http://sailsjs.com/documentation/concepts/Routes) file.  Some examples of when you might want to use explicit routes are:
+Apart le routage par défaut, Sails vous permet de lier manuellement les routes aux actions du contrôleur à l'aide du fichier [`config/routes.js`](http://sailsjs.com/documentation/concepts/Routes). Voici quelques exemples d'utilisation de routes explicites:
 
-+ When you want to use separate actions to handle the same route path, based on the [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verb).  The aforementioned **action blueprint** routes bind *all* request methods for a path to a given action, including `GET`, `POST`, `PUT`, `DELETE`, etc.
-+ When you want an action to be available at a custom URL (e.g. `PUT /login`, `POST /signup`, or a "vanity URL" like `GET /:username`)
-+ When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)
++ Lorsque vous souhaitez utiliser des actions distinctes pour gérer le même chemin de route, basé sur la méthode [HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verbe). Les **actions Blueprint** mentionnés ci-dessus lient *toutes* les méthodes HTTP d'un chemin d'accès à une action donnée, y compris `GET`,` POST`, `PUT`,` DELETE`, etc.
++ Lorsque vous voulez qu'une action soit disponible sur une URL personnalisée (par exemple, `PUT /login`, `POST /inscription` ou une 'URL de vanité' comme `GET /:identifiant`).
++ Lorsque vous souhaitez configurer des options supplémentaires pour la manière dont la route doit être gérée (par exemple, une configuration CORS spéciale).
 
-To manually bind a route to a controller action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the controller name + `.` + action name as the value (i.e. the **route target**).
+Pour lier manuellement une route à une action du contrôleur dans le fichier `config/routes.js`, vous pouvez utiliser le verbe HTTP et le chemin d'accès (c-à-d. **L'adresse de route**) comme clé et le nom du contrôleur + `.` + le nom d'action en tant que valeur (c'est-à-dire la **cible de la route**).
 
-For example, the following manual route will cause your app to trigger the `makeIt()` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
+Par exemple, la route manuelle suivant entraînera votre application à déclencher l'action `faire()` dans `api/controllers/SandwichController.js` chaque fois qu'elle reçoit une requête POST à `/faire/un/sandwich`:
 
 ```js
-  'POST /make/a/sandwich': 'SandwichController.makeIt'
+  'POST /faire/un/sandwich': 'SandwichController.faire'
 ```
 
 
-> **Note:**
+> ** Note: **
 >
-> For controller files saved in subfolders, the subfolder is part of the controller identity:
+> Pour les contrôleurs enregistrés dans des sous-dossiers, le sous-dossier fait partie de l'identité du contrôleur:
 >
 > ```js
->   '/do/homework': 'stuff/things/HomeworkController.do'
+> '/faire/mes/devoirs': 'ecole/math/ExericeController.faire'
 > ```
 >
-> This will cause the `do()` action in `api/controllers/stuff/things/HomeworkController.js` to be triggered whenever `/do/homework` is requested.
+> Cela provoquera l'action `faire()` dans `api/controllers/ecole/math/ExericeController.js` pour être déclenchée chaque fois que `/faire/mes/devoirs` est demandé.
 
-A full discussion of manual routing is out of the scope of this doc--please see the [routes documentation](http://sailsjs.com/documentation/concepts/Routes) for a full overview of the available options.
+Une discussion complète sur le routage manuel est hors de la portée de ce document-- veuillez consulter la [documentation sur le routage](http://sailsjs.com/documentation/concepts/Routes) pour un aperçu complet sur les options disponibles.
 
 
 <docmeta name="displayName" value="Routing to Controllers">
