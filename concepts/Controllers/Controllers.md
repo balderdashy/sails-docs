@@ -50,4 +50,4 @@ Ainsi, le but de la philosophie du «contrôleur mince» est d'encourager le dé
 
 
 
-<docmeta name="displayName" value="Controllers">
+<docmeta name="displayName" value="Contrôleurs">
