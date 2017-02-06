@@ -1,55 +1,52 @@
-# Controllers
+# Contrôleurs
 
-### Overview
+### Vue d'ensemble
 
-Controllers (the **C** in **MVC**) are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+Les contrôleurs (le **C** dans **MVC**) sont les principaux objets de votre application Sails chargés de répondre aux *requêtes* d'un navigateur Web, d'une application mobile ou de tout autre système capable de communiquer avec un serveur. Ils agissent souvent comme intermédiaires entre vos [modèles](http://sailsjs.com/documentation/concepts/ORM/Models.html) et [vues](http://sailsjs.com/documentation/concepts/Views). Pour de nombreuses applications, les contrôleurs contiendront la majeure partie de la logique métier de votre projet.
 
 ### Actions
-Controllers are comprised of a set of methods called **actions** (or sometimes "controller actions").  Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
+Les contrôleurs sont composés d'un ensemble de méthodes appelées **actions** (ou parfois "actions du contrôleur"). Les actions sont liées à des [routes](http://sailsjs.com/documentation/concepts/Routes) dans votre application, de sorte que lorsqu'un client demande la route, l'action est exécutée pour traiter une logique métier et envoyer une réponse. Par exemple, la route `GET /bonjour` dans votre application peut être liée à une action comme:
 
 ```javascript
 function (req, res) {
-  return res.send('Hi there!');
+  return res.send('Bonjour !');
 }
 ```
 
-Any time a web browser is pointed to the `/hello` URL on your app's server, the page will display the message: &ldquo;Hi there&rdquo;.
+Chaque fois qu'un navigateur Web pointe vers l'URL `/bonjour` sur le serveur de votre application, la page affiche le message: Bonjour !
 
-### Where are controllers defined?
-Controllers are defined in the `api/controllers/` folder. You can put any files you like in that folder, but in order for them to be loaded by Sails as controllers, a file must *end* in `Controller.js`.  By convention, Sails controllers are usually [*Pascal-cased*](http://c2.com/cgi/wiki?PascalCase), so that every word in the filename (including the first word) is capitalized: for example, `UserController.js`, `MyController.js` and `SomeGreatBigController.js` are all valid, Pascal-cased names.
+### Où sont définis les contrôleurs?
+Les contrôleurs sont définis dans le dossier `api/controllers/`. Vous pouvez placer autant de fichiers que vous voulez dans ce dossier, mais pour qu'ils soient chargés par Sails comme contrôleurs, le nom du fichier doit *finir* par `Controller.js`. Par convention, les contrôleurs Sails sont généralement en [*CamelCase*](https://fr.wikipedia.org/wiki/CamelCase), de sorte que chaque mot du nom de fichier (y compris le premier mot) est en majuscule: par exemple, `UtilisateurController.js`, `MonController.js` et `MonGrosChatController.js` sont tous des noms *CamelCase* valides.
 
-> You may organize your controllers into groups by saving them in subfolders of `api/controllers`, however note that the subfolder name *will become part of the Controller&rsquo;s identity* when used for routing (more on that in the "Routing" section below).
+> Vous pouvez organiser vos contrôleurs en groupes en les enregistrant dans des sous-dossiers de `api/controllers`, mais notez que le nom du sous-dossier *deviendra une partie de l'identité du contrôleur* lorsqu'il est utilisé pour le routage (voir la section "Routage" ci-dessous).
 
-### What does a controller file look like?
-A controller file defines a Javascript dictionary (aka "plain object") whose keys are action names, and whose values are the corresponding action methods.  Here&rsquo;s a simple example of a full controller file:
+### À quoi ressemble un contrôleur?
+Un fichier de contrôleur définit un dictionnaire Javascript (aka «objet simple») dont les clés sont des noms d'action et dont les valeurs sont les méthodes d'action correspondantes. Voici un simple exemple d'un fichier de contrôleur complet:
 
 ```javascript
 module.exports = {
-  hi: function (req, res) {
-    return res.send('Hi there!');
+  salut: function (req, res) {
+    return res.send('Salut :) !');
   },
-  bye: function (req, res) {
-    return res.redirect('http://www.sayonara.com');
+  auRevoir: function (req, res) {
+    return res.redirect('http://www.aurevoir.com');
   }
 };
 ```
 
-This controller defines two actions: `hi` and `bye`.  The `hi` action responds to a request with a string message, while the `bye` action responds by redirecting to another web site.  The `req` and `res` objects will be familiar to anyone who has used [Express.js](https://github.com/expressjs) to write a web application.  This is by design, as Sails uses Express under the hood to handle routing.  Take special note, however, of the lack of a `next` argument for the actions.  Unlike Express  middleware methods, Sails controller actions should always be the last stop in the request chain--that is, they should always result in either a response or an error.  While it is technically possible to use `next` in an action method, you are strongly encouraged to use [policies](http://sailsjs.com/documentation/concepts/Policies) instead wherever possible.
+Ce contrôleur définit deux actions: `salut` et `auRevoir`. L'action `salut` répond à une demande avec un message, tandis que l'action `auRevoir` réagit en redirigeant vers un autre site Web. Les objets `req` et` res` seront familiers à quiconque a utilisé [Express.js](https://github.com/expressjs) pour développer une application web. C'est par conception, car Sails utilise Express sous le capot pour gérer le routage. Notez toutefois le manque d'argument `next` pour les actions. Contrairement aux méthodes middleware Express, les actions du contrôleur Sails doivent toujours être le dernier arrêt de la chaîne de requêtes, c'est-à-dire qu'elles doivent toujours générer une réponse ou une erreur. Bien qu'il soit techniquement possible d'utiliser `next` dans une méthode d'action, vous êtes fortement encouragé à utiliser [les politiques](http://sailsjs.com/documentation/concepts/Policies).
 
+### Contrôleurs "minces"
 
+La plupart des frameworks MVC recommandent l'écriture de contrôleurs "minces", et tandis que Sails ne fait pas exception (c'est une bonne idée de garder vos contrôleurs Sails aussi simple que possible), il est également utile de comprendre pourquoi?
 
+Le code du contrôleur est intrinsèquement dépendant d'une sorte de déclencheur ou d'événement. Dans un environnement de backend comme Sails, cet événement est toujours une requête entrante. Donc, si vous écrivez un tas de code dans l'une de vos actions de contrôleur, il n'est pas rare que la portée de ce code dépende du contexte de la requête (les objets `req` et` res`). Ce qui est très bien ... jusqu'à ce que vous souhaitez utiliser ce code à partir d'une action légèrement différente, ou à partir de la ligne de commande.
 
-### "Thin" Controllers
+Ainsi, le but de la philosophie du «contrôleur mince» est d'encourager le découplage du code réutilisable de tout enchevêtrement connexe. Dans Sails, vous pouvez obtenir ceci dans un certain nombre de manières différentes, mais les stratégies les plus communes pour extrapoler le code des contrôleurs sont:
 
-Most MVC frameworks recommend writing "thin" controllers, and while Sails is no exception (it is a good idea to keep your Sails controllers as simple as possible) it is also helpful to understand "why?"
-
-Controller code is inherently dependent on some sort of trigger or event.  In a backend framework like Sails, this event is always an incoming request.  So if you write a bunch of code in one of your controller actions, it is not uncommon for that code's scope to be dependent on the "request habitat" (the `req` and `res` objects).  Which is fine...until you want to use that code from a slightly different action, or from the command line.
-
-So the goal of the "thin controller" philosophy is to encourage decoupling of reusable code from any related scope entanglements.  In Sails, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:
-
-+ Write a helper function or machine and expose it as a [service](http://sailsjs.com/documentation/concepts/services).  This is a good go-to strategy for encapsulating code that performs any particular application-specific task.
-+ Write a custom model method to encapsulate some code that performs a particular task relating to one particular model
-+ If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module.  Then you can share it across your organization, use it in future projects, or better yet, [publish it on npm](https://docs.npmjs.com/getting-started/publishing-npm-packages) under a permissive open-source license for other developers to use and help maintain.
++ Écrire une fonction d'assistance ou une machine et l'exposer comme un [service](http://sailsjs.com/documentation/concepts/services). Il s'agit d'une bonne stratégie pour encapsuler le code qui exécute une tâche particulière spécifique à l'application.
++ Écrire une méthode de modèle personnalisée pour encapsuler un code qui exécute une tâche particulière liée à un modèle particulier.
++ Si vous trouvez un code qui est utile à travers plusieurs applications différentes (et vous avez le temps de le faire), vous devez l'extraire dans un module node. Ensuite, vous pouvez le partager à travers votre organisation, l'utiliser dans des projets futurs, ou mieux encore, [publiez-le sur npm] (https://docs.npmjs.com/getting-started/publishing-npm-packages) sous une license open-source pour que les autres développeurs l'utilisent et vous aide à le maintenir.
 
 
 
