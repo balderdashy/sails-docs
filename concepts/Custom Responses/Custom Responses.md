@@ -36,7 +36,7 @@ foo: function(req, res) {
 Cette approche présente de nombreux avantages:
 
 - Les charges utiles d'erreurs sont normalisées.
-- Le logging en production versus développement est pris en considération.
+- Le log d'erreurdans l'environnement production Versus développement est pris en considération.
 - Les codes d'erreur sont cohérents.
 - La négociation de contenu (JSON vs HTML) est prise en charge.
 - Les réglages de l'API peuvent être effectués en une seule modification rapide au fichier de réponses génériques approprié.
