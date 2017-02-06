@@ -10,7 +10,7 @@ Voici un exemple rapide de l'action du contrôleur:
 foo: function(req, res) {
    if (!req.param('id')) {
      res.status(400);
-     res.view('400', {message: 'Désolé, vous devez nous indiquer l'ID du FOO que vous voulez!'});
+     res.view('400', {message: 'Désolé, vous devez nous indiquer l\'ID du FOO que vous voulez!'});
    }
    ...
 }
