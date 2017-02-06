@@ -1,24 +1,25 @@
-# Hosting
+# Hébergement
 
-Here is a non-comprehensive list of Node/Sails hosting providers and available community tutorials.
+Voici une liste non exhaustive des fournisseurs d'hébergement Node/Sails et des didacticiels communautaires disponibles.
 
-##### Deploying to Modulus?
+##### Déploiement en module ?
 
 + http://blog.modulus.io/sails-js
 
-##### Deploying to OpenShift?
-To deploy to OpenShift, you'll need to make some minor modifications to your configuration:
-Open up `config/local.js` in your app folder. In here, you'll need to add the following lines.
+##### Déploiement sur OpenShift ?
+Pour effectuer le déploiement sur OpenShift, vous devrez apporter quelques modifications mineures à votre configuration:
+Ouvrez `config/local.js` dans votre dossier d'application. Dans ce cas, vous devez ajouter les lignes suivantes.
 
 ```
 	port: process.env.OPENSHIFT_NODEJS_PORT,
 	host: process.env.OPENSHIFT_NODEJS_IP,
 ```
 
-You will also need to install `grunt-cli` with `npm i --save grunt-cli`.
+Vous devrez également installer `grunt-cli` avec `npm i -save grunt-cli`.
 
-After doing that, create the file `.openshift/action_hooks/pre_start_nodejs` with the following contents. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6))
-This action_hook tells OpenShift's supervisor to run all 'prod' grunt tasks, before Sails lifted.
+Après cela, créez le fichier `.openshift/action_hooks/pre_start_nodejs` avec le contenu suivant. ([Source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6)).
+
+ce hook d'action indique au superviseur d'OpenShift d'exécuter toutes les tâches Grunt de production, avant que Sails ne soit démarré.
 
 
 ```
@@ -29,8 +30,8 @@ if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
     (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
 fi
 ```
-Then disable Sails Grunt integration hook. 
-To do this set the `grunt` property to `false` in `.sailsrc` hooks like this:
+Désactivez ensuite le hook d'intégration Grunt de Sails.
+Pour cela, définissez la propriété `grunt` à `false` dans les hooks de `.sailsrc` comme ça :
 
 ```json
 {
@@ -39,61 +40,58 @@ To do this set the `grunt` property to `false` in `.sailsrc` hooks like this:
     }
 }
 ```
-### NOTE:
-Do not remove Gruntfile.js to disable Grunt hook, this file still using by OpenShift's supervisor.
+### REMARQUE:
+Ne supprimez pas Gruntfile.js pour désactiver le hook Grunt, ce fichier étant toujours utilisé par le superviseur d'OpenShift.
 
-
-Then create the file `/supervisor_opts` with the following contents. This tells OpenShift's supervisor to ignore Sails' `.tmp` directory for the hot reload functionality. ([source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
+Ensuite, créez le fichier `/supervisor_opts` avec le contenu suivant. Cela indique au superviseur d'OpenShift d'ignorer le répertoire `.tmp` de Sails pour la fonctionnalité de "hot reload". ([Source](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6#comment-1318102))
 
 ```
 -i .tmp
 ```
-### NOTE:
-This deployment guide works only on Openshift's "SCALABLE" gears, nodejs v0.10.
-If you're using non-scalable gear, the `/supervisor_opts` file will be ignored and Sails will not lift on it. 
+### REMARQUE:
+Ce guide de déploiement ne fonctionne que sur les engrenages "évolutif" d'Openshift, nodejs v0.10.
+Si vous utilisez un équipement non évolutif, le fichier `/supervisor_opts` sera ignoré et Sails ne démarrera pas sur celui-ci.
 
-You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
+Vous pouvez maintenant `git add. && git commit -a -m "votre message" && git push` à déployer sur OpenShift.
 
-##### Using DigitalOcean?
+##### Vous utilisez DigitalOcean ?
 
 + https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
 + https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
 + https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab
 
-##### Deploying to Heroku?
+##### Déploiement à Heroku ?
 
-+ [Platzi: Develop Apps with Sails.js: Pt 2](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
-+ [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
-+ [Sails.js on Heroku](http://vort3x.me/sailsjs-heroku/)
++ [Platzi: Développer des applications avec Sails.js: Pt 2](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(voir la seconde partie)_
++ [SailsCasts: Déploiement d'une application Sails à Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
++ [Sails.js sur Heroku](http://vort3x.me/sailsjs-heroku/)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
 + http://dennisrongo.com/deploying-sails-js-to-heroku
 + http://stackoverflow.com/a/20184907/486547
 
-##### Deploying to AWS?
+##### Déploiement sur AWS ?
 
 + http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html
 + http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance
 + http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html
 + http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac
 
-##### Using PM2?
+##### Vous utilisez PM2 ?
 
 + http://devo.ps/blog/goodbye-node-forever-hello-pm2/
 
 
-##### Deploying to CloudControl?
+##### Déploiement sur CloudControl ?
 
 + https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Sailsjs
 
 
-##### Deploying to RoseHosting?
+##### Deploying to RoseHosting ?
 
- + [Install Sails.js with Apache as a reverse proxy on CentOS 7](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
- + [Install Sails.js on Ubuntu](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
- + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
-
-
+ + [Installez Sails.js avec Apache comme proxy inverse sur CentOS 7](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
+ + [Installer Sails.js sur Ubuntu](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
+ + Toutes les formules d'hébergement de RoseHosting sont entièrement gérées avec un support 24/7 gratuit, vous pouvez donc contacter leur [équipe de support](https://www.rosehosting.com/support.html) et ils installeront et configureront Sails.js pour vous gratuitement.
 
 
 <docmeta name="displayName" value="Hosting">
