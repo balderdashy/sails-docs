@@ -15,7 +15,7 @@ Something.update(criteria, valuesToSet)
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
 | 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
-| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.
+| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 
 ##### Callback
@@ -46,6 +46,8 @@ User.update({name:'Pen'})
 ```
 
 ##### Fetching updated records
+
+To fetch updated records, use enable the `fetch` meta key:
 
 ```javascript
 User.update({name:'Finn'})
