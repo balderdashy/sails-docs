@@ -1,58 +1,54 @@
-# Internationalization
+# Internationalisation
 
-### Overview
+### Vue d'ensemble
 
-If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n)).
+Si votre application touche des personnes ou des systèmes de partout dans le monde, l'internationalisation et la localisation (i18n) peuvent être un élément important de votre stratégie internationale. Sails offre une prise en charge intégrée pour détecter les préférences de langue utilisateur et traduire les mots/phrases statiques grâce à [i18n-node](https://github.com/mashpie/i18n-node). ([NPM](https://www.npmjs.org/package/i18n)).
 
 
 ### Usage
 
 
-In a view:
+Dans une vue :
 ```ejs
-<h1> <%= __('Hello') %> </h1>
-<h1> <%= __('Hello %s, how are you today?', 'Mike') %> </h1>
-<p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
+<h1> <%= __('Bonjour') %> </h1>
+<h1> <%= __('Bonjour %s, comment ça va aujourd'hui ?', 'Mike') %> </h1>
+<p> <%= i18n('C\'est vrai !-- tu peux utiliser i18n() ou __()') %> </p>
 ```
 
 
-In a controller or policy:
+Dans un contrôleur ou une politique :
 ```javascript
-req.__('Hello'); // => Hola
-req.__('Hello %s', 'Marcus'); // => Hola Marcus
-req.__('Hello {{name}}', { name: 'Marcus' }); // => Hola Marcus
+req.__('Hello'); // => Bonjour
+req.__('Hello %s', 'Marcus'); // => Bonjour Marcus
+req.__('Hello {{name}}', { name: 'Marcus' }); // => Bonjour Marcus
 ```
 
 
-Or if you already know the locale id, you can translate from anywhere in your application using `sails.__`:
-
+Ou si vous connaissez déjà l'identifiant de localisation, vous pouvez traduire de n'importe où dans votre application en utilisant `sails .__`
 ```javascript
 sails.__({
   phrase: 'Hello',
-  locale: 'es'
+  locale: 'fr'
 });
-// => 'Hola!'
+// => 'Bonjour'
 ```
 
-### Locales
+### Les paramètres régionaux
 
-See [**Concepts > Internationalization > Locales**](http://sailsjs.com/documentation/concepts/internationalization/locales).
+Voir [**Concepts > Internationalisation > Les paramètres régionaux**](http://sailsjs.com/documentation/concepts/internationalization/locales).
 
 
-### Additional options
+### Options additionelles
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Les paramètres de localisation/internationalisation peuvent être configurés dans [`sails.config.i18n`](http://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html). La raison la plus fréquente pour laquelle vous devez modifier ces paramètres consiste à modifier la liste des paramètres régionaux pris en charge de votre application et/ou l'emplacement de vos fichiers de chaînes de traduction :
 
 ```javascript
-// Which locales are supported?
+// Quelles locales sont prises en charge?
 locales: ['en', 'es'],
 
-// Where are your locale translations located?
+// Où trouver les fichiers de traduction des locales?
 localesDirectory: '/config/locales'
 ```
-
-
-
 
 ### Disabling or customizing Sails' default internationalization support
 
