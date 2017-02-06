@@ -27,7 +27,7 @@ Maintenant, considérez ce remplacement:
 ```javascript
 foo: function(req, res) {
    if (!req.param('id')) {
-     res.badRequest('Désolé, vous devez nous indiquer l'ID du FOO que vous voulez!');
+     res.badRequest('Désolé, vous devez nous indiquer l\'ID du FOO que vous voulez!');
    }
    ...
 }
