@@ -17,7 +17,7 @@ someDatastore.sendStatement(statement).exec(function(err, parsedResult) {
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(The exact format of this error varies depending on the SQL query you passed in and the database adapter you're using.  See examples below for links to relevant documentation.)_
-| 2 |    _parsedResult_   | ((Ref?))         | The parsed result from the database adapter, if any. (The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.) |
+| 2 |    _parsedResult_   | ((Ref?))         | The parsed result from the database adapter, if any. (The exact format of this parsed result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.) |
 
 
 
