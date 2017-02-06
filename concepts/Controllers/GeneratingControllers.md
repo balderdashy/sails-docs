@@ -63,4 +63,4 @@ module.exports = {
 ```
 
 
-<docmeta name="displayName" value="Generating Controllers">
+<docmeta name="displayName" value="Génération de contrôleurs">
