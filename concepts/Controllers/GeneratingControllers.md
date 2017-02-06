@@ -1,23 +1,23 @@
-# Generating controllers
+# Génération de contrôleurs
 
-You can use the [Sails command line tool](http://sailsjs.com/documentation/reference/command-line-interface) to quickly generate a controller, by typing:
-
-```sh
-$ sails generate controller <controller name> [action names separated by spaces...]
-```
-
-For example, if you run the following command:
+Vous pouvez utiliser la ligne de commande [Sails](http://sailsjs.com/documentation/reference/command-line-interface) pour générer rapidement un contrôleur en tapant:
 
 ```sh
-$ sails generate controller comment create destroy tag like
-info: Generated a new controller `comment` at api/controllers/CommentController.js!
+$ sails generate controller <nom du contrôleur> [les noms des actions séparés par un espace...]
 ```
 
-Sails will generate `api/controllers/CommentController.js`:
+Par exemple, si vous exécutez la commande suivante:
+
+```sh
+$ sails generate controller commentaire poster supprimer tagger aimer
+info: Generated a new controller `commentaire` at api/controllers/CommentareController.js!
+```
+
+Sails va générer `api/controllers/CommentaireController.js`:
 
 ```javascript
 /**
- * CommentController.js
+ * CommentaireController.js
  *
  * @description :: Server-side logic for managing comments.
  */
@@ -25,36 +25,36 @@ Sails will generate `api/controllers/CommentController.js`:
 module.exports = {
 
   /**
-   * CommentController.create()
+   * CommentController.poster()
    */
-  create: function (req, res) {
+  poster: function (req, res) {
     return res.json({
       todo: 'Not implemented yet!'
     });
   },
 
   /**
-   * CommentController.destroy()
+   * CommentController.supprimer()
    */
-  destroy: function (req, res) {
+  supprimer: function (req, res) {
     return res.json({
       todo: 'Not implemented yet!'
     });
   },
 
   /**
-   * CommentController.tag()
+   * CommentController.tagger()
    */
-  tag: function (req, res) {
+  tagger: function (req, res) {
     return res.json({
       todo: 'Not implemented yet!'
     });
   },
 
   /**
-   * CommentController.like()
+   * CommentController.aimer()
    */
-  like: function (req, res) {
+  aimer: function (req, res) {
     return res.json({
       todo: 'Not implemented yet!'
     });
