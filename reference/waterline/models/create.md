@@ -13,7 +13,7 @@ Something.create(initialValues)
 
 |   | Argument            | Type                         | Details                               |
 |---|:--------------------|------------------------------|:--------------------------------------|
-| 1 | initialValues       | ((dictionary))               | The initial values for the new record.
+| 1 | initialValues       | ((dictionary))               | The initial values for the new record.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 ##### Callback
 
