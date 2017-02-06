@@ -1,29 +1,39 @@
-# Default responses
+# Réponses par défaut
 
-The following responses are bundled with all new Sails apps inside the `/api/responses` folder.  Each one sends a normalized JSON object if the client is expecting JSON, containing a `status` key with the HTTP status code, and additional keys with relevant information about any errors.
+Les réponses suivantes sont présentes dans toute nouvelle application Sails dans le dossier `/api/responses`. Chacune de ces réponses envoie un objet JSON normalisé (si le client attend JSON), contenant une clé `status` et une valeur du code de status HTTP avec des clés supplémentaires contenant des informations pertinentes sur les éventuelles erreurs.
 
 #### res.ok()
 
-This method is used to send a 200 ("Ok") response back down to the client indicating that everything worked out a-okay.  See the [`res.ok()` reference page](http://sailsjs.com/documentation/reference/response-res/res-ok) for usage info.
+Cette méthode est utilisée pour envoyer une réponse HTTP 200 ("OK")  au client indiquant que tout s'est bien passé. 
+
+Voir la page de référence [`res.ok()`](http://sailsjs.com/documentation/reference/response-res/res-ok) pour les informations d'utilisation.
 
 #### res.serverError()
 
-This method is used to send a 500 ("Server Error") response back down to the client indicating that some kind of server error occurred.  See the [`res.serverError()` reference page](http://sailsjs.com/documentation/reference/response-res/res-server-error) for usage info.
+Cette méthode est utilisée pour envoyer une réponse HTTP 500 ("Erreur de serveur") au client indiquant qu'une erreur de serveur s'est produite.
+
+Consultez la page de référence [`res.serverError()`](http://sailsjs.com/documentation/reference/response-res/res-server-error) pour obtenir des informations sur l'utilisation.
 
 #### res.badRequest()
 
-This method is used to send a 400 ("Bad Request") response back down to the client indicating that the request is invalid.  See the [`res.badRequest()` reference page](http://sailsjs.com/documentation/reference/response-res/res-bad-request) for usage info.
+Cette méthode est utilisée pour envoyer une réponse HTTP 400 ("Demande incorrecte") au client indiquant que la demande n'est pas valide. 
+
+Voir la page de référence [`res.badRequest()`](http://sailsjs.com/documentation/reference/response-res/res-bad-request) pour les informations d'utilisation.
 
 #### res.notFound()
 
-This method is used to send a 404 ("Not Found") response back down to the client indicating that the requested URL doesn&rsquo;t match any routes in the app.  See the [`res.notFound()` reference page](http://sailsjs.com/documentation/reference/response-res/res-not-found) for usage info.
+Cette méthode est utilisée pour envoyer une réponse HTTP 404 ("Introuvée") au client indiquant que l'URL demandée ne correspond à aucune des routes de l'application. 
+
+Voir la page de référence [`res.notFound()`](http://sailsjs.com/documentation/reference/response-res/res-not-found) pour les informations d'utilisation.
 
 #### res.forbidden()
 
-This method is used to send a 403 ("Forbidden") response back down to the client indicating that the request is not allowed.  See the [`res.forbidden()` reference page](http://sailsjs.com/documentation/reference/response-res/res-forbidden) for usage info.
+Cette méthode est utilisée pour envoyer une réponse HTTP 403 ("Accès Interdit") au client indiquant que la requête n'est pas autorisée.
+
+Voir la page de référence [`res.forbidden()`](http://sailsjs.com/documentation/reference/response-res/res-forbidden) pour les informations d'utilisation.
 
 #### res.created()
 
-This method is used to send a 201 ("Created") response back down to the client indicating that one or more new resources have been created. See the [`res.created()` reference page](http://sailsjs.com/documentation/reference/response-res/res-created) for usage info.
+Cette méthode est utilisée pour renvoyer une réponse HTTP 201 ("Créée") au client indiquant qu'une ou plusieurs nouvelles ressources ont été créées. Voir la page de référence [`res.created ()`](http://sailsjs.com/documentation/reference/response-res/res-created) pour les informations d'utilisation.
 
-<docmeta name="displayName" value="Default Responses">
+<docmeta name="displayName" value="Réponses par défaut">
