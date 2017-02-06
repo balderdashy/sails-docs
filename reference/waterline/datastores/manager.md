@@ -9,7 +9,7 @@ datastore.manager
 >  Depending on the adapter, this might represent a connection pool, a single connection, or even just a reference to a pre-configured client library instance.
 
 ### Example
-
+Access a raw Mongo collection instance representing a model `Pet`.
 ```javascript
 // Since the db connection manager exposed by `sails-mongo` is actually
 // the same as the Mongo client's `db` instance, we can treat it as such.
