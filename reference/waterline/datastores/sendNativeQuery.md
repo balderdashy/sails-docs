@@ -4,7 +4,7 @@ Execute a raw SQL query using this datastore.
 
 ```
 datastore.sendNativeQuery(sql, valuesToEscape)
-.exec(function(err, resultMaybe) {
+.exec(function(err, rawResult) {
 
 });
 ```
