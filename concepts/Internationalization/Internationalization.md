@@ -50,27 +50,26 @@ locales: ['en', 'es'],
 localesDirectory: '/config/locales'
 ```
 
-### Disabling or customizing Sails' default internationalization support
+### Désactivation/Personnalisation du support par défaut d'internationalisation de Sails
 
-Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
+Bien sûr, vous pouvez toujours faire un `require()` de tous les modules node que vous aimez, n'importe où dans votre projet, et utilisez la stratégie d'internationalisation que vous voulez.
 
-But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://sailsjs.com/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
+Il faut noter que Sails implémente l'intégration [node-i18n](https://github.com/mashpie/i18n-node) dans le [hook i18n](http://sailsjs.com/documentation/concepts/Internationalization), vous pouvez le désactiver complètement ou le remplacer à l'aide des options de configuration de [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) et/ou [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).
 
+### Conversion du contenu dynamique
 
-### Translating dynamic content
-
-See [**Concepts > Internationalization > Translating dynamic content**](http://sailsjs.com/documentation/concepts/internationalization/translating-dynamic-content).
-
-
-### What about i18n on the client?
-
-The above technique works great out of the box for server-side views. But what about rich client apps that serve static HTML templates from a CDN or static host? (e.g. performance-obsessed SPAs or PhoneGap apps/Chrome extensions)
-
-There are [lots of different options available](http://stackoverflow.com/questions/9640630/javascript-i18n-internationalization-frameworks-libraries-for-client-side-use) for client-side internationalization.  Like other client-side technologies, you should have no problem integrating any of them with Sails.
-
-> If you'd prefer not to use an external internationalization library, you can actually reuse Sails' i18n support to help you get your translated templates to the browser.  If you want to use Sails to internationalize your _client-side templates_, put your front-end templates in a subdirectory of your app's `/views` folder.
-> + In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
-> + In production mode, you'll want to translate and precompile all templates on lift(). In loadtime-critical scenarios (e.g. mobile web apps) you can even upload your translated, precompiled, minified templates to a CDN like Cloudfront for further performance gains.
+Voir [**Concepts > Internationalisation > Traduction de contenu dynamique**](http://sailsjs.com/documentation/concepts/internationalization/translating-dynamic-content).
 
 
-<docmeta name="displayName" value="Internationalization">
+### Qu'en est-il de l'i18n côté-client?
+
+La technique ci-dessus fonctionne très bien pour les vues côté-serveur. Mais qu'en est-il des applications client riches qui servent des templates HTML statiques à partir d'un hôte CDN ou statique? (Par exemple, les SPAs obéissant aux performances ou applications PhoneGap/extensions Chrome)
+
+Il existe [beaucoup de différentes options disponibles](http://stackoverflow.com/questions/9640630/javascript-i18n-internationalization-frameworks-libraries-for-client-side-use) pour l'internationalisation côté client. Comme d'autres technologies côté-client, vous ne devriez avoir aucun problème à intégrer l'une d'entre elles avec Sails.
+
+> Si vous préférez ne pas utiliser une bibliothèque d'internationalisation externe, vous pouvez réutiliser le support i18n de Sails pour vous aider à obtenir des templates traduits dans le navigateur. Si vous souhaitez utiliser Sails pour internationaliser vos templates _côté-client_, placez vos templates dans un sous-répertoire du dossier `/views` de votre application.
+> + En mode développement, vous devez retransmettre et précompiler vos templates à chaque fois que le fichier stringfile ou le template change en utilisant grunt-contrib-watch, qui est déjà installé par défaut dans tout nouveau projet Sails.
+> + En mode production, vous devriez traduire et précompiler tous les templates lors du démarrage de l'application. Dans les cas où vous voulez optimiser d'avantage le temps de chargement (par exemple, les applications Web pour mobile), vous pouvez uploader vos templates minifiés, précompilés et traduits vers un CDN comme Cloudfront pour avoir de plus de performances.
+
+
+<docmeta name="displayName" value="Internationalisation">
