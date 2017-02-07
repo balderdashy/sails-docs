@@ -73,7 +73,7 @@ La documentation de Sails a été traduite dans différentes langues. La liste c
 | Chinese                      | `zh-cn`    | [@linxiaowu66](https://github.com/linxiaowu66)   | [sails-docs-zh-cn](https://github.com/linxiaowu66/sails-docs-zh-cn)
 | French                       | `fr`    | [@marrouchi](https://github.com/marrouchi)   | [sails-docs-fr](https://github.com/marrouchi/sails-docs-fr)
 
-> Puisque nous utilisons maintenant des branches pour suivre les différentes versions de la documentation de Sails, nous nous éloignons de l'approche originale de l'utilisation de branches pour différentes langues.  Avant de vous lancer dans un nouveau projet de traduction, nous vous demandons d'examiner [les informations mises à jour ci-dessous](#how-can-i-help-translate-the-documentation)-- Le processus a changé un peu.
+> Puisque nous utilisons maintenant des branches pour suivre les différentes versions de la documentation de Sails, nous nous éloignons de l'approche originale de l'utilisation de branches pour différentes langues.  Avant de vous lancer dans un nouveau projet de traduction, nous vous demandons d'examiner [les informations mises à jour ci-dessous](#comment-puis-je-aider-à-traduire-la-documentation-)-- Le processus a changé un peu.
 
 
 
