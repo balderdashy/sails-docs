@@ -24,7 +24,7 @@ req.__('Hello {{name}}', { name: 'Marcus' }); // => Bonjour Marcus
 ```
 
 
-Ou si vous connaissez déjà l'identifiant de localisation, vous pouvez traduire de n'importe où dans votre application en utilisant `sails .__`
+Ou si vous connaissez déjà l'identifiant de localisation, vous pouvez traduire de n'importe où dans votre application en utilisant `sails.__`
 ```javascript
 sails.__({
   phrase: 'Hello',
