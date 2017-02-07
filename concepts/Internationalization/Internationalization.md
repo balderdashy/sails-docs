@@ -11,7 +11,7 @@ Si votre application touche des personnes ou des systèmes de partout dans le mo
 Dans une vue :
 ```ejs
 <h1> <%= __('Bonjour') %> </h1>
-<h1> <%= __('Bonjour %s, comment ça va aujourd'hui ?', 'Mike') %> </h1>
+<h1> <%= __('Bonjour %s, comment ça va aujourd\'hui ?', 'Mike') %> </h1>
 <p> <%= i18n('C\'est vrai !-- tu peux utiliser i18n() ou __()') %> </p>
 ```
 
