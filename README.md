@@ -34,7 +34,7 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
   - Deployment (100%)
   - File Uploads (100%)
   - Globals (100%)
-  - Internationalization (50%)
+  - Internationalization (100%)
   - Logging
   - Middleware
   - ORM
