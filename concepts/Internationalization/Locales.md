@@ -1,31 +1,31 @@
 # Locales
 
-### Overview
+### Vue d'ensemble
 
-The i18n hook reads JSON-formatted translation files from your project's "locales" directory (`config/locales` by default).  Each file corresponds with a [locale](http://en.wikipedia.org/wiki/Locale) (usually a language) that your Sails backend will support.
+Le hook i18n lit des fichiers de traduction au format JSON dans le répertoire "locales" de votre projet (`config/locales`) par défaut). Chaque fichier correspond à un [locale](http://en.wikipedia.org/wiki/Locale) (habituellement une langue) que votre backoffice Sails prendra en charge.
 
-These files contain locale-specific strings (as JSON key-value pairs) that you can use in your views, controllers, etc. The name of the file should match the language that you are supporting. This allows for automatic language detection based on request headers.
+Ces fichiers contiennent des chaînes spécifique au locale (en tant que paires clé-valeur JSON) que vous pouvez utiliser dans vos vues, contrôleurs, etc. Le nom du fichier doit correspondre à la langue que vous utilisez. Cela permet une détection automatique de la langue en fonction des en-têtes de requête.
 
-Here is an example locale file (`config/locales/es.json`):
+Voici un exemple de fichier de locale (`config/locales/fr.json`):
 ```json
 {
-    "Hello!": "Hola!",
-    "Hello %s, how are you today?": "¿Hola %s, como estas?"
+    "Hello!": "Salut !",
+    "Hello %s, how are you today?": "Salut %s, comment ça va aujourd'hui ?"
 }
 ```
 
-Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
+Notez que les clés dans ces fichiers là (par exemple, "Hello %s, how are you today?") sont **sensibles à la casse** et requièrent des correspondances exactes. Il ya quelques écoles différentes de pensée sur la meilleure approche, et il dépend vraiment de qui/à quelle fréquence vous allez mettre à jour ces fichiers de langue versus HTML à l'avenir. En particulier, si vous modifiez les traductions à la main, des chaînes de caractéres plus simples et plus minces seront préférables pour une meilleure maintenabilité.
 
-For example, here's another way you could approach `config/locales/es.json`:
+Par exemple, voici une autre approche dans `config/locales/fr.json`:
 
 ```json
 {
-    "hello": "hola",
-    "howAreYouToday": "cómo estás"
+    "hello": "salut",
+    "howAreYouToday": "comment ça va aujourd'hui"
 }
 ```
 
-And here's `config/locales/en.json`:
+Et voiçi la version anglaise `config/locales/en.json`:
 
 ```json
 {
@@ -34,38 +34,36 @@ And here's `config/locales/en.json`:
 }
 ```
 
-To represent nested strings, use `.` in keys.  For example, here's some of the strings for an app's "Edit profile" page:
+Pour représenter des chaînes imbriquées, utilisez le `.` dans les clés. Voici quelques-unes des chaînes de la page "Modifier le profil" d'une application :
 
 ``` json
 {
-  "editProfile.heading": "Edit your profile",
-  "editProfile.username.label": "Username",
-  "editProfile.username.description": "Choose a new unique username.",
-  "editProfile.username.placeholder": "callmethep4rtysquid"
+  "editProfile.heading": "Modifier votre profil",
+  "editProfile.username.label": "Identifiant",
+  "editProfile.username.description": "Veuillez choisir un identifiant unique."
 }
 ```
 
+### Détection et/ou surcharger une localisation pour une requête spécifique
 
-### Detecting and/or overriding the desired locale for a request
+Pour déterminer la localisation de la requête, utilisez [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale).
 
-To determine the current locale used by the request, use [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale).
-
-To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), calling it with the unique code for the new locale, e.g.:
+Pour surcharger la langue/localisation détectée pour une requête, utilisez [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), en l'appelant avec le code unique de localisation, par exemple:
 
 ```js
-// Force the language to German for the remainder of the request:
+// Forcer la langue à l'allemand pour le reste de la requête:
 req.setLocale('de');
-// (this will use the strings located in `config/locales/de.json` for translation)
+// (Cela utilisera la traduction de `config/locales/de.json`)
 ```
 
-By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.
+Par défaut, node-i18n détecte la langue souhaitée d'une requête en examinant ses en-têtes HTTP de langage. Les en-têtes de langue sont définis dans les paramètres du navigateur de vos utilisateurs et, même s'ils sont corrects la plupart du temps, vous pouvez avoir besoin de la souplesse nécessaire pour remplacer cette langue détectée et fournir les vôtres.
 
-For instance, if your app allows users to pick their preferred language, you might create a [policy](http://sailsjs.com/documentation/concepts/Policies) which checks for a custom language in the user's session, and if one exists, sets the appropriate locale for use in subsequent policies, controller actions, and views:
+Par exemple, si votre application permet aux utilisateurs de choisir leur langue préférée, vous pouvez créer une [politique](http://sailsjs.com/documentation/concepts/Policies) qui vérifie la langue à partir de la session de l'utilisateur, et la définit si elle existe dans les politiques, les contrôleurs et les vues qui vont s'exécuter par la suite. En voiçi un exemple concrêt :
 
 ```js
-// api/policies/localize.js
+// api/policies/localiser.js
 module.exports = function(req, res, next) {
-  req.setLocale(req.session.languagePreference);
+  req.setLocale(req.session.maPreferenceDeLangue);
   next();
 };
 ```
