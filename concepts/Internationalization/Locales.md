@@ -2,7 +2,7 @@
 
 ### Vue d'ensemble
 
-Le hook i18n lit des fichiers de traduction au format JSON dans le répertoire "locales" de votre projet (`config/locales`) par défaut). Chaque fichier correspond à un [locale](http://en.wikipedia.org/wiki/Locale) (habituellement une langue) que votre backoffice Sails prendra en charge.
+Le hook i18n lit des fichiers de traduction au format JSON dans le répertoire "locales" de votre projet (`config/locales`). Chaque fichier correspond à un [locale](https://fr.wikipedia.org/wiki/Param%C3%A8tres_r%C3%A9gionaux) (habituellement une langue) que votre backoffice Sails prendra en charge.
 
 Ces fichiers contiennent des chaînes spécifique au locale (en tant que paires clé-valeur JSON) que vous pouvez utiliser dans vos vues, contrôleurs, etc. Le nom du fichier doit correspondre à la langue que vous utilisez. Cela permet une détection automatique de la langue en fonction des en-têtes de requête.
 
