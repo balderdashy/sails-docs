@@ -2,7 +2,7 @@
 
 Execute a raw SQL query using this datastore.
 
-```
+```usage
 datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
 
 });
