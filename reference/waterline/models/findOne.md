@@ -12,7 +12,7 @@ Something.findOne(criteria).exec(function (err, record) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|------------------------------------|
-| 1 |    criteria         | ((dictionary))                               | The first record which matches this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be returned.
+| 1 |    criteria         | ((dictionary))                               | The first record which matches this [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) will be returned.
 
 ##### Callback
 

@@ -258,7 +258,7 @@ Limits the number of results returned from a query.
 Model.find({ where: { name: 'foo' }, limit: 20 })
 ```
 
-> Note: if you set `limit` to 0, the query will always return an empty array.  
+> Note: if you set `limit` to 0, the query will always return an empty array.
 
 #### Skip
 
@@ -287,7 +287,7 @@ Model.find().paginate({page: 2, limit: 10});
 > You can find out more about the Waterline API below:
 > * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
-> * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
+> * [Waterline Reference Docs](http://sailsjs.com/documentation/reference/waterline-orm)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
 
 
