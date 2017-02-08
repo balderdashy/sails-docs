@@ -2,7 +2,7 @@
 
 Attempt to find a particular record in your database that matches the given criteria.
 
-```javascript
+```
 Something.findOne(criteria).exec(function (err, record) {
 
 });
