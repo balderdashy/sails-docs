@@ -5,7 +5,7 @@ Sails est totalement compatible avec le middleware Express/Connect - Une grande 
 
 ### Middleware HTTP
 
-Sails utilise également une autre [pile de middleware configurable](http://sailsjs.com/documentation/concepts/Middleware#adding-or-overriding-http-middleware) uniquement pour la gestion des requêtes HTTP. Chaque fois que votre application reçoit une requête HTTP, la pile de middleware HTTP configurée s'exécute dans l'ordre.
+Sails utilise également une autre [pile de middleware configurable](http://sailsjs.com/documentation/concepts/Middleware#adding-or-overriding-http-middleware) uniquement pour la gestion des requêtes HTTP. Chaque fois que votre application reçoit une requête HTTP, une pile de middleware HTTP configurée s'exécute dans l'ordre.
 
 Lisez à propos de la pile de middleware par défaut [ici](http://sailsjs.com/documentation/concepts/middleware/conventional-defaults).
 
