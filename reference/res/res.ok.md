@@ -5,7 +5,7 @@ This method is used to send a <a href="https://en.wikipedia.org/wiki/List_of_HTT
 
 ### Usage
 
-```js
+```usage
 return res.ok();
 ```
 

@@ -2,7 +2,7 @@
 
 Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
 
-```javascript
+```usage
 GET /:model
 ```
 

@@ -2,7 +2,7 @@
 The request method (aka "verb".)
 
 ### Usage
-```js
+```usage
 req.method;
 ```
 

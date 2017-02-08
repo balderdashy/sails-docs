@@ -5,7 +5,7 @@ Send a simple response.  `statusCode` defaults to 200 ("OK").
 This method is used in the underlying implementation of most of the other terminal response methods.
 
 ### Usage
-```javascript
+```usage
 return res.send([statusCode,] body);
 ```
 

@@ -4,7 +4,7 @@ A flag indicating whether or not this request (`req`) originated from a Socket.i
 
 
 ### Usage
-```js
+```usage
 req.isSocket;
 ```
 

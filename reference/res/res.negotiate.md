@@ -12,7 +12,7 @@ Especially handy for handling potential validation errors from [Model.create()](
 
 ### Usage
 
-```js
+```usage
 return res.negotiate(err);
 ```
 

@@ -3,7 +3,7 @@
 Modify a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) so that, when executed, it will return associated record(s) belonging to the specified association, and optionally according to the specified `subcriteria`.  Populate may be called more than once on the same query, as long as each call is for a different association.
 
 
-```javascript
+```usage
 Something.find()
 .populate(association, subcriteria)
 .exec(function afterwards(err, populatedRecords){

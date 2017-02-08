@@ -5,7 +5,7 @@
 
 Make a virtual request to a running Sails instance.
 
-```javascript
+```usage
 sails.request(request);
 ```
 

@@ -2,7 +2,7 @@
 
 Update all records matching criteria.
 
-```javascript
+```usage
 Something.update(criteria, valuesToSet)
 .exec(function(err) {
   //...
@@ -60,7 +60,7 @@ User.update({name:'Finn'})
 
   sails.log('Updated all '+updatedUsers.length+' user(s) named "Finn" so that their new name is "Jake".  Here they are now:');
   sails.log(updatedUsers);
-  
+
   return res.ok();
 });
 ```

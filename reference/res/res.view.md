@@ -5,7 +5,7 @@ Respond with an HTML page.
 
 ### Usage
 
-```js
+```usage
 return res.view(pathToView, locals);
 ```
 

@@ -2,7 +2,7 @@
 
 Get the aggregate mean of the specified attribute across all matching records.
 
-```javascript
+```usage
 Something.avg(numericAttrName, criteria)
 .exec(function (err, average){
   // ...

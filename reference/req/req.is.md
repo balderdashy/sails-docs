@@ -4,7 +4,7 @@ Returns true if this request's declared "Content-Type" matches the specified med
 Specifically, this method matches the given `type` against this request's "Content-Type" header.
 
 ### Usage
-```js
+```usage
 req.is(type);
 ```
 

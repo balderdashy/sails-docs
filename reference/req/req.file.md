@@ -2,7 +2,7 @@
 
 Build and return a [Skipper Upstream](https://github.com/balderdashy/skipper) representing an incoming multipart file upload from the specified `field`.
 
-```javascript
+```usage
 req.file(field);
 ```
 

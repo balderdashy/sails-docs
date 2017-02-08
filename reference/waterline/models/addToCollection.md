@@ -2,7 +2,7 @@
 
 Add one or more child records (e.g. a comment) to the specified collection (e.g. the `comments` of BlogPost #4).
 
-```javascript
+```usage
 Something.addToCollection(parentId, association)
 .members(childIds)
 .exec(function (err) {

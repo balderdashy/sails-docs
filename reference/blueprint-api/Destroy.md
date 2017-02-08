@@ -2,7 +2,7 @@
 
 Delete the record specified by `id` from the database forever and notify subscribed sockets.
 
-```javascript
+```usage
 DELETE /:model/:id
 ```
 

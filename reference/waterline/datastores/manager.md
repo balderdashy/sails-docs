@@ -2,8 +2,8 @@
 
 The live connection manager for this datastore.
 
-```
-datastore.manager;
+```usage
+datastore.manager
 ```
 
 >  Depending on the adapter, this might represent a connection pool, a single connection, or even just a reference to a pre-configured client library instance.

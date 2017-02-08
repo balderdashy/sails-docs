@@ -2,7 +2,7 @@
 
 Replace all members of the specified collection (e.g. the `comments` of BlogPost #4).
 
-```javascript
+```usage
 Something.replaceCollection(parentId, association)
 .members(childIds)
 .exec(function (err) {

@@ -2,7 +2,7 @@
 
 Create a record in the database.
 
-```javascript
+```usage
 Something.create(initialValues)
 .exec(function (err) {
 
@@ -87,7 +87,7 @@ User.create({
       return res.serverError(err);
     }
   }
-  
+
   return res.ok();
 })
 ```

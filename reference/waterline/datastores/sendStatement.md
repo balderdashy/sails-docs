@@ -2,7 +2,7 @@
 
 Send a Waterline "statement" (stage 4 query) to the database and return the results.
 
-```
+```usage
 someDatastore.sendStatement(statement).exec(function(err, parsedResult) {
 
 });

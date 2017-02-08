@@ -5,7 +5,7 @@
 
 Flush and reload all Sails [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers)
 
-```javascript
+```usage
 sails.reloadActions(cb);
 ```
 

@@ -5,7 +5,7 @@ Send a JSON or JSONP response.
 Identical to [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json) except that, if a request parameter named "callback" was provided in the query string, then Sails will send the response data as [JSONP](http://en.wikipedia.org/wiki/JSONP) instead of JSON.  The value of the "callback" request parameter will be used as the name of the JSONP function call wrapper in the response.
 
 ### Usage
-```js
+```usage
 return res.jsonp(data);
 ```
 

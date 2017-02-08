@@ -1,7 +1,7 @@
 # sails.getDatastore()
 Access a particular [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#?datastores), or the default datastore.
 
-```javascript
+```usage
 sails.getDatastore(datastoreName);
 ```
 

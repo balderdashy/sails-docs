@@ -4,7 +4,7 @@ Returns the value of _all_ parameters sent in the request, merged together into 
 
 ### Usage
 
-```js
+```usage
 req.allParams();
 ```
 

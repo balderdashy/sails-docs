@@ -4,7 +4,7 @@ Redirect the requesting user-agent to the given absolute or relative url.
 
 
 ### Usage
-```js
+```usage
 return res.redirect(url);
 ```
 

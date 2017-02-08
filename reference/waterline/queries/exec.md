@@ -2,7 +2,7 @@
 
 Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
-```javascript
+```usage
 query.exec(function (err, result) {
 
 });

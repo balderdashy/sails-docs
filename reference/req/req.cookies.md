@@ -3,7 +3,7 @@ An object containing all of the [**unsigned cookies**](https://github.com/balder
 
 
 ### Usage
-```javascript
+```usage
 req.cookies;
 ```
 

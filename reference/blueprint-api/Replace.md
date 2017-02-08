@@ -2,7 +2,7 @@
 
 Replace the foreign records in one of this record's collection associations (e.g. "comments").
 
-```
+```usage
 PUT /:model/:id/:association
 ```
 

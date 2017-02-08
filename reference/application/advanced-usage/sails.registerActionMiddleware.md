@@ -5,7 +5,7 @@
 
 Register a new action middleware function that will be applied to actions with the specified identities.
 
-```javascript
+```usage
 sails.registerActionMiddleware(actionMiddlewareFns, actionIdentities);
 ```
 

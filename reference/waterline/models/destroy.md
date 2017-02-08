@@ -2,7 +2,7 @@
 
 Destroy records in your database that match the given criteria.
 
-```javascript
+```usage
 Something.destroy(criteria).exec(function (err) {
 
 });

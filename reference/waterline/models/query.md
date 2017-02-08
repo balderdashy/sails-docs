@@ -4,7 +4,7 @@
 
 Execute a raw SQL query using the specified model's datastore.
 
-```javascript
+```usage
 SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 
 });

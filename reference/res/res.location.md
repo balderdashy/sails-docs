@@ -2,7 +2,7 @@
 Sets the "Location" response header to the specified URL expression (`url`).
 
 ### Usage
-```javascript
+```usage
 res.location(url);
 ```
 

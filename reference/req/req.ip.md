@@ -7,7 +7,7 @@ The IP address of the client who sent this request (`req`).
 > If your Sails app is deployed behind a proxy (on Heroku, for example), then you'll need to do a bit of additional configuration.  Normally, `req.ip` is simply the "remote address"-- the IP address of the requesting user agent.  But if the [sails.config.http.trustProxy](http://sailsjs.com/documentation/reference/configuration/sails-config-http) option is enabled, this is the "[upstream address](https://en.wikipedia.org/wiki/X-Forwarded-For)".
 
 ### Usage
-```javascript
+```usage
 req.ip;
 ```
 

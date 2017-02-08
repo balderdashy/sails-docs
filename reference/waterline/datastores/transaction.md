@@ -2,7 +2,7 @@
 
 Fetch a preconfigured deferred object hooked up to the sails-mysql adapter (and consequently the appropriate driver)
 
-```
+```usage
 someDatastore.transaction(during).exec(function(err, resultMaybe) {
 
 });
@@ -38,7 +38,7 @@ sails.getDatastore()
   .exec(function (err, myAccount) {
     if (err) { return proceed(err); }
     if (!myAccount) { return proceed(new Error('Consistency violation: Database is corrupted-- logged in user record has gone missing')); }
-    
+
     BankAccount.findOne({ owner: req.param('recipientId') }).usingConnection(db)
     .exec(function (err, recipientAccount) {
       if (err) { return proceed(err); }
@@ -47,7 +47,7 @@ sails.getDatastore()
         err.code = 'E_NO_SUCH_RECIPIENT';
         return proceed(err);
       }
-      
+
       // Do the math to subtract from the logged-in user's account balance,
       // and add to the recipient's bank account balance.
       var myNewBalance = myAccount.balance - req.param('amount');
@@ -59,20 +59,20 @@ sails.getDatastore()
         err.code = 'E_INSUFFICIENT_FUNDS';
         return proceed(err);
       }
-      
+
       // Update the current user's bank account
       BankAccount.update({ owner: req.session.userId })
-      .set({ 
+      .set({
         balance: myNewBalance
       })
       .usingConnection(db)
       .exec(function (err) {
         if (err) { return proceed(err); }
-        
+
         // Update the recipient's bank account
         BankAccount.update({ owner: req.param('recipientId') })
-        .set({ 
-          balance: recipientAccount.balance + req.param('amount') 
+        .set({
+          balance: recipientAccount.balance + req.param('amount')
         })
         .usingConnection(db)
         .exec(function (err) {

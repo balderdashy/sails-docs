@@ -2,7 +2,7 @@
 
 Get the aggregate sum of the specified attribute across all matching records.
 
-```javascript
+```usage
 Something.sum(numericAttrName, criteria)
 .exec(function (err, total){
   // ...

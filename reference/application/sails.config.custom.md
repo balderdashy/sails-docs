@@ -4,7 +4,7 @@ The runtime values of your app's [custom configuration settings](http://sailsjs.
 
 ### Usage
 
-```js
+```usage
 sails.config.custom;
 ```
 

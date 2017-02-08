@@ -3,7 +3,7 @@
 Sets the "Content-Disposition" header of the current response to "attachment". If a `filename` is given, then the "Content-Type" will be automatically set based on the extension of the file (e.g. `.jpg` or `.html`), and the "Content-Disposition" header will be set to "filename=`filename`".
 
 ### Usage
-```javascript
+```usage
 res.attachment([filename]);
 ```
 

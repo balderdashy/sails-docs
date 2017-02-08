@@ -4,7 +4,7 @@ Look up the first route pointing at the specified target (e.g. `MeController.log
 
 
 
-```javascript
+```usage
 sails.getUrlFor(target);
 ```
 

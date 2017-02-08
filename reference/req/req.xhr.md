@@ -3,7 +3,7 @@ A flag indicating whether the current request (`req`) appears to be an AJAX requ
 
 
 ### Usage
-```js
+```usage
 req.xhr;
 ```
 

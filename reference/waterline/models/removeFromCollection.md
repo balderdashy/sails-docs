@@ -2,7 +2,7 @@
 
 Remove one or more members (e.g. a comment) from the specified collection (e.g. the `comments` of BlogPost #4).
 
-```javascript
+```usage
 Something.removeFromCollection(parentId, association)
 .members(childIds)
 .exec(function (err) {

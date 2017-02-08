@@ -5,7 +5,7 @@ Returns whether this request (`req`) considers a certain `language` "acceptable"
 
 ### Usage
 
-```js
+```usage
 req.acceptsLanguage(language);
 ```
 

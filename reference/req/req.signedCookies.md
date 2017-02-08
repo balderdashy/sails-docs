@@ -6,7 +6,7 @@ A dictionary containing all of the signed cookies from this request (`req`).
 
 
 ### Usage
-```javascript
+```usage
 req.signedCookies;
 ```
 

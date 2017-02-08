@@ -2,7 +2,7 @@
 
 The generic, stateless, low-level driver for this datastore (if the adapter supports it).
 
-```
+```usage
 datastore.driver;
 ```
 
@@ -22,7 +22,7 @@ Driver.createManager({
   connectionString: req.param('connectionUrl')
 }).exec(function(err, managerReport){
   if (err) { return res.serverError(err); }
-  
+
   Driver.getConnection({ manager: managerReport.manager }).exec(function(err, connectionReport) {
     if (err) {
       Driver.destroyManager({ manager: managerReport.manager }).exec(function (secondaryErr) {
@@ -31,16 +31,16 @@ Driver.createManager({
       });//_∏_
       return;
     }//-•
-    
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Do some stuff here...
     // e.g.
     //     Driver.sendNativeQuery({
     //       connection: connectionReport.connection,
     //       nativeQuery: '...'
     //     }).exec(...)
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
-    
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
     // Finally, before we continue, tear down the dynamic connection manager.
     // (this also takes care of releasing the active connection we acquired above)
     Driver.destroyManager({ manager: managerReport.manager }).exec(function (err) {
@@ -48,7 +48,7 @@ Driver.createManager({
 
       return res.ok();
     });
-    
+
   });
 });
 ```

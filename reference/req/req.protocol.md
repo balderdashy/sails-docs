@@ -2,7 +2,7 @@
 The protocol used to send this request (`req`).
 
 ### Usage
-```javascript
+```usage
 req.protocol;
 ```
 

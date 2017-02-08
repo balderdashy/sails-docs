@@ -47,7 +47,7 @@ sails.getDatastore()
   // (result format depends on the SQL query that was passed in, and the adapter you're using)
 
   // Then parse the raw result and do whatever you like with it.
-  
+
   return res.ok();
 
 });

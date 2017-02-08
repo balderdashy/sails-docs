@@ -6,7 +6,7 @@ This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP
 
 ### Usage
 
-```js
+```usage
 return res.badRequest();
 ```
 

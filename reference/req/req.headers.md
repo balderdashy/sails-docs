@@ -4,7 +4,7 @@ An object containing pre-defined/custom header given in the current request.
 
 ### Usage
 
-```javascript
+```usage
 req.headers;
 ```
 

@@ -3,7 +3,7 @@
 Sends a JSON response composed of a stringified version of the specified `data`.
 
 ### Usage
-```js
+```usage
 return res.json([statusCode, ] data);
 ```
 

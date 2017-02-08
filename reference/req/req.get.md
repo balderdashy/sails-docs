@@ -4,7 +4,7 @@ Returns the value of the specified `header` field in this request (`req`).  Note
 
 ### Usage
 
-```js
+```usage
 req.get(header);
 ```
 

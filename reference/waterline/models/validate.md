@@ -2,7 +2,7 @@
 
 Verify that a value would be valid for a given attribute, then return it, loosely coerced.
 
-```javascript
+```usage
 Something.validate(attrName, value);
 ```
 

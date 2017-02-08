@@ -2,7 +2,7 @@
 
 Create a set of records in the database.
 
-```javascript
+```usage
 Something.createEach(initialValues)
 .exec(function (err) {
   //...

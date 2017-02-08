@@ -2,7 +2,7 @@
 
 Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
 
-```
+```usage
 PUT /:model/:id/:association/:fk
 ```
 

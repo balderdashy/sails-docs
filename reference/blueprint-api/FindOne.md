@@ -2,7 +2,7 @@
 
 Look up the record with the specified `id` from the database and (if possible) subscribe to the record to hear about any future changes.
 
-```javascript
+```usage
 GET /:model/:id
 ```
 

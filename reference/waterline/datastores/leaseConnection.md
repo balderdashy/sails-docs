@@ -3,7 +3,7 @@
 Lease a new connection from the datastore for use in running multiple queries on the same connection (i.e. so that the logic provided in `during` can reuse the db connection).
 
 
-```
+```usage
 someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 
 });
@@ -63,7 +63,7 @@ sails.getDatastore()
 }).exec(function (err, inventory) {
   if (err && err.code === 'E_NO_SUCH_LOCATION') { return res.notFound(); }
   else if (err) { return res.serverError(err); }
-  
+
   // All done!  Whatever we were doing with that connection worked.
   // Now we can proceed with our business.
   return res.ok();
