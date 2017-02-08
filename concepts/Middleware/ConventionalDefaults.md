@@ -2,7 +2,7 @@
 
 Sails est livré avec une suite de middleware HTTP classique, prêt à l'emploi. Vous pouvez, bien sûr, désactiver, remplacer, réorganiser ou ajouter, mais la pile préinstallée est parfaitement acceptable pour la plupart des applications en développement ou en production. Vous trouverez ci-dessous une liste des fonctions middleware HTTP standard qui sont livrées dans Sails, dans l'ordre où elles sont exécutées chaque fois que le serveur reçoit une requête HTTP entrante:
 
- HTTP Middleware Key       | Purpose
+ Clé du Middleware HTTP    | Objectif
  :------------------------ |:------------
  **startRequestTimer**     | Alloue une variable dans la mémoire pour conserver l'horodatage lorsque la requête a commencé. Vous pouvez y accéder et l'utiliser pour fournir des informations de diagnostic sur les requêtes lentes.
  _cookieParser_ *          | Parse l'en-tête du cookie en un objet propre pour l'utiliser dans le middleware suivant et le code de votre application.
