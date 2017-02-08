@@ -15,6 +15,8 @@ If an adapter is only going to be used in one app (e.g. a short-term fork of an 
 
 Go with this option if you plan to share your adapter between multiple Sails apps, whether that's within your organization or as an open-source package for other members of the Sails/Node.js community at large.  To use an externalized adapter like this, you'll need to do `npm install your-adapter-package-name` or `npm link your-adapter-package-name`.
 
+> Before you start on an open-source adapter, we recommend you search GitHub for `sails-databasename` and `waterline-databasename` to check if a project already exists. If it does, it's generally a good idea to approach the author of an existing adapter and offer to contribute instead of starting a new project. Most developers will welcome your help, and the combined efforts will likely result in a better quality adapter. If one doesn't exist, we recommend you create a new project and name it following the convention: `sails-databasename`.
+
 
 ### What goes in a custom adapter?
 
