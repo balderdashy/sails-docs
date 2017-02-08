@@ -3,8 +3,7 @@
 Execute a raw SQL query using this datastore.
 
 ```
-datastore.sendNativeQuery(sql, valuesToEscape)
-.exec(function(err, rawResult) {
+datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
 
 });
 ```
