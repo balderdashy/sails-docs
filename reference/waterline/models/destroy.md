@@ -25,7 +25,8 @@ Something.destroy(criteria).exec(function (err) {
 
 | Key                 | Type              | Details                                                        |
 |:--------------------|-------------------|:---------------------------------------------------------------|
-| fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.
+| fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
+
 
 
 
