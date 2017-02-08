@@ -8,16 +8,16 @@ Something.findOne(criteria).exec(function (err, record) {
 });
 ```
 
-#### Usage
+### Usage
 
 |   |     Argument        | Type                                         | Details                            |
-|---|:--------------------|----------------------------------------------|------------------------------------|
-| 1 |    criteria         | ((dictionary))                               | The first record which matches this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be returned.
+|---|:--------------------|----------------------------------------------|:-----------------------------------|
+| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching this record in the database.  (This criteria must never match more than one record.)
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|----------------------------------------------------------------------------------|
+|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
 | 2 |    _record_         | ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
 
