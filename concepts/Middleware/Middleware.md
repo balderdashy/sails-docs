@@ -9,7 +9,7 @@ Sails utilise également une autre [pile de middleware configurable](http://sail
 
 Lisez à propos de la pile de middleware par défaut [ici](http://sailsjs.com/documentation/concepts/middleware/conventional-defaults).
 
-> Notez que cette pile middleware HTTP n'est utilisée que pour les "vrais" requêtes HTTP - elle est ignorée pour ** les requêtes virtuelles** (par exemple, les requêtes provenant d'une connexion Socket.io en direct).
+> Notez que cette pile middleware HTTP n'est utilisée que pour les "vrais" requêtes HTTP - elle est ignorée pour **les requêtes virtuelles** (par exemple, les requêtes provenant d'une connexion Socket.io en direct).
 
 
 
