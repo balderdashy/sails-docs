@@ -26,7 +26,7 @@ Something.create(initialValues)
 
 | Key                 | Type              | Details                                                        |
 |:--------------------|-------------------|:---------------------------------------------------------------|
-| fetch               | ((boolean))       | If set to `true`, then the created record will be provided as the second argument of the callback.
+| fetch               | ((boolean))       | If set to `true`, then the created record will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
 
 
 ### Example
