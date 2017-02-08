@@ -3,7 +3,7 @@
 Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```javascript
-query.exec(function afterwards(err, result) {
+query.exec(function (err, result) {
 
 });
 ```
@@ -18,8 +18,8 @@ query.exec(function afterwards(err, result) {
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    result           | ((JSON))            | The result from the database.  Exact data type depends on the query.  If an error occurred (i.e. `err` is truthy), then this result argument should be ignored.
+| 1 |    _err_            | ((Error?))          | The Error that occurred, or `undefined` if there were no errors.
+| 2 |    _result_         | ((Ref?))            | The result from the database, if any.  Exact data type depends on the query.  If an error occurred (i.e. `err` is truthy), then this result argument should be ignored.
 
 
 
@@ -28,16 +28,13 @@ query.exec(function afterwards(err, result) {
 ### Example
 
 ```javascript
-Zookeeper.find().exec(function (err, zookeepers) {
+Zookeeper.find().exec(function afterwards(err, zookeepers) {
   if (err) {
-    // uh oh
-    // (handle error; e.g. `return res.serverError(err)`)
-    return;
+    return res.serverError(err);
   }
 
   // would you look at all those zookeepers?
-  // (now let's do the next thing;
-  //  e.g. `_.reduce(zookeepers, ...)` and/or `return res.json(zookeepers)`)
+  return res.json(zookeepers);
 });
 //
 // (don't put code out here)
@@ -45,7 +42,7 @@ Zookeeper.find().exec(function (err, zookeepers) {
 
 
 ### Notes
-> If you don't run `.exec()` or use promises, your query will not execute. For help using `.exec()` with model methods like `.find()`, read more about the [chainable query object](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+> + If you don't run `.exec()` or use promises, your query will not execute. For help using `.exec()` with model methods like `.find()`, read more about the [chainable query object](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 
 
