@@ -1,35 +1,32 @@
-# Custom log messages
+# Les messages de log personnalisés
 
-It is often useful to emit custom log messages or events from your application code; whether you are tracking the status of outbound emails sent in the background, or just looking for a configurable alternative to calling [`console.log()`](https://nodejs.org/api/console.html#console_console_log_data) in your application code.
+Il est souvent utile d'émettre des messages ou des événements de log personnalisés à partir du code de votre application; Si vous traquez le statut des e-mails outbound envoyés ou si vous cherchez simplement une alternative configurable à l'appel de [`console.log ()`](https://nodejs.org/api/console.html#console_console_log_data) dans votre code d'application.
 
-For convenience, Sails exposes its internal logging interface as `sails.log`.  Its usage is purposely very similar to Node's `console.log()`, but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output.
+Pour plus de commodité, Sails expose son interface de log interne `sails.log`. Son utilisation est très similaire à `console.log ()` celui de Node, mais avec une poignée de fonctionnalités supplémentaires; À savoir la prise en charge de plusieurs niveaux de log et d'un affichage coloré et préfixé de la console.
 
-See [sails.log()](http://sailsjs.com/documentation/reference/application/sails-log) for more information and examples, or  [sails.config.log](http://sailsjs.com/documentation/reference/configuration/sails-config-log) for configuration options.
+Pour plus d'informations et exemples sur les options de configuration, voir [sails.log()](http://sailsjs.com/documentation/reference/application/sails-log) ou [sails.config.log](http://sailsjs.com/documentation/reference/configuration/sails-config-log).
 
+## Les méthodes disponibles
 
-## Available methods
-
-Each of the log methods below accepts an infinite number of arguments of any data type, seperated by commas.  Like `console.log`, data passed as arguments to the Sails logger are automatically prettified for readability using Node's [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options). Consequently, standard Node.js conventions apply; _any_ dictionaries, errors, dates, arrays, or other data types are pretty-printed using the built-in logic in [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) (e.g. you see `{ pet: { name: 'Hamlet' } }` instead of `[object Object]`.)  Also, if you log an object that has a custom `inspect()` method, the logger will run that method automatically and write the string it returns to the console.
+Chacune des méthodes de log ci-dessous accepte un nombre infini d'arguments de n'importe quel type de données, séparés par des virgules. Tout comme `console.log`, les données passées en argument au logger Sails sont automatiquement préconfigurées pour la lisibilité à l'aide de [`util.inspect()`](http://nodejs.org/api/util.html#util_util_inspect_object_options) de Node. Par conséquent, les conventions Node.js standard s'appliquent; _tous les_ dictionnaires, les erreurs, les dates, les tableaux ou d'autres types de données sont bien imprimés en utilisant la logique intégrée de [`util.inspect()`](https://nodejs.org/api/util.html#util_util_inspect_object_options) (Par exemple, vous voyez `{chat: {nom: 'kitty'}}` au lieu de `[object Object]`.) De plus, si vous enregistrez un objet qui a une méthode `inspect()` personnalisée, le logger exécutera cette méthode automatiquement et écrira la chaîne qu'il retourne à la console.
 
 
 ### sails.log.error()
 
-Writes log output to `stderr` at the "error" log level.
-Useful for tracking major errors.
+Cette méthode écrit dans `stderr` (sortie d'erreur standard) au niveau "error". C'est utile pour le suivi des erreurs majeures.
 
 ```js
-sails.log.error('Sending 500 ("Server Error") response.');
-// -> error: Sending 500 ("Server Error") response.
+sails.log.error('Envoie d\'une réponse d\'erreur 500 ("Erreur serveur").');
+// -> Envoie d'une réponse d'erreur 500 ("Erreur serveur").
 ```
 
 ### sails.log.warn()
 
-Writes log output to `stderr` at the "warn" log level.
-Useful for tracking information about operations that failed silently.
+Cette méthode écrit dans `stderr` (sortie d'erreur standard) au niveau "warn". C'est utile pour suivre les informations sur les opérations qui ont échoué silencieusement.
 
 ```js
-sails.log.warn('File upload quota exceeded for user #%d.  Request aborted.', user.id);
-// -> warn: File upload quota exceeded for user #94271.  Request aborted.
+sails.log.warn('Le quota d\'upload de fichier a été dépassé pour l\'utilisateur #%d. Requête annulée.', utilisateur.id);
+// -> warn: Le quota d\'upload de fichier a été dépassé pour l'utilisateur #94271. Requête annulée.
 ```
 
 
@@ -37,52 +34,49 @@ sails.log.warn('File upload quota exceeded for user #%d.  Request aborted.', use
 
 _aka sails.log.debug()_
 
-The default log function, which writes console output to `stderr` at the "debug" log level.
-Useful for passing around important technical information amongst your team; or as a general alternative to `console.log()`.
+Cette méthode écrit dans `stderr` (sortie d'erreur standard) au niveau "debug". C'est utile pour partager une information technique importante avec votre équipe; Ou comme une alternative générale à `console.lo ()`.
 
 ```js
-sails.log('This endpoint (`POST /accounts`) will be deprecated in the next few days.  Please use `POST /signup` instead. ');
-// -> debug: This endpoint (`POST /accounts`) will be deprecated in the next few days.  Please use `POST /signup` instead.
+sails.log('La route (`POST /accounts`) sera dépréciée dans les prochains jours. Utiliser `POST /signup` à la place.');
+// -> debug: La route (`POST /accounts`) sera dépréciée dans les prochains jours. Utiliser `POST /signup` à la place.
 ```
-
 
 
 ### sails.log.info()
 
-Writes log output to `stdout` at the "info" log level.
-Useful for capturing information about your app's business logic.
+Cette méthode écrit dans `stdout` (sortie standard) au niveau "info". C'est utile pour capturer des informations sur la logique métier de votre application.
 
 ```js
-sails.log.info('A new user (', newUser.emailAddress, ') just signed up!');
-// -> info: A new user ( irl@foobar.com ) just signed up!
+sails.log.info('Un nouvel utilisateur (', utilisateur.email, ') vient de s\'inscrire !');
+// -> info: Un nouvel utilisateur (robert@mail.com) vient de s\'inscrire !
 ```
 
 
 ### sails.log.verbose()
 
-Writes log output to `stdout` at the "verbose" log level.
-Useful for capturing detailed information about your app that you only need on rare occasions.
+
+Cette méthode écrit dans `stdout` (sortie standard) au niveau "verbose". C'est utile pour capturer des informations détaillées sur votre application dont vous avez rarement besoin.
 
 ```js
-sails.log.verbose('A user (IP adddress: `%s`) initiated an account transfer...', req.ip);
-// -> verbose: A user (IP adddress: `10.48.1.191`) initiated an account transfer...
+sails.log.verbose('Un utilisateur (adresse IP: `%s`) a lancé un transfert de compte ...', req.ip);
+// -> verbose: Un utilisateur (adresse IP: `10.48.1.191`) a lancé un transfert de compte ...
 ```
 
 
 ### sails.log.silly()
 
-Writes log output to `stdout` at the "silly" log level.
-Useful for capturing technical details about your app that are only useful for diagnostics and/or troubleshooting.
+
+Cette méthode écrit dans `stdout` (sortie standard) au niveau "silly". C'est utile pour capturer des détails techniques sur votre application qui ne sont utiles que pour le diagnostic et/ou le dépannage.
 
 ```js
 sails.log.silly(
-'Successfully fetched Account record for requesting authenticated user (`%d`).',
-'Took %dms.', req.param('id'), msElapsed);
-// -> silly: Successfully fetched Account record for authenticated user (`49722`). Took 41ms.
+'Récupération d\'un enregistrement de compte de l\'utilisateur authentifié (`%d`).',
+'Temps %dms.', req.param('id'), msElapsed);
+// -> silly: Récupération d'un enregistrement de compte de l'utilisateur authentifié (`49722`). Temps 41ms.
 ```
 
 
 
 
-<docmeta name="displayName" value="Custom log messages">
+<docmeta name="displayName" value="Les messages de log personnalisés">
 
