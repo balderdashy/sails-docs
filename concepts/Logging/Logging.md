@@ -1,25 +1,25 @@
 # Logging
 
-Sails comes with a simple, built-in logger called [`captains-log`](https://github.com/balderdashy/captains-log).  Its usage is purposely very similar to Node's [`console.log`](https://nodejs.org/api/console.html#console_console_log_data), but with a handful of extra features; namely support for multiple log levels with colorized, prefixed console output. The logger serves two purposes:
-+ it emits warnings, errors, and other console output from inside the Sails framework
-+ it can be used to emit [custom events/messages](http://sailsjs.com/documentation/concepts/logging/custom-log-messages) from within your application code
+Sails est livré avec un logger simple, intégré, appelé [`captains-log`](https://github.com/balderdashy/captains-log). Son utilisation est très similaire à [`console.log`](https://nodejs.org/api/console.html#console_console_log_data), mais avec une plusieurs fonctionnalités supplémentaires; À savoir la prise en charge de plusieurs niveaux de log avec un affichage colorée et préfixée de la console. Il sert a deux choses:
++ Il émet des avertissements, des erreurs et d'autres sorties de la console à l'intérieur du framework Sails.
++ Il peut être utilisé pour émettre des [événements personnalisés/messages](http://sailsjs.com/documentation/concepts/logging/custom-log-messages) à partir du code de votre application.
 
 
 ### Configuration
-Sails' log configuration is determined by [`sails.config.log`](http://sailsjs.com/documentation/reference/configuration/sails-config-log), which is conventionally set by a generated configuration file ([`config/log.js`](http://sailsjs.com/documentation/anatomy/my-app/config/log-js)) in new Sails projects out of the box.
+La configuration du log de Sails est définie dans [`sails.config.log`](http://sailsjs.com/documentation/reference/configuration/sails-config-log), qui est classiquement définie par un fichier de configuration généré ([`config/log.js`](http://sailsjs.com/documentation/anatomy/my-app/config/log-js)) dans tout nouveau projet Sails.
 
-### Usage
+### Utilisation
 
 ```
-sails.log.error(new Error("Doh, got an error :/"));
-sails.log.debug("I am a debug message");
+sails.log.error(new Error("Oh lala ! j'ai reçu une erreur :/"));
+sails.log.debug("Je suis un message de débogage");
 ```
 
-### Log levels
+### Niveaux de log
 
-Using the built-in logger, Sails will write output (to stdout/stderr) for log function calls that are _at_ or _above_ the priority of the currently-configurd log level.  This log level is normalized and also applied to generated output from Grunt, Socket.io, Waterline, Express, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
+En utilisant le logger intégré, Sails écrira la sortie (vers stdout/stderr) pour les appels de fonction log qui sont _à_ ou _en-dessous_ de la priorité du niveau de log configuré actuellement. Ce niveau de log normalisé est également appliqué à la sortie générée par Grunt, Socket.io, Waterline, Express et autres dépendances. La hiérarchie des niveaux de notation et leurs priorités relatives est résumée dans le tableau ci-dessous:
 
-| Priority | Level     | Log fns that produce visible output   |
+| Priorité | Niveau    | Les fonctions Log                     |
 |----------|-----------|:--------------------------------------|
 | 0        | silent    | _N/A_
 | 1        | error     | `.error()`            |
@@ -30,11 +30,11 @@ Using the built-in logger, Sails will write output (to stdout/stderr) for log fu
 | 6        | silly     | `.silly()`, `.verbose()`, `.info()`, `.debug()`, `.warn()`, `.error()` |
 
 
-#### Notes
- + The [default log level](http://sailsjs.com/documentation/reference/configuration/sails-config-log) is **info**.  When your app's log level is set to "info", Sails logs limited information about the server/app's status.
- + When running automated tests for your app, it is often helpful to set the log level to **error**.
- + When the log level is set to **verbose**, Sails logs Grunt output, as well as much more detailed information on the routes, models, hooks, etc. that were loaded.
- + When the log level is set to **silly**, Sails outputs everything from **verbose** as well as internal information on which routes are being bound and other detailed framework lifecycle information, diagnostics, and implementation details.
+#### Remarques
++ Le [niveau de log par défaut](http://sailsjs.com/documentation/reference/configuration/sails-config-log) est **info**. Lorsque le niveau de log de votre application est défini sur "info", Sails enregistre des informations limitées sur l'état du serveur/de l'application.
++ Lors de l'exécution de tests automatisés pour votre application, il est souvent utile de définir le niveau de log à **erreur**.
++ Lorsque le niveau du journal est réglé sur **verbose**, Sails enregistre la sortie Grunt, ainsi que des informations beaucoup plus détaillées sur les routes, modèles, hooks, etc. qui ont été chargés.
++ Lorsque le niveau du log est défini sur **silly**, Sails génère tout de **verbose** ainsi que des informations internes sur les routes qui sont liées et d'autres informations détaillées du cycle de vie du framework, des diagnostics et des détails d'implémentation.
 
 
 
