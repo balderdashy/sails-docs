@@ -27,6 +27,8 @@ Something.destroy(criteria).exec(function (err) {
 |:--------------------|-------------------|:---------------------------------------------------------------|
 | fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
 
+> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
 
 
 
