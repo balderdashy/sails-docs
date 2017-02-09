@@ -27,6 +27,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 ### Breaking changes to lesser-used features
 
+* **The `.findOne()` query method no longer supports `sort` and `limit` modifiers, and will throw an error if the given criteria match more than one record**.  If you want to find a single record using anything besides a `unique` attribute (like the primary key) as criteria, use `.find(<criteria>).limit(1)` instead (keeping in mind that this will return an array of one item).
 * **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
 * **Dynamic finders** (such as `User.findById()`) are no longer added to your models automatically.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
 * **Model Instance Methods** are no longer supported. This allows records returned from find queries to be plain javascript objects instead of model record instances.
