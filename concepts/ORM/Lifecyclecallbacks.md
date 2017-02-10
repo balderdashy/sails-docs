@@ -1,35 +1,35 @@
-# Lifecycle callbacks
+# Les callbacks du cycle de vie
 
-### Overview
+### Vue d'ensemble
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically hash a password before creating or updating an `Account` model.
+Les callbacks (appelés aussi fonctions de rappel) du cycle de vie sont des fonctions qui sont appelées auto-magiquement avant ou après certaines actions du _modèle_. Par exemple, nous utilisons parfois des callbacks de cycle de vie pour hacher automatiquement un mot de passe avant de créer ou de mettre à jour un modèle `Compte`.
 
-Sails exposes a handful of lifecycle callbacks by default.
-
-
-##### Callbacks on `create`
-
-  - beforeValidate: fn(values, cb)
-  - afterValidate: fn(values, cb)
-  - beforeCreate: fn(values, cb)
-  - afterCreate: fn(newlyInsertedRecord, cb)
-
-##### Callbacks on `update`
-
-  - beforeValidate: fn(valuesToUpdate, cb)
-  - afterValidate: fn(valuesToUpdate, cb)
-  - beforeUpdate: fn(valuesToUpdate, cb)
-  - afterUpdate: fn(updatedRecord, cb)
-
-##### Callbacks on `destroy`
-
-  - beforeDestroy: fn(criteria, cb)
-  - afterDestroy: fn(destroyedRecords, cb)
+Sails met à disposition par défaut plusieurs de callbacks du cycle de vie.
 
 
-### Example
+##### Callbacks à l'événement `create` (au moment de la création)
 
-If you want to hash a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
+  - Avant la validation des données : `beforeValidate: fn(values, cb) {}`
+  - Après la validation des données : `afterValidate: fn(values, cb) {}`
+  - Avant la création               : `beforeCreate: fn(values, cb) {}`
+  - Après la création               : `afterCreate: fn(newlyInsertedRecord, cb) {}`
+
+##### Callbacks à l'événement `update`(au moment de la mise à jour)
+
+  - Avant la validation des données : `beforeValidate: fn(valuesToUpdate, cb) {}`
+  - Après la validation des données : `afterValidate: fn(valuesToUpdate, cb) {}`
+  - Avant la mise à jour            : `beforeUpdate: fn(valuesToUpdate, cb) {}`
+  - Après la mise à jour            : `afterUpdate: fn(updatedRecord, cb) {}`
+
+##### Callbacks à l'événement `destroy` (au moment de la suppression)
+
+  - Avant la suppression            : `beforeDestroy: fn(criteria, cb) {}`
+  - Après la suppression            : `afterDestroy: fn(destroyedRecords, cb) {}`
+
+
+### Exemple
+
+Si vous souhaitez hacher un mot de passe avant d'enregistrer dans la base de données, vous pouvez utiliser le callback de cycle de vie `beforeCreate`.
 
 ```javascript
 var bcrypt = require('bcrypt');
@@ -38,29 +38,30 @@ module.exports = {
 
   attributes: {
 
-    username: {
+    identifiant: {
       type: 'string',
       required: true
     },
 
-    password: {
+    motDePasse: {
       type: 'string',
       minLength: 6,
       required: true,
-      columnName: 'hashed_password'
+      columnName: 'mot_de_passe_encrypte'
     }
 
   },
 
 
-  // Lifecycle Callbacks
+  // Les callbacks de cycle de vie
   beforeCreate: function (values, cb) {
 
-    // Hash password
-    bcrypt.hash(values.password, 10, function(err, hash) {
+    // Hacher le mot de passe
+    bcrypt.hash(values.motDePasse, 10, function(err, hash) {
       if(err) return cb(err);
-      values.password = hash;
-      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
+      values.motDePasse = hash;
+      // Appeler cb() avec un argument retourne une erreur. 
+      // Utile pour annuler l'opération entière si certains critères échouent.
       cb();
     });
   }
@@ -69,4 +70,4 @@ module.exports = {
 
 
 
-<docmeta name="displayName" value="Lifecycle callbacks">
+<docmeta name="displayName" value="Les callbacks du cycle de vie">
