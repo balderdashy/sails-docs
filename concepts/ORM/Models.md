@@ -112,7 +112,7 @@ Ensuite, vous pouvez faire:
 
 ```js
 Singe.chercherMemeNomPersonne(daniel, function (err, singes) { ... });
-// -or-
+// -ou-
 Singe.chercherMemeNomPersonne(37, function (err, singes) { ... });
 ```
 
