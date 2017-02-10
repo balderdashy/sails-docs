@@ -66,7 +66,7 @@ Create a new pony named "Applejack" with a hobby of "pickin", whose is friends w
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the model will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the model will receive a notification where the event name is the model identity (e.g. `pony`), and the message has the following format:
 
 ```
 verb: 'created',
@@ -80,6 +80,7 @@ For instance, continuing the example above, all clients subscribed to the `Pony`
 id: 47,
 verb: 'created',
 data: {
+  id: 47,
   name: 'Applejack',
   hobby: 'pickin',
   createdAt: 1485550575626,
@@ -87,11 +88,9 @@ data: {
 }
 ```
 
-Clients subscribed to linked records also receive an additional notification:
+Clients subscribed to linked records might also receive an additional notification:
 
-Since our example is demonstrating a [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association, any clients subscribed to any of Pony #47's `friends` (Pony #13 or Pony #25) would receive an `addedTo` notification. See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
-
-Similarly, if our example represented a [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) association, (e.g. if ponies #13 and #25 were Applejack's `employees` instead of `friends`, and Applejack were those ponies' `employer`, then any clients subscribed to ponies #13 and #25 would receive an `addedTo` notification.)
+Since the new record in our example included `friends`, an array of related ids representing a plural ([one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)) association, then `addedTo` notifications would also be sent to any clients who are subscribed to those records on the other side of the relationship-- in this case, ponies 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
 
 <docmeta name="displayName" value="create">
