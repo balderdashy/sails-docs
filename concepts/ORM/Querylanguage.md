@@ -290,7 +290,7 @@ Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 >
 > Toutes les requêtes à l'intérieur de Waterline sont **insensibles à la casse**. Cela facilite l'interrogation mais rend les chaînes d'indexation difficiles. C'est quelque chose à savoir si vous indexez et recherchez sur des champs de chaîne.
 >
-> Actuellement, la meilleure façon d'exécuter les requêtes **sensible à la casse** consiste à utiliser [`.native()`](http://sailsjs.com/documentation/reference/waterline/models/native.html) ou [`.query ()`](http://sailsjs.com/documentation/reference/waterline/models/query.html).
+> Actuellement, la meilleure façon d'exécuter les requêtes **sensible à la casse** consiste à utiliser [`.native()`](http://sailsjs.com/documentation/reference/waterline/models/native.html) ou [`.query()`](http://sailsjs.com/documentation/reference/waterline/models/query.html).
 
 
 <docmeta name="displayName" value="Langage de requête">
