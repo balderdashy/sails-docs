@@ -1,6 +1,6 @@
 # .getDatastore()
 
-Access the [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#?datastores) for this particular model.
+Access the [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#?datastores) for a particular model.
 
 ```usage
 Something.getDatastore();
