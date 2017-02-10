@@ -9,7 +9,7 @@ Sails exposes a handful of lifecycle callbacks by default.
 
 ##### Callbacks on `create`
 
-  - beforeCreate: fn(values, cb)
+  - beforeCreate: fn(recordToInsert, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
 ##### Callbacks on `update`
