@@ -1,68 +1,68 @@
 # Waterline: SQL/noSQL Data Mapper (ORM/ODM)
 
 
-Sails comes installed with a powerful [ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odm) called [Waterline](https://github.com/balderdashy/waterline), a datastore-agnostic tool that dramatically simplifies interaction with one or more [databases](http://www.cs.umb.edu/cs630/hd1.pdf).  It provides an abstraction layer on top of the underlying database, allowing you to easily query and manipulate your data _without_ writing vendor-specific integration code.
+Sails est installé avec un puissant [ORM/ODM](http://stackoverflow.com/questions/12261866/what-is-the-difference-between-an-orm-and-an-odod) appelé [Waterline](https://github.com/balderdashy/waterline), un outil agnostique par rapport aux bases de données, qui simplifie considérablement l'interaction avec une ou plusieurs [bases de données](http://www.cs.umb.edu/cs630/hd1.pdf). Il fournit une couche d'abstraction sur la base de données sous-jacente, vous permettant de consulter et de manipuler facilement vos données _sans_ écrire le code d'intégration spécifique au fournisseur.
 
-### Database Agnosticism
+### Agnosticisme de la base de données
 
-In schemaful databases like [Postgres](http://www.postgresql.org/), [Oracle](https://www.oracle.com/database), and [MySQL](http://www.mysql.com), models are represented by tables.  In [MongoDB](http://www.mongodb.org), they're represented by Mongo "collections".  In [Redis](http://redis.io), they're represented using key/value pairs.  Each database has its own distinct query dialect, and in some cases even requires installing and compiling a specific native module to connect to the server.  This involves a fair amount of overhead, and garners an unsettling level of [vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) to a specific database; e.g. if your app uses a bunch of SQL queries, it will be very hard to switch to Mongo later, or Redis, and vice versa.
+Dans des bases de données schématiques comme [Postgres](http://www.postgresql.org/), [Oracle](https://www.oracle.com/database) et [MySQL](http://www.mysql.com), les modèles sont représentés par des tableaux. Dans [MongoDB](http://www.mongodb.org), ils sont représentés par des "collections" de Mongo. Dans [Redis](http://redis.io), ils sont représentés à l'aide de paires clé/valeur. Chaque base de données a son propre dialecte de requête distincte, et dans certains cas même nécessite l'installation et la compilation d'un module natif spécifique pour se connecter au serveur.
 
-Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`](http://sailsjs.com/documentation/reference/waterline/queries/populate.html) associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again - without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](http://sailsjs.com/documentation/reference/waterline/models/query.html) and [.native()](http://sailsjs.com/documentation/reference/waterline/models/native.html).)
-
-
-
-### Scenario
-
-Let's imagine you're building an e-commerce website, with an accompanying mobile app.  Users browse products by category or search for products by keyword, then they buy them.  That's it!  Some parts of your app are quite ordinary; you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
-
-##### Flexibility
-
-_You ask the business what database they would like to use:_
-
-> "Datab... what?  Let's not be hasty, wouldn't want to make the wrong choice.  I'll get ops/IT on it.  Go ahead and get started though."
-
-The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
-
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [connection configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
+La syntaxe de la requête Waterline flotte au-dessus de tout ça, en se concentrant sur la logique métier comme la création de nouveaux enregistrements, la recherche des enregistrements existants, la mise à jour ou la destruction des enregistrements. Peu importe la base de données que vous avez choisi, l'utilisation est _exactement la même_. De plus, Waterline vous permet de créer des associations [`.populate()]`](http://sailsjs.com/documentation/reference/waterline/queries/populate.html) entre les modèles, même si les données de chaque modèle sont différentes base de données. Cela signifie que vous pouvez passer des modèles de votre application de Mongo, Postgres, MySQL, Redis, et de retour - sans changer de code. Pour les moments où vous avez besoin de fonctionnalités bas niveau, spécifiques à la base de données, Waterline fournit une interface de requête qui vous permet de communiquer directement au pilote de base de données de votre modèle (voir [`.query()`](http://sailsjs.com/documentation/reference/waterline/models/query.html) et [`.native()`] (http://sailsjs.com/documentation/reference/waterline/models/native.html).)
 
 
 
-##### Compatibility
+### Scénario
 
-_The product owner/stakeholder walks up to you and says:_
+Imaginons que vous construisez un site Web e-commerce avec une application mobile associée. Les utilisateurs parcourent les produits par catégorie ou recherchent des produits par mot-clé, puis ils les achètent. C'est tout! Certaines parties de votre application sont assez ordinaires; Vous disposez d'un flux piloté par l'API pour vous connecter, vous inscrire, traiter les commandes/paiements, réinitialiser les mots de passe, etc. Cependant, vous savez qu'il y a quelques traits mondains qui se cachent dans votre feuille de route. Assez sur:
 
-> "Oh hey by the way, the products actually already live in our point of sale system. It's some ERP thing I guess, something like "DB2"?  Anyways, I'm sure you'll figure it out- sounds easy right?"
+##### La flexibilité
 
-Many enterprise applications must integrate with an existing database.  If you're lucky, a one-time data migration may be all that's necessary, but more commonly, the existing dataset is still being modified by other applications.  In order to build your app, you might need to marry data from multiple legacy systems, or with a separate dataset stored elsewhere.  These datasets could live on 5 different servers scattered across the world! One colocated database server might house a SQL database with relational data, while another cloud server might hold a handful of Mongo or Redis collections.
+_Vous demandez à l'entreprise quelle base de données ils aimeraient utiliser :_
 
-Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually)
+> "Datab ... quoi? Ne soyons pas hâtifs, ne voudrions pas faire le mauvais choix, je vais obtenir l'avis ops/IT sur cette question. Allez-y commencez le travail !"
+
+La méthode traditionnelle de choisir une base de données unique pour une application Web/API est en fait prohibitive pour de nombreux cas d'utilisation de la production. Souvent, l'application doit maintenir la compatibilité avec un ou plusieurs ensembles de données existants, ou il est nécessaire d'utiliser quelques types différents de bases de données pour des raisons de performances.
+
+Comme Sails utilise `sails-disk` par défaut, vous pouvez commencer à construire votre application sans configuration, en utilisant un fichier temporaire local comme stockage. Lorsque vous êtes prêt d'aller en production, il suffit de changer votre application [configuration de connexion](http://sailsjs.com/documentation/reference/configuration/sails-config-connections ).
+
+
+
+##### Compatibilité
+
+_Le propriétaire/intervenant du produit vous accompagne et vous dit :_
+
+> "Dis en passant, les produits existent déjà dans notre système de point de vente. Je crois que c'est un ERP, quelque chose comme "DB2"? Quoi qu'il en soit, je suis sûr que vous allez le comprendre - ça semble non ?"
+
+De nombreuses applications d'entreprise doivent s'intégrer à une base de données existante. Si vous avez de la chance, une migration de données ponctuelle peut être tout ce qui est nécessaire, mais plus souvent, l'ensemble de données existant est toujours modifié par d'autres applications. Pour construire votre application, vous pourriez avoir besoin d'épouser des données provenant de plusieurs systèmes existants ou d'un ensemble de données distinct stocké ailleurs. Ces ensembles de données pourraient vivre sur 5 serveurs différents dispersés à travers le monde ! Un serveur de base de données co-implanté peut héberger une base de données SQL avec des données relationnelles, tandis qu'un autre serveur Cloud peut contenir une poignée de collections Mongo ou Redis.
+
+Sails/Waterline vous permet de raccorder différents modèles à différents magasins de données (datastores); Localement ou n'importe où sur Internet. Vous pouvez créer un modèle `Utilisateur` qui mappe à une table MySQL personnalisée dans une base de données héritée (avec des noms de colonnes bizarres). Même chose pour un modèle de produit qui correspond à une table dans DB2 ou un modèle de commande qui correspond à une collection MongoDB. Le meilleur de tous, vous pouvez `.populate()` à travers ces différents datastores et adaptateurs, donc si vous configurez un modèle pour vivre dans une base de données différente, votre contrôleur/code de modèle n'a pas besoin de changer (notez que vous allez migrer manuellement toutes les données de production importantes)
 
 ##### Performance
 
-_You're sitting in front of your laptop late at night, and you realize:_
-> "How can I do keyword search?  The product data doesn't have any keywords, and the business wants search results ranked based on n-gram word sequences.  Also I have no idea how this recommendation engine is going to work.  Also if I hear the words `big data` one more time tonight I'm quitting and going back to work at the coffee shop."
+_Vous êtes assis en face de votre ordinateur portable tard dans la nuit, et vous vous rendez compte :_
+> "Comment puis-je faire une recherche par mot-clé?" Les données du produit n'ont pas de mots-clés et l'entreprise veut que les résultats de la recherche soient classés en fonction des séquences de mots n-gram. J'entends le mot `big data` une fois de plus ce soir, je quitte et retourne travailler au café."
 
-So what about the "big data"?  Normally when you hear bloggers and analyst use that buzzword, you think of data mining and business intelligence.  You might imagine a process that pulls data from multiple sources, processes/indexes/analyzes it, then writes that extracted information somewhere else and either keeps the original data or throws it away.
+Qu'en est-il des `big data` ? Normalement, lorsque vous entendez les blogueurs et les analystes utiliser ce mot à la mode, vous pensez au data mining and business intelligence. Vous pouvez imaginer un processus qui extrait des données à partir de sources multiples, les traite/indexe/analyse, puis écrit que les informations extraites ailleurs et conserve les données d'origine ou les jette.
 
-However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases (for instance MongoDB provides geospatial indexing, and ElasticSearch provides excellent support for indexing data for full-text search).
+Cependant, il existe des défis beaucoup plus communs qui se prêtent aux mêmes besoins d'indexation/analyse; Des fonctionnalités telles que la recherche "driving-direction-closeness" ou un moteur de recommandation pour les produits connexes. Heureusement, un certain nombre de bases de données simplifient des cas spécifiques d'utilisation de données importantes (MongoDB fournit par exemple l'indexation géospatiale et ElasticSearch fournit un excellent support pour l'indexation des données pour la recherche en texte intégral).
 
-Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with optimizations/trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales.
+L'utilisation des bases de données de la manière dont elles sont conçues offre d'énormes avantages en matière de performances, en particulier lorsqu'il s'agit de requêtes complexes de rapports, de recherche (qui est vraiment un tri personnalisé) et d'apprentissage NLP/machine. Certaines bases de données sont très efficaces pour répondre à des requêtes d'entreprise relationnelles traditionnelles, alors que d'autres sont mieux adaptées au traitement de données cartographiques/réduites, avec des optimisations et des compromis pour des écritures et des écritures flamboyantes. Cette considération est particulièrement importante en tant qu'échelle de base de votre application.
 
-### Adapters
+### Adaptateurs
 
-Like most MVC frameworks, Sails supports [multiple databases](http://sailsjs.com/features).  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
+Comme la plupart des frameworks MVC, Sails prend en charge [plusieurs bases de données](http://sailsjs.com/features). Cela signifie que la syntaxe pour interroger et manipuler nos données est toujours la même, que nous utilisions MongoDB, MySQL ou toute autre base de données prise en charge.
 
-Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](http://sailsjs.com/features), and a wealth of [community adapters](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) are also available.
+Waterline s'appuie sur cette flexibilité avec son concept d'adaptateurs. Un adaptateur est un peu de code qui mappe des méthodes comme `find()` et `create()` à une syntaxe de niveau inférieur comme `SELECT * FROM` et `INSERT INTO`. L'équipe de Sails maintient des adaptateurs open-source pour les [bases de données les plus populaires](http://sailsjs.com/features), et des [adaptateurs communautaires](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) sont également disponibles.
 
-Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations; anything from a proprietary enterprise account system, to a cache, to a traditional database.
+Les adaptateurs personalisés Waterline sont réellement [assez simples à construire](https://github.com/balderdashy/sails-generate-adapter), et peuvent faire pour des intégrations plus maintenables; d'un système de compte d'entreprise propriétaire, vers un cache, vers une base de données traditionnelle.
 
 
-### Connections
+### Les connexions
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+Une **connexion** représente une configuration de base de données particulière. Cet objet de configuration inclut un adaptateur à utiliser, ainsi que des informations telles que l'hôte, le port, le nom d'utilisateur, le mot de passe, etc. Si votre base de données ne nécessite pas de mot de passe, supprimez simplement la propriété mot de passe. Les connexions sont définies dans [`config/connections.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
 
 ```javascript
-// in config/connections.js
+// dans config/connections.js
 // ...
 {
   adapter: 'sails-mysql',
@@ -74,13 +74,13 @@ A **connection** represents a particular database configuration.  This configura
 // ...
 ```
 
-Depending on the adapter in use, it's also possible to use unix sockets, without port and host or a URL. Here's an example using an existing MAMP mysql server and sails-mysql adapter:
+Selon l'adaptateur utilisé, il est également possible d'utiliser des sockets unix, sans port ni hôte ni URL. Voici un exemple utilisant un serveur MAMP mysql existant et un adaptateur sails-mysql:
 
 ```javascript
-// in config/local.js
+// dans config/local.js
 // ...
 connections:{
-  local_mysql:{ //arbitrary name
+  local_mysql:{ // un nom arbitraire
     module: 'sails-mysql',
     user: 'root',
     password: 'root',
@@ -91,13 +91,13 @@ connections:{
 // ...
 ```
 
-And another showing an example of configuring the adapter using a url:
+Et un autre exemple de configuration de l'adaptateur à l'aide d'une url:
 
 ```javascript
-// in config/local.js
+// dans config/local.js
 // ...
 connections:{
-  local_mysql:{ //arbitrary name
+  local_mysql:{ // un nom arbitraire
     module: 'sails-mysql',
     url: 'mysql://root:root@localhost:3306/sailstest1'
   }
@@ -105,52 +105,48 @@ connections:{
 // ...
 ```
 
-
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
-Often it is also useful override the connections object in [`config/local.js`](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file)
+Pour une application Sails, la connexion de base de données par défaut se trouve dans la configuration du modèle de base (`config/models.js`), mais elle peut également être remplacée par modèle en spécifiant une [`connection`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html). Souvent, il est également utile de remplacer l'objet connexions dans [`config/local.js`](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file)
 
 
-### Analogy
+### Analogie
 
-Imagine a file cabinet full of completed pen-and-ink forms. All of the forms have the same fields (e.g. "name", "birthdate", "maritalStatus"), but for each form, the _values_ written in the fields vary.  For example, one form might contain "Lara", "2000-03-16T21:16:15.127Z", "single", while another form contains "Larry", "1974-01-16T21:16:15.127Z", "married".
+Imaginez un classeur rempli de formulaires remplis de stylo et d'encre. Tous les formulaires ont les mêmes champs (par exemple, "nom", "date de naissance", "état marital"), mais pour chaque formulaire, les valeurs exprimées dans les champs varient. Par exemple, un formulaire peut contenir "Lara", "2000-03-16T21:16:15.127Z", "simple", tandis qu'un autre formulaire contient "Larry", "1974-01-16T21:16:15.127Z», "marié".
 
-Now imagine you're running a hotdog business.  If you were _very_ organized, you might set up your file cabinets as follows:
+Imaginez maintenant que vous dirigez une entreprise de hot-dogs. Si vous étiez très organisé, vous pouvez configurer vos classeurs comme suit:
 
-+ **Employee** (contains your employee records)
-  + `fullName`
-  + `hourlyWage`
-  + `phoneNumber`
-+ **Location** (contains a record for each location you operate)
-  + `streetAddress`
-  + `city`
-  + `state`
-  + `zipcode`
-  + `purchases`
-    + a list of all the purchases made at this location
-  + `manager`
-    + the employee who manages this location
-+ **Purchase** (contains a record for each purchase made by one of your customers)
-  + `madeAtLocation`
-  + `productsPurchased`
++ **Employee** (contient les enregistrements de vos employés)
+  + `nomComplet`
+  + `salaire`
+  + `telephone`
++ **pointDeVente** (Contient un enregistrement de l'adresse de chaque point de vente)
+  + `adresse`
+  + `ville`
+  + `province`
+  + `codePostal`
+  + `ventes`
+    + Une liste de tous les achats effectués à cet endroit
+  + `responsable`
+    + L'employé qui gère cet endroit
++ **Vente** (Contient un enregistrement pour chaque achat effectué par l'un de vos clients)
+  + `pointDeVente`
+  + `produits`
   + `createdAt`
-+ **Product** (contains a record for each of your various product offerings)
-  + `nameOnMenu`
-  + `price`
-  + `numCalories`
-  + `percentRealMeat`
-  + `availableAt`
-    + a list of the locations where this product offering is available.
+    + Date et heure de création de l'enregistrement (auto-rempli)
++ **Produit** (Contient un enregistrement pour chacune de vos produits)
+  + `nom`
+  + `prix`
+  + `nombreDeCalories`
+  + `pourcentageDeViande`
+  + `disponibleA`
+    + Une liste des points de vente où cette offre de produit est disponible.
 
 
-In your Sails app, a **model** is like one of the file cabinets.  It contains **records**, which are like the forms.  `Attributes` are like the fields in each form.
+Dans votre application Sails, un **modèle** est comme l'un des classeurs. Il contient des **enregistrements**, qui sont comme les formulaires. Les «attributes» sont comme les champs de chaque formulaire.
 
-
-
-### Notes
-+ This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose.)
-
+### Remarques
++ Cette documentation sur les modèles n'est pas applicable si vous remplacez l'ORM intégré, [Waterline](https://github.com/balderdashy/waterline). Dans ce cas, vos modèles suivront la convention que vous avez établie, en plus de la bibliothèque ORM que vous utilisez (par exemple, Mongoose).
 
 
 
 
-<docmeta name="displayName" value="Models and ORM">
+<docmeta name="displayName" value="Modèle et ORM">
