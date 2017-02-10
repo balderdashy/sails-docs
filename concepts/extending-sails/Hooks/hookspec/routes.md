@@ -5,32 +5,33 @@ The `routes` feature allows a custom hook to easily bind new routes to a Sails a
 ```javascript
 module.exports = function (sails) {
 
-   return {
+  return {
 
-      initialize: function(cb) {
-         this.numRequestsSeen = 0;
-         this.numUnhandledRequestsSeen = 0;
-         return cb();
-      },
+    initialize: function(cb) {
+      this.numRequestsSeen = 0;
+      this.numUnhandledRequestsSeen = 0;
+      return cb();
+    },
 
-      routes: {
-         before: {
-            'GET /*': function (req, res, next) {
-               this.numRequestsSeen++;
-               return next();
-            }
-        },
-        after: {
-            'GET /*': function (req, res, next) {
-               this.numUnhandledRequestsSeen++;
-               return next();
-            }
+    routes: {
+      before: {
+        'GET /*': function (req, res, next) {
+          this.numRequestsSeen++;
+          return next();
         }
-    };
+      },
+      after: {
+        'GET /*': function (req, res, next) {
+          this.numUnhandledRequestsSeen++;
+          return next();
+        }
+      }
+    }
+  };
 };
 ```
 
-This hook will process all requests via the function provided in the `before` object, and increment its `numRequestsSeen` variable.  It will also process any *unhandled* requests via the function provided in the `after` object&mdash;that is, any routes that aren't bound in the app via a custom route configuration or a blueprint.  
+This hook will process all requests via the function provided in the `before` object, and increment its `numRequestsSeen` variable.  It will also process any *unhandled* requests via the function provided in the `after` object&mdash;that is, any routes that aren't bound in the app via a custom route configuration or a blueprint.
 
 > The two variables set up in the hook will be available to other modules in the Sails app as `sails.hooks["count-requests"].numRequestsSeen` and `sails.hooks["count-requests"].numUnhandledRequestsSeen`
 
