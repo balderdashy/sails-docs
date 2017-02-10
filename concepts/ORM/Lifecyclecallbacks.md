@@ -9,15 +9,21 @@ Sails exposes a handful of lifecycle callbacks by default.
 
 ##### Callbacks on `create`
 
+The `afterCreate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
   - beforeCreate: fn(recordToInsert, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
 ##### Callbacks on `update`
 
+The `afterUpdate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
   - beforeUpdate: fn(valuesToUpdate, cb)
   - afterUpdate: fn(updatedRecord, cb)
 
 ##### Callbacks on `destroy`
+
+The `afterDestroy` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeDestroy: fn(criteria, cb)
   - afterDestroy: fn(destroyedRecords, cb)
