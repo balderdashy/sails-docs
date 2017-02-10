@@ -48,6 +48,7 @@ return res.redirect('back');
 > + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(http://sailsjs.com/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
 >  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
 >  + This behavior may change to more closely reflect HTTP in future versions of Sails.
+>  + If you want to send a custom status code along with a redirect, you can chain the following functions, `res.status()` and `res.redirect()`: `return res.status(301).redirect('/foo');`
 
 
 
