@@ -1,32 +1,32 @@
-# Models
+# Modèles
 
-A model represents a collection of structured data, usually corresponding to a single table or collection in a database.  Models are usually defined by creating a file in an app's `api/models/` folder.
+Un modèle représente une collection de données structurées, généralement correspondant à une seule table ou collection dans une base de données. Les modèles sont généralement définis en créant un fichier dans le dossier `api/models/` d'une application.
 
 ```javascript
-// Parrot.js
-// The set of parrots registered in our app.
+// Perroquet.js
+// L'ensemble des perroquets inscrits dans notre application.
 module.exports = {
   attributes: {
     // e.g., "Polly"
-    name: {
+    nom: {
       type: 'string'
     },
 
     // e.g., 3.26
-    wingspan: {
+    porteeAile: {
       type: 'float',
       required: true
     },
 
     // e.g., "cm"
-    wingspanUnits: {
+    porteeAileUnite: {
       type: 'string',
       enum: ['cm', 'in', 'm', 'mm'],
       defaultsTo: 'cm'
     },
 
     // e.g., [{...}, {...}, ...]
-    knownDialects: {
+    DialectesConnus: {
       collection: 'Dialect'
     }
   }
@@ -35,151 +35,149 @@ module.exports = {
 
 <!--
 
-// api/models/Product.js
+// api/models/Produit.js
 module.exports = {
   attributes: {
-    nameOnMenu: { type: 'string' },
-    price: { type: 'string' },
-    percentRealMeat: { type: 'float' },
-    numCalories: { type: 'integer' }
+    nom: { type: 'string' },
+    prix: { type: 'string' },
+    pourcentageDeViande: { type: 'float' },
+    nombreDeCalories: { type: 'integer' }
   }
 }
 -->
 
 
-### Using models
+### Utilisation des modèles
 
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.com/documentation/reference/waterline/models/find.html), [create](http://sailsjs.com/documentation/reference/waterline/models/create.html), [update](http://sailsjs.com/documentation/reference/waterline/models/update.html), and [destroy](http://sailsjs.com/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+Les modèles peuvent être consultés à partir de nos contrôleurs, politiques, services, réponses, tests et dans les méthodes de modèle personnalisé. Il existe de nombreuses méthodes intégrées disponibles sur les modèles, dont les plus importantes sont les méthodes de requête: [find](http://sailsjs.com/documentation/reference/waterline/models/find.html), [create]( Http://sailsjs.com/documentation/reference/waterline/models/create.html), [update](http://sailsjs.com/documentation/reference/waterline/models/update.html), et [destroy](Http://sailsjs.com/documentation/reference/waterline/models/destroy.html). Ces méthodes sont [asynchrones](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - En arriére plan, Waterline doit envoyer une requête à la base de données et attend une réponse.
 
 
-Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
+Par conséquent, les méthodes de requête renvoient un objet de requête différé. Pour exécuter effectivement une requête, `.exec(cb)` doit être appelée sur cet objet différé, où `cb` est une fonction callback à exécuter après que la requête soit terminée.
 
-Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query object, we can call `.then()`, `.spread()`, or `.catch()`, which will return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
-
-
+Waterline comprend également un soutien facultatif aux promesses (promises). Au lieu d'appeler `.exec()` sur un objet de requête, nous pouvons appeler `.then()`, `.spread()` ou `.catch()`, qui renverra une [promesse Bluebird](https://github.com/petkaantonov/bluebird).
 
 
 
-### Model Methods (aka "static" or "class" methods)
 
-Model class methods are functions built into the model itself that perform a particular task on its instances (records).  This is where you will find the familiar CRUD methods for performing database operations like `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
+### Méthodes de modèle (alias méthodes "statiques" ou "classes")
+
+Les méthodes de classe de modèle sont des fonctions intégrées dans le modèle lui-même qui effectuent une tâche particulière sur ses instances (enregistrements). C'est là que vous trouverez les méthodes familières de CRUD pour effectuer des opérations de base de données comme `.create()`, `.update()`, `.destroy()`, `.find()`, etc.
 
 
-###### Custom model methods
+###### Méthodes personnalisées de modèle
 
-Waterline allows you to define custom methods on your models.  This feature takes advantage of the fact that Waterline models ignore unrecognized keys, so you do need to be careful about inadvertently overriding built-in methods and dynamic finders (don't define methods named "create", etc.)  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
+Waterline vous permet de définir des méthodes personnalisées sur vos modèles. Cette fonctionnalité profite du fait que les modèles Waterline ignorent les clés non reconnues, vous devez donc être prudent en cas de surcharge involontaire des méthodes intégrées et des moteurs de recherche dynamiques (ne définissez pas de méthodes nommées `create`, etc.). Les méthodes personnalisées de modèle sont utiles pour extrapoler un code de contrôleur qui se rapporte à un modèle particulier; C'est-à-dire que vous pouvez extraire le code de vos contrôleurs vers des fonctions réutilisables qui peuvent être appelées de n'importe où (c'est-à-dire ne dépendent pas de `req` ou` res`.)
 
-Model methods are generally asynchronous functions.  By convention, asynchronous model methods should be 2-ary functions, which accept an object of inputs as their first argument (usually called `opts` or `options`) and a Node callback as the second argument.  Alternatively, you might opt to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
+Les méthodes des modèles sont généralement des fonctions asynchrones. Par convention, les méthodes de modèle asynchrone devraient être des fonctions à deux arguments, qui acceptent un objet d'entrées comme leur premier argument (généralement appelé `opts` ou` options`) et un callback Node comme deuxième argument. Sinon, vous pouvez choisir de retourner une promesse (les deux stratégies fonctionnent très bien, c'est une question de préférence. Si vous n'avez pas de préférence, limitez-vous aux callbacks de Node).
 
-A best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+Une bonne pratique consiste à écrire votre méthode de modèle statique de sorte qu'il peut accepter soit un enregistrement soit sa valeur de clé primaire. Pour les méthodes de modèle qui fonctionnent sur/depuis _plusieurs_ enregistrements à la fois, vous devez autoriser un tableau d'enregistrements ou un tableau de valeurs de clé primaire à passer. Cela prend plus de temps pour écrire, mais rend votre méthode beaucoup plus puissante. Et puisque vous faites cela pour extrapoler la logique couramment utilisée, ça vaut généralement l'effort supplémentaire.
 
-For example:
+Par exemple:
 
 ```js
-// in api/models/Monkey.js...
+// in api/models/Singe.js...
 
-// Find monkeys with the same name as the specified person
-findWithSameNameAsPerson: function (opts, cb) {
+// Trouver les singes portant le même nom qu'une personne
+chercherMemeNomPersonne: function (opts, cb) {
 
-  var person = opts.person;
+  var personne = opts.personne;
 
-  // Before doing anything else, check if a primary key value
-  // was passed in instead of a record, and if so, lookup which
-  // person we're even talking about:
-  (function _lookupPersonIfNecessary(afterLookup){
-    // (this self-calling function is just for concise-ness)
-    if (typeof person === 'object')) return afterLookup(null, person);
-    Person.findOne(person).exec(afterLookup);
-  })(function (err, person){
+  // Avant de faire quoi que ce soit d'autre, vérifiez si une valeur de clé primaire
+  // a été passé au lieu d'un enregistrement, et si oui, recherche qui
+  // personne dont nous parlons :
+  (function _chercherPersonneSiNecessaire(apresRechercher){
+    if (typeof personne === 'object')) return apresRechercher(null, personne);
+    Personne.findOne(personne).exec(apresRechercher);
+  })(function (err, personne){
     if (err) return cb(err);
-    if (!person) {
+    if (!personne) {
       err = new Error();
-      err.message = require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person);
+      err.message = require('util').format('Impossible de trouver des singes portant le même nom que la personne w/ id=%s parce que cette personne n'existe pas.', personne);
       err.status = 404;
       return cb(err);
     }
 
-    Monkey.findByName(person.name)
-    .exec(function (err, monkeys){
+    Singe.findByName(personne.name)
+    .exec(function (err, singes){
       if (err) return cb(err);
-      cb(null, monkeys);
+      cb(null, singes);
     })
   });
 
 }
 ```
 
-Then you can do:
+Ensuite, vous pouvez faire:
 
 ```js
-Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
+Singe.chercherMemeNomPersonne(daniel, function (err, singes) { ... });
 // -or-
-Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
+Singe.chercherMemeNomPersonne(37, function (err, singes) { ... });
 ```
 
-> For more tips, read about the incident involving [Timothy the Monkey]().
+> Pour en savoir plus, lisez l'incident concernant [Timothy le singe] ().
 
-Another example:
+Un autre exemple:
 
 ```javascript
-// api/models/User.js
+// api/models/Utilisateur.js
 module.exports = {
 
   attributes: {
 
-    name: {
+    nom: {
       type: 'string'
     },
-    enrolledIn: {
-      collection: 'Course', via: 'students'
+    inscritDans: {
+      collection: 'Cours', via: 'etudiants'
     }
   },
 
   /**
-   * Enrolls a user in one or more courses.
+   * Inscrit un utilisteur dans un ou plusieurs cours
    * @param  {Object}   options
-   *            => courses {Array} list of course ids
-   *            => id {Integer} id of the enrolling user
+   *            => cours {Array} Liste d'identifiant des cours
+   *            => id {Integer} identifiant de l'utilisateur
    * @param  {Function} cb
    */
-  enroll: function (options, cb) {
+  inscrire: function (options, cb) {
 
-    User.findOne(options.id).exec(function (err, theUser) {
+    Utilisateur.findOne(options.id).exec(function (err, utilisateur) {
       if (err) return cb(err);
-      if (!theUser) return cb(new Error('User not found.'));
-      theUser.enrolledIn.add(options.courses);
-      theUser.save(cb);
+      if (!utilisateur) return cb(new Error('Utilisateur inexistant.'));
+      utilisateur.inscritDans.add(options.cours);
+      utilisateur.save(cb);
     });
   }
 };
 ```
 
 
-#### Dynamic Finders
+#### Recherche dynamique
 
-These are special static methods that are dynamically generated by Sails when you lift your app.  For instance, if your Person model has a "firstName", you might run:
+Il s'agit de méthodes statiques spéciales générées dynamiquement par Sails lorsque vous lancez votre application. Par exemple, si votre modèle Personne a un "prenom", vous pouvez exécuter:
 
 ```js
-Person.findByFirstName('emma').exec(function(err,people){ ... });
+Personne.findByFirstName('emma').exec(function(err, personnes){ ... });
 ```
 
 
-#### Resourceful Pubsub Methods
+#### Méthodes Pubsub des ressouces
 
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub).
+Un type spécial de méthodes de modèle qui sont attachés par le hook pubsub. Plus sur cela dans la [section de la documentation sur le pubsub](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub).
 
 
 <!--
-another special type of class method.  It stands for 'Publish, Subscribe' and that's just what they do. These methods play a big role in how Sails integrates and utilizes Socket.IO.  They are used to subscribe clients to and publish messages about the creation, update, and destruction of models.  If you want to build real-time functionality in Sails, these will come in handy.
+Un autre type spécial de méthode de classe. Il signifie "Publier, S'abonner" et c'est juste ce qu'ils font. Ces méthodes jouent un rôle important dans la façon dont Sails intègre et utilise Socket.IO. Ils servent à souscrire des clients et à publier des messages sur la création, la mise à jour et la destruction de modèles. Si vous voulez construire des fonctionnalités en temps réel dans Sails, ce sera pratique.
 -->
 
-#### Attribute Methods (i.e. record/instance methods)
+#### Méthodes d'attribut (méthodes d'enregistrement/instance)
 
-Attribute methods are functions available on records (i.e. model instances) returned from Waterline queries.  For example, if you find the ten students with the highest GPA from the Student model, each of those student records will have access to all the built-in attribute methods, as well as any custom attribute methods defined on the Student model.
+Les méthodes d'attributs sont des fonctions disponibles sur les enregistrements (c'est-à-dire les instances de modèle) renvoyées par les requêtes Waterline. Par exemple, si vous cherchez les dix étudiants avec l'IQ le plus élevé du modèle `Etudiant`, chacun de ces enregistrements d'étudiant aura accès à toutes les méthodes d'attributs intégrées, ainsi qu'à toutes les méthodes d'attributs personnalisés définies sur le modèle `Etudiant`.
 
-###### Built-in attribute methods
-Every Waterline model includes some attribute methods automatically, including:
+###### Méthodes d'attribut intégrées
+Chaque modèle Waterline inclut automatiquement certaines méthodes d'attribut, notamment:
 
 + [`.toJSON()`](http://sailsjs.com/documentation/reference/waterline/records/toJSON.html)
 + [`.save()`](http://sailsjs.com/documentation/reference/waterline/records/save.html)
@@ -187,115 +185,111 @@ Every Waterline model includes some attribute methods automatically, including:
 + [`.validate()`](http://sailsjs.com/documentation/reference/waterline/records/validate.html)
 
 
-<!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->
+<!-- Note - nous devons regrouper une méthode d'attribut getPrimaryKeyValue() sur chaque modèle dans le noyau de Waterline (ou peut-être juste getId() puisque "id" est plus simple à comprendre) ~ mike - aug2,2014 -->
 
 
-###### Custom attribute methods
+###### Méthodes d'attribut personnalisées
 
-Waterline models also allow you to define your own custom attribute methods.  Define them like any other attribute, but instead of an attribute definition object, write a function on the right-hand-side.
-
+Les modèles Waterline vous permettent également de définir vos propres méthodes d'attributs personnalisés. Définissez-les comme n'importe quel autre attribut, mais au lieu d'un objet de définition d'attribut, écrivez une fonction :
 
 ```js
-// From api/models/Person.js...
+// From api/models/Personne.js...
 
 module.exports = {
   attributes: {
-    // Primitive attributes
-    firstName: {
+    // Attributs primitives
+    prenom: {
       type: 'string',
       defaultsTo: ''
     },
-    lastName: {
+    nom: {
       type: 'string',
       defaultsTo: ''
     },
-
-    // Associations (aka relational attributes)
-    spouse: { model: 'Person' },
-    pets: { collection: 'Pet' },
-
-    // Attribute methods
-    getFullName: function (){
-      return this.firstName + ' ' + this.lastName;
+    age: {
+      type: 'int'
     },
-    isMarried: function () {
-      return !!this.spouse;
+
+    // Associations (aka attributs relationel)
+    epouse: { model: 'Personne' },
+    animaux: { collection: 'Animal' },
+
+    // Méthodes d'attribut
+    getNomComplet: function (){
+      return this.prneom + ' ' + this.nom;
     },
-    isEligibleForSocialSecurity: function (){
+    isMarie: function () {
+      return !!this.epouse;
+    },
+    isElligiblePourLaSecuriteSociale: function (){
       return this.age >= 65;
     },
-    encryptPassword: function () {
-
-    }
   }
 };
 ```
-
-> Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_ by convention.
+> À noter que, à l'exception notable des méthodes d'attribut `.save()` et `.destroy()`, les méthodes d'attribut sont presque toujours synchrones par convention.
 >
-> Also note that custom attributes methods are not serialized to JSON by default.  To serialize them, you can override [toJSON](http://sailsjs.com/documentation/reference/waterline-orm/records/to-json).
+> Notez également que les méthodes d'attributs personnalisés ne sont pas sérialisées par défaut en JSON. Pour les sérialiser, vous pouvez remplacer [toJSON](http://sailsjs.com/documentation/reference/waterline-orm/records/to-json).
 
-###### When to write a custom attribute method
+###### Quand écrire une méthode d'attribut personnalisé
 
-Custom attribute methods are particularly useful for extracting some information out of a record.  I.e. you might want to reduce some information from one or more attributes (i.e. "is this person married?"")
+Les méthodes d'attribut personnalisées sont particulièrement utiles pour extraire certaines informations d'un enregistrement. Vous voulez peut-être réduire certaines informations à partir d'un ou plusieurs attributs (par exemple, "cette personne est-elle mariée ?")
 
 ```js
-if ( rick.isMarried() ) {
+if ( rick.isMarie() ) {
   // ...
 }
 ```
 
 
 
-###### When NOT to write a custom attribute method
+###### Quand NE PAS écrire une méthode d'attribut personnalisé
 
-You should **avoid writing your own _asynchronous_ attribute methods**.  While built-in asynchronous attribute methods like `.save()` and `.destroy()` can be convenient from your app code, writing your _own_ asynchronous attribute methods can sometimes have unintended consequences, and is not the most efficient way to build your app.
+Vous devez **éviter d'écrire vos propres méthodes d'attribut _asynchrones_**. Alors que les méthodes d'attribut asynchrones intégrées comme `.save()` et `.destroy()` peuvent être commodes à partir du code de votre application, l'écriture de vos _propres_ méthodes d'attribut asynchrones peut parfois avoir des conséquences imprévues et n'est pas le moyen le plus efficace de construire votre application.
 
-For instance, consider an app that manages wedding records.  You might think to write an attribute method on the Person model that updates the `spouse` attribute on both individuals in the database.  This would allow you to write controller code like:
+Par exemple, envisager une application qui gère les dossiers de mariage. Vous pourriez penser à écrire une méthode d'attribut sur le modèle Personne qui met à jour l'attribut `conjoint` sur les deux individus dans la base de données. Cela vous permettra d'écrire une code de contrôleur comme:
 
 ```js
-personA.marry(personB, function (err) {
+personneA.seMarie(personneB, function (err) {
   if (err) return res.negotiate(err);
   return res.ok();
 })
 ```
 
-Which looks great...until you need to write a different action where you don't have an actual record for "personA".
+Qui semble bien ... jusqu'à ce que vous avez besoin d'écrire une action différente où vous n'avez pas un enregistrement réel pour "personneA".
 
-A better strategy is to write a custom (static) model method instead.  This makes your function more reusable/versatile, since it will be accessible whether or not you have an actual record instance on hand.  You might refactor the code from the previous example to look like:
+Une meilleure stratégie consiste à écrire à sa place une méthode de modèle personnalisée (statique). Cela rend votre fonction plus réutilisable/polyvalente, car elle sera accessible que vous ayez ou non une instance d'enregistrement réelle à portée de main. Vous pouvez refactoriser le code de l'exemple précédent à:
 
 ```js
-Person.marry([joe,raquel], function (err) {
+Person.seMarie([joe,raquel], function (err) {
   if (err) return res.negotiate(err);
   return res.ok();
 })
 ```
 
 
-
-###### Naming your attribute methods
-Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" (e.g. `getFullName()`) prefix and avoid writing attribute methods that change records in-place.
-
-<!--
-
-Imagine you have a small monkey named Timothy that rides on your shoulders and styles your hair when you are scheduled to speak at a conference.  In this scenario, you are a record of the `Person` model and Timothy is a record of the `Monkey` model. The `Person` model has primitive attributes like "name", "email", and "phoneNumber", and relational attributes like "petMonkey" (points to an individual `Monkey`) and "mom" (points to an individual `Person`).  Meanwhile the `Monkey` model has primitive attributes "name", "age", and "demeanor", as well as an relational attribute: "petOfPerson" (which points to an individual person).
-
-
-Everyone knows that a person can style her own hair, but it is more efficient if her pet monkey does it.  We can represent this by definining `styleHair: function (cb){ return cb(); }` as an attribute method on Person and `styleOwnersHair: function (cb){ return cb();}` as an attribute method on Monkey.
-
-
-If your app involves multigenerational hair-styling, you might think it would make sense to write an attribute method on the Monkey model called "getOwnersGrandma()" which would call a callback with the monkey's owner's mom's mom.
--->
+###### Nommer vos méthodes d'attribut
+Assurez-vous d'utiliser une convention de dénomination pour éviter de confondre **les méthodes d'attribut**  _des valeurs d'attributs_ lorsque vous travaillez avec des enregistrements dans votre application. Une bonne pratique est d'utiliser le préfixe "get*" ou "is*" (par exemple `getNomComplet()` ou `isMarie`) et d'éviter d'écrire des méthodes d'attribut qui modifient les enregistrements en place.
 
 <!--
 
-###### an aside about promises
+Imaginez que vous avez un petit singe nommé Timothy qui monte sur vos épaules et les styles de vos cheveux quand vous êtes invité à parler dans une conférence. Dans ce scénario, vous êtes un enregistrement du modèle `Personne` et Timothy est un enregistrement du modèle `Singe`. Le modèle `Personne` a des attributs primitifs comme "nom", "email" et "telephone", et des attributs relationnels comme "animalDomestique" (pointe vers le modèle `Singe`) et "maman" (pointe vers une `Personne`). Pendant ce temps, le modèle `Singe` a des attributs primitifs "nom", "age" et "comportement", ainsi qu'un attribut relationnel: "appartientA" (qui pointe vers une personne).
 
-Promises are most effective when used to handle asynchronous, but referentially transparent ("nullipotent") operations; i.e. logic without any side-effects.
+
+Tout le monde sait qu'une personne peut coiffer de ses propres cheveux, mais il est plus efficace si son singe de compagnie le fait. Nous pouvons le représenter en définissant `coifferCheuveux: function (cb) {return cb (); }` comme méthode d'attribut sur `Personne` et 'coifferPropreCheuveux: function (cb) {return cb ();}` comme méthode d'attribut sur `Singe`.
+
+
+Si votre application implique une coiffure multigénérationnelle, vous pourriez penser qu'il serait logique d'écrire une méthode d'attribut sur le modèle `Singe` appelé "getGrandMereDuProprio()" qui appellerait un callback avec la maman de la maman du propriétaire du singe.
+-->
+
+<!--
+###### un de côté sur les promesses
+
+Les promesses sont plus efficaces lorsqu'elles sont utilisées pour gérer des opérations asynchrones, mais référentiellement transparentes ("nullipotent"); À savoir la logique sans effets secondaires.
 -->
 
 
 
 
 
-<docmeta name="displayName" value="Models">
+<docmeta name="displayName" value="Modèles">
