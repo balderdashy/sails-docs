@@ -269,7 +269,7 @@ Person.seMarie([joe,raquel], function (err) {
 
 
 ###### Nommer vos méthodes d'attribut
-Assurez-vous d'utiliser une convention de dénomination pour éviter de confondre **les méthodes d'attribut**  _des valeurs d'attributs_ lorsque vous travaillez avec des enregistrements dans votre application. Une bonne pratique est d'utiliser le préfixe "get*" ou "is*" (par exemple `getNomComplet()` ou `isMarie`) et d'éviter d'écrire des méthodes d'attribut qui modifient les enregistrements en place.
+Assurez-vous d'utiliser une convention de dénomination pour éviter de confondre **les méthodes d'attribut**  _des valeurs d'attributs_ lorsque vous travaillez avec des enregistrements dans votre application. Une bonne pratique est d'utiliser le préfixe "get*" ou "is*" (par exemple `getNomComplet()` ou `isMarie()`) et d'éviter d'écrire des méthodes d'attribut qui modifient les enregistrements en place.
 
 <!--
 
