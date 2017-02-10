@@ -1,220 +1,220 @@
-# Waterline Query Language
+# langage de requête de Waterline
 
-The Waterline Query language is an object-based syntax used to retrieve the records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
+Le langage de requête de Waterline est une syntaxe basée sur les objets utilisée pour récupérer les enregistrements à partir de n'importe quelle base de données prise en charge. Sous la couverture, Waterline utilise les adaptateurs de base de données installés dans votre projet pour traduire ce langage en requêtes natives, puis envoyer ces requêtes à la base de données appropriée. Cela signifie que vous pouvez utiliser la même requête avec MySQL que avec Redis ou MongoDb. Et il vous permet de modifier votre base de données avec des modifications minimales (le cas échéant) à votre code d'application.
 
-> All queries inside of Waterline are case-insensitive. While this allows for more consistent querying across databases, depending on the database you're using, it can make indexing strings tough.  This is something to be aware of if you plan to create indexes in your database to optimize the performance of searching on string fields.
+> Toutes les requêtes à l'intérieur de Waterline sont insensibles à la casse. Bien que cela permette une interrogation plus cohérente entre les bases de données, selon la base de données que vous utilisez, il peut rendre les chaînes d'indexation difficiles. C'est quelque chose à savoir si vous prévoyez de créer des index dans votre base de données pour optimiser les performances de la recherche sur les champs de chaîne.
 
-### Query Language Basics
+### Les bases du langage de requête
 
-The criteria objects are formed using one of four types of object keys. These are the top level
-keys used in a query object. It is loosely based on the criteria used in MongoDB with a few slight variations.
+Les objets de critères sont formés en utilisant l'un des quatre types de clés d'objet. Ce sont les clés de niveau supérieur
+utilisées dans un objet de requête. Il est basé librement sur les critères utilisés dans MongoDB avec quelques légères variations.
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or, if `where` is excluded, the entire object will be treated as a `where` criteria.
+Les requêtes peuvent être créées à l'aide d'une clé `where` pour spécifier des attributs, ce qui vous permettra également d'utiliser des options de requête telles que `limit` et `skip` ou, si` where` est exclue, l'objet entier sera traité comme un `where`.
 
 ```javascript
 
-Model.find({
-  name: 'mary'
-}).exec(function (err, peopleNamedMary){
+Personne.find({
+  nom: 'marie'
+}).exec(function (err, personnesNommeeMarie){
 
 });
 
 
-// OR
+// OU
 
 
-Model.find({
-  where: { name: 'mary' },
+Personne.find({
+  where: { nom: 'mary' },
   skip: 20,
   limit: 10,
   sort: 'createdAt DESC'
-}).exec(function(err, thirdPageOfRecentPeopleNamedMary){
+}).exec(function(err, troisiemePageDesNouvellesPersonnesNommeeMarie){
 
 });
 ```
 
-#### Key Pairs
+#### Paires de clés
 
-A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
+Une paire de clés peut être utilisée pour rechercher des enregistrements pour les valeurs correspondant exactement à ce qui est spécifié. Il s'agit de la base d'un objet de critères où la clé représente un attribut d'un modèle et la valeur est une vérification d'égalité stricte des enregistrements pour les valeurs correspondantes.
 
 ```javascript
-Model.find({
-  name: 'lyra'
-}).exec(function (err, peopleNamedLyra) {
+Personne.find({
+  nom: 'lise'
+}).exec(function (err, personnesNommeeLise) {
 
 });
 ```
 
-They can be used together to search multiple attributes.
+Ils peuvent être utilisés ensemble pour rechercher des attributs multiples.
 
 ```javascript
-Model.find({
-  name: 'walter',
-  state: 'new mexico'
-}).exec(function (err, waltersFromNewMexico) {
+Personne.find({
+  nom: 'daniel',
+  ville: 'Lyon'
+}).exec(function (err, danielsDeLyon) {
   
 });
 ```
 
-#### Modified Pairs
+#### Paires modifiées
 
-Modified pairs also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
+Les paires modifiées ont également des attributs de modèle pour les clés, mais ils utilisent également l'un des modificateurs de critères pris en charge pour effectuer des requêtes dans lesquelles une vérification d'égalité stricte ne fonctionnerait pas.
 
 ```javascript
-Model.find({
-  name : {
-    'contains' : 'yra'
+Personne.find({
+  nom : {
+    'contains' : 'belle'
   }
 })
 ```
 
-#### In Pairs
+#### Dans les paires
 
-Provide an array to find records whose value for this attribute exactly matches (case-insensitive) _any_ of the specified search terms.
+Fournir un tableau pour trouver des enregistrements dont la valeur pour cet attribut correspond exactement (sans distinction entre majuscules et minuscules) à _l'un_ des termes de recherche spécifiés.
 
-> This is more or less equivalent to "IN" queries in SQL, and the `$in` operator in MongoDB.
+> Ceci est plus ou moins équivalent aux requêtes "IN" dans SQL et à l'opérateur `$in` dans MongoDB.
 
 ```javascript
-Model.find({
-  name : ['walter', 'skyler']
-}).exec(function (err, waltersAndSkylers){
+Personne.find({
+  name : ['lise', 'daniel']
+}).exec(function (err, lisesEtDaniels){
 
 });
 ```
 
-#### Not-In Pairs
+#### Pas dans les paires
 
-Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches (case-insensitive) for any of the specified search terms.
+Fournir un tableau enveloppé dans un dictionnaire sous une clé `!` (Comme `{'!': [...]}`) pour trouver des enregistrements dont la valeur pour cet attribut _ne_ correspond pas aux (insensible à la casse) ermes de recherche spécifiés.
 
-> This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
+> Ceci est plus ou moins équivalent aux requêtes "NOT IN" dans SQL et à l'opérateur `$nin` dans MongoDB.
 
 ```javascript
-Model.find({
-  name: { '!' : ['walter', 'skyler'] }
-}).exec(function (err, everyoneExceptWaltersAndSkylers){
+Personne.find({
+  name: { '!' : ['lise', 'daniel'] }
+}).exec(function (err, TousExcepteLisesEtDaniels){
 
 });
 ```
 
-#### Or Pairs
+#### Les paires Où
 
-Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query pairs in the `or` array.
+Utilisez le modificateur `or` pour correspondre à _l'un_ des ensembles de règles imbriqués que vous spécifiez en tant que tableau de paires de requêtes. Pour que les enregistrements correspondent à une requête `or`, ils doivent correspondre à au moins une des paires de requêtes spécifiées dans le tableau `or`.
 
 ```javascript
-Model.find({
-  or : [
-    { name: 'walter' },
-    { occupation: 'teacher' }
-  ]
-}).exec(function(waltersAndTeachers){
+Personne.find({
+   or : [
+     {nom: 'albert'},
+     {occupation: 'professeur'}
+   ]
+}).exec(function (err, lesProfsAlbert) {
 
 });
 ```
 
-### Criteria Modifiers
+### Critères Modificateurs
 
-The following modifiers are available to use when building queries.
+Les modificateurs suivants sont disponibles pour l'utilisation lors de la création de requêtes.
 
-* `'<'` / `'lessThan'`
-* `'<='` / `'lessThanOrEqual'`
-* `'>'` / `'greaterThan'`
-* `'>='` / `'greaterThanOrEqual'`
-* `'!'` / `'not'`
-* `'like'`
-* `'contains'`
-* `'startsWith'`
-* `'endsWith'`
+* Inférieur à           : `'<'` / `'lessThan'`
+* Inférieur ou égale à  : `'<='` / `'lessThanOrEqual'`
+* Supérieur à           : `'>'` / `'greaterThan'`
+* Supérieur ou égale à  : `'>='` / `'greaterThanOrEqual'`
+* Négation              : `'!'` / `'not'`
+* Comme                 : `'like'`
+* Contient              : `'contains'`
+* Commence par          : `'startsWith'`
+* Fini par              : `'endsWith'`
 
 
 #### '<' / 'lessThan'
 
-Searches for records where the value is less than the value specified.
+Recherche des enregistrements dont la valeur est inférieure à la valeur spécifiée.
 
 ```javascript
-Model.find({ age: { '<': 30 }})
+Personne.find({ age: { '<': 30 }})
 ```
 
 #### '<=' / 'lessThanOrEqual'
 
-Searches for records where the value is less or equal to the value specified.
+Recherche des enregistrements dont la valeur est inférieure ou égale à la valeur spécifiée.
 
 ```javascript
-Model.find({ age: { '<=': 21 }})
+Personne.find({ age: { '<=': 21 }})
 ```
 
 #### '>' / 'greaterThan'
 
-Searches for records where the value is more than the value specified.
+Recherche des enregistrements dont la valeur est supérieure à la valeur spécifiée.
 
 ```javascript
-Model.find({ age: { '>': 18 }})
+Personne.find({ age: { '>': 18 }})
 ```
 
 #### '>=' / 'greaterThanOrEqual'
 
-Searches for records where the value is more or equal to the value specified.
+Recherche des enregistrements dont la valeur est supérieure ou égale à la valeur spécifiée.
 
 ```javascript
-Model.find({ age: { '>=': 21 }})
+Personne.find({ age: { '>=': 21 }})
 ```
 
 #### '!' / 'not'
 
-Searches for records where the value is not equal to the value specified.
+Recherche des enregistrements dont la valeur n'est pas égale à la valeur spécifiée.
 
 ```javascript
-Model.find({
-  name: { '!': 'foo' }
+Personne.find({
+  nom: { '!': 'foo' }
 })
 ```
 
 #### 'contains'
 
-Searches for records where the value for this attribute _contains_ the given string. (Case insensitive.)
+Recherche les enregistrements où la valeur de cet attribut _contient_ la chaîne donnée (Insensible à la casse).
 
 ```javascript
-Model.find({
-  subject: { contains: 'music' }
-}).exec(function (err, musicCourses){
+Livre.find({
+  sujet: { contains: 'musique' }
+}).exec(function (err, livresDeMusique){
   
 });
 ```
 
 #### 'startsWith'
 
-Searches for records where the value for this attribute _starts with_ the given string. (Case insensitive.)
+Recherche les enregistrements où la valeur de cet attribut _commence par_ avec la chaîne donnée (Insensible à la casse).
 
 ```javascript
-Model.find({
-  subject: { startsWith: 'american' }
-}).exec(function (err, coursesAboutAmerica){
+Livre.find({
+  sujet: { startsWith: 'america' }
+}).exec(function (err, livresSurAmerique){
 
 });
 ```
 
 #### 'endsWith'
 
-Searches for records where the value for this attribute _ends with_ the given string. (Case insensitive.)
+Recherche des enregistrements dans lesquels la valeur de cet attribut _fini par_ la chaîne donnée (Insensible à la casse).
 
 ```javascript
-Model.find({
-  subject: { endsWith: 'history' }
-}).exec(function (err, historyCourses) {
+Livre.find({
+  sujet: { endsWith: 'histoire' }
+}).exec(function (err, livresHistoire) {
 
 })
 ```
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign. (Case insensitive.)
+Recherche des enregistrements en utilisant la correspondance de motif avec le signe `%` (Insensible à la casse).
 
 ```javascript
-Model.find({ food: { 'like': '%beans' }})
+Recette.find({ ingredients: { 'like': '%tomate%' }})
 ```
 
-#### 'Date Ranges'
+#### Périodes de date
 
-You can do date range queries using the comparison operators.
+Vous pouvez effectuer des requêtes de dates en utilisant les opérateurs de comparaison.
 
 ```javascript
 Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
@@ -222,8 +222,7 @@ Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
 
 ### Query Options
 
-Query options allow you refine the results that are returned from a query. The current options
-available are:
+Les options de requête vous permettent d'affiner les résultats renvoyés par une requête. Les options disponibles sont:
 
 * `limit`
 * `skip`
@@ -231,7 +230,7 @@ available are:
 
 #### Limit
 
-Limits the number of results returned from a query.
+Limitez le nombre de résultats renvoyés par une requête.
 
 ```javascript
 Model.find({ where: { name: 'foo' }, limit: 20 })
@@ -239,7 +238,7 @@ Model.find({ where: { name: 'foo' }, limit: 20 })
 
 #### Skip
 
-Returns all the results excluding the number of items to skip.
+Renvoie tous les résultats à partir d'un certain nombre (début de sélection).
 
 ```javascript
 Model.find({ where: { name: 'foo' }, skip: 10 });
@@ -247,13 +246,13 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 
 ##### Pagination
 
-`skip` and `limit` can be used together to build up a pagination system.
+`skip` et` limit` peuvent être utilisés ensemble pour créer un système de pagination.
 
 ```javascript
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
-`paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
+`paginate` est une méthode auxiliaire Waterline qui peut accomplir la même chose que` skip` et `limit`.
 
 ``` javascript
 Model.find().paginate({page: 2, limit: 10});
@@ -261,40 +260,37 @@ Model.find().paginate({page: 2, limit: 10});
 
 > **Waterline**
 >
-> You can find out more about the Waterline API below:
-> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline/queries)
-> * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
-> * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
-> * [Waterline Github Repository](https://github.com/balderdashy/waterline)
-
+> Pour en savoir plus sur l'API Waterline ci-dessous:
+> * [Documentation Sails.js](http://sailsjs.com/documentation/reference/waterline/queries)
+> * [README de Waterline](https://github.com/balderdashy/waterline/blob/master/README.md)
+> * [Documentation sur Waterline](https://github.com/balderdashy/waterline-docs)
+> * [Dépôt Waterline](https://github.com/balderdashy/waterline)
 
 #### Sort
 
-Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
-sort, or specify an `asc` or `desc` flag for ascending or descending orders respectively.
+Les résultats peuvent être triés par nom d'attribut. Il suffit de spécifier un nom d'attribut pour un tri naturel (ascendant), ou spécifier respectivement avec "asc" ou "desc" pour les ordres ascendants ou descendants.
 
 ```javascript
-// Sort by name in ascending order
+// Trier par nom en ordre croissant
 Model.find({ where: { name: 'foo' }, sort: 'name' });
 
-// Sort by name in descending order
+// Trier par nom en ordre décroissant
 Model.find({ where: { name: 'foo' }, sort: 'name DESC' });
 
-// Sort by name in ascending order
+// Trier par nom en ordre croissant
 Model.find({ where: { name: 'foo' }, sort: 'name ASC' });
 
-// Sort by binary notation
+// Trier par notation binaire 
 Model.find({ where: { name: 'foo' }, sort: { 'name': 1 }});
 
-// Sort by multiple attributes
+// Trier par plusieurs attributs
 Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 ```
-
-> **Case-sensitivity**
+> **Sensibilité à la casse**
 >
-> All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
+> Toutes les requêtes à l'intérieur de Waterline sont **insensibles à la casse**. Cela facilite l'interrogation mais rend les chaînes d'indexation difficiles. C'est quelque chose à savoir si vous indexez et recherchez sur des champs de chaîne.
 >
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.com/documentation/reference/waterline/models/native.html) or [`.query()`](http://sailsjs.com/documentation/reference/waterline/models/query.html) method.
+> Actuellement, la meilleure façon d'exécuter les requêtes **sensible à la casse** consiste à utiliser [`.native()`](http://sailsjs.com/documentation/reference/waterline/models/native.html) ou [`.query ()`](http://sailsjs.com/documentation/reference/waterline/models/query.html).
 
 
-<docmeta name="displayName" value="Query Language">
+<docmeta name="displayName" value="Langage de requête">
