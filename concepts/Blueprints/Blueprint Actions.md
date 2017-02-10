@@ -17,7 +17,7 @@ The current version of Sails ships with the following blueprint actions:
 
 ##### Overriding blueprint actions
 
-You may also override any of the actions for a model by naming your function method the same name as the blueprint action.
+You may also override any of the blueprint actions for a controller by defining a custom action with the same name:
 
 ```javascript
 module.exports = {
