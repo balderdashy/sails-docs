@@ -26,7 +26,7 @@ This action removes a reference to some other record (the "foreign" record) from
 
 Say you're building an app for a small chain of grocery stores.  Each store has a giant television screen that displays the current "Employee of the Month" at that store, so that customers and team members see it when they walk in the door.  In order to be sure it is up to date, you build a scheduled job (e.g. using [cron](https://en.wikipedia.org/wiki/Cron)) that runs on the first day of every month to change the "Employees of the Month" for each store in our system.
 
-Let's say that, as a part of this scheduled job, we send a request to remove remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16:
+Let's say that, as a part of this scheduled job, we send a request to remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16:
 
 ```
 DELETE /store/16/employeesOfTheMonth/7
