@@ -132,7 +132,7 @@ Imaginez maintenant que vous dirigez une entreprise de hot-dogs. Si vous étiez 
   + `produits`
   + `createdAt`
     + Date et heure de création de l'enregistrement (auto-rempli)
-+ **Produit** (Contient un enregistrement pour chacune de vos produits)
++ **Produit** (Contient un enregistrement pour chacun de vos produits)
   + `nom`
   + `prix`
   + `nombreDeCalories`
