@@ -27,7 +27,7 @@ Comme Sails utilise `sails-disk` par défaut, vous pouvez commencer à construir
 
 
 
-##### Compatibilité
+##### La compatibilité
 
 _Le propriétaire/intervenant du produit vous accompagne et vous dit :_
 
@@ -37,7 +37,7 @@ De nombreuses applications d'entreprise doivent s'intégrer à une base de donn�
 
 Sails/Waterline vous permet de raccorder différents modèles à différents magasins de données (datastores); Localement ou n'importe où sur Internet. Vous pouvez créer un modèle `Utilisateur` qui mappe à une table MySQL personnalisée dans une base de données héritée (avec des noms de colonnes bizarres). Même chose pour un modèle de produit qui correspond à une table dans DB2 ou un modèle de commande qui correspond à une collection MongoDB. Le meilleur de tous, vous pouvez `.populate()` à travers ces différents datastores et adaptateurs, donc si vous configurez un modèle pour vivre dans une base de données différente, votre contrôleur/code de modèle n'a pas besoin de changer (notez que vous allez migrer manuellement toutes les données de production importantes)
 
-##### Performance
+##### La performance
 
 _Vous êtes assis en face de votre ordinateur portable tard dans la nuit, et vous vous rendez compte :_
 > "Comment puis-je faire une recherche par mot-clé?" Les données du produit n'ont pas de mots-clés et l'entreprise veut que les résultats de la recherche soient classés en fonction des séquences de mots n-gram. J'entends le mot `big data` une fois de plus ce soir, je quitte et retourne travailler au café."
