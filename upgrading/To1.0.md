@@ -304,5 +304,40 @@ All Sails 1.0 projects that use websockets must install the latest `sails-hook-s
 * The default `transports` setting is simply `['websocket']`.  In the majority of production deployments, restricting your app to the `websocket` transport (rather than using `['polling', 'websocket']`) avoids problems with sessions (see the pre-1.0 [scaling guide notes](https://github.com/balderdashy/sails-docs/blob/1038b38cb34fd945086480ee45325a1ac95a0950/concepts/Deployment/Scaling.md#notes) for details).  If you&rsquo;re using the `sails.io.js` websocket client, the easiest way to make your app compatible with the new websocket settings is to install the new `sails.io.js` version with `sails generate sails.io.js`.  The latest version of that package also defaults to the &ldquo;websocket-only&rdquo; transport strategy.  If you&rsquo;ve customized the `transports` setting in your front-end code and `config/sockets.js` file, then you'll just need to continue to ensure that the values in both places match.
 * The latest `sails-hook-sockets` hook uses a newer version of Socket.io.  See the [Socket.io changelog](https://github.com/socketio/socket.io/blob/master/History.md#150--2016-10-06) for a full update, but one thing to keep in mind is that socket IDs no longer have `/#` prepended to them by default.
 
+### Grunt
+
+The Grunt task-management functionality that was formerly part of the Sails core has now been moved into the separate `sails-hook-grunt` module.  Existing apps simply need to `npm install --save sails-hook-grunt` to continue using Grunt.  However, with a modification to your app&rsquo;s `Gruntfile.js`, you can take advantage of the fact that `sails-hook-grunt` includes all of the `grunt-contrib` modules that previously had to be installed at the project level.  The new `Gruntfile.js` contains:
+
+```
+module.exports = function(grunt) {
+
+  var loadGruntTasks = require('sails-hook-grunt/accessible/load-grunt-tasks');
+
+  // Load Grunt task configurations (from `tasks/config/`) and Grunt
+  // task registrations (from `tasks/register/`).
+  loadGruntTasks(__dirname, grunt);
+
+};
+```
+
+Assuming that you haven&rsquo;t customized the Gruntfile in your app, you can replace `Gruntfile.js` with that code and then safely run:
+
+```
+npm uninstall --save grunt-contrib-clean
+npm uninstall --save grunt-contrib-coffee
+npm uninstall --save grunt-contrib-concat
+npm uninstall --save grunt-contrib-copy
+npm uninstall --save grunt-contrib-cssmin
+npm uninstall --save grunt-contrib-jst
+npm uninstall --save grunt-contrib-less
+npm uninstall --save grunt-contrib-uglify
+npm uninstall --save grunt-contrib-watch
+npm uninstall --save grunt-sails-linker
+npm uninstall --save grunt-sync
+npm uninstall --save grunt-cli
+```
+
+to remove those dependencies from your project.
+
 <docmeta name="displayName" value="To v.1.0">
 <docmeta name="version" value="1.0.0">
