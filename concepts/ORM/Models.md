@@ -93,7 +93,7 @@ chercherMemeNomPersonne: function (opts, cb) {
     if (err) return cb(err);
     if (!personne) {
       err = new Error();
-      err.message = require('util').format('Impossible de trouver des singes portant le même nom que la personne w/ id=%s parce que cette personne n'existe pas.', personne);
+      err.message = require('util').format('Impossible de trouver des singes portant le même nom que la personne w/ id=%s parce que cette personne n\'existe pas.', personne);
       err.status = 404;
       return cb(err);
     }
