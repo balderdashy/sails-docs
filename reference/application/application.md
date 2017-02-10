@@ -65,7 +65,7 @@ where you need to create more than one Sails application instance in a process, 
 the instance returned by `require('sails')`, as this can cause unexpected behavior.  Instead, you should
 obtain application instances by using the Sails constructor:
 
-```
+```javascript
 var Sails = require('sails').constructor;
 var sails0 = new Sails();
 var sails1 = new Sails();
