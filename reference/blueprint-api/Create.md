@@ -88,7 +88,7 @@ data: {
 }
 ```
 
-Clients subscribed to linked records might also receive an additional notification:
+Clients subscribed to linked records might receive a notification, too.
 
 Since the new record in our example included `friends`, an array of related ids representing a plural ([one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)) association, then `addedTo` notifications would also be sent to any clients who are subscribed to those records on the other side of the relationship-- in this case, ponies 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
