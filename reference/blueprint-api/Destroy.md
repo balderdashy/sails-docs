@@ -63,7 +63,12 @@ data: {
 }
 ```
 
-Similarly, if the destroyed record had any links to other records via [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `updated` or `removedFrom` notifications would be sent to any clients subscribed to the records on the other side of the relationship.  See the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) and [remove-from blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.
+If the destroyed record had any links to other records, there will be some additional notifications:
+
+For example, if Pony #4 had a `friends` attribute that included ponies #13 and #47, then any clients subscribed to ponies #13 and #47 would receive a `removedFrom` notification upon pony #4's destruction. (See the [remove-from blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about this notification.)
+
+Alternatively, if Pony #4 was in Pony #13's list of `friends`, then  clients subscribed to Pony #13 would receive an `updated` notification, as destroying Pony #4 would remove it from Pony #13's `friends`. (See the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about this notification.)
+
 
 <docmeta name="displayName" value="destroy">
 <docmeta name="pageType" value="endpoint">

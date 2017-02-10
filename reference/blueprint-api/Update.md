@@ -76,7 +76,7 @@ For instance, continuing the example above, all clients subscribed to `Pony` #47
 }
 ```
 
-Clients subscribed to involved child records also receive an additional notification:
+Clients subscribed to involved parent records also receive an additional notification:
 
 If Pony #47 had an attribute representing the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance, a `favoriteFriend`, e.g.:
 

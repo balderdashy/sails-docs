@@ -87,7 +87,7 @@ data: {
 }
 ```
 
-Clients subscribed to involved child records also receive an additional notification:
+Clients subscribed to linked records also receive an additional notification:
 
 Since our example is demonstrating a [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association, any clients subscribed to any of Pony #47's `friends` (Pony #13 or Pony #25) would receive an `addedTo` notification. See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
