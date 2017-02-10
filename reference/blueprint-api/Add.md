@@ -102,14 +102,18 @@ addedId: <the child record primary key>
 
 For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following message:
 
-```
+```javascsript
 id: 7,
 verb: 'addedTo',
 attribute: 'involvedInPurchases',
 addedId: 47
 ```
 
-Similarly, if the relationship between the parent and child models is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to the child record will receive `addedTo` notifications as well (with the `id` and `addedId` values reversed).  If the relationship is [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to the child will receive an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+Clients subscribed to involved child records also receive an additional notification:
+
+Since our example is demonstrating a one-to-many association, any clients subscribed to purchase #47 would receive an `updated`notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+
+Alternatively, if, in our example, a purchase could have multiple cashiers, and this demonstrated a [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association, then any clients subscribed to any involved purchases would receive `addedTo` notifications with the `id` and `addedId` values reversed.
 
 
 
