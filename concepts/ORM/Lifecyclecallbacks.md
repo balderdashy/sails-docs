@@ -6,6 +6,8 @@ Lifecycle callbacks are functions that are automagically called before or after 
 
 Sails exposes a handful of lifecycle callbacks by default.
 
+No lifecycle callbacks are run on bulk inserts of data using `createEach`.
+
 
 ##### Callbacks on `create`
 
