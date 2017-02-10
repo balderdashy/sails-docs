@@ -5,8 +5,8 @@ Begin executing a Waterline [query instance](http://sailsjs.com/documentation/re
 ```usage
 query.toPromise();
 ```
-
-> For more information, see
+### Notes
+> For more information, see the [bluebird `Promise.promisify()` API docs](http://bluebirdjs.com/docs/api/promise.promisify.html).
 
 <docmeta name="displayName" value=".toPromise()">
 <docmeta name="pageType" value="method">
