@@ -27,7 +27,7 @@ The biggest difference between these methods and their counterparts in `sails.so
 While you are free to use any Javascript library to listen for socket events on the client, Sails provides its own socket client called [sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the Sails server from any web browser or Node.js process that supports Socket.io.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
 ```javascript
-io.socket.on('<model identity>', function (data) {
+io.socket.on('<model identity>', function (msg) {
 
 });
 ```
@@ -40,8 +40,8 @@ io.socket.on('<model identity>', function (data) {
 Let&rsquo;s say you have a model named `User` in your app, with a single &ldquo;name&rdquo; attribute.  First, we&rsquo;ll add a listener for &ldquo;user&rdquo; events:
 
 ```javascript
-io.socket.on('user', function(data){
-  console.log(data);
+io.socket.on('user', function(msg){
+  console.log(msg);
 })
 ```
 
