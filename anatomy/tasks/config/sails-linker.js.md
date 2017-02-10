@@ -6,7 +6,7 @@ Automatically inject `<script>` tags and `<link>` tags into the specified
 specified HTML and/or EJS files.  The specified delimiters (`startTag`
 and `endTag`) determine the insertion points.
 
-#### Development (default)
+##### Development (default)
 
 By default, tags will be injected for your app's client-side JavaScript files,
 CSS stylesheets, and precompiled client-side HTML templates in the `templates/`
@@ -16,7 +16,7 @@ and a `<link>` tag will be inserted for it.  Similarly, if any Coffeescript
 files exist in `assets/js/`, they will be compiled into JavaScript and injected
 as well.
 
-#### Production (`NODE_ENV=production`)
+##### Production (`NODE_ENV=production`)
 
 In production, all stylesheets (including all .css files and `assets/styles/importer.less`) are
 minified into a single `.css` file (see `tasks/config/cssmin.js` task) and
