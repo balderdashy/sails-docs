@@ -17,7 +17,7 @@ sails.log.debug("I am a debug message");
 
 ### Log levels
 
-Using the built-in logger, Sails will write output (to stdout/stderr) for log function calls that are _at_ or _above_ the priority of the currently-configurd log level.  This log level is normalized and also applied to generated output from Grunt, Socket.io, Waterline, Express, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
+Using the built-in logger, Sails will write output (to stdout/stderr) for log function calls that are _at_ or _above_ the priority of the currently-configured log level.  This log level is normalized and also applied to generated output from Grunt, Socket.io, Waterline, Express, and other dependencies. The hierarchy of log levels and their relative priorities is summarized by the chart below:
 
 | Priority | Level     | Log fns that produce visible output   |
 |----------|-----------|:--------------------------------------|

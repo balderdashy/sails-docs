@@ -12,7 +12,7 @@ Depending on the type of link, an association attribute can be set in a [`.creat
 
 Unlike normal attributes, association attribute values are not always returned when retrieving a record with [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find-one).  Instead, you declare which associations to retrieve by using the [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/populate) method:
 
-```
+```js
 // Find a single user, including its pets
 User.findOne(123).populate('pets').exec(...);
 ```
