@@ -1,4 +1,4 @@
-# langage de requête de Waterline
+# Langage de requête de Waterline
 
 Le langage de requête de Waterline est une syntaxe basée sur les objets utilisée pour récupérer les enregistrements à partir de n'importe quelle base de données prise en charge. Sous la couverture, Waterline utilise les adaptateurs de base de données installés dans votre projet pour traduire ce langage en requêtes natives, puis envoyer ces requêtes à la base de données appropriée. Cela signifie que vous pouvez utiliser la même requête avec MySQL que avec Redis ou MongoDb. Et il vous permet de modifier votre base de données avec des modifications minimales (le cas échéant) à votre code d'application.
 
