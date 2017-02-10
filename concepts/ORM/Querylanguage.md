@@ -106,7 +106,7 @@ Model.find({
     { name: 'walter' },
     { occupation: 'teacher' }
   ]
-}).exec(function(waltersAndTeachers){
+}).exec(function(err, waltersAndTeachers){
 
 });
 ```
