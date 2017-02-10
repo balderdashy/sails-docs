@@ -56,7 +56,7 @@ attribute: <the parent record collection attribute name>,
 removedId: <the child record primary key>
 ```
 
-For instance, continuing the example above, all clients subscribed to employee #16 (_except_ for the client making the request, if the request was made via websocket) would receive the following message:
+For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following message:
 
 ```
 id: 16,
@@ -65,7 +65,11 @@ attribute: 'employeesOfTheMonth',
 removedId: 7
 ```
 
-Similarly, if the relationship between the parent and child models is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to the child record will receive `removedFrom` notifications as well (with the `id` and `removedId` values reversed).  If the relationship is [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to the child will receive an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+Clients subscribed to involved parent or child records also receive an additional notification:
+
+For example, if an employee had the attribute `employeeOfTheMonthAt: 16`, making the relationship [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to employee #7 would receive an `updated` notification. (See the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info.)
+
+Similarly, if an employee could be an employee of the month at _multiple_ stores, (e.g. `employeeOfTheMonthAt: [...]`) making the relationship [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to store #16 would receive `removedFrom` notifications as well (with the `id` and `removedId` values reversed).
 
 ### Notes
 
