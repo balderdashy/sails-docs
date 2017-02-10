@@ -9,15 +9,11 @@ Sails exposes a handful of lifecycle callbacks by default.
 
 ##### Callbacks on `create`
 
-  - beforeValidate: fn(values, cb)
-  - afterValidate: fn(values, cb)
   - beforeCreate: fn(values, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
 ##### Callbacks on `update`
 
-  - beforeValidate: fn(valuesToUpdate, cb)
-  - afterValidate: fn(valuesToUpdate, cb)
   - beforeUpdate: fn(valuesToUpdate, cb)
   - afterUpdate: fn(updatedRecord, cb)
 
