@@ -37,7 +37,7 @@ La documentation officielle de la version stable actuelle de Sails se trouve sur
   - Internationalization (100%)
   - Logging (100%)
   - Middleware (50%)
-  - ORM
+  - ORM (25%)
   - Policies
   - Programmatic Usage
   - Realtime
