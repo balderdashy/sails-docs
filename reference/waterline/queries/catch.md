@@ -12,14 +12,15 @@ query.catch(callback);
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |   callback      | ((function?))                                    | A function that runs if the query fails.<br/><br/> Takes the error as its argument.
+| 1 |   filter            | ((dictionary?))                              | An optional dictionary whose properties will be checked against the Error. If they all match, then the callback will run. Otherwise, it won't.
+| 2 |   callback          | ((function))                                 | A function that runs if the query fails.<br/><br/> Takes the error as its argument.
 
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |   err               | ((Ref?))            | The error that occured.
+| 1 |   _err_             | ((Error?))          | The Error that occurred, or `undefined` if there were no errors.
 
 
 ### Example
@@ -30,8 +31,9 @@ To look up the user with the specified email address:
 User.findOne({
   email: req.param('email')
 })
-.then(function (){
-  return res.ok();
+.then(function (user){
+  if(!user) { return res.notFound(); }
+  return res.json(user);
 })
 // If there was some kind of usage / validation error
 .catch({ name: 'UsageError' }, function (err) {

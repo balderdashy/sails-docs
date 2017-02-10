@@ -12,7 +12,7 @@ query.then(callback);
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |   callback      | ((function?))                                    | A function that runs if the query successfully completes<br/><br/> Takes the result of the query as its argument.
+| 1 |   callback          | ((function))                                    | A function that runs if the query successfully completes<br/><br/> Takes the result of the query as its argument.
 
 
 ##### Callback
@@ -32,7 +32,7 @@ User.findOne({
 })
 .then(function (user){
   if (!user) { return res.notFound(); }
-  return res.ok();
+  return res.json(user);
 })
 .catch(function (err) { return res.serverError(err); });
 ```

@@ -98,6 +98,9 @@ User.create({
 User.create({
   email: req.param('email')
 })
+.then(function (){
+  return res.ok();
+})
 // Uniqueness constraint violation
 .catch({ code: 'E_UNIQUE' }, function (err) {
   return res.status(401).json(err);
