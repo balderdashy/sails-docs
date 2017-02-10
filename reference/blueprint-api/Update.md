@@ -38,7 +38,7 @@ Change Applejack's hobby to "kickin":
 {
   "hobby": "kickin",
   "id": 47,
-  "name": "AppleJack",
+  "name": "Applejack",
   "createdAt": 1485462079725,
   "updatedAt": 1485476060873
 }
@@ -69,14 +69,30 @@ For instance, continuing the example above, all clients subscribed to `Pony` #47
   previous: {
     hobby: 'pickin',
     id: 47,
-    name: 'AppleJack',
+    name: 'Applejack',
     createdAt: 1485462079725,
     updatedAt: 1485462079725
   }
 }
 ```
 
-Similarly, if the update included changes to an attribute representing the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then `addedTo` and `removedFrom` notifications will be sent to any clients subscribed to the new (if any) and former (if any) _parent_ record.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.
+Clients subscribed to involved child records also receive an additional notification:
+
+If Pony #47 had an attribute representing the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance, a `favoriteFriend`, e.g.:
+
+```json
+{
+  "hobby": "kickin",
+  "id": 47,
+  "name": "Applejack",
+  "favoriteFriend": 13,
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873
+}
+```
+
+then if that `favoriteFriend` attribute were updated to `25`, an `addedTo` notification would be sent to any clients subscribed to pony #25, and a `removedFrom` notification would be send to any clients subscribed to pony #13. (See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
+
 
 
 ### Notes

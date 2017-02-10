@@ -23,13 +23,13 @@ Parameters should be sent in the [request body](https://www.getpostman.com/docs/
 
 ### Example
 
-Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends with ponies #13 and #25:
+Create a new pony named "Applejack" with a hobby of "pickin", whose is friends with ponies #13 and #25:
 
 `POST /pony`
 
 ```json
 {
-  "name": "AppleJack",
+  "name": "Applejack",
   "hobby": "pickin",
   "friends": [13,25]
 }
@@ -41,20 +41,20 @@ Create a new pony named "AppleJack" with a hobby of "pickin", whose is friends w
 ```json
 {
   "id": 47,
-  "name": "AppleJack",
+  "name": "Applejack",
   "hobby": "pickin",
   "friends": [
     {
       "id": 13,
       "name": "Sparkle",
-      "hobby": "hoppin",
+      "hobby": "math",
       "createdAt": 1485550525451,
       "updatedAt": 1485550544901
     },
     {
       "id": 25,
-      "name": "Lollipop",
-      "hobby": "winkin",
+      "name": "Rarity",
+      "hobby": "sewing",
       "createdAt": 1485550561340,
       "updatedAt": 1485550561340
     }
@@ -80,14 +80,19 @@ For instance, continuing the example above, all clients subscribed to the `Pony`
 id: 47,
 verb: 'created',
 data: {
-  name: 'AppleJack',
+  name: 'Applejack',
   hobby: 'pickin',
   createdAt: 1485550575626,
   updatedAt: 1485550603847
 }
 ```
 
-Similarly, if the new record included values for attributes representing [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) associations, then `addedTo` notifications would be sent to any clients subscribed to the records on the other side of the relationship.  See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
+Clients subscribed to involved child records also receive an additional notification:
+
+Since our example is demonstrating a [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association, any clients subscribed to any of Pony #47's `friends` (Pony #13 or Pony #25) would receive an `addedTo` notification. See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
+
+Similarly, if our example represented a [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) association, (e.g. if ponies #13 and #25 were Applejack's `employees` instead of `friends`, and Applejack were those ponies' `employer`, then any clients subscribed to ponies #13 and #25 would receive an `addedTo` notification.)
+
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">
