@@ -1,6 +1,6 @@
 # Add (Blueprint)
 
-Add a foreign record (e.g. a comment) to one of this record's collection associations (e.g. "comments").
+Add a foreign record (e.g. a comment) to one of this record's collection attributes (e.g. "comments").
 
 ```usage
 PUT /:model/:id/:association/:fk
@@ -10,8 +10,8 @@ This action adds a reference to some other record (the "foreign", or "child" rec
 
 + If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
 + If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
-+ If the collection association within the primary record _already_ contains a reference to the foreign record, this action will be ignored.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
-+ Note that, if the association is "shared" -- a plural ("collection") association with "via", or a singular ("model") association that has a "via" on the _other side_ -- then the association on the foreign record will also be updated.
++ If the primary record is already associated with this foreign record, this action will be ignored.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
++ Note that, if the collection is "shared" (meaning it has `via`) then the attribute it points to with that `via` will also be updated on the foreign record.
 
 
 ### Parameters
@@ -19,9 +19,9 @@ This action adds a reference to some other record (the "foreign", or "child" rec
  Parameter                          | Type                                    | Details
 :-----------------------------------| --------------------------------------- |:---------------------------------
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
- id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
- association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
- fk | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection association.<br/><br/>e.g. `47`
+ id                | ((string))    | The desired target record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
+ association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
+ fk | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection.<br/><br/>e.g. `47`
 
 
 ### Example
@@ -91,16 +91,16 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "PUT"
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification, where the notification event name is that of the parent model identity (e.g. `'employee'`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the primary record will receive a notification, where the notification event name is the primary model identity (e.g. `'employee'`), and the message has the following format:
 
-```
+```usage
 id: <the parent record primary key>,
 verb: 'addedTo',
 attribute: <the parent record collection attribute name>,
 addedId: <the child record primary key>
 ```
 
-For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following message:
+For instance, continuing the example above, all clients subscribed to Dolly a.k.a. employee #7 (_except_ for the client making the request) would receive the following message:
 
 ```javascsript
 id: 7,
@@ -109,12 +109,15 @@ attribute: 'involvedInPurchases',
 addedId: 47
 ```
 
-Clients subscribed to involved child records also receive an additional notification:
+**Clients subscribed to the child record receive an additional notification:**
 
-Since our example is demonstrating a one-to-many association, any clients subscribed to purchase #47 would receive an `updated`notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+Assuming the collection attribute in our example had a `via`, then either `updated` or `addedTo` notifications will also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to affected child records on the other side of the relationship.  See [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update), and [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about the structure of those notifications.
 
-Alternatively, if, in our example, a purchase could have multiple cashiers, and this demonstrated a [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association, then any clients subscribed to any involved purchases would receive `addedTo` notifications with the `id` and `addedId` values reversed.
+> If the association pointed at by the `via` is also plural (e.g. `cashiers`), then the `addedTo` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 
+** Finally, a third notification might be sent:**
+
+If adding this purchase to Dolly's (employee #7's) collection would "steal" it from another collection, then any clients subscribed to the stolen-from employee record (e.g. employee #9) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)).
 
 
 ### Notes
