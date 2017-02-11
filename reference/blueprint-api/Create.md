@@ -23,7 +23,7 @@ Parameters should be sent in the [request body](https://www.getpostman.com/docs/
 
 ### Example
 
-Create a new pony named "Applejack" with a hobby of "pickin", whose is friends with ponies #13 and #25:
+Create a new user named "Applejack" with a hobby of "pickin", who is involved in purchases #13 and #25:
 
 `POST /pony`
 
@@ -31,42 +31,40 @@ Create a new pony named "Applejack" with a hobby of "pickin", whose is friends w
 {
   "name": "Applejack",
   "hobby": "pickin",
-  "friends": [13,25]
+  "involvedInPurchases": [13,25]
 }
 ```
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Example Response
+##### Example response
 ```json
 {
   "id": 47,
   "name": "Applejack",
   "hobby": "pickin",
-  "friends": [
+  "createdAt": 1485550575626,
+  "updatedAt": 1485550603847,
+  "involvedInPurchases": [
     {
       "id": 13,
-      "name": "Sparkle",
-      "hobby": "math",
+      "amount": 10000,
       "createdAt": 1485550525451,
       "updatedAt": 1485550544901
     },
     {
       "id": 25,
-      "name": "Rarity",
-      "hobby": "sewing",
+      "amount": 4.50,
       "createdAt": 1485550561340,
       "updatedAt": 1485550561340
     }
-  ],
-  "createdAt": 1485550575626,
-  "updatedAt": 1485550603847
+  ]
 }
 ```
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the model will receive a notification where the event name is the model identity (e.g. `pony`), and the message has the following format:
+If you have WebSockets enabled for your app, then every socket client who is "watching" this model (has sent a request to the model's ["find where" blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/find-where)) will receive a "created" notification where the event name is the model identity (e.g. `user`), and the message has the following format:
 
 ```
 verb: 'created',
@@ -74,8 +72,7 @@ data: <a dictionary of the attribute values of the new record (without associati
 id: <the new record primary key>,
 ```
 
-For instance, continuing the example above, all clients subscribed to the `Pony` model (_except_ for the client making the request) would receive the following message:
-
+For instance, continuing the example above, all clients who are watching the `User` model (_except_ for the client making the request) would receive the following message:
 ```js
 id: 47,
 verb: 'created',
@@ -88,10 +85,9 @@ data: {
 }
 ```
 
-**Clients subscribed to certain linked records will receive a notification, too:**
+**Clients subscribed to backlinked child records will receive a notification, too:**
 
-Since the new record in our example included `friends`, an array of related ids representing a plural ([one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)) association, then `addedTo` notifications would also be sent to any clients who are subscribed to those records on the other side of the relationship-- in this case, ponies 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
-
+Since the new record in our example included an initial value for `involvedInPurchases`, a [backlinked]() association, then `addedTo` notifications would also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship-- in this case, purchases 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">
