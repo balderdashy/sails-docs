@@ -85,9 +85,9 @@ data: {
 }
 ```
 
-**Clients subscribed to backlinked child records will receive a notification, too:**
+**Clients subscribed to newly-associated child records will receive a notification, too:**
 
-Since the new record in our example included an initial value for `involvedInPurchases`, a [backlinked]() association, then `addedTo` notifications would also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship-- in this case, purchases 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about those notifications.
+Since the new record in our example included an initial value for `involvedInPurchases`, an association pointed at by `via` on the other side, then `addedTo` notifications would also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those now-associated child records on the other side of the relationship-- in this case, purchases 13 and 25.  See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about the structure of those notifications.
 
 <docmeta name="displayName" value="create">
 <docmeta name="pageType" value="endpoint">
