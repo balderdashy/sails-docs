@@ -47,7 +47,7 @@ If you have WebSockets enabled for your app, then every client [subscribed](http
 ```
 verb: 'destroyed',
 id: <the record primary key>,
-previous: <a dictionary of the attribute values of the destroyed record (including associations)>
+previous: <a dictionary of the attribute values of the destroyed record (including populated associations)>
 ```
 
 For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request) might receive the following message:
@@ -55,7 +55,7 @@ For instance, continuing the example above, all clients subscribed to `Pony` #4 
 ```json
 id: 4,
 verb: 'destroyed',
-data: {
+previous: {
   name: 'Pinkie Pie',
   hobby: 'kickin',
   createdAt: 1485550644076,
@@ -63,11 +63,11 @@ data: {
 }
 ```
 
-If the destroyed record had any links to other records, there will be some additional notifications:
+**If the destroyed record had any links to other records, there might be some additional notifications:**
 
-For example, if Pony #4 had a `friends` attribute that included ponies #13 and #47, then any clients subscribed to ponies #13 and #47 would receive a `removedFrom` notification upon pony #4's destruction. (See the [remove-from blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about this notification.)
+Assuming the record being destroyed in our example had an association with a `via`, then either `updated` or `removedFrom` notifications would also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship.  See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) and [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about the structure of those notifications.
 
-Alternatively, if Pony #4 was in Pony #13's list of `friends`, then  clients subscribed to Pony #13 would receive an `updated` notification, as destroying Pony #4 would remove it from Pony #13's `friends`. (See the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about this notification.)
+> If the association pointed at by the `via` is plural (e.g. `cashiers`), then the `removedFrom` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 
 
 <docmeta name="displayName" value="destroy">
