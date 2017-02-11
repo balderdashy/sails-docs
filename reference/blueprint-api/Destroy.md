@@ -24,7 +24,7 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 
 Delete Pinkie Pie:
 
-`DELETE /pony/4`
+`DELETE /user/4`
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
@@ -42,7 +42,7 @@ Delete Pinkie Pie:
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `user`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 verb: 'destroyed',
@@ -50,7 +50,7 @@ id: <the record primary key>,
 previous: <a dictionary of the attribute values of the destroyed record (including populated associations)>
 ```
 
-For instance, continuing the example above, all clients subscribed to `Pony` #4 (_except_ for the client making the request) might receive the following message:
+For instance, continuing the example above, all clients subscribed to `User` #4 (_except_ for the client making the request) might receive the following message:
 
 ```json
 id: 4,
