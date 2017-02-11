@@ -10,7 +10,7 @@ This action removes a reference to some other record (the "foreign" record) from
 
 + If the foreign record does not exist, it is created first.
 + If the collection doesn't contain a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. reflexive, with "via" on both sides) the association on the foreign record will also be updated.
++ If the association is 2-way (i.e. one-to-many, or with "via" on both sides) the association on the foreign record will also be updated.
 
 ### Parameters
 
