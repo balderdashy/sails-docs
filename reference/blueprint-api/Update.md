@@ -23,7 +23,7 @@ _Attributes to change should be sent in the HTTP body as form-encoded values or 
 
 Change Applejack's hobby to "kickin":
 
-`PATCH /pony/47`
+`PATCH /user/47`
 
 ```json
 {
@@ -46,7 +46,7 @@ Change Applejack's hobby to "kickin":
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `pony`), and the data &ldquo;payload&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `user`), and the data &ldquo;payload&rdquo; has the following format:
 
 ```
 verb: 'updated',
@@ -55,7 +55,7 @@ data: <a dictionary of changes made to the record>,
 previous: <the record prior to the update>
 ```
 
-For instance, continuing the example above, all clients subscribed to `Pony` #47 (_except_ for the client making the request) would receive the following message:
+For instance, continuing the example above, all clients subscribed to `User` #47 (_except_ for the client making the request) would receive the following message:
 
 ```js
 {
