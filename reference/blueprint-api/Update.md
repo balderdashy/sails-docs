@@ -76,29 +76,29 @@ For instance, continuing the example above, all clients subscribed to `Pony` #47
 }
 ```
 
-Clients subscribed to involved parent records also receive an additional notification:
+**If the update changed any links to other records, there might be some additional notifications:**
 
-If Pony #47 had an attribute representing the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance, a `favoriteFriend`, e.g.:
+
+
+
+If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance:
+
+`PATCH /user/47`
 
 ```json
 {
-  "hobby": "kickin",
-  "id": 47,
-  "name": "Applejack",
-  "favoriteFriend": 13,
-  "createdAt": 1485462079725,
-  "updatedAt": 1485476060873
+  "store": 25
 }
 ```
 
-then if that `favoriteFriend` attribute were updated to `25`, an `addedTo` notification would be sent to any clients subscribed to pony #25, and a `removedFrom` notification would be send to any clients subscribed to pony #13. (See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
+Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. (See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
 
 
 
 ### Notes
 
 > + This action can be used to update any attribute in a record _except_ for attributes representing a plural ("collection") association.  To update a plural association of a record, use the [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to), [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) or [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) actions.
-> + This action was bound to the `PUT /:model/:id` route in previous Sails versions.
+> + In previous Sails versions, this action was bound to the `PUT /:model/:id` route.
 
 
 <docmeta name="displayName" value="update">
