@@ -8,7 +8,7 @@ Something.validate(attrName, value);
 
 > This validates (and potentially coerces) the provided data as if it was one of the values passed in to [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update).  You might think about it like a "dry run".
 
-#### Usage
+### Usage
 
 | # | Description   | Accepted Data Types          | Required ? |
 |---|---------------|------------------------------|:-----------|
@@ -18,16 +18,12 @@ Something.validate(attrName, value);
 ### Example
 
 Check the given string and return a normalized version.
-> Note that if normalization is not possible, this throws an error.
+> Note that if normalization is not possible, this throws an error.  **Be careful: You must manually handle any error thrown from within an asynchronous callback.**
 
 ```javascript
 User.validate('emailAddress', req.param('email'));
 User.validate('password', req.param('password'));
-
-User.
 ```
-
-
 
 ##### Negotiating errors
 
