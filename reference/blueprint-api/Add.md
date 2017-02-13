@@ -10,7 +10,7 @@ This action adds a reference to some other record (the "foreign", or "child" rec
 
 + If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
 + If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
-+ If the primary record is already associated with this foreign record, this action will have no effect.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
++ If the primary record is already associated with this foreign record, this action will not modify any records.
 + Note that, if the collection is 2-way (meaning it has `via`) then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
 
@@ -111,7 +111,7 @@ addedId: 47
 
 **Clients subscribed to the child record receive an additional notification:**
 
-Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added. 
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added.
 
 > If the attribute pointed at by the `via` is also plural (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
