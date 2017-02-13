@@ -1,14 +1,16 @@
 # Validations
 
-Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s). 
+Sails intégre la validation automatique des attributs de vos modèles. Chaque fois qu'un enregistrement est mis à jour ou qu'un nouvel enregistrement est créé, les données de chaque attribut seront vérifiées par rapport à toutes vos règles de validation prédéfinies. Il s'agit d'un moyen de sécurité pratique pour garantir que les entrées non valides ne pénètrent pas dans la ou les bases de données de votre application.
+
+Toutes les validations ci-dessous sont implémentés en JavaScript et exécutés dans le même processus de serveur Node.js que Sails, sauf `unique` qui est implémenté comme une contrainte au niveau de la base de données; [voir "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique). N'oubliez pas non plus que, peu importe les validations utilisées, un attribut doit toujours spécifier l'un des types de données intégrés ('string', 'number', 'json', etc.).
 
 Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types ('string', 'number', json', etc).
 
 ```javascript
-// User
+// Utilisateur
 module.exports = {
   attributes: {
-    emailAddress: {
+    email: {
       type: 'string',
       unique: true,
       required: true
@@ -17,91 +19,92 @@ module.exports = {
 };
 ```
 
-### Built-in Data Types
+### Types de données intégrés
 
-Every attribute definition must have a built-in data type (or _typeclass_) specified.  This is used for logical validation and coercion of results and criteria.
+Chaque définition d'attribut doit avoir un type de données intégré (_typeclass_) spécifié. Ceci est utilisé pour la validation logique et la coercition des résultats et des critères.
 
 
-| Data Type        | Usage                         | Description                                                  |
+| Type de données  | Usage                         | Description                                                  |
 |:----------------:|:----------------------------- |:------------------------------------------------------------ |
-| ((string))       | `type: 'string'`              | Any string (tolerates `null`).
-| ((number))       | `type: 'number'`              | Any number (tolerates `null`)
-| ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`)
-| ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries, and `null`.
-| ((array))        | `type: 'array'`               | Any array consisting solelyof JSON-serializable contents.   |
+| ((string))       | `type: 'string'`              | N'importe quelle chaîne de caractères (tolére `null`).
+| ((number))       | `type: 'number'`              | N'importe quel nombre (tolére `null`)
+| ((boolean))      | `type: 'boolean'`             | `true` ou `false` (tolére aussi le `null`)
+| ((json))         | `type: 'json'`                | Toute valeur JSON-sérialisable, y compris les nombres, les booléens, les chaînes, les tableaux, les dictionnaires et `null`.
+| ((array))        | `type: 'array'`               | Tout tableau constitué uniquement de contenu JSON-sérialisable.  |
 
-Different databases vary slightly in the way they handle edge cases and special values such as `Infinity`, `null`, strings of varying lengths, etc.  Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected typeclass.
+Les bases de données différent légèrement dans la façon avec laquelle elles traitent les limites et des valeurs spéciales telles que `Infinity`, `null`, des chaînes de différentes longueurs, etc. L'ORM (Waterline) de Sails et ses adaptateurs effectuent une validation lâche pour s'assurer que les valeurs fournies dans les dictionnaires de critères et des valeurs de `.create()` ou `.update()` correspondent au typeclass attendu.
 
-> Note that auto-migration also relies on the attribute's declared `type`. This is mainly relevant for schemaful databases (like MySQL or PostgreSQL), since the relevant adapter needs to use this information in order to alter/define tables during auto-migration.  Remember that in production, `migrate: 'safe'` will be enabled and auto-migration will be skipped.
-
-
-
-### Validation Rules
-
-The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a robust validation library for Node.js.
-
-In the table below, the "Compatible Attribute Type(s)" column shows what data type(s) (i.e. for the attribute definition's `type` property) are appropriate for each validation rule.  In many cases, a validation rule can be used with more than one type.  Note that coincidentally, the table below takes a shortcut:  If compatible with ((string)), ((number)), ((boolean)), or ((array)), then the validation rule is also compatible with ((json)).
+> Notez que l'auto-migration s'appuie également sur le `type` d'attribut déclaré. Ceci est principalement pertinent pour les bases de données schématiques (comme MySQL ou PostgreSQL), car l'adaptateur concerné doit utiliser ces informations pour modifier/définir les tables lors de l'auto-migration. N'oubliez pas qu'en production, `migrate: 'safe'` sera activé et la migration automatique sera ignorée.
 
 
-| Name of Rule      | What It Checks For                                                                                                  | Notes On Usage               | Compatible Attribute Type(s) |
+### Les règles de validation
+
+Les règles de validation suivantes sont gérées par [Anchor](https://github.com/sailsjs/anchor), une bibliothèque de validation robuste pour Node.js.
+
+Dans le tableau ci-dessous, la colonne "Types d'attributs compatibles" indique le type de données (c'est-à-dire la propriété `type` de la définition d'attribut) appropriées pour chaque règle de validation. Dans de nombreux cas, une règle de validation peut être utilisée avec plus d'un type. Notez que par coïncidence, le tableau ci-dessous prend un raccourci: Si compatible avec ((string)), ((number)), ((boolean)) ou ((array)), la règle de validation est également compatible avec ((json)).
+
+
+| Nom de la régle   | Ce qu'elle vérifie                                                                                                  | Notes sur l'usage               | Types d'attributs compatibles |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:-----------------------------|:----------------------------:|
-|after              | A value that, when parsed as a date, refers to moment _after_ the configured JavaScript `Date` instance.            | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
-|alpha              | A value that contains only uppercase and/or lowercase letters.                                                      | `alpha: true`                | ((string)) |
-|alphadashed        | A value that contains only letters and dashes.                                                                      |  | ((string)) |
-|alphanumeric       | A value that contains only letters and numbers.                                                                     | | ((string)) |
-|alphanumericdashed | A value that is a string consisting of only letters, numbers, and/or dashes.                                        | | ((string)) |
-|before             | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
-|contains           | A value that contains the specified substring.                                                                      | `contains: 'needle'`   | ((string)) |
-|creditcard         | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
-|datetime           | A value that can be parsed as a timestamp; i.e. would construct a JavaScript Date with `new Date()`                 |    | ((string)) |
-|_decimal_          | _Alias for `float`._ | |  |
-|email              | A value that looks like an email address. | | ((string)) |
-|finite             | A value that is, or can be coerced to, a finite number. | This is not the same as native isFinite which will return true for booleans and empty strings | ((number)) or ((string)) |
-|float              | A value that is, or can be coerced to, a floating point (aka decimal) number. | | ((number)) or ((string)) |
-|hexadecimal        | A value that is a hexadecimal number. | | ((number)) or ((string)) |
-|hexColor           | A value that is a hexadecimal color. | | ((string)) |
-|in                 | A value that is in the specified array of allowed strings. | | ((string)) |
-|_int_              | _Alias for `integer`._       |  |  |
-|integer            | A value that is an integer, or a string that looks like one. | | ((number)) or ((string)) |
-|ip                 | A value that is a valid IP address (v4 or v6) | | ((string)) |
-|ipv4               | A value that is a valid IP v4 address. | | ((string)) |
-|ipv6               | A value that is a valid IP v6 address. | | ((string)) |
-|_is_               | _Alias for `regex`._                               | |  |
-|lowercase          | A value that consists only of lowercase characters. | | ((string)) |
-|max                | A value that is less than the configured number. | | ((number)) |
-|maxLength          | A value that has no more than the configured number of characters. |  | ((string)) |
-|min                | A value that is greater than the configured number. | | ((number)) |
-|minLength          | A value that has at least the configured number of characters. | | ((string)) |
-|notRegex           | A value that **does not** match the configured regular expression. | | ((string)) |
-|notContains        | A value that does not contain the configured substring. | e.g. `'-haystack-needle-haystack-'` would fail validation against `notContains: 'needle'` | ((string)) |
-|notIn              | A value that **is not in** the configured array. | | ((string)) |
-|notNull            | A value that **is not** equal to `null` | | ((json)) |
-|numeric            | A value that is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
-|required           | A value that is defined; that is, **not `undefined`**. | | ((json)) |
-|regex              | A value that matches the configured regular expression. | | ((string)) |
-|truthy             | A value that would be considered truthy if used in a JavaScript `if` statement. | | ((json)) |
-|uppercase          | A value that is uppercase. | | ((string)) |
-|url                | A value that is a URL. | | ((string)) |
-|urlish             | A value that looks vaguely like a URL of some kind (i.e. `/^\s([^\/]+\.)+.+\s*$/g`). | `urlish: true` | ((string)) |
-|uuid               | A value that is a UUID (v3, v4, or v5) | | ((string)) |
-|uuidv3             | A value that is a UUID (v3) | | ((string)) |
-|uuidv4             | A value that is a UUID (v4) | | ((string)) |
-
+|after              | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _supérieur_ l'instance `Date` fournie.
+             | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|alpha              | Une valeur qui ne contient que des majuscules et/ou minuscules.                                                    | `alpha: true`                | ((string)) |
+|alphadashed        | Une valeur qui ne contient que des lettres et des tirets.                                                          | | ((string)) |
+|alphanumeric       | Une valeur qui ne contient que des lettres et des chiffres.                                                        | | ((string)) |
+|alphanumericdashed | Valeur qui est une chaîne composée uniquement de lettres, de chiffres et/ou de tirets.                              | | ((string)) |
+|before             | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _avant_ l'instance `Date` fournie.         
+             | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|contains           | Une valeur qui contient la sous-chaîne spécifiée.                                                                  | `contains: 'needle'`   | ((string)) |
+|creditcard         | Une valeur qui est un numéro de carte de crédit.                                                                    | **Ne stockez pas de numéros de carte de crédit dans votre base de données, sauf si votre application est compatible PCI!**. Si vous souhaitez permettre aux utilisateurs de stocker des informations de carte de crédit, une alternative sûre consiste à utiliser une API de paiement comme [Stripe](https://stripe.com). | ((string)) |
+|datetime           | Une valeur qui peut être analysée comme un timestamp; C'est-à-dire construire une date JavaScript avec `new Date()`
+             |    | ((string)) |
+|_decimal_          | _Alias pour `float`._ | |  |
+|email              | Une valeur qui représente une adresse e-mail. | | ((string)) |
+|finite             | Valeur qui est ou peut être contrainte à un nombre fini. | Ce n'est pas le même que `isFinite` (natif) qui renvoi `true` pour les booléens et les chaînes vides | ((number)) ou ((string)) |
+|float              | Valeur qui est ou peut être contrainte à un nombre de virgule flottante (aka décimal). | | ((number)) or ((string)) |
+|hexadecimal        | Une valeur hexadécimale. | | ((number)) ou ((string)) |
+|hexColor           | Une valeur d'une couleur en hexadécimale | | ((string)) |
+|in                 | Une valeur qui se trouve dans le tableau fourni des chaînes autorisées. | | ((string)) |
+|_int_              | _Alias pour `integer`._       |  |  |
+|integer            | Une valeur qui est un entier ou une chaîne qui ressemble à un entier. | | ((number)) ou ((string)) |
+|ip                 | Une valeur qui est une adresse IP valide (v4 ou v6) | | ((string)) |
+|ipv4               | Une valeur qui est une adresse IP v4 valide. | | ((string)) |
+|ipv6               | Une valeur qui est une adresse IP v6 valide. | | ((string)) |
+|_is_               | _Alias pour `regex`._                               | |  |
+|lowercase          | Une valeur constituée de lettres minuscules. | | ((string)) |
+|max                | Une valeur inférieure au nombre configuré.   | | ((number)) |
+|maxLength          | Une valeur qui a une longueure inférieure au nombre de caractères configuré. |  | ((string)) |
+|min                | Une valeur supérieure au nombre configuré. | | ((number)) |
+|minLength          | Une valeur qui possède au moins le nombre de caractères configuré. | | ((string)) |
+|notRegex           | Une valeur qui **ne correspond pas** à l'expression régulière configurée. | | ((string)) |
+|notContains        | Une valeur qui ne contient pas la sous-chaîne configurée. | e.g. `'-haystack-needle-haystack-'` échouerait à la validation `notContains: 'needle'` | ((string)) |
+|notIn              | Une valeur qui **n'est pas** dans le tableau configuré. | | ((string)) |
+|notNull            | Une valeur qui **n'est pas** égale à `null` | | ((json)) |
+|numeric            | Une valeur qui est une chaîne analysée en tant que nombre. | [Tandis que `NaN` est considéré comme un nombre en JavaScript](https://www.destroyallsoftware.com/talks/wat), Ce qui n'est pas vrai pour cette validation. | ((string)) |
+|required           | Une valeur qui est définie; C'est-à-dire **n'est pas `undefined`**. | | ((json)) |
+|regex              | Une valeur qui correspond à l'expression régulière configurée. | | ((string)) |
+|truthy             | Une valeur qui serait considérée vraie si elle est utilisée dans une instruction JavaScript `if`. | | ((json)) |
+|uppercase          | Une valeur en majuscules. | | ((string)) |
+|url                | Une valeur qui est une URL. | | ((string)) |
+|urlish             | Une valeur qui ressemble vaguement à une URL (c'est à dire, `/^\s([^\/]+\.)+.+\s*$/g`). | `urlish: true` | ((string)) |
+|uuid               | Une valeur qui est un UUID (v3, v4 ou v5) | | ((string)) |
+|uuidv3             | Une valeur qui est un UUID (v3) | | ((string)) |
+|uuidv4             | Une valeur qui est un UUID (v4) | | ((string)) |
 
 
 
 ### Unique
 
-`unique` is different from all of the validation rules listed above.  In fact, it isn't really a validation at all: it is a **database-level constraint**.  More on that in a second.
+La régle `Unique` est différente de toutes les règles de validation énumérées ci-dessus. En fait, ce n'est pas vraiment une validation du tout: c'est une **contrainte au niveau de la base de données**.
 
-If an attribute declares itself `unique: true`, then Sails ensures no two records will be allowed with the same value.  The canonical example is an `emailAddress` attribute on a `User` model:
+Si un attribut se déclare `unique: true`, Sails s'assure qu'aucun enregistrement ne sera permis avec la même valeur. L'exemple canonique est un attribut `email` sur un modèle `Utilisateur`:
 
 ```javascript
-// api/models/User.js
+// api/models/Utilisateur.js
 module.exports = {
 
   attributes: {
-    emailAddress: {
+    email: {
       type: 'string',
       unique: true,
       required: true
@@ -111,26 +114,25 @@ module.exports = {
 };
 ```
 
-##### Why is `unique` different from other validations?
+##### Pourquoi `unique` est-elle différente des autres régles de validation ?
 
-Imagine you have 1,000,000 user records in your database.  If `unique` was implemented like other validations, every time a new user signed up for your app, Sails would need to search through _one million_ existing records to ensure that no one else was already using the email address provided by the new user.  Not only would that be slow, but by the time we finished searching through all those records, someone else could have signed up!
+Imaginez que vous disposiez de 1 000 000 d'enregistrements utilisateur dans votre base de données. Si `unique` a été implémenté comme d'autres validations, chaque fois qu'un nouvel utilisateur s'inscrirait à votre application, Sails aurait besoin de rechercher dans _un million_ des enregistrements existants pour s'assurer qu'aucun autre n'utilisait déjà l'adresse e-mail fournie par le nouvel utilisateur. Non seulement ce serait lent, mais au moment où nous avons terminé la recherche à travers tous ces enregistrement, quelqu'un d'autre aurait pu s'inscrire!
 
-Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) to implement support for the `unique` validation-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
+Heureusement, ce type de vérification d'unicité est peut-être la caractéristique la plus universelle de toute base de données. Pour tirer parti de cela, Sails s'appuie sur l'[adaptateur de base de données](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) pour implémenter le support de la validation `unique` - En ajoutant une **contrainte d'unicité** au champ/colonne/attribut pertinent dans la base de données pendant l'[auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate). En d'autres termes, alors que votre application est configurée sur `migrate: 'alter'`, Sails génèrera automatiquement des tables/collections dans la base de données sous-jacente avec des contraintes d'unicité intégrées. Une fois que vous aurez migré vers `migrate: 'safe'`, les contraintes dépenderont de vous.
 
-##### What about indexes?
+##### Qu'en est-il des index?
 
-When you start using your production database, it is always a good idea to set up indexes to boost your database's performance.  The exact process and best practices for setting up indexes varies between databases, and is out of the scope of the documentation here.  That said if you've never done this before, don't worry-- it's [easier than you might think](http://stackoverflow.com/a/1130/486547).
+Lorsque vous commencez à utiliser votre base de données de production, il est toujours judicieux de configurer des index pour améliorer les performances de votre base de données. Le processus exact et les meilleures pratiques pour la configuration des index varient d'une base de données à l'autre et sont hors de la portée de la documentation ici. Cela dit, si vous n'avez jamais fait cela avant, ne vous inquiétez pas - c'est [plus facile que vous ne le pensez](http://stackoverflow.com/a/1130/486547).
 
-Just like everything else related to your production schema, once you set your app to use `migrate: 'safe'`, Sails leaves database indexes entirely up to you.
+Tout comme tous les autres éléments liés à votre schéma de production, une fois que vous avez défini votre application à `migrate: 'safe'`, il serait à vous de gérer les index de votre base de données.
 
-> Note that this means you should be sure to update your indexes alongside your uniqueness constraints when performing [manual migrations](https://github.com/BlueHotDog/sails-migrations).
+> Notez que cela signifie que vous devez être sûr de mettre à jour vos index en même temps que vos contraintes d'unicité en effectuant [une migration manuelle](https://github.com/BlueHotDog/sails-migrations).
 
+### Quand utiliser les validations
 
-### When to Use Validations
+Les validations peuvent être un énorme gain de temps, vous empêchant d'écrire plusieurs centaines de lignes de code répétitif. Mais gardez à l'esprit que les validations de modèle sont exécutées pour _chaque create ou update_ dans votre application. Avant d'utiliser une règle de validation dans l'une de vos définitions d'attribut, assurez-vous d'être bien appliquée _à chaque fois_ que votre application appelle `.create()` ou `.update()` pour spécifier une nouvelle valeur pour cet attribut. Si ce n'est pas le cas, mettez le code qui valide les valeurs entrantes inline dans votre contrôleur; Ou faites appel à une fonction personnalisée dans l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou une [méthode dans le modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
 
-Validations can be a huge time-saver, preventing you from writing many hundreds of lines of repetitive code.  But keep in mind that model validations are run for _every create or update_ in your application.  Before using a validation rule in one of your attribute definitions, make sure you are OK with it being applied _every time_ your application calls `.create()` or `.update()` to specify a new value for that attribute.  If that is _not_ the case, write code that validates the incoming values inline in your controller; or call out to a custom function in one of your [services](http://sailsjs.com/documentation/concepts/services), or a [model class method](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
-
-For example, let's say that your Sails app allows users to sign up for an account by either (A) entering an email address and password and then confirming that email address or (B) signing up with LinkedIn.  Now let's say your `User` model has one attribute called `linkedInEmail` and another attribute called `manuallyEnteredEmail`.  Even though _one_ of those email address attributes is required, _which one_ is required depends on how a user signed up.  So in that case, your `User` model cannot use the `required: true` validation-- instead you'll need to validate that one email or the other was provided and is valid by manually checking these values before the relevant `.create()` and `.update()` calls in your code, e.g.:
+Par exemple, disons que votre application Sails permet aux utilisateurs de s'inscrire à un compte soit: (A) en entrant une adresse e-mail et un mot de passe, puis en confirmant cette adresse e-mail ou (B) en utilisant LinkedIn. Maintenant, disons que votre modèle `Utilisateur` a un attribut appelé` linkedInEmail` et un autre attribut appelé `email`. Même si l'un de ces attributs d'adresse de courrier électronique est requis, l'un d'entre eux dépend de la manière dont un utilisateur s'est inscrit. Dans ce cas, votre modèle `Utilisateur` ne peut pas utiliser la validation `required: true` - vous devrez plutôt valider que l'un des deux est fourni et est valide en vérifiant ces valeurs manuellement avant le `.create()` et `.update()` dans votre code, par exemple:
 
 ```javascript
 if ( !_.isString( req.param('email') ) ) {
@@ -138,103 +140,105 @@ if ( !_.isString( req.param('email') ) ) {
 }
 ```
 
-To take this one step further, now let's say your application accepts payments.  During the sign up flow, if a user signs up with a paid plan, he or she must also provide an email address for billing purposes (`billingEmail`).  If a user signs up with a free account, he or she skips that step.  On the account settings page, users on a paid plan do see a "Billing Email" form field where they can customize their billing address.  This is different from users on the free plan, who see a call to action which links to the "Upgrade Plan" page.
+Pour aller plus loin, disons maintenant que votre application accepte les paiements. Pendant le processus d'inscription, si un utilisateur s'inscrit à un abonnement payant, il doit également fournir un email de facturation («facturationEmail»). Si un utilisateur s'inscrit à un abonnement gratuit, il ou elle peut sauter cette étape. Dans la page des paramètres du compte, les utilisateurs de l'abonnement payant voient le champ de formulaire "Email de facturation" où ils peuvent personnaliser leur email de facturation. Ceci est différent des utilisateurs ayant un abonnement gratuit, qui voient un bouton d'appel à l'action "Migrer vers l'abonnement payant".
 
-Even with these requirements, which seem quite specific, there are unanswered questions:
+Même avec ces exigences, qui semblent tout à fait spécifiques, il y'a des questions qui restent sans réponse:
 
-- Do we update the billing email automatically when the other email address from which it was defaulted changes?
-- What if the billing email had been changed at least once?
-- What happens to the billing email after a user downgrades to the free plan? If a user upgrades to a paid plan again, do we infer his or her billing email address anew or use the old one?
-- What happens to the billing email when an existing user connects his or her LinkedIn account and a new `linkedInEmail` is saved?
-- What happens to the billing email if a monthly invoice email cannot be delivered?
-- What happens to the billing email if a member of your support team logs into the admin interface and changes it manually?
-- What happens to the billing email if a POST request is received on the callback URL we provided to the LinkedIn API to notify our app that the user changed her email address on http://linkedin.com, and so a new `linkedInEmail` is saved?
-- What happens to the billing email when an existing user disconnects her LinkedIn account?
-- Are two user accounts in the database allowed to have the same billing email?  What about the email from LinkedIn?  Or the one they entered manually?
-
-Depending on the answers to questions like these, we might end up keeping the `required` validation on `billingEmail`, adding new attributes (like `hasBillingEmailBeenChangedManually`), or even changing whether or not to use a `unique` constraint.
-
-### Best Practices
-
-Finally, here are a few tips:
-- Your initial decision about whether or not to use validations for a particular attribute should depend on your app's requirements and how you are calling `.update()` and `.create()`. Don't be afraid to forgo built-in validation support and check values by hand in your controllers or in a helper function.  Oftentimes this is the cleanest and most maintainable approach.
-- There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
-- It is a very good idea to spend the time to fully understand your application's user interface _first_ before setting up complex validations on your model attributes.
-
-> As much as possible, it is a good idea to obtain or flesh out your own wireframes of your app's user interface _before_ you spend any serious amount of time implementing _any_ backend code.  Of course, this isn't always possible- and that's what the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) is for.  Applications built with a UI-centric, or "front-end first" philosophy are easier to maintain, tend to have fewer bugs and, since they are built with full knowledge of the user interface from the get-go, they often have more elegant APIs.
+- Est-ce que nous mettons à jour le courrier électronique de facturation automatiquement lorsque l'autre adresse de courriel est modifiée ?
+- Et si le courriel de facturation avait été modifié au moins une fois ?
+- Que se passe-t-il avec l'email de facturation après qu'un utilisateur ait retrogradé vers l'abonnement gratuit ? Si un utilisateur effectue à nouveau une mise à niveau vers l'abonnement payant, est-ce qu'on va demander de nouveau son adresse e-mail de facturation ou allons nous utiliser l'ancienne ?
+- Qu'arrive-t-il l'email de facturation lorsqu'un utilisateur existant se connecte avec son compte LinkedIn et qu'un nouveau `linkedInEmail` est enregistré ?
+- Que se passe-t-il avec l'email de facturation si un courrier électronique mensuel contennt la facture ne peut pas être livré ?
+- Que se passe-t-il avec l'email de facturation si un membre de votre équipe de support se connecte à l'interface d'administration et le modifie manuellement ?
+- Que se passe-t-il avec l'email de facturation si une requête POST est reçue sur l'URL de rappel que nous avons fournie à l'API LinkedIn pour informer notre application que l'utilisateur a changé son adresse email sur http://linkedin.com et ainsi un nouveau lien `linkedInEmail` est enregistré ?
+- Que se passe-t-il avec l'email de facturation lorsqu'un utilisateur existant déconnecte son compte LinkedIn ?
+- Deux comptes d'utilisateurs dans la base de données sont-ils autorisés à avoir le même courrier électronique de facturation ? Et l'email de LinkedIn ? Ou celui qu'ils ont entré manuellement ?
 
 
+Selon les réponses à ces questions, nous pourrions finir par conserver la validation `required` sur `facturationEmail`, en ajoutant de nouveaux attributs (comme `emailFacturationModifieManuellement`) ou même en modifiant ou non une contrainte `unique`.
 
-### Custom Validation Rules
+### Les meilleures pratiques
 
-> **Warning:** Support for custom validation rules as documented here will very likely be ending in Waterline 1.0.  To future-proof your app, use a function from one of your [services](http://sailsjs.com/documentation/concepts/services) or a [model class method](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods) for custom validation instead.
+Enfin, voici quelques conseils:
+- Votre décision initiale d'utiliser ou non les validations d'un attribut particulier dépend des exigences de votre application et de la façon dont vous appelez `.update()` et `.create()`. N'ayez pas peur de renoncer à la validation intégrée et de vérifier les valeurs à la main dans vos contrôleurs ou dans une fonction d'assistance. Souvent, c'est l'approche la plus propre et la plus maintenable.
+- Il n'y a rien de mal à ajouter ou supprimer des validations de vos modèles au fur et à mesure que votre application évolue. Mais une fois que vous allez en production, il y'a une **exception très importante** : `unique`. Pendant le développement, lorsque votre application est configurée pour utiliser [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), vous pouvez ajouter ou supprimer les validations `unique` à volonté. Cependant, si vous utilisez `migrate: safe` (par exemple avec votre base de données de production), vous allez devoir mettre à jour les contraintes/indices dans votre base de données, ainsi que [migrer vos données à la main](https://github.com/BlueHotDog/sails-migrations).
+- C'est une très bonne idée de passer le temps à bien comprendre l'interface utilisateur de votre application _d'abord_ avant de configurer des validations complexes sur les attributs de votre modèle.
 
-You can define your own custom validation rules by specifying a `types` dictionary as a top level property of your model, then use them in your attribute definitions just like you could any other validation rule above:
+> Dans la mesure du possible, il est judicieux de faire des wireframes avant que vous ne dépensiez une quantité importante de temps à implémenter un code backend quelconque. Bien sûr, ce n'est pas toujours possible - et c'est l'utilité de l'[API Blueprint](http://sailsjs.com/documentation/concepts/blueprints). Les applications construites avec une philosophie centrée sur l'interface utilisateur ou «front-end first» sont plus faciles à entretenir, ont tendance à avoir moins de bugs, puisqu'elles sont construites avec une connaissance approfondie de l'interface utilisateur depuis le get-go, Apis.
+
+
+### Règles de validation personnalisées
+
+> **Avertissement :** Le support des règles de validation personnalisées comme documenté ici se terminera très probablement dans version 1.0 de Waterline. À l'avenir, utilisez une fonction de l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou d'une [méthode classe de modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods) pour une validation personnalisée.
+
+Vous pouvez définir vos propres règles de validation personnalisées en spécifiant un dictionnaire `types` en tant que propriété de niveau supérieur de votre modèle, puis utilisez-les dans vos définitions d'attribut comme vous le feriez pour toute autre règle de validation ci-dessus:
 
 ```javascript
-// api/models/User.js
+// api/models/Utilisateur.js
 module.exports = {
 
-  // Values passed for creates or updates of the User model must obey the following rules:
+  // Les valeurs transmises pour la création ou les mises à jour du modèle utilisateur 
+  // doivent respecter les règles suivantes:
   attributes: {
 
-    firstName: {
-      // Note that a base type (in this case "string") still has to be defined, even though validation rules are in use.
+    prenom: {
+      // Notez qu'un type de base (dans ce cas "chaîne") doit encore être défini,
+      // même si les règles de validation sont en cours d'utilisation.
       type: 'string',
       required: true,
       minLength: 5,
       maxLength: 15
     },
 
-    location: {
+    emplacement: {
       type: 'json',
-      isPoint: true // << defined below
+      isPoint: true // << Défini ci-bas
     },
 
-    password: {
+    motDePasse: {
       type: 'string',
-      password: true // << defined below
+      password: true // << Défini ci-bas
     }
 
   },
 
-  // Custom types / validation rules
-  // (available for use in this model's attribute definitions above)
+  // Types personnalisés / Règles de validation
+  // (Disponible pour l'utilisation dans les définitions d'attributs de ce modèle ci-dessus)
   types: {
     isPoint: function(value){
-      // For all creates/updates of `User` records that specify a value for an attribute
-      // which declares itself `isPoint: true`, that value must:
-      // • be a dictionary with numeric `x` and `y` properties
-      // • both `x` and `y` must be neither `Infinity` nor `-Infinity`
+      // Pour toutes les créations/mises à jour d'enregistrements `Utilisateur`
+      // qui spécifient une valeur pour l'attribut qui se déclare `isPoint: true`, cette valeur doit:
+      // • être un dictionnaire avec des propriétés numériques `x` et `y`
+      // • les deux `x` et `y` ne doivent pas être ni `Infinity` ni `-Infinity`
       return _.isObject(value) &&
       _.isNumber(value.x) && _.isNumber(value.y) &&
       value.x !== Infinity && value.x !== -Infinity &&
       value.y !== Infinity && value.y !== -Infinity;
     },
     password: function(value) {
-      // For all creates/updates of `User` records that specify a value for an attribute
-      // which declares itself `type: 'password'`, that value must:
-      // • be a string
-      // • be at least 6 characters long
-      // • contain at least one number
-      // • contain at least one letter
+      // Pour toutes les créations/mises à jour d'enregistrements `Utilisateur`, 
+      // qui spécifient une valeur pour l'attribut qui se déclare `type: 'password'`, cette valeur doit:
+      // • être une chaîne
+      // • avoir au moins 6 caractères
+      // • contient au moins un numéro
+      // • contenir au moins une lettre
       return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
     }
   }
 }
 ```
 
-Custom validation functions receive the incoming value being validated as their first argument, and are expected to return `true` if it is valid, `false` otherwise.  Once set up, these custom validation rules can be used in one or more attributes in the model where they are defined by setting an extra property with the same name in relevant attribute definitions; e.g. `someCustomValidationRuleOrType: true`.
+Les fonctions de validation personnalisées reçoivent la valeur entrante validée comme leur premier argument, et on s'attend à ce qu'elles renvoient `true` s'il est valide, `false` sinon. Une fois configurées, ces règles de validation personnalisées peuvent être utilisées dans un ou plusieurs attributs du modèle où elles sont définies en définissant une propriété supplémentaire portant le même nom dans des définitions d'attributs pertinentes; par exemple, `UneRegleOuTypeDeValidation: true`.
 
-Note that custom validation rules are not namespaced from built-in validations and types-- they are all merged together. So be careful not to define a custom validation that collides with any of the base types or validations in Waterline (e.g. don't name your custom validation rule `string` or `minLength`).
+Notez que les règles de validation personnalisées ne sont pas définies par des validations et des types intégrés - elles sont toutes fusionnées ensemble. Veillez donc à ne pas définir une validation personnalisée qui entre en onflit avec l'un des types de base ou des validations de Waterline (par exemple, ne nommez pas votre chaîne de validation personnalisée `string` ou` minLength`).
 
 
 
-##### Custom Validation Messages
+##### Messages de validation personnalisés
 
-Out of the box, Sails.js does not support custom validation messages.  Instead your code should look at validation errors in the callback from your `create()` or `update()` calls and take the appropriate action; whether that's sending a particular error code in your JSON response or rendering the appropriate message in an HTML error page.
+Par défaut, Sails.js ne prend pas en charge les messages de validation personnalisés. Au lieu de cela, votre code devrait examiner les erreurs de validation dans le callback depuis vos appels `create()` ou `update()` et prendre les mesures appropriées; Qu'il s'agisse d'envoyer un code d'erreur particulier dans votre réponse JSON ou de rendre le message approprié dans une page d'erreur HTML.
 
-> If you are using Sails v0.11.0+, you may want to take advantage of [`sails-hook-validation`](https://github.com/lykmapipo/sails-hook-validation), a [custom hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks) by [@lykmapipo](http://github.com/lykmapipo).  Details regarding its installation and usage can be found in the [`sails-hook-validation` repository on GitHub](https://github.com/lykmapipo/sails-hook-validation).
+> Si vous utilisez Sails v0.11.0+, vous pouvez utiliser [`sails-hook-validation`](https://github.com/lykmapipo/sails-hook-validation), un [hook personnalisé](http://sailsjs.com/documentation/concepts/extending-sails/hooks) par [@lykmapipo](http://github.com/lykmapipo). Les détails concernant son installation et son utilisation se trouvent dans le dépôt [`sails-hook-validation` sur GitHub](https://github.com/lykmapipo/sails-hook-validation).
 
 
 
