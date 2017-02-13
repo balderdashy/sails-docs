@@ -1,17 +1,17 @@
 # Add (Blueprint)
 
-Add a foreign record (e.g. a comment) to one of this record's collection attributes (e.g. "comments").
+Add a foreign record (e.g. a comment) to one of this record's collections (e.g. "comments").
 
 ```usage
 PUT /:model/:id/:association/:fk
 ```
 
-This action adds a reference to some other record (the "foreign", or "child" record) onto a particular collection attribute of this record (the "primary", or "parent" record).
+This action adds a reference to some other record (the "foreign", or "child" record) onto a particular collection of this record (the "primary", or "parent" record).
 
 + If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
 + If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
-+ If the primary record is already associated with this foreign record, this action will be ignored.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
-+ Note that, if the collection is "shared" (meaning it has `via`) then the attribute it points to with that `via` will also be updated on the foreign record.
++ If the primary record is already associated with this foreign record, this action will have no effect.  (In other words, this is [idempotent](http://www.restapitutorial.com/lessons/idempotency.html).)
++ Note that, if the collection is 2-way (meaning it has `via`) then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
 
 ### Parameters
@@ -19,9 +19,9 @@ This action adds a reference to some other record (the "foreign", or "child" rec
  Parameter                          | Type                                    | Details
 :-----------------------------------| --------------------------------------- |:---------------------------------
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
- id                | ((string))    | The desired target record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
+ id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
- fk | ((string))    | The primary key (e.g. `id`) of the foreign record to add to this collection.<br/><br/>e.g. `47`
+ fk | ((string))    | The primary key (e.g. `id`) of the child record to add to this collection.<br/><br/>e.g. `'47'`
 
 
 ### Example
