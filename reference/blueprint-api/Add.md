@@ -111,20 +111,21 @@ addedId: 47
 
 **Clients subscribed to the child record receive an additional notification:**
 
-Assuming the collection attribute in our example had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to affected child records on the other side of the relationship.  See [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update), and [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about the structure of those notifications.
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added. 
 
-> If the association pointed at by the `via` is also plural (e.g. `cashiers`), then the `addedTo` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
+> If the attribute pointed at by the `via` is also plural (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
 **Finally, a third notification might be sent:**
 
-If adding this purchase to Dolly's (employee #7's) collection would "steal" it from another collection, then any clients subscribed to the stolen-from employee record (e.g. employee #9) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)).
+If adding this purchase to Dolly's collection would "steal" it from another employee's `involvedInPurchases`, then any clients subscribed to that other, stolen-from employee record (e.g. Motoki, employee #12) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
 
 
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for adding a foreign record to a _plural_ ("collection") association.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the model association to the id of the new foreign record (or `null` to clear the association).  If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with association: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with association: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
+> + This action is for dealing with _plural_ ("collection") attributes.  If you want to set or unset a _singular_ ("model") attribute, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the foreign key to the id of the new foreign record (or `null` to clear the association).
+> If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
+> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with attribute: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with attribute: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
