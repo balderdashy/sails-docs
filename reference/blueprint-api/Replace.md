@@ -67,7 +67,7 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) will receive one notification for each child record, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
 
-```
+```usage
 id: <the parent record primary key>,
 verb: 'addedTo',
 attribute: <the parent record collection attribute name>,
@@ -76,7 +76,7 @@ addedId: <the child record primary key>
 
 For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following two messages:
 
-```
+```javascript
 id: 7,
 verb: 'addedTo',
 attribute: 'involvedInPurchases',
@@ -85,7 +85,7 @@ addedId: 47
 
 and
 
-```
+```javascript
 id: 7,
 verb: 'addedTo',
 attribute: 'involvedInPurchases',
