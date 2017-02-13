@@ -115,7 +115,7 @@ Assuming the collection attribute in our example had a `via`, then either `updat
 
 > If the association pointed at by the `via` is also plural (e.g. `cashiers`), then the `addedTo` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 
-** Finally, a third notification might be sent:**
+**Finally, a third notification might be sent:**
 
 If adding this purchase to Dolly's (employee #7's) collection would "steal" it from another collection, then any clients subscribed to the stolen-from employee record (e.g. employee #9) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)).
 
