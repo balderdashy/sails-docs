@@ -102,7 +102,7 @@ addedId: <the child record primary key>
 
 For instance, continuing the example above, all clients subscribed to Dolly a.k.a. employee #7 (_except_ for the client making the request) would receive the following message:
 
-```javascsript
+```javascript
 id: 7,
 verb: 'addedTo',
 attribute: 'involvedInPurchases',
