@@ -67,6 +67,29 @@ io.socket.get('/purchase/47/cashier', function (cashier) {
 curl http://localhost:1337/purchase/47/cashier
 ```
 
+### Example of populating a collection
+
+Populate the `involvedInPurchases` of employee #7:
+
+`GET /employee/7/involvedInPurchases`
+
+##### Expected response
+
+```json
+[{
+  "amount": 10000,
+  "createdAt": 1485476060873,
+  "updatedAt": 1485476060873,
+  "id": 47,
+  "cashier": 7
+},{
+  "amount": 50,
+  "createdAt": 1487015460792,
+  "updatedAt": 1487015476357,
+  "id": 52,
+  "cashier": 7
+}]
+```
 
 
 
