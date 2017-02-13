@@ -95,7 +95,7 @@ Populate the `involvedInPurchases` of employee #7:
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model with an association attribute: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
+> + The examples above assume "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
@@ -103,7 +103,7 @@ Populate the `involvedInPurchases` of employee #7:
 >   $ sails generate model purchase
 >   $ sails generate model employee
 >   ```
-> ...then editing `api/models/Purchase.js`.
+> ...then editing `api/models/Employee.js` and `api/models/Purchase.js`.
 
 
 <docmeta name="displayName" value="populate where">
