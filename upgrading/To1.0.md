@@ -24,6 +24,7 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 * **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates) for more info.
 * **If your app uses the [&ldquo;add&rdquo; blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/add-to)** to update the items in a plural association, be aware that the HTTP verb for that blueprint has changed from `POST` to `PUT`.
 * **If your app sets a model attribute to `null`** using `.create()`, `.findOrCreate()` or `.update()`, you&rsquo;ll need to change the type of that attribute to `json`, or use the base value for the existing attribute type instead of `null` (e.g. `0` for numbers).  See [the validations docs](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?null-and-empty-string) for more info.
+* **The `create` blueprint response is now fully populated**, just like responses from `find`, `findOne`, `update` and `destroy`.  To suppress records from being populated, set the `populate` parameter to `false` in the URL (e.g. make a POST request to `http://localhost:1337/user?populate=false`).
 
 ### Breaking changes to lesser-used features
 
