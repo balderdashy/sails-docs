@@ -9,7 +9,7 @@ DELETE /:model/:id/:association/:fk
 This action removes a reference to some other record (the "foreign" or "child" record) from a collection of this record (the "primary" or "parent" record).  Note that this does not actually destroy the foreign record-- it just unlinks it.
 
 + If the primary record does not exist, this responds using `res.notFound()`.
-+ If the foreign record does not exist, it is created first.
++ If the foreign record does not exist, this responds using `res.notFound()`.
 + If the collection doesn't contain a reference to the foreign record, this action will not modify any records.
 + If the association is 2-way (meaning it has `via`), then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
