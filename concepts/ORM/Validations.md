@@ -46,18 +46,15 @@ Dans le tableau ci-dessous, la colonne "Types d'attributs compatibles" indique l
 
 | Nom de la régle   | Ce qu'elle vérifie                                                                                                  | Notes sur l'usage               | Types d'attributs compatibles |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:-----------------------------|:----------------------------:|
-|after              | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _supérieur_ l'instance `Date` fournie.
-             | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|after              | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _supérieur_ l'instance `Date` fournie.                                                                                                                | `after: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
 |alpha              | Une valeur qui ne contient que des majuscules et/ou minuscules.                                                    | `alpha: true`                | ((string)) |
 |alphadashed        | Une valeur qui ne contient que des lettres et des tirets.                                                          | | ((string)) |
 |alphanumeric       | Une valeur qui ne contient que des lettres et des chiffres.                                                        | | ((string)) |
 |alphanumericdashed | Valeur qui est une chaîne composée uniquement de lettres, de chiffres et/ou de tirets.                              | | ((string)) |
-|before             | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _avant_ l'instance `Date` fournie.         
-             | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
+|before             | Une valeur qui, lorsqu'elle est analysée en tant que date, fait référence à un moment _avant_ l'instance `Date` fournie.                                                                                                                | `before: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)) |
 |contains           | Une valeur qui contient la sous-chaîne spécifiée.                                                                  | `contains: 'needle'`   | ((string)) |
 |creditcard         | Une valeur qui est un numéro de carte de crédit.                                                                    | **Ne stockez pas de numéros de carte de crédit dans votre base de données, sauf si votre application est compatible PCI!**. Si vous souhaitez permettre aux utilisateurs de stocker des informations de carte de crédit, une alternative sûre consiste à utiliser une API de paiement comme [Stripe](https://stripe.com). | ((string)) |
-|datetime           | Une valeur qui peut être analysée comme un timestamp; C'est-à-dire construire une date JavaScript avec `new Date()`
-             |    | ((string)) |
+|datetime           | Une valeur qui peut être analysée comme un timestamp; C'est-à-dire construire une date JavaScript avec `new Date()`     |    | ((string)) |
 |_decimal_          | _Alias pour `float`._ | |  |
 |email              | Une valeur qui représente une adresse e-mail. | | ((string)) |
 |finite             | Valeur qui est ou peut être contrainte à un nombre fini. | Ce n'est pas le même que `isFinite` (natif) qui renvoi `true` pour les booléens et les chaînes vides | ((number)) ou ((string)) |
@@ -80,7 +77,7 @@ Dans le tableau ci-dessous, la colonne "Types d'attributs compatibles" indique l
 |notContains        | Une valeur qui ne contient pas la sous-chaîne configurée. | e.g. `'-haystack-needle-haystack-'` échouerait à la validation `notContains: 'needle'` | ((string)) |
 |notIn              | Une valeur qui **n'est pas** dans le tableau configuré. | | ((string)) |
 |notNull            | Une valeur qui **n'est pas** égale à `null` | | ((json)) |
-|numeric            | Une valeur qui est une chaîne analysée en tant que nombre. | [Tandis que `NaN` est considéré comme un nombre en JavaScript](https://www.destroyallsoftware.com/talks/wat), Ce qui n'est pas vrai pour cette validation. | ((string)) |
+|numeric            | Une valeur qui est une chaîne analysée en tant que nombre. | [Tandis que `NaN` est considéré comme un nombre en JavaScript](https://www.destroyallsoftware.com/talks/wat), ce qui n'est pas vrai pour cette validation. | ((string)) |
 |required           | Une valeur qui est définie; C'est-à-dire **n'est pas `undefined`**. | | ((json)) |
 |regex              | Une valeur qui correspond à l'expression régulière configurée. | | ((string)) |
 |truthy             | Une valeur qui serait considérée vraie si elle est utilisée dans une instruction JavaScript `if`. | | ((json)) |
