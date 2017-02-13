@@ -64,7 +64,7 @@ attribute: <the parent record collection attribute name>,
 removedId: <the child record primary key>
 ```
 
-For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following message:
+For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following message:
 
 ```javascript
 id: 16,
@@ -73,16 +73,18 @@ attribute: 'employeesOfTheMonth',
 removedId: 7
 ```
 
-Clients subscribed to involved parent or child records also receive an additional notification:
+**Clients subscribed to the child record receive an additional notification:**
 
-For example, if an employee had the attribute `employeeOfTheMonthAt: 16`, making the relationship [one-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many), then subscribers to employee #7 would receive an `updated` notification. (See the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info.)
+Assuming `employeesOfTheMonth` was defined with a `via`, then either `updated` or `removedFrom` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to Dolly, the child record we removed.
 
-Similarly, if an employee could be an employee of the month at _multiple_ stores, (e.g. `employeeOfTheMonthAt: [...]`) making the relationship [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many), then subscribers to store #16 would receive `removedFrom` notifications as well (with the `id` and `removedId` values reversed).
+> If the attribute pointed at by the `via` is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `employeeOfTheMonthAtStores`), then another `removedFrom` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `employeeOfTheMonthAtStore`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+
 
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough for the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") association, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the model association to the id of the new foreign record (or `null` to clear the association). If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
+> + This action is for dealing with _plural_ ("collection") associations.  If you want to set or unset a _singular_ ("model") attribute, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the foreign key to the id of the new foreign record (or `null` to clear the association).
+> + If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
 
 <docmeta name="displayName" value="remove from">
 <docmeta name="pageType" value="endpoint">
