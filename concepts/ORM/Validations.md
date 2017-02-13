@@ -4,8 +4,6 @@ Sails intégre la validation automatique des attributs de vos modèles. Chaque f
 
 Toutes les validations ci-dessous sont implémentés en JavaScript et exécutés dans le même processus de serveur Node.js que Sails, sauf `unique` qui est implémenté comme une contrainte au niveau de la base de données; [voir "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique). N'oubliez pas non plus que, peu importe les validations utilisées, un attribut doit toujours spécifier l'un des types de données intégrés ('string', 'number', 'json', etc.).
 
-Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types ('string', 'number', json', etc).
-
 ```javascript
 // Utilisateur
 module.exports = {
@@ -92,9 +90,9 @@ Dans le tableau ci-dessous, la colonne "Types d'attributs compatibles" indique l
 
 ### Unique
 
-La régle `Unique` est différente de toutes les règles de validation énumérées ci-dessus. En fait, ce n'est pas vraiment une validation du tout: c'est une **contrainte au niveau de la base de données**.
+La régle `Unique` est différente de toutes les règles de validation énumérées ci-dessus. En fait, ce n'est pas vraiment une validation du tout : C'est une **contrainte au niveau de la base de données**.
 
-Si un attribut se déclare `unique: true`, Sails s'assure qu'aucun enregistrement ne sera permis avec la même valeur. L'exemple canonique est un attribut `email` sur un modèle `Utilisateur`:
+Si un attribut se déclare `unique: true`, Sails s'assure qu'aucun enregistrement ne sera permis avec la même valeur. L'exemple canonique est un attribut `email` dans le modèle `Utilisateur`:
 
 ```javascript
 // api/models/Utilisateur.js
@@ -113,7 +111,7 @@ module.exports = {
 
 ##### Pourquoi `unique` est-elle différente des autres régles de validation ?
 
-Imaginez que vous disposiez de 1 000 000 d'enregistrements utilisateur dans votre base de données. Si `unique` a été implémenté comme d'autres validations, chaque fois qu'un nouvel utilisateur s'inscrirait à votre application, Sails aurait besoin de rechercher dans _un million_ des enregistrements existants pour s'assurer qu'aucun autre n'utilisait déjà l'adresse e-mail fournie par le nouvel utilisateur. Non seulement ce serait lent, mais au moment où nous avons terminé la recherche à travers tous ces enregistrement, quelqu'un d'autre aurait pu s'inscrire!
+Imaginez que vous disposiez de 1 000 000 d'enregistrements utilisateur dans votre base de données. Si `unique` a été implémenté comme d'autres validations, à chaque fois qu'un nouvel utilisateur s'inscrit à votre application, Sails aurait besoin de rechercher dans _un million_ d'enregistrements pour s'assurer qu'aucun autre n'utilise déjà l'adresse e-mail fournie par le nouvel utilisateur. Non seulement ce serait lent, mais au moment où nous auront terminé la recherche à travers tous ces enregistrements, quelqu'un d'autre aurait pu s'inscrire!
 
 Heureusement, ce type de vérification d'unicité est peut-être la caractéristique la plus universelle de toute base de données. Pour tirer parti de cela, Sails s'appuie sur l'[adaptateur de base de données](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) pour implémenter le support de la validation `unique` - En ajoutant une **contrainte d'unicité** au champ/colonne/attribut pertinent dans la base de données pendant l'[auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate). En d'autres termes, alors que votre application est configurée sur `migrate: 'alter'`, Sails génèrera automatiquement des tables/collections dans la base de données sous-jacente avec des contraintes d'unicité intégrées. Une fois que vous aurez migré vers `migrate: 'safe'`, les contraintes dépenderont de vous.
 
@@ -121,15 +119,15 @@ Heureusement, ce type de vérification d'unicité est peut-être la caractérist
 
 Lorsque vous commencez à utiliser votre base de données de production, il est toujours judicieux de configurer des index pour améliorer les performances de votre base de données. Le processus exact et les meilleures pratiques pour la configuration des index varient d'une base de données à l'autre et sont hors de la portée de la documentation ici. Cela dit, si vous n'avez jamais fait cela avant, ne vous inquiétez pas - c'est [plus facile que vous ne le pensez](http://stackoverflow.com/a/1130/486547).
 
-Tout comme tous les autres éléments liés à votre schéma de production, une fois que vous avez défini votre application à `migrate: 'safe'`, il serait à vous de gérer les index de votre base de données.
+Tout comme tous les autres éléments liés à votre schéma de production, une fois que vous aurez défini votre application à `migrate: 'safe'`, il serait à vous de gérer les index de votre base de données.
 
 > Notez que cela signifie que vous devez être sûr de mettre à jour vos index en même temps que vos contraintes d'unicité en effectuant [une migration manuelle](https://github.com/BlueHotDog/sails-migrations).
 
 ### Quand utiliser les validations
 
-Les validations peuvent être un énorme gain de temps, vous empêchant d'écrire plusieurs centaines de lignes de code répétitif. Mais gardez à l'esprit que les validations de modèle sont exécutées pour _chaque create ou update_ dans votre application. Avant d'utiliser une règle de validation dans l'une de vos définitions d'attribut, assurez-vous d'être bien appliquée _à chaque fois_ que votre application appelle `.create()` ou `.update()` pour spécifier une nouvelle valeur pour cet attribut. Si ce n'est pas le cas, mettez le code qui valide les valeurs entrantes inline dans votre contrôleur; Ou faites appel à une fonction personnalisée dans l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou une [méthode dans le modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
+Les validations peuvent être un énorme gain de temps, vous empêchant d'écrire plusieurs centaines de lignes de code répétitif. Mais gardez à l'esprit que les validations de modèle sont exécutées pour _chaque create ou update_ dans votre application. Avant d'utiliser une règle de validation dans l'une de vos définitions d'attribut, assurez-vous d'être bien appliquée _à chaque fois_ que votre application appelle `.create()` ou `.update()` pour spécifier une nouvelle valeur pour cet attribut. Si ce n'est pas le cas, mettez le code qui valide les valeurs entrantes inline dans votre contrôleur; Ou faites appel à une fonction personnalisée dans l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou une [méthode de classe de modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
 
-Par exemple, disons que votre application Sails permet aux utilisateurs de s'inscrire à un compte soit: (A) en entrant une adresse e-mail et un mot de passe, puis en confirmant cette adresse e-mail ou (B) en utilisant LinkedIn. Maintenant, disons que votre modèle `Utilisateur` a un attribut appelé` linkedInEmail` et un autre attribut appelé `email`. Même si l'un de ces attributs d'adresse de courrier électronique est requis, l'un d'entre eux dépend de la manière dont un utilisateur s'est inscrit. Dans ce cas, votre modèle `Utilisateur` ne peut pas utiliser la validation `required: true` - vous devrez plutôt valider que l'un des deux est fourni et est valide en vérifiant ces valeurs manuellement avant le `.create()` et `.update()` dans votre code, par exemple:
+Par exemple, disons que votre application Sails permet aux utilisateurs de s'inscrire à un compte soit : (A) en entrant une adresse e-mail et un mot de passe, puis en confirmant cette adresse e-mail ou (B) en utilisant LinkedIn. Maintenant, disons que votre modèle `Utilisateur` a un attribut appelé` linkedInEmail` et un autre attribut appelé `email`. Même si l'un de ces attributs d'email est requis, l'un d'entre eux dépend de la manière dont un utilisateur s'est inscrit. Dans ce cas, votre modèle `Utilisateur` ne peut pas utiliser la validation `required: true` - vous devriez plutôt valider que l'un des deux est fourni et est valide en vérifiant ces valeurs manuellement avant le `.create()` et `.update()` dans votre code, par exemple:
 
 ```javascript
 if ( !_.isString( req.param('email') ) ) {
@@ -139,36 +137,35 @@ if ( !_.isString( req.param('email') ) ) {
 
 Pour aller plus loin, disons maintenant que votre application accepte les paiements. Pendant le processus d'inscription, si un utilisateur s'inscrit à un abonnement payant, il doit également fournir un email de facturation («facturationEmail»). Si un utilisateur s'inscrit à un abonnement gratuit, il ou elle peut sauter cette étape. Dans la page des paramètres du compte, les utilisateurs de l'abonnement payant voient le champ de formulaire "Email de facturation" où ils peuvent personnaliser leur email de facturation. Ceci est différent des utilisateurs ayant un abonnement gratuit, qui voient un bouton d'appel à l'action "Migrer vers l'abonnement payant".
 
-Même avec ces exigences, qui semblent tout à fait spécifiques, il y'a des questions qui restent sans réponse:
+Même avec ces exigences, qui semblent tout à fait spécifiques, il y'a des questions qui restent sans réponse :
 
-- Est-ce que nous mettons à jour le courrier électronique de facturation automatiquement lorsque l'autre adresse de courriel est modifiée ?
+- Est-ce que nous mettons à jour l'email de facturation automatiquement lorsque l'autre adresse de courriel est modifiée ?
 - Et si le courriel de facturation avait été modifié au moins une fois ?
-- Que se passe-t-il avec l'email de facturation après qu'un utilisateur ait retrogradé vers l'abonnement gratuit ? Si un utilisateur effectue à nouveau une mise à niveau vers l'abonnement payant, est-ce qu'on va demander de nouveau son adresse e-mail de facturation ou allons nous utiliser l'ancienne ?
+- Que se passe-t-il avec l'email de facturation après qu'un utilisateur ait retrogradé vers l'abonnement gratuit ? Si un utilisateur effectue à nouveau une mise à niveau vers l'abonnement payant, est-ce qu'on va demander de nouveau son e-mail de facturation ou allons-nous utiliser l'ancienne adresse ?
 - Qu'arrive-t-il l'email de facturation lorsqu'un utilisateur existant se connecte avec son compte LinkedIn et qu'un nouveau `linkedInEmail` est enregistré ?
-- Que se passe-t-il avec l'email de facturation si un courrier électronique mensuel contennt la facture ne peut pas être livré ?
+- Que se passe-t-il avec l'email de facturation si le courrier électronique mensuel (facture) ne peut pas être livré ?
 - Que se passe-t-il avec l'email de facturation si un membre de votre équipe de support se connecte à l'interface d'administration et le modifie manuellement ?
-- Que se passe-t-il avec l'email de facturation si une requête POST est reçue sur l'URL de rappel que nous avons fournie à l'API LinkedIn pour informer notre application que l'utilisateur a changé son adresse email sur http://linkedin.com et ainsi un nouveau lien `linkedInEmail` est enregistré ?
+- Que se passe-t-il avec l'email de facturation si une requête POST est reçue sur l'URL de rappel que nous avons fournie à l'API LinkedIn pour informer notre application que l'utilisateur a changé son adresse email sur http://linkedin.com et ainsi un nouveau `linkedInEmail` est enregistré ?
 - Que se passe-t-il avec l'email de facturation lorsqu'un utilisateur existant déconnecte son compte LinkedIn ?
-- Deux comptes d'utilisateurs dans la base de données sont-ils autorisés à avoir le même courrier électronique de facturation ? Et l'email de LinkedIn ? Ou celui qu'ils ont entré manuellement ?
-
+- Deux comptes d'utilisateurs dans la base de données sont-ils autorisés à avoir le même email de facturation ? Et l'email de LinkedIn ? Ou celui qu'ils ont entré manuellement ?
 
 Selon les réponses à ces questions, nous pourrions finir par conserver la validation `required` sur `facturationEmail`, en ajoutant de nouveaux attributs (comme `emailFacturationModifieManuellement`) ou même en modifiant ou non une contrainte `unique`.
 
-### Les meilleures pratiques
+### Les bonnes pratiques
 
 Enfin, voici quelques conseils:
-- Votre décision initiale d'utiliser ou non les validations d'un attribut particulier dépend des exigences de votre application et de la façon dont vous appelez `.update()` et `.create()`. N'ayez pas peur de renoncer à la validation intégrée et de vérifier les valeurs à la main dans vos contrôleurs ou dans une fonction d'assistance. Souvent, c'est l'approche la plus propre et la plus maintenable.
-- Il n'y a rien de mal à ajouter ou supprimer des validations de vos modèles au fur et à mesure que votre application évolue. Mais une fois que vous allez en production, il y'a une **exception très importante** : `unique`. Pendant le développement, lorsque votre application est configurée pour utiliser [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), vous pouvez ajouter ou supprimer les validations `unique` à volonté. Cependant, si vous utilisez `migrate: safe` (par exemple avec votre base de données de production), vous allez devoir mettre à jour les contraintes/indices dans votre base de données, ainsi que [migrer vos données à la main](https://github.com/BlueHotDog/sails-migrations).
-- C'est une très bonne idée de passer le temps à bien comprendre l'interface utilisateur de votre application _d'abord_ avant de configurer des validations complexes sur les attributs de votre modèle.
+- Votre décision initiale d'utiliser ou non les validations d'un attribut particulier dépend des exigences de votre application et de la façon dont vous appelez `.update()` et `.create()`. N'ayez pas peur de renoncer à la validation intégrée et de vérifier les valeurs à la main dans vos contrôleurs ou dans une fonction d'un service. Souvent, c'est l'approche la plus propre et la plus maintenable.
+- Il n'y a rien de mal à ajouter ou supprimer des validations de vos modèles au fur et à mesure que votre application évolue. Mais une fois que vous allez en production, il y'a une **exception très importante** : `unique`. Pendant le développement, lorsque votre application est configurée pour utiliser [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), vous pouvez ajouter ou supprimer à volonté les validations `unique`. Cependant, si vous utilisez `migrate: safe` (par exemple avec votre base de données de production), vous allez devoir mettre à jour les contraintes/indexes dans votre base de données, ainsi que [migrer vos données à la main](https://github.com/BlueHotDog/sails-migrations).
+- C'est une très bonne idée de passer du temps à bien comprendre _d'abord_ l'interface utilisateur de votre application avant de configurer des validations complexes sur les attributs de votre modèle.
 
-> Dans la mesure du possible, il est judicieux de faire des wireframes avant que vous ne dépensiez une quantité importante de temps à implémenter un code backend quelconque. Bien sûr, ce n'est pas toujours possible - et c'est l'utilité de l'[API Blueprint](http://sailsjs.com/documentation/concepts/blueprints). Les applications construites avec une philosophie centrée sur l'interface utilisateur ou «front-end first» sont plus faciles à entretenir, ont tendance à avoir moins de bugs, puisqu'elles sont construites avec une connaissance approfondie de l'interface utilisateur depuis le get-go, Apis.
+> Dans la mesure du possible, il est judicieux de faire des wireframes avant que vous ne dépensiez une quantité importante de temps à implémenter un code backend quelconque. Bien sûr, ce n'est pas toujours possible - et c'est l'utilité de l'[API Blueprint](http://sailsjs.com/documentation/concepts/blueprints). Les applications construites avec une philosophie centrée sur l'interface utilisateur ou «front-end first» sont plus faciles à entretenir, et ont tendance à avoir moins de bugs puisqu'elles sont construites avec une connaissance approfondie de l'interface utilisateur depuis le get-go, Apis.
 
 
 ### Règles de validation personnalisées
 
-> **Avertissement :** Le support des règles de validation personnalisées comme documenté ici se terminera très probablement dans version 1.0 de Waterline. À l'avenir, utilisez une fonction de l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou d'une [méthode classe de modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods) pour une validation personnalisée.
+> **Avertissement :** Le support des règles de validation personnalisées comme documenté ici se terminera très probablement dans la version 1.0 de Waterline. À l'avenir, utilisez une fonction de l'un de vos [services](http://sailsjs.com/documentation/concepts/services) ou une [méthode de classe de modèle](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods) pour avoir une validation personnalisée.
 
-Vous pouvez définir vos propres règles de validation personnalisées en spécifiant un dictionnaire `types` en tant que propriété de niveau supérieur de votre modèle, puis utilisez-les dans vos définitions d'attribut comme vous le feriez pour toute autre règle de validation ci-dessus:
+Vous pouvez définir vos propres règles de validation personnalisées en spécifiant un dictionnaire `types` en tant que propriété de niveau supérieur dans votre modèle, puis utilisez-les dans vos définitions d'attribut comme vous le feriez pour toute autre règle de validation :
 
 ```javascript
 // api/models/Utilisateur.js
@@ -225,17 +222,16 @@ module.exports = {
 }
 ```
 
-Les fonctions de validation personnalisées reçoivent la valeur entrante validée comme leur premier argument, et on s'attend à ce qu'elles renvoient `true` s'il est valide, `false` sinon. Une fois configurées, ces règles de validation personnalisées peuvent être utilisées dans un ou plusieurs attributs du modèle où elles sont définies en définissant une propriété supplémentaire portant le même nom dans des définitions d'attributs pertinentes; par exemple, `UneRegleOuTypeDeValidation: true`.
+Les fonctions de validation personnalisées reçoivent la valeur entrante à valider comme premier argument, et on s'attend à ce qu'elles renvoient `true` si elle est valide, et `false` sinon. Une fois configurées, ces règles de validation personnalisées peuvent être utilisées dans un ou plusieurs attributs du modèle où elles sont définies en ajoutant une propriété supplémentaire portant le même nom dans les définitions d'attributs ; par exemple, `UneRegleOuTypeDeValidation: true`.
 
-Notez que les règles de validation personnalisées ne sont pas définies par des validations et des types intégrés - elles sont toutes fusionnées ensemble. Veillez donc à ne pas définir une validation personnalisée qui entre en onflit avec l'un des types de base ou des validations de Waterline (par exemple, ne nommez pas votre chaîne de validation personnalisée `string` ou` minLength`).
-
+Notez que les règles de validation personnalisées ne sont pas définies par des validations et des types intégrés - elles sont toutes fusionnées ensemble. Veillez donc à ne pas définir une validation personnalisée dont le nom qui entre en conflit avec l'un des types de base ou les validations de Waterline (par exemple, ne nommez pas votre chaîne de validation personnalisée `string` ou` minLength`).
 
 
 ##### Messages de validation personnalisés
 
 Par défaut, Sails.js ne prend pas en charge les messages de validation personnalisés. Au lieu de cela, votre code devrait examiner les erreurs de validation dans le callback depuis vos appels `create()` ou `update()` et prendre les mesures appropriées; Qu'il s'agisse d'envoyer un code d'erreur particulier dans votre réponse JSON ou de rendre le message approprié dans une page d'erreur HTML.
 
-> Si vous utilisez Sails v0.11.0+, vous pouvez utiliser [`sails-hook-validation`](https://github.com/lykmapipo/sails-hook-validation), un [hook personnalisé](http://sailsjs.com/documentation/concepts/extending-sails/hooks) par [@lykmapipo](http://github.com/lykmapipo). Les détails concernant son installation et son utilisation se trouvent dans le dépôt [`sails-hook-validation` sur GitHub](https://github.com/lykmapipo/sails-hook-validation).
+> Si vous utilisez Sails v0.11.0+, vous pouvez installer [`sails-hook-validation`](https://github.com/lykmapipo/sails-hook-validation), un [hook personnalisé](http://sailsjs.com/documentation/concepts/extending-sails/hooks) fait par [@lykmapipo](http://github.com/lykmapipo). Les détails concernant l'installation et l'utilisation se trouvent dans le dépôt [`sails-hook-validation` sur GitHub](https://github.com/lykmapipo/sails-hook-validation).
 
 
 
