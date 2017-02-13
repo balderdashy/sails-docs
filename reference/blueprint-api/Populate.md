@@ -67,7 +67,7 @@ io.socket.get('/purchase/47/cashier', function (cashier) {
 curl http://localhost:1337/purchase/47/cashier
 ```
 
-### Example of populating a collection
+### Populating a collection
 
 Populate the `involvedInPurchases` of employee #7:
 
