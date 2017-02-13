@@ -111,7 +111,7 @@ addedId: 47
 
 **Clients subscribed to the child record receive an additional notification:**
 
-Assuming the collection attribute in our example had a `via`, then either `updated` or `addedTo` notifications will also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to affected child records on the other side of the relationship.  See [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update), and [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about the structure of those notifications.
+Assuming the collection attribute in our example had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to affected child records on the other side of the relationship.  See [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update), and [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) for more info about the structure of those notifications.
 
 > If the association pointed at by the `via` is also plural (e.g. `cashiers`), then the `addedTo` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 
