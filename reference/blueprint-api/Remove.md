@@ -1,32 +1,33 @@
 # Remove (Blueprint)
 
-Remove a foreign record (e.g. a comment) from one of this record's collection associations (e.g. "comments").
+Remove a foreign record (e.g. a comment) from one of this record's collections (e.g. "comments").
 
 ```usage
 DELETE /:model/:id/:association/:fk
 ```
 
-This action removes a reference to some other record (the "foreign" record) from a collection attribute of this record (the "primary" record).  Note that this does not actually destroy the foreign record-- it just removes it.
+This action removes a reference to some other record (the "foreign" or "child" record) from a collection of this record (the "primary" or "parent" record).  Note that this does not actually destroy the foreign record-- it just unlinks it.
 
++ If the primary record does not exist, this responds using `res.notFound()`.
 + If the foreign record does not exist, it is created first.
-+ If the collection doesn't contain a reference to the foreign record, this action will be ignored.
-+ If the association is 2-way (i.e. at least one side has "via") the association on the foreign record will also be updated.
++ If the collection doesn't contain a reference to the foreign record, this action will have no effect.
++ If the association is 2-way (meaning it has `via`), then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
 ### Parameters
 
  Parameter                          | Type                                    | Details
 :---------------------------------- | --------------------------------------- |:---------------------------------
  model | ((string)) | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'store'` (in `/store/16/employeesOfTheMonth/7`)
- id | ((string)) | The desired target record's primary key value<br/><br/>e.g. `'16'` (in `/store/16/employeesOfTheMonth/7`)
- association       | ((string))                              | The name of the collection association<br/><br/>e.g. `'employeesOfTheMonth'`
- fk  | ((string))    | The id of the foreign record to remove from the collection association.<br/><br/>e.g. `7`
+ id | ((string)) | The desired parent record's primary key value.<br/><br/>e.g. `'16'` (in `/store/16/employeesOfTheMonth/7`)
+ association       | ((string))                              | The name of the collection attribute.<br/><br/>e.g. `'employeesOfTheMonth'`
+ fk  | ((string))    | The primary key of the child record to remove from the collection.<br/><br/>e.g. `'7'`
 
 
 ### Example
 
-Say you're building an app for a small chain of grocery stores.  Each store has a giant television screen that displays the current "Employee of the Month" at that store, so that customers and team members see it when they walk in the door.  In order to be sure it is up to date, you build a scheduled job (e.g. using [cron](https://en.wikipedia.org/wiki/Cron)) that runs on the first day of every month to change the "Employees of the Month" for each store in our system.
+Say you're building an app for a small chain of grocery stores.  Each store has a giant television screen that displays the current "Employees of the Month" at that store, so that customers and team members see it when they walk in the door.  In order to be sure it is up to date, you build a scheduled job (e.g. using [cron](https://en.wikipedia.org/wiki/Cron)) that runs on the first day of every month to change the "Employees of the Month" for each store in their system.
 
-Let's say that, as a part of this scheduled job, we send a request to remove Dolly (employee #7) from the `employeesOfTheMonth` list of store #16:
+Let's say that, as a part of this scheduled job, we send a request to remove Dolly (employee #7) from store #16's `employeesOfTheMonth`:
 
 ```
 DELETE /store/16/employeesOfTheMonth/7
@@ -41,7 +42,14 @@ DELETE /store/16/employeesOfTheMonth/7
   "name": "Parmer and N. Lamar",
   "createdAt": 1485552033435,
   "updatedAt": 1485552048794,
-  "employeesOfTheMonth": []
+  "employeesOfTheMonth": [
+    {
+      "id": 12,
+      "name": "Motoki",
+      "createdAt": 1485462079725,
+      "updatedAt": 1485476060873
+    }
+  ]
 }
 ```
 
@@ -58,7 +66,7 @@ removedId: <the child record primary key>
 
 For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request, if the request was made via websocket) would receive the following message:
 
-```
+```javascript
 id: 16,
 verb: 'removedFrom',
 attribute: 'employeesOfTheMonth',
