@@ -1,6 +1,7 @@
 # .native()
 
-> **This method is deprecated.**
+> **As of Sails v1.x, this method is deprecated.**
+> Instead, please change your code to use [`Model.getDatastore().manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager), which offers a cleaner, simpler API.
 
 `.native()` is only available when using Sails/Waterline with MongoDB.
 
