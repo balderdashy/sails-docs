@@ -1,6 +1,6 @@
 # .addToCollection()
 
-Add one or more child records (e.g. a comment) to the specified collection (e.g. the `comments` of BlogPost #4).
+Add one or more existing child records (e.g. a couple of comments) to the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
 Something.addToCollection(parentId, association)
@@ -41,6 +41,14 @@ User.addToCollection(3, 'pets')
 ```
 
 > If either user record already has one of those pets in its "pets", then we just silently skip over it.
+
+
+### Edge cases
+
++ If the parent id does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If one of the child id does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If an empty array of child records is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
+
 
 
 <docmeta name="displayName" value=".addToCollection()">
