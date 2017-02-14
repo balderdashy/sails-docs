@@ -1,6 +1,6 @@
 # .addToCollection()
 
-Add one or more existing child records (e.g. a couple of comments) to the specified collection (e.g. the `comments` of BlogPost #4).
+Add one or more existing child records to the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
 Something.addToCollection(parentId, association)
