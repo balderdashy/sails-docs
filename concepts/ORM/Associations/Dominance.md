@@ -1,16 +1,16 @@
 # Dominance
-## Example Ontology
+## Exemple d'ontologie
 
 
 ```javascript
-// User.js
+// Utilisateur.js
 module.exports = {
-  connection: 'ourMySQL',
+  connection: 'notreMySQL',
   attributes: {
     email: 'string',
-    wishlist: {
-      collection: 'product',
-      via: 'wishlistedBy'
+    wishliste: {
+      collection: 'produit',
+      via: 'whitelistePar'
     }
   }
 };
@@ -18,118 +18,117 @@ module.exports = {
 
 
 ```javascript
-// Product.js
+// Produit.js
 module.exports = {
-  connection: 'ourRedis',
+  connection: 'notreRedis',
   attributes: {
-    name: 'string',
-    wishlistedBy: {
-      collection: 'user',
-      via: 'wishlist'
+    nom: 'string',
+    whitelistePar: {
+      collection: 'utilisateur',
+      via: 'wishliste'
     }
   }
 };
 ```
 
-### The Problem
+### Le problème
 
-It's easy to see what's going on in this cross-adapter relationship.  There's a many-to-many ( `N->...` ) relationship between users and products.  In fact, you can imagine a few other relationships (e.g. purchases) which might exist, but since those are probably better-represented using a middleman model, I went for something simple in this example.
+Il est facile de voir ce qui se passe dans cette relation d'adaptateur croisé. Il existe une relation many-to-many (`N -> ...`) entre utilisateurs et produits. En fait, vous pouvez imaginer quelques autres relations (par exemple les achats) qui pourraient exister, mais comme celles-ci sont probablement mieux représentées à l'aide d'un modèle intermédiaire, je suis allé chercher quelque chose de simple dans cet exemple.
 
-Anyways, that's all great... but where does the relationship resource live?  "ProductUser", if you'll pardon with the SQL-oriented nomenclature.  We know it'll end up on one side or the other, but what if we want to control which database it ends up in? 
+Quoi qu'il en soit, c'est génial ... mais où est-ce que la ressource relation va être définie ? "ProduitUtilisateur", avec la nomenclature orientée SQL. Nous savons que cela finira d'un côté ou de l'autre, mais que faire si nous voulons contrôler la base de données dans laquelle elle se retrouve ?
 
-> **IMPORTANT NOTE**
+> **NOTE IMPORTANTE**
 >
-> This is _only a problem because both sides of the association have a `via` modifier specified_!!
-> In the absence of `via`, a collection attribute always behaves as `dominant: true`.
-> See the FAQ below for more information.
+> Il s'agit là d'un problème _seulement parce que les deux côtés de l'association ont un modificateur `via` spécifié_ !!
+> En l'absence de `via`, un attribut de collection se comporte toujours comme `dominant: true`.
+> Consultez la FAQ ci-dessous pour plus d'informations.
 
 
-## The Solution
+## La solution
 
-Eventually, it may even be possible to specify a 3rd connection/adapter to use for the join table.  For now, we'll focus on choosing one side or the other.
-
-
-We address this through the concept of "dominance."  In any cross-adapter model relationship, one side is assumed to be dominant.  It may be helpful to think about the analogy of a child with multinational parents who must choose one country or the other for her [citizenship](http://en.wikipedia.org/wiki/Japanese_nationality_law)
+Finalement, il peut même être possible de spécifier une troisième connexion/adaptateur à utiliser pour la table de jointure. Pour l'instant, nous allons nous concentrer sur le choix d'un côté ou de l'autre.
 
 
-Here's the ontology again, but this time we'll indicate the MySQL database as the "dominant".  This means that the "ProductUser" relationship "table" will be stored as a MySQL table.
+Nous abordons cette question à travers le concept de "dominance". Dans toute relation de modèle d'adaptateur croisé, un côté est supposé être dominant. Il peut être utile de penser à l'analogie d'un enfant avec des parents multinationaux qui doivent choisir un pays ou l'autre pour sa citoyenneté (http://en.wikipedia.org/wiki/Japanese_nationality_law)
+
+
+Voici l'ontologie à nouveau, mais cette fois, nous allons indiquer la base de données MySQL comme le "dominant". Cela signifie que la "ProduitUtilisateur" relation "table" sera stocké comme une table MySQL.
 
 
 ```javascript
-// User.js
+// Utilisateur.js
 module.exports = {
-  connection: 'ourMySQL',
+  connection: 'notreMySQL',
   attributes: {
     email: 'string',
-    wishlist: {
-      collection: 'product',
-      via: 'wishlistedBy',
+    wishliste: {
+      collection: 'produit',
+      via: 'whitelistePar',
       dominant: true
     }
   }
 };
 ```
 
-
 ```javascript
-// Product.js
+// Produit.js
 module.exports = {
-  connection: 'ourRedis',
+  connection: 'notreRedis',
   attributes: {
-    name: 'string',
-    wishlistedBy: {
-      collection: 'user',
-      via: 'wishlist'
+    nom: 'string',
+    whitelistePar: {
+      collection: 'utilisateur',
+      via: 'wishliste'
     }
   }
 };
 ```
 
+## Choisir un "dominant"
 
-## Choosing a "dominant"
+Plusieurs facteurs peuvent influencer votre décision :
 
-Several factors may influence your decision:
-
-+ If one side is a SQL database, placing the relationship table on that side will allow your queries to be more efficient, since the relationship table can be joined before the other side is communicated with.  This reduces the number of total queries required from 3 to 2.
-+ If one connection is much faster than the other, all other things being equal, it probably makes sense to put the connection on that side.
-+ If you know that it is much easier to migrate one of the connections, you may choose to set that side as `dominant`.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between `Patient` and `Medicine`) you want to be sure that all relevant data is saved in one particular database over the other (in this case, `Patient` is likely to be `dominant`).
-+ Along the same lines, if one of your connections is read-only (perhaps `Medicine` in the previous example is connected to a read-only vendor database), you won't be able to write to it, so you'll want to make sure your relationship data can be persisted safely on the other side.
++ Si un côté est une base de données SQL, placer la table de relation de ce côté permettra à vos requêtes d'être plus efficaces, puisque la table de relation peut être jointe avant que l'autre ne communique avec. Cela réduit le nombre total de requêtes requises de 3 à 2.
++ Si une connexion est beaucoup plus rapide que l'autre, toutes choses égales par ailleurs, il est probablement logique de mettre la connexion de ce côté.
++ Si vous savez qu'il est beaucoup plus facile de migrer une des connexions, vous pouvez choisir de définir ce côté comme "dominant". De même, les règlements ou les questions de conformité peuvent influer sur votre décision. Si la relation contient des informations sensibles du patient (par exemple, une relation entre «Patient» et «Medicament»), vous voulez être sûr que toutes les données pertinentes sont enregistrées dans une base de données particulière et non l'autre (dans ce cas, «Patient» est probable être "dominante").
++ Dans le même ordre d'idées, si l'une de vos connexions est en lecture seule (peut-être que "Medicament" dans l'exemple précédent est connecté à une base de données en lecture seule), vous ne pourrez pas y écrire, alors veillez à ce que vos données relationnelles puissent être conservées en toute sécurité de l'autre côté.
 
 
 ## FAQ
 
 
-##### What if one of the collections doesn't have `via`?
+##### Que se passe-t-il si une des collections n'a pas `via` ?
 
-> If a `collection` association does not have a `via` property, it is automatically `dominant: true`.
-
-
-##### What if both collections don't have `via`?
-
-> If both `collections` don't have `via`, then they are not related.  Both are `dominant`, because they are separate relationship tables!!
-
-##### What about `model` associations?
-
-> In all other types of associations, the `dominant` property is prohibited.  Setting one side to `dominant` is only necessary for associations between two models which have an attribute like: `{ via: '...', collection: '...' }` on both sides.
+> Si une association `collection` n'a pas de propriété `via`, elle est automatiquement `dominante: true`.
 
 
-##### Can a model be dominant for one attribute and not another?
-> Keep in mind that a model is "dominant" only in the context of a particular relationship.  A model may be dominant in one or more relationships (attributes) while simultaneously NOT being dominant in other relationships (attributes).
-> e.g. if a `User` has a collection of toys called `favoriteToys` via `favoriteToyOf` on the `Toy` model, and `favoriteToys` on `User` is `dominant: true`, `Toy` can still be dominant in other ways.  So `Toy` might also be associated to `User` by way of its attribute, `designedBy`, for which it is `dominant: true`.
+##### Et si les deux collections n'ont pas `via`?
+
+> Si les deux `collections` n'ont pas `via`, alors elles ne sont pas liées. Les deux sont "dominants", car elles sont des tables séparée !
+
+##### Qu'en est-il des associations `model` ?
+
+> Dans tous les autres types d'associations, la propriété "dominant" est interdite. La définition d'un côté à `dominant` n'est nécessaire que pour les associations entre deux modèles qui ont un attribut comme : `{via: '...', collection: '...'}` des deux côtés.
 
 
-##### Can both models be dominant?
+##### Un modèle peut-il être dominant pour un attribut et pas pour un autre?
 
-> No. If both models in a cross-adapter/cross-connection, many-to-many association set `dominant: true`, an error is thrown before lift.
+> Gardez à l'esprit qu'un modèle n'est "dominant" que dans le contexte d'une relation particulière. Un modèle peut être dominant dans une ou plusieurs relations (attributs) tout en n'étant PAS dominant dans d'autres relations (attributs).
+> Par exemple, si un `Utilisateur` a une collection de jouets appelée `Jouetsfavoris` via `jouetsFavorisDe` dans le modèle `Jouet` et `Jouetsfavoris` dans `Utilisateur` est "dominant: true", `Jouet` peut encore être dominant en d'autres façons. Donc, `Jouet` pourrait également être associé à `Utilisateur` à travers son attribut, `construitPar`, pour lequel il est `dominant: true`.
 
 
-##### Can neither model be dominant?
+##### Les deux modèles peuvent-ils être dominants?
 
-> Sort of... If neither model in a cross-adapter/cross-connection, many-to-many association sets `dominant: true`, a warning is displayed before lift, and a guess will be made automatically based on the characteristics of the relationship.  For now, that just means an arbitrary decision based on alphabetical order :)
+> Non. Si les deux modèles sont dans une association croisée/interconnexion, l'association many-to-many définit "dominant: true", une erreur est lancée lors du démarrage.
 
-##### What about non-cross-adapter associations?
 
-> The `dominant` property is silently ignored in non-cross-adapter/cross-connection associations.  We're assuming you might be planning on breaking up the schema across multiple connections eventually, and there's no reason to prevent you from being proactive.  Plus, this reserves additional future utility for the "dominant" option down the road.
+##### Est-il possible qu'aucun des modèles ne soit dominant ?
+
+> Oui, en quelque sorte... Si ni l'un ni l'autre des modèles d'un adaptateur/connection croisé(e), l'association many-to-many définit "dominant: true", un avertissement s'affiche lors du démarrage et une estimation sera faite automatiquement en fonction des caractéristiques de la relation. Pour l'instant, cela signifie simplement une décision arbitraire basée sur l'ordre alphabétique :)
+
+##### Qu'en est-il des associations d'adaptateur non-croisé?
+
+> La propriété `dominant` est silencieusement ignorée dans les associations d'adaptateur/connection non-croisé(e). Nous supposons que vous pourriez envisager de briser éventuellement le schéma à travers plusieurs connexions, et il n'y a aucune raison de vous empêcher d'être proactif. De plus, cela réserve une utilité supplémentaire pour l'option "dominante".
 
 
 
