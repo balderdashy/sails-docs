@@ -74,7 +74,7 @@ For instance, continuing the example above, let's assume that Dolly's previous `
   id: 7,
   verb: 'addedTo',
   attribute: 'involvedInPurchases',
-  addedIds: [47]
+  addedIds: [ 47 ]
 }
 ```
 
@@ -85,7 +85,7 @@ and
   id: 7,
   verb: 'removedFrom',
   attribute: 'involvedInPurchases',
-  removedIds: [42, 33]
+  removedIds: [ 42, 33 ]
 }
 ```
 

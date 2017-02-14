@@ -107,7 +107,7 @@ For instance, continuing the example above, all clients subscribed to Dolly a.k.
   id: 7,
   verb: 'addedTo',
   attribute: 'involvedInPurchases',
-  addedIds: [47]
+  addedIds: [ 47 ]
 }
 ```
 
