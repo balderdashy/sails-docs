@@ -94,10 +94,10 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "PUT"
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the primary record will receive a notification, where the notification event name is the primary model identity (e.g. `'employee'`), and the message has the following format:
 
 ```usage
-id: <the parent record primary key>,
+id: <the parent record primary key value>,
 verb: 'addedTo',
 attribute: <the parent record collection attribute name>,
-addedId: <the child record primary key>
+addedIds: <the now-added child records' primary key values>
 ```
 
 For instance, continuing the example above, all clients subscribed to Dolly a.k.a. employee #7 (_except_ for the client making the request) would receive the following message:
