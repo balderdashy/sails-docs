@@ -1,30 +1,29 @@
 # Replace (Blueprint)
 
-Replace the foreign records in one of this record's collection associations (e.g. "comments").
+Replace all of the foreign records in one of this record's collections (e.g. "comments").
 
 ```usage
 PUT /:model/:id/:association
 ```
 
-This action adds one or more reference to some other record (the "foreign", or "child" record) onto a particular collection attribute of this record (the "primary", or "parent" record), replacing any existing references in the collection.
+This action resets references to "foreign", or "child" records that are members of a particular collection of _this_ record (the "primary", or "parent" record), replacing any existing references in the collection.
 
 + If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
-+ Note that, if the association is "shared" -- a plural ("collection") association with "via", or a singular ("model") association that has a "via" on the _other side_ -- then the association on the foreign records will also be updated.
++ Note that, if the association is "2-way" (meaning it has `via`), then the foreign key or collection on the foreign record(s) will also be updated.
 
 
 ### Parameters
 
  Parameter                          | Type                                    | Details
 :-----------------------------------| --------------------------------------- |:---------------------------------
- model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
- id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
- association       | ((string))                             | The name of the collection association<br/><br/>e.g. `'involvedInPurchases'`
- fks | ((array))    | The primary keys (e.g. `id`) of the foreign records to use in this collection association.<br/><br/>e.g. [`47`,`65`]
+ model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases`)
+ id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases`)
+ association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
+ fks | ((array))    | The primary key values (usually ids) of the child records to use as the new members of this collection.<br/><br/>e.g. `[47, 65]`
 
 
 ### Example
-
-Add purchases #47 and #65 to the list of purchases that Dolly (employee #7) has been involved in:
+Suppose you are in charge of keeping records for a large chain of grocery stores, and Dolly the cashier (employee #7) had been taking credit for being involved in a large number of purchases, when really she had only checked out two customers. Since the owner of the grocery store chain is very forgiving, Dolly gets to keep her job, but now you have to update Dolly's `involvedInPurchases` collection so that it _only_ contains purchases #47 and #65:
 
 `PUT /employee/7/involvedInPurchases`
 
@@ -36,7 +35,7 @@ Add purchases #47 and #65 to the list of purchases that Dolly (employee #7) has 
 
 ##### Expected response
 
-This returns "Dolly", the parent record.  Notice she is now involved in purchases #47 and #65:
+This returns Dolly, the parent record.  Notice that her record only shows her being involved in purchases #47 and #65:
 
 ```json
 {
@@ -48,14 +47,14 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
     {
       "amount": 10000,
       "createdAt": 1485551132315,
-      "updatedAt": 1485551132315
+      "updatedAt": 1486355134239,
       "id": 47,
       "cashier": 7
     },
     {
       "amount": 5667,
-      "createdAt": 1485551158349,
-      "updatedAt": 1485551158349
+      "createdAt": 1483551158349,
+      "updatedAt": 1485355134284,
       "id": 65,
       "cashier": 7
     }
@@ -64,35 +63,35 @@ This returns "Dolly", the parent record.  Notice she is now involved in purchase
 ```
 
 ### Socket notifications
-
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) will receive one notification for each child record, where the notification event name is that of the parent model identity (e.g. `employee`), and the &ldquo;message&rdquo; has the following format:
-
-```usage
-id: <the parent record primary key>,
-verb: 'addedTo',
-attribute: <the parent record collection attribute name>,
-addedId: <the child record primary key>
-```
+If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive one [`addedTo` notification](http://sailsjs.com/documentation/reference/blueprint-api/add-to#?socket-notifications) for each child record in the new collection (if any).
 
 For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following two messages:
 
 ```javascript
-id: 7,
-verb: 'addedTo',
-attribute: 'involvedInPurchases',
-addedId: 47
+{
+  id: 7,
+  verb: 'addedTo',
+  attribute: 'involvedInPurchases',
+  addedId: 47
+}
 ```
 
 and
 
 ```javascript
-id: 7,
-verb: 'addedTo',
-attribute: 'involvedInPurchases',
-addedId: 65
+{
+  id: 7,
+  verb: 'addedTo',
+  attribute: 'involvedInPurchases',
+  addedId: 65
+}
 ```
 
-Similarly, any clients subscribed to the _child_ records would receive either an `addedTo` notification like the ones above (if the assocatiation is [many-to-many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)) or an `updated` notification (see the [update blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about that notification).
+**Clients subscribed to the child records receive additional notifications:**
+
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchases #47 or #65, the child records we just linked.
+
+> If the `via`-linked attribute on the other side is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
 ### Notes
 

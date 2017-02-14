@@ -11,7 +11,7 @@ This action adds a reference to some other record (the "foreign", or "child" rec
 + If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
 + If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
 + If the primary record is already associated with this foreign record, this action will not modify any records.  (Note that currently, in the case of a many-to-many association, it _will_ add duplicate junction records though!  To resolve this, add a multi-column index at the database layer, if possible.  We are currently working on a friendlier solution/default for users of MongoDB, sails-disk, and other NoSQL databases.)
-+ Note that, if the collection is 2-way (meaning it has `via`) then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
++ Note that, if the association is "2-way" (meaning it has `via`) then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
 
 ### Parameters
@@ -21,7 +21,7 @@ This action adds a reference to some other record (the "foreign", or "child" rec
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
  id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
- fk | ((string))    | The primary key (e.g. `id`) of the child record to add to this collection.<br/><br/>e.g. `'47'`
+ fk | ((string))    | The primary key value (usually id) of the child record to add to this collection.<br/><br/>e.g. `'47'`
 
 
 ### Example
@@ -103,17 +103,19 @@ addedId: <the child record primary key>
 For instance, continuing the example above, all clients subscribed to Dolly a.k.a. employee #7 (_except_ for the client making the request) would receive the following message:
 
 ```javascript
-id: 7,
-verb: 'addedTo',
-attribute: 'involvedInPurchases',
-addedId: 47
+{
+  id: 7,
+  verb: 'addedTo',
+  attribute: 'involvedInPurchases',
+  addedId: 47
+}
 ```
 
 **Clients subscribed to the child record receive an additional notification:**
 
 Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added.
 
-> If the attribute pointed at by the `via` is also plural (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+> If the `via`-linked attribute on the other side is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
 **Finally, a third notification might be sent:**
 
