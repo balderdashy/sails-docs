@@ -1,23 +1,23 @@
 # Associations
 
-With Sails and Waterline, you can associate models across multiple data stores. This means that even if your users live in [PostgreSQL](http://www.postgresql.org/) and their photos live in [MongoDB](http://www.mongodb.com/), you can interact with the data as if they lived together in the same database. You can also have associations that span different [connections](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html) (i.e. datastores/databases) using the same adapter.  This comes in handy if, for example, your app needs to access/update legacy recipe data stored in a [MySQL](http://www.mysql.com/) database in your company's data center, but also store/retrieve ingredient data from a brand new MySQL database in the cloud.
+Avec Sails et Waterline, vous pouvez associer des modèles à plusieurs bases de données. Cela signifie que même si vos utilisateurs sont stockés dans [PostgreSQL](http://www.postgresql.org/) et leurs photos dans [MongoDB](http://www.mongodb.com/), vous pouvez interagir avec le données comme si elles étaient dans la même base de données. Vous pouvez également avoir des associations qui couvrent différentes [connexions](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html) (c'est-à-dire bases de données / magasins de données) en utilisant le même adaptateur. Cela est pratique si, par exemple, votre application doit accéder ou mettre à jour les données de recettes héritées stockées dans une base de données MySQL (http://www.mysql.com/) dans le centre de données de votre entreprise, mais également stocker/récupérer des données d'une nouvelle base de données MySQL dans sur le Cloud.
 
-> **IMPORTANT NOTE**
+> **NOTE IMPORTANTE**
 >
-> In the examples used throughout the associations concepts guide, note that all references to Sails model classes are in _lowercase_.  For example, in:
+> Notez que, dans les exemples utilisés dans le guide des concepts d'associations, toutes les références aux classes de modèle Sails sont en _minuscule_. Par exemple, dans:
 ```
-// User.js
+// Utilisteur.js
 module.exports = {
-  connection: 'ourMySQL',
+  connection: 'notreMySQL',
   attributes: {
     email: 'string',
-    wishlist: {
-      collection: 'product',
-      via: 'wishlistedBy'
+    wishliste: {
+      collection: 'produit',
+      via: 'whiltelistePar'
     }
   }
 };
 ```
-the `collection` key is set to `product`--this is the _identity_ of the Sails model called `Product`.  Whenever models are referenced in `collection`, `via`, `model` or `through` keys, their lowercased identity names should be used.
+La clé `collection` est définie sur `produit` - c'est _l'identité_ du modèle Sails appelé `Produit`. Chaque fois que les modèles sont référencés dans les clés `collection`, `via`, `model` ou `through`, vos noms d'identité doivent être en minuscules.
 
 <docmeta name="displayName" value="Associations">
