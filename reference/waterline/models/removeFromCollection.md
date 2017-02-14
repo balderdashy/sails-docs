@@ -41,6 +41,17 @@ User.removeFromCollection(3, 'pets')
 ```
 
 
+### Edge cases
+
++ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If one of the child ids does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If a parent record _does not have_ one or more of these child ids as members of its collection, then ((TODO: verify this behavior)).
++ If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
++ If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
+
+### Notes
+> + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Pet") side is singular, the each child record's foreign key ("owner") will be set to `null`.  If it's plural, then each child record's collection will be modified accordingly.
+
 
 
 
