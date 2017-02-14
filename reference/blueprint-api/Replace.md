@@ -19,8 +19,9 @@ This action resets references to "foreign", or "child" records that are members 
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases`)
  id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
- fks | ((array))    | The primary key values (usually ids) of the child records to use as the new members of this collection. _This parameter should be sent in the PUT request body, unless you are making this request using a  development-only [shortcut blueprint route](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes), in which case you can simply include it to the query string as `?replace=[47,65]`._<br/><br/>e.g. `[47, 65]`
+ fks | ((array))    | The primary key values (usually ids) of the child records to use as the new members of this collection.<br/><br/>e.g. `[47, 65]`
 
+> _The `fks` parameter should be sent in the PUT request body, unless you are making this request using a development-only [shortcut blueprint route](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes), in which case you can simply include it in the query string as `?fks=[47,65]`._
 
 ### Example
 Suppose you are in charge of keeping records for a large chain of grocery stores, and Dolly the cashier (employee #7) had been taking credit for being involved in a large number of purchases, when really she had only checked out two customers. Since the owner of the grocery store chain is very forgiving, Dolly gets to keep her job, but now you have to update Dolly's `involvedInPurchases` collection so that it _only_ contains purchases #47 and #65:
@@ -65,7 +66,7 @@ This returns Dolly, the parent record.  Notice that her record only shows her be
 ### Socket notifications
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive one [`addedTo` notification](http://sailsjs.com/documentation/reference/blueprint-api/add-to#?socket-notifications) for each child record in the new collection (if any).
 
-For instance, continuing the example above, all clients subscribed Dolly (_except_ for the client making the request) would receive two messages, one for purchcase #47 and one for #65:
+For instance, continuing the example above, let's assume that Dolly was already involved in purchase #65, along with five other purchases. ((TODO: come back to this- this seems like it might get kind of crazy)) All clients subscribed to Dolly's employee record (_except_ for the client making the request) would receive two messages, one for purchase #47 and one for #65:
 
 ```javascript
 {
@@ -89,13 +90,18 @@ and
 
 **Clients subscribed to the child records receive additional notifications:**
 
-Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to any of the purchases we just linked.
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo`/`removedFrom` notifications would also be sent to clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to any of the purchases we just linked or unlinked.
 
-> If the `via`-linked attribute on the other side (Purchase) is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+> If the `via`-linked attribute on the other side (Purchase) is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then an `addedTo` or `removedFrom` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+
+**Finally, a third kind of notification might be sent:**
+
+If replacing Dolly's collection of Purchases would "steal" them from other employees' `involvedInPurchases`, then any clients subscribed to those other, stolen-from employee records (e.g. Motoki, employee #12 and Timothy, employee #4) would receive `removedFrom` notifications. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
+
 
 ### Notes
 
-> + Remember, this blueprint replaces the _entire_ set of associated records for the given attribute.  To add or remove a single associated record from the collection, leaving the rest of the collection unchanged, use the [&ldquo;add&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/add-to) or [&ldquo;remove&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
+> + Remember, this blueprint replaces the _entire_ set of associated records for the given attribute.  To add or remove a single associated record from the collection, leaving the rest of the collection unchanged, use the "add" or "remove" blueprint actions. (See [**Blueprints > add to**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)).
 
 
 <docmeta name="displayName" value="replace">
