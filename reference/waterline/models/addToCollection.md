@@ -52,7 +52,7 @@ User.addToCollection(3, 'pets')
 + If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
 
 ### Notes
-> + If the association is "2-way" (meaning it has `via`) then the relevant foreign keys or collections of these child records will be modified accordingly.
+> + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Purchase") side is singular, the each child record's foreign key ("cashier") will be changed.  If it's plural, then each child record's collection will be modified accordingly.
 > + In addition, if the `via` points at a singular ("model") attribute on the other side, then `.addToCollection()` will "steal" these child records if necessary.  For example, imagine you have an Employee model with this plural ("collection") attribute: `involvedInPurchases: { collection: 'Purchase', via: 'cashier' }`.  If you executed `Employee.addToCollection(7, 'involvedInPurchases', [47])` to assign this purchase to employee #7 (Dolly), but purchase #47 was already associated with a different employee (e.g. #12, Motoki), then this would "steal" the purchase from Motoki and give it to Dolly.  In other words, if you executed `Employee.find([7, 12]).populate('involvedInPurchases')`, Dolly's `involvedInPurchases` array would contain purchase #47 and Motoki's would not.
 
 <docmeta name="displayName" value=".addToCollection()">
