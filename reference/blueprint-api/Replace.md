@@ -96,7 +96,7 @@ Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo`/`
 
 **Finally, a third kind of notification might be sent:**
 
-If replacing Dolly's collection of Purchases would "steal" them from other employees' `involvedInPurchases`, then any clients subscribed to those other, stolen-from employee records (e.g. Motoki, employee #12 and Timothy, employee #4) would receive `removedFrom` notifications. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
+If giving Dolly this new collection of Purchases would "steal" any of them from other employees' `involvedInPurchases`, then any clients subscribed to those other, stolen-from employee records (e.g. Motoki, employee #12 and Timothy, employee #4) would receive `removedFrom` notifications. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
 
 
 ### Notes
