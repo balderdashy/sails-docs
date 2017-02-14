@@ -77,7 +77,7 @@ For instance, continuing the example above, all clients subscribed to employee #
   id: 16,
   verb: 'removedFrom',
   attribute: 'employeesOfTheMonth',
-  removedId: 7
+  removedIds: [7]
 }
 ```
 

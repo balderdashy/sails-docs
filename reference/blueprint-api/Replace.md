@@ -64,16 +64,17 @@ This returns Dolly, the parent record.  Notice that her record only shows her be
 ```
 
 ### Socket notifications
+
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive one [`addedTo` notification](http://sailsjs.com/documentation/reference/blueprint-api/add-to#?socket-notifications) for each child record in the new collection (if any).
 
-For instance, continuing the example above, let's assume that Dolly was already involved in purchase #65, along with five other purchases. ((TODO: come back to this- this seems like it might get kind of crazy)) All clients subscribed to Dolly's employee record (_except_ for the client making the request) would receive two messages, one for purchase #47 and one for #65:
+For instance, continuing the example above, let's assume that Dolly's previous `involvedInPurchases` included purchases #65, #42, and #33. All clients subscribed to Dolly's employee record (_except_ for the client making the request) would receive two kinds of notifications: `addedTo` for the purchase she was not previously involved in (#47), and `removedFrom` for the purchases she is no longer involved in (#42 and #33).
 
 ```javascript
 {
   id: 7,
   verb: 'addedTo',
   attribute: 'involvedInPurchases',
-  addedId: 47
+  addedIds: [47]
 }
 ```
 
@@ -82,11 +83,13 @@ and
 ```javascript
 {
   id: 7,
-  verb: 'addedTo',
+  verb: 'removedFrom',
   attribute: 'involvedInPurchases',
-  addedId: 65
+  removedIds: [42, 33]
 }
 ```
+
+> Note that purchase #65 is not included in the `addedTo` notification, since it was in Dolly's previous list of `involvedInPurchases`.
 
 **Clients subscribed to the child records receive additional notifications:**
 
