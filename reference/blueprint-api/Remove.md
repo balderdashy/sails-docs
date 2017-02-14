@@ -64,10 +64,10 @@ DELETE /store/16/employeesOfTheMonth/7
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive a notification about the removed child, where the notification event name is that of the parent model identity (e.g. `store`), and the &ldquo;message&rdquo; has the following format:
 
 ```
-id: <the parent record primary key>,
+id: <the parent record's primary key value>,
 verb: 'removedFrom',
 attribute: <the parent record collection attribute name>,
-removedId: <the child record primary key>
+removedIds: <the now-removed child records' primary key values>
 ```
 
 For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following message:
