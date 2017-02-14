@@ -19,7 +19,7 @@ This action resets references to "foreign", or "child" records that are members 
  model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases`)
  id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
- fks | ((array))    | The primary key values (usually ids) of the child records to use as the new members of this collection.<br/><br/>e.g. `[47, 65]`
+ fks | ((array))    | The primary key values (usually ids) of the child records to use as the new members of this collection. _This parameter should be sent in the PUT request body, unless you are making this request using a  development-only [shortcut blueprint route](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes), in which case you can simply include it to the query string as `?replace=[47,65]`._<br/><br/>e.g. `[47, 65]`
 
 
 ### Example
@@ -65,7 +65,7 @@ This returns Dolly, the parent record.  Notice that her record only shows her be
 ### Socket notifications
 If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the parent record will receive one [`addedTo` notification](http://sailsjs.com/documentation/reference/blueprint-api/add-to#?socket-notifications) for each child record in the new collection (if any).
 
-For instance, continuing the example above, all clients subscribed to employee #7 (_except_ for the client making the request) would receive the following two messages:
+For instance, continuing the example above, all clients subscribed Dolly (_except_ for the client making the request) would receive two messages, one for purchcase #47 and one for #65:
 
 ```javascript
 {
@@ -89,13 +89,12 @@ and
 
 **Clients subscribed to the child records receive additional notifications:**
 
-Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchases #47 or #65, the child records we just linked.
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to any of the purchases we just linked.
 
-> If the `via`-linked attribute on the other side is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+> If the `via`-linked attribute on the other side (Purchase) is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
 ### Notes
 
-> + If you have [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) turned on, you can replace the existing collection by using the collection attribute name as a query string parameter, and setting the value to an array, e.g. `http://localhost:1337/user/3/pets/replace?pets=[3,4]`
 > + Remember, this blueprint replaces the _entire_ set of associated records for the given attribute.  To add or remove a single associated record from the collection, leaving the rest of the collection unchanged, use the [&ldquo;add&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/add-to) or [&ldquo;remove&rdquo;](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
 
 
