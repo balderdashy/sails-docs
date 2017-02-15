@@ -13,6 +13,8 @@ sails.helpers.sayHello({ name: 'Bubba' }).exec(function(err, greeting) {
   if (err) { return res.serverError(err); }
   
   // `greeting` is now "Hello, Bubba!"
+  sails.log(greeting);
+  
   return res.ok();
 });
 ```
