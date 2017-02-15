@@ -43,8 +43,8 @@ User.replaceCollection(3, 'pets')
 ### Edge cases
 
 + If the parent id does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
-+ If any of the child ids do not actually correspond with an existing, persisted record, then a record will not be included in the collection for that child id. (If none of the child ids correspond to existing records, then the collection will be replaced with an empty array.)
-+ If an empty array of child ids is provided, then this will detach _all_ child records from the parent.
++ If any of the child ids do not actually correspond with an existing, persisted record, then a record will not be included in the collection for that child id.
++ If an empty array of child ids is provided, or if none of the provided child ids correspond to existing records, then this will detach _all_ child records from the parent.
 
 ### Notes
 > + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Purchase") side is singular, the each newly-linked-or-unlinked child record's foreign key ("cashier") will be changed.  If it's plural, then each child record's collection will be modified accordingly.
