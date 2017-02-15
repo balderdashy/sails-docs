@@ -26,15 +26,16 @@ skipExpandingDefaultSelectClause      | ((boolean)) | false    | Set to `true` t
 ```javascript
 User.create({name: 'alice'})
 .meta({fetch: true})
-.exec(function (err,results){
-  console.log(results)
+.exec(function (err, newUser){
+  if (err) { return res.serverError(err); }
+  return res.json(newUser);
 });
 
 ```
 
 ### Notes
-> * In order for `cascade` to work when the `fetch` meta key is _not_ `true`, Waterline must do an extra `.find().select('id')` before actually performing the `.destroy()` in order to get the IDs of the records that would be destroyed.
-> * Each model method returns a chainable object if you don't supply a callback.  This method can be chained to that object to further modify the query.  It can also be provided as a third argument to the `.exec()` method.
+> * In order for `cascade` to work when the `fetch` meta key is _not_ also `true`, Waterline must do an extra `.find().select('id')` before actually performing the `.destroy()` in order to get the IDs of the records that would be destroyed.
+> * Rather than using the `.meta()` query method, you can also set meta keys for a query by passing in a dictionary after the explicit callback.  For example: `User.create({name: 'alice'}, function(err, newUser){/*...*/}, { fetch: true })`.
 
 <docmeta name="displayName" value=".meta()">
 <docmeta name="pageType" value="method">
