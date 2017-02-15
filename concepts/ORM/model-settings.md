@@ -158,9 +158,9 @@ When you lift your Sails app in a development environment (e.g. running `sails l
 
 | Auto-migration strategy  | Description |
 |:-------------------------|:---------------------------------------------|
-|`safe`                    | never auto-migrate my database(s). I will do it myself, by hand.
-|`alter`                   | auto-migrate columns/fields, but attempt to keep my existing data (experimental)
-|`drop`                    | wipe/drop ALL my data and rebuild models every time I lift Sails
+| `safe`                    | never auto-migrate my database(s). I will do it myself, by hand.
+| `alter`                   | auto-migrate columns/fields, but attempt to keep my existing data (experimental)
+| `drop`                    | wipe/drop ALL my data and rebuild models every time I lift Sails
 
 
 ##### Can I use auto-migrations in production?
@@ -227,13 +227,13 @@ The following low-level settings are included in the spirit of completeness, but
 
 The name of a model's primary key attribute.
 
-```
+```javascript
 primaryKey: 'id'
 ```
 
-| Type       | Example       |
-| ---------- |:--------------|
-| ((string)) | `'id'`        |
+| Type       | Example       | Default       |
+| ---------- |:--------------|:--------------|
+| ((string)) | `'id'`        | `'id'`        |
 
 The name of the attribute to use as the primary key for this model.  Conventionally, this is "id", a default attribute that is included for you automatically in `config/models.js`.  **You should never need to change this setting**, since you can set a `columnName` on the "id" attribute.
 
@@ -246,11 +246,11 @@ The name of the attribute to use as the primary key for this model.  Conventiona
 
 The lowercase, unique identifier for a model.
 
+> **A model's `identity` is read-only.  It is automatically derived, and should never be set by hand.**
+
 ```
 Something.identity;
 ```
-
-> **You should never set a model's `identity` by hand.**
 
 | Type       | Example       |
 | ---------- |:--------------|
@@ -271,6 +271,8 @@ assert(Purchase === sails.models.purchase);
 
 The unique global identifier for a model, which also determines the name of its corresponding global variable (if relevant).
 
+> **A model's `globalId` is read-only.  It is automatically derived, and should never be set by hand.**
+
 ```
 Something.globalId;
 ```
@@ -278,8 +280,6 @@ Something.globalId;
 | Type       | Example       |
 | ---------- |:--------------|
 | ((string)) | `'Purchase'`  |
-
-> **You should never set a model's `globalId` by hand.**
 
 The primary purpose of a model's globalId is to determine the name of the global variable that Sails automatically exposes on its behalf-- that is, unless globalization of models has been [disabled](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).  In Sails, a model's `globalId` is inferred automatically by from its filename.  For example, the globalId of `api/models/Purchase.js` would be `Purchase`.
 
