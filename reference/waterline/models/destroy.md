@@ -12,7 +12,7 @@ Something.destroy(criteria).exec(function (err) {
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) will be destroyed.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ `destroy` queries do not support pagination using `skip` or `limit` or projections using `select`. |
+| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) will be destroyed.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ `destroy` queries do not support pagination using `skip` and `limit` or projections using `select`. |
 
 ##### Callback
 
