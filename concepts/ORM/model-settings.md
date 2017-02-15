@@ -41,19 +41,44 @@ Now that you know what model settings are in general, and how to configure them,
 
 ### attributes
 
+The set of attribute definitions for a model.
+
+```
+attributes: { /* ... */ }
+```
+
+| Type           | Example                 | Default       |
+| -------------- |:------------------------|:--------------|
+| ((dictionary)) | _See below._            | `{}`          |
+
+Most of the time, you'll define attributes in your individual model definitions (in `api/models/`).  But you can also specify **default attributes** in `config/models.js`.  This allows you to define a set of global attributes in one place, and then rely on Sails to make them available to all of your models implicitly, without repeating yourself.  Default attributes can also be overridden on a per-model basis by defining a replacement attribute with the same name in the relevant model definition.
+
 ```js
 attributes: {
-  id: { type: 'number' },
+  id: { type: 'number', autoIncrement: true },
   createdAt: { type: 'number', autoCreatedAt: true },
   updatedAt: { type: 'number', autoUpdatedAt: true },
 }
 ```
 
-Most of the time, you'll define attributes in your individual model definitions (in `api/models/`).  But you can also specify **default attributes** in `config/models.js`.  This allows you to define a set of global attributes in one place, and then rely on Sails to make them available to all of your models implicitly, without repeating yourself.  Default attributes can also be overridden on a per-model basis by defining a replacement attribute with the same name in the relevant model definition.
-
 For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
 
 ### customToJSON
+
+A function that allows you to customize the way a model's records are serialized to JSON.
+
+```
+customToJSON: function() { /*...*/ }
+```
+
+| Type         | Example                 | Default       |
+| ------------ |:------------------------|:--------------|
+| ((function)) | _See below._            | _n/a_         |
+
+Adding the `customToJSON` setting to a model changes the way that the model&rsquo;s records are _stringified_.  In other words, it allows you to inject custom logic that runs any time one of these records are passed into `JSON.stringify()`.  This is most commonly used to implement a failsafe, making sure sensitive data like user passwords aren't accidentally included in a response (since [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json) stringifies data before sending).
+
+The `customToJSON` function takes no arguments, but provides access to the record as the `this` variable.  This allows you to omit sensitive data and return the sanitized result, which is what `JSON.stringify()` will actually use when generating a JSON string.  For example:
+
 ```js
 customToJSON: function() {
   // Return a shallow copy of this record with the password and ssn removed.
@@ -61,19 +86,21 @@ customToJSON: function() {
 }
 ```
 
-Adding the `customToJSON` setting to a model changes the way that the model&rsquo;s records are _stringified_.  In other words, it allows you to inject custom logic that runs any time one of these records are passed into `JSON.stringify()`.  This is most commonly used to implement a failsafe, making sure sensitive data like user passwords aren't accidentally included in a response (since [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json) stringifies data before sending).
-
-The `customToJSON` function takes no arguments, but provides access to the record as the `this` variable.  This allows you to omit sensitive data and return the sanitized result, which is what `JSON.stringify()` will actually use when generating a JSON string.
-
 > Note that the `this` variable available in `customToJSON` is a _direct reference to the actual record object_, so be careful not to modify it.  In other words, avoid writing code like `delete this.password`.  Instead, use methods like `_.omit()` or `_.pick()` to get a _copy_ of the record.  Or just construct a new dictionary and return that (e.g. `return { foo: this.foo }`).
 
 ### tableName
+
+The name of the SQL table (/MongoDB collection) where a model will store and retrieve its records as rows (/MongoDB documents).
 
 ```javascript
 tableName: 'some_preexisting_table'
 ```
 
-By default, this is the same as the model's identity.    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
+| Type        | Example                    | Default       |
+| ----------- |:---------------------------|:--------------|
+| ((string))  | `'some_preexisting_table'` | _Same as model's identity._
+
+By default, this is the same as the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
 
 The **tableName** setting gives you the ability to customize the name of the underlying _physical model_ that a particular model should use.  In other words, it lets you control where a model stores and retrieves records within the database, _without_ affecting the code in your controller actions / helpers.
 
@@ -96,11 +123,17 @@ User.find().exec(...)
 
 ### migrate
 
+The **auto-migration strategy** that Sails will run every time your app loads.
+
 ```javascript
-migrate: 'safe'
+migrate: 'alter'
 ```
 
-The `migrate` setting controls the **auto-migration strategy** that Sails will run every time your app loads.  In short, this tells Sails whether or not you'd like it to attempt to automatically rebuild the tables/collections/sets/etc. in your database(s).
+| Type        | Example                 | Default       |
+| ----------- |:------------------------|:--------------|
+| ((string))  | `'alter'`               | _You'll be prompted._<br/><br/>_**Note**: In production, this is always `'safe'`._
+
+The `migrate` setting controls your app's auto-migration strategy.  In short, this tells Sails whether or not you'd like it to attempt to automatically rebuild the tables/collections/sets/etc. in your database(s).
 
 ##### Database migrations
 
@@ -147,9 +180,16 @@ If you are working with a relatively large amount of development/test data, the 
 
 ### schema
 
+Whether or not a model expects records to conform to a specific set of attributes.
+
 ```javascript
 schema: true
 ```
+
+| Type        | Example                 | Default       |
+| ----------- |:------------------------|:--------------|
+| ((boolean)) | `true`                  | _Depends on the adapter._
+
 
 The `schema` setting allows you to toggle a model between "schemaless" or "schemaful" mode.  More specifically, it governs the behavior of methods like `.create()` and `.update()`.  Normally, you are allowed to store arbitrary data in a record, as long as the adapter you're using supports it.  But if you enable `schema:true`, only properties that correspond with the model's `attributes` will actually be stored.
 
@@ -159,11 +199,17 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 ### datastore
 
+The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
+
 ```javascript
-datastore: 'legacyEcommerceDb'
+datastore: 'legacyECommerceDb'
 ```
 
-The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) indicating the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
+| Type       | Example                 | Default       |
+| ---------- |:------------------------|:--------------|
+| ((string)) | `'legacyECommerceDb'`   | `'default'`   |
+
+This indicates the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
 
 For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
@@ -179,11 +225,17 @@ The following low-level settings are included in the spirit of completeness, but
 
 ##### primaryKey
 
+The name of a model's primary key attribute.
+
 ```javascript
 primaryKey: 'id'
 ```
 
-The name of the attribute to use as the primary key for this model.  Conventionally, this is "id", a default attribute that is included for you automatically in `config/models.js`.  You should never need to change this setting, since you can set a `columnName` on the "id" attribute.
+| Type       | Example       |
+| ---------- |:--------------|
+| ((string)) | `'id'`        |
+
+The name of the attribute to use as the primary key for this model.  Conventionally, this is "id", a default attribute that is included for you automatically in `config/models.js`.  **You should never need to change this setting**, since you can set a `columnName` on the "id" attribute.
 
 > All caveats aside, lets say you're an avid user of MongoDB.  In your new Sails app, even though you set `columnName: '_id'` on your "id" attribute and everything is working, you might find yourself wishing that you could change the actual name of the "id" attribute itself-- purely for the sake of familiarity.  For example, that way, when you call built-in model methods in your code, instead of the usual "id", you would use syntax like `.destroy({ _id: 'ba8319abd-13810-ab31815' })`.
 >
@@ -192,19 +244,56 @@ The name of the attribute to use as the primary key for this model.  Conventiona
 
 ##### identity
 
-```javascript
-identity: 'purchase'
+The lowercase, unique identifier for a model.
+
+```
+Something.identity;
 ```
 
-The lowercase, unique identifier for this model, e.g. `user`.  By default, a model's `identity` is inferred automatically by lowercasing its filename, and stripping off the file extension.  You should never change this property on your models.
+| Type       | Example       |
+| ---------- |:--------------|
+| ((string)) | `'purchase'`  |
 
-### globalId
+
+In Sails, a model's `identity` is inferred automatically by lowercasing its filename and stripping off the file extension.  For example, the identity of `api/models/Purchase.js` would be `purchase`.  It would be accessible as `sails.models.purchase`, and if blueprint routes were enabled, you'd be able to reach it with requests like `GET /purchase` and `PATCH /purchase/1`.   
 
 ```javascript
-globalId: 'Purchase'
+assert(Purchase.identity === 'purchase');
+assert(sails.models.purchase.identity === 'purchase');
+assert(Purchase === sails.models.purchase);
 ```
 
-This flag changes the global name by which you can access your model (if the globalization of models is enabled).  You should never change this property on your models. To disable globals, see [`sails.config.globals`](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).
+> **You should never set a model's `identity` by hand.**
+
+
+
+##### globalId
+
+The unique global identifier for a model, which also determines the name of its corresponding global variable (if relevant).
+
+```
+Something.globalId;
+```
+
+| Type       | Example       |
+| ---------- |:--------------|
+| ((string)) | `'Purchase'`  |
+
+
+The primary purpose of a model's globalId is to determine the name of the global variable that Sails automatically exposes on its behalf-- that is, unless globalization of models has been [disabled](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).  In Sails, a model's `globalId` is inferred automatically by from its filename.  For example, the globalId of `api/models/Purchase.js` would be `Purchase`.
+
+```javascript
+assert(Purchase.globalId === 'Purchase');
+assert(sails.models.purchase.globalId === 'Purchase');
+if (sails.config.globals.models) {
+  assert(sails.models.purchase === Purchase);
+}
+else {
+  assert(typeof Purchase === 'undefined');
+}
+```
+
+> **You should never set a model's `globalId` by hand.**
 
 
 <docmeta name="displayName" value="Model settings">
