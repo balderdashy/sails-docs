@@ -1,6 +1,6 @@
 # .addToCollection()
 
-Add one or more child records (e.g. a comment) to the specified collection (e.g. the `comments` of BlogPost #4).
+Add one or more existing child records to the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
 Something.addToCollection(parentId, association)
@@ -42,6 +42,18 @@ User.addToCollection(3, 'pets')
 
 > If either user record already has one of those pets in its "pets", then we just silently skip over it.
 
+
+### Edge cases
+
++ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If one of the child ids does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If a parent record _already has_ one or more of these child ids as members of its collection, then ((TODO: verify this behavior)).
++ If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
++ If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
+
+### Notes
+> + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Purchase") side is singular, the each child record's foreign key ("cashier") will be changed.  If it's plural, then each child record's collection will be modified accordingly.
+> + In addition, if the `via` points at a singular ("model") attribute on the other side, then `.addToCollection()` will "steal" these child records if necessary.  For example, imagine you have an Employee model with this plural ("collection") attribute: `involvedInPurchases: { collection: 'Purchase', via: 'cashier' }`.  If you executed `Employee.addToCollection(7, 'involvedInPurchases', [47])` to assign this purchase to employee #7 (Dolly), but purchase #47 was already associated with a different employee (e.g. #12, Motoki), then this would "steal" the purchase from Motoki and give it to Dolly.  In other words, if you executed `Employee.find([7, 12]).populate('involvedInPurchases')`, Dolly's `involvedInPurchases` array would contain purchase #47 and Motoki's would not.
 
 <docmeta name="displayName" value=".addToCollection()">
 <docmeta name="pageType" value="method">

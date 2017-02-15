@@ -10,4 +10,9 @@ For example, if you create a `User.js` model file in your project, then with blu
 
 Blueprints are great for prototyping, but they are also a powerful tool in production due to their ability to be overridden, protected, extended or disabled entirely.
 
+### Up next
+
++ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) about built-in blueprint actions
++ [Read more](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes) about implicit "shadow" routes and how to configure or override them
+
 <docmeta name="displayName" value="Blueprints">

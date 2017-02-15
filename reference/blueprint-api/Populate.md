@@ -67,12 +67,38 @@ io.socket.get('/purchase/47/cashier', function (cashier) {
 curl http://localhost:1337/purchase/47/cashier
 ```
 
+### Populating a collection
+
+You can also populate a collection. For example, to populate the `involvedInPurchases` of employee #7:
+
+`GET /employee/7/involvedInPurchases`
+
+##### Expected response
+
+```json
+[
+  {
+    "amount": 10000,
+    "createdAt": 1485476060873,
+    "updatedAt": 1485476060873,
+    "id": 47,
+    "cashier": 7
+  },
+  {
+    "amount": 50,
+    "createdAt": 1487015460792,
+    "updatedAt": 1487015476357,
+    "id": 52,
+    "cashier": 7
+  }
+]
+```
 
 
 
 ### Notes
 
-> + The example above assumes "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model with an association attribute: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
+> + The examples above assume "rest" blueprints are enabled, and that your project contains at least an empty 'Employee' model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo
@@ -80,7 +106,7 @@ curl http://localhost:1337/purchase/47/cashier
 >   $ sails generate model purchase
 >   $ sails generate model employee
 >   ```
-> ...then editing `api/models/Purchase.js`.
+> ...then editing `api/models/Employee.js` and `api/models/Purchase.js`.
 
 
 <docmeta name="displayName" value="populate where">
