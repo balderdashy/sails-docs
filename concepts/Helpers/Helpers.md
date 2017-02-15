@@ -29,11 +29,10 @@ Helpers follow the <a href="http://node-machine.org" target="_blank">node-machin
 // api/helpers/say-hello.js
 module.exports = {
 
-
   friendlyName: 'Say hello',
 
 
-  description: 'A utility that accepts a name and creates a greeting.',
+  description: 'Return a personalized greeting using the provided name.',
 
 
   sync: true, // See the `Synchronous helpers` documentation later in this document
