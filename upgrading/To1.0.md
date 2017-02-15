@@ -97,7 +97,8 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **The [`destroy`](http://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action** now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
 * **The experimental `create` auto-migration scheme is no longer supported**.  It is highly recommended that you use a migration tool such as [Knex](http://knexjs.org/#Migrations) to handle migrations of your production database.
 * **The experimental `forceLoadAdapter` datastore setting is no longer supported**.  Instead, all adapters referenced in `config/datastores.js` (formerly `config/connections.js`) are automatically loaded whenever Sails lifts.
-* **The experimental `usage` route option has been removed.  It is recommended that you perform any route parameter validation in your controller code.
+* **The experimental `usage` route option has been removed.**  It is recommended that you perform any route parameter validation in your controller code.
+* **The experimental &ldquo;associated-item&rdquo; blueprint shadow routes have been removed.** These were routes like `GET /user/1/pets/2`, whose functionality can be replicated by simply using the much-clearer route `GET /pets/2`.
 
 
 ### Changes to database configuration
