@@ -227,6 +227,8 @@ The following low-level settings are included in the spirit of completeness, but
 
 The name of a model's primary key attribute.
 
+> **You should never need to change this setting, since you set a custom `columnName` on the "id" attribute.**
+
 ```javascript
 primaryKey: 'id'
 ```
@@ -235,11 +237,29 @@ primaryKey: 'id'
 | ---------- |:--------------|:--------------|
 | ((string)) | `'id'`        | `'id'`        |
 
-The name of the attribute to use as the primary key for this model.  Conventionally, this is "id", a default attribute that is included for you automatically in `config/models.js`.  **You should never need to change this setting**, since you can set a `columnName` on the "id" attribute.
+Conventionally, this is "id", a default attribute that is included for you automatically in the `config/models.js` file of new apps generated as of Sails v1.0.  The best way to change the primary key for your model is simply to customize the `columnName` of that default attribute.
 
-> All caveats aside, lets say you're an avid user of MongoDB.  In your new Sails app, even though you set `columnName: '_id'` on your "id" attribute and everything is working, you might find yourself wishing that you could change the actual name of the "id" attribute itself-- purely for the sake of familiarity.  For example, that way, when you call built-in model methods in your code, instead of the usual "id", you would use syntax like `.destroy({ _id: 'ba8319abd-13810-ab31815' })`.
+For example, imagine you have a User model that needs to integrate with a table in a pre-existing MySQL database.  That table might have a column named something other than "id" (like "email_address") as its primary key.  To make your model respect that primary key, you'd specify an override for your `id` attribute in the model definition; like this:
+
+```js
+id: {
+  type: 'string',
+  columnName: 'email_address',
+  required: true
+}
+```
+
+Then, in your app's code, you'll be able to look up users by primary key, while the mapping to `email_address` in all generated SQL queries is taken care of for you automatically:
+
+```js
+User.find({ id: req.param('emailAddress' }).exec(/*...*/);
+```
+
+> All caveats aside, lets say you're an avid user of MongoDB.  In your new Sails app, you'll start off by setting `columnName: '_id'` on your default "id" attribute in `config/models.js`.  Then you can use Sails and Waterline just like normal, and everything will work just fine.
+> 
+> But what if you find yourself wishing that you could change the actual name of the "id" attribute itself-- purely for the sake of familiarity?  For example, that way, when you call built-in model methods in your code, instead of the usual "id", you would use syntax like `.destroy({ _id: 'ba8319abd-13810-ab31815' })`.
 >
-> That's where this model setting might come in.  All you'd have to do is edit `config/models.js` so that it contains `primaryKey: '_id'`, and then rename the default "id" attribute to "\_id".  But there are some [good reasons to reconsider](https://gist.github.com/mikermcneil/9247a420488d86f09be342038e114a08).
+> That's where this model setting might come in.  All you'd have to do is edit `config/models.js` so that it contains `primaryKey: '_id'`, and then rename the default "id" attribute to "_id".  But there are some [good reasons to reconsider](https://gist.github.com/mikermcneil/9247a420488d86f09be342038e114a08).
 
 
 ##### identity
