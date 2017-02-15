@@ -250,6 +250,8 @@ The lowercase, unique identifier for a model.
 Something.identity;
 ```
 
+> **You should never set a model's `identity` by hand.**
+
 | Type       | Example       |
 | ---------- |:--------------|
 | ((string)) | `'purchase'`  |
@@ -262,8 +264,6 @@ assert(Purchase.identity === 'purchase');
 assert(sails.models.purchase.identity === 'purchase');
 assert(Purchase === sails.models.purchase);
 ```
-
-> **You should never set a model's `identity` by hand.**
 
 
 
@@ -279,6 +279,7 @@ Something.globalId;
 | ---------- |:--------------|
 | ((string)) | `'Purchase'`  |
 
+> **You should never set a model's `globalId` by hand.**
 
 The primary purpose of a model's globalId is to determine the name of the global variable that Sails automatically exposes on its behalf-- that is, unless globalization of models has been [disabled](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).  In Sails, a model's `globalId` is inferred automatically by from its filename.  For example, the globalId of `api/models/Purchase.js` would be `Purchase`.
 
@@ -292,8 +293,6 @@ else {
   assert(typeof Purchase === 'undefined');
 }
 ```
-
-> **You should never set a model's `globalId` by hand.**
 
 
 <docmeta name="displayName" value="Model settings">
