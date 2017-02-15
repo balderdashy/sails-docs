@@ -84,17 +84,23 @@ You can provide a default value for an input by setting its `defaultsTo` propert
 
 ##### Exits
 
-Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to provide custom exits to handle specific error cases.  This adds to your code&rsquo;s maintainability.  For example, a helper called &ldquo;Create user&rdquo; could include a special `usernameConflict` exit to be called if the provided username already exists, allowing you to handle this scenario after calling the helper without having to resort to `try/catch` blocks or examining complex return values.
+Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.  
+
+> Custom exits for a helper are defined in the `exits` dictionary, with each exit definition being composed of, at minimum, a `description` property.  For more advanced options, see the [full specification](http://node-machine.org/spec).
+
+This helps guarantee your code&rsquo;s maintainability by providing strong conventions.  For example, a helper called &ldquo;Create user&rdquo; could expose a custom `usernameConflict` exit.  The helper's `fn` might trigger this special exit if the provided username already exists, allowing your userland code to handle this specific scenario after calling the helper without muddying up your result values or resorting to extra `try/catch/switch` blocks.
 
 ```javascript
-sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com'}).exec({
-  success: function(newUser) { ... continue action with new user ... },
-  usernameConflict: function() { ... return 409 status code to client ... }
-  error: function(err) { ... return 500 status code to client ... },
+sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com' }).exec({
+  error: function(err) { return res.serverError(err); },
+  usernameConflict: function() { return res.status(409).badRequest(); }
+  success: function(newUserId) {
+    return res.ok();
+  }
 });
 ```
 
-Custom exits for a helper are defined in the `exits` dictionary, with each exit being composed of, at minimum, a `description` property.  Any argument passed to such an exit will be wrapped in a Javascript Error object (if it isn&rsquo;t already one) before being outputted.  If no argument is passed, the exit description will be used to create an error for the helper output.
+> Any argument that your helper's `fn` passes in when it calls an exit internally (e.g. `'foo'` in `exits.usernameConflict('foo')`) will be wrapped in a new Javascript Error instance (if it isn&rsquo;t already one) before being outputted.  If no argument is passed in, the exit description will be used to create an Error for the helper output automatically.
 
 ##### Synchronous helpers
 
