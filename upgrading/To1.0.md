@@ -4,29 +4,58 @@
 
 To get started upgrading your existing Sails app to version 1.0, follow the checklist below, which covers the changes most likely to affect the majority of apps.  If your app still has errors or warnings on startup after following the checklist, come back to this document and follow the applicable guides to upgrading various app components.
 
+> We've done a lot of work to make the upgrade process as seemless as possible.  But if you have lingering questions about any of the changes below, or if you're stumped, feel free to [ask for help or drop by our Gitter channel](http://sailsjs.com/support).
+
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
+
++ Step 1: Install hooks & update dependencies
++ Step 2: Update configuration
++ Step 3: Modify client-side code for the new blueprint API
++ Step 4: Adopt the new release of Waterline ORM
+
+##### Step 1: Install hooks & update dependencies
+Sails v1 introduces [custom builds](https://github.com/balderdashy/sails/pull/3504).  This means certain core hooks are now installed as direct dependencies of your app, giving you more control over your dependencies, and making `npm install sails` run _considerably_ faster.  So the first thing you'll need to do is install the core hooks you're using.  (And while you're at it, be sure to update the other dependencies mentioned in the list below.)
 
 * **Install the `sails-hook-orm` package** into your app with `npm install --save sails-hook-orm`, unless your app has the ORM hook disabled.
 * **Install the `sails-hook-sockets` package** into your app with `npm install --save sails-hook-sockets`, unless your app has the sockets hook disabled.
 * **Install the `sails-hook-grunt` package** into your app with `npm install --save sails-hook-grunt`, unless your app has the Grunt hook disabled.
 * **Install the latest version of your database adapter**.  For example, if you're using `sails-mysql`, do `npm install --save sails-mysql@latest`.
+* **Upgrade your `sails.io.js` websocket client** with `sails generate sails.io.js`.  See the ["Websockets" section below](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?websockets) for more details.
+
+
+##### Step 2: Update configuration
+Sails v1 comes with several improvements to how your app is configured.  For example, your automatic install of lodash and async can now be customized to any version you like, and view engine configuration syntax has been normalized to be consistent with the approach in Express v4+.  But by far the biggest change to configuration is related to one of the biggest new features in Sails v1: [datastores](http://sailsjs.com/documentation/reference/waterline-orm/datastores).  To make sure you correctly upgrade the configuration for your database(s) and other settings, be sure to carefully read through the steps below and apply the necessary changes.
+
 * **Update your `config/globals.js` file** (unless your app has `sails.config.globals` set to `false`)
   + Set `models` and `sails` to have boolean values (`true` or `false`)
   + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
 * **Comment out any database configuration your aren&rsquo;t using** in `config/connections.js`.  Unlike previous versions, Sails 1.0 will load _all_ database adapters that are referenced in config files, regardless of whether they are actually used by a model.  See the [migration guide section on database configuration](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration) for more info.
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
-* **Upgrade your `sails.io.js` websocket client** with `sails generate sails.io.js`.  See the ["Websockets" section below](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?websockets) for more details.
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
+
+##### Step 3: Modify client-side code for the new blueprint API
+Besides getting expanded to include a new endpoint, there also are a couple of minor (but breaking) changes to the blueprint API that might require you to make changes to your client-side code. 
+
+* **If your app uses the [&ldquo;add&rdquo; blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/add-to)** to update the items in a plural association, be aware that the HTTP verb for that blueprint has changed from `POST` to `PUT`.
+* **TODO: the other breaking change to blueprints goes here**
+
+
+##### Step 4: Adopt the new release of Waterline ORM
+The new release of Waterline ORM (v0.13) introduces full support for SQL transactions, picking/omitting attributes in result sets (aka "projections"), dynamic database connections, and more granular control over query behavior.  It also comes with a major stability and performance overhaul which comes with a few breaking changes to usage.  The bullet points below cover the most common issues you're likely to run into from the Waterline upgrade.
+
 * **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to update your model settings to indicate that you want those methods to fetch records (or chain a `.meta({fetch: true})` to individual calls).  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` results](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy-results) for more info.
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
 * **Waterline queries will now rely on the database for case sensitivity.** This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries.
 * **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates) for more info.
-* **If your app uses the [&ldquo;add&rdquo; blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/add-to)** to update the items in a plural association, be aware that the HTTP verb for that blueprint has changed from `POST` to `PUT`.
 * **If your app sets a model attribute to `null`** using `.create()`, `.findOrCreate()` or `.update()`, you&rsquo;ll need to change the type of that attribute to `json`, or use the base value for the existing attribute type instead of `null` (e.g. `0` for numbers).  See [the validations docs](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?null-and-empty-string) for more info.
 * **The `create` blueprint response is now fully populated**, just like responses from `find`, `findOne`, `update` and `destroy`.  To suppress records from being populated, set the `populate` parameter to `false` in the URL (e.g. make a POST request to `http://localhost:1337/user?populate=false`).
 
+
+
 ### Breaking changes to lesser-used features
+
+The points above cover the majority of upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0.  But since every app is different, it's a good idea to read through the rest of the points below before you dive back in.  Not all of these points will necessarily apply to your app, but some might.
 
 * **The `.findOne()` query method no longer supports `sort` and `limit` modifiers, and will throw an error if the given criteria match more than one record**.  If you want to find a single record using anything besides a `unique` attribute (like the primary key) as criteria, use `.find(<criteria>).limit(1)` instead (keeping in mind that this will return an array of one item).
 * **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
