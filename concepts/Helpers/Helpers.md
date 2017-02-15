@@ -129,7 +129,7 @@ var headers = sails.helpers.parseMyHeaders({ req: req }).execSync();
 
 ### Generating a helper
 
-Sails provides an easy generator to create a new helper:
+Sails provides a built-in generator that you can use to create a new helper automatically:
 
 ```bash
 sails generate helper foo-bar
@@ -139,12 +139,14 @@ This will create a file `api/helpers/foo-bar.js` that can be accessed in your co
 
 ### Calling a helper
 
-Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Helpers can then be invoked from your code, simply by calling them with a dictionary of values, one for each input:
+Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Any helper can then be invoked from your code, simply by calling it with a dictionary of values (one key for each input), and providing a standard Node.js callback function:
 
 ```javascript
-sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err, result) {
-  if (err) {...handle error and return...}
-  ...process result...
+sails.helpers.sayHello({ name: 'Dolly' }).exec(function(err, result) {
+  if (err) { /*...handle error and return...*/ return res.serverError(err); }
+  /* ...process result... */
+  sails.log('Ok it worked!  The result is:', result);
+  return res.ok();
 });
 ```
 
@@ -155,11 +157,14 @@ If a helper declares the `sync` property, you can also call it like this:
 ```javascript
 var greeting;
 try {
-  greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
-} catch (e) { ... handle error .. }
+  greeting = sails.helpers.sayHello({ name: 'Timothy' }).execSync();
+} catch (e) { /*... handle error ...*/ return res.serverError(err); }
+
+/* ...process result... */
+return res.ok();
 ```
 
-> If something goes wrong, `.execSync()` handles exceptions by throwing an Error.  So remember: if you're using `.execSync()` from within some other asynchronous callback, be sure you handle the possibility of it throwing.  If you're ever unsure about whether you can safely call `.execSync()`, you can always just wrap it in a `try`/`catch` and handle the error in the `catch`.
+If something goes wrong, `.execSync()` handles exceptions by throwing an Error.  So remember: if you're using `.execSync()` from within some other asynchronous callback, be sure you handle the possibility of it throwing.  If you're ever unsure about whether you can safely call `.execSync()`, you can always just wrap it in a `try`/`catch` and handle the error in the `catch`.
 
 ### Handling exceptions
 
@@ -201,5 +206,6 @@ sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
 ### Next steps
 
 + Since 2014, the Sails community has created hundreds of MIT-licensed, open-source helpers for many common use cases.  [Have a look!](http://node-machine.org/machinepacks)
++ If you have a question about helpers, or if you want to browse more tutorials and examples, [click here](https://sailsjs.com/support).
 
 <docmeta name="displayName" value="Helpers">
