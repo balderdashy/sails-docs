@@ -43,9 +43,9 @@ User.removeFromCollection(3, 'pets')
 
 ### Edge cases
 
-+ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
-+ If one of the child ids does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
-+ If a parent record _does not have_ one or more of these child ids as members of its collection, then ((TODO: verify this behavior)).
++ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then this will modify the existing records and ignore the non-existent ones.
++ If one of the child ids does not actually correspond with an existing, persisted record, then that child id will be ignored, and only those records that correspond with the other provided child ids will be removed.
++ If a parent record _does not have_ one or more of these child ids as members of its collection, then only the records corresponding to provided child ids that _are_ in the collection will be removed.
 + If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
 + If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
 
