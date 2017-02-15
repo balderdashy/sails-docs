@@ -229,14 +229,15 @@ sails.helpers.getGravatarUrl({ emailAddress: req.param('email') })
 
 ##### As much or as little as you need
 
-While this example usage is kind of trumped-up, it's easy to see a scenario where we might care about handling custom exits like `invalidEmail`.  But it's definitely not necessary to handle every exit!  In fact, ideally, you should only have to handle an exit in your userland code if you actually need it to improve the user experience, provide a better internal error message, or to implement a feature of some kind.
+While this example usage is kind of trumped-up, it's easy to see a scenario where it's very helpful to rely on custom exits like `invalidEmail`.  Still, you don't want to have to handle _every_ custom exit _every_ time.  Ideally, you'd only have to mess with handling a custom exit in your userland code if you actually needed it: whether that's to implement a feature of some kind, or even just to improve the user experience or provide a better internal error message.
 
-Luckily, with Sails helpers, userland code can choose to integrate with as few or as many custom exits as you like, on a case by case basis.  And when custom exits _aren't_ handled, the edge case behavior is well-defined.
+Luckily, with Sails helpers, userland code can choose to integrate with _as few or as many custom exits as you like_, on a case by case basis.  And when custom exits _aren't_ handled, the edge case behavior is well-defined.
 
-For example, here is what happens if our helper's `fn` calls its "invalidEmail" exit (`exits.invalidEmail()`) under various conditions:
+For example, here's a breakdown of what happens (under various usage conditions) when our helper's `fn` calls its "invalidEmail" exit (`exits.invalidEmail()`):
 + if called using `.exec()` with a Node.js-style callback, then that userland callback function would be triggered with an automatically-generated Error instance as its first argument
 + if called using `.execSync()`, then since this is synchronous usage, our helper would throw an automatically-generated Error.
-+ if called using `.exec()` with a switchback, but without including a key for `invalidEmail`, then the `error` callback would be triggered instead (again, with an automatically-generated Error instance as its first argument).
++ if called using `.exec()` with a _switchback_, but _without including an exit handler_ for `invalidEmail`, then the `error` callback would be triggered instead (again, with an automatically-generated Error instance as its first argument).
++ if called using `.exec()` with a _switchback with a dedicated exit handler_ for `invalidEmail`, then that handler function would be triggered.
 
 ### Next steps
 
