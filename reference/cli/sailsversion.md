@@ -7,7 +7,7 @@ Get the version of your computer's _globally_ installed Sails command-line tool 
 
 ```bash
 $ sails version
-0.12.0
+1.0.0
 ```
 
 ### Notes
