@@ -1,21 +1,26 @@
 # Helpers
 
-Helpers are small utilities that can be called from anyplace in your code that has access to the `sails` app instance (e.g. [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) or even other helpers).
+In the course of creating the [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers) that your app uses to respond to client requests, you will sometimes find yourself repeating pieces of code in several places.  So in order to avoid repeating yourself, and to make the development and documentation of your app more efficient, Sails provides **helpers** as a convenient approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) or even other helpers.
 
-In the course of creating the [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers) that your app uses to respond to client requests, you will often find yourself repeating pieces of code in several places.  In order to make the development and documentation of your app more efficient, you can pull repeated code into helpers that can be shared between actions.
+> Helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
 
 ### How helpers are defined
 
 Helpers follow the <a href="http://node-machine.org" target="_blank">node-machine specification</a> (like [Actions2-style actions](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).  Here's an example of a small, well-defined helper:
 
 ```javascript
+// api/helpers/say-hello.js
 module.exports = {
+
 
   friendlyName: 'Say hello',
 
+
   description: 'A utility that accepts a name and creates a greeting.',
 
+
   sync: true, // See the `Synchronous helpers` documentation later in this document
+
 
   inputs: {
 
@@ -27,12 +32,14 @@ module.exports = {
 
   },
 
+
   fn: function (inputs, exits) {
 
     var greeting = 'Hello, ' + inputs.name + '!';
     return exits.success(greeting);
 
   }
+  
 };
 ```
 
@@ -51,8 +58,7 @@ or, since the helper declares the `sync` property:
 var greeting;
 try {
   greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
-}
-catch (e) { ... handle error .. }
+} catch (e) { ... handle error .. }
 ```
 
 ##### The `fn` function
@@ -92,7 +98,7 @@ By default, all helpers are considered _asynchronous_.  If the code inside your 
 
 > Note: calling an asynchronous helper with `execSync()` (either because `sync: true` was not used, or the `fn` code was not really synchronous) will trigger an error.
 
-### Creating a helper
+### Generating a helper
 
 Sails provides an easy generator to create a new helper:
 
@@ -125,17 +131,19 @@ sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err,
 });
 ```
 
-### Accessing the request object in a helper
+### Accessing `req` in a helper
 
 If you&rsquo;re calling a helper from an action, the simplest way to pass along the [request object](http://sailsjs.com/documentation/reference/request-req) is to define it as an input:
 
 ```javascript
 inputs: {
+
   req: {
     friendlyName: 'Request',
     type: 'ref',
     description: 'A reference to the request object'
   }
+  
 }
 ```
 
