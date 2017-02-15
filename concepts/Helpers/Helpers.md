@@ -2,7 +2,16 @@
 
 In the course of creating the [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers) that your app uses to respond to client requests, you will sometimes find yourself repeating pieces of code in several places.  So in order to avoid repeating yourself, and to make the development and documentation of your app more efficient, Sails provides **helpers** as a convenient approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) or even other helpers.
 
-> Helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
+```javascript
+sails.helpers.sayHello({ name: 'Bubba'}).exec(function(err, greeting) {
+  if (err) { return res.serverError(err); }
+  
+  // `greeting` is now "Hello, Bubba!"
+  return res.ok();
+});
+```
+
+> The example above demonstrates calling a helper from an action, but helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
 
 ### How helpers are defined
 
