@@ -59,7 +59,7 @@ mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
 protocol  user     password     host          port     database
 ```
 
-In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.  For more information about how to configure your particular database, check out the [database adapter reference here](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
+In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.  For more information about how to configure your particular database, check out the [database adapter reference](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
 ##### Building your own connection URL
 
