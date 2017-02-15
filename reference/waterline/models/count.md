@@ -6,7 +6,7 @@ Get the number of records matching a criteria.
 
 | # | Argument      | Type                  | Details    |
 |---|---------------|:----------------------|:-----------|
-| 1 | _criteria_    | ((dictionary?))       | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
+| 1 | _criteria_    | ((dictionary?))       | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `count` queries do no support pagination using `skip` or `limit` or projections using `select`.
 
 #### Callback
 
