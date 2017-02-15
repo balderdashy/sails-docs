@@ -100,7 +100,8 @@ sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com' }).
 });
 ```
 
-> Any argument that your helper's `fn` passes in when it calls an exit internally (e.g. `'foo'` in `exits.usernameConflict('foo')`) will be wrapped in a new Javascript Error instance (if it isn&rsquo;t already one) before being outputted.  If no argument is passed in, the exit description will be used to create an Error for the helper output automatically.
+> Internally, your helper's `fn` is responsible for triggering one of its exits internally (e.g. `exits.usernameConflict('foo')`).  If your helper sends back a result through the exit (e.g. `'foo'`), then that result will be passed back to the exit handler.
+> Note: For every exit **other than `success`**,  any result will be automatically wrapped in a new Javascript Error instance (if it isn&rsquo;t already one) before being outputted.  And if a non-success exit is triggered _without a result_, Sails will use the exit's predefined description to create an appropriate Error automatically.
 
 ##### Synchronous helpers
 
