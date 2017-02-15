@@ -14,7 +14,7 @@ Something.avg(numericAttrName, criteria)
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |  numericAttrName    | ((string))                                   | The name of the numeric attribute whose mean will be calculated.
-| 2 |  _criteria_         | ((dictionary?))                                | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the average will be computed across _all_ of this model's records. `avg` queries do no support pagination using `skip` or `limit` or projections using `select`.
+| 2 |  _criteria_         | ((dictionary?))                                | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the average will be computed across _all_ of this model's records. `avg` queries do not support pagination using `skip` and `limit` or projections using `select`.
 
 
 ##### Callback
