@@ -80,7 +80,7 @@ You can provide a default value for an input by setting its `defaultsTo` propert
 
 ##### Exits
 
-Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to provide custom exits to handle specific error cases.  This adds to your code&rsquo;s maintainability.  For example, a helper called &ldquo;Create User&rdquo; could include a special `usernameConflict` exit to be called if the provided username already exists, allowing you to handle this scenario after calling the helper without having to resort to `try/catch` blocks or examining complex return values.
+Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to provide custom exits to handle specific error cases.  This adds to your code&rsquo;s maintainability.  For example, a helper called &ldquo;Create user&rdquo; could include a special `usernameConflict` exit to be called if the provided username already exists, allowing you to handle this scenario after calling the helper without having to resort to `try/catch` blocks or examining complex return values.
 
 ```javascript
 sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com'}).exec({
