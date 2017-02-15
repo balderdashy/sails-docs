@@ -14,7 +14,7 @@ Something.update(criteria, valuesToSet)
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
-| 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
+| 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `update` queries do no support pagination using `skip` or `limit` or projections using `select`.
 | 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 
