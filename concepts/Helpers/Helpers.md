@@ -240,7 +240,7 @@ While this example usage is kind of trumped-up, it's easy to see a scenario wher
 
 Luckily, Sails helpers support "automatic exit forwarding".  That means userland code can choose to integrate with _as few or as many custom exits as you like_, on a case by case basis.  In other words, when you're calling a helper, it's OK to completely ignore its custom `invalidEmail` exit if you don't need it.  That way, your code remains as concise and intuitive as possible.  And if things change, you can always come back and hook some code up to handle the custom exit later.
 
-In the mean time, when custom exits _aren't_ handled explicitly, the behavior of helpers is still well-defined.  For example, here's a breakdown of what happens (under various usage conditions) when our helper's `fn` calls its "invalidEmail" exit (`exits.invalidEmail()`):
+In the mean time, when custom exits _aren't_ handled explicitly, the behavior of helpers is still well-defined.  For example, here's a breakdown of what happens (under various usage conditions) when our helper's `fn` triggers its custom "invalidEmail" exit:
 + if called using `.exec(function(err){...})` -- i.e. a Node.js-style callback -- then that userland callback function would be triggered with an automatically-generated Error instance as its first argument
 + if called using `.execSync()`, then since this is synchronous usage, our helper would throw an automatically-generated Error.
 + if called using `.exec({...})`, a switchback, but where the switchback _does not include an exit handler_ for `invalidEmail`, then the `error` exit handler would be triggered instead (again, with an automatically-generated Error instance as its first argument).
