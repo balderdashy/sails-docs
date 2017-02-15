@@ -42,7 +42,7 @@ User.replaceCollection(3, 'pets')
 
 ### Edge cases
 
-+ If the parent id does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
++ If the parent id does not actually correspond with an existing, persisted record, then this will do nothing.
 + If any of the child ids do not actually correspond with an existing, persisted record, then a record will not be included in the collection for that child id.
 + If an empty array of child ids is provided, or if none of the provided child ids correspond to existing records, then this will detach _all_ child records from the parent.
 
