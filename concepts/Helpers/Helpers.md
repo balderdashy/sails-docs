@@ -32,7 +32,7 @@ module.exports = {
   friendlyName: 'Say hello',
 
 
-  description: 'Return a personalized greeting using the provided name.',
+  description: 'Return a personalized greeting based on the provided name.',
 
 
   sync: true, // See the `Synchronous helpers` documentation later in this document
@@ -175,37 +175,67 @@ Fortunately, Sails helpers take things a couple of steps further.
 ##### Traditional error negotiation
 When invoking a helper, if you pass in a classic Node callback when you call `.exec()` (or if you use `.execSync()`) then the Error instance might have a property called `exit`.  If set, it will be the name of the exit that the helper's implementation (`fn`) called when it exited.  (And if it's not set, it just means that the helper exited via the `error` exit.)
 
-For example:
+For example, with asynchronous (non-blocking) usage:
 
 ```javascript
-.exec(function (err) {
+sails.helpers.getGravatarUrl(/*...*/).exec(function (err, gravatarUrl) {
   if (err) {
     if (err.exit === 'invalidEmail') { return res.badRequest(); }
     return res.serverError(err);
   }
+  
   // ...
   return res.ok();
 });
 ```
 
-##### Switchback-style error negotiation
+Or with _synchronous_ (blocking) usage:
 
-For convenience, there's also an even easier way: instead of a Node.js callback, you can simply pass in a dictionary of exit handlers to `.exec()`:
 
 ```javascript
-sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
+var gravatarUrl;
+try {
+  gravatarUrl = sails.helpers.getGravatarUrl(/*...*/).execSync();
+} catch (err) {
+  if (err.exit === 'invalidEmail') { return res.badRequest(); }
+  return res.serverError(err);
+}
+
+// ...
+return res.ok();
+```
+
+##### Switchback-style error negotiation
+
+For convenience, there's another, even easier way to negotiate errors from an asynchronous helper.  Instead of a Node.js callback, you can simply pass `.exec()` a dictionary of exit handlers (a.k.a. a "switchback"):
+
+```javascript
+sails.helpers.getGravatarUrl({ emailAddress: req.param('email') })
+.exec({
   error: function(err) { return res.serverError(err); },
   invalidEmail: function (err) { return res.badRequest(); },
-  success: function(someOutputMaybe) {
+  success: function(gravatarUrl) {
     // ...
     return res.ok();
   }
 });
 ```
 
+##### As much or as little as you need
+
+While this example usage is kind of trumped-up, it's easy to see a scenario where we might care about handling custom exits like `invalidEmail`.  But it's definitely not necessary to handle every exit!  In fact, ideally, you should only have to handle an exit in your userland code if you actually need it to improve the user experience, provide a better internal error message, or to implement a feature of some kind.
+
+Luckily, with Sails helpers, userland code can choose to integrate with as few or as many custom exits as you like, on a case by case basis.  And when custom exits _aren't_ handled, the edge case behavior is well-defined.
+
+For example, here is what happens if our helper's `fn` calls its "invalidEmail" exit (`exits.invalidEmail()`) under various conditions:
++ if called using `.exec()` with a Node.js-style callback, then that userland callback function would be triggered with an automatically-generated Error instance as its first argument
++ if called using `.execSync()`, then since this is synchronous usage, our helper would throw an automatically-generated Error.
++ if called using `.exec()` with a switchback, but without including a key for `invalidEmail`, then the `error` callback would be triggered instead (again, with an automatically-generated Error instance as its first argument).
+
 ### Next steps
 
++ [Explore a practical example](http://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
 + Since 2014, the Sails community has created hundreds of MIT-licensed, open-source helpers for many common use cases.  [Have a look!](http://node-machine.org/machinepacks)
-+ If you have a question about helpers, or if you want to browse more tutorials and examples, [click here](https://sailsjs.com/support).
++ [Click here](https://sailsjs.com/support) to ask a question about helpers or see more tutorials and examples.
 
 <docmeta name="displayName" value="Helpers">
