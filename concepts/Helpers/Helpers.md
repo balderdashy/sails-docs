@@ -94,7 +94,11 @@ Custom exits for a helper are defined in the `exits` dictionary, with each exit 
 
 ##### Synchronous helpers
 
-By default, all helpers are considered _asynchronous_.  If the code inside your helper function is definitely synchronous, you can set the top-level `sync` property to `true`, which allows users to call the helper using `execSync()` instead of `exec()`.  When called with `execSync`, any argument passed to an exit is _returned_ instead of provided as the argument to the error handler.  Keep in mind that when called synchronously, triggering any exit besides `success` will cause the helper to throw an error, so you&rsquo;ll want to wrap any such invocations in a `try/catch` block!
+By default, all helpers are considered _asynchronous_.  While this is a safe default assumption, it's not always true-- and when you know for certain that's the case, it's nice to avoid adding another level of indentation.  Sails helpers support this using the `sync` property.
+
+If you know all of the code inside your helper's `fn` is definitely synchronous, you can set the top-level `sync` property to `true`, which allows userland code to call the helper using [`execSync()`](http://sailsjs.com/documentation/concepts/helpers#?synchronous-usage) instead of `exec()`.
+
+When your helper is invoked with `execSync()`, then any result data that your `fn`'s code passes in to `exits.success()` is _returned_ instead of being provided as an argument to the callback.  And, when its being called synchronously, if your helper's `fn` calls any exit other than `success`, then it will throw an Error.
 
 > Note: calling an asynchronous helper with `execSync()` (either because `sync: true` was not used, or the `fn` code was not really synchronous) will trigger an error.
 
@@ -154,6 +158,8 @@ try {
   greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
 } catch (e) { ... handle error .. }
 ```
+
+> If something goes wrong, `.execSync()` handles exceptions by throwing an Error.  So remember: if you're using `.execSync()` from within some other asynchronous callback, be sure you handle the possibility of it throwing.  If you're ever unsure about whether you can safely call `.execSync()`, you can always just wrap it in a `try`/`catch` and handle the error in the `catch`.
 
 ### Handling exceptions
 
