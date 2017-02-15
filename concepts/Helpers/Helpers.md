@@ -1,9 +1,15 @@
 # Helpers
 
-In the course of creating the [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers) that your app uses to respond to client requests, you will sometimes find yourself repeating pieces of code in several places.  So in order to avoid repeating yourself, and to make the development and documentation of your app more efficient, Sails provides **helpers** as a convenient approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) or even other helpers.
+As of version 1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  It also makes it much easier to create documentation for your app.
+
+### Overview
+
+In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
+
+For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  So in order to avoid repeating yourself, and to make the development and documentation of your app more efficient, Sails provides **helpers** as 
 
 ```javascript
-sails.helpers.sayHello({ name: 'Bubba'}).exec(function(err, greeting) {
+sails.helpers.sayHello({ name: 'Bubba' }).exec(function(err, greeting) {
   if (err) { return res.serverError(err); }
   
   // `greeting` is now "Hello, Bubba!"
