@@ -8,10 +8,10 @@ To get started upgrading your existing Sails app to version 1.0, follow the chec
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
-+ Step 1: Install hooks & update dependencies
-+ Step 2: Update configuration
-+ Step 3: Modify client-side code for the new blueprint API
-+ Step 4: Adopt the new release of Waterline ORM
++ **Step 1**: Install hooks & update dependencies
++ **Step 2**: Update configuration
++ **Step 3**: Modify client-side code for the new blueprint API
++ **Step 4**: Adopt the new release of Waterline ORM
 
 ##### Step 1: Install hooks & update dependencies
 Sails v1 introduces [custom builds](https://github.com/balderdashy/sails/pull/3504).  This means certain core hooks are now installed as direct dependencies of your app, giving you more control over your dependencies, and making `npm install sails` run _considerably_ faster.  So the first thing you'll need to do is install the core hooks you're using.  (And while you're at it, be sure to update the other dependencies mentioned in the list below.)
@@ -35,10 +35,14 @@ Sails v1 comes with several improvements to how your app is configured.  For exa
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 
 ##### Step 3: Modify client-side code for the new blueprint API
-Besides getting expanded to include a new endpoint, there also are a couple of minor (but breaking) changes to the blueprint API that might require you to make changes to your client-side code. 
+Besides getting expanded to include a new endpoint, there also are a couple of minor (but breaking) changes to the blueprint API that might require you to make changes to your client-side code.
 
-* **If your app uses the [&ldquo;add&rdquo; blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/add-to)** to update the items in a plural association, be aware that the HTTP verb for that blueprint has changed from `POST` to `PUT`.
-* **TODO: the other breaking change to blueprints goes here**
+* **If your app uses blueprint routes**, then be aware that a couple of implicit "shadow" routes have had their HTTP method (a.k.a. verb) changed:
+  + the RESTful blueprint route address for [**add**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) has changed from `POST` to `PUT`.
+  + the RESTful blueprint route address for [**update**](http://sailsjs.com/documentation/reference/blueprint-api/update) has changed from `PUT` to `PATCH`.
+* **If your app relies on the default socket notifications from blueprint actions**, be aware that there have been some performance-related upgrades that change the structure of these messages somewhat:
+  + Sails no longer publishes separate `addedTo` notifications, one for each new member of a collection.  Instead, they're now rolled up into a single notification, and the message now contains an array of ids (`addedIds`) instead of just one.
+  + Sails no longer publishes separate `removedFrom` notifications, one for each former member of a collection. Sails rolls them up into a single notification, and the message now contains an array of ids (`removedIds`) instead of just one.
 
 
 ##### Step 4: Adopt the new release of Waterline ORM
