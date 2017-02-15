@@ -9,7 +9,7 @@ In Sails, helpers are the recommended approach for pulling repeated code into a 
 For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
 ```javascript
-sails.helpers.sayHello({ name: 'Bubba' }).exec(function(err, greeting) {
+sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greeting) {
   if (err) { return res.serverError(err); }
   
   // `greeting` is now "Hello, Bubba!"
@@ -26,10 +26,10 @@ sails.helpers.sayHello({ name: 'Bubba' }).exec(function(err, greeting) {
 Helpers follow the <a href="http://node-machine.org" target="_blank">node-machine specification</a> (like [Actions2-style actions](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).  Here's an example of a small, well-defined helper:
 
 ```javascript
-// api/helpers/say-hello.js
+// api/helpers/format-welcome-message.js
 module.exports = {
 
-  friendlyName: 'Say hello',
+  friendlyName: 'Format welcome message',
 
 
   description: 'Return a personalized greeting based on the provided name.',
@@ -142,7 +142,7 @@ This will create a file `api/helpers/foo-bar.js` that can be accessed in your co
 Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Any helper can then be invoked from your code, simply by calling it with a dictionary of values (one key for each input), and providing a standard Node.js callback function:
 
 ```javascript
-sails.helpers.sayHello({ name: 'Dolly' }).exec(function(err, result) {
+sails.helpers.formatWelcomeMessage({ name: 'Dolly' }).exec(function(err, result) {
   if (err) { /*...handle error and return...*/ return res.serverError(err); }
   /* ...process result... */
   sails.log('Ok it worked!  The result is:', result);
@@ -157,7 +157,7 @@ If a helper declares the `sync` property, you can also call it like this:
 ```javascript
 var greeting;
 try {
-  greeting = sails.helpers.sayHello({ name: 'Timothy' }).execSync();
+  greeting = sails.helpers.formatWelcomeMessage({ name: 'Timothy' }).execSync();
 } catch (e) { /*... handle error ...*/ return res.serverError(err); }
 
 /* ...process result... */
