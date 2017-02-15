@@ -59,23 +59,7 @@ module.exports = {
 };
 ```
 
-Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.  You might call this helper from an action like this:
-
-```javascript
-sails.helpers.sayHello({ name: 'Bubba'}).exec(function(err, greeting) {
-  if (err) { ... handle error ... }
-  // `greeting` is now "Hello, Bubba!"
-});
-```
-
-or, since the helper declares the `sync` property:
-
-```javascript
-var greeting;
-try {
-  greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
-} catch (e) { ... handle error .. }
-```
+Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.
 
 ##### The `fn` function
 
@@ -114,6 +98,31 @@ By default, all helpers are considered _asynchronous_.  If the code inside your 
 
 > Note: calling an asynchronous helper with `execSync()` (either because `sync: true` was not used, or the `fn` code was not really synchronous) will trigger an error.
 
+
+##### Accessing `req` in a helper
+
+If you&rsquo;re designing a helper that parses request headers, specifically for use from within actions, then you'll want to take advantage of pre-existing methods and/or properties of the [request object](http://sailsjs.com/documentation/reference/request-req).  The simplest way to allow the code in your action to pass along `req` to your helper is to define a `type: 'ref'` input:
+
+```javascript
+inputs: {
+
+  req: {
+    friendlyName: 'Request',
+    type: 'ref',
+    description: 'A reference to the request object (req).',
+    required: true
+  }
+  
+}
+```
+
+
+Then, to use your helper in your actions, you might write code like this:
+
+```javascript
+var headers = sails.helpers.parseMyHeaders({ req: req }).execSync();
+```
+
 ### Generating a helper
 
 Sails provides an easy generator to create a new helper:
@@ -126,19 +135,7 @@ This will create a file `api/helpers/foo-bar.js` that can be accessed in your co
 
 ### Calling a helper
 
-Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Helpers can then be invoked by calling them with a dictionary of inputs as the sole argument, and then calling `.exec()` on the returned value, with the set of exits to handle as the argument.  This typically happens in a chain:
-
-```javascript
-sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
-   error: function(err) { ... },
-   success: function(someOutput) { ... },
-   someOtherExit: function() { ... }
-});
-```
-
-##### Shortcut syntax
-
-If your helper only has the default `error` and `success` exits, you can use a classic Node callback function as the argument to `exec`, instead of a dictionary of exit handlers:
+Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Helpers can then be invoked from your code, simply by calling them with a dictionary of values, one for each input:
 
 ```javascript
 sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err, result) {
@@ -147,20 +144,56 @@ sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec(function(err,
 });
 ```
 
-### Accessing `req` in a helper
+##### Synchronous usage
 
-If you&rsquo;re calling a helper from an action, the simplest way to pass along the [request object](http://sailsjs.com/documentation/reference/request-req) is to define it as an input:
+If a helper declares the `sync` property, you can also call it like this:
 
 ```javascript
-inputs: {
-
-  req: {
-    friendlyName: 'Request',
-    type: 'ref',
-    description: 'A reference to the request object'
-  }
-  
-}
+var greeting;
+try {
+  greeting = sails.helpers.sayHello({ name: 'Bubba'}).execSync();
+} catch (e) { ... handle error .. }
 ```
+
+### Handling exceptions
+
+For more granular error handling (and for those exceptional cases that aren't _quite_ errors, even) you may be used to setting some kind of error code, then sniffing it out.  This approach works fine, but it can be time consuming and hard to keep track of.
+
+Fortunately, Sails helpers take things a couple of steps further.
+
+##### Traditional error negotiation
+When invoking a helper, if you pass in a classic Node callback when you call `.exec()` (or if you use `.execSync()`) then the Error instance might have a property called `exit`.  If set, it will be the name of the exit that the helper's implementation (`fn`) called when it exited.  (And if it's not set, it just means that the helper exited via the `error` exit.)
+
+For example:
+
+```javascript
+.exec(function (err) {
+  if (err) {
+    if (err.exit === 'invalidEmail') { return res.badRequest(); }
+    return res.serverError(err);
+  }
+  // ...
+  return res.ok();
+});
+```
+
+##### Switchback-style error negotiation
+
+For convenience, there's also an even easier way: instead of a Node.js callback, you can simply pass in a dictionary of exit handlers to `.exec()`:
+
+```javascript
+sails.helpers.fooBar({ someInput: 'abc', anotherInput: 123 }).exec({
+  error: function(err) { return res.serverError(err); },
+  invalidEmail: function (err) { return res.badRequest(); },
+  success: function(someOutputMaybe) {
+    // ...
+    return res.ok();
+  }
+});
+```
+
+### Next steps
+
++ Since 2014, the Sails community has created hundreds of MIT-licensed, open-source helpers for many common use cases.  [Have a look!](http://node-machine.org/machinepacks)
 
 <docmeta name="displayName" value="Helpers">
