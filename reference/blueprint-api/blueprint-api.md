@@ -79,8 +79,7 @@ By default, the **Find** and **Find One** blueprint actions will call [`.subscri
 
 ##### Blueprints and "auto-watch"
 
-By default, the **Find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false`.
+By default, the **find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false`.
 
 
 <docmeta name="displayName" value="Blueprint API">
-<docmeta name="stabilityIndex" value="2">
