@@ -92,7 +92,7 @@ customToJSON: function() {
 
 The name of the SQL table (/MongoDB collection) where a model will store and retrieve its records as rows (/MongoDB documents).
 
-```javascript
+```
 tableName: 'some_preexisting_table'
 ```
 
@@ -125,7 +125,7 @@ User.find().exec(...)
 
 The **auto-migration strategy** that Sails will run every time your app loads.
 
-```javascript
+```
 migrate: 'alter'
 ```
 
@@ -182,7 +182,7 @@ If you are working with a relatively large amount of development/test data, the 
 
 Whether or not a model expects records to conform to a specific set of attributes.
 
-```javascript
+```
 schema: true
 ```
 
@@ -201,7 +201,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
 
-```javascript
+```
 datastore: 'legacyECommerceDb'
 ```
 
@@ -227,7 +227,7 @@ The following low-level settings are included in the spirit of completeness, but
 
 The name of a model's primary key attribute.
 
-```javascript
+```
 primaryKey: 'id'
 ```
 
