@@ -23,7 +23,7 @@ sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greetin
 
 ### How helpers are defined
 
-Helpers follow the <a href="http://node-machine.org" target="_blank">node-machine specification</a> (like [Actions2-style actions](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).  Here's an example of a small, well-defined helper:
+Here's an example of a small, well-defined helper:
 
 ```javascript
 // api/helpers/format-welcome-message.js
@@ -61,6 +61,8 @@ module.exports = {
 
 Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.
 
+> Look familiar?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).  
+
 ##### The `fn` function
 
 The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values) and `exits` (a dictionary of exit functions).  The job of `fn` is to utilize and process the inputs, and then call one of the provided exits to return control back to whatever code called the helper.  Note that as opposed to a typical Javascript function that uses `return` to provide a value to the caller, helpers provide that value (aka the &ldquo;output&rdquo;) by passing it as an argument to one of the exits.
@@ -77,6 +79,8 @@ Inputs for a helper are defined in the `inputs` dictionary, with each input bein
 * `ref` - a Javascript variable reference.  Technically this can be _any_ value, but typically it refers to an object like a dictionary or an array.
 
 You can provide a default value for an input by setting its `defaultsTo` property.
+
+> These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
 
 ##### Exits
 
@@ -149,6 +153,8 @@ sails.helpers.formatWelcomeMessage({ name: 'Dolly' }).exec(function(err, result)
   return res.ok();
 });
 ```
+
+> This is the same usage you might already be familiar with from [model methods](sailsjs.com/documentation/concepts/models-and-orm/models) like `.create()`.
 
 ##### Synchronous usage
 
