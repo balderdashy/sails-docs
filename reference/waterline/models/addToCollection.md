@@ -45,11 +45,15 @@ User.addToCollection(3, 'pets')
 
 ### Edge cases
 
-+ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
-+ If one of the child ids does not actually correspond with an existing, persisted record, then ((TODO: verify this behavior)).
-+ If a parent record _already has_ one or more of these child ids as members of its collection, then ((TODO: verify this behavior)).
 + If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
 + If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
++ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, the exact behavior depends on what kind of association this is:
+  + If this collection is a 1-way association, or a 2-way association where the other side is plural ([many-to-many](TODO)), then Waterline **pretends like the parent record(s) exist anyways**, tracking their relationships as prearranged, "aspirational" junction records in the database.
+  + If this is a 2-way association where the other side is singular ([one-to-many](TODO)), then the missing parent records are simply ignored.
++ Along the same lines, if one of the child ids does not actually correspond with an existing, persisted record, then:
+  + If this is a 1-way association, or a 2-way association where the other side is plural ([many-to-many](TODO)), then Waterline **pretends like these hypothetical child record(s) exist anyways**, tracking their relationships as prearranged, "aspirational" junction records in the database.
+  + If this is a 2-way association where the other side is singular ([one-to-many](TODO)), then the missing child records are simply ignored.
++ If a parent record's collection _already has_ one or more of these children as members, then, for performance reasons, those memberships might be tracked again (e.g. stored in your database's join table multiple times).  In most cases, that's OK-- it usually won't affect future queries (For example, when populating the relevant parent record's collection, the double-tracked relationship will not result in the child being listed more than once.)  But if you do need to prevent duplicate join table records, fortunately there's an easy way to work around this: assuming you are using a relational database like MySQL or PostgreSQL, then you can create a multi-column index on your join table.  Doing so will cause queries like this to result in an AdapterError with `code: 'E_UNIQUE'`.
 
 ### Notes
 > + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Purchase") side is singular, the each child record's foreign key ("cashier") will be changed.  If it's plural, then each child record's collection will be modified accordingly.

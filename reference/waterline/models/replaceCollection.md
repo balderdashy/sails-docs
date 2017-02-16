@@ -14,7 +14,7 @@ Something.replaceCollection(parentId, association)
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |  parentId    | ((number)) _or_ ((string))                   | The primary key value(s) (i.e. ids) for the parent record(s). <br/>Must be a number or string (e.g. `'507f191e810c19729de860ea'` or `49`).  <br/>Alternatively, an array of numbers or strings may be specified (e.g. `['507f191e810c19729de860ea', '14832ace0c179de897']` or `[49, 32, 37]`). In this case, the child records will be replaced in each parent record.
+| 1 |  parentId           | ((number)) _or_ ((string))                   | The primary key value(s) (i.e. ids) for the parent record(s). <br/>Must be a number or string (e.g. `'507f191e810c19729de860ea'` or `49`).  <br/>Alternatively, an array of numbers or strings may be specified (e.g. `['507f191e810c19729de860ea', '14832ace0c179de897']` or `[49, 32, 37]`). In this case, the child records will be replaced in each parent record.
 | 2 |  association | ((string))                                   | The name of the plural ("collection") association (e.g. "pets")
 | 3 |  childIds      | ((array))                                    | The primary key values (i.e. ids) for the child records that will be the new members of the association.  _Note that this does not [create](http://sailsjs.com/documentation/reference/waterline-orm/models/create) these records or [destroy](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy) the old ones, it just attaches/detaches records to/from the specified parent(s)._
 
@@ -43,7 +43,7 @@ User.replaceCollection(3, 'pets')
 ### Edge cases
 
 + If the parent id does not actually correspond with an existing, persisted record, then this will do nothing.
-+ If any of the child ids do not actually correspond with an existing, persisted record, then a record will not be included in the collection for that child id.
++ If one of the child ids does not actually correspond with an existing, persisted record, then that child id will be ignored, and only those members that correspond with the other provided child ids will be included in the replacement collection.
 + If an empty array of child ids is provided, or if none of the provided child ids correspond to existing records, then this will detach _all_ child records from the parent.
 
 ### Notes
