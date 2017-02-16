@@ -38,7 +38,7 @@ url: 'mysql://user:password@host:port/database',
 ```
 
 > + The default port for MySQL is `3306`.
-> + For relational database servers like MySQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
+> + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
 
 
 ### sails-postgresql
