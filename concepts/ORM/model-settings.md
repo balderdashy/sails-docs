@@ -215,7 +215,22 @@ For more about configuring your app's datastores, see [Reference > Configuration
 
 
 
+### cascadeOnDestroy
 
+> ##### _**This feature is still experimental.**_
+> This model setting is still under development, and its interface and/or behavior could change at any time.
+
+Whether or not to _always_ act like you set `cascade: true` any time you call `.destroy()` using this model.
+
+```
+cascadeOnDestroy: true
+```
+
+| Type        | Example                 | Default       |
+| ----------- |:------------------------|:--------------|
+| ((boolean)) | `true`                  | `false`
+
+This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 ### Seldom-used settings
