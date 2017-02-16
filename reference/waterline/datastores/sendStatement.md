@@ -1,5 +1,8 @@
 # .sendStatement()
 
+> ##### _**This feature is still experimental.**_
+> This method is still under development, and its interface and/or behavior could change at any time.
+
 Send a Waterline "statement" (stage 4 query) to the database and return the results.
 
 ```usage
