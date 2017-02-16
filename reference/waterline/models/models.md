@@ -2,46 +2,10 @@
 
 This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful pubsub methods](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be hand-written in your app to wrap reusable custom code.
 
-> For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](http://sailsjs.com/documentation/concepts/models-and-orm/models).
+> + For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](http://sailsjs.com/documentation/concepts/models-and-orm/models).
+> + You can find an example of how to define a model [here](https://gist.github.com/rachaelshaw/f5bf442b2171154aa6021846d1a250f8).
 
-```javascript
-/**
-* Parrot.js
-* 
-* @description :: The set of parrots registered in our app.
-* @docs        :: http://sailsjs.com/documentation/concepts/models-and-orm/models
-*/
 
-module.exports = {
-
-  attributes: {
-    
-    // e.g. "Polly"
-    name: {
-      type: 'string'
-    },
-    
-    // e.g. 3.26
-    wingspan: {
-      type: 'number',
-      required: true,
-      columnType: 'FLOAT'
-    },
-    
-    // e.g. "cm"
-    wingspanUnits: {
-      type: 'string',
-      isIn: ['cm', 'in', 'm', 'mm'],
-      defaultsTo: 'cm'
-    },
-    
-    // e.g. [{...}, {...}, ...]
-    knownDialects: {
-      collection: 'Dialect'
-    } 
-  }
-};
-```
 
 
 ### Built-In Model Methods
