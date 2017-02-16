@@ -72,24 +72,7 @@ Most built-in model methods accept a callback as an optional final argument. If 
 
 ### `sails.models`
 
-If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models.
-
-A model's `identity` is different than its `globalId`.  The `globalId` is determined automatically from the name of the model, whereas the `identity` is the all-lowercased version.  For instance, you the model defined in `api/models/Kitten.js` has a globalId of `Kitten`, but its identity is `kitten`. For example:
-
-```javascript
-// Kitten === sails.models.kitten
-sails.models.kitten.find().exec(function (err, allTheKittens) {
-  // We also could have just used `Kitten.find().exec(...)`
-  // if we'd left the global variable exposed.
-});
-```
-### Using Promises
-```javascript
-sails.models.kitten.find().then(function(alltheKittens) {
-  //.... 
-}).catch(function(err){
-  //....
-});
-```
+If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models. 
+> Not sure of your model's `identity`? Check out [Concepts > Models and ORM > Model settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity).
 
 <docmeta name="displayName" value="Models">
