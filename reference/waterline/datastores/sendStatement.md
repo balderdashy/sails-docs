@@ -43,3 +43,4 @@ sails.getDatastore()
 
 <docmeta name="displayName" value=".sendStatement()">
 <docmeta name="pageType" value="method">
+<docmeta name="isExperimental" value="true">
