@@ -66,7 +66,7 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 
 
 
-### Breaking changes to lesser-used features
+### Other breaking changes
 
 The points above cover the majority of upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0.  But since every app is different, it's a good idea to read through the rest of the points below before you dive back in.  Not all of these points will necessarily apply to your app, but some might.
 
@@ -80,8 +80,9 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **`beforeValidate` and `afterValidate` lifecycle callbacks no longer exist**. Use one of the [many other lifecycle callbacks](http://sailsjs.com/documentation/concepts/models-and-orm/lifecycle-callbacks) to tap into the query.
 * **`afterDestroy` lifecycle callback now receives a single record**. It has been normalized to work the same way as the `afterUpdate` callback and call the function once for each record that has been destroyed rather than once with all the destroyed records.
 * **Many resourceful pubsub methods have changed** (see the PubSub section below for the full list).  If your app only uses the automatic RPS functionality provided by blueprints (and doesn&rsquo;t call RPS methods directly), no updates are required.
+* **The `.find()` model method no longer automatically coerces constraints that are provided for unrecognized attributes**.  For example, if you execute `Purchase.find({ amount: '12' })`, e.g. via blueprints (http://localhost:1337/purchase?amount=12), and there is no such "amount" attribute, then even if the database contains a record with the numeric equivalent (`12`), it will not be matched.  (This is only relevant when MongoDB and sails-disk.)  If you are running into problems because of this, either define the attribute as a number or (if you're using blueprints) use an exlicit `where` clause instead (e.g. `http://localhost.com:1337/purchase?where={"amount":12}`).
 * **Custom blueprints and the associated blueprint route syntax have been removed**.  This functionality can be replicated using custom actions, helpers and routes.  See the "Replacing custom blueprints" section below for more info.
-* **Blueprint action routes no longer include `/:id?`** at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
+* **Blueprint action shadow routes no longer include `/:id?`** at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
 * **`sails.getBaseUrl`**, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
 * **`req.params.all()`**, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
 * **`sails.config.dontFlattenConfig`**, deprecated in v0.12.x, has been removed.  See the [original notes about `dontFlattenConfig`](http://sailsjs.com/documentation/upgrading/to-v-0-11#?config-files-in-subfolders) for details.
