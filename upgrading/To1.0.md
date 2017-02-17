@@ -33,6 +33,7 @@ Sails v1 comes with several improvements to how your app is configured.  For exa
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
+* **If your `api` or `config` folders and subfolders contain any non-source files**, they&rsquo;ll need to be moved.  The exception is for Markdown (.md) and text (.txt) files, which will continue to be ignored.  Sails will attempt to read all other files in those folders as code, allowing for more flexibility in choosing a Javascript dialect (see the notes about CoffeeScript and TypeScript above).
 
 ##### Step 3: Modify client-side code for the new blueprint API
 Besides getting expanded to include a new endpoint, there also are a couple of minor (but breaking) changes to the blueprint API that might require you to make changes to your client-side code.
