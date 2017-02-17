@@ -19,7 +19,7 @@ Something.create(initialValues)
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See below for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
 | 2 | _createdRecord_     | ((dictionary?))     | For improved performance, the created record is not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created record will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 ##### Meta keys
@@ -59,64 +59,10 @@ User.create({name:'Finn'})
 });
 ```
 
-
 ### Negotiating errors
 
-It's important to always handle errors from model methods.  But sometimes, you need to look at errors in a more granular way.
+It's important to always handle errors from model methods.  But sometimes, you need to look at errors in a more granular way. To learn more about the kinds of errors Waterline returns, and for examples of how to handle them, see [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors).
 
-> The exact strategy you use to do this in your Sails app depends on whether you're using [callbacks or promises](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  Remember: use whatever you're most comfortable with.  If you aren't sure, start with callbacks.
-
-##### Negotiating errors with callbacks
-
-```javascript
-User.create({
-  email: req.param('email')
-})
-.exec(function(err){
-  if (err){
-    // Uniqueness constraint violation
-    if (err.code === 'E_UNIQUE') {
-      return res.status(401).json(err);
-    }
-    // Some other kind of usage / validation error
-    else if (err.name === 'UsageError') {
-      return res.badRequest(err);
-    }
-    // If something completely unexpected happened.
-    else {
-      return res.serverError(err);
-    }
-  }
-
-  return res.ok();
-})
-```
-
-##### Negotiating errors with promises
-
-```javascript
-User.create({
-  email: req.param('email')
-})
-.then(function (){
-  return res.ok();
-})
-// Uniqueness constraint violation
-.catch({ code: 'E_UNIQUE' }, function (err) {
-  return res.status(401).json(err);
-})
-// Some other kind of usage / validation error
-.catch({ name: 'UsageError' }, function (err) {
-  return res.badRequest(err);
-})
-// If something completely unexpected happened.
-.catch(function (err) {
-  return res.serverError(err);
-});
-```
-
-
-> For a more complex example, see https://gist.github.com/mikermcneil/801e827948d5de7e26b2420ff39d3c68.
 
 <docmeta name="displayName" value=".create()">
 <docmeta name="pageType" value="method">
