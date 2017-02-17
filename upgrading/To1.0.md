@@ -1,10 +1,18 @@
 # Upgrading to Sails v1.0
 
-> ## Note: the links in this guide are not currently active (the 1.0 docs have not been published yet!)
+Sails v1.0 is here!  Check out our [blog post](TODO) for a high-level overview of what's changed in this release, and to learn about some new features you might want to take advantage of in your app.
 
-To get started upgrading your existing Sails app to version 1.0, follow the checklist below, which covers the changes most likely to affect the majority of apps.  If your app still has errors or warnings on startup after following the checklist, come back to this document and follow the applicable guides to upgrading various app components.
+> ##### Warning
+>
+> Some of the links in this guide will not work, since the 1.0 docs aren't on the Sails website yet.  But you can check out the new docs by looking at the 1.0 branch of [sails-docs](http://github.com/balderdashy/sails-docs/tree/1.0) on GitHub.
 
-> We've done a lot of work to make the upgrade process as seemless as possible.  But if you have lingering questions about any of the changes below, or if you're stumped, feel free to [ask for help or drop by our Gitter channel](http://sailsjs.com/support).
+### Upgrading an existing app
+
+Ready to upgrade your existing Sails app to version 1.0?  To get started, we recommend starting with the checklist below, which covers the changes most likely to affect the majority of apps.
+
+If your app still has errors or warnings on startup after following this checklist, or if you're seeing something unexpected, head back to this document and take a look further down the page.  (One of the guides for covering various app components will probably be applicable.)
+
+> We've done a lot of work to make the upgrade process as seemless as possible, particularly when it comes to the errors and warnings you'll see on the console.  But if you're stumped, or if you have lingering questions about any of the changes below, feel free to [drop by the Sails community Gitter channel](http://sailsjs.com/support).  (If your company is using Sails Flagship, you can also chat directly with the Sails core team [here](https://flagship.sailsjs.com/ask)).
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
