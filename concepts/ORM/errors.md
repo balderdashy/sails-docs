@@ -18,8 +18,8 @@ Catchall error handling, while better than nothing, often just isn't enough. (Th
 | Property       | Type          | Details            |
 |:---------------|---------------|:-------------------|
 | name           | ((string))    | The broad classification of the error. <br/><br/> e.g.`'UsageError'`     |
-| message        | ((string))    | _See [.message](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_message)._ |
-| stack          | ((string))    | _See [.stack](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_stack)._     |
+| message        | ((string))    | <em>See [.message](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_message).</em> |
+| stack          | ((string))    | <em>See [.stack](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_stack).<em>     |
 | _code_         | ((string?))   | An optional, narrower classification of the error.<br/><br/>e.g. `'E_UNIQUE'`       |
 
 When using code that interacts with Waterline (usually through model methods) there are a few different kinds of error you may encounter.
