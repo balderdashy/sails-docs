@@ -10,11 +10,9 @@ When an error has `name: 'UsageError'`, this indicates that there was a validati
 
 ### Adapter error
 
-Adapter errors usually indicate a problem in the underlying adapter, and not in the request itself. This can happen when a database goes offline, when there is a permission issue, because of some database-specific edge case, or (more rarely) a bug in the adapter.
+Adapter errors usually indicate a problem in the underlying adapter, and not in the request itself. This can happen when a database goes offline, when there is a permission issue, because of some database-specific edge case, or (more rarely) a bug in the adapter. This kind of error will have `name: 'AdapterError'`.
 
 The one time an adapter error _is_ the result of a problem with the request is when there is a uniqueness constraint violation.
-
-In the case of a problem with the adapter, the error will have `name: 'AdapterError'`.
 
 ##### Uniqueness
 
