@@ -14,7 +14,7 @@ Adapter errors usually indicate a problem in the underlying adapter, and not in 
 
 The one time an adapter error _is_ the result of a problem with the request is when there is a uniqueness constraint violation.
 
-In the case of problem with the adapter, the error will have `name: 'AdapterError'`.
+In the case of a problem with the adapter, the error will have `name: 'AdapterError'`.
 
 ##### Uniqueness
 
