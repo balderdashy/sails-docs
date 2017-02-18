@@ -16,8 +16,8 @@ When using code that interacts with Waterline (usually through model methods) th
 | Property       | Type          | Example            |
 |:---------------|---------------|:-------------------|
 | name           | ((string))    | `'UsageError'`     |
-| message        | ((string))    | `'Invalid new record(s).\nDetails:\n  Could not use specifi..'`     |
-| stack          | ((string))    | _A summary of this Error with a call stack indicating [where it originated](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_stack)._    |
+| message        | ((string))    | _See [.message](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_message)_   |
+| stack          | ((string))    | _See [.stack](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_stack))._    | <!--A summary of this error and where it originated-->
 | _code_         | ((string?))   | `'E_UNIQUE'`       |
 
 TODO: add details column to table above
