@@ -4,17 +4,17 @@ As of version 1.0, all Sails apps come with built-in support for **helpers**, si
 
 ### Overview
 
-In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
+In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
 For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
 ```javascript
 sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greeting) {
   if (err) { return res.serverError(err); }
-  
+
   // `greeting` is now "Hello, Bubba!"
   sails.log(greeting);
-  
+
   return res.ok();
 });
 ```
@@ -55,13 +55,13 @@ module.exports = {
     return exits.success(greeting);
 
   }
-  
+
 };
 ```
 
 Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.
 
-> Look familiar?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).  
+> Look familiar?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).
 
 ##### The `fn` function
 
@@ -84,7 +84,7 @@ You can provide a default value for an input by setting its `defaultsTo` propert
 
 ##### Exits
 
-Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.  
+Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.
 
 > Custom exits for a helper are defined in the `exits` dictionary, with each exit definition being composed of, at minimum, a `description` property.  For more advanced options, see the [full specification](http://node-machine.org/spec).
 
@@ -127,7 +127,7 @@ inputs: {
     description: 'A reference to the request object (req).',
     required: true
   }
-  
+
 }
 ```
 
@@ -196,7 +196,7 @@ sails.helpers.getGravatarUrl(/*...*/).exec(function (err, gravatarUrl) {
     if (err.exit === 'invalidEmail') { return res.badRequest(); }
     return res.serverError(err);
   }
-  
+
   // ...
   return res.ok();
 });

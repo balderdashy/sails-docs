@@ -72,7 +72,7 @@ Any `.js` script saved in the `/api/responses` folder will be executed by callin
 
 ### Built-in responses
 
-All Sails apps have several pre-configured responses that can be used even if they don&rsquo;t have corresponding files in `api/responses`.  An overview of these responses can be found on the [default responses documentation page](http://sailsjs.com/documentation/concepts/custom-responses/default-responses).  Any of the default responses may be overridden by adding a file to `api/responses` in your app (e.g. `api/responses/serverError.js`).
+All Sails apps have several pre-configured responses that can be used even if they don&rsquo;t have corresponding files in `api/responses`.  An overview of these responses can be found on the [default responses documentation page](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses/default-responses).  Any of the default responses may be overridden by adding a file to `api/responses` in your app (e.g. `api/responses/serverError.js`).
 
 
 <docmeta name="displayName" value="Custom responses">

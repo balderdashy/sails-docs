@@ -152,7 +152,7 @@ Be careful to avoid redirect loops when redirecting within your Sails app!
 Note that when redirecting, the HTTP method of the original request (and any extra headers / parameters) will likely be lost, and the request will be transformed to a simple **GET** request.  In the above example, a **POST** request to **/alias** will result in a **GET** request to **/some/other/route**.  This is somewhat browser-dependent behavior, but it is recommended that you don't expect request methods and other data to survive a redirect.
 
 ##### Response target syntax
-You can map an address directly to a default or custom [response](http://sailsjs.com/documentation/concepts/Custom-Responses) using this syntax:
+You can map an address directly to a default or custom [response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) using this syntax:
 
 ```js
 '/foo': { response: 'notFound' }
