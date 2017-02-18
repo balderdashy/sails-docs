@@ -1,7 +1,6 @@
 # Errors
 
-When a call to any model method fails, `err` is returned. This `err` is a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) that contains properties for diagnosing what went wrong.
-
+When a call to any model method fails, `err` is returned. This `err` is a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whose properties can be useful in diagnosing what went wrong.
 ```usage
 Something.create()
 .exec(function(err) {...});
