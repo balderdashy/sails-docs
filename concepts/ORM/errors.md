@@ -1,11 +1,12 @@
 # Errors
 
-When using code that interacts with Waterline (usually through model methods), there are a few different kinds of error you may encounter.
+Catchall error handling, while better than nothing, often just isn't enough. (There's a big difference between "that is not a valid username" and "we aren't able to create new users at all right now".) In order to negotiate the different kinds of errors appropriately, you'll need to be able to examine them in a granular way.
+
+When using code that interacts with Waterline (usually through model methods) there are a few different kinds of error you may encounter, which are easily distinguished by `name` or `code`.
 
 ### Usage error
-A usage error indicates that there was a validation error, and will contain information about the parameters that didn't pass validation.
 
-In the case of a usage error, Waterline will return an Error with `name: 'UsageError'`.
+When an error has `name: 'UsageError'`, this indicates that there was a validation error when attempting to use a Waterline method. This sort of error will include validation info.
 
 ### Adapter error
 
@@ -13,11 +14,11 @@ Adapter errors usually indicate a problem in the underlying adapter, and not in 
 
 The one time an adapter error _is_ the result of a problem with the request is when there is a uniqueness constraint violation.
 
-In the case of an adapter error, Waterline will return an Error with `name: 'AdapterError'`.
+In the case of problem with the adapter, the error will have `name: 'AdapterError'`.
 
 ##### Uniqueness
 
-A uniqueness occurs when a value that _should_ be unique matches that of another record. While this is considered an adapter error, it has its own `code` to differentiate it from a normal adapter error: `code: 'E_UNIQUE'`.
+A uniqueness error occurs when a value that _should_ be unique matches that of another record in the database. While this is considered an adapter error, it has its own `code` to differentiate it from a normal adapter error: `code: 'E_UNIQUE'`.
 
 This sort of error can only occur with `.create()`, `.update()`, `.addToCollection()`, and `.replaceCollection()`.
 
