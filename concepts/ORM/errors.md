@@ -7,7 +7,7 @@ Something.create()
 ```
 Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`.
 
-> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](http://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw an error, since it has no callback.
+> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](http://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw, since it has no callback.
 
 
 ### Negotiating errors
