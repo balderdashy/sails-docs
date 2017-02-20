@@ -104,9 +104,9 @@ The `exposeLocalsToBrowser` function has a single `options` parameter that can b
 
 |&nbsp;   |     Property        | Type                                         | Default| Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|-----|
-| 1 | keys     | ((array?))                              | `undefined` | A &ldquo;whitelist&rdquo; of locals to expose.  If left undefined, _all_ locals will be exposed.  If specified, this should be an array of property names from the locals dictionary.  For example, given the `res.view()` statement shown above, setting `keys: ['someString', 'someBool']` would cause `windows.SAILS_LOCALS` to be set to `{someString: 'hello', someBool: false}`.
-| 2 | namespace | ((string?)) | `SAILS_LOCALS` | The name of the global variable to assign the bootstrapped data to.
-| 3| dontUnescapeOnClient | ((boolean?)) | false | If set to `true`, any string values that were escaped to avoid XSS attacks will be left escaped in the exposed variable, instead of being transformed back into the original value.  For example, given the `res.view()` statement above, using `exposeLocalsToBrowser({dontUnescapeOnClient: true})` would cause `window.SAILS_LOCALS.someXSS` to be set to `&lt;script&gt;alert(&#39;hello!&#39;);`.
+| 1 | _keys_     | ((array?))                              | `undefined` | A &ldquo;whitelist&rdquo; of locals to expose.  If left undefined, _all_ locals will be exposed.  If specified, this should be an array of property names from the locals dictionary.  For example, given the `res.view()` statement shown above, setting `keys: ['someString', 'someBool']` would cause `windows.SAILS_LOCALS` to be set to `{someString: 'hello', someBool: false}`.
+| 2 | _namespace_ | ((string?)) | `SAILS_LOCALS` | The name of the global variable to assign the bootstrapped data to.
+| 3| _dontUnescapeOnClient_ | ((boolean?)) | false | **Advanced. Not recommended for most apps.** If set to `true`, any string values that were escaped to avoid XSS attacks will _still be escaped_ when accessed from client-side JS, instead of being transformed back into the original value.  For example, given the `res.view()` statement from the example above, using `exposeLocalsToBrowser({dontUnescapeOnClient: true})` would cause `window.SAILS_LOCALS.someXSS` to be set to `&lt;script&gt;alert(&#39;hello!&#39;);`.
 
 
 <docmeta name="displayName" value="Locals">
