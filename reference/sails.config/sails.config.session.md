@@ -9,7 +9,7 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
-| `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
+| `adapter`   | ((string))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in the name of an installed scalable session store module instead (e.g. `connect-redis`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
 | `name`        | ((string))       | `sails.sid`      | The name of the session ID cookie to set in the response (and read from in the request) when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used.
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 | `cookie` | ((dictionary)) | _see [below](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie)_ | Configuration for the session ID cookie, including `maxAge`, `secure`, and more.  See [below](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie) for more info.
@@ -66,7 +66,7 @@ For example, to use Mongo as your session store, install [connect-mongo](https:/
 npm install connect-mongo@1.1.0 --save --save-exact
 ```
 
-Then require it and pass it in as your `adapter` in `config/session.js`:
+Then specify it as your `adapter` in `config/session.js`:
 
 ```javascript
   adapter: 'connect-mongo',
