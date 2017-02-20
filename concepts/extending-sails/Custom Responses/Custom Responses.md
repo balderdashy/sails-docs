@@ -40,20 +40,20 @@ Now, consider this replacement:
 
 ```javascript
 getProfile: function(req, res) {
-   // Get the user ID from the session.
-   var userId = req.session.userId;
+  // Get the user ID from the session.
+  var userId = req.session.userId;
 
-   // Look up the user in the database.
-   User.findOne(userId).exec(function(err, user) {
+  // Look up the user in the database.
+  User.findOne(userId).exec(function(err, user) {
 
-     // Handle a database error.
-     if (err) {
-       return res.serverError(err);
-     }
+   // Handle a database error.
+   if (err) {
+     return res.serverError(err);
+   }
 
-     // ...
+   // ...
 
-   });
+  });
 }
 ```
 
@@ -68,11 +68,22 @@ This approach has many advantages:
 
 ### Responses methods and files
 
-Any `.js` script saved in the `/api/responses` folder will be executed by calling `res.[responseName]` in your controller.  For example, `/api/responses/disappeared.js` can be executed with a call to `res.disappeared()`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (like `serverError`'s `errors` parameter).
+Any `.js` script saved in the `api/responses/` folder will be executed by calling `res.[responseName]` in your controller.  For example, `api/responses/disappeared.js` can be executed with a call to `res.disappeared()`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (e.g. `res.disappeared('foo','bar','baz')`).
 
 ### Built-in responses
 
-All Sails apps have several pre-configured responses that can be used even if they don&rsquo;t have corresponding files in `api/responses`.  An overview of these responses can be found on the [default responses documentation page](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses/default-responses).  Any of the default responses may be overridden by adding a file to `api/responses` in your app (e.g. `api/responses/serverError.js`).
+All Sails apps have several pre-configured responses like [`res.serverError()`](http://sailsjs.com/documentation/reference/response-res/res-server-error) and [`res.notFound()`](http://sailsjs.com/documentation/reference/response-res/res-not-found) that can be used even if they don&rsquo;t have corresponding files in `api/responses`.
+
+Any of the default responses may be overridden by adding a file with the same name to `api/responses/` in your app (e.g. `api/responses/serverError.js`).
+
+> You can use the [Sails command-line tool](http://sailsjs.com/documentation/reference/command-line-interface/sails-generate) as a shortcut for doing this.
+>
+> For example:
+>
+>```bash
+>sails generate response serverError
+>```
+
 
 
 <docmeta name="displayName" value="Custom responses">
