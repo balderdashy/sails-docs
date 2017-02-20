@@ -109,7 +109,7 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **The experimental `forceLoadAdapter` datastore setting is no longer supported**.  Instead, all adapters referenced in `config/datastores.js` (formerly `config/connections.js`) are automatically loaded whenever Sails lifts.
 * **The experimental `usage` route option has been removed.**  It is recommended that you perform any route parameter validation in your controller code.
 * **The experimental &ldquo;associated-item&rdquo; blueprint shadow routes have been removed.** These were routes like `GET /user/1/pets/2`, whose functionality can be replicated by simply using the much-clearer route `GET /pets/2`.
-
+* **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](http://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more info.
 
 ### Changes to database configuration
 
