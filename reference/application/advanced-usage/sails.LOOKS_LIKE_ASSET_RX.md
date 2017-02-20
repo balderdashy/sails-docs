@@ -37,4 +37,4 @@ isSessionDisabled: function (req){
 ```
 
 <docmeta name="displayName" value="sails.LOOKS_LIKE_ASSET_RX">
-<docmeta name="pageType" value="property">
+<docmeta name="pageType" value="constant">
