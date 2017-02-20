@@ -58,7 +58,8 @@ module.exports = {
 
 To override a RESTful blueprint route for a single model, simply create an action in the relevant controller file (or a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) in the relevant folder) with the appropriate name: [_find_](http://sailsjs.com/documentation/reference/blueprint-api/find-where), [_findOne_](http://sailsjs.com/documentation/reference/blueprint-api/find-one), [_create_](http://sailsjs.com/documentation/reference/blueprint-api/create), [_update_](http://sailsjs.com/documentation/reference/blueprint-api/update), [_destroy_](http://sailsjs.com/documentation/reference/blueprint-api/destroy), [_populate_](http://sailsjs.com/documentation/reference/blueprint-api/populate), [_add_](http://sailsjs.com/documentation/reference/blueprint-api/add) or [_remove_](http://sailsjs.com/documentation/reference/blueprint-api/remove).
 
->  It's important to realize that, even if you haven't defined these yourself, as long as a model exists with the same name as the controller, Sails will respond with built-in CRUD logic in the form of a JSON API, including support for sort, pagination, and filtering.
+> If you&rsquo;d like to override a particular blueprint for _all_ models, check out the <a href="https://www.npmjs.com/package/sails-hook-custom-blueprints" target="_blank">sails-hook-custom-blueprints plugin</a>.
+> It's important to realize that, even if you haven't defined these yourself, Sails will respond with built-in CRUD logic for each model in the form of a JSON API (including support for sort, pagination, and filtering) as long as action or shortcut blueprints are enabled in your [blueprints configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints.
 
 ##### Action routes
 
