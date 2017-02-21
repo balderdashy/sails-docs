@@ -6,14 +6,16 @@ Before you launch any web application, you should ask yourself a few questions:
 
 + What is your expected traffic?
 + Are you contractually required to meet any uptime guarantees, e.g. a Service Level Agreement (SLA)?
-+ What sorts of front-end apps will be "hitting" your infrastructure?
-  + Android/iOS/Windows Phone apps
++ What sorts of user agents will be "hitting" your infrastructure?
   + desktop web browsers
-  + mobile web browsers (tablets, phones, iPad minis?)
-  + Cordova/Electron apps
-  + tvs, watches, toasters..?
+  + mobile web browsers (and what form factors?  Tablet or handset?  Or both?)
+  + embedded browsers from smart TVs or gaming consoles
+  + Android/iOS/Windows Phone apps
+  + PhoneGap/Electron apps
+  + Developers (cURL, Postman, AJAX requests, WebSocket front-end apps)
+  + Other devices (tvs, watches, toasters..?)
 + And what kinds of things will they be requesting? (e.g. HTML? JSON? XML?)
-+ Will you be taking advantage of realtime pubsub features with Socket.io?
++ Will you be taking advantage of realtime features with Socket.io?
   + e.g. chat, realtime analytics, in-app notifications/messages
 + How are you tracking crashes and errors?
   + Are you using `sails.log()`? Or are you using a custom logger from NPM like [Winston](https://github.com/winstonjs/winston)?
@@ -21,13 +23,13 @@ Before you launch any web application, you should ask yourself a few questions:
   + A quick way to test this out is to run `sails lift --prod`.
 
 
-### Configuring Your App For Production
+### Configuring your app for production
 
 You can provide configuration which only applies in production in a [few different ways](http://sailsjs.com/documentation/reference/configuration).  Most apps find themselves using a mix of environment variables and `config/env/production.js`.  But regardless of how you go about it, this section and the [Scaling section](http://sailsjs.com/documentation/concepts/deployment/scaling) of the documentation cover the configuration settings you should review and/or change before going to production.
 
 
 
-### Deploying On a Single Server
+### Deploying on a single server
 
 Node.js is pretty darn fast.  For many apps, one server is enough to handle the expected traffic-- at least at first.
 
@@ -53,7 +55,7 @@ When your app is running in a production environment:
 
 
 >**Note:**
->If you set [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment) to `'production'` some other way, that's totally cool.  Just note that Sails will set the `NODE_ENV` environment variable to `'production'` for you automatically.  The reason this environment variable is so important is that it is a universal convention in Node.js, regardless of the framework you are using.  Built-in middleware and dependencies in Sails _expect_ `NODE_ENV` to be set in production-- otherwise they use their less efficient code paths that were designed for development use only.
+>If you set [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment) to `'production'` some other way, that's totally cool.  Just note that Sails will either set the `NODE_ENV` environment variable to `'production'` for you automatically (or otherwise log a warning-- so keep an eye on the console!).  The reason this environment variable is so important is that it is a universal convention in Node.js, regardless of the framework you are using.  Built-in middleware and dependencies in Sails _expect_ `NODE_ENV` to be set in production-- otherwise they use their less efficient code paths that were designed for development use only.
 
 ##### Set a `sails.config.sockets.onlyAllowOrigins` value
 
@@ -98,11 +100,11 @@ Protecting against CSRF is an important security measure for Sails apps.  If you
 
 If your API or website does anything that requires authentication, you should use SSL in production.  To configure your Sails app to use an SSL certificate, use [`sails.config.ssl`](http://sailsjs.com/documentation/reference/configuration/sails-config).
 
-> As mentioned above, ignore this step if your app will be running behind a load balancer or proxy.
+> As mentioned above, ignore this step if your app will be running behind a load balancer or proxy (e.g. on a PaaS like Heroku).
 
 
 
-##### Lift Your App
+##### Lift Your app
 
 The last step of deployment is actually starting the server.  For example:
 
@@ -120,25 +122,16 @@ node app.js --prod
 As you can see, instead of `sails lift` you should start your Sails app with `node app.js` in production.  This way, your app does not rely on having access to the `sails` command-line tool; it just runs the `app.js` file bundled in your Sails app (which does exactly the same thing).
 
 
-##### ...And Keep It Lifted
+##### ...And keep it lifted
 
-Unless you are not deploying to a PaaS like Heroku or Modulus, you will want to use a tool like [`pm2`](http://pm2.keymetrics.io/) or [`forever`](https://github.com/foreverjs/forever) to make sure your app server will start back up if it crashes.  Regardless of the daemon you choose, you'll want to make sure that it starts the server as described above.
-
-For convenience, here are example lift commands for both `pm2` and `forever`:
-
-Using `pm2`:
-
-```bash
-pm2 start app.js -x -- --prod
-```
-
-Using `forever`:
-
-```bash
-forever start app.js --prod
-```
+Unless you are not deploying to a PaaS like Heroku, you will want to use a tool like [`pm2`](http://pm2.keymetrics.io/) or [`forever`](https://github.com/foreverjs/forever) to make sure your app server will start back up if it crashes.  Regardless of the daemon you choose, you'll want to make sure that it starts the server as described above.
 
 
+
+### Next steps
+
++ [Scaling your Sails/Node.js app](http://sailsjs.com/documentation/concepts/deployment/scaling)
++ 
 
 
 <docmeta name="displayName" value="Deployment">
