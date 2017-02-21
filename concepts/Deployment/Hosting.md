@@ -75,7 +75,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Xervo (formerly Modulus)
 
-<a href="https://xervo.io"><img alt="Xervo/Modulus logo" style="width: 225px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
+<a href="https://xervo.io"><img alt="Xervo logo" style="width: 150px;" src="https://xervo.io/img/xervo_icon_200.png"/>&nbsp;<img alt="Modulus logo" style="width: 150px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
 
 + [Customer Spotlight: Sails.js](https://blog.xervo.io/sails-js)
 
