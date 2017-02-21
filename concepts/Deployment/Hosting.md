@@ -5,7 +5,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Heroku
 
-<a title="Deploy your Sails/Node.js app on Heroku" href="http://heroku.com"><img style="width:300px;" src="https://d0.awsstatic.com/logos/Third%20Party/heroku-logo.png" alt="Heroku logo"/></a>
+<a title="Deploy your Sails/Node.js app on Heroku" href="http://heroku.com"><img style="width:285px;" src="https://d0.awsstatic.com/logos/Third%20Party/heroku-logo.png" alt="Heroku logo"/></a>
 
 + [Hello Sails.js: Hosting your Sails.js application on Heroku](https://hellosails.com/hosting-your-sails-js-application-heroku/)
 + [Platzi: Develop Apps with Sails.js: Pt 2](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
@@ -36,7 +36,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### DigitalOcean
 
-<a title="DigitalOcean" href="https://aws.amazon.com/"><img style="width:275px;" src="https://cdn.worldvectorlogo.com/logos/digitalocean.svg" alt="DigitalOcean logo"/></a>
+<a title="DigitalOcean" href="https://aws.amazon.com/"><img style="width:225px;" src="https://cdn.worldvectorlogo.com/logos/digitalocean.svg" alt="DigitalOcean logo"/></a>
 
 + [Troubleshooting: Can't install Sails.js on DigitalOcean](https://www.digitalocean.com/community/questions/can-t-install-sails-js)
 + [How to create a Node.js app using Sails.js on an Ubuntu VBS](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
@@ -46,7 +46,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Amazon Web Services (AWS)
 
-<a title="Amazon Web Services (AWS)" href="https://aws.amazon.com/"><img style="width:300px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png" alt="AWS logo"/></a>
+<a title="Amazon Web Services (AWS)" href="https://aws.amazon.com/"><img style="width:275px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/AmazonWebservices_Logo.svg/2000px-AmazonWebservices_Logo.svg.png" alt="AWS logo"/></a>
 
 
 + [Creating a Sails.js application on AWS](http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html) _(see also [this question on ServerFault](http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance))_
@@ -57,7 +57,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### PM2 (KeyMetrics)
 
-<a title="About PM2" href="http://pm2.keymetrics.io/"><img style="width:325px;" src="https://cdn.worldvectorlogo.com/logos/pm2.svg" alt="PM2 logo"/></a>
+<a title="About PM2" href="http://pm2.keymetrics.io/"><img style="width:285px;" src="https://cdn.worldvectorlogo.com/logos/pm2.svg" alt="PM2 logo"/></a>
 
 + [Deploying with PM2](http://devo.ps/blog/goodbye-node-forever-hello-pm2/)
 
@@ -75,7 +75,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Xervo (formerly Modulus)
 
-<a href="https://xervo.io"><img alt="Xervo logo" style="width: 150px;" src="https://xervo.io/img/xervo_icon_200.png"/>&nbsp;<img alt="Modulus logo" style="width: 150px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
+<a href="https://xervo.io"><img alt="Xervo logo" style="width: 85px;" src="https://xervo.io/img/xervo_icon_200.png"/>&nbsp;<img alt="Modulus logo" style="width: 85px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
 
 + [Customer Spotlight: Sails.js](https://blog.xervo.io/sails-js)
 
