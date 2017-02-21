@@ -57,7 +57,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### PM2 (KeyMetrics)
 
-<a title="About PM2" href="http://pm2.keymetrics.io/"><img style="width:325px;" src="https://raw.githubusercontent.com/unitech/pm2/master/pres/pm2.20d3ef.png" alt="PM2 logo"/></a>
+<a title="About PM2" href="http://pm2.keymetrics.io/"><img style="width:325px;" src="https://cdn.worldvectorlogo.com/logos/pm2.svg" alt="PM2 logo"/></a>
 
 + [Deploying with PM2](http://devo.ps/blog/goodbye-node-forever-hello-pm2/)
 
@@ -75,7 +75,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Xervo (formerly Modulus)
 
-<a href="https://xervo.io"><img alt="Xervo/Modulus logo" style="width: 275px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
+<a href="https://xervo.io"><img alt="Xervo/Modulus logo" style="width: 225px;" src="https://d1qb2nb5cznatu.cloudfront.net/startups/i/88547-f3730974e6ede2087553be3ca36161bb-medium_jpg.jpg?buster=1429172046"/></a>
 
 + [Customer Spotlight: Sails.js](https://blog.xervo.io/sails-js)
 
