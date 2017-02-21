@@ -10,10 +10,10 @@ In case of doubt about whether a change you would like to make would be consider
 
 #### General rules
 
-- **No CoffeeScript**.  For consistency, all imperative code in Sails core, including core hooks and core generators, must be written in JavaScript, not CoffeeScript, TypeScript, or any other pre-compiled language.  We cannot merge a pull request written in CoffeeScript.
+- **ES5 JavaScript only, please**.  For consistency, all imperative code in Sails core, including core hooks and core generators, must be written in JavaScript, not CoffeeScript, TypeScript, or any other pre-compiled or transpiled language.  Don't get us wrong-- we think it's great to use ES6, TypeScript, and/or CoffeeScript syntax in userland code if it boosts your productivity!  But for compatibility and consistency reasons, we cannot merge a pull request unless it is written in ES5-compatible JavaScript.
 - Do not auto-format code, or attempt to fix perceived style problems in existing files in core.
-- Do not change more than 3 files in a single pull request-- it makes it very hard to tell what's going on.
-- Do not submit pull requests which implement new features or enhance existing features unless you are working from a very clearly-defined proposal and spec from a merged feature request.  As stated above, nothing is more frustrating than seeing your hard work go to waste because your vision does not align with a project's roadmap.
+- Keep every pull request extremely focused on a single goal, and change as few LoC/files as possible.
+- Do not submit pull requests which implement new features or enhance existing features unless you are working from a very clearly-defined proposal.  As stated above, nothing is more frustrating than seeing your hard work go unmerged because your vision does not align with a project's maintainers.
 - Before beginning work on a feature, you should be sure to leave a comment telling other contributors that you are working on the feature.  Note that if you do not actively keep other contributors informed about your progress, your silence may be taken as inactivity, and you may end up working on the same feature as someone else in parallel.
 
 
@@ -21,7 +21,7 @@ In case of doubt about whether a change you would like to make would be consider
 
 Sub-modules within the Sails core are at varying levels of API stability. Bug fixes (patches) are always welcome, but API or behavioral changes cannot be merged without serious planning, as documented in the process for feature proposals above.
 
-Sails has several dependencies referenced in the `package.json` file that are not part of the project proper. Any proposed changes to those dependencies or _their_ dependencies should be sent to their respective projects (i.e. Waterline, Anchor, Express, etc.) Please do not send your patch or feature request to the sails repository; we cannot accept or fulfill it.
+Sails has several dependencies referenced in the `package.json` file that are not part of the project proper. Any proposed changes to those dependencies or _their_ dependencies should be sent to their respective projects (i.e. Express, Socket.io, etc.) Please do not send your patch or feature request to the sails repository; we cannot accept or fulfill it.  (Though if you reach out via chat, we'll try to help if we can.)
 
 
 #### Contributing to an adapter
