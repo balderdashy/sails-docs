@@ -18,9 +18,9 @@ Before you launch any web application, you should ask yourself a few questions:
 + Will you be taking advantage of realtime features with Socket.io?
   + e.g. chat, realtime analytics, in-app notifications/messages
 + How are you tracking crashes and errors?
-  + Are you using `sails.log()`? Or are you using a custom logger from NPM like [Winston](https://github.com/winstonjs/winston)?
+  + Are you using `sails.log()`? Or are you using a custom logger from NPM like [Winston](https://github.com/winstonjs/winston)?  Or even easier, sticking with built-in logging from `sails.log()` in combination with a hosted service like [Papertrail](https://papertrailapp.com/)?
 + Have you tried running in production mode locally in production mode (with the `NODE_ENV` environment variable set to "production")?
-  + A quick way to test this out is to run `sails lift --prod`.
+  + A quick way to test this out is to run `NODE_ENV=production node app` (or, as a shortcut: `sails lift --prod`).
 
 
 ### Configuring your app for production
