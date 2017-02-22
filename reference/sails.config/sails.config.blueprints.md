@@ -83,7 +83,7 @@ The `parseBlueprintOptions()` method takes a single argument (the [request objec
 
 Adding your own `parseBlueprintOptions()` is an advanced concept, and it is recommended that you first familiarize yourself with the [default method code](https://github.com/balderdashy/sails/blob/master/lib/hooks/blueprints/parse-blueprint-options.js) and use it as a starting point.  For small modifications to blueprint behavior, it is best to first call the default method inside your override and then make changes to the returned query options:
 
-```
+```js
 parseBlueprintOptions: function(req) {
 
   // Get the default query options.
