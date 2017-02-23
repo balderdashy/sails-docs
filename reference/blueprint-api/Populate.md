@@ -15,8 +15,8 @@ If the specified association is plural ("collection"), this action returns the l
  model           | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
  id              | ((string))   | The primary key of the parent record.<br/><br/>e.g. `'47'` (in `GET /purchase/47/cashier`)
  association     | ((string))   | The name of the association.<br/><br/>e.g. `'cashier'` (in `GET /purchase/47/cashier`) or `'products'` (in `GET /purchase/47/products`)
- _select_         | ((string?))   | The attributes to include in the result, specified as a comma-delimited list.  By default, all attributes are selected.  Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?select=name,age`.
- _omit_           | ((string?))   | The attributes to exclude from the result, specified as a comma-delimited list.  Cannot be used in conjuction with `select`.    Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?omit=favoriteColor,address`.
+ _select_         | ((string?))   | The attributes to include in each record in the result, specified as a comma-delimited list.  By default, all attributes are selected.  Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?select=name,age`.
+ _omit_           | ((string?))   | The attributes to exclude from each record in the result, specified as a comma-delimited list.  Cannot be used in conjuction with `select`.    Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?omit=favoriteColor,address`.
 
 
 ### Example
