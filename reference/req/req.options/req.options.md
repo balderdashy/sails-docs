@@ -6,6 +6,9 @@ The purpose of `req.options` is to allow an action's code to access its configur
 
 <!--
 FUTURE: pull out the rest of the content below to a new, separate page under **Concepts > Routes > Route options** and just link to it from in here rather than having all this exist inline.
+
+(Also be sure to consolidate any additional useful content from http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options into the new page, and replace the content under that heading with a sentence that links to the new "Route options" page.)
+
 -m  Feb 23, 2017
 -->
 
