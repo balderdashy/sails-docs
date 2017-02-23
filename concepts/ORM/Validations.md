@@ -92,6 +92,10 @@ workEmail: {
 
 Then when you call `.create()` _or_ `.update()`, this value can be set to any valid email address (like "santa@clause.com") OR as empty string ("").  However, you wouldn't be able to set it to `null`, because that would violate the type safety restriction imposed by `type: 'string'`.
 
+> To make this attribute accept `null` (for example, if you are working with a pre-existing database), change it to `type: 'json'`.  Normally you'd also want to add `isString: true`-- but since, in this example, we already enforce `isEmail: true`, there's no need to do so.
+>
+> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](TODO) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
+
 
 ##### Example: Required star rating
 
@@ -160,7 +164,7 @@ Just like everything else related to your production schema, once you set your a
 > Note that this means you should be sure to update your indexes alongside your uniqueness constraints when performing [manual migrations](https://github.com/BlueHotDog/sails-migrations).
 
 
-### When to Use Validations
+### When to use validations
 
 Validations can be a huge time-saver, preventing you from writing many hundreds of lines of repetitive code.  But keep in mind that model validations are run for _every create or update_ in your application.  Before using a validation rule in one of your attribute definitions, make sure you are OK with it being applied _every time_ your application calls `.create()` or `.update()` to specify a new value for that attribute.  If that is _not_ the case, write code that validates the incoming values inline in your controller; or call out to a custom function in one of your [services](http://sailsjs.com/documentation/concepts/services), or a [model class method](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
 
