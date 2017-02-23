@@ -52,9 +52,9 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
 ```bash
-sails> User.create({name: 'Brian', password: 'sailsRules'}).exec(console.log)
+sails> User.create({name: 'Brian', password: 'sailsRules'}).meta({fetch: true}).exec(console.log)
 undefined
-sails> null { name: 'Brian',
+sails> undefined { name: 'Brian',
   password: 'sailsRules',
   createdAt: "2014-08-07T04:29:21.447Z",
   updatedAt: "2014-08-07T04:29:21.447Z",
@@ -62,6 +62,16 @@ sails> null { name: 'Brian',
 ```
 
 Pretty cool, it inserts it into the database. However, you might be noticing the undefined and null. Don't worry about those. Remember that the .exec() returns error and data for values. So doing `.exec(console.log)` is the same as doing .exec(console.log(err, data))` The second method will remove the undefined message, but add null on a new line. It's up to you if you want to type more.
+
+> Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
+>
+> ```
+> sails> undefined RowDataPacket { name: 'Brian',
+>   password: 'sailsRules',
+>   createdAt: "2014-08-07T04:29:21.447Z",
+>   updatedAt: "2014-08-07T04:29:21.447Z",
+>   id: 1 }
+> ```
 
 #### Exposing Sails
 
