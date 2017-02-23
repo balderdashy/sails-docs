@@ -1,9 +1,12 @@
 # sails.config.blueprints
 
-These configurable settings allow you to configure the blueprint API in Sails.  Some settings (like `sails.config.blueprints.populate`) control the behavior of built-in blueprint actions, whereas others (like `sails.config.blueprints.shortcuts`) tweak the behavior of blueprint routing and/or determine whether Sails automatically binds certain kinds of blueprint routes at all.
+These configurable settings allow you to configure the blueprint API in Sails.  Some settings (like `sails.config.blueprints.autoWatch`) control the behavior of built-in [blueprint actions](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions), whereas others (like `sails.config.blueprints.shortcuts`) tweak the behavior of implicit [blueprint routing](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) and/or determine whether Sails automatically binds certain kinds of blueprint routes at all.
 
+> Remember, blueprint actions can be attached to your custom routes _regardless of whether or not_ you have any kind of implicit blueprint routing enabled.
 
 ### Properties
+
+##### Route-related settings
 
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
@@ -13,8 +16,13 @@ These configurable settings allow you to configure the blueprint API in Sails.  
 | `prefix`      | ((string))| `''`     | Optional mount path prefix (e.g. '/api/v2') for all [blueprint routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes), including `rest`, `actions`, and `shortcuts`.  This only applies to implicit blueprint ("shadow") routes, not your [custom routes](http://sailsjs.com/documentation/concepts/routes/custom-routes).)
 | `restPrefix`  | ((string))| `''`     | Optional mount path prefix for all REST blueprint routes on a controller, e.g. '/api/v2'. (Does not include `actions` and `shortcuts` routes.) This allows you to take advantage of REST blueprint routing, even if you need to namespace your RESTful API methods.  Will be joined to your `prefix` config, e.g. `prefix: '/api'` and `restPrefix: '/rest'` RESTful actions will be available under `/api/rest`.
 |`pluralize`|((boolean))|false| Whether to use plural model names in blueprint routes, e.g. `/users` for the `User` model. (This only applies to blueprint autoroutes, not manual routes from `sails.config.routes`)
+
+
+##### Action-related settings
+
+| Property    | Type       | Default   | Details |
+|:------------|:----------:|:----------|:--------|
 |`autoWatch`|((boolean))|`true`| Whether to subscribe the requesting socket in the `find` and `findOne` blueprint action to notifications about newly _created_ records via the blueprint API.
-|`defaultLimit`|((integer))|`30`|The default number of records to show in the response from a "find" action.  Doubles as the default size of populated arrays if `populate` is `true`.
 |`parseBlueprintOptions`|((function))|(See below)|Provide this function in order to override the default behavior for blueprint actions (including search criteria, skip, limit, sort and population).
 
 ##### Using `parseBlueprintOptions`
