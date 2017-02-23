@@ -56,7 +56,7 @@ sails.getDatastore()
 
 ### Notes
 > + The SQL query you write should refer to table names and column names, not model identities and attribute names.  If your models are defined with custom table names, or if their attributes are defined with custom column names, do take care.
-> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client.
+> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`).
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">
