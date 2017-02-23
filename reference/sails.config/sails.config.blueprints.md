@@ -21,67 +21,9 @@ These configurable settings allow you to configure the blueprint API in Sails.  
 
 Each blueprint action includes, at its core, a Waterline model method call.  For instance, the `find` blueprint, when run for the `User` model, runs `User.find()` in order to retrieve some user records.  The options that are passed to these Waterline methods are determined by a call to `parseBlueprintOptions()`.  The default version of this method (available via `sails.hooks.blueprints.parseBlueprintOptions()`) determines the default behaviors for blueprints.  You can override `parseBlueprintOptions` in your [blueprints config](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) (in [`config/blueprints.js`](http://sailsjs.com/documentation/anatomy/config/blueprints.js)) to customize the behavior for _all_ blueprint actions, or on a [per-route basis](http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options) to customize the behavior for a single route.
 
-The `parseBlueprintOptions()` method takes a single argument (the [request object](http://sailsjs.com/documentation/reference/request-req)) and is expected to return a Waterline query options dictionary.  A full example of a such a dictionary is as follows (keep in mind that not all keys apply to all blueprint actions):
+The `parseBlueprintOptions()` method takes a single argument (the [request object](http://sailsjs.com/documentation/reference/request-req)) and is expected to return a dictionary of Waterline query options.  (You can review an unrealistically-expanded example of a such a dictionary [here](https://gist.github.com/mikermcneil/1b87af6b6a8458254deb83a6d1cf264f), but keep in mind that not all keys apply to all blueprint actions-- see [source code in Sails code](https://github.com/balderdashy/sails/tree/v1.0.0-25/lib/hooks/blueprints/actions) for complete details).
 
-```js
-{
-  // The model identity, REQUIRED.
-  using: 'user',
-
-  // Search criteria, used by `find`, `findOne`, `destroy`, `populate` and `update`.
-  // Note that for all except `find`, the `where` clause must include only the model's primary key.
-  criteria: {
-    where: {
-      age: 25
-    },
-    // Skip, limit and sort will be ignored by all blueprints except `find`.
-    skip: 5,
-    limit: 10,
-    sort: [{score: 'desc'}]
-  },
-
-  // Dictionary of associations to populate.  Each key should be an attribute name,
-  // with the value set to a criteria object like the one above.
-  populates: {
-    pets: {
-      where: {
-        breed: 'cat'
-      },
-      sort: [{name: 'asc'}],
-      limit: 5
-    }
-  },
-
-  // Values for a new record, valid only for the `create` blueprint.
-  newRecord: {
-    name: 'bob',
-    age: 30,
-    score: 10,
-    pets: [3, 65]
-  },
-
-  // Values for an updated record, valid only for the `update` blueprint.
-  valuesToSet: {
-    name: 'joe',
-    age: 12,
-  },
-
-  // Name of a plural association attribute to modify.
-  // Valid for `add`, `remove`, `replace` and `populate`.
-  alias: 'pets',
-
-  // The primary key of the record containing a plural association to modify.
-  // Valid for `add`, `remove`, and `replace`.
-  targetRecordId: 123,
-
-  // The primary keys of associated records, for use in `add`, `remove` and `replace`.
-  // For `add` and `remove` this array must contain only one value.
-  associatedIds: [34, 12]
-
-}
-```
-
-Adding your own `parseBlueprintOptions()` is an advanced concept, and it is recommended that you first familiarize yourself with the [default method code](https://github.com/balderdashy/sails/blob/master/lib/hooks/blueprints/parse-blueprint-options.js) and use it as a starting point.  For small modifications to blueprint behavior, it is best to first call the default method inside your override and then make changes to the returned query options:
+Adding your own `parseBlueprintOptions()` is an advanced concept, and it is recommended that you first familiarize yourself with the [default method code](https://github.com/balderdashy/sails/blob/1.0.0-25/lib/hooks/blueprints/parse-blueprint-options.js) and use it as a starting point.  For small modifications to blueprint behavior, it is best to first call the default method inside your override and then make changes to the returned query options:
 
 ```js
 parseBlueprintOptions: function(req) {
@@ -89,15 +31,20 @@ parseBlueprintOptions: function(req) {
   // Get the default query options.
   var queryOptions = req._sails.hooks.blueprints.parseBlueprintOptions(req);
 
-  // If the query is set to populate `pets`, limit the number of pets to 1.
-  if (queryOptions.populates.pets) {
-    queryOptions.populates.pets.limit = 1;
+  // If this is the "find" or "populate" blueprint action, and the normal query options
+  // indicate that the request is attempting to set an exceedingly high `limit` clause,
+  // then prevent it (we'll say `limit` must not exceed 100).
+  if (req.options.blueprintAction === 'find' || req.options.blueprintAction === 'populate') {
+    if (queryOptions.criteria.limit > 100) {
+      queryOptions.criteria.limit = 100;
+    }
   }
 
   return queryOptions;
 
 }
 ```
+
 
 <docmeta name="displayName" value="sails.config.blueprints">
 <docmeta name="pageType" value="property">
