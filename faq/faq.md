@@ -59,26 +59,20 @@ Aside from the [official documentation](http://sailsjs.com/documentation), be su
 
 ### Who else is using Sails.js?
 
-> Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature). This small list is definitely not authoritative, so if you're using Sails in your app/product/service, we'd love to hear about it!  You can submit a pull request updating this list [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md). (We just ask that you respect the order in which projects/companies have been submitted, and add yours to the end of the list.)
+> Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature).
 
-#### Companies/Organizations using Sails:
-+ [The City of Paris](http://paris.fr)
-+ [18F (United States)](http://18f.gsa.gov/)
-+ [Postman](http://www.getpostman.com/)
-+ [BeyondSoft](http://beyondsoft.com/)
-+ [The Broad Institute / Human Genome Project](http://www.broadinstitute.org/)
-+ [Insight Replay](http://insightreplay.com) - Instant replay for [athletes](http://insightreplay.com/insight-replay-at-sochi-winter-olympics/) and coaches
-+ [Gamefroot](http://gamefroot.com/)
-
-#### Projects built with Sails:
-+ [Cuckoo Quack](http://www.cyber-duck.co.uk/blog/the-cuckoo-quack) - An antique clock turned into a notification system
-+ [Portfolio Page](http://isaac.levid.com/) - By Isaac T. Wooten
-+ [Taskboard](http://tarlepp.github.io/Taskboard/) - a Sails application to mimic "scrum-ban" taskboard
-
+You can see some examples [here](http://sailsjs.com/#?using-sails) of companies that have used Sails for their projects. This small list is definitely not authoritative, so if you're using Sails in your app/product/service, [we'd love to hear about it](http://sailsjs.com/contact)!
 
 ### Are there professional support options?
 
-The Sails Company (the core maintainers of the framework) offers professional support subscriptions through Sails Flagship. You can learn more about our plans at [sailsjs.com/flagship](http://sailsjs.com/flagship).
+The Sails Company (the core maintainers of the framework) offers custom development, services, training, and support for teams building applications on Sails.
+
+##### [Studio](http://sailsjs.com/studio)
+Our studio provides enterprise-class development services for startups, SMBs, and the Fortune 500. As you might expect, our team has done a lot of custom Sails+Node.js development, but we also have experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications, and building rich user experiences across many different devices and screen resolutions. If you're interested in working with us on your next project, [drop us a line](http://sailsjs.com/studio#?contact).
+
+
+##### [Sails Flagship](http://sailsjs.com/flagship)
+We created Sails Flagship as a lifeline for companies using Sails to build their products. If you need help with a critical technical issue, or just want an extra pair of eyes looking out for your code base, take a look at our [support subscriptions](http://sailsjs.com/flagship/plans), or [contact us](https://flagship.sailsjs.com/contact) to learn more.
 
 
 ### What are some good community tutorials?
@@ -136,6 +130,7 @@ Thanks!
 <!-- 6-12-2013 -->
 
 ##### Video tutorials:
++ [Develop Web Apps in Node.js and Sails.js](https://courses.platzi.com/courses/develop-apps-sails-js/)
 + [Jorge Casar: Introduccion a Sails.js](https://www.youtube.com/watch?v=7_zUNTtXtcg)
 <!-- 12-17-2014 -->
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)
