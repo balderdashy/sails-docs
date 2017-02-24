@@ -1,11 +1,11 @@
 # Upgrading to v1.0
 
 ### Note:
-> Sails version 1.0 has not officially been released, but is available for preview for those who want to try out the bleeding edge or get a head start and see what the upgrade process will look like. Please note that this version is not intended for use in production applications and still has some known issues.  We recommend Sails apps use the [latest stable version from NPM](https://www.npmjs.com/package/sails) until v1.0 has been formally released.
+> Sails version 1.0 has not officially been released, but a beta version is available for those who want to try out new features or get a head start on the upgrade process. Please note that this version is not intended for use in production applications; we recommend Sails apps use the [latest stable version from NPM](https://www.npmjs.com/package/sails) until v1.0 has been formally released.
 
 ### Installing the 1.0 preview
 
-To install the preview globally, run `npm install sails@edge -g`. To install it for a particular Sails app, `cd` into that app's directory, then run `npm install sails@edge --save`.
+To install the beta globally, run `npm install sails@beta -g`. To install it for a particular Sails app, `cd` into that app's directory, then run `npm install sails@beta --save`.
 
 ### Migration guide
 
