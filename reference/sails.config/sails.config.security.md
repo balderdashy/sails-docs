@@ -16,7 +16,7 @@ These options are conventionally set in the **config/security.js** configuration
 | allowRequestMethods |((string))| `'GET, POST, PUT, DELETE, OPTIONS, HEAD'` |Comma-delimited list of HTTP methods that are allowed to be used in CORS requests.  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests), so the inclusion of GET, POST, OPTIONS and HEAD, although customary, is not necessary.
 | allowRequestHeaders |((string))| `'content-type'` |Comma-delimited list of headers that are allowed to be sent with CORS requests.  This is only used in response to [preflight requests](https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS#Preflighted_requests).
 | allowResponseHeaders |((string))|`''`| List of response headers that browsers will be allowed to access.  See [access-control-expose-headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS#Access-Control-Expose-Headers).
-| allowCredentials |((boolean)) | false | Whether or not cookies can be shared in CORS requests. |
+| allowCredentials |((boolean)) | false | Whether or not cookies can be shared in CORS requests.  _(For example, if `allowCredentials` is not enabled, then if Sails receives an AJAX request from a webpage on some other domain, it won't be able to provide `req.session` when the backend code runs.)_ |
 | allowAnyOriginWithCredentialsUnsafe |((boolean))|false| A safety precaution.  This flag must be enabled in order to use `allowOrigins: '*'` and `allowCredentials: true` _at the same time_.  This essentially negates the security benefits of browsers' cross-origin policy, and should be used very carefully.
 
 ### Custom route config example
