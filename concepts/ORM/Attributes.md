@@ -1,7 +1,7 @@
 # Attributes
 ### Overview
 
-Model attributes are basic pieces of information about a model. A model called `Person` might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
+Model attributes are basic pieces of information about a model. A model called `Person` might have attributes called `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`. Attributes are required for built-in <a href="https://github.com/balderdashy/waterline" target="_blank">Waterline</a> methods like findOrCreate() to work properly.
 <!---
 TODO: address sql vs. no sql and stuff like:
 """
