@@ -86,6 +86,19 @@ attributes: {
 }
 ```
 
+##### Allow Null
+
+The `string`, `number` and `boolean` data types do _not_ accept `null` as a value when creating or updating records.  In order to allow setting a `null` value you can toggle the `allowNull` flag on the attribute. The `allowNull` flag is only valid on these data types however. It is _not_ valid on attributes with types `json` or `ref`, any associations, or any primary key attributes.
+
+
+```javascript
+attributes: {
+  phoneNumber: {
+    type: 'string',
+    allowNull: true
+  }
+}
+```
 
 ### Validations
 
