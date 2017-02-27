@@ -33,6 +33,8 @@ This data type is used for logical validation and coercion of results and criter
 
 Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected data type.
 
+**NOTE:** In adapters that don't support the ((json)) type natively, the adapter must support it in other ways. For example in MySQL the data being written to a ((json)) attribute gets `JSON.stringify()` called on it and then is stored in a column with a type set to `text`. Each time the record is returned the data has `JSON.parse()` called on it. This is something to be aware of for performance and for compatibility with other applications or existing data in the database. The official postgresql and mongodb adapters can read and write ((json)) data natively.
+
 
 ##### Null and empty string
 
