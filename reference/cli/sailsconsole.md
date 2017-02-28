@@ -2,6 +2,16 @@
 
 Quietly lift your sails app (i.e. with logging silenced), and enter the [node REPL](http://nodejs.org/api/repl.html).  This means you can access and use all of your models, services, configuration, and much more.  Useful for trying out Waterline queries, quickly managing your data, and checking out your project's runtime configuration.
 
+```usage
+sails console
+```
+By default, this still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)
+
+
+### Usage
+`sails console` takes the following options:
+  * `--dontLift` - Start `sails console` without lifting the server.
+
 ### Example
 
 ```bash
@@ -14,8 +24,6 @@ info: ( to exit, type <CTRL>+<C> )
 
 sails>
 ```
-
-> Note that `sails console` still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)  If you&rsquo;d rather not lift the server, run `sails console --dontLift`.
 
 
 
@@ -47,7 +55,7 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 
 ### More Examples
 
-#### Waterline
+##### Waterline
 
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
@@ -73,7 +81,7 @@ Pretty cool, it inserts it into the database. However, you might be noticing the
 >   id: 1 }
 > ```
 
-#### Exposing Sails
+##### Exposing Sails
 
 In sails console, type in `sails` to view a list of sails properties. You can use this to learn more about sails, override properties, or check to see if you disabled globals.
 
