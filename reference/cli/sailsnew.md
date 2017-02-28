@@ -20,7 +20,9 @@ To create a project called "test-project" in `code/testProject/`:
 
 ```text
 $ sails new code/testProject
-
+info: Installing dependencies...
+Press CTRL+C to skip.
+(but if you do that, you'll need to cd in and run `npm install`)
 info: Created a new Sails app `test-project`!
 ```
 
@@ -29,7 +31,9 @@ To create a sails project in an existing `myProject/` folder:
 ```text
 $ cd myProject
 $ sails new .
-
+info: Installing dependencies...
+Press CTRL+C to skip.
+(but if you do that, you'll need to cd in and run `npm install`)
 info: Created a new Sails app `my-project`!
 ```
 > Creating a new sails app in an existing folder will only work if the folder is empty.
