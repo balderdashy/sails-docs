@@ -96,7 +96,7 @@ Then when you call `.create()` _or_ `.update()`, this value can be set to any va
 
 > To make this attribute accept `null` (for example, if you are working with a pre-existing database), change it to `type: 'json'`.  Normally you'd also want to add `isString: true`-- but since, in this example, we already enforce `isEmail: true`, there's no need to do so.
 >
-> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](TODO) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
+> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
 
 
 ##### Example: Required star rating

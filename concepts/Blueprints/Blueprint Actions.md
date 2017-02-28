@@ -1,6 +1,6 @@
 # Blueprint actions
 
-Blueprint actions (not to be confused with implicit [blueprint "action" _routes_](TODO)) are generic actions designed to work with your models.  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model then `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
+Blueprint actions (not to be confused with implicit [blueprint "action" _routes_](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?action-routes)) are generic actions designed to work with your models.  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model then `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 
 By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).
 
@@ -18,7 +18,7 @@ The current version of Sails ships with the following blueprint actions:
 
 ### Socket notifications
 
-Most blueprint actions have realtime features that take effect if your app has WebSockets enabled.  For example, if the **find** blueprint action receives a request from a socket client, it will [subscribe](TODO) that socket to future notifications.  Then, any time records are changed using blueprint actions like **update**, Sails will [publish](TODO) certain notifications.
+Most blueprint actions have realtime features that take effect if your app has WebSockets enabled.  For example, if the **find** blueprint action receives a request from a socket client, it will [subscribe](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) that socket to future notifications.  Then, any time records are changed using blueprint actions like **update**, Sails will [publish](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) certain notifications.
 
 The best way to understand the behavior of a particular blueprint action is to read its [reference page](http://sailsjs.com/documentation/reference/blueprint-api) (or see the list above).  But if you're looking for more of a birds-eye view of how realtime features work in Sails's blueprint API, see [**Concepts > Realtime**](http://sailsjs.com/documentation/concepts/realtime).  (If you're OK with some details being out of date, you might even want to check out the [original "Intro to Sails.js" video from 2013](https://www.youtube.com/watch?v=GK-tFvpIR7c).)
 
@@ -28,7 +28,7 @@ The best way to understand the behavior of a particular blueprint action is to r
 
 ### Overriding blueprint actions
 
-You may also override any of the blueprint actions for a controller by defining a [custom action](http://sailsjs.com/documentation/concepts/actions-and-controllers) with the same name.  
+You may also override any of the blueprint actions for a controller by defining a [custom action](http://sailsjs.com/documentation/concepts/actions-and-controllers) with the same name.
 
 ```javascript
 // api/controllers/user/UserController.js
@@ -41,9 +41,9 @@ module.exports = {
    * associations: "company" and "friends".
    */
   findOne: function (req, res) {
-  
+
     sails.log.debug('Running custom `findOne` action.  (Will look up user #'+req.param(\'id\')...');
-    
+
     User.findOne({ id: req.param('id') }).omit(['password'])
     .populate('company', { select: ['profileImageUrl'] })
     .populate('top8', { omit: ['password'] })
@@ -56,11 +56,11 @@ module.exports = {
       }
 
       if (!userRecord) { return res.notFound(); }
-      
+
       if (req.isSocket) {
         User.subscribe(req, [user.id]);
       }
-     
+
       return res.ok({
         model: 'user',
         luckyCoolNumber: Math.ceil(10*Math.random()),
@@ -68,7 +68,7 @@ module.exports = {
       });
     });
   }
-  
+
 }
 ```
 

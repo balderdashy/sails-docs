@@ -4,7 +4,7 @@
 Model attributes are basic pieces of information about a model.  For example, a model called `Person` might have attributes named `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
 
 <!---
-TODO: address sql vs. no sql and stuff like:
+FUTURE: address sql vs. no sql and stuff like:
 """
 In most cases, this data is _homogenous_, meaning each record has the same attributes,
 """
@@ -119,7 +119,7 @@ For a complete list of high-level validation rules, see [Validations](http://sai
 
 <!--
 
-TODO: need ot move primary key out to the top-level (it's a model setting now)
+FUTURE: need ot move primary key out to the top-level (it's a model setting now)
 
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#1
 -->
@@ -281,7 +281,7 @@ commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#3
 
 
-TODO: move enum to validations page
+FUTURE: move enum to validations page
 
 
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#4

@@ -125,7 +125,7 @@ module.exports.policies = {
 
 <!--
 
-  TODO:
+  FUTURE:
 
 ### Advanced Express Middleware In Sails
 
