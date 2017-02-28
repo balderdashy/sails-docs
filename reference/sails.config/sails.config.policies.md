@@ -1,6 +1,6 @@
 # sails.config.policies
 <!--
-> TODO:
+> FUTURE:
 >
 > Merge most of the contents of this file into the main reference section on policies.
 > Include a simple config reference table (with only one row with property: `*`) explaining how
