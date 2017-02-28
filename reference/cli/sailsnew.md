@@ -22,11 +22,12 @@ To create a project called "testProject" in the `code/` folder:
 $ sails new code/testProject
 ```
 
-To create a project called "testProject" in the current folder:
+To create a sails project in the current folder:
 
 ```text
-$ sails new testProject
+$ sails new .
 ```
+> This will only work in an empty folder.
 
 ### Notes:
 > + `sails new` is really just a special [generator](http://sailsjs.com/documentation/concepts/extending-sails/Generators) which runs [`sails-generate-new`](http://github.com/balderdashy/sails-generate-new).  In other words, running `sails new foo` is an alias for running `sails generate new foo`, and like any Sails generator, the actual generator module which gets run can be overridden in your global `~/.sailsrc` file.
