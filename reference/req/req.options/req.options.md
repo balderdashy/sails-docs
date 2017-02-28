@@ -2,7 +2,7 @@
 
 `req.options` is a dictionary (plain JavaScript object) of request-agnostic settings available in your app's actions.
 
-The purpose of `req.options` is to allow an action's code to access its configured route options, if there are any.  (Simply put, "route options" are just any additional properties provided in a [route target](http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target).) 
+The purpose of `req.options` is to allow an action's code to access its configured route options, if there are any.  (Simply put, "route options" are just any additional properties provided in a [route target](http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target).)
 
 <!--
 FUTURE: pull out the rest of the content below to a new, separate page under **Concepts > Routes > Route options** and just link to it from in here rather than having all this exist inline.
@@ -16,7 +16,7 @@ FUTURE: pull out the rest of the content below to a new, separate page under **C
 
 Route options in Sails were originally devised as a more flexible way to configure built-in blueprint actions.
 
-Some special settings must always be provided to [certain blueprint actions](http://sailsjs.com/documentation/reference/blueprint-api).  This provides a way for your app to communicate which model/association a blueprint action should target.  For example, [`req.options.model`](TODO) is the identity of the model that a particular blueprint action should target.  And for blueprint actions that directly involve an association, [`req.options.alias`](TODO) indicates the name of the associating attribute.
+Some special settings must always be provided to [certain blueprint actions](http://sailsjs.com/documentation/reference/blueprint-api).  This provides a way for your app to communicate which model/association a blueprint action should target.  For example, `req.options.model` is the identity of the model that a particular blueprint action should target.  And for blueprint actions that directly involve an association, `req.options.alias` indicates the name of the associating attribute.
 
 You can take advantage of this in your app order to bind a blueprint action to an arbitrary custom route.  For example, consider the following custom route in [`config/routes.js`](http://sailsjs.com/documentation/anatomy/config/routes-js):
 
@@ -62,7 +62,7 @@ module.exports = function receiveEvent(req, res) {
   if (_.isUndefined(req.options.model) || !sails.models[req.options.model]) {
     return res.serverError(new Error('Invalid configuration: To use `github/receive-event`, please set this route's `model` to the identity of one of your app\'s models.  (Currently, it is `'+req.options.model+'`, which cannot be used.)'));
   }
-  
+
   var GitHubEventModel = sails.models[req.options.model];
   GitHubEventModel.create({
     raw: req.allParams(),
@@ -71,7 +71,7 @@ module.exports = function receiveEvent(req, res) {
     // ... etc. (see https://developer.github.com/webhooks/#events)
   }).exec(function(err) {
     if (err) { return res.serverError(err); }
-    
+
     return res.ok();
   });
 };
