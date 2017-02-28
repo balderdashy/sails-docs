@@ -102,6 +102,7 @@ Then send a GET request to the route you defined, and you'll get CSRF token retu
 ```
 
 > For security reasons, you can&rsquo;t retrieve a CSRF token via a socket request.  You can however _spend_ CSRF tokens (see below) via socket requests.
+> The `security/grant-csrf-token` action is not intended to be used in cross-origin requests, since some browsers block third-party cookies by default.  See the [CORS documentation](http://sailsjs.com/documentation/concepts/security/cors) for more info about cross-origin requests.
 
 
 
