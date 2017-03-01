@@ -14,6 +14,8 @@
 11. [How does the documentation end up on the Sails website?](http://sailsjs.com/faq#?how-does-the-documentation-end-up-on-the-sails-website)
 12. [Where is the documentation for the different releases of Sails?](http://sailsjs.com/faq#?where-is-the-documentation-for-the-different-releases-of-sails)
 
+<hr/>
+
 ### I'm having trouble installing Sails. What should I do?
 
 Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](http://sailsjs.com/documentation/contributing) and then create a GitHub issue in the Sails repo.
