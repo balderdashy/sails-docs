@@ -14,18 +14,18 @@ The following _core generators_ are bundled with Sails:
 
 |  Command                        | Details               |
 |:--------------------------------|:----------------------|
-| sails generate model            | Generate **api/models/Foo.js**, including attributes with the specified types if provided. 
-| sails generate action           | TODO
-| sails generate helper           | TODO
+| sails generate model            | Generate **api/models/Foo.js**, including attributes with the specified types if provided.
+| sails generate action           | Generate a standalone [action](http://sailsjs.com/documentation/concepts/actions-and-controllers/generating-actions-and-controllers#?generating-standalone-actions).
+| sails generate helper           | Generate a [helper](http://sailsjs.com/documentation/concepts/helpers) at **api/helpers/foo.js**.
 | sails generate controller       | Generate **api/controllers/FooController.js**, including actions with the specified names if provided.
-| sails generate hook             | TODO
-| sails generate generator        | Generate a **foo** folder containing the files necessary for building a new generator. 
-| sails generate response         | TODO
-| sails generate adapter          | Generate a **api/adapters/foo** folder containing the files necessary for building a new adapter. 
-| sails generate sails.io.js      | TODO
+| sails generate hook             | Generate a [project hook](http://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks) in **api/hooks/foo/**.
+| sails generate generator        | Generate a **foo** folder containing the files necessary for building a new generator.
+| sails generate response         | Generate a [custom response](sailsjs.com/documentation/concepts/extending-sails/custom-responses) at **api/responses/foo.js**
+| sails generate adapter          | Generate a **api/adapters/foo/** folder containing the files necessary for building a new adapter.
+| sails generate sails.io.js      | Generate a sails.io.js file at the specified location, overwriting the default sails.io.js if applicable.
 | _sails generate api_            | _Generate **api/models/Foo.js** and **api/controllers/FooController.js**._
 | _sails generate new_            | _Alias for [`sails new`](http://sailsjs.com/documentation/reference/cli/sails-new)._
-| _sails generate etc_            | **Experimental.** TODO: document
+| _sails generate etc_            | **Experimental.** Adds the following files to your app:<br/>&bull; .gitignore <br/>&bull; .jshintrc <br/>&bull; .editorconfig <br/>&bull; .npmignore <br/>&bull; .travis.yml <br/>&bull; .appveyor.yml
 
 
 > TODO: finish documenting these https://github.com/balderdashy/sails-generate/tree/e845c44a4294adf86d52b22be2211edcbd4a2fe5/lib/core-generators
