@@ -29,7 +29,7 @@ sails generate controller <foo> --coffee
 # Generate api/controllers/FooController.coffee
 ```
 
-Thats it, now you can write your code using Coffeescript!
+That's it, now you can write your code using Coffeescript!
 
 
 <docmeta name="displayName" value="sails generate">
