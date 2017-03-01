@@ -14,7 +14,7 @@ By default, this still lifts the server, so your routes will be accessible via H
 
 ### Example
 
-```bash
+```text
 $ sails console
 
 info: Starting app in interactive mode...
@@ -46,7 +46,7 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 >
 > Or alternatively, build yourself a local variable to use for familiarity:
 >
-> ```bash
+> ```text
 > sails> var lodash = sails.util._;
 > sails> lodash.keys(sails.config);
 > ```
@@ -59,7 +59,7 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
-```bash
+```text
 sails> User.create({name: 'Brian', password: 'sailsRules'}).meta({fetch: true}).exec(console.log)
 undefined
 sails> undefined { name: 'Brian',
@@ -73,7 +73,7 @@ Pretty cool, it inserts it into the database. However, you might be noticing the
 
 > Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
 >
-> ```
+> ```text
 > sails> undefined RowDataPacket { name: 'Brian',
 >   password: 'sailsRules',
 >   createdAt: "2014-08-07T04:29:21.447Z",
@@ -85,7 +85,7 @@ Pretty cool, it inserts it into the database. However, you might be noticing the
 
 In sails console, type in `sails` to view a list of sails properties. You can use this to learn more about sails, override properties, or check to see if you disabled globals.
 
-```bash
+```text
 sails> sails
   |>   [a lifted Sails app on port 1337]
 \___/  For help, see: http://sailsjs.com/documentation/concepts/
