@@ -16,7 +16,7 @@ Sails ships with several *generators* to help you scaffold new projects.  You ca
 
 ### Coffeescript support
 
-If you want to use Coffeescript for write your controllers or models even config files; just follow these steps:
+If you want to use Coffeescript to write your controllers, models or config files, just follow these steps:
  1. Install Coffeescript locally and save it in your `package.json` file:
 ```bash
 npm install --save coffee-script
