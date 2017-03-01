@@ -1,61 +1,24 @@
 # Frequently Asked Questions
 
-### How does the documentation end up on the Sails website?
-
-The documentation is compiled from the markdown files in the [`sails-docs` repo on github](https://github.com/balderdashy/sails-docs). A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [doc-templater](https://github.com/uncletammy/doc-templater) module for more information.
-
-
-### Where is the documentation for the different releases of Sails?
-The [documentation on the main website](http://sailsjs.com/documentation) is for the latest stable npm release of Sails, and is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs) (Master is sometimes a few commits ahead, but any critical documentation updates make it onto the website within a day or two.)
-
-For older releases of Sails that are still widely used, the documentation is compiled from the relevant `sails-docs` branches and hosted on the following subdomains:
-+ [0.12.sailsjs.com](http://0.12.sailsjs.com/)
-+ [0.11.sailsjs.com](http://0.11.sailsjs.com/)
-
-
-### How do I get involved?
-
-There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/documentation/contributing) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
-
-
-### Where do I submit ideas?  Report issues?
-
-The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](http://sailsjs.com/documentation/contributing) before you create an issue, submit a proposal, or begin working on pull request.
-
-
-### What version of Sails should I use?
-
-[![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
-
-Unless you are a contributor running a pre-release version of the framework in order to do some testing or work on core, you should use the latest stable version of Sails from NPM (click the badge above).  Installing is easy- just follow [these instructions](http://sailsjs.com/get-started).
-
-> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --force`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force && npm install`.
-
-If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
-
-Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
-
-For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](http://sailsjs.com/documentation/contributing).
-
+<!-- TODO: table of contents -->
 
 ### I'm having trouble installing Sails. What should I do?
 
 Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki/Troubleshooting).  If you continue to have problems, and you've tried Google searching but you're still stumped, please carefully review the updated Sails [contribution guide](http://sailsjs.com/documentation/contributing) and then create a GitHub issue in the Sails repo.
 
 
-
 ### What are the dependencies of Sails?
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails' dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
+We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails's dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
 
-Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, and built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  Out of the box, it also depends on other great modules, like `grunt`, `waterline`, and `fs-extra`.  Click the badge above for the full list of dependencies.
+Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, though we recommend using at least Node v4.0.0.  The framework is built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  Out of the box, it also depends on other great modules, like `grunt`, `waterline`, and `fs-extra`.  Click the badge above for the full list of dependencies in the latest stable release of Sails core.
 
+> **Sails Flagship users:** We manually verify every dependency of Sails and other officially-maintained modules by hand, every single week.  This includes core hooks, adapters, generators, client SDKs, and Flagship packages.   We regularly send security/compatibility reports about dependencies to the primary email address associated with your account.  If you'd like additional people on your team to receive these reports, no problem!  Just [let us know](https://flagship.sailsjs.com/ask) their email addresses and we'll get them set up.  _(These email addresses will also receive communications about patches, shrinkwrap updates, and compatibility notices.)_
 
-### Where do I get help?
+If you have questions or concerns about our dependencies, [talk to a core team member](http://sailsjs.com/contact).  _Please do not submit a pull request changing the version of a dependency without first (1) checking that dependency's changelog, (2) verifying compatibility, and (3) [submitting an accompanying PR to update **roadstead**](https://github.com/treelinehq/roadstead/edit/master/constants/verified-releases.type.js), our dependency wallah._
 
-Aside from the [official documentation](http://sailsjs.com/documentation), be sure and check out the [Support page on the Sails website](http://sailsjs.com/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action). If you're a [Flagship support](http://sailsjs.com/flagship) member, you can submit a ticket [here](http://flagship.sailsjs.com/new-ticket).
 
 ### Who else is using Sails.js?
 
@@ -65,14 +28,29 @@ You can see some examples [here](http://sailsjs.com/#?using-sails) of companies 
 
 ### Are there professional support options?
 
-The Sails Company (the core maintainers of the framework) offers custom development, services, training, and support for teams building applications on Sails.
+[The Sails Company](http://sailsjs.com/studio) offers custom development, services, training, enterprise-class products, and support for teams building applications on Sails.
 
-##### [Studio](http://sailsjs.com/studio)
-Our studio provides enterprise-class development services for startups, SMBs, and the Fortune 500. As you might expect, our team has done a lot of custom Sails+Node.js development, but we also have experience across the full stack, including: advanced interaction design, practical/scalable development of huge HTML 5 applications, and building rich user experiences across many different devices and screen resolutions. If you're interested in working with us on your next project, [drop us a line](http://sailsjs.com/studio#?contact).
+##### Partner with us
+Our studio provides development services for startups, SMBs, and the Fortune 500. As you might expect, the Sails core team has done a lot of custom Sails/Node.js development, but we also have experience across the full stack, including: advanced interaction design, practical/scalable JavaScript development practices for huge applications, and building rich user experiences across many different devices and screen resolutions.
+
+We can build your app and API from scratch, modernize your legacy web platform, or catalyze the development efforts of your established team.  If you're interested in working with us on your next project, [drop us a line](http://sailsjs.com/studio#?contact).
+
+##### Sails Flagship for Enterprise
+Sails Flagship is a platform on top of Sails which provides a suite of additional services, production-quality accoutrements, and support for enterprise use cases.  This includes early access to new features and enhancements, a license for our internal tools, as well as exclusive reports and best-practice guides created by core maintainers.  To learn more, [set up a call](http://sailsjs.com/contact) _(or [purchase online now](http://sailsjs.com/flagship/plans))_.
+
+> In 2017, we are actively expanding this product offering with new additions and official re-releases of some formerly-experimental modules.  If you have specific suggestions/requests for new Flagship packages, please [let us know](http://flagship.sailsjs.com/contact).
+
+##### Professional support / SLAs
+The Sails Company also provides a lifeline for organizations using Sails to build their products. If you need guaranteed support in the event of a critical production issue, or just want an extra pair of eyes looking out for your code base during development, take a look at our [basic subscriptions](http://sailsjs.com/flagship/plans), or [contact us](https://flagship.sailsjs.com/contact) and we'll give you a call.
 
 
-##### [Sails Flagship](http://sailsjs.com/flagship)
-We created Sails Flagship as a lifeline for companies using Sails to build their products. If you need help with a critical technical issue, or just want an extra pair of eyes looking out for your code base, take a look at our [support subscriptions](http://sailsjs.com/flagship/plans), or [contact us](https://flagship.sailsjs.com/contact) to learn more.
+
+### Where do I get help?
+
+Aside from the [official documentation](http://sailsjs.com/documentation), be sure and check out the [recommended support options on the Sails website](http://sailsjs.com/support), and pop in to our [Gitter chat room](https://gitter.im/balderdashy/sails).  If you're stumped, make sure and [ask a question on StackOverflow](http://stackoverflow.com/questions/ask), where there's an [active Sails community](http://stackoverflow.com/questions/tagged/sailsjs?sort=newest&days=30).  Members of our core team recently taught a [free video course](https://courses.platzi.com/courses/develop-apps-sails-js/) on [Platzi](http://platzi.com) and wrote [a book](https://www.manning.com/books/sails-js-in-action).
+
+> If you're using [Sails Flagship](http://sailsjs.com/faq#?are-there-professional-support-options), you can contact the core team [here](http://flagship.sailsjs.com/ask).
+
 
 
 ### What are some good community tutorials?
@@ -156,7 +134,7 @@ Thanks!
 + [Presentation at Smart City Conference & Expo 2015](http://www.goodxense.com/blog/post/our-presentation-at-smart-city-conference-expo-2015/) (George Lu & YJ Yang)
 + Sails.js, Treeline and the future of programming  ([Article](https://courses.platzi.com/blog/sails-js-creator-mike-mcneil-on-treeline-and-frameworks/) | [Video](https://www.youtube.com/watch?v=nZKG7hLhbRs) | [Deck](https://speakerdeck.com/mikermcneil/what-even-is-software))
 + [Radio interview with Mike McNeil w/ ComputerAmerica's Craig Crossman](https://www.youtube.com/watch?v=ERIvf2iUj5U&feature=youtu.be)
-+ [UI-First API Design & Development: Apigee's I <3 APIs, San Francisco, 2015](https://speakerdeck.com/mikermcneil/i-love-apis)
++ [UI-First API Design & Development: Apigee's I &hearts; APIs, San Francisco, 2015](https://speakerdeck.com/mikermcneil/i-love-apis)
 + [Choosing the right framework for Node.js development](https://jaxenter.com/choosing-the-right-framework-for-node-js-development-126432.html)
 + [TechCrunch: Our 10 Favorite Companies From Y Combinator Demo Day](https://techcrunch.com/gallery/our-10-favorite-companies-from-y-combinator-demo-day-day-1/slide/11/)
 + [Sails.js used on the website for the city of Paris](https://twitter.com/parisnumerique/status/617999231182176256)
@@ -189,5 +167,42 @@ Thanks!
 + [New web design tools that you need to check out](http://www.designyourway.net/blog/resources/new-web-design-tools-that-you-need-to-check-out/)
 + [Live code Sails.js avec Mike McNeil](http://www.weezevent.com/live-code-sailsjs-avec-mike-mcneil)
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
+
+
+### Where do I submit ideas?  Report bugs?
+
+The Sails project tracks bug reports in GitHub issues and uses pull requests for feature proposals.  Please read the [contribution guide](http://sailsjs.com/documentation/contributing) before you create an issue, submit a proposal, or begin working on pull request.
+
+
+### What version of Sails should I use?
+
+[![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)
+
+Unless you are a contributor running a pre-release version of the framework in order to do some testing or work on core, you should use the latest stable version of Sails from NPM (click the badge above).  Installing is easy- just follow [these instructions](http://sailsjs.com/get-started).
+
+> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --force`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force && npm install`.
+
+If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
+
+Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
+
+For more instructions on installing the beta and edge versions of Sails, check out the [contribution guide](http://sailsjs.com/documentation/contributing).
+
+
+### How do I get involved?
+
+There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/documentation/contributing) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
+
+### How does the documentation end up on the Sails website?
+
+The documentation is compiled from the markdown files in the [`sails-docs` repo on github](https://github.com/balderdashy/sails-docs). A number of Sails users have expressed interest in emulating the process we use to generate the pages on the Sails website.  Good news is it's pretty simple:  The compilation process for the Sails docs involves generating HTML from Markdown files in the sails-docs repo, then performing some additional transformations such as adding data type bubbles, tagging permalinks for individual sections of pages, building JSON data to power the side navigation menu and setting HTML `<title>` attributes for better search engine discoverability of individual doc pages.  See the [doc-templater](https://github.com/uncletammy/doc-templater) module for more information.
+
+
+### Where is the documentation for the different releases of Sails?
+The [documentation on the main website](http://sailsjs.com/documentation) is for the latest stable npm release of Sails, and is mirrored by the [master branch of the `sails-docs` repo on github](https://github.com/balderdashy/sails-docs) (Master is sometimes a few commits ahead, but any critical documentation updates make it onto the website within a day or two.)
+
+For older releases of Sails that are still widely used, the documentation is compiled from the relevant `sails-docs` branches and hosted on the following subdomains:
++ [0.12.sailsjs.com](http://0.12.sailsjs.com/)
++ [0.11.sailsjs.com](http://0.11.sailsjs.com/)
 
 
