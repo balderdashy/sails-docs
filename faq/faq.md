@@ -3,7 +3,7 @@
 ### Table of Contents
 1. [I'm having trouble installing Sails. What should I do?](http://sailsjs.com/faq#?im-having-trouble-installing-sails-what-should-i-do)
 2. [What are the dependencies of Sails?](http://sailsjs.com/faq#?what-are-the-dependencies-of-sails)
-3. [Who else is using Sails.js?](http://sailsjs.com/faq#?who-else-is-using-sails-js)
+3. [Who else is using Sails.js?](http://sailsjs.com/faq#?who-else-is-using-sailsjs)
 4. [Are there professional support options?](http://sailsjs.com/faq#?are-there-professional-support-options)
 5. [Where do I get help?](http://sailsjs.com/faq#?where-do-i-get-help)
 6. [What are some good community tutorials?](http://sailsjs.com/faq#?what-are-some-good-community-tutorials)
