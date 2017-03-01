@@ -1,6 +1,18 @@
 # Frequently Asked Questions
 
-<!-- TODO: table of contents -->
+### Table of Contents
+1. [I'm having trouble installing Sails. What should I do?](http://sailsjs.com/faq#?im-having-trouble-installing-sails-what-should-i-do)
+2. [What are the dependencies of Sails?](http://sailsjs.com/faq#?what-are-the-dependencies-of-sails)
+3. [Who else is using Sails.js?](http://sailsjs.com/faq#?who-else-is-using-sails-js)
+4. [Are there professional support options?](http://sailsjs.com/faq#?are-there-professional-support-options)
+5. [Where do I get help?](http://sailsjs.com/faq#?where-do-i-get-help)
+6. [What are some good community tutorials?](http://sailsjs.com/faq#?what-are-some-good-community-tutorials)
+7. [How can I convince the other girls/guys on my team?](http://sailsjs.com/faq#?how-can-i-convince-the-other-girls-guys-on-my-team)
+8. [Where do I submit ideas?  Report bugs?](http://sailsjs.com/faq#?where-do-i-submit-ideas-report-bugs)
+9. [What version of Sails should I use?](http://sailsjs.com/faq#?what-version-of-sails-should-i-use)
+10. [How do I get involved?](http://sailsjs.com/faq#?how-do-i-get-involved)
+11. [How does the documentation end up on the Sails website?](http://sailsjs.com/faq#?how-does-the-documentation-end-up-on-the-sails-website)
+12. [Where is the documentation for the different releases of Sails?](http://sailsjs.com/faq#?where-is-the-documentation-for-the-different-releases-of-sails)
 
 ### I'm having trouble installing Sails. What should I do?
 
