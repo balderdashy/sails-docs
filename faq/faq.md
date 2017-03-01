@@ -22,9 +22,7 @@ If you have questions or concerns about our dependencies, [talk to a core team m
 
 ### Who else is using Sails.js?
 
-> Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature).
-
-You can see some examples [here](http://sailsjs.com/#?using-sails) of companies that have used Sails for their projects. This small list is definitely not authoritative, so if you're using Sails in your app/product/service, [we'd love to hear about it](http://sailsjs.com/contact)!
+Sails is used in production by individuals and companies, non-profits, and government entities all over the world, for all sorts of projects (greenfield and mature).  You can see some examples [here](http://sailsjs.com/#?using-sails) of companies that have used Sails for their projects. (This small list is definitely not authoritative, so if you're using Sails in your app/product/service, [we'd love to hear about it](http://sailsjs.com/contact)!
 
 ### Are there professional support options?
 
