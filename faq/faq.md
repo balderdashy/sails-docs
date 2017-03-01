@@ -25,7 +25,7 @@ Start with NPM's helpful [troubleshooting guide](https://github.com/npm/npm/wiki
 
 [![Dependency Status](https://david-dm.org/balderdashy/sails.png)](https://david-dm.org/balderdashy/sails)
 
-We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails's dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
+We have learned again and again over the years to take versioning of dependencies very seriously.  We lock Sails's dependency versions and only bump those versions if the associated updates fix a security issue or present other substantive advantages to Sails users (improved compatibility, performance, etc.)  In addition, the core maintainers of Sails are committed to fixing any major security, performance, or stability bugs that arise in any of our core dependencies-- regardless of whether those modules are [officially maintained by another entity or not](https://github.com/balderdashy/sails/pull/3235#issuecomment-170417122).
 
 Sails is tested with [node](http://nodejs.org/) versions 0.10.x and up, though we recommend using at least Node v4.0.0.  The framework is built on the rock-solid foundations of [Express](https://github.com/expressjs/) and [Socket.io](http://socket.io/).  Out of the box, it also depends on other great modules, like `grunt`, `waterline`, and `fs-extra`.  Click the badge above for the full list of dependencies in the latest stable release of Sails core.
 
@@ -134,7 +134,7 @@ Thanks!
 ##### Articles / interviews / press releases / whitepapers / talks
 
 > + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md).  We'll check it out!
-> + If you are a company interested in doing a press release about Sails, please contact @mikermcneil on Twitter (and er.. remind him if necessary!)  We'll do what we can to help.
+> + If you are a company interested in doing a press release about Sails, please contact [@mikermcneil](https://twitter.com/mikermcneil) on Twitter.  We'll do what we can to help.
 
 + [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
 + [InfoWorld: Why Node.js beats Java and .Net for web, mobile, and IoT apps](http://www.infoworld.com/article/2975233/javascript/why-node-js-beats-java-net-for-web-mobile-iot-apps.html) _(Speed, scalability, productivity, and developer politics all played a role in [AnyPresence](http://anypresence.com)’s selection of Sails.js/Node.js for its enterprise development platform)_
@@ -203,7 +203,7 @@ For more instructions on installing the beta and edge versions of Sails, check o
 
 ### How do I get involved?
 
-There are many different ways to contibute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/documentation/contributing) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
+There are many different ways to contribute to Sails; for example you could help us improve the [official documentation](https://github.com/balderdashy/sails-docs), write a [plugin](http://sailsjs.com/documentation/concepts/extending-sails), answer [StackOverflow questions](http://stackoverflow.com/questions/tagged/sails.js), start a Sails meetup, help troubleshoot GitHub issues, write some tests, or submit a patch to Sails core or one of its dependencies.  Please look through the [contribution guide](http://sailsjs.com/documentation/contributing) before you get started. It's a short read that covers guidelines and best practices that ensure your hard work will have the maximum impact.
 
 ### How does the documentation end up on the Sails website?
 
