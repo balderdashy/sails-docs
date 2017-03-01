@@ -17,14 +17,8 @@ Sails ships with several *generators* to help you scaffold new projects.  You ca
 ### Coffeescript support
 
 If you want to use Coffeescript to write your controllers, models or config files, just follow these steps:
- 1. Install Coffeescript locally and save it in your `package.json` file:
-```bash
-npm install --save coffee-script
-```
- 2. Install the generators for Coffeescript (optional):
-```bash
-npm install --save-dev sails-generate-controller-coffee sails-generate-model-coffee
-```
+ 1. Install Coffeescript locally and save it in your `package.json` file: <br/>`npm install --save coffee-script`
+ 2. Install the generators for Coffeescript (optional): <br/>`npm install --save-dev sails-generate-controller-coffee sails-generate-model-coffee`
  3. To generate scaffold code, add `--coffee`:
 ```bash
 sails generate api <foo> --coffee
