@@ -114,7 +114,7 @@ findWithSameNameAsPerson: function (opts, cb) {
       return cb(err);
     }
 
-    Monkey.findByName(person.name)
+    Monkey.find({ name: person.name })
     .exec(function (err, monkeys){
       if (err) return cb(err);
       cb(null, monkeys);
@@ -133,44 +133,6 @@ Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
-
-Another example:
-
-```javascript
-// api/models/User.js
-module.exports = {
-
-  attributes: {
-
-    name: {
-      type: 'string'
-    },
-    enrolledIn: {
-      collection: 'Course', via: 'students'
-    }
-  },
-
-  /**
-   * Enrolls a user in one or more courses.
-   * @param  {Object}   options
-   *            => courses {Array} list of course ids
-   *            => id {Integer} id of the enrolling user
-   * @param  {Function} cb
-   */
-  enroll: function (options, cb) {
-
-    User.findOne(options.id).exec(function (err, theUser) {
-      if (err) return cb(err);
-      if (!theUser) return cb(new Error('User not found.'));
-      theUser.enrolledIn.add(options.courses);
-      theUser.save(cb);
-    });
-  }
-};
-```
-
-
-
 
 ##### What about instance methods?
 
