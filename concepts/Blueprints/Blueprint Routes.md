@@ -1,6 +1,6 @@
 # Blueprint routes
 
-When you run `sails lift` with blueprints enabled, the framework inspects your models and configuration in order to [bind certain routes](http://sailsjs.com/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadow routes", or even just "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  By default, the blueprint routes point to their corresponding blueprint *actions* (see "Blueprint Actions" below), any of which can be overridden with custom code.
+When you run `sails lift` with blueprints enabled, the framework inspects your models and configuration in order to [bind certain routes](http://sailsjs.com/documentation/concepts/Routes) automatically. These implicit blueprint routes (sometimes called "shadow routes", or even just "shadows") allow your app to respond to certain requests without you having to bind those routes manually in your `config/routes.js` file.  When enabled, the blueprint routes point to their corresponding blueprint *actions* (see "Action routes" below), any of which can be overridden with custom code.
 
 There are four types of blueprint routes in Sails:
 
@@ -55,15 +55,18 @@ Shortcut routes are enabled by default, and are very handy for development, but 
 
 Action routes automatically create routes for your custom controller actions, and speed up the backend development workflow by eliminating the need to manually bind routes. When enabled, GET, POST, PUT, and DELETE routes will be generated for every one of a controller's actions.
 
-For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as blueprint action routes are enabled.  Unlike RESTful and shortcut routes, action routes do *not* require that a controller has a corresponding model file.
+For example, if you have a `FooController.js` file with a `bar` method, then a `/foo/bar` route will automatically be created for you as long as `sails.config.blueprints.actions` is enabled.  Unlike RESTful and shortcut shadows, implicit, per-action shadow routes do *not* require that a controller has a corresponding model file.
 
 If an `index` action exists, additional naked routes will be created for it. Finally, all `actions` blueprints support an optional path parameter, `id`, for convenience.
 
-`actions` are enabled by default, and can be OK for production-- however, if you'd like to continue to use controller/action autorouting in a production deployment, you must take great care not to inadvertently expose unsafe/unintentional controller logic to GET requests.
-#### Index routes
+`actions` are disabled by default. They can be OK for production-- however, if you'd like to continue to use controller/action autorouting in a production deployment, you must take great care not to inadvertently expose unsafe/unintentional controller logic to GET requests.
 
-Index routes automatically create &ldquo;root&rdquo; routes for specific actions named `index`.  For example, if you have a `FooController.js` file with an `index` action in it, a `/foo` route will automatically be bound to that action.  If you have a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) at `api/controllers/index.js`, a `/` route will be bound to it.
+##### Index routes
 
-See the [blueprints subsection of the configuration reference](http://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different blueprint route types.
+When action shadows (`sails.config.blueprints.actions`) are enabled, an additional "root" shadow route is automatically exposed for actions named `index`.  For example, if you have a `FooController.js` file with an `index` action in it, a `/foo` shadow route will automatically be bound for that action.  Similarly, if you have a [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) at `api/controllers/foo/index.js`, a `/foo` route will be exposed automatically on its behalf.
+
+See the [blueprints subsection of the configuration reference](http://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html) for blueprint configuration options, including how to enable / disable different categories of blueprint routes.
+
+> Note:  There is a special exception for top-level standalone actions.  For example, if you have a standalone action at `api/controllers/index.js`, it will be bound to a `/` shadow route automatically.
 
 <docmeta name="displayName" value="Blueprint routes">
