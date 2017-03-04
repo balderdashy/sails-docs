@@ -41,6 +41,16 @@ The final special-case is a back redirect, which allows you to redirect a reques
 return res.redirect('back');
 ```
 
+### Socket.io
+
+You cannot use res.redirect from a Socket.io originated request (see notes).
+If you want to send a 302 to a socket.io:
+
+```javascript
+res.writeHead(302, {'Location': 'http://google.com'})
+return res.end();
+```
+
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 > + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
@@ -48,6 +58,7 @@ return res.redirect('back');
 > + If a request originated from a Socket.io client, it always "wants JSON".  If you do call `res.redirect(http://sailsjs.com/documentation/reference/res/res.redirect.html)` for a socket request, Sails reroutes the request internally on the server, effectively "forcing" the redirect to take place (i.e. instead of sending a 302 status code, the server simply creates a new request to the redirect URL).
 >  + As a result, redirects to external domains are not supported for socket requests (although this is technically possible by proxying).
 >  + This behavior may change to more closely reflect HTTP in future versions of Sails.
+>  + If .
 > + If you want to send a custom status code along with a redirect, you can chain the following functions, res.status() and res.redirect(): `return res.status(301).redirect('/foo');`
 
 
