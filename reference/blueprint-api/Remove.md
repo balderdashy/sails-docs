@@ -29,7 +29,7 @@ Say you're building an app for a small chain of grocery stores.  Each store has 
 
 Let's say that, as a part of this scheduled job, we send a request to remove Dolly (employee #7) from store #16's `employeesOfTheMonth`:
 
-```
+```text
 DELETE /store/16/employeesOfTheMonth/7
 ```
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)

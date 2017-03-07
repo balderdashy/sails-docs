@@ -31,7 +31,7 @@ If the action was triggered via a socket request, the requesting socket will be 
 
 Find up to 30 of the newest purchases in our database:
 
-```javascript
+```text
 GET /purchase?sort=createdAt DESC&limit=30
 ```
 

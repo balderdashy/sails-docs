@@ -27,7 +27,9 @@ If the specified association is plural ("collection"), this action returns the l
 
 Populate the `cashier` who conducted purchase #47:
 
+```text
 `GET /purchase/47/cashier`
+```
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 

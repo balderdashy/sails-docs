@@ -34,12 +34,12 @@ GET /purchase/1
 
 ##### Expected Response
 
- ```js
+ ```json
  {
-   amount: 49.99,
-   id: 1,
-   createdAt: 1485551132315,
-   updatedAt: 1485551132315
+   "amount": 49.99,
+   "id": 1,
+   "createdAt": 1485551132315,
+   "updatedAt": 1485551132315
  }
  ```
 
