@@ -52,7 +52,7 @@ previous: <a dictionary of the attribute values of the destroyed record (includi
 
 For instance, continuing the example above, all clients subscribed to `User` #4 (_except_ for the client making the request) might receive the following message:
 
-```json
+```js
 id: 4,
 verb: 'destroyed',
 previous: {
