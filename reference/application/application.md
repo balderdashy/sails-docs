@@ -75,7 +75,7 @@ var sails2 = new Sails();
 Each app instance (`sails0`, `sails1`, `sails2`) can be loaded/lifted separately,
 using different configuration.
 
-For more on using Sails programatically, see the conceptual overview on [programatic usage in Sails](http://sailsjs.com/documentation/concepts/programmatic-usage).
+For more on using Sails programatically, see the conceptual overview on [programmatic usage in Sails](http://sailsjs.com/documentation/concepts/programmatic-usage).
 
 
 <docmeta name="displayName" value="Application">
