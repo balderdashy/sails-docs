@@ -274,7 +274,7 @@ Person.marry([joe,raquel], function (err) {
 
 
 ###### Naming your attribute methods
-Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" ou "is*" (e.g. `getFullName()` or `isMarried()`) prefix and avoid writing attribute methods that change records in-place.
+Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" or "is*" (e.g. `getFullName()` or `isMarried()`) prefix and avoid writing attribute methods that change records in-place.
 
 <!--
 
