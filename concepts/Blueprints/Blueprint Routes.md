@@ -7,7 +7,7 @@ There are four types of blueprint routes in Sails:
 ### RESTful routes
 REST blueprints are the automatically generated routes Sails uses to expose a conventional REST API for a model, including `find`, `create`, `update`, and `destroy` actions. The path for RESTful routes is always `/:modelIdentity` or `/:modelIdentity/:id`.  These routes use the HTTP "verb" to determine the action to take.
 
-For example, with `rest` enabled, having a `Boat` model in your app generates the following routes:
+For example, with [`rest`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?routerelated-settings) enabled, having a `Boat` model in your app generates the following routes:
 
 + **GET /boat** -> find boats matching criteria provided on the query string, using the [`find` blueprint](http://sailsjs.com/documentation/reference/blueprint-api/find-where).
 + **GET /boat/:id** -> find a single boat with the given unique ID (i.e. primary key) value, using the [`findOne` blueprint](http://sailsjs.com/documentation/reference/blueprint-api/find-one).

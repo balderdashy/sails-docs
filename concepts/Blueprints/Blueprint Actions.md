@@ -2,7 +2,7 @@
 
 Blueprint actions (not to be confused with implicit [blueprint "action" _routes_](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?action-routes)) are generic actions designed to work with your models.  Think of them as the default behavior for your application.  For instance, if you have a `User.js` model then `find`, `create`, `update`, `destroy`, `populate`, `add` and `remove` actions exist implicitly, without you having to write them.
 
-By default, the blueprint RESTful routes and shortcut routes are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).
+By default, the blueprint [RESTful routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?restful-routes) and [shortcut routes](http://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?shortcut-routes) are bound to their corresponding blueprint actions.  However, any blueprint action can be overridden for a particular controller by creating a custom action in that controller file (e.g. `ParrotController.find`).
 
 The current version of Sails ships with the following blueprint actions:
 
