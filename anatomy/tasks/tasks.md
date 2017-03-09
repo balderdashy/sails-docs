@@ -1,6 +1,6 @@
 # tasks/
 
-The `tasks/` directory is a suite of Grunt tasks and their configurations, bundled for your convenience.  The Grunt integration is mainly useful for bundling front-end assets, (like stylesheets, scripts, & markup templates) but it can also be used to run all kinds of development tasks, from browserify compilation to database migrations.
+The `tasks/` directory is a suite of Grunt tasks and their configurations, bundled for your convenience.  The Grunt integration is mainly useful for bundling front-end assets (like stylesheets, scripts and markup templates), but it can also be used to run all kinds of development tasks, from browserify compilation to database migrations.
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, read on!
 
@@ -40,14 +40,14 @@ You can modify, omit, or replace any of these Grunt tasks to fit your requiremen
 
 ### Do I have to use Grunt?
 
-Nope! To disable Grunt integration in Sails, just delete your Gruntfile or disable the Grunt hook.
+Nope! To disable Grunt integration in Sails, just delete your Gruntfile or [disable the Grunt hook](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).
 
 
 ### What if I'm not building a web frontend?
 
 That's ok! A core tenant of Sails is client-agnosticism-- it's especially designed for building APIs used by all sorts of clients; native Android/iOS/Cordova, serverside SDKs, etc.
 
-You can completely disable Grunt by following the instructions above.
+You can completely disable Grunt by following the instructions [here](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).
 
 If you still want to use Grunt for other purposes, but don't want any of the default web front-end stuff, just delete your project's `assets` folder and remove the front-end oriented tasks from the `grunt/register` and `grunt/config` folders.  You can also run `sails new myCoolApi --no-frontend` to omit the `assets` folder and front-end-oriented Grunt tasks for future projects.  You can also replace your `sails-generate-frontend` module with alternative community generators, or create your own.  This allows `sails new` to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.
 
