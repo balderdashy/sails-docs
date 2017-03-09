@@ -1,10 +1,15 @@
 # Middleware
 
-Sails is fully compatible with Express / Connect middleware - in fact, it's all over the place!  Much of the code you'll write in Sails is effectively middleware, or at least inspired by it; most notably [controller actions](http://sailsjs.com/documentation/concepts/Controllers?q=actions) and [policies](http://sailsjs.com/documentation/concepts/policies).
+Technically, much of the code you&rsquo;ll write in a Sails app is _middleware_, in that runs in between the incoming request and the outgoing response -- that is, in the "middle" of the request/response stack.  In an MVC framework, the term &ldquo;middleware&rdquo; typically refers more specifically to code that runs _before_ or _after_ your route-handling code (i.e. your [controller actions](http://sailsjs.com/documentation/concepts/Controllers?q=actions)), making it possible to apply the same piece of code to multiple routes or actions.  Sails has robust support for the middleware design pattern.  Depending on your needs, you may choose to implement:
+
+* HTTP middleware (to apply code before _every_ HTTP request -- see below for more details)
+* [Policies](http://sailsjs.com/documentation/concepts/policies) (to apply code before one or more controller actions)
+* [Hooks with the `routes` feature implemented](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/routes) (to apply code before one or more route handlers)
+* [Custom responses](http://sailsjs.com/documentation/concepts/custom-responses) (to apply code after one or more controller actions)
 
 ### HTTP middleware
 
-Sails also utilizes a configurable _middleware stack_, just for handling HTTP requests.  Each time your app receives an HTTP request, the configured HTTP middleware stack runs in order.
+Sails is fully compatible with Express / Connect middleware, which are functions that accept `req`, `res` and `next` as arguments.  Every app utilizes a configurable _middleware stack_, just for handling HTTP requests.  Each time the app receives an HTTP request, its configured HTTP middleware stack runs in order.
 
 > Note that this HTTP middleware stack is only used for "true" HTTP requests-- it is ignored for **virtual requests** (e.g. requests from a live Socket.io connection.)
 
