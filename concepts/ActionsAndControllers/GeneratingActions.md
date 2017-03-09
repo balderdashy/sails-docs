@@ -27,10 +27,42 @@ module.exports = {
 
 ### Generating standalone actions
 
-Run the following command to generate a standalone action, using the higher-level _actions2_ interface:
+Run the following command to generate a standalone action:
 
 ```sh
 $ sails generate action user/signup
+info: Created a new action!
+```
+
+Sails will create `api/controllers/user/sign-up.js`:
+
+```javascript
+/**
+ * Module dependencies
+ */
+
+// ...
+
+
+/**
+ * user/signup.js
+ *
+ * Signup user.
+ */
+module.exports = function signup(req, res) {
+
+  sails.log.debug('TODO: implement');
+  return res.ok();
+
+};
+```
+
+Or, using the higher-level _actions2_ interface:
+
+```sh
+$ sails generate action user/signup --actions2
+debug: Using "actions2"...
+debug: (see http://sailsjs.com/docs/concepts/actions)
 info: Created a new action!
 ```
 
