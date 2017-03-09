@@ -4,6 +4,8 @@ A set of datastore configurations which tell Sails where to fetch or save data w
 
 > This file is mainly useful for configuring your development database, as well as any additional one-off databases used by individual models.
 
-You can learn more about configuring datastores [here](http://sailsjs.com/config/datastores).
+### Usage
+
+See [`sails.config.datastores`](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores) for all available options.
 
 <docmeta name="displayName" value="datastores.js">

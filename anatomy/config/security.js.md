@@ -9,5 +9,9 @@ For a conceptual explanation of CORS in Sails, see [Security > CORS](sailsjs.com
 
 For a conceptual explanation of CSRF in Sails, see [Security > CSRF](sailsjs.com/documentation/concepts/security/csrf).
 
+### Usage
+
+See [`sails.config.security`](http://sailsjs.com/documentation/reference/configuration/sails-config-security) for all available options.
+
 
 <docmeta name="displayName" value="security.js">

@@ -8,7 +8,10 @@ When you first generate your Sails app, there is only one route in this file.  I
 
 You'll probably want to add some more.
 
-
 > Sails also injects _shadow routes_, or implicit routes that handle certain kinds of requests behind the scenes.  For more information about these kinds of routes, see **[Concepts > Blueprints](http://sailsjs.com/documentation/concepts/blueprints)**.
+
+### Usage
+
+See [`sails.config.routes`](http://sailsjs.com/documentation/reference/configuration/sails-config-routes) for all available options.
 
 <docmeta name="displayName" value="routes.js">
