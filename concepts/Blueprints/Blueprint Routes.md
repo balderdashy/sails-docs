@@ -49,6 +49,7 @@ Shortcut routes are enabled by default, and are very handy for development, but 
 ##### Notes
 
 > + Like RESTful routes, shortcut routes can be overridden by providing an action in a matching controller, or by providing a route in `config/routes.js`.
+> + the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.com/documentation/reference/blueprint-api#?overriding-blueprints))
 > + When using a <a href="https://en.wikipedia.org/wiki/NoSQL" target="_blank">NoSQL</a> database (like <a href="https://docs.mongodb.com/" target="_blank">MongoDB</a>) with your model&rsquo;s [`schema` configuration](http://next.sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema) set to `false`, shortcut routes will interpret any parameter value for an unknown attribute as a _string_.  Be careful doing `http://localhost:1337/game/create?players=2` if you don&rsquo;t have a `players` attribute with a `number` type!
 
 ### Action routes
@@ -59,7 +60,14 @@ For example, if you have a `FooController.js` file with a `bar` method, then a `
 
 If an `index` action exists, additional naked routes will be created for it. Finally, all `actions` blueprints support an optional path parameter, `id`, for convenience.
 
-`actions` are disabled by default. They can be OK for production-- however, if you'd like to continue to use controller/action autorouting in a production deployment, you must take great care not to inadvertently expose unsafe/unintentional controller logic to GET requests.
+`actions` are disabled by default. They can be OK for production-- however, if you'd like to continue to use controller/action autorouting in a production deployment, you must take great care not to inadvertently expose unsafe/unintentional controller logic to GET requests. You can easily turn off a particular method or path in your [`/config/routes.js`](http://sailsjs.com/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.com/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
+
+```javascript
+'POST /user': {response: 'notFound'}
+```
+
+##### Notes
+> + Action routes respond to _all_ HTTP verbs (GET, PUT, POST, etc.).  You can use `req.method` inside an action to determine which method was used.
 
 ##### Index routes
 

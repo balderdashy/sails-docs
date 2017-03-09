@@ -8,33 +8,6 @@ For a conceptual overview of blueprints, see [Concepts > Blueprints](http://sail
 
 The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](http://sailsjs.com/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
-##### RESTful routes
-
-RESTful routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.rest`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
-
-Sails will create RESTful routes whenever it loads a [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) file.
-
-##### Shortcut routes
-
-Shortcut routes are activated by default in new Sails apps, and can be turned off by setting [`sails.config.blueprints.shortcuts`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
-
-Like RESTful routes (see above), Sails creates shortcut routes for every model.  Note that the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.com/documentation/reference/blueprint-api#?overriding-blueprints))
-
-##### Action routes
-
-Action routes are deactivated by default in new Sails apps, and can be turned on by setting [`sails.config.blueprints.actions`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `true` (typically in [`/config/blueprints.js`](http://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js).
-
-While action routes are activated, any function added as a property of a controller's `module.exports` object will be exposed as a route at the URL `<controller identity>/<property name>`.  For example, if `api/controllers/PetController.js` contains:
-
-```javascript
-module.exports {
-  adore: function (req, res) {
-    res.send("I adore pets!");
-  }
-}
-```
-
-then a route `/pet/adore` will automatically be created.  Note that action routes respond to _all_ HTTP verbs (GET, PUT, POST, etc.).  You can use `req.method` inside an action to determine which method was used.
 
 ##### Disabling blueprints on a per-controller basis
 
@@ -51,7 +24,6 @@ module.exports = {
 }
 ```
 
-
 ### Overriding blueprints
 
 ##### RESTful / shortcut routes and actions
@@ -61,13 +33,6 @@ To override a RESTful blueprint route for a single model, simply create an actio
 > If you&rsquo;d like to override a particular blueprint for _all_ models, check out the <a href="https://www.npmjs.com/package/sails-hook-custom-blueprints" target="_blank">sails-hook-custom-blueprints plugin</a>.
 > It's important to realize that, even if you haven't defined these yourself, Sails will respond with built-in CRUD logic for each model in the form of a JSON API (including support for sort, pagination, and filtering) as long as action or shortcut blueprints are enabled in your [blueprints configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints.
 
-##### Action routes
-
-In production apps, you may often wish to turn action routes off completely for security reasons (to keep from accidentally exposing a controller action).  However, if you do wish to keep action routes on, but simply want to turn off a particular method or path, you can do so easily in your [`/config/routes.js`](http://sailsjs.com/documentation/anatomy/my-app/config/routes-js) file using the [response target syntax](http://sailsjs.com/documentation/concepts/routes/custom-routes#?response-target-syntax), for example:
-
-```javascript
-'POST /user': {response: 'notFound'}
-```
 
 ### Blueprints and resourceful pubsub
 
