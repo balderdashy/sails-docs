@@ -65,7 +65,7 @@ beforeConnect: function(handshake, proceed) {
 
 By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.
 
-> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security.
+> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side JavaScript. Using HTTP-only cookies is crucial for your app's security.
 
 ##### Cross-origin sockets
 The sails.io.js client is usually initiated from an HTML page that was already fetched via HTTP.  So in most cases, sockets that connect from this sort of a browser environment will automatically provide a valid session cookie.  And thus everything will work normally; and `req.session` will be available.

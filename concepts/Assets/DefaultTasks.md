@@ -32,7 +32,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### concat
 
-> Concatenates javascript and css files, and saves concatenated files in `.tmp/public/concat/` directory.
+> Concatenates JavaScript and css files, and saves concatenated files in `.tmp/public/concat/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-concat)
 
@@ -54,7 +54,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### jst
 
-> Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny javascript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
+> Precompiles Underscore templates to a `.jst` file. (i.e. it takes HTML template files and turns them into tiny JavaScript functions). This can speed up template rendering on the client, and reduce bandwidth usage.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-jst)
 
@@ -66,7 +66,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### sails-linker
 
-> Automatically inject `<script>` tags for javascript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), but the big takeaway is that script and stylesheet injection is *only* done in files containing `<!--SCRIPTS--><!--SCRIPTS END-->` and/or `<!--STYLES--><!--STYLES END-->` tags.  These are included in the default **views/layout.ejs** file in a new Sails project.  If you don't want to use the linker for your project, you can simply remove those tags.
+> Automatically inject `<script>` tags for JavaScript files and `<link>` tags for css files.  Also automatically links an output file containing precompiled templates using a `<script>` tag. A much more detailed description of this task can be found [here](https://github.com/balderdashy/sails-generate-frontend/blob/master/docs/overview.md#a-litte-bit-more-about-sails-linking), but the big takeaway is that script and stylesheet injection is *only* done in files containing `<!--SCRIPTS--><!--SCRIPTS END-->` and/or `<!--STYLES--><!--STYLES END-->` tags.  These are included in the default **views/layout.ejs** file in a new Sails project.  If you don't want to use the linker for your project, you can simply remove those tags.
 
 > [usage docs](https://github.com/Zolmeister/grunt-sails-linker)
 
@@ -78,7 +78,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### uglify
 
-> Minifies client-side javascript assets.  Note that by default, this task will "mangle" all of your function and variable names (either by changing them to a much shorter name, or stripping them entirely).  This is usually desirable as it makes your code significantly smaller, but in some cases can lead to unexpected results (particularly when you expect an object's constructor to have a certain name).  To turn off or modify this behavior, [use the `mangle` option](https://github.com/gruntjs/grunt-contrib-uglify#no-mangling) when setting up this task.
+> Minifies client-side JavaScript assets.  Note that by default, this task will "mangle" all of your function and variable names (either by changing them to a much shorter name, or stripping them entirely).  This is usually desirable as it makes your code significantly smaller, but in some cases can lead to unexpected results (particularly when you expect an object's constructor to have a certain name).  To turn off or modify this behavior, [use the `mangle` option](https://github.com/gruntjs/grunt-contrib-uglify#no-mangling) when setting up this task.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-uglify)
 

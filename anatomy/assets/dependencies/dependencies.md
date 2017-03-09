@@ -1,6 +1,6 @@
 # assets/dependencies/
 
-This directory allows grunt to load javascript dependencies in index.ejs before the rest of the javascript files in the js directory.
+This directory allows grunt to load JavaScript dependencies in index.ejs before the rest of the JavaScript files in the js directory.
 
 
 This setup will create

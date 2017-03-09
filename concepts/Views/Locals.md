@@ -17,7 +17,7 @@ There are three kinds of template tags in EJS:
   + Includes the `someRawHTML` local verbatim, without escaping it.
   + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
 + `<% if (!loggedIn) { %>  <a>Logout</a>  <% } %>`
-  + Runs the javascript inside the `<% ... %>` when the view is compiled.
+  + Runs the JavaScript inside the `<% ... %>` when the view is compiled.
   + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
 
 

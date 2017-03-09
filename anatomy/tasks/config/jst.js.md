@@ -5,7 +5,7 @@ This file configures a Grunt task called "jst".
 
 It precompiles HTML templates using Underscore/Lodash notation into functions, creating a `.jst` file.  This can be brought into your HTML via a `<script>` tag in order to expose your templates as `window.JST` for use in your client-side JavaScript.
 
-In other words, this takes HTML files in `assets/templates/` and turns them into tiny little javascript functions that return HTML strings when you pass a data dictionary into them.  This approach is called "precompiling", and it can considerably speed up template rendering on the client, and even reduce bandwidth usage and related expenses.)
+In other words, this takes HTML files in `assets/templates/` and turns them into tiny little JavaScript functions that return HTML strings when you pass a data dictionary into them.  This approach is called "precompiling", and it can considerably speed up template rendering on the client, and even reduce bandwidth usage and related expenses.)
 
 > Note that, by default, Underscore/Lodash/JST notation is _opposite_ from EJS (`<%=` is `<%-`, and vice versa).
 > If this bothers you, it can be easily configured in this file. (See inline comments for details.)
