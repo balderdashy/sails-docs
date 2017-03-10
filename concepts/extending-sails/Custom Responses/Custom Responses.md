@@ -8,51 +8,40 @@ Sails apps come bundled with several pre-configured _responses_ that can be call
 
 ### Using responses
 
-As a quick example, consider the following controller action:
+As a quick example, consider the following action:
 
 ```javascript
 getProfile: function(req, res) {
-   // Get the user ID from the session.
-   var userId = req.session.userId;
 
-   // Look up the user in the database.
-   User.findOne(userId).exec(function(err, user) {
-
-     // Handle a database error.
-     if (err) {
-       res.status(500);
-       return res.view('500', {data: err});
-     }
-
-    // ...
-
+  // Look up the currently logged-in user's record from the database.
+  User.findOne({ id: req.session.userId }).exec(function(err, user) {
+    if (err) {
+      res.status(500);
+      return res.view('500', {data: err});
+    }
+    
+    return res.json(user);
   });
 }
 ```
 
 This code handles a database error by sending a 500 error status and sending the error data to a view to be displayed.  However, this code has several drawbacks, primarily:
 
-*  It isn't *normalized*; the code is specific to this instance, and we'd have to work hard to keep the same format everywhere
-*  It isn't *abstracted*; if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
 *  The response isn't *content-negotiated*; if the client is expecting a JSON response, they're out of luck
+*  The response *reveals too much* about the error -- in production, it'd be best to just log the error to the terminal
+*  It isn't *normalized*; even if we dealt with the other bullet points above, the code is specific to this action, and we'd have to work hard to keep the exact same format for error handling everywhere
+*  It isn't *abstracted*; if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
+
 
 Now, consider this replacement:
 
 ```javascript
 getProfile: function(req, res) {
-  // Get the user ID from the session.
-  var userId = req.session.userId;
 
-  // Look up the user in the database.
-  User.findOne(userId).exec(function(err, user) {
-
-   // Handle a database error.
-   if (err) {
-     return res.serverError(err);
-   }
-
-   // ...
-
+  // Look up the currently logged-in user's record from the database.
+  User.findOne({ id: req.session.userId }).exec(function(err, user) {
+    if (err) { return res.serverError(err); }
+    return res.json(user);
   });
 }
 ```
@@ -60,19 +49,51 @@ getProfile: function(req, res) {
 
 This approach has many advantages:
 
+ - More concise
  - Error payloads are normalized
- - Production vs. Development logging is taken into account
+ - Production vs. development logging is taken into account
  - Error codes are consistent
  - Content negotiation (JSON vs HTML) is taken care of
  - API tweaks can be done in one quick edit to the appropriate generic response file
 
-### Responses methods and files
 
-Any `.js` script saved in the `api/responses/` folder will be executed by calling `res.[responseName]` in your controller.  For example, `api/responses/disappeared.js` can be executed with a call to `res.disappeared()`.  The request and response objects are available inside the response script as `this.req` and `this.res`; this allows the actual response function to take arbitrary parameters (e.g. `res.disappeared('foo','bar','baz')`).
+### Response methods and files
+
+Any `.js` file saved in the `api/responses/` folder can be executed by calling `res.thatFileName()`.  For example, `api/responses/insufficientFunds.js` can be executed with a call to `res.insufficientFunds()`.
+
+##### Accessing `req`, `res`, and `sails`
+
+The request and response objects are available inside of a custom response as `this.req` and `this.res`.  This allows the actual response function to take arbitrary parameters.  For example: 
+
+```javascript
+return res.insufficientFunds(err, { happenedDuring: 'signup' });
+```
+
+And the implementation of the custom response might look something like this:
+
+```javascript
+module.exports = function insufficientFunds(err, extraInfo){
+  
+  var req = this.req;
+  var res = this.res;
+  var sails = req._sails;
+  
+  var newError = new Error('Insufficient funds');
+  newError.raw = err;
+  _.extend(newError, extraInfo);
+  
+  sails.log.verbose('Sent "Insufficient funds" response.');
+
+  return res.badRequest(newError);
+
+}
+```
+
+
 
 ### Built-in responses
 
-All Sails apps have several pre-configured responses like [`res.serverError()`](http://sailsjs.com/documentation/reference/response-res/res-server-error) and [`res.notFound()`](http://sailsjs.com/documentation/reference/response-res/res-not-found) that can be used even if they don&rsquo;t have corresponding files in `api/responses`.
+All Sails apps have several pre-configured responses like [`res.serverError()`](http://sailsjs.com/documentation/reference/response-res/res-server-error) and [`res.notFound()`](http://sailsjs.com/documentation/reference/response-res/res-not-found) that can be used even if they don&rsquo;t have corresponding files in `api/responses/`.
 
 Any of the default responses may be overridden by adding a file with the same name to `api/responses/` in your app (e.g. `api/responses/serverError.js`).
 
@@ -83,6 +104,7 @@ Any of the default responses may be overridden by adding a file with the same na
 >```bash
 >sails generate response serverError
 >```
+>
 
 
 
