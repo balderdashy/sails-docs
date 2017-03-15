@@ -36,9 +36,7 @@ var Sails = require('sails').constructor;
 var sailsApp = new Sails();
 
 sailsApp.lift({
-  log: {
-    level: 'warn'
-  }
+  log: { level: 'warn' }
 }, function (err) {
   if (err) {
     console.log('Error occurred lifting Sails app:', err);
@@ -48,13 +46,13 @@ sailsApp.lift({
   // --•
   console.log('Sails app lifted successfully!');
 
-));
+});
 ```
 
 
 ### Notes
 > - The difference between [`.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) and [`.load()`](http://sailsjs.com/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
-> - When a Sails app is fully lifted, it also emits the `lifted` event.
+> - When a Sails app is fully lifted, it also emits the [`lifted` event](http://sailsjs.com/documentation/concepts/extending-sails/hooks/events).
 
 
 <docmeta name="displayName" value="sails.lift()">
