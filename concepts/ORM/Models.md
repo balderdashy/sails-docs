@@ -209,6 +209,9 @@ module.exports = {
       type: 'string',
       defaultsTo: ''
     },
+    age: {
+      type: 'integer'
+    },
 
     // Associations (aka relational attributes)
     spouse: { model: 'Person' },
@@ -224,9 +227,6 @@ module.exports = {
     isEligibleForSocialSecurity: function (){
       return this.age >= 65;
     },
-    encryptPassword: function () {
-
-    }
   }
 };
 ```
@@ -237,7 +237,7 @@ module.exports = {
 
 ###### When to write a custom attribute method
 
-Custom attribute methods are particularly useful for extracting some information out of a record.  I.e. you might want to reduce some information from one or more attributes (i.e. "is this person married?"")
+Custom attribute methods are particularly useful for extracting some information out of a record.  I.e. you might want to reduce some information from one or more attributes (i.e. "is this person married?")
 
 ```js
 if ( rick.isMarried() ) {
@@ -274,7 +274,7 @@ Person.marry([joe,raquel], function (err) {
 
 
 ###### Naming your attribute methods
-Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" (e.g. `getFullName()`) prefix and avoid writing attribute methods that change records in-place.
+Make sure you use a naming convention that helps you avoid confusing **attribute methods** from _attribute values_ when you're working with records in your app.  A good best practice is to use "get*" or "is*" (e.g. `getFullName()` or `isMarried()`) prefix and avoid writing attribute methods that change records in-place.
 
 <!--
 
