@@ -4,7 +4,7 @@
 
 Each Sails hook is implemeted as a Javascript function that takes a single argument&mdash;a reference to the running `sails` instance&mdash;and returns an object with one or more of the keys described later in this document.  So, the most basic hook would look like this:
 
-```
+```javascript
 module.exports = function myBasicHook(sails) {
    return {};
 }
@@ -29,7 +29,7 @@ The following features are available to implement in your hook.  All features ar
 
 Any other keys added to the object returned from the main hook function will be provided in the `sails.hooks[<hook name>]` object.  This is how custom hook functionality is provided to end-users.  Any data and functions that you wish to remain private to the hook can be added *outside* the returned object:
 
-```
+```javascript
 // File api/hooks/myhook/index.js
 module.exports = function myHook(sails) {
 
