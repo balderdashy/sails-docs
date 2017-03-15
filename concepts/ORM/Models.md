@@ -89,7 +89,7 @@ findWithSameNameAsPerson: function (opts, cb) {
   // person we're even talking about:
   (function _lookupPersonIfNecessary(afterLookup){
     // (this self-calling function is just for concise-ness)
-    if (typeof person === 'object')) return afterLookup(null, person);
+    if (typeof person === 'object') return afterLookup(null, person);
     Person.findOne(person).exec(afterLookup);
   })(function (err, person){
     if (err) return cb(err);
