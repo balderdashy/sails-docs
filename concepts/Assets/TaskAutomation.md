@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 };
 ```
 
-* Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* Replace the path to source files in asset pipeline. The only change here will be that handlebars looks for files with the extension .hbs while underscore templates can be in simple html files.
 
 ```javascript
 // tasks/pipeline.js
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
 
 // tasks/register/syncAssets.js
 // --------------------------------
-// synce assets registered grunt task
+// sync assets registered grunt task
 
 module.exports = function (grunt) {
   grunt.registerTask('syncAssets', [
