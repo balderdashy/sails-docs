@@ -40,7 +40,7 @@ Sails is used in production by individuals and companies, non-profits, and gover
 
 ### Are there professional support options?
 
-[The Sails Company](http://sailsjs.com/studio) offers custom development, services, training, enterprise-class products, and support for teams building applications on Sails.
+[The Sails Company](http://sailsjs.com/about) offers custom development, services, training, enterprise-class products, and support for teams building applications on Sails.
 
 ##### Partner with us
 Our studio provides development services for startups, SMBs, and the Fortune 500. As you might expect, the Sails core team has done a lot of custom Sails/Node.js development, but we also have experience across the full stack, including: advanced interaction design, practical/scalable JavaScript development practices for huge applications, and building rich user experiences across many different devices and screen resolutions.
