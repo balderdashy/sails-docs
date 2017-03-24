@@ -134,21 +134,19 @@ Thanks!
 > + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md).  We'll check it out!
 > + If you are a company interested in doing a press release about Sails, please contact [@mikermcneil](https://twitter.com/mikermcneil) on Twitter.  We'll do what we can to help.
 
-+ [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
 + [InfoWorld: Why Node.js beats Java and .Net for web, mobile, and IoT apps](http://www.infoworld.com/article/2975233/javascript/why-node-js-beats-java-net-for-web-mobile-iot-apps.html) _(Speed, scalability, productivity, and developer politics all played a role in [AnyPresence](http://anypresence.com)’s selection of Sails.js/Node.js for its enterprise development platform)_
-+ [Anypresence & Node.js](http://www.anypresence.com/blog/2015/03/06/anypresence-nodejs/)
-+ [TechCrunch: Sails.js Funded by Y-Combinator](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/)
 + [TechRepublic: Build Robust Applications with the Node.js MVC framework](http://www.techrepublic.com/article/build-robust-node-applications-with-the-sails-js-mvc-framework/)
++ [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
 + [Mike's interview w/ @freddier and @cvander from Platzi](https://www.youtube.com/watch?v=WN0YgPdPbRE)
 + [Smashing Magazine: Sailing with Sails.js](https://www.smashingmagazine.com/2015/11/sailing-sails-js-mvc-style-framework-node-js/)
 + [Presentation at Smart City Conference & Expo 2015](http://www.goodxense.com/blog/post/our-presentation-at-smart-city-conference-expo-2015/) (George Lu & YJ Yang)
-+ Sails.js, Treeline and the future of programming  ([Article](https://courses.platzi.com/blog/sails-js-creator-mike-mcneil-on-treeline-and-frameworks/) | [Video](https://www.youtube.com/watch?v=nZKG7hLhbRs) | [Deck](https://speakerdeck.com/mikermcneil/what-even-is-software))
 + [Radio interview with Mike McNeil w/ ComputerAmerica's Craig Crossman](https://www.youtube.com/watch?v=ERIvf2iUj5U&feature=youtu.be)
++ Sails.js, Treeline and the future of programming  ([Article](https://courses.platzi.com/blog/sails-js-creator-mike-mcneil-on-treeline-and-frameworks/) | [Video](https://www.youtube.com/watch?v=nZKG7hLhbRs) | [Deck](https://speakerdeck.com/mikermcneil/what-even-is-software))
 + [UI-First API Design & Development: Apigee's I &hearts; APIs, San Francisco, 2015](https://speakerdeck.com/mikermcneil/i-love-apis)
 + [Choosing the right framework for Node.js development](https://jaxenter.com/choosing-the-right-framework-for-node-js-development-126432.html)
 + [TechCrunch: Our 10 Favorite Companies From Y Combinator Demo Day](https://techcrunch.com/gallery/our-10-favorite-companies-from-y-combinator-demo-day-day-1/slide/11/)
 + [Sails.js used on the website for the city of Paris](https://twitter.com/parisnumerique/status/617999231182176256)
-+ [Pulling the Plug: dotJS (Paris, 2014)](http://www.thedotpost.com/2014/11/mike-mcneil-pulling-the-plug)
++ [18f Open Source Hack Series: Midas](https://18f.gsa.gov/2014/10/01/open-source-hack-series-midas/)
 + [From Rags to Open Source](https://speakerdeck.com/mikermcneil/all-things-open) (All Things Open, Raleigh, 2014)
 + SxSW Conference, Austin, TX: ([2014](https://speakerdeck.com/mikermcneil/2014-intro-to-sails-v0-dot-10-dot-x) | [2015](https://speakerdeck.com/mikermcneil/sxsw-2015))
 + [More talks by Mike and the Sails.js core team](http://lanyrd.com/profile/mikermcneil/)
@@ -162,11 +160,11 @@ Thanks!
 + [Startup America](http://www.prlog.org/12038372-engine-pitches-startup-america-board-of-directors.html)
 + [Recent tweets about Sails.js](https://twitter.com/search?q=treelinehq%20OR%20%40treelinehq%20OR%20%23treelinehq%20OR%20%40waterlineorm%20OR%20treeline.io%20OR%20sailsjs.com%20OR%20github.com%2Fbalderdashy%2Fsails%20OR%20sailsjs%20OR%20sails.js%20OR%20%23sailsjs%20OR%20%40sailsjs&src=typd)
 + [How to use more open source](https://18f.gsa.gov/2014/11/26/how-to-use-more-open-source/) _(18F is an office inside the U.s. General Services Administration that helps other federal agencies build, buy, and share efficient and easy-to-use digital services.)_
-+ [18f Open Source Hack Series: Midas](https://18f.gsa.gov/2014/10/01/open-source-hack-series-midas/)
 + [Express Web Server Advances in Node.js Ecosystem](https://adtmag.com/articles/2016/02/11/express-joins-node.aspx) ([auch auf Deutsch](http://www.heise.de/developer/meldung/IBM-uebergibt-JavaScript-Webframework-Express-an-Node-js-Foundation-3099223.html))
 + Interview w/ Tim Heckel [on InfoQ](http://www.infoq.com/news/2013/04/Sails-0.8.9-Released)
 + [Sails.js - Une Architecture MVC pour applications real-time Node.js](http://www.lafermeduweb.net/billet/sails-js-une-architecture-mvc-pour-applications-real-time-node-js-1528.html)
 + [Hacker News](https://news.ycombinator.com/item?id=5373342)
++ [Pulling the Plug: dotJS (Paris, 2014)](http://www.thedotpost.com/2014/11/mike-mcneil-pulling-the-plug)
 + [Intro to Sails.js :: Node PDX, Portland, 2013 (Slides)](http://www.slideshare.net/michaelrmcneil/node-pdx))
 + [Sail.js : un framework MVC pour Node.js](http://javascript.developpez.com/actu/52729/Sail-js-un-framework-MVC-pour-Node-js/)
 + [Build Custom & Enterprise Node.js Apps with Sails.js](http://www.webappers.com/2013/03/29/build-custom-enterprise-node-js-apps-with-sails-js/)
@@ -177,6 +175,7 @@ Thanks!
 + [New web design tools that you need to check out](http://www.designyourway.net/blog/resources/new-web-design-tools-that-you-need-to-check-out/)
 + [Live code Sails.js avec Mike McNeil](http://www.weezevent.com/live-code-sailsjs-avec-mike-mcneil)
 + [#hack4good adds cities and welcomes Sails.js creator to speak and hack in Paris!](http://us2.campaign-archive1.com/?u=cf9af451f2674767755b02b35&id=fb98713f48&e=b2d87b15fe)
++ [TechCrunch: Sails.js Funded by Y-Combinator](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/)
 
 
 ### Where do I submit ideas?  Report bugs?
@@ -190,9 +189,9 @@ The Sails project tracks bug reports in GitHub issues and uses pull requests for
 
 Unless you are a contributor running a pre-release version of the framework in order to do some testing or work on core, you should use the latest stable version of Sails from NPM (click the badge above).  Installing is easy- just follow [these instructions](http://sailsjs.com/get-started).
 
-> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --force`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force && npm install`.
+> Note: to install/upgrade to the latest version of Sails locally in an existing project, run `npm install sails@latest --save`.  If you are having trouble and are looking for a bazooka, you might also want to run `rm -rf node_modules && npm cache clear && npm install sails@latest --force --save && npm install`.
 
-If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.
+If you are looking to install a pre-release version of Sails, you can install from the `beta` tag on npm (i.e. `npm install sails@beta`). This is a great way to try out a coming release ahead of time and start upgrading before the release becomes official.  The beta npm release candidate corresponds with the `beta` branch in the Sails repo.  (Just be sure to also use the right version of your favorite adapters and other plugins.  If in doubt, [feel free to ask](http://sailsjs.com/support).)
 
 Finally, if you like living on the edge, or you're working on adding a feature or fixing a bug in Sails, install the edge version from the `master` branch on github.  The edge version is not published on the registry since it's constantly under development, but you can _still use npm to install it_ (e.g. `npm install sails@git://github.com/balderdashy/sails.git`)
 
