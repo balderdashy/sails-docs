@@ -5,7 +5,7 @@ Sails makes it fairly easy to write your own database adapter.  Custom adapters 
 
 ### What goes in a custom adapter?
 
-In Sails, database adapters expose **interfaces**, which imply a conract to implemnt certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are primarily useful for integrating with databases, but they can also be used to support any open API or internal/proprietary web service that is _purely_ RESTful.
+In Sails, database adapters expose **interfaces**, which imply a conract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are primarily useful for integrating with databases, but they can also be used to support any open API or internal/proprietary web service that is _purely_ RESTful.
 
 > Not everything fits perfectly into a RESTful/CRUD mold.  Sometimes the service you're integrating with has more of an RPC-style interface, with one-off methods.  For example, consider an API request to send an email, or to read a remote sensor on a piece of connected hardware.  For that, you'll want to write or extend a machinepack.  [Learn more about machinepacks here](http://node-machine.org).
 
