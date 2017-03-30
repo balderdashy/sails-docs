@@ -214,6 +214,11 @@ This indicates the database where this model will fetch and save its data.  Unle
 For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
 
+### dontUseObjectIds
+
+> ##### _**This feature is for use with the [`sails-mongo` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmongo) only.**_
+
+If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID object as its primary key.  This allows you to create models using the `sails-mongo` adapter with primary keys that are strings or numbers.  Note that setting this to `true` means that you will have to provide a value for `id` in every call to [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.createEach()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each).
 
 ### cascadeOnDestroy
 
@@ -271,7 +276,7 @@ User.find({ id: req.param('emailAddress' }).exec(/*...*/);
 ```
 
 > All caveats aside, lets say you're an avid user of MongoDB.  In your new Sails app, you'll start off by setting `columnName: '_id'` on your default "id" attribute in `config/models.js`.  Then you can use Sails and Waterline just like normal, and everything will work just fine.
-> 
+>
 > But what if you find yourself wishing that you could change the actual name of the "id" attribute itself-- purely for the sake of familiarity?  For example, that way, when you call built-in model methods in your code, instead of the usual "id", you would use syntax like `.destroy({ _id: 'ba8319abd-13810-ab31815' })`.
 >
 > That's where this model setting might come in.  All you'd have to do is edit `config/models.js` so that it contains `primaryKey: '_id'`, and then rename the default "id" attribute to "_id".  But there are some [good reasons to reconsider](https://gist.github.com/mikermcneil/9247a420488d86f09be342038e114a08).
@@ -292,7 +297,7 @@ Something.identity;
 | ((string)) | `'purchase'`  |
 
 
-In Sails, a model's `identity` is inferred automatically by lowercasing its filename and stripping off the file extension.  For example, the identity of `api/models/Purchase.js` would be `purchase`.  It would be accessible as `sails.models.purchase`, and if blueprint routes were enabled, you'd be able to reach it with requests like `GET /purchase` and `PATCH /purchase/1`.   
+In Sails, a model's `identity` is inferred automatically by lowercasing its filename and stripping off the file extension.  For example, the identity of `api/models/Purchase.js` would be `purchase`.  It would be accessible as `sails.models.purchase`, and if blueprint routes were enabled, you'd be able to reach it with requests like `GET /purchase` and `PATCH /purchase/1`.
 
 ```javascript
 assert(Purchase.identity === 'purchase');
