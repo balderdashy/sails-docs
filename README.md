@@ -21,6 +21,9 @@ The documentation for Sails has been translated to a number of different languag
 
 > Since we are now using branches to keep track of different versions of the Sails documentation, we are moving away from the original approach of using branches for different languages.  Before embarking on a new translation project, we ask that you review the [updated information below](#how-can-i-help-translate-the-documentation)-- the process has changed a little bit.
 
+##### Hosting websites in other languages
+If you're the maintainer of a translation project and would like to host a version of the Sails website in your language, you can clone [this Sails app](https://github.com/sailshq/sails-docs-translation-website-template) and use it to compile your markdown docs to HTML.
+
 
 
 ## Contributing to the Sails docs
