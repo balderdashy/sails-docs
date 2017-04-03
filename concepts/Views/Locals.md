@@ -77,9 +77,11 @@ Assuming we hooked up our route to one of our controller's actions (and our mode
 
 ### Escaping untrusted data using `exposeLocalsToBrowser`
 
-It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  However, this can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
+It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  Sites like [Twitter and GitHub](https://blog.twitter.com/2012/improving-performance-on-twittercom) rely heavily on this approach in order to optimize page load times and provide an improved user experience.
 
-To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS views, you would do:
+In the past, a common way of solving this problem was with hidden form fields, or by hand-rolling code that injects server-side locals directly into a client-side script tag.  However, these techniques can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
+
+To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS view engine, you would do:
 
 ```ejs
 <%- exposeLocalsToBrowser() %>
