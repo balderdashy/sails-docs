@@ -5,33 +5,42 @@ The `routes` feature allows a custom hook to easily bind new routes to a Sails a
 ```javascript
 module.exports = function (sails) {
 
-   return {
+  // Declare a var that will act as a reference to this hook.
+  var hook;
 
-      initialize: function(cb) {
-         this.numRequestsSeen = 0;
-         this.numUnhandledRequestsSeen = 0;
-         return cb();
+  return {
+
+    initialize: function(cb) {
+      // Assign this hook object to the `hook` var.
+      // This allows us to add/modify values that users of the hook can retrieve.
+      hook = this;
+      // Initialize a couple of values on the hook.
+      hook.numRequestsSeen = 0;
+      hook.numUnhandledRequestsSeen = 0;
+      // Signal that initialization of this hook is complete
+      // by calling the callback.
+      return cb();
+    },
+
+    routes: {
+      before: {
+        'GET /*': function (req, res, next) {
+          hook.numRequestsSeen++;
+          return next();
+        }
       },
-
-      routes: {
-         before: {
-            'GET /*': function (req, res, next) {
-               this.numRequestsSeen++;
-               return next();
-            }
-         },
-         after: {
-            'GET /*': function (req, res, next) {
-               this.numUnhandledRequestsSeen++;
-               return next();
-            }
-         }
+      after: {
+        'GET /*': function (req, res, next) {
+          hook.numUnhandledRequestsSeen++;
+          return next();
+        }
       }
-   };
+    }
+  };
 };
 ```
 
-This hook will process all requests via the function provided in the `before` object, and increment its `numRequestsSeen` variable.  It will also process any *unhandled* requests via the function provided in the `after` object&mdash;that is, any routes that aren't bound in the app via a custom route configuration or a blueprint.  
+This hook will process all requests via the function provided in the `before` object, and increment its `numRequestsSeen` variable.  It will also process any *unhandled* requests via the function provided in the `after` object&mdash;that is, any routes that aren't bound in the app via a custom route configuration or a blueprint.
 
 > The two variables set up in the hook will be available to other modules in the Sails app as `sails.hooks["count-requests"].numRequestsSeen` and `sails.hooks["count-requests"].numUnhandledRequestsSeen`
 
