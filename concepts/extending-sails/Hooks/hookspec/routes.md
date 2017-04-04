@@ -5,24 +5,33 @@ The `routes` feature allows a custom hook to easily bind new routes to a Sails a
 ```javascript
 module.exports = function (sails) {
 
+  // Declare a var that will act as a reference to this hook.
+  var hook;
+
   return {
 
     initialize: function(cb) {
-      this.numRequestsSeen = 0;
-      this.numUnhandledRequestsSeen = 0;
+      // Assign this hook object to the `hook` var.
+      // This allows us to add/modify values that users of the hook can retrieve.
+      hook = this;
+      // Initialize a couple of values on the hook.
+      hook.numRequestsSeen = 0;
+      hook.numUnhandledRequestsSeen = 0;
+      // Signal that initialization of this hook is complete
+      // by calling the callback.
       return cb();
     },
 
     routes: {
       before: {
         'GET /*': function (req, res, next) {
-          this.numRequestsSeen++;
+          hook.numRequestsSeen++;
           return next();
         }
       },
       after: {
         'GET /*': function (req, res, next) {
-          this.numUnhandledRequestsSeen++;
+          hook.numUnhandledRequestsSeen++;
           return next();
         }
       }
