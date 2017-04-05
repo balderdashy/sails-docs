@@ -18,7 +18,7 @@ _Or:_
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 | _configOverrides_   | ((dictionary?))                              | A dictionary of config that will override any conflicting options present on the command line, in environment variables, or in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.com/documentation/reference/configuration).
+| 1 | _configOverrides_   | ((dictionary?))                              | A dictionary of config that will override any conflicting options present in configuration files.  If provided, this will be merged on top of [`sails.config`](http://sailsjs.com/documentation/reference/configuration).
 
 ##### Callback
 
@@ -53,7 +53,7 @@ sailsApp.lift({
 ### Notes
 > - The difference between [`.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) and [`.load()`](http://sailsjs.com/documentation/reference/application/sails-load) is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap) (if any), and (2) emitting the `ready` event.  The core `http` hook will typically respond to the `ready` event by starting an HTTP server on the port configured via `sails.config.port` (1337 by default).
 > - When a Sails app is fully lifted, it also emits the [`lifted` event](http://sailsjs.com/documentation/concepts/extending-sails/hooks/events).
-
+> - With the exception of `NODE_ENV` and `PORT`, [configuration set via environment variables](http://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables) will not automatically apply to apps started using `.lift()`, nor will options set in [`.sailsrc` files](http://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files).  If you wish to use those configuration values, you can retrieve them via `require('sails/accessible/rc')('sails')` and pass them in as the first argument to `.lift()`.
 
 <docmeta name="displayName" value="sails.lift()">
 <docmeta name="pageType" value="method">

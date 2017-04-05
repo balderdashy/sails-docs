@@ -76,8 +76,9 @@ sails_security__cors__allowOrigins='["http://somedomain.com","https://anotherdom
 
 This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 
+Also note that configuration specified using environment variables does _not_ automatically apply to Sails instances that are started [programmatically](http://sailsjs.com/documentation/concepts/programmatic-usage).
 
-> There are a couple of special exceptions to the rule: `NODE_ENV` and `PORT`.
+> There are a couple of special exceptions to the above rule: `NODE_ENV` and `PORT`.
 > + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
 > + Similarly, `PORT` is just another way to set [`sails.config.port`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigport).  This is strictly for convenience and backwards compatibility.
 >
@@ -86,7 +87,36 @@ This value will be in effect _only_ for the lifetime of this particular Sails in
 > ```bash
 > PORT=443 NODE_ENV=production sails lift
 > ```
+>
+> When present in the current process environment, `NODE_ENV` and `PORT` will apply to any Sails app that is started via the command line or programmatically, unless explicitly overridden.
 
+Environment variables are one of the most powerful ways to configure your Sails app.  Since you can customize just about any setting (as long as it's JSON-serializable), this approach solves a number of problems, and is our core team's recommended strategy for production deployments.  Here are a few:
+
++ Using environment variables means you don't have to worry about checking in your production database credentials, API tokens, etc.
++ This makes changing Postgresql hosts, Mailgun accounts, S3 credentials, and other maintenance straightforward, fast, and easy; plus you don't need to change any code or worry about merging in downstream commits from other people on your team
++ Depending on your hosting situation, you may be able to manage your production configuration through a UI (most PaaS providers like [Heroku](http://heroku.com) or [Modulus](https://modulus.io) support this, as does [Azure Cloud](https://azure.microsoft.com/en-us/).)
+
+
+### Setting `sails.config` values using command-line arguments
+
+For situations where setting an environment variable on the command line may not be practical (such as some Windows systems), you can use regular command-line arguments to set configuration options.  To do so, specify the name of the option prefixed by two dashes (`--`), with nested key names separated by dots.  Command-line arguments are parsed using [minimist](https://github.com/substack/minimist/tree/0.0.10), which does _not_ parse JSON values like arrays or dictionaries, but will handle strings, numbers and booleans (using a special syntax).  Some examples:
+
+```javascript
+// Set the port to 1338
+sails lift --port=1338
+
+// Set a custom "email" value to "foo@bar.com":
+sails lift --custom.email='foo@bar.com'
+
+// Turn on CSRF support
+sails lift --security.csrf
+
+// Turn off CSRF support
+sails lift --no-security.csrf
+
+// This won't work; it'll just try to set the value to the string "[1,2,3]"
+sails lift --custom.array='[1,2,3]'
+```
 
 ### Custom configuration
 
@@ -103,6 +133,26 @@ The [`.sailsrc` file](http://sailsjs.com/documentation/anatomy/myApp/sailsrc.htm
 And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](http://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) files for more information.
 
 
+### Order of precedence for configuration
+
+Depending on whether you're starting a Sails app from the command line using `sails lift` or `node app.js`, or programmatically using [`sails.lift()`](http://sailsjs.com/documentation/reference/application/advanced-usage/sails-lift) or [`sails.load()`](http://sailsjs.com/documentation/reference/application/advanced-usage/sails-load), Sails will draw its configuration from a number of sources, in a certain order.
+
+##### Order of precedence when starting via `sails lift` or `node app.js` (in order from highest to lowest priority):
+
++ command-line options parsed by [minimist](https://github.com/substack/minimist/tree/0.0.10); e.g. `sails lift --custom.mailgun.apiToken='foo'` becomes `sails.config.custom.mailgun.apiToken`.
++ [environment variables](https://en.wikipedia.org/wiki/Environment_variable) prefixed with `sails_`, and using double underlines to indicate dots; e.g.: `sails_port=1492 sails lift` ([A few more examples](https://gist.github.com/mikermcneil/92769de1e6c10f0159f97d575e18c6cf)).
++ a [`.sailsrc` file](http://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) in your app's directory, or the first found looking in `../`, `../../` etc.
++ a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`).
++ any existing `config/local.js` file in your app.
++ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`).
++ any other files in your app's `config/` directory (if one exists).
+
+##### Order of precedence when starting programmatically (in order from highest to lowest priority):
+
++ an optional dictionary (`{}`) of configuration overrides passed in as the first argument to `.lift()` or `.load()`.
++ any existing `config/local.js` file in your app.
++ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`).
++ any other files in your app's `config/` directory (if one exists).
 
 
 ### Notes
