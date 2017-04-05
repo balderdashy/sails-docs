@@ -76,9 +76,9 @@ port: 80
 
 ##### Set up production database(s) for your models
 
-If all of your app&rsquo;s models use the default datastore, then setting up your production database is as simple as configuring `sails.config.datastores.default` in the [config/env/production.js](http://next.sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env) file with the correct settings.
+If all of your app&rsquo;s models use the default datastore, then setting up your production database is as simple as configuring `sails.config.datastores.default` in the [config/env/production.js](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env) file with the correct settings.
 
-If your app is using more than one database, your process will be similar.  For every datastore used by the app, add an item to the `sails.config.datastores` dictionary in [config/env/production.js](http://next.sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env).
+If your app is using more than one database, your process will be similar.  For every datastore used by the app, add an item to the `sails.config.datastores` dictionary in [config/env/production.js](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env).
 
 Keep in mind that if you are using version control (e.g. git), then any sensitive credentials (such as database passwords) will be checked in to the repo if you include them in your app's configuration files.  A common solution to this problem is to provide certain sensitive configuration settings as environment variables.  See [Configuration](http://sailsjs.com/documentation/concepts/configuration) for more information.
 
@@ -131,7 +131,7 @@ Unless you are not deploying to a PaaS like Heroku, you will want to use a tool 
 ### Next steps
 
 + [Scaling your Sails/Node.js app](http://sailsjs.com/documentation/concepts/deployment/scaling)
-+ 
++
 
 
 <docmeta name="displayName" value="Deployment">

@@ -58,7 +58,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](http://next.sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
+| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
 | isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
 | isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
 | isBoolean         | A value that is `true` or `false` | isBoolean: true | ((json)), ((ref)) |

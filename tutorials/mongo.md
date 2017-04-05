@@ -35,7 +35,7 @@ To use `sails-mongo` in your app:
    }
    ```
 
-As with all of the [Sails database adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), you can use any of the [Waterline model methods](http://sailsjs.com/documentation/reference/waterline-orm/models) to interact with your models when using `sails-mongo`.  You can also access the lower-level &ldquo;native&rdquo; MongoDB client to send more complex queries, using the [`.manager()` method](http://next.sailsjs.com/documentation/reference/waterline-orm/datastores/manager) of the [datastore instance](http://next.sailsjs.com/documentation/reference/application/sails-get-datastore):
+As with all of the [Sails database adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), you can use any of the [Waterline model methods](http://sailsjs.com/documentation/reference/waterline-orm/models) to interact with your models when using `sails-mongo`.  You can also access the lower-level &ldquo;native&rdquo; MongoDB client to send more complex queries, using the [`.manager()` method](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) of the [datastore instance](http://sailsjs.com/documentation/reference/application/sails-get-datastore):
 
 ```js
 // Get access to the native MongoDB client via the default Sails datastore.

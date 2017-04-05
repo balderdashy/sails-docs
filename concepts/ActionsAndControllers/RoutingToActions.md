@@ -2,7 +2,7 @@
 
 ### Manual routing
 
-By default, controller actions in your Sails app will be inaccessible to users until you _bind_ them to a route in your [`config/routes.js` file](http://next.sailsjs.com/documentation/reference/configuration/sails-config-routes).  When you bind a route, you specify a URL that users can access the action at, along with options like [CORS security settings](http://next.sailsjs.com/documentation/concepts/security/cors#?configuring-cors-for-individual-routes).
+By default, controller actions in your Sails app will be inaccessible to users until you _bind_ them to a route in your [`config/routes.js` file](http://sailsjs.com/documentation/reference/configuration/sails-config-routes).  When you bind a route, you specify a URL that users can access the action at, along with options like [CORS security settings](http://sailsjs.com/documentation/concepts/security/cors#?configuring-cors-for-individual-routes).
 
 To bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
 

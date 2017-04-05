@@ -50,7 +50,7 @@ Shortcut routes are enabled by default, and are very handy for development, but 
 
 > + Like RESTful routes, shortcut routes can be overridden by providing an action in a matching controller, or by providing a route in `config/routes.js`.
 > + the same _action_ is executed for similar RESTful/shortcut routes.  For example, the `POST /user` and `GET /user/create` routes that Sails creates when it loads `api/models/User.js` will respond by running the same code (even if you [override the blueprint action](http://sailsjs.com/documentation/reference/blueprint-api#?overriding-blueprints))
-> + When using a <a href="https://en.wikipedia.org/wiki/NoSQL" target="_blank">NoSQL</a> database (like <a href="https://docs.mongodb.com/" target="_blank">MongoDB</a>) with your model&rsquo;s [`schema` configuration](http://next.sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema) set to `false`, shortcut routes will interpret any parameter value for an unknown attribute as a _string_.  Be careful doing `http://localhost:1337/game/create?players=2` if you don&rsquo;t have a `players` attribute with a `number` type!
+> + When using a <a href="https://en.wikipedia.org/wiki/NoSQL" target="_blank">NoSQL</a> database (like <a href="https://docs.mongodb.com/" target="_blank">MongoDB</a>) with your model&rsquo;s [`schema` configuration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema) set to `false`, shortcut routes will interpret any parameter value for an unknown attribute as a _string_.  Be careful doing `http://localhost:1337/game/create?players=2` if you don&rsquo;t have a `players` attribute with a `number` type!
 
 ### Action routes
 

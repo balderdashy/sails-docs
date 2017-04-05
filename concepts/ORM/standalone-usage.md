@@ -128,7 +128,7 @@ var config = {
 };
 ```
 
-So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.  Depending on which adapter is used, each item in `datastores` may allow further configuration.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](http://next.sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more info.
+So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.  Depending on which adapter is used, each item in `datastores` may allow further configuration.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more info.
 
 Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
 
