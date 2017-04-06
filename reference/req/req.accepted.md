@@ -3,7 +3,7 @@
 Contains an array of the "media types" this request (`req`) can accept (e.g. `text/html` or `application/json`), ordered from highest to lowest quality.
 
 ### Usage
-```javascript
+```usage
 req.accepted;
 ```
 

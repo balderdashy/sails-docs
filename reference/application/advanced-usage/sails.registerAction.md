@@ -2,7 +2,7 @@
 
 Register a new Sails [action](http://sailsjs.com/documentation/concepts/actions-and-controllers) that can then be bound to a route.
 
-```javascript
+```usage
 sails.registerAction(action, name);
 ```
 

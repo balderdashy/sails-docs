@@ -42,7 +42,7 @@ That's it!  The next time you lift your app, all of your models will communicate
 
 ### The connection URL
 
-You might have noticed that we used `url` here, instead of specifying individual settings like `host`, `port`, `user`, `password`, and `database`.  This is called a _connection URL_, and it's just another, more concise way, to tell Sails and Waterline about your datastore configuration.
+You might have noticed that we used `url` here, instead of specifying individual settings like `host`, `port`, `user`, `password`, and `database`.  This is called a _connection URL_ (or "connection string"), and it's just another, more concise way, to tell Sails and Waterline about your datastore configuration.
 
 One major benefit to this style of configuration is that the format of a connection URL is the same across various types of databases. In other words, whether you're using MySQL, PostgreSQL, MongoDB, or almost any other common database technology, you can specify basic configuration using a URL that looks roughly the same:
 
@@ -50,7 +50,7 @@ One major benefit to this style of configuration is that the format of a connect
 protocol://user:password@host:port/database
 ```
 
-The `protocol://` chunk of the URL is always based on the adapter you're using (`mysql://`, `mongo://`, etc.), and the rest of the URL is composed of the credentials and network information that your app needs to locate and connect to the database.  Here's a deconstructed version of the `url` from the MySQL example above that shows what each section is called:
+The `protocol://` chunk of the URL is always based on the adapter you're using (`mysql://`, `mongodb://`, etc.), and the rest of the URL is composed of the credentials and network information that your app needs to locate and connect to the database.  Here's a deconstructed version of the `url` from the MySQL example above that shows what each section is called:
 
 ```
 mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
@@ -59,10 +59,20 @@ mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
 protocol  user     password     host          port     database
 ```
 
+In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.  For more information about how to configure your particular database, check out the [database adapter reference](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
-Technically, configuration of individual settings (`user`, `password`, `host`, `port`, and `database`) is also supported, and if both the `url` notation and individual settings are used, the non-url configuration options will take precedence.  You should, however, always use one approach or the other-- either the `url` or the individual properties.  Mixing the two configuration strategies may confuse the adapter, or cause the underlying database driver to reject your configuration.
+##### Building your own connection URL
 
-> In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.
+If you have all of the pieces of information mentioned above, building a connection URL is easy: you just stick them together.  But sometimes, you may not want to specify _all_ of those details (if you want to use the default port, or if you're using a local database that does not require a username and password, for example).
+
+Fortunately, since database connection URLs are more or less just normal URLs, you can omit various pieces of information in the same way you might already be familiar with.  For example, here are a few common mashups, all of which are potentially-valid connection URLs:
+
++ `protocol://user:password@host:port/databaseName`
++ `protocol://user:password@host/databaseName` _(no port)_
++ `protocol://user@host:port/databaseName` _(no password)_
++ `protocol://host:port/databaseName` _(neither a username nor a password)_
+
+> Connection URLs are the recommended approach for configuring your Sails app's database(s), so it's best to stick with them if possible.  But technically, _some adapters_ also support configuration of individual settings (`user`, `password`, `host`, `port`, and `database`) as an alternative.  In that scenario, if both the `url` notation and individual settings are used, the non-url configuration options should always take precedence.  You should, however, always use one approach or the other-- either the `url` or the individual properties.  Mixing the two configuration strategies may confuse the adapter, or cause the underlying database driver to reject your configuration.
 
 ### Production datastore configuration
 
@@ -88,7 +98,7 @@ Connection URLs really shine in production, because you can change them by swapp
 
 ### Supported databases
 
-Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and [local memory](http://npmjs.com/package/sails-memory), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
+Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
 
 You can find an up-to-date list of supported database adapters [here](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
@@ -116,16 +126,16 @@ module.exports.datastores = {
   },
   q3PromoDb: {
     adapter: require('sails-mongo'),
-    url: 'mongo://djbluegrass:0ldy3ll3r@seasonal-pet-sweaters-promo.example.com:27017/promotional',
+    url: 'mongodb://djbluegrass:0ldy3ll3r@seasonal-pet-sweaters-promo.example.com:27017/promotional',
   }
 };
 
 ```
 
-> **Note:** If a datastore is using a particular adapter, then _all_ datastores that share that adapter will be loaded on `sails.lift`, whether or not models are actually using them.  In the example above, if a model was configured to use the `existingEcommerceDb` datastore, then at runtime, Waterline will create two MySQL connection pools: one for `existingEcommerceDb` and one for `default`.  Because of this behavior, we recommend commenting out or removing any "aspirational" datastore configurations that you're not actually using.
+> **Note:** If a datastore is using a particular adapter, then _all_ datastores that share that adapter will be loaded on `sails lift`, whether or not models are actually using them.  In the example above, if a model was defined with `datastore: 'existingEcommerceDb'`, then at runtime, Waterline would create two MySQL connection pools: one for `existingEcommerceDb` and one for `default`.  Because of this behavior, we recommend commenting out or removing any "aspirational" datastore configurations that you're not actually using from `config/datastores.js`.
 
 
-### Summary
+### Best practices
 Some general rules of thumb:
 
 + To change the datastore you're using _during development_, edit the `default` key in `config/datastores.js` (or use `config/local.js` if you'd rather not check in your credentials)

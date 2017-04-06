@@ -11,7 +11,7 @@ The contents of this `.tmp/public` folder are what Sails actually serves at runt
 
 ### Static middleware
 
-Behind the scenes, Sails uses the [static middleware](http://www.senchalabs.org/connect/static.html) from Express to serve your assets. You can configure this middleware (e.g. cache settings) in [`/config/http.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.http.html).
+Behind the scenes, Sails uses the [serve-static middleware](https://www.npmjs.com/package/serve-static) from Express to serve your assets. You can configure this middleware (e.g. to change cache settings) in [`/config/http.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.http.html).
 
 ##### `index.html`
 Like most web servers, Sails honors the `index.html` convention.  For instance, if you create `assets/foo.html` in a new Sails project, it will be accessible at `http://localhost:1337/foo.html`.  But if you create `assets/foo/index.html`, it will be available at both `http://localhost:1337/foo/index.html` and `http://localhost:1337/foo`.

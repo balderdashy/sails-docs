@@ -1,8 +1,11 @@
 # sails.reloadActions()
 
+> ##### _**This feature is still experimental.**_
+> This method is still under development, and its interface and/or behavior could change at any time.
+
 Flush and reload all Sails [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers)
 
-```javascript
+```usage
 sails.reloadActions(cb);
 ```
 

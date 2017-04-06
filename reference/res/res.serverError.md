@@ -5,12 +5,12 @@ This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP
 ### Usage
 
 
-```js
-return res.serverError();
+```usage
+return res.serverError(err);
 ```
 
 _Or:_
-+ `return res.serverError(data);`
++ `return res.serverError();`
 
 ### Details
 

@@ -3,7 +3,7 @@
 Returns the current value of the specified response header (`header`).
 
 ### Usage
-```js
+```usage
 res.get(header);
 ```
 

@@ -2,7 +2,7 @@
 
 Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
 
-Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types ('string', 'number', json', etc).
+Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types (`string`, `number`, `json`, etc).
 
 ```javascript
 // User
@@ -25,26 +25,29 @@ This data type is used for logical validation and coercion of results and criter
 
 | Data Type        | Usage                         | Description                                                  |
 |:----------------:|:----------------------------- |:------------------------------------------------------------ |
-| ((string))       | `type: 'string'`              | Any string (tolerates `null`).
-| ((number))       | `type: 'number'`              | Any number (tolerates `null`).
-| ((boolean))      | `type: 'boolean'`             | `true` or `false` (also tolerates `null`).
+| ((string))       | `type: 'string'`              | Any string.
+| ((number))       | `type: 'number'`              | Any number.
+| ((boolean))      | `type: 'boolean'`             | `true` or `false`.
 | ((json))         | `type: 'json'`                | Any JSON-serializable value, including numbers, booleans, strings, arrays, dictionaries (plain JavaScript objects), and `null`.
 | ((ref))          | `type: 'ref'`                 | Any JavaScript value except `undefined`. (Should only be used when taking advantage of adapter-specific behavior.)    |
 
 Sails' ORM (Waterline) and its adapters perform loose validation to ensure that the values provided in criteria dictionaries and as values to `.create()` or `.update()` match the expected data type.
 
+**NOTE:** In adapters that don't support the ((json)) type natively, the adapter must support it in other ways. For example in MySQL the data being written to a ((json)) attribute gets `JSON.stringify()` called on it and then is stored in a column with a type set to `text`. Each time the record is returned the data has `JSON.parse()` called on it. This is something to be aware of for performance and for compatibility with other applications or existing data in the database. The official postgresql and mongodb adapters can read and write ((json)) data natively.
+
 
 ##### Null and empty string
 
-Since `null` is neither a string, number, nor boolean, the most specific data type that accurately describes it is ((json)).  So for example, if you want to describe a normal attribute whose values are sometimes numbers and sometimes `null`, you'll want to use `type: 'json'`.
-
+The `string`, `number` and `boolean` data types do _not_ accept `null` as a value when creating or updating records.  In order to allow setting a `null` value you can toggle the `allowNull` flag on the attribute. The `allowNull` flag is only valid on these data types however. It is _not_ valid on attributes with types `json` or `ref`, any associations, or any primary key attributes.
 
 Since empty string ("") is a string, it is normally supported by `type: 'string'` attributes.  There are a couple of exceptions though:  primary keys (because primary keys never support empty string) and any attribute which has `required: true`.
 
 
-### Validation Rules
+##### Required
 
-The following validation rules are handled by [Anchor](https://github.com/sailsjs/anchor), a robust validation library for Node.js.
+If an attribute is `required: true`, then a value must always be specified for it when calling `.create()`.  It also prevents explicitly trying to create (or update) this value as `null` or empty string (""),
+
+### Validation Rules
 
 _None_ of the following validation impose any _additional_ restrictions against `null`.  That is, if `null` would be allowed normally, then enabling the `isEmail` validation rule will not cause `null` to be rejected as invalid.
 
@@ -55,17 +58,22 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value that, when provided to this custom function as the first argument, does not throw.                          | [Example](https://gist.github.com/mikermcneil/9999a70c6deb77814601c0658d502fae)            |  _Any_   |
+| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
 | isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
 | isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
+| isBoolean         | A value that is `true` or `false` | isBoolean: true | ((json)), ((ref)) |
 | isCreditCard      | A value that is a credit card number.                                                                               | **Do not store credit card numbers in your database unless your app is PCI compliant!**  If you want to allow users to store credit card information, a safe alternative is to use a payment API like [Stripe](https://stripe.com). | ((string)) |
 | isEmail           | A value that looks like an email address.                                                                           | `isEmail: true`                                         | ((string)) |
 | isHexColor        | A string that is a hexadecimal color.                                                                               | `isHexColor: true`                                      | ((string)) |
 | isIn              | A value that is in the specified array of allowed strings.                                                          | `isIn: ['paid', 'delinquent']`                          | ((string)) |
 | isInteger         | A number that is an integer (a whole number)                                                                        | `isInteger: true`                                       | ((number)) |
 | isIP              | A value that is a valid IP address (v4 or v6)                                                                       | `isIP: true`                                              | ((string)) |
+| isNotEmptyString  | A value that is _not_ an empty string | `isNotEmptyString: true` | ((json)), ((ref))
 | isNotIn           | A value that **is not in** the configured array.                                                                    | `isNotIn: ['profanity1', 'profanity2']`                   | ((string)) |
+| isNumber          | A value that is a Javascript number | `isNumber: true` | ((json)), ((ref))
+| isString          | A value that is a string (i.e. `typeof(value) === 'string'`) | `isString: true` | ((json)), ((ref))
 | isURL             | A value that looks like a URL. | `isURL: true` | ((string)) |
+| isUUID            | A value that looks like a UUID (v3, v4 or v5) | `isUUID: true` | ((string))
 | max               | A number that is less than or equal to the configured number. | `max: 10000` | ((number)) |
 | min               | A number that is greater than or equal to the configured number. | `min: 0` | ((number)) |
 | maxLength         | A string that has no more than the configured number of characters. |  `maxLength: 144` | ((string)) |
@@ -85,6 +93,10 @@ workEmail: {
 ```
 
 Then when you call `.create()` _or_ `.update()`, this value can be set to any valid email address (like "santa@clause.com") OR as empty string ("").  However, you wouldn't be able to set it to `null`, because that would violate the type safety restriction imposed by `type: 'string'`.
+
+> To make this attribute accept `null` (for example, if you are working with a pre-existing database), change it to `type: 'json'`.  Normally you'd also want to add `isString: true`-- but since, in this example, we already enforce `isEmail: true`, there's no need to do so.
+>
+> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
 
 
 ##### Example: Required star rating
@@ -143,7 +155,7 @@ module.exports = {
 
 Imagine you have 1,000,000 user records in your database.  If `unique` was implemented like other validations, every time a new user signed up for your app, Sails would need to search through _one million_ existing records to ensure that no one else was already using the email address provided by the new user.  Not only would that be slow, but by the time we finished searching through all those records, someone else could have signed up!
 
-Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) to implement support for the `unique` validation-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
+Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) to implement support for `unique`-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
 
 ##### What about indexes?
 
@@ -154,7 +166,7 @@ Just like everything else related to your production schema, once you set your a
 > Note that this means you should be sure to update your indexes alongside your uniqueness constraints when performing [manual migrations](https://github.com/BlueHotDog/sails-migrations).
 
 
-### When to Use Validations
+### When to use validations
 
 Validations can be a huge time-saver, preventing you from writing many hundreds of lines of repetitive code.  But keep in mind that model validations are run for _every create or update_ in your application.  Before using a validation rule in one of your attribute definitions, make sure you are OK with it being applied _every time_ your application calls `.create()` or `.update()` to specify a new value for that attribute.  If that is _not_ the case, write code that validates the incoming values inline in your controller; or call out to a custom function in one of your [services](http://sailsjs.com/documentation/concepts/services), or a [model class method](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
 
@@ -185,9 +197,10 @@ Depending on the answers to questions like these, we might end up keeping the `r
 ### Best Practices
 
 Finally, here are a few tips:
-- Your initial decision about whether or not to use validations for a particular attribute should depend on your app's requirements and how you are calling `.update()` and `.create()`. Don't be afraid to forgo built-in validation support and check values by hand in your controllers or in a helper function.  Oftentimes this is the cleanest and most maintainable approach.
-- There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
-- It is a very good idea to spend the time to fully understand your application's user interface _first_ before setting up complex validations on your model attributes.
+
++ Your initial decision about whether or not to use validations for a particular attribute should depend on your app's requirements and how you are calling `.update()` and `.create()`. Don't be afraid to forgo built-in validation support and check values by hand in your controllers or in a helper function.  Oftentimes this is the cleanest and most maintainable approach.
++ There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
++ It is a very good idea to spend the time to fully understand your application's user interface _first_ before setting up complex validations on your model attributes.
 
 > As much as possible, it is a good idea to obtain or flesh out your own wireframes of your app's user interface _before_ you spend any serious amount of time implementing _any_ backend code.  Of course, this isn't always possible- and that's what the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) is for.  Applications built with a UI-centric, or "front-end first" philosophy are easier to maintain, tend to have fewer bugs and, since they are built with full knowledge of the user interface from the get-go, they often have more elegant APIs.
 

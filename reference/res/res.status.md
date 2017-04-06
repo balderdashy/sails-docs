@@ -3,7 +3,7 @@
 Set the status code of this response.
 
 ### Usage
-```js
+```usage
 res.status(200);
 ```
 

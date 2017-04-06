@@ -1,11 +1,19 @@
 # sails debug
 
-Attach the node debugger and lift the sails app; similar to running `node --debug app.js`.  Takes the same options as `sails lift`.  You can then use [node-inspector](https://github.com/node-inspector/node-inspector) to debug your app as it runs.
+Attach the node debugger and lift the sails app; similar to running `node --debug app.js`. You can then use [node-inspector](https://github.com/node-inspector/node-inspector) to debug your app as it runs.
+
+```usage
+sails debug
+```
+
+
+### Usage
+Takes the same options as [`sails lift`](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift), listed [here](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift#?usage).
 
 
 ### Example
 
-```bash
+```text
 $ sails debug
 
 info: Running node-inspector on this app...
@@ -17,8 +25,6 @@ info: ( to exit, type <CTRL>+<C> )
 
 debugger listening on port 5858
 ```
-
-
 
 
 > To use the standard (command-line) node debugger with sails, you can always just run `node debug app.js`.

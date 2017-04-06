@@ -2,7 +2,7 @@
 An array of all the subdomains in this request's URL.
 
 ### Usage
-```javascript
+```usage
 req.subdomains;
 ```
 

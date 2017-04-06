@@ -6,7 +6,7 @@
 Return a best guess of the base URL for this app, based on a combination of user-supplied and default configuration values.
 
 
-```javascript
+```usage
 sails.getBaseUrl();
 ```
 

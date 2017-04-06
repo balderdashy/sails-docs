@@ -7,7 +7,7 @@ When called manually from your app code, this method is normally used to indicat
 
 ### Usage
 
-```js
+```usage
 return res.notFound();
 ```
 

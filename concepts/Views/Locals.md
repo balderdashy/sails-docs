@@ -17,7 +17,7 @@ There are three kinds of template tags in EJS:
   + Includes the `someRawHTML` local verbatim, without escaping it.
   + Be careful!  This tag can make you vulnerable to XSS attacks if you don't know what you're doing.
 + `<% if (!loggedIn) { %>  <a>Logout</a>  <% } %>`
-  + Runs the javascript inside the `<% ... %>` when the view is compiled.
+  + Runs the JavaScript inside the `<% ... %>` when the view is compiled.
   + Useful for conditionals (`if`/`else`), and looping over data (`for`/`each`).
 
 
@@ -77,15 +77,17 @@ Assuming we hooked up our route to one of our controller's actions (and our mode
 
 ### Escaping untrusted data using `exposeLocalsToBrowser`
 
-It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  However, this can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
+It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  Sites like [Twitter and GitHub](https://blog.twitter.com/2012/improving-performance-on-twittercom) rely heavily on this approach in order to optimize page load times and provide an improved user experience.
 
-To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS views, you would do:
+In the past, a common way of solving this problem was with hidden form fields, or by hand-rolling code that injects server-side locals directly into a client-side script tag.  However, these techniques can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
+
+To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS view engine, you would do:
 
 ```ejs
 <%- exposeLocalsToBrowser() %>
 ```
 
-By default, the exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
+By default, this exposes _all_ of your view locals as the `window.SAILS_LOCALS` global variable.  For example, if your action code contained:
 
 ```javascript
 res.view('myView', {
@@ -103,10 +105,10 @@ then using `exposeLocalsToBrowser` as shown above would cause the locals to be s
 The `exposeLocalsToBrowser` function has a single `options` parameter that can be used to configure what data is outputted, and how.  The `options` parameter is a dictionary that can contain the following properties:
 
 |&nbsp;   |     Property        | Type                                         | Default| Details                            |
-|---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 | keys     | ((array?))                              | `undefined` | A &ldquo;whitelist&rdquo; of locals to expose.  If left undefined, _all_ locals will be exposed.  If specified, this should be an array of property names from the locals dictionary.  For example, given the `res.view()` statement shown above, setting `keys: ['someString', 'someBool']` would cause `windows.SAILS_LOCALS` to be set to `{someString: 'hello', someBool: false}`.
-| 2 | namespace | ((string?)) | `SAILS_LOCALS` | The name of the global variable to assign the bootstrapped data to.
-| 3| dontUnescapeOnClient | ((boolean?)) | false | If set to `true`, any string values that were escaped to avoid XSS attacks will be left escaped in the exposed variable, instead of being transformed back into the original value.  For example, given the `res.view()` statement above, using `exposeLocalsToBrowser({dontUnescapeOnClient: true})` would cause `window.SAILS_LOCALS.someXSS` to be set to `&lt;script&gt;alert(&#39;hello!&#39;);`.
+|---|:--------------------|----------------------------------------------|:-----------------------------------|-----|
+| 1 | _keys_     | ((array?))                              | `undefined` | A &ldquo;whitelist&rdquo; of locals to expose.  If left undefined, _all_ locals will be exposed.  If specified, this should be an array of property names from the locals dictionary.  For example, given the `res.view()` statement shown above, setting `keys: ['someString', 'someBool']` would cause `windows.SAILS_LOCALS` to be set to `{someString: 'hello', someBool: false}`.
+| 2 | _namespace_ | ((string?)) | `SAILS_LOCALS` | The name of the global variable to assign the bootstrapped data to.
+| 3| _dontUnescapeOnClient_ | ((boolean?)) | false | **Advanced. Not recommended for most apps.** If set to `true`, any string values that were escaped to avoid XSS attacks will _still be escaped_ when accessed from client-side JS, instead of being transformed back into the original value.  For example, given the `res.view()` statement from the example above, using `exposeLocalsToBrowser({dontUnescapeOnClient: true})` would cause `window.SAILS_LOCALS.someXSS` to be set to `&lt;script&gt;alert(&#39;hello!&#39;);`.
 
 
 <docmeta name="displayName" value="Locals">

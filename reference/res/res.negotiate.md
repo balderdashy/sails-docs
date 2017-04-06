@@ -2,7 +2,7 @@
 
 > _**This method is deprecated**._
 >
-> You should use a [custom response](http://sailsjs.com/documentation/concepts/custom-responses) instead.
+> You should use a [custom response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
 >
 > To handle errors from [Waterline model methods](http://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](#) for more details).
 
@@ -12,7 +12,7 @@ Especially handy for handling potential validation errors from [Model.create()](
 
 ### Usage
 
-```js
+```usage
 return res.negotiate(err);
 ```
 

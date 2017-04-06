@@ -5,7 +5,7 @@ Returns whether this request (`req`) is able to handle a specified `characterSet
 
 ### Usage
 
-```js
+```usage
 req.acceptsCharset(characterSet);
 ```
 

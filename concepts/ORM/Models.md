@@ -114,7 +114,7 @@ findWithSameNameAsPerson: function (opts, cb) {
       return cb(err);
     }
 
-    Monkey.findByName(person.name)
+    Monkey.find({ name: person.name })
     .exec(function (err, monkeys){
       if (err) return cb(err);
       cb(null, monkeys);
@@ -133,44 +133,6 @@ Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
-
-Another example:
-
-```javascript
-// api/models/User.js
-module.exports = {
-
-  attributes: {
-
-    name: {
-      type: 'string'
-    },
-    enrolledIn: {
-      collection: 'Course', via: 'students'
-    }
-  },
-
-  /**
-   * Enrolls a user in one or more courses.
-   * @param  {Object}   options
-   *            => courses {Array} list of course ids
-   *            => id {Integer} id of the enrolling user
-   * @param  {Function} cb
-   */
-  enroll: function (options, cb) {
-
-    User.findOne(options.id).exec(function (err, theUser) {
-      if (err) return cb(err);
-      if (!theUser) return cb(new Error('User not found.'));
-      theUser.enrolledIn.add(options.courses);
-      theUser.save(cb);
-    });
-  }
-};
-```
-
-
-
 
 ##### What about instance methods?
 
@@ -195,6 +157,12 @@ Person.marry(personA.id, personB.id, function (err) {
   return res.ok();
 })
 ```
+
+### Case Sensitivity
+
+Queries in Sails 1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much improved query performance and better index utilization. Most databases are case *sensitive* by default but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
+
+For example by default MySQL will use a database collation that is case *insensitive* which is different from sails-disk so you may experience different results from development to production. In order to fix this you can set the tables in your MySQL database to a case *sensitive* collation such as `utf8_bin`.
 
 
 <!--

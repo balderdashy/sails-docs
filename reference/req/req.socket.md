@@ -4,7 +4,7 @@ If the current Request (`req`) originated from a connected Socket.io client, `re
 
 ### Usage
 
-```js
+```usage
 req.socket;
 ```
 

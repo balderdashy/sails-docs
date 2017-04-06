@@ -1,10 +1,11 @@
 # .query()
 
-> **This method is deprecated.**
+> **As of Sails v1.0, this method is deprecated.**
+> Instead, please use [`Model.getDatastore().sendNativeQuery()`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query), the new version of this method that standardizes the format of SQL escape bindings, as well as fully supporting `.exec()` and promise-based usage.
 
 Execute a raw SQL query using the specified model's datastore.
 
-```javascript
+```usage
 SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 
 });

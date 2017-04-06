@@ -2,7 +2,7 @@
 _July 10, 2013_
 ### Sails.js
 + Main: Express 3.x has been integrated.
-+ Main: CSRF Attack Protection was added as part of the core. Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, javascript plugins).
++ Main: CSRF Attack Protection was added as part of the core. Uses express-csrf, plus a token-based approach for SPAs and embedded apps (Chrome extensions, JavaScript plugins).
 + Main: Most of the core has been refactored for performance, code clarity, and simplicity to make contributions easier.
 + Main: Most of the core has been pulled into hooks. In a subsequent patch release for 0.9.x, this process will make Socket.io optional.
 + Controllers: Automatic routing is now disable-able.

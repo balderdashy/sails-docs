@@ -5,7 +5,7 @@ This property is an array that contains the acceptable charsets specified by the
 
 ### Usage
 
-```js
+```usage
 req.acceptedCharsets;
 ```
 

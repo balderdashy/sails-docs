@@ -13,6 +13,9 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
 ### More Info
 > Socket.IO configuration options can be found [here](https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO).
 
+### Usage
+
+See [`sails.config.sockets`](http://sailsjs.com/documentation/reference/configuration/sails-config-sockets) for all available options.
 
 
 <docmeta name="displayName" value="sockets.js">

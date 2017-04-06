@@ -152,7 +152,7 @@ Be careful to avoid redirect loops when redirecting within your Sails app!
 Note that when redirecting, the HTTP method of the original request (and any extra headers / parameters) will likely be lost, and the request will be transformed to a simple **GET** request.  In the above example, a **POST** request to **/alias** will result in a **GET** request to **/some/other/route**.  This is somewhat browser-dependent behavior, but it is recommended that you don't expect request methods and other data to survive a redirect.
 
 ##### Response target syntax
-You can map an address directly to a default or custom [response](http://sailsjs.com/documentation/concepts/Custom-Responses) using this syntax:
+You can map an address directly to a default or custom [response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) using this syntax:
 
 ```js
 '/foo': { response: 'notFound' }
@@ -223,8 +223,5 @@ In addition to the options discussed in the various route target syntaxes above,
 |`locals`|[controller](http://sailsjs.com/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((dictionary))|Sets default [local variables](http://sailsjs.com/documentation/reference/res/res.view.html?q=arguments) to pass to any view that is rendered while handling the request.|
 |`cors`|all|((dictionary)) or ((boolean)) or ((string))|Specifies how to handle requests for this route from a different origin.  See the [main CORS documentation](http://sailsjs.com/documentation/concepts/security/cors) for more info.|
 |`csrf`|all|((boolean))|Indicate whether the route should be protected by requiring a CSRF token to be passed with the request.  See the [main CSRF documentation](http://sailsjs.com/documentation/concepts/security/csrf) for more info.
-|`populate`|[blueprint](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((boolean))|Indicates whether the results in a "find" or "findOne" blueprint action should have associated model fields [populated](http://sailsjs.com/documentation/reference/waterline/populated-values).  Defaults to the value set in [**config/blueprints.js**](http://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html).
-|`skip`, `limit`, `sort`, `where`|[blueprint](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax)|((dictionary))|Set criteria for "find" blueprint.  See the [queries reference](https://github.com/balderdashy/sails-docs/blob/master/reference/waterline/queries/queries.md) for more info.
-
-
+|`parseBlueprintOptions`|[blueprint](http://sailsjs.com/documentation/concepts/routes/custom-routes#?routing-to-blueprint-actions)|((function))|Provide this function in order to override the default behavior for a blueprint action (including search criteria, skip, limit, sort and population).  See the [blueprints configuration reference](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 <docmeta name="displayName" value="Custom routes">

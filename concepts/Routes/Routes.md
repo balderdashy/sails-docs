@@ -59,11 +59,11 @@ In addition to your custom routes, Sails binds many routes for you automatically
 
 ##### Unhandled Requests
 
-If no custom or automatic route matches a request URL, Sails will send back a default 404 response.  This response can be customized by adding a `api/responses/notFound.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) for more info.
+If no custom or automatic route matches a request URL, Sails will send back a default 404 response.  This response can be customized by adding a `api/responses/notFound.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) for more info.
 
 ##### Unhandled Errors in Request Handlers
 
-If an unhandled error is thrown during the processing of a request (for instance, in some [action code](http://sailsjs.com/documentation/concepts/actions-and-controllers), Sails will send back a default 500 response. This response can be customized by adding a `api/responses/serverError.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/custom-responses) for more info.
+If an unhandled error is thrown during the processing of a request (for instance, in some [action code](http://sailsjs.com/documentation/concepts/actions-and-controllers), Sails will send back a default 500 response. This response can be customized by adding a `api/responses/serverError.js` file to your app.  See [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) for more info.
 
 ### Supported Protocols
 

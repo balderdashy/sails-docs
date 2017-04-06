@@ -4,7 +4,7 @@
 Model attributes are basic pieces of information about a model.  For example, a model called `Person` might have attributes named `firstName`, `lastName`, `phoneNumber`, `age`, `birthDate` and `emailAddress`.
 
 <!---
-TODO: address sql vs. no sql and stuff like:
+FUTURE: address sql vs. no sql and stuff like:
 """
 In most cases, this data is _homogenous_, meaning each record has the same attributes,
 """
@@ -86,6 +86,19 @@ attributes: {
 }
 ```
 
+##### Allow Null
+
+The `string`, `number` and `boolean` data types do _not_ accept `null` as a value when creating or updating records.  In order to allow setting a `null` value you can toggle the `allowNull` flag on the attribute. The `allowNull` flag is only valid on these data types however. It is _not_ valid on attributes with types `json` or `ref`, any associations, or any primary key attributes.
+
+
+```javascript
+attributes: {
+  phoneNumber: {
+    type: 'string',
+    allowNull: true
+  }
+}
+```
 
 ### Validations
 
@@ -106,7 +119,7 @@ For a complete list of high-level validation rules, see [Validations](http://sai
 
 <!--
 
-TODO: need ot move primary key out to the top-level (it's a model setting now)
+FUTURE: need ot move primary key out to the top-level (it's a model setting now)
 
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#1
 -->
@@ -114,7 +127,7 @@ commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d
 
 ### columnName
 
-Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured connection (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
+Inside an attribute definition, you can specify a `columnName` to force Sails/Waterline to store data for that attribute in a specific column in the configured datastore (i.e. database).  Be aware that this is not necessarily SQL-specific-- it will also work for MongoDB fields, etc.
 
 While the `columnName` property is primarily designed for working with existing/legacy databases, it can also be useful in situations where your database is being shared by other applications, or you don't have access permissions to change the schema.
 
@@ -137,7 +150,7 @@ Let's say you have a `User` model in your Sails app that looks like this:
 ```javascript
 // api/models/User.js
 module.exports = {
-  connection: 'shinyNewMySQLDatabase',
+  datastore: 'shinyNewMySQLDatabase',
   attributes: {
     name: {
       type: 'string'
@@ -157,17 +170,14 @@ module.exports = {
 Everything works great, but instead of using an existing MySQL database sitting on a server somewhere that happens to house your app's intended users:
 
 ```javascript
-// config/connections.js
+// config/datastores.js
 module.exports = {
   // ...
 
   // Existing users are in here!
   rustyOldMySQLDatabase: {
     adapter: 'sails-mysql',
-    user: 'bofh',
-    host: 'db.eleven.sameness.foo',
-    password: 'Gh19R!?had9gzQ#Q#Q#%AdsghaDABAMR>##G<ADMBOVRH@)$(HTOADG!GNADSGADSGNBI@(',
-    database: 'jonas'
+    url: 'mysql://ofh:Gh19R!?@db.eleven.sameness.foo/jonas'
   },
   // ...
 };
@@ -186,7 +196,7 @@ In order to use this from Sails, you'd change your `User` model to look like thi
 ```javascript
 // api/models/User.js
 module.exports = {
-  connection: 'rustyOldMySQLDatabase',
+  datastore: 'rustyOldMySQLDatabase',
   tableName: 'our_users',
   attributes: {
     id: {
@@ -220,9 +230,13 @@ module.exports = {
 
 ### Automigrations
 
+These settings are used to indicate how Sails should create the physical-level (e.g. PostgreSQL, MySQL or MongoDB) database field for an attribute when an app is lifted.
+
+> When a model&rsquo;s `migrate` property is set to `safe`, these settings will be ignored and the database columns will remain unchanged.
+
 ##### columnType
 
-Sends down the type of physical level column data type to use in the adapter. This allows you to specify types that are tied directly to how your underlying database will create them. For example, you may have an attribute that sets it's `type` property to `number` and to store that in the database you want to use the column type `float`. Your attribute definition would look like:
+Indicates the type of physical-level column data type to use for an attribute when Sails creates the database table. This allows you to specify types that are tied directly to how your underlying database will create them. For example, you may have an attribute that sets its `type` property to `number` and to store that in the database you want to use the column type `float`. Your attribute definition would look like:
 
 ```javascript
 attributes: {
@@ -233,9 +247,12 @@ attributes: {
 }
 ```
 
+> * Column types are entirely database-dependent.  Be sure that the `columnType` you select corresponds to a data type that is valid for your database!  If you don&rsquo;t specify a `columnType`, the adapter will choose one for you based on the attribute&rsquo;s `type`.
+> * If you intend to store binary data in a Sails model, you&rsquo;ll want to set the `type` of the attribute to `ref`, and then use the appropriate `columnType` for your chosen database (e.g. `mediumblob` for MySQL or `bytea` for PostgreSQL).  Keep in mind that whatever you attempt to store will have to fit in memory before being transferred to the database--there is currently no mechanism in Sails for streaming binary data to a datastore adapter.  As an alternative to storing blobs in a database, you might consider streaming them to disk or to a remote filesystem like S3, using the [`.upload()` method](http://sailsjs.com/documentation/concepts/file-uploads).
+
 ##### autoIncrement
 
-Sets up the attribute as an auto-increment key.  When a new record is added to the model, if a value for this attribute is not specified, it will be generated by incrementing the most recent record's value by one. Note: Attributes which specify `autoIncrement` should always be of `type: 'integer'`. Also, bear in mind that the level of support varies across different datastores. For instance, MySQL will not allow more than one auto-incrementing column per table.
+Sets up the attribute as an auto-increment key.  When a new record is added to the model, if a value for this attribute is not specified, it will be generated by incrementing the most recent record's value by one. Note: Attributes which specify `autoIncrement` should always be of `type: 'number'`. Also, bear in mind that the level of support varies across different datastores. For instance, MySQL will not allow more than one auto-incrementing column per table.
 
 ```javascript
 attributes: {
@@ -269,7 +286,7 @@ commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#3
 
 
-TODO: move enum to validations page
+FUTURE: move enum to validations page
 
 
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#4

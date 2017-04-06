@@ -6,7 +6,7 @@ A flag indicating whether the requesting client would prefer a JSON response (as
 
 
 ### Usage
-```js
+```usage
 req.wantsJSON;
 ```
 

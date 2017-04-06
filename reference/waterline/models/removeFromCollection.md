@@ -2,7 +2,7 @@
 
 Remove one or more members (e.g. a comment) from the specified collection (e.g. the `comments` of BlogPost #4).
 
-```javascript
+```usage
 Something.removeFromCollection(parentId, association)
 .members(childIds)
 .exec(function (err) {
@@ -40,6 +40,17 @@ User.removeFromCollection(3, 'pets')
 });
 ```
 
+
+### Edge cases
+
++ If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, then this will modify the existing records and ignore the non-existent ones.
++ If one of the child ids does not actually correspond with an existing, persisted record, then that child id will be ignored, and only those members that correspond with the other provided child ids will be removed from the collection.
++ If a parent record's collection _does not have_ one or more of these child ids as members, then the ids of those non-members will be ignored. ((TODO: test with one-to-many))
++ If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
++ If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
+
+### Notes
+> + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Pet") side is singular, the each child record's foreign key ("owner") will be set to `null`.  If it's plural, then each child record's collection will be modified accordingly.
 
 
 

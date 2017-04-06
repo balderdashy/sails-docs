@@ -3,7 +3,7 @@
 Modify a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) so that, when executed, it will return associated record(s) belonging to the specified association, and optionally according to the specified `subcriteria`.  Populate may be called more than once on the same query, as long as each call is for a different association.
 
 
-```javascript
+```usage
 Something.find()
 .populate(association, subcriteria)
 .exec(function afterwards(err, populatedRecords){
@@ -17,9 +17,9 @@ Something.find()
 |   |     Argument           | Type                                         | Details                            |
 |---|:-----------------------|----------------------------------------------|:-----------------------------------|
 | 1 |    association         | ((string))                                   | The name of the association to populate.  e.g. `snacks`
-| 2 |    _subcriteria_       | ((dictionary?))                              | Optional.  When populating `collection` associations between two models which reside in the same database, a [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) may be specified as a second argument to populate.  This will be used for filtering, sorting, and limiting the array of associated records (e.g. snacks) associated with each primary record.
+| 2 |    _subcriteria_       | ((dictionary?))                              | Optional.  When populating `collection` associations between two models which reside in the same database, a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) may be specified as a second argument to populate.  This will be used for filtering, sorting, and limiting the array of associated records (e.g. snacks) associated with each primary record.
 
-> **Important:** While experimental support exists, the `subcriteria` argument should only be used in production on queries involving a single database that supports native joins (e.g. MySQL or PostgreSQL).  Do not use the `subcriteria` argument when performing cross-adapter queries involving multiple databases.  Attempting to do so will display a warning message at runtime.
+> **Important:** Both the basic join polyfill (cross-datastore populate, or populate between models whose configured adapter does not provide a `.join()` implementation) and the subcriteria argument to `.populate()` are fully supported in Sails **individually**. But using the subcriteria argument to `.populate()` at the same time as the join polyfill is experimental. That means that, if an association spans multiple datastores, or if its datastore's configured adapter does not support a physical layer join, then you should not rely on the subcriteria argument to `.populate()`. If you try that in production, you will see a warning logged to the console. SQL adapters such as [sails-postgresql](https://github.com/balderdashy/sails-postgresql) and [sails-mysql](https://github.com/balderdashy/sails-mysql) support native joins and should be ok to use the subcriteria argument.
 
 
 ### Example

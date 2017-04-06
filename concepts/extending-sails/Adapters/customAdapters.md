@@ -15,6 +15,8 @@ If an adapter is only going to be used in one app (e.g. a short-term fork of an 
 
 Go with this option if you plan to share your adapter between multiple Sails apps, whether that's within your organization or as an open-source package for other members of the Sails/Node.js community at large.  To use an externalized adapter like this, you'll need to do `npm install your-adapter-package-name` or `npm link your-adapter-package-name`.
 
+> Before you start on an open-source adapter, we recommend you search GitHub for `sails-databasename` and `waterline-databasename` to check if a project already exists. If it does, it's generally a good idea to approach the author of an existing adapter and offer to contribute instead of starting a new project. Most developers will welcome your help, and the combined efforts will likely result in a better quality adapter. If one doesn't exist, we recommend you create a new project and name it following the convention: `sails-databasename`.
+
 
 ### What goes in a custom adapter?
 
@@ -110,7 +112,7 @@ The functionality of database adapters is as varied as the services they connect
 
 ### Are there examples I can look at?
 
-If you're looking for some inspiration, a good place to start is with the core adapters.  Take a look at **[MySQL](https://github.com/balderdashy/sails-mysql)**, **[PostgreSQL](https://github.com/balderdashy/sails-postgresql)**, **[MongoDB](https://github.com/balderdashy/sails-mongo)**, **[Redis](https://github.com/balderdashy/sails-redis)**, local [disk](https://github.com/balderdashy/sails-disk), or local [memory](https://github.com/balderdashy/sails-memory).
+If you're looking for some inspiration, a good place to start is with the core adapters.  Take a look at **[MySQL](https://github.com/balderdashy/sails-mysql)**, **[PostgreSQL](https://github.com/balderdashy/sails-postgresql)**, **[MongoDB](https://github.com/balderdashy/sails-mongo)**, **[Redis](https://github.com/balderdashy/sails-redis)**, or local [disk](https://github.com/balderdashy/sails-disk).
 
 
 ### Where do I get help?

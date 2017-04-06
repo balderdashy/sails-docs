@@ -62,7 +62,7 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF tokens
 
-To get a CSRF token, you should either bootstrap it in your view using [locals](http://sailsjs.com/docs/concepts/views/locals) (good for traditional multi-page web applications) or fetch it using AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+To get a CSRF token, you should either bootstrap it in your view using [locals](http://sailsjs.com/documentation/concepts/views/locals) (good for traditional multi-page web applications) or fetch it using AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
 
 
 ##### Using view locals:
@@ -102,6 +102,7 @@ Then send a GET request to the route you defined, and you'll get CSRF token retu
 ```
 
 > For security reasons, you can&rsquo;t retrieve a CSRF token via a socket request.  You can however _spend_ CSRF tokens (see below) via socket requests.
+> The `security/grant-csrf-token` action is not intended to be used in cross-origin requests, since some browsers block third-party cookies by default.  See the [CORS documentation](http://sailsjs.com/documentation/concepts/security/cors) for more info about cross-origin requests.
 
 
 

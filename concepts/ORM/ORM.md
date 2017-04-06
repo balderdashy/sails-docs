@@ -23,7 +23,7 @@ _You ask the business what database they would like to use:_
 
 The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
 
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [datastore configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
+Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [datastore configuration](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
 
 
@@ -59,7 +59,7 @@ Custom Waterline adapters are actually [pretty simple to build](https://github.c
 
 ### Datastores
 
-A **datastore** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Datastores are defined in the Sails config [`config/datastores.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+A **datastore** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Datastores are defined in the Sails config [`config/datastores.js`](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
 ```javascript
 // in config/datastores.js

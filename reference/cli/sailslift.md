@@ -1,10 +1,22 @@
 # sails lift
 
+
 Run the Sails app in the current dir (if `node_modules/sails` exists, it will be used instead of the globally installed Sails)
 
-##### Options:
+```usage
+sails lift
+```
 
-  * `--dev` - in development environment (the default). In the development environment Sails use *grunt-watch* to keep a eye on your files in `/assets`. If you change something (for example in one of our css-files) and reload your browser Sails will automatically show your changes. Also you views won't be cached so you can change your view-files without restarting Sails like the assets.
+By default, Sails lifts your app in development mode.  In the development environment, Sails uses [Grunt](https://gruntjs.com/) to keep an eye on your files in `/assets`. If you change something (for example in one of your `.css` or `.less` files) and reload your browser, you'll notice that your changes are reflected automatically.
+
+Also note that, in development mode, your view templates won't be cached in memory.  So, like assets, you can also change your view files without restarting Sails.
+
+> Any changes to back-end logic or configuration (e.g. the files in `config/`, `api/`, or `node_modules/`) _will not take effect_ unless you kill and restart the server (CTRL+C  + `sails lift`).
+
+### Usage:
+
+`sails lift` takes the following options:
+
   * `--prod` - in production environment
   * `--port <portNum>` - on the port specified by `portNum` instead of the default (1337)
   * `--verbose` - with verbose logging enabled
@@ -13,7 +25,7 @@ Run the Sails app in the current dir (if `node_modules/sails` exists, it will be
 
 ### Example
 
-```bash
+```text
 $ sails lift
 
 info: Starting app...

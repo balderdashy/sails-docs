@@ -1,8 +1,8 @@
 # req.ips
-If "trust proxy" is enabled, this variable contains the IP addresses in this request's "X-Forwarded-For" header as an array of the IP address strings. Otherwise an empty array is returned.
+If [sails.config.http.trustProxy](http://sailsjs.com/documentation/reference/configuration/sails-config-http) is enabled, this variable contains the IP addresses in this request's "X-Forwarded-For" header as an array of the IP address strings. Otherwise an empty array is returned.
 
 ### Usage
-```js
+```usage
 req.ips;
 ```
 

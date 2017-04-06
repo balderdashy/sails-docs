@@ -2,7 +2,7 @@
 
 Stream records from your database one at a time or in batches, without first having to buffer the entire result set in memory.
 
-```javascript
+```usage
 Something.stream(criteria)
 .eachRecord(function(record, next) { ... })
 .exec(function (err) {
@@ -45,7 +45,7 @@ After iterating over all matching records/batches...
 
 ### When should I use this?
 
-The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `.eachBatch()` to provide an iteratee function which receives one record or batch at a time.  
+The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `.eachBatch()` to provide an iteratee function which receives one record or batch at a time.
 
 This is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, they would if you tried to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors: preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 
@@ -64,16 +64,16 @@ User.stream({name:'Finn'}).eachRecord(function (user, next){
   if (Math.random() > 0.5) {
     return next(new Error('Oops!  This is a simulated error.'));
   }
-  
+
   sails.log('Found a user (`'+user.id+'`) named Finn.');
 
   return next();
-  
+
 }).exec(function (err){
   if (err) {
     return res.serverError(err);
   }
-  
+
   return res.ok();
 });
 ```
@@ -111,7 +111,7 @@ BlogPost.stream()
 })
 .exec(function (err) {
   if (err) { return res.serverError(err); }
-  
+
   sitemapXml += '</urlset>';
 
   return res.send(sitemapXml);
@@ -158,7 +158,7 @@ Comment.stream({
     domain: sails.config.custom.mailgunDomain
   }).exec(function (err) {
     if (err) { return next(err); }
-    
+
     numReported++;
 
     return next();
@@ -217,7 +217,7 @@ Comment.stream({
     if (!isCreepyEnoughToWorryAbout) { return true; }//<< not creepy enough, remove it.
     else { return false; }//<< this is creepy enough, keep it.
   });
-  
+
   // If this batch doesn't contain any comments that are creepy enough,
   // then bail now and skip to the next batch, if any are left.
   if (someCreepyComments.length === 0) {

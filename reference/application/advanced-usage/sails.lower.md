@@ -4,7 +4,7 @@ Shut down a lifted Sails app and have it cease listening for / responding to any
 
 
 
-```javascript
+```usage
 sails.lower(callback);
 ```
 

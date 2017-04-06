@@ -22,12 +22,16 @@ Once you have a reference to a new Sails app, you can use [`.load()`](http://sai
 
 > Any configuration options sent as arguments to `.load()` or `.lift()` will take precedence over options loaded from anywhere else.
 
+> Configuration options set via environment variables will _not_ automatically be applied to Sails app started programmatically, with the exception of `NODE_ENV` and `PORT`.
+
+> To load configuration options from `.sailsrc` files and environment variables, use the `rc` module that Sails makes available via `require('sails/accessible/rc')`.
+
 The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.com/documentation/reference/application/sails-request) method of the loaded app.
 
 
 ##### .lift()
 
-Starting an app with .lift() on port 1338 and sending a POST request via HTTP:
+Starting an app with `.lift()` on port 1338 and sending a POST request via HTTP:
 
 ```javascript
 var request = require('request');
@@ -70,6 +74,19 @@ mySailsApp.lift({
     });//</lower sails app>
   });//</request.post() :: send http request>
 });//</lift sails app>
+```
+
+Starting an app with `.lift()` using the current environment and .sailsrc settings:
+
+```javascript
+var Sails = require('sails').constructor;
+
+var rc = require('sails/accessible/rc');
+
+var mySailsApp = new Sails();
+mySailsApp.lift(rc('sails'), function(err) {
+
+});
 ```
 
 ##### .load()

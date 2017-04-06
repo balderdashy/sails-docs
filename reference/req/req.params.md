@@ -7,7 +7,7 @@ For example if you have the route `/user/:name`, then the "name" from the URL pa
 
 ### Usage
 
-```javascript
+```usage
 req.params;
 ```
 

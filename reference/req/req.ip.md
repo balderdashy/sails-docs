@@ -4,12 +4,10 @@ The IP address of the client who sent this request (`req`).
 
 > **Note:**
 >
-> If the `trust proxy` option is disabled in Express, this is the "remote address". Otherwise, if `trust proxy` is enabled, this is the "upstream address".
-> See Express docs for [app.set()](http://expressjs.com/api.html#app.set) - in Sails
-> this can be accomplished by adding the line `sails.hooks.http.app.set('trust proxy', true);` to `config/bootstrap.js`.
+> If your Sails app is deployed behind a proxy (on Heroku, for example), then you'll need to do a bit of additional configuration.  Normally, `req.ip` is simply the "remote address"-- the IP address of the requesting user agent.  But if the [sails.config.http.trustProxy](http://sailsjs.com/documentation/reference/configuration/sails-config-http) option is enabled, this is the "[upstream address](https://en.wikipedia.org/wiki/X-Forwarded-For)".
 
 ### Usage
-```javascript
+```usage
 req.ip;
 ```
 

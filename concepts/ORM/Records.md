@@ -5,7 +5,7 @@ A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is 
 ```js
 Order.find().exec(function (err, records){
   if (err) {
-    return exits.error(err);
+    return res.serverError(err);
   }
 
   console.log('Found %d records', records.length);
@@ -13,22 +13,27 @@ Order.find().exec(function (err, records){
     console.log('Found at least one record, and its `id` is:',records[0].id);
   }
 
-  return exits.success();
+  return res.ok();
 
 });
 ```
 
-In Sails, records are just dictionaries (plain JavaScript objects).
 
 
-## Populated values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using associations.  When [`.populate()`](http://sailsjs.com/documentation/reference/waterline/queries/populate.html) is called on a query, each of the resulting records will contain one or more **populated values**.  Each one of those **populated values** is a snapshot of the record(s) linked to that particular association at the time of the query.
+### JSON serialization
 
-The type of a populated value is either:
+In Sails, records are just dictionaries (plain JavaScript objects), which means they can easily be represented as JSON. But you can also customize the way that records from a particular model are _stringified_ using the [`customToJSON` model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson).
 
-+ `null`, or a plain old JavaScript object (POJO),  _(if it corresponds to a "model" association)_ or
-+ an empty array, or an array of plain old JavaScript objects _(if it corresponds to a "collection" association)_
+
+### Populated values
+
+In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).  When [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/populate) is called on a query, each of the resulting records will contain one or more populated values.  Each one of those populated values is a snapshot of the record (or array of records) linked to that particular association at the time of the query.
+
+The type of a populated value depends on what kind of association it is:
+
++ `null`, or a plain JavaScript object,  _(if it corresponds to a "model" association)_ or
++ an empty array, or an array of plain JavaScript objects _(if it corresponds to a "collection" association)_
 
 
 
@@ -58,11 +63,20 @@ Order.find()
 });
 ```
 
+##### Expected types / values for association attributes
+
+The table below shows what values you can expect in records returned from a `.find()` or `.findOne()` call under different circumstances.  
+
+| &nbsp; |  without a `.populate()` added for the association | with `.populate()`, but no associated records found | with `.populate()`, with associated records found
+|:--- |:--- | --- |:--- |
+| Singular association (e.g. `seller`) | Whatever is in the database record for this attribute (typically `null` or a foreign key value) | `null` | A POJO representing a child record |
+| Plural association (e.g. `buyers`) |  `undefined` (the key will not be present) | `[]` (an empty array) | An array of POJOs representing child records
 
 
-### Modifying populated values
+##### Modifying populated values
 
-Changes to populated values are persisted (i.e. saved to the database) by calling [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) on a Model.
+To modify the populated values of a particular record or set of records, call the [.addToCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection), [.removeFromCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection), or [.replaceCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) model methods.
+
 
 
 <docmeta name="displayName" value="Records">

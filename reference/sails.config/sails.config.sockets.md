@@ -7,7 +7,7 @@ These configuration options provide transparent access to Socket.io, the WebSock
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@^1.0.0 --save --save-exact`. |
+| `adapter`      |((string))  |`'memory'`| The queue socket.io will use to deliver messages.  Can be set to either `'memory'` or `'socket.io-redis'`. If `'socket.io-redis'` is specified, you should run `npm install socket.io-redis@^3.0.0 --save --save-exact`. |
 | `transports`  |((array))  | `['websocket']`     | An array of allowed transport strategies that Sails/Socket.io will use when connecting clients.  This should _always_ match the [configuration in your socket client (i.e. `sails.io.js`)](http://sailsjs.com/documentation/reference/web-sockets/socket-client#?configuring-the-sailsiojs-library) -- if you change transports here, you need to configure them there, and vice versa.<br/><br/> <em>Note that if you opt to modify the default transports, then you may need to do additional configuration in production.  (For example, if you add the `polling` transport, and your app is running on multiple servers behind a load balancer like nginx, then you will need to configure that load balancer to support TCP sticky sessions.  However, that _should not_ be necessary out of the box with only the `websocket` transport enabled.)  See [Deployment > Scaling](http://sailsjs.com/documentation/concepts/deployment/scaling) for more tips and best practices.</em> |
 | `onlyAllowOrigins` | ((array)) | `undefined` | Array of hosts (beginning with http:// or https://) from which sockets will be allowed to connect.  Leaving this undefined will allow sockets from _any_ origin to connect, which is useful for testing but is not allowed in production mode (so you should at least set this in [config/env/production.js](http://sailsjs.com/documentation/anatomy/config/env/production-js)).  Note that as the name implies (and in contrast to the similar [CORS setting](http://ailsjs.com/documentation/reference/configuration/sails-config-security-cors)), _only_ the origins listed will be allowed to connect.  For testing locally, you&rsquo;ll probably want to add `http://localhost:1337` to the list.
 
@@ -30,12 +30,12 @@ These configuration options provide lower-level access to the underlying Socket.
 
 | Property   | Type      | Default  | Details |
 |:-----------|:---------:|:---------|:--------|
-| `beforeConnect`|((boolean)), ((function)) | `undefined` | A function to run every time a new client-side socket attempts to connect to the server which can be used to reject or allow the incoming connection.  Useful for tweaking your production environment to prevent [DoS](http://sailsjs.com/docs/concepts/security/ddos) attacks, or reject socket.io connections based on business-specific heuristics. See [beforeConnect](http://sailsjs.com/documentation/reference/configuration/sails-config-sockets#?beforeconnect) below for more info. |
+| `beforeConnect`|((boolean)), ((function)) | `undefined` | A function to run every time a new client-side socket attempts to connect to the server which can be used to reject or allow the incoming connection.  Useful for tweaking your production environment to prevent [DoS](http://sailsjs.com/documentation/concepts/security/ddos) attacks, or reject socket.io connections based on business-specific heuristics. See [beforeConnect](http://sailsjs.com/documentation/reference/configuration/sails-config-sockets#?beforeconnect) below for more info. |
 | `afterDisconnect`| ((function)) | `undefined` | A function to run when a client-side socket disconnects from the server.  To define your own custom logic, specify a function like `afterDisconnect: function (session, socket, cb) {}`.
 | `allowUpgrades` | ((boolean)) | `true` | This is a raw configuration option exposed from Engine.io.  It indicates whether to allow Socket.io clients to upgrade the transport that they are using (e.g. start with polling, then upgrade to a true WebSocket connection).  |
 | `cookie` | ((string)), ((boolean)) | `false` | This is a raw configuration option exposed from Engine.io.  It indicates the name of the HTTP cookie that contains the connecting socket.io client's socket id.  The cookie will be set when responding to the initial Socket.io "handshake".  Alternatively, may be set to `false` to disable the cookie altogether.  Note that the `sails.io.js` client does not rely on this cookie, so it is disabled (set to `false`) by default for enhanced security.  If you are using socket.io directly and need to re-enable this cookie, keep in mind that the conventional setting is `"io"`.  |
 | `grant3rdPartyCookie` | ((boolean)) | `true` | Whether to expose a `GET /__getcookie` route that sets an HTTP-only session cookie.  By default, if it detects that it is about to connect to a cross-origin server, the Sails socket client (`sails.io.js`) sends a JSONP request to this endpoint before it begins connecting.  For user agents where 3rd party cookies are possible, this allows `sails.io.js` to connect the socket to the cross-origin Sails server using a user's existing session cookie, if they have one (for example, if they were already logged in.) Without this, virtual requests you make from the socket will not be able to access the same session, and will need to reauthenticate using some other mechanism.   |
-| `maxHttpBufferSize` | ((number)) | `10E7` | This is a raw configuration option exposed from Engine.io.  It reflects the maximum number of bytes or characters in a message when polling before automatically closing the socket (to avoid [DoS]((http://sailsjs.com/docs/concepts/security/ddos)). |
+| `maxHttpBufferSize` | ((number)) | `10E7` | This is a raw configuration option exposed from Engine.io.  It reflects the maximum number of bytes or characters in a message when polling before automatically closing the socket (to avoid [DoS]((http://sailsjs.com/documentation/concepts/security/ddos)). |
 | `path`        | ((string)) | `/socket.io` | Path that client-side sockets should connect to on the server.  See http://socket.io/docs/server-api/#server(opts:object).
 | `pingInterval` | ((number)) | `25000` | This is a raw configuration option exposed from Engine.io.  It reflects the number of miliseconds to wait between "ping packets" (i.e. this is what "heartbeats" has become, more or less)  |
 | `pingTimeout` | ((number)) | `60000` | This is a raw configuration option exposed from Engine.io.  It reflects how many ms without a pong packet to wait before considering a socket.io connection closed |
@@ -53,7 +53,7 @@ During development, when a socket tries to connect, Sails allows it, every time 
 If your app needs more flexibility, then as an additional precaution, you can define your own custom logic to allow or deny socket connections.  To do so, specify a `beforeConnect` function:
 ```javascript
 beforeConnect: function(handshake, proceed) {
-  
+
   // Send back `true` to allow the socket to connect.
   // (Or send back `false` to reject the attempt.)
   return proceed(undefined, true);
@@ -61,16 +61,18 @@ beforeConnect: function(handshake, proceed) {
 },
 ```
 
+> Note that if `beforeConnect` is used, then the `onlyAllowOrigins` setting will be ignored.  This allows you to accept socket connections from non-traditional clients (for example, in an [Electron app](electron.atom.io)) that may not set an `origin` header.
+
 ### Sockets & sessions
 
-By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.  
+By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.
 
-> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side javascript. Using HTTP-only cookies is crucial for your app's security. 
+> A note for browser clients: The user's session cookie is NOT (and will never be) accessible from client-side JavaScript. Using HTTP-only cookies is crucial for your app's security.
 
 ##### Cross-origin sockets
 The sails.io.js client is usually initiated from an HTML page that was already fetched via HTTP.  So in most cases, sockets that connect from this sort of a browser environment will automatically provide a valid session cookie.  And thus everything will work normally; and `req.session` will be available.
 
-However, in the case of cross-origin sockets, it is possible to receive a connection upgrade request _without a cookie_ (for certain transports anyway).  In this case, there is no way to keep track of the requesting user between virtual requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.                           
+However, in the case of cross-origin sockets, it is possible to receive a connection upgrade request _without a cookie_ (for certain transports anyway).  In this case, there is no way to keep track of the requesting user between virtual requests, since there is no identifying information to link him/her with a session. The sails.io.js client solves this by sending an HTTP request to a CORS+JSONP endpoint first, in order to get a 3rd party cookie. This cookie is then used when opening the socket connection.
 
 ##### Non-browser clients
 Similarly, if a socket connects _without_ providing a session cookie, or with a corrupted cookie, then a temporary, throwaway session entry will be created for it.  The same thing happens if the provided session cookie doesn't match any known session entry.

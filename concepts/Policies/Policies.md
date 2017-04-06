@@ -3,7 +3,7 @@
 
 Policies in Sails are versatile tools for authorization and access control-- they let you execute some logic _before_ an action is run, to determine whether or not to continue processing the request.  The most common use-case for policies is to restrict certain actions to _logged-in users only_.
 
-> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/docs/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
+> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](http://sailsjs.com/documentation/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
 
 ### Protecting Actions and Controllers with Policies
 
@@ -89,7 +89,7 @@ Sails provides two built-in policies that can be applied globally, or to a speci
 
  `'*': true` is the default policy for all controllers and actions.  In production, it's good practice to set this to `false` to prevent access to any logic you might have inadvertently exposed.
 
-In addition to `true` and `false`, all Sails apps generated with [`sails new`](http://sailsjs.com/documentation/reference/command-line-interface/sails-new) include the [`isLoggedIn` policy](http://sailsjs.com/documentation/anatomy/api/policies/is-logged-in-js) in `api/policies`.  This policy checks the session for a `userId` property, and if it doesn&rsquo;t find one, sends the default [`forbidden` response](http://sailsjs.com/documentation/concepts/custom-responses/default-responses#?resforbidden).  It can be used as an easy way to restrict actions to logged-in-users only, and modified to suit your needs (for example, to [redirect](http://sailsjs.com/documentation/reference/response-res/res-redirect) to `/login` instead of returning `res.forbidden()`).
+In addition to `true` and `false`, all Sails apps generated with [`sails new`](http://sailsjs.com/documentation/reference/command-line-interface/sails-new) include the [`isLoggedIn` policy](http://sailsjs.com/documentation/anatomy/api/policies/is-logged-in-js) in `api/policies`.  This policy checks the session for a `userId` property, and if it doesn&rsquo;t find one, sends the default [`forbidden` response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses/default-responses#?resforbidden).  It can be used as an easy way to restrict actions to logged-in-users only, and modified to suit your needs (for example, to [redirect](http://sailsjs.com/documentation/reference/response-res/res-redirect) to `/login` instead of returning `res.forbidden()`).
 
 ### Writing Your First Policy
 

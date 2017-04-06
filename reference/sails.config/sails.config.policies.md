@@ -1,13 +1,13 @@
 # sails.config.policies
 <!--
-> TODO:
+> FUTURE:
 >
 > Merge most of the contents of this file into the main reference section on policies.
 > Include a simple config reference table (with only one row with property: `*`) explaining how
 > this particular config module is read.  But don't worry about trying to explain what policies are here-- instead, link to the full docs on the subject (again, to reduce duplicate content and make this all more maintainable)
 -->
 
-This configuration is a dictionary that maps [policies](http://sailsjs.com/docs/concepts/policies) to an app&rsquo;s [actions](http://sailsjs.com/docs/concepts/actions-and-controllers).  See [Concepts > Policies](http://sailsjs.com/docs/concepts/policies#?using-policies-with-blueprint-actions) for more info.
+This configuration is a dictionary that maps [policies](http://sailsjs.com/documentation/concepts/policies) to an app&rsquo;s [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers).  See [Concepts > Policies](http://sailsjs.com/documentation/concepts/policies#?using-policies-with-blueprint-actions) for more info.
 
 ### Properties
 

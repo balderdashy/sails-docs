@@ -3,7 +3,7 @@ Returns the value of the parameter with the specified name.
 
 ### Usage
 
-```javascript
+```usage
 req.param(name[, defaultValue]);
 ```
 

@@ -2,111 +2,66 @@
 
 Create a record in the database.
 
-```javascript
-Something.create(values).exec(function (err, records) {
+```usage
+Something.create(initialValues)
+.exec(function (err) {
 
 });
 ```
 
 ### Usage
 
-|   |     Argument        | Type                                         | Details                            |
-|---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    values           | ((dictionary))                               | The attributes that the new record should have.
+|   | Argument            | Type                         | Details                               |
+|---|:--------------------|------------------------------|:--------------------------------------|
+| 1 | initialValues       | ((dictionary))               | The initial values for the new record.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See below for an example of how to negotiate validation errors (e.g. attempting to insert a record that would violate a uniqueness constraint)
-| 2 |    newRecord        | ((dictionary))      | The newly-created record, with its primary key (usually `id`) set.
+| 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| 2 | _createdRecord_     | ((dictionary?))     | For improved performance, the created record is not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created record will be sent back. (Be aware that this requires an extra database query in some adapters.)
+
+##### Meta keys
+
+| Key                 | Type              | Details                                                        |
+|:--------------------|-------------------|:---------------------------------------------------------------|
+| fetch               | ((boolean))       | If set to `true`, then the created record will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
+
+> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 ### Example
 
 To create a user named Finn in the database:
 ```javascript
-User.create({name:'Finn'}).exec(function (err, finn){
-  if (err) { return res.serverError(err); }
+User.create({name:'Finn'})
+.exec(function (err){
+  if (err) {
+    return res.serverError(err);
+  }
 
-  sails.log('Finn\'s id is:', finn.id);
   return res.ok();
 });
 ```
 
-
-##### Negotiating Validation Errors
-
-> Originally posted in [#3459](https://github.com/balderdashy/sails/issues/3459#issuecomment-170155680)
-
+##### Fetching the newly-created record
 ```javascript
-var Passwords = require('machinepack-passwords');
+User.create({name:'Finn'})
+.meta({fetch: true})
+.exec(function (err, createdUser){
+  if (err) {
+    return res.serverError(err);
+  }
 
-
-module.exports = {
-
-  signup: function (req, res) {
-    // Encrypt a string using the BCrypt algorithm.
-    Passwords.encryptPassword({
-      password: req.param('password'),
-    }).exec({
-      // An unexpected error occurred encrypting the password.
-      error: function (err){
-        return res.serverError(err);
-      },
-      // OK.
-      success: function (encryptedPassword) {
-
-        // Create a user record in the database.
-        User.create({
-          email: req.param('email'),
-          password: encryptedPassword
-        }).exec(function (err, newUser) {
-          // If there was an error, we negotiate it.
-          if (err) {
-
-            // If this is NOT a waterline validation error, it is a mysterious error indeed.
-            var isWLValidationErr = _.isObject(err) && _.isObject(err.invalidAttributes);
-            if (!isWLValidationErr) {
-              return res.serverError(err);
-            }
-
-            // Otherwise, it must be a waterline validation error.
-
-            // If it doesn't contain a problem with the password, then just handle is
-            // using `res.badRequest()` like normal.
-            if (!_.isArray(err.invalidAttributes.password)) {
-              return res.badRequest(err);
-            }
-
-            // Otherwise, something was wrong with the provided encrypted password.
-            // So in this case, we'll modify the validation error in place to improve the error output
-            // and so that we don't inadvertently reveal info about the encrypted password.
-            // (specifically, we loop over the array of attribute errors and modify them).
-            err.invalidAttributes.password = _.map(err.invalidAttributes.password, function eachPasswordErr (passwordError) {
-              return _.reduce(passwordError, function (memo, val, key) {
-                var allOccurrencesOfEncryptedPassMatcher = new RegExp(_.escapeRegExp(encryptedPassword),'g');
-                memo[key] = val.replace(allOccurrencesOfEncryptedPassMatcher, '****');
-                return memo;
-              }, {});
-            });
-
-            // Finally, respond with the modified waterline validation error and a 400 status code.
-            return res.badRequest(err);
-
-          }//</if (err)>
-
-          // Otherwise, `err` was falsy, so it worked!  The user was created.
-          // (maybe do other stuff here, or just send a 200 OK response)
-          return res.ok();
-
-        });//</User.create>
-      }
-    });//</Passwords.encryptPassword>
-  }//</UserController.signup>
+  sails.log('Finn\'s id is:', createdUser.id);
+  return res.ok();
 });
 ```
 
+### Negotiating errors
+
+It's important to always handle errors from model methods.  But sometimes, you need to look at errors in a more granular way. To learn more about the kinds of errors Waterline returns, and for examples of how to handle them, see [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors).
 
 
 <docmeta name="displayName" value=".create()">

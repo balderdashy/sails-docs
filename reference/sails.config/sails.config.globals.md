@@ -16,6 +16,25 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 | `services` | ((boolean)) | `true` | Expose each of your app's services as global variables (using their "globalId").  E.g. a service defined in `api/services/NaturalLanguage.js` would have a globalId of `NaturalLanguage` by default.  If this is disabled, you can still access your services via `sails.services.*`.
 
 
+### Using global Lodash (`_`) and async libraries
+
+Newly-generated Sails 1.0 apps have Lodash v3.10.1 and async v2.0.1 installed by default and enabled globally so that you can reference `_` and `async` in your app code without needing to `require()`.  This is done with the following default configuration in `config/globals.js`:
+
+```
+{
+  _: require('lodash'),
+
+  async: require('async')
+}
+```
+
+You can disable access by setting the properties to `false`. Prior to `Sails v1.0` you could set the properties to `true`; this has been deprecated and replaced by the syntax above.
+
+To use your own version of Lodash or async, you just need to `npm install` the version you want.  For example, to install the latest version of Lodash 4.x.x:
+
+```sh
+npm install lodash@^4.x.x --save --save-exact
+```
 
 ### Using Lodash (`_`) and async without globals
 
@@ -46,20 +65,10 @@ Finally, just like you'd import [any other Node.js module](https://soundcloud.co
 
 
 
-### Using a different version of `lodash` or `async`
-
-As of Sails v1.0, to use your own version of Lodash or async, you just need to `npm install` the version you want.  For example, to install the latest version of Lodash 4.x.x:
-
-```sh
-npm install lodash@^4.x.x --save --save-exact
-```
-
-
 
 ### Notes
 
 > + As a shortcut to disable _all_ of the above global variables, you can set `sails.config.globals` itself to `false`.  This does the same thing as if you had manually disabled each of the settings above.
-> + In previous versions of Sails, when `sails.config.globals._` or `sails.config.globals.async` was set to `true`, Sails would expose its own internal `lodash` and/or `async` dependency.  If you are migrating an app built before Sails v1.0 and want to use the same lodash and async version as before, run `npm install lodash@3.10.1 async@1.5.2 --save --save-exact`, then modify `config/globals.js` to pass in `_: require('lodash')` and `async: require('async')`.  See [lodash/lodash#2768](https://github.com/lodash/lodash/issues/2768) for more background.
 
 
 

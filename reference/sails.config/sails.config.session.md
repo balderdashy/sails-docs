@@ -9,11 +9,11 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 
 | Property    | Type       | Default   | Details |
 |:------------|:----------:|:----------|:--------|
-| `adapter`   | ((ref))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in a scalable session store module instead (e.g. `require('connect-redis')`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
+| `adapter`   | ((string))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in the name of an installed scalable session store module instead (e.g. `connect-redis`).  See [Production config](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
 | `name`        | ((string))       | `sails.sid`      | The name of the session ID cookie to set in the response (and read from in the request) when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used.
 | `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 | `cookie` | ((dictionary)) | _see [below](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie)_ | Configuration for the session ID cookie, including `maxAge`, `secure`, and more.  See [below](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie) for more info.
-| `routesDisabled` | ((array)) | (see details) | An array of [route address strings](http://sailsjs.com/documentation/concepts/routes) for which built-in session support will be skipped.  Useful for performance tuning; particularly preventing the unnecessary creation of sessions in requests for assets (e.g. `['GET /js/*', 'GET /styles/*', 'GET /images/*']`).  The default value for `routesDisabled` will disable the session for all [asset requests](http://sailsjs.com/documentation/concepts/assets) -- for example, requests that fetch `/dependencies/sails.io.js` or `/images/logo.jpg` would not load a session.
+| `isSessionDisabled` | ((function)) | (see details) | A function to be run for every request which, if it returns a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy" target="_blank">&ldquo;truthy&rdquo; value</a>, will cause session support to be disabled for the request (i.e. `req.session` will not exist).  By default, this function will check the request path against the [sails.LOOKS_LIKE_ASSET_RX](http://sailsjs.com/documentation/reference/application/advanced-usage/sails-looks-like-asset-rx) regular expression, effectively disabling session support when requesting [assets](http://sailsjs.com/documentation/concepts/assets).
 
 
 
@@ -29,7 +29,7 @@ The most popular session store for production Sails applications is Redis.  It w
 The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
 
 ```javascript
-adapter: require('connect-redis'),
+adapter: 'connect-redis',
 ```
 
 Then install the [connect-redis](https://github.com/tj/connect-redis) session adapter as a dependency of your app:
@@ -66,10 +66,10 @@ For example, to use Mongo as your session store, install [connect-mongo](https:/
 npm install connect-mongo@1.1.0 --save --save-exact
 ```
 
-Then require it and pass it in as your `adapter` in `config/session.js`:
+Then specify it as your `adapter` in `config/session.js`:
 
 ```javascript
-  adapter: require('connect-mongo'),
+  adapter: 'connect-mongo',
 ```
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):

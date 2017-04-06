@@ -1,14 +1,10 @@
 # Routing to actions
 
-By default, Sails will create a [blueprint action route](http://sailsjs.com/documentation/reference/blueprint-api) for each action, so that a `GET` request to `/:actionIdentity` will trigger the action.  For example, a `signup` action saved in `api/controllers/UserController.js` or `api/controllers/user/signup.js` would be bound to a `/user/signup` route.  See the [blueprints documentation](http://sailsjs.com/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
+### Manual routing
 
-Besides the default routing, Sails allows you to manually bind routes to actions using the [`config/routes.js`](http://sailsjs.com/documentation/concepts/Routes) file.  Some examples of when you might want to use explicit routes are:
+By default, controller actions in your Sails app will be inaccessible to users until you _bind_ them to a route in your [`config/routes.js` file](http://sailsjs.com/documentation/reference/configuration/sails-config-routes).  When you bind a route, you specify a URL that users can access the action at, along with options like [CORS security settings](http://sailsjs.com/documentation/concepts/security/cors#?configuring-cors-for-individual-routes).
 
-+ When you want to use separate actions to handle the same route path, based on the [HTTP method](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) (aka verb).  The aforementioned **action blueprint** routes bind *all* request methods for a path to a given action, including `GET`, `POST`, `PUT`, `DELETE`, etc.
-+ When you want an action to be available at a custom URL (e.g. `PUT /login`, `POST /signup`, or a "vanity URL" like `GET /:username`)
-+ When you want to set up additional options for how the route should be handled (e.g. special CORS configuration)
-
-To manually bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
+To bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
 
 For example, the following manual route will cause your app to trigger the `makeIt` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
 
@@ -22,7 +18,11 @@ If you&rsquo;re using standalone actions, so that you had an `api/controllers/sa
   'POST /make/a/sandwich': 'sandwich/make'
 ```
 
-For a full discussion of manual routing, please see the [routes documentation](http://sailsjs.com/documentation/concepts/Routes).
+For a full discussion of routing, please see the [routes documentation](http://sailsjs.com/documentation/concepts/Routes).
+
+### Automatic routing
+
+Sails can also automatically bind routes to your controller actions so that a `GET` request to `/:actionIdentity` will trigger the action.  This is called _blueprint action routing_, and it can be activated by setting `actions` to `true` in the [`config/blueprints.js`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) file.  For example, with blueprint action routing turned on, a `signup` action saved in `api/controllers/UserController.js` or `api/controllers/user/signup.js` would be bound to a `/user/signup` route.  See the [blueprints documentation](http://sailsjs.com/documentation/reference/blueprint-api) for more information about Sails&rsquo; automatic route binding.
 
 
 <docmeta name="displayName" value="Routing to actions">

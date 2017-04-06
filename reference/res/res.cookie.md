@@ -4,7 +4,7 @@ Sets a cookie with name (`name`) and value (`value`) to be sent along with the r
 
 
 ### Usage
-```js
+```usage
 res.cookie(name, value [,options]);
 ```
 

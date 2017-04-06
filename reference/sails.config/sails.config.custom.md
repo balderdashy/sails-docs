@@ -1,29 +1,29 @@
-# sails.config.custom
+# Custom configuration
 
 ### What is this?
 
-Your custom configuration file. This is useful for one-off settings specific to your application-- things like the domain to use when sending emails, or 3rd party API keys for Stripe, Mailgun, Twitter, Facebook, etc. These values may also be overridden in `config/env/production.js`.
+The custom configuration for your app. This is useful for one-off settings specific to your application-- things like the domain to use when sending emails, or 3rd party API keys for Stripe, Mailgun, Twitter, Facebook, etc.
 
-To access these values from your actions and helpers, use `sails.config.custom`.
+These values are usually set in the [`config/custom.js`](http://sailsjs.com/documentation/anatomy/config/custom-js) file, and potentially overridden in production using `config/env/production.js`, environment variables, or any  of the other [configuration mechanisms](http://sailsjs.com/documentation/concepts/configuration) provided by Sails.
 
-### For example:
+### Example
+
+First, to set custom configuration:
 
 ```javascript
+// config/custom.js
 module.exports.custom = {
   mailgunDomain: 'transactional-mail.example.com',
   mailgunApiKey: 'key-testkeyb183848139913858e8abd9a3'
 };
 ```
 
+Then, to access these values from your actions and helpers, use `sails.config.custom`:
+
 ```javascript
-// In your controller/service/model/hook/whatever:
-// ...
-var mailgunApiKey = sails.config.custom.mailgunApiKey;
-var mailgunDomain = sails.config.custom.mailgunDomain;
-// ...
+sails.config.custom.mailgunApiKey;
+// -> "key-testkeyb183848139913858e8abd9a3"
 ```
-### Notes
-> The contents of this file can be overridden via environment variables, or using any of the other configuration mechanisms provided by Sails.     
 
 
 <docmeta name="displayName" value="sails.config.custom">

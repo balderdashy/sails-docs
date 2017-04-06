@@ -2,7 +2,7 @@
 
 This file is useful for setting configuration for ALL Sails apps on a computer.  You can also use it to extend the functionality of the Sails CLI tool.
 
-[Reference docs for .sailsrc](http://sailsjs.com/documentation/reference/Configuration/Configuration.html)
+You can learn more about using sailsrc files [here](http://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files).
 
 
 <docmeta name="displayName" value=".sailsrc">

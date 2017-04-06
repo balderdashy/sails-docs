@@ -3,7 +3,7 @@
 A dictionary containing the parsed query-string, defaulting to `{}`.
 
 ### Usage
-```js
+```usage
 req.query;
 ```
 

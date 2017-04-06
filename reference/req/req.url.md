@@ -2,7 +2,7 @@
 
 Like [`req.path`](http://sailsjs.com/documentation/reference/req/req.path.html), but also includes the query string suffix.
 
-```js
+```usage
 req.url;
 
 // => "/search?q=worlds%20largest%20dogs"

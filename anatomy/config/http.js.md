@@ -1,6 +1,6 @@
 # config/http.js
 
-This file is conventionally used for configuring the underlying HTTP server in Sails.
+This file is for configuring the underlying HTTP server in Sails, as well as any HTTP middleware your app may need.
 
 ### Usage
 

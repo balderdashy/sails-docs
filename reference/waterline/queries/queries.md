@@ -3,7 +3,7 @@
 **Queries** (aka _query instances_) are the chainable deferred objects returned from model methods like `.find()` and `.create()`.  They represent a not-quite-yet-fulfilled intent to fetch or modify records from the database.
 
 
-```js
+```usage
 var query = Zookeeper.find();
 ```
 

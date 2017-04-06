@@ -2,7 +2,7 @@
 An array containing the "acceptable" response languages specified by the user agent in the "[Accept-Language](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)" header of this request (`req`).
 
 ### Usage
-```js
+```usage
 req.acceptedLanguages;
 ```
 

@@ -2,9 +2,19 @@
 
 Quietly lift your sails app (i.e. with logging silenced), and enter the [node REPL](http://nodejs.org/api/repl.html).  This means you can access and use all of your models, services, configuration, and much more.  Useful for trying out Waterline queries, quickly managing your data, and checking out your project's runtime configuration.
 
+```usage
+sails console
+```
+By default, this still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)
+
+
+### Usage
+`sails console` takes the following options:
+  * `--dontLift` - Start `sails console` without lifting the server.
+
 ### Example
 
-```bash
+```text
 $ sails console
 
 info: Starting app in interactive mode...
@@ -14,8 +24,6 @@ info: ( to exit, type <CTRL>+<C> )
 
 sails>
 ```
-
-> Note that `sails console` still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)  If you&rsquo;d rather not lift the server, run `sails console --dontLift`.
 
 
 
@@ -38,7 +46,7 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 >
 > Or alternatively, build yourself a local variable to use for familiarity:
 >
-> ```bash
+> ```text
 > sails> var lodash = sails.util._;
 > sails> lodash.keys(sails.config);
 > ```
@@ -47,14 +55,14 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 
 ### More Examples
 
-#### Waterline
+##### Waterline
 
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
-```bash
-sails> User.create({name: 'Brian', password: 'sailsRules'}).exec(console.log)
+```text
+sails> User.create({name: 'Brian', password: 'sailsRules'}).meta({fetch: true}).exec(console.log)
 undefined
-sails> null { name: 'Brian',
+sails> undefined { name: 'Brian',
   password: 'sailsRules',
   createdAt: "2014-08-07T04:29:21.447Z",
   updatedAt: "2014-08-07T04:29:21.447Z",
@@ -63,11 +71,21 @@ sails> null { name: 'Brian',
 
 Pretty cool, it inserts it into the database. However, you might be noticing the undefined and null. Don't worry about those. Remember that the .exec() returns error and data for values. So doing `.exec(console.log)` is the same as doing .exec(console.log(err, data))` The second method will remove the undefined message, but add null on a new line. It's up to you if you want to type more.
 
-#### Exposing Sails
+> Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
+>
+> ```text
+> sails> undefined RowDataPacket { name: 'Brian',
+>   password: 'sailsRules',
+>   createdAt: "2014-08-07T04:29:21.447Z",
+>   updatedAt: "2014-08-07T04:29:21.447Z",
+>   id: 1 }
+> ```
+
+##### Exposing Sails
 
 In sails console, type in `sails` to view a list of sails properties. You can use this to learn more about sails, override properties, or check to see if you disabled globals.
 
-```bash
+```text
 sails> sails
   |>   [a lifted Sails app on port 1337]
 \___/  For help, see: http://sailsjs.com/documentation/concepts/

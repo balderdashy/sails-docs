@@ -4,13 +4,13 @@ Sets specified response header (`header`) to the specified value (`value`).
 Alternatively, you can pass in a single object argument (`headers`) to set multiple header fields at once, where the keys are the header field names, and the corresponding values are the desired values.
 
 ### Usage
-```js
+```usage
 res.set(header, value);
 ```
 
 -or-
 
-```js
+```usage
 res.set(headers);
 ```
 

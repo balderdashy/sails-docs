@@ -4,7 +4,7 @@ Clears cookie (`name`) in the response.
 
 ### Usage
 
-```js
+```usage
 res.clearCookie(name [,options]);
 ```
 

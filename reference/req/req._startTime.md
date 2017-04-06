@@ -5,7 +5,7 @@ The moment that Sails started processing the request, as a [Javascript Date obje
 > This property is not added when your app is in [production mode](http://sailsjs.com/documentation/concepts/deployment#?set-the-nodeenv-environment-variable-to-production).
 
 ### Usage
-```javascript
+```usage
 req._startTime;
 ```
 

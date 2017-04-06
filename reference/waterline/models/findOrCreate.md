@@ -2,7 +2,7 @@
 
 Find the record matching the specified criteria. If no record exists or more than one record matches the criteria, an error will be returned.
 
-```javascript
+```usage
 Something.findOrCreate(criteria, values)
 .exec(function(err, attr, createdOrFound) {
   // ...

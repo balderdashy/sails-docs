@@ -5,7 +5,7 @@ The URL pathname from the [request URL string](http://nodejs.org/api/http.html#h
 
 ### Usage
 
-```js
+```usage
 req.path;
 ```
 

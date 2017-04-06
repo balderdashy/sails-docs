@@ -6,25 +6,29 @@ Lifecycle callbacks are functions that are automagically called before or after 
 
 Sails exposes a handful of lifecycle callbacks by default.
 
+No lifecycle callbacks are run on bulk inserts of data using `createEach`.
+
 
 ##### Callbacks on `create`
 
-  - beforeValidate: fn(values, cb)
-  - afterValidate: fn(values, cb)
-  - beforeCreate: fn(values, cb)
+The `afterCreate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
+  - beforeCreate: fn(recordToInsert, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
 
 ##### Callbacks on `update`
 
-  - beforeValidate: fn(valuesToUpdate, cb)
-  - afterValidate: fn(valuesToUpdate, cb)
+The `afterUpdate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
   - beforeUpdate: fn(valuesToUpdate, cb)
   - afterUpdate: fn(updatedRecord, cb)
 
 ##### Callbacks on `destroy`
 
+The `afterDestroy` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
   - beforeDestroy: fn(criteria, cb)
-  - afterDestroy: fn(destroyedRecords, cb)
+  - afterDestroy: fn(destroyedRecord, cb)
 
 
 ### Example

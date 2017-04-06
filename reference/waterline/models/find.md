@@ -2,7 +2,7 @@
 
 Find records in your database that match the given criteria.
 
-```javascript
+```usage
 Something.find(criteria).exec(function (err, records) {
 
 });

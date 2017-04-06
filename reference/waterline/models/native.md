@@ -1,6 +1,7 @@
 # .native()
 
-> **This method is deprecated.**
+> **As of Sails v1.x, this method is deprecated.**
+> Instead, please change your code to use [`Model.getDatastore().manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager), which offers a cleaner, simpler API.
 
 `.native()` is only available when using Sails/Waterline with MongoDB.
 
@@ -9,7 +10,7 @@ Returns a raw Mongo collection instance representing the specified model, allowi
 For full documentation and usage examples, check out the [native Node Mongo driver](https://github.com/mongodb/node-mongodb-native#introduction).
 
 
-Note that `sails-mongo` maintains a single Mongo connection for each of your configured connections/datastores.  Consequently, when using `.native()`, you don't need to close or open `db` manually.  For lower-level usage, you can `require('mongodb')` directly.
+Note that `sails-mongo` maintains a single Mongo connection for each of your configured datastores.  Consequently, when using `.native()`, you don't need to close or open `db` manually.  For lower-level usage, you can `require('mongodb')` directly.
 
 ### Example
 

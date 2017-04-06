@@ -4,7 +4,7 @@ Checks whether this request's stated list of "accepted" [media types](http://www
 
 
 ### Usage
-```javascript
+```usage
 req.accepts(type);
 ```
 
