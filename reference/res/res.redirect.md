@@ -5,14 +5,15 @@ Redirect the requesting user-agent to the given absolute or relative url.
 
 ### Usage
 ```js
-return res.redirect(url);
+return res.redirect([status,] url);
 ```
 
 ### Arguments
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | `status`       | ((integer)) |  (optional) a positive integer that corresponds to an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)|
+| 2 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
 
 
 
@@ -46,7 +47,7 @@ return res.redirect('back');
 > + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
 > + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html)).
 > + The [Sails socket client](http://sailsjs.com/documentation/reference/web-sockets/socket-client) does _not_ follow redirects, so if an action is called via a websocket request using (for example) [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), it will simply receive a 302 status code and a header indicating the location of the desired resource.  It&rsquo;s up to the client-side code to decide how to handle redirects for websocket requests.
-> + If you want to send a custom status code along with a redirect, you can chain the following functions, res.status() and res.redirect(): `return res.status(301).redirect('/foo');`
+> + If you want to send a custom status code(e.g. 301) along with a redirect, you can do the following: `return res.redirect(301, '/foo');`
 
 
 
