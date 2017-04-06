@@ -61,6 +61,8 @@ beforeConnect: function(handshake, proceed) {
 },
 ```
 
+> Note that if `beforeConnect` is used, then the `onlyAllowOrigins` setting will be ignored.  This allows you to accept socket connections from non-traditional clients (for example, in an [Electron app](electron.atom.io)) that may not set an `origin` header.
+
 ### Sockets & sessions
 
 By default (with the session hook enabled), when client sockets connect to a Sails app, they authenticate using a session cookie.  This allows Sails to associate the virtual requests made from the socket with an existing user session -- much like how normal HTTP requests work.
