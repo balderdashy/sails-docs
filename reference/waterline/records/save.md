@@ -27,7 +27,7 @@ User.find().exec(
     var getOneRecord = myRecords.pop();
     getOneRecord.name = 'Hank';
     getOneRecord.save(
-      function(err){
+      function(err, savedUser){
         console.log('User with ID '+getOneRecord.id+' now has name '+getOneRecord.name);
       });
   });
