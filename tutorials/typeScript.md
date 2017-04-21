@@ -1,6 +1,6 @@
 # Using TypeScript in a Sails app
 
-Sails supports using TypeScript to write your custom app code (like [actions](http://sailsjs.com/documentation/concepts/controllers#?actions) and [models](http://sailsjs.com/documentation/concepts/models-and-orm)).  You can enable this support in three steps:
+Sails supports using TypeScript to write your custom app code (like [actions](http://sailsjs.com/documentation/concepts/controllers#?actions) and [models](http://sailsjs.com/documentation/concepts/models-and-orm)).  You can enable this support in just a few steps:
 
 1. Run `npm install ts-node --save` in your app folder.
 2. Install the necessary typings for your app.  At the very least you'll probably want to:
