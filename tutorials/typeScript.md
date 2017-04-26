@@ -14,7 +14,7 @@ Sails supports using TypeScript to write your custom app code (like [actions](ht
    ```
 4. Add a `config/extensions.js` file to your project with:
    ```javascript
-   module.exports.moduleloader: {
+   module.exports.moduleloader = {
      sourceExt: ['js', 'ts'],
      configExt: ['js', 'ts']
    };
