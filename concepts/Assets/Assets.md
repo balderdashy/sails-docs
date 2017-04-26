@@ -19,6 +19,13 @@ Like most web servers, Sails honors the `index.html` convention.  For instance, 
 ##### Precedence
 It is important to note that the static [middleware](http://stephensugden.com/middleware_guide/) is installed **after** the Sails router.  So if you define a [custom route](http://sailsjs.com/documentation/concepts/Routes?q=custom-routes), but also have a file in your assets directory with a conflicting path, the custom route will intercept the request before it reaches the static middleware. For example, if you create `assets/index.html`, with no routes defined in your [`config/routes.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html) file, it will be served as your home page.  But if you define a custom route, `'/': 'FooController.bar'`, that route will take precedence.
 
+### Slow compile times
+Due to the way Uglify works, if you have too many minified files in your project, your compile times might become a bit slow, as referenced in [this issue](https://github.com/balderdashy/sails/issues/3583), you have a couple of options to circumvent the slowness:
+
+* Using unminified versions of your assets
+Though uglify might be slow when your assets are already minified, it is very fast to minify your raw assets, so you could just add `jquery.js` instead of `jquery.min.js` in your project
+* Precompiling and disabling Grunt
+By precompiling the assets with your preferred task runner(e.g. gulp, webpack, node scripts), you can also avoid this issue, since you have more control over your compiling pipeline, in which case you should [disable Grunt](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).
 
 
 <docmeta name="displayName" value="Assets">
