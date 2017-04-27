@@ -8,7 +8,7 @@ Security announcements are sent to the Sails [newsgroup](https://groups.google.c
 
 ### Reporting a security issue in Sails
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at sailsjs dot io**.  In the spirit of [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure), we ask that you privately report any security vulnerability at that email address, and give us time to patch the issue before publishing the details</em>.
+If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at sailsjs dot com**.  In the spirit of [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure), we ask that you privately report any security vulnerability at that email address, and give us time to patch the issue before publishing the details</em>.
 
 ### What is a security vulnerability?
 
