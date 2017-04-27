@@ -93,7 +93,7 @@ This helps guarantee your code&rsquo;s maintainability by providing strong conve
 ```javascript
 sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com' }).exec({
   error: function(err) { return res.serverError(err); },
-  usernameConflict: function() { return res.status(409).badRequest(); }
+  usernameConflict: function() { return res.status(409).badRequest(); },
   success: function(newUserId) {
     return res.ok();
   }
