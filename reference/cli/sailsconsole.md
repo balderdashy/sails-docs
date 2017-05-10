@@ -1,6 +1,6 @@
 # sails console
 
-Quietly lift your sails app (i.e. with logging silenced), and enter the [node REPL](http://nodejs.org/api/repl.html).  This means you can access and use all of your models, services, configuration, and much more.  Useful for trying out Waterline queries, quickly managing your data, and checking out your project's runtime configuration.
+Lift your Node.js/Sails.js app in interactive mode, and enter the [REPL](http://nodejs.org/api/repl.html).  This means you can access and use all of your models, helpers, configuration, services, and the `sails` app instance.  Useful for trying out Waterline queries, quickly managing your data, and checking out your project's runtime configuration.
 
 ```usage
 sails console
