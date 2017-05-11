@@ -9,7 +9,7 @@ Sailsの日本語ドキュメントは、[日本語版sails-docs](https://github
 1. 最新の英語ドキュメントを日本語訳する
 1. コミットメッセージに、その時点の最新の英語ドキュメントのコミットハッシュを記載する
 
-#### How are these docs compiled and pushed to the website?
+#### コンパイルの仕組み
 Sailsチームは`doc-templater`を使って.mdファイルをhtmlに変換しています。使い方の詳細は[doc-templater リポジトリ](https://github.com/uncletammy/doc-templater)を参照してください。
 
 各.mdファイルがそれぞれ一つのページになります。ページタイトルを指定するために、各.mdファイルは`<docmeta name="displayName">`タグを持っている必要があります。このタグのvalueプロパティでページタイトルを指定してください。このタグが検索エンジンにおけるページの見え方を決めます。また、ナビゲーションメニューの表示にも使われます。例えば以下のように指定します。
