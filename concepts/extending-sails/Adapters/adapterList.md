@@ -41,6 +41,17 @@ url: 'mysql://user:password@host:port/database',
 > + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.
 > + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
 
+##### Handshake inactivity timeout errors
+If you find yourself encountering a "Handshake inactivity timeout" error when your Sails app interacts with MySQL, you can increase the timeout using the `connectTimeout` option.  This is [usually only necessary](https://github.com/mysqljs/mysql/issues/1434) when queries are running side-by-side with computationally expensive operations (for example, compiling client-side typescript files or running webpack during development).
+
+For example, you might extend the timeout to 20 seconds:
+
+```javascript
+adapter: require('sails-mysql'),
+url: 'mysql://user:password@host:port/database',
+connectTimeout: 20000
+```
+
 
 ### sails-postgresql
 
