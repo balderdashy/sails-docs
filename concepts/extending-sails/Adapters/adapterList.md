@@ -38,7 +38,7 @@ url: 'mysql://user:password@host:port/database',
 ```
 
 > + The default port for MySQL is `3306`.
-> + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.
+> + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.  You may use the [`columnType` setting](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) in a model attribute to set the character set.
 > + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
 
 ##### Handshake inactivity timeout errors
