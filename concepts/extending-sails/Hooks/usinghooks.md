@@ -30,7 +30,7 @@ module.exports.installedHooks = {
 > Note: you may have to create the `config/installedHooks.js` file yourself.
 
 * [Hooks overview](http://sailsjs.com/documentation/concepts/extending-sails/Hooks)
-* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec)
+* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
 * [Creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
 * [Creating an installable hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/installablehooks.html)
 
