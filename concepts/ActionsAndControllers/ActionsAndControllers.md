@@ -103,7 +103,7 @@ module.exports = {
          if (err) {return exits.error(err);}
 
          // If no user was found, redirect to signup.
-         if (!user) {return exits.notFound('/signup');
+         if (!user) {return exits.notFound('/signup');}
 
          // Display the welcome view.
          return exits.success({name: user.name});
