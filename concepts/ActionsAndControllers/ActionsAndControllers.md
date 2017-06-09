@@ -118,7 +118,7 @@ Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-acti
 
 Using classic `req, res` functions for your actions is the quickest way to start out with a new app.  However, using Actions2 provides several advantages:
 
- * The code you write is not directly dependent on `res` and `res`, making it easier to re-use or abstract into a [helper](http://sailsjs.com/documentation/concepts/helpers).
+ * The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](http://sailsjs.com/documentation/concepts/helpers).
  * You guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run.
  * You&rsquo;ll be able to see all of the possible outcomes from running the action without having to dissect the code.
 
