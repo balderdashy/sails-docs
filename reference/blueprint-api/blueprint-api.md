@@ -72,7 +72,7 @@ In production apps, you may often wish to turn action routes off completely for 
 
 ### Custom blueprints
 
-Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a /blueprints/foo.js file, you can bind a route to it in your [`/config/routes.js`](http://sailsjs.com/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://sailsjs.com/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
+Along with the built-in RESTful actions provided by Sails, you can create your own custom blueprints to be shared by your controllers.  However, custom blueprints do not get bound to routes automatically. If you create a `/blueprints/foo.js` file, you can bind a route to it in your [`/config/routes.js`](http://sailsjs.com/documentation/anatomy/my-app/config/routes-js) file using the [blueprint target syntax](http://sailsjs.com/documentation/concepts/routes/custom-routes#?blueprint-target-syntax).  For example:
 
 ```
 GET /myRoute: {blueprint: 'foo'}
