@@ -1,7 +1,7 @@
 # sails.config.globals
 
 
-Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default.  The options are conventionally specified in the [`config/globals.js`](http://sailsjs.com/anatomy/config/globals-js) configuration file.
+Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default. The globals configuration in sails is only for controlling global variables introduced by sails. The options are conventionally specified in the [`config/globals.js`](http://sailsjs.com/anatomy/config/globals-js) configuration file. 
 
 
 
