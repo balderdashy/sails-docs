@@ -23,7 +23,6 @@ This method is useful primarily in development scenarios.
 | &nbsp;  |       Argument             | Type                | Details
 |---|--------------------------- | ------------------- |:-----------
 | 1 |      _options_      | ((dictionary?))          | Currently accepts one key, `hooksToSkip`, which if given should be an array of names of hooks that should _not_ call their `reloadActions` method.
-argument will override the `data` property of the `request` argument, if provided.
 | 2 |      _callback_              | ((function)) | A callback to be called with the virtual response.
 
 
