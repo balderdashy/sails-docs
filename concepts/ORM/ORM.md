@@ -31,11 +31,11 @@ Since Sails uses `sails-disk` by default, you can start building your app with z
 
 _The product owner/stakeholder walks up to you and says:_
 
-> "Oh hey by the way, the products actually already live in our point of sale system. It's some ERP thing I guess, something like "DB2"?  Anyways, I'm sure you'll figure it out- sounds easy right?"
+> "Oh hey by the way, the product's actually already live in our point of sale system. It's some ERP thing I guess, something like "DB2"?  Anyways, I'm sure you'll figure it out- sounds easy right?"
 
 Many enterprise applications must integrate with an existing database.  If you're lucky, a one-time data migration may be all that's necessary, but more commonly, the existing dataset is still being modified by other applications.  In order to build your app, you might need to marry data from multiple legacy systems, or with a separate dataset stored elsewhere.  These datasets could live on 5 different servers scattered across the world! One colocated database server might house a SQL database with relational data, while another cloud server might hold a handful of Mongo or Redis collections.
 
-Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually)
+Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually).
 
 ##### Performance
 
