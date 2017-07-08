@@ -2,7 +2,7 @@
 
 To add your own custom response method, simply add a file to `/api/responses` with the same name as the method you would like to create.  The file should export a function, which can take any parameters you like.
 
-```
+```javascript
 /** 
  * api/responses/myResponse.js
  *
