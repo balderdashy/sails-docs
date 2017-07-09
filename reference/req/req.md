@@ -8,7 +8,7 @@ Sails adds a few methods and properties of its own to the `req` object, like [`r
 
 ### Protocol Support
 
-The chart below describes support for the methods and properties on the Sails [Request](http://sailsjs.com/documentation/reference/req) object (`req`) across multiple transports:
+The chart below describes support for the methods and properties on the Sails [Request](http://sailsjs.com/documentation/reference/request-req) object (`req`) across multiple transports:
 
 <!-- TODO: add SPDY -->
 
