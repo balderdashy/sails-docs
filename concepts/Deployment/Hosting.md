@@ -29,7 +29,7 @@ if [ -f "${OPENSHIFT_REPO_DIR}"/Gruntfile.js ]; then
     (cd "${OPENSHIFT_REPO_DIR}"; node_modules/grunt-cli/bin/grunt prod)
 fi
 ```
-Then disable Sails Grunt integration hook. 
+Then disable Sails Grunt integration hook.
 To do this set the `grunt` property to `false` in `.sailsrc` hooks like this:
 
 ```json
@@ -50,9 +50,15 @@ Then create the file `/supervisor_opts` with the following contents. This tells 
 ```
 ### NOTE:
 This deployment guide works only on Openshift's "SCALABLE" gears, nodejs v0.10.
-If you're using non-scalable gear, the `/supervisor_opts` file will be ignored and Sails will not lift on it. 
+If you're using non-scalable gear, the `/supervisor_opts` file will be ignored and Sails will not lift on it.
 
 You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
+
+##### Using Nanobox?
+
++ [Getting Started](https://content.nanobox.io/a-simple-sails-js-example-app/)
++ [Official Quickstart](https://github.com/nanobox-quickstarts/nanobox-sails)
++ [Official Guides](https://guides.nanobox.io/nodejs/sails/)
 
 ##### Using DigitalOcean?
 
@@ -97,4 +103,3 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 
 
 <docmeta name="displayName" value="Hosting">
-
