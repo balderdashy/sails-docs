@@ -2,6 +2,16 @@
 
 Here is a non-comprehensive list of Node/Sails hosting providers and a few available community tutorials.  Keep in mind that, most of the time, the process for deploying your Sails app is exactly the same as it would be for any other Node.js app.  Just be sure to take a look at the [other pages](http://sailsjs.com/documentation/concepts/deployment) in this section of the docs (as well as your app's [`config/env/production.js` file](http://sailsjs.com/documentation/anatomy/config/env/production-js)) and make any necessary adjustments before you actually deploy to production.
 
+### Nanobox
+
+<a title="Deploy your Sails/Node.js app on Nanobox" href="https://nanobox.io"><img style="width:285px;" src="http://sailsjs.com/images/deployment_nanobox.png" alt="Nanobox logo"/></a>
+
++ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
++ [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
++ [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
++ [Official Nanobox Docs](https://docs.nanobox.io)
++ [Join Us on Slack for Help](https://slack.nanoapp.io)
+
 
 ### Heroku
 
