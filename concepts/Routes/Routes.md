@@ -52,7 +52,7 @@ What if I want to change the view layout within the route itself?  No problem we
 
 In addition to your custom routes, Sails binds many routes for you automatically.  If a URL doesn't match a custom route, it may match one of the automatic routes and still generate a response.  The main types of automatic routes in Sails are:
 
-* [Blueprint routes](http://sailsjs.com/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](http://sailsjs.com/documentation/concepts/Controllers) and [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) with a full REST API.
+* [Blueprint routes](http://sailsjs.com/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](http://sailsjs.com/documentation/concepts/Controllers) and [models](http://sailsjs.com/documentation/concepts/models-and-orm/Models.html) with a full REST API.
 * [Assets](http://sailsjs.com/documentation/concepts/Assets), such as images, Javascript and stylesheet files.
 * [CSRF](http://sailsjs.com/documentation/concepts/Security/CSRF.html), if turned on, provides a **/csrfToken** route to your app that can be used to retrieve the CSRF token.
 
