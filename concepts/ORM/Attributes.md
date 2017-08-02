@@ -254,6 +254,8 @@ module.exports = {
 
 > You might have noticed that we also used the [`tableName`](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
 
+> The `columnName` property is not valid for plural associations (that is, attributes with their `collection` property set).  If you&rsquo;re trying to customize a join table for a many-to-many association, use the [`through` property](http://sailsjs.com/documentation/concepts/models-and-orm/associations/through-associations) instead.
+
 
 
 
