@@ -71,7 +71,7 @@ WHERE
 ```
 
 ### Notes
-> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`).
+> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.)
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">
