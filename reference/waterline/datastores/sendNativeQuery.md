@@ -70,6 +70,9 @@ WHERE
 `;
 ```
 
+But be aware that you still have to deal with custom column names on the way out!  The `rawResult` you get back from `.sendNativeQuery()` is inherently database-specific and tied to the physical layer, thus it will inherit any complexity you've set up there (including custom table/column names from your model definitions).
+
+
 ### Notes
 > + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.)
 
