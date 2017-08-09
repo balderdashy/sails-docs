@@ -6,9 +6,16 @@ Execute a raw SQL query using this datastore.
 var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ```
 
+```usage
+datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
+  
+});
+```
+
 _Or:_
 + `.sendNativeQuery(sql)`
 
+---------------------
 
 > `.sendNativeQuery()` is only available on Sails/Waterline [datastores](http://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
 
@@ -19,13 +26,6 @@ _Or:_
 | 2 | valuesToEscape     | ((array?))           | An array of dynamic, untrusted strings to SQL-escape and inject within `sql`.  _(If you have no dynamic values to inject, then just omit this argument or pass in an empty array here.)_
 
 ##### Callback
-
-```usage
-datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
-  
-});
-```
-
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
