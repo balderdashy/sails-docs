@@ -9,19 +9,6 @@ var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 _Or:_
 + `.sendNativeQuery(sql)`
 
-<!--
-
-```usage
-datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
-
-});
-```
-
-_Or:_
-+ `.sendNativeQuery(sql).exec(afterwards)`
-
--->
-
 
 > `.sendNativeQuery()` is only available on Sails/Waterline [datastores](http://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
 
@@ -32,6 +19,14 @@ _Or:_
 | 2 | valuesToEscape     | ((array?))           | An array of dynamic, untrusted strings to SQL-escape and inject within `sql`.  _(If you have no dynamic values to inject, then just omit this argument or pass in an empty array here.)_
 
 ##### Callback
+
+```usage
+datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
+  
+});
+```
+
+
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(Expect this to be an Error instance with a [`.footprint` property](https://github.com/treelinehq/waterline-query-docs/blob/8fc158d8460aa04ee6233fefbdf83cc17e7645df/docs/errors.md).)_
@@ -61,34 +56,7 @@ return exits.success();
 ```
 
 
-<!--
-
-```js
-// Build our SQL query template.
-var NAMES_OF_PETS_SQL =
-'SELECT pet.name '+
-'FROM pet '+
-'WHERE pet.species_label = $1 OR pet.species_label = $2';
-
-// Send it to the database.
-sails.getDatastore()
-.sendNativeQuery(NAMES_OF_PETS_SQL, [ 'dog', 'cat' ])
-.exec(function(err, rawResult) {
-  if (err) { return res.serverError(err); }
-
-  sails.log(rawResult);
-  // (result format depends on the SQL query that was passed in, and the adapter you're using)
-
-  // Then parse the raw result and do whatever you like with it.
-
-  return res.ok();
-
-});//_∏_
-```
--->
-
-
-### Deriving schema information
+### Custom table/column names
 
 The SQL query you write should refer to table names and column names, not model identities and attribute names.  If your models are defined with custom table names, or if their attributes are defined with custom column names, you'll want to be sure you're using those custom names in your native SQL queries.
 
