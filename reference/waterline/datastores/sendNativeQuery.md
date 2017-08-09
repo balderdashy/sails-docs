@@ -6,7 +6,7 @@ Execute a raw SQL query using this datastore.
 var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ```
 
-```usage:callbacks
+```usage-callbacks
 datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
   
 });
