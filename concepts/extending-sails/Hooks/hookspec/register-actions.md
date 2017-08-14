@@ -15,6 +15,8 @@ registerActions: function(cb) {
     return res.status(200).send('Hey there, ' + name + '!');
   }, 'myhook/greet');
 
+  return cb();
+
 }
 ```
 

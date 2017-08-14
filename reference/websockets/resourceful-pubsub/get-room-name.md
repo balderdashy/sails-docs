@@ -10,7 +10,7 @@ Something.getRoomName(id);
 
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
-| 1 | id         | ((number)) <br/>_or_<br/> ((string))    | The ID (primary key value) of the record to get the PubSub room name for.
+| 1 | id         | ((number)) <br> _or_ <br> ((string))    | The ID (primary key value) of the record to get the PubSub room name for.
 
 ### Example
 

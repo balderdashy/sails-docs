@@ -102,12 +102,12 @@ attributes: {
 
 ### Validations
 
-In addition to basic type safety checks, Sails offers several different high-level validation rules.  For example, the `enum` rule verifies that any new value stored for this attribute must _exactly match_ one of a few different hard-coded constants:
+In addition to basic type safety checks, Sails offers several different high-level validation rules.  For example, the `isIn` rule verifies that any new value stored for this attribute must _exactly match_ one of a few different hard-coded constants:
 
 ```javascript
 unsubscribeReason: {
   type: 'string',
-  enum: ['boring', 'too many emails', 'recipes too difficult', 'other'],
+  isIn: ['boring', 'too many emails', 'recipes too difficult', 'other'],
   required: true
 }
 ```
