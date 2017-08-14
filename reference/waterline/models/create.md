@@ -104,7 +104,7 @@ module.exports = {
       }
     });//</Passwords.encryptPassword>
   }//</UserController.signup>
-});
+};
 ```
 
 
