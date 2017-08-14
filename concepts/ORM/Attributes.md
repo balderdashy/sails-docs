@@ -30,6 +30,7 @@ Specifies the type of data that will be stored in this attribute.  One of:
 - mediumtext
 - longtext
 - objectid
+- email
 
 ###### defaultsTo
 
