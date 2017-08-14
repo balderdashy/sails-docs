@@ -2,7 +2,7 @@
 
 ### Overview
 
-If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to [i18n-node](https://github.com/mashpie/i18n-node). ([npm](https://www.npmjs.org/package/i18n)).
+If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to the light-weight i18n-node-2 ([GitHub](https://github.com/jeresig/i18n-node-2) and ([NPM](https://www.npmjs.com/package/i18n-2)).
 
 
 ### Usage
@@ -24,13 +24,9 @@ req.__('Hello {{name}}', { name: 'Marcus' }); // => Hola Marcus
 ```
 
 
-Or if you already know the locale id, you can translate from anywhere in your application using `sails.__`:
-
+Also, you can translate from anywhere in your application using `sails.__` (the string will be translated according to the current locale):
 ```javascript
-sails.__({
-  phrase: 'Hello',
-  locale: 'es'
-});
+sails.__('Hello');
 // => 'Hola!'
 ```
 
@@ -58,7 +54,7 @@ localesDirectory: '/config/locales'
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
-But worth noting is that since Sails implements [node-i18n](https://github.com/mashpie/i18n-node) integration in the [i18n hook](http://sailsjs.com/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
+But worth noting is that since Sails implements [node-i18n-2](https://github.com/jeresig/i18n-node-2) integration in the [i18n hook](http://sailsjs.com/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
 
 
 ### Translating dynamic content
