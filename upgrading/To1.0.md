@@ -117,6 +117,7 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **The experimental `usage` route option has been removed.**  It is recommended that you perform any route parameter validation in your controller code.
 * **The experimental &ldquo;associated-item&rdquo; blueprint shadow routes have been removed.** These were routes like `GET /user/1/pets/2`, whose functionality can be replicated by simply using the much-clearer route `GET /pets/2`.
 * **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](http://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more info.
+* **The ordering of attributes** in the internal representation of model classes has changed (association attributes are now sorted at the bottom).  This has the effect of causing tables created using `migrate: 'alter'` to have their columns in a different order than in previous versions of Waterline, so be aware of this if column ordering is important in your application.  As a reminder, auto-migrations are intended to help you design your schema as you build your app.  They are not guaranteed to be consistent regarding any details of your physical database columns besides setting the column name, type (including character set / encoding if specified) and uniqueness.
 
 ### Changes to database configuration
 
