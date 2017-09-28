@@ -89,6 +89,43 @@ See [Concepts > Realtime](http://sailsjs.com/documentation/concepts/realtime) fo
 
 
 
+### Multiple rooms per record
+
+For some applications, you may run across the need to manage two different channels related to the same record.  To accomplish this, you can combine [.getRoomName()](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/get-room-name) and [sails.sockets.join()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/join):
+
+```js
+// On the server, in your subscribe action…
+
+var orgId = req.param('organizationId');
+if (!orgId) { return res.badRequest(); }
+
+if (!req.isSocket) { return res.badRequest('This action is designed for use with WebSockets.'); }
+
+var me = await User.findOne({
+  id: req.session.userId
+})
+.populate('globalAdminOfOrganizations', {
+  where: { id: orgId },
+  select: ['id']
+});
+
+// Subscribe to general notifications.
+Organization.subscribe(req, orgId);
+
+// If this user is a global admin of this organization, then also subscribe them to
+// an additional private room (this is used for additional notifications intended only
+// for global admins):
+var isGlobalAdminOfThisOrg = (globalAdminOfOrganizations.length > 0);
+if (isGlobalAdminOfThisOrg) {
+  var privateRoom = Organization.getRoomName(req.param('organizationId')) + 'admins-only';
+  sails.sockets.join(req, privateRoom);
+}
+
+return res.ok();
+```
+
+Then later, to publish to one of these rooms, just compute the appropriate room name and use [sails.sockets.broadcast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) to blast out your notification.
+
 
 
 ### Notes
