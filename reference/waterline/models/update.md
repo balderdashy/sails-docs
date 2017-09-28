@@ -7,8 +7,8 @@ Updates existing records in the database that match the specified criteria.
 
 |   |     Description     | Accepted Data Types | Required ? |
 |---|---------------------|---------------------|------------|
-| 1 |   Find Criteria     |   `{}`,`[{}]`, `string`, `int`  |   Yes     |
-| 2 |   Updated Records   |   `{}`,`[{}]`       |   Yes     |
+| 1 |   Find Criteria     |   `{}`, `string`, `int`  |   Yes     |
+| 2 |   Updated Values   |   `{}`       |   Yes     |
 | 3 |     Callback        | `function`          | No        |
 
 #### Callback Parameters
@@ -28,13 +28,12 @@ User.update({name:'Walter Jr'},{name:'Flynn'}).exec(function afterwards(err, upd
     return;
   }
 
-  console.log('Updated user to have name ' + updated[0].name);
+  console.log('Updated all users named "Walter Jr" to have name ' + updated[0].name);
 });
 
 ```
 ### Notes
 > + An array of primary key values passed to `.update()` for a `collection` association will set the association to contain **only** the records with those primary key values provided.  That is- it **unlinks all other** records from the association.
-> + Although you may pass .update() an object or an array of objects, it will always return an array of objects.
 > + If you specify a primary key (e.g. `7` or `"50c9b254b07e040200000028"`) instead of a criteria object, any `.where()` filters will be ignored.
 > + Currently, calling `.populate()` on an `.update()` query has no effect.  To populate attributes on the results, you should follow up your update with a `find().populate()` query.
 
