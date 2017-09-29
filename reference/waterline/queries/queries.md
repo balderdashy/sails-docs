@@ -22,7 +22,7 @@ In this example, the call to `Zookeeper.find()` returns a query instance, but _d
 
 ### How It Works
 
-When you **execute** a query `await`, a lot happens:
+When you **execute** a query using `await`, a lot happens:
 
 ```js
 await query;
