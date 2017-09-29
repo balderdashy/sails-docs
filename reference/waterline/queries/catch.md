@@ -6,7 +6,7 @@ Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/
 query.catch(callback);
 ```
 
-> This is an alternative to `.exec()`.  When combined with `.then()`, it provides the same functionality.
+> As of Sails v1 and Node.js v8, you can take advantage of [`await`](https://sailsjs.com/documentation/reference/waterline-orm/queries) instead of using this method.
 
 ### Usage
 
@@ -48,7 +48,9 @@ User.findOne({
 
 
 ### Notes
-> + The `.catch()` function also returns a promise, to allow for chaining.
+> + Whenever possible, it is recommended that you use `await` instead of calling this method.
+> + This is an alternative to `.exec()`.  When combined with `.then()`, it provides the same functionality.
+> + The `.catch()` function also returns a promise, to allow for chaining.  This is not recommended for all but the most advanced users of promises due to the complex (and arguably non-intuitive) behavior of chained `.catch()` calls.
 > + For more information, see the [bluebird `.catch()` api docs](http://bluebirdjs.com/docs/api/catch).
 
 
