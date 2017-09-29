@@ -9,15 +9,12 @@ var query = Zookeeper.find();
 
 The purpose of query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire. Then, when you're ready to fire the query off to the database, you can just `await` it.
 
-> If you are using an older version of Node.js, that does not support JavaScript's `await` keyword, you can use [`.exec()`](http://sailsjs.com/documentation/reference/waterline/queries/exec.html) or `.then()`+`.catch()`).
+> If you are using an older version of Node.js, that does not support JavaScript's `await` keyword, you can use `.exec()`, or `.then()`+`.catch()`.  See the section on "Promises and Callbacks" below for more information.
 
 Most of the time, you won't think about query instances as objects _per se_, rather as just another part of the syntax for communicating with the database.  In fact, you may already be using these objects in your Sails app! If so, the following syntax should look familiar:
 
 ```js
 var zookeepers = await Zookeeper.find();
-// would you look at all those zookeepers?
-// (now let's do the next thing;
-//  e.g. `_.reduce(zookeepers, ...)` and/or `return res.json(zookeepers)`)
 ```
 
 In this example, the call to `Zookeeper.find()` returns a query instance, but _doesn't actually do anything yet_.  The query is not actually executed until it is executed using the `await` keyword.
@@ -25,20 +22,43 @@ In this example, the call to `Zookeeper.find()` returns a query instance, but _d
 
 ### How It Works
 
-When you **execute** a query (using `.exec()` or `.then()`), a lot happens:
+When you **execute** a query `await`, a lot happens:
 
 ```js
-query.exec(function (err, zookeepers) {...});
+await query;
 ```
 
-First, it is "shaken out" by Waterline core into a normalized [Waterline criteria dictionary](http://sailsjs.com/documentation/concepts/models-and-orm/query-language).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
+First, it is "shaken out" by Waterline core into a [normalized query](http://sailsjs.com/documentation/concepts/models-and-orm/query-language).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
 
-When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to the callback you provided to `.exec()` for consumption by your app.
+When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to "userland" (i.e. your code) for consumption by your app.
+
+
+### Error handling
+
+You can use a try/catch to handle specific errors, if desired.
+
+```js
+var zookeepersAtThisZoo;
+try {
+  zookeepersAtThisZoo = await Zookeeper.find({
+    zoo: req.param('zoo')
+  }).limit(30);
+} catch (err) {
+  switch (err.name) {
+    case 'UsageError': return res.badRequest(err);
+    default: throw err;
+  }
+}
+
+return res.json(zookeepersAtThisZoo);
+```
+
+The specific kinds of errors you could receive vary based on what kind of query you are executing.  See the reference docs for the various query methods for more specific information.
 
 
 ### Promises and Callbacks
 
-As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an `.exec()` method.
+As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an [`.exec()`](https://sailsjs.com/documentation/reference/waterline/queries/exec) method.
 
 
 ```js
@@ -63,7 +83,7 @@ Zookeeper.find().exec(function afterFind(err, zookeepers) {
 ```
 
 
-Similar to the example above, the query is not actually executed right away.  But in this example, instead of using `await` to execute the query and wait for its result, we use the traditional `.exec()` method with a callback function.
+Similar to the example above, the query is not actually executed right away.  But in this example, instead of using `await` to execute the query and wait for its result, we use the traditional `.exec()` method with a callback function.  Note that, with this usage, we _cannot rely on try/catch and normal error handling in JavaScript_ to take care of our errors!  Instead, we have to manually handle that in our callback to .exec().  This style of error handling is the traditional approach in Node.js apps prior to ~Summer 2017.
 
 
 Under the covers, Sails and Waterline also provide a minimalist integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.then()` and `.catch()` methods.
