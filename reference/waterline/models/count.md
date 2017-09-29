@@ -1,6 +1,6 @@
 # .count()
 
-Get the number of records matching a criteria.
+Get the total number of records matching the specified criteria.
 
 ```usage
 var numRecords = await Model.count(criteria);
