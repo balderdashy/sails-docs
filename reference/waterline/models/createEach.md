@@ -16,7 +16,7 @@ await Something.createEach(initialValues);
   		  
 | Type                | Description      |
 |---------------------|:-----------------|
-| ((array?)) of ((dictionary))	| For improved performance, the created records are not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created records will be sent back. (Be aware that this requires an extra database query in some adapters.)
+| ((array?)) of ((dictionary))	| For improved performance, the created records are not provided as a result by default.  But if you enable `.meta({fetch: true})`, then the newly-created records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 ##### Errors
 
@@ -31,7 +31,7 @@ await Something.createEach(initialValues);
 
 | Key                 | Type              | Details                                                        |
 |:--------------------|-------------------|:---------------------------------------------------------------|
-| fetch               | ((boolean))       | If set to `true`, then the created records will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
+| fetch               | ((boolean))       | If set to `true`, then the created records will be sent back.<br/><br/>Defaults to `false`.
 
 > For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
