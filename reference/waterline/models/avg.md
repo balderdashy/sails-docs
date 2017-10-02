@@ -3,10 +3,7 @@
 Get the aggregate mean of the specified attribute across all matching records.
 
 ```usage
-Something.avg(numericAttrName, criteria)
-.exec(function (err, average){
-  // ...
-});
+var average = await Something.avg(numericAttrName, criteria);
 ```
 
 ### Usage
@@ -17,28 +14,36 @@ Something.avg(numericAttrName, criteria)
 | 2 |  _criteria_         | ((dictionary?))                                | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the average will be computed across _all_ of this model's records. `avg` queries do not support pagination using `skip` and `limit` or projections using `select`.
 
 
-##### Callback
+##### Result
+ 
+| Type                | Description      |
+|---------------------|:-----------------|
+| ((number))          | The aggregate mean of the specified attribute across all matching records.
+ 
+##### Errors
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|:---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    average          | ((number))          | The aggregate mean of the specified attribute across all matching records.
-
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
+| Error				| ((error))           | Thrown if anything else unexpected happens.
 
 ### Example
 
 Get the average balance of bank accounts owned by people between the ages of 35 and 45.
 
 ```javascript
-BankAccount.avg('balance')
-.where({
-  ownerAge: { '>=': 35, '<=': 45 }
-})
-.exec(function (err, averageBalance){
-  if (err) { return res.serverError(err); }
-
-  return averageBalance;
-});
+try {
+	var avg = BankAccount
+			.avg('balance')
+			.where({
+				ownerAge: { '>=': 35, '<=': 45 }
+			});
+	
+	return avg;
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 
