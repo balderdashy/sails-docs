@@ -61,6 +61,9 @@ module.exports.bootstrap = function (done) {
 ```
 
 
+### Notes
+
+> - Sails will log a warning if the bootstrap function is "taking too long", in case you forgot to call `done()`.  You can change the default timeout of 5 seconds by setting `sails.config.bootstrapTimeout`.
 
 <docmeta name="displayName" value="sails.config.bootstrap()">
 <docmeta name="pageType" value="property">
