@@ -24,7 +24,7 @@ var records = await Something.find(criteria);
 |     Name        | Type                | When? |
 |--------------------|---------------------|:---------------------------------------------------------------------------------|
 | UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
 | Error				| ((error))           | Thrown if anything else unexpected happens.
 
 
