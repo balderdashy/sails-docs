@@ -3,9 +3,7 @@
 Find records in your database that match the given criteria.
 
 ```usage
-Something.find(criteria).exec(function (err, records) {
-
-});
+var records = await Something.find(criteria);
 ```
 
 ### Usage
@@ -14,12 +12,20 @@ Something.find(criteria).exec(function (err, records) {
 |---|:--------------------|-------------------|:-----------------------------------|
 | 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
-##### Callback
+##### Result
+  		  
+| Type                | Description      |
+|---------------------|:-----------------|
+| ((array)) of ((dictionary))	| The array of records from your database which match the given criteria.
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
+
+##### Errors
+
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| Error				| ((error))           | Thrown if anything else unexpected happens.
 
 
 ### Example
@@ -27,28 +33,35 @@ Something.find(criteria).exec(function (err, records) {
 ##### A basic find query
 
 To find any users named Finn in the database:
+
 ```javascript
-User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
-  sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
-  return res.json(usersNamedFinn);
-});
+try {
+	var usersNamedFinn = await User.find({name:'Finn'});
+	
+	sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
+	
+	return res.json(usersNamedFinn);
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 
 ##### Using projection
 
 Projection selectively omits the fields returned on found records. This can be done, for example, for faster performance, or for greater security when passing found records to the client. The select clause in a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) takes an array of strings that correspond with attribute names. The record ID is always returned.
-```javascript
-User.find({where:{name:'Finn'}, select: ['name', 'email']}).exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
 
-  return res.json(usersNamedFinn);
-});
+```javascript
+try {
+	var usersNamedFinn = User.find({
+		where: {name:'Finn'},
+		select: ['name', 'email']
+	});
+	
+	return res.json(usersNamedFinn);
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 
