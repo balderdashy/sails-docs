@@ -3,11 +3,9 @@
 Add one or more existing child records to the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-Something.addToCollection(parentId, association)
-.members(childIds)
-.exec(function (err) {
-
-});
+await Something
+	.addToCollection(parentId, association)
+	.members(childIds)
 ```
 
 ### Usage
@@ -19,11 +17,14 @@ Something.addToCollection(parentId, association)
 | 3 |  childIds           | ((array))                                    | The primary key values (i.e. ids) of the child records to add. _Note that this does not [create](http://sailsjs.com/documentation/reference/waterline-orm/models/create) these child records, it just links them to the specified parent(s)._
 
 
-##### Callback
+##### Errors
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
+| Error				| ((error))           | Thrown if anything else unexpected happens.
+
 
 
 ### Example
@@ -31,13 +32,15 @@ Something.addToCollection(parentId, association)
 For user 3, add pets 99 and 98 to the "pets" collection:
 
 ```javascript
-User.addToCollection(3, 'pets')
-.members([99,98])
-.exec(function (err){
-  if (err) { return res.serverError(err); }
-
-  return res.ok();
-});
+try {
+	await User
+		.addToCollection(3, 'pets')
+		.members([99,98]);
+		
+	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 > If either user record already has one of those pets in its "pets", then we just silently skip over it.
