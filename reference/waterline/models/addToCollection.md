@@ -3,11 +3,9 @@
 Add one or more existing child records to the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-Something.addToCollection(parentId, association)
-.members(childIds)
-.exec(function (err) {
-
-});
+  await Something
+    .addToCollection(parentId, association)
+    .members(childIds);
 ```
 
 ### Usage
@@ -31,13 +29,12 @@ Something.addToCollection(parentId, association)
 For user 3, add pets 99 and 98 to the "pets" collection:
 
 ```javascript
-User.addToCollection(3, 'pets')
-.members([99,98])
-.exec(function (err){
-  if (err) { return res.serverError(err); }
-
+try {
+  await User.addToCollection(3, 'pets').members([99,98]);
   return res.ok();
-});
+} catch (err) {
+  return res.serverError(err);
+}
 ```
 
 > If either user record already has one of those pets in its "pets", then we just silently skip over it.
