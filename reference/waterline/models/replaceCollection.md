@@ -3,11 +3,9 @@
 Replace all members of the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-Something.replaceCollection(parentId, association)
-.members(childIds)
-.exec(function (err) {
-
-});
+await Something
+	.replaceCollection(parentId, association)
+	.members(childIds);
 ```
 
 ### Usage
@@ -19,11 +17,14 @@ Something.replaceCollection(parentId, association)
 | 3 |  childIds      | ((array))                                    | The primary key values (i.e. ids) for the child records that will be the new members of the association.  _Note that this does not [create](http://sailsjs.com/documentation/reference/waterline-orm/models/create) these records or [destroy](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy) the old ones, it just attaches/detaches records to/from the specified parent(s)._
 
 
-##### Callback
+##### Errors
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
+| Error				| ((error))           | Thrown if anything else unexpected happens.
+
 
 
 ### Example
@@ -31,13 +32,15 @@ Something.replaceCollection(parentId, association)
 For user 3, replace all pets in the "pets" collection with pets 99 and 98:
 
 ```javascript
-User.replaceCollection(3, 'pets')
-.members([99,98])
-.exec(function (err){
-  if (err) { return res.serverError(err); }
-
-  return res.ok();
-});
+try {
+	await User
+		.replaceCollection(3, 'pets')
+		.members([99,98]);
+		
+	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 ### Edge cases
