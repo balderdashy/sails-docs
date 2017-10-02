@@ -3,10 +3,7 @@
 Create a set of records in the database.
 
 ```usage
-Something.createEach(initialValues)
-.exec(function (err) {
-  //...
-});
+await Something.createEach(initialValues);
 ```
 
 ### Usage
@@ -15,12 +12,20 @@ Something.createEach(initialValues)
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |  initialValues      | ((array?))                                   | An array of dictionaries with attributes for the new records.
 
-##### Callback
+##### Result
+  		  
+| Type                | Description      |
+|---------------------|:-----------------|
+| ((array?)) of ((dictionary))	| For improved performance, the created records are not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |  _err_              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |  _createdRecords_   | ((array?)) of ((dictionary))  |  For improved performance, the created records are not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created records will be sent back. (Be aware that this requires an extra database query in some adapters.)
+##### Errors
+
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| Error				| ((error))           | Thrown if anything else unexpected happens.
+
 
 ##### Meta keys
 
@@ -35,29 +40,29 @@ Something.createEach(initialValues)
 ### Example
 
 To create users named Finn and Jake in the database:
-```javascript
-User.createEach([{name:'Finn'}, {name: 'Jake'}])
-.exec(function (err){
-  if (err) {
-    return res.serverError(err);
-  }
 
-  return res.ok();
-});
+```javascript
+try {
+	await User.createEach([{name:'Finn'}, {name: 'Jake'}]);
+	
+	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 ##### Fetching newly-created records
 ```javascript
-User.createEach([{name:'Finn'}, {name: 'Jake'}])
-.meta({fetch: true})
-.exec(function (err, createdUsers){
-  if (err) {
-    return res.serverError(err);
-  }
+try {
+	var createdUsers = User
+		.createEach([{name:'Finn'}, {name: 'Jake'}])
+		.meta({fetch: true});
 
-  sails.log('Created ' + createdUsers.length + 'users.');
-  return res.ok();
-});
+	sails.log('Created ' + createdUsers.length + 'users.');
+	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 ### Notes
