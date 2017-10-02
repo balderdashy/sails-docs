@@ -3,11 +3,9 @@
 Remove one or more members (e.g. a comment) from the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-Something.removeFromCollection(parentId, association)
-.members(childIds)
-.exec(function (err) {
-
-});
+await Something
+	.removeFromCollection(parentId, association)
+	.members(childIds);
 ```
 
 ### Usage
@@ -19,11 +17,14 @@ Something.removeFromCollection(parentId, association)
 | 3 |  childIds      | ((array))                                    | The primary key values (i.e. ids) of the child records to remove.  _Note that this does not [destroy](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy) these records, it just detaches them from the specified parent(s)._
 
 
-##### Callback
+##### Errors
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
+|     Name        | Type                | When? |
+|--------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
+| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
+| Error				| ((error))           | Thrown if anything else unexpected happens.
+
 
 
 ### Example
@@ -31,13 +32,15 @@ Something.removeFromCollection(parentId, association)
 For user 3, remove pets 99 and 98 from the "pets" collection:
 
 ```javascript
-User.removeFromCollection(3, 'pets')
-.members([99,98])
-.exec(function (err){
-  if (err) { return res.serverError(err); }
-
-  return res.ok();
-});
+try {
+	await User
+		.removeFromCollection(3, 'pets')
+		.members([99,98]);
+	
+	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 
