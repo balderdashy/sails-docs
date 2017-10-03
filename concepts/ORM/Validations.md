@@ -142,8 +142,8 @@ starRating: {
 >   isNumber: true,
 >   min: 1,
 >   max: 5,
-? }
-```
+> }
+> ```
 
 
 
