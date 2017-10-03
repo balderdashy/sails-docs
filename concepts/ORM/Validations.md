@@ -117,13 +117,32 @@ starRating: {
 
 If we wanted to make our star rating optional, the easiest thing to do is just to remove the `required: true` flag.  If omitted, the starRating will default to zero.
 
-But if we wanted to indicate that this attribute supports certain numbers _or_ `null`, we'd need to change its type from `number` to `json`.  But since the `json` type allows other data like booleans, arrays, etc., and since we might want to explicitly protect against that, we can also add the `isNumber: true` validation rule:
+
+##### Example: Optional star rating (w/ `null`)
+
+But what if the star rating isn't _always_ a number?  For example, we might want to indicate that this attribute supports certain numbers _or_ `null`.
+
+For that, we have two options:
+
+(1) Change its type from `number` to `json`.  But since the `json` type allows other data like booleans, arrays, etc., and since we might want to explicitly protect against that, we can also add the `isNumber: true` validation rule:
 
 
 ```javascript
 starRating: {
   type: 'json',
   isNumber: true,
+  min: 1,
+  max: 5,
+}
+```
+
+
+(2) Or simply take advantage of `allowNull: true`:
+
+```javascript
+starRating: {
+  type: 'number',
+  allowNull: true
   min: 1,
   max: 5,
 }
