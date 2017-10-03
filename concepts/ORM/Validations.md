@@ -120,24 +120,9 @@ If we wanted to make our star rating optional, the easiest thing to do is just t
 
 ##### Example: Optional star rating (w/ `null`)
 
-But what if the star rating isn't _always_ a number?  For example, we might want to indicate that this attribute supports certain numbers _or_ `null`.
+But what if the star rating can't _always_ be a number?  For example, we might have a legacy database that we need to integrate with, where star ratings already in the database could be a number or the special `null` literal.  For that scenario, we need a way to define this attribute so that it can support certain numbers _or_ `null`.
 
-For that, we have two options:
-
-(1) Change its type from `number` to `json`.  But since the `json` type allows other data like booleans, arrays, etc., and since we might want to explicitly protect against that, we can also add the `isNumber: true` validation rule:
-
-
-```javascript
-starRating: {
-  type: 'json',
-  isNumber: true,
-  min: 1,
-  max: 5,
-}
-```
-
-
-(2) Or simply take advantage of `allowNull: true`:
+To accomplish this, just use `allowNull`:
 
 ```javascript
 starRating: {
@@ -147,6 +132,19 @@ starRating: {
   max: 5,
 }
 ```
+
+> Sails and Waterline attributes support `allowNull` for convenience.  But another viable solution is to change `starRating` from `type: 'number'` to `type: 'json'`.  Just realize that, since the `json` type allows other data like booleans, arrays, etc., and since we might want to explicitly protect against that, we would also probably want to add the `isNumber: true` validation rule:
+>
+>
+> ```javascript
+> starRating: {
+>   type: 'json',
+>   isNumber: true,
+>   min: 1,
+>   max: 5,
+? }
+```
+
 
 
 ### Unique
