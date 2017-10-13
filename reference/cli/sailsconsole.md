@@ -36,22 +36,13 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 
 > **Warning**
 >
-> Avoid using `_` as a variable name in the Node REPL.
-> (It [doesn't work quite like you might expect](https://github.com/balderdashy/sails/issues/3795)-- although that is [improving in Node v6](http://stackoverflow.com/questions/17073290/in-the-node-js-repl-why-does-this-happen/17073313#comment61417858_17073313).)
+> In Node versions earlier than v6, using `_` as a variable in the REPL will cause unexpected behavior.  As an alternative, simply import the Lodash module as a variable:
 >
-> Instead, use Sails' version of lodash as `sails.util._`.  For example:
 > ```bash
-> sails> sails.util._.keys(sails.config)
+> sails> var lodash = require('lodash');
+> sails> console.log(lodash.range(1, 5));
 > ```
->
-> Or alternatively, build yourself a local variable to use for familiarity:
->
-> ```text
-> sails> var lodash = sails.util._;
-> sails> lodash.keys(sails.config);
-> ```
->
-> Finally, note that this warning isn't limited to the `_` exposed by Sails as a global variable.  When in the REPL, it's best to avoid using `var _ = ...` for any reason (again, unless you're running Node v6.0 or later.)
+
 
 ### More Examples
 
