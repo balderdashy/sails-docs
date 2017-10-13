@@ -250,6 +250,7 @@ attributes: {
 > * Column types are entirely database-dependent.  Be sure that the `columnType` you select corresponds to a data type that is valid for your database!  If you don&rsquo;t specify a `columnType`, the adapter will choose one for you based on the attribute&rsquo;s `type`.
 > * The `columnType` value is used verbatim in the statement that creates the database column, so you can use it to specify additional options, e.g. `varchar(255) CHARACTER SET utf8mb4`.
 > * If you intend to store binary data in a Sails model, you&rsquo;ll want to set the `type` of the attribute to `ref`, and then use the appropriate `columnType` for your chosen database (e.g. `mediumblob` for MySQL or `bytea` for PostgreSQL).  Keep in mind that whatever you attempt to store will have to fit in memory before being transferred to the database--there is currently no mechanism in Sails for streaming binary data to a datastore adapter.  As an alternative to storing blobs in a database, you might consider streaming them to disk or to a remote filesystem like S3, using the [`.upload()` method](http://sailsjs.com/documentation/concepts/file-uploads).
+> * Keep in mind that custom column options like `CHARACTER SET utf8mb4` in MySQL can affect a column&rsquo;s storage size. This is especially relevant when used in conjunction with the `unique` property, where you may have to specify a smaller column size to avoid errors.  See the [`unique` property](http://next.sailsjs.com/documentation/concepts/models-and-orm/attributes#?unique) docs below for more info.
 
 ##### autoIncrement
 
@@ -276,8 +277,7 @@ attributes: {
   }
 }
 ```
-> When using MySQL with the `utf8mb4` character set, you will need to add the `size` constraint to the appropriate column in your table directly via MySQL. Otherwise, since `type: 'string'` is translated to `varchar(255)` in the MySQL adapter, the `unique: true` constraint will cause an 'index too long' error: `ER_INDEX_COLUMN_TOO_LONG: Index column size too large. The maximum column size is 767 bytes.`
-
+> When using `unique: true` on an attribute with the `utf8mb4` character set in a MySQL database, you will need to set the column size manually via the [`columnType` property](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to avoid a possible 'index too long' error.  For example: `columnType: varchar(100) CHARACTER SET utf8mb4`.
 
 <!--
 
