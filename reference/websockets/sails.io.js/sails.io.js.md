@@ -127,6 +127,14 @@ Fortunately, like every other boilerplate file and folder in Sails, the socket c
 
 Under the covers, the socket client (`sails.io.js`) emits Socket.io messages with reserved names that, when interpreted by Sails, are routed to the appropriate policies/controllers/etc. according to your app's routes and blueprint configuration.
 
+##### How do I tell my Sails app _not_ to connect a socket with the current browser session?
+
+By default, a socket connection will be linked to the current browser session (if any) using the `cookie` header that is sent with the initial socket handshake.  In order to turn off this behavior, add `nosession=true` to the [`query` property](http://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/properties#?advanced-properties) of the socket before it connects; for example:
+
+```
+<script src="/js/dependencies/sails.io.js"></script>
+<script type="text/javascript">io.sails.query='nosession=true';</script>
+```
 
 ##### Can I bypass this client and use Socket.io directly?
 
