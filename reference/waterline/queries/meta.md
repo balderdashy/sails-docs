@@ -35,6 +35,7 @@ User.create({name: 'alice'})
 
 
 ### Notes
+> * The [`.fetch()` method](https://sailsjs.com/documentation/reference/waterline-orm/queries/fetch) is a shorthand for `.meta({fetch: true})`.
 > * In order for `cascade` to work when the `fetch` meta key is _not_ also `true`, Waterline must do an extra `.find().select('id')` before actually performing the `.destroy()` in order to get the IDs of the records that would be destroyed.
 > * Rather than using the `.meta()` query method, you can also set meta keys for a query by passing in a dictionary after the explicit callback.  For example: `User.create({name: 'alice'}, function(err, newUser){/*...*/}, { fetch: true })`.
 
