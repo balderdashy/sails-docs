@@ -97,7 +97,7 @@ Clients subscribed to the new store (25) would receive an `addedTo` notification
 
 ### Notes
 
-> + This action can be used to update any attribute in a record _except_ for attributes representing a plural ("collection") association.  To update a plural association of a record, use the [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to), [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) or [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) actions.
+> + This action can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replace` blueprint action](http://next.sailsjs.com/documentation/reference/blueprint-api/replace).  To modify items in a collection individually, use the [add](http://next.sailsjs.com/documentation/reference/blueprint-api/add-to) or [remove](http://next.sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
 > + In previous Sails versions, this action was bound to the `PUT /:model/:id` route.
 
 
