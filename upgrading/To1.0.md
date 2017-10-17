@@ -58,7 +58,7 @@ Besides getting expanded to include a new endpoint, there also are a couple of m
 ##### Step 4: Adopt the new release of Waterline ORM
 The new release of Waterline ORM (v0.13) introduces full support for SQL transactions, picking/omitting attributes in result sets (aka "projections"), dynamic database connections, and more granular control over query behavior.  It also comes with a major stability and performance overhaul which comes with a few breaking changes to usage.  The bullet points below cover the most common issues you're likely to run into from the Waterline upgrade.
 
-* **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to update your model settings to indicate that you want those methods to fetch records (or chain a `.meta({fetch: true})` to individual calls).  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` results](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy-results) for more info.
+* **If your app relies on getting records back from `.create()`, `.createEach()`, `.update()`, or `.destroy()` calls**, you&rsquo;ll need to update your model settings to indicate that you want those methods to fetch records (or chain a `.fetch()` to individual calls).  See the [migration guide section on `create()`, `.createEach()`, `.update()`, and `.destroy()` results](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-create-createeach-update-and-destroy-results) for more info.
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
 * **Waterline queries will now rely on the database for case sensitivity.** This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries. For more info on how to manage this for databases such as MySQL see the [case sensitivity docs](https://sailsjs.com/documentation/concepts/models-and-orm/models#?case-sensitivity).
 * **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates) for more info.
@@ -168,7 +168,7 @@ To encourage better performance and easier scalability, `.create()` no longer se
 
 This makes your app more efficient by removing unnecessary `find` queries, and it makes it possible to use `.update()` and `.destroy()` to modify many different records in large datasets, rather than falling back to lower-level native queries.
 
-You can still instruct the adapter to send back created or modified records for a single query by using the `fetch` meta key.  For example:
+You can still instruct the adapter to send back created or modified records for a single query by using the `fetch` method.  For example:
 
 ```js
 Article.update({
@@ -178,7 +178,7 @@ Article.update({
 .set({
   status: 'live'
 })
-.meta({fetch: true})
+.fetch()
 .exec(function(err, updatedRecords){
   //...
 });
@@ -195,7 +195,7 @@ Article.update({
 > fetchRecordsOnCreateEach: true,
 > ```
 >
-> That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.create()`, `.createEach()`, `.update()`, and `.destroy()` calls and add `.meta({fetch:true})` when you can.  Support for these model settings will eventually be removed in Sails v2.
+> That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.create()`, `.createEach()`, `.update()`, and `.destroy()` calls and add `.fetch()` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
 ### Changes to Waterline criteria usage
 * As of Sails v1.0 / Waterline 0.13, for performance, criteria passed in to Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case.)

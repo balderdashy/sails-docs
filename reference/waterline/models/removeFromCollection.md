@@ -3,9 +3,8 @@
 Remove one or more members (e.g. a comment) from the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-await Something
-	.removeFromCollection(parentId, association)
-	.members(childIds);
+await Something.removeFromCollection(parentId, association)
+.members(childIds);
 ```
 
 ### Usage
@@ -20,11 +19,12 @@ await Something
 ##### Errors
 
 |     Name        | Type                | When? |
-|--------------------|---------------------|:---------------------------------------------------------------------------------|
-| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
-| Error				| ((error))           | Thrown if anything else unexpected happens.
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
 
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ### Example
@@ -32,15 +32,10 @@ await Something
 For user 3, remove pets 99 and 98 from the "pets" collection:
 
 ```javascript
-try {
-	await User
-		.removeFromCollection(3, 'pets')
-		.members([99,98]);
-	
-	return res.ok();
-} catch (err) {
-	return res.serverError(err);
-}
+await User.removeFromCollection(3, 'pets')
+.members([99,98]);
+
+return res.ok();
 ```
 
 
@@ -53,6 +48,7 @@ try {
 + If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
 
 ### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 > + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Pet") side is singular, the each child record's foreign key ("owner") will be set to `null`.  If it's plural, then each child record's collection will be modified accordingly.
 
 

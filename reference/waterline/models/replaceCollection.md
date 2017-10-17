@@ -3,9 +3,8 @@
 Replace all members of the specified collection (e.g. the `comments` of BlogPost #4).
 
 ```usage
-await Something
-	.replaceCollection(parentId, association)
-	.members(childIds);
+await Something.replaceCollection(parentId, association)
+.members(childIds);
 ```
 
 ### Usage
@@ -20,10 +19,12 @@ await Something
 ##### Errors
 
 |     Name        | Type                | When? |
-|--------------------|---------------------|:---------------------------------------------------------------------------------|
-| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
-| Error				| ((error))           | Thrown if anything else unexpected happens.
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 
@@ -32,15 +33,10 @@ await Something
 For user 3, replace all pets in the "pets" collection with pets 99 and 98:
 
 ```javascript
-try {
-	await User
-		.replaceCollection(3, 'pets')
-		.members([99,98]);
-		
-	return res.ok();
-} catch (err) {
-	return res.serverError(err);
-}
+await User.replaceCollection(3, 'pets')
+.members([99,98]);
+
+return res.ok();
 ```
 
 ### Edge cases
@@ -50,6 +46,7 @@ try {
 + If an empty array of child ids is provided, or if none of the provided child ids correspond to existing records, then this will detach _all_ child records from the parent.
 
 ### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 > + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other (e.g. "Purchase") side is singular, the each newly-linked-or-unlinked child record's foreign key ("cashier") will be changed.  If it's plural, then each child record's collection will be modified accordingly.
 > + In addition, if the `via` points at a singular ("model") attribute on the other side, then `.addToCollection()` will "steal" these child records if necessary.  For example, imagine you have an Employee model with this plural ("collection") attribute: `involvedInPurchases: { collection: 'Purchase', via: 'cashier' }`.  If you executed `Employee.addToCollection(7, 'involvedInPurchases', [47])` to assign this purchase to employee #7 (Dolly), but purchase #47 was already associated with a different employee (e.g. #12, Motoki), then this would "steal" the purchase from Motoki and give it to Dolly.  In other words, if you executed `Employee.find([7, 12]).populate('involvedInPurchases')`, Dolly's `involvedInPurchases` array would contain purchase #47 and Motoki's would not.
 

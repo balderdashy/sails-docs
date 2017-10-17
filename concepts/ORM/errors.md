@@ -88,30 +88,53 @@ User.create({
 })
 ```
 
-##### Negotiating errors with promises
+##### Negotiating errors with callbacks or promise chaining
 
-To handle the different errors that may occur when attempting to create a new user:
+If you're not able to use `await` because you're using Node.js <= v7.9, then prepare yourself: error handling works a bit differently when [using callbacks or promise chaining](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#flow-control) instead of `await`.
+
+For example, if you're using promise chaining, here's how you might handle the different errors that could occur when attempting to create a new user:
 
 ```javascript
 User.create({
-  email: req.param('email')
+  emailAddress: req.param('emailAddress')
 })
 .then(function (){
-  return res.ok();
+  res.ok();
 })
 // Uniqueness constraint violation
 .catch({ code: 'E_UNIQUE' }, function (err) {
-  return res.status(401).json(err);
+  res.sendStatus(409);
 })
 // Some other kind of usage / validation error
 .catch({ name: 'UsageError' }, function (err) {
-  return res.badRequest(err);
+  res.badRequest();
 })
 // If something completely unexpected happened.
 .catch(function (err) {
-  return res.serverError(err);
+  res.serverError(err);
 });
 ```
+
+Here's the same example, but written with traditional Node.js callbacks instead of promise chaining:
+
+```javascript
+User.create({
+  emailAddress: req.param('emailAddress')
+})
+.exec(function (err){
+  if (err && err.code === 'E_UNIQUE') {
+    return res.sendStatus(409);
+  } else if (err && err.name === 'UsageError') {
+    return res.badRequest();
+  } else if (err) {
+    return res.serverError(err);
+  }
+
+  return res.ok();
+});
+```
+
+> But beware [uncaught exceptions](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#handling-uncaught-exceptions)!
 
 
 <docmeta name="displayName" value="Errors">

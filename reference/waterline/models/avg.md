@@ -15,37 +15,38 @@ var average = await Something.avg(numericAttrName, criteria);
 
 
 ##### Result
- 
+
 | Type                | Description      |
 |---------------------|:-----------------|
 | ((number))          | The aggregate mean of the specified attribute across all matching records.
- 
+
+
 ##### Errors
 
 |     Name        | Type                | When? |
-|--------------------|---------------------|:---------------------------------------------------------------------------------|
-| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
-| Error				| ((error))           | Thrown if anything else unexpected happens.
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError       | ((Error))          | Thrown if something invalid was passed in.
+| AdapterError     | ((Error))          | Thrown if something went wrong in the database adapter.
+| Error            | ((Error))          | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
+
 
 ### Example
 
 Get the average balance of bank accounts owned by people between the ages of 35 and 45.
 
 ```javascript
-try {
-	var avg = BankAccount
-			.avg('balance')
-			.where({
-				ownerAge: { '>=': 35, '<=': 45 }
-			});
-	
-	return avg;
-} catch (err) {
-	return res.serverError(err);
-}
+var averageBalance = await BankAccount.avg('balance')
+.where({
+  ownerAge: { '>=': 35, '<=': 45 }
+});
+
+return res.json(averageBalance);
 ```
 
+### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 
 <docmeta name="displayName" value=".avg()">
 <docmeta name="pageType" value="method">

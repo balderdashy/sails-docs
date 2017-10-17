@@ -24,19 +24,22 @@ var numRecords = await Model.count(criteria);
 
 | Name                | Type                | When?                                                        |
 |:--------------------|---------------------|:-------------------------------------------------------------|
-| UsageError          | ((error))           | Thrown if something in the provided criteria was invalid.
-| AdapterError        | ((error))           | Thrown if something went wrong in the database adapter.
-| Error               | ((error))           | Thrown if anything else unexpected happens.
+| UsageError          | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError        | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error               | ((Error))           | Thrown if anything else unexpected happens.
 
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 ### Example
 
 ```javascript
 var total = await User.count({name:'Flynn'});
-sails.log('There are ' + total + ' users named "Flynn"');
+sails.log(`There ${total===1?'is':'are'} ${total} user${total===1?'':'s'} named "Flynn".`);
 return res.json(total);
 ```
 
+### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 
 
 <docmeta name="displayName" value=".count()">

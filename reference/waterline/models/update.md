@@ -6,6 +6,10 @@ Update all records matching criteria.
 await Something.update(criteria, valuesToSet);
 ```
 
+_Or:_
+
++ `var updatedRecord = await Something.update(criteria, valuesToSet).fetch();`
+
 
 ### Usage
 
@@ -15,18 +19,21 @@ await Something.update(criteria, valuesToSet);
 | 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 ##### Result
-  		  
+
 | Type                | Description      |
-|---------------------|:-----------------|
-| ((array?)) | By default, for better performance, the updated records are not provided as a result.  But if you enable `.meta({fetch: true})`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
+|:--------------------|:-----------------|
+| ((array?)) | By default, for better performance, the updated records are not provided as a result.   But if you chain `.fetch()`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
+
 
 ##### Errors
 
 |     Name        | Type                | When? |
-|--------------------|---------------------|:---------------------------------------------------------------------------------|
-| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
-| Error				| ((error))           | Thrown if anything else unexpected happens.
+|:-------------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError			| ((Error))           | Thrown if something invalid was passed in.
+| AdapterError		| ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| Error				| ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ##### Meta keys
@@ -41,16 +48,11 @@ await Something.update(criteria, valuesToSet);
 ### Example
 
 ```javascript
-try {
-	await User
-		.update({name:'Pen'})
-		.set({name:'Finn'});
-	
-	sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
-	return res.ok();
-} catch (err) {
-	return res.serverError(err);
-}
+await User.update({name:'Pen'})
+.set({name:'Finn'});
+
+sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
+return res.ok();
 ```
 
 ##### Fetching updated records
@@ -58,20 +60,18 @@ try {
 To fetch updated records, use enable the `fetch` meta key:
 
 ```javascript
-try {
-	var updatedUsers = await User
-		.update({name:'Finn'})
-		.set({name:'Jake'})
-		.meta({fetch: true});
+var updatedUsers = await User.update({name:'Finn'})
+.set({name:'Jake'})
+.fetch();
 
-	sails.log('Updated all ' + updatedUsers.length + ' user(s) named "Finn" so that their new name is "Jake".  Here they are now:');
-  	sails.log(updatedUsers);
+sails.log(`Updated all ${updatedUsers.length} user${updatedUsers.length===1?'':'s'} named "Finn" to have the name "Jake".  Here they are now:`);
+sails.log(updatedUsers);
 
-  	return res.ok();
-} catch (err) {
-	res.serverError(err);
-}
+return res.ok();
 ```
+
+### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 
 <docmeta name="displayName" value=".update()">
 <docmeta name="pageType" value="method">

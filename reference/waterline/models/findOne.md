@@ -13,18 +13,20 @@ var record = await Something.findOne(criteria);
 | 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching this record in the database.  (This criteria must never match more than one record.) `findOne` queries do not support pagination using `skip` or `limit`.
 
 ##### Result
-  		  
+
 | Type                | Description      |
 |---------------------|:-----------------|
-| ((dictionary?))	| The record that was found, or `undefined` if no such record could be located.
+| ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
 
 ##### Errors
 
 |     Name        | Type                | When? |
-|--------------------|---------------------|:---------------------------------------------------------------------------------|
-| UsageError			| ((error))           | Thrown if something in the provided criteria was invalid.
-| Adapter Error		| ((error))           | Thrown if something went wrong in the database adapter.
-| Error				| ((error))           | Thrown if anything else unexpected happens.
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ### Example
@@ -32,26 +34,23 @@ var record = await Something.findOne(criteria);
 To locate the user whose username is "finn" in your database:
 
 ```javascript
-try {
-	var finn = await Users.findOne({
-		username: 'finn'
-	});
-	
-	if (!finn) {
-		return res.notFound('Could not find Finn, sorry.');
- 	}
- 	
- 	sails.log('Found "%s"', finn.fullName);
-  	return res.json(finn);
-} catch (err) {
-	return res.serverError(err);
+var finn = await Users.findOne({
+  username: 'finn'
+});
+
+if (!finn) {
+  return res.notFound('Could not find Finn, sorry.');
 }
+
+sails.log('Found "%s"', finn.fullName);
+return res.json(finn);
 ```
 
 
 
 ### Notes
-> - Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the result will be `undefined`.
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
+> + Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the result will be `undefined`.
 
 
 
