@@ -19,22 +19,7 @@ Something.destroy(criteria).exec(function (err) {
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:-----------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-
-
-##### Meta keys
-
-| Key                 | Type              | Details                                                        |
-|:--------------------|-------------------|:---------------------------------------------------------------|
-| fetch               | ((boolean))       | If set to `true`, then the array of updated records will be provided as the second argument of the callback.<br/><br/>Defaults to `false`.
-
-> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
-
-
-
-
-<!--
-| 2 |    deletedRecords   | ((array))           | An array containing any records which were deleted.
--->
+| 2 |  _destroyedRecords_   | ((array?)) of ((dictionary))  |  For improved performance, the destroyed records are not provided to this callback by default.  But if you chain `.fetch()`, then the recently-destroyed records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 
 ### Example
@@ -74,7 +59,7 @@ To delete a particular book, and also fetch the destroyed record:
 Book.destroy({
   id: 4
 })
-.meta({ fetch: true })
+.fetch()
 .exec(function (err, burnedBooks){
   if (err) {
     return res.serverError(err);

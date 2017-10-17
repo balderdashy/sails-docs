@@ -20,7 +20,7 @@ Something.create(initialValues)
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.  See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
-| 2 | _createdRecord_     | ((dictionary?))     | For improved performance, the created record is not provided to this callback by default.  But if you enable `.meta({fetch: true})`, then the newly-created record will be sent back. (Be aware that this requires an extra database query in some adapters.)
+| 2 | _createdRecord_     | ((dictionary?))     | For improved performance, the created record is not provided to this callback by default.  But if you chain `.fetch()`, then the newly-created record will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 ##### Meta keys
 
@@ -48,7 +48,7 @@ User.create({name:'Finn'})
 ##### Fetching the newly-created record
 ```javascript
 User.create({name:'Finn'})
-.meta({fetch: true})
+.fetch()
 .exec(function (err, createdUser){
   if (err) {
     return res.serverError(err);

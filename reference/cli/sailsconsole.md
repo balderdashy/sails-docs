@@ -51,7 +51,7 @@ Sails exposes [the same global variables](http://sailsjs.com/documentation/refer
 The format `Model.action(query).exec(console.log)` console.log is good for seeing the results.
 
 ```text
-sails> User.create({name: 'Brian', password: 'sailsRules'}).meta({fetch: true}).exec(console.log)
+sails> User.create({name: 'Brian', password: 'sailsRules'}).fetch().exec(console.log)
 undefined
 sails> undefined { name: 'Brian',
   password: 'sailsRules',
