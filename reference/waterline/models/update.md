@@ -57,5 +57,10 @@ User.update({name:'Finn'})
 });
 ```
 
+### Notes
+
+> + This method can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replaceCollection` method](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).  To modify items in a collection individually, use the [`addToCollection`](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [removeFromCollection](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) methods.
+
+
 <docmeta name="displayName" value=".update()">
 <docmeta name="pageType" value="method">
