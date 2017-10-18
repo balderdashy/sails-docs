@@ -12,6 +12,7 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - Optional automatic asset injection, minification, and concatenation
 - Creation of a web ready public directory
 - File watching and syncing
+- Transpilation of ES6 to ES2015 in production
 - Optimization of assets in production
 
 ### Default Grunt tasks
@@ -75,6 +76,12 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 > A grunt task to keep directories in sync. It is very similar to grunt-contrib-copy but tries to copy only those files that have actually changed. It specifically synchronizes files from the `assets/` folder to `.tmp/public/`, overwriting anything that's already there.
 
 > [usage docs](https://github.com/tomusdrw/grunt-sync)
+
+##### babel
+
+> This grunt task is configured to transpile any ES6 syntax in your front-end Javascript files into ES2015 code compatible with older browsers.
+
+> [usage docs](https://github.com/babel/grunt-babel)
 
 ##### uglify
 
