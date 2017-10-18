@@ -16,10 +16,15 @@ If your app still has errors or warnings on startup after following this checkli
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
++ **Step 0**: Check your Node version
 + **Step 1**: Install hooks & update dependencies
 + **Step 2**: Update configuration
 + **Step 3**: Modify client-side code for the new blueprint API
 + **Step 4**: Adopt the new release of Waterline ORM
+
+##### Step 0: Check your Node version!
+
+If your app needs to support Node versions earlier than v4, you will not be able to upgrade to Sails 1.0.  Sails 1.0 no longer supports Node v0.x; the earliest version it supports is Node 4.x.
 
 ##### Step 1: Install hooks & update dependencies
 Sails v1 introduces [custom builds](https://github.com/balderdashy/sails/pull/3504).  This means certain core hooks are now installed as direct dependencies of your app, giving you more control over your dependencies, and making `npm install sails` run _considerably_ faster.  So the first thing you'll need to do is install the core hooks you're using.  (And while you're at it, be sure to update the other dependencies mentioned in the list below.)
