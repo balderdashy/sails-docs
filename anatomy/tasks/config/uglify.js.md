@@ -10,14 +10,16 @@ For additional usage documentation, see [`grunt-contrib-uglify`](https://npmjs.c
 
 ### ES6 and beyond
 
-The default "uglify" task _cannot_ handle client-side JavaScript written with >=ES6 syntax (arrow functions, `await`, etc.).  This is because, at the time of this release, the `grunt-contrib-uglify` plugin does not support client-side JavaScript files written using ES6 syntax.  For this reason, we've included the "babel" step in the Grunt tasks for the production environment, which takes care of this out of the box.
+The default "uglify" task _cannot_ handle client-side JavaScript written with >= ES6 syntax (arrow functions, `await`, etc.)  This is because, at the time of this release, the `grunt-contrib-uglify` plugin does not support client-side JavaScript files written using ES6 syntax.  For this reason, we've included the "babel" step in the Grunt tasks for the production environment, which takes care of this out of the box.
 
 > If you encounter issues related issues, stop by https://sailsjs.com/support for advice and troubleshooting help.
 
 
 ### Minification without transpilation
 
-If your client-side JavaScript code (`assets/js/` or `assets/dependencies/`) is written using this syntax, and you want minification to work, you will need to make sure not to remove the provided `babel` task (as well as the recommended `polyfill` task to provide polyfills for features such as Promises), or else use a different uglifier.  For example, if you'd prefer not to use Babel to transpile your code, but still want it uglified, you might try installing the "harmony" branch of grunt-contrib-uglify with:
+If your client-side JavaScript code (`assets/js/` or `assets/dependencies/`) is written using >= ES6 syntax (arrow functions, `await`, etc.) and you want minification to work, you will need to make sure not to remove the provided [`babel` task]() (which performs transpilation), as well as the recommended `polyfill` task (which provides polyfills for features such as Promises in older browsers.)
+
+**The recommended approach is to leave everything the way it is, out of the box.**  But if that is not an option for you, you could switch to to a different uglifier.  For example, if you'd prefer not to use Babel to transpile your code, but still want it uglified, you might try installing the "harmony" branch of grunt-contrib-uglify with:
 
 ```bash
 npm install gruntjs/grunt-contrib-uglify#harmony --save-dev --save-exact
