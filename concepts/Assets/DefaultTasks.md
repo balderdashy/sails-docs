@@ -12,7 +12,7 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - Optional automatic asset injection, minification, and concatenation
 - Creation of a web ready public directory
 - File watching and syncing
-- Transpilation of ES6 to ES2015 in production
+- Transpilation of client-side JavaScript in production to allow use of >=ES6 syntax while maintaining broad browser compatibility
 - Optimization of assets in production
 
 ### Default Grunt tasks
@@ -79,7 +79,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### babel
 
-> This grunt task is configured to transpile any ES6 syntax in your front-end Javascript files into ES2015 code compatible with older browsers.
+> This grunt task is configured to transpile any >=ES6 syntax in your front-end Javascript files into code compatible with older browsers.
 
 > [usage docs](https://github.com/babel/grunt-babel)
 
