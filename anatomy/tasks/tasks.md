@@ -2,7 +2,7 @@
 
 The `tasks/` directory is a suite of Grunt tasks and their configurations, bundled for your convenience.  The Grunt integration is mainly useful for bundling front-end assets (like stylesheets, scripts and markup templates), but it can also be used to run all kinds of development tasks, from browserify compilation to database migrations.
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, read on!
+If you haven't used [Grunt](http://gruntjs.com/) before, that's OK!  For many common use cases, you can get by without customizing or even looking at the files in this folder.  If you do need to customize something, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains basic concepts like the [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as how to install and use Grunt plugins. Once you're familiar with that process, read on!
 
 
 ### How does this work?
