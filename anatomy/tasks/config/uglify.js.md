@@ -17,7 +17,7 @@ The default "uglify" task _cannot_ handle client-side JavaScript written with >=
 
 ### Minification without transpilation
 
-If your client-side JavaScript code (`assets/js/` or `assets/dependencies/`) is written using >= ES6 syntax (arrow functions, `await`, etc.) and you want minification to work, you will need to make sure not to remove the provided [`babel` task]() (which performs transpilation), as well as the recommended `polyfill` task (which provides polyfills for features such as Promises in older browsers.)
+If your client-side JavaScript code (for example, `assets/js/`) is written using >= ES6 syntax (arrow functions, `await`, etc.), then minification will work out of the box thanks to the provided [`babel` task](https://sailsjs.com/documentation/anatomy/tasks/config/babel.js) (which performs transpilation), and the [`polyfill` task](https://sailsjs.com/documentation/anatomy/tasks/register/polyfill.js) (which provides polyfills for features such as promises in older browsers.)
 
 **The recommended approach is to leave everything the way it is, out of the box.**  But if that is not an option for you, you could switch to to a different uglifier.  For example, if you'd prefer not to use Babel to transpile your code, but still want it uglified, you might try installing the "harmony" branch of grunt-contrib-uglify with:
 
@@ -25,6 +25,6 @@ If your client-side JavaScript code (`assets/js/` or `assets/dependencies/`) is 
 npm install gruntjs/grunt-contrib-uglify#harmony --save-dev --save-exact
 ```
 
-You'd then want to remove `polyfill:prod` and `babel` from the production tasks (`tasks/register/prod.js` and `tasks/register/buildProd.js`).
+You'd then want to remove `polyfill:prod` and `babel` from the production tasks ([`tasks/register/prod.js`](https://sailsjs.com/documentation/anatomy/tasks/register/prod.js) and [`tasks/register/buildProd.js`](https://sailsjs.com/documentation/anatomy/tasks/register/buildProd.js)).
 
 <docmeta name="displayName" value="uglify.js">
