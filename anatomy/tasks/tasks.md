@@ -14,7 +14,7 @@ The entire front-end asset workflow in Sails is completely customizable-- while 
 
 ### What tasks does Sails run automatically?
 
-Sails runs some of these tasks (the ones in the `tasks/register` folder) automatically when you run certain commands.
+Sails runs some of these tasks (certain ones in the `tasks/register/` folder) automatically when you run certain commands.
 
 ###### `sails lift`
 
