@@ -16,7 +16,9 @@ No problem!
 
 If you aren't using any kind of precompiled client-side templates, then just ignore this file.
 
-If you want to use a _different_ pre-processor like [Handlebars](http://handlebarsjs.com/) or [Dust](http://www.dustjs.com/), and you want Sails to process your client-side templates automatically as you work, then you're in luck.  In most cases, this is as easy as installing the appropriate Grunt plugin as a dependency of your Sails app, and then configuring it to output the precompiled templates (condensed into a single JavaScript file) to the same path as in this default task.
+If you are using a front-end framework like [Vue.js](https://vuejs.org), Ember, React, or Angular, see the starter app for examples, or come by https://sailsjs.com/support for assistance.
+
+If you want to use a _completely different_ pre-processor like [Handlebars](http://handlebarsjs.com/) or [Dust](http://www.dustjs.com/), and you want Sails to process your client-side templates automatically as you work, then you're in luck.  In most cases, this is as easy as installing the appropriate Grunt plugin as a dependency of your Sails app, and then configuring it to output the precompiled templates (condensed into a single JavaScript file) to the same path as in this default task.
 
 Here are a couple of popular examples:
 
