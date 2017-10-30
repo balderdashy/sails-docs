@@ -6,15 +6,21 @@ Sails v1.0 is here!  Check out our [blog post](TODO) for a high-level overview o
 >
 > Some of the links in this guide will not work, since the 1.0 docs aren't on the Sails website yet.  But you can check out the new docs by looking at the 1.0 branch of [sails-docs](http://github.com/balderdashy/sails-docs/tree/1.0) on GitHub.
 
-### Upgrading an existing app
+### Upgrading an existing app using the automated tool
 
-Ready to upgrade your existing Sails app to version 1.0?  To get started, we recommend starting with the checklist below, which covers the changes most likely to affect the majority of apps.
+Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g --save sails@^1.0.0` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
+
+### Upgrading an existing app manually
+
+The checklist below covers the changes most likely to affect the majority of apps.
 
 If your app still has errors or warnings on startup after following this checklist, or if you're seeing something unexpected, head back to this document and take a look further down the page.  (One of the guides for covering various app components will probably be applicable.)
 
 > We've done a lot of work to make the upgrade process as seemless as possible, particularly when it comes to the errors and warnings you'll see on the console.  But if you're stumped, or if you have lingering questions about any of the changes below, feel free to [drop by the Sails community Gitter channel](http://sailsjs.com/support).  (If your company is using Sails Flagship, you can also chat directly with the Sails core team [here](https://flagship.sailsjs.com/ask)).
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
+
+The upgrade tool will do it&rsquo;s best to help with some of these items, but it won&rsquo;t change your app-specific code for you!
 
 + **Step 0**: Check your Node version
 + **Step 1**: Install hooks & update dependencies
