@@ -18,39 +18,34 @@ Imagine you're building your own structured data visualizer (e.g. phpMyAdmin).  
 var Driver = sails.getDatastore().driver;
 
 // Create our own dynamic connection manager (e.g. connection pool)
-Driver.createManager({
-  connectionString: req.param('connectionUrl')
-}).exec(function(err, managerReport){
-  if (err) { return res.serverError(err); }
+var manager = (
+  await Driver.createManager({ connectionString: req.param('connectionUrl') })
+).manager;
 
-  Driver.getConnection({ manager: managerReport.manager }).exec(function(err, connectionReport) {
-    if (err) {
-      Driver.destroyManager({ manager: managerReport.manager }).exec(function (secondaryErr) {
-        if (secondaryErr) { return res.serverError(secondaryErr); }
-        return res.serverError(err);
-      });//_∏_
-      return;
-    }//-•
+var db;
+try {
+  db = (
+    await Driver.getConnection({ manager: managerReport.manager })
+  ).connection;
+} catch (err) {
+  await Driver.destroyManager({ manager: managerReport.manager });
+  throw err;
+}
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Do some stuff here...
-    // e.g.
-    //     Driver.sendNativeQuery({
-    //       connection: connectionReport.connection,
-    //       nativeQuery: '...'
-    //     }).exec(...)
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// Do some stuff here...
+// e.g.
+//     await Driver.sendNativeQuery({
+//       connection: db,
+//       nativeQuery: '...'
+//     });
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    // Finally, before we continue, tear down the dynamic connection manager.
-    // (this also takes care of releasing the active connection we acquired above)
-    Driver.destroyManager({ manager: managerReport.manager }).exec(function (err) {
-      if (err) { return res.serverError(err); }
+// Finally, before we continue, tear down the dynamic connection manager.
+// (this also takes care of releasing the active connection we acquired above)
+await Driver.destroyManager({ manager: managerReport.manager });
 
-      return res.ok();
-    });
-
-  });
-});
+return res.ok();
 ```
 
 <docmeta name="displayName" value=".driver">
