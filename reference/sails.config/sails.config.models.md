@@ -14,6 +14,7 @@ Most of the settings below can also be overridden on a per-model basis-- just ed
  `schema`              | ((boolean))     | `false`                      | Only relevant for models hooked up to a schemaless database like MongoDB.  If set to `true`, then the ORM will switch into "schemaful" mode.  For example, if properties passed in to `.create()`, `.createEach()`, or `.update()` do not correspond with recognized attributes, then they will be stripped out before saving.
  `datastore`           | ((string))   | `'default'`                     | The default [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) any given model will use without a configured override.  Avoid changing this.
  `primaryKey`          | ((string))   | `'id'`             | The name of the attribute that every model in your app should use as its primary key by default.  Can be overridden here, or on a per-model basis-- but there's [usually a better way](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?primarykey).
+  `archiveModelIdentity` | ((string)) _or_ ((boolean))   | `'archive'`             | The identity of the model to use when calling [`.archive()`](https://sailsjs.com/documentation/reference/waterline-orm/models/archive).  By default, this is the Archive model, an implicit model automatically defined by Sails/Waterline.  Set to `false` to disable built-in support for soft-deletes.
 
 <docmeta name="displayName" value="sails.config.models">
 <docmeta name="pageType" value="property">
