@@ -24,7 +24,8 @@ Most built-in model methods accept a callback as an optional final argument. If 
  `.findOrCreate()`     | Lookup a single record which matches the specified criteria, or create it if it doesn't.
  `.count()`            | Get the total count of records which match the specified criteria.
  `.native()`/`query()` | Make a direct call to the underlying database driver.
- `.stream()`           | Return a readable (object-mode) stream of records which match the specified criteria
+ `.stream()`           | Return a readable (object-mode) stream of records which match the specified criteria.
+ `.archive()`          | Archive ("soft-delete") records that match the specified criteria.
 
 
 
@@ -36,7 +37,7 @@ Most built-in model methods accept a callback as an optional final argument. If 
 
 ### `sails.models`
 
-If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models. 
+If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models.
 > Not sure of your model's `identity`? Check out [Concepts > Models and ORM > Model settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity).
 
 <docmeta name="displayName" value="Models">
