@@ -56,9 +56,11 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 
 ##### Using Nanobox?
 
-+ [Getting Started](https://content.nanobox.io/a-simple-sails-js-example-app/)
-+ [Official Quickstart](https://github.com/nanobox-quickstarts/nanobox-sails)
-+ [Official Guides](https://guides.nanobox.io/nodejs/sails/)
++ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
++ [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
++ [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
++ [Official Nanobox Docs](https://docs.nanobox.io)
++ [Join Us on Slack for Help](https://slack.nanoapp.io)
 
 ##### Using DigitalOcean?
 
