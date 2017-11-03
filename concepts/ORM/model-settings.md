@@ -216,16 +216,42 @@ This indicates the database where this model will fetch and save its data.  Unle
 For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
 
-### dontUseObjectIds
+### dataEncryptionKeys
 
-> ##### _**This feature is for use with the [`sails-mongo` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmongo) only.**_
+A set of keys to use when decrypting data.  The `default` data encryption key (or "DEK") is always used for encryption unless configured otherwise.
 
-If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID object as its primary key.  This allows you to create models using the `sails-mongo` adapter with primary keys that are strings or numbers.  Note that setting this to `true` means that you will have to provide a value for `id` in every call to [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.createEach()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each).
+
+```javascript
+dataEncryptionKeys: {
+  default: 'tVdQbq2JptoPp4oXGT94kKqF72iV0VKY/cnp7SjL7Ik='
+}
+```
+
+> Unless your use case requires key rotation, the `default` key is all you need.  Any other data encryption keys besides `default` are just there to allow for decrypting older data that was encrypted with them.
+
+##### Key rotation
+
+To retire a data encryption key, you'll need to give it a new key id (like `2028`), and then create a new `default` key for use in any new encryption. For example, if you release a Sails app in year 2028, and your keys are rotated out yearly, then the following year your `dataEncryptionKeys` may look like this:
+
+```javascript
+dataEncryptionKeys: {
+  default: 'DZ7MslaooGub3pS/0O734yeyPTAeZtd0Lrgeswwlt0s=',
+  '2028': 'C5QAkA46HD9pK0m7293V2CzEVlJeSUXgwmxBAQVj+xU='
+}
+```
+
+After changing out the default key _the year after that_ in January 2030, you might have:
+
+```javascript
+dataEncryptionKeys: {
+  default: 'tVdQbq2JptoPp4oXGT94kKqF72iV0VKY/cnp7SjL7Ik=',
+  '2029': 'DZ7MslaooGub3pS/0O734yeyPTAeZtd0Lrgeswwlt0s=',
+  '2028': 'C5QAkA46HD9pK0m7293V2CzEVlJeSUXgwmxBAQVj+xU='
+}
+```
+
 
 ### cascadeOnDestroy
-
-> ##### _**This feature is still experimental.**_
-> This model setting is still under development, and its interface and/or behavior could change at any time.
 
 Whether or not to _always_ act like you set `cascade: true` any time you call `.destroy()` using this model.
 
@@ -238,6 +264,22 @@ cascadeOnDestroy: true
 | ((boolean)) | `true`                  | `false`
 
 This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
+
+
+### dontUseObjectIds
+
+> ##### _**This feature is for use with the [`sails-mongo` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmongo) only.**_
+
+If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID object as its primary key.  This allows you to create models using the `sails-mongo` adapter with primary keys that are arbitrary strings or numbers, not just big long UUID-looking things.  Note that setting this to `true` means that you will have to provide a value for `id` in every call to [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.createEach()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each).
+
+
+| Type        | Example                 | Default       |
+| ----------- |:------------------------|:--------------|
+| ((boolean)) | `true`                  | `false`
+
+This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
 
 
 ### Seldom-used settings
@@ -282,7 +324,6 @@ User.find({ id: req.param('emailAddress' }).exec(/*...*/);
 > But what if you find yourself wishing that you could change the actual name of the "id" attribute itself-- purely for the sake of familiarity?  For example, that way, when you call built-in model methods in your code, instead of the usual "id", you would use syntax like `.destroy({ _id: 'ba8319abd-13810-ab31815' })`.
 >
 > That's where this model setting might come in.  All you'd have to do is edit `config/models.js` so that it contains `primaryKey: '_id'`, and then rename the default "id" attribute to "_id".  But there are some [good reasons to reconsider](https://gist.github.com/mikermcneil/9247a420488d86f09be342038e114a08).
-
 
 ##### identity
 
