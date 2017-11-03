@@ -22,9 +22,10 @@ Sails supports using TypeScript to write your custom app code (like [actions](ht
 5. Start your app with `node app.js` instead of `sails lift`.
 
 Here's an example Typescript controller to get you started, courtesy of [@oshatrk](https://github.com/oshatrk):
+Remember to name it with `.ts` extension: `api/controllers/TsController.ts`
 
 ```typescript
-// api/controllers/TsController.js
+// api/controllers/TsController.ts
 
 import util = require('util');
 import express = require('express');
