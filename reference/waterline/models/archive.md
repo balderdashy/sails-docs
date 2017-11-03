@@ -3,9 +3,7 @@
 Archive ("soft-delete") records that match the specified criteria, saving them as new records in the built-in Archive model, then destroying the originals.
 
 ```javascript
-Something.archive(criteria).exec(function (err) {
-
-});
+await Something.archive(criteria);
 ```
 
 #### Usage
@@ -41,7 +39,7 @@ If you need to access archived records in the future, you can do so by searching
 
 For example, to retrieve the archive record describing the user we got rid of above:
 
-```
+```javascript
 var archive = await Archive.findOne({
   fromModel: 'user',
   originalRecordId: 1
@@ -51,7 +49,7 @@ var archive = await Archive.findOne({
 ```
 
 ### Notes
-> This method is best used in situations where you would otherwise use [`.destroy()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy), but you still need to keep the deleted data somewhere. If you anticipate needing to access the data again in your app (e.g. if to allow un-deleting), you may want to consider using an `isDeleted` flag on your records instead of archiving them, since the records become more difficult to work with once they are archived.
+> This method is best used in situations where you would otherwise use [`.destroy()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy), but you still need to keep the deleted data somewhere. If you anticipate needing to access the data again in your app (e.g. if you allow un-deleting), you may want to consider using an `isDeleted` flag instead, since the records become more difficult to work with once they are archived.
 
 
 <docmeta name="displayName" value=".archive()">
