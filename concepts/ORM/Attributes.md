@@ -224,6 +224,22 @@ module.exports = {
 > You might have noticed that we also used the [`tableName`](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
 
 
+### Encryption at rest
+
+##### encrypt
+
+Whether to auto-encrypt this attribute. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://next.sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
+
+```javascript
+attributes: {
+  ssn: {
+    type: number,
+    encrypt: true
+  }
+}
+```
+
+
 
 
 
@@ -279,19 +295,6 @@ attributes: {
 ```
 > When using `unique: true` on an attribute with the `utf8mb4` character set in a MySQL database, you will need to set the column size manually via the [`columnType` property](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to avoid a possible 'index too long' error.  For example: `columnType: varchar(100) CHARACTER SET utf8mb4`.
 
-
-##### encrypt
-
-Whether to auto-encrypt this attribute. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://next.sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
-
-```javascript
-attributes: {
-  ssn: {
-    type: number,
-    encrypt: true
-  }
-}
-```
 
 <!--
 
