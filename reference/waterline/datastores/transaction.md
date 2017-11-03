@@ -1,6 +1,6 @@
 # .transaction()
 
-Fetch a preconfigured deferred object hooked up to the sails-mysql adapter (and consequently the appropriate driver)
+Fetch a preconfigured deferred object hooked up to the sails-mysql or sails-postgresql adapter (and consequently the appropriate driver)
 
 ```usage
 someDatastore.transaction(during).exec(function(err, resultMaybe) {
