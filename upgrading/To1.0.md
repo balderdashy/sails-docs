@@ -15,8 +15,7 @@ For more detailed information about upgrading your Sails app to v1.0, see the [u
 
 ### v1.0 documentation
 
-To view the v1.0 documentation, click [here](https://github.com/balderdashy/sails-docs/tree/1.0).
-
+To view the v1.0 documentation, click [here](https://next.sailsjs.com). You can also view the source of the v1.0 documentation in the corresponding [GitHub repository](https://github.com/balderdashy/sails-docs/tree/1.0).
 
 ### Questions?
 If you have specific questions or concerns about how the v1.0 release will affect your app, and need our help, just [send us a note](http://sailsjs.com/contact).
