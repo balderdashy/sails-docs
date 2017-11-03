@@ -2,7 +2,7 @@
 
 Archive ("soft-delete") records that match the specified criteria, saving them as new records in the built-in Archive model, then destroying the originals.
 
-```javascript
+```usage
 await Something.archive(criteria);
 ```
 
