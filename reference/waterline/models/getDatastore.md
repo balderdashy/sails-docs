@@ -6,12 +6,16 @@ Access the [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#
 Something.getDatastore();
 ```
 
+### Usage
 
-#### Returns
+##### Returns
 
 **Type:** ((Dictionary))
 
 A [datastore instance](http://sailsjs.com/documentation/reference/waterline-orm/datastores).
+
+### Notes
+> + This is a synchronous method, so you don't need to use a solution like `await`, promise chaining, or traditional Node callbacks.
 
 
 
