@@ -124,15 +124,38 @@ Using classic `req, res` functions for your actions is the quickest way to start
 
 In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.
 
+###### Exit signals
+
+In an action, helper, or script, throwing anything will trigger the `error` exit by default. If you want to trigger any other exit, you can do so by throwing a "special exit signal". This will either be a string (the name of the exit), or an object with the name of the exit as the key and the output data as the value.
+For example, instead of the usual syntax:
+
+```javascript
+return exits.hasConflictingCourses();
+```
+
+You could use the shorthand:
+
+```javascript
+throw 'hasConflictingCourses';
+```
+
+Or, to include output data:
+
+```javascript
+throw { hasConflictingCourses: ['CS 301', 'M 402'] };
+```
+
+Aside from being an easy-to-read shorthand, exit signals are especially useful if you're inside of a `for` loop, `forEach`, etc., but still want to exit through a particular exit.
+
 ### Controllers
 
 The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User controller" could be created at `api/controllers/UserController.js` file containing:
 
 ```javascript
 module.exports = {
-   login: function (req, res) { ... },
-   logout: function (req, res) { ... },
-   signup: function (req, res) { ... },
+  login: function (req, res) { ... },
+  logout: function (req, res) { ... },
+  signup: function (req, res) { ... },
 };
 ```
 
