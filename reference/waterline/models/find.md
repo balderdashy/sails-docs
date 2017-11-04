@@ -3,9 +3,7 @@
 Find records in your database that match the given criteria.
 
 ```usage
-Something.find(criteria).exec(function (err, records) {
-
-});
+var records = await Something.find(criteria);
 ```
 
 ### Usage
@@ -14,12 +12,22 @@ Something.find(criteria).exec(function (err, records) {
 |---|:--------------------|-------------------|:-----------------------------------|
 | 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
-##### Callback
+##### Result
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    err              | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    records          | ((array))           | The array of records from your database which match the given criteria.
+| Type                | Description      |
+|---------------------|:-----------------|
+| ((array)) of ((dictionary))   | The array of records from your database which match the given criteria.
+
+
+##### Errors
+
+|     Name        | Type                | When? |
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ### Example
@@ -27,28 +35,26 @@ Something.find(criteria).exec(function (err, records) {
 ##### A basic find query
 
 To find any users named Finn in the database:
+
 ```javascript
-User.find({name:'Finn'}).exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
-  sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
-  return res.json(usersNamedFinn);
-});
+var usersNamedFinn = await User.find({name:'Finn'});
+
+sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
+return res.json(usersNamedFinn);
 ```
 
 
 ##### Using projection
 
 Projection selectively omits the fields returned on found records. This can be done, for example, for faster performance, or for greater security when passing found records to the client. The select clause in a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) takes an array of strings that correspond with attribute names. The record ID is always returned.
-```javascript
-User.find({where:{name:'Finn'}, select: ['name', 'email']}).exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
 
-  return res.json(usersNamedFinn);
+```javascript
+var usersNamedFinn = User.find({
+  where: {name:'Finn'},
+  select: ['name', 'email']
 });
+
+return res.json(usersNamedFinn);
 ```
 
 
@@ -70,6 +76,8 @@ Might yield:
 ]
 ```
 
+### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 
 <docmeta name="importance" value="10">
 <docmeta name="displayName" value=".find()">

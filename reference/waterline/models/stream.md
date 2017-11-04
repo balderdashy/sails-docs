@@ -3,10 +3,9 @@
 Stream records from your database one at a time or in batches, without first having to buffer the entire result set in memory.
 
 ```usage
-Something.stream(criteria)
-.eachRecord(function(record, next) { ... })
-.exec(function (err) {
-
+await Something.stream(criteria)
+.eachRecord(async (record, next)=>{
+  return next();
 });
 ```
 
@@ -15,15 +14,14 @@ Something.stream(criteria)
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
-| 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
-
+| 1 | _criteria_          | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
 ##### Iteratee
 
 _Use one of the following:_
 
-+ `.eachRecord(function(record, next) { ... })`
-+ `.eachBatch(function(batch, next) { ... })`
++ `.eachRecord(async (record, next)=>{ ... })`
++ `.eachBatch(async (batch, next)=>{ ... })`
 
 <br/>
 
@@ -33,19 +31,20 @@ _Use one of the following:_
 | 2 | next                | ((function))        | A callback function that the iteratee should invoke when it is finished processing the current record or batch.  Like any Node callback, if your code in the iteratee calls `next()` with a truthy first argument (conventionally an Error instance), then Waterline understands that to mean an error occurred, and that it should stop processing records/batches.  Otherwise, it is assumed that everything went according to plan.
 
 
-##### Callback
+##### Errors
 
-After iterating over all matching records/batches...
+|     Name        | Type                | When? |
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 | _err_               | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ### When should I use this?
 
-The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback.  Instead, you use `.eachRecord()` or `.eachBatch()` to provide an iteratee function which receives one record or batch at a time.
+The `.stream()` method is almost exactly like [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback nor does it provide it as a result.  Instead, you use `.eachRecord()` or `.eachBatch()` to provide an iteratee function which receives one record or batch at a time.
 
 This is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, they would if you tried to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors: preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 
@@ -59,25 +58,19 @@ There are 4 examples below.
 An action that iterates over users named Finn in the database, one at a time:
 
 ```javascript
-User.stream({name:'Finn'}).eachRecord(function (user, next){
+await User.stream({name:'Finn'})
+.eachRecord(async (user, next)=>{
 
   if (Math.random() > 0.5) {
     return next(new Error('Oops!  This is a simulated error.'));
   }
 
-  sails.log('Found a user (`'+user.id+'`) named Finn.');
-
+  sails.log(`Found a user ${user.id} named Finn.`);
   return next();
+}
 
-}).exec(function (err){
-  if (err) {
-    return res.serverError(err);
-  }
-
-  return res.ok();
-});
+return res.ok();
 ```
-
 
 ##### Generating a dynamic sitemap
 
@@ -96,10 +89,10 @@ var RENDER_SITEMAP_XML_URL_EL = _.template(
   '</url>'
 );
 
-BlogPost.stream()
+await BlogPost.stream()
 .limit(50000)
 .sort('title ASC')
-.eachRecord(function (blogPost, next){
+.eachRecord(async (blogPost, next)=>{
 
   sitemapXml += RENDER_SITEMAP_XML_URL_EL({
     url: 'https://blog.example.com/' + blogPost.slug,
@@ -107,17 +100,11 @@ BlogPost.stream()
   });
 
   return next();
-
-})
-.exec(function (err) {
-  if (err) { return res.serverError(err); }
-
-  sitemapXml += '</urlset>';
-
-  return res.send(sitemapXml);
-
 });
 
+sitemapXml += '</urlset>';
+
+return res.send(sitemapXml);
 ```
 
 
@@ -127,14 +114,11 @@ BlogPost.stream()
 A snippet of a command-line script that searches for creepy comments from someone named "Bailey Bitterbumps" and reports them to the authorities:
 
 ```js
-
-// e.g. in a cmdline script
+// e.g. in a shell script
 
 var numReported = 0;
 
-Comment.stream({
-  author: 'Bailey Bitterbumps'
-})
+await Comment.stream({ author: 'Bailey Bitterbumps' })
 .limit(1000)
 .skip(40)
 .sort('title ASC')
@@ -143,41 +127,28 @@ Comment.stream({
   sort: 'updatedAt'
 })
 .populate('fromBlogPost')
-.eachRecord(function (comment, next){
+.eachRecord(async (comment, next)=>{
 
   var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/beanie weenies/) && comment.attachedFiles.length > 1;
   if (!isCreepyEnoughToWorryAbout) {
     return next();
   }
 
-  Mailgun.sendPlaintextEmail({
-    toEmail: 'authorities@cannedmeat.gov',
-    message: 'Yeah, there\'s a creepy thing going on at:\n'+
-              'https://blog.example.com/' + comment.fromBlogPost.slug + '/comments/' + comment.slug + '.',
-    apiKey: sails.config.custom.mailgunApiKey,
-    domain: sails.config.custom.mailgunDomain
-  }).exec(function (err) {
-    if (err) { return next(err); }
+  await sails.helpers.sendTemplateEmail({
+    subject: 'Creepy comment alert',
+    template: 'email-creepy-comment-notification',
+    templateData: {
+      url: `https://blog.example.com/${comment.fromBlogPost.slug}/comments/${comment.slug}.`
+    },
+    to: 'authorities@cannedmeat.gov',
+  });
 
-    numReported++;
-
-    return next();
-
-  });//</Mailgun.sendPlaintextEmail()>
-
-})
-.exec(function (err) {
-  if (err) {
-    sails.log.error('An unexpected error occurred when reporting a creepy comment: '+ err.stack);
-    return process.exit(1);
-  }
-
-  sails.log('Successfully reported '+numReported+' creepy comments.');
-
-  return process.exit(0);
-
+  numReported++;
+  return next();
 });
 
+sails.log(`Successfully reported ${numReported} creepy comments.`);
+return exits.success();
 ```
 
 
@@ -189,13 +160,11 @@ If we ran the code in the previous example, we'd be sending one email per creepy
 Fortunately, there are a few easy changes we can make to our script to solve this.  Let's try again; but this go-round, instead of processing individual records one at a time, we'll receive and process them as batches:
 
 ```js
-// e.g. in a cmdline script, batch at a time
-
-
+// e.g. in a shell script, batch at a time
 var numReported = 0;
 var numEmailsSent = 0;
 
-Comment.stream({
+await Comment.stream({
   author: 'Bailey Bitterbumps'
 })
 .limit(1000)
@@ -206,7 +175,7 @@ Comment.stream({
   sort: 'updatedAt'
 })
 .populate('fromBlogPost')
-.eachBatch(function (someCreepyComments, next){
+.eachBatch(async (someCreepyComments, next)=>{
 
   // If a comment contains the phrase "beanie weenies", AND it has
   // at least one attached file, then we'll consider it creepy.
@@ -224,50 +193,34 @@ Comment.stream({
     return next();
   }//--•
 
-  var message = 'Dear authorities,\n';
-  message += 'There\'s '+someCreepyComments.length+' creepy thing'+(someCreepyComments.length !== 1 ? 's' : '') +' ';
-  message += 'going on here:\n';
-  message += _.reduce(someCreepyComments, function (memo, creepyComment){
-    memo += ' • ' + 'https://blog.example.com/' + creepyComment.fromBlogPost.slug + '/comments/' + creepyComment.slug + '\n';
-    return memo;
-  }, '')+'\n';
-  message += '\n';
-  message += 'Sincerely,\n';
-  message += 'Concerned parent';
+  await sails.helpers.sendTemplateEmail({
+    subject: 'Creepy comment alert: daily digest',
+    template: 'email-creepy-comment-digest',
+    templateData: {
+      urls: _.reduce(someCreepyComments, function (memo, creepyComment){
+        memo += ' • ' + `https://blog.example.com/${creepyComment.fromBlogPost.slug}/comments/${creepyComment.slug}.` + '\n';
+        return memo;
+      }, '')
+    },
+    to: 'authorities@cannedmeat.gov',
+  });
 
-  Mailgun.sendPlaintextEmail({
-    toEmail: 'authorities@cannedmeat.gov',
-    message: message,
-    apiKey: sails.config.custom.mailgunApiKey,
-    domain: sails.config.custom.mailgunDomain
-  }).exec(function (err) {
-    if (err) { return next(err); }
+  numReported += someCreepyComments.length;
+  numEmailsSent++;
 
-    numReported += someCreepyComments.length;
-    numEmailsSent++;
-
-    return next();
-
-  });//</Mailgun.sendPlaintextEmail()>
+  return next();
 
 })//~∞%°
-.exec(function (err) {
-  if (err) {
-    sails.log.error('An unexpected error occurred when reporting a batch of creepy comments: '+ err.stack);
-    return process.exit(1);
-  }
 
-  sails.log('Successfully reported '+numReported+' creepy comments-- spread across '+numEmailsSent+' different emails.');
-
-  return process.exit(0);
-
-});
+sails.log('Successfully reported '+numReported+' creepy comment(s)-- spread across '+numEmailsSent+' different emails.');
+return exits.success();
 ```
 
 
 ### Notes
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exe
 > + Internally, regardless whether you're using `.eachBatch()` or `.eachRecord()`, Waterline grabs pages of 30 records at a time.
-> + Just like async.eachSeries(), this method bails and calls its .exec() callback with an error _immediately_ upon receiving the first error from any iteratee.
+> + Just like async.eachSeries(), this method bails and throws an error (or calls its .exec() callback with an error) _immediately_ upon receiving the first error from any iteratee.
 > + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
 > + Prior to Sails v1.0 / Waterline 0.13, this method had a lower-level interface, exposing a [Readable "object stream"](http://nodejs.org/api/stream.html).  This was powerful, but tended to be error-prone.  So the new, adapter-agnostic `.stream()` does not rely on emitters, or any particular flavor of Node streams.  (Need to get it working the old way?  Don't worry, with a little code, you can still easily build a streams2/streams3-compatible Readable "object stream" using the new interface.)
 > + Read more about `.stream()` [here](https://gist.githubusercontent.com/mikermcneil/d1e612cd1a8564a79f61e1f556fc49a6/raw/094d49a670e70cc38ae11a9419314542e8e4e5c9/streaming-records-in-sails-v1.md), including additional examples, background information, and implementation details.

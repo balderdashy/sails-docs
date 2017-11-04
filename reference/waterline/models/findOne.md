@@ -3,9 +3,7 @@
 Attempt to find a particular record in your database that matches the given criteria.
 
 ```usage
-Something.findOne(criteria).exec(function (err, record) {
-
-});
+var record = await Something.findOne(criteria);
 ```
 
 ### Usage
@@ -14,40 +12,45 @@ Something.findOne(criteria).exec(function (err, record) {
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching this record in the database.  (This criteria must never match more than one record.) `findOne` queries do not support pagination using `skip` or `limit`.
 
-##### Callback
+##### Result
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or `undefined` if there were no errors.
-| 2 |    _record_         | ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
+| Type                | Description      |
+|---------------------|:-----------------|
+| ((dictionary?))     | The record that was found, or `undefined` if no such record could be located.
 
+##### Errors
 
+|     Name        | Type                | When? |
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 
 ### Example
 
 To locate the user whose username is "finn" in your database:
+
 ```javascript
-
-User.findOne({
-  username:'finn'
-}).exec(function (err, finn){
-  if (err) {
-    return res.serverError(err);
-  }
-  if (!finn) {
-    return res.notFound('Could not find Finn, sorry.');
-  }
-
-  sails.log('Found "%s"', finn.fullName);
-  return res.json(finn);
+var finn = await Users.findOne({
+  username: 'finn'
 });
+
+if (!finn) {
+  return res.notFound('Could not find Finn, sorry.');
+}
+
+sails.log('Found "%s"', finn.fullName);
+return res.json(finn);
 ```
 
 
 
 ### Notes
-> - Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the value of the 2nd argument to the callback (e.g. `finn`) will be `undefined`.
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
+> + Being unable to find a record with the given criteria does **not** constitute an error for `findOne()`.  If no matching record is found, the result will be `undefined`.
 
 
 
