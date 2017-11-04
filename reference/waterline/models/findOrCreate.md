@@ -48,7 +48,7 @@ Ensure our test user, Finn, exists:
 
 ```javascript
 User.findOrCreate({ name: 'Finn' }, { name: 'Finn' })
-.exec(function(err, user, wasCreated) {
+.exec(async(err, user, wasCreated)=> {
   if (err) { return res.serverError(err); }
 
   if(wasCreated) {
