@@ -3,7 +3,7 @@
 Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
 
 ```usage
-query.then(callback);
+q.then(callback)
 ```
 
 > As of Sails v1 and Node.js v8, you can take advantage of [`await`](https://sailsjs.com/documentation/reference/waterline-orm/queries) instead of using this method.
@@ -13,7 +13,7 @@ query.then(callback);
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |   callback          | ((function))                                    | A function that runs if the query successfully completes<br/><br/> Takes the result of the query as its argument.
+| 1 |   callback          | ((function))                                 | A function that runs if the query successfully completes<br/><br/> Takes the result of the query as its argument.
 
 
 ##### Callback

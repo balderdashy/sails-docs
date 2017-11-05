@@ -3,9 +3,9 @@
 Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
-query.exec(function (err, result) {
+.exec(function (err, result) {
 
-});
+})
 ```
 
 > As of Sails v1 and Node.js v8, you can take advantage of [`await`](https://sailsjs.com/documentation/reference/waterline-orm/queries) instead of using this method.
@@ -30,7 +30,7 @@ query.exec(function (err, result) {
 ### Example
 
 ```javascript
-Zookeeper.find().exec(function afterwards(err, zookeepers) {
+Zookeeper.find().exec((err, zookeepers)=>{
   if (err) {
     return res.serverError(err);
   }

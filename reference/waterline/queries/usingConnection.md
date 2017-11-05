@@ -3,7 +3,7 @@
 Specify an existing database connection to use for this [query](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
-query.usingConnection(connection);
+.usingConnection(connection);
 ```
 
 ### Usage

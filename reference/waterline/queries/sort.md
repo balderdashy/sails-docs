@@ -2,38 +2,48 @@
 
 Set the order in which retrieved records should be returned when executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
+```usage
+.sort(sortClause)
+```
+
 The &ldquo;sort clause&ldquo; can be specified as either a string or an array of dictionaries.
 
-If the clause is a _string_, it should contain an attribute name followed by a space, followed by either `ASC` or `DESC` (to indicate an _ascending_ or _descending_ sort), for example `name ASC`.
 
-If the clause is an _array_, then each item in the array should be a dictionary with a single key representing the attribute to sort by, whose value is either `ASC` or `DESC`.  The array syntax allows for sorting by multiple attributes, using the array order to establish precedence.  For example:
+
+ For example:
 
 ```
 // Sort by name, and for records with the same name, sort by age in descending order.
-[
-  { name: 'ASC' },
-  { age:  'DESC'}
-]
+
 ```
 
 
-### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Sort Clause        |      ((string)), ((array))       | Yes        |
+### Usage
+|   |     Argument     | Type                | Details |
+|---|:-----------------|---------------------|------------|
+| 1 |  sortClause      | ((string)) _or_ ((array)) of ((dictionary)) | If specified as a string, this should be formatted as: an attribute name, followed by a space, followed by either `ASC` or `DESC` to indicate an _ascending_ or _descending_ sort (e.g. `name ASC`). <br/>If specified as an array, then each array item should be a dictionary with a single key representing the attribute to sort by, whose value is either `ASC` or `DESC`. The array syntax allows for sorting by multiple attributes, using the array order to establish precedence <br/>(e.g. [ { name: 'ASC' }, { age:  'DESC'} ]). |
 
-### Example Usage
+### Example
 
+To sort users named Jake by age, in ascending order:
 ```javascript
-var myQuery = User.find();
+var users = await User.find({ name: 'Jake'});
+.sort('age ASC');
 
-myQuery.sort('name ASC');
-
-myQuery.exec(function callBack(err,results){
-  console.log(results)
-});
-
+return res.json(users);
 ```
+
+To sort users named Finn, first by age, then by when they joined:
+```javascript
+var users = await User.find({ name: 'Finn'});
+.sort([
+  { name: 'ASC' },
+  { createdAt: 'ASC' },
+]);
+
+return res.json(users);
+```
+
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 

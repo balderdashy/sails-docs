@@ -1,14 +1,10 @@
 # .populate()
 
-Modify a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) so that, when executed, it will return associated record(s) belonging to the specified association, and optionally according to the specified `subcriteria`.  Populate may be called more than once on the same query, as long as each call is for a different association.
+Modify a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) so that, when executed, it will populate child records for the specified collection, optionally filtering by `subcriteria`.  Populate may be called more than once on the same query, as long as each call is for a different association.
 
 
 ```usage
-Something.find()
 .populate(association, subcriteria)
-.exec(function afterwards(err, populatedRecords){
-
-});
 ```
 
 
@@ -28,16 +24,12 @@ Something.find()
 
 To find any users named Finn in the database and, for each one, also populate their dad:
 ```javascript
-User.find({name:'Finn'}).populate('dad').exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
+var usersNamedFinn = await User.find({name:'Finn'}).populate('dad');
 
-  sails.log('Wow, there are %d users named Finn.', usersNamedFinn.length);
-  sails.log('Check it out, some of them probably have a dad named Joshua or Martin:', usersNamedFinn);
+sails.log('Wow, there are %d users named Finn.', usersNamedFinn.length);
+sails.log('Check it out, some of them probably have a dad named Joshua or Martin:', usersNamedFinn);
 
-  return res.json(usersNamedFinn);
-});
+return res.json(usersNamedFinn);
 ```
 
 
@@ -75,25 +67,20 @@ To find any users named Finn in the database and, for each one, also populate th
 // Warning: This is only safe to use on large datasets if both models are in the same database,
 // and the adapter supports optimized populates.
 // (e.g. cannot do this with the `User` model in PostgreSQL and the `Sword` model in MongoDB)
-User.find({
-  name:'Finn'
-}).populate('currentSwords', {
+var usersNamedFinn = await User.find({ name:'Finn' })
+.populate('currentSwords', {
   where: {
     color: 'purple'
   },
   limit: 3,
   sort: 'hipness DESC'
-}).exec(function (err, usersNamedFinn){
-  if (err) {
-    return res.serverError(err);
-  }
-
-  // Note that Finns without any swords are still included-- their `currentSwords` arrays will just be empty.
-  sails.log('Wow, there are %d users named Finn.', usersNamedFinn.length);
-  sails.log('Check it out, some of them probably have non-empty arrays of purple swords:', usersNamedFinn);
-
-  return res.json(usersNamedFinn);
 });
+
+// Note that Finns without any swords are still included-- their `currentSwords` arrays will just be empty.
+sails.log('Wow, there are %d users named Finn.', usersNamedFinn.length);
+sails.log('Check it out, some of them probably have non-empty arrays of purple swords:', usersNamedFinn);
+
+return res.json(usersNamedFinn);
 ```
 
 Might yield:
@@ -121,7 +108,6 @@ Might yield:
   // ...more users
 ]
 ```
-
 
 
 <docmeta name="displayName" value=".populate()">

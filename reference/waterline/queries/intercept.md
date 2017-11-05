@@ -3,11 +3,11 @@
 Capture and intercept the specified error, automatically modifying and re-throwing it, or specifying a new Error instead.
 
 ```usage
-query.intercept(filter, handler);
+.intercept(filter, handler)
 ```
 
 _Or:_
-+ `query.intercept(handler);`
++ `.intercept(handler)`
 
 
 

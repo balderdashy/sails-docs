@@ -3,11 +3,11 @@
 Intercept and swallow the specified error, and return a new result value (or `undefined`) instead.
 
 ```usage
-query.tolerate(filter, handler);
+.tolerate(filter, handler)
 ```
 
 _Or:_
-+ `query.tolerate(filter);`
++ `.tolerate(filter)`
 
 
 

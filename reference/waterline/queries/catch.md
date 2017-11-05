@@ -3,7 +3,7 @@
 Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
 
 ```usage
-query.catch(callback);
+.catch(callback)
 ```
 
 > As of Sails v1 and Node.js v8, you can take advantage of [`await`](https://sailsjs.com/documentation/reference/waterline-orm/queries) instead of using this method.

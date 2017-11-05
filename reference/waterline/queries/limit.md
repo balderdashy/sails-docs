@@ -2,22 +2,26 @@
 
 Set the maximum number of records to retrieve when executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
-### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Number to Return   |      ((number))         | Yes         |
+```usage
+.limit(maximum)
+```
 
-### Example Usage
+### Usage
+|   |     Argument        | Type         | Details    |
+|---|:--------------------|--------------|------------|
+| 1 |  maximum            |  ((number))  | The maximum number of records to retrieve. |
+
+### Example
+
+To retrieve records for up to 10 users named Jake:
 
 ```javascript
-var myQuery = User.find();
-myQuery.limit(12);
+var jakes = await User.find({ name: 'Jake' });
+.limit(10);
 
-myQuery.exec(function callBack(err,results){
-    console.log(results)
-    });
-
+return res.json(jakes);
 ```
+
 ### Notes
 > * If you set the limit to 0, the query will always return an empty array.
 > * If the limit is greater than the number of records matching the query criteria, all of the matching records will be returned.

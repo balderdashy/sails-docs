@@ -4,7 +4,7 @@ Decrypt any auto-encrypted attributes in the records returned for this particula
 
 
 ```usage
-await query.decrypt();
+query.decrypt()
 ```
 
 ### Usage

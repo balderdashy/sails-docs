@@ -2,8 +2,8 @@
 
 Provide additional options to Waterline when executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
 
-```javascript
-query.meta(options);
+```usage
+.meta(options)
 ```
 
 ### Usage
@@ -27,12 +27,10 @@ encryptWith                           | ((string))  | 'default' | The id of a cu
 ### Example
 
 ```javascript
-User.create({name: 'alice'})
-.meta({fetch: true})
-.exec(function (err, newUser){
-  if (err) { return res.serverError(err); }
-  return res.json(newUser);
-});
+var user = await User.create({name: 'alice'})
+.meta({fetch: true});
+
+return res.json(newUser);
 ```
 
 

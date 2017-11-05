@@ -6,7 +6,7 @@ Tell Waterline (and the underlying database adapter) to send back records that w
 
 
 ```usage
-query.fetch();
+.fetch()
 ```
 
 ### Usage

@@ -3,7 +3,7 @@
 Begin executing a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) and return a promise.
 
 ```usage
-query.toPromise();
+.toPromise();
 ```
 
 > This is an alternative to `.exec()`.
