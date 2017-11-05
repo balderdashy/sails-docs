@@ -50,7 +50,7 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
       "sails": "~0.11.0"
 }
 ```
-1. Install Sails as a dependency of your hook with `npm install sails` or `npm link sails` (if you have Sails installed globally on your system).
+1. Install Sails as a dependency of your hook with `npm install sails@0.12` or `npm link sails` (if you have Sails installed globally on your system).
 1. Install [Mocha](http://mochajs.org/) on your system with `npm install -g mocha`, if you haven&rsquo;t already.
 1. Add a `test` folder inside your hook&rsquo;s main folder.
 2. Add a `basic.js` file with the following basic test:

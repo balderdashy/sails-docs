@@ -67,7 +67,7 @@ Aside from the [official documentation](http://sailsjs.com/documentation), be su
 
 ### What are some good community tutorials?
 
-> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
+> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/master/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
 
 <!--
 A quick note for anyone contributing to this file:
@@ -135,7 +135,7 @@ Thanks!
 
 ##### Articles / interviews / press releases / whitepapers / talks
 
-> + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md).  We'll check it out!
+> + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/master/FAQ.md).  We'll check it out!
 > + If you are a company interested in doing a press release about Sails, please contact [@mikermcneil](https://twitter.com/mikermcneil) on Twitter.  We'll do what we can to help.
 
 + [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
