@@ -21,7 +21,7 @@ module.exports = {
   friendlyName: 'Check permissions',
 
 
-  description: 'Look up a user's "rights" within a particular organization.',
+  description: 'Look up a user\'s "rights" within a particular organization.',
 
 
   inputs: {
