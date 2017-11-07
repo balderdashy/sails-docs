@@ -50,9 +50,9 @@ module.exports = {
     if (!org) { throw 'orgNotFound'; }
     
     var rights = [];
-    if (org.regularUsers.length > 0) {
+    if (org.regularUsers.length !== 0) {
       rights = ['basicAccess', 'inviteRegularUsers'];
-    } else if (org.adminUsers.length > 0) {
+    } else if (org.adminUsers.length !== 0) {
       rights = ['basicAccess', 'inviteRegularUsers', 'removeRegularUsers', 'inviteOrgAdmins'];
     } else if (org.owner === inputs.userId) {
       rights = ['basicAccess', 'inviteRegularUsers', 'removeRegularUsers', 'inviteOrgAdmins', 'removeOrDemoteOrgAdmins'];
