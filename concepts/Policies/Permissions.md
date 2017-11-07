@@ -86,4 +86,4 @@ return exits.success();
 ```
 
 
-<docmeta name="displayName" value="Sails + Passport">
+<docmeta name="displayName" value="Access Control and Permissions">
