@@ -75,7 +75,7 @@ var rights = await checkPermissions({
 })
 .intercept('orgNotFound', ()=>'notFound');
 
-if (_.contains(rights, 'removeOrDemoteOrgAdmins')) {
+if (!_.contains(rights, 'removeOrDemoteOrgAdmins')) {
   throw 'forbidden';
 }
 
