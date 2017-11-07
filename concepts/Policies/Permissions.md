@@ -10,7 +10,7 @@ sails new foo --caviar
 
 ### Dynamic permissions
 
-For more complex permissions schemes, where a requesting user agent's access rights depend on _who they are_ and _what they're trying to do_, you'll want to involve the database.  While you can use policies to accomplish this, it's usually more straightforward and maintainable to use a [helper](https://sailsjs.com/documentation/concepts/helpers).
+For more complex permission schemes, where a requesting user agent's access rights depend on _who they are_ and _what they're trying to do_, you'll want to involve the database.  While you can use policies to accomplish this, it's usually more straightforward and maintainable to use a [helper](https://sailsjs.com/documentation/concepts/helpers).
 
 For example, you might create `api/helpers/check-permissions.js`:
 
