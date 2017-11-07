@@ -33,7 +33,7 @@ npm install sails-mysql --save
 ```
 
 ```javascript
-adapter: require('sails-mysql'),
+adapter: 'sails-mysql',
 url: 'mysql://user:password@host:port/database',
 ```
 
@@ -48,7 +48,7 @@ If you find yourself encountering a "Handshake inactivity timeout" error when yo
 For example, you might extend the timeout to 20 seconds:
 
 ```javascript
-adapter: require('sails-mysql'),
+adapter: 'sails-mysql',
 url: 'mysql://user:password@host:port/database',
 connectTimeout: 20000
 ```
@@ -65,7 +65,7 @@ npm install sails-postgresql --save
 ```
 
 ```javascript
-adapter: require('sails-postgresql'),
+adapter: 'sails-postgresql',
 url: 'postgresql://user:password@host:port/database',
 ```
 
@@ -83,7 +83,7 @@ npm install sails-mongo --save
 ```
 
 ```javascript
-adapter: require('sails-mongo'),
+adapter: 'sails-mongo',
 url: 'mongodb://user:password@host:port/database',
 ```
 
