@@ -4,10 +4,12 @@ Lease a new connection from the datastore for use in running multiple queries on
 
 
 ```usage
-someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
-
-});
+await datastore.leaseConnection(during);
 ```
+
+_Or_
+
++ `var result = await datastore.leaseConnection(during);`
 
 
 ### Usage
@@ -23,54 +25,55 @@ someDatastore.leaseConnection(during).exec(function(err, resultMaybe) {
 
 
 
-##### Callback
+##### Result
 
-The _final_ callback that you pass in to `.exec()` receives the following arguments:
+| Type                | Details |
+|---------------------|:---------------------------------------------------------------------------------|
+| ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.
-| 2 |    _resultMaybe_    | ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
+##### Errors
+
+|     Name        | Type                | When? |
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 ### Example
 
 Lease a database connection from the default datastore, then use it to send two queries before releasing it back to the pool.
 
 ```javascript
-sails.getDatastore()
-.leaseConnection(function (db, proceed) {
+var inventory = await sails.getDatastore()
+.leaseConnection(async (db, proceed)=> {
 
-  Location.findOne({ id: req.param('locationId') })
-  .usingConnection(db)
-  .exec(function (err, location) {
-    if (err) { return proceed(err); }
-    if (!location) {
-      err = new Error('Cannot find location with that id (`'+req.param('locationId')+'`)');
-      err.code = 'E_NO_SUCH_LOCATION';
-      return proceed(err);
-    }
+  var location = await Location.findOne({ id: req.param('locationId') })
+  .usingConnection(db);
 
-    // Get all products at the location
-    ProductOffering.find({ location: req.param('locationId') })
-    .populate('productType')
-    .usingConnection(db)
-    .exec(function(err, productOfferings) {
-      if (err) { return proceed(err); }
-      var inventory = _.indexBy(productOfferings, 'id');
-      return proceed(undefined, inventory);
-    });
-  });
-}).exec(function (err, inventory) {
-  if (err && err.code === 'E_NO_SUCH_LOCATION') { return res.notFound(); }
-  else if (err) { return res.serverError(err); }
+  if (!location) {
+    err = new Error('Cannot find location with that id (`'+req.param('locationId')+'`)');
+    err.code = 'E_NO_SUCH_LOCATION';
+    return proceed(err);
+  }
 
-  // All done!  Whatever we were doing with that connection worked.
-  // Now we can proceed with our business.
-  return res.ok();
+  // Get all products at the location
+  var productOfferings = await ProductOffering.find({ location: req.param('locationId') })
+  .populate('productType')
+  .usingConnection(db);
+
+  var inventory = _.indexBy(productOfferings, 'id');
+  return proceed(undefined, inventory);
+})
+.intercept('E_NO_SUCH_LOCATION', ()=> {
+  return res.notFound();
 });
+
+// All done!  Whatever we were doing with that connection worked.
+// Now we can proceed with our business.
+return res.json(inventory);
 ```
-
-
 
 
 <docmeta name="displayName" value=".leaseConnection()">
