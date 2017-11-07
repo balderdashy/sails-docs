@@ -4,7 +4,7 @@ Policies in Sails are designed for controlling binary ("yes or no") access to pa
 
 To see that in action, alongside login, authentication, and password recovery, generate the expanded starter app:
 
-```js
+```bash
 sails new foo --caviar
 ```
 
@@ -14,7 +14,7 @@ For more complex permissions schemes, where a requesting user agent's access rig
 
 For example, you might create `api/helpers/check-permissions.js`:
 
-```js
+```javascript
 module.exports = {
 
 
@@ -26,7 +26,7 @@ module.exports = {
 
   inputs: {
     userId: { type: 'number', required: true },
-    orgId: { type: 'number', required: true },
+    orgId: { type: 'number', required: true }
   },
   
   exits: {
@@ -67,7 +67,7 @@ module.exports = {
 
 Then in your action, for example `api/controllers/demote-org-admin.js`:
 
-```js
+```javascript
 //…
 var rights = await checkPermissions({
   userId: this.req.session.userId,
