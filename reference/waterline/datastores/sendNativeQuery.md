@@ -8,7 +8,7 @@ var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 
 ```usage-exec
 datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
-  
+
 });
 ```
 
@@ -20,12 +20,21 @@ datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
 | 1 | sql                 | ((string))          | A SQL string written in the appropriate dialect for this database.  Allows template syntax like `$1`, `$2`, etc. (See example below.)  If you are using custom table names or column names, be sure to reference those directly (rather than model identities and attribute names).  |
 | 2 | valuesToEscape     | ((array?))           | An array of dynamic, untrusted strings to SQL-escape and inject within `sql`.  _(If you have no dynamic values to inject, then just omit this argument or pass in an empty array here.)_
 
-##### Callback
+##### Result
 
-|   |     Argument        | Type                | Details |
-|---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| 1 |    _err_            | ((Error?))          | The error that occurred, or a falsy value if there were no errors.  _(Expect this to be an Error instance with a [`.footprint` property](https://github.com/treelinehq/waterline-query-docs/blob/8fc158d8460aa04ee6233fefbdf83cc17e7645df/docs/errors.md).)_
-| 2 |    _rawResult_      | ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.)_ |
+| Type                | Details |
+|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+| ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.)_ |
+
+##### Errors
+
+|     Name        | Type                | When? |
+|:----------------|---------------------|:---------------------------------------------------------------------------------|
+| UsageError      | ((Error))           | Thrown if something invalid was passed in.
+| AdapterError    | ((Error))           | Thrown if something went wrong in the database adapter.
+| Error           | ((Error))           | Thrown if anything else unexpected happens.
+
+See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
 ### Example
 
@@ -35,7 +44,7 @@ datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
 ```js
 // Build our SQL query template.
 var NAMES_OF_PETS_SQL = `
-SELECT pet.name 
+SELECT pet.name
 FROM pet
 WHERE pet.species_label = $1 OR pet.species_label = $2`;
 
@@ -61,7 +70,7 @@ For example:
 
 ```js
 var NAMES_OF_PETS_SQL = `
-SELECT ${Pet.tableName}.${Pet.schema.name.columnName} 
+SELECT ${Pet.tableName}.${Pet.schema.name.columnName}
 FROM ${Pet.tableName}
 WHERE
   ${Pet.tableName}.${Pet.schema.speciesLabel.columnName} = $1
