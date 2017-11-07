@@ -49,7 +49,7 @@ module.exports = {
     
     if (!org) { throw 'orgNotFound'; }
     
-    var rights;
+    var rights = [];
     if (org.regularUsers.length > 0) {
       rights = ['basicAccess', 'inviteRegularUsers'];
     } else if (org.adminUsers.length > 0) {
