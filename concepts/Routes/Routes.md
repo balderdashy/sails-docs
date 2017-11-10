@@ -78,3 +78,5 @@ The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP reque
 
 
 <docmeta name="displayName" value="Routes">
+<docmeta name="nextUpLink" value="/documentation/concepts/actions-and-controllers">
+<docmeta name="nextUpName" value="Actions">
