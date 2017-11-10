@@ -177,3 +177,5 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 -->
 
 <docmeta name="displayName" value="Models">
+<docmeta name="nextUpLink" value="/documentation/concepts/configuration">
+<docmeta name="nextUpName" value="Configuration">

@@ -161,3 +161,5 @@ Depending on whether you're starting a Sails app from the command line using `sa
 
 
 <docmeta name="displayName" value="Configuration">
+<docmeta name="nextUpLink" value="/documentation/concepts/policies">
+<docmeta name="nextUpName" value="Policies">
