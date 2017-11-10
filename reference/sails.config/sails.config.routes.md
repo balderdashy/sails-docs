@@ -7,8 +7,8 @@ For example:
 ```
 module.exports.routes = {
 
-    "GET /": {view: "homepage"},
-    "POST /foo/bar": {controller: "FooController", action: "bar"}
+    'GET /': { view: 'pages/homepage' },
+    'POST /foo/bar': { action: 'foo/bar' }
 }
 ```
 

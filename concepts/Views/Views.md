@@ -24,13 +24,13 @@ You can also hook up a view directly to a route in your `routes.js` file.  Just 
 ```javascript
 {
   'get /': {
-    view: 'homepage'
+    view: 'pages/homepage'
   },
   'get /signup': {
-    view: 'signupFlow/basicInfo'
+    view: 'pages/signup/basic-info'
   },
   'get /signup/password': {
-    view: 'signupFlow/chooseAPassword'
+    view: 'pages/signup/choose-password'
   },
   // and so on.
 }
