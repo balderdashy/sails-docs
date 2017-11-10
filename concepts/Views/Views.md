@@ -51,5 +51,5 @@ In this case, you have a couple of options for bootstrapping the single-page app
 
 
 <docmeta name="displayName" value="Views">
-<docmeta name="nextUpLink" value="/documentation/concepts/shell-scripts">
-<docmeta name="nextUpName" value="Shell scripts">
+<docmeta name="nextUpLink" value="/documentation/concepts/assets">
+<docmeta name="nextUpName" value="Assets">

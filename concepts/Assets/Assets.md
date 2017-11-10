@@ -22,3 +22,6 @@ It is important to note that the static [middleware](http://stephensugden.com/mi
 
 
 <docmeta name="displayName" value="Assets">
+<docmeta name="nextUpLink" value="/documentation/concepts/shell-scripts">
+<docmeta name="nextUpName" value="Shell Scripts">
+
