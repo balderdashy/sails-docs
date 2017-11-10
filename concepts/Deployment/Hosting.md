@@ -54,20 +54,6 @@ If you're using non-scalable gear, the `/supervisor_opts` file will be ignored a
 
 You can now `git add . && git commit -a -m "your message" && git push` to deploy to OpenShift.
 
-##### Using Nanobox?
-
-+ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
-+ [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
-+ [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
-+ [Official Nanobox Docs](https://docs.nanobox.io)
-+ [Join Us on Slack for Help](https://slack.nanoapp.io)
-
-##### Using DigitalOcean?
-
-+ https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
-+ https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
-+ https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab
-
 ##### Deploying to Heroku?
 
 + [Platzi: Develop Apps with Sails.js: Pt 2](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
@@ -78,12 +64,28 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
 + http://dennisrongo.com/deploying-sails-js-to-heroku
 + http://stackoverflow.com/a/20184907/486547
 
+##### Using DigitalOcean?
+
++ https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps
++ https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
++ https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab
+
+
 ##### Deploying to AWS?
 
 + http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html
 + http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance
 + http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html
 + http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac
+
+
+##### Using Nanobox?
+
++ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
++ [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
++ [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
++ [Official Nanobox Docs](https://docs.nanobox.io)
++ [Join Us on Slack for Help](https://slack.nanoapp.io)
 
 ##### Using PM2?
 
