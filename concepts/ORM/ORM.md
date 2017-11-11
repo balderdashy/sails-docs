@@ -119,3 +119,5 @@ In your Sails app, a **model** is like one of the file cabinets.  It contains **
 
 
 <docmeta name="displayName" value="Models and ORM">
+<docmeta name="nextUpLink" value="/documentation/concepts/models-and-orm/models">
+<docmeta name="nextUpName" value="Models">
