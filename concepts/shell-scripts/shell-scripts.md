@@ -71,4 +71,4 @@ For more detailed information on usage, see the [`whelk` README](https://github.
 
 <docmeta name="displayName" value="Shell Scripts">
 <docmeta name="nextUpLink" value="/documentation/concepts/models-and-orm">
-<docmeta name="nextUpName" value="Models and Orm">
+<docmeta name="nextUpName" value="Models and ORM">
