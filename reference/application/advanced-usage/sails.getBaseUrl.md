@@ -1,7 +1,7 @@
 # sails.getBaseUrl()
 
 > ##### _**This method is deprecated and will likely be removed or changed in an upcoming release.**_
-> There is no reliable, cross-platform way to automatically detect the external URL of a running Sails app (or any other Node app). In mission-critical situations, you are advised to pre-determine the URL and save it in a custom [environment-dependent configuration value](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env) (e.g. `sails.config.custom.baseUrl`) that you can reference elsewhere in the app.
+> There is no reliable, cross-platform way to automatically detect the external URL of a running Sails app (or any other Node app).  Instead, configure your base URL explicitly and save it in [custom configuration](https://next.sailsjs.com/documentation/reference/configuration/sails-config-custom) (e.g. `sails.config.custom.baseUrl`) that you can reference throughout the app.  (This can then be overridden in production, staging, etc. as-needed using [environment-dependent configuration](http://sailsjs.com/documentation/concepts/configuration#?environmentspecific-files-config-env).)
 
 Return a (possibly incorrect) best guess of the base URL for this app, based on a combination of user-supplied and default configuration values.
 
