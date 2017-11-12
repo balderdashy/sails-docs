@@ -17,7 +17,7 @@ Then, to run it, use:
 sails run hello
 ```
 
-> If you need to run a script without global access to the `sails` command-line interface (in a Profile, for example), use `node ./node_modules/sails/bin/sails run hello`.
+> If you need to run a script without global access to the `sails` command-line interface (in a Procfile, for example), use `node ./node_modules/sails/bin/sails run hello`.
 
 ### Example
 
