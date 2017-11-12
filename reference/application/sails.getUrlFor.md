@@ -32,6 +32,13 @@ sails.getUrlFor(target);
 In a view...
 
 ```ejs
+<a href="<%= sails.getUrlFor('entrance/view-login') %>">Login</a>
+<a href="<%= sails.getUrlFor('entrance/view-signup') %>">Signup</a>
+```
+
+Or, if you're using traditional controllers:
+
+```ejs
 <a href="<%= sails.getUrlFor('PageController.login') %>">Login</a>
 <a href="<%= sails.getUrlFor('PageController.signup') %>">Signup</a>
 ```
