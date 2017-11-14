@@ -2,12 +2,12 @@
 
 ### Overview
 
-_Actions_ are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). For many applications, the actions will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+_Actions_ are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). With rare exceptions, the actions will orchestrate the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
 
-Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
+Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a user agent requests a particular URL, the bound action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
 
 ```javascript
-function (req, res) {
+async function (req, res) {
   return res.send('Hi there!');
 }
 ```
@@ -23,43 +23,42 @@ An action can have any file extension besides `.md` (Markdown) and `.txt` (text)
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _classic_ or _Actions2_.
+Action files can use one of two formats: _classic_ or _actions2_.
 
 ##### Classic actions
 
-The quickest way to get started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [request object](http://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [response object](http://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](http://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](http://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
 
 ```javascript
-module.exports = function welcomeUser (req, res) {
+module.exports = async function welcomeUser (req, res) {
 
-   // Get the `userId` parameter from the request.
-   // This could have been set on the querystring, in
-   // the request body, or as part of the URL used to
-   // make the request.
-   var userId = req.param('userId');
+  // Get the `userId` parameter from the request.
+  // This could have been set on the querystring, in
+  // the request body, or as part of the URL used to
+  // make the request.
+  var userId = req.param('userId');
 
    // If no `userId` was specified, or it wasn't a number, return an error.
-   if (!_.isNumeric(userId)) {
-      return res.badRequest(new Error('No user ID specified!'));
-   }
+  if (!_.isNumeric(userId)) {
+    return res.badRequest(new Error('No user ID specified!'));
+  }
 
-   // Look up the user whose ID was specified in the request.
-   User.findOne(userId).exec(function (err, user) {
-      // Handle unknown errors.
-      if (err) {return res.serverError(err);}
-      // If no user was found, redirect to signup.
-      if (!user) {return res.redirect('/signup');
-      // Display the welcome view, setting the view variable
-      // named "name" to the value of the user's name.
-      return res.view('welcome', {name: user.name});
-   });
+  // Look up the user whose ID was specified in the request.
+  var user = await User.findOne({ id: userId });
+
+  // If no user was found, redirect to signup.
+  if (!user) { return res.redirect('/signup' );
+
+  // Display the welcome view, setting the view variable
+  // named "name" to the value of the user's name.
+  return res.view('welcome', {name: user.name});
 
 }
 ```
 
-##### Actions2
+##### actions2
 
-Another, more structured way to create an action is by writing it as a _machine_, in much the same way that Sails [helpers](http://sailsjs.com/documentation/concepts/helpers) are created.  By defining your action as a machine, it is essentially self-documenting and self-validating.  Here's the same actions as above, rewritten using the machine format:
+Another, more structured way to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](http://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the same action as above, rewritten using the actions2 format:
 
 ```javascript
 module.exports = {
@@ -70,59 +69,61 @@ module.exports = {
 
    inputs: {
       userId: {
-         description: 'The ID of the user to look up.',
-         // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
-         // if the `userId` parameter is not a number.
-         type: 'number',
-         // By making the `userId` parameter required, Sails will automatically respond with
-         // `res.badRequest` if it's left out.
-         required: true
+        description: 'The ID of the user to look up.',
+        // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
+        // if the `userId` parameter is not a number.
+        type: 'number',
+        // By making the `userId` parameter required, Sails will automatically respond with
+        // `res.badRequest` if it's left out.
+        required: true
       }
    },
 
    exits: {
       success: {
-         responseType: 'view',
-         viewTemplatePath: 'welcome'
+        responseType: 'view',
+        viewTemplatePath: 'pages/welcome'
       },
       notFound: {
-         description: 'No user with the specified ID was found in the database.',
-         responseType: 'redirect'
+        description: 'No user with the specified ID was found in the database.',
+        responseType: 'notFound'
       }
    },
 
-   fn: function (inputs, exits, env) {
+   fn: async function (inputs, exits) {
 
       // Look up the user whose ID was specified in the request.
       // Note that we don't have to validate that `userId` is a number;
       // the machine runner does this for us and returns `badRequest`
       // if validation fails.
-      User.findOne(inputs.userId).exec(function (err, user) {
+      var user = await User.findOne({ id: inputs.userId });
 
-         // Handle unknown errors.
-         if (err) {return exits.error(err);}
+      // If no user was found, respond "notFound" (like calling `res.notFound()`)
+      if (!user) { return exits.notFound(); }
 
-         // If no user was found, redirect to signup.
-         if (!user) {return exits.notFound('/signup');}
-
-         // Display the welcome view.
-         return exits.success({name: user.name});
-      });
+      // Display the welcome view.
+      return exits.success({name: user.name});
    }
 };
 ```
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
-> Note that machine-as-action provides actions with access to the [request object](http://sailsjs.com/documentation/reference/request-req) as `env.req`, and to the Sails application object (in case you don&rsquo;t have [globals](http://sailsjs.com/documentation/concepts/globals) turned on) as `env.sails`.
+> Note that machine-as-action provides actions with access to the [request object](http://sailsjs.com/documentation/reference/request-req) as `this.req`.
 
-Using classic `req, res` functions for your actions is the quickest way to start out with a new app.  However, using Actions2 provides several advantages:
+<!--
+Removed in order to reduce the amount of information:  (Mike nov 14, 2017)
 
- * The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](http://sailsjs.com/documentation/concepts/helpers).
+and to the Sails application object (in case you don&rsquo;t have [globals](http://sailsjs.com/documentation/concepts/globals) turned on) as `this.sails`.
+-->
+
+Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
+
+ * The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers).
  * You guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run.
  * You&rsquo;ll be able to see all of the possible outcomes from running the action without having to dissect the code.
 
-In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.
+In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.  And since you'll declare the action's parameters ahead of time, you'll be much less likely to expose edge cases and security holes.
 
 ###### Exit signals
 
@@ -179,7 +180,7 @@ api/
    signup.js
 ```
 
-where each of the three Javascript files exports a `req, res` function or an Actions2 definition.
+where each of the three Javascript files exports a `req, res` function or an actions2 definition.
 
 Using standalone actions has several advantages over controller files:
 
