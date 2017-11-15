@@ -3,9 +3,8 @@
 In Sails, [records](http://sailsjs.com/documentation/concepts/models-and-orm/records) come from model methods like `.find()`, and represent data from your database. You can work with records just like you would any other data.
 
 ```js
-Order.find().exec(function (err, orders){
-  // `orders` is an array of records
-});
+var orders = Order.find();
+// `orders` is an array of records
 ```
 
 ### Working with populated records
