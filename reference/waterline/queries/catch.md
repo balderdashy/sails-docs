@@ -44,7 +44,6 @@ User.findOne({
   return res.serverError(err);
 });
 ```
-```
 
 
 ### Notes
