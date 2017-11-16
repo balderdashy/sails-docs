@@ -9,7 +9,33 @@ For convenience, Sails bundles special support for layouts **when using the defa
 
 ### Creating Layouts
 
-Sails layouts are special `.ejs` files in your app's `views/` folder you can use to "wrap" or "sandwich" other views. Layouts usually contain the preamble (e.g. `<!DOCTYPE html><html><head>....</head><body>`) and conclusion (`</body></html>`).  Then the original view file is included using `<%- body %>`.  Layouts are never used without a view- that would be like serving someone a bread sandwich.
+Sails layouts are special `.ejs` files in your app's `views/` folder you can use to "wrap" or "sandwich" other views. Layouts usually contain the preamble (e.g. `<!DOCTYPE html><html><head>....</head><body>`) and conclusion (`</body></html>`).  Then the original view file is included using `<%- body %>`. You can also include scripts and stylesheets using `<%- scripts %>` and `<%- stylesheets %>` respectively. Layouts are never used without a view- that would be like serving someone a bread sandwich.
+
+Example of a simple layout:
+
+```
+<!doctype html>
+<html lang="en">
+<head>
+  <title>My Website</title>
+  <%-stylesheets%>
+</head>
+<body>
+<%- body %>
+<%- scripts %>
+</body>
+</html>
+```
+
+and the example of usage in a view:
+
+```
+<% stylesheet('/css/app.css') %>
+<p>Body content</p>
+<% script('/js/app.js') %>
+```
+
+Sails layout is currently using [ejs-locals](https://github.com/RandomEtc/ejs-locals) under the hood. So check out its repository to get more detailed information.
 
 Layout support for your app can be configured or disabled in [`config/views.js`](http://sailsjs.com/documentation/anatomy/myApp/config/views.js.html), and can be overridden for a particular route or action by setting a special [local](http://sailsjs.com/documentation/concepts/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layout.ejs`.
 
