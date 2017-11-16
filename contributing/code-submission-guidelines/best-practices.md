@@ -9,6 +9,7 @@ The best way to work with Sails core is to fork the repository, `git clone` it t
 
 | Release               | Install Command          | Build Status      |
 |-----------------------|--------------------------|-------------------|
+| [v0.12.x](https://github.com/balderdashy/sails/tree/0.12)                | `npm install sails@0.12`      | [![Build Status](https://travis-ci.org/balderdashy/sails.png?branch=0.12)](https://travis-ci.org/balderdashy/sails/branches) |
 | [stable](https://github.com/balderdashy/sails/tree/stable)                | `npm install sails`      | [![Build Status](https://travis-ci.org/balderdashy/sails.png?branch=stable)](https://travis-ci.org/balderdashy/sails/branches) |
 | [beta](https://github.com/balderdashy/sails/tree/beta)                  | `npm install sails@beta` | [![Build Status](https://travis-ci.org/balderdashy/sails.png?branch=beta)](https://travis-ci.org/balderdashy/sails/branches) |
 | [edge](https://github.com/balderdashy/sails/tree/master)                  | `npm install sails@git://github.com/balderdashy/sails.git` | [![Build Status](https://travis-ci.org/balderdashy/sails.png?branch=master)](https://travis-ci.org/balderdashy/sails/branches) |
@@ -28,6 +29,7 @@ This is useful for testing/installing hot-fixes, and just a good thing to know h
 
 | Release               | Install Command          |
 |-----------------------|--------------------------|
+| [v0.12.x](https://github.com/balderdashy/sails/tree/0.12)                | `npm install sails@git://github.com/balderdashy/sails.git#0.12`      |
 | [stable](https://github.com/balderdashy/sails/tree/stable)                | `npm install sails@git://github.com/balderdashy/sails.git#stable`      |
 | [beta](https://github.com/balderdashy/sails/tree/beta)                  | `npm install sails@git://github.com/balderdashy/sails.git#beta` |
 | [edge](https://github.com/balderdashy/sails/tree/master)                  | `npm install sails@git://github.com/balderdashy/sails.git` |
@@ -41,9 +43,11 @@ This is useful for testing/installing hot-fixes, and just a good thing to know h
 4. Make the tests pass and make sure you follow [our syntax guidelines](https://github.com/balderdashy/sails/blob/master/.jshintrc).
 5. Add a line of what you did to CHANGELOG.md (right under `master`).
 6. Push to your fork and submit a pull request to the appropriate branch:
+  + [0.12](https://github.com/balderdashy/sails/tree/0.12)
+    + corresponds with the "v0.12.x" version.  Pull requests for 0.12.x should be sent here
   + [master](https://github.com/balderdashy/sails/tree/master)
     + corresponds with the "edge" version-- the latest, not-yet-released version of Sails. Most pull requests should be sent here
   + [stable](https://github.com/balderdashy/sails/tree/stable)
     + corresponds with the latest stable release on npm (i.e. if you have a high-priority hotfix, send the PR here)
-    
+
 <docmeta name="displayName" value="Best Practices">

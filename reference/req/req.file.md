@@ -41,8 +41,8 @@ In a controller action or policy:
 req.file('avatar').upload(function (err, uploadedFiles){
   if (err) return res.serverError(err);
   return res.json({
-    message: files.length + ' file(s) uploaded successfully!',
-    files: files
+    message: uploadedFiles.length + ' file(s) uploaded successfully!',
+    files: uploadedFiles
   });
 });
 ```

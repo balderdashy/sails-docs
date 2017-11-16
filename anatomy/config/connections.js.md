@@ -45,7 +45,7 @@ module.exports.connections = {
   // http://en.wikipedia.org/wiki/MySQL
   //
   // Run:
-  // npm install sails-mysql
+  // npm install sails-mysql@for-sails-0.12
   //
   someMysqlServer: {
     adapter: 'sails-mysql',
@@ -59,7 +59,7 @@ module.exports.connections = {
   // http://en.wikipedia.org/wiki/MongoDB
   //
   // Run:
-  // npm install sails-mongo
+  // npm install sails-mongo@for-sails-0.12
   //
   someMongodbServer: {
     adapter: 'sails-mongo',
@@ -74,7 +74,7 @@ module.exports.connections = {
   // http://en.wikipedia.org/wiki/PostgreSQL
   //
   // Run:
-  // npm install sails-postgresql
+  // npm install sails-postgresql@for-sails-0.12
   //
   somePostgresqlServer: {
     adapter: 'sails-postgresql',

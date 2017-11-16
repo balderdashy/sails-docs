@@ -12,6 +12,6 @@ Sails.js was originally developed by [Mike McNeil](http://twitter.com/mikermcnei
 
 #### Financial Support
 
-Today, Sails.js is financially supported by [The Sails Company](http://sailsjs.com/about) ([YC W15](http://techcrunch.com/2015/03/11/treeline-wants-to-take-the-coding-out-of-building-a-backend/)).  Please feel free to [contact us directly](http://sailsjs.com/contact) with questions about the company, our [team](http://sailsjs.com/about), or our mission.
+Today, Sails.js is financially supported by [The Sails Company](http://sailsjs.com/about) with the help of [Flagship subscribers](https://sailsjs.com/flagship) and our [other customers](https://sailsjs.com/studio).  Please feel free to [contact us directly](http://sailsjs.com/contact) with questions about the company, our [team](http://sailsjs.com/about), or our mission.
 
 <docmeta name="displayName" value="Core Maintainers">

@@ -1,6 +1,6 @@
 # Uploading to Amazon S3
 
->Please note that your Amazon S3 bucket must be created in the 'US Standard' region. 
+>Please note that your Amazon S3 bucket must be created in the 'US Standard' region - recently renamed by AWS to US East (N. Virginia). 
 >If you fail to do so, you will get a 'TypeError('Uncaught, unspecified "error" event.').
 
 With Sails, you can stream file uploads to Amazon S3 with very little additional configuration.

@@ -11,7 +11,7 @@ The documentation for Sails has been translated to a number of different languag
 
 | Language                     | [IETF Language Tag](https://en.wikipedia.org/wiki/IETF_language_tag)  | Maintainer(s)        | Repo                               |
 | ---------------------------- | ------- | ------------------ | ---------------------------------- |
-| Japanese                     | `ja`    | [@kory-yhg](https://github.com/kory-yhg)      | [sails-docs-ja](https://github.com/balderdashy/sails-docs/tree/ja) <br/>(_live on [sailsjs.jp](http://sailsjs.jp)_)
+| Japanese                     | `ja`    | [@kory-yhg](https://github.com/kory-yhg)      | [sails-docs-ja](https://github.com/balderdashy/sails-docs/tree/ja)
 | Spanish                      | `es`    | [@eduartua](https://github.com/eduartua/) & [@alejandronanez](https://github.com/alejandronanez)   | [sails-docs-es](https://github.com/eduartua/sails-docs-es)
 | Brazilian Portuguese         | `pt-BR` | [@marceloboeira](https://github.com/marceloboeira) & [@gabrielalmir10](https://github.com/gabrielalmir10)   | [sails-docs-pt-BR](https://github.com/balderdashy/sails-docs/tree/pt-BR)
 | Taiwanese Mandarin           | `zh-TW` | [@CalvertYang](https://github.com/CalvertYang)   | [sails-docs-zh-TW](https://github.com/balderdashy/sails-docs/tree/zh-TW)
@@ -41,7 +41,6 @@ On the other hand, if you are making an edit related to an unreleased feature in
 
 | Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
 |-------------------------------------------------------------------------------------|------------------------|:-------------------|
-| [`1.0`](https://github.com/balderdashy/sails-docs/tree/1.0) | Upcoming v1.0 release                          | [next.sailsjs.com](http://next.sailsjs.com)
 | [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.com](http://preview.sailsjs.com)
 | [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Sails v0.12.x | [sailsjs.com](http://sailsjs.com)
 | [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11) | Sails v0.11.x           | [0.11.sailsjs.com](http://0.11.sailsjs.com)

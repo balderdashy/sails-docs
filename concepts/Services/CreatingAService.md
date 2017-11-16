@@ -64,7 +64,7 @@ module.exports = {
     if (options.emailAddress.match(/@(greezeworthy|greeseworthy|greasworthy)\.enterprise$/i)) {
       potentiallyFixedEmailAddress = options.emailAddress.replace(/@(.+)\.enterprise$/, '@greaseworthy.enterprise');
     }
-    if (potentiallyFixedEmailAddress.match(/@greaseworthy\.enterprise$/i)) {
+    if (!potentiallyFixedEmailAddress.match(/@greaseworthy\.enterprise$/i)) {
       var err = new Error('The specified email (`'+options.emailAddress+'`) is not a valid internal email address here at Greaseworthy enterprises.  You probably misspelled Harold\'s last name.  It is spelled "Greaseworthy".');
       err.code = 'notInternal'
       throw err;
