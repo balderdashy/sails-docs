@@ -67,33 +67,6 @@ module.exports = {
 };
 ```
 
-### Error handling ###
 
-It's important to realize that Sails will not catch thrown errors in your callbacks. If there is any chance the code you are executing will throw an `Error`, please wrap it in a `try catch` and pass the error to the callback. 
-
-```javascript
-beforeCreate: function(values, cb) {
-  try {
-    values.token = UtilService.randomString();
-    cb();
-  } catch (err) {
-    cb(err);
-  }
-}
-```
-
-If you are using promises, please define a `catch` and pass the error to the callback. A promise will swallow the error. 
-
-```javascript
-afterCreate: function(values, cb) {
-  PublicUrl.create({user: values.id})
-    .then(function(){
-      cb();
-    })
-    .catch(function(err){
-      cb(err);
-    });
-}
-```  
 
 <docmeta name="displayName" value="Lifecycle callbacks">
