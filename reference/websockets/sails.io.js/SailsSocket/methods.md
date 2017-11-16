@@ -15,7 +15,7 @@ In addition to the basic communication / event listening methods, each SailsSock
 Determines whether the SailsSocket instance is currently connected to a server, returning `true` if a connection has been established.
 
 ```js
-io.socket.isConnecting();
+io.socket.isConnected();
 ```
 
 ##### .isConnecting()
