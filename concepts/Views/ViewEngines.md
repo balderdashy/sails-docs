@@ -1,6 +1,6 @@
 # View Engines
 
-The default view engine in Sails is [EJS](https://github.com/mde/ejs).
+The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
 
 ##### Swapping out the view engine
 
@@ -16,7 +16,7 @@ For example, to switch to jade, run `npm install jade --save-dev`, then set `eng
   - [dust](https://github.com/akdubya/dustjs) [(website)](http://akdubya.github.com/dustjs/) (.dust)
   - [eco](https://github.com/sstephenson/eco)
   - [ect](https://github.com/baryshev/ect) [(website)](http://ectjs.com/)
-  - [ejs](https://github.com/mde/ejs) (.ejs)
+  - [ejs](https://github.com/visionmedia/ejs) (.ejs)
   - [haml](https://github.com/visionmedia/haml.js) [(website)](http://haml.info/)
   - [haml-coffee](https://github.com/9elements/haml-coffee) [(website)](http://haml.info/)
   - [handlebars](https://github.com/wycats/handlebars.js/) [(website)](http://handlebarsjs.com/) (.hbs)
