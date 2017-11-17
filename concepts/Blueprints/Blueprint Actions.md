@@ -6,14 +6,14 @@ By default, the blueprint [RESTful routes](http://sailsjs.com/documentation/conc
 
 The current version of Sails ships with the following blueprint actions:
 
-+ [find](http://sailsjs.com/documentation/reference/blueprint-api/find)
-+ [findOne](http://sailsjs.com/documentation/reference/blueprint-api/findOne)
++ [find](http://sailsjs.com/documentation/reference/blueprint-api/find-where)
++ [findOne](http://sailsjs.com/documentation/reference/blueprint-api/find-one)
 + [create](http://sailsjs.com/documentation/reference/blueprint-api/create)
 + [update](http://sailsjs.com/documentation/reference/blueprint-api/update)
 + [destroy](http://sailsjs.com/documentation/reference/blueprint-api/destroy)
 + [populate](http://sailsjs.com/documentation/reference/blueprint-api/populate)
-+ [add](http://sailsjs.com/documentation/reference/blueprint-api/add)
-+ [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove)
++ [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to)
++ [remove](http://sailsjs.com/documentation/reference/blueprint-api/remove-from)
 + [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace)
 
 ### Socket notifications
