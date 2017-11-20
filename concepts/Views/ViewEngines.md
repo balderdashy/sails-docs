@@ -1,6 +1,6 @@
 # View engines
 
-The default view engine in Sails is [EJS](https://github.com/visionmedia/ejs).
+The default view engine in Sails is [EJS](https://github.com/mde/ejs).
 
 ##### Swapping out the view engine
 
