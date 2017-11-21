@@ -47,7 +47,7 @@ A time limit, in milliseconds, imposed on all hooks in your app.  Sails will giv
 
 ### `sails.config.ssl`
 
-SSL/TLS (transport-layer security) is critical for preventing potential man-in-the-middle attacks.  Without a protocol like SSL/TLS, web basics like securely transmitting login credentials and credit card numbers would be much more complicated and troublesome.  SSL/TLS is not only important for HTTP requests (`https://`); it's also necessary for WebSockets (over `wss://`).  Fortunately, you only need to worry configuring SSL settings in once place: `sails.config.ssl`.
+SSL/TLS (transport-layer security) is critical for preventing potential man-in-the-middle attacks.  Without a protocol like SSL/TLS, web basics like securely transmitting login credentials and credit card numbers would be much more complicated and troublesome.  SSL/TLS is not only important for HTTP requests (`https://`); it's also necessary for WebSockets (over `wss://`).  Fortunately, you only need to worry about configuring SSL settings in one place: `sails.config.ssl`.
 
 > ##### SSL and load balancers
 >
