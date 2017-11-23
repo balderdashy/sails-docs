@@ -138,7 +138,7 @@ Then you can do:
 ```js
 const monkeys = await Monkey.findWithSameNameAsPerson(albus);
 // -or-
-const monkeys = Monkey.findWithSameNameAsPerson(37);
+const monkeys = await Monkey.findWithSameNameAsPerson(37);
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
