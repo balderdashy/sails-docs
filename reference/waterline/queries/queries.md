@@ -17,7 +17,7 @@ Most of the time, you won't think about query instances as objects _per se_, rat
 var zookeepers = await Zookeeper.find();
 ```
 
-In this example, the call to `Zookeeper.find()` returns a query instance, but _doesn't actually do anything yet_.  The query is not actually executed until it is executed using the `await` keyword.
+In this example, the call to `Zookeeper.find()` returns a query instance, but _doesn't actually do anything_ until it is executed using the `await` keyword, and then the result is assigned to the `zookeepers` variable.
 
 
 ### How It Works
