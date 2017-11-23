@@ -89,7 +89,7 @@ sails.helpers.getRecentUsers({ numUsers: 10, activeSince: (new Date('2014-03-17'
 And finally, to handle the `noUsersFound` exit explicitly, rather than simply treating it like any other error, we can just pass in a switchback:
 
 ```javascript
-sails.helpers.getRecentUsers(/*...*/).exec({
+sails.helpers.getRecentUsers(/*...*/).switch({
   error: function(err) { /* ... handle any misc. unexpected errors, e.g.: */ return res.serverError(err); },
   noUsersFound: function() {
     /* ... handle the case where no users were found, e.g.:*/
