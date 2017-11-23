@@ -17,28 +17,9 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 
 
 
-### Production config
+### Advanced session config
 
-In production, you should configure a stateless session adapter which uses a store that can be [shared across multiple servers](http://sailsjs.com/documentation/concepts/deployment/scaling).  To do so, you will need to set `sails.config.session.adapter`, set up your session store, and then add any other configuration specific to the Express/Connect session adapter you are using.  Fortunately, this is easier than it sounds.
-
-
-##### Configuring Redis as your session store
-
-The most popular session store for production Sails applications is Redis.  It works great as a session database since it is inherently good at ephemeral storage, but Redis' popularity probably has more to do with the fact that, if you are using sockets and plan to scale your app to multiple servers, you will [need a Redis instance](http://sailsjs.com/documentation/concepts/deployment/scaling) anyway.
-
-The easiest way to set up Redis as your app's shared session store is to uncomment the following line in `config/session.js`:
-
-```javascript
-adapter: 'connect-redis',
-```
-
-Then install the [connect-redis](https://github.com/tj/connect-redis) session adapter as a dependency of your app:
-
-```bash
-npm install connect-redis@~3.0.2 --save --save-exact
-```
-
-The following settings are optional, since if no Redis configuration other than `adapter` is provided, Sails assumes you want it to use a Redis instance running on `localhost`.
+If you are using Redis as a session store in development, additional configuration options are available. Most apps can use Sails's default Redis support as described [here](https://sailsjs.com/documentation/concepts/sessions#?using-redis-as-the-session-store), but some advanced use cases may include the following optional config:
 
 
 | Property      | Type       | Default  | Details |

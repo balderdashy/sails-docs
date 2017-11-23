@@ -60,19 +60,13 @@ During development, the Sails session store is *in memory*.  Therefore, when you
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
-To enable Redis as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a Redis instance running on the same machine as your Sails instance your session store will use Redis.  You can point to a different Redis instance by configuring the following optional properties in `projectName/config/session.js`:
+#### Enabling Redis session store in development
 
-```javascript
-// host: 'localhost',
-// port: 6379,
-// ttl: <redis session TTL in seconds>,
-// db: 0,
-// pass: <redis auth password>,
-// prefix: 'sess:',
+To enable Redis as your session store in development, first make sure you have a local Redis instance running on your machine (`redis-server`). Then, lift your app with `sails lift --redis`.
 
-```
+This is just a shortcut for `sails lift --session.adapter=connect-redis --sockets.adapter=socket.io-redis`. These adapters are included as dependencies of new Sails apps by default, but if you're working with an upgraded app you'll need to install `connect-redis` version 3.0.2 and `socket.io-redis` version 4.0.0.
 
-For more information on configuring these properties go to [https://github.com/tj/connect-redis](https://github.com/tj/connect-redis).
+> Note: This built-in configuration uses your local Redis instance. For advanced session configuration options, see [Reference > Configuration > sails.config.session](https://next.sailsjs.com/documentation/reference/configuration/sails-config-session).
 
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
