@@ -139,29 +139,31 @@ waterline.initialize(config, function (err, ontology) {
   }
 
   // Tease out fully initialized models.
-  var User = ontology.collections.user;
-  var Pet = ontology.collections.pet;
+  	var User = ontology.collections.user;
+  	var Pet = ontology.collections.pet;
 
-    User.create({ // First we create a user.
-            firstName: 'Neil',
-            lastName: 'Armstrong'
-        }).then(function (user) { // Then we create the pet
-            return Pet.create({
-                breed: 'beagle',
-                type: 'dog',
-                name: 'Astro',
-                owner: user.id
-            });
-
-        }).then(function (pet) { // Then we grab all users and their pets
-            return User.find().populate('pets');
-
-        }).then(function(users){ // Results of the previous then clause are passed to the next
-             console.dir(users);
-
-        }).catch(function(err){ // If any errors occur execution jumps to the catch block.
-      console.error(err);
-    });
+  	try {
+  		// First we create a user
+  		const user = await User.create({
+			firstName: 'Neil',
+		   	lastName: 'Armstrong'
+	  	);
+	  
+	  	// Then we create the pet
+	  	const pet = await Pet.create({
+			breed: 'beagle',
+			type: 'dog',
+			name: 'Astro',
+			owner: user.id
+		});
+		
+		// Then we grab all users and their pets
+		const users = await User.find().populate('pets');
+	   	console.dir(users);
+  	} catch (err) {
+  		// If any errors occur execution jumps to the catch block.
+		console.log(err);
+  	}
 });
 ```
 
@@ -175,7 +177,7 @@ After checking for an error, the `ontology` variable contains the collection obj
 
 We will use some Promise goodness to create a user and a pet and see what we can get back out of the datastore.
 
-First, we use the `create` method to create a new user. We just need to supply the attibutes for our user, and we'll get back a copy of the record that was created.
+First, we use the `create` method to create a new user. We just need to supply the attributes for our user, and we'll get back a copy of the record that was created.
 
 > Note that by default, Waterline adds an `id` primary key for you, unless you specifically tell it not to.
 

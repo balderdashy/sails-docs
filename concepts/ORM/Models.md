@@ -42,7 +42,28 @@ Every model in Waterline will have a set of query methods exposed on it to allow
 
 Since they have to send a query to the database and wait for a response, query methods are **asynchronous functions**.  That is, they don't come back with an answer right away.  Like other asynchronous functions in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
 
-In Node.js, Sails, and JavaScript in general, the classic way to support this paradigm is by using _callbacks_.
+As of Sails 1.0 the recommended way to handle this is by using `async/await`, which is built on top of promises.
+
+In order to be able to `await` a `promise`, said `promise` needs to be within an `async` function, which is declared with `async function`, instead of the traditional `function`. More info on this [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
+
+##### Async/Await
+
+```javascript
+async function findRose() {
+	try {
+		const user = await User.findOne({ name: 'Rose' });
+		if (!user) { return res.notFound(); }
+		return res.json(rose);
+	} catch (err) {
+		return res.serverError(err);
+	}
+}
+```
+> Note: It is highly advisable that you understand `promises` too, as `async/await` is built on top of them. 
+ 
+It is **very important** that you handle your errors, as a `promise` rejection will throw an error which will "bubble up" until it gets caught or ends the process. This is why we wrapped our code in a `try/catch` block.
+
+Although `async/await` is recommended you can still use JavaScript's classic _callbacks_.
 
 ##### Callbacks
 
@@ -52,7 +73,7 @@ For convenience, built-in model methods return a _deferred object_ known as a "q
 var query = User.findOne({ name: 'Rose' });
 ```
 
-After running [the code above](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), our app has not _actually_ talked to the database yet.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
+After running [the code above](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), our app has not _actually_ talked to the database yet.  To actually execute this query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
 
 ```javascript
 query.exec(function (err, rose) {
@@ -67,9 +88,7 @@ query.exec(function (err, rose) {
 
 ##### Promises
 
-As an alternative to callbacks, Waterline also includes opt-in support for promises.  Instead of calling `.exec()` on a query, you can choose to call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
-
-> If you are not already an avid user of promises, don't worry-- [just stick with `.exec()`](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  The decision of whether to use callbacks or promises is a question of style, so don't feel pressured one way or the other.
+As an in-between alternative to callbacks and `async/await`, promises are also a valid approach.  Instead of `await` a promise or calling `.exec()` on a query, you can choose to call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
 
 ### Resourceful pubsub methods
 
@@ -94,42 +113,32 @@ For example:
 // in api/models/Monkey.js...
 
 // Find monkeys with the same name as the specified person
-findWithSameNameAsPerson: function (opts, cb) {
-
-  var person = opts.person;
-
-  // Before doing anything else, check if a primary key value
-  // was passed in instead of a record, and if so, lookup which
-  // person we're even talking about:
-  (function _lookupPersonIfNecessary(afterLookup){
-    // (this self-calling function is just for concise-ness)
-    if (typeof person === 'object')) return afterLookup(null, person);
-    Person.findOne(person).exec(afterLookup);
-  })(function (err, person){
-    if (err) return cb(err);
-    if (!person) {
-      err = new Error();
-      err.message = require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person);
-      err.status = 404;
-      return cb(err);
-    }
-
-    Monkey.find({ name: person.name })
-    .exec(function (err, monkeys){
-      if (err) return cb(err);
-      cb(null, monkeys);
-    })
-  });
-
+findWithSameNameAsPerson: async function (opts) {
+	var person = opts.person;
+	if (typeof person !== 'object') {
+		person = await Person.findOne(person);
+	}
+	
+	if (!person) {
+		let err = new Error();
+		err.message = require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person);
+		err.status = 404;
+		throw err;
+	}
+	
+	return Monkey.find({ name: person.name });
 }
 ```
+> Notice we didn't `await` the final `find`. This is because `findWithSameNameAsPerson`, by being `async`, always returns a `promise`, so it needs to be `await`ed (or `.then`ed) when you use it.
+> 
+> Also on that point, we didn't `try/catch` any of the code within that function, that's because we intend to leave that responsibility to whoever calls our function (possibly a controller of some sort).
 
 Then you can do:
 
 ```js
-Monkey.findWithSameNameAsPerson(albus, function (err, monkeys) { ... });
+const monkeys = await Monkey.findWithSameNameAsPerson(albus);
 // -or-
-Monkey.findWithSameNameAsPerson(37, function (err, monkeys) { ... });
+const monkeys = Monkey.findWithSameNameAsPerson(37);
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().

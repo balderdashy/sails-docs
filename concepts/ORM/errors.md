@@ -1,9 +1,13 @@
 # Errors
 
 When a call to any model method fails, `err` is returned. This `err` is a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whose properties can be useful in diagnosing what went wrong.
+
 ```usage
-Something.create()
-.exec(function(err) {...});
+try {
+	await Something.create();
+} catch (err) {
+	// Handle error
+}
 ```
 Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`.
 
@@ -58,19 +62,18 @@ err.code === 'E_UNIQUE'
 
 ### Example
 
-The exact strategy you use to do this in your Sails app depends on whether you're using [callbacks or promises](https://github.com/balderdashy/sails/issues/3459#issuecomment-171039631).  Remember: use whatever you're most comfortable with.  If you aren't sure, start with callbacks.
+The exact strategy you use to do this in your Sails app depends on whether you're using async/await, promises or callbacks.
 
-##### Negotiating errors with callbacks
+##### Negotiating errors with async/await
 
 To handle the different errors that may occur when attempting to create a new user:
 
 ```javascript
-User.create({
-  email: req.param('email')
-})
-.exec(function(err){
-  if (err){
-    // Uniqueness constraint violation
+try {
+	await User.create({ email: req.param('email') });
+	return res.ok();
+} catch (err) {
+	 // Uniqueness constraint violation
     if (err.code === 'E_UNIQUE') {
       return res.status(409).json(err);
     }
@@ -82,10 +85,7 @@ User.create({
     else {
       return res.serverError(err);
     }
-  }
-
-  return res.ok();
-})
+}
 ```
 
 ##### Negotiating errors with callbacks or promise chaining

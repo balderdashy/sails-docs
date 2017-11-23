@@ -3,19 +3,18 @@
 A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is a uniquely identifiable object that corresponds 1-to-1 with a physical database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
 
 ```js
-Order.find().exec(function (err, records){
-  if (err) {
-    return res.serverError(err);
-  }
+try {
+	const records = await Order.find();
+	
+	console.log('Found %d records', records.length);
+  	if (records.length > 0) {
+    	console.log('Found at least one record, and its `id` is:',records[0].id);
+  	}
 
-  console.log('Found %d records', records.length);
-  if (records.length > 0) {
-    console.log('Found at least one record, and its `id` is:',records[0].id);
-  }
-
-  return res.ok();
-
-});
+  	return res.ok();
+} catch (err) {
+	return res.serverError(err);
+}
 ```
 
 
@@ -40,27 +39,30 @@ The type of a populated value depends on what kind of association it is:
 For example, assuming we're dealing with orders of adorable wolf puppies:
 
 ```js
-Order.find()
-.populate('buyers')  // a "collection" association
-.populate('seller')  // a "model" association
-.exec(function (err, orders){
+try {
+	const orders = await Order.find()
+	.populate('buyers')  // a "collection" association
+	.populate('seller');  // a "model" association
 
-  // this array is a snapshot of the Customers who are associated with the first Order as "buyers"
-  orders[0].buyers;
-  // => [ {id: 1, name: 'Robb Stark'}, {id: 6, name: 'Arya Stark'} ]
+	// this array is a snapshot of the Customers who are associated with the first Order as "buyers"
+	orders[0].buyers;
+	// => [ {id: 1, name: 'Robb Stark'}, {id: 6, name: 'Arya Stark'} ]
+	
+	// this object is a snapshot of the Company that is associated with the first Order as the "seller"
+	orders[0].seller;
+	// => { id: 42941, corporateName: 'WolvesRUs Inc.' }
+	
+	// this array is empty because the second Order doesn't have any "buyers"
+	orders[1].buyers;
+	// => []
+	
+	// this is `null` because there is no "seller" associated with the second Order
+	orders[1].seller;
+	// => null
+} catch (err) {
+	// handle error
+}
 
-  // this object is a snapshot of the Company that is associated with the first Order as the "seller"
-  orders[0].seller;
-  // => { id: 42941, corporateName: 'WolvesRUs Inc.' }
-
-  // this array is empty because the second Order doesn't have any "buyers"
-  orders[1].buyers;
-  // => []
-
-  // this is `null` because there is no "seller" associated with the second Order
-  orders[1].seller;
-  // => null
-});
 ```
 
 ##### Expected types / values for association attributes

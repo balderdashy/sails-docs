@@ -60,26 +60,21 @@ Now that the pets and users know about each other, they can be associated. To do
 or update a pet with the user's primary key for the `owner` value.
 
 ```javascript
-Pet.create({
+await Pet.create({
   breed: 'labrador',
   type: 'dog',
   name: 'fido',
 
   // Set the User's Primary Key to associate the Pet with the User.
   owner: 123
-})
-.exec(function(err, pet) {});
+});
 ```
 
 Now that the `Pet` is associated with the `User`, all the pets belonging to a specific user can
 be populated by using the [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
 
 ```javascript
-User.find()
-.populate('pets')
-.exec(function(err, users) {
-  if(err) // handle error
-
+const users = await User.find().populate('pets');
   // The users object would look something like the following
   // [{
   //   id: 123,
@@ -93,7 +88,6 @@ User.find()
   //     user: 123
   //   }]
   // }]
-});
 ```
 
 

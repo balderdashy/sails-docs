@@ -12,23 +12,18 @@ Queries can be built using either a `where` key to specify attributes, which wil
 
 ```javascript
 
-Model.find({
+const peopleNamedMary = await Model.find({
   name: 'mary'
-}).exec(function (err, peopleNamedMary){
-
 });
-
 
 // OR
 
 
-Model.find({
+const thirdPageOfRecentPeopleNamedMary = await Model.find({
   where: { name: 'mary' },
   skip: 20,
   limit: 10,
   sort: 'createdAt DESC'
-}).exec(function(err, thirdPageOfRecentPeopleNamedMary){
-
 });
 ```
 
@@ -37,21 +32,17 @@ Model.find({
 A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
 
 ```javascript
-Model.find({
+const peopleNamedLyra = await Model.find({
   name: 'lyra'
-}).exec(function (err, peopleNamedLyra) {
-
 });
 ```
 
 They can be used together to search multiple attributes.
 
 ```javascript
-Model.find({
+const waltersFromNewMexico = await Model.find({
   name: 'walter',
   state: 'new mexico'
-}).exec(function (err, waltersFromNewMexico) {
-
 });
 ```
 
@@ -74,10 +65,8 @@ Provide an array to find records whose value for this attribute exactly matches 
 > This is more or less equivalent to "IN" queries in SQL, and the `$in` operator in MongoDB.
 
 ```javascript
-Model.find({
+const waltersAndSkylers = await Model.find({
   name : ['walter', 'skyler']
-}).exec(function (err, waltersAndSkylers){
-
 });
 ```
 
@@ -88,10 +77,8 @@ Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`)
 > This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
 ```javascript
-Model.find({
+const everyoneExceptWaltersAndSkylers = await Model.find({
   name: { '!' : ['walter', 'skyler'] }
-}).exec(function (err, everyoneExceptWaltersAndSkylers){
-
 });
 ```
 
@@ -100,13 +87,11 @@ Model.find({
 Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query modifiers in the `or` array.
 
 ```javascript
-Model.find({
+const waltersAndTeachers = await Model.find({
   or : [
     { name: 'walter' },
     { occupation: 'teacher' }
   ]
-}).exec(function(err, waltersAndTeachers){
-
 });
 ```
 
@@ -195,10 +180,8 @@ Model.find({
 Searches for records where the value for this attribute _contains_ the given string.
 
 ```javascript
-Model.find({
+const musicCourses = await Model.find({
   subject: { contains: 'music' }
-}).exec(function (err, musicCourses){
-
 });
 ```
 
@@ -207,10 +190,8 @@ Model.find({
 Searches for records where the value for this attribute _starts with_ the given string.
 
 ```javascript
-Model.find({
+const coursesAboutAmerica = await Model.find({
   subject: { startsWith: 'american' }
-}).exec(function (err, coursesAboutAmerica){
-
 });
 ```
 
@@ -219,11 +200,9 @@ Model.find({
 Searches for records where the value for this attribute _ends with_ the given string.
 
 ```javascript
-Model.find({
+const historyCourses = await Model.find({
   subject: { endsWith: 'history' }
-}).exec(function (err, historyCourses) {
-
-})
+});
 ```
 
 #### 'like'
@@ -231,7 +210,7 @@ Model.find({
 Searches for records using pattern matching with the `%` sign.
 
 ```javascript
-Model.find({ food: { 'like': '%beans' }})
+Model.find({ food: { 'like': '%beans' }});
 ```
 
 #### 'Date Ranges'
