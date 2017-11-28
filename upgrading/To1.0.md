@@ -7,7 +7,7 @@ Sails v1.0 is here!  Check out our [blog post](TODO) for a high-level overview o
 > Some of the links in this guide will not work, since the 1.0 docs aren't on the Sails website yet.  But you can check out the new docs by looking at the 1.0 branch of [sails-docs](http://github.com/balderdashy/sails-docs/tree/1.0) on GitHub.
 
 ### A note about breaking changes
-While working on this version of Sails, many of our decisions favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you’re finished, there’ll be a much better chance that the features you’re using in Sails are things that its author and maintainers understand and use almost every day.
+While working on this version of Sails, we made a lot of decisions which favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you’re finished, there’ll be a much better chance that the features you’re using in Sails are things that its author and maintainers understand and use almost every day.
 
 For more about our philosphy behind many of the breaking changes in 1.0, you can read Mike McNeil's in-depth explanation [here](https://gitter.im/balderdashy/sails?at=5a1d8fcd3a80a84b5b907099).
 
