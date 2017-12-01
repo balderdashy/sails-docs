@@ -286,7 +286,7 @@ Model.find().paginate({page: 2, limit: 10});
 > **Waterline**
 >
 > You can find out more about the Waterline API below:
-> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline/queries)
+> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline-orm/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
 > * [Waterline Reference Docs](http://sailsjs.com/documentation/reference/waterline-orm)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
