@@ -48,7 +48,7 @@ We can build your app and API from scratch, modernize your legacy web platform, 
 ##### Sails Flagship for Enterprise
 Sails Flagship is a platform on top of Sails which provides a suite of additional services, production-quality accoutrements, and support for enterprise use cases.  This includes early access to new features and enhancements, a license for our internal tools, as well as exclusive reports and best-practice guides created by core maintainers.  To learn more, [set up a call](http://sailsjs.com/contact) _(or [purchase online now](http://sailsjs.com/flagship/plans))_.
 
-> In 2017, we are actively expanding this product offering with new additions and official re-releases of some formerly-experimental modules.  If you have specific suggestions/requests for new Flagship packages, please [let us know](http://flagship.sailsjs.com/contact).
+> We are actively expanding this product offering with new additions and official re-releases of some formerly-experimental modules.  If you have specific suggestions/requests for new Flagship packages, please [let us know](http://flagship.sailsjs.com/contact).
 
 ##### Professional support / SLAs
 The Sails Company also provides a lifeline for organizations using Sails to build their products. If you need guaranteed support in the event of a critical production issue, or just want an extra pair of eyes looking out for your code base during development, take a look at our [basic subscriptions](http://sailsjs.com/flagship/plans), or [contact us](https://flagship.sailsjs.com/contact) and we'll give you a call.
