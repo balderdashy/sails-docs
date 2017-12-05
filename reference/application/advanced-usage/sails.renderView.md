@@ -24,9 +24,9 @@ To compile an HTML template with a customized greeting for the recipient:
 ```javascript
 var htmlEmailContents = await sails.renderView('emails/signup-welcome', {
   fullName: inputs.fullName,
-  // Disable the Sails app's default layout for this email.
+  // Don't include the Sails app's default layout in the rendered template.
   layout: false
-})
+});
 ```
 
 <docmeta name="displayName" value="sails.renderView()">
