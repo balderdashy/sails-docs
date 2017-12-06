@@ -7,7 +7,7 @@ Policies in Sails are versatile tools for authorization and access control-- the
 
 ### When to use policies
 
-It's best to avoid implementing numerous or complex policies in your app.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](http://sailsjs.com/docs/concepts/controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
+It's best to avoid implementing numerous or complex policies in your app.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](https://next.sailsjs.com/documentation/concepts/actions-and-controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
 
 For example, if you need to implement user-level or role-based permissions in your application, the most straightforward approach is to take care of the relevant checks at the top of your controller action-- either inline, or by calling out to a helper.  Following this best practice will significantly enhance the maintainability of your code.
 
