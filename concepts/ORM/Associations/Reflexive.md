@@ -45,7 +45,7 @@ module.exports = {
 
 The reflexive associations in the example `User` model above operate just like any other associations.  The singular `bestFriend` attribute can be set to the primary key of another user (or for the narcissistic, to the same user!).  The `parents` and `children` attributes can be modified using `.addToCollection()`, `.removeFromCollection()` and `.replaceCollection()`.  Note that as with all plural associations, adding to one side will allow the relationship to be accessed by either side, so running:
 
-```
+```javascript
 // Add User #12 as a parent of User #23
 User.addToCollection(23, 'parents', 12).exec(function(err) {
 
@@ -57,7 +57,7 @@ User.addToCollection(23, 'parents', 12).exec(function(err) {
 
 would return something like:
 
-```
+```javascript
 {
   id: 12,
   firstName: 'John',
