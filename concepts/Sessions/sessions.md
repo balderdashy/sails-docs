@@ -64,7 +64,7 @@ Redis is a key-value database package that can be used as a session store that i
 
 To enable Redis as your session store in development, first make sure you have a local Redis instance running on your machine (`redis-server`). Then, lift your app with `sails lift --redis`.
 
-This is just a shortcut for `sails lift --session.adapter=connect-redis --sockets.adapter=socket.io-redis`. These adapters are included as dependencies of new Sails apps by default, but if you're working with an upgraded app you'll need to install `connect-redis` version 3.0.2 and `socket.io-redis` version 4.0.0.
+This is just a shortcut for `sails lift --session.adapter=connect-redis --sockets.adapter=socket.io-redis`. These adapters are included as dependencies of new Sails apps by default, but if you're working with an upgraded app you'll need to install `connect-redis` version 3.3.2 and `socket.io-redis` version 5.2.0.
 
 > Note: This built-in configuration uses your local Redis instance. For advanced session configuration options, see [Reference > Configuration > sails.config.session](https://next.sailsjs.com/documentation/reference/configuration/sails-config-session).
 
