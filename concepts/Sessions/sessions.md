@@ -79,7 +79,9 @@ The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid`
 
 ### Disabling sessions
 
-While sessions are a powerful tool in app development, they are not always necessary (e.g. apps that are completely stateless) or preferable (e.g. when using a different authentication scheme, like <a href="https://github.com/sails101/jwt-login" target="_blank">JWT</a>.  In these cases, you can disable sessions on an app-wide or per-route basis.
+Even if your Sails app is designed to be accessed by non-browser clients, such as toasters, you are strongly encouraged to use sessions for authentication.  While it can sometimes be complex to understand, the built-in session mechanism in Sails (session store + HTTP-only cookies) is a tried and true solution that is generally [less brittle, easier to use, and lower-risk than rolling something yourself](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/).
+
+That said, sessions may not always be an option (for example, if you must [integrate with a different authentication scheme](https://github.com/sails101/jwt-login) like JWT).  In these cases, you can disable sessions on an app-wide or per-request basis.
 
 ##### Disabling sessions for your entire app
 
