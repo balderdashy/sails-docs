@@ -82,9 +82,7 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 ### Nanobox
 
-<a title="Deploy your Sails/Node.js app on Nanobox" href="https://nanobox.io"><img style="width:285px;" src="http://sailsjs.com/images/deployment_nanobox.png" alt="Nanobox logo"/></a>
-
-+ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
++ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/) on Nanobox
 + [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
 + [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
 + [Official Nanobox Docs](https://docs.nanobox.io)
