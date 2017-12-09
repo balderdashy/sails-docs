@@ -93,8 +93,8 @@ To entirely turn off session support for your app, add the following to your `.s
 
 This disables the core Sails session hook.  You can also accomplish this by setting the `sails_hooks__session` environment variable to `false`.
 
-##### Disabling sessions for one or more routes
+##### Disabling sessions for certain requests
 
-To turn off session support on a per-route basis, use the [`sails.config.session.routesDisabled` setting](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  The default setting turns off session support for all [assets](http://sailsjs.com/documentation/concepts/assets).
+To turn off session support on a per-route (or per-request) basis, use the [`sails.config.session.isSessionDisabled` setting](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  By default, Sails enables session support for all requests except those that [look like](https://sailsjs.com/documentation/reference/application/advanced-usage/sails-looks-like-asset-rx) they're pointed at static assets like images, stylesheets, etc.
 
 <docmeta name="displayName" value="Sessions">
