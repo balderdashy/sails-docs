@@ -101,6 +101,10 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
  + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
 
 
+### More options
 
++ Like [Heroku](https://stackshare.io/heroku), there are many [other Platform as a Service (PaaS) solutions that support Node.js/Sails.js](https://stackshare.io/heroku/alternatives)
++ Like [Microsoft Azure](https://stackshare.io/microsoft-azure) and [EC2](https://stackshare.io/amazon-ec2), there are many [other Node.js/Sails.js-compatible "bare-metal"/IaaS cloud servers](https://stackshare.io/amazon-ec2/alternatives)
++ Like [Cloudflare](https://stackshare.io/cloudflare), there are [other great CDNs for optimized hosting of your static assets](https://stackshare.io/cloudflare/alternatives)
 
 <docmeta name="displayName" value="Hosting">
