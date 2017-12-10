@@ -26,21 +26,25 @@ Certain generators are built in to Sails by default.
 | sails generate helper view-_name_
 | sails generate script _name_
 | sails generate script get-_name_
-
-
-| Commands
-|:-----------------------------------|
-| sails generate response _name_
-| sails generate generator _name_
-| sails generate adapter _name_
-| sails generate hook _name_
 | sails generate controller _name_
 | sails generate api _name_
+| sails generate hook _name_
+| sails generate response _name_
 
-| Other generators available by default
+
+| Commands for generating plugins
+|:-----------------------------------|
+| sails generate generator _name_
+| sails generate adapter _name_
+
+
+| Commands for (re)generating client-side dependencies
 |:-----------------------------------|
 | sails generate sails.io.js
 | sails generate parasails
+
+| Utils for building your own 3rd party packages
+|:-----------------------------------|
 | sails generate etc
 
 
