@@ -1,6 +1,6 @@
 # Waterline query language
 
-The Waterline Query language is an object-based syntax used to retrieve the records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
+The syntax supported by Sails' model methods is called Waterline Query Language.  Waterline knows how to interpret this syntax to retrieve or mutate records from any supported database.  Under the covers, Waterline uses the database adapter(s) installed in your project to translates this language into native queries, and then to send those queries to the appropriate database.  This means that you can use the same query with MySQL as you do with Redis, or MongoDb. And it allows you to change your database with minimal (if any) changes to your application code.
 
 
 ### Query Language Basics
@@ -12,10 +12,8 @@ Queries can be built using either a `where` key to specify attributes, which wil
 
 ```javascript
 
-Model.find({
+var peopleNamedMary = await Model.find({
   name: 'mary'
-}).exec(function (err, peopleNamedMary){
-
 });
 
 
@@ -277,7 +275,9 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
-`paginate` is a  Waterline helper method which can accomplish the same as `skip` and `limit`.
+`paginate` is a shortcut method which can accomplish the same as `skip` and `limit`.
+
+<!-- TODO: set up reference page for .paginate() -->
 
 ``` javascript
 Model.find().paginate({page: 2, limit: 10});

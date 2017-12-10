@@ -347,12 +347,13 @@ By contrast, in Sails v1.0, `User.publish(123, {owl: 'hoot'})` will simply broad
 
 ### Replacing custom blueprints
 
-While it is no longer possible to add a file to `api/blueprints` that will automatically be used as a blueprint action for all models, this behavior can be replicated in several ways.
+Out of the box, it is no longer possible to add a file to `api/blueprints/` that will automatically be used as a blueprint action for all models.  However, this behavior can be replicated easily by installing [`sails-hook-custom-blueprints`](https://www.npmjs.com/package/sails-hook-custom-blueprints).
 
-One way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
+<!--
+Another way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
 
-Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see [Concepts > Helpers](http://sailsjs.com/documentation/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
-
+Yet another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of values as inputs (see [Concepts > Helpers](http://sailsjs.com/documentation/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
+-->
 
 ### Express 4
 

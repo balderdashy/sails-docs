@@ -14,7 +14,7 @@ Almost none of this should affect the existing code in project, but there are a 
 
 Old v0.9 socket.io client will no longer work, so consequently you'll need to upgrade your sails.io.js client from v0.9 or v0.10 to v0.11.
 
-To do this, just remove your sails.io.js client and install the new one.  We've bundled a helper generator that will do this for you, assuming your sails.io.js client is in the conventional location at `assets/js/dependencies/sails.io.js` (i.e. if you haven't moved or renamed it):
+To do this, just remove your sails.io.js client and install the new one.  We've bundled a new generator that will do this for you, assuming your sails.io.js client is in the conventional location at `assets/js/dependencies/sails.io.js` (i.e. if you haven't moved or renamed it):
 
 ```sh
 sails generate sails.io.js --force

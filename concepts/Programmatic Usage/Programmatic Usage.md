@@ -150,6 +150,8 @@ mySailsApp.lower(function(err) {
 
 ##### Using `moduleDefinitions` to add actions, models and more
 
+> **Warning:**  Declarative loading of modules with the `moduleDefinitions` setting is **currently experimental**, and may undergo breaking changes _even between major version releases_.  Before using this setting, be sure your project's Sails dependency is pinned to an exact version (i.e. no `^`).
+
 Whenever a Sails app starts, it typically loads and initializes all modules stored in `api/*` (e.g. models from `api/models`, policies from `api/policies`, etc.).  You can add _additional_ modules by specifying them in the runtime configuration passed in as the first argument to `.load()` or `.lift()`, using the `moduleDefinitions` key.  This is mainly useful when running tests.
 
 The following Sails modules can be added programmatically:

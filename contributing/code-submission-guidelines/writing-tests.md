@@ -16,7 +16,7 @@ If, on the other hand, our strategy for testing the behavior of the blueprints i
 
 
 
-
+<!--
 ### Structural Conventions
 
 Sails's tests are broken up into three distinct types- `unit`, `integration`, and `benchmark` tests.  See the README.md file in each directory for more information about the distinction and purpose of each type of test, as well as a shortlist of ways you can get involved.
@@ -38,5 +38,6 @@ Contains sample data/files/templates used for testing (e.g. a dummy Sails app or
 
 #### `helpers` directory
 Logic to help setup or teardown Sails, read fixtures, and otherwise simplify the logic in our tests.
+-->
 
 <docmeta name="displayName" value="Writing tests">

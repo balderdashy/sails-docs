@@ -1,8 +1,8 @@
 # Access Control and Permissions
 
-Policies in Sails are designed for controlling binary ("yes or no") access to particular actions.  They work great for checking whether a user is logged in, or for simple "yes or no" checks like whether the logged in user is a "super admin".
+Policies in Sails are designed for controlling binary ("yes or no") access to particular actions.  They work great for checking whether a user is logged in, or for other simple "yes or no" checks, like whether the logged in user is a "super admin".
 
-To see that in action, alongside login, authentication, and password recovery, generate the expanded starter app:
+To see an example of access control in action, alongside login, authentication, and password recovery, generate the starter web app:
 
 ```bash
 sails new foo --caviar
@@ -28,7 +28,7 @@ module.exports = {
     userId: { type: 'number', required: true },
     orgId: { type: 'number', required: true }
   },
-  
+
   exits: {
     success: {
       outputFriendlyName: 'Rights',
@@ -41,14 +41,14 @@ module.exports = {
       description: 'No such organization exists.'
     }
   },
-  
+
   fn: async function(inputs, exits) {
     var org = await Organization.findOne(inputs.orgId)
     .populate('adminUsers', { id: inputs.userId })
     .populate('regularUsers', { id: inputs.userId });
-    
+
     if (!org) { throw 'orgNotFound'; }
-    
+
     var rights = [];
     if (org.regularUsers.length !== 0) {
       rights = ['basicAccess', 'inviteRegularUsers'];
@@ -57,11 +57,11 @@ module.exports = {
     } else if (org.owner === inputs.userId) {
       rights = ['basicAccess', 'inviteRegularUsers', 'removeRegularUsers', 'inviteOrgAdmins', 'removeOrDemoteOrgAdmins'];
     }
-    
+
     return exits.success(rights);
   }
 
-}; 
+};
 ```
 
 

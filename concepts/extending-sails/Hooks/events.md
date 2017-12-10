@@ -26,6 +26,6 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 | `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
 
 
-> In addition to `.on()`, Sails also exposes a useful helper function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/master/lib/EVENTS.md#usage) in Sails core for more information.
+> In addition to `.on()`, Sails also exposes a useful utility function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/fd2f9b6866637143eda8e908775365ca52fab27c/lib/EVENTS.md#usage) in Sails core for more information.
 
 <docmeta name="displayName" value="Events">

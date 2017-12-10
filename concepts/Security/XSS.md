@@ -27,7 +27,7 @@ Use `<%= %>` to HTML-encode data:
 
 ##### When exposing view locals to client-side JavaScript...
 
-Use the `exposeLocalsToBrowser` helper to safely expose some or all of your view locals to client-side JavaScript:
+Use the `exposeLocalsToBrowser` partial to safely expose some or all of your view locals to client-side JavaScript:
 
 ```html
 <%- exposeLocalsToBrowser(); %>
