@@ -20,13 +20,11 @@ Then `cd` into `my-project` and ask Sails to spit out the template for a new gen
 sails generate generator awesome
 ```
 
-<!--You'll know the generator was created if you see the message: `info: Created a new generator!`.-->
-
 ### Configuring a generator
 
-To enable the generator you need to tell Sails about it via `my-project/.sailsrc`.  If you were using an existing generator you could just install it from NPM, then specify the name of the package in `.sailsrc`.
+To enable the generator you need to tell Sails about it via your test project's [`.sailsrc` file](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files).
 
-Since we're developing your own generator locally, we'll just link to the folder directly:
+If we were using an existing generator, we could just install it from NPM, then specify the name of the package in `.sailsrc`.  But since we're developing this generator locally, we'll just connect it to the folder directly:
 
 ```javascript
 {
@@ -36,8 +34,9 @@ Since we're developing your own generator locally, we'll just link to the folder
     }
   }
 }
+```
 
-> **Note:** For now, we'll stick with `awesome`, but you can name the generator anything you want.  Whatever name you give your generator in the `.sailsrc` file will be the name you'll use to run it from the terminal (e.g. `sails generate awesome`).
+> **Note:** For now, we'll stick with "awesome", but you can mount the generator under any name you want.  Whatever you choose for the name of the key in the `.sailsrc` file will be the name you'll use to run this generator from the terminal (e.g. `sails generate awesome`).
 
 
 ### Running a custom generator
