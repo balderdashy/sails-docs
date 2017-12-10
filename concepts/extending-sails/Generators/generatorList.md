@@ -4,22 +4,47 @@
 
 Certain generators are built in to Sails by default.
 
+| Commands that generate a new Sails app
+|:-----------------------------------|
+| sails new 
+| sails new --fast
+| sails new --caviar
+| sails new --without=lodash,async,i18n,grunt
+| sails new --no-frontend
+| sails new --without=sockets,i18n,async
+| sails new --minimal
+
+
+| Generators for spitting out new files in an existing Sails app
+|:-----------------------------------|
+| sails generate model _identity_
+| sails generate action _name_
+| sails generate action view-_name_
+| sails generate action _some/path/_view-_name_
+| sails generate page _name_
+| sails generate helper _name_
+| sails generate helper view-_name_
+| sails generate script _name_
+| sails generate script get-_name_
+
+
+| Commands
+|:-----------------------------------|
+| sails generate response _name_
+| sails generate generator _name_
+| sails generate adapter _name_
+| sails generate hook _name_
+| sails generate controller _name_
+| sails generate api _name_
+
+| Other generators available by default
+|:-----------------------------------|
+| sails generate sails.io.js
+| sails generate parasails
+| sails generate etc
+
+
 _Since Sails v1.0, built-in generators are now [bundled](https://npmjs.com/package/sails-generate) in Sails core, rather than in separate NPM packages.  All generators can still be overridden the same way.  For advice setting up overrides for core generators in your environment, [click here](https://sailsjs.com/support)._
-
-| Repo       |  Latest Stable Version   |
-|------------|--------------------------|
-| [sails-generate-generator](https://github.com/balderdashy/sails-generate-generator)  | [![NPM version](https://badge.fury.io/js/sails-generate-generator.png)](http://badge.fury.io/js/sails-generate-generator) |
-| [sails-generate-new](https://github.com/balderdashy/sails-generate-new) | [![NPM version](https://badge.fury.io/js/sails-generate-new.png)](http://badge.fury.io/js/sails-generate-new) |
-| [sails-generate-controller](https://github.com/balderdashy/sails-generate-controller) | [![NPM version](https://badge.fury.io/js/sails-generate-controller.png)](http://badge.fury.io/js/sails-generate-controller) |
-| [sails-generate-frontend](https://github.com/balderdashy/sails-generate-frontend) | [![NPM version](https://badge.fury.io/js/sails-generate-frontend.png)](http://badge.fury.io/js/sails-generate-frontend) |
-| [sails-generate-backend](https://github.com/balderdashy/sails-generate-backend) | [![npm version](https://badge.fury.io/js/sails-generate-backend.png)](https://badge.fury.io/js/sails-generate-backend) |
-| [sails-generate-views](https://github.com/balderdashy/sails-generate-views)   | [![npm version](https://badge.fury.io/js/sails-generate-views.png)](https://badge.fury.io/js/sails-generate-views) |
-| [sails-generate-adapter](https://github.com/balderdashy/sails-generate-adapter)   | [![npm version](https://badge.fury.io/js/sails-generate-adapter.png)](https://badge.fury.io/js/sails-generate-adapter) |
-| [sails-generate-model](https://github.com/balderdashy/sails-generate-model)   | [![npm version](https://badge.fury.io/js/sails-generate-model.png)](https://badge.fury.io/js/sails-generate-model) |
-| [sails-generate-api](https://github.com/balderdashy/sails-generate-api)   | [![npm version](https://badge.fury.io/js/sails-generate-api.png)](https://badge.fury.io/js/sails-generate-api) |
-| [sails-generate-test](https://github.com/balderdashy/sails-generate-test) | [![npm version](https://badge.fury.io/js/sails-generate-test.png)](https://badge.fury.io/js/sails-generate-test) |
-| [sails-generate-hook](https://github.com/balderdashy/sails-generate-hook) | [![npm version](https://badge.fury.io/js/sails-generate-hook.png)](https://badge.fury.io/js/sails-generate-hook) |
-
 
 
 ### Community Generators
