@@ -2,7 +2,9 @@
 
 ### Core Generators
 
-> These generators are built in to Sails by default.
+Certain generators are built in to Sails by default.
+
+_Since Sails v1.0, built-in generators are now [bundled](https://npmjs.com/package/sails-generate) in Sails core, rather than in separate NPM packages.  All generators can still be overridden the same way.  For advice setting up overrides for core generators in your environment, [click here](https://sailsjs.com/support)._
 
 | Repo       |  Latest Stable Version   |
 |------------|--------------------------|
