@@ -5,7 +5,7 @@ A big part of Sails, like any framework, is to automate repetitive tasks.  **Gen
 When you type
 
 ```sh
-~/ $ sails new my-project
+sails new my-project
 ```
 
 sails uses its built-in "new" generator to prompt you for your app template of choice, then spits out the initial folder structure for a Sails app:
