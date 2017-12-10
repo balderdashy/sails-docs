@@ -1,5 +1,7 @@
 # Available generators
 
+The Sails framework's built-in [generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) can be customized using command-line options, and overridden by [mounting custom generators in the `.sailsrc` file](https://sailsjs.com/documentation/concepts/extending-sails/generators/custom-generators).  Other generators that add completely new functionality to the `sails generate` command can be added in the same way.  
+
 ### Core Generators
 
 Certain generators are built in to Sails by default.
