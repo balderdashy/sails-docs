@@ -31,7 +31,7 @@ The following conventions are true for all three types of tests:
 
 > **Reasoning**
 >
-> Filenames like these make it easy to differentiate tests from core files when performing a flat search on the repository (i.e. CMD/CTRL+T in Sublime).  Likewise, this makes the process easier to automate-- you can quickly grab all the test files with a simple recursive find on the command-line, for instance.
+> Filenames like these make it easy to differentiate tests from core files when performing a flat search on the repository (i.e. CMD/CTRL+P in Sublime).  Likewise, this makes the process easier to automate-- you can quickly grab all the test files with a simple recursive find on the command-line, for instance.
 
 #### `fixtures` directory
 Contains sample data/files/templates used for testing (e.g. a dummy Sails app or simple middleware functions)
