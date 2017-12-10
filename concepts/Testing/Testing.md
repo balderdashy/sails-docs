@@ -2,7 +2,7 @@
 
 This section of the documentation runs through one way you can go about testing your Sails application.  There are countless test frameworks and assertion libraries for Sails and Node.js -- pick one that fits your needs.
 
-> There is no official strategy for testing in the Sails framework, and this page is a collaborative, community-driven guide that has not been thoroughly vetted by Sails core team members.  If you run across something confusing or incorrect, feel free to jump in and send a pull request.
+> **There is no official strategy for testing in the Sails framework, and this page is a collaborative, community-driven guide that has not been thoroughly vetted by Sails core team members.  If you run across something confusing or incorrect, feel free to jump in and send a pull request.**
 
 ### Preparation
 
