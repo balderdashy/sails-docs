@@ -33,6 +33,7 @@ In fact, unless you're already familiar with how to customize blueprints in Sail
 ##### Notes
 
 > + If your app contains a controller whose name matches that of your model, then you can override the default actions pointed to by the RESTful routes by providing your own controller actions.  For example, if you have an `api/controllers/BoatController.js` controller file containing a custom `find` action, then the `GET /boat` route will point at that action.
+> + Also, as usual, the same logic applies whether you're using controllers or standalone actions.  (As far as Sails is concerned, once an app has been loaded into memory and normalized in `sails lift`, all of its actions look the same no matter where they came from.)
 > + If your app contains a route in `config/routes.js` that matches one of the above RESTful routes, it will be used instead of the default route.
 
 ### Shortcut blueprint routes
