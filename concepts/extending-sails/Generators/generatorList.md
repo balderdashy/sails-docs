@@ -6,13 +6,13 @@ Certain generators are built in to Sails by default.
 
 | Commands that generate a new Sails app
 |:-----------------------------------|
-| sails new 
-| sails new --fast
-| sails new --caviar
-| sails new --without=lodash,async,i18n,grunt
-| sails new --no-frontend
-| sails new --without=sockets,i18n,async
-| sails new --minimal
+| sails new _name_
+| sails new _name_ --fast
+| sails new _name_ --caviar
+| sails new _name_ --without=grunt
+| sails new _name_ --without=lodash,async,grunt,blueprints,i18n
+| sails new _name_ --no-frontend --without=sockets,lodash
+| sails new _name_ --minimal
 
 
 | Generators for spitting out new files in an existing Sails app
