@@ -15,7 +15,7 @@ Note that `sails-mongo` maintains a single Mongo connection for each of your con
 Pet.native(function(err, collection) {
   if (err) return res.serverError(err);
 
-  collection.find({}, {
+  collection.find({
     name: true
   }).toArray(function (err, results) {
     if (err) return res.serverError(err);
