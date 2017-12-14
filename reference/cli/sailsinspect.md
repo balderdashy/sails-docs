@@ -1,6 +1,6 @@
 # sails inspect
 
-> ##### _**This method should only be used with modern versions of Node.  For Node v5 and below, use [`sails debug`](http://sailsjs.com/documentation/reference/command-line-interface/sails-debug).**_
+> ##### _**This command should only be used with modern versions of Node.  For Node v5 and below, use [`sails debug`](http://sailsjs.com/documentation/reference/command-line-interface/sails-debug).**_
 
 Attach the node debugger and lift the sails app; similar to running `node --inspect app.js`. You can then use a tool like the Chrome DevTools to interactively debug your apps (see the [Node Inspector docs](https://nodejs.org/en/docs/inspector/) for more info).
 
