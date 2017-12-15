@@ -103,7 +103,9 @@ You can now `git add . && git commit -a -m "your message" && git push` to deploy
  + [Install Sails.js on Ubuntu](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
  + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
 
-
+##### Using Linode?
+The instructions and setup are pretty much the same with Linode as they are with Vultr, DigitalOcean and other cloud server providers.
+ + [Intro to Sails.js: Creating your first app and hosting it on a Linode server](https://thishosting.rocks/intro-sails-js-first-app-linode/)
 
 
 <docmeta name="displayName" value="Hosting">
