@@ -90,7 +90,7 @@ await sails.getDatastore()
   return res.badRequest(err);
 })
 .intercept('E_NO_SUCH_RECIPIENT', ()=> {
-  return return res.notFound();
+  return res.notFound();
 });
 
 return res.ok();
