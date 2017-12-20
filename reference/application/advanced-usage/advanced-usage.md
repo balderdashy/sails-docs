@@ -32,6 +32,19 @@ The API exposed by the [`sails.sockets.*` methods](http://sailsjs.com/documentat
 > Sails bundles `socket.io` as a dependency of [sails-hook-sockets](github.com/balderdashy/sails-hook-sockets), a core hook.
 
 
+### Where does the application object come from?
+
+An application instance automatically created _the first time_ you `require('sails')`.
+
+This is what is happening in the generated `app.js` file:
+
+```javascript
+var sails = require('sails');
+```
+
+Note that any subsequent calls to `require('sails')` return the same app instance.  (This is why you might sometimes hear the Sails app instance referred to as a "singleton".)
+
+
 
 ### Creating a new application object (advanced)
 
