@@ -28,4 +28,4 @@ This method is useful primarily in development scenarios.
 
 <docmeta name="displayName" value="sails.reloadActions()">
 <docmeta name="pageType" value="method">
-
+<docmeta name="isExperimental" value="true">
