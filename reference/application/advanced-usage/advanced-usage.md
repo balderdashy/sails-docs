@@ -2,6 +2,19 @@
 
 Most users of the Sails framework will never need to access more than a few basic methods of the `sails` application object. However, if you have an advanced use case, or are considering [contributing to Sails](http://sailsjs.com/documentation/contributing), you may need to delve into some of these lesser-used methods, or reference the [loading order of Sails core](http://sailsjs.com/documentation/reference/application/advanced-usage/lifecycle).
 
+### Disabling the `sails` global
+
+In Sails, the recommended approach is to use the `sails` global.
+
+However, the auto-globalization of `sails` [can be disabled](http://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for use cases where multiple Sails app instances need to exist at once, or where globals are not an option.
+
+If the `sails` global is disabled, then you'll need another way to reference the application instance.  Luckily, this is possible from almost anywhere in your app:
+
++ in the `fn` of an [action](http://sailsjs.com/documentation/concepts/actions-and-controllers) (`this.sails`)
++ in the `fn` of a [helper](http://sailsjs.com/documentation/concepts/helpers) (`this.sails`).
++ on an incoming request (`req._sails`)
+
+
 ### Properties (advanced)
 
 ##### sails.hooks
