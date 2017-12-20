@@ -200,7 +200,7 @@ Luckily, Sails helpers support "automatic exit forwarding".  That means userland
 ### Next steps
 
 + [Explore a practical example](http://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
-+ `sails-hook-organics` (which is bundled in the "Web App" template) comes with several free, open-source, and MIT-licensed helpers for many common use cases.  [Have a look!](https://github.com/sailshq/sails-hook-organics)
++ `sails-hook-organics` (which is bundled in the "Web App" template) comes with several free, open-source, and MIT-licensed helpers for many common use cases.  [Have a look!](https://npmjs.com/package/sails-hook-organics)
 + [Click here](https://sailsjs.com/support) if you're unsure about helpers, or if you want to see more tutorials and examples.
 
 <docmeta name="displayName" value="Helpers">
