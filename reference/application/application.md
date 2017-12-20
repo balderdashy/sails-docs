@@ -1,20 +1,9 @@
 # Application (`sails`)
 
 The Sails application object contains all relevant runtime state for a Sails application.
-By default it is exposed globally as `sails`.
+By default it is exposed globally as `sails`, and accessible almost anywhere in your code.
 
 > Most users of the framework will only need to know about the `sails` application object in order to access a few basic methods and their custom configuration; less commonly-used methods can be found in the [advanced usage](http://sailsjs.com/documentation/reference/application/advanced-usage) section.
-
-### How does it work?
-
-An application instance is automatically created the first time you `require('sails')`.
-This is what is happening in the generated `app.js` file:
-
-```javascript
-var sails = require('sails');
-```
-
-
 
 
 ### Properties
