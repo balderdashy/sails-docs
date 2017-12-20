@@ -1,10 +1,7 @@
 # Application (`sails`)
 
 The Sails application object contains all relevant runtime state for a Sails application.
-By default it is exposed globally as `sails`, but this behavior [can be disabled](http://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for
-use cases where multiple Sails app instances need to exist at once, or where globals
-are not an option. The application object can also always be accessed on an incoming
-request (`req._sails`), and inside of [model](http://sailsjs.com/documentation/concepts/models-and-orm/models) and [service](http://sailsjs.com/documentation/concepts/services) modules via `this.sails`.
+By default it is exposed globally as `sails`.
 
 > Most users of the framework will only need to know about the `sails` application object in order to access a few basic methods and their custom configuration; less commonly-used methods can be found in the [advanced usage](http://sailsjs.com/documentation/reference/application/advanced-usage) section.
 
