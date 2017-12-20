@@ -1,17 +1,17 @@
 # Advanced usage
 
-Most users of the Sails framework will never need to access more than a few basic methods of the `sails` application object. However, if you have an advanced use case, or are considering [contributing to Sails](http://sailsjs.com/documentation/contributing), you may need to delve into some of these lesser-used methods, or reference the [loading order of Sails core](http://sailsjs.com/documentation/reference/application/advanced-usage/lifecycle).
+Most users of the Sails framework will never need to access more than a few basic methods of the `sails` application object. However, if you have an advanced use case, or are considering [contributing to Sails](https://sailsjs.com/documentation/contributing), you may need to delve into some of these lesser-used methods, or reference the [loading order of Sails core](https://sailsjs.com/documentation/reference/application/advanced-usage/lifecycle).
 
 ### Disabling the `sails` global
 
 In Sails, the recommended approach is to use the `sails` global.
 
-However, the auto-globalization of `sails` [can be disabled](http://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for use cases where multiple Sails app instances need to exist at once, or where globals are not an option.
+However, the auto-globalization of `sails` [can be disabled](https://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for use cases where multiple Sails app instances need to exist at once, or where globals are not an option.
 
 If the `sails` global is disabled, then you'll need another way to reference the application instance.  Luckily, this is possible from almost anywhere in your app:
 
-+ in the `fn` of an [action](http://sailsjs.com/documentation/concepts/actions-and-controllers) (`this.sails`)
-+ in the `fn` of a [helper](http://sailsjs.com/documentation/concepts/helpers) (`this.sails`).
++ in the `fn` of an [action](https://sailsjs.com/documentation/concepts/actions-and-controllers) (`this.sails`)
++ in the `fn` of a [helper](https://sailsjs.com/documentation/concepts/helpers) (`this.sails`).
 + on an incoming request (`req._sails`)
 
 
@@ -19,15 +19,15 @@ If the `sails` global is disabled, then you'll need another way to reference the
 
 ##### sails.hooks
 
-A dictionary of all loaded [Sails hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails; for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks#?types-of-hooks), for advanced usage.
+A dictionary of all loaded [Sails hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails; for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks#?types-of-hooks), for advanced usage.
 
-By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](http://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
+By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
 
-See the [hooks concept documentation](http://sailsjs.com/documentation/concepts/extending-sails/hooks) for more info about hooks.
+See the [hooks concept documentation](https://sailsjs.com/documentation/concepts/extending-sails/hooks) for more info about hooks.
 
 ##### `sails.io`
 
-The API exposed by the [`sails.sockets.*` methods](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) is flexible enough out of the box to cover the requirements of most applications, and using them will future-proof your app against possible changes in the underlying implementation.  However, if you are working on bringing some legacy code from a vanilla Socket.io app into your Sails app, it can be useful to talk to Socket.io directly.  To accomplish this, Sails provides raw access to the underlying [socket.io](http://socket.io/) server instance (`io`) as `sails.io`. See the [Socket.io docs](http://socket.io/docs/) for more information.  If you decide to use Socket.io directly, please proceed with care.
+The API exposed by the [`sails.sockets.*` methods](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets) is flexible enough out of the box to cover the requirements of most applications, and using them will future-proof your app against possible changes in the underlying implementation.  However, if you are working on bringing some legacy code from a vanilla Socket.io app into your Sails app, it can be useful to talk to Socket.io directly.  To accomplish this, Sails provides raw access to the underlying [socket.io](http://socket.io/) server instance (`io`) as `sails.io`. See the [Socket.io docs](http://socket.io/docs/) for more information.  If you decide to use Socket.io directly, please proceed with care.
 
 > Sails bundles `socket.io` as a dependency of [sails-hook-sockets](github.com/balderdashy/sails-hook-sockets), a core hook.
 
@@ -63,7 +63,7 @@ var sails2 = new Sails();
 Each app instance (`sails0`, `sails1`, `sails2`) can be loaded/lifted separately,
 using different configuration.
 
-For more on using Sails programatically, see the conceptual overview on [programmatic usage in Sails](http://sailsjs.com/documentation/concepts/programmatic-usage).
+For more on using Sails programatically, see the conceptual overview on [programmatic usage in Sails](https://sailsjs.com/documentation/concepts/programmatic-usage).
 
 
 <docmeta name="displayName" value="Advanced usage">

@@ -4,7 +4,7 @@ This folder contains the information that is used by your app in supporting visi
 
 ### Usage
 
-See **[Concepts > Internationalization](http://sailsjs.com/documentation/concepts/internationalization)**.
+See **[Concepts > Internationalization](https://sailsjs.com/documentation/concepts/internationalization)**.
 
 <docmeta name="displayName" value="locales">
 

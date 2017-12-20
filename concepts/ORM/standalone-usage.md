@@ -2,7 +2,7 @@
 
 In addition to built-in usage with the Sails framework, Waterline can be used as a standalone module.
 
-> **Warning:** This section of the documentation is for fairly advanced Node.js users.  If you aren't planning to use Waterline outside of your Sails app (e.g. to build your own framework), you might want to skip this page and head back to [Models and ORM](http://sailsjs.com/documentation/concepts/models-and-orm) instead.
+> **Warning:** This section of the documentation is for fairly advanced Node.js users.  If you aren't planning to use Waterline outside of your Sails app (e.g. to build your own framework), you might want to skip this page and head back to [Models and ORM](https://sailsjs.com/documentation/concepts/models-and-orm) instead.
 
 ### Installation
 
@@ -22,7 +22,7 @@ You can install any number of adapters into your application.
 
 The `sails-disk` adapter is a common choice for development and testing.
 
-> If you are new to Node, hop on over to [Getting Started](http://sailsjs.com/get-started) to learn about installing Node on your preferred platform.
+> If you are new to Node, hop on over to [Getting Started](https://sailsjs.com/get-started) to learn about installing Node on your preferred platform.
 
 
 ### Getting Started
@@ -128,7 +128,7 @@ var config = {
 };
 ```
 
-So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.  Depending on which adapter is used, each item in `datastores` may allow further configuration.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more info.
+So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.  Depending on which adapter is used, each item in `datastores` may allow further configuration.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more info.
 
 Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
 
@@ -213,7 +213,7 @@ Interesting. There are the attributes we gave the models, and we can also see th
 
 ### Testing
 
-This section will walk you through running integration tests for Waterline models. For documentation on testing in Sails apps, see [Concepts > Testing](http://sailsjs.com/documentation/concepts/testing).
+This section will walk you through running integration tests for Waterline models. For documentation on testing in Sails apps, see [Concepts > Testing](https://sailsjs.com/documentation/concepts/testing).
 
 ##### The testing framework
 

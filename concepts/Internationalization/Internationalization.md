@@ -32,12 +32,12 @@ sails.__('Hello');
 
 ### Locales
 
-See [**Concepts > Internationalization > Locales**](http://sailsjs.com/documentation/concepts/internationalization/locales).
+See [**Concepts > Internationalization > Locales**](https://sailsjs.com/documentation/concepts/internationalization/locales).
 
 
 ### Additional options
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Settings for localization/internationalization may be configured in [`sails.config.i18n`](https://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
 
 ```javascript
 // Which locales are supported?
@@ -54,12 +54,12 @@ localesDirectory: '/config/locales'
 
 Of course you can always `require()` any Node modules you like, anywhere in your project, and use any internationalization strategy you want.
 
-But worth noting is that since Sails implements [node-i18n-2](https://github.com/jeresig/i18n-node-2) integration in the [i18n hook](http://sailsjs.com/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
+But worth noting is that since Sails implements [node-i18n-2](https://github.com/jeresig/i18n-node-2) integration in the [i18n hook](https://sailsjs.com/documentation/concepts/Internationalization), you can completely disable or override it using the [`loadHooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) and/or [`hooks`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) configuration options.
 
 
 ### Translating dynamic content
 
-See [**Concepts > Internationalization > Translating dynamic content**](http://sailsjs.com/documentation/concepts/internationalization/translating-dynamic-content).
+See [**Concepts > Internationalization > Translating dynamic content**](https://sailsjs.com/documentation/concepts/internationalization/translating-dynamic-content).
 
 
 ### What about i18n on the client?

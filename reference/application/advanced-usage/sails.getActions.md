@@ -1,6 +1,6 @@
 # sails.getActions()
 
-Return a dictionary of Sails [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers).
+Return a dictionary of Sails [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers).
 
 ```usage
 sails.getActions();

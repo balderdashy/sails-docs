@@ -6,6 +6,6 @@ A set of datastore configurations which tell Sails where to fetch or save data w
 
 ### Usage
 
-See [`sails.config.datastores`](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores) for all available options.
+See [`sails.config.datastores`](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores) for all available options.
 
 <docmeta name="displayName" value="datastores.js">

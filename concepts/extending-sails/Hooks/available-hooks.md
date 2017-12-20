@@ -5,7 +5,7 @@ This page is meant to be an up to date, comprehensive list of all of the core ho
 
 ### Core hooks
 
-The following hooks are maintained by the Sails.js core team and are included in your Sails app by default. You can override or disable them using your [sailsrc file](http://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) or [environment variables](http://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables).
+The following hooks are maintained by the Sails.js core team and are included in your Sails app by default. You can override or disable them using your [sailsrc file](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) or [environment variables](https://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables).
 
 | Hook           | Package       | Latest stable release   | Purpose     |
 |:---------------|---------------|-------------------------|:------------|

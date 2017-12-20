@@ -37,7 +37,7 @@ if ( req.param('amount') > 123 )
 ### Notes
 > + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 >+ `res.badRequest()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `api/responses/badRequest.js`.  If a `badRequest.js` response method does not exist in your app, Sails will implicitly use the default behavior.
->+ This method is called automatically by the [Blueprint Actions](http://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) when bad parameters are sent with a request.
+>+ This method is called automatically by the [Blueprint Actions](https://sailsjs.com/documentation/concepts/blueprints/blueprint-actions) when bad parameters are sent with a request.
 
 
 

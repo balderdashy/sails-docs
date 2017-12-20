@@ -2,15 +2,15 @@
 
 This page is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.
 
-All supported adapters can be configured in roughly the same way: by passing in a Sails/Waterline adapter (`adapter`), as well as a connection URL (`url`).  For more information on configuring datastores, see [sails.config.datastores](http://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
+All supported adapters can be configured in roughly the same way: by passing in a Sails/Waterline adapter (`adapter`), as well as a connection URL (`url`).  For more information on configuring datastores, see [sails.config.datastores](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
-> Having trouble connecting?  Be sure to check your connection URL for typos.  If that doesn't work, review the documentation for your database provider, or [get help](http://sailsjs.com/support).
+> Having trouble connecting?  Be sure to check your connection URL for typos.  If that doesn't work, review the documentation for your database provider, or [get help](https://sailsjs.com/support).
 
 ### Officially-supported database adapters
 
 The following core adapters are maintained, tested, and used by the Sails.js core team.
 
-> Want to help out with a core adapter?  Get started by reading [the Sails project contribution guide](http://sailsjs.com/contributing).
+> Want to help out with a core adapter?  Get started by reading [the Sails project contribution guide](https://sailsjs.com/contributing).
 
 |  Database technology    | Adapter                                                        | Connection URL structure                      | For production?     |
 |:------------------------|:---------------------------------------------------------------|:----------------------------------------------|:--------------------|
@@ -38,7 +38,7 @@ url: 'mysql://user:password@host:port/database',
 ```
 
 > + The default port for MySQL is `3306`.
-> + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.  You may use the [`columnType` setting](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) in a model attribute to set the character set.
+> + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.  You may use the [`columnType` setting](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) in a model attribute to set the character set.
 > + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
 > + The sails-mysql adapter is also 100% compatible with [Amazon Aurora](https://aws.amazon.com/rds/aurora/) databases.
 
@@ -150,7 +150,7 @@ Note that, to be listed on this page, an adapter must:
 3. Support configuration via a connection URL, as `url` (if applicable)
 
 
-If you find that any of these conventions are not true for any of the community adapters above (i.e. for latest stable release published on NPM, not for the code on GitHub), then please reach out to the maintainer of the adapter.  If you can't reach them or need further assistance, then please [get in touch](http://sailsjs.com/contact) with a member of the Sails core team.
+If you find that any of these conventions are not true for any of the community adapters above (i.e. for latest stable release published on NPM, not for the code on GitHub), then please reach out to the maintainer of the adapter.  If you can't reach them or need further assistance, then please [get in touch](https://sailsjs.com/contact) with a member of the Sails core team.
 
 
 

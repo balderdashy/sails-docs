@@ -29,24 +29,24 @@ One of the big challenges of scaling an application is that these sorts of clust
 + Ensure none of the other dependencies you might be using in your app rely on shared memory.
 + Make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) are scalable (e.g. sharding/cluster)
 + **If your app uses sessions:**
-  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.2.2 --save --save-exact`). For more information about configuring your session store for production, see the [sails.config.session](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) docs.
+  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the connect-redis adapter as a dependency of your app (e.g. `npm install connect-redis@~3.2.2 --save --save-exact`). For more information about configuring your session store for production, see the [sails.config.session](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) docs.
 + **If your app uses sockets:**
   + Configure your app to use Redis as a shared message queue for delivering socket.io messages. Socket.io (and consequently Sails.js) apps support Redis for sockets by default, so to enable a remote redis pubsub server, uncomment the relevant lines in `config/env/production.js`.
   + Install the socket.io-redis adapter as a dependency of your app (e.g. `npm install socket.io-redis@^5.2.0 --save --save-exact`)
 + **If your cluster is on a single server (for instance, using [pm2 cluster mode](http://pm2.keymetrics.io/docs/usage/cluster-mode/))**
-  + To avoid file conflict issues due to Grunt tasks, always start your apps in `production` environment, and/or consider [turning Grunt off completely](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).  See [here](https://github.com/balderdashy/sails/issues/3577#issuecomment-184786535) for more details on Grunt issues in single-server clusters
-  + Be careful with [`config/bootstrap.js` code](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap) that persists data in a database, to avoid conflicts when the bootstrap runs multiple times (once per node in the cluster)
+  + To avoid file conflict issues due to Grunt tasks, always start your apps in `production` environment, and/or consider [turning Grunt off completely](https://sailsjs.com/documentation/concepts/assets/disabling-grunt).  See [here](https://github.com/balderdashy/sails/issues/3577#issuecomment-184786535) for more details on Grunt issues in single-server clusters
+  + Be careful with [`config/bootstrap.js` code](https://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap) that persists data in a database, to avoid conflicts when the bootstrap runs multiple times (once per node in the cluster)
 
 ### Deploying a Node/Sails app to a PaaS
 
-Deploying your app to a PaaS like Heroku or Modulus is dead simple. Depending on your situation, there may still be a few devils in the details, but Node support with hosting providers has gotten _really good_ over the last couple of years.  Take a look at [Hosting](http://sailsjs.com/documentation/concepts/deployment/Hosting) for more platform-specific information.
+Deploying your app to a PaaS like Heroku or Modulus is dead simple. Depending on your situation, there may still be a few devils in the details, but Node support with hosting providers has gotten _really good_ over the last couple of years.  Take a look at [Hosting](https://sailsjs.com/documentation/concepts/deployment/Hosting) for more platform-specific information.
 
 ### Deploying your own cluster
 
 + Deploy multiple instances (aka servers running a copy of your app) behind a [load balancer](https://en.wikipedia.org/wiki/Load_balancing_(computing)) (e.g. nginx)
   + Configure your load balancer to terminate SSL requests
   + But remember that you won't need to use the SSL configuration in Sails-- the traffic will already be decrypted by the time it reaches Sails.
-  + Lift your app on each instance using a daemon like `forever` or `pm2` (see http://sailsjs.com/documentation/concepts/deployment for more about daemonology)
+  + Lift your app on each instance using a daemon like `forever` or `pm2` (see https://sailsjs.com/documentation/concepts/deployment for more about daemonology)
 
 
 ### Optimization

@@ -40,7 +40,7 @@ info: Created a new Sails app `my-project`!
 > Creating a new sails app in an existing folder will only work if the folder is empty.
 
 ### Notes:
-> + `sails new` is really just a special [generator](http://sailsjs.com/documentation/concepts/extending-sails/Generators) which runs [`sails-generate-new`](http://github.com/balderdashy/sails-generate-new).  In other words, running `sails new foo` is an alias for running `sails generate new foo`, and like any Sails generator, the actual generator module which gets run can be overridden in your global `~/.sailsrc` file.
+> + `sails new` is really just a special [generator](https://sailsjs.com/documentation/concepts/extending-sails/Generators) which runs [`sails-generate-new`](http://github.com/balderdashy/sails-generate-new).  In other words, running `sails new foo` is an alias for running `sails generate new foo`, and like any Sails generator, the actual generator module which gets run can be overridden in your global `~/.sailsrc` file.
 
 
 <docmeta name="displayName" value="sails new">

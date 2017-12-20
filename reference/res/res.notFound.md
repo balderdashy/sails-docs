@@ -1,6 +1,6 @@
 # res.notFound()
 
-This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> ("Not Found") response using either [res.json()](http://sailsjs.com/documentation/reference/res/res.json.html) or [res.view()](http://sailsjs.com/documentation/reference/res/res.view.html). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> ("Not Found") response using either [res.json()](https://sailsjs.com/documentation/reference/res/res.json.html) or [res.view()](https://sailsjs.com/documentation/reference/res/res.view.html). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
 
 When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn't exist.
 
@@ -18,8 +18,8 @@ Like the other built-in custom response modules, the behavior of this method is 
 By default, it works as follows:
 
 + The status code of the response will be set to 404.
-+ If the request "[wants JSON](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send a response body with the string `"Not Found"`.
-+ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve the view located at `views/404.ejs` (assuming the default EJS [view engine](http://sailsjs.com/documentation/concepts/views/view-engines)).  If no such view is found, or an error occurs attempting to serve it, a default response body will be sent with the string `"Not Found"`.
++ If the request "[wants JSON](https://sailsjs.com/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send a response body with the string `"Not Found"`.
++ If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve the view located at `views/404.ejs` (assuming the default EJS [view engine](https://sailsjs.com/documentation/concepts/views/view-engines)).  If no such view is found, or an error occurs attempting to serve it, a default response body will be sent with the string `"Not Found"`.
 
 ### Example
 

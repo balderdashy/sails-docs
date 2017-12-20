@@ -6,7 +6,7 @@ While Sails dutifully adheres to the philosophy of [convention-over-configuratio
 
 > Here looking for a particular setting?  Head over to [Reference > Configuration](sailsjs.com/documentation/reference/configuration) to see a complete guide to all configuration options available in Sails.
 
-Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](http://sailsjs.com/documentation/anatomy/myApp/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](http://sailsjs.com/documentation/anatomy/myApp/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
+Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](https://sailsjs.com/documentation/anatomy/myApp/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
 
 
 ### Standard configuration files (`config/*`)
@@ -25,7 +25,7 @@ module.exports.blueprints = {
 };
 ```
 
-For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](http://sailsjs.com/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](http://sailsjs.com/documentation/anatomy) for a higher-level overview.
+For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](https://sailsjs.com/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](https://sailsjs.com/documentation/anatomy) for a higher-level overview.
 
 ### Environment-specific files (`config/env/*`)
 
@@ -46,14 +46,14 @@ NODE_ENV=production node app.js
 
 ### The `config/local.js` file
 
-You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](https://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
 
-See [http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html](http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html) for more information.
+See [https://sailsjs.com/documentation/concepts/Configuration/localjsfile.html](https://sailsjs.com/documentation/concepts/Configuration/localjsfile.html) for more information.
 
 
 ### Accessing `sails.config` in your app
 
-The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](http://sailsjs.com/documentation/concepts/Globals) during lift, and therefore available from anywhere in your app.
+The `config` object is available on the Sails app instance (`sails`).  By default, this is exposed on the [global scope](https://sailsjs.com/documentation/concepts/Globals) during lift, and therefore available from anywhere in your app.
 
 ##### Example
 ```javascript
@@ -66,7 +66,7 @@ if (sails.config.environment === 'production' && !sails.config.csrf) {
 
 ### Setting `sails.config` values directly using environment variables
 
-In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  Any environment variable formatted this way will be parsed as JSON (if possible). For example, you could do the following to set the [allowed CORS origins](http://sailsjs.com/documentation/concepts/security/cors) (`sails.config.security.cors.allowOrigins`) to `["http://somedomain.com","https://anotherdomain.com:1337"]` on the command line:
+In addition to using configuration _files_, you can set individual configuration values on the command line when you lift Sails by prefixing the config key names with `sails_`, and separating nested key names with double-underscores (`__`).  Any environment variable formatted this way will be parsed as JSON (if possible). For example, you could do the following to set the [allowed CORS origins](https://sailsjs.com/documentation/concepts/security/cors) (`sails.config.security.cors.allowOrigins`) to `["http://somedomain.com","https://anotherdomain.com:1337"]` on the command line:
 
 ```javascript
 sails_security__cors__allowOrigins='["http://somedomain.com","https://anotherdomain.com:1337"]' sails console sails lift
@@ -76,11 +76,11 @@ sails_security__cors__allowOrigins='["http://somedomain.com","https://anotherdom
 
 This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 
-Also note that configuration specified using environment variables does _not_ automatically apply to Sails instances that are started [programmatically](http://sailsjs.com/documentation/concepts/programmatic-usage).
+Also note that configuration specified using environment variables does _not_ automatically apply to Sails instances that are started [programmatically](https://sailsjs.com/documentation/concepts/programmatic-usage).
 
 > There are a couple of special exceptions to the above rule: `NODE_ENV` and `PORT`.
-> + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
-> + Similarly, `PORT` is just another way to set [`sails.config.port`](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigport).  This is strictly for convenience and backwards compatibility.
+> + `NODE_ENV` is a convention for any Node.js app.  When set to `'production'`, it sets [`sails.config.environment`](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).
+> + Similarly, `PORT` is just another way to set [`sails.config.port`](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigport).  This is strictly for convenience and backwards compatibility.
 >
 > Here's a relatively common example where you might use both of these environment variables at the same time:
 >
@@ -120,7 +120,7 @@ sails lift --custom.array='[1,2,3]'
 
 ### Custom configuration
 
-You can also leverage Sails's configuration loader to manage your own custom settings.  See [sails.config.custom](http://sailsjs.com/config/sails-config-custom) for more information.
+You can also leverage Sails's configuration loader to manage your own custom settings.  See [sails.config.custom](https://sailsjs.com/config/sails-config-custom) for more information.
 
 
 
@@ -128,20 +128,20 @@ You can also leverage Sails's configuration loader to manage your own custom set
 
 When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database setup, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetitive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.
 
-The [`.sailsrc` file](http://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators](http://sailsjs.com/documentation/concepts/extending-sails/Generators) that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
+The [`.sailsrc` file](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators](https://sailsjs.com/documentation/concepts/extending-sails/Generators) that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
 
-And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](http://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) files for more information.
+And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) files for more information.
 
 
 ### Order of precedence for configuration
 
-Depending on whether you're starting a Sails app from the command line using `sails lift` or `node app.js`, or programmatically using [`sails.lift()`](http://sailsjs.com/documentation/reference/application/advanced-usage/sails-lift) or [`sails.load()`](http://sailsjs.com/documentation/reference/application/advanced-usage/sails-load), Sails will draw its configuration from a number of sources, in a certain order.
+Depending on whether you're starting a Sails app from the command line using `sails lift` or `node app.js`, or programmatically using [`sails.lift()`](https://sailsjs.com/documentation/reference/application/advanced-usage/sails-lift) or [`sails.load()`](https://sailsjs.com/documentation/reference/application/advanced-usage/sails-load), Sails will draw its configuration from a number of sources, in a certain order.
 
 ##### Order of precedence when starting via `sails lift` or `node app.js` (in order from highest to lowest priority):
 
 + command-line options parsed by [minimist](https://github.com/substack/minimist/tree/0.0.10); e.g. `sails lift --custom.mailgun.apiToken='foo'` becomes `sails.config.custom.mailgun.apiToken`.
 + [environment variables](https://en.wikipedia.org/wiki/Environment_variable) prefixed with `sails_`, and using double underlines to indicate dots; e.g.: `sails_port=1492 sails lift` ([A few more examples](https://gist.github.com/mikermcneil/92769de1e6c10f0159f97d575e18c6cf)).
-+ a [`.sailsrc` file](http://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) in your app's directory, or the first found looking in `../`, `../../` etc.
++ a [`.sailsrc` file](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) in your app's directory, or the first found looking in `../`, `../../` etc.
 + a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`).
 + any existing `config/local.js` file in your app.
 + any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`).

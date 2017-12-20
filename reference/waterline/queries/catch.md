@@ -1,6 +1,6 @@
 # .catch()
 
-Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
+Execute a Waterline [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
 
 ```usage
 .catch(callback)

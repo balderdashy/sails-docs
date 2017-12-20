@@ -6,7 +6,7 @@ Verify that a value would be valid for a given attribute, then return it, loosel
 Something.validate(attrName, value);
 ```
 
-> This validates (and potentially coerces) the provided data as if it was one of the values passed in to [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update).  You might think about it like a "dry run".
+> This validates (and potentially coerces) the provided data as if it was one of the values passed in to [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update).  You might think about it like a "dry run".
 
 ### Usage
 

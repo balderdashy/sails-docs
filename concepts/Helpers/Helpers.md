@@ -4,7 +4,7 @@ As of version 1.0, all Sails apps come with built-in support for **helpers**, si
 
 ### Overview
 
-In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
+In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](https://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
 For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
@@ -14,7 +14,7 @@ sails.log(greeting);
 // => "Hello, Bubba!"
 ```
 
-> Helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
+> Helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](https://sailsjs.com/documentation/reference/application).
 
 
 ### How helpers are defined
@@ -53,7 +53,7 @@ module.exports = {
 
 Though simple, this file displays several characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task in the simplest way possible.
 
-> Look familiar?  Helpers follow the same specification as [shell scripts](https://sailsjs.com/documentation/concepts/shell-scripts) and [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
+> Look familiar?  Helpers follow the same specification as [shell scripts](https://sailsjs.com/documentation/concepts/shell-scripts) and [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
 
 ##### The `fn` function
 
@@ -70,7 +70,7 @@ Input for a helper are defined in the `inputs` dictionary.  Each input definitio
 * `boolean` - the value `true` or `false`
 * `ref` - a Javascript variable reference.  This can be _any_ value, including dictionaries, arrays, functions, streams, and more.
 
-These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
+These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes).
 So as you might expect, you can provide a default value for an input by setting its `defaultsTo` property.  Or make it required by setting `required: true`.  You can even use `allowNull` and almost any of the higher-level validation rules like `isEmail`.
 
 
@@ -118,7 +118,7 @@ Internally, your helper's `fn` is responsible for triggering one of its exits-- 
 
 By default, all helpers are considered _asynchronous_.  While this is a safe default assumption, it's not always true-- and when you know for certain that's the case, you can optimize performance by telling Sails that's the case using the `sync: true` property.
 
-If you know all of the code inside your helper's `fn` is definitely synchronous, you can set the top-level `sync` property to `true`, which allows userland code to [call the helper without `await`](http://sailsjs.com/documentation/concepts/helpers#?synchronous-usage).
+If you know all of the code inside your helper's `fn` is definitely synchronous, you can set the top-level `sync` property to `true`, which allows userland code to [call the helper without `await`](https://sailsjs.com/documentation/concepts/helpers#?synchronous-usage).
 (You must also remember to change `fn: async function` to `fn: function`.)
 
 > Note: Calling an asynchronous helper without `await` _will not work_.
@@ -126,7 +126,7 @@ If you know all of the code inside your helper's `fn` is definitely synchronous,
 
 ##### Accessing `req` in a helper
 
-If you&rsquo;re designing a helper that parses request headers, specifically for use from within actions, then you'll want to take advantage of pre-existing methods and/or properties of the [request object](http://sailsjs.com/documentation/reference/request-req).  The simplest way to allow the code in your action to pass along `req` to your helper is to define a `type: 'ref'` input:
+If you&rsquo;re designing a helper that parses request headers, specifically for use from within actions, then you'll want to take advantage of pre-existing methods and/or properties of the [request object](https://sailsjs.com/documentation/reference/request-req).  The simplest way to allow the code in your action to pass along `req` to your helper is to define a `type: 'ref'` input:
 
 ```javascript
 inputs: {
@@ -199,7 +199,7 @@ Luckily, Sails helpers support "automatic exit forwarding".  That means userland
 
 ### Next steps
 
-+ [Explore a practical example](http://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
++ [Explore a practical example](https://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
 + `sails-hook-organics` (which is bundled in the "Web App" template) comes with several free, open-source, and MIT-licensed helpers for many common use cases.  [Have a look!](https://npmjs.com/package/sails-hook-organics)
 + [Click here](https://sailsjs.com/support) if you're unsure about helpers, or if you want to see more tutorials and examples.
 

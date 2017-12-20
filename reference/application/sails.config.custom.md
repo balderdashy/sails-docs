@@ -1,6 +1,6 @@
 # sails.config.custom
 
-The runtime values of your app's [custom configuration settings](http://sailsjs.com/documentation/reference/configuration/sails-config-custom).
+The runtime values of your app's [custom configuration settings](https://sailsjs.com/documentation/reference/configuration/sails-config-custom).
 
 ### Usage
 
@@ -19,7 +19,7 @@ sails.config.custom.mailgunApiKey;
 
 ### Notes
 
-> + For information on how to set custom configuration in the first place, see [Reference > Config > sails.config.custom](http://sailsjs.com/documentation/reference/configuration/sails-config-custom).
+> + For information on how to set custom configuration in the first place, see [Reference > Config > sails.config.custom](https://sailsjs.com/documentation/reference/configuration/sails-config-custom).
 
 
 <docmeta name="displayName" value="sails.config.custom">

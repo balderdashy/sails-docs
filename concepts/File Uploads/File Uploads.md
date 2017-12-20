@@ -179,8 +179,8 @@ module.exports = {
 ## Read more
 
 + [Skipper docs](https://github.com/balderdashy/skipper)
-+ [Uploading to Amazon S3](http://sailsjs.com/documentation/concepts/file-uploads/uploading-to-s-3)
-+ [Uploading to Mongo GridFS](http://sailsjs.com/documentation/concepts/file-uploads/uploading-to-grid-fs)
++ [Uploading to Amazon S3](https://sailsjs.com/documentation/concepts/file-uploads/uploading-to-s-3)
++ [Uploading to Mongo GridFS](https://sailsjs.com/documentation/concepts/file-uploads/uploading-to-grid-fs)
 
 
 

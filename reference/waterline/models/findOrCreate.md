@@ -18,7 +18,7 @@ _Or:_
 
 | # | Argument      | Type                  | Details    |
 |---|---------------|:----------------------|:-----------|
-| 1 | _criteria_    | ((dictionary?))       | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.  **This particular criteria should always match exactly zero or one records in the database.**
+| 1 | _criteria_    | ((dictionary?))       | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.  **This particular criteria should always match exactly zero or one records in the database.**
 | 2 |  initialValues | ((dictionary))       | The initial values for the new record, if one is created.
 
 

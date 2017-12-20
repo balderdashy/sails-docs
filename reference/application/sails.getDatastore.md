@@ -1,5 +1,5 @@
 # sails.getDatastore()
-Access a particular [datastore](http://sailsjs.com/documentation/concepts/models-and-orm#?datastores), or the default datastore.
+Access a particular [datastore](https://sailsjs.com/documentation/concepts/models-and-orm#?datastores), or the default datastore.
 
 ```usage
 sails.getDatastore(datastoreName);
@@ -16,7 +16,7 @@ sails.getDatastore(datastoreName);
 
 **Type:** ((Dictionary))
 
-A [datastore instance](http://sailsjs.com/documentation/reference/waterline-orm/datastores).
+A [datastore instance](https://sailsjs.com/documentation/reference/waterline-orm/datastores).
 
 <docmeta name="displayName" value="sails.getDatastore()">
 <docmeta name="pageType" value="method">

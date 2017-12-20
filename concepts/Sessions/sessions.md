@@ -66,7 +66,7 @@ To enable Redis as your session store in development, first make sure you have a
 
 This is just a shortcut for `sails lift --session.adapter=connect-redis --sockets.adapter=socket.io-redis`. These adapters are included as dependencies of new Sails apps by default, but if you're working with an upgraded app you'll need to install `connect-redis` version 3.3.2 and `socket.io-redis` version 5.2.0.
 
-> Note: This built-in configuration uses your local Redis instance. For advanced session configuration options, see [Reference > Configuration > sails.config.session](https://next.sailsjs.com/documentation/reference/configuration/sails-config-session).
+> Note: This built-in configuration uses your local Redis instance. For advanced session configuration options, see [Reference > Configuration > sails.config.session](https://sailsjs.com/documentation/reference/configuration/sails-config-session).
 
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.

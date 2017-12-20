@@ -20,7 +20,7 @@ _Or_
 ##### During
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 | db                  | ((ref))             | Your newly-leased database connection.  (See [`.usingConnection()`](http://sailsjs.com/documentation/reference/waterline-orm/models/using-connection) for more information on what to do with this.) |
+| 1 | db                  | ((ref))             | Your newly-leased database connection.  (See [`.usingConnection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/using-connection) for more information on what to do with this.) |
 | 2 | proceed             | ((function))        | Call this function when your `during` code is finished, or if a fatal error occurs.<br/><br/>_Usage:_<br/>&bull; `return proceed();`<br/>&bull; `proceed(new Error('Oops))`<br/>&bull; `proceed(undefined, { some: 'arbitrary result'} )`<br/><br/>_Like any Node callback, if you call `proceed(new Error('Oops'))` (i.e. with a truthy first argument; conventionally an Error instance), then Sails understands that to mean a fatal error occurred.  Otherwise, it is assumed that everything went according to plan.  In any case, when your code calls `proceed()`, the connection is automatically released back to the pool before calling the final callback._
 
 

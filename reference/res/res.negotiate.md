@@ -2,13 +2,13 @@
 
 > _**This method is deprecated**._
 >
-> You should use a [custom response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
+> You should use a [custom response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
 >
-> To handle errors from [Waterline model methods](http://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](#) for more details).
+> To handle errors from [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](#) for more details).
 
 Given an error (`err`), attempt to guess which error response should be called (`badRequest`, `forbidden`, `notFound`, or `serverError`) by inspecting the `status` property.  If `err` is not a dictionary, or the `status` property does not match a known HTTP status code, then default to `serverError`.
 
-Especially handy for handling potential validation errors from [Model.create()](http://sailsjs.com/documentation/reference/waterline/models/create.html) or [Model.update()](http://sailsjs.com/documentation/reference/waterline/models/update.html).
+Especially handy for handling potential validation errors from [Model.create()](https://sailsjs.com/documentation/reference/waterline/models/create.html) or [Model.update()](https://sailsjs.com/documentation/reference/waterline/models/update.html).
 
 ### Usage
 
@@ -22,10 +22,10 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 `res.negotiate()` examines the provided error (`err`) and determines the appropriate error-handling behavior from one of the following methods:
 
-+ [`res.badRequest()`](http://sailsjs.com/documentation/anatomy/myApp/api/responses/badRequest.js.html)   (400)
-+ [`res.forbidden()`](http://sailsjs.com/documentation/anatomy/myApp/api/responses/forbidden.js.html)    (403)
-+ [`res.notFound()`](http://sailsjs.com/documentation/anatomy/myApp/api/responses/notFound.js.html)     (404)
-+ [`res.serverError()`](http://sailsjs.com/documentation/anatomy/myApp/api/responses/serverError.js.html)  (500)
++ [`res.badRequest()`](https://sailsjs.com/documentation/anatomy/myApp/api/responses/badRequest.js.html)   (400)
++ [`res.forbidden()`](https://sailsjs.com/documentation/anatomy/myApp/api/responses/forbidden.js.html)    (403)
++ [`res.notFound()`](https://sailsjs.com/documentation/anatomy/myApp/api/responses/notFound.js.html)     (404)
++ [`res.serverError()`](https://sailsjs.com/documentation/anatomy/myApp/api/responses/serverError.js.html)  (500)
 
 The determination is made based on `err`'s "status" property.  If a more specific diagnosis cannot be determined (e.g. `err` doesn't have a "status" property, or it's a string), Sails will default to `res.serverError()`.
 

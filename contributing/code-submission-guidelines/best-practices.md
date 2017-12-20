@@ -35,7 +35,7 @@ This is useful for testing/installing hot-fixes, and just a good thing to know h
 
 #### Submitting Pull Requests
 
-0. If this is your first time forking and submitting a PR, [follow our instructions here](http://sailsjs.com/documentation/contributing/code-submission-guidelines/sending-pull-requests).
+0. If this is your first time forking and submitting a PR, [follow our instructions here](https://sailsjs.com/documentation/contributing/code-submission-guidelines/sending-pull-requests).
 1. Fork the repo.
 2. Add a test for your change. Only refactoring and documentation changes require no new tests. If you are adding functionality or fixing a bug, we need a test!
 4. Make the tests pass and make sure you follow [our syntax guidelines](https://github.com/balderdashy/sails/blob/master/.jshintrc).

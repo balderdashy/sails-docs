@@ -1,17 +1,17 @@
 # Model settings
 
-In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
+In Sails, the top-level properties of model definitions are called **model settings**.  This includes everything from [attribute definitions](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?attributes), to the [database settings](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore) the model will use, as well as a few other options.
 
 The majority of this page is devoted to a complete tour of the model settings supported by Sails.  But before we begin, let's look at how to actually apply these settings in a Sails app.
 
 
 ### Overview
 
-Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](http://sailsjs.com/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models).
+Model settings allow you to customize the behavior of the models in your Sails app.  They can be specified on a per-model basis by setting top-level properties in a [model definition](https://sailsjs.com/documentation/concepts/models-and-orm/models), or as app-wide defaults in [`sails.config.models`](https://sailsjs.com/documentation/reference/configuration/sails-config-models).
 
 ##### Changing default model settings
 
-To modify the [default model settings](http://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](http://sailsjs.com/documentation/anatomy/my-app/config/models-js).
+To modify the [default model settings](https://sailsjs.com/documentation/reference/configuration/sails-config-models) shared by all of the models in your app, edit [`config/models.js`](https://sailsjs.com/documentation/anatomy/my-app/config/models-js).
 
 For example, when you generate a new app, Sails automatically includes three different default attributes in your `config/models.js` file:  `id`, `createdAt`, and `updatedAt`.  Let's say that, for all of your models, you wanted to use a slightly different, customized `id` attribute. To do so, you could just override `attributes: {  id: {...}  }` in your `config/models.js` definition.
 
@@ -61,7 +61,7 @@ attributes: {
 }
 ```
 
-For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](http://sailsjs.com/documentation/concepts/orm/attributes).
+For a complete introduction to model attributes, including how to define and use them in your Sails app, see [Concepts > ORM > Attributes](https://sailsjs.com/documentation/concepts/orm/attributes).
 
 ### customToJSON
 
@@ -75,7 +75,7 @@ customToJSON: function() { /*...*/ }
 | ------------ |:------------------------|:--------------|
 | ((function)) | _See below._            | _n/a_         |
 
-Adding the `customToJSON` setting to a model changes the way that the model&rsquo;s records are _stringified_.  In other words, it allows you to inject custom logic that runs any time one of these records are passed into `JSON.stringify()`.  This is most commonly used to implement a failsafe, making sure sensitive data like user passwords aren't accidentally included in a response (since [`res.json()`](http://sailsjs.com/documentation/reference/response-res/res-json) stringifies data before sending).
+Adding the `customToJSON` setting to a model changes the way that the model&rsquo;s records are _stringified_.  In other words, it allows you to inject custom logic that runs any time one of these records are passed into `JSON.stringify()`.  This is most commonly used to implement a failsafe, making sure sensitive data like user passwords aren't accidentally included in a response (since [`res.json()`](https://sailsjs.com/documentation/reference/response-res/res-json) stringifies data before sending).
 
 The `customToJSON` function takes no arguments, but provides access to the record as the `this` variable.  This allows you to omit sensitive data and return the sanitized result, which is what `JSON.stringify()` will actually use when generating a JSON string.  For example:
 
@@ -100,7 +100,7 @@ tableName: 'some_preexisting_table'
 | ----------- |:---------------------------|:--------------|
 | ((string))  | `'some_preexisting_table'` | _Same as model's identity._
 
-By default, this is the same as the model's [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
+By default, this is the same as the model's [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
 
 The **tableName** setting gives you the ability to customize the name of the underlying _physical model_ that a particular model should use.  In other words, it lets you control where a model stores and retrieves records within the database, _without_ affecting the code in your controller actions / helpers.
 
@@ -167,11 +167,11 @@ When you lift your Sails app in a development environment (e.g. running `sails l
 
 ##### Can I use auto-migrations in production?
 
-The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
+The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
 
 In many cases, hosting providers automatically set the `NODE_ENV` environment variable to "production" when they detect a Node.js app.  Even so, please don't rely only on that failsafe, and take the usual precautions to keep your users' data safe.  Any time you connect Sails (or any other tool or framework) to a database with pre-existing production data, **do a dry run**.  Especially the very first time.  Production data is sensitive, valuable, and in many cases irreplaceable.  Customers, users, and their lawyers are not cool with it getting flushed.
 
-As a best practice, make sure to never lift or [deploy](http://sailsjs.com/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](http://sailsjs.com/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
+As a best practice, make sure to never lift or [deploy](https://sailsjs.com/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this organization-wide is simply to _never_ push up production database credentials to your source code repository in the first place, and instead relying on [environment variables](https://sailsjs.com/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
 
 
 ##### Are auto-migrations slow?
@@ -201,7 +201,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 ### datastore
 
-The name of the [datastore configuration](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
+The name of the [datastore configuration](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
 
 ```
 datastore: 'legacyECommerceDb'
@@ -213,7 +213,7 @@ datastore: 'legacyECommerceDb'
 
 This indicates the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
 
-For more about configuring your app's datastores, see [Reference > Configuration > Datastores](http://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
+For more about configuring your app's datastores, see [Reference > Configuration > Datastores](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
 
 
 ### dataEncryptionKeys
@@ -263,22 +263,22 @@ cascadeOnDestroy: true
 | ----------- |:------------------------|:--------------|
 | ((boolean)) | `true`                  | `false`
 
-This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 
 ### dontUseObjectIds
 
-> ##### _**This feature is for use with the [`sails-mongo` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmongo) only.**_
+> ##### _**This feature is for use with the [`sails-mongo` adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmongo) only.**_
 
-If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID object as its primary key.  This allows you to create models using the `sails-mongo` adapter with primary keys that are arbitrary strings or numbers, not just big long UUID-looking things.  Note that setting this to `true` means that you will have to provide a value for `id` in every call to [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.createEach()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each).
+If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID object as its primary key.  This allows you to create models using the `sails-mongo` adapter with primary keys that are arbitrary strings or numbers, not just big long UUID-looking things.  Note that setting this to `true` means that you will have to provide a value for `id` in every call to [`.create()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.createEach()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create-each).
 
 
 | Type        | Example                 | Default       |
 | ----------- |:------------------------|:--------------|
 | ((boolean)) | `true`                  | `false`
 
-This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 
@@ -364,7 +364,7 @@ Something.globalId;
 | ---------- |:--------------|
 | ((string)) | `'Purchase'`  |
 
-The primary purpose of a model's globalId is to determine the name of the global variable that Sails automatically exposes on its behalf-- that is, unless globalization of models has been [disabled](http://sailsjs.com/documentation/concepts/globals?q=disabling-globals).  In Sails, a model's `globalId` is inferred automatically by from its filename.  For example, the globalId of `api/models/Purchase.js` would be `Purchase`.
+The primary purpose of a model's globalId is to determine the name of the global variable that Sails automatically exposes on its behalf-- that is, unless globalization of models has been [disabled](https://sailsjs.com/documentation/concepts/globals?q=disabling-globals).  In Sails, a model's `globalId` is inferred automatically by from its filename.  For example, the globalId of `api/models/Purchase.js` would be `Purchase`.
 
 ```javascript
 assert(Purchase.globalId === 'Purchase');

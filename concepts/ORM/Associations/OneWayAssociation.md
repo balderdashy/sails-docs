@@ -4,7 +4,7 @@
 
 ### Overview
 
-A one way association is where a model is associated with another model.  You could query that model and [populate](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) to get the associated model.  You can't however query the associated model and populate to get the associating model.
+A one way association is where a model is associated with another model.  You could query that model and [populate](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) to get the associated model.  You can't however query the associated model and populate to get the associating model.
 
 ### One Way Example
 
@@ -41,7 +41,7 @@ module.exports = {
 }
 ```
 
-Now that the association is setup, you can [populate](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) the pony association.
+Now that the association is setup, you can [populate](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) the pony association.
 
 ```javascript
 User.find({ name:'Mike' })

@@ -18,7 +18,7 @@ This action adds a reference to some other record (the "foreign", or "child" rec
 
  Parameter                          | Type                                    | Details
 :-----------------------------------| --------------------------------------- |:---------------------------------
- model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
+ model          | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
  id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
  fk | ((string))    | The primary key value (usually id) of the child record to add to this collection.<br/><br/>e.g. `'47'`
@@ -91,7 +91,7 @@ curl http://localhost:1337/employee/7/involvedInPurchases/47 -X "PUT"
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the primary record will receive a notification, where the notification event name is the primary model identity (e.g. `'employee'`), and the message has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the primary record will receive a notification, where the notification event name is the primary model identity (e.g. `'employee'`), and the message has the following format:
 
 ```usage
 id: <the parent record primary key value>,
@@ -113,20 +113,20 @@ For instance, continuing the example above, all clients subscribed to Dolly a.k.
 
 **Clients subscribed to the child record receive an additional notification:**
 
-Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added.
+Assuming `involvedInPurchases` had a `via`, then either `updated` or `addedTo` notifications would also be sent to any clients who were [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to purchase #47, the child record we just added.
 
-> If the `via`-linked attribute on the other side is [also plural](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](http://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
+> If the `via`-linked attribute on the other side is [also plural](https://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) (e.g. `cashiers`), then another `addedTo` notification will be sent. Otherwise, if the `via` [points at a singular attribute](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) (e.g. `cashier`) then the [`updated` notification](https://sailsjs.com/documentation/reference/blueprint-api/update#?socket-notifications) will be sent.
 
 **Finally, a third notification might be sent:**
 
-If adding this purchase to Dolly's collection would "steal" it from another employee's `involvedInPurchases`, then any clients subscribed to that other, stolen-from employee record (e.g. Motoki, employee #12) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
+If adding this purchase to Dolly's collection would "steal" it from another employee's `involvedInPurchases`, then any clients subscribed to that other, stolen-from employee record (e.g. Motoki, employee #12) would receive a `removedFrom` notification. (See [**Blueprints > remove from**](https://sailsjs.com/documentation/reference/blueprint-api/remove-from#?socket-notifications)).
 
 
 ### Notes
 
 > + If you'd like to spend some more time with Dolly, a more detailed walkthrough related to the example above is available [here](https://gist.github.com/mikermcneil/e5a20b03be5aa4e0459b).
-> + This action is for dealing with _plural_ ("collection") attributes.  If you want to set or unset a _singular_ ("model") attribute, just use [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and set the foreign key to the id of the new foreign record (or `null` to clear the association).
-> If you want to completely _replace_ the set of records in the collection with another set, use the [replace](http://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
+> + This action is for dealing with _plural_ ("collection") attributes.  If you want to set or unset a _singular_ ("model") attribute, just use [update](https://sailsjs.com/documentation/reference/blueprint-api/update) and set the foreign key to the id of the new foreign record (or `null` to clear the association).
+> If you want to completely _replace_ the set of records in the collection with another set, use the [replace](https://sailsjs.com/documentation/reference/blueprint-api/replace) blueprint.
 > + The example above assumes "rest" blueprints are enabled, and that your project contains at least an 'Employee' model with attribute: `involvedInPurchases: {collection: 'Purchase', via: 'cashier'}` as well as a `Purchase` model with attribute: `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
