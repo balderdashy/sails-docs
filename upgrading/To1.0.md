@@ -14,7 +14,7 @@ For more about our philosphy behind many of the breaking changes in 1.0, you can
 
 ### Upgrading an existing app using the automated tool
 
-Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g --save sails@^1.0.0` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
+Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g sails@^1.0.0-44` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
 
 ### Upgrading an existing app manually
 
