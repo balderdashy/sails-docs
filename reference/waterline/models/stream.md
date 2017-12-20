@@ -134,13 +134,13 @@ await Comment.stream({ author: 'Bailey Bitterbumps' })
     return next();
   }
 
-  await sails.helpers.sendTemplateEmail({
-    subject: 'Creepy comment alert',
+  await sails.helpers.sendTemplateEmail.with({
     template: 'email-creepy-comment-notification',
     templateData: {
       url: `https://blog.example.com/${comment.fromBlogPost.slug}/comments/${comment.slug}.`
     },
     to: 'authorities@cannedmeat.gov',
+    subject: 'Creepy comment alert'
   });
 
   numReported++;
@@ -193,8 +193,7 @@ await Comment.stream({
     return next();
   }//--•
 
-  await sails.helpers.sendTemplateEmail({
-    subject: 'Creepy comment alert: daily digest',
+  await sails.helpers.sendTemplateEmail.with({
     template: 'email-creepy-comment-digest',
     templateData: {
       urls: _.reduce(someCreepyComments, function (memo, creepyComment){
@@ -203,6 +202,7 @@ await Comment.stream({
       }, '')
     },
     to: 'authorities@cannedmeat.gov',
+    subject: 'Creepy comment alert: daily digest',
   });
 
   numReported += someCreepyComments.length;

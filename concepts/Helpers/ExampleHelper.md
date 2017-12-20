@@ -17,22 +17,30 @@ module.exports = {
 
 
   inputs: {
+
     numUsers: {
       friendlyName: 'Number of users',
       description: 'The maximum number of users to retrieve.',
       type: 'number',
       defaultsTo: 5
     },
+
     activeSince: {
       description: 'Cut-off time to look for logins after, expressed as a JS timestamp.',
       extendedDescription: 'Remember: A _JS timestamp_ is the number of **milliseconds** since [that fateful night in 1970](https://en.wikipedia.org/wiki/Unix_time).',
       type: 'number'
       defaultsTo: 0
     }
+
   },
 
 
   exits: {
+
+    success: {
+      outputFriendlyName: 'Recent users',
+      outputDescription: 'An array of users who recently logged in.',
+    },
 
     noUsersFound: {
       description: 'Could not find any users who logged in during the specified time frame.'
@@ -41,69 +49,81 @@ module.exports = {
   },
 
 
-  fn: function (inputs, exits) {
+  fn: async function (inputs, exits) {
 
     // Run the query
-    User.find({
+    var users = await User.find({
       active: true,
       lastLogin: { '>': inputs.activeSince }
     })
     .sort('lastLogin DESC')
-    .limit(inputs.numUsers)
-    .exec(function(err, users) {
+    .limit(inputs.numUsers);
 
-      // If an error occurred, return through the `error` exit.
-      if (err) {return exits.error(err);}
+    // If no users were found, trigger the `noUsersFound` exit.
+    if (users.length === 0) {
+      throw 'noUsersFound';
+    }
 
-      // If no users were found, trigger the `noUsersFound()` exit.
-      if (users.length === 0) {
-        return exits.noUsersFound();
-      }
+    // Otherwise return the records through the `success` exit.
+    return exits.success(users);
 
-      // Otherwise return the users through the `success` exit.
-      return exits.success(users);
-
-    });
-    
   }
 
 };
 ```
 
+### Usage
+
 To call this helper from app code using the default options (in an action, for example), we would use:
 
 ```javascript
-sails.helpers.getRecentUsers().exec(function (err, users){
-  if (err) { return res.serverError(err); }
-  return res.json(users);
+var users = await sails.helpers.getRecentUsers();
+```
+
+To alter the criteria for the returned users, we could pass in some values:
+
+```javascript
+var users = await sails.helpers.getRecentUsers(50);
+```
+
+Or, for example, to get the 10 most recent users who have logged in since St. Patrick's Day, 2017:
+
+```javascript
+await sails.helpers.getRecentUsers(10, (new Date('2017-03-17')).getTime());
+```
+
+Again, this time using named parameters:
+
+```javascript
+await sails.helpers.getRecentUsers({
+  numUsers: 10,
+  activeSince: (new Date('2017-03-17')).getTime()
 });
 ```
 
-To alter the criteria for the returned users, we would set the options in the initial call to the helper, before `exec()`:
+> Note: These values passed into a helper at runtime are sometimes called **argins**, or options, and they correspond with the key order of the helper's declared input definitions (e.g. `numUsers` and `activeSince`).
+
+
+##### Exceptions
+
+Finally, to handle the `noUsersFound` exit explicitly, rather than simply treating it like any other error, we can use [`.intercept()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept) or [`.tolerate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate):
 
 ```javascript
-// Get ten most recent users since St. Patrick's Day, 2014:
-sails.helpers.getRecentUsers({ numUsers: 10, activeSince: (new Date('2014-03-17')).getTime() }).exec(/*...*/)
+var users = await sails.helpers.getRecentUsers(10)
+.tolerate('noUsersFound', ()=>{
+  // ... handle the case where no users were found. For example:
+  sails.log.verbose(
+    'Worth noting: Just handled a request for active users during a time frame '+
+    'where no users were found.  Anyway, I didn\'t think this was possible, because '+
+    'our app is so cool and popular.  But there you have it.'
+  );
+});
 ```
 
-And finally, to handle the `noUsersFound` exit explicitly, rather than simply treating it like any other error, we can just pass in a switchback:
-
 ```javascript
-sails.helpers.getRecentUsers(/*...*/).exec({
-  error: function(err) { /* ... handle any misc. unexpected errors, e.g.: */ return res.serverError(err); },
-  noUsersFound: function() {
-    /* ... handle the case where no users were found, e.g.:*/
-    sails.log.verbose(
-      'Worth noting: Just handled a request for active users during a time frame '+
-      'where no users were found.  Anyway, I didn\'t think this was possible, because '+
-      'our app is so cool and popular.  But there you have it.'
-    );
-    return res.json([]);
-  },
-  success: function(users) {
-    /* ... handle the usual, expected outcome, e.g.: */
-    return res.json(users);
-  }
+var users = await sails.helpers.getRecentUsers(10)
+.intercept('noUsersFound', ()=>{
+  return new Error('Inconceivably, no active users were found for that timeframe.');
 });
 ```
 
@@ -112,7 +132,7 @@ A key advantage to using helpers comes from the ability to update functionality 
 
 ### Notes
 
-A few more notes about the example `get-recent-users` helper above:
+A few more notes about the example `getRecentUsers()` helper above:
 
 > * Many of the fields such as `description` and `friendlyName` are not strictly required, but are immensely helpful in keeping the code maintainable, especially when sharing the helper across multiple apps.
 > * The `noUsersFound` exit may or may not be helpful, depending on your app.  If you always wanted to perform some specific action whenever no users were returned (for example, redirecting to a different page), the exit would be a good idea.  If on the other hand you simply wanted to tweak some text in a view based on whether or not users were returned, it might be better to just have the `success` exit and check the `length` of the returned array in your action or view code.
