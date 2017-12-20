@@ -186,7 +186,10 @@ For more granular error handling (and for those exceptional cases that aren't _q
 Fortunately, Sails helpers take things a couple of steps further.  See the pages on [.tolerate()](), [.intercept()](), and [special exit signals]() for more information.
 
 
-<!-- See https://github.com/balderdashy/sails-docs/commit/e3e43533d1b359fa4de4b442befc791ee115f21e
+<!--
+For future reference, see https://github.com/balderdashy/sails-docs/commit/61f0039d26021c8abf4873aa675c409372dc2f8f
+for the original content of these docs.
+-->
 
 ##### As much or as little as you need
 
