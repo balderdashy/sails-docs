@@ -186,66 +186,13 @@ For more granular error handling (and for those exceptional cases that aren't _q
 Fortunately, Sails helpers take things a couple of steps further.  See the pages on [.tolerate()](), [.intercept()](), and [special exit signals]() for more information.
 
 
-<!-- ##### Traditional error negotiation
-When invoking a helper, if you pass in a classic Node callback when you call `.exec()` (or if you use `.execSync()`) then the Error instance might have a property called `exit`.  If set, it will be the name of the exit that the helper's implementation (`fn`) called when it exited.  (And if it's not set, it just means that the helper exited via the `error` exit.)
-
-For example, with asynchronous (non-blocking) usage:
-
-```javascript
-sails.helpers.getGravatarUrl(/*...*/).exec(function (err, gravatarUrl) {
-  if (err) {
-    if (err.exit === 'notUnique') { return res.badRequest(); }
-    return res.serverError(err);
-  }
-
-  // ...
-  return res.ok();
-});
-```
-
-Or with _synchronous_ (blocking) usage:
-
-
-```javascript
-var gravatarUrl;
-try {
-  gravatarUrl = sails.helpers.getGravatarUrl(/*...*/).execSync();
-} catch (err) {
-  if (err.exit === 'notUnique') { return res.badRequest(); }
-  return res.serverError(err);
-}
-
-// ...
-return res.ok();
-```
-
-##### Switchback-style error negotiation
-
-For convenience, there's another, even easier way to negotiate errors from an asynchronous helper.  Instead of a Node.js callback, you can simply pass `.exec()` a dictionary of exit handlers (a.k.a. a "switchback"):
-
-```javascript
-sails.helpers.getGravatarUrl({ emailAddress: req.param('email') })
-.exec({
-  error: function(err) { return res.serverError(err); },
-  notUnique: function (err) { return res.badRequest(); },
-  success: function(gravatarUrl) {
-    // ...
-    return res.ok();
-  }
-});
-``` -->
+<!-- See https://github.com/balderdashy/sails-docs/commit/e3e43533d1b359fa4de4b442befc791ee115f21e
 
 ##### As much or as little as you need
 
 While this example usage is kind of trumped-up, it's easy to see a scenario where it's very helpful to rely on custom exits like `notUnique`.  Still, you don't want to have to handle _every_ custom exit _every_ time.  Ideally, you'd only have to mess with handling a custom exit in your userland code if you actually needed it: whether that's to implement a feature of some kind, or even just to improve the user experience or provide a better internal error message.
 
 Luckily, Sails helpers support "automatic exit forwarding".  That means userland code can choose to integrate with _as few or as many custom exits as you like_, on a case by case basis.  In other words, when you're calling a helper, it's OK to completely ignore its custom `notUnique` exit if you don't need it.  That way, your code remains as concise and intuitive as possible.  And if things change, you can always come back and hook some code up to handle the custom exit later.
-
-<!-- In the mean time, when custom exits _aren't_ handled explicitly, the behavior of helpers is still well-defined.  For example, here's a breakdown of what happens (under various usage conditions) when our helper's `fn` triggers its custom "notUnique" exit:
-+ if called using `.exec(function(err){...})` -- i.e. a Node.js-style callback -- then that userland callback function would be triggered with an automatically-generated Error instance as its first argument
-+ if called using `.execSync()`, then since this is synchronous usage, our helper would throw an automatically-generated Error.
-+ if called using `.exec({...})`, a switchback, but where the switchback _does not include an exit handler_ for `notUnique`, then the `error` exit handler would be triggered instead (again, with an automatically-generated Error instance as its first argument).
-+ if called using `.exec({...})`, a switchback that _includes a dedicated exit handler_ for `notUnique`, then that dedicated handler function would be triggered. -->
 
 ### Next steps
 
