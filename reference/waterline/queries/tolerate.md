@@ -1,6 +1,6 @@
 # .tolerate()
 
-Intercept and swallow the specified error, and return a new result value (or `undefined`) instead.
+Tolerate (swallow) the specified error, and return a new result value (or `undefined`) instead.
 
 ```usage
 .tolerate(filter, handler)
