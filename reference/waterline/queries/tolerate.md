@@ -1,6 +1,6 @@
 # .tolerate()
 
-Tolerate (swallow) the specified error, and return a new result value (or `undefined`) instead.
+Tolerate (swallow) the specified error, and return a new result value (or `undefined`) instead.  (Don't throw.)
 
 ```usage
 .tolerate(filter, handler)
@@ -8,7 +8,7 @@ Tolerate (swallow) the specified error, and return a new result value (or `undef
 
 _Or:_
 + `.tolerate(filter)`
-+ `.tolerate(handler)`
++ `.tolerate(handler)` _(to tolerate all errors)_
 
 
 ### Usage
