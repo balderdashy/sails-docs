@@ -22,7 +22,9 @@ _Or:_
 |---|---------------------|---------------------|:------------------------|
 | 1 | err                 | ((Error))           | Your anticipated Error. |
 
-Return a value to replace the Error.
+Return a value that will be used as the return value from the original logic instead of throwing the tolerated error.
+
+> .tolerate() is useful for tolerating a kind of error (or all errors). If you chain on .tolerate(), and it matches the error that occurs, then the underlying logic won't throw. It'll return instead. What it returns is up to you -- it's whatever you return from the function you passed in to .tolerate()
 
 
 
