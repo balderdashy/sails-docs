@@ -8,7 +8,7 @@ Tolerate (swallow) the specified error, and return a new result value (or `undef
 
 _Or:_
 + `.tolerate(filter)`
-
++ `.tolerate(handler)`
 
 
 ### Usage
