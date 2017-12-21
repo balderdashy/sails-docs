@@ -7,7 +7,7 @@ Capture and intercept the specified error, automatically modifying and re-throwi
 ```
 
 _Or:_
-+ `.intercept(handler)`
++ `.intercept(handler)` _(to intercept all errors)_
 
 
 
@@ -20,10 +20,11 @@ _Or:_
 ##### Handler
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------------------|
-| 1 | err                 | ((Error))           | Your anticipated Error. |
+| 1 | err                 | ((Error))           | The anticipated Error being intercepted. |
 
-Return an Error instance or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals).
+Return an Error instance or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) that will be thrown from the original logic instead of throwing the intercepted error.
 
+> .intercept() is for intercepting a certain kind of error (or all errors). If you chain on .intercept(), and it matches the error that occurs, then the underlying logic will throw. But what it throws is up to you -- it's whatever you return from the function you passed in to .intercept()
 
 
 
