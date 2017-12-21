@@ -23,22 +23,6 @@ To use `sails-mongo` in your app:
     }
     ```
 
-<!--
-
-5. _Advanced_: if you don&rsquo;t want a particular model to use a MongoDB ObjectID as its primary key, set the `dontUseObjectIds` flag to `true` in that model file, and set up its primary key attribute manually:
-
-   ```js
-   // api/models/User.js
-   module.exports = {
-     dontUseObjectIds: true,
-     attributes: {
-       id: { type: 'number', columnName: '_id' }, // <-- still need to set `columnName`!
-       name: { type: 'string' },
-       ...etc...
-     }
-   }
-   ```
--->
 
 As with all of the [Sails database adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), you can use any of the [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models) to interact with your models when using `sails-mongo`.  You can also access the lower-level &ldquo;native&rdquo; MongoDB client to send more complex queries, using the [`.manager()` method](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) of the [datastore instance](https://sailsjs.com/documentation/reference/application/sails-get-datastore):
 
