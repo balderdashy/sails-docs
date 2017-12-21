@@ -1,6 +1,6 @@
 # .intercept()
 
-Capture and intercept the specified error, automatically modifying and re-throwing it, or specifying a new Error instead.
+Capture and intercept the specified error, automatically modifying and re-throwing it, or specifying a new Error to be thrown instead.    (Still throws.)
 
 ```usage
 .intercept(filter, handler)
