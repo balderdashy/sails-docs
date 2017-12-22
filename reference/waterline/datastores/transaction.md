@@ -62,7 +62,7 @@ await sails.getDatastore()
 
   // Do the math to subtract from the logged-in user's account balance,
   // and add to the recipient's bank account balance.
-  var myNewBalance = myAccount.balance - inputs.amount');
+  var myNewBalance = myAccount.balance - inputs.amount;
 
   // If this would put the logged-in user's account balance below zero,
   // then abort.  (The transaction will be rolled back automatically.)
