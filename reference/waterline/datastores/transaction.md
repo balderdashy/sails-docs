@@ -42,16 +42,18 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 Subtract the specified amount from one user's balance and add it to another.
 
 ```javascript
+// e.g. in an action:
+
 await sails.getDatastore()
 .transaction(async (db, proceed)=> {
 
-  var myAccount = await BankAccount.findOne({ owner: req.session.userId })
+  var myAccount = await BankAccount.findOne({ owner: this.req.session.userId })
   .usingConnection(db);
   if (!myAccount) {
     return proceed(new Error('Consistency violation: Database is corrupted-- logged in user record has gone missing'));
   }
 
-  var recipientAccount = await BankAccount.findOne({ owner: req.param('recipientId') }).usingConnection(db)
+  var recipientAccount = await BankAccount.findOne({ owner: inputs.recipientId }).usingConnection(db)
   if (!recipientAccount) {
     err = new Error('There is no recipient with that id');
     err.code = 'E_NO_SUCH_RECIPIENT';
@@ -60,7 +62,7 @@ await sails.getDatastore()
 
   // Do the math to subtract from the logged-in user's account balance,
   // and add to the recipient's bank account balance.
-  var myNewBalance = myAccount.balance - req.param('amount');
+  var myNewBalance = myAccount.balance - inputs.amount');
 
   // If this would put the logged-in user's account balance below zero,
   // then abort.  (The transaction will be rolled back automatically.)
@@ -71,29 +73,26 @@ await sails.getDatastore()
   }
 
   // Update the current user's bank account
-  await BankAccount.update({ owner: req.session.userId })
+  await BankAccount.update({ owner: this.req.session.userId })
   .set({
     balance: myNewBalance
   })
   .usingConnection(db);
 
   // Update the recipient's bank account
-  await BankAccount.update({ owner: req.param('recipientId') })
+  await BankAccount.update({ owner: inputs.recipientId })
   .set({
-    balance: recipientAccount.balance + req.param('amount')
+    balance: recipientAccount.balance + inputs.amount
   })
   .usingConnection(db);
 
   return proceed();
 })
-.intercept('E_INSUFFICIENT_FUNDS', (err)=> {
-  return res.badRequest(err);
-})
-.intercept('E_NO_SUCH_RECIPIENT', ()=> {
-  return res.notFound();
-});
+.intercept('E_INSUFFICIENT_FUNDS', ()=>'badRequest')
+.intercept('E_NO_SUCH_RECIPIENT', ()=>'notFound');
 
-return res.ok();
+// respond with a 200:
+return exits.success();
 ```
 
 <docmeta name="displayName" value=".transaction()">
