@@ -44,6 +44,8 @@ Subtract the specified amount from one user's balance and add it to another.
 ```javascript
 // e.g. in an action:
 
+var flaverr = require('flaverr');
+
 await sails.getDatastore()
 .transaction(async (db, proceed)=> {
 
@@ -55,8 +57,7 @@ await sails.getDatastore()
 
   var recipientAccount = await BankAccount.findOne({ owner: inputs.recipientId }).usingConnection(db)
   if (!recipientAccount) {
-    err = new Error('There is no recipient with that id');
-    err.code = 'E_NO_SUCH_RECIPIENT';
+    let err = flaverr('E_NO_SUCH_RECIPIENT', new Error('There is no recipient with that id'));
     return proceed(err);
   }
 
@@ -67,8 +68,7 @@ await sails.getDatastore()
   // If this would put the logged-in user's account balance below zero,
   // then abort.  (The transaction will be rolled back automatically.)
   if (myNewBalance < 0) {
-    err = new Error('Insufficient funds');
-    err.code = 'E_INSUFFICIENT_FUNDS';
+    let err = flaverr('E_INSUFFICIENT_FUNDS', new Error('Insufficient funds'));
     return proceed(err);
   }
 
