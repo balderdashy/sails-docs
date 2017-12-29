@@ -59,7 +59,7 @@ The `config` object is available on the Sails app instance (`sails`).  By defaul
 ```javascript
 // This example checks that, if we are in production mode, csrf is enabled.
 // It throws an error and crashes the app otherwise.
-if (sails.config.environment === 'production' && !sails.config.csrf) {
+if (sails.config.environment === 'production' && !sails.config.security.csrf) {
   throw new Error('STOP IMMEDIATELY ! CSRF should always be enabled in a production deployment!');
 }
 ```
