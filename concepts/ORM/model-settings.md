@@ -55,9 +55,15 @@ Most of the time, you'll define attributes in your individual model definitions 
 
 ```js
 attributes: {
-  id: { type: 'number', autoMigrations: {autoIncrement: true }},
-  createdAt: { type: 'number', autoMigrations: { autoCreatedAt: true }},
-  updatedAt: { type: 'number', autoMigrations: { autoUpdatedAt: true }},
+  id: { 
+    type: 'number', 
+    autoMigrations: {autoIncrement: true }},
+  createdAt: { 
+    type: 'number', 
+    autoMigrations: { autoCreatedAt: true }},
+  updatedAt: { 
+    type: 'number', 
+    autoMigrations: { autoUpdatedAt: true }},
 }
 ```
 
