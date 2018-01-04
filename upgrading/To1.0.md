@@ -158,20 +158,30 @@ Remove any `autoPK`, `autoCreatedAt` and `autoUpdatedAt` properties from your mo
 
 ```javascript
   attributes: {
-    createdAt: { type: 'number', autoCreatedAt: true, },
-    updatedAt: { type: 'number', autoUpdatedAt: true, },
-    id: { type: 'number', autoIncrement: true}, // <-- for SQL databases
+    createdAt: { type: 'number', autoMigrations: {autoCreatedAt: true }},
+    updatedAt: { type: 'number', autoMigrations: {autoUpdatedAt: true }},
+    id: { type: 'number', autoMigrations: {autoIncrement: true}}, // <-- for SQL databases
     id: { type: 'string', columnName: '_id'}, // <-- for MongoDB
   }
 ```
 
+##### The `columnType` has been added and is a property of `autoMigrations`
+To allow for flexibility in automigrations, attributes may also specify a new key, columnType. If specified, the columnType is sent to the appropriate adapter during automigration (in sails-hook-orm). This allows Sails/Waterline models to indicate how the values for individual attributes should be stored at rest vs. how they are validated/coerced when your code calls .create() or .update().
+
+```javascript
+  attributes: {
+    date: { 
+      type: 'string', 
+      autoMigrations: {autoCreatedAt: true, columnType: 'DATETIME' }}
+  }
+```
 ##### The `autoPK` top-level property is no longer supported
 
 This property was formerly used to indicate whether or not Waterline should create an `id` attribute as the primary key for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create any attributes in the background.  Instead, the `id` attribute must be defined explicitly.  There is also a new top-level model property called `primaryKey`, which can be set to the name of the attribute that should be used as the model's primary key.  This value defaults to `id` for every model, so in general you won't have to set it yourself.
 
-##### The `autoUpdatedAt` and `autoCreatedAt` model settings are now attribute-level properties
+##### The `autoUpdatedAt` and `autoCreatedAt` model settings are now `autoMigrations` properties
 
-These properties were formerly used to indicate whether or not Waterline should create `createdAt` and `updatedAt` timestamps for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create these attributes in the background.  Instead, the `createdAt` and `updatedAt` attributes must be defined explicitly if you want to use them.  By adding `autoCreatedAt: true` or `autoUpdatedAt: true` to an attribute definition, you can instruct Waterline to set that attribute to the current timestamp whenever a record is created or updated. Depending on the type of these attributes, the timestamps will be generated in one of two formats:
+These properties were formerly used to indicate whether or not Waterline should create `createdAt` and `updatedAt` timestamps for a model.  Starting with Sails v1.0 / Waterline 0.13, Waterline will no longer create these attributes in the background.  Instead, the `createdAt` and `updatedAt` attributes must be defined explicitly if you want to use them.  By adding `autoMigrations: {autoCreatedAt: true}` or `autoMigrations: {autoUpdatedAt: true}` to an attribute definition, you can instruct Waterline to set that attribute to the current timestamp whenever a record is created or updated. Depending on the type of these attributes, the timestamps will be generated in one of two formats:
   + For `type: 'string'`, these timestamps are stored in the same way as they were in Sails 0.12: as timezone-agnostic ISO 8601 JSON timestamp strings (e.g. `'2017-12-30T12:51:10Z'`).  So if any of your front-end code is relying on the timestamps as strings it's important to set this to `string`.
   + For `type: 'number'`, these timestamps are stored as JS timestamps (the number of milliseconds since Jan 1, 1970 at midnight UTC).
 
