@@ -160,7 +160,7 @@ module.exports = {
     },
     email: {
       type: 'string',
-      unique: true
+      autoMigrations: { unique:true },
     }
   }
 };
@@ -201,7 +201,7 @@ module.exports = {
   attributes: {
     id: {
       type: 'number',
-      unique: true,
+      autoMigrations: { unique:true },
       columnName: 'the_primary_key'
     },
     name: {
@@ -214,7 +214,7 @@ module.exports = {
     },
     email: {
       type: 'string',
-      unique: true,
+      autoMigrations: { unique:true },
       columnName: 'email_address'
     }
   }
@@ -258,7 +258,7 @@ Indicates the type of physical-level column data type to use for an attribute wh
 attributes: {
   placeInLine: {
     type: 'number',
-    columnType: 'float'
+    autoMigrations: { columnType:'FLOAT' }
   }
 }
 ```
@@ -276,7 +276,7 @@ Sets up the attribute as an auto-increment key.  When a new record is added to t
 attributes: {
   placeInLine: {
     type: 'number',
-    autoIncrement: true
+    autoMigrations: { autoIncrement: true }
   }
 }
 ```
@@ -289,7 +289,7 @@ Ensures no two records will be allowed with the same value for the target attrib
 attributes: {
   username: {
     type: 'string',
-    unique: true
+    autoMigrations: { unique:true },
   }
 }
 ```
