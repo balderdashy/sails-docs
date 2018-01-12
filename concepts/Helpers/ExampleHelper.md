@@ -94,10 +94,10 @@ await sails.helpers.getRecentUsers(10, (new Date('2017-03-17')).getTime());
 
 > Note: These values passed into a helper at runtime are sometimes called **argins**, or options, and they correspond with the key order of the helper's declared input definitions (e.g. `numUsers` and `activeSince`).
 
-Again, this time using named parameters:
+Again, chaining `.with()` in order to use named parameters:
 
 ```javascript
-await sails.helpers.getRecentUsers({
+await sails.helpers.getRecentUsers.with({
   numUsers: 10,
   activeSince: (new Date('2017-03-17')).getTime()
 });
