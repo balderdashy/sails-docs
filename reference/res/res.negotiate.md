@@ -4,7 +4,7 @@
 >
 > You should use a [custom response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
 >
-> To handle errors from [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](#) for more details).
+> To handle errors from [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models), check the `name` property of the error (see the [Waterline error reference](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for more details).
 
 Given an error (`err`), attempt to guess which error response should be called (`badRequest`, `forbidden`, `notFound`, or `serverError`) by inspecting the `status` property.  If `err` is not a dictionary, or the `status` property does not match a known HTTP status code, then default to `serverError`.
 
