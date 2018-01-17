@@ -54,7 +54,8 @@ Then specify it as your `adapter` in `config/session.js`:
 ```
 
 The following values are optional, and should only be used if relevant for your Mongo configuration. You can read more about these, and other available options, at [https://github.com/kcbanner/connect-mongo](https://github.com/kcbanner/connect-mongo):
-```
+
+```js
 // Note: in this URL, `user`, `pass` and `port` are all optional.
 url: 'mongodb://user:pass@host:port/database',
 //--------------------------------------------------------------------------
