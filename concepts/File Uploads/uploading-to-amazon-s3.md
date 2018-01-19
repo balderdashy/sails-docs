@@ -8,7 +8,7 @@ With Sails, you can stream file uploads to Amazon S3 with very little additional
 
 First install the [S3 Skipper adapter](https://github.com/balderdashy/skipper-s3):
 ```sh
-$ npm install skipper-s3 --save
+npm install skipper-s3 --save
 ```
 
 Then use it in one of your controllers:
