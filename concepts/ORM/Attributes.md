@@ -100,7 +100,7 @@ attributes: {
 
 ###### primaryKey
 
-Use this attribute as the the primary key for the record. Only one attribute per model can be the `primaryKey`.  Note: This should never be used unless [autoPK](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=autopk) is set to false.
+Use this attribute as the the primary key for the record. Only one attribute per model can be the `primaryKey`.  Note: This should never be used unless [autoPK](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=autopk) is set to false.Primary key can be only of type string.
 
 ```javascript
 attributes: {
