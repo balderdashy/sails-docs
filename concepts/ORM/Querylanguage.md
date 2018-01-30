@@ -209,7 +209,7 @@ Model.find({
 Searches for records using pattern matching with the `%` sign. (Case insensitive.)
 
 ```javascript
-Model.find({ food: { 'like': '%beans' }})
+Model.find({ food: { 'like': '%beans%' }})
 ```
 
 #### 'Date Ranges'
