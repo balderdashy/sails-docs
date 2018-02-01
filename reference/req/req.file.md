@@ -1,6 +1,6 @@
 # req.file()
 
-Build and return a [Skipper Upstream](https://github.com/balderdashy/skipper) representing an incoming multipart file upload from the specified `field`.
+Build and return a [Skipper Upstream](https://github.com/balderdashy/skipper/tree/b0f99c526b6664a2e867e3ef0bafcfff35e6fba2#what-are-upstreams) representing an incoming multipart file upload from the specified `field`.
 
 ```usage
 req.file(field);
@@ -50,8 +50,8 @@ req.file('avatar').upload(function (err, uploadedFiles){
 
 ### Notes
 > + Remember that the client request's **text parameters must be sent first**, before the file parameters.
-> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files). Specifically, an [`Upstream`](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js) is a [Node.js Readable stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) in "object mode", where each object is itself an incoming multipart file upload stream.
-> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/master/lib/Upstream.js#L126), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
+> + `req.file()` supports multiple files sent over the same field, but it's important to realize that, as a consequence, the Upstream it returns is actually a stream (buffered event emitter) of potential binary streams (files). Specifically, an [`Upstream`](https://github.com/balderdashy/skipper/tree/b0f99c526b6664a2e867e3ef0bafcfff35e6fba2#what-are-upstreams) is a [Node.js Readable stream](http://nodejs.org/api/stream.html#stream_class_stream_readable) in "object mode", where each object is itself an incoming multipart file upload stream.
+> + If you prefer to work directly with the Upstream as a stream of streams, you can omit the `.upload()` method and bind "finish" and "error" events (or use `.pipe()`) instead.  [Under the covers](https://github.com/balderdashy/skipper/blob/b0f99c526b6664a2e867e3ef0bafcfff35e6fba2/standalone/Upstream/prototype.upload.js), all `.upload()` is doing is piping the **Upstream** into the specified receiver instance, then running the specified callback when the Upstream emits either a `finish` or `error` event.
 
 
 
