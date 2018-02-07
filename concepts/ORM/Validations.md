@@ -72,13 +72,13 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 |maxLength          | A value that has no more than the configured number of characters. |  | ((string)) |
 |min                | A value that is greater than the configured number. | | ((number)) |
 |minLength          | A value that has at least the configured number of characters. | | ((string)) |
-|notRegex           | A value that **does not** match the configured regular expression. | | ((string)) |
+|notRegex           | A value that **does not** match the configured regular expression. | | ((regex)) |
 |notContains        | A value that does not contain the configured substring. | e.g. `'-haystack-needle-haystack-'` would fail validation against `notContains: 'needle'` | ((string)) |
 |notIn              | A value that **is not in** the configured array. | | ((string)) |
 |notNull            | A value that **is not** equal to `null` | | ((json)) |
 |numeric            | A value that is a string which is parseable as a number. | Note that [while `NaN` is considered a number in JavaScript](https://www.destroyallsoftware.com/talks/wat), that is not true for the purposes of this validation. | ((string)) |
 |required           | A value that is defined; that is, **not `undefined`**. | | ((json)) |
-|regex              | A value that matches the configured regular expression. | | ((string)) |
+|regex              | A value that matches the configured regular expression. | | ((regex)) |
 |truthy             | A value that would be considered truthy if used in a JavaScript `if` statement. | | ((json)) |
 |uppercase          | A value that is uppercase. | | ((string)) |
 |url                | A value that is a URL. | | ((string)) |
