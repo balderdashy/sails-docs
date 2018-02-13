@@ -39,7 +39,7 @@ io.socket.put('/users/9', { occupation: 'psychic' }, function (resData, jwr) {
 
 ### Notes
 > + Remember that you can communicate with _any of your routes_ using socket requests.
-> + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-request) method, or to set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
+> + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-request) method, or to set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
 
 
 

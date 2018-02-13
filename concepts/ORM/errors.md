@@ -11,7 +11,7 @@ try {
 ```
 Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`.
 
-> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](http://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw, since it has no callback.
+> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](https://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw, since it has no callback.
 
 
 ### Negotiating errors
@@ -31,7 +31,7 @@ When using code that interacts with Waterline (usually through model methods) th
 
 ### Usage errors
 
-When an error has `name: 'UsageError'`, this indicates that a Waterline method was used incorrectly, or executed with invalid options (for example, attempting to create a new record that would violate one of your model's [high-level validation rules](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?validation-rules).)
+When an error has `name: 'UsageError'`, this indicates that a Waterline method was used incorrectly, or executed with invalid options (for example, attempting to create a new record that would violate one of your model's [high-level validation rules](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?validation-rules).)
 
 This sort of error can come from any model method.
 

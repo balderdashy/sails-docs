@@ -1,7 +1,7 @@
 # .query()
 
 > **As of Sails v1.0, this method is deprecated.**
-> Instead, please use [`Model.getDatastore().sendNativeQuery()`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query), the new version of this method that standardizes the format of SQL escape bindings, as well as fully supporting `.exec()` and promise-based usage.
+> Instead, please use [`Model.getDatastore().sendNativeQuery()`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query), the new version of this method that standardizes the format of SQL escape bindings, as well as fully supporting `.exec()` and promise-based usage.
 
 Execute a raw SQL query using the specified model's datastore.
 
@@ -75,7 +75,7 @@ Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?', [ 'dog' ] ,function(err
 ```
 
 ### Notes
-> + This method only works with SQL databases.  To get access to the raw MongoDB collection, use [`.native()`](http://sailsjs.com/documentation/reference/waterline-orm/models/native).
+> + This method only works with SQL databases.  To get access to the raw MongoDB collection, use [`.native()`](https://sailsjs.com/documentation/reference/waterline-orm/models/native).
 > + This method **does not** support `.exec()` or `.then()`, and it **does not** return a promise.  If you want to "promisify" `.query()`, have a look at [this](http://stackoverflow.com/questions/21886630/how-to-use-model-query-with-promises-in-sailsjs-waterline).
 
 

@@ -1,6 +1,6 @@
 # .publish()
 
-Broadcast an arbitrary message to socket clients [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) to one or more of this model's [records](http://sailsjs.com/documentation/concepts/models-and-orm).
+Broadcast an arbitrary message to socket clients [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) to one or more of this model's [records](https://sailsjs.com/documentation/concepts/models-and-orm).
 
 ```js
 Something.publish(ids, data, req);
@@ -52,7 +52,7 @@ Something.publish(ids, data, req);
 
   // Subscribe this client socket to Bob-only secrets
   // > See the `.subscribe()` documentation for more info about subscribing to records:
-  // > http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe
+  // > https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe
   io.socket.get('/subscribeToBobSecrets');
 
   // Whenever a `user` event is received, do something.

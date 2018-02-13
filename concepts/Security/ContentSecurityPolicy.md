@@ -14,7 +14,7 @@
 npm install lusca --save --save-exact
 ```
 
-Then add `csp` in [`config/http.js`](http://sailsjs.com/anatomy/config/http-js):
+Then add `csp` in [`config/http.js`](https://sailsjs.com/anatomy/config/http-js):
 
 ```js
 
@@ -72,7 +72,7 @@ Different CSP response headers are supported by different browsers.  For example
 
 ### Additional Resources
 + [Content Security Policy (OWasp)](https://www.owasp.org/index.php/Content_Security_Policy)
-+ Learn more about installing HTTP middleware in [Concepts > Middleware](http://sailsjs.com/documentation/concepts/middleware).
++ Learn more about installing HTTP middleware in [Concepts > Middleware](https://sailsjs.com/documentation/concepts/middleware).
 
 <docmeta name="displayName" value="Content security policy">
 <docmeta name="tags" value="csp,content security policy">

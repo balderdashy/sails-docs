@@ -2,7 +2,7 @@
 
 ### Overview
 
-Sails app instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible to facilitate scalability), events can be very useful when extending Sails (via [hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks) or [adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters)) and in a testing environment.
+Sails app instances inherit Node's [`EventEmitter` interface](https://nodejs.org/api/events.html#events_class_eventemitter), meaning that they can both emit and listen for custom events.  While it is not recommended that you utilize Sails events directly in app code (since your apps should strive to be as stateless as possible to facilitate scalability), events can be very useful when extending Sails (via [hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks) or [adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters)) and in a testing environment.
 
 ### Should I use events?
 
@@ -26,6 +26,6 @@ None of the events are emitted with extra information, so your `eventHandlerFn` 
 | `hook:<hook identity>:loaded` | The hook with the specified identity loaded and ran its `initialize()` method successfully.  |
 
 
-> In addition to `.on()`, Sails also exposes a useful helper function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/master/lib/EVENTS.md#usage) in Sails core for more information.
+> In addition to `.on()`, Sails also exposes a useful utility function called `sails.after()`.  See the [inline documentation](https://github.com/balderdashy/sails/blob/fd2f9b6866637143eda8e908775365ca52fab27c/lib/EVENTS.md#usage) in Sails core for more information.
 
 <docmeta name="displayName" value="Events">

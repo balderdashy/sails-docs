@@ -1,6 +1,6 @@
 # req.url
 
-Like [`req.path`](http://sailsjs.com/documentation/reference/req/req.path.html), but also includes the query string suffix.
+Like [`req.path`](https://sailsjs.com/documentation/reference/req/req.path.html), but also includes the query string suffix.
 
 ```usage
 req.url;

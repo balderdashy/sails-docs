@@ -15,7 +15,7 @@ _Attributes to change should be sent in the HTTP body as form-encoded values or 
 
  Parameter                          | Type                                                    | Details
  ---------------------------------- | ------------------------------------------------------- |:---------------------------------
- model                              | ((string))                                              | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'product'` (in `PATCH /product/5`)
+ model                              | ((string))                                              | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'product'` (in `PATCH /product/5`)
  id                                 | ((string))                                              | The primary key value of the record to update.<br/><br/>e.g. `'5'` (in `PATCH /product/5`)
  *                                 | ((json))                                                 | For `PATCH` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
 
@@ -46,7 +46,7 @@ Change Applejack's hobby to "kickin":
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `user`), and the data &ldquo;payload&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `user`), and the data &ldquo;payload&rdquo; has the following format:
 
 ```
 verb: 'updated',
@@ -81,7 +81,7 @@ For instance, continuing the example above, all clients subscribed to `User` #47
 
 
 
-If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance:
+If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance:
 
 `PATCH /user/47`
 
@@ -91,13 +91,13 @@ If we were reassigning user #47 to store #25, we'd update `store`, which represe
 }
 ```
 
-Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. (See the [add blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
+Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. (See the [add blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
 
 
 
 ### Notes
 
-> + This action can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replace` blueprint action](http://next.sailsjs.com/documentation/reference/blueprint-api/replace).  To modify items in a collection individually, use the [add](http://next.sailsjs.com/documentation/reference/blueprint-api/add-to) or [remove](http://next.sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
+> + This action can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replace` blueprint action](https://sailsjs.com/documentation/reference/blueprint-api/replace).  To modify items in a collection individually, use the [add](https://sailsjs.com/documentation/reference/blueprint-api/add-to) or [remove](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
 > + In previous Sails versions, this action was bound to the `PUT /:model/:id` route.
 
 

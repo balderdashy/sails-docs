@@ -1,6 +1,6 @@
 # .usingConnection()
 
-Specify an existing database connection to use for this [query](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+Specify an existing database connection to use for this [query](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
 .usingConnection(connection);
@@ -10,11 +10,11 @@ Specify an existing database connection to use for this [query](http://sailsjs.c
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |   connection        | ((ref))                                      | An existing database connection obtained using [`.transaction()`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/transaction) or [`.leaseConnection()`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/lease-connection).
+| 1 |   connection        | ((ref))                                      | An existing database connection obtained using [`.transaction()`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/transaction) or [`.leaseConnection()`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/lease-connection).
 
 ### Example
 
-An example of `.usingConnection()` usage can be found in the example for [`.transaction()`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/transaction#?example).
+An example of `.usingConnection()` usage can be found in the example for [`.transaction()`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/transaction#?example).
 
 
 <docmeta name="displayName" value=".usingConnection()">

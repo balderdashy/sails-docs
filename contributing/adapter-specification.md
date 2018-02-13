@@ -54,7 +54,7 @@ Deprecated-- should be moved to the pubsub hook docs:
 
 Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don't always apply.
 
-If query modifiers are enabled, the adapter must support `Model.find()`, as well as the **complete** query interface, or, where it is impossible to do so, at least provide helper notices.  If coverage of the interace is unfinished, it's still not a bad idea to make the adapter available, but it's important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.
+If query modifiers are enabled, the adapter must support `Model.find()`, as well as the **complete** query interface, or, where it is impossible to do so, at least provide good error messages.  If coverage of the interface is unfinished, it's still not a bad idea to make the adapter available, but it's important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.
 
 > All officially supported Sails.js database adapters implement this interface.
 

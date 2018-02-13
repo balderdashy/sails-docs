@@ -1,29 +1,25 @@
 # Helpers
 
-As of version 1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  It also makes it much easier to create documentation for your app.
+As of version 1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  Like actions2, this also makes it much easier to create documentation for your app.
 
 ### Overview
 
-In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](http://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
+In Sails, helpers are the recommended approach for pulling repeated code into a separate file, then reusing that code in various [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers), [custom responses](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses), [command-line scripts](https://www.npmjs.com/package/machine-as-script), [unit tests](https://sailsjs.com/documentation/concepts/testing), or even other helpers. You don't _have_ to use helpers-- in fact you might not even need them right at first.  But as your code base grows, helpers will become more and more important for your app's maintainability.  (Plus, they're really convenient.)
 
 For example, in the course of creating the actions that your Node.js/Sails app uses to respond to client requests, you will sometimes find yourself repeating code in several places.  That can be pretty bug-prone, of course, not to mention annoying.  Fortunately, there's a neat solution: replace the duplicate code with a call to a custom helper:
 
 ```javascript
-sails.helpers.formatWelcomeMessage({ name: 'Bubba' }).exec(function(err, greeting) {
-  if (err) { return res.serverError(err); }
-
-  // `greeting` is now "Hello, Bubba!"
-  sails.log(greeting);
-
-  return res.ok();
-});
+var greeting = await sails.helpers.formatWelcomeMessage('Bubba');
+sails.log(greeting);
+// => "Hello, Bubba!"
 ```
 
-> The example above demonstrates calling a helper from an action, but helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](http://sailsjs.com/documentation/reference/application).
+> Helpers can be called from almost anywhere in your code; as long as that place has access to the [`sails` app instance](https://sailsjs.com/documentation/reference/application).
+
 
 ### How helpers are defined
 
-Here's an example of a small, well-defined helper:
+Here's an example of a simple, well-defined helper:
 
 ```javascript
 // api/helpers/format-welcome-message.js
@@ -35,13 +31,11 @@ module.exports = {
   description: 'Return a personalized greeting based on the provided name.',
 
 
-  sync: true, // See the `Synchronous helpers` documentation later in this document
-
-
   inputs: {
 
     name: {
       type: 'string',
+      example: 'Ami',
       description: 'The name of the person to greet.',
       required: true
     }
@@ -49,82 +43,97 @@ module.exports = {
   },
 
 
-  fn: function (inputs, exits) {
-
-    var greeting = 'Hello, ' + inputs.name + '!';
-    return exits.success(greeting);
-
+  fn: async function (inputs, exits) {
+    var result = `Hello, ${inputs.name}!`;
+    return exits.success(result);
   }
 
 };
 ```
 
-Though simple, this file displays all the characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task with a minimum amount of code.
+Though simple, this file displays several characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task in the simplest way possible.
 
-> Look familiar?  Much like [actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2), helpers follow the [node-machine specification](http://node-machine.org/spec).
+> Look familiar?  Helpers follow the same specification as [shell scripts](https://sailsjs.com/documentation/concepts/shell-scripts) and [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
 
 ##### The `fn` function
 
-The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values) and `exits` (a dictionary of exit functions).  The job of `fn` is to utilize and process the inputs, and then call one of the provided exits to return control back to whatever code called the helper.  Note that as opposed to a typical Javascript function that uses `return` to provide a value to the caller, helpers provide that value (aka the &ldquo;output&rdquo;) by passing it as an argument to one of the exits.
+The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values, or "argins") and `exits` (a dictionary of callback functions).  The job of `fn` is to utilize and process the argins, and then trigger one of the provided exits to return control back to whatever code called the helper.  Note that, as opposed to a typical Javascript function that uses `return` to provide output to the caller, helpers provide that result value by passing it in to `exits.success()`.
 
 ##### Inputs
 
-A helper&rsquo;s _inputs_ are analogous to the parameters of a typical Javascript function: they define the values that the code has to work with.  However, unlike function parameters, inputs are _typed_ and can be _required_.  If a helper is called using inputs of the wrong type, or missing a required input, it will trigger an error.  Thus, helpers are _self-validating_.
+A helper&rsquo;s declared _inputs_ are analogous to the parameters of a typical Javascript function: they define the values that the code has to work with.  However, unlike standard JavaScript function parameters, inputs are validated automatically.  If a helper is called using argins of the wrong type for their corresponding inputs, missing a value for a required input, it will trigger an error.  Thus, helpers are _self-validating_.
 
-Inputs for a helper are defined in the `inputs` dictionary, with each input being composed of, at minimum, a `type` property.  Helper inputs currently support the following types:
+Input for a helper are defined in the `inputs` dictionary.  Each input definition is composed of, at minimum, a `type` property.  Helper inputs support types like:
 
 * `string` - a string value
 * `number` - a number value (both integers and floats are valid)
 * `boolean` - the value `true` or `false`
-* `ref` - a Javascript variable reference.  Technically this can be _any_ value, but typically it refers to an object like a dictionary or an array.
+* `ref` - a Javascript variable reference.  This can be _any_ value, including dictionaries, arrays, functions, streams, and more.
 
-You can provide a default value for an input by setting its `defaultsTo` property.
+These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes).
+So as you might expect, you can provide a default value for an input by setting its `defaultsTo` property.  Or make it required by setting `required: true`.  You can even use `allowNull` and almost any of the higher-level validation rules like `isEmail`.
 
-> These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes).
+
+The arguments you pass in when calling a helper correspond with the order of keys in that helper's declared `inputs`.  Alternatively, if you'd rather pass in argins by name, use `.with()`:
+
+```javascript
+var greeting = await sails.helpers.formatWelcomeMessage.with({ name: 'Bubba' });
+```
 
 ##### Exits
 
-Exits describe the different possible outcomes a helper can have.  Every helper automatically supports the `error` and `success` exits.  Additionally, you are encouraged to expose custom exits to allow userland code that calls your helper to handle specific error cases.
+Exits describe all the different possible outcomes a helper can have, good or bad.  Every helper automatically supports the `error` and `success` exits.
+When calling a helper, if its `fn` triggers `success`, then it will return normally.  But if its `fn` triggers some exit _other than_ `success`, then it will throw an Error (unless [`.tolerate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate) was used.)
 
-> Custom exits for a helper are defined in the `exits` dictionary, with each exit definition being composed of, at minimum, a `description` property.  For more advanced options, see the [full specification](http://node-machine.org/spec).
+When necessary, you can also expose other custom exits (known as "exceptions"), allowing the userland code that calls your helper to handle specific, exceptional cases.
+This helps guarantee your code&rsquo;s transparency and maintainability by making it painless and easy to declare and negotiate errors.
 
-This helps guarantee your code&rsquo;s maintainability by providing strong conventions.  For example, a helper called &ldquo;Create user&rdquo; could expose a custom `usernameConflict` exit.  The helper's `fn` might trigger this special exit if the provided username already exists, allowing your userland code to handle this specific scenario after calling the helper without muddying up your result values or resorting to extra `try/catch/switch` blocks.
+> Exceptions (custom exits) for a helper are defined in the `exits` dictionary.  It is a good practice to provide all custom exceptions with an explicit `description` property.
+
+
+Imagine a helper called &ldquo;Invite new user&rdquo; which exposes a custom `emailAddressInUse` exit.  The helper's `fn` might trigger this custom exit if the provided email already exists, allowing your userland code to handle this specific scenario-- without muddying up your result values or resorting to extra `try/catch` blocks.
+
+For example, if this helper was called from within an action that has its own "badRequest" exit:
 
 ```javascript
-sails.helpers.createUser({ username: 'bubba123', email: 'bubba@hawtmail.com' }).exec({
-  error: function(err) { return res.serverError(err); },
-  usernameConflict: function() { return res.status(409).badRequest(); },
-  success: function(newUserId) {
-    return res.ok();
-  }
-});
+var newUserId = sails.helpers.inviteNewUser('bubba@hawtmail.com')
+.intercept('emailAddressInUse', 'badRequest');
 ```
 
-> Internally, your helper's `fn` is responsible for triggering one of its exits internally (e.g. `exits.usernameConflict('foo')`).  If your helper sends back a result through the exit (e.g. `'foo'`), then that result will be passed back to the exit handler.
-> Note: For every exit **other than `success`**,  any result will be automatically wrapped in a new Javascript Error instance (if it isn&rsquo;t already one) before being outputted.  And if a non-success exit is triggered _without a result_, Sails will use the exit's predefined description to create an appropriate Error automatically.
+> The fancy-looking shorthand above is just a quicker way to write:
+>
+> ```javascript
+> .intercept('emailAddressInUse', (err)=>{
+>   return 'badRequest';
+> });
+> ```
+>
+> As for [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept)?  It's just another shortcut so you're not forced to write custom try/catch blocks and negotiate these errors by hand all the time.
+
+Internally, your helper's `fn` is responsible for triggering one of its exits-- either by throwing a [special exit signal]() or by invoking an exit callback (e.g. `exits.success('foo')`).  If your helper sends back a result through the success exit (e.g. `'foo'`), then that will be the return value of the helper.
+
+> Note: For non-success exits, Sails will use the exit's predefined description to create an appropriate JavaScript Error instance automatically, if needed.
 
 ##### Synchronous helpers
 
-By default, all helpers are considered _asynchronous_.  While this is a safe default assumption, it's not always true-- and when you know for certain that's the case, it's nice to avoid adding another level of indentation.  Sails helpers support this using the `sync` property.
+By default, all helpers are considered _asynchronous_.  While this is a safe default assumption, it's not always true-- and when you know for certain that's the case, you can optimize performance by telling Sails that's the case using the `sync: true` property.
 
-If you know all of the code inside your helper's `fn` is definitely synchronous, you can set the top-level `sync` property to `true`, which allows userland code to call the helper using [`execSync()`](http://sailsjs.com/documentation/concepts/helpers#?synchronous-usage) instead of `exec()`.
+If you know all of the code inside your helper's `fn` is definitely synchronous, you can set the top-level `sync` property to `true`, which allows userland code to [call the helper without `await`](https://sailsjs.com/documentation/concepts/helpers#?synchronous-usage).
+(You must also remember to change `fn: async function` to `fn: function`.)
 
-When your helper is invoked with `execSync()`, then any result data that your `fn`'s code passes in to `exits.success()` is _returned_ instead of being provided as an argument to the callback.  And, when its being called synchronously, if your helper's `fn` calls any exit other than `success`, then it will throw an Error.
-
-> Note: calling an asynchronous helper with `execSync()` (either because `sync: true` was not used, or the `fn` code was not really synchronous) will trigger an error.
+> Note: Calling an asynchronous helper without `await` _will not work_.
 
 
 ##### Accessing `req` in a helper
 
-If you&rsquo;re designing a helper that parses request headers, specifically for use from within actions, then you'll want to take advantage of pre-existing methods and/or properties of the [request object](http://sailsjs.com/documentation/reference/request-req).  The simplest way to allow the code in your action to pass along `req` to your helper is to define a `type: 'ref'` input:
+If you&rsquo;re designing a helper that parses request headers, specifically for use from within actions, then you'll want to take advantage of pre-existing methods and/or properties of the [request object](https://sailsjs.com/documentation/reference/request-req).  The simplest way to allow the code in your action to pass along `req` to your helper is to define a `type: 'ref'` input:
 
 ```javascript
 inputs: {
 
   req: {
-    friendlyName: 'Request',
     type: 'ref',
-    description: 'A reference to the request object (req).',
+    description: 'The current incoming request (req).',
     required: true
   }
 
@@ -135,7 +144,7 @@ inputs: {
 Then, to use your helper in your actions, you might write code like this:
 
 ```javascript
-var headers = sails.helpers.parseMyHeaders({ req: req }).execSync();
+var headers = await sails.helpers.parseMyHeaders(req);
 ```
 
 ### Generating a helper
@@ -150,106 +159,50 @@ This will create a file `api/helpers/foo-bar.js` that can be accessed in your co
 
 ### Calling a helper
 
-Whenever a Sails app loads, it finds all of the files in `api/helpers`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Any helper can then be invoked from your code, simply by calling it with a dictionary of values (one key for each input), and providing a standard Node.js callback function:
+Whenever a Sails app loads, it finds all of the files in `api/helpers/`, compiles them into functions, and stores them in the `sails.helpers` dictionary using the camel-cased version of the filename.  Any helper can then be invoked from your code, simply by calling it with `await`, and providing some argin values:
 
 ```javascript
-sails.helpers.formatWelcomeMessage({ name: 'Dolly' }).exec(function(err, result) {
-  if (err) { /*...handle error and return...*/ return res.serverError(err); }
-  /* ...process result... */
-  sails.log('Ok it worked!  The result is:', result);
-  return res.ok();
-});
+var result = await sails.helpers.formatWelcomeMessage('Dolly');
+sails.log('Ok it worked!  The result is:', result);
 ```
 
-> This is the same usage you might already be familiar with from [model methods](sailsjs.com/documentation/concepts/models-and-orm/models) like `.create()`.
+> This is roughly the same usage you might already be familiar with from [model methods](sailsjs.com/documentation/concepts/models-and-orm/models) like `.create()`.
 
 ##### Synchronous usage
 
-If a helper declares the `sync` property, you can also call it like this:
+If a helper declares the `sync` property, you can also call it like this (without `await`):
 
 ```javascript
-var greeting;
-try {
-  greeting = sails.helpers.formatWelcomeMessage({ name: 'Timothy' }).execSync();
-} catch (e) { /*... handle error ...*/ return res.serverError(err); }
-
-/* ...process result... */
-return res.ok();
+var greeting = sails.helpers.formatWelcomeMessage('Timothy');
 ```
 
-If something goes wrong, `.execSync()` handles exceptions by throwing an Error.  So remember: if you're using `.execSync()` from within some other asynchronous callback, be sure you handle the possibility of it throwing.  If you're ever unsure about whether you can safely call `.execSync()`, you can always just wrap it in a `try`/`catch` and handle the error in the `catch`.
+But before you remove `await`, just make sure the helper is actually synchronous.  (Otherwise, without `await`, it'll never actually execute!)
+
 
 ### Handling exceptions
 
 For more granular error handling (and for those exceptional cases that aren't _quite_ errors, even) you may be used to setting some kind of error code, then sniffing it out.  This approach works fine, but it can be time consuming and hard to keep track of.
 
-Fortunately, Sails helpers take things a couple of steps further.
-
-##### Traditional error negotiation
-When invoking a helper, if you pass in a classic Node callback when you call `.exec()` (or if you use `.execSync()`) then the Error instance might have a property called `exit`.  If set, it will be the name of the exit that the helper's implementation (`fn`) called when it exited.  (And if it's not set, it just means that the helper exited via the `error` exit.)
-
-For example, with asynchronous (non-blocking) usage:
-
-```javascript
-sails.helpers.getGravatarUrl(/*...*/).exec(function (err, gravatarUrl) {
-  if (err) {
-    if (err.exit === 'invalidEmail') { return res.badRequest(); }
-    return res.serverError(err);
-  }
-
-  // ...
-  return res.ok();
-});
-```
-
-Or with _synchronous_ (blocking) usage:
+Fortunately, Sails helpers take things a couple of steps further.  See the pages on [.tolerate()](), [.intercept()](), and [special exit signals]() for more information.
 
 
-```javascript
-var gravatarUrl;
-try {
-  gravatarUrl = sails.helpers.getGravatarUrl(/*...*/).execSync();
-} catch (err) {
-  if (err.exit === 'invalidEmail') { return res.badRequest(); }
-  return res.serverError(err);
-}
-
-// ...
-return res.ok();
-```
-
-##### Switchback-style error negotiation
-
-For convenience, there's another, even easier way to negotiate errors from an asynchronous helper.  Instead of a Node.js callback, you can simply pass `.exec()` a dictionary of exit handlers (a.k.a. a "switchback"):
-
-```javascript
-sails.helpers.getGravatarUrl({ emailAddress: req.param('email') })
-.exec({
-  error: function(err) { return res.serverError(err); },
-  invalidEmail: function (err) { return res.badRequest(); },
-  success: function(gravatarUrl) {
-    // ...
-    return res.ok();
-  }
-});
-```
+<!--
+For future reference, see https://github.com/balderdashy/sails-docs/commit/61f0039d26021c8abf4873aa675c409372dc2f8f
+for the original content of these docs.
+-->
 
 ##### As much or as little as you need
 
-While this example usage is kind of trumped-up, it's easy to see a scenario where it's very helpful to rely on custom exits like `invalidEmail`.  Still, you don't want to have to handle _every_ custom exit _every_ time.  Ideally, you'd only have to mess with handling a custom exit in your userland code if you actually needed it: whether that's to implement a feature of some kind, or even just to improve the user experience or provide a better internal error message.
+While this example usage is kind of trumped-up, it's easy to see a scenario where it's very helpful to rely on custom exits like `notUnique`.  Still, you don't want to have to handle _every_ custom exit _every_ time.  Ideally, you'd only have to mess with handling a custom exit in your userland code if you actually needed it: whether that's to implement a feature of some kind, or even just to improve the user experience or provide a better internal error message.
 
-Luckily, Sails helpers support "automatic exit forwarding".  That means userland code can choose to integrate with _as few or as many custom exits as you like_, on a case by case basis.  In other words, when you're calling a helper, it's OK to completely ignore its custom `invalidEmail` exit if you don't need it.  That way, your code remains as concise and intuitive as possible.  And if things change, you can always come back and hook some code up to handle the custom exit later.
-
-In the mean time, when custom exits _aren't_ handled explicitly, the behavior of helpers is still well-defined.  For example, here's a breakdown of what happens (under various usage conditions) when our helper's `fn` triggers its custom "invalidEmail" exit:
-+ if called using `.exec(function(err){...})` -- i.e. a Node.js-style callback -- then that userland callback function would be triggered with an automatically-generated Error instance as its first argument
-+ if called using `.execSync()`, then since this is synchronous usage, our helper would throw an automatically-generated Error.
-+ if called using `.exec({...})`, a switchback, but where the switchback _does not include an exit handler_ for `invalidEmail`, then the `error` exit handler would be triggered instead (again, with an automatically-generated Error instance as its first argument).
-+ if called using `.exec({...})`, a switchback that _includes a dedicated exit handler_ for `invalidEmail`, then that dedicated handler function would be triggered.
+Luckily, Sails helpers support "automatic exit forwarding".  That means userland code can choose to integrate with _as few or as many custom exits as you like_, on a case by case basis.  In other words, when you're calling a helper, it's OK to completely ignore its custom `notUnique` exit if you don't need it.  That way, your code remains as concise and intuitive as possible.  And if things change, you can always come back and hook some code up to handle the custom exit later.
 
 ### Next steps
 
-+ [Explore a practical example](http://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
-+ Since 2014, the Sails community has created hundreds of MIT-licensed, open-source helpers for many common use cases.  [Have a look!](http://node-machine.org/machinepacks)
-+ [Click here](https://sailsjs.com/support) to ask a question about helpers or see more tutorials and examples.
++ [Explore a practical example](https://sailsjs.com/documentation/concepts/helpers/example-helper) of a helper in a Node.js/Sails app.
++ `sails-hook-organics` (which is bundled in the "Web App" template) comes with several free, open-source, and MIT-licensed helpers for many common use cases.  [Have a look!](https://npmjs.com/package/sails-hook-organics)
++ [Click here](https://sailsjs.com/support) if you're unsure about helpers, or if you want to see more tutorials and examples.
 
 <docmeta name="displayName" value="Helpers">
+<docmeta name="nextUpLink" value="/documentation/concepts/deployment">
+<docmeta name="nextUpName" value="Deployment">

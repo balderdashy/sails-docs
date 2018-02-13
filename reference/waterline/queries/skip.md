@@ -1,6 +1,6 @@
 # .skip()
 
-Indicate a number of records to skip before returning the results from executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+Indicate a number of records to skip before returning the results from executing a [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
 .skip(numRecordsToSkip)

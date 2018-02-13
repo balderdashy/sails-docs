@@ -2,7 +2,7 @@
 
 ### Overview
 
-The majority of the time, you will interact with Sails through its [command-line interface](http://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](http://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](http://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
+The majority of the time, you will interact with Sails through its [command-line interface](https://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](https://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](https://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
 
 ### Creating a Sails app programmatically
 
@@ -16,7 +16,7 @@ var myOtherSailsApp = new Sails();
 
 ### Configuring, starting and stopping Sails apps programmatically
 
-Once you have a reference to a new Sails app, you can use [`.load()`](http://sailsjs.com/documentation/reference/application/sails-load) or [`.lift()`](http://sailsjs.com/documentation/reference/application/sails-lift) to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
+Once you have a reference to a new Sails app, you can use [`.load()`](https://sailsjs.com/documentation/reference/application/sails-load) or [`.lift()`](https://sailsjs.com/documentation/reference/application/sails-lift) to start it.  Both methods take two arguments: a dictionary of configuration options, and a callback function that will be run after the Sails app starts.
 
 > When Sails is started programmatically, it will still use the `api`, `config` and other folders underneath the current working directory to load controllers, models, and configuration options.  One notable exception is that `.sailsrc` files will _not_ be loaded when starting apps this way.
 
@@ -26,7 +26,7 @@ Once you have a reference to a new Sails app, you can use [`.load()`](http://sai
 
 > To load configuration options from `.sailsrc` files and environment variables, use the `rc` module that Sails makes available via `require('sails/accessible/rc')`.
 
-The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](http://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](http://sailsjs.com/documentation/reference/application/sails-request) method of the loaded app.
+The difference between `.load()` and `.lift()` is that `.lift()` takes the additional steps of (1) running the app's [bootstrap](https://sailsjs.com/documentation/reference/configuration/sails-config-bootstrap), if any, and (2) starting an HTTP server on the port configured via `sails.config.port` (1337 by default).  This allows you to make HTTP requests to the lifted app.  To make requests to an app started with `.load()`, you can use the [`.request()`](https://sailsjs.com/documentation/reference/application/sails-request) method of the loaded app.
 
 
 ##### .lift()
@@ -150,13 +150,15 @@ mySailsApp.lower(function(err) {
 
 ##### Using `moduleDefinitions` to add actions, models and more
 
+> **Warning:**  Declarative loading of modules with the `moduleDefinitions` setting is **currently experimental**, and may undergo breaking changes _even between major version releases_.  Before using this setting, be sure your project's Sails dependency is pinned to an exact version (i.e. no `^`).
+
 Whenever a Sails app starts, it typically loads and initializes all modules stored in `api/*` (e.g. models from `api/models`, policies from `api/policies`, etc.).  You can add _additional_ modules by specifying them in the runtime configuration passed in as the first argument to `.load()` or `.lift()`, using the `moduleDefinitions` key.  This is mainly useful when running tests.
 
 The following Sails modules can be added programmatically:
 
   Module type          | Config key        | Details
  :------------------   |:----------        |:-------
- Actions | `controllers.moduleDefinitions` | A dictionary mapping [standalone action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) paths to action definitions ([classic](http://sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) or [Actions2](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).
+ Actions | `controllers.moduleDefinitions` | A dictionary mapping [standalone action](https://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions) paths to action definitions ([classic](https://sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) or [Actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2)).
  Helpers | `helpers.moduleDefinitions` | A dictionary mapping helper names to helper definitions.
  Models  | `orm.moduleDefinitions.models` | A dictionary mapping model identities (lower-cased model names) to model definitions.
  Policies | `policies.moduleDefinitions` | A dictionary mapping policy names (e.g. `isAdmin`) to policy functions.
@@ -164,6 +166,6 @@ The following Sails modules can be added programmatically:
 
 ### Reference
 
-The full reference for Sails' programmatic interface is available in [**Reference > Application**](http://sailsjs.com/documentation/reference/application).
+The full reference for Sails' programmatic interface is available in [**Reference > Application**](https://sailsjs.com/documentation/reference/application).
 
 <docmeta name="displayName" value="Programmatic usage">

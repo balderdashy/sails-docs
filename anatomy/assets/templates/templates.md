@@ -1,6 +1,6 @@
 # assets/templates/
 
-Client-side HTML templates are important prerequisites for certain types of modern, rich client applications built for browsers; particularly [SPAs](https://en.wikipedia.org/wiki/Single-page_application). To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require that you load templates client-side; completely separate from your traditional [server-side views](http://sailsjs.com/documentation/concepts/views).  Out of the box, new Sails apps support the best of both worlds.
+Client-side HTML templates are important prerequisites for certain types of modern, rich client applications built for browsers; particularly [SPAs](https://en.wikipedia.org/wiki/Single-page_application). To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require that you load templates client-side; completely separate from your traditional [server-side views](https://sailsjs.com/documentation/concepts/views).  Out of the box, new Sails apps support the best of both worlds.
 
 Whether or not you use client-side templates in your app and where you put them is, of course, completely up to you.  But for the sake of convention, new apps generated with Sails include a `templates/` folder for you by default.
 
@@ -25,7 +25,7 @@ For example, here are a few things you could do:
 - Internationalize your client-side templates using a server-side stringfile before they're served.
 
 
-For more information, check out the conceptual documentation on the [default Grunt tasks](http://sailsjs.com/documentation/concepts/assets/default-tasks) that make up Sails' asset pipeline.
+For more information, check out the conceptual documentation on the [default Grunt tasks](https://sailsjs.com/documentation/concepts/assets/default-tasks) that make up Sails' asset pipeline.
 
 <docmeta name="displayName" value="templates">
 

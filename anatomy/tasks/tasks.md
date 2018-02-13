@@ -40,16 +40,20 @@ You can modify, omit, or replace any of these Grunt tasks to fit your requiremen
 
 ### Do I have to use Grunt?
 
-Nope! To disable Grunt integration in Sails, just delete your Gruntfile or [disable the Grunt hook](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).
+Nope!  The Sails core team has used Grunt on real-world projects for upwards of 4 years now, and overall it's been a fantastic tool.  But we realize it's not for everyone.  To disable Grunt integration in Sails, just delete your Gruntfile or [disable the Grunt hook](https://sailsjs.com/documentation/concepts/assets/disabling-grunt).
+
+> You can also [generate a new Sails app `--without=grunt`](https://sailsjs.com/documentation/reference/command-line-interface/sails-new).
 
 
 ### What if I'm not building a web frontend?
 
 That's ok! A core tenant of Sails is client-agnosticism-- it's especially designed for building APIs used by all sorts of clients; native Android/iOS/Cordova, serverside SDKs, etc.
 
-You can completely disable Grunt by following the instructions [here](http://sailsjs.com/documentation/concepts/assets/disabling-grunt).
+You can completely disable Grunt by following the instructions [here](https://sailsjs.com/documentation/concepts/assets/disabling-grunt).
 
 If you still want to use Grunt for other purposes, but don't want any of the default web front-end stuff, just delete your project's `assets` folder and remove the front-end oriented tasks from the `grunt/register` and `grunt/config` folders.  You can also run `sails new myCoolApi --no-frontend` to omit the `assets` folder and front-end-oriented Grunt tasks for future projects.  You can also replace your `sails-generate-frontend` module with alternative community generators, or create your own.  This allows `sails new` to create the boilerplate for native iOS apps, Android apps, Cordova apps, SteroidsJS apps, etc.
+
+> If you know you'll _never_ need any kind of web frontend, you can also [generate a new Sails app with `--no-frontend` at all](https://sailsjs.com/documentation/reference/command-line-interface/sails-new).
 
 
 ### More info

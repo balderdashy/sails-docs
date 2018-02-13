@@ -1,6 +1,6 @@
 # .exec()
 
-Execute a Waterline [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+Execute a Waterline [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
 .exec(function (err, result) {
@@ -44,7 +44,7 @@ Zookeeper.find().exec((err, zookeepers)=>{
 
 
 ### Notes
-> + If you don't run `.exec()` or use promises, your query will not execute. For help using `.exec()` with model methods like `.find()`, read more about the [chainable query object](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+> + If you don't run `.exec()` or use promises, your query will not execute. For help using `.exec()` with model methods like `.find()`, read more about the [chainable query object](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 
 

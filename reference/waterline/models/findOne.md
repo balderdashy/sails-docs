@@ -10,7 +10,7 @@ var record = await Something.findOne(criteria);
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching this record in the database.  (This criteria must never match more than one record.) `findOne` queries do not support pagination using `skip` or `limit`.
+| 1 |    criteria         | ((dictionary))                               | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching this record in the database.  (This criteria must never match more than one record.) `findOne` queries do not support pagination using `skip` or `limit`.
 
 ##### Result
 

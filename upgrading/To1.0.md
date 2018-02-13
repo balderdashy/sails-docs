@@ -6,9 +6,15 @@ Sails v1.0 is here!  Check out our [blog post](TODO) for a high-level overview o
 >
 > Some of the links in this guide will not work, since the 1.0 docs aren't on the Sails website yet.  But you can check out the new docs by looking at the 1.0 branch of [sails-docs](http://github.com/balderdashy/sails-docs/tree/1.0) on GitHub.
 
+### A note about breaking changes
+While working on this version of Sails, a lot of the decisions we made favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you're finished, there's be a much better chance that the features you're using in Sails are things that its author and maintainers understand thoroughly and use almost every day.
+
+For more about our philosphy behind many of the breaking changes in 1.0, you can read Mike McNeil's in-depth explanation [here](https://gitter.im/balderdashy/sails?at=5a1d8fcd3a80a84b5b907099).
+
+
 ### Upgrading an existing app using the automated tool
 
-Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g --save sails@^1.0.0` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
+Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g sails@^1.0.0-44` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
 
 ### Upgrading an existing app manually
 
@@ -16,7 +22,7 @@ The checklist below covers the changes most likely to affect the majority of app
 
 If your app still has errors or warnings on startup after following this checklist, or if you're seeing something unexpected, head back to this document and take a look further down the page.  (One of the guides for covering various app components will probably be applicable.)
 
-> We've done a lot of work to make the upgrade process as seemless as possible, particularly when it comes to the errors and warnings you'll see on the console.  But if you're stumped, or if you have lingering questions about any of the changes below, feel free to [drop by the Sails community Gitter channel](http://sailsjs.com/support).  (If your company is using Sails Flagship, you can also chat directly with the Sails core team [here](https://flagship.sailsjs.com/ask)).
+> We've done a lot of work to make the upgrade process as seemless as possible, particularly when it comes to the errors and warnings you'll see on the console.  But if you're stumped, or if you have lingering questions about any of the changes below, feel free to [drop by the Sails community Gitter channel](https://sailsjs.com/support).  (If your company is using Sails Flagship, you can also chat directly with the Sails core team [here](https://flagship.sailsjs.com/ask)).
 
 ### tl;dr checklist: things you simply _must_ do when upgrading to version 1.0
 
@@ -43,15 +49,15 @@ Sails v1 introduces [custom builds](https://github.com/balderdashy/sails/pull/35
 
 
 ##### Step 2: Update configuration
-Sails v1 comes with several improvements to how your app is configured.  For example, your automatic install of lodash and async can now be customized to any version you like, and view engine configuration syntax has been normalized to be consistent with the approach in Express v4+.  But by far the biggest change to configuration is related to one of the biggest new features in Sails v1: [datastores](http://sailsjs.com/documentation/reference/waterline-orm/datastores).  To make sure you correctly upgrade the configuration for your database(s) and other settings, be sure to carefully read through the steps below and apply the necessary changes.
+Sails v1 comes with several improvements to how your app is configured.  For example, your automatic install of lodash and async can now be customized to any version you like, and view engine configuration syntax has been normalized to be consistent with the approach in Express v4+.  But by far the biggest change to configuration is related to one of the biggest new features in Sails v1: [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores).  To make sure you correctly upgrade the configuration for your database(s) and other settings, be sure to carefully read through the steps below and apply the necessary changes.
 
 * **Update your `config/globals.js` file** (unless your app has `sails.config.globals` set to `false`)
   + Set `models` and `sails` to have boolean values (`true` or `false`)
   + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
 * **Comment out any database configuration your aren&rsquo;t using** in `config/connections.js`.  Unlike previous versions, Sails 1.0 will load _all_ database adapters that are referenced in config files, regardless of whether they are actually used by a model.  See the [migration guide section on database configuration](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration) for more info.
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
-* **If your app relies on [action shadow routes](http://sailsjs.com/documentation/concepts/blueprints blueprint-routes#?action-routes)** (where every custom controller action is automatically mapped to a route), you&rsquo;ll need to update your `config/blueprints.js` file and set `actions` to `true`.  This setting is now `false` by default.
-* **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](http://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](http://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
+* **If your app relies on [action shadow routes](https://sailsjs.com/documentation/concepts/blueprints blueprint-routes#?action-routes)** (where every custom controller action is automatically mapped to a route), you&rsquo;ll need to update your `config/blueprints.js` file and set `actions` to `true`.  This setting is now `false` by default.
+* **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your `api` or `config` folders and subfolders contain any non-source files**, they&rsquo;ll need to be moved.  The exception is for Markdown (.md) and text (.txt) files, which will continue to be ignored.  Sails will attempt to read all other files in those folders as code, allowing for more flexibility in choosing a Javascript dialect (see the notes about CoffeeScript and TypeScript above).
 
@@ -59,8 +65,8 @@ Sails v1 comes with several improvements to how your app is configured.  For exa
 Besides getting expanded to include a new endpoint, there also are a couple of minor (but breaking) changes to the blueprint API that might require you to make changes to your client-side code.
 
 * **If your app uses blueprint routes**, then be aware that a couple of implicit "shadow" routes have had their HTTP method (a.k.a. verb) changed:
-  + the RESTful blueprint route address for [**add**](http://sailsjs.com/documentation/reference/blueprint-api/add-to) has changed from `POST` to `PUT`.
-  + the RESTful blueprint route address for [**update**](http://sailsjs.com/documentation/reference/blueprint-api/update) has changed from `PUT` to `PATCH`.
+  + the RESTful blueprint route address for [**add**](https://sailsjs.com/documentation/reference/blueprint-api/add-to) has changed from `POST` to `PUT`.
+  + the RESTful blueprint route address for [**update**](https://sailsjs.com/documentation/reference/blueprint-api/update) has changed from `PUT` to `PATCH`.
 * **If your app relies on the default socket notifications from blueprint actions**, be aware that there have been some performance-related upgrades that change the structure of these messages somewhat:
   + Sails no longer publishes separate `addedTo` notifications, one for each new member of a collection.  Instead, they're now rolled up into a single notification, and the message now contains an array of ids (`addedIds`) instead of just one.
   + Sails no longer publishes separate `removedFrom` notifications, one for each former member of a collection. Sails rolls them up into a single notification, and the message now contains an array of ids (`removedIds`) instead of just one.
@@ -73,10 +79,10 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 * **If your app relies on using the `.add()`, `.remove()`, and `.save()` methods to modify collections**, you will need to update them to use the new [.addToCollection](https://sailsjs.com/documentation/reference/waterline/models/addToCollection), [.removeFromCollection](https://sailsjs.com/documentation/reference/waterline/models/removeFromCollection), and [.replaceCollection](https://sailsjs.com/documentation/reference/waterline/models/replaceCollection) model methods.
 * **Waterline queries will now rely on the database for case sensitivity.** This means in most adapters your queries will now be case-sensitive where as before they were not. This may have unexpected consequences if you are used to having case insensitive queries. For more info on how to manage this for databases such as MySQL see the [case sensitivity docs](https://sailsjs.com/documentation/concepts/models-and-orm/models#?case-sensitivity).
 * **Waterline no longer supports nested creates or updates**, and this change extends to the related blueprints.  If your app relies on these features, see the [migration guide section on nested creates and updates](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?nested-creates-and-updates) for more info.
-* **If your app sets a model attribute to `null`** using `.create()`, `.findOrCreate()` or `.update()`, you&rsquo;ll need to change the type of that attribute to `json`, or use the base value for the existing attribute type instead of `null` (e.g. `0` for numbers).  See [the validations docs](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?null-and-empty-string) for more info.
-* **The `create` blueprint response is now fully populated**, just like responses from `find`, `findOne`, `update` and `destroy`.  To suppress records from being populated, add a `parseBlueprintOptions` to your blueprints config or to a specific route.  See the [blueprints configuration reference](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
-* **If you're using `createEach`** to insert large numbers of rows into a database, keep in mind that the Sails 1.0-compatible versions of most adapters now optimize the `createEach` method to use a single query, instead of using one query per row.  Depending on your database, per-request data size limits may apply.  See the [notes at the bottom of the `.createEach()` reference page](http://sailsjs.com/documentation/reference/waterline-orm/models/create-each#?notes) for more info.
-* **The `size` property for attributes** is no longer supported.  Instead, you may indicate column size using [the `columnType` property](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype).
+* **If your app sets a model attribute to `null`** using `.create()`, `.findOrCreate()` or `.update()`, you&rsquo;ll need to change the type of that attribute to `json`, or use the base value for the existing attribute type instead of `null` (e.g. `0` for numbers).  See [the validations docs](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?null-and-empty-string) for more info.
+* **The `create` blueprint response is now fully populated**, just like responses from `find`, `findOne`, `update` and `destroy`.  To suppress records from being populated, add a `parseBlueprintOptions` to your blueprints config or to a specific route.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
+* **If you're using `createEach`** to insert large numbers of rows into a database, keep in mind that the Sails 1.0-compatible versions of most adapters now optimize the `createEach` method to use a single query, instead of using one query per row.  Depending on your database, per-request data size limits may apply.  See the [notes at the bottom of the `.createEach()` reference page](https://sailsjs.com/documentation/reference/waterline-orm/models/create-each#?notes) for more info.
+* **The `size` property for attributes** is no longer supported.  Instead, you may indicate column size using [the `columnType` property](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype).
 
 
 
@@ -84,16 +90,16 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 
 The points above cover the majority of upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0.  But since every app is different, it's a good idea to read through the rest of the points below before you dive back in.  Not all of these points will necessarily apply to your app, but some might.
 
-* **Several `req.options` properties related to blueprints are no longer supported.**  Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
-* **The `defaultLimit` and `populate` blueprint configuration options are no longer supported.** Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
+* **Several `req.options` properties related to blueprints are no longer supported.**  Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
+* **The `defaultLimit` and `populate` blueprint configuration options are no longer supported.** Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 * **The `.findOne()` query method no longer supports `sort` and `limit` modifiers, and will throw an error if the given criteria match more than one record**.  If you want to find a single record using anything besides a `unique` attribute (like the primary key) as criteria, use `.find(<criteria>).limit(1)` instead (keeping in mind that this will return an array of one item).
 * **`autoPk`, `autoCreatedAt` and `autoUpdatedAt`** are no longer supported as top-level model properties.  See the [migration guide section on model config changes](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-model-configuration) for more info.
-* **Dynamic finders** (such as `User.findById()`) are no longer added to your models automatically.  You can implement these yourself as [custom model methods](http://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
+* **Dynamic finders** (such as `User.findById()`) are no longer added to your models automatically.  You can implement these yourself as [custom model methods](https://sailsjs.com/documentation/concepts/models-and-orm/models#?custom-model-methods).
 * **Model Instance Methods** are no longer supported. This allows records returned from find queries to be plain JavaScript objects instead of model record instances.
-* **Custom `.toJSON()`** instance methods are no longer supported.  Instead, add a [`customToJSON` method](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) to the model class (i.e. outside of the `attributes` dictionary).  See the [model settings documentation](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) for more info.
-* **The `.toObject()` instance method** is no longer added to every record.  When implementing [`customToJSON`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) for a model, be sure to clone the record using `_.omit()`, `_.pick()` or `_.clone()`.
+* **Custom `.toJSON()`** instance methods are no longer supported.  Instead, add a [`customToJSON` method](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) to the model class (i.e. outside of the `attributes` dictionary).  See the [model settings documentation](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings) for more info.
+* **The `.toObject()` instance method** is no longer added to every record.  When implementing [`customToJSON`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) for a model, be sure to clone the record using `_.omit()`, `_.pick()` or `_.clone()`.
 * **`autoUpdatedAt` timestamps can now be manually updated** in calls to `.update()` (previously, the passed-in attribute value would be ignored).  The previous behavior faciliated the use of `.save()`, which is no longer supported.  Now, you can update the `updatedAt` if you need to (but generally you should let Sails do this for you!)
-* **`beforeValidate` and `afterValidate` lifecycle callbacks no longer exist**. Use one of the [many other lifecycle callbacks](http://sailsjs.com/documentation/concepts/models-and-orm/lifecycle-callbacks) to tap into the query.
+* **`beforeValidate` and `afterValidate` lifecycle callbacks no longer exist**. Use one of the [many other lifecycle callbacks](https://sailsjs.com/documentation/concepts/models-and-orm/lifecycle-callbacks) to tap into the query.
 * **`afterDestroy` lifecycle callback now receives a single record**. It has been normalized to work the same way as the `afterUpdate` callback and call the function once for each record that has been destroyed rather than once with all the destroyed records.
 * **Many resourceful pubsub methods have changed** (see the PubSub section below for the full list).  If your app only uses the automatic RPS functionality provided by blueprints (and doesn&rsquo;t call RPS methods directly), no updates are required.
 * **The `.find()` model method no longer automatically coerces constraints that are provided for unrecognized attributes**.  For example, if you execute `Purchase.find({ amount: '12' })`, e.g. via blueprints (http://localhost:1337/purchase?amount=12), and there is no such "amount" attribute, then even if the database contains a record with the numeric equivalent (`12`), it will not be matched.  (This is only relevant when using MongoDB and sails-disk.)  If you are running into problems because of this, either define the attribute as a number or (if you're using blueprints) use an explicit `where` clause instead (e.g. `http://localhost.com:1337/purchase?where={"amount":12}`).
@@ -101,17 +107,17 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **Blueprint action shadow routes no longer include `/:id?`** at the end -- that is, if you have a `UserController.js` with a `tickle` action, you will no longer get a `/user/tickle/:id?` route (instead, it will be just `/user/tickle`).  Apps relying on those routes should add them manually to their `config/routes.js` file.
 * **`sails.getBaseUrl`**, deprecated in v0.12.x, has been removed.  See the [v0.12 docs for `getBaseUrl`](http://0.12.sailsjs.com/documentation/reference/application/sails-get-base-url) for more info and why it was removed and how you should replace it.
 * **`req.params.all()`**, deprecated in v0.12.x, has been removed.  Use `req.allParams()` instead.
-* **`sails.config.dontFlattenConfig`**, deprecated in v0.12.x, has been removed.  See the [original notes about `dontFlattenConfig`](http://sailsjs.com/documentation/upgrading/to-v-0-11#?config-files-in-subfolders) for details.
+* **`sails.config.dontFlattenConfig`**, deprecated in v0.12.x, has been removed.  See the [original notes about `dontFlattenConfig`](https://sailsjs.com/documentation/upgrading/to-v-0-11#?config-files-in-subfolders) for details.
 * **The order of precedence for `req.param()` and `req.allParams()` has changed.**  It is now consistently path > body > query (that is, url path params override request body params, which override query string params).
-* **`req.validate()`** has been removed.  Use [`actions2`](http://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2) instead.
+* **`req.validate()`** has been removed.  Use [`actions2`](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2) instead.
 * **The default `res.created()` response has been removed.**  If you&rsquo;re calling `res.created()` directly in your app, and you don't have an `api/responses/created.js` file, you&rsquo;ll need to create one.
- + On a related note, the [Blueprint create action](http://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
+ + On a related note, the [Blueprint create action](https://sailsjs.com/documentation/reference/blueprint-api/create) will now return a 200 status code upon success, instead of 201.
 * **The default `notFound` and `serverError` responses no longer accept a `pathToView` argument.** They will only attempt to serve a `404` or `500` view.  If you need to be able to call these responses with different views, you can customize the responses by adding `api/responses/notFound.js` or `api/responses/serverError.js` files to your app.
 * **The default `badRequest` or `forbidden` responses no longer display views**.  If you don&rsquo; already have `api/responses/badRequest.js` and `api/responses/forbidden.js` file, you&rsquo;ll need add them yourself and write custom code if you want them to display view files.
-* **The <a href="https://www.npmjs.com/package/connect-flash" target="_blank">`connect-flash`</a> middleware has been removed** (so `req.flash()` will no longer be available by default).  If you wish to continue using `req.flash()`, run `npm install --save connect-flash` in your app folder and [add the middleware manually](http://sailsjs.com/documentation/concepts/middleware).
+* **The <a href="https://www.npmjs.com/package/connect-flash" target="_blank">`connect-flash`</a> middleware has been removed** (so `req.flash()` will no longer be available by default).  If you wish to continue using `req.flash()`, run `npm install --save connect-flash` in your app folder and [add the middleware manually](https://sailsjs.com/documentation/concepts/middleware).
 * **The `POST /:model/:id` blueprint RESTful route has been removed.**  If your app is relying on this route, you&rsquo;ll need to add it manually to `config/routes.js` and bind it to a custom action.
 * **The `handleBodyParserError` middleware has been removed** -- in its place, the <a href="https://www.npmjs.com/package/skipper" target="_blank">Skipper body parser</a> now has its own `onBodyParserError` method.
-  + If you have customized the [middleware order](http://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.
+  + If you have customized the [middleware order](https://sailsjs.com/documentation/concepts/middleware#?adding-or-overriding-http-middleware), you&rsquo;ll need to remove `handleBodyParserError` from the array.
   + If you've overridden `handleBodyParserError`, you&rsquo;ll need to instead override `bodyParser` with your own customized version of Skipper, including your error-handling logic in the `onBodyParserError` option.
 * **The `methodOverride` middleware has been removed.** If your app utilizes this middleware:
   + `npm install --save method-override`
@@ -119,17 +125,17 @@ The points above cover the majority of upgrade issues that Sails contributors ha
   + add `methodOverride: require('method-override')()` to `sails.config.http.middleware`.
 * **The `router` middleware is no longer overrideable.**  The Express 4 router is used for routing both external and internal (aka &ldquo;virtual&rdquo;) requests.  It&rsquo;s still important to have a `router` entry in `sails.config.http.middleware.order`, to delimit which middleware should be added _before_ the router, and which should be added after.
 * **The query modifiers `lessThan`, `lessThanOrEqual`, `greaterThan`, and `greaterThanOrEqual` have been removed**. Use the shorthand versions instead. i.e. `<`, `<=`, `>`, `>=`.
-* **The [`add`](http://sailsjs.com/documentation/reference/blueprint-api/add-to) and [`remove`](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) blueprint actions** now require that the primary key of the child record to add or remove be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
-* **The [`destroy`](http://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action** now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
-* **The `sails.config.session.routesDisabled` setting has changed** to `sails.config.session.isSessionDisabled()`, a function.  See the [`config/session.js` docs](http://sailsjs.com/documentation/reference/configuration/sails-config-session) for more info on configuring `isSessionDisabled()`.
+* **The [`add`](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and [`remove`](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) blueprint actions** now require that the primary key of the child record to add or remove be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
+* **The [`destroy`](https://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action** now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
+* **The `sails.config.session.routesDisabled` setting has changed** to `sails.config.session.isSessionDisabled()`, a function.  See the [`config/session.js` docs](https://sailsjs.com/documentation/reference/configuration/sails-config-session) for more info on configuring `isSessionDisabled()`.
 * **The experimental &ldquo;switchback-style&rdquo; usage for Waterline methods is no longer supported**.  Only function callbacks may be used with Waterline model methods.
 * **The experimental `create` auto-migration scheme is no longer supported**.  It is highly recommended that you use a migration tool such as [Knex](http://knexjs.org/#Migrations) to handle migrations of your production database.
 * **The experimental `forceLoadAdapter` datastore setting is no longer supported**.  Instead, all adapters referenced in `config/datastores.js` (formerly `config/connections.js`) are automatically loaded whenever Sails lifts.
 * **The experimental `usage` route option has been removed.**  It is recommended that you perform any route parameter validation in your controller code.
 * **The experimental &ldquo;associated-item&rdquo; blueprint shadow routes have been removed.** These were routes like `GET /user/1/pets/2`, whose functionality can be replicated by simply using the much-clearer route `GET /pets/2`.
-* **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](http://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more info.
+* **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](https://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more info.
 * **The ordering of attributes** in the internal representation of model classes has changed (association attributes are now sorted at the bottom).  This has the effect of causing tables created using `migrate: 'alter'` to have their columns in a different order than in previous versions of Waterline, so be aware of this if column ordering is important in your application.  As a reminder, auto-migrations are intended to help you design your schema as you build your app.  They are not guaranteed to be consistent regarding any details of your physical database columns besides setting the column name, type (including character set / encoding if specified) and uniqueness.
-* **Using `_config` to link a controller to a model** will no longer work.  This was never a supported feature, but it was used in some projects to change the URLs that were mapped to the blueprint actions for a model.  Please use [`restPrefix`](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?properties) instead.
+* **Using `_config` to link a controller to a model** will no longer work.  This was never a supported feature, but it was used in some projects to change the URLs that were mapped to the blueprint actions for a model.  Please use [`restPrefix`](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?properties) instead.
 
 ### Changes to database configuration
 
@@ -140,9 +146,9 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 
 ### Nested creates and updates
 
-* The [`.create()`](http://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.add()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find) model methods no longer support creating a new &ldquo;child&rdquo; record to link immediately to a new or existing parent.  For example, given a `User` model with a singular association to an `Animal` model through an attribute called `pet`, it is not possible to set `pet` to a dictionary representing values for a brand new `Animal` (aka a &ldquo;nested create&rdquo;).  Instead, create the new `Animal` first and use its primary key to set `pet` when creating the new `User`.
-* Similarly, the [create](http://sailsjs.com/documentation/reference/blueprint-api/create), [update](http://sailsjs.com/documentation/reference/blueprint-api/update) and [add](http://sailsjs.com/documentation/reference/blueprint-api/add-to) blueprint actions no longer support nested creates.
-* The [`.update()`](http://sailsjs.com/documentation/reference/waterline-orm/models/update) model method and its associated [blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/update) no longer support replacing an entire plural association.  If a record is linked to one or more other records via a [&ldquo;one-to-many&rdquo;](http://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [&ldquo;many-to-many&rdquo;](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association and you wish to link it to an entirely different set of records, use the [`.replaceCollection()` model method](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) or the [replace blueprint action](http://sailsjs.com/documentation/reference/blueprint-api/replace).
+* The [`.create()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.add()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find) model methods no longer support creating a new &ldquo;child&rdquo; record to link immediately to a new or existing parent.  For example, given a `User` model with a singular association to an `Animal` model through an attribute called `pet`, it is not possible to set `pet` to a dictionary representing values for a brand new `Animal` (aka a &ldquo;nested create&rdquo;).  Instead, create the new `Animal` first and use its primary key to set `pet` when creating the new `User`.
+* Similarly, the [create](https://sailsjs.com/documentation/reference/blueprint-api/create), [update](https://sailsjs.com/documentation/reference/blueprint-api/update) and [add](https://sailsjs.com/documentation/reference/blueprint-api/add-to) blueprint actions no longer support nested creates.
+* The [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update) model method and its associated [blueprint action](https://sailsjs.com/documentation/reference/blueprint-api/update) no longer support replacing an entire plural association.  If a record is linked to one or more other records via a [&ldquo;one-to-many&rdquo;](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) or [&ldquo;many-to-many&rdquo;](https://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association and you wish to link it to an entirely different set of records, use the [`.replaceCollection()` model method](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) or the [replace blueprint action](https://sailsjs.com/documentation/reference/blueprint-api/replace).
 
 ### Changes to model configuration
 
@@ -211,7 +217,7 @@ Article.update({
 
 ### Changes to Waterline criteria usage
 * As of Sails v1.0 / Waterline 0.13, for performance, criteria passed in to Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case.)
-* Aggregation clauses (`sum`, `average`, `min`, `max`, and `groupBy`) are no longer supported in criteria.  Instead, see new model methods [.sum()](http://sailsjs.com/documentation/reference/waterline-orm/models/sum) and [.avg()](http://sailsjs.com/documentation/reference/waterline-orm/models/avg).
+* Aggregation clauses (`sum`, `average`, `min`, `max`, and `groupBy`) are no longer supported in criteria.  Instead, see new model methods [.sum()](https://sailsjs.com/documentation/reference/waterline-orm/models/sum) and [.avg()](https://sailsjs.com/documentation/reference/waterline-orm/models/avg).
 * Changes to limit and skip:
   + `limit: 0` **no longer does the same thing as `limit: undefined`**.  Instead of matching ∞ results, it now matches 0 results.
   + Avoid specifying a limit of < 0.  It is still ignored, and acts like `limit: undefined`, but it now logs a deprecation warning to the console.
@@ -246,7 +252,7 @@ You should use:
 New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files, but apps migrating from earlier versions can keep their existing files as long as they perform the following upgrades:
 
 * Change `module.exports.cors` to `module.exports.security.cors` in `config/cors.js`
-* Change CORS config settings names to match the newly documented names in [Reference > Configuration > sails.config.security](http://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors)
+* Change CORS config settings names to match the newly documented names in [Reference > Configuration > sails.config.security](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors)
 * Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`.  This value is now simply `true` or `false`; no other CSRF options are supported (see below).
 * `sails.config.csrf.routesDisabled` is no longer supported -- instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
 
@@ -300,7 +306,7 @@ getRenderFn: function() {
 }
 ```
 
-Note that the [built-in support for layouts](http://sailsjs.com/documentation/concepts/views/layouts) still works for the default EJS views, but layout support for other view engines (e.g. Handlebars or Ractive) is not bundled with Sails 1.0.
+Note that the [built-in support for layouts](https://sailsjs.com/documentation/concepts/views/layouts) still works for the default EJS views, but layout support for other view engines (e.g. Handlebars or Ractive) is not bundled with Sails 1.0.
 
 ### Resourceful PubSub
 
@@ -318,7 +324,7 @@ Note that the [built-in support for layouts](http://sailsjs.com/documentation/co
   * `.unwatch()`
   * `.message()`
 
-In place of the removed methods, you should use the new `.publish()` method, or the low-level [sails.sockets](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include the ID yourself as part of the data if it&rsquo;s important.  For example, in Sails v0.12.x, doing `User.message(123, {owl: 'hoot'})` would have resulted in the following notification being broadcast to clients:
+In place of the removed methods, you should use the new `.publish()` method, or the low-level [sails.sockets](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include the ID yourself as part of the data if it&rsquo;s important.  For example, in Sails v0.12.x, doing `User.message(123, {owl: 'hoot'})` would have resulted in the following notification being broadcast to clients:
 
 ```
 {
@@ -341,12 +347,13 @@ By contrast, in Sails v1.0, `User.publish(123, {owl: 'hoot'})` will simply broad
 
 ### Replacing custom blueprints
 
-While it is no longer possible to add a file to `api/blueprints` that will automatically be used as a blueprint action for all models, this behavior can be replicated in several ways.
+Out of the box, it is no longer possible to add a file to `api/blueprints/` that will automatically be used as a blueprint action for all models.  However, this behavior can be replicated easily by installing [`sails-hook-custom-blueprints`](https://www.npmjs.com/package/sails-hook-custom-blueprints).
 
-One way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
+<!--
+Another way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
 
-Another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of attributes as inputs (see [Concepts > Helpers](http://sailsjs.com/documentation/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
-
+Yet another option would be to add a `api/helpers/create.js` helper which takes a model name and dictionary of values as inputs (see [Concepts > Helpers](https://sailsjs.com/documentation/concepts/helpers)), and call that helper from the related action for each model (e.g. `UserController.create`).
+-->
 
 ### Express 4
 
@@ -376,7 +383,7 @@ being sure to insert `passportInit` and `passportSession` into your `middleware.
 
 ### Response methods
  * `.jsonx()` is deprecated. If you have files in `api/responses` that you haven't customized at all, you can just delete them and let the Sails default responses work their magic.  If you have files in `api/responses` that you&rsquo;d like to keep, replace any occurences of `res.jsonx()` in those files with `res.json()`.
- * `res.negotiate()` is deprecated. Use `res.serverError()`, `res.badRequest()`, or a [custom response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
+ * `res.negotiate()` is deprecated. Use `res.serverError()`, `res.badRequest()`, or a [custom response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) instead.
 
 
 ### i18n

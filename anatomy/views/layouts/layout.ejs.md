@@ -1,6 +1,6 @@
-# views/layout.ejs
+# views/layouts/layout.ejs
 
-This [Embedded JavaScript file](http://embeddedjs.com/) acts as the default layout for all server side views rendered by your app.
+This [Embedded JavaScript file](http://ejs.co/) acts as the default layout for all server side views rendered by your app.
 
 Before one of your custom views is sent to the client, it is injected into this file.  It is this file that is actually sent to the client.
 

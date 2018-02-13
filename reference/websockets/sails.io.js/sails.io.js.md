@@ -26,7 +26,7 @@ In the browser, all that is required to use `sails.io.js` is to include the libr
 <script type="text/javascript" src="/js/dependencies/sails.io.js"></script>
 ```
 
-and then use `io.socket` as a global variable in subsequent inline or external scripts.  For detailed instructions and examples of everyday usage, see [`io.socket`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket).
+and then use `io.socket` as a global variable in subsequent inline or external scripts.  For detailed instructions and examples of everyday usage, see [`io.socket`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket).
 
 
 
@@ -78,7 +78,7 @@ Any configuration which may be provided as an HTML attribute may alternately be 
 
 As of Sails v0.12.x, only the most basic configuration options may be set using HTML attributes.  If you want to configure any of the other options not mentioned above, you will need to interact with `io.sails` programmatically.  Fortunately, the approach described above is really just a convenient shortcut for doing just that!  Heres how it works:
 
-When you load it on the page in a `<script>` tag, the `sails.io.js` library waits for one cycle of the event loop before _automatically connecting_ a socket (if `io.sails.autoConnect` is enabled; [see below](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect)).  This is to allow any properties that you specify on `io.sails` to be set before the socket begins connecting.  However, in order to ensure that the `io.sails` properties are read before connection, you should put the code setting those properties immediately after the `<script>` tag that includes `sails.io.js`:
+When you load it on the page in a `<script>` tag, the `sails.io.js` library waits for one cycle of the event loop before _automatically connecting_ a socket (if `io.sails.autoConnect` is enabled; [see below](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?autoconnect)).  This is to allow any properties that you specify on `io.sails` to be set before the socket begins connecting.  However, in order to ensure that the `io.sails` properties are read before connection, you should put the code setting those properties immediately after the `<script>` tag that includes `sails.io.js`:
 
 ```html
 <script src="/js/dependencies/sails.io.js"></script>
@@ -98,11 +98,11 @@ Normally, the socket client always connects to the server where the script is be
 
 ### Advanced usage
 
-You can also create and connect client sockets manually using [`io.sails.connect`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method).  This returns an instance of the `SailsSocket`. For more information about rarer / more advanced use cases such as connecting multiple sockets, see [SailsSocket](http://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket).
+You can also create and connect client sockets manually using [`io.sails.connect`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method).  This returns an instance of the `SailsSocket`. For more information about rarer / more advanced use cases such as connecting multiple sockets, see [SailsSocket](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket).
 
 ##### Advanced configuration
 
-The `sails.io.js` library and its individual client sockets have a handful of configuration options.  Global configuration lives in [`io.sails`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).  This includes the ability to disable the "eager" socket and default settings for new sockets.  Individual sockets can also be configured when they are manually connected-- see [`io.sails.connect()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method) for more information on that.
+The `sails.io.js` library and its individual client sockets have a handful of configuration options.  Global configuration lives in [`io.sails`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).  This includes the ability to disable the "eager" socket and default settings for new sockets.  Individual sockets can also be configured when they are manually connected-- see [`io.sails.connect()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?the-connect-method) for more information on that.
 
 
 
@@ -129,7 +129,7 @@ Under the covers, the socket client (`sails.io.js`) emits Socket.io messages wit
 
 ##### How do I tell my Sails app _not_ to connect a socket with the current browser session?
 
-By default, a socket connection will be linked to the current browser session (if any) using the `cookie` header that is sent with the initial socket handshake.  In order to turn off this behavior, add `nosession=true` to the [`query` property](http://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/properties#?advanced-properties) of the socket before it connects; for example:
+By default, a socket connection will be linked to the current browser session (if any) using the `cookie` header that is sent with the initial socket handshake.  In order to turn off this behavior, add `nosession=true` to the [`query` property](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/properties#?advanced-properties) of the socket before it connects; for example:
 
 ```
 <script src="/js/dependencies/sails.io.js"></script>

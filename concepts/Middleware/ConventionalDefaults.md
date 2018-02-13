@@ -5,11 +5,11 @@ Sails comes bundled with a suite of conventional HTTP middleware, ready to use. 
  HTTP Middleware Key       | Purpose
  :------------------------ |:------------
  _cookieParser_ *          | Parses the cookie header into a clean object for use in subsequent middleware and your application code.
- _session_ *               | Creates or loads a unique session object (`req.session`) for the requesting user agent based on their cookies and your [session configuration](http://sailsjs.com/documentation/reference/sails.config/sails.config.session.html).
+ _session_ *               | Creates or loads a unique session object (`req.session`) for the requesting user agent based on their cookies and your [session configuration](https://sailsjs.com/documentation/reference/sails.config/sails.config.session.html).
  **bodyParser**            | Parses parameters and binary upstreams (for streaming file uploads) from the HTTP request body using [Skipper](https://github.com/balderdashy/skipper).
  **compress**              | Compresses response data using gzip/deflate. See [`compression`](https://github.com/expressjs/compression) for details.
  **poweredBy**             | Attaches an `X-Powered-By` header to outgoing responses.
- _router_ *                | This is where the bulk of your app logic gets applied to any given request.  In addition to running `"before"` handlers in hooks (e.g. csrf token enforcement) and some internal Sails logic, this routes requests using your app's explicit routes (in [`sails.config.routes`](http://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html)) and/or route blueprints.
+ _router_ *                | This is where the bulk of your app logic gets applied to any given request.  In addition to running `"before"` handlers in hooks (e.g. csrf token enforcement) and some internal Sails logic, this routes requests using your app's explicit routes (in [`sails.config.routes`](https://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html)) and/or route blueprints.
  _www_ *                   | Serves static files- usually images, stylesheets, scripts- in your app's "public" folder (configured in [`sails.config.paths`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md), conventionally [`.tmp/public/`](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md)) using Connect's [static middleware](http://www.senchalabs.org/connect/static.html).
  **favicon**               | Serves the [browser favicon](http://en.wikipedia.org/wiki/Favicon) for your app if one is provided as `/assets/favicon.ico`.
 

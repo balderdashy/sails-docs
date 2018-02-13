@@ -2,6 +2,8 @@
 
 This section of the documentation runs through one way you can go about testing your Sails application.  There are countless test frameworks and assertion libraries for Sails and Node.js -- pick one that fits your needs.
 
+> There is no official strategy for testing in the Sails framework, and this page is a collaborative, community-driven guide that has not been thoroughly vetted by Sails core team members.  If you run across something confusing or incorrect, feel free to jump in and send a pull request.
+
 ### Preparation
 
 For our example test suite, we'll use [mocha](http://mochajs.org/).
@@ -10,7 +12,7 @@ For our example test suite, we'll use [mocha](http://mochajs.org/).
 npm install mocha --save-dev
 ```
 
-Before you start building your test cases, you should first organize your `test/` directory structure.  Once again, when it comes to automated testing, there are several different organizational approaches you might choose.  For this example, we'll go about it as follows:
+Before you start building your test cases, organize your `test/` directory structure.  Once again, when it comes to automated testing, there are several different organizational approaches you might choose.  For this example, we'll go about it as follows:
 
 ```bash
 ./myApp
@@ -79,15 +81,15 @@ after(function(done) {
 
 ##### mocha.opts
 
-This file is optional.  You can use it to hold mocha configuration as described here: [mocha.opts](https://mochajs.org/#mochaopts)
+This file is optional.  You can use it as an alternative to command-line options for specifying [custom mocha configuration](https://mochajs.org/#mochaopts).
 
-The default timeout for test cases in Mocha is 2 seconds. Increase the timeout value in mocha.opts to make sure your app lifts with enough time to finish your first test.  For example:
+There is one option that is worth paying a bit of extra attention to.  The default timeout in Mocha is 2 seconds.  This works fine for most test cases, but depending on how often you have your tests lifting and lowering Sails, you may need to increase the timeout value in mocha.opts to make sure Sails lifts in time to finish your first test.  For example:
 
 ```bash
 --timeout 10000
 ```
 
-> **Note**: If you are writing your tests in CoffeeScript be sure to add these lines to your `mocha.opts`.
+> **Note**: If you are writing your tests in a transpiled language such as CoffeeScript (`.coffee` files instead of `.js` files), you'll need to take an extra step to configure Mocha accordingly.  For example, you might add these lines to your `mocha.opts`:
 >
 > ```bash
 > --require coffee-script/register
@@ -173,7 +175,7 @@ In order to run your test using mocha, you'll have to use `mocha` in the command
 
 ##### Using `npm test` to run your test
 
-To avoid typing the mocha command, like stated before (especially when calling lifecycle.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts dictionary, add a `test` key and type this as its value `mocha test/lifecycle.test.js test/integration/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (especially when calling lifecycle.test.js) and using `npm test` instead, you can modify your package.json file. On the scripts dictionary, add a `test` key and type this as its value `mocha test/lifecycle.test.js test/integration/**/*.test.js` like this:
 
 ```json
   "scripts": {
@@ -200,12 +202,12 @@ If you'd like to have a system automatically run your tests every time you push 
 
 ### Load testing
 
-A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help with setting up your Sails app to be production-ready and scalable, see [Scalability](http://sailsjs.com/documentation/concepts/deployment/scalability).  For additional help or more specific questions, click [here](http://sailsjs.com/support).
+A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help with setting up your Sails app to be production-ready and scalable, see [Scalability](https://sailsjs.com/documentation/concepts/deployment/scalability).  For additional help or more specific questions, click [here](https://sailsjs.com/support).
 
 
 ### Optimizing performance
 
-Usually, the scalability and overall performance of your app is more important than the performance and latency of any given individual request to a particular endpoint.  So rather than focusing on one piece of code in isolation, we recommend starting with [the basics](http://sailsjs.com/documentation/concepts/deployment/scaling) -- for most apps, that's good enough.  But for some use cases (e.g. serving ads, or apps with very computationally-intensive functionality), individual request latency may be important from the get-go.
+Usually, the scalability and overall performance of your app is more important than the performance and latency of any given individual request to a particular endpoint.  So rather than focusing on one piece of code in isolation, we recommend starting with [the basics](https://sailsjs.com/documentation/concepts/deployment/scaling) -- for most apps, that's good enough.  But for some use cases (e.g. serving ads, or apps with very computationally-intensive functionality), individual request latency may be important from the get-go.
 
 For testing the performance of particular chunks of code, or for benchmarking the latency of individual requests to particular endpoints, a great option is [benchmark.js](https://www.npmjs.com/package/benchmark).  Not only is it a robust library that supports high-resolution timers & returns statistically significant results, it also works great with Mocha out of the box.
 

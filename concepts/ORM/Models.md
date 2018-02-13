@@ -18,7 +18,7 @@ module.exports = {
 };
 ```
 
-For a complete walkthrough of available options when setting up a model definition, see [Model Settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings), [Attributes](http://sailsjs.com/documentation/concepts/models-and-orm/attributes), and [Associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).
+For a complete walkthrough of available options when setting up a model definition, see [Model Settings](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings), [Attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes), and [Associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations).
 
 <!--
 commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134de3a5c47b2ebb8#1
@@ -31,9 +31,9 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 
 ### Using models
 
-Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
+Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write backend code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
 
-There are many built-in methods available on models, the most important of which are the query methods like [.find()](http://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](http://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](http://sailsjs.com/documentation/reference/waterline-orm/models).
+There are many built-in methods available on models, the most important of which are the query methods like [.find()](https://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](https://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](https://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
 ### Query methods
@@ -83,7 +83,7 @@ query.exec(function (err, rose) {
 });
 ```
 
-> In addition to `.exec()`, many Sails apps benefit from using the [async](https://www.npmjs.com/package/async) library.  In fact, to facilitate this, Sails provides an [easy way](http://sailsjs.com/documentation/reference/configuration/sails-config-globals) to access `async` throughout your app.
+> In addition to `.exec()`, many Sails apps benefit from using the [async](https://www.npmjs.com/package/async) library.  In fact, to facilitate this, Sails provides an [easy way](https://sailsjs.com/documentation/reference/configuration/sails-config-globals) to access `async` throughout your app.
 
 
 ##### Promises
@@ -92,7 +92,7 @@ As an in-between alternative to callbacks and `async/await`, promises are also a
 
 ### Resourceful pubsub methods
 
-Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifically designed for performing simple realtime operations using dynamic rooms.  For more information about those methods, see [Reference > WebSockets > Resourceful PubSub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
+Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifically designed for performing simple realtime operations using dynamic rooms.  For more information about those methods, see [Reference > WebSockets > Resourceful PubSub](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub).
 
 
 ### Custom model methods
@@ -186,3 +186,5 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 -->
 
 <docmeta name="displayName" value="Models">
+<docmeta name="nextUpLink" value="/documentation/concepts/configuration">
+<docmeta name="nextUpName" value="Configuration">

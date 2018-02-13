@@ -60,19 +60,13 @@ During development, the Sails session store is *in memory*.  Therefore, when you
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
-To enable Redis as a session store open `projectName/config/session.js` in your favorite text editor and uncomment the `adapter` property.  That's it.  During development as long as you have a Redis instance running on the same machine as your Sails instance your session store will use Redis.  You can point to a different Redis instance by configuring the following optional properties in `projectName/config/session.js`:
+#### Enabling Redis session store in development
 
-```javascript
-// host: 'localhost',
-// port: 6379,
-// ttl: <redis session TTL in seconds>,
-// db: 0,
-// pass: <redis auth password>,
-// prefix: 'sess:',
+To enable Redis as your session store in development, first make sure you have a local Redis instance running on your machine (`redis-server`). Then, lift your app with `sails lift --redis`.
 
-```
+This is just a shortcut for `sails lift --session.adapter=connect-redis --sockets.adapter=socket.io-redis`. These adapters are included as dependencies of new Sails apps by default, but if you're working with an upgraded app you'll need to install `connect-redis` version 3.3.2 and `socket.io-redis` version 5.2.0.
 
-For more information on configuring these properties go to [https://github.com/tj/connect-redis](https://github.com/tj/connect-redis).
+> Note: This built-in configuration uses your local Redis instance. For advanced session configuration options, see [Reference > Configuration > sails.config.session](https://sailsjs.com/documentation/reference/configuration/sails-config-session).
 
 #### Nerdy details of how the session cookie is created
 The value for the cookie is created by first hashing the `sid` with a configurable *secret* which is just a long string.
@@ -85,7 +79,9 @@ The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid`
 
 ### Disabling sessions
 
-While sessions are a powerful tool in app development, they are not always necessary (e.g. apps that are completely stateless) or preferable (e.g. when using a different authentication scheme, like <a href="https://github.com/sails101/jwt-login" target="_blank">JWT</a>.  In these cases, you can disable sessions on an app-wide or per-route basis.
+Even if your Sails app is designed to be accessed by non-browser clients, such as toasters, you are strongly encouraged to use sessions for authentication.  While it can sometimes be complex to understand, the built-in session mechanism in Sails (session store + HTTP-only cookies) is a tried and true solution that is generally [less brittle, easier to use, and lower-risk than rolling something yourself](http://cryto.net/~joepie91/blog/2016/06/13/stop-using-jwt-for-sessions/).
+
+That said, sessions may not always be an option (for example, if you must [integrate with a different authentication scheme](https://github.com/sails101/jwt-login) like JWT).  In these cases, you can disable sessions on an app-wide or per-request basis.
 
 ##### Disabling sessions for your entire app
 
@@ -99,8 +95,8 @@ To entirely turn off session support for your app, add the following to your `.s
 
 This disables the core Sails session hook.  You can also accomplish this by setting the `sails_hooks__session` environment variable to `false`.
 
-##### Disabling sessions for one or more routes
+##### Disabling sessions for certain requests
 
-To turn off session support on a per-route basis, use the [`sails.config.session.routesDisabled` setting](http://sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  The default setting turns off session support for all [assets](http://sailsjs.com/documentation/concepts/assets).
+To turn off session support on a per-route (or per-request) basis, use the [`sails.config.session.isSessionDisabled` setting](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?properties).  By default, Sails enables session support for all requests except those that [look like](https://sailsjs.com/documentation/reference/application/advanced-usage/sails-looks-like-asset-rx) they're pointed at static assets like images, stylesheets, etc.
 
 <docmeta name="displayName" value="Sessions">

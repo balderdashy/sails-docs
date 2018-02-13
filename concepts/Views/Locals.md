@@ -58,7 +58,7 @@ If the data you wanted to pass down to this view was completely static, you don'
   // ...
 ```
 
-On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()](http://sailsjs.com/documentation/reference/res/res.view.html) method.
+On the other hand, in the more likely scenario that this data is dynamic, we'd need to use a controller action to load it from our models, then pass it to the view using the [res.view()](https://sailsjs.com/documentation/reference/res/res.view.html) method.
 
 Assuming we hooked up our route to one of our controller's actions (and our models were set up), we might send down our view like this:
 
@@ -79,7 +79,7 @@ Assuming we hooked up our route to one of our controller's actions (and our mode
 
 It is often desirable to &ldquo;bootstrap&rdquo; data onto a page so that it&rsquo;s available via Javascript as soon as the page loads, instead of having to fetch the data in a separate AJAX or socket request.  Sites like [Twitter and GitHub](https://blog.twitter.com/2012/improving-performance-on-twittercom) rely heavily on this approach in order to optimize page load times and provide an improved user experience.
 
-In the past, a common way of solving this problem was with hidden form fields, or by hand-rolling code that injects server-side locals directly into a client-side script tag.  However, these techniques can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a helper function called `exposeLocalsToBrowser` that you can use in your views to output data safely.
+In the past, a common way of solving this problem was with hidden form fields, or by hand-rolling code that injects server-side locals directly into a client-side script tag.  However, these techniques can present a challenge when some of the data you want to bootstrap is from an _untrusted_ source, meaning that it might contain HTML tags and Javascript code meant to compromise your app with an <a href="https://en.wikipedia.org/wiki/Cross-site_scripting" target="_blank">XSS attack</a>.  To help prevent such issues, Sails provides a built-in view partial called `exposeLocalsToBrowser` that you can use to securely inject data from your view locals for access from client-side JavaScript.
 
 To use `exposeLocalsToBrowser`, simply call it from within your view using the _non-escaping syntax_ for your template language.  For example, using the default EJS view engine, you would do:
 

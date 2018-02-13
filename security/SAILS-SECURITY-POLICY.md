@@ -43,8 +43,8 @@ You can expect follow-up emails outlining the progression of a solution to the v
 
 ### Is this an SLA?
 
-No. The Sails framework is available under the [MIT license](http://sailsjs.com/license), which does not include a service level agreement.  However, the core team and contributors care deeply about Sails, and all of us have websites and APIs running on Sails in production.  We will _always_ publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
+No. The Sails framework is available under the [MIT license](https://sailsjs.com/license), which does not include a service level agreement.  However, the core team and contributors care deeply about Sails, and all of us have websites and APIs running on Sails in production.  We will _always_ publish a fix for any serious security vulnerability as soon as possible-- not just out of the kindness of our hearts, but because it could affect our apps (and our customer's apps) too.
 
-> For more support options, see http://sailsjs.com/support.
+> For more support options, see https://sailsjs.com/support.
 
 

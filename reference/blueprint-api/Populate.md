@@ -12,10 +12,10 @@ If the specified association is plural ("collection"), this action returns the l
 
   Parameter      | Type         | Details
  :-------------- | ------------ |:---------------------------------
- model           | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
+ model           | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `GET /purchase/47/cashier`)
  id              | ((string))   | The primary key of the parent record.<br/><br/>e.g. `'47'` (in `GET /purchase/47/cashier`)
  association     | ((string))   | The name of the association.<br/><br/>e.g. `'cashier'` (in `GET /purchase/47/cashier`) or `'products'` (in `GET /purchase/47/products`)
- _where_          | ((string?))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
+ _where_          | ((string?))   | Instead of filtering based on a specific attribute, you may instead choose to provide a `where` parameter with the WHERE piece of a [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language), _encoded as a JSON string_.  This allows you to take advantage of `contains`, `startsWith`, and other sub-attribute criteria modifiers for more powerful `find()` queries. <br/> <br/> e.g. `?where={"name":{"contains":"theodore"}}`
  _limit_          | ((number?))   | The maximum number of records to send back (useful for pagination). Defaults to 30. <br/> <br/> e.g. `?limit=100`
  _skip_           | ((number?))   | The number of records to skip (useful for pagination). <br/> <br/> e.g. `?skip=30`
  _sort_           | ((string?))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
@@ -61,7 +61,7 @@ $http.get('/purchase/47/cashier')
 });
 ```
 
-**Using [sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/socket-client):**
+**Using [sails.io.js](https://sailsjs.com/documentation/reference/web-sockets/socket-client):**
 
 ```javascript
 io.socket.get('/purchase/47/cashier', function (cashier) {
@@ -107,7 +107,7 @@ You can also populate a collection. For example, to populate the `involvedInPurc
 ### Notes
 
 > + In the first example above, if purchase #47 did not have a `cashier` (i.e. `null`), then this action would respond with a 404 status code.
-> + The examples above assume "rest" blueprint routing is enabled (or that you've bound this blueprint action as a comparable [custom route](http://sailsjs.com/documentation/concepts/routes/custom-routes)), and that your project contains at least an empty 'Employee' model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
+> + The examples above assume "rest" blueprint routing is enabled (or that you've bound this blueprint action as a comparable [custom route](https://sailsjs.com/documentation/concepts/routes/custom-routes)), and that your project contains at least an empty 'Employee' model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo

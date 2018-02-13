@@ -6,7 +6,7 @@ When you call `sails generate api cats` via the command line from inside your pr
 
 The `api/controllers` directory can also contain _standalone actions_, which are JavaScript files containing a _single_ controller action, rather than a dictionary of actions.
 
-See the [main actions and controllers documentation](http://sailsjs.com/documentation/concepts/actions-and-controllers) for more info.
+See the [main actions and controllers documentation](https://sailsjs.com/documentation/concepts/actions-and-controllers) for more info.
 
 <docmeta name="displayName" value="controllers">
 

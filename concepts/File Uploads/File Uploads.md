@@ -125,6 +125,10 @@ req.file('avatar').upload({
 });
 ```
 
+### Sending text parameters in the same form as a file upload
+
+As mentioned above, you can send text parameters like "name" and "email" to your Sails action along with your file upload field.  However, the text fields _must appear before any file fields_ in your form in order for them to be processed.  This is critical to Sails' ability to run your action code while files are uploading (rather than having to wait for them to finish). See the [Skipper docs](https://github.com/balderdashy/skipper#text-parameters) for more info.
+
 ### Example
 
 #### Generate an `api`
@@ -179,8 +183,8 @@ module.exports = {
 ## Read more
 
 + [Skipper docs](https://github.com/balderdashy/skipper)
-+ [Uploading to Amazon S3](http://sailsjs.com/documentation/concepts/file-uploads/uploading-to-s-3)
-+ [Uploading to Mongo GridFS](http://sailsjs.com/documentation/concepts/file-uploads/uploading-to-grid-fs)
++ [Uploading to Amazon S3](https://sailsjs.com/documentation/concepts/file-uploads/uploading-to-s-3)
++ [Uploading to Mongo GridFS](https://sailsjs.com/documentation/concepts/file-uploads/uploading-to-grid-fs)
 
 
 

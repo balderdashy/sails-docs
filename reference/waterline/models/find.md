@@ -10,7 +10,7 @@ var records = await Something.find(criteria);
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
+| 1 |    criteria         | ((dictionary))    | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database.
 
 ##### Result
 
@@ -46,10 +46,10 @@ return res.json(usersNamedFinn);
 
 ##### Using projection
 
-Projection selectively omits the fields returned on found records. This can be done, for example, for faster performance, or for greater security when passing found records to the client. The select clause in a [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) takes an array of strings that correspond with attribute names. The record ID is always returned.
+Projection selectively omits the fields returned on found records. This can be done, for example, for faster performance, or for greater security when passing found records to the client. The select clause in a [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) takes an array of strings that correspond with attribute names. The record ID is always returned.
 
 ```javascript
-var usersNamedFinn = User.find({
+var usersNamedFinn = await User.find({
   where: {name:'Finn'},
   select: ['name', 'email']
 });

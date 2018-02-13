@@ -22,12 +22,12 @@ try {
 
 ### JSON serialization
 
-In Sails, records are just dictionaries (plain JavaScript objects), which means they can easily be represented as JSON. But you can also customize the way that records from a particular model are _stringified_ using the [`customToJSON` model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson).
+In Sails, records are just dictionaries (plain JavaScript objects), which means they can easily be represented as JSON. But you can also customize the way that records from a particular model are _stringified_ using the [`customToJSON` model setting](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson).
 
 
 ### Populated values
 
-In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations).  When [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/populate) is called on a query, each of the resulting records will contain one or more populated values.  Each one of those populated values is a snapshot of the record (or array of records) linked to that particular association at the time of the query.
+In addition to basic attribute data like email addresses, phone numbers, and birthdates, Waterline can dynamically store and retrieve linked sets of records using [associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations).  When [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/populate) is called on a query, each of the resulting records will contain one or more populated values.  Each one of those populated values is a snapshot of the record (or array of records) linked to that particular association at the time of the query.
 
 The type of a populated value depends on what kind of association it is:
 
@@ -77,7 +77,7 @@ The table below shows what values you can expect in records returned from a `.fi
 
 ##### Modifying populated values
 
-To modify the populated values of a particular record or set of records, call the [.addToCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection), [.removeFromCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection), or [.replaceCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) model methods.
+To modify the populated values of a particular record or set of records, call the [.addToCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection), [.removeFromCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection), or [.replaceCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection) model methods.
 
 
 

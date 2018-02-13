@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-To associate records together, the Model method [.addToCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) is used. This allows you to set the primary keys of the records that will be associated.
+To associate records together, the Model method [.addToCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) is used. This allows you to set the primary keys of the records that will be associated.
 
 ```javascript
 // To add a Pet to a user's `pets` collection where the User has an id of
@@ -70,7 +70,7 @@ You can also add multiple pets at once:
 await User.addToCollection(10, 'pets', [300, 301]);
 ```
 
-Removing associations is just as easy using the [.removeFromCollection()](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) method. It works the same way as  `addToCollection`:
+Removing associations is just as easy using the [.removeFromCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) method. It works the same way as  `addToCollection`:
 
 ```javascript
 // To remove a User from a pet's collection of owners where the User has an id of
@@ -86,7 +86,7 @@ await Pet.removeFromCollection(300, 'owners', [10, 12]);
 
 Note that adding / removing associated records from one side of a many-to-many relationship will automatically affect the other side.  For example, adding records to the `pets` attribute of a `User` model record with `.addToCollection()` will immediately affect the `owners` attributes of the linked `Pet` records.
 
-To return associated collections along with a record retrieved by [`.find()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](http://sailsjs.com/documentation/reference/waterline-orm/models/find-one), use the [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
+To return associated collections along with a record retrieved by [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-one), use the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
 
 ### Dominance
 

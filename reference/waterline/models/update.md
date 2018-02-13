@@ -15,8 +15,8 @@ _Or:_
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
-| 1 | criteria            | ((dictionary))    | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `update` queries do not support pagination using `skip` and `limit` or projections using `select`.
-| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
+| 1 | criteria            | ((dictionary))    | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `update` queries do not support pagination using `skip` and `limit` or projections using `select`.
+| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 ##### Result
 
@@ -30,7 +30,7 @@ _Or:_
 |     Name        | Type                | When? |
 |:-------------------|---------------------|:---------------------------------------------------------------------------------|
 | UsageError			| ((Error))           | Thrown if something invalid was passed in.
-| AdapterError		| ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| AdapterError		| ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
 | Error				| ((Error))           | Thrown if anything else unexpected happens.
 
 See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
@@ -42,7 +42,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 |:--------------------|-------------------|:---------------------------------------------------------------|
 | fetch               | ((boolean))       | If set to `true`, then the array of updated records will be sent back.<br/><br/>Defaults to `false`.
 
-> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+> For more information on meta keys, see [.meta()](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 
@@ -73,7 +73,7 @@ return res.ok();
 
 ### Notes
 > + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
-> + This method can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replaceCollection` method](http://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).  To modify items in a collection individually, use the [`addToCollection`](http://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [removeFromCollection](http://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) methods.
+> + This method can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replaceCollection` method](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).  To modify items in a collection individually, use the [`addToCollection`](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [removeFromCollection](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) methods.
 
 
 <docmeta name="displayName" value=".update()">

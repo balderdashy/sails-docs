@@ -31,7 +31,7 @@ sails>
 
 ### Global variables in `sails console`
 
-Sails exposes [the same global variables](http://sailsjs.com/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance and your models; as well as any of your other configured globals -- for example, lodash (`_`) and async (`async`).
+Sails exposes [the same global variables](https://sailsjs.com/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance and your models; as well as any of your other configured globals -- for example, lodash (`_`) and async (`async`).
 
 
 > **Warning**
@@ -62,7 +62,7 @@ sails> undefined { name: 'Brian',
 
 Pretty cool, it inserts it into the database. However, you might be noticing the undefined and null. Don't worry about those. Remember that the .exec() returns error and data for values. So doing `.exec(console.log)` is the same as doing .exec(console.log(err, data))` The second method will remove the undefined message, but add null on a new line. It's up to you if you want to type more.
 
-> Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
+> Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
 >
 > ```text
 > sails> undefined RowDataPacket { name: 'Brian',
@@ -79,7 +79,7 @@ In sails console, type in `sails` to view a list of sails properties. You can us
 ```text
 sails> sails
   |>   [a lifted Sails app on port 1337]
-\___/  For help, see: http://sailsjs.com/documentation/concepts/
+\___/  For help, see: https://sailsjs.com/documentation/concepts/
 
 Tip: Use `sails.config` to access your app's runtime configuration.
 

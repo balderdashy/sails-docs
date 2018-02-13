@@ -2,7 +2,7 @@
 
 Sails bundles support for automatic validations of your models' attributes. Any time a record is updated, or a new record is created, the data for each attribute will be checked against all of your predefined validation rules. This provides a convenient failsafe to ensure that invalid entries don't make their way into your app's database(s).
 
-Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types (`string`, `number`, `json`, etc).
+Except for `unique` (which is implemented as a database-level constraint; [see "Unique"](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?unique)), all validations below are implemented in JavaScript and run in the same Node.js server process as Sails.  Also keep in mind that, no matter what validations are used, an attribute must _always_ specify one of the built in data types (`string`, `number`, `json`, etc).
 
 ```javascript
 // User
@@ -58,7 +58,7 @@ In the table below, the "Compatible Attribute Type(s)" column shows what data ty
 
 | Name of Rule      | What It Checks For                                                                                                  | Notes On Usage                                         | Compatible Attribute Type(s) |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------|:----------------------------:|
-| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
+| custom            | A value such that when it is provided as the first argument to the custom function, the function returns `true`.                          | [Example](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?custom-validation-rules)            |  _Any_   |
 | isAfter           | A value that, when parsed as a date, refers to a moment _after_ the configured JavaScript `Date` instance.          | `isAfter: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')`  | ((string)), ((number))       |
 | isBefore          | A value that, when parsed as a date, refers to a moment _before_ the configured JavaScript `Date` instance.         | `isBefore: new Date('Sat Nov 05 1605 00:00:00 GMT-0000')` | ((string)), ((number))       |
 | isBoolean         | A value that is `true` or `false` | isBoolean: true | ((json)), ((ref)) |
@@ -96,7 +96,7 @@ Then when you call `.create()` _or_ `.update()`, this value can be set to any va
 
 > To make this attribute accept `null` (for example, if you are working with a pre-existing database), change it to `type: 'json'`.  Normally you'd also want to add `isString: true`-- but since, in this example, we already enforce `isEmail: true`, there's no need to do so.
 >
-> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
+> A more advanced feature to keep in mind is that, depending on your database, you can also choose to take advantage of [`columnType`](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to inform Sails / Waterline which column type to define during auto-migrations (if relevant).
 
 
 ##### Example: Required star rating
@@ -172,7 +172,7 @@ module.exports = {
 
 Imagine you have 1,000,000 user records in your database.  If `unique` was implemented like other validations, every time a new user signed up for your app, Sails would need to search through _one million_ existing records to ensure that no one else was already using the email address provided by the new user.  Not only would that be slow, but by the time we finished searching through all those records, someone else could have signed up!
 
-Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](http://sailsjs.com/documentation/concepts/models-and-orm#?adapters) to implement support for `unique`-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
+Fortunately, this type of uniqueness check is perhaps the most universal feature of _any_ database.  To take advantage of that, Sails relies on the [database adapter](https://sailsjs.com/documentation/concepts/models-and-orm#?adapters) to implement support for `unique`-- specifically, by adding a **uniqueness constraint** to the relevant field/column/attribute in the database itself during [auto-migration](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate).  That is, while your app is set to `migrate:'alter'`, Sails will automatically generate tables/collections in the underlying database with uniqueness constraints built right in.  Once you switch to `migrate:'safe'`, updating your database constraints is up to you.
 
 ##### What about indexes?
 
@@ -185,7 +185,7 @@ Just like everything else related to your production schema, once you set your a
 
 ### When to use validations
 
-Validations can be a huge time-saver, preventing you from writing many hundreds of lines of repetitive code.  But keep in mind that model validations are run for _every create or update_ in your application.  Before using a validation rule in one of your attribute definitions, make sure you are OK with it being applied _every time_ your application calls `.create()` or `.update()` to specify a new value for that attribute.  If that is _not_ the case, write code that validates the incoming values inline in your controller; or call out to a custom function in one of your [services](http://sailsjs.com/documentation/concepts/services), or a [model class method](http://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
+Validations can be a huge time-saver, preventing you from writing many hundreds of lines of repetitive code.  But keep in mind that model validations are run for _every create or update_ in your application.  Before using a validation rule in one of your attribute definitions, make sure you are OK with it being applied _every time_ your application calls `.create()` or `.update()` to specify a new value for that attribute.  If that is _not_ the case, write code that validates the incoming values inline in your controller; or call out to a custom function in one of your [services](https://sailsjs.com/documentation/concepts/services), or a [model class method](https://sailsjs.com/documentation/concepts/models-and-orm/models#?model-methods-aka-static-or-class-methods).
 
 For example, let's say that your Sails app allows users to sign up for an account by either (A) entering an email address and password and then confirming that email address or (B) signing up with LinkedIn.  Now let's say your `User` model has one attribute called `linkedInEmail` and another attribute called `manuallyEnteredEmail`.  Even though _one_ of those email address attributes is required, _which one_ is required depends on how a user signed up.  So in that case, your `User` model cannot use the `required: true` validation-- instead you'll need to validate that one email or the other was provided and is valid by manually checking these values before the relevant `.create()` and `.update()` calls in your code, e.g.:
 
@@ -216,10 +216,10 @@ Depending on the answers to questions like these, we might end up keeping the `r
 Finally, here are a few tips:
 
 + Your initial decision about whether or not to use validations for a particular attribute should depend on your app's requirements and how you are calling `.update()` and `.create()`. Don't be afraid to forgo built-in validation support and check values by hand in your controllers or in a helper function.  Oftentimes this is the cleanest and most maintainable approach.
-+ There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
++ There's nothing wrong with adding or removing validations from your models as your app evolves. But once you go to production, there is one **very important exception**: `unique`.  During development, when your app is configured to use [`migrate: 'alter'`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate), you can add or remove `unique` validations at will.  However, if you are using `migrate: safe` (e.g. with your production database), you will want to update constraints/indices in your database, as well as [migrate your data by hand](https://github.com/BlueHotDog/sails-migrations).
 + It is a very good idea to spend the time to fully understand your application's user interface _first_ before setting up complex validations on your model attributes.
 
-> As much as possible, it is a good idea to obtain or flesh out your own wireframes of your app's user interface _before_ you spend any serious amount of time implementing _any_ backend code.  Of course, this isn't always possible- and that's what the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) is for.  Applications built with a UI-centric, or "front-end first" philosophy are easier to maintain, tend to have fewer bugs and, since they are built with full knowledge of the user interface from the get-go, they often have more elegant APIs.
+> As much as possible, it is a good idea to obtain or flesh out your own wireframes of your app's user interface _before_ you spend any serious amount of time implementing _any_ backend code.  Of course, this isn't always possible- and that's what the [blueprint API](https://sailsjs.com/documentation/concepts/blueprints) is for.  Applications built with a UI-centric, or "front-end first" philosophy are easier to maintain, tend to have fewer bugs and, since they are built with full knowledge of the user interface from the get-go, they often have more elegant APIs.
 
 
 
@@ -275,9 +275,6 @@ Custom validation functions receive the incoming value being validated as their 
 ##### Custom Validation Messages
 
 Out of the box, Sails.js does not support custom validation messages.  Instead your code should look at validation errors in the callback from your `create()` or `update()` calls and take the appropriate action; whether that's sending a particular error code in your JSON response or rendering the appropriate message in an HTML error page.
-
-> If you are using Sails v0.11.0+, you may want to take advantage of [`sails-hook-validation`](https://github.com/lykmapipo/sails-hook-validation), a [custom hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks) by [@lykmapipo](http://github.com/lykmapipo).  Details regarding its installation and usage can be found in the [`sails-hook-validation` repository on GitHub](https://github.com/lykmapipo/sails-hook-validation).
-
 
 
 <docmeta name="displayName" value="Validations">

@@ -7,12 +7,12 @@ For example:
 ```
 module.exports.routes = {
 
-    "GET /": {view: "homepage"},
-    "POST /foo/bar": {controller: "FooController", action: "bar"}
+    'GET /': { view: 'pages/homepage' },
+    'POST /foo/bar': { action: 'foo/bar' }
 }
 ```
 
-Please see the [routes concept overview](http://sailsjs.com/documentation/concepts/Routes) for a full discussion of Sails routes, and the [custom routes documentation](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html) for a detailed description of the available configurations for both the route address and route target.
+Please see the [routes concept overview](https://sailsjs.com/documentation/concepts/Routes) for a full discussion of Sails routes, and the [custom routes documentation](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html) for a detailed description of the available configurations for both the route address and route target.
 
 
 <docmeta name="displayName" value="sails.config.routes">

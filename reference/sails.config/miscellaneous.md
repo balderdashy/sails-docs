@@ -1,8 +1,8 @@
 # Miscellaneous (`sails.config.*`)
 
-For a conceptual overview of configuration in Sails, see http://sailsjs.com/documentation/concepts/Configuration.
+For a conceptual overview of configuration in Sails, see https://sailsjs.com/documentation/concepts/Configuration.
 
-This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](http://sailsjs.com/documentation/anatomy/my-app/config/env), or in your [config/local.js](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
+This page is a quick reference of assorted configuration topics that don't fit elsewhere, namely top-level properties on the sails.config object.  Many of these properties are best set on a [per-environment basis](https://sailsjs.com/documentation/anatomy/my-app/config/env), or in your [config/local.js](https://sailsjs.com/documentation/concepts/configuration/the-local-js-file).  To set them globally for your app, create a new file in the `config` folder (e.g. `config/misc.js`) and add them there.
 
 ### `sails.config.port`
 
@@ -10,7 +10,7 @@ The `port` setting determines which <a href="http://en.wikipedia.org/wiki/Port_(
 
 By default, if it&rsquo;s set, Sails uses the port configured in your app (`sails.config.port`).  If not, it checks to see if the `PORT` environment variable is set, and uses that if possible.  Otherwise it falls back to port 1337.
 
-> In production, you will probably want Sails to listen on port 80 (or 443, if you have an SSL certificate and are serving your site via `https://`.)  But depending on where your app is deployed, you may or may not need to actually modify this setting.  For example, if you are deploying behind a proxy, or to a PaaS like [Heroku](http://heroku.com), [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/), or [Deis](http://deis.io/), you probably won't need to configure `sails.config.port`, since in most cases it is handled automatically.  For more guidance and tips related to deploying, scaling, and maintaining Sails in production, see [Concepts > Deployment](http://sailsjs.com/documentation/concepts/deployment).
+> In production, you will probably want Sails to listen on port 80 (or 443, if you have an SSL certificate and are serving your site via `https://`.)  But depending on where your app is deployed, you may or may not need to actually modify this setting.  For example, if you are deploying behind a proxy, or to a PaaS like [Heroku](http://heroku.com), [Azure App Service](https://azure.microsoft.com/en-us/services/app-service/), or [Deis](http://deis.io/), you probably won't need to configure `sails.config.port`, since in most cases it is handled automatically.  For more guidance and tips related to deploying, scaling, and maintaining Sails in production, see [Concepts > Deployment](https://sailsjs.com/documentation/concepts/deployment).
 
 
 ### `sails.config.explicitHost`
@@ -34,7 +34,7 @@ When you lift your app with the NODE_ENV environment variable to `production`, S
 
 If you attempt to lift a Sails app in the production environment _without_ setting `NODE_ENV` to `production` (for example, by running `sails lift --prod`), Sails will automatically set `NODE_ENV` to `production` for you.  If you attempt to lift a Sails app in production while `NODE_ENV` is set to a _different_ value (for example `NODE_ENV=development sails lift --prod`), the app will fail to start.
 
-> For more background on configuring your Sails app for production, see [Concepts > Deployment](http://sailsjs.com/documentation/concepts/deployment).
+> For more background on configuring your Sails app for production, see [Concepts > Deployment](https://sailsjs.com/documentation/concepts/deployment).
 
 Note that it is perfectly valid to set `sails.config.environment` to something else entirely, like "staging", while still setting `NODE_ENV=production`.  This causes Sails to load a different environment-specific configuration file (e.g. `config/env/staging.js`) and Grunt task (e.g. `tasks/register/staging.js`), while still otherwise acting like it's in production.
 
@@ -43,11 +43,11 @@ Note that it is perfectly valid to set `sails.config.environment` to something e
 
 A time limit, in milliseconds, imposed on all hooks in your app.  Sails will give up if any hook takes longer than this to load.  Defaults to `20000` (20 seconds).
 
-> The most common use for this setting is to tolerate slow production Grunt tasks.  For example, if your app is using uglify, and you have lots and lots of client-side JavaScript files in your assets folder, then you might need Sails to wait longer than 20 seconds to compile all of those client-side assets.  For more tips about the production asset pipeline, see [Concepts > Deployment](http://sailsjs.com/documentation/concepts/deployment).
+> The most common use for this setting is to tolerate slow production Grunt tasks.  For example, if your app is using uglify, and you have lots and lots of client-side JavaScript files in your assets folder, then you might need Sails to wait longer than 20 seconds to compile all of those client-side assets.  For more tips about the production asset pipeline, see [Concepts > Deployment](https://sailsjs.com/documentation/concepts/deployment).
 
 ### `sails.config.ssl`
 
-SSL/TLS (transport-layer security) is critical for preventing potential man-in-the-middle attacks.  Without a protocol like SSL/TLS, web basics like securely transmitting login credentials and credit card numbers would be much more complicated and troublesome.  SSL/TLS is not only important for HTTP requests (`https://`); it's also necessary for WebSockets (over `wss://`).  Fortunately, you only need to worry configuring SSL settings in once place: `sails.config.ssl`.
+SSL/TLS (transport-layer security) is critical for preventing potential man-in-the-middle attacks.  Without a protocol like SSL/TLS, web basics like securely transmitting login credentials and credit card numbers would be much more complicated and troublesome.  SSL/TLS is not only important for HTTP requests (`https://`); it's also necessary for WebSockets (over `wss://`).  Fortunately, you only need to worry about configuring SSL settings in one place: `sails.config.ssl`.
 
 > ##### SSL and load balancers
 >
@@ -55,9 +55,9 @@ SSL/TLS (transport-layer security) is critical for preventing potential man-in-t
 >
 > If you're satisfied this configuration setting applies to your app, then please continue below for more details.
 
-Use `sails.config.ssl` to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](http://sailsjs.com/documentation/reference/configuration/sails-config-http#?properties).
+Use `sails.config.ssl` to set up basic SSL server options, or to indicate that you will be specifying more advanced options in [sails.config.http.serverOptions](https://sailsjs.com/documentation/reference/configuration/sails-config-http#?properties).
 
-If you specify a dictionary, it should contain both `key` _and_ `cert` keys, _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `sails.config.ssl` to `true` and specify your advanced options in [sails.config.http.serverOptions](http://sailsjs.com/documentation/reference/configuration/sails-config-http#?properties).
+If you specify a dictionary, it should contain both `key` _and_ `cert` keys, _or_ a `pfx` key. The presence of those options indicates to Sails that your app should be lifted with an HTTPS server.  If your app requires a more complex SSL setup (for example by using [SNICallback](https://nodejs.org/api/tls.html#tls_tls_createserver_options_secureconnectionlistener)), set `sails.config.ssl` to `true` and specify your advanced options in [sails.config.http.serverOptions](https://sailsjs.com/documentation/reference/configuration/sails-config-http#?properties).
 
 #### SSL configuration example
 

@@ -4,7 +4,7 @@ Unless you override them, the properties contained in this file will be included
 
 ### Usage
 
-See [`sails.config.models`](http://sailsjs.com/documentation/reference/configuration/sails-config-models) for all available options.
+See [`sails.config.models`](https://sailsjs.com/documentation/reference/configuration/sails-config-models) for all available options.
 
 <docmeta name="displayName" value="models.js">
 

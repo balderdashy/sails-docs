@@ -2,7 +2,7 @@
 
 This file configures a Grunt task called "coffee".
 
-By default, this compiles CoffeeScript files located in [`assets/js/`](http://sailsjs.com/anatomy/assets/js/) into JavaScript, then generates new `.js` files in `.tmp/public/js/`.
+By default, this compiles CoffeeScript files located in [`assets/js/`](https://sailsjs.com/anatomy/assets/js/) into JavaScript, then generates new `.js` files in `.tmp/public/js/`.
 
 
 ### But I'm not using CoffeeScript...

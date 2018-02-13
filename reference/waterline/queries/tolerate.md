@@ -1,6 +1,6 @@
 # .tolerate()
 
-Intercept and swallow the specified error, and return a new result value (or `undefined`) instead.
+Tolerate (swallow) the specified error, and return a new result value (or `undefined`) instead.  (Don't throw.)
 
 ```usage
 .tolerate(filter, handler)
@@ -8,7 +8,7 @@ Intercept and swallow the specified error, and return a new result value (or `un
 
 _Or:_
 + `.tolerate(filter)`
-
++ `.tolerate(handler)` _(to tolerate all errors)_
 
 
 ### Usage
@@ -22,7 +22,9 @@ _Or:_
 |---|---------------------|---------------------|:------------------------|
 | 1 | err                 | ((Error))           | Your anticipated Error. |
 
-Return a value to replace the Error.
+Return a value that will be used as the return value from the original logic instead of throwing the tolerated error.
+
+> .tolerate() is useful for tolerating a kind of error (or all errors). If you chain on .tolerate(), and it matches the error that occurs, then the underlying logic won't throw. It'll return instead. What it returns is up to you -- it's whatever you return from the function you passed in to .tolerate()
 
 
 

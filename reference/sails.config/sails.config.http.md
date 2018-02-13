@@ -1,16 +1,16 @@
 # sails.config.http
 
-Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the [`config/http.js`](http://sailsjs.com/documentation/anatomy/myApp/config/http.js.html) configuration file.
+Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the [`config/http.js`](https://sailsjs.com/documentation/anatomy/myApp/config/http.js.html) configuration file.
 
 
 ### Properties
 
   Property          | Type       | Default   | Details
 :------------------ |:----------:| --------- |:-------
- `middleware`       | ((dictionary)) | See [conventional defaults for HTTP middleware](http://sailsjs.com/documentation/concepts/Middleware?q=conventional-defaults) | A dictionary of all HTTP middleware functions your app will run on every incoming HTTP request.<br/>[Example](https://gist.github.com/mikermcneil/9cbd68c95839da480e97)
+ `middleware`       | ((dictionary)) | See [conventional defaults for HTTP middleware](https://sailsjs.com/documentation/concepts/Middleware?q=conventional-defaults) | A dictionary of all HTTP middleware functions your app will run on every incoming HTTP request.<br/>[Example](https://gist.github.com/mikermcneil/9cbd68c95839da480e97)
  `middleware.order` | ((array))  | See [conventional defaults for HTTP middleware order](https://github.com/balderdashy/sails/blob/master/lib/hooks/http/index.js#l51-66) | An array of middleware names (strings) indicating the order in which middleware should be run for all incoming HTTP requests.
- `cache`            | ((number)) | `31557600000` _(1 year)_ | The number of milliseconds to cache [static assets](http://sailsjs.com/documentation/concepts/assets) when your app is running in a ['production' environment](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).<br/>More specifically, this is the "max-age" that will be included in the "Cache-Control" header when responding to requests for static assets-- i.e. any flat files like images, scripts, stylesheets, etc. that are served by Express' static middleware.
- `serverOptions`    | ((dictionary)) | `{}`      | _SSL only_: advanced options to send directly to the [Node `https` module](https://nodejs.org/dist/latest-v4.x/docs/api/https.html) when creating the server.  These will be merged with your [SSL settings](http://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigssl), if any.  See the [createServer docs](https://nodejs.org/dist/latest-v4.x/docs/api/https.html#https_https_createserver_options_requestlistener) for more info.
+ `cache`            | ((number)) | `31557600000` _(1 year)_ | The number of milliseconds to cache [static assets](https://sailsjs.com/documentation/concepts/assets) when your app is running in a ['production' environment](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment).<br/>More specifically, this is the "max-age" that will be included in the "Cache-Control" header when responding to requests for static assets-- i.e. any flat files like images, scripts, stylesheets, etc. that are served by Express' static middleware.
+ `serverOptions`    | ((dictionary)) | `{}`      | _SSL only_: advanced options to send directly to the [Node `https` module](https://nodejs.org/dist/latest-v4.x/docs/api/https.html) when creating the server.  These will be merged with your [SSL settings](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigssl), if any.  See the [createServer docs](https://nodejs.org/dist/latest-v4.x/docs/api/https.html#https_https_createserver_options_requestlistener) for more info.
   `trustProxy`      | ((boolean)) _or_ ((function)) | `undefined`      | This tells Sails/Express how it should interpret "X-Forwarded" headers.  Only use this setting if you are using HTTPS _and_ if you are deploying behind a proxy (for example, a PaaS like Heroku).  If your app does not fit that description, then leave this as undefined.  Otherwise, you might start by setting this to `true`, which works for many deployments.  But if that doesn't work, see [here](https://expressjs.com/en/guide/behind-proxies.html) for all available options.
 
 
@@ -18,7 +18,7 @@ Configuration for your app's underlying HTTP server.  These properties are conve
 
 The _body parser_ is what Sails/Express apps use to read and understand the body of incoming HTTP requests.  Many different body parsers are available, with different strengths and weaknesses.  By default, Sails apps use [Skipper](http://github.com/balderdashy/skipper), a general purpose solution that knows how to parse most kinds of HTTP request bodies, while also providing support for streaming, multipart file uploads.
 
-> You can also specify a different body parser or a custom function with req, res and next parameters (just like any other [HTTP middleware function](http://sailsjs.com/documentation/concepts/middleware).)
+> You can also specify a different body parser or a custom function with req, res and next parameters (just like any other [HTTP middleware function](https://sailsjs.com/documentation/concepts/middleware).)
 
 ##### Configuring Skipper
 

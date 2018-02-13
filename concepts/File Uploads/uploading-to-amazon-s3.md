@@ -1,14 +1,14 @@
 # Uploading to Amazon S3
 
->Please note that your Amazon S3 bucket must be created in the 'US Standard' region.
->If you fail to do so, you will get a 'TypeError('Uncaught, unspecified "error" event.').
+> Please note that your Amazon S3 bucket must be created in the 'US East (N. Virginia)' region.
+> If you fail to do so, the uploads will not work and you'll see an 'InvalidRequest' error from AWS.
 
 With Sails, you can stream file uploads to Amazon S3 with very little additional configuration.
 
 
 First install the [S3 Skipper adapter](https://github.com/balderdashy/skipper-s3):
 ```sh
-$ npm install skipper-s3 --save
+npm install skipper-s3 --save
 ```
 
 Then use it in one of your controllers:

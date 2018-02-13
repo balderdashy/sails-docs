@@ -13,7 +13,7 @@ Sails can be configured to allow cross-origin requests from a list of domains yo
 
 For security reasons, CORS is disabled by default in Sails.  But enabling it is dead-simple.
 
-To allow cross-origin requests from a whitelist of trusted domains to _any_ route in your app, simply enable `allRoutes` and provide an `origin` setting in [`config/cors.js`](http://sailsjs.com/docs/reference/configuration/sails-config-cors):
+To allow cross-origin requests from a whitelist of trusted domains to _any_ route in your app, simply enable `allRoutes` and provide an `origin` setting in [`config/cors.js`](https://sailsjs.com/docs/reference/configuration/sails-config-cors):
 
 ```javascript
 allRoutes: true,
@@ -28,14 +28,14 @@ allowOrigins: '*',
 allowCredentials: false
 ```
 
-Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](http://sailsjs.com/docs/reference/configuration/sails-config-security-cors) setting.
+Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](https://sailsjs.com/docs/reference/configuration/sails-config-security-cors) setting.
 
 
-See [`sails.config.security.cors`](http://sailsjs.com/documentation/reference/configuration/sails-config-security-cors) for a comprehensive reference of all available options.
+See [`sails.config.security.cors`](https://sailsjs.com/documentation/reference/configuration/sails-config-security-cors) for a comprehensive reference of all available options.
 
 
 ### Configuring CORS For individual routes
-Besides the global CORS configuration in `config/security.js`, you can also configure these settings on a per-route basis in [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js).
+Besides the global CORS configuration in `config/security.js`, you can also configure these settings on a per-route basis in [`config/routes.js`](https://sailsjs.com/anatomy/config/routes-js).
 
 If you set `allRoutes: true` in `config/cors.js`, but you want to exempt a specific route, set the `cors: false` in the route's target:
 
@@ -60,7 +60,7 @@ To enable or override global CORS configuration for a particular route, provide 
 
 ### Notes
 
-> + CORS support is only relevant for HTTP requests.  Requests made via sockets are not subject to cross-origin restrictions.  To ensure that your app is secure via sockets, configure the [`onlyAllowOrigins`](http://sailsjs.com/documentation/reference/configuration/sails-config-sockets) setting (typically in [`config/env/production.js`](http://sailsjs.com/documentation/anatomy/config/env/production-js).
+> + CORS support is only relevant for HTTP requests.  Requests made via sockets are not subject to cross-origin restrictions.  To ensure that your app is secure via sockets, configure the [`onlyAllowOrigins`](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets) setting (typically in [`config/env/production.js`](https://sailsjs.com/documentation/anatomy/config/env/production-js).
 > + CORS is not supported in Internet Explorer 7.  Fortunately, it is supported in IE8 and up, as well as in all other modern browsers.
 > + Read [more about CORS from MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS)
 > + Read the [CORS spec](https://www.w3.org/TR/cors/)

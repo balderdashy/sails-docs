@@ -15,7 +15,7 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
 
 ### Usage
 
-See [`sails.config.sockets`](http://sailsjs.com/documentation/reference/configuration/sails-config-sockets) for all available options.
+See [`sails.config.sockets`](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets) for all available options.
 
 
 <docmeta name="displayName" value="sockets.js">
