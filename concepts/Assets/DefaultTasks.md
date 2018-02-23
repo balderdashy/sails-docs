@@ -9,11 +9,13 @@ Here are a few things that the default Grunt configuration in Sails does to help
 - Automatic LESS compilation
 - Automatic JST compilation
 - Automatic Coffeescript compilation
+- Cache busting
 - Optional automatic asset injection, minification, and concatenation
 - Creation of a web ready public directory
 - File watching and syncing
 - Transpilation of client-side JavaScript in production to allow use of >=ES6 syntax while maintaining broad browser compatibility
 - Optimization of assets in production
+
 
 ### Default Grunt tasks
 
@@ -30,6 +32,12 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 > Compiles coffeeScript files from `assets/js/` into Javascript and places them into `.tmp/public/js/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
+
+##### hash
+
+> Creates and adds an unique hash to the end of a filename for cache busting. 
+
+> [usage docs](https://github.com/jgallen23/grunt-hash/tree/0.5.0#grunt-hash)
 
 ##### concat
 
