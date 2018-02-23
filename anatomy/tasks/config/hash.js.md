@@ -10,7 +10,7 @@ Specifically, its job is to append a unique hash to the end of a filename.
 
 ### Usage
 
-For additional usage documentation, see [`grunt-sync`](https://github.com/jgallen23/grunt-hash/tree/0.5.0#grunt-hash).
+For additional usage documentation, see [`grunt-hash`](https://github.com/jgallen23/grunt-hash/tree/0.5.0#grunt-hash).
 
 
 <docmeta name="displayName" value="hash.js">
