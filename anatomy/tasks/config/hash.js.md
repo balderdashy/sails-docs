@@ -7,7 +7,7 @@ This task implements cache-busting for minified CSS and JavaScript files.
 
 Specifically, its job is to append a unique hash to the end of a filename.
 
-> (For example: foo/dist/*.b93fd451.js)
+> For example: bar/foo.css => bar/dist/foo.f8494f81.css
 
 
 ### Usage
