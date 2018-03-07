@@ -80,7 +80,10 @@ User.find({
     color: 'purple'
   },
   limit: 3,
-  sort: 'hipness DESC'
+  sort: {
+    hipness: 'desc',
+    coolness: 'asc'
+  }
 }).exec(function (err, usersNamedFinn){
   if (err) {
     return res.serverError(err);
