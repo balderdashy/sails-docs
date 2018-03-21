@@ -6,6 +6,7 @@ Like most Node packages, Sails respects [semantic versioning](http://semver.org/
 
 For details about changes between versions, as well as a migration guide to assist you in making an necessary changes to your app, please refer to the appropriate page:
 
+- [v1.0.x](https://sailsjs.com/documentation/upgrading/to-v-1-0)
 - [v0.12.x](https://sailsjs.com/documentation/concepts/upgrading/to-v-0-12)
 - [v0.11.x](https://sailsjs.com/documentation/concepts/upgrading/to-v-0-11)
 - [v0.10.x](https://sailsjs.com/documentation/concepts/upgrading/to-v-0-10)
