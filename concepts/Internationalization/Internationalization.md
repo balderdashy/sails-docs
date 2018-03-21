@@ -2,29 +2,29 @@
 
 ### Overview
 
-If your app will touch people or systems from all over the world, internationalization and localization (i18n) may be an important part of your international strategy.  Sails provides built-in support for detecting user language preferences and translating static words/sentences thanks to the light-weight i18n-node-2 ([GitHub](https://github.com/jeresig/i18n-node-2) and ([NPM](https://www.npmjs.com/package/i18n-2)).
+If your app will touch people or systems from all over the world, internationalization and localization (also known as "i18n") may be an important part of your international strategy.  This is particularly important for applications whose main user base is split across different languages: for example a tutorial site providing both Spanish and English content, or an online store with customers all over Quebec and British Columbia.
 
+Fortunately, Sails provides built-in support for detecting user language preferences and translating static words/sentences.  As of Sails v1, this is implemented using the lightweight [`i18n-node-2` package](https://www.npmjs.com/package/i18n-2).  This package provides several additional options beyond what is covered here, which you can read about in its README file.  But for many Node.js/Sails.js apps with basic internationalization requirements, the simple usage below is all you'll need.
 
 ### Usage
 
+In Sails, it's easy to translate words and phrases using the locale specified in the request header:
 
-In a view:
+From a view:
 ```ejs
 <h1> <%= __('Hello') %> </h1>
 <h1> <%= __('Hello %s, how are you today?', 'Mike') %> </h1>
 <p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
 ```
 
-
-In a controller or policy:
+From a controller action:
 ```javascript
 req.__('Hello'); // => Hola
-req.__('Hello %s', 'Marcus'); // => Hola Marcus
-req.__('Hello {{name}}', { name: 'Marcus' }); // => Hola Marcus
+req.__('Hello %s', 'Marissa'); // => Hola Marissa
+req.__('Hello {{name}}', { name: 'Marco' }); // => Hola Marco
 ```
 
-
-Also, you can translate from anywhere in your application using `sails.__` (the string will be translated according to the current locale):
+Finally, if you are more comfortable writing markup in a language other than the default locale for your application, you can translate an abritrary string to the [configured default locale](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n) from almost anywhere in your application using `sails.__`:
 ```javascript
 sails.__('Hello');
 // => 'Hola!'
@@ -37,17 +37,9 @@ See [**Concepts > Internationalization > Locales**](https://sailsjs.com/document
 
 ### Additional options
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](https://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Settings for localization/internationalization may be configured in [`config/i18n.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales.
 
-```javascript
-// Which locales are supported?
-locales: ['en', 'es'],
-
-// Where are your locale translations located?
-localesDirectory: '/config/locales'
-```
-
-
+For more information on configuring your Node.js/Sails.js app's internationalization settings, see [sails.config.i18n](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n).
 
 
 ### Disabling or customizing Sails' default internationalization support
@@ -64,9 +56,9 @@ See [**Concepts > Internationalization > Translating dynamic content**](https://
 
 ### What about i18n on the client?
 
-The above technique works great out of the box for server-side views. But what about rich client apps that serve static HTML templates from a CDN or static host? (e.g. performance-obsessed SPAs or PhoneGap apps/Chrome extensions)
+The above technique works great out of the box for server-side views. But what about rich client apps that serve static HTML templates from a CDN or static host? <!-- (e.g. performance-sensitive SPAs, Chrome extensions, or webview apps built with tools like Ionic, PhoneGap, etc.) -->
 
-There are [lots of different options available](http://stackoverflow.com/questions/9640630/javascript-i18n-internationalization-frameworks-libraries-for-client-side-use) for client-side internationalization.  Like other client-side technologies, you should have no problem integrating any of them with Sails.
+Well, the easiest option is just to keep internationalizing from your server-rendered views.  But if you'd rather not do that, there are [lots of different options available](http://stackoverflow.com/questions/9640630/javascript-i18n-internationalization-frameworks-libraries-for-client-side-use) for client-side internationalization.  Like other client-side technologies, you should have no problem integrating any of them with Sails.
 
 > If you'd prefer not to use an external internationalization library, you can actually reuse Sails' i18n support to help you get your translated templates to the browser.  If you want to use Sails to internationalize your _client-side templates_, put your front-end templates in a subdirectory of your app's `/views` folder.
 > + In development mode, you should retranslate and precompile your templates each time the relevant stringfile or template changes using grunt-contrib-watch, which is already installed by default in new Sails projects.
