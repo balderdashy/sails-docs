@@ -17,22 +17,40 @@ From a view:
 <p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
 ```
 
-From a controller action:
+
+##### Overriding language headers
+
+Sometimes, it is useful to override browser/device language headers -- for example, if you want to allow a user to set their own language preference.  Whether such a preference is session-based or associated with their account in the database, this is pretty straightforward to accomplish using [`req.setLocale()`](https://sailsjs.com/documentation/reference/request-req/req-set-locale).
+
+<!-- More rarely, it's sometimes useful to do this from a controller action:
 ```javascript
 req.__('Hello'); // => Hola
 req.__('Hello %s', 'Marissa'); // => Hola Marissa
 req.__('Hello {{name}}', { name: 'Marco' }); // => Hola Marco
 ```
+-->
 
-Finally, if you are more comfortable writing markup in a language other than the default locale for your application, you can translate an abritrary string to the [configured default locale](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n) from almost anywhere in your application using `sails.__`:
+##### Internationalizing a shell script
+
+Finally, if you are building a [command-line script](https://sailsjs.com/documentation/concepts/shell-scripts) using Sails, or pursuing some other advanced use case, you can also translate abritrary strings to the [configured default locale](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n) from almost anywhere in your application using `sails.__`:
+
 ```javascript
-sails.__('Hello');
-// => 'Hola!'
+sails.__('Welcome');
+// => 'Bienvenido'
+
+sails.__('Welcome, %s', 'Mary');
+// => 'Bienvenido, Mary'
 ```
+
+<!--
+
+  FUTURE: See https://trello.com/c/7GusjTTX
+
+-->
 
 ### Locales
 
-See [**Concepts > Internationalization > Locales**](https://sailsjs.com/documentation/concepts/internationalization/locales).
+See [**Concepts > Internationalization > Locales**](https://sailsjs.com/documentation/concepts/internationalization/locales) for more information about creating your locale files (aka "stringfiles").
 
 
 ### Additional options
