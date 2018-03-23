@@ -50,6 +50,8 @@ var newUserRecord = await User.create({
 .fetch();
 ```
 
+For some more examples and explanation of how `.intercept()` works, [check this out](https://gitter.im/balderdashy/sails?at=5ab44f512b9dfdbc3a113e2f).
+
 
 <docmeta name="displayName" value=".intercept()">
 <docmeta name="pageType" value="method">
