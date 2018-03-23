@@ -52,6 +52,19 @@ var newUserRecord = await User.create({
 
 For some more examples and explanation of how `.intercept()` works, [check this out](https://gitter.im/balderdashy/sails?at=5ab44f512b9dfdbc3a113e2f).
 
+### Notes
+
+> Note that the usage in our example above could have also been written more concisely as:
+>
+> ```js
+> .intercept('E_UNIQUE', 'emailAlreadyInUse')
+> ```
+>
+> Or less concisely as:
+>
+> ```js
+> .intercept('E_UNIQUE', ()=>{ return 'emailAlreadyInUse'; })
+> ```
 
 <docmeta name="displayName" value=".intercept()">
 <docmeta name="pageType" value="method">
