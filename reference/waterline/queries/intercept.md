@@ -15,7 +15,7 @@ _Or:_
 |   |     Argument    | Type                | Details    |
 |---|-----------------|---------------------|:-----------|
 | 1 | _filter_        | ((string)) or ((dictionary)) | The code of the error that you want to intercept, or a dictionary of criteria for identifying the error to intercept.  (If not provided, ALL errors will be intercepted.) |
-| 2 | handler         | ((function))        | A [procedural parameter](https://en.wikipedia.org/wiki/Procedural_parameter) which Sails will call automatically if the anticipated error is thrown.  It will receive the argument specified in the "Handler" usage table below. The handler should return the modified Error, a new Error, or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals). |
+| 2 | handler         | ((function)) or ((string))     | A [procedural parameter](https://en.wikipedia.org/wiki/Procedural_parameter) which Sails will call automatically if the anticipated error is thrown.  It will receive the argument specified in the "Handler" usage table below. The handler should return the modified Error, a new Error, or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals).  Finally, for convenience, a string may also be provided, instead of a function-- that's just shorthand.  (It's the same thing as passing in a handler function that simply returns the string.) |
 
 ##### Handler
 |   |     Argument        | Type                | Details
@@ -24,7 +24,7 @@ _Or:_
 
 Return an Error instance or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) that will be thrown from the original logic instead of throwing the intercepted error.
 
-> .intercept() is for intercepting a certain kind of error (or all errors). If you chain on .intercept(), and it matches the error that occurs, then the underlying logic will throw. But what it throws is up to you -- it's whatever you return from the function you passed in to .intercept()
+> .intercept() is for intercepting a certain kind of error (or all errors). If you chain on .intercept(), and it matches the error that occurs, then the underlying logic will throw. But what it throws is up to you -- it's determined by whatever your `handler` function returns.
 
 
 
