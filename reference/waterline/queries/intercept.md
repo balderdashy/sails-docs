@@ -63,7 +63,7 @@ For some more examples and explanation of how `.intercept()` works, [check this 
 > Or less concisely as:
 >
 > ```js
-> .intercept('E_UNIQUE', ()=>{ return 'emailAlreadyInUse'; })
+> .intercept({ code: 'E_UNIQUE' }, ()=>{ return 'emailAlreadyInUse'; })
 > ```
 
 <docmeta name="displayName" value=".intercept()">
