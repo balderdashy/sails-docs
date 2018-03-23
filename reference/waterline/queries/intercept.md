@@ -50,8 +50,6 @@ var newUserRecord = await User.create({
 .fetch();
 ```
 
-For some more examples and explanation of how `.intercept()` works, [check this out](https://gitter.im/balderdashy/sails?at=5ab44f512b9dfdbc3a113e2f).
-
 ### Notes
 
 > Note that the usage in our example above could have also been written more concisely as:
@@ -65,6 +63,8 @@ For some more examples and explanation of how `.intercept()` works, [check this 
 > ```js
 > .intercept({ code: 'E_UNIQUE' }, ()=>{ return 'emailAlreadyInUse'; })
 > ```
+>
+> For more examples and further explanation of how `.intercept()` works, check out [this related conversation](https://gitter.im/balderdashy/sails?at=5ab44f512b9dfdbc3a113e2f).
 
 <docmeta name="displayName" value=".intercept()">
 <docmeta name="pageType" value="method">
