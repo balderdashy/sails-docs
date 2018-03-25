@@ -144,7 +144,7 @@ npm uninstall grunt-contrib-jst --save-dev
 
 ### Task triggers
 
-In [development mode](https://sailsjs.com/documentation/reference/sails.config/sails.config.local.html?q=environment), Sails runs the `default` task ([`tasks/register/default.js`](https://sailsjs.com/documentation/anatomy/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
+In [development mode](https://next.sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails runs the `default` task ([`tasks/register/default.js`](https://sailsjs.com/documentation/anatomy/tasks/register/default.js.html)).  This compiles LESS, CoffeeScript, and client-side JST templates, then links to them automatically from your app's dynamic views and static HTML pages.
 
 In production, Sails runs the `prod` task ([`tasks/register/prod.js`](https://sailsjs.com/documentation/anatomy/tasks/register/prod.js.html)) which shares the same duties as `default`, but also minifies your app's scripts and stylesheets.  This reduces your application's load time and bandwidth usage.
 
