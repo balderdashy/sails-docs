@@ -167,7 +167,7 @@ Person.findByFirstName('emma').exec(function(err,people){ ... });
 
 #### Resourceful Pubsub Methods
 
-A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub).
+A special type of model methods which are attached by the pubsub hook.  More on that in the [section of the docs on resourceful pubsub](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub).
 
 
 <!--

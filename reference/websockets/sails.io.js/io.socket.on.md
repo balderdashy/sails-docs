@@ -27,13 +27,13 @@ io.socket.on(eventIdentity, function (msg) {
 Note that the event handler will NEVER be called until one of your back-end controllers, models, services, etc. sends a message to this socket.  Typically that is achieved one of the following ways:
 
 ###### Resourceful Pubsub Methods
-+ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/subscribe.html))
-+ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](http://sailsjs.com/documentation/reference/websockets/resourceful-pubsub/watch.html))
++ server publishes a message about a record to which this socket is subscribed (see [Model.publishUpdate()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publishUpdate.html), [Model.publishDestroy()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publishDestroy.html), and [Model.subscribe()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/subscribe.html))
++ server publishes a message informing all permitted watcher sockets that a new record has been created in the model with the same identity as `eventIdentity` (see [Model.publishCreate(http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publishCreate.html)](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/publishCreate.html) and [Model.watch()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pubsub/watch.html))
 
 ###### Low-Level Socket Methods (`sails.sockets`)
-+ server emits a message to all known sockets (see [sails.sockets.blast()](http://sailsjs.com/documentation/reference/websockets/sails.sockets/sails.sockets.blast.html))
-+ server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](http://sailsjs.com/documentation/reference/websockets/sails.sockets/sails.sockets.emit.html))
-+ server [broadcasts](http://sailsjs.com/documentation/reference/websockets/sails.sockets/sails.sockets.broadcast.html) to a room in which this socket (`io.socket`) has been allowed to [join](http://sailsjs.com/documentation/reference/websockets/sails.sockets/sails.sockets.join.html) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
++ server emits a message to all known sockets (see [sails.sockets.blast()](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-blast))
++ server emits a message directly to this socket (`io.socket`) using its unique id (see [sails.sockets.emit()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-emit))
++ server [broadcasts](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast) to a room in which this socket (`io.socket`) has been allowed to [join](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-join) (remember that a socket only stays subscribed as long as it is connected-- i.e. as long as the browser tab is open)
 
 
 
