@@ -18,7 +18,7 @@ Like the other built-in custom response modules, the behavior of this method is 
 By default, it works as follows:
 
 + The status code of the response will be set to 404.
-+ If the request "[wants JSON](https://sailsjs.com/documentation/reference/req/req.wantsJSON)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send a response body with the string `"Not Found"`.
++ If the request "[wants JSON](https://sailsjs.com/documentation/reference/request-req/req-wants-json)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send a response body with the string `"Not Found"`.
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve the view located at `views/404.ejs` (assuming the default EJS [view engine](https://sailsjs.com/documentation/concepts/views/view-engines)).  If no such view is found, or an error occurs attempting to serve it, a default response body will be sent with the string `"Not Found"`.
 
 ### Example
