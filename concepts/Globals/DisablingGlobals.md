@@ -1,6 +1,6 @@
 # Disabling Globals
 
-Sails determines which globals to expose by looking at [`sails.config.globals`](http://sailsjs.com/documentation/reference/sails.config/sails.config.globals.html), which is conventionallly configured in [`config/globals.js`](http://sailsjs.com/documentation/anatomy/config/globals.js.html).
+Sails determines which globals to expose by looking at [`sails.config.globals`](https://sailsjs.com/documentation/reference/configuration/sails-config-globals), which is conventionallly configured in [`config/globals.js`](http://sailsjs.com/documentation/anatomy/config/globals.js.html).
 
 To disable all global variables, just set the setting to `false`:
 

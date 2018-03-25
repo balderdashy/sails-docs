@@ -59,7 +59,7 @@ Custom Waterline adapters are actually [pretty simple to build](https://github.c
 
 ### Connections
 
-A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+A **connection** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  If your database doesn't require a password simply delete the password property. Connections are defined in [`config/connections.js`](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
 
 ```javascript
 // in config/connections.js
@@ -106,7 +106,7 @@ connections:{
 ```
 
 
-The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.com/documentation/reference/sails.config/sails.config.connections.html).
+The default database connection for a Sails app is located in the base model configuration (`config/models.js`), but it can also be overriden on a per-model basis by specifying a [`connection`](http://sailsjs.com/documentation/reference/configuration/sails-config-connections).
 Often it is also useful override the connections object in [`config/local.js`](http://sailsjs.com/documentation/concepts/configuration/the-local-js-file)
 
 
