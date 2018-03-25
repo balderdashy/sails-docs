@@ -7,7 +7,7 @@
 var query = Zookeeper.find();
 ```
 
-The purpose of query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire. Then, when you're ready to fire the query off to the database, you can just call [`.exec()`](http://sailsjs.com/documentation/reference/waterline/queries/exec.html) (or if you are using promises, `.then()`).
+The purpose of query instances is to provide a convenient, chainable syntax for working with your models.  Methods like `.populate()`, `.where()`, and `.sort()` allow you to refine database calls _before_ they're sent down the wire. Then, when you're ready to fire the query off to the database, you can just call [`.exec()`](http://sailsjs.com/documentation/reference/waterline-orm/queries/exec) (or if you are using promises, `.then()`).
 
 Most of the time, you won't think about query instances as objects _per se_, rather as just another part of the syntax for communicating with the database.  In fact, you may already be using these objects in your Sails app! If so, the following syntax should look familiar:
 
@@ -18,7 +18,7 @@ Zookeeper.find().exec(function afterFind(err, zookeepers) {
     // (handle error; e.g. `return res.serverError(err)`)
     return;
   }
-  
+
   // would you look at all those zookeepers?
   // (now let's do the next thing;
   //  e.g. `_.reduce(zookeepers, ...)` and/or `return res.json(zookeepers)`)

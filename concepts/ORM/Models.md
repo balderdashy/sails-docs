@@ -50,7 +50,7 @@ module.exports = {
 ### Using models
 
 
-Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.com/documentation/reference/waterline/models/find.html), [create](http://sailsjs.com/documentation/reference/waterline/models/create.html), [update](http://sailsjs.com/documentation/reference/waterline/models/update.html), and [destroy](http://sailsjs.com/documentation/reference/waterline/models/destroy.html).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
+Models may be accessed from our controllers, policies, services, responses, tests, and in custom model methods.  There are many built-in methods available on models, the most important of which are the query methods: [find](http://sailsjs.com/documentation/reference/waterline-orm/models/find), [create](http://sailsjs.com/documentation/reference/waterline-orm/models/create), [update](http://sailsjs.com/documentation/reference/waterline-orm/models/update), and [destroy](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy).  These methods are [asynchronous](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) - under the covers, Waterline has to send a query to the database and wait for a response.
 
 
 Consequently, query methods return a deferred query object.  To actually execute a query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete.
@@ -181,10 +181,10 @@ Attribute methods are functions available on records (i.e. model instances) retu
 ###### Built-in attribute methods
 Every Waterline model includes some attribute methods automatically, including:
 
-+ [`.toJSON()`](http://sailsjs.com/documentation/reference/waterline/records/toJSON.html)
-+ [`.save()`](http://sailsjs.com/documentation/reference/waterline/records/save.html)
-+ [`.destroy()`](http://sailsjs.com/documentation/reference/waterline/models/destroy.html)
-+ [`.validate()`](http://sailsjs.com/documentation/reference/waterline/records/validate.html)
++ [`.toJSON()`](http://sailsjs.com/documentation/reference/waterline-orm/records/to-json)
++ [`.save()`](http://sailsjs.com/documentation/reference/waterline-orm/records/save)
++ [`.destroy()`](http://sailsjs.com/documentation/reference/waterline-orm/models/destroy)
++ [`.validate()`](http://sailsjs.com/documentation/reference/waterline-orm/records/validate)
 
 
 <!-- note to self- we should bundle a getPrimaryKeyValue() attribute method on every model in waterline core (or maybe just getId() since "id" is simpler to understand) ~mike - aug2,2014 -->
@@ -233,7 +233,7 @@ module.exports = {
 
 > Note that with the notable exception of the built-in `.save()` and `.destroy()` attribute methods, attribute methods are almost always _synchronous_ by convention.
 >
-> Also note that custom attributes methods are not serialized to JSON by default.  To serialize them, you can override [toJSON](http://sailsjs.com/documentation/reference/waterline-orm/records/to-json).
+> Also note that custom attributes methods are not serialized to JSON by default.  To serialize them, you can override [toJSON](http://sailsjs.com/documentation/reference/waterline-orm-orm/records/to-json).
 
 ###### When to write a custom attribute method
 
