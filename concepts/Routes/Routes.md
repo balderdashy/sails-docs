@@ -67,7 +67,7 @@ If an unhandled error is thrown during the processing of a request (for instance
 
 ### Supported Protocols
 
-The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) and messages sent via [WebSockets](http://en.wikipedia.org/wiki/Websockets). It accomplishes this by listening for Socket.io messages sent to reserved event handlers in a simple format, called JWR (JSON-WebSocket Request/Response).  This specification is implemented and available out of the box in the [client-side socket SDK](https://sailsjs.com/documentation/reference/websockets/sails.io.js).
+The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP requests](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) and messages sent via [WebSockets](http://en.wikipedia.org/wiki/Websockets). It accomplishes this by listening for Socket.io messages sent to reserved event handlers in a simple format, called JWR (JSON-WebSocket Request/Response).  This specification is implemented and available out of the box in the [client-side socket SDK](https://sailsjs.com/documentation/reference/web-sockets/socket-client).
 
 
 
