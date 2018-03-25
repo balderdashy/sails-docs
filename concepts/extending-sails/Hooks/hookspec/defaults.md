@@ -11,7 +11,7 @@ The `defaults` feature can be implemented either as an object or a function whic
 }
 ```
 
-If a `myapihook.timeout` value is provided via a Sails configuration file, that value will be used; otherwise it will default to `5000`.  
+If a `myapihook.timeout` value is provided via a Sails configuration file, that value will be used; otherwise it will default to `5000`.
 
 ##### Namespacing your hook configuration
 For [project hooks](https://sailsjs.com/documentation/concepts/extending-sails/Hooks?q=types-of-hooks), you should namespace your hook&rsquo;s configuration under a key that uniquely identifies that hook (e.g. `myapihook` above).  For [installable hooks](https://sailsjs.com/documentation/concepts/extending-sails/Hooks?q=types-of-hooks), you should use the special `__configKey__` key to allow end-users of your hook to [change the configuration key](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html?q=changing-the-way-sails-loads-an-installable-hook) if necessary.  The default key for a hook using `__configKey__` is the hook name.  For example, if you create a hook called `sails-hooks-myawesomehook` which includes the following `defaults` object:
@@ -28,7 +28,7 @@ then it will, by default, provide default settings for the `sails.config.myaweso
 
 ##### Using `defaults` as a function
 
-If you specify a function for the `defaults` feature instead of a plain object, it takes a single argument (`config`) which receives any Sails configuration overrides.  Configuration overrides can be made by passing settings to the command line when lifting Sails (e.g. `sails lift --prod`), by passing an object as the first argument when programmatically lifting or loading Sails (e.g. `Sails.lift({port: 1338}, ...)`) or by using a [`.sailsrc`](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) file.  The `defaults` function should return a plain object representing configuration defaults for your hook.
+If you specify a function for the `defaults` feature instead of a plain object, it takes a single argument (`config`) which receives any Sails configuration overrides.  Configuration overrides can be made by passing settings to the command line when lifting Sails (e.g. `sails lift --prod`), by passing an object as the first argument when programmatically lifting or loading Sails (e.g. `Sails.lift({port: 1338}, ...)`) or by using a [`.sailsrc`](https://sailsjs.com/documentation/anatomy/sailsrc.html) file.  The `defaults` function should return a plain object representing configuration defaults for your hook.
 
 
 <docmeta name="displayName" value=".defaults">

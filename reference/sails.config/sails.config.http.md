@@ -1,6 +1,6 @@
 # sails.config.http
 
-Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the [`config/http.js`](https://sailsjs.com/documentation/anatomy/myApp/config/http.js.html) configuration file.
+Configuration for your app's underlying HTTP server.  These properties are conventionally specified in the [`config/http.js`](https://sailsjs.com/documentation/anatomy/config/http.js.html) configuration file.
 
 
 ### Properties

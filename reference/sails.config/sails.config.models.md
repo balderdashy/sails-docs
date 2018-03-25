@@ -1,6 +1,6 @@
 # sails.config.models
 
-Your default project-wide **model settings**, conventionally specified in the [config/models.js](https://sailsjs.com/documentation/anatomy/myApp/config/models-js) configuration file.
+Your default project-wide **model settings**, conventionally specified in the [config/models.js](https://sailsjs.com/documentation/anatomy/config/models-js) configuration file.
 
 Most of the settings below can also be overridden on a per-model basis-- just edit the appropriate model definition file.  There are also some additional model settings, not listed below, which can _only_ be specified on a per-model basis.  For more details, see [Concepts > Model Settings](https://sailsjs.com/documentation/concepts/orm/model-settings).
 
