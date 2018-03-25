@@ -17,7 +17,7 @@ Views are defined in your app's [`views/`](https://sailsjs.com/documentation/ana
 
 ##### Compiling a view
 
-Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](https://sailsjs.com/documentation/reference/res/res.view.html) to compile one of your views, then send the resulting HTML down to the user.
+Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](https://sailsjs.com/documentation/reference/response-res/res-view) to compile one of your views, then send the resulting HTML down to the user.
 
 You can also hook up a view directly to a route in your `routes.js` file.  Just indicate the relative path to the view from your app's `views/` directory.  For example:
 
