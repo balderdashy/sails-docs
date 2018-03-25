@@ -162,7 +162,7 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 ##### Policy target syntax
 
-In most cases, you will want to apply [policies](https://sailsjs.com/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](https://sailsjs.com/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
+In most cases, you will want to apply [policies](https://sailsjs.com/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](https://sailsjs.com/documentation/reference/configuration/sails-config-policies) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
 
 ```js
 '/foo': { policy: 'my-policy' }

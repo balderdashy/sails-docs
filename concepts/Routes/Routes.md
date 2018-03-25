@@ -11,7 +11,7 @@ Like most web frameworks, Sails provides a router: a mechanism for mapping URLs 
 
 Sails lets you design your app's URLs in any way you like- there are no framework restrictions.
 
-Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/sails.config/sails.config.routes.html), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view.
+Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view.
 
 ```javascript
 // config/routes.js
@@ -72,7 +72,7 @@ The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP reque
 
 
 #### Notes
-+ Advanced users may opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.  You can bind socket events directly in your app's [`onConnect`](https://sailsjs.com/documentation/reference/sails.config/sails.config.sockets.html?q=commonlyused-options) function (located in [`config/sockets.js`](https://sailsjs.com/documentation/anatomy/config/sockets.js).)  But bear in mind that, in most cases, you are better off leveraging the request interpreter for socket communication - maintaining consistent routes across HTTP and WebSockets helps keep your app maintainable.
++ Advanced users may opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.  You can bind socket events directly in your app's [`onConnect`](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets#?commonlyused-options) function (located in [`config/sockets.js`](https://sailsjs.com/documentation/anatomy/config/sockets.js).)  But bear in mind that, in most cases, you are better off leveraging the request interpreter for socket communication - maintaining consistent routes across HTTP and WebSockets helps keep your app maintainable.
 
 
 
