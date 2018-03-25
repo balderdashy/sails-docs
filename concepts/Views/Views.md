@@ -12,7 +12,7 @@ By default, Sails is configured to use EJS ([Embedded Javascript](http://embedde
 
 If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) via [Consolidate](https://github.com/visionmedia/consolidate.js/).
 
-Views are defined in your app's [`views/`](http://sailsjs.com/documentation/anatomy/myApp/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
+Views are defined in your app's [`views/`](http://sailsjs.com/documentation/anatomy/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
 
 
 ##### Compiling a view
