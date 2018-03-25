@@ -24,7 +24,7 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ If the request "[wants JSON](http://sailsjs.com/documentation/reference/req/req.wantsJSON.html)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Not Found"`).
++ If the request "[wants JSON](https://sailsjs.com/documentation/reference/request-req/req-wants-json)" (e.g. the request originated from AJAX, WebSockets, or a REST client like cURL), Sails will send the provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Not Found"`).
 + If the request _does not_ "want JSON" (e.g. a URL typed into a web browser), Sails will attempt to serve one of your views.
   + If a specific `pathToView` was provided, Sails will attempt to use that view.
   + Alternatively if `pathToView` was _not_ provided, Sails will try to guess an appropriate view (see [`res.view()`](http://sailsjs.com/documentation/reference/res/res.view.html) for details).  If Sails cannot guess a workable view, it will just send JSON.
