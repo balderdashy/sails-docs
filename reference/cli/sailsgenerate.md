@@ -24,7 +24,7 @@ The following _core generators_ are bundled with Sails:
 | sails generate adapter          | Generate a **api/adapters/foo/** folder containing the files necessary for building a new adapter.
 | sails generate sails.io.js      | Generate a sails.io.js file at the specified location, overwriting the default sails.io.js if applicable.
 | _sails generate api_            | _Generate **api/models/Foo.js** and **api/controllers/FooController.js**._
-| _sails generate new_            | _Alias for [`sails new`](https://sailsjs.com/documentation/reference/cli/sails-new)._
+| _sails generate new_            | _Alias for [`sails new`](https://sailsjs.com/documentation/reference/command-line-interface/sails-new)._
 | _sails generate etc_            | **Experimental.** Adds the following files to your app:<br/>&bull; .gitignore <br/>&bull; .jshintrc <br/>&bull; .editorconfig <br/>&bull; .npmignore <br/>&bull; .travis.yml <br/>&bull; .appveyor.yml
 
 
