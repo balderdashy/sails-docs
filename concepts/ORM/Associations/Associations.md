@@ -14,7 +14,7 @@ Unlike normal attributes, association attribute values are not always returned w
 
 ```js
 // Find a single user, including its pets
-await User.findOne(123).populate('pets');
+var userWithPets = await User.findOne(123).populate('pets');
 ```
 
 How an association attribute is represented in a returned record depends on the type of association, whether there are actual records linked, and whether `.populate()` is chained to the query.  See [this table](https://sailsjs.com/documentation/concepts/models-and-orm/records#?expected-types-values-for-association-attributes) for a full description of what to expect in a returned record with association attributes.
