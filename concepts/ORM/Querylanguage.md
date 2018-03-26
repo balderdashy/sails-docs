@@ -226,10 +226,10 @@ Model.find({
 
 #### 'like'
 
-Searches for records using pattern matching with the `%` sign.
+Searches for records that match a particular SQL-like (`%`) wildcard pattern.
 
 ```javascript
-Model.find({ food: { 'like': '%beans' }})
+Model.find({ food: { 'like': '%be%ans%' }})
 ```
 
 #### 'Date Ranges'
