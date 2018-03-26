@@ -11,15 +11,15 @@ Sails and Express provide built-in, easily configurable protection against most 
 
 Learn about several different types of attacks that Node.js/Sails helps prevent out of the box, and how to enable and configure security settings in your app:
 
-+ [CORS](http://sailsjs.com/documentation/concepts/security/cors)
-+ [DDOS](http://sailsjs.com/documentation/concepts/security/ddos)
-+ [CSRF](http://sailsjs.com/documentation/concepts/security/csrf)
-+ [Clickjacking](http://sailsjs.com/documentation/concepts/security/clickjacking)
-+ [P3P](http://sailsjs.com/documentation/concepts/security/p3p)
-+ [Content Security Policy](http://sailsjs.com/documentation/concepts/security/content-security-policy)
-+ [Socket Hijacking](http://sailsjs.com/documentation/concepts/security/socket-hijacking)
-+ [XSS](http://sailsjs.com/documentation/concepts/security/xss)
-+ [Strict Transport Security](http://sailsjs.com/documentation/concepts/security/strict-transport-security)
++ [CORS](https://sailsjs.com/documentation/concepts/security/cors)
++ [DDOS](https://sailsjs.com/documentation/concepts/security/ddos)
++ [CSRF](https://sailsjs.com/documentation/concepts/security/csrf)
++ [Clickjacking](https://sailsjs.com/documentation/concepts/security/clickjacking)
++ [P3P](https://sailsjs.com/documentation/concepts/security/p3p)
++ [Content Security Policy](https://sailsjs.com/documentation/concepts/security/content-security-policy)
++ [Socket Hijacking](https://sailsjs.com/documentation/concepts/security/socket-hijacking)
++ [XSS](https://sailsjs.com/documentation/concepts/security/xss)
++ [Strict Transport Security](https://sailsjs.com/documentation/concepts/security/strict-transport-security)
 
 
 <docmeta name="displayName" value="Security">

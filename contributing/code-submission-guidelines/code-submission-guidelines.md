@@ -6,7 +6,7 @@ There are two types of code contributions we can accept in Sails core:  patches 
 
 **New features** are TODOs summarized in the [Sails Roadmap](https://github.com/balderdashy/sails/blob/master/ROADMAP.md) file, with more information in an accompanying pull request.  Anything that is not specifically in the ROADMAP.md file should not be submitted as a new feature.
 
-In case of doubt about whether a change you would like to make would be considered a "patch", please open an issue in the [issue tracker](https://github.com/balderdashy/sails/issues/new) or contact someone from our [core team](http://sailsjs.com/about) on Twitter _before_ you begin work on the pull request. Especially do so if you plan to work on something big. Nothing is more frustrating than seeing your hard work go to waste because your vision does not align with planned or ongoing development efforts of the project's maintainers.
+In case of doubt about whether a change you would like to make would be considered a "patch", please open an issue in the [issue tracker](https://github.com/balderdashy/sails/issues/new) or contact someone from our [core team](https://sailsjs.com/about) on Twitter _before_ you begin work on the pull request. Especially do so if you plan to work on something big. Nothing is more frustrating than seeing your hard work go to waste because your vision does not align with planned or ongoing development efforts of the project's maintainers.
 
 #### General rules
 
@@ -32,7 +32,7 @@ If the adapter is part of core (code base is located in the Sails repo), please 
 
 Sails adapters translate Waterline query syntax into the lower-level language of the integrated database, and they take the results from the database and map them to the response expected by Waterline, the Sails framework's ORM.  While creating a new adapter should not be taken lightly, in many cases, writing an adapter is not as hard as it sounds (i.e. you usually end up wrapping around an existing NPM package), and it's a great way to get your feet wet with contributing to the ORM hook in Sails, and to the Waterline code base.
 
-Before starting work on a new adapter, just make sure and do a thorough search on npm, Google and Github to check that someone else hasn't already started working on the same thing.  Read more about adapters in [Concepts > Extending Sails > Adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters).
+Before starting work on a new adapter, just make sure and do a thorough search on npm, Google and Github to check that someone else hasn't already started working on the same thing.  Read more about adapters in [Concepts > Extending Sails > Adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters).
 
 
 #### Contributing to a hook
@@ -41,7 +41,7 @@ If the hook is part of core (code base is located in the Sails repo), please fol
 
 #### Authoring a new hook
 
-Creating a hook is a great way to accomplish _almost anything_ in Sails core.  Before starting work on a new custom hook, just make sure and do a thorough search on npm, Google and Github to make sure someone else hasn't already started working on the same thing.  Read more about custom hooks in [Concepts > Extending Sails > Hooks](http://sailsjs.com/documentation/concepts/extending-sails/hooks).
+Creating a hook is a great way to accomplish _almost anything_ in Sails core.  Before starting work on a new custom hook, just make sure and do a thorough search on npm, Google and Github to make sure someone else hasn't already started working on the same thing.  Read more about custom hooks in [Concepts > Extending Sails > Hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks).
 
 
 #### Contributing to a generator

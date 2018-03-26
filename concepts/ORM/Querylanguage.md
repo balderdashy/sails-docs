@@ -119,12 +119,11 @@ The following modifiers are available to use when building queries.
 * `'!='`
 * `'nin'`
 * `'in'`
-* `'like'`
 * `'contains'`
 * `'startsWith'`
 * `'endsWith'`
 
-> Note that the availability and behavior of the criteria modifiers when matching against attributes with [JSON attributes](http://sailsjs.com/documentation/concepts/models-and-orm/validations#?builtin-data-types) may vary according to the database adapter you&rsquo;re using.  For instance, while `sails-postgresql` will map your JSON attributes to the <a href="https://www.postgresql.org/docs/9.4/static/datatype-json.html" target="_blank">JSON column type</a>, you&rsquo;ll need to [send a native query](http://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query) in order to query those attributes directly.  On the other hand, `sails-mongo` supports queries against JSON-type attributes, but you should be aware that if a field contains an array, the query criteria will be run against every _item_ in the array, rather than the array itself (this is based on the behavior of MongoDB itself).
+> Note that the availability and behavior of the criteria modifiers when matching against attributes with [JSON attributes](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?builtin-data-types) may vary according to the database adapter you&rsquo;re using.  For instance, while `sails-postgresql` will map your JSON attributes to the <a href="https://www.postgresql.org/docs/9.4/static/datatype-json.html" target="_blank">JSON column type</a>, you&rsquo;ll need to [send a native query](https://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query) in order to query those attributes directly.  On the other hand, `sails-mongo` supports queries against JSON-type attributes, but you should be aware that if a field contains an array, the query criteria will be run against every _item_ in the array, rather than the array itself (this is based on the behavior of MongoDB itself).
 
 #### '<'
 
@@ -168,77 +167,62 @@ Model.find({
 })
 ```
 
-#### 'in'
+#### in
 
 Searches for records where the value is in the list of values.
 
 ```javascript
 Model.find({
-  name: { 'in': ['foo', 'bar'] }
+  name: { in: ['foo', 'bar'] }
 })
 ```
 
-#### 'nin'
+#### nin
 
 Searches for records where the value is NOT in the list of values.
 
 ```javascript
 Model.find({
-  name: { 'nin': ['foo', 'bar'] }
+  name: { nin: ['foo', 'bar'] }
 })
 ```
 
-#### 'contains'
+#### contains
 
 Searches for records where the value for this attribute _contains_ the given string.
 
 ```javascript
-Model.find({
+var musicCourses = await Course.find({
   subject: { contains: 'music' }
-}).exec(function (err, musicCourses){
-
 });
 ```
 
-#### 'startsWith'
+_For performance reasons, case-sensitivity of `contains` depends on the database adapter._
+
+#### startsWith
 
 Searches for records where the value for this attribute _starts with_ the given string.
 
 ```javascript
-Model.find({
+var coursesAboutAmerica = await Course.find({
   subject: { startsWith: 'american' }
-}).exec(function (err, coursesAboutAmerica){
-
 });
 ```
 
-#### 'endsWith'
+_For performance reasons, case-sensitivity of `startsWith` depends on the database adapter._
+
+#### endsWith
 
 Searches for records where the value for this attribute _ends with_ the given string.
 
 ```javascript
-Model.find({
+var historyCourses = await Course.find({
   subject: { endsWith: 'history' }
-}).exec(function (err, historyCourses) {
-
-})
+});
 ```
 
-#### 'like'
+_For performance reasons, case-sensitivity of `endsWith` depends on the database adapter._
 
-Searches for records using pattern matching with the `%` sign.
-
-```javascript
-Model.find({ food: { 'like': '%beans' }})
-```
-
-#### 'Date Ranges'
-
-You can do date range queries using the comparison operators.
-
-```javascript
-Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
-```
 
 ### Query Options
 
@@ -275,27 +259,19 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
-`paginate` is a shortcut method which can accomplish the same as `skip` and `limit`.
-
-<!-- TODO: set up reference page for .paginate() -->
-
-``` javascript
-Model.find().paginate({page: 2, limit: 10});
-```
-
 > **Waterline**
 >
 > You can find out more about the Waterline API below:
-> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline-orm/queries)
+> * [Sails.js Documentation](https://sailsjs.com/documentation/reference/waterline-orm/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
-> * [Waterline Reference Docs](http://sailsjs.com/documentation/reference/waterline-orm)
+> * [Waterline Reference Docs](https://sailsjs.com/documentation/reference/waterline-orm)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
 
 
 #### Sort
 
 Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
-sort, or specify an `asc` or `desc` flag for ascending or descending orders respectively.
+sort, or specify an `ASC` or `DESC` flag for ascending or descending orders respectively.
 
 ```javascript
 // Sort by name in ascending order

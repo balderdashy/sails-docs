@@ -11,7 +11,7 @@ var total = await Something.sum(numericAttrName, criteria);
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
 | 1 |  numericAttrName    | ((string))                                   | The name of the numeric attribute that will be totaled up.
-| 2 |  _criteria_         | ((dictionary?))                              | The [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the sum will be computed across _all_ of this model's records. `sum` queries do not support pagination using `skip` and `limit` or projections using `select`.
+| 2 |  _criteria_         | ((dictionary?))                              | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. If no criteria is specified, the sum will be computed across _all_ of this model's records. `sum` queries do not support pagination using `skip` and `limit` or projections using `select`.
 
 
 ##### Result

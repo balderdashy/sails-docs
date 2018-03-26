@@ -8,6 +8,6 @@ Underneath the covers, Sails uses Winston for logging, which allows for some pre
 
 ### Usage
 
-See [`sails.config.log`](http://sailsjs.com/documentation/reference/configuration/sails-config-log) for all available options.
+See [`sails.config.log`](https://sailsjs.com/documentation/reference/configuration/sails-config-log) for all available options.
 
 <docmeta name="displayName" value="log.js">

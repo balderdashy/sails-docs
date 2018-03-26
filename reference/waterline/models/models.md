@@ -1,8 +1,8 @@
 # Working with Models
 
-This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful pubsub methods](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be hand-written in your app to wrap reusable custom code.
+This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful pubsub methods](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be hand-written in your app to wrap reusable custom code.
 
-> + For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](http://sailsjs.com/documentation/concepts/models-and-orm/models).
+> + For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](https://sailsjs.com/documentation/concepts/models-and-orm/models).
 > + You can find an example of how to define a model [here](https://gist.github.com/rachaelshaw/f5bf442b2171154aa6021846d1a250f8).
 
 
@@ -11,7 +11,7 @@ This section of the documentation focuses on the model methods provided by Water
 ### Built-In Model Methods
 
 In general, model methods are _asynchronous_, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, promises or async/await. 
-Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries](http://sailsjs.com/documentation/reference/waterline-orm/queries) for more on that.
+Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.where()` and `.exec()`. See [Working with Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries) for more on that.
 
 
  Method                | Summary
@@ -38,6 +38,6 @@ Most built-in model methods accept a callback as an optional final argument. If 
 ### `sails.models`
 
 If you need to disable global variables in Sails, you can still use `sails.models.<model_identity>` to access your models.
-> Not sure of your model's `identity`? Check out [Concepts > Models and ORM > Model settings](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity).
+> Not sure of your model's `identity`? Check out [Concepts > Models and ORM > Model settings](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity).
 
 <docmeta name="displayName" value="Models">

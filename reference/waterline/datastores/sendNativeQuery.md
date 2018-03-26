@@ -12,7 +12,7 @@ datastore.sendNativeQuery(sql, valuesToEscape).exec(function(err, rawResult) {
 });
 ```
 
-> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](http://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
+> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
 
 ### Usage
 |   |     Argument        | Type                | Details
@@ -38,7 +38,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-> Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  The standard [MySQL adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
+> Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  The standard [MySQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
 
 
 ```js
@@ -83,7 +83,7 @@ But be aware that you still have to deal with custom column names on the way out
 
 
 ### Notes
-> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](http://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.)
+> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.)
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">

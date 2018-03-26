@@ -42,13 +42,13 @@ Render the token directly into a hidden form input element in your HTML, e.g.:
 
 ### Enabling CSRF protection
 
-Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.security.csrf](http://sailsjs.com/docs/reference/configuration/sails-config-security-csrf) (conventionally located in your project's [`config/security.js`](http://sailsjs.com/anatomy/config/security-js) file):
+Sails bundles optional CSRF protection out of the box. To enable the built-in enforcement, just make the following adjustment to [sails.config.security.csrf](https://sailsjs.com/docs/reference/configuration/sails-config-security-csrf) (conventionally located in your project's [`config/security.js`](https://sailsjs.com/anatomy/config/security-js) file):
 
 ```js
 csrf: true
 ```
 
-You can also turn CSRF protection on or off on a per-route basis by adding `csrf: true` or `csrf: false` to any route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file.
+You can also turn CSRF protection on or off on a per-route basis by adding `csrf: true` or `csrf: false` to any route in your [`config/routes.js`](https://sailsjs.com/anatomy/config/routes-js) file.
 
 Note that if you have existing code that communicates with your Sails backend via POST, PUT, or DELETE requests, you'll need to acquire a CSRF token and include it as a parameter or header in those requests.  More on that in a sec.
 
@@ -62,7 +62,7 @@ CSRF tokens are temporary and session-specific; e.g. Imagine Mary and Muhammad a
 
 ### Dispensing CSRF tokens
 
-To get a CSRF token, you should either bootstrap it in your view using [locals](http://sailsjs.com/documentation/concepts/views/locals) (good for traditional multi-page web applications) or fetch it using AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
+To get a CSRF token, you should either bootstrap it in your view using [locals](https://sailsjs.com/documentation/concepts/views/locals) (good for traditional multi-page web applications) or fetch it using AJAX from a special protected JSON endpoint (handy for single-page-applications (SPAs).)
 
 
 ##### Using view locals:
@@ -85,7 +85,7 @@ If you are doing a `multipart/form-data` upload with the form, be sure to place 
 
 ##### Using AJAX/WebSockets
 
-In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](http://sailsjs.com/anatomy/config/routes-js) file pointing to the `security/grant-csrf-token` action:
+In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically rather than having it bootstrapped on the page.  You can do so by setting up a route in your [`config/routes.js`](https://sailsjs.com/anatomy/config/routes-js) file pointing to the `security/grant-csrf-token` action:
 
 ```json
 {
@@ -102,7 +102,7 @@ Then send a GET request to the route you defined, and you'll get CSRF token retu
 ```
 
 > For security reasons, you can&rsquo;t retrieve a CSRF token via a socket request.  You can however _spend_ CSRF tokens (see below) via socket requests.
-> The `security/grant-csrf-token` action is not intended to be used in cross-origin requests, since some browsers block third-party cookies by default.  See the [CORS documentation](http://sailsjs.com/documentation/concepts/security/cors) for more info about cross-origin requests.
+> The `security/grant-csrf-token` action is not intended to be used in cross-origin requests, since some browsers block third-party cookies by default.  See the [CORS documentation](https://sailsjs.com/documentation/concepts/security/cors) for more info about cross-origin requests.
 
 
 

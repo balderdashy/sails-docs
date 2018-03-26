@@ -2,9 +2,9 @@
 
 Send a virtual request to a Sails server using Socket.io.
 
-This function is very similar to [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), [`io.socket.post()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-post), etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
+This function is very similar to [`io.socket.get()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), [`io.socket.post()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-post), etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
 
-Using the automatically-created [`io.socket`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket) instance:
+Using the automatically-created [`io.socket`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket) instance:
 
 ```js
 io.socket.request(options, function (resData, jwres)){
@@ -67,7 +67,7 @@ io.socket.request({
 ### Notes
 > + A helpful analogy might be to think of the difference between `io.socket.get` and this method as the difference between JQuery's `$.get` and `$.ajax`.
 > + Remember that you can communicate with _any of your routes_ using socket requests.
-> + Need to set custom headers for _all_ outgoing requests?  Check out [`io.sails.headers`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
+> + Need to set custom headers for _all_ outgoing requests?  Check out [`io.sails.headers`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
 
 <docmeta name="displayName" value="io.socket.request()">
 <docmeta name="pageType" value="method">

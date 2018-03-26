@@ -10,7 +10,7 @@ Specify a where clause for filtering a query.
 ### Usage
 |   |     Arguments      | Type                | Details    |
 |---|:-------------------|---------------------|------------|
-| 1 |  whereClause          |  ((dictionary))     | The [where clause](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. |
+| 1 |  whereClause          |  ((dictionary))     | The [where clause](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. |
 
 
 ### Example

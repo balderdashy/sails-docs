@@ -4,9 +4,9 @@
 
 Datastore configurations (or simply datastores) are like "saved settings" for your adapters.
 
-In Sails, [database adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters) are the middle man between your app and some kind of structured data storage (typically a database).  But in order for an adapter to communicate between your Sails app and a particular database, it needs some additional information.  That's where datastores come in.  Datastores are dictionaries (plain JavaScript objects) that specify an `adapter`, as well as other necessary configuration information-- stuff like `url`, or `host`, `port`, `username`, and `password`.
+In Sails, [database adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters) are the middle man between your app and some kind of structured data storage (typically a database).  But in order for an adapter to communicate between your Sails app and a particular database, it needs some additional information.  That's where datastores come in.  Datastores are dictionaries (plain JavaScript objects) that specify an `adapter`, as well as other necessary configuration information-- stuff like `url`, or `host`, `port`, `username`, and `password`.
 
-While this [can be overridden](http://sailsjs.com/documentation/concepts/orm/model-settings) on a per-model basis, out of the box, every model in your app uses a datastore named "default".
+While this [can be overridden](https://sailsjs.com/documentation/concepts/orm/model-settings) on a per-model basis, out of the box, every model in your app uses a datastore named "default".
 
 
 ### The default datastore
@@ -37,7 +37,7 @@ module.exports.datastores = {
 
 That's it!  The next time you lift your app, all of your models will communicate with the specified MySQL database whenever your code executes built-in model methods like `.create()` or `.find()`.
 
-> Want to use a different database?  Don't worry, MySQL is just an example -- your can use any [supported database adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters) in your Sails app.
+> Want to use a different database?  Don't worry, MySQL is just an example -- your can use any [supported database adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters) in your Sails app.
 
 
 ### The connection URL
@@ -59,7 +59,7 @@ mysql://  root  :  squ1ddy   @  localhost  :  3306  /  my_dev_db_name
 protocol  user     password     host          port     database
 ```
 
-In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.  For more information about how to configure your particular database, check out the [database adapter reference](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
+In production, if you are using a cloud-hosted database, you'll probably be given a connection URL (e.g. `mysql://lkjdsf4:kw8sd@us-west-2.64-8.amazonaws.com:3306/4e843g`).  If not, it's still usually a good idea to build one yourself from the individual pieces of information.  For more information about how to configure your particular database, check out the [database adapter reference](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
 ##### Building your own connection URL
 
@@ -93,16 +93,16 @@ module.exports = {
 };
 ```
 
-Connection URLs really shine in production, because you can change them by swapping out a single config key.  Not only does this make your production settings easier to understand, if desired, it also allows you to swap out your production database credentials simply by setting an [environment variable](http://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables) (`sails_datastores__default__url`).  This is a handy way to avoid immortalizing sensitive database credentials as commits in your version control system.
+Connection URLs really shine in production, because you can change them by swapping out a single config key.  Not only does this make your production settings easier to understand, if desired, it also allows you to swap out your production database credentials simply by setting an [environment variable](https://sailsjs.com/documentation/concepts/configuration#?setting-sailsconfig-values-directly-using-environment-variables) (`sails_datastores__default__url`).  This is a handy way to avoid immortalizing sensitive database credentials as commits in your version control system.
 
 
 ### Supported databases
 
-Sails's ORM, [Waterline](http://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
+Sails's ORM, [Waterline](https://sailsjs.com/documentation/concepts/models-and-orm), has a well-defined adapter system for supporting all kinds of datastores.  The Sails core team maintains official adapters for [MySQL](http://npmjs.com/package/sails-mysql), [PostgreSQL](http://npmjs.com/package/sails-postgresql), [MongoDB](http://npmjs.com/package/sails-mongo), [local disk](http://npmjs.com/package/sails-disk), and community adapters exist for databases like Oracle, DB2, MSSQL, OrientDB, and many more.
 
-You can find an up-to-date list of supported database adapters [here](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
+You can find an up-to-date list of supported database adapters [here](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters).
 
-> Still can't find the adapter for your database?  You can also create a [custom adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/custom-adapters).  Or if you'd like to modify/update an existing adapter, get in touch with its maintainer.  (Need help?  Click [here](http://sailsjs.com/support) for additional resources.)
+> Still can't find the adapter for your database?  You can also create a [custom adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/custom-adapters).  Or if you'd like to modify/update an existing adapter, get in touch with its maintainer.  (Need help?  Click [here](https://sailsjs.com/support) for additional resources.)
 
 
 ### Multiple datastores
@@ -140,8 +140,8 @@ Some general rules of thumb:
 
 + To change the datastore you're using _during development_, edit the `default` key in `config/datastores.js` (or use `config/local.js` if you'd rather not check in your credentials)
 + To configure your default _production_ datastore, use `config/env/production.js` (or set environment variables if you'd rather not check in your credentials)
-+ To override the datastore for a particular model, [set its `datastore`](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore).
-+ Besides the `config/datastores.js` and `config/env/production.js` files, you can configure datastores in [the same way you configure anything else in Sails](http://sailsjs.com/documentation/concepts/configuration), including environment variables, command-line options, and more.
++ To override the datastore for a particular model, [set its `datastore`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?datastore).
++ Besides the `config/datastores.js` and `config/env/production.js` files, you can configure datastores in [the same way you configure anything else in Sails](https://sailsjs.com/documentation/concepts/configuration), including environment variables, command-line options, and more.
 
 
 

@@ -26,6 +26,10 @@ req.path;
 
 
 
+### Notes
+> + If you would like the URL query string _as well as_ the path, see [`req.url`](https://sailsjs.com/documentation/reference/request-req/req-url).
+
+
 
 
 

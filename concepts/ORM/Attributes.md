@@ -14,7 +14,7 @@ In most cases, this data is _homogenous_, meaning each record has the same attri
 
 ### Defining attributes
 
-A model's `attributes` [setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) allows you to provide a set of attributes, each defined as a dictionary (aka plain JavaScript object):
+A model's `attributes` [setting](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings) allows you to provide a set of attributes, each defined as a dictionary (aka plain JavaScript object):
 
 ```javascript
 // api/models/User.js
@@ -32,7 +32,7 @@ Within each attribute, there are one or more keys, or options, which are used to
 
 ##### Default attributes
 
-You can also define default attributes that will appear in _all_ of your models, by defining `attributes` as a [default model setting](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings) (e.g. in `config/models.js`.)  For example, new Sails apps come with three default attributes out of the box: `id`, `createdAt`, and `updatedAt`.
+You can also define default attributes that will appear in _all_ of your models, by defining `attributes` as a [default model setting](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings) (e.g. in `config/models.js`.)  For example, new Sails apps come with three default attributes out of the box: `id`, `createdAt`, and `updatedAt`.
 
 These attributes will be available in all models, unless they are overridden or disabled.  To override a default attribute, define an attribute with the same name in the model definition.  To _disable_ a default attribute, define it as `false`.  For instance, to disable the default `updatedAt` attribute for a particular model:
 
@@ -53,7 +53,7 @@ module.exports = {
 
 ##### Type
 
-Except for [associations](http://sailsjs.com/documentation/concepts/models-and-orm/associations), every attribute must declare a `type`.
+Except for [associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations), every attribute must declare a `type`.
 
 This is the type of data that will be stored for this attribute -- used for logical type safety checks of queries and results.  Here is a list of the data types supported by Sails and Waterline:
 
@@ -112,7 +112,7 @@ unsubscribeReason: {
 }
 ```
 
-For a complete list of high-level validation rules, see [Validations](http://sailsjs.com/documentation/concepts/models-and-orm/validations).
+For a complete list of high-level validation rules, see [Validations](https://sailsjs.com/documentation/concepts/models-and-orm/validations).
 
 
 
@@ -221,14 +221,14 @@ module.exports = {
 };
 ```
 
-> You might have noticed that we also used the [`tableName`](http://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
+> You might have noticed that we also used the [`tableName`](https://sailsjs.com/documentation/concepts/ORM/model-settings.html?q=tablename) property in this example.  This allows us to control the name of the table that will be used to house our data.
 
 
 ### Encryption at rest
 
 ##### encrypt
 
-Whether to auto-encrypt this attribute. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://next.sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
+Whether to auto-encrypt this attribute. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
 
 ```javascript
 attributes: {
@@ -265,8 +265,8 @@ attributes: {
 
 > * Column types are entirely database-dependent.  Be sure that the `columnType` you select corresponds to a data type that is valid for your database!  If you don&rsquo;t specify a `columnType`, the adapter will choose one for you based on the attribute&rsquo;s `type`.
 > * The `columnType` value is used verbatim in the statement that creates the database column, so you can use it to specify additional options, e.g. `varchar(255) CHARACTER SET utf8mb4`.
-> * If you intend to store binary data in a Sails model, you&rsquo;ll want to set the `type` of the attribute to `ref`, and then use the appropriate `columnType` for your chosen database (e.g. `mediumblob` for MySQL or `bytea` for PostgreSQL).  Keep in mind that whatever you attempt to store will have to fit in memory before being transferred to the database--there is currently no mechanism in Sails for streaming binary data to a datastore adapter.  As an alternative to storing blobs in a database, you might consider streaming them to disk or to a remote filesystem like S3, using the [`.upload()` method](http://sailsjs.com/documentation/concepts/file-uploads).
-> * Keep in mind that custom column options like `CHARACTER SET utf8mb4` in MySQL can affect a column&rsquo;s storage size. This is especially relevant when used in conjunction with the `unique` property, where you may have to specify a smaller column size to avoid errors.  See the [`unique` property](http://next.sailsjs.com/documentation/concepts/models-and-orm/attributes#?unique) docs below for more info.
+> * If you intend to store binary data in a Sails model, you&rsquo;ll want to set the `type` of the attribute to `ref`, and then use the appropriate `columnType` for your chosen database (e.g. `mediumblob` for MySQL or `bytea` for PostgreSQL).  Keep in mind that whatever you attempt to store will have to fit in memory before being transferred to the database--there is currently no mechanism in Sails for streaming binary data to a datastore adapter.  As an alternative to storing blobs in a database, you might consider streaming them to disk or to a remote filesystem like S3, using the [`.upload()` method](https://sailsjs.com/documentation/concepts/file-uploads).
+> * Keep in mind that custom column options like `CHARACTER SET utf8mb4` in MySQL can affect a column&rsquo;s storage size. This is especially relevant when used in conjunction with the `unique` property, where you may have to specify a smaller column size to avoid errors.  See the [`unique` property](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?unique) docs below for more info.
 
 ##### autoIncrement
 
@@ -293,7 +293,7 @@ attributes: {
   }
 }
 ```
-> When using `unique: true` on an attribute with the `utf8mb4` character set in a MySQL database, you will need to set the column size manually via the [`columnType` property](http://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to avoid a possible 'index too long' error.  For example: `columnType: varchar(100) CHARACTER SET utf8mb4`.
+> When using `unique: true` on an attribute with the `utf8mb4` character set in a MySQL database, you will need to set the column size manually via the [`columnType` property](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to avoid a possible 'index too long' error.  For example: `columnType: varchar(100) CHARACTER SET utf8mb4`.
 
 
 <!--

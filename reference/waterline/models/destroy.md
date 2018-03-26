@@ -15,7 +15,7 @@ _Or:_
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](http://sailsjs.com/documentation/concepts/models-and-orm/query-language) will be destroyed.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ `destroy` queries do not support pagination using `skip` and `limit` or projections using `select`. |
+| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) will be destroyed.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ `destroy` queries do not support pagination using `skip` and `limit` or projections using `select`. |
 
 
 ##### Result
@@ -41,7 +41,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 |:--------------------|-------------------|:---------------------------------------------------------------|
 | fetch               | ((boolean))       | If set to `true`, then the array of destroyed records will be sent back.<br/><br/>Defaults to `false`.
 
-> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+> For more information on meta keys, see [.meta()](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 

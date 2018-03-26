@@ -58,7 +58,7 @@ module.exports = {
 }
 ```
 
-By using the `PetUser` model we can use [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) on both the `User` model and `Pet` model just the same as a normal [Many-to-Many](http://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association.
+By using the `PetUser` model we can use [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) on both the `User` model and `Pet` model just the same as a normal [Many-to-Many](https://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many) association.
 
 > Currently if you would like to add additional information to the `through` table it will not be available when calling `.populate`. To do this you will need to query the `through` model manually.
 

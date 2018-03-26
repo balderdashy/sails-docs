@@ -1,6 +1,6 @@
 # Creating an installable hook
 
-Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
+Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
 
 To create a new installable hook:
 
@@ -19,7 +19,7 @@ To create a new installable hook:
 }
 ```
 If you use `npm init` to create your `package.json`, be sure to open the file afterwards and manually insert the `sails` key containing `isHook: true`.
-1. Write your hook code in `index.js` in accordance with the [hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification).
+1. Write your hook code in `index.js` in accordance with the [hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification).
 
 Your new folder may contain other files as well, which can be loaded in your hook via `require`; only `index.js` will be read automatically by Sails.  Use the `dependencies` key of your `package.json` to refer to any dependencies that need to be installed in order for your hook to work (you may also use `npm install <dependency> --save` to easily save dependency information to `package.json`).
 
@@ -109,10 +109,10 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 
 Assuming your hook is tested and looks good, and assuming that the hook name isn&rsquo;t already in use by another [NPM](http://npmjs.org) module, you can share it with world by running `npm publish`.  Go you!
 
-* [Hooks overview](http://sailsjs.com/documentation/concepts/extending-sails/Hooks)
-* [Using hooks in your app](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
-* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
+* [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/Hooks)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
+* [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
 
 
 

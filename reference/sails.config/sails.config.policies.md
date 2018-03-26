@@ -7,7 +7,7 @@
 > this particular config module is read.  But don't worry about trying to explain what policies are here-- instead, link to the full docs on the subject (again, to reduce duplicate content and make this all more maintainable)
 -->
 
-This configuration is a dictionary that maps [policies](http://sailsjs.com/documentation/concepts/policies) to an app&rsquo;s [actions](http://sailsjs.com/documentation/concepts/actions-and-controllers).  See [Concepts > Policies](http://sailsjs.com/documentation/concepts/policies#?using-policies-with-blueprint-actions) for more info.
+This configuration is a dictionary that maps [policies](https://sailsjs.com/documentation/concepts/policies) to an app&rsquo;s [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers).  See [Concepts > Policies](https://sailsjs.com/documentation/concepts/policies#?using-policies-with-blueprint-actions) for more info.
 
 ### Properties
 

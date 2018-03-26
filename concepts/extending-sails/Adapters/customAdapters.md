@@ -35,7 +35,7 @@ In practice, your adapter can really do anything it likes-- any method you write
 
 ### Building a custom adapter
 
-Check out the [Sails docs](http://sailsjs.com/documentation), or see [`config/datastores.js`](http://sailsjs.com/anatomy/config/datastores.js) in a new Sails project for information on setting up this adapter in a Sails app.
+Check out the [Sails docs](https://sailsjs.com/documentation), or see [`config/datastores.js`](https://sailsjs.com/anatomy/config/datastores.js) in a new Sails project for information on setting up this adapter in a Sails app.
 
 
 #### Running the tests
@@ -117,7 +117,7 @@ If you're looking for some inspiration, a good place to start is with the core a
 
 ### Where do I get help?
 
-An active community of Sails and Waterline users exists on GitHub, Stack Overflow, Google groups, IRC, Gitter, and more.  See the [Support page](http://sailsjs.com/support) for a list of recommendations.
+An active community of Sails and Waterline users exists on GitHub, Stack Overflow, Google groups, IRC, Gitter, and more.  See the [Support page](https://sailsjs.com/support) for a list of recommendations.
 
 > If you have an unanswered question that isn't covered here, and that you feel would add value for the community, please feel free to send a PR adding it to this section of the docs.
 

@@ -7,7 +7,7 @@ Sails is built on [Express](https://github.com/expressjs/), and uses [Node's HTT
 
 A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
 
-Sails adds a few methods of its own to the `res` object, like [`res.badRequest()`](http://sailsjs.com/documentation/reference/response-res/res-badRequest), [`res.serverError()`](http://sailsjs.com/documentation/reference/response-res/res-serverError), [`res.view()`](http://sailsjs.com/documentation/reference/response-res/res-view).  These features are syntactic sugar on top of the underlying implementation, and support both HTTP _and_ (in many cases) WebSockets.
+Sails adds a few methods of its own to the `res` object, like [`res.badRequest()`](https://sailsjs.com/documentation/reference/response-res/res-badRequest), [`res.serverError()`](https://sailsjs.com/documentation/reference/response-res/res-serverError), [`res.view()`](https://sailsjs.com/documentation/reference/response-res/res-view).  These features are syntactic sugar on top of the underlying implementation, and support both HTTP _and_ (in many cases) WebSockets.
 
 
 <!--

@@ -1,6 +1,6 @@
 # .limit()
 
-Set the maximum number of records to retrieve when executing a [query instance](http://sailsjs.com/documentation/reference/waterline-orm/queries).
+Set the maximum number of records to retrieve when executing a [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ```usage
 .limit(maximum)

@@ -202,12 +202,12 @@ If you'd like to have a system automatically run your tests every time you push 
 
 ### Load testing
 
-A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help with setting up your Sails app to be production-ready and scalable, see [Scalability](http://sailsjs.com/documentation/concepts/deployment/scalability).  For additional help or more specific questions, click [here](http://sailsjs.com/support).
+A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help with setting up your Sails app to be production-ready and scalable, see [Scalability](https://sailsjs.com/documentation/concepts/deployment/scalability).  For additional help or more specific questions, click [here](https://sailsjs.com/support).
 
 
 ### Optimizing performance
 
-Usually, the scalability and overall performance of your app is more important than the performance and latency of any given individual request to a particular endpoint.  So rather than focusing on one piece of code in isolation, we recommend starting with [the basics](http://sailsjs.com/documentation/concepts/deployment/scaling) -- for most apps, that's good enough.  But for some use cases (e.g. serving ads, or apps with very computationally-intensive functionality), individual request latency may be important from the get-go.
+Usually, the scalability and overall performance of your app is more important than the performance and latency of any given individual request to a particular endpoint.  So rather than focusing on one piece of code in isolation, we recommend starting with [the basics](https://sailsjs.com/documentation/concepts/deployment/scaling) -- for most apps, that's good enough.  But for some use cases (e.g. serving ads, or apps with very computationally-intensive functionality), individual request latency may be important from the get-go.
 
 For testing the performance of particular chunks of code, or for benchmarking the latency of individual requests to particular endpoints, a great option is [benchmark.js](https://www.npmjs.com/package/benchmark).  Not only is it a robust library that supports high-resolution timers & returns statistically significant results, it also works great with Mocha out of the box.
 

@@ -6,6 +6,6 @@ Policies are simply Express middleware functions which run before your controlle
 
 ### Usage
 
-See [`sails.config.policies`](http://sailsjs.com/documentation/reference/configuration/sails-config-policies) for all available options.
+See [`sails.config.policies`](https://sailsjs.com/documentation/reference/configuration/sails-config-policies) for all available options.
 
 <docmeta name="displayName" value="policies.js">

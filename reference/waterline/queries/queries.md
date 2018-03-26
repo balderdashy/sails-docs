@@ -28,7 +28,7 @@ When you **execute** a query using `await`, a lot happens:
 await query;
 ```
 
-First, it is "shaken out" by Waterline core into a [normalized query](http://sailsjs.com/documentation/concepts/models-and-orm/query-language).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
+First, it is "shaken out" by Waterline core into a [normalized query](https://sailsjs.com/documentation/concepts/models-and-orm/query-language).  Then it passes through the relevant Waterline adapter(s) for translation to the raw query syntax of your database(s) (e.g. Redis or Mongo commands, various SQL dialects, etc.)  Next, each involved adapter uses its native Node.js database driver to send the query out over the network to the corresponding physical database.
 
 When the adapter receives a response, it is marshalled to the Waterline interface spec and passed back up to Waterine core, where it is integrated with any other raw adapter responses into a coherent result set.  At that point, it undergoes one last normalization before being passed back to "userland" (i.e. your code) for consumption by your app.
 
@@ -58,7 +58,7 @@ The specific kinds of errors you could receive vary based on what kind of query 
 
 ### Promises and Callbacks
 
-As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an [`.exec()`](https://sailsjs.com/documentation/reference/waterline/queries/exec) method.
+As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an [`.exec()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec) method.
 
 
 ```js

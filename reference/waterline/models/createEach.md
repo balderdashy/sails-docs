@@ -31,7 +31,7 @@ _Or:_
 |     Name        | Type                | When? |
 |--------------------|---------------------|:---------------------------------------------------------------------------------|
 | UsageError            | ((Error))           | Thrown if something invalid was passed in.
-| AdapterError     | ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](http://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
+| AdapterError     | ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
 | Error             | ((Error))           | Thrown if anything else unexpected happens.
 
 See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
@@ -44,7 +44,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 |:--------------------|-------------------|:---------------------------------------------------------------|
 | fetch               | ((boolean))       | If set to `true`, then the created records will be sent back.<br/><br/>Defaults to `false`.
 
-> For more information on meta keys, see [.meta()](http://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+> For more information on meta keys, see [.meta()](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 ### Example

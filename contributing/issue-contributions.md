@@ -2,7 +2,7 @@
 
 When opening new issues or commenting on existing issues in any of the repositories in this GitHub organization, please make sure discussions are related to concrete technical issues of the Sails.js software.  Feature requests and ideas are always welcome; but they should not be submitted as GitHub issues.  See [Requesting Features](https://github.com/balderdashy/sails/blob/master/CONTRIBUTING.md#requesting-features) below for submission guidelines.
 
-For general help using Sails, please refer to the [official Sails documentation](http://sailsjs.com/documentation).  For additional help, ask a question on [StackOverflow](http://stackoverflow.com/questions/ask) or refer to any of the [other recommended avenues of support](http://sailsjs.com/support).
+For general help using Sails, please refer to the [official Sails documentation](https://sailsjs.com/documentation).  For additional help, ask a question on [StackOverflow](http://stackoverflow.com/questions/ask) or refer to any of the [other recommended avenues of support](https://sailsjs.com/support).
 
 If you have found a security vulnerability in Sails or any of its dependencies, _do not report it in a public issue_.  Instead, you should promptly follow the instructions for alerting the core maintainers in the [Sails Security Policy](https://github.com/balderdashy/sails-docs/blob/master/security/SAILS-SECURITY-POLICY.md).  Please observe this request _even for  external dependencies the core Sails.js team does not directly maintain_ (such as Socket.io, Express, Node.js, or openssl)_.  Whether or not you believe the core team can do anything to fix an issue, please follow the instructions in our security policy to privately disclose the vulnerability as quickly as possible.
 
@@ -10,7 +10,7 @@ Finally, discussion of a non-technical nature, including subjects like team memb
 
 #### Opening an issue
 
-> Sails is composed of a number of different sub-projects, many of which have their [own dedicated repository](http://sailsjs.com/architecture).  As a general rule of thumb, the best place to support a suspected issue with a module maintained by the Sails core team is in the main Sails repo.  This helps us stay on top of issues and keep organized.
+> Sails is composed of a number of different sub-projects, many of which have their [own dedicated repository](https://sailsjs.com/architecture).  As a general rule of thumb, the best place to support a suspected issue with a module maintained by the Sails core team is in the main Sails repo.  This helps us stay on top of issues and keep organized.
 
 Before submitting an issue, please follow these simple instructions:
 

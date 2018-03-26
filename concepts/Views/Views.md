@@ -10,14 +10,13 @@ Alternatively, a view can be compiled directly into an HTML string for use in yo
 
 By default, Sails is configured to use EJS ([Embedded Javascript](http://ejs.co/)) as its view engine.  The syntax for EJS is highly conventional- if you've worked with php, asp, erb, gsp, jsp, etc., you'll immediately know what you're doing.
 
-If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) via [Consolidate](https://github.com/visionmedia/consolidate.js/).
+If you prefer to use a different view engine, there are a multitude of options.  Sails supports all of the view engines compatible with [Express](http://expressjs.com/en/guide/using-template-engines.html) via [Consolidate](https://github.com/visionmedia/consolidate.js).
 
-Views are defined in your app's [`views/`](http://sailsjs.com/documentation/anatomy/myApp/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
-
+Views are defined in your app's [`views/`](https://sailsjs.com/documentation/anatomy/views) folder by default, but like all of the default paths in Sails, they are [configurable](https://sailsjs.com/documentation/reference/configuration/sails-config-views).  If you don't need to serve dynamic HTML pages at all (say, if you're building an API for a mobile app), you can remove the directory from your app.
 
 ##### Compiling a view
 
-Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](http://sailsjs.com/documentation/reference/res/res.view.html) to compile one of your views, then send the resulting HTML down to the user.
+Anywhere you can access the `res` object (i.e. a controller action, custom response, or policy), you can use [`res.view`](https://sailsjs.com/documentation/reference/response-res/res-view) to compile one of your views, then send the resulting HTML down to the user.
 
 You can also hook up a view directly to a route in your `routes.js` file.  Just indicate the relative path to the view from your app's `views/` directory.  For example:
 

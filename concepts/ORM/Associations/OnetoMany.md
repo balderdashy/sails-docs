@@ -72,7 +72,7 @@ Pet.create({
 ```
 
 Now that the `Pet` is associated with the `User`, all the pets belonging to a specific user can
-be populated by using the [`.populate()`](http://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
+be populated by using the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
 
 ```javascript
 User.find()

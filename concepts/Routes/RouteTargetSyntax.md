@@ -39,7 +39,7 @@ will match all paths, where as:
 
 will match all paths that *start* with **/user/foo**.
 
-> **Note:** When using a route with a wildcard, such as `'/*'`, be aware that this will also match requests to static assets (i.e. `/js/dependencies/sails.io.js`) and override them. To prevent this, consider using the `skipAssets` option [described below](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
+> **Note:** When using a route with a wildcard, such as `'/*'`, be aware that this will also match requests to static assets (i.e. `/js/dependencies/sails.io.js`) and override them. To prevent this, consider using the `skipAssets` option [described below](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
 
 You can capture the parts of the address that are matched by wildcards into named parameters by using the `:paramName` wildcard syntax instead of the `*`:
 
@@ -75,7 +75,7 @@ Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the
 
 While you are free to add items to your **config/routes.js** file in any order, be aware that Sails will internally sort your routes by _inclusiveness_, a measure of how many potential requests an address can handle.  In general, routes with addresses containing no dynamic components will be matched first, followed by routes with dynamic parameters, followed by those with wildcards.  This prevents routes from blocking each other (for example, a `/*` route, if left at the top of the list, would respond to all requests and no other routes would ever be matched).
 
-If you have any [regular expression addresses](http://sailsjs.com/documentation/concepts/routes/custom-routes#?regular-expressions-in-addresses), they will be left in the order you specify.  For example, if your **config/routes.js** file contains a `GET /foo/bar` route followed by a `GET r|^/foo/\\d+$|` route, the second route will always be sorted to appear immediately after `GET /foo/bar`.  This is due to the extreme difficulty of determining the inclusiveness of a regular expression route.  Take care when specifying these routes that you order them so that they won't match more requests than intended.
+If you have any [regular expression addresses](https://sailsjs.com/documentation/concepts/routes/custom-routes#?regular-expressions-in-addresses), they will be left in the order you specify.  For example, if your **config/routes.js** file contains a `GET /foo/bar` route followed by a `GET r|^/foo/\\d+$|` route, the second route will always be sorted to appear immediately after `GET /foo/bar`.  This is due to the extreme difficulty of determining the inclusiveness of a regular expression route.  Take care when specifying these routes that you order them so that they won't match more requests than intended.
 
 ### Route Target
 
@@ -83,7 +83,7 @@ The address portion of a custom route specifies which URLs the route should matc
 
 ##### Controller / action target syntax
 
-This syntax binds a route to an action in a [controller file](http://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers).  The following four routes are equivalent:
+This syntax binds a route to an action in a [controller file](https://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers).  The following four routes are equivalent:
 
 ```js
 'GET /foo/go': 'FooController.myGoAction',
@@ -98,7 +98,7 @@ The controller and action names in this syntax are case-insensitive.
 
 ##### Standalone action target syntax
 
-This syntax binds an address to a [standalone Sails action](http://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions).  Simply specify the path of the action (relative to `api/controllers`):
+This syntax binds an address to a [standalone Sails action](https://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions).  Simply specify the path of the action (relative to `api/controllers`):
 
 ```js
 'GET /': { action: 'index' },   // Use the action in api/controllers/index.js
@@ -111,7 +111,7 @@ This syntax binds an address to a [standalone Sails action](http://sailsjs.com/d
 
 ##### Routing to blueprint actions
 
-The [blueprint API](http://sailsjs.com/documentation/reference/blueprint-api) adds several actions for each of your models, all of which are available for routing.  For example, if you have a model defined in `api/models/User.js`, you&rsquo;ll automatically be able to do:
+The [blueprint API](https://sailsjs.com/documentation/reference/blueprint-api) adds several actions for each of your models, all of which are available for routing.  For example, if you have a model defined in `api/models/User.js`, you&rsquo;ll automatically be able to do:
 
 ```js
 'GET /foo/go': 'user/find'              // Return a list of users
@@ -121,11 +121,11 @@ or
 'GET /foo/go': 'UserController.find'    // Same as above
 ```
 
-If you have a custom action in `api/controllers/user/find.js` or `api/controllers/UserController.js`, that action will be run instead of the default blueprint `find`.  For a full list of the actions provided for your models, see the [blueprint API reference](http://sailsjs.com/documentation/reference/blueprint-api).
+If you have a custom action in `api/controllers/user/find.js` or `api/controllers/UserController.js`, that action will be run instead of the default blueprint `find`.  For a full list of the actions provided for your models, see the [blueprint API reference](https://sailsjs.com/documentation/reference/blueprint-api).
 
 ##### View target syntax
 
-Another common target is one that binds a route to a [view](http://sailsjs.com/documentation/concepts/Views).  This is particularly useful for binding static views to a custom URL, and it's how the default homepage for new projects is set up out of the box.
+Another common target is one that binds a route to a [view](https://sailsjs.com/documentation/concepts/Views).  This is particularly useful for binding static views to a custom URL, and it's how the default homepage for new projects is set up out of the box.
 
 The syntax for view targets is simple: it is just the path to the view file, without the file extension (e.g. `.ejs`) and relative to the **views/** folder :
 
@@ -133,7 +133,7 @@ The syntax for view targets is simple: it is just the path to the view file, wit
 'GET /team': { view: 'brochure/about' }
 ```
 
-This tells Sails to handle `GET` requests to `/team` by serving the view template located at `views/brochure/about.ejs` (assuming the default EJS [template engine](http://sailsjs.com/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it. For consistency with Express/consolidate, if the specified relative path does not match a view file, then Sails will look for a sub-folder with the same name (e.g. `pages/brochure`) and serve the "index" view in that sub-folder (e.g. `pages/brochure/index.ejs`) if one exists.
+This tells Sails to handle `GET` requests to `/team` by serving the view template located at `views/brochure/about.ejs` (assuming the default EJS [template engine](https://sailsjs.com/documentation/concepts/Views/ViewEngines.html) is used).  As long as that view file exists, a **GET** request to  **/home** will display it. For consistency with Express/consolidate, if the specified relative path does not match a view file, then Sails will look for a sub-folder with the same name (e.g. `pages/brochure`) and serve the "index" view in that sub-folder (e.g. `pages/brochure/index.ejs`) if one exists.
 
 > Note that since this route is bound directly to the view, none of your configured policies will be applied.  If you need to configure a policy, use `res.view()` from a controller action.  See [this StackOverflow question](http://stackoverflow.com/questions/21303217/sailsjs-policy-based-route-with-a-view/21340313#21340313) for more background information.
 
@@ -152,7 +152,7 @@ Be careful to avoid redirect loops when redirecting within your Sails app!
 Note that when redirecting, the HTTP method of the original request (and any extra headers / parameters) will likely be lost, and the request will be transformed to a simple **GET** request.  In the above example, a **POST** request to **/alias** will result in a **GET** request to **/some/other/route**.  This is somewhat browser-dependent behavior, but it is recommended that you don't expect request methods and other data to survive a redirect.
 
 ##### Response target syntax
-You can map an address directly to a default or custom [response](http://sailsjs.com/documentation/concepts/extending-sails/custom-responses) using this syntax:
+You can map an address directly to a default or custom [response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) using this syntax:
 
 ```js
 '/foo': { response: 'notFound' }
@@ -162,7 +162,7 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 ##### Policy target syntax
 
-In most cases, you will want to apply [policies](http://sailsjs.com/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](http://sailsjs.com/documentation/reference/sails.config/sails.config.policies.html) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
+In most cases, you will want to apply [policies](https://sailsjs.com/documentation/concepts/Policies) to your controller actions using the [**config/policies.js**](https://sailsjs.com/documentation/reference/configuration/sails-config-policies) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax) target syntax.  The policy target syntax is:
 
 ```js
 '/foo': { policy: 'my-policy' }
@@ -200,7 +200,7 @@ You can also combine this syntax with others using an array, allowing you to def
 ],
 ```
 
-You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
+You can also use a dictionary with an `fn` key to assign a function.  This allows you to also specify [other route target  options](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options) at the same time:
 ```js
 'GET /*': {
   skipAssets: true,
@@ -218,10 +218,10 @@ In addition to the options discussed in the various route target syntaxes above,
 
 | Property    | Applicable Target Types       | Data Type | Details |
 |-------------|:----------:|-----------|-----------|
-|`skipAssets`|all|((boolean))|Set to `true` if you *don't* want the route to match URLs with dots in them (e.g. **myImage.jpg**).  This will keep your routes with [wildcard notation](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters) from matching URLs of static assets.  Useful when creating [URL slugs](/#/documentation/concepts/Routes/URLSlugs.html).|
+|`skipAssets`|all|((boolean))|Set to `true` if you *don't* want the route to match URLs with dots in them (e.g. **myImage.jpg**).  This will keep your routes with [wildcard notation](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=wildcards-and-dynamic-parameters) from matching URLs of static assets.  Useful when creating [URL slugs](/#/documentation/concepts/Routes/URLSlugs.html).|
 |`skipRegex`|all|((regexp))|If skipping every URL containing a dot is too permissive, or you need a route's handler to be skipped based on different criteria entirely, you can use `skipRegex`.  This option allows you to specify a regular expression or array of regular expressions to match the request URL against; if any of the matches are successful, the handler is skipped.  Note that unlike the syntax for binding a handler with a regular expression, `skipRegex` expects *actual [RegExp objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp)*, not strings.|
-|`locals`|[controller](http://sailsjs.com/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((dictionary))|Sets default [local variables](http://sailsjs.com/documentation/reference/res/res.view.html?q=arguments) to pass to any view that is rendered while handling the request.|
-|`cors`|all|((dictionary)) or ((boolean)) or ((string))|Specifies how to handle requests for this route from a different origin.  See the [main CORS documentation](http://sailsjs.com/documentation/concepts/security/cors) for more info.|
-|`csrf`|all|((boolean))|Indicate whether the route should be protected by requiring a CSRF token to be passed with the request.  See the [main CSRF documentation](http://sailsjs.com/documentation/concepts/security/csrf) for more info.
-|`parseBlueprintOptions`|[blueprint](http://sailsjs.com/documentation/concepts/routes/custom-routes#?routing-to-blueprint-actions)|((function))|Provide this function in order to override the default behavior for a blueprint action (including search criteria, skip, limit, sort and population).  See the [blueprints configuration reference](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
+|`locals`|[controller](https://sailsjs.com/#!/documentation/concepts/Routes/RouteTargetSyntax.html?q=controller-%2F-action-target-syntax), [view](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=view-target-syntax), [blueprint](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=blueprint-target-syntax), [response](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=response-target-syntax)|((dictionary))|Sets default [local variables](https://sailsjs.com/documentation/reference/response-res/res-view?q=arguments) to pass to any view that is rendered while handling the request.|
+|`cors`|all|((dictionary)) or ((boolean)) or ((string))|Specifies how to handle requests for this route from a different origin.  See the [main CORS documentation](https://sailsjs.com/documentation/concepts/security/cors) for more info.|
+|`csrf`|all|((boolean))|Indicate whether the route should be protected by requiring a CSRF token to be passed with the request.  See the [main CSRF documentation](https://sailsjs.com/documentation/concepts/security/csrf) for more info.
+|`parseBlueprintOptions`|[blueprint](https://sailsjs.com/documentation/concepts/routes/custom-routes#?routing-to-blueprint-actions)|((function))|Provide this function in order to override the default behavior for a blueprint action (including search criteria, skip, limit, sort and population).  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 <docmeta name="displayName" value="Custom routes">

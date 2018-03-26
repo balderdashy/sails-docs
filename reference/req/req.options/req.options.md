@@ -2,12 +2,12 @@
 
 `req.options` is a dictionary (plain JavaScript object) of request-agnostic settings available in your app's actions.
 
-The purpose of `req.options` is to allow an action's code to access its configured route options, if there are any.  (Simply put, "route options" are just any additional properties provided in a [route target](http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target).)
+The purpose of `req.options` is to allow an action's code to access its configured route options, if there are any.  (Simply put, "route options" are just any additional properties provided in a [route target](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target).)
 
 <!--
 FUTURE: pull out the rest of the content below to a new, separate page under **Concepts > Routes > Route options** and just link to it from in here rather than having all this exist inline.
 
-(Also be sure to consolidate any additional useful content from http://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options into the new page, and replace the content under that heading with a sentence that links to the new "Route options" page.)
+(Also be sure to consolidate any additional useful content from https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options into the new page, and replace the content under that heading with a sentence that links to the new "Route options" page.)
 
 -m  Feb 23, 2017
 -->
@@ -16,9 +16,9 @@ FUTURE: pull out the rest of the content below to a new, separate page under **C
 
 Route options in Sails were originally devised as a more flexible way to configure built-in blueprint actions.
 
-Some special settings must always be provided to [certain blueprint actions](http://sailsjs.com/documentation/reference/blueprint-api).  This provides a way for your app to communicate which model/association a blueprint action should target.  For example, `req.options.model` is the identity of the model that a particular blueprint action should target.  And for blueprint actions that directly involve an association, `req.options.alias` indicates the name of the associating attribute.
+Some special settings must always be provided to [certain blueprint actions](https://sailsjs.com/documentation/reference/blueprint-api).  This provides a way for your app to communicate which model/association a blueprint action should target.  For example, `req.options.model` is the identity of the model that a particular blueprint action should target.  And for blueprint actions that directly involve an association, `req.options.alias` indicates the name of the associating attribute.
 
-You can take advantage of this in your app order to bind a blueprint action to an arbitrary custom route.  For example, consider the following custom route in [`config/routes.js`](http://sailsjs.com/documentation/anatomy/config/routes-js):
+You can take advantage of this in your app order to bind a blueprint action to an arbitrary custom route.  For example, consider the following custom route in [`config/routes.js`](https://sailsjs.com/documentation/anatomy/config/routes-js):
 
 ```js
 'GET /foo/bar': {
@@ -29,9 +29,9 @@ You can take advantage of this in your app order to bind a blueprint action to a
 
 Whenever a GET request to /foo/bar arrives, the `find` blueprint action will run, and `req.options.model` will be available as `user`.  (This is how the built-in, generic "find" blueprint action knows that it should communicate with the User model.)
 
-> Need to customize blueprint actions further?  In most cases, the easiest (and most maintainable) way to do this is to write a custom action.  If you're making the transition between the blueprint API and writing your own custom actions for the first time, you might start by checking out [Concepts > Actions & Controllers](http://sailsjs.com/documentation/concepts/actions-and-controllers).
+> Need to customize blueprint actions further?  In most cases, the easiest (and most maintainable) way to do this is to write a custom action.  If you're making the transition between the blueprint API and writing your own custom actions for the first time, you might start by checking out [Concepts > Actions & Controllers](https://sailsjs.com/documentation/concepts/actions-and-controllers).
 >
-> Note that there is a middle ground that allows you to programmatically modify some additional aspects of a blueprint action's behavior without overriding it completely (for example, examining the request to determine the criteria that a blueprint action uses when accessing models.)  See [**Reference > sails.config.blueprints > Using parseBlueprintOptions**](http://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more on that.
+> Note that there is a middle ground that allows you to programmatically modify some additional aspects of a blueprint action's behavior without overriding it completely (for example, examining the request to determine the criteria that a blueprint action uses when accessing models.)  See [**Reference > sails.config.blueprints > Using parseBlueprintOptions**](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more on that.
 
 
 ### Custom route options

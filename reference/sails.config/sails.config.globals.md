@@ -1,7 +1,7 @@
 # sails.config.globals
 
 
-Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default. The globals configuration in sails is only for controlling global variables introduced by sails. The options are conventionally specified in the [`config/globals.js`](http://sailsjs.com/anatomy/config/globals-js) configuration file. 
+Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default. The globals configuration in sails is only for controlling global variables introduced by sails. The options are conventionally specified in the [`config/globals.js`](https://sailsjs.com/anatomy/config/globals-js) configuration file. 
 
 
 
@@ -11,7 +11,7 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 |:-----------|:----------:|:----------|:--------|
 | `_` _(underscore)_  | ((ref))<br/>_or_<br/>((boolean))     | `require('lodash')`  | Expose the specified `lodash` as a global variable (`_`).  Or set this to `false` to disable the `_` global altogether.  _(More on that below.)_
 | `async`  | ((ref))<br/>_or_<br/>((boolean)) | `require('async')` | Expose the specified `async` as a global variable (`async`).  Or set this to `false` to disable the `async` global altogether. _(More on that below.)_
-| `models` | ((boolean)) | `true` | Expose each of your app's models as a global variable (using its "globalId").  For example, a model defined in `api/models/User.js` would have a "globalId" of `User`.   If this is disabled, then you can still access all of your models by identity in the [`sails.models`](http://sailsjs.com/documentation/reference/application#?sailsmodels) dictionary.
+| `models` | ((boolean)) | `true` | Expose each of your app's models as a global variable (using its "globalId").  For example, a model defined in `api/models/User.js` would have a "globalId" of `User`.   If this is disabled, then you can still access all of your models by identity in the [`sails.models`](https://sailsjs.com/documentation/reference/application#?sailsmodels) dictionary.
 | `sails` | ((boolean)) | `true` | Expose the `sails` instance representing your app.  Even if this is disabled, you can still get access to it in your actions via `env.sails`, or in your policies via `req._sails`.
 | `services` | ((boolean)) | `true` | Expose each of your app's services as global variables (using their "globalId").  E.g. a service defined in `api/services/NaturalLanguage.js` would have a globalId of `NaturalLanguage` by default.  If this is disabled, you can still access your services via `sails.services.*`.
 

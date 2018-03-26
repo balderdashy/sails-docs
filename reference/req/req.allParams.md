@@ -1,6 +1,6 @@
 # req.allParams()
 
-Returns the value of _all_ parameters sent in the request, merged together into a single dictionary (plain JavaScript object). Includes parameters parsed from the url path, the request body and the query string _in that order_. See [`req.param()`](http://sailsjs.com/documentation/reference/request-req/req-param) for details.
+Returns the value of _all_ parameters sent in the request, merged together into a single dictionary (plain JavaScript object). Includes parameters parsed from the url path, the request body and the query string _in that order_. See [`req.param()`](https://sailsjs.com/documentation/reference/request-req/req-param) for details.
 
 ### Usage
 

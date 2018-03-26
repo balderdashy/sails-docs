@@ -18,7 +18,7 @@ For example, a `MySQLAdapter` implements a `create()` method which, internally, 
 
 ### Next steps
 
-Read about [available adapters](http://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), or how to make your own [custom adapter](http://sailsjs.com/documentation/concepts/extending-sails/adapters/custom-adapters).
+Read about [available adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), or how to make your own [custom adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/custom-adapters).
 
 
 <docmeta name="displayName" value="Adapters">

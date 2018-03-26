@@ -27,17 +27,17 @@ io.socket.on(eventName, function (msg) {
 
 ### When is the event handler called?
 
-This event handler is called when the client receives an incoming socket notification that matches the specified event name (e.g. `'welcome'`).  This happens when the server broadcasts a message to this socket directly, or to a room of which it is a member.  To broadcast a socket notification, you either need to use the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints) or write some server-side code (e.g. in an action, helper, or even in a command-line script).  This is typically achieved in one of the following ways:
+This event handler is called when the client receives an incoming socket notification that matches the specified event name (e.g. `'welcome'`).  This happens when the server broadcasts a message to this socket directly, or to a room of which it is a member.  To broadcast a socket notification, you either need to use the [blueprint API](https://sailsjs.com/documentation/concepts/blueprints) or write some server-side code (e.g. in an action, helper, or even in a command-line script).  This is typically achieved in one of the following ways:
 
 
 ###### Low-Level Socket Methods (`sails.sockets`)
-+ server blasts out a message to all connected sockets (see [sails.sockets.blast()](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/blast))
-+ server broadcasts a message directly to a particular socket using its unique id, or to an entire room full of sockets (see [sails.sockets.broadcast()](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast))
++ server blasts out a message to all connected sockets (see [sails.sockets.blast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/blast))
++ server broadcasts a message directly to a particular socket using its unique id, or to an entire room full of sockets (see [sails.sockets.broadcast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast))
 
 
 ###### Resourceful Pubsub Methods
-+ server broadcasts a message about a record, which multiple sockets might be subscribed to (see [Model.publish()](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish)
-+ server broadcasts a message as part of the "Create" blueprint action _(only relevant if using [blueprints](http://sailsjs.com/documentation/concepts/blueprints))_
++ server broadcasts a message about a record, which multiple sockets might be subscribed to (see [Model.publish()](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish)
++ server broadcasts a message as part of the "Create" blueprint action _(only relevant if using [blueprints](https://sailsjs.com/documentation/concepts/blueprints))_
 
 
 
@@ -102,11 +102,11 @@ $(function whenDomIsReady(){
 });//< / when DOM is ready >
 ```
 
-> Note that this example assumes the backend calls [`.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) or [`.broadcast()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) at some point.  That might be through custom code, or via the [blueprint API](http://sailsjs.com/documentation/concepts/blueprints).
+> Note that this example assumes the backend calls [`.publish()`](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/publish) or [`.broadcast()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) at some point.  That might be through custom code, or via the [blueprint API](https://sailsjs.com/documentation/concepts/blueprints).
 
 
 ### The 'connect' event
-When the Sails socket client is loaded on a page, by default, it begins connecting a socket for you automatically.  When using the default, auto-connecting socket (`io.socket`), you don't have to wait for the socket to connect before using it.  In other words, you can listen for other socket events or call methods like [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get) immediately.  The Sails socket client will queue up anything you do in the mean time, and then replay it automatically once the connection is live.
+When the Sails socket client is loaded on a page, by default, it begins connecting a socket for you automatically.  When using the default, auto-connecting socket (`io.socket`), you don't have to wait for the socket to connect before using it.  In other words, you can listen for other socket events or call methods like [`io.socket.get()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get) immediately.  The Sails socket client will queue up anything you do in the mean time, and then replay it automatically once the connection is live.
 
 Consequently, direct usage of the "connect" event **is not necessary for most apps**.  But in the spirit of completeness, it is worth mentioning that you can also bind your own "connect" handler:
 
@@ -131,8 +131,8 @@ io.socket.on('disconnect', function onDisconnect(){
 
 
 ### Notes
->+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
->+ When listening for socket messages from resourceful pubsub calls and blueprints, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
+>+ Remember that a socket only stays subscribed to a room for as long as it is connected-- e.g. as long as the browser tab is open-- or until it is manually unsubscribed on the server using [`.unsubscribe()`](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/unsubscribe) or [`.leave()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/leave).
+>+ When listening for socket messages from resourceful pubsub calls and blueprints, the event name is always the same as the identity of the calling model.  For example, if you have a model named "UserComment", the model's identity (and therefore the socket event name used by [`UserComment.publish()`](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) is "usercomment".
 >+ For context-- socket notifications are also sometimes referred to as "server-sent events" or "[comet](http://en.wikipedia.org/wiki/Comet_(programming)) messages".
 
 

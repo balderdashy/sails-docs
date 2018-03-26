@@ -15,7 +15,7 @@ Additionally, a `destroy` event will be published to all sockets subscribed to t
 
  Parameter                          | Type                                    | Details
  ---------------------------------- | --------------------------------------- |:---------------------------------
- model          | ((string))   | The [identity](http://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `/purchase/7`)
+ model          | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `/purchase/7`)
  id<br/>*(required)*                | ((string))                              | The primary key value of the record to destroy, specified in the path.  <br/>e.g. `'7'` (in `/purchase/7`) .
 
 
@@ -42,7 +42,7 @@ Delete Pinkie Pie:
 
 ### Socket notifications
 
-If you have WebSockets enabled for your app, then every client [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `user`), and the &ldquo;message&rdquo; has the following format:
+If you have WebSockets enabled for your app, then every client [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `user`), and the &ldquo;message&rdquo; has the following format:
 
 ```
 verb: 'destroyed',
@@ -65,7 +65,7 @@ previous: {
 
 **If the destroyed record had any links to other records, there might be some additional notifications:**
 
-Assuming the record being destroyed in our example had an association with a `via`, then either `updated` or `removedFrom` notifications would also be sent to any clients who are [subscribed](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship.  See [**Blueprints > remove from**](http://sailsjs.com/documentation/reference/blueprint-api/remove-from) and [**Blueprints > update**](http://sailsjs.com/documentation/reference/blueprint-api/update) for more info about the structure of those notifications.
+Assuming the record being destroyed in our example had an association with a `via`, then either `updated` or `removedFrom` notifications would also be sent to any clients who are [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship.  See [**Blueprints > remove from**](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) and [**Blueprints > update**](https://sailsjs.com/documentation/reference/blueprint-api/update) for more info about the structure of those notifications.
 
 > If the association pointed at by the `via` is plural (e.g. `cashiers`), then the `removedFrom` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 

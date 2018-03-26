@@ -44,13 +44,13 @@ module.exports = {
       emailConfirmationReminderAlreadySent: false,
       createdAt: { '>': Date.now() - 1000*60*60*24*3 }
     })
-    .eachRecord(async(user, proceed)=>{
-      await sails.helpers.sendTemplateEmail({
-        to: user.emailAddress,
+    .eachRecord(async (user, proceed)=>{
+      await sails.helpers.sendTemplateEmail.with({
         template: 'reminder-to-confirm-email',
         templateData: {
           user: user
-        }
+        },
+        to: user.emailAddress
       });
       return proceed();
     });//∞

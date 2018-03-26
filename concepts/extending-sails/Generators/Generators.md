@@ -49,7 +49,7 @@ Sails' generators allow you to completely customize what happens when you run `s
 - to make it easy to include new Vue / React components or Angular modules from your favorite templates (for example `sails generate component` or `sails generate ng-module`)
 
 
-> If you are interested in making custom generators, the best place to start is by checking out the [introduction to custom generators](http://sailsjs.com/documentation/concepts/extending-sails/generators/custom-generators).  You also might check out [open-source generators from the community](https://sailsjs.com/documentation/concepts/extending-sails/generators/available-generators), in case something already out there will save you some time.
+> If you are interested in making custom generators, the best place to start is by checking out the [introduction to custom generators](https://sailsjs.com/documentation/concepts/extending-sails/generators/custom-generators).  You also might check out [open-source generators from the community](https://sailsjs.com/documentation/concepts/extending-sails/generators/available-generators), in case something already out there will save you some time.
 
 
 <docmeta name="displayName" value="Generators">

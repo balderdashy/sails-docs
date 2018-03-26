@@ -8,8 +8,8 @@ Its job is to [minify](https://en.wikipedia.org/wiki/Minification_(programming))
 
 For additional usage documentation, see [`grunt-contrib-uglify`](https://github.com/gruntjs/grunt-contrib-uglify/tree/harmony).
 
-### ES6 and beyond
+### ES8 and beyond
 
-The default package is capable of minifying JavaScript written using ES6 syntax and features, even without [transpiling](https://sailsjs.com/documentation/concepts/assets/default-tasks#?babel).  However, if you're planning on supporting older browsers that don't support ES6, it's recommended that you still transpile your code (by leaving the default [`babel`](https://next.sailsjs.com/documentation/anatomy/tasks/config/babel.js) and [`polyfill`](https://next.sailsjs.com/documentation/anatomy/tasks/register/polyfill.js) tasks in place).
+The default package is capable of minifying JavaScript written using ES6, ES7, and ES8 syntax and features, even without [transpiling](https://sailsjs.com/documentation/concepts/assets/default-tasks#?babel).  However, if you're planning on supporting older browsers that don't support ES6, it's recommended that you still transpile your code (by leaving the default [`babel`](https://sailsjs.com/documentation/anatomy/tasks/config/babel.js) and [`polyfill`](https://sailsjs.com/documentation/anatomy/tasks/register/polyfill.js) tasks in place).
 
 <docmeta name="displayName" value="uglify.js">
