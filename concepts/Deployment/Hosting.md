@@ -7,7 +7,20 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 <a title="Deploy your Sails/Node.js app on Heroku" href="http://heroku.com"><img style="width:285px;" src="https://sailsjs.com/images/deployment_heroku.png" alt="Heroku logo"/></a>
 
-+ [Platzi: Full Stack JavaScript: Pt 5 (2017-2018)](https://platzi.com/cursos/javascript-pro/)
+The easiest (and free) way to deploy any Sails project generated using the "Web App" template is probably via Heroku:
+1. Create a GitHub repo and push your code up to the `master` branch.
+2. Create a Heroku pipeline, and create a staging app within that pipeline (e.g. `my-cool-site-staging`)
+3. Using the point-and-click interface, set up that staging Heroku app to auto-deploy from the `deploy` branch of your GitHub repo.
+4. Under "Add-ons", set up Papertrail for logging, Redis2Go as your production session store (+ for delivering socket messages, if relevant), Heroku Scheduler for scheduled jobs (if relevant), and either MySQL, PostgreSQL, or a MongoDB host for your database (pick any).
+5. Run through `config/production.js` and `config/staging.js` in your project and set it up.  Any information you feel is too sensitive to hard-code in those files in your repo (like database credentials) can be set up as "Config Variables" in Heroku's user interface.  (See bundled config files for examples.)
+6. In the terminal, make sure you've got everything pulled/pushed and are 100% in sync with the remote master branch on GitHub.
+7. Then type `sails run deploy`.
+
+You can see a demonstration of that in action [here](https://platzi.com/cursos/javascript-pro/).
+
+##### More resources for using Heroku with Node.js/Sails.js:
+
++ [Platzi: Full Stack JavaScript: Pt 5 (2018)](https://platzi.com/cursos/javascript-pro/)
 + [Hello Sails.js: Hosting your Sails.js application on Heroku (2016-2017)](https://hellosails.com/hosting-your-sails-js-application-heroku/)
 + [Platzi: Develop Apps with Sails.js: Pt 2 (2015)](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
 + [Sails.js on Heroku (2015)](http://vort3x.me/sailsjs-heroku/)
@@ -106,8 +119,8 @@ More 2013:
 
 ### RoseHosting
 
- + [Install Sails.js with Apache as a reverse proxy on CentOS 7](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
- + [Install Sails.js on Ubuntu](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
+ + [Install Sails.js with Apache as a reverse proxy on CentOS 7 (2016)](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
+ + [Install Sails.js on Ubuntu (2014)](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
  + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
 
 
