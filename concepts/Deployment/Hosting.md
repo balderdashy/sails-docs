@@ -7,21 +7,26 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 <a title="Deploy your Sails/Node.js app on Heroku" href="http://heroku.com"><img style="width:285px;" src="https://sailsjs.com/images/deployment_heroku.png" alt="Heroku logo"/></a>
 
-+ [Hello Sails.js: Hosting your Sails.js application on Heroku](https://hellosails.com/hosting-your-sails-js-application-heroku/)
-+ [Platzi: Develop Apps with Sails.js: Pt 2](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
-+ [SailsCasts: Deploying a Sails App to Heroku](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
-+ [Sails.js on Heroku](http://vort3x.me/sailsjs-heroku/)
++ [Platzi: Full Stack JavaScript: Pt 5 (2017-2018)](https://platzi.com/cursos/javascript-pro/)
++ [Hello Sails.js: Hosting your Sails.js application on Heroku (2016-2017)](https://hellosails.com/hosting-your-sails-js-application-heroku/)
++ [Platzi: Develop Apps with Sails.js: Pt 2 (2015)](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
++ [Sails.js on Heroku (2015)](http://vort3x.me/sailsjs-heroku/)
++ [SailsCasts: Deploying a Sails App to Heroku (2013)](http://irlnathan.github.io/sailscasts/blog/2013/11/05/building-a-sails-application-ep26-deploying-a-sails-app-to-heroku/)
+
+<!--
+More 2013:
++ [StackOverflow: Sails.js + Heroku (2013)](http://stackoverflow.com/a/20184907/486547)
 + https://groups.google.com/forum/#!topic/sailsjs/vgqJFr7maSY
 + https://github.com/chadn/heroku-sails
 + http://dennisrongo.com/deploying-sails-js-to-heroku
-+ http://stackoverflow.com/a/20184907/486547
+-->
 
 ### Microsoft Azure
 
 <a title="Deploy a Sails.js web app to Azure App Service" href="https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-nodejs-sails"><img style="width:350px;" src="https://sailsjs.com/images/deployment_azure.png" alt="Azure logo"/></a>
 
-+ [Deploy a Sails.js web app to Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-nodejs-sails)
-+ [Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
++ [Deploy a Sails.js web app to Azure App Service (2017)](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-nodejs-sails)
++ [Deploying Sails.js to Azure Web Apps (2015)](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
 
 ### Google Cloud Platform
 
@@ -29,19 +34,23 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 > It's easy to get enterprise-grade Sails.js apps running on Google Cloud Platform. And because the apps you create will be running on the same infrastructure that powers all of Google's products, you can be confident that they will scale to serve all of your users, whether there are a few or millions of them.
 
-+ [Run Sails.js on Google Cloud Platform](https://cloud.google.com/nodejs/resources/frameworks/sails)
-+ [Deploying Sails.js to Google Cloud](http://www.mot.la/2016-06-04-deploying-sails-js-to-google-cloud.html)
-+ [A couple of Googlers demonstrate and deploy their app built on Sails.js and GO in a talk called `runtime:yours` at Google Cloud Platform Live](https://www.facebook.com/sailsjs/posts/721341477911963)
++ [Run Sails.js on Google Cloud Platform (2016)](https://cloud.google.com/nodejs/resources/frameworks/sails)
++ [Deploying Sails.js to Google Cloud (2016)](http://www.mot.la/2016-06-04-deploying-sails-js-to-google-cloud.html)
++ [A couple of Googlers demonstrate and deploy their app built on Sails.js and GO in a talk called `runtime:yours` at Google Cloud Platform Live (2014)](https://www.facebook.com/sailsjs/posts/721341477911963)
 
 
 ### DigitalOcean
 
 <a title="DigitalOcean" href="https://aws.amazon.com/"><img style="width:225px;" src="https://sailsjs.com/images/deployment_digitalocean.png" alt="DigitalOcean logo"/></a>
 
-+ [Troubleshooting: Can't install Sails.js on DigitalOcean](https://www.digitalocean.com/community/questions/can-t-install-sails-js)
-+ [How to create a Node.js app using Sails.js on an Ubuntu VBS](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
-+ https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
++ [Troubleshooting: Can't install Sails.js on DigitalOcean (2017)](https://www.digitalocean.com/community/questions/can-t-install-sails-js)
++ [How to create a Node.js app using Sails.js on an Ubuntu VBS (2013)](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
++ [How to use PM2 to set up a Node.js production environment on an Ubuntu VPS (2014)](https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
+
+<!--
+More 2013:
 + https://www.digitalocean.com/community/articles/how-to-host-multiple-node-js-applications-on-a-single-vps-with-nginx-forever-and-crontab
+-->
 
 
 ### Amazon Web Services (AWS)
@@ -49,10 +58,10 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 <a title="Amazon Web Services (AWS)" href="https://aws.amazon.com/"><img style="width:275px;" src="https://sailsjs.com/images/deployment_aws.png" alt="AWS logo"/></a>
 
 
-+ [Creating a Sails.js application on AWS](http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html) _(see also [this question on ServerFault](http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance))_
-+ [Deploying Sails/Node.js apps to AWS](http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac)
++ [Creating a Sails.js application on AWS (2017)](http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html) _(see also [this question on ServerFault](http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance))_
 + [Deploy a Sails app to AWS](https://www.distelli.com/docs/tutorials/build-and-deploy-sails-angular-application)
-+ [Your own mini-Heroku on AWS](http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html)
++ [Your own mini-Heroku on AWS (2014)](http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html)
++ [Deploying Sails/Node.js apps to AWS (2012)](http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac)
 
 
 
@@ -73,12 +82,13 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 + [Listening to a different IP address on OpenShift](https://coderwall.com/p/dhhfcw/sailsjs-listening-on-a-different-ip-address) _(courtesy [@otupman](https://github.com/otupman))_
 + [Get Sails/Node.js running on OpenShift](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6) _(Warning: quite out of date, but still useful for context.  Courtesy [@mdunisch](https://github.com/mdunisch).)_
 
-
+<!--
 ### Xervo (formerly Modulus)
 
 <a href="https://xervo.io"><img alt="Xervo logo" style="display: inline-block; width: 85px;" src="https://sailsjs.com/images/deployment_xervo.png"/>&nbsp; &nbsp;<img alt="Modulus logo" style="display: inline-block; width: 85px;" src="https://sailsjs.com/images/deployment_modulus.png"/></a>
 
 + [Customer Spotlight: Sails.js](https://blog.xervo.io/sails-js)
+-->
 
 ### Nanobox
 
