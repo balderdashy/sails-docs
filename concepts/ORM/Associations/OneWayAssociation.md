@@ -44,7 +44,7 @@ module.exports = {
 Now that the association is setup, you can [populate](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) the pony association.
 
 ```javascript
-var users = await User.find({ name:'Mike' }).populate('pony');
+var usersWithPonies = await User.find({ name:'Mike' }).populate('pony');
   // The users object would look something like:
   // [{
   //  name: 'Mike',
