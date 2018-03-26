@@ -2,8 +2,8 @@
 
 ### Overview
 
-The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](https://sailsjs.com/documentation/concepts/Assets/TaskAutomation.html?q=task-configuration) to fit your needs.
-<!-- change link to: /documentation/concepts/assets/task-automation#?task-configuration once new site is live -->
+The asset pipeline bundled in Sails is a set of Grunt tasks configured with conventional defaults designed to make your project more consistent and productive. The entire frontend asset workflow is completely customizable, while it provides some default tasks out of the box. Sails makes it easy to [configure new tasks](https://sailsjs.com/documentation/concepts/assets/task-automation#?task-configuration) to fit your needs.
+
 
 Here are a few things that the default Grunt configuration in Sails does to help you out:
 - Automatic LESS compilation
@@ -35,7 +35,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### hash
 
-> Creates and adds an unique hash to the end of a filename for cache busting. 
+> Creates and adds an unique hash to the end of a filename for cache busting.
 
 > [usage docs](https://github.com/jgallen23/grunt-hash/tree/0.5.0#grunt-hash)
 

@@ -19,11 +19,11 @@ Each hook should be saved in its own folder with the filename `index.js`.  The f
 ### Hook features
 The following features are available to implement in your hook.  All features are optional, and can be implemented by adding them to the object returned by your hook function.
 
-* [.defaults](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html)
-* [.configure()](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/configure.html)
-* [.initialize()](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/initialize.html)
-* [.routes](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/routes.html)
-* [.registerActions()](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/register-actions.html)
+* [.defaults](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults)
+* [.configure()](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/configure)
+* [.initialize()](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/initialize)
+* [.routes](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/routes)
+* [.registerActions()](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/register-actions)
 
 ### Custom hook data and functions
 
@@ -37,7 +37,7 @@ module.exports = function (sails) {
    var foo = 'bar';
 
    return {
-   
+
      // This var will be public
      abc: 123,
 

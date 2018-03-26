@@ -92,7 +92,7 @@ If this makes you nervous or if you can't connect to the production database rem
 
 ##### Enable CSRF protection
 
-Protecting against CSRF is an important security measure for Sails apps.  If you haven't already been developing with CSRF protection enabled (see [`sails.config.security.csrf`](https://sailsjs.com/documentation/reference/configuration/sails-config-security-csrf)), be sure to [enable CSRF protection](https://sailsjs.com/documentation/concepts/Security/CSRF.html?q=enabling-csrf-protection) before going to production.
+Protecting against CSRF is an important security measure for Sails apps.  If you haven't already been developing with CSRF protection enabled (see [`sails.config.security.csrf`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycsrf)), be sure to [enable CSRF protection](https://sailsjs.com/documentation/concepts/security/csrf#?enabling-csrf-protection) before going to production.
 
 
 

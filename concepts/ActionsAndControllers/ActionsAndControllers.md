@@ -2,7 +2,7 @@
 
 ### Overview
 
-_Actions_ are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](https://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](https://sailsjs.com/documentation/concepts/Views). With rare exceptions, the actions will orchestrate the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+_Actions_ are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](https://sailsjs.com/documentation/concepts/models-and-orm) and [views](https://sailsjs.com/documentation/concepts/views). With rare exceptions, the actions will orchestrate the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
 
 Actions are bound to [routes](https://sailsjs.com/documentation/concepts/Routes) in your application, so that when a user agent requests a particular URL, the bound action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
 

@@ -1,6 +1,6 @@
 # Creating an installable hook
 
-Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
+Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks) instead.
 
 To create a new installable hook:
 
@@ -109,10 +109,10 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 
 Assuming your hook is tested and looks good, and assuming that the hook name isn&rsquo;t already in use by another [NPM](http://npmjs.org) module, you can share it with world by running `npm publish`.  Go you!
 
-* [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/Hooks)
-* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
+* [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/hooks)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks)
 * [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
 
 
 
