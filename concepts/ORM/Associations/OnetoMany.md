@@ -74,7 +74,7 @@ Now that the `Pet` is associated with the `User`, all the pets belonging to a sp
 be populated by using the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
 
 ```javascript
-const users = await User.find().populate('pets');
+var users = await User.find().populate('pets');
   // The users object would look something like the following
   // [{
   //   id: 123,
