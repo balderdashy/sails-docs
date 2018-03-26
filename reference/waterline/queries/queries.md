@@ -58,7 +58,7 @@ The specific kinds of errors you could receive vary based on what kind of query 
 
 ### Promises and Callbacks
 
-As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an [`.exec()`](https://sailsjs.com/documentation/reference/waterline/queries/exec) method.
+As an alternative to `await`, Sails and Waterline provide support for callbacks and promise-chaining.  In general, you should **use `await` whenever possible**-- it leads to simpler, easier-to-understand code, and helps prevent DDoS vulnerabilities and stability issues which can arise from throwing uncaught exceptions in asynchronous callbacks.  That said, sometimes it is necessary to maintain backwards compatibility with an older version of Node.js.  For this reason, all queries in Sails and Waterline expose an [`.exec()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec) method.
 
 
 ```js

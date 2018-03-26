@@ -35,7 +35,7 @@ The following will allow cross-origin AJAX GET, PUT and POST requests to `/foo/b
 
 ## sails.config.security.csrf
 
-Configuration for Sails' built-in [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) protection middleware.  CSRF options are conventionally set in the [`config/security.js`](https://sailsjs.com/documentation/anatomy/myApp/config/security.js.html) configuration file.  For detailed usage instructions, see [Concepts > Security > Cross-Site Request Forgery](https://sailsjs.com/documentation/concepts/security/csrf).
+Configuration for Sails' built-in [CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) protection middleware.  CSRF options are conventionally set in the [`config/security.js`](https://sailsjs.com/documentation/anatomy/config/security.js) configuration file.  For detailed usage instructions, see [Concepts > Security > Cross-Site Request Forgery](https://sailsjs.com/documentation/concepts/security/csrf).
 
 This setting protects your Sails app against cross-site request forgery (or CSRF) attacks.  A would-be attacker needs not only a user's session cookie, but also this timestamped, secret CSRF token, which is refreshed/granted when the user visits a URL on your app's domain.  This allows you to have certainty that your users' requests haven't been hijacked, and that the requests they're making are intentional and legitimate.
 

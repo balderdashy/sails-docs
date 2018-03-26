@@ -15,7 +15,7 @@ res.get('Content-Type');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+Response headers can be changed up until the response is sent - see [`res.set()`](https://sailsjs.com/documentation/reference/res/res.set.html).
+>+Response headers can be changed up until the response is sent - see [`res.set()`](https://sailsjs.com/documentation/reference/response-res/res-set).
 
 
 
