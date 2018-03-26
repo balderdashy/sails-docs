@@ -56,12 +56,10 @@ Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifi
 In addition to the built-in functionality provided by Sails, you can also define your own custom model methods.  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
 
 > This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods (don't define methods named "create", etc.)
+>
+> If you're at all unsure, write a [helper](https://sailsjs.com/documentation/concepts/helpers) instead.
 
-Model methods can be synchronous or asynchronous functions, but more often than not, they're _asynchronous_.  By convention, asynchronous model methods should be 2-ary functions, which accept `options` as their first argument, and a Node-style callback as the second argument.  Alternatively, instead of a callback, you might choose to return a promise (both strategies work just fine- it's a matter of preference.  If you don't have a preference, stick with Node callbacks.)
-
-##### Best practices
-
-One best practice is to write your static model method so that it can accept either a record OR its primary key value.  For model methods that operate on/from _multiple_ records at once, you should allow an array of records OR an array of primary key values to be passed in.  This takes more time to write, but makes your method much more powerful.  And since you're doing this to extrapolate commonly-used logic anyway, it's usually worth the extra effort.
+Custom model methods can be synchronous or asynchronous functions, but more often than not, they're _asynchronous_.  By convention, asynchronous model methods should be `async` functions, which accept a dictionary of `options` as their argument.
 
 For example:
 
@@ -70,31 +68,23 @@ For example:
 
 // Find monkeys with the same name as the specified person
 findWithSameNameAsPerson: async function (opts) {
-	var person = opts.person;
-	if (typeof person !== 'object') {
-		person = await Person.findOne(person);
-	}
+	var person = await Person.findOne(person);
 	
 	if (!person) {
-		let err = new Error();
-		err.message = require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person);
-		err.status = 404;
+		let err = new Error(require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person));
+		err.code = 'E_UNKNOWN_PERSON';
 		throw err;
 	}
 	
-	return Monkey.find({ name: person.name });
+	return await Monkey.find({ name: person.name });
 }
 ```
-> Notice we didn't `await` the final `find`. This is because `findWithSameNameAsPerson`, by being `async`, always returns a `promise`, so it needs to be `await`ed (or `.then`ed) when you use it.
-> 
-> Also on that point, we didn't `try/catch` any of the code within that function, that's because we intend to leave that responsibility to whoever calls our function (possibly a controller of some sort).
+> Notice we didn't `try/catch` any of the code within that function, that's because we intend to leave that responsibility to whoever calls our function (e.g. an action).
 
 Then you can do:
 
 ```js
-const monkeys = await Monkey.findWithSameNameAsPerson(albus);
-// -or-
-const monkeys = await Monkey.findWithSameNameAsPerson(37);
+var monkeys = await Monkey.findWithSameNameAsPerson(37);
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
