@@ -44,7 +44,7 @@ Since they usually have to send a query to the database and wait for a response,
 
 In Node.js, Sails, and JavaScript in general, the recommended way to handle this is by using [`async/await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
 
-For more information about working with queries, see [Waterline (ORM) > Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries).
+For more information about working with queries, see [Reference > Waterline (ORM) > Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ### Resourceful pubsub methods
 
