@@ -119,7 +119,6 @@ The following modifiers are available to use when building queries.
 * `'!='`
 * `'nin'`
 * `'in'`
-* `'like'`
 * `'contains'`
 * `'startsWith'`
 * `'endsWith'`
@@ -222,14 +221,6 @@ Model.find({
 }).exec(function (err, historyCourses) {
 
 })
-```
-
-#### 'like'
-
-Searches for records that match a particular SQL-like (`%`) wildcard pattern.
-
-```javascript
-Model.find({ food: { 'like': '%be%ans%' }})
 ```
 
 #### 'Date Ranges'
