@@ -97,7 +97,7 @@ User.find()
 ```
 
 ### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/models/associations/associations.md)
+> For a more detailed description of this type of association, see the [Waterline Docs](https://sailsjs.com/documentation/concepts/models-and-orm/associations)
 
 
 
