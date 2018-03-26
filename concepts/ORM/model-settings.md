@@ -109,14 +109,14 @@ The **tableName** setting gives you the ability to customize the name of the und
 By default, when no tableName is specified, Waterline uses the model's [identity](#?identity) (e.g. "user"):
 
 ```js
-User.find().exec(...)
+await User.find();
 // => SELECT * FROM user;
 ```
 
 This is a recommended convention, and shouldn't need to be changed in most cases.  But, if you are sharing a database with an existing PHP or Java app, or if you'd like to adhere to a different naming convention, then it may be useful to customize this mapping.  Returning to the example above, if you modified your model definition in `api/models/User.js`, and set `tableName: 'foo_bar'`, then you'd see slightly different results:
 
 ```js
-User.find().exec(...)
+await User.find();
 // => SELECT * FROM foo_bar;
 ```
 
@@ -316,7 +316,7 @@ id: {
 Then, in your app's code, you'll be able to look up users by primary key, while the mapping to `email_address` in all generated SQL queries is taken care of for you automatically:
 
 ```js
-User.find({ id: req.param('emailAddress' }).exec(/*...*/);
+await User.find({ id: req.param('emailAddress' });
 ```
 
 > All caveats aside, lets say you're an avid user of MongoDB.  In your new Sails app, you'll start off by setting `columnName: '_id'` on your default "id" attribute in `config/models.js`.  Then you can use Sails and Waterline just like normal, and everything will work just fine.

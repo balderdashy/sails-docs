@@ -47,12 +47,9 @@ The reflexive associations in the example `User` model above operate just like a
 
 ```javascript
 // Add User #12 as a parent of User #23
-User.addToCollection(23, 'parents', 12).exec(function(err) {
-
-  // Find User #12 and populate its children
-  User.findOne(12).populate('children').exec(console.log);
-
-});
+await User.addToCollection(23, 'parents', 12);
+// Find User #12 and populate its children
+var userTwelve = await User.findOne(12).populate('children');
 ```
 
 would return something like:
