@@ -57,8 +57,8 @@ More 2013:
 <a title="DigitalOcean" href="https://aws.amazon.com/"><img style="width:225px;" src="https://sailsjs.com/images/deployment_digitalocean.png" alt="DigitalOcean logo"/></a>
 
 + [Troubleshooting: Can't install Sails.js on DigitalOcean (2017)](https://www.digitalocean.com/community/questions/can-t-install-sails-js)
-+ [How to create a Node.js app using Sails.js on an Ubuntu VBS (2013)](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
 + [How to use PM2 to set up a Node.js production environment on an Ubuntu VPS (2014)](https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps)
++ [How to create a Node.js app using Sails.js on an Ubuntu VBS (2013)](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
 
 <!--
 More 2013:
