@@ -5,7 +5,7 @@ Configuration for your app's security settings, including how it deals with cros
 ## sails.config.security.cors
 Configuration for Sails' [built-in support for Cross-Origin Resource Sharing](https://sailsjs.com/documentation/concepts/security/cors).  CORS specifies how HTTP requests to your app originating from foreign domains should be treated.  It is primarily used to allow third-party sites to make AJAX requests to your app, which are normally blocked by browsers following the <a href="http://en.wikipedia.org/wiki/Same-origin_policy" target="_blank">same-origin policy</a>.
 
-These options are conventionally set in the **config/security.js** configuration file.  Note that these settings (with the exception of `allRoutes`) can be changed on a per-route basis in the [**config/routes.js** file](https://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options).
+These options are conventionally set in the **config/security.js** configuration file.  Note that these settings (with the exception of `allRoutes`) can be changed on a per-route basis in the [**config/routes.js** file](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options).
 
 ### Properties
 

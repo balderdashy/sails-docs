@@ -4,16 +4,16 @@ When building an app with many different pages, it can be helpful to extrapolate
 
 In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
 
-For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](https://sailsjs.com/documentation/concepts/Views/ViewEngines.html) to find the appropriate syntax.
+For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](https://sailsjs.com/documentation/concepts/concepts/views/view-engines) to find the appropriate syntax.
 
 
 ### Creating Layouts
 
 Sails layouts are special `.ejs` files in your app's `views/` folder you can use to "wrap" or "sandwich" other views. Layouts usually contain the preamble (e.g. `<!DOCTYPE html><html><head>....</head><body>`) and conclusion (`</body></html>`).  Then the original view file is included using `<%- body %>`.  Layouts are never used without a view- that would be like serving someone a bread sandwich.
 
-Layout support for your app can be configured or disabled in [`config/views.js`](https://sailsjs.com/documentation/anatomy/config/views.js), and can be overridden for a particular route or action by setting a special [local](https://sailsjs.com/documentation/concepts/Views/Locals.html) called `layout`. By default, Sails will compile all views using the layout located at `views/layouts/layout.ejs`.
+Layout support for your app can be configured or disabled in [`config/views.js`](https://sailsjs.com/documentation/anatomy/config/views.js), and can be overridden for a particular route or action by setting a special [local](https://sailsjs.com/documentation/concepts/views/locals) called `layout`. By default, Sails will compile all views using the layout located at `views/layouts/layout.ejs`.
 
-To specify what layout a view uses, see the example below. There is more information in the docs at [routes](https://sailsjs.com/documentation/concepts/Routes.html).
+To specify what layout a view uses, see the example below. There is more information in the docs at [routes](https://sailsjs.com/documentation/concepts/routes).
 
 The example route below will use the view located at `./views/users/privacy.ejs` within the layout located at `./views/users.ejs`
 

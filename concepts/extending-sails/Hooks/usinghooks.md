@@ -4,7 +4,7 @@
 To use a project hook in your app, first create the `api/hooks` folder if it doesn&rsquo;t already exist.  Then [create the project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks) or copy the folder for the hook you want to use into `api/hooks`.
 
 ## Using an installable hook
-To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks.html) directly into your app&rsquo;s `node_modules` folder.
+To use an installable hook in your app, simply run `npm install` with the package name of the hook you wish to install (e.g. `npm install sails-hook-autoreload`).  You may also manually copy or link an [installable hook folder that you've created](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks) directly into your app&rsquo;s `node_modules` folder.
 
 ## Calling hook methods
 Any methods that a hook exposes are available in the `sails.hooks[<hook-name>]` object.  For example, the `sails-hook-email` hook provides a `sails.hooks.email.send()` method (note that the `sails-hook-` prefix is stripped off).  Consult a hook&rsquo;s documentation to determine which methods it provides.
@@ -32,7 +32,7 @@ module.exports.installedHooks = {
 * [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/hooks)
 * [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
 * [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
-* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks.html)
+* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks)
 
 
 

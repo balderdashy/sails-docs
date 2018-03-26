@@ -1,6 +1,6 @@
 # sails.config.log
 
-Configuration for the [logger](https://sailsjs.com/documentation/concepts/logging) in your Sails app.  These settings apply whenever you call functions like `sails.log.debug()` or `sails.log.error()` in your app code, as well as when Sails logs a message to the console automatically.  The options here are conventionally specified in the [config/log.js](https://sailsjs.com/documentation/anatomy/config/log.js.html) configuration file.
+Configuration for the [logger](https://sailsjs.com/documentation/concepts/logging) in your Sails app.  These settings apply whenever you call functions like `sails.log.debug()` or `sails.log.error()` in your app code, as well as when Sails logs a message to the console automatically.  The options here are conventionally specified in the [config/log.js](https://sailsjs.com/documentation/anatomy/config/log.js) configuration file.
 
 
 ### Properties
