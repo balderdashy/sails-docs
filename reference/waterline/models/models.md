@@ -2,7 +2,7 @@
 
 This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (i.e. the [resourceful pubsub methods](http://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)), be exposed by the underlying adapters to provide custom functionality, or be hand-written in your app to wrap reusable custom code.
 
-> For an in-depth introduction to models in Sails/Waterline, see <a href="http://sailsjs.com/documentation/concepts/ORM/Models.html">http://sailsjs.com/documentation/concepts/ORM/Models.html</a>.
+> For an in-depth introduction to models in Sails/Waterline, see <a href="https://sailsjs.com/documentation/concepts/models-and-orm/models">Concepts > Models and ORM > Models</a>.
 
 ![screenshot of a Waterline/Sails model in Sublime Text 2](http://i.imgur.com/8uRlFi8.png)
 
@@ -49,7 +49,7 @@ sails.models.kitten.find().exec(function (err, allTheKittens) {
 ### Using Promises
 ```javascript
 sails.models.kitten.find().then(function(alltheKittens) {
-  //.... 
+  //....
 }).catch(function(err){
   //....
 });

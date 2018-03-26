@@ -50,7 +50,7 @@ We can build your app and API from scratch, modernize your legacy web platform, 
 ##### Sails Flagship for Enterprise
 Sails Flagship is a platform on top of Sails which provides a suite of additional services, production-quality accoutrements, and support for enterprise use cases.  This includes early access to new features and enhancements, a license for our internal tools, as well as exclusive reports and best-practice guides created by core maintainers.  To learn more, [set up a call](http://sailsjs.com/contact) _(or [purchase online now](http://sailsjs.com/flagship/plans))_.
 
-> In 2017, we are actively expanding this product offering with new additions and official re-releases of some formerly-experimental modules.  If you have specific suggestions/requests for new Flagship packages, please [let us know](http://flagship.sailsjs.com/contact).
+> We are actively expanding this product offering with new additions and official re-releases of some formerly-experimental modules.  If you have specific suggestions/requests for new Flagship packages, please [let us know](http://flagship.sailsjs.com/contact).
 
 ##### Professional support / SLAs
 The Sails Company also provides a lifeline for organizations using Sails to build their products. If you need guaranteed support in the event of a critical production issue, or just want an extra pair of eyes looking out for your code base during development, take a look at our [basic subscriptions](http://sailsjs.com/flagship/plans), or [contact us](https://flagship.sailsjs.com/contact) and we'll give you a call.
@@ -67,7 +67,7 @@ Aside from the [official documentation](http://sailsjs.com/documentation), be su
 
 ### What are some good community tutorials?
 
-> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
+> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/master/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
 
 <!--
 A quick note for anyone contributing to this file:
@@ -102,6 +102,8 @@ Thanks!
 
 
 ##### Articles & blog posts:
++ [Nanobox Blog: Getting Started - A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/)
+<!-- 6-13-2017 -->
 + [Twitter Dev Blog: Guest Post: Twitter Sign-In with Sails.js](https://blog.twitter.com/2015/guest-post-twitter-sign-in-with-treelineio)
 <!-- 3-25-2015 -->
 + [Guest Post on Segment.io Blog: Webhooks with Slack, Segment, and Sails.js/Treeline](https://segment.com/blog/segment-webhooks-slack/)
@@ -133,7 +135,7 @@ Thanks!
 
 ##### Articles / interviews / press releases / whitepapers / talks
 
-> + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md).  We'll check it out!
+> + If you are the author of an article about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/master/FAQ.md).  We'll check it out!
 > + If you are a company interested in doing a press release about Sails, please contact [@mikermcneil](https://twitter.com/mikermcneil) on Twitter.  We'll do what we can to help.
 
 + [Microsoft Case Study: Deploying Sails.js to Azure Web Apps](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
@@ -216,5 +218,3 @@ The [documentation on the main website](http://sailsjs.com/documentation) is for
 For older releases of Sails that are still widely used, the documentation is compiled from the relevant `sails-docs` branches and hosted on the following subdomains:
 + [0.12.sailsjs.com](http://0.12.sailsjs.com/)
 + [0.11.sailsjs.com](http://0.11.sailsjs.com/)
-
-

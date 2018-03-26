@@ -12,7 +12,7 @@ A hook is a Node module that adds functionality to the Sails core.  The [hook sp
 
 Hooks share some common features with Sails [services](http://sailsjs.com/documentation/concepts/Services).  They both allow developers to store commonly used code in one location, and they both make new methods available globally to a Sails app.  However, there are some key differences between the two concepts:
 
-* Services cannot be saved independently of an app.  While some types of hooks may be tied to a single app (see [Project Hooks](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)), other types can be developed independently of a Sails app and installed using `npm install`.
+* Services cannot be saved independently of an app.  While some types of hooks may be tied to a single app (see [Project Hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)), other types can be developed independently of a Sails app and installed using `npm install`.
 * Hooks have their own initialization system.  This allows them to be more dynamic and configure themselves when Sails lifts.
 * Hooks can add new [routes](http://sailsjs.com/documentation/concepts/Routes) to a Sails app before it lifts.
 
@@ -32,10 +32,10 @@ There are three types of hooks available in Sails:
 
 ## Read more
 
-* [Using hooks in your app](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
-* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
-* [Creating an installable hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/installablehooks.html)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks)
+* [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
+* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks)
 
 
 

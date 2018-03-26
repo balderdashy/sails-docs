@@ -1,6 +1,6 @@
 # Creating an Installable Hook
 
-Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html) instead.
+Installable hooks are custom Sails hooks that reside in an application&rsquo;s `node_modules` folder.  They are useful when you want to share functionality between Sails apps, or publish your hook to [NPM](http://npmjs.org) to share it with the Sails community.  If you wish to create a hook for use in  *just one* Sails app, see [creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks) instead.
 
 To create a new installable hook:
 
@@ -50,7 +50,7 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
       "sails": "~0.11.0"
 }
 ```
-1. Install Sails as a dependency of your hook with `npm install sails` or `npm link sails` (if you have Sails installed globally on your system).
+1. Install Sails as a dependency of your hook with `npm install sails@0.12` or `npm link sails` (if you have Sails installed globally on your system).
 1. Install [Mocha](http://mochajs.org/) on your system with `npm install -g mocha`, if you haven&rsquo;t already.
 1. Add a `test` folder inside your hook&rsquo;s main folder.
 2. Add a `basic.js` file with the following basic test:
@@ -109,10 +109,10 @@ Before you distribute your installable hook to others, you&rsquo;ll want to writ
 
 Assuming your hook is tested and looks good, and assuming that the hook name isn&rsquo;t already in use by another [NPM](http://npmjs.org) module, you can share it with world by running `npm publish`.  Go you!
 
-* [Hooks overview](http://sailsjs.com/documentation/concepts/extending-sails/Hooks)
-* [Using hooks in your app](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
+* [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/hooks)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks)
 * [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
 
 
 

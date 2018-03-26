@@ -1,6 +1,6 @@
 # Creating a Project Hook
 
-Project hooks are custom Sails hooks that reside in an application&rsquo;s `api/hooks` folder.  They are typically useful when you want to take advantage of hook features like [defaults](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/defaults.html) and [routes](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec/routes.html) for code that is used by multiple components in a single app.  If you wish to re-use a hook in *more than one* Sails app, see [creating an installable hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/installablehooks.html) instead.
+Project hooks are custom Sails hooks that reside in an application&rsquo;s `api/hooks` folder.  They are typically useful when you want to take advantage of hook features like [defaults](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults) and [routes](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/routes) for code that is used by multiple components in a single app.  If you wish to re-use a hook in *more than one* Sails app, see [creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks) instead.
 
 To create a new project hook:
 
@@ -21,10 +21,10 @@ To test that your hook is being loaded by Sails, lift your app with `sails lift 
 
 in the logs.
 
-* [Hooks overview](http://sailsjs.com/documentation/concepts/extending-sails/Hooks)
-* [Using hooks in your app](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
-* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/hookspec)
-* [Creating an installable hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/installablehooks.html)
+* [Hooks overview](https://sailsjs.com/documentation/concepts/extending-sails/hooks)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks)
+* [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
+* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks)
 
 
 <docmeta name="displayName" value="Project Hooks">

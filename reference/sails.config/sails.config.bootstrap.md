@@ -32,11 +32,11 @@ module.exports.bootstrap = function (done) {
   }).exec(function (err, existingFakeClinics) {
     if (err) { return done(err); }
     
-    if (existingFakeClinics.length >= 2) {
+    if (existingFakeClinics >= 2) {
       return done(new Error('Consistency violation: Database is in invalid state: There should never be more than one fake clinic!'));
     }
     
-    if (existingFakeClinics.length === 1) {
+    if (existingFakeClinics === 1) {
       // If the clinic already exists, then we're done.
       // That means we must have already run the bootstrap and seeded the fake data.
       return done();
