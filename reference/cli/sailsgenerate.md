@@ -5,7 +5,7 @@ Sails ships with several *generators* to help you scaffold new projects.  You ca
 The following generators are bundled with Sails:
 
 #### `sails generate new <appName>`
-Create a new Sails project in a folder called **appName**.  See [`sails new`](http://sailsjs.com/documentation/reference/cli/sailsnew.html) for usage options.
+Create a new Sails project in a folder called **appName**.  See [`sails new`](http://sailsjs.com/documentation/reference/command-line-interface/sails-new) for usage options.
 
 #### `sails generate api <foo>`
 Generate **api/models/Foo.js** and **api/controllers/FooController.js**

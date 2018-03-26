@@ -1,6 +1,6 @@
 # sails.config.log
 
-Configuration for the [logger](http://sailsjs.com/documentation/concepts/logging) in your Sails app.  These settings apply whenever you call functions like `sails.log.debug()` or `sails.log.error()` in your app code, as well as when Sails logs a message to the console automatically.  The options here are conventionally specified in the [config/log.js](http://sailsjs.com/documentation/anatomy/myApp/config/log.js.html) configuration file.
+Configuration for the [logger](http://sailsjs.com/documentation/concepts/logging) in your Sails app.  These settings apply whenever you call functions like `sails.log.debug()` or `sails.log.error()` in your app code, as well as when Sails logs a message to the console automatically.  The options here are conventionally specified in the [config/log.js](http://sailsjs.com/documentation/anatomy/config/log.js) configuration file.
 
 
 ### Properties
@@ -15,7 +15,7 @@ Configuration for the [logger](http://sailsjs.com/documentation/concepts/logging
 
 It can sometimes be useful to configure a custom logger-- particularly for regulatory compliance and organizational requirements (i.e. if your company is using a particular logger in other apps.)  In the context of Sails, configuring a custom logger also allows you to intercept all log messages automatically created by the framework, which is handy for setting up email notifications about errors and warnings.
 
-> But don't feel like you _have_ to use a custom logger if you want these sorts of notifications!  In fact, there are usually more straightforward ways to implement features like automated Slack, SMS, or email notifications whenever errors occur.  For example, one approach is to customize your app's default server error response ([`responses/serverError.js`](http://sailsjs.com/documentation/anatomy/my-app/api/responses/server-error-js)).  Another popular option is using a monitoring service like [AppDynamics](https://www.appdynamics.com/nodejs/sails/) or [NewRelic](https://discuss.newrelic.com/t/using-newrelic-with-sails-js/3338/8).
+> But don't feel like you _have_ to use a custom logger if you want these sorts of notifications!  In fact, there are usually more straightforward ways to implement features like automated Slack, SMS, or email notifications whenever errors occur.  For example, one approach is to customize your app's default server error response ([`responses/serverError.js`](http://sailsjs.com/documentation/anatomy/api/responses/servererror.js)).  Another popular option is using a monitoring service like [AppDynamics](https://www.appdynamics.com/nodejs/sails/) or [NewRelic](https://discuss.newrelic.com/t/using-newrelic-with-sails-js/3338/8).
 
 
 Here's an example of configuring [winston](https://github.com/winstonjs/winston) as a custom logger, defining both a console transport and file transport:

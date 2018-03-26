@@ -41,7 +41,7 @@ See [**Concepts > Internationalization > Locales**](http://sailsjs.com/documenta
 
 ### Additional options
 
-Settings for localization/internationalization may be configured in [`sails.config.i18n`](http://sailsjs.com/documentation/reference/sails.config/sails.config.i18n.html).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
+Settings for localization/internationalization may be configured in [`sails.config.i18n`](https://sailsjs.com/documentation/reference/configuration/sails-config-i-18-n).  The most common reason you'll need to modify these settings is to edit the list of your app's supported locales and/or the location of your translation stringfiles:
 
 ```javascript
 // Which locales are supported?

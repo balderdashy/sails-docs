@@ -11,7 +11,7 @@ But even when writing custom code, you can call the methods described in this se
 
 ### Listening for events on the client
 
-While you are free to use any Javascript library to listen for socket events on the client, Sails provides its own socket client called [sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js) as a convenient way to communicate with the Sails server from any web browser or Node.js process that supports Socket.io.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
+While you are free to use any Javascript library to listen for socket events on the client, Sails provides its own socket client called [sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/sails.io.js) as a convenient way to communicate with the Sails server from any web browser or Node.js process that supports Socket.io.  Using the Sails socket client makes listening for resourceful pubsub events as easy as:
 
 ```
 io.socket.on('<model identity>', function (event) {
@@ -35,7 +35,7 @@ This will log any notifications about `User` models to the console.  However, we
 io.socket.get('/user', function(resData, jwres) {console.log(resData);})
 ```
 
-This requests the current list of users from the Sails server, and subscribes the client to events about each user.  Additionally, if the [`autoWatch` setting](http://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html?q=properties) is on (the default), the client will also be notified whenever a new `User` is created, and will automatically be subscribed to the new user.  The callback in this example simply logs the user list to the console.  See the [socket.get](http://sailsjs.com/documentation/reference/websockets/sails.io.js/socket.get.html) reference for more info about this method.
+This requests the current list of users from the Sails server, and subscribes the client to events about each user.  Additionally, if the [`autoWatch` setting](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?properties) is on (the default), the client will also be notified whenever a new `User` is created, and will automatically be subscribed to the new user.  The callback in this example simply logs the user list to the console.  See the [socket.get](http://sailsjs.com/documentation/reference/web-sockets/sails.io.js/socket.get.html) reference for more info about this method.
 
 It&rsquo;s important to note that in order for the subscription to take place, the `/user` request must be made via a websocket call, *not* a regular HTTP request.  That is, using an AJAX request (e.g. `jQuery.get("/user")`) will *not* result in the client being subscribed to resourceful pubsub messages about `User`.  However, once the subscription is made, *any* changes to models--whether they be the result of a socket call, an AJAX request, even a cURL request from the command line--will cause the client to receive a notification.  Continuing with the above example, if you were to open up a new browser window and go to the following URL:
 
