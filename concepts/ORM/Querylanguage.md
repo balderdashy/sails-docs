@@ -12,14 +12,13 @@ Queries can be built using either a `where` key to specify attributes, which wil
 
 ```javascript
 
-const peopleNamedMary = await Model.find({
+var peopleNamedMary = await Model.find({
   name: 'mary'
 });
 
 // OR
 
-
-const thirdPageOfRecentPeopleNamedMary = await Model.find({
+var thirdPageOfRecentPeopleNamedMary = await Model.find({
   where: { name: 'mary' },
   skip: 20,
   limit: 10,
@@ -32,7 +31,7 @@ const thirdPageOfRecentPeopleNamedMary = await Model.find({
 A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
 
 ```javascript
-const peopleNamedLyra = await Model.find({
+var peopleNamedLyra = await Model.find({
   name: 'lyra'
 });
 ```
@@ -40,7 +39,7 @@ const peopleNamedLyra = await Model.find({
 They can be used together to search multiple attributes.
 
 ```javascript
-const waltersFromNewMexico = await Model.find({
+var waltersFromNewMexico = await Model.find({
   name: 'walter',
   state: 'new mexico'
 });
@@ -51,7 +50,7 @@ const waltersFromNewMexico = await Model.find({
 Complex constraints also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
 
 ```javascript
-Model.find({
+var peoplePossiblyNamedLyra = await Model.find({
   name : {
     'contains' : 'yra'
   }
@@ -65,7 +64,7 @@ Provide an array to find records whose value for this attribute exactly matches 
 > This is more or less equivalent to "IN" queries in SQL, and the `$in` operator in MongoDB.
 
 ```javascript
-const waltersAndSkylers = await Model.find({
+var waltersAndSkylers = await Model.find({
   name : ['walter', 'skyler']
 });
 ```
@@ -77,7 +76,7 @@ Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`)
 > This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
 ```javascript
-const everyoneExceptWaltersAndSkylers = await Model.find({
+var everyoneExceptWaltersAndSkylers = await Model.find({
   name: { '!' : ['walter', 'skyler'] }
 });
 ```
@@ -87,7 +86,7 @@ const everyoneExceptWaltersAndSkylers = await Model.find({
 Use the `or` modifier to match _any_ of the nested rulesets you specify as an array of query pairs.  For records to match an `or` query, they must match at least one of the specified query modifiers in the `or` array.
 
 ```javascript
-const waltersAndTeachers = await Model.find({
+var waltersAndTeachers = await Model.find({
   or : [
     { name: 'walter' },
     { occupation: 'teacher' }
@@ -117,7 +116,7 @@ The following modifiers are available to use when building queries.
 
 Searches for records where the value is less than the value specified.
 
-```javascript
+```usage
 Model.find({ age: { '<': 30 }})
 ```
 
@@ -125,15 +124,15 @@ Model.find({ age: { '<': 30 }})
 
 Searches for records where the value is less or equal to the value specified.
 
-```javascript
-Model.find({ age: { '<=': 21 }})
+```usage
+Model.find({ age: { '<=': 20 }})
 ```
 
 #### '>'
 
 Searches for records where the value is more than the value specified.
 
-```javascript
+```usage
 Model.find({ age: { '>': 18 }})
 ```
 
@@ -141,7 +140,7 @@ Model.find({ age: { '>': 18 }})
 
 Searches for records where the value is more or equal to the value specified.
 
-```javascript
+```usage
 Model.find({ age: { '>=': 21 }})
 ```
 
@@ -149,7 +148,7 @@ Model.find({ age: { '>=': 21 }})
 
 Searches for records where the value is not equal to the value specified.
 
-```javascript
+```usage
 Model.find({
   name: { '!=': 'foo' }
 })
@@ -159,7 +158,7 @@ Model.find({
 
 Searches for records where the value is in the list of values.
 
-```javascript
+```usage
 Model.find({
   name: { 'in': ['foo', 'bar'] }
 })
@@ -169,7 +168,7 @@ Model.find({
 
 Searches for records where the value is NOT in the list of values.
 
-```javascript
+```usage
 Model.find({
   name: { 'nin': ['foo', 'bar'] }
 })
@@ -179,7 +178,7 @@ Model.find({
 
 Searches for records where the value for this attribute _contains_ the given string.
 
-```javascript
+```usage
 const musicCourses = await Model.find({
   subject: { contains: 'music' }
 });
@@ -189,7 +188,7 @@ const musicCourses = await Model.find({
 
 Searches for records where the value for this attribute _starts with_ the given string.
 
-```javascript
+```usage
 const coursesAboutAmerica = await Model.find({
   subject: { startsWith: 'american' }
 });
@@ -199,7 +198,7 @@ const coursesAboutAmerica = await Model.find({
 
 Searches for records where the value for this attribute _ends with_ the given string.
 
-```javascript
+```usage
 const historyCourses = await Model.find({
   subject: { endsWith: 'history' }
 });
@@ -209,7 +208,7 @@ const historyCourses = await Model.find({
 
 Searches for records using pattern matching with the `%` sign.
 
-```javascript
+```usage
 Model.find({ food: { 'like': '%beans' }});
 ```
 
@@ -217,7 +216,7 @@ Model.find({ food: { 'like': '%beans' }});
 
 You can do date range queries using the comparison operators.
 
-```javascript
+```usage
 Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
 ```
 
@@ -234,7 +233,7 @@ available are:
 
 Limits the number of results returned from a query.
 
-```javascript
+```usage
 Model.find({ where: { name: 'foo' }, limit: 20 })
 ```
 
@@ -244,7 +243,7 @@ Model.find({ where: { name: 'foo' }, limit: 20 })
 
 Returns all the results excluding the number of items to skip.
 
-```javascript
+```usage
 Model.find({ where: { name: 'foo' }, skip: 10 });
 ```
 
@@ -252,7 +251,7 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 
 `skip` and `limit` can be used together to build up a pagination system.
 
-```javascript
+```usage
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
@@ -260,7 +259,7 @@ Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 
 <!-- TODO: set up reference page for .paginate() -->
 
-``` javascript
+``` usage
 Model.find().paginate({page: 2, limit: 10});
 ```
 
@@ -278,7 +277,7 @@ Model.find().paginate({page: 2, limit: 10});
 Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
 sort, or specify an `asc` or `desc` flag for ascending or descending orders respectively.
 
-```javascript
+```usage
 // Sort by name in ascending order
 Model.find({ where: { name: 'foo' }, sort: 'name' });
 
