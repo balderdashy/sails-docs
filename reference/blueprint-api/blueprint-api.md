@@ -92,7 +92,7 @@ By default, the **Find** blueprint action will call [`.watch()`](http://sailsjs.
 
 ### Notes
 
-> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.com/documentation/reference/websockets/sails.io.js)) for example usage.
+> + While the following documentation focuses on HTTP, the blueprint API (just like any of your custom actions and policies) is also compatible with WebSockets, thanks to the virtual request interpreter.  Check out the reference section on the browser SDK ([Reference > WebSockets > sails.io.js](http://sailsjs.com/documentation/reference/web-sockets/sails.io.js)) for example usage.
 
 
 <docmeta name="displayName" value="Blueprint API">

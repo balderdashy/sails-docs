@@ -1,4 +1,4 @@
-# sconfig/sockets.js
+# config/sockets.js
 ### Purpose
 This is a configuration file that allows you to customize the way your app talks to clients over Socket.IO.
 
@@ -27,7 +27,7 @@ It provides transparent access to Sails' encapsulated pubsub/socket server for c
  * configuration layered on top.
  *
  * For more information on sockets configuration, including advanced config options, see:
- * http://sailsjs.com/documentation/reference/sails.config/sails.config.sockets.html
+ * https://sailsjs.com/documentation/reference/configuration/sails-config-sockets
  */
 
 module.exports.sockets = {

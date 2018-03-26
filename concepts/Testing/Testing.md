@@ -1,9 +1,17 @@
 # Testing your code
 
-## Preparation
+There are many options for testing JavaScript code.  With Sails and Node.js, you can use just about any of them.
 
-For our test suite, we use [mocha](http://mochajs.org/).
-Before you start building your test cases, you should first organise your `test/` directory structure, for example in the following way:
+As an example, we'll take a look below at one particular way you might go about testing with [mocha](http://mochajs.org/).
+
+> ### About testing in Sails
+>
+> The rest of this page of the documentation is a collaborative tutorial contributed by many different members of the Sails community.  It is a good starting point and example, please bear in mind it has not been thoroughly vetted by the Sails core team.  **There is no "official" strategy for testing in Sails.  The Sails framework is completely impartial towards how you write your tests.**  The folder structure for your test suites, the NPM packages you use, and your strategy for lifting and lowering Sails are all completely up to you.
+
+
+## Example: Testing with Mocha
+
+Before you start building your test cases, start by organizing your `test/` directory structure, for example in the following way:
 
 ```batch
 ./myApp
@@ -54,17 +62,21 @@ after(function(done) {
 
 ### mocha.opts
 
-This file should contain mocha configuration as described here: [mocha.opts](https://mochajs.org/#mochaopts)
+In addition to command-line arguments, the `mocha.opts` file can be used for specifying [custom mocha configuration](https://mochajs.org/#mochaopts).
 
-**Note**: If you are writing your test in CoffeeScript be sure to add these lines to your `mocha.opts`.
+There is one option that is worth paying a bit of extra attention to.  The default **timeout** in Mocha is 2 seconds.  This works fine for most scenarios, but depending on how often you have your tests lifting and lowering Sails, you may need to increase the timeout value in mocha.opts to make sure Sails lifts and lowers in time to complete each test suite:
+
+```bash
+--timeout 10s
 ```
---require coffee-script/register
---compilers coffee:coffee-script/register
-```
-**Note**: The default test-case timeout in Mocha is 2 seconds. Increase the timeout value in mocha.opts to make sure the sails lifting completes before any of the test-cases can be started. For example:
-```
---timeout 5s
-```
+
+> **Note**: If you are writing your tests in a transpiled language such as CoffeeScript (`.coffee` files instead of `.js` files), be sure to configure Mocha accordingly.  For example, you might add these lines to your `mocha.opts`:
+>
+> ```bash
+> --require coffee-script/register
+> --compilers coffee:coffee-script/register
+> ```
+
 
 ## Writing tests
 
@@ -118,7 +130,7 @@ In order to run your test using mocha, you'll have to use `mocha` in the command
 
 #### Using `npm test` to run your test
 
-To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you'll need to modify your package.json. On the scripts dictionary, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
+To avoid typing the mocha command, like stated before (specially when calling bootstrap.test.js) and using `npm test` instead, you can modify your package.json. On the `scripts` dictionary, add a `test` key and type this as its value `mocha test/bootstrap.test.js test/integration/**/*.test.js` like this:
 
 ```js
   // package.json

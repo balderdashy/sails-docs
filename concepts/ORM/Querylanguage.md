@@ -52,7 +52,7 @@ Model.find({
   name: 'walter',
   state: 'new mexico'
 }).exec(function (err, waltersFromNewMexico) {
-  
+
 });
 ```
 
@@ -176,7 +176,7 @@ Searches for records where the value for this attribute _contains_ the given str
 Model.find({
   subject: { contains: 'music' }
 }).exec(function (err, musicCourses){
-  
+
 });
 ```
 
@@ -262,7 +262,7 @@ Model.find().paginate({page: 2, limit: 10});
 > **Waterline**
 >
 > You can find out more about the Waterline API below:
-> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline/queries)
+> * [Sails.js Documentation](http://sailsjs.com/documentation/reference/waterline-orm/queries)
 > * [Waterline README](https://github.com/balderdashy/waterline/blob/master/README.md)
 > * [Waterline Documentation](https://github.com/balderdashy/waterline-docs)
 > * [Waterline Github Repository](https://github.com/balderdashy/waterline)
@@ -294,7 +294,7 @@ Model.find({ where: { name: 'foo' }, sort: { name:  1, age: 0 });
 >
 > All queries inside of Waterline are **case-insensitive**. This allows for easier querying but makes indexing strings tough. This is something to be aware of if you are indexing and searching on string fields.
 >
-> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.com/documentation/reference/waterline/models/native.html) or [`.query()`](http://sailsjs.com/documentation/reference/waterline/models/query.html) method.
+> Currently, the best way to execute **case-sensitive** queries is using the [`.native()`](http://sailsjs.com/documentation/reference/waterline-orm/models/native) or [`.query()`](http://sailsjs.com/documentation/reference/waterline-orm/models/query) method.
 
 
 <docmeta name="displayName" value="Query Language">

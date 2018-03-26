@@ -19,7 +19,7 @@ Something.create(values).exec(function (err, record) {
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 |    _err_            | ((Error?))          | The error that occurred, or `null` if there were no errors.  See below for an example of how to negotiate validation errors (e.g. attempting to insert a record that would violate a uniqueness constraint)
-| 2 |    newRecord        | ((object))           | The newly-created record, with its primary key (usually `id`) set.
+| 2 |    newRecord        | ((dictionary))           | The newly-created record, with its primary key (usually `id`) set.
 
 
 ### Example

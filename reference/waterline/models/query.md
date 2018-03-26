@@ -41,14 +41,14 @@ Communicate directly with [`pg`](http://npmjs.com/package/pg), an NPM package us
 ```js
 Pet.query('SELECT pet.name FROM pet WHERE pet.name = $1', [ 'dog' ] ,function(err, rawResult) {
   if (err) { return res.serverError(err); }
-  
+
   sails.log(rawResult);
   // (result format depends on the SQL query that was passed in, and the adapter you're using)
-  
+
   // Then parse the raw result and do whatever you like with it.
-  
+
   return res.ok();
-  
+
 });
 ```
 
@@ -59,15 +59,15 @@ Assuming the `Pet` model is configured to use the `sails-mysql` adapter, the fol
 ```js
 Pet.query('SELECT pet.name FROM pet WHERE pet.name = ?', [ 'dog' ] ,function(err, rawResult) {
   if (err) { return res.serverError(err); }
-  
+
   sails.log(rawResult);
   // ...grab appropriate data...
   // (result format depends on the SQL query that was passed in, and the adapter you're using)
-  
+
   // Then parse the raw result and do whatever you like with it.
-  
+
   return res.ok();
-  
+
 });
 ```
 
