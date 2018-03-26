@@ -31,19 +31,21 @@ Secondly, we are open to suggestions about the process we're using to manage our
 
 #### What branch should I edit?
 
-As we get closer to releasing a newer version of Sails, we ask that all pull requests be made to the `1.0` branch, since that content will soon replace the 0.12 docs on the main website. The only exception is if you are documenting something that isn't relevant for Sails v1.
+<!-- As we get closer to releasing a newer version of Sails, we ask that all pull requests be made to the `1.0` branch, since that content will soon replace the 0.12 docs on the main website. The only exception is if you are documenting something that isn't relevant for Sails v1. -->
+
+To make an edit that is relevant for the latest stable version of Sails (i.e. the version on [NPM](npmjs.org/package/sails)), you'll want to edit the `master` branch of _this_ repo (what you see in the sails-docs repo by default).  The Sails core team merges master into the appropriate branch for the latest stable release of Sails, and then deploys that to sailsjs.com about once per week.
 
 <!-- That depends on what kind of edit you are making.  Most often, you'll be making an edit that is relevant for the latest stable version of Sails (i.e. the version on [NPM](npmjs.org/package/sails)) and so you'll want to edit the `master` branch of _this_ repo (what you see in the sails-docs repo by default).  The docs team merges master into the appropriate branch for the latest stable release of Sails, and then deploys that to sailsjs.com about once per week.
 
 On the other hand, if you are making an edit related to an unreleased feature in an upcoming version; most commonly as an accompaniment a feature proposal or open pull request to Sails or a related project, then you will want to edit the branch for the next, unreleased version of Sails (sometimes called "edge").
  -->
 
-| Branch (in `sails-docs`)                    | Documentation for Sails Version...                                   | Preview At...      |
-|-------------------------------------------------------------------------------------|------------------------|:-------------------|
-| [`1.0`](https://github.com/balderdashy/sails-docs/tree/1.0) | Upcoming v1.0 release                          | `next.sailsjs.com`
-| [`master`](https://github.com/balderdashy/sails-docs/tree/master) | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails) | [preview.sailsjs.com](http://preview.sailsjs.com)
-| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12) | Sails v0.12.x | [sailsjs.com](https://sailsjs.com)
-| [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11) | Sails v0.11.x           | [0.11.sailsjs.com](http://0.11.sailsjs.com)
+| Branch (in `sails-docs`)                                          | Documentation for Sails Version...                                                     | Accessible At...   |
+|:------------------------------------------------------------------|:---------------------------------------------------------------------------------------|:-------------------|
+| [`master`](https://github.com/balderdashy/sails-docs/tree/master) | _Bleeding edge_                                                                        | [next.sailsjs.com](http://next.sailsjs.com)
+| [`1.0`](https://github.com/balderdashy/sails-docs/tree/1.0)       | [![NPM version](https://badge.fury.io/js/sails.png)](http://badge.fury.io/js/sails)    | `sailsjs.com`
+| [`0.12`](https://github.com/balderdashy/sails-docs/tree/0.12)     | Sails v0.12.x                                                                          | [0.12.sailsjs.com](https://0.12.sailsjs.com)
+| [`0.11`](https://github.com/balderdashy/sails-docs/tree/0.11)     | Sails v0.11.x                                                                          | [0.11.sailsjs.com](http://0.11.sailsjs.com)
 
 
 #### How are these docs compiled and pushed to the website?
