@@ -2,7 +2,7 @@
 
 ### Overview
 
-Controllers (the **C** in **MVC**) are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](http://sailsjs.com/documentation/concepts/ORM/Models.html) and [views](http://sailsjs.com/documentation/concepts/Views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
+Controllers (the **C** in **MVC**) are the principal objects in your Sails application that are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](https://sailsjs.com/documentation/concepts/models-and-orm/models) and [views](https://sailsjs.com/documentation/concepts/views). For many applications, the controllers will contain the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic).
 
 ### Actions
 Controllers are comprised of a set of methods called **actions** (or sometimes "controller actions").  Actions are bound to [routes](http://sailsjs.com/documentation/concepts/Routes) in your application, so that when a client requests the route, the action is executed to perform some business logic and send a response.  For example, the `GET /hello` route in your application could be bound to an action like:
