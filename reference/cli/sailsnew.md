@@ -12,7 +12,7 @@ Most Sails apps should be generated simply by running `sails new your-app-name`,
 
   * `--no-frontend` - Useful when generating a new Sails app that will not be used to serve any front-end assets.  Disable the generation of the `assets/` folder, `tasks/` folder, and related files.
   * `--minimal` - Generates an extremely minimal Sails app.  This disables the same things as `--no-frontend`, along with i18n, Waterline, Grunt, Lodash, Async, sessions, and views.
-  * `--without` - Used to generate a Sails app without the specified feature(s). The supported "without" options are: `'lodash'`, `'async'`, `'orm'`, `'sockets'`, `'grunt'`, `'i18n'`, `'session'`, and `'views'`. To disable multiple features at once, you can include the options as a comma-separated list, e.g. `sails new your-app-name --without-grunt,views`.
+  * `--without` - Used to generate a Sails app without the specified feature(s). The supported "without" options are: `'lodash'`, `'async'`, `'orm'`, `'sockets'`, `'grunt'`, `'i18n'`, `'session'`, and `'views'`. To disable multiple features at once, you can include the options as a comma-separated list, e.g. `sails new your-app-name --without=grunt,views`.
 
 
 ### Example

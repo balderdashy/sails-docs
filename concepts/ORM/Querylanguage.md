@@ -105,7 +105,6 @@ The following modifiers are available to use when building queries.
 * `'!='`
 * `'nin'`
 * `'in'`
-* `'like'`
 * `'contains'`
 * `'startsWith'`
 * `'endsWith'`
@@ -154,71 +153,62 @@ Model.find({
 })
 ```
 
-#### 'in'
+#### in
 
 Searches for records where the value is in the list of values.
 
 ```usage
 Model.find({
-  name: { 'in': ['foo', 'bar'] }
+  name: { in: ['foo', 'bar'] }
 })
 ```
 
-#### 'nin'
+#### nin
 
 Searches for records where the value is NOT in the list of values.
 
 ```usage
 Model.find({
-  name: { 'nin': ['foo', 'bar'] }
+  name: { nin: ['foo', 'bar'] }
 })
 ```
 
-#### 'contains'
+#### contains
 
 Searches for records where the value for this attribute _contains_ the given string.
 
 ```usage
-const musicCourses = await Model.find({
+var musicCourses = await Course.find({
   subject: { contains: 'music' }
 });
 ```
 
-#### 'startsWith'
+_For performance reasons, case-sensitivity of `contains` depends on the database adapter._
+
+#### startsWith
 
 Searches for records where the value for this attribute _starts with_ the given string.
 
 ```usage
-const coursesAboutAmerica = await Model.find({
+var coursesAboutAmerica = await Course.find({
   subject: { startsWith: 'american' }
 });
 ```
 
-#### 'endsWith'
+_For performance reasons, case-sensitivity of `startsWith` depends on the database adapter._
+
+#### endsWith
 
 Searches for records where the value for this attribute _ends with_ the given string.
 
 ```usage
-const historyCourses = await Model.find({
+var historyCourses = await Course.find({
   subject: { endsWith: 'history' }
 });
 ```
 
-#### 'like'
+_For performance reasons, case-sensitivity of `endsWith` depends on the database adapter._
 
-Searches for records using pattern matching with the `%` sign.
-
-```usage
-Model.find({ food: { 'like': '%beans' }});
-```
-
-#### 'Date Ranges'
-
-You can do date range queries using the comparison operators.
-
-```usage
-Model.find({ date: { '>': new Date('2/4/2014'), '<': new Date('2/7/2014') } })
-```
 
 ### Query Options
 
@@ -255,14 +245,6 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
-`paginate` is a shortcut method which can accomplish the same as `skip` and `limit`.
-
-<!-- TODO: set up reference page for .paginate() -->
-
-``` usage
-Model.find().paginate({page: 2, limit: 10});
-```
-
 > **Waterline**
 >
 > You can find out more about the Waterline API below:
@@ -275,7 +257,7 @@ Model.find().paginate({page: 2, limit: 10});
 #### Sort
 
 Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
-sort, or specify an `asc` or `desc` flag for ascending or descending orders respectively.
+sort, or specify an `ASC` or `DESC` flag for ascending or descending orders respectively.
 
 ```usage
 // Sort by name in ascending order

@@ -94,7 +94,7 @@ One of the really nice things about Sails apps is that they can take advantage o
 
 > _"Where do I `app.use()` this thing?"_.
 
-In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`](https://sailsjs.com/documentation/reference/sails.config/sails.config.http.html).  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
+In most cases, the answer is to install the Express middleware as a custom HTTP middleware in [`sails.config.http.middleware`](https://sailsjs.com/documentation/reference/configuration/sails-config-http).  This will trigger it for ALL HTTP requests to your Sails app, and allow you to configure the order in which it runs in relation to other HTTP middleware.
 
 > You should never override or remove the `router` HTTP middleware.  It is built-in to Sails, and without it, your app's explicit routes and blueprint routes will not work.
 
@@ -103,7 +103,7 @@ In most cases, the answer is to install the Express middleware as a custom HTTP 
 
 To make Express middleware apply only to a particular action, you can also include Express middleware as a policy-- just be sure that you actually want it to run for both HTTP _and_ virtual socket requests.
 
-To do this, edit [`config/policies.js`](https://sailsjs.com/documentation/reference/sails.config/sails.config.policies.html).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
+To do this, edit [`config/policies.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-policies).  You can either require and setup the middleware in an actual wrapper policy (usually a good idea) or just require it directly in your policies.js file.  The following example uses the latter strategy for brevity:
 
 ```js
 var auth = require('http-auth');

@@ -6,7 +6,7 @@ While Sails dutifully adheres to the philosophy of [convention-over-configuratio
 
 > Here looking for a particular setting?  Head over to [Reference > Configuration](sailsjs.com/documentation/reference/configuration) to see a complete guide to all configuration options available in Sails.
 
-Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](https://sailsjs.com/documentation/anatomy/myApp/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
+Sails apps can be [configured programmatically](https://github.com/mikermcneil/sails-generate-new-but-like-express/blob/master/templates/app.js#L15), by specifying [environment variables](http://en.wikipedia.org/wiki/Environment_variable) or command-line arguments, by changing the local or global [`.sailsrc` files](https://sailsjs.com/documentation/anatomy/sailsrc.html), or (most commonly) using the boilerplate configuration files conventionally located in the [`config/`](https://sailsjs.com/documentation/anatomy/config) folder of new projects. The authoritative, merged-together configuration used in your app is available at runtime on the `sails` global as `sails.config`.
 
 
 ### Standard configuration files (`config/*`)
@@ -25,7 +25,7 @@ module.exports.blueprints = {
 };
 ```
 
-For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](https://sailsjs.com/documentation/anatomy/myApp/config) in [The Anatomy of a Sails App](https://sailsjs.com/documentation/anatomy) for a higher-level overview.
+For an exhaustive reference of individual configuration options, and the file they live in by default, check out the reference pages in this section, or take a look at ["`config/`"](https://sailsjs.com/documentation/anatomy/config) in [The Anatomy of a Sails App](https://sailsjs.com/documentation/anatomy) for a higher-level overview.
 
 ### Environment-specific files (`config/env/*`)
 
@@ -128,9 +128,9 @@ You can also leverage Sails's configuration loader to manage your own custom set
 
 When it comes to configuration, most of the time you'll be focused on managing the runtime settings for a particular app: the port, database setup, and so forth.  However it can also be useful to customize the Sails CLI itself; to simplify your workflow, reduce repetitive tasks, perform custom build automation, etc.  Thankfully, Sails v0.10 added a powerful new tool to do just that.
 
-The [`.sailsrc` file](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators](https://sailsjs.com/documentation/concepts/extending-sails/Generators) that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
+The [`.sailsrc` file](https://sailsjs.com/documentation/anatomy/sailsrc.html) is unique from other configuration sources in Sails in that it may also be used to configure the Sails CLI-- either system-wide, for a group of directories, or only when you are `cd`'ed into a particular folder.  The main reason to do this is to customize the [generators](https://sailsjs.com/documentation/concepts/extending-sails/Generators) that are used when `sails generate` and `sails new` are run, but it can also be useful to install your own custom generators or apply hard-coded config overrides.
 
-And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](https://sailsjs.com/documentation/anatomy/myApp/sailsrc.html) files for more information.
+And since Sails will look for the "nearest" `.sailsrc` in the ancestor directories of the current working directory, you can safely use this file to configure sensitive settings you can't check in to your cloud-hosted code repository (_like your **database password**_.)  Just include a `.sailsrc` file in your "$HOME" directory.  See [the docs on `.sailsrc`](https://sailsjs.com/documentation/anatomy/sailsrc.html) files for more information.
 
 
 ### Order of precedence for configuration

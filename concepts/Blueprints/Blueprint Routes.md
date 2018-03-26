@@ -32,6 +32,7 @@ In fact, unless you're already familiar with how to customize blueprints in Sail
 
 ##### Notes
 
+> + If CSRF protection is enabled, you'll need to provide or disable a [CSRF token](https://sailsjs.com/documentation/concepts/security/csrf) for POST/PUT/DELETE actions, otherwise you will get a 403 Forbidden response.
 > + If your app contains a controller whose name matches that of your model, then you can override the default actions pointed to by the RESTful routes by providing your own controller actions.  For example, if you have an `api/controllers/BoatController.js` controller file containing a custom `find` action, then the `GET /boat` route will point at that action.
 > + Also, as usual, the same logic applies whether you're using controllers or standalone actions.  (As far as Sails is concerned, once an app has been loaded into memory and normalized in `sails lift`, all of its actions look the same no matter where they came from.)
 > + If your app contains a route in `config/routes.js` that matches one of the above RESTful routes, it will be used instead of the default route.
@@ -88,7 +89,7 @@ TODO: check on this (it's unclear what point it was trying to get across):
 
 -->
 
-Read more about [configuring blueprints in Sails](https://sailsjs.com/documentation/reference/sails.config/sails.config.blueprints.html), including how to enable / disable different categories of blueprint routes.
+Read more about [configuring blueprints in Sails](sailsjs.com/documentation/reference/configuration/sails-config-blueprints), including how to enable / disable different categories of blueprint routes.
 
 
 <docmeta name="displayName" value="Blueprint routes">
