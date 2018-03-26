@@ -58,7 +58,7 @@ More 2013:
 
 + [Troubleshooting: Can't install Sails.js on DigitalOcean (2017)](https://www.digitalocean.com/community/questions/can-t-install-sails-js)
 + [How to create a Node.js app using Sails.js on an Ubuntu VBS (2013)](https://www.digitalocean.com/community/articles/how-to-create-an-node-js-app-using-sails-js-on-an-ubuntu-vps)
-+ [How to use PM2 to set up a Node.js production environment on an Ubuntu VPS (2014)](https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps
++ [How to use PM2 to set up a Node.js production environment on an Ubuntu VPS (2014)](https://www.digitalocean.com/community/articles/how-to-use-pm2-to-setup-a-node-js-production-environment-on-an-ubuntu-vps)
 
 <!--
 More 2013:
@@ -119,9 +119,10 @@ More 2013:
 
 ### RoseHosting
 
+> All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you.
+
  + [Install Sails.js with Apache as a reverse proxy on CentOS 7 (2016)](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
  + [Install Sails.js on Ubuntu (2014)](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
- + All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you for free
 
 
 ### More options
