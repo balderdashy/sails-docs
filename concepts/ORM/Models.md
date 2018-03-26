@@ -33,62 +33,18 @@ commented-out content at: https://gist.github.com/rachaelshaw/1d7a989f6685f11134
 
 Once a Sails app is running, its models may be accessed from within controller actions, helpers, tests, and just about anywhere else you normally write backend code.  This lets your code call model methods to communicate with your database (or even with multiple databases).
 
-There are many built-in methods available on models, the most important of which are the query methods like [.find()](https://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](https://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](https://sailsjs.com/documentation/reference/waterline-orm/models).
+There are many built-in methods available on models, the most important of which are the model methods like [.find()](https://sailsjs.com/documentation/reference/waterline/models/find) and [.create()](https://sailsjs.com/documentation/reference/waterline/models/create).  You can find detailed usage documentation for methods like these in [Reference > Waterline (ORM) > Models](https://sailsjs.com/documentation/reference/waterline-orm/models).
 
 
 ### Query methods
 
-Every model in Waterline will have a set of query methods exposed on it to allow you to interact with the database in a normalized fashion. These are known as the CRUD (Create-Read-Update-Delete) methods and is the primary way of interacting with your data.
+Every model in Sails has a set of methods exposed on it to allow you to interact with the database in a normalized fashion. This is the primary way of interacting with your app's data.
 
-Since they have to send a query to the database and wait for a response, query methods are **asynchronous functions**.  That is, they don't come back with an answer right away.  Like other asynchronous functions in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
+Since they usually have to send a query to the database and wait for a response, most model methods are **asynchronous**.  That is, they don't come back with an answer right away.  Like other asynchronous logic in JavaScript (`setTimeout()` for example), that means we need some other way of determining when they've finished executing, whether they were successful, and if not, what kind of error (or other exceptional circumstance) occurred.
 
-As of Sails 1.0 the recommended way to handle this is by using `async/await`, which is built on top of promises.
+In Node.js, Sails, and JavaScript in general, the recommended way to handle this is by using [`async/await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
 
-In order to be able to `await` a `promise`, said `promise` needs to be within an `async` function, which is declared with `async function`, instead of the traditional `function`. More info on this [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
-
-##### Async/Await
-
-```javascript
-async function findRose() {
-	try {
-		const user = await User.findOne({ name: 'Rose' });
-		if (!user) { return res.notFound(); }
-		return res.json(rose);
-	} catch (err) {
-		return res.serverError(err);
-	}
-}
-```
-> Note: It is highly advisable that you understand `promises` too, as `async/await` is built on top of them. 
- 
-It is **very important** that you handle your errors, as a `promise` rejection will throw an error which will "bubble up" until it gets caught or ends the process. This is why we wrapped our code in a `try/catch` block.
-
-Although `async/await` is recommended you can still use JavaScript's classic _callbacks_.
-
-##### Callbacks
-
-For convenience, built-in model methods return a _deferred object_ known as a "query":
-
-```javascript
-var query = User.findOne({ name: 'Rose' });
-```
-
-After running [the code above](https://gist.github.com/mikermcneil/c6a033d56497e9930a363a2949284fd3), our app has not _actually_ talked to the database yet.  To actually execute this query, `.exec(cb)` must be called on this deferred object, where `cb` is a callback function to run after the query is complete:
-
-```javascript
-query.exec(function (err, rose) {
-  if (err) { return res.serverError(err); }
-  if (!rose) { return res.notFound(); }
-  return res.json(rose);
-});
-```
-
-> In addition to `.exec()`, many Sails apps benefit from using the [async](https://www.npmjs.com/package/async) library.  In fact, to facilitate this, Sails provides an [easy way](https://sailsjs.com/documentation/reference/configuration/sails-config-globals) to access `async` throughout your app.
-
-
-##### Promises
-
-As an in-between alternative to callbacks and `async/await`, promises are also a valid approach.  Instead of `await` a promise or calling `.exec()` on a query, you can choose to call `.then()`, `.spread()`, or `.catch()`, which will begin executing the query and return a [Bluebird promise](https://github.com/petkaantonov/bluebird).
+For more information about working with queries, see [Waterline (ORM) > Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
 ### Resourceful pubsub methods
 
