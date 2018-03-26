@@ -69,6 +69,7 @@ User.find({ name:'Mike' })
 
 
 > Because we have only formed an association on one of the models, a `Pet` has no restrictions on the number of `User` models it can belong to. If we wanted to, we could change this and associate the `Pet` with exactly one `User` and the `User` with exactly one `Pet`.
+> In the example above we showed how to connect to a single model using `model` key, if you would like to connect many object's to one, you could use the `collection` key instead, and not specify `via` key.
 
 
 <docmeta name="displayName" value="One Way Association">
