@@ -32,10 +32,10 @@ There are three types of hooks available in Sails:
 
 ## Read more
 
-* [Using hooks in your app](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/usinghooks.html)
-* [The hook specification](http://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
-* [Creating a project hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/projecthooks.html)
-* [Creating an installable hook](http://sailsjs.com/documentation/concepts/extending-sails/Hooks/installablehooks.html)
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks)
+* [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
+* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks)
 
 
 

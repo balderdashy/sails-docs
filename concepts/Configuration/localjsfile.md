@@ -1,6 +1,6 @@
 # The `config/local.js` file
 
-The `config/local.js` file is useful for configuring a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+The `config/local.js` file is useful for configuring a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
 
 While you’re developing your app, this config file should include any settings specifically for your development computer or server (db passwords, etc.)  If you're using git, note that `config/local.js` is included in the `.gitignore` in new Sails apps by default, and so it won't be checked into your repository when you commit.
 

@@ -46,9 +46,9 @@ NODE_ENV=production node app.js
 
 ### The `config/local.js` file
 
-You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](http://sailsjs.com/documentation/concepts/Configuration/usingsailsrcfiles.html).  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
+You may use the `config/local.js` file to configure a Sails app for your local environment (your laptop, for example).  The settings in this file take precedence over all other config files except [.sailsrc](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files.  Since they're intended only for local use, they should not be put under version control (and are included in the default `.gitignore` file for that reason).  Use `local.js` to store local database settings, change the port used when lifting an app on your computer, etc.
 
-See [http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html](http://sailsjs.com/documentation/concepts/Configuration/localjsfile.html) for more information.
+See [https://sailsjs.com/documentation/concepts/configuration/the-local-js-file](https://sailsjs.com/documentation/concepts/configuration/the-local-js-file) for more information.
 
 
 ### Accessing `sails.config` in your app

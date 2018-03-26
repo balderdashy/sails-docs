@@ -25,7 +25,7 @@ module.exports.routes = {
 ```
 
 
-Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Each **route** consists of an **address** (on the left, e.g. `'get /me'`) and a **target** (on the right, e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
 
 For example, we might read `'get /me': 'UserController.profile'` as:
 
@@ -43,8 +43,8 @@ What if I want to change the view layout within the route itself?  No problem we
 ```
 
 #### Notes
-+ Just because a request matches a route address doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware](http://sailsjs.com/documentation/concepts/Middleware) first.  And if the route points to a controller [action](http://sailsjs.com/documentation/concepts/Controllers?q=actions), the request will need to pass through any configured [policies](http://sailsjs.com/documentation/concepts/Policies) first.  Finally, there are a few special [route options](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html?q=route-target-options) which allow a route to be "skipped" for certain kinds of requests.
-+ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](http://sailsjs.com/documentation/concepts/Routes/RouteTargetSyntax.html) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
++ Just because a request matches a route address doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware](http://sailsjs.com/documentation/concepts/Middleware) first.  And if the route points to a controller [action](http://sailsjs.com/documentation/concepts/Controllers?q=actions), the request will need to pass through any configured [policies](http://sailsjs.com/documentation/concepts/Policies) first.  Finally, there are a few special [route options](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options) which allow a route to be "skipped" for certain kinds of requests.
++ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
 
 
 
@@ -54,7 +54,7 @@ In addition to your custom routes, Sails binds many routes for you automatically
 
 * [Blueprint routes](http://sailsjs.com/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](http://sailsjs.com/documentation/concepts/Controllers) and [models](https://sailsjs.com/documentation/concepts/models-and-orm/models) with a full REST API.
 * [Assets](http://sailsjs.com/documentation/concepts/Assets), such as images, Javascript and stylesheet files.
-* [CSRF](http://sailsjs.com/documentation/concepts/Security/CSRF.html), if turned on, provides a **/csrfToken** route to your app that can be used to retrieve the CSRF token.
+* [CSRF](http://sailsjs.com/documentation/concepts/Security/CSRF), if turned on, provides a **/csrfToken** route to your app that can be used to retrieve the CSRF token.
 
 
 ### Supported Protocols
