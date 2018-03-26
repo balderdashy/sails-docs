@@ -3,15 +3,15 @@
 When a call to any model method fails, `err` is returned. This `err` is a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whose properties can be useful in diagnosing what went wrong.
 
 ```usage
-try {
-	await Something.create();
-} catch (err) {
-	// Handle error
-}
+await Something.create(…)
+.intercept((err)=>{
+ // Return an error or a special exit signal here, 
+ // and .create() will throw that instead
+});
 ```
 Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`.
 
-> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](https://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw, since it has no callback.
+> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](https://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw.
 
 
 ### Negotiating errors
@@ -62,30 +62,25 @@ err.code === 'E_UNIQUE'
 
 ### Example
 
-The exact strategy you use to do this in your Sails app depends on whether you're using async/await, promises or callbacks.
+The exact strategy you use to do this in your Sails app depends on whether you're using `await`, promises or callbacks.
 
-##### Negotiating errors with async/await
+##### Negotiating errors with `await`
 
-To handle the different errors that may occur when attempting to create a new user:
+To handle the different errors that may occur when attempting to create a new user from within an action:
 
 ```javascript
-try {
-	await User.create({ email: req.param('email') });
-	return res.ok();
-} catch (err) {
-	 // Uniqueness constraint violation
-    if (err.code === 'E_UNIQUE') {
-      return res.status(409).json(err);
-    }
-    // Some other kind of usage / validation error
-    else if (err.name === 'UsageError') {
-      return res.badRequest(err);
-    }
-    // If something completely unexpected happened.
-    else {
-      return res.serverError(err);
-    }
-}
+await User.create({ emailAddress: inputs.emailAddress })
+// Uniqueness constraint violation
+.intercept('E_UNIQUE', (err)=> {
+  return 'emailAlreadyInUse';
+})
+// Some other kind of usage / validation error
+.intercept('UsageError', (err)=> {
+  return 'invalid';
+});
+// If something completely unexpected happened, the error will be thrown as-is.
+
+return exits.success();
 ```
 
 ##### Negotiating errors with callbacks or promise chaining
