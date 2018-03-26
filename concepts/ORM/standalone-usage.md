@@ -152,14 +152,14 @@ waterline.initialize(config, function (err, ontology) {
 	  
     // Then we create the pet
     var pet = await Pet.create({
-			breed: 'beagle',
-			type: 'dog',
-			name: 'Astro',
-			owner: user.id
-		});
+      breed: 'beagle',
+      type: 'dog',
+      name: 'Astro',
+      owner: user.id
+    });
 		
-		// Then we grab all users and their pets
-		var users = await User.find().populate('pets');
+    // Then we grab all users and their pets
+    var users = await User.find().populate('pets');
     console.dir(users);
     
   } catch (err) {
