@@ -53,6 +53,7 @@ return res.redirect(301, '/foo');
 > + When your app calls `res.redirect()`, Sails sends a response with status code [302](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#3xx_Redirection).  This instructs the user-agent to send a new request to the indicated URL.  There is no way to _force_ a user-agent to follow redirects, but most clients play nicely.
 > + In general, you should not need to use `res.redirect()` if a request "wants JSON" (i.e. [`req.wantsJSON`](https://sailsjs.com/documentation/reference/request-req/req-wants-json)).
 > + The [Sails socket client](http://sailsjs.com/documentation/reference/web-sockets/socket-client) does _not_ follow redirects, so if an action is called via a websocket request using (for example) [`io.socket.get()`](http://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), it will simply receive a 302 status code and a header indicating the location of the desired resource.  It&rsquo;s up to the client-side code to decide how to handle redirects for websocket requests.
+> + If you want to send a custom status code along with a redirect, you can set it as the first argument for res.redirect() function: `return res.redirect(301, '/foo')`;
 
 
 
