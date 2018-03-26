@@ -78,9 +78,9 @@ More 2013:
 
 <a href="https://www.openshift.com/"><img style="width:350px;" alt="Red Hat™ OpenShift logo" src="https://sailsjs.com/images/deployment_openshift.png"/></a>
 
-+ [Deploying a Sails / Node.js application to OpenShift](https://gist.github.com/mikermcneil/b6136aa219f6d15b01a05b14cc681fcb)
-+ [Listening to a different IP address on OpenShift](https://coderwall.com/p/dhhfcw/sailsjs-listening-on-a-different-ip-address) _(courtesy [@otupman](https://github.com/otupman))_
-+ [Get Sails/Node.js running on OpenShift](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6) _(Warning: quite out of date, but still useful for context.  Courtesy [@mdunisch](https://github.com/mdunisch).)_
++ [Deploying a Sails / Node.js application to OpenShift (2017)](https://gist.github.com/mikermcneil/b6136aa219f6d15b01a05b14cc681fcb)
++ [Listening to a different IP address on OpenShift (2017-2018)](https://coderwall.com/p/dhhfcw/sailsjs-listening-on-a-different-ip-address) _(courtesy [@otupman](https://github.com/otupman))_
++ [Get Sails/Node.js running on OpenShift (2017)](https://gist.github.com/mdunisch/4a56bdf972c2f708ccc6) _(Warning: quite out of date, but still useful for context.  Courtesy [@mdunisch](https://github.com/mdunisch).)_
 
 <!--
 ### Xervo (formerly Modulus)
@@ -92,7 +92,7 @@ More 2013:
 
 ### Nanobox
 
-+ [Getting Started: A Simple Sails.js App](https://content.nanobox.io/a-simple-sails-js-example-app/) on Nanobox
++ [Getting Started: A Simple Sails.js App (2017)](https://content.nanobox.io/a-simple-sails-js-example-app/) on Nanobox
 + [Quickstart: nanobox-sails](https://github.com/nanobox-quickstarts/nanobox-sails)
 + [Official Sails.js Guides](https://guides.nanobox.io/nodejs/sails/)
 + [Official Nanobox Docs](https://docs.nanobox.io)
