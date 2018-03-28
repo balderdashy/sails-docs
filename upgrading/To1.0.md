@@ -1,10 +1,7 @@
 # Upgrading to Sails v1.0
 
-Sails v1.0 is here!  Check out our [blog post](TODO) for a high-level overview of what's changed in this release, and to learn about some new features you might want to take advantage of in your app.
+Sails v1.0 is here!  Keep reading for a high-level overview of what's changed in this release, and to learn about some new features you might want to take advantage of in your app.
 
-> ##### Warning
->
-> Some of the links in this guide will not work, since the 1.0 docs aren't on the Sails website yet.  But you can check out the new docs by looking at the 1.0 branch of [sails-docs](http://github.com/balderdashy/sails-docs/tree/1.0) on GitHub.
 
 ### A note about breaking changes
 While working on this version of Sails, a lot of the decisions we made favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you're finished, there's be a much better chance that the features you're using in Sails are things that its author and maintainers understand thoroughly and use almost every day.
@@ -14,7 +11,7 @@ For more about our philosphy behind many of the breaking changes in 1.0, you can
 
 ### Upgrading an existing app using the automated tool
 
-Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g sails@^1.0.0-44` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
+Ready to upgrade your existing v0.12.x Sails app to version 1.0?  To get started, we recommend using the Sails 1.0 upgrade tool, which will help with some of the most common migration tasks.  To use the tool, first install Sails 1.0 globally with `npm install -g sails@^1.0.0` and then run `sails upgrade`.  After the tool runs, it will create a report for you with a list of remaining items that need to be manually upgraded.
 
 ### Upgrading an existing app manually
 
@@ -440,7 +437,7 @@ to remove those dependencies from your project.
 
 Make sure you have `sails` installed locally in your project, and also that you're using the v1 version of the command-line tool:
 
-To install the beta globally, run `npm install sails -g`. To install it for a particular Sails app, cd into that app's directory, then run `npm install sails@latest --save`.
+To install the v1.0 globally, run `npm install sails@^1.0.0 -g`. To install it for a particular Sails app, cd into that app's directory, then run `npm install sails@^1.0.0 --save`.  (After installing locally, be sure to also install the necessary hooks -- see above.)
 
 
 
