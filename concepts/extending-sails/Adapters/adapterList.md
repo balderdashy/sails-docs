@@ -45,7 +45,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 ##### sails-postgres
 
-https://github.com/balderdashy/sails-postgresql/
+https://github.com/balderdashy/sails-postgresql/tree/0.12.x
 
 [PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 

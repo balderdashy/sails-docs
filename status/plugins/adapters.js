@@ -35,7 +35,7 @@ module.exports = {
 		status: 'stable'
 	},
 	'sails-postgresql': {
-		repo: 'https://github.com/balderdashy/sails-postgresql',
+		repo: 'https://github.com/balderdashy/sails-postgresql/tree/0.12.x',
 		supported: true,
 		status: 'stable'
 	},

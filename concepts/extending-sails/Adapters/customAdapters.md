@@ -97,7 +97,7 @@ The functionality of database adapters is as varied as the services they connect
 
 ### Are there examples I can look at?
 
-If you're looking for some inspiration, a good place to start is with the core adapters.  Take a look at **[MySQL](https://github.com/balderdashy/sails-mysql/tree/0.12.x)**, **[PostgreSQL](https://github.com/balderdashy/sails-postgresql)**, **[MongoDB](https://github.com/balderdashy/sails-mongo)**, **[Redis](https://github.com/balderdashy/sails-redis)**, local [disk](https://github.com/balderdashy/sails-disk), or local [memory](https://github.com/balderdashy/sails-memory).
+If you're looking for some inspiration, a good place to start is with the core adapters.  Take a look at **[MySQL](https://github.com/balderdashy/sails-mysql/tree/0.12.x)**, **[PostgreSQL](https://github.com/balderdashy/sails-postgresql/tree/0.12.x)**, **[MongoDB](https://github.com/balderdashy/sails-mongo)**, **[Redis](https://github.com/balderdashy/sails-redis)**, local [disk](https://github.com/balderdashy/sails-disk), or local [memory](https://github.com/balderdashy/sails-memory).
 
 
 ### Where do I get help?
