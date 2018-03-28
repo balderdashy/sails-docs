@@ -35,12 +35,12 @@ module.exports = {
 		status: 'stable'
 	},
 	'sails-postgresql': {
-		repo: 'https://github.com/balderdashy/sails-postgresql/tree/0.12.x',
+		repo: 'https://github.com/balderdashy/sails-postgresql/tree/for-sails-0.12',
 		supported: true,
 		status: 'stable'
 	},
 	'sails-mongo': {
-		repo: 'https://github.com/balderdashy/sails-mongo',
+		repo: 'https://github.com/balderdashy/sails-mongo/tree/0.12.x',
 		supported: true,
 		status: 'stable'
 	},

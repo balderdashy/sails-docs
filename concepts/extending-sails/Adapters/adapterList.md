@@ -45,7 +45,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 ##### sails-postgres
 
-https://github.com/balderdashy/sails-postgresql/tree/0.12.x
+https://github.com/balderdashy/sails-postgresql/tree/for-sails-0.12
 
 [PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 
@@ -58,7 +58,7 @@ https://github.com/balderdashy/sails-postgresql/tree/0.12.x
 
 ##### sails-mongo
 
-https://github.com/balderdashy/sails-mongo/
+https://github.com/balderdashy/sails-mongo/tree/0.12.x
 
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
