@@ -31,7 +31,7 @@ Pretty much like Disk, but doesn't actually write to disk, so it's not persisten
 
 ##### sails-mysql
 
-https://github.com/balderdashy/sails-mysql/
+https://github.com/balderdashy/sails-mysql/tree/0.12.x
 
 MySQL is the world's most popular relational database.
 http://en.wikipedia.org/wiki/MySQL
@@ -47,7 +47,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 https://github.com/balderdashy/sails-postgresql/
 
-[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 
 ###### Interfaces implemented:
 + Semantic
@@ -62,7 +62,7 @@ https://github.com/balderdashy/sails-mongo/
 
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
-  
+
 ###### Interfaces implemented:
 + Semantic
 + Queryable
@@ -83,7 +83,7 @@ https://github.com/balderdashy/sails-redis/
 
 ### Can I contribute to a core adapter?
 
-Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/documentation/contributing). 
+Definitely!  Get started by reading [the Sails project contribution guide](http://sailsjs.com/documentation/contributing).
 
 
 
@@ -100,7 +100,7 @@ Here are a few highlights:
 
 https://github.com/appscot/sails-orientdb
 
-[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs. 
+[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs.
 
 ###### Interfaces implemented:
 + Semantic

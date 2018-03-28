@@ -101,7 +101,7 @@ If you were using the [workaround suggested by @sgress454 here](http://stackover
 
 ## SQL Adapter Performance
 
-[Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters, upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
+[Sails-PostgreSQL](https://github.com/balderdashy/sails-postgresql) and [Sails-MySQL](https://github.com/balderdashy/sails-mysql/tree/0.12.x) recieved patch updates that significantly improved performance when populating associations. Thanks to [@jianpingw](https://github.com/jianpingw) for digging into the source and finding a bug that was processing database records too many times. If you are using either of these adapters, upgrading to `sails-postgresql@0.11.1` or `sails-mysql@0.11.3` will give you a significant performance boost.
 
 
 ## Contributing

@@ -30,7 +30,7 @@ module.exports = {
 		status: 'stable'
 	},
 	'sails-mysql': {
-		repo: 'https://github.com/balderdashy/sails-mysql',
+		repo: 'https://github.com/balderdashy/sails-mysql/tree/0.12.x',
 		supported: true,
 		status: 'stable'
 	},
@@ -146,7 +146,7 @@ module.exports = {
 		repo: 'https://github.com/murilopolese/sails-parse',
 		status: 'unknown'
 	},
-	
+
 	//
 	// Tumblr
 	//
