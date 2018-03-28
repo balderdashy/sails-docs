@@ -438,9 +438,9 @@ to remove those dependencies from your project.
 
 ##### Still displaying v0.12 at launch?
 
-Make sure you have `sails@beta` installed locally in your project, and also that you're using the v1 version of the command-line tool:
+Make sure you have `sails` installed locally in your project, and also that you're using the v1 version of the command-line tool:
 
-To install the beta globally, run `npm install sails@beta -g`. To install it for a particular Sails app, cd into that app's directory, then run `npm install sails@beta --save`.
+To install the beta globally, run `npm install sails -g`. To install it for a particular Sails app, cd into that app's directory, then run `npm install sails@latest --save`.
 
 
 
