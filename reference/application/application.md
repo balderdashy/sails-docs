@@ -50,7 +50,7 @@ See the [hooks concept documentation](http://sailsjs.com/documentation/concepts/
 
 The API exposed by the [`sails.sockets.*` methods](http://sailsjs.com/documentation/reference/web-sockets/sails-sockets) is flexible enough out of the box to cover the requirements of most applications, and using them will future-proof your app against possible changes in the underlying implementation.  However, if you are working on bringing some legacy code from a vanilla Socket.io app into your Sails app, it can be useful to talk to Socket.io directly.  To accomplish this, Sails provides raw access to the underlying [socket.io](http://socket.io/) server instance (`io`) as `sails.io`. See the [Socket.io docs](http://socket.io/docs/) for more information.  If you decide to use Socket.io directly, please proceed with care.
 
-> As of v0.11.4, Sails bundles `socket.io@v1.4.3` as a dependency of [sails-hook-sockets](github.com/balderdashy/sails-hook-sockets), a core hook.
+> As of the final v0.12 release, Sails bundles `socket.io@1.7.3` as a dependency of [sails-hook-sockets](github.com/balderdashy/sails-hook-sockets), a core hook.
 
 
 
