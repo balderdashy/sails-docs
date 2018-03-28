@@ -65,7 +65,7 @@ Aside from the [official documentation](https://sailsjs.com/documentation), be s
 
 ### What are some good community tutorials?
 
-> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/1.0/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
+> If you are the author of a tutorial or guide about Sails, please send us a pull request [here](https://github.com/balderdashy/sails-docs/edit/master/FAQ.md) and we'll check it out. (Be sure to add your tutorial to the top of the applicable list, as we try to order these from newest to oldest.)
 
 <!--
 A quick note for anyone contributing to this file:
