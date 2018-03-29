@@ -88,6 +88,7 @@ url: 'mongodb://user:password@host:port/database',
 ```
 
 > + The default port for MongoDB is `27017`.
+> + For authentication database and then a different database for collections `?authSource=admin`.
 
 
 ### sails-disk
