@@ -69,6 +69,6 @@ sails run send-email-proof-reminders
 
 For more detailed information on usage, see the [`whelk` README](https://github.com/sailshq/whelk/blob/master/README.md).
 
-<docmeta name="displayName" value="Shell Scripts">
+<docmeta name="displayName" value="Shell scripts">
 <docmeta name="nextUpLink" value="/documentation/concepts/models-and-orm">
 <docmeta name="nextUpName" value="Models and ORM">
