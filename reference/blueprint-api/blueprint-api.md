@@ -4,12 +4,12 @@
 
 For a conceptual overview of blueprints, see [Concepts > Blueprints](https://sailsjs.com/documentation/concepts/blueprints).
 
-### Activating/deactivating blueprints in your app
+### Activating/deactivating blueprint routes in your app
 
 The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](https://sailsjs.com/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
 
-##### Disabling blueprints on a per-controller basis
+##### Disabling blueprint routes on a per-controller basis
 
 You may also override any of the settings from [`config/blueprints.js`](https://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
 
@@ -25,6 +25,10 @@ module.exports = {
 ```
 
 ### Overriding blueprints
+
+The best way to change a blueprint route is just to [explicitly configure a custom route](https://sailsjs.com/documentation/concepts/routes/custom-routes) instead.  Similarly, the best way to override a blueprint action is just to write your own [custom action](https://sailsjs.com/documentation/concepts/actions-and-controllers).  This is the recommended approach.
+
+But if you really know what you're doing, then read on:
 
 ##### RESTful / shortcut routes and actions
 
