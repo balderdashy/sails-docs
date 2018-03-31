@@ -20,7 +20,7 @@ The following _core generators_ are bundled with Sails:
 | sails generate controller       | Generate **api/controllers/FooController.js**, including actions with the specified names if provided.
 | sails generate hook             | Generate a [project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks) in **api/hooks/foo/**.
 | sails generate generator        | Generate a **foo** folder containing the files necessary for building a new generator.
-| sails generate response         | Generate a [custom response](sailsjs.com/documentation/concepts/extending-sails/custom-responses) at **api/responses/foo.js**
+| sails generate response         | Generate a [custom response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) at **api/responses/foo.js**
 | sails generate adapter          | Generate a **api/adapters/foo/** folder containing the files necessary for building a new adapter.
 | sails generate sails.io.js      | Generate a sails.io.js file at the specified location, overwriting the default sails.io.js if applicable.
 | _sails generate api_            | _Generate **api/models/Foo.js** and **api/controllers/FooController.js**._
