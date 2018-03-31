@@ -9,21 +9,6 @@ For a conceptual overview of blueprints, see [Concepts > Blueprints](https://sai
 The process for activating/deactivating blueprints varies slightly with the kind of blueprint route you are concerned with (RESTful routes, shortcut routes or action routes).  See the [Blueprint Routes documentation section](https://sailsjs.com/documentation/concepts/blueprints?blueprint-routes) for a discussion of the different blueprint types.
 
 
-##### Disabling blueprint routes on a per-controller basis
-
-You may also override any of the settings from [`config/blueprints.js`](https://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
-
-```javascript
-// In /api/controllers/PetController.js
-module.exports = {
-  _config: {
-    actions: false,
-    shortcuts: false,
-    rest: false
-  }
-}
-```
-
 ### Overriding blueprints
 
 The best way to change a blueprint route is just to [explicitly configure a custom route](https://sailsjs.com/documentation/concepts/routes/custom-routes) instead.  Similarly, the best way to override a blueprint action is just to write your own [custom action](https://sailsjs.com/documentation/concepts/actions-and-controllers).  This is the recommended approach.
@@ -50,6 +35,27 @@ By default, the **Find** and **Find One** blueprint actions will call [`.subscri
 ##### Blueprints and "auto-watch"
 
 By default, the **find** blueprint action (when triggered via a WebSocket request) will subscribe the requesting socket to notifications about _new_ instances of that model being created.  This behavior can be changed for all models by setting [`sails.config.blueprints.autoWatch`](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints) to `false`.
+
+
+##### Disabling blueprint routes on a per-controller basis
+
+> The following technique is only supported for compatibility reasons.  Please just use custom routes, whether or not you are using blueprint actions!
+
+If you are using controllers, rather than standalone action files, it is possible to **disable** certain settings from [`config/blueprints.js`](https://sailsjs.com/documentation/anatomy/my-app/config/blueprints-js) on a per-controller basis by defining a `_config` key in your controller definition:
+
+```javascript
+// In /api/controllers/PetController.js
+module.exports = {
+  _config: {
+    actions: false,
+    shortcuts: false,
+    rest: false
+  }
+}
+```
+
+> Disabling `shortcuts`-style automatic routes on a per-controller basis is not supported.  This is never necessary, because you should never use `shortcuts: true` in production.
+
 
 
 <docmeta name="displayName" value="Blueprint API">
