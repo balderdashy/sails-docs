@@ -15,7 +15,7 @@ res.send('oops');
 
 ### Notes
 >+ The status code may be set up until the response is sent.
->+ `res.status()` is effectively just a chainable alias of node's '`res.statusCode=`.
+>+ `res.status()` is effectively just a chainable alias of node's `res.statusCode = …;`.
 
 
 
