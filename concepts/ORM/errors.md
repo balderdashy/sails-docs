@@ -1,22 +1,35 @@
 # Errors
 
-When a call to any model method fails, `err` is returned. This `err` is a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whose properties can be useful in diagnosing what went wrong.
+When a call to any model method or helper fails, Sails throws a [JavaScript Error instance](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whose properties can be useful in diagnosing what went wrong.
 
-```usage
-await Something.create(…)
-.intercept((err)=>{
- // Return an error or a special exit signal here, 
- // and .create() will throw that instead
-});
+Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`:
+
+```js
+try {
+  await Something.create({…});
+} catch (err) {
+  // err.name
+  // err.code
+  // …
+}
 ```
-Waterline normalizes these Error instances, classifying them with consistent `err.name` values and, when applicable, `err.code`.
-
-> The only time a Waterline model method might not return a normalized Error instance is in the case of a synchronous method such as [.validate()](https://sailsjs.com/documentation/reference/waterline-orm/models/validate). When a synchronous method fails, it will throw.
 
 
 ### Negotiating errors
 
-Catchall error handling, while better than nothing, often just isn't enough. (There's a big difference between "that is not a valid username" and "we aren't able to create new users at all right now".) In order to negotiate the different kinds of errors appropriately, you'll need to be able to examine them in a granular way.
+Catchall error handling, while better than nothing, often just isn't enough. (There's a big difference between "that is not a valid username" and "we aren't able to create new users at all right now".)  In order to negotiate the different kinds of errors appropriately, you'll need to be able to examine them in a granular way.
+
+Fortunately, Sails provides some syntactic sugar for doing this out of the box, without resorting to try…catch: [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept) and [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate).
+
+```javascript
+await Something.create({…})
+.intercept((err)=>{
+ // Return a modified error here (or a special exit signal)
+ // and .create() will throw that instead
+ err.message = 'Uh oh: '+err.message;
+ return err;
+});
+```
 
 
 | Property       | Type          | Details            |
@@ -60,7 +73,7 @@ This sort of error can only come from the `.create()`, `.update()`, `.addToColle
 err.code === 'E_UNIQUE'
 ```
 
-### Example
+### Examples
 
 The exact strategy you use to do this in your Sails app depends on whether you're using `await`, promises or callbacks.
 
@@ -86,6 +99,8 @@ return exits.success();
 ##### Negotiating errors with callbacks or promise chaining
 
 If you're not able to use `await` because you're using Node.js <= v7.9, then prepare yourself: error handling works a bit differently when [using callbacks or promise chaining](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#flow-control) instead of `await`.
+
+> Please use `await` if at all possible!  It is much safer for your app, your code will be cleaner, and you will be happier.
 
 For example, if you're using promise chaining, here's how you might handle the different errors that could occur when attempting to create a new user:
 
