@@ -104,7 +104,7 @@ Sails provides two built-in policies that can be applied globally, or to a speci
 
 ### Writing Your First Policy
 
-Here is a simple `isLoggedIn` policy to prevent access for unauthenticated users. It the session for a `userId` property, and if it doesn&rsquo;t find one, sends the default [`forbidden` response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses/default-responses#?resforbidden). (For many apps, this will likely be the only policy needed.) The following example assumes that, in the controller actions for authenticating a user, you set `req.session.userId` to a [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) value.
+Here is a simple `isLoggedIn` policy to prevent access for unauthenticated users. It checks the session for a `userId` property, and if it doesn&rsquo;t find one, sends the default [`forbidden` response](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses/default-responses#?resforbidden). (For many apps, this will likely be the only policy needed.) The following example assumes that, in the controller actions for authenticating a user, you set `req.session.userId` to a [truthy](https://developer.mozilla.org/en-US/docs/Glossary/Truthy) value.
 
 ```javascript
 // policies/isLoggedIn.js
