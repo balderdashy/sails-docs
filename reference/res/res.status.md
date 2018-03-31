@@ -9,8 +9,8 @@ res.status(200);
 
 ### Example
 ```javascript
-res.status(404);
-res.send('oops');
+res.status(418);
+res.send('I am a teapot');
 ```
 
 ### Notes
