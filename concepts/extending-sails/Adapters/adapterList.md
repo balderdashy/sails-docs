@@ -88,6 +88,7 @@ url: 'mongodb://user:password@host:port/database',
 ```
 
 > + The default port for MongoDB is `27017`.
+> + If your Mongo depoyment keeps track of its internal credentials in a separate database, then you may need to name that database by tacking on [`?authSource=theotherdb`](https://stackoverflow.com/a/40608735/486547) to the end of the connection URL.
 
 
 ### sails-disk
