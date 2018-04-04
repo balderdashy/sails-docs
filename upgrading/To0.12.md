@@ -42,11 +42,11 @@ Without question, the biggest change in Sails v0.12 is to the API of the low-lev
 
 The following `sails.sockets` methods have been deprecated:
 
- + [`.emit()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-emit)
- + [`.id()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-id) (renamed to [`.getId()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/get-id))
- + [`.socketRooms()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-socket-rooms)
- + [`.rooms()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-rooms)
- + [`.subscribers()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers)
+ + [`.emit()`](https://0.12.sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-emit)
+ + [`.id()`](https://0.12.sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-id) (renamed to [`.getId()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/get-id))
+ + [`.socketRooms()`](https://0.12.sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-socket-rooms)
+ + [`.rooms()`](https://0.12.sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-rooms)
+ + [`.subscribers()`](https://0.12.sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-subscribers)
 
 If you are using any of those methods in your app, they will still work in v0.12 but _you should replace them as soon as possible_ as they may be removed from Sails in the next version.  See the individual doc pages for each method for more information.
 
