@@ -17,8 +17,8 @@ For example, with [`rest`](https://sailsjs.com/documentation/reference/configura
 
 If the `Boat` model has a &ldquo;to-many&rdquo; relationship with a `Driver` model through an attribute called `drivers`, then the following additional routes would be available:
 
-+ **PUT /boat/:id/drivers/add/:fk** -> add the driver with the unique ID equal to the `:fk` value to the `drivers` collection of the boat with the ID given as `:id`, using the [`add` blueprint](https://sailsjs.com/documentation/reference/blueprint-api/add-to).
-+ **DELETE /boat/:id/drivers/add/:fk** -> remove the driver with the unique ID equal to the `:fk` value to the `drivers` collection of the boat with the ID given as `:id`, using the [`remove` blueprint](https://sailsjs.com/documentation/reference/blueprint-api/remove-from)
++ **PUT /boat/:id/drivers/:fk** -> add the driver with the unique ID equal to the `:fk` value to the `drivers` collection of the boat with the ID given as `:id`, using the [`add` blueprint](https://sailsjs.com/documentation/reference/blueprint-api/add-to).
++ **DELETE /boat/:id/drivers/:fk** -> remove the driver with the unique ID equal to the `:fk` value to the `drivers` collection of the boat with the ID given as `:id`, using the [`remove` blueprint](https://sailsjs.com/documentation/reference/blueprint-api/remove-from)
 + **PUT /boat/:id/drivers** -> replace the entire `drivers` collection with the drivers whose unique IDs are contained in an array provided as the body of the request, using the [`replace` blueprint](https://sailsjs.com/documentation/reference/blueprint-api/replace).
 
 `rest` blueprint routes are enabled by default, and are suitable for use in a production scenario, as long as they are protected by [policies](https://sailsjs.com/documentation/concepts/Policies) to avoid unauthorized access.
