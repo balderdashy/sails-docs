@@ -56,9 +56,9 @@ To represent nested strings, use `.` in keys.  For example, here's some of the s
 
 ### Detecting and/or overriding the desired locale for a request
 
-To determine the current locale used by the request, use [`req.getLocale()`](https://github.com/mashpie/i18n-node#getlocale).
+To determine the current locale used by the request, use [`req.getLocale()`](https://github.com/jeresig/i18n-node-2/tree/9c77e01a772bfa0b86fab8716619860098d90d6f#getlocale).
 
-To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://github.com/mashpie/i18n-node#setlocale), calling it with the unique code for the new locale, e.g.:
+To override the auto-detected language/localization preference for a request, use [`req.setLocale()`](https://sailsjs.com/documentation/reference/request-req/req-set-locale), calling it with the unique code for the new locale, e.g.:
 
 ```js
 // Force the language to German for the remainder of the request:
