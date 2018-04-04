@@ -387,6 +387,8 @@ being sure to insert `passportInit` and `passportSession` into your `middleware.
 
 Sails 1.0 switches from using the [i18n](http://npmjs.org/package/i18n) to the lighter-weight [i18n-2](http://npmjs.org/package/i18n-2) module.  The overwhelming majority of users should see no difference in their apps.  However, if you&rsquo;re using the `sails.config.i18n.updateFiles` option, be aware that this is no longer supported -- instead, locale files will _always_ be updated in development mode, and _never_ in production mode.  If this is a problem or you&rsquo;re missing some other feature from the i18n module, you can install [sails-hook-i18n](http://npmjs.org/package/sails-hook-i18n) to revert to pre-Sails-1.0 functionality.
 
+> If your 0.12 application is running into issues during upgrade due to its use of i18n features, see [#4343](https://github.com/balderdashy/sails/issues/4343) for more troubleshooting tips.
+
 ### WebSockets
 
 All Sails 1.0 projects that use websockets must install the latest `sails-hook-sockets` dependency (`npm install --save sails-hook-sockets`).  This version of `sails-hook-sockets` differs from previous ones in a couple of ways:
