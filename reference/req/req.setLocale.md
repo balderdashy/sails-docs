@@ -4,8 +4,6 @@ Override the inferred locale for this request.
 
 Normally, the locale is determined on a per-request basis based on incoming request headers (i.e. a user's browser or device language settings).  This command overrides that setting for a particular request.
 
-This can be particularly Time out this request if it does not receive a response within the specified number of milliseconds.
-
 ### Usage
 ```usage
 req.setLocale(override);
