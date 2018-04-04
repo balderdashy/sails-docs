@@ -22,13 +22,6 @@ From a view:
 
 Sometimes, it is useful to override browser/device language headers -- for example, if you want to allow a user to set their own language preference.  Whether such a preference is session-based or associated with their account in the database, this is pretty straightforward to accomplish using [`req.setLocale()`](https://sailsjs.com/documentation/reference/request-req/req-set-locale).
 
-<!-- More rarely, it's sometimes useful to do this from a controller action:
-```javascript
-req.__('Hello'); // => Hola
-req.__('Hello %s', 'Marissa'); // => Hola Marissa
-req.__('Hello {{name}}', { name: 'Marco' }); // => Hola Marco
-```
--->
 
 ##### Internationalizing a shell script
 
