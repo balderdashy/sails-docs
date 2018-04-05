@@ -2,7 +2,6 @@
 
 Return whether this request (`req`) advertises that it understands any of the specified language(s), and if so, which one.
 
-
 > If _more than one_ of the languages passed in to this method are considered acceptable, then the first one from the left will be returned.  And if none of the languages are considered acceptable, this returns `false`.
 > (By languages, we mean natural languages, such as English, and not programming languages.)
 
@@ -46,9 +45,9 @@ req.acceptsLanguages('es', 'fr');
 
 ### Notes
 
-> + You can expect the ["Accept-Language" header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) to exist in most requests which originate from web browsers (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4).
+> + You can expect the ["Accept-Language" header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language) to exist in most requests which originate from web browsers (see [RFC-2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4)).
 > + Browsers send the "Accept-Language" header automatically based on the user's language settings.
-> + See the [`accepts` module](https://www.npmjs.com/package/accepts) for the finer details of the header parsing algorithm used in Sails/Express.
+> + See the [`accepts` package](https://www.npmjs.com/package/accepts) for the finer details of the header parsing algorithm used in Sails/Express.
 
 
 
