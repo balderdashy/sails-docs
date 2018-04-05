@@ -87,6 +87,10 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 
 The points above cover the majority of upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0.  But since every app is different, it's a good idea to read through the rest of the points below before you dive back in.  Not all of these points will necessarily apply to your app, but some might.
 
+* **Several properties and methods on `req` now work a little differently:**
+  * `req.accepted` has been replaced with [`req.accepts()`](https://sailsjs.com/documentation/reference/request-req/req-accepts)
+  * `req.acceptedLanguages` and `req.acceptsLanguage()` have been replaced with [`req.acceptsLanguages()`](https://sailsjs.com/documentation/reference/request-req/req-accepts-languages)
+  * `req.acceptedCharsets` and `req.acceptsCharset()` have been replaced with [`req.acceptsCharsets()`](https://sailsjs.com/documentation/reference/request-req/req-accepts-charsets)
 * **Several `req.options` properties related to blueprints are no longer supported.**  Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 * **The `defaultLimit` and `populate` blueprint configuration options are no longer supported.** Instead, the new `parseBlueprintOptions` method can be used to give you complete control over blueprint behavior.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 * **The `.findOne()` query method no longer supports `sort` and `limit` modifiers, and will throw an error if the given criteria match more than one record**.  If you want to find a single record using anything besides a `unique` attribute (like the primary key) as criteria, use `.find(<criteria>).limit(1)` instead (keeping in mind that this will return an array of one item).
