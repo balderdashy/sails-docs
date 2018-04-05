@@ -39,16 +39,10 @@ To debug your Sails app using node-inspector, first install it over npm
 $ npm install -g node-inspector
 ```
 
-Then, launch it with the `node-inspector` command
-
-```bash
-$ node-inspector
-```
-
 Now, you can lift your Sails app in debug mode
 
 ```bash
-$ sails debug
+$ sails inspect
 ```
 
 Once the application is launched, visit http://127.0.0.1:8080?port=5858 in Opera or Chrome (_sorry, other browsers!_). Now you can request your app as usual on port 1337 and debug your code from the browser.
