@@ -11,8 +11,9 @@ Sails' log configuration is determined by [`sails.config.log`](https://sailsjs.c
 ### Usage
 
 ```javascript
-sails.log.error(new Error("Doh, got an error :/"));
-sails.log.debug("I am a debug message");
+sails.log.info('I am an info-level message.');
+sails.log('I am a debug-level message');
+sails.log.warn('I am a warn-level message');
 ```
 
 ### Log levels
