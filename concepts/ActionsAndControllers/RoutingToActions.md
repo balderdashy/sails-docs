@@ -6,7 +6,7 @@ By default, controller actions in your Sails app will be inaccessible to users u
 
 To bind a route to an action in the `config/routes.js` file, you can use the HTTP verb and path (i.e. the **route address**) as the key, and the action identity as the value (i.e. the **route target**).
 
-For example, the following manual route will cause your app to trigger the `makeIt` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
+For example, the following manual route will cause your app to trigger the `make` action in `api/controllers/SandwichController.js` whenever it receives a POST request to `/make/a/sandwich`:
 
 ```js
   'POST /make/a/sandwich': 'SandwichController.make'
