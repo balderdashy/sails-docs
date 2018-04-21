@@ -36,7 +36,7 @@ sailsApp.lower(
 ```
 
 ### Notes
-> + After an app is successfully lowered, it will emit the `lowered` event.
+> + The app will emit the `lower` event before shutting down the HTTP and WebSocket services.
 > + Lowered apps cannot be lifted again.
 
 <docmeta name="displayName" value="sails.lower()">
