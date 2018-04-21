@@ -4,7 +4,7 @@ Sails is built on [Express](https://github.com/balderdashy/sails-docs/blob/maste
 
 A nice side effect of this compatibility is that, in many cases, you can paste existing Node.js code into a Sails app and it will work.  And since Sails implements a transport-agnostic request interpreter, the code in your Sails app is WebSocket-compatible as well.
 
-Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`](https://sailsjs.com/documentation/reference/request-req/req-wantsJSON) and [`req.allParams()`](https://sailsjs.com/documentation/reference/request-req/req-allParams).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
+Sails adds a few methods and properties of its own to the `req` object, like [`req.wantsJSON`](https://sailsjs.com/documentation/reference/request-req/req-wants-json) and [`req.allParams()`](https://sailsjs.com/documentation/reference/request-req/req-all-params).  These features are syntactic sugar on top of the underlying implementation, and also support both HTTP and WebSockets.
 
 
 <!--
