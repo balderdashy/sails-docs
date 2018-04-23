@@ -2,12 +2,9 @@
 
 ### Overview
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions. For example, we sometimes use lifecycle callbacks to automatically hash a password before creating or updating an `Account` model.
+Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions.  For example, you might use lifecycle callbacks to automatically compute the value of a `fullName` attribute before creating or updating a `User` record.
 
 Sails exposes a handful of lifecycle callbacks by default.
-
-No lifecycle callbacks are run on bulk inserts of data using `createEach`.
-
 
 ##### Callbacks on `create`
 
@@ -15,6 +12,8 @@ The `afterCreate` lifecycle callback will only be run on queries that have the `
 
   - beforeCreate: fn(recordToInsert, cb)
   - afterCreate: fn(newlyInsertedRecord, cb)
+
+> `beforeCreate()` is not run on bulk inserts of data using `createEach`.
 
 ##### Callbacks on `update`
 
