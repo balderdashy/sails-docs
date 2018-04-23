@@ -49,24 +49,20 @@ module.exports = {
     password: {
       type: 'string',
       minLength: 6,
-      required: true,
-      columnName: 'hashed_password'
+      required: true
     }
 
   },
 
 
-  // Lifecycle Callbacks
-  beforeCreate: function (values, cb) {
-
+  beforeCreate: function (values, proceed) {
     // Hash password
-    bcrypt.hash(values.password, 10, function(err, hash) {
-      if(err) return cb(err);
-      values.password = hash;
-      //calling cb() with an argument returns an error. Useful for canceling the entire operation if some criteria fails.
-      cb();
-    });
+    sails.helpers.passwords.hashPassword(values.password).exec((err)=>{
+      if (err) { return proceed(err); }
+      return proceed();
+    });//_∏_
   }
+  
 };
 ```
 
