@@ -2,7 +2,7 @@
 
 This file configures a Grunt task called "uglify".
 
-Its job is to [minify](https://en.wikipedia.org/wiki/Minification_(programming)) client-side JavaScript files.  Internally, it uses [UglifyES](https://www.npmjs.com/package/uglifyes).
+Its job is to <a target="_blank" href="https://en.wikipedia.org/wiki/Minification_(programming)">minify</a> client-side JavaScript files.  Internally, it uses [UglifyES](https://www.npmjs.com/package/uglifyes).
 
 ### Usage
 
