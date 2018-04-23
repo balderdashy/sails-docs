@@ -55,10 +55,11 @@ module.exports = {
   },
 
 
-  beforeCreate: function (values, proceed) {
+  beforeCreate: function (valuesToSet, proceed) {
     // Hash password
-    sails.helpers.passwords.hashPassword(values.password).exec((err)=>{
+    sails.helpers.passwords.hashPassword(valuesToSet.password).exec((err, hashedPassword)=>{
       if (err) { return proceed(err); }
+      valuesToSet.password = hashedPassword;
       return proceed();
     });//_∏_
   }
