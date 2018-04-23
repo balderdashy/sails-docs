@@ -2,9 +2,9 @@
 
 ### Overview
 
-Lifecycle callbacks are functions that are automagically called before or after certain _model_ actions.  For example, you might use lifecycle callbacks to automatically compute the value of a `fullName` attribute before creating or updating a `User` record.
+Lifecycle callbacks are functions that are called before or after certain model methods.  For example, you might use lifecycle callbacks to automatically compute the value of a `fullName` attribute before creating or updating a `User` record.
 
-Sails exposes a handful of lifecycle callbacks by default.
+Sails exposes a handful of lifecycle callbacks by default:
 
 ##### Lifecycle callbacks on `.create()`
 
@@ -35,8 +35,7 @@ The `afterDestroy` lifecycle callback will only be run on `.destroy()` queries t
 If you want to hash a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
 
 ```javascript
-var bcrypt = require('bcrypt');
-
+// User.js
 module.exports = {
 
   attributes: {
@@ -66,7 +65,6 @@ module.exports = {
   
 };
 ```
-
 
 
 <docmeta name="displayName" value="Lifecycle callbacks">
