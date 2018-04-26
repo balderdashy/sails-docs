@@ -1,7 +1,7 @@
 # sails.request()
 
 > ##### _**This feature is still experimental.**_
-> This method is still under development, and its interface and/or behavior could change at any time.
+> This method is still under development, and its interface and/or behavior could change at any time. Jota Changes
 
 Make a virtual request to a running Sails instance.
 
