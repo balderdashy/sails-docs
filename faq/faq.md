@@ -120,6 +120,7 @@ Thanks!
 <!-- 6-12-2013 -->
 
 ##### Video tutorials:
++ [Full-stack JavaScript with Sails.js](https://courses.platzi.com/classes/sails-js/)
 + [Develop Web Apps in Node.js and Sails.js](https://courses.platzi.com/courses/develop-apps-sails-js/)
 + [Jorge Casar: Introduccion a Sails.js](https://www.youtube.com/watch?v=7_zUNTtXtcg)
 <!-- 12-17-2014 -->
