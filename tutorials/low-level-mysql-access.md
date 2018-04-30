@@ -1,4 +1,4 @@
-# Advanced: Low-level MySQL usage
+# Low-level MySQL usage (advanced)
 
 This tutorial steps through how to access the raw MySQL connection instance from the [`mysql` package](https://www.npmjs.com/package/mysql).  This is useful for getting access to low level APIs available only in the raw client itself.  If you're looking to use custom native SQL queries, check out [`sendNativeQuery()`](/documentation/reference/waterline-orm/datastores/send-native-query).
 
@@ -77,4 +77,4 @@ connection.query('SELECT * FROM posts')
   .pipe(...);
 ```
 
-<docmeta name="displayName" value="Advanced: Low-level MySQL usage">
+<docmeta name="displayName" value="Low-level MySQL usage (advanced)">
