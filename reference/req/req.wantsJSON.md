@@ -23,10 +23,10 @@ This all makes your app more future-proof and less brittle: as best-practices fo
 ### Example
 ```javascript
 if (req.wantsJSON) {
-  return res.json(data);
+  sails.log('This request wants JSON!');
 }
 else {
-  return res.view(data);
+  // `req.wantsJSON` is falsy (undefined), to this request must not want JSON.
 }
 ```
 
