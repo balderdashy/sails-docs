@@ -26,6 +26,7 @@ if (req.wantsJSON) {
   return res.json(data);
 }
 else {
+  // if false, returns 'undefined'
   return res.view(data);
 }
 ```
