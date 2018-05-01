@@ -15,6 +15,7 @@ if (req.isSocket){
 }
 else {
   // Just another HTTP request.
+  // Returns 'undefined'
 }
 ```
 
@@ -22,6 +23,7 @@ else {
 
 > + Useful for allowing HTTP requests to skip calls to pubsub or WebSocket-centric methods like `subscribe()` or `watch()`  that depend on an actual Socket.io request.  This allows you to reuse backend code, using it for both WebSocket and HTTP clients.
 > + As you might expect, `req.isSocket` doesn't need to be checked before running methods which **publish to other** connected sockets.  Those methods don't depend on the request, so they work either way.
+
 
 
 
