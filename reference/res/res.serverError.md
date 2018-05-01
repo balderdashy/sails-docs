@@ -10,7 +10,9 @@ return res.serverError(err);
 ```
 
 _Or:_
-+ `return res.serverError();`
+```
+return res.serverError();
+```
 
 ### Details
 
