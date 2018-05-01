@@ -25,5 +25,5 @@ req.hostname;
 
 
 
-<docmeta name="displayName" value="req.host">
+<docmeta name="displayName" value="req.hostname">
 <docmeta name="pageType" value="property">
