@@ -11,11 +11,12 @@ req.isSocket;
 ### Example
 ```javascript
 if (req.isSocket){
-  // You're a socket.  Do cool socket stuff.
+  // You're a socket.  Do cool socket stuff like subscribing.
+  User.subscribe(req, [req.session.userId]);
 }
 else {
   // Just another HTTP request.
-  // Returns 'undefined'
+  // (`req.isSocket` is undefined)
 }
 ```
 
