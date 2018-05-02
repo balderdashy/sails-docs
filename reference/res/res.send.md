@@ -13,8 +13,6 @@ return res.send([string]);
 
 This method can be used to send a string of XML.
 
-When a string is given the Content-Type is set to "text/html".
-
 If no argument is provided, no response body is sent back-- only the status code.
 
 ### Examples
@@ -23,7 +21,7 @@ To allow users to export their own data in compliance with 2018's new GDPR regul
 
 ```javascript
 // Send back some dynamic CSV-formatted data.
-return res.send(`
+return res.set('text/csv').send(`
 some,csv,like,this
 or,,like,this
 `);
@@ -33,7 +31,7 @@ Or to respond with XML, e.g. for a sitemap:
 
 ```javascript
 // Send down some dynamic XML-formatted data.
-return res.send(`<?xml version="1.0" encoding="UTF-8"?>
+return res.set('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://sailsjs.com</loc>
