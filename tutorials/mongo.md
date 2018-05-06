@@ -1,10 +1,10 @@
 # Using MongoDB as a datastore in a Sails app
 
-Sails supports the popular [MongoDB database](https://www.mongodb.com/) via the [`sails-mongo` adapter](https://www.npmjs.com/package/sails-mongo).
+Sails supports the popular [MongoDB database](https://www.mongodb.com/) via the [sails-mongo adapter](https://www.npmjs.com/package/sails-mongo).
 
 > First, make sure you have access to a running MongoDB server, either on your development machine or in the cloud.  Below, 'mongodb://root@localhost/foo' refers to a locally-installed MongoDB using "foo" as the database name.  Be sure to replace that [connection URL](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores#?the-connection-url) with the appropriate string for your database.
 
-To use `sails-mongo` in your app:
+To use MongoDB in your Node.js/Sails app:
 
 1. Run `npm install sails-mongo` in your app folder.
 2. In your `config/datastores.js` file, edit the `default` datastore configuration:
