@@ -2,19 +2,20 @@
 
 Sails supports the popular [MongoDB database](https://www.mongodb.com/) via the [`sails-mongo` adapter](https://www.npmjs.com/package/sails-mongo).
 
+> First, make sure you have access to a running MongoDB server, either on your development machine or in the cloud.  Below, 'mongodb://root@localhost/foo' refers to a locally-installed MongoDB using "foo" as the database name.  Be sure to replace that [connection URL](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores#?the-connection-url) with the appropriate string for your database.
+
 To use `sails-mongo` in your app:
 
-1. Make sure you have access to a running MongoDB server, either on your development machine or in the cloud.
-2. Run `npm install sails-mongo --save` in your app folder.
-3. In your `config/datastores.js` file, edit the `default` datastore configuration:
+1. Run `npm install sails-mongo` in your app folder.
+2. In your `config/datastores.js` file, edit the `default` datastore configuration:
 
     ```js
     default: {
       adapter: 'sails-mongo',
-      url: <connection string for your mongo server, e.g. 'mongodb://localhost:27017/myMongoDb'>
+      url: 'mongodb://root@localhost/foo'
     }
     ```
-4. In your `config/models.js` file, edit the default `id` attribute to have the appropriate `type` and `columnName` for MongoDB's primary keys:
+3. In your `config/models.js` file, edit the default `id` attribute to have the appropriate `type` and `columnName` for MongoDB's primary keys:
 
     ```js
     attributes: {
@@ -23,8 +24,15 @@ To use `sails-mongo` in your app:
     }
     ```
 
+That's it!  Lift your app again and you should be good to go.
 
-As with all of the [Sails database adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), you can use any of the [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models) to interact with your models when using `sails-mongo`.  You can also access the lower-level &ldquo;native&rdquo; MongoDB client to send more complex queries, using the [`.manager()` method](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) of the [datastore instance](https://sailsjs.com/documentation/reference/application/sails-get-datastore):
+### Low-level MongoDB usage (advanced)
+
+As with all of the [Sails database adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters), you can use any of the [Waterline model methods](https://sailsjs.com/documentation/reference/waterline-orm/models) to interact with your models when using `sails-mongo`.
+
+For many apps, that's all you'll need-- from "hello world" to production.  Even if you run into limitations, they can usually be worked around without writing Mongo-specific code.  However, for situations when there is no alternative, it is possible to use the Mongo driver directly in your Sails app.
+
+To access the lower-level &ldquo;native&rdquo; MongoDB client directly, use the [`.manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) property of the [datastore instance](https://sailsjs.com/documentation/reference/application/sails-get-datastore):
 
 ```js
 // Get access to the native MongoDB client via the default Sails datastore.
@@ -35,7 +43,7 @@ var db = sails.getDatastore().manager;
 db.collection('user').find({"albums.title": {"$regex": /blue/}}).toArray(console.log);
 ```
 
-For a full list of methods available in the native MongoDB client, see the <a href="http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html" target="_blank">Node.js MongoDB Driver API reference</a>.
+For a full list of methods available in the native MongoDB client, see the [Node.js MongoDB Driver API reference](http://mongodb.github.io/node-mongodb-native/2.2/api/Collection.html).
 
 
 <docmeta name="displayName" value="Using MongoDB">
