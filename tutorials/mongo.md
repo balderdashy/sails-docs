@@ -1,10 +1,12 @@
-# Using MongoDB as a datastore in a Sails app
+# Using MongoDB with Node.js/Sails.js
 
 Sails supports the popular [MongoDB database](https://www.mongodb.com/) via the [sails-mongo adapter](https://www.npmjs.com/package/sails-mongo).
 
 > First, make sure you have access to a running MongoDB server, either on your development machine or in the cloud.  Below, 'mongodb://root@localhost/foo' refers to a locally-installed MongoDB using "foo" as the database name.  Be sure to replace that [connection URL](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores#?the-connection-url) with the appropriate string for your database.
 
-To use MongoDB in your Node.js/Sails app:
+### Developing locally with MongoDB
+
+To use MongoDB in your Node.js/Sails app during development:
 
 1. Run `npm install sails-mongo` in your app folder.
 2. In your `config/datastores.js` file, edit the `default` datastore configuration:
@@ -25,6 +27,23 @@ To use MongoDB in your Node.js/Sails app:
     ```
 
 That's it!  Lift your app again and you should be good to go.
+
+### Deploying your app with MongoDB
+
+To use MongoDB in production, edit your adapter setting in `config/env/production.js`:
+
+```js
+adapter: 'sails-mongo',
+```
+
+You may also configure your [connection URL](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores#?the-connection-url) -- but many developers prefer not to check sensitive credentials into version control.  Another option is to use an environment variable:
+
+```
+sails_datastores__default__url=mongodb://heroku_12345678:random_password@ds029017.mLab.com:29017/heroku_12345678
+```
+
+> To use MongoDB in your staging environment, edit `config/env/staging.js`.  Depending on your application, it may be acceptable to check in your staging database credentials to version control, since they are less of a security risk.
+
 
 ### Low-level MongoDB usage (advanced)
 
