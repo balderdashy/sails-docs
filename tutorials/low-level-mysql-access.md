@@ -2,9 +2,9 @@
 
 This tutorial steps through how to access the raw MySQL connection instance from the [`mysql` package](https://www.npmjs.com/package/mysql).  This is useful for getting access to low level APIs available only in the raw client itself.  If you're looking to use custom native SQL queries, check out [`sendNativeQuery()`](/documentation/reference/waterline-orm/datastores/send-native-query).
 
-> Note: Before we proceed, make sure you have a datastore configured to use a functional MySQL server, and that it is the datastore for at least one of your models.
+> Note: Before we proceed, make sure you have a datastore configured to use a functional MySQL database.
 
-### Get access to a MySQL connection object
+### Get access to an active MySQL connection
 
 To obtain an active connection from the MySQL package you can call the [`.leaseConnection()`](/documentation/reference/waterline-orm/datastores/lease-connection) method of a registered datastore object (RDI).
 
