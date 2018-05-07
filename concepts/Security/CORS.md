@@ -13,31 +13,35 @@ Sails can be configured to allow cross-origin requests from a list of domains yo
 
 For security reasons, CORS is disabled by default in Sails.  But enabling it is dead-simple.
 
-To allow cross-origin requests from a whitelist of trusted domains to _any_ route in your app, simply enable `allRoutes` and provide an `origin` setting in [`config/cors.js`](https://sailsjs.com/docs/reference/configuration/sails-config-cors):
+To allow cross-origin requests from a whitelist of trusted domains to _any_ route in your app, simply enable `allRoutes` and provide an `origin` setting in [`config/security.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors):
 
 ```javascript
-allRoutes: true,
-allowOrigins: ['http://example.com','https://api.example.com','http://blog.example.com:1337','https://foo.com:8888']
+cors: {
+  allRoutes: true,
+  allowOrigins: ['http://example.com','https://api.example.com','http://blog.example.com:1337','https://foo.com:8888']
+}
 ```
 
 To allow cross-origin requests from _any_ domain to _any_ route in your app, use `allowOrigins: '*'`:
 
 ```javascript
-allRoutes: true,
-allowOrigins: '*',
-allowCredentials: false
+cors: {
+  allRoutes: true,
+  allowOrigins: '*',
+  allowCredentials: false
+}
 ```
 
-Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](https://sailsjs.com/docs/reference/configuration/sails-config-security-cors) setting.
+Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, meaning that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors) setting.
 
 
-See [`sails.config.security.cors`](https://sailsjs.com/documentation/reference/configuration/sails-config-security-cors) for a comprehensive reference of all available options.
+See [`sails.config.security.cors`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors) for a comprehensive reference of all available options.
 
 
 ### Configuring CORS For individual routes
-Besides the global CORS configuration in `config/security.js`, you can also configure these settings on a per-route basis in [`config/routes.js`](https://sailsjs.com/anatomy/config/routes-js).
+Besides the global CORS configuration in `config/security.js`, you can also configure these settings on a per-route basis in [`config/routes.js`](https://sailsjs.com/documentation/anatomy/config/routes-js).
 
-If you set `allRoutes: true` in `config/cors.js`, but you want to exempt a specific route, set the `cors: false` in the route's target:
+If you set `allRoutes: true` in `config/security.js`, but you want to exempt a specific route, set the `cors: false` in the route's target:
 
 ```javascript
 'POST /signup': {
