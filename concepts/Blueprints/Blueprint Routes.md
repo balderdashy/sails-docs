@@ -89,7 +89,7 @@ TODO: check on this (it's unclear what point it was trying to get across):
 
 -->
 
-Read more about [configuring blueprints in Sails](sailsjs.com/documentation/reference/configuration/sails-config-blueprints), including how to enable / disable different categories of blueprint routes.
+Read more about [configuring blueprints in Sails](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints), including how to enable / disable different categories of blueprint routes.
 
 
 <docmeta name="displayName" value="Blueprint routes">
