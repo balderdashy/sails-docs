@@ -4,20 +4,6 @@
 
 A hook is a Node module that adds functionality to the Sails core.  The [hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification) defines the requirements a module must meet for Sails to be able to import its code and make the new functionality available.  Because they can be saved separately from the core, hooks allow Sails code to be shared between apps and developers without having to modify the framework.
 
-### Hooks vs. Services
-
-Hooks share some common features with Sails [services](https://sailsjs.com/documentation/concepts/Services).  They both allow developers to store commonly used code in one location, and they both make new methods available globally to a Sails app.  However, there are some key differences between the two concepts:
-
-* Services cannot be saved independently of an app.  While some types of hooks may be tied to a single app (see [Project Hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)), other types can be developed independently of a Sails app and installed using `npm install`.
-* Hooks have their own initialization system.  This allows them to be more dynamic and configure themselves when Sails lifts.
-* Hooks can add new [routes](https://sailsjs.com/documentation/concepts/Routes) to a Sails app before it lifts.
-
-Services are still a good choice for code that is shared between multiple [controllers](https://sailsjs.com/documentation/concepts/Controllers) or [models](https://sailsjs.com/documentation/concepts/models-and-orm/models) in an app, but
-* is unlikely to be reused in another app
-* won't need to behave differently in different environments (e.g. development vs. production)
-
-For all other reusable code, hooks are the way to go!
-
 ### Types of hooks
 
 There are three types of hooks available in Sails:
