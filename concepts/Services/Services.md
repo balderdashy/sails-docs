@@ -12,4 +12,6 @@ Hypothetically, one could create a service for:
 - Blasting tweets to celebrities
 - Retrieving data from a third party API
 
+But [helpers](https://sailsjs.com/documentation/concepts/helpers) are a better bet.
+
 <docmeta name="displayName" value="Services">
