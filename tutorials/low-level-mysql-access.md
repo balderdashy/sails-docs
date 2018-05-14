@@ -1,10 +1,12 @@
 # Low-level MySQL usage (advanced)
 
-This tutorial steps through how to access the raw MySQL connection instance from the [`mysql` package](https://www.npmjs.com/package/mysql).  This is useful for getting access to low level APIs available only in the raw client itself.  If you're looking to use custom native SQL queries, check out [`sendNativeQuery()`](/documentation/reference/waterline-orm/datastores/send-native-query).
+This tutorial steps through how to access the raw MySQL connection instance from the [`mysql` package](https://www.npmjs.com/package/mysql).  This is useful for getting access to low level APIs available only in the raw client itself. 
 
-> Note: Before we proceed, make sure you have a datastore configured to use a functional MySQL server, and that it is the datastore for at least one of your models.
+> Note: Many Node.js / Sails apps using MySQL will never need the kind of low-level usage described here.  If you find yourself running up against the limitations of the ORM, there is usually a workaround that does not involve writing code for the underlying database.  Even then, if you're just looking to use custom native SQL queries, read no further-- instead, check out [`sendNativeQuery()`](/documentation/reference/waterline-orm/datastores/send-native-query) instead.
+>
+> Also, before we proceed, make sure you have a datastore configured to use a functional MySQL database.
 
-### Get access to a MySQL connection object
+### Get access to an active MySQL connection
 
 To obtain an active connection from the MySQL package you can call the [`.leaseConnection()`](/documentation/reference/waterline-orm/datastores/lease-connection) method of a registered datastore object (RDI).
 
