@@ -1,6 +1,12 @@
-# findOrCreate
+# .findOrCreate()
 
 Find the record matching the specified criteria.  If no such record exists, create one using the provided initial values.
+
+```usage
+var newOrExistingRecord = await Something.findOrCreate(criteria, initialValues);
+```
+
+_Or, if you need to know whether a new record was created:_
 
 ```usage
 Something.findOrCreate(criteria, initialValues)
@@ -8,11 +14,6 @@ Something.findOrCreate(criteria, initialValues)
 
 });
 ```
-
-_Or:_
-
-+ `var newOrExistingRecord = await Something.findOrCreate(criteria, initialValues);`
-
 
 #### Usage
 
