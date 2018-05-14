@@ -18,7 +18,7 @@ req.file('avatar').upload(function (err, uploadedFiles) {
 });
 ```
 
-Files should be uploaded inside of an `action` in one of your controllers.  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.userId`.
+Files should be uploaded inside of an [action](https://sailsjs.com/documentation/concepts/actions-and-controllers).  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.userId`.
 
 ```javascript
 // api/controllers/UserController.js
