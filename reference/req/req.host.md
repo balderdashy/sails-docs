@@ -9,7 +9,6 @@ The hostname of this request, without the port number, as specified by its "Host
 ### Usage
 ```usage
 req.host;
-
 ```
 
 ### Example
