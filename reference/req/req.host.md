@@ -1,7 +1,7 @@
 # req.host
 
 > ##### **This method is deprecated and will likely be removed or changed in an upcoming release.**
-> Instead, use: [req.hostname](https://github.com/balderdashy/sails-docs/edit/master/reference/req/req.hostname.md)
+> Instead, use: [req.hostname](https://sailsjs.com/documentation/reference/request-req/req-hostname)
 
 
 The hostname of this request, without the port number, as specified by its "Host" header.
