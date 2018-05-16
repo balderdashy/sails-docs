@@ -13,7 +13,7 @@ module.exports = {
   description: 'Retrieve a list of users who were online most recently.',
 
 
-  extendedDescription: 'Use `activeSince` to only retrieve users who logged in since a certain date/time.'
+  extendedDescription: 'Use `activeSince` to only retrieve users who logged in since a certain date/time.',
 
 
   inputs: {
@@ -28,7 +28,7 @@ module.exports = {
     activeSince: {
       description: 'Cut-off time to look for logins after, expressed as a JS timestamp.',
       extendedDescription: 'Remember: A _JS timestamp_ is the number of **milliseconds** since [that fateful night in 1970](https://en.wikipedia.org/wiki/Unix_time).',
-      type: 'number'
+      type: 'number',
       defaultsTo: 0
     }
 
