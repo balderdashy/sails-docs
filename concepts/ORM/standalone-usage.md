@@ -57,9 +57,15 @@ Next, we define the specification for the user model, like so:
 var userCollection = Waterline.Collection.extend({
   identity: 'user',
   datastore: 'default',
+  primaryKey: 'id'
+  
   attributes: {
-    firstName: 'string',
-    lastName: 'string',
+    id: {
+        type: 'number',
+        autoMigrations: {autoIncrement: true}
+    },
+    firstName: {type:'string'},
+    lastName: {type:'string'},
 
     // Add a reference to Pets
     pets: {
@@ -86,10 +92,16 @@ Obviously we now need to define what a pet is.
 var petCollection = Waterline.Collection.extend({
   identity: 'pet',
   datastore: 'default',
+  primaryKey: 'id'
+  
   attributes: {
-    breed: 'string',
-    type: 'string',
-    name: 'string',
+    id: {
+        type: 'number',
+        autoMigrations: {autoIncrement: true}
+    },
+    breed: {type:'string'},
+    type: {type:'string'},
+    name: {type:'string'},
 
     // Add a reference to User
     owner: {
@@ -106,8 +118,8 @@ Most of the structure is the same as for the user. However, the `owner` field sp
 Next we have some more boring setup chores.
 
 ```js
-waterline.loadCollection(userCollection);
-waterline.loadCollection(petCollection);
+waterline.registerModel(userCollection);
+waterline.registerModel(petCollection);
 ```
 
 Here we are adding the model specifications into the `waterline` instance itself.
