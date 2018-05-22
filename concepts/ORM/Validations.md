@@ -127,7 +127,7 @@ To accomplish this, just use `allowNull`:
 ```javascript
 starRating: {
   type: 'number',
-  allowNull: true
+  allowNull: true,
   min: 1,
   max: 5,
 }
