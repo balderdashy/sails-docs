@@ -53,10 +53,10 @@ User.findOrCreate({ name: 'Finn' }, { name: 'Finn' })
   if (err) { return res.serverError(err); }
 
   if(wasCreated) {
-    sails.log('Created a new user: '+user.name');
+    sails.log('Created a new user: ' + user.name);
   }
   else {
-    sails.log('Found existing user: '+user.name');
+    sails.log('Found existing user: ' + user.name);
   }
 
   return res.json(user);
