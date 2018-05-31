@@ -55,6 +55,7 @@ There are more than 200 community hooks for Sails.js [available on NPM](https://
 | [sails-hook-winston](https://www.npmjs.com/package/sails-hook-winston) | [Kikobeats](https://github.com/Kikobeats) | Integrate the Winston logging system with your Sails application. | [![Release info for sails-hook-winston](https://img.shields.io/npm/dm/sails-hook-winston.svg?style=plastic)](http://npmjs.com/package/sails-hook-winston)
 | [sails-hook-allowed-hosts](https://www.npmjs.com/package/sails-hook-allowed-hosts) | [Akshay Bist](https://github.com/elssar) | Ensure that only requests made from authorized hosts/IP addresses are allowed. | [![Release info for sails-hook-allowed-hosts](https://img.shields.io/npm/dm/sails-hook-allowed-hosts.svg?style=plastic)](http://npmjs.com/package/sails-hook-allowed-hosts)
 | [sails-hook-cron](https://www.npmjs.com/package/sails-hook-cron) | [Eugene Obrezkov](https://github.com/ghaiklor) | Run cron tasks for your Sails app. | [![Release info for sails-hook-cron](https://img.shields.io/npm/dm/sails-hook-cron.svg?style=plastic)](http://npmjs.com/package/sails-hook-cron)
+| [sails-hook-organics](https://www.npmjs.com/package/sails-hook-organics) | [Mike McNeil](https://github.com/mikermcneil) | Exposes a set of commonly-used functions ("organics") as built-in helpers in your Sails app. | [![Release info for sails-hook-organics](https://img.shields.io/npm/dm/sails-hook-organics.svg?style=plastic)](http://npmjs.com/package/sails-hook-organics)
 
 
 ##### Add your hook to this list
