@@ -145,7 +145,7 @@ So here we specify the `adapters` we are going to use (one for each type of stor
 Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
 
 ```js
-waterline.initialize(config, function (err, ontology) {
+waterline.initialize(config, async function (err, ontology) {
   if (err) {
     console.error(err);
     return;
