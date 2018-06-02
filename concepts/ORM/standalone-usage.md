@@ -57,7 +57,7 @@ Next, we define the specification for the user model, like so:
 var userCollection = Waterline.Collection.extend({
   identity: 'user',
   datastore: 'default',
-  primaryKey: 'id'
+  primaryKey: 'id',
   
   attributes: {
     id: {
