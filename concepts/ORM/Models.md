@@ -68,10 +68,10 @@ For example:
 
 // Find monkeys with the same name as the specified person
 findWithSameNameAsPerson: async function (opts) {
-	var person = await Person.findOne(person);
+	var person = await Person.findOne({ id: opts.id });
 	
 	if (!person) {
-		let err = new Error(require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', person));
+		let err = new Error(require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', opts.id));
 		err.code = 'E_UNKNOWN_PERSON';
 		throw err;
 	}
