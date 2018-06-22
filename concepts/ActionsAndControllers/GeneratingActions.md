@@ -17,7 +17,7 @@ Sails will generate `api/controllers/UserController.js`:
 /**
  * UserController.js
  *
- * @description :: Server-side controller action for manging users.
+ * @description :: Server-side controller action for managing users.
  * @help        :: See https://sailsjs.com/documentation/concepts/controllers
  */
 module.exports = {
