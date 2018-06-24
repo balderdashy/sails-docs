@@ -46,6 +46,11 @@ You can capture the parts of the address that are matched by wildcards into name
 ```js
 '/user/foo/bar/:name'
 ```
+If params is optional, you should be add ? at param:
+
+```js
+'/user/foo/bar/:name?'
+```
 
 Will match _almost_ the same URLs as:
 
