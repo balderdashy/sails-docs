@@ -145,7 +145,7 @@ So here we specify the `adapters` we are going to use (one for each type of stor
 Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
 
 ```js
-waterline.initialize(config, function (err, ontology) {
+waterline.initialize(config, (err, ontology)=>{
   if (err) {
     console.error(err);
     return;
@@ -155,13 +155,14 @@ waterline.initialize(config, function (err, ontology) {
   var User = ontology.collections.user;
   var Pet = ontology.collections.pet;
 
-  try {
+  // Since we're using `await`, we'll scope our selves an async IIFE:
+  (async ()=>{
     // First we create a user
     var user = await User.create({
       firstName: 'Neil',
       lastName: 'Armstrong'
     });
-	  
+
     // Then we create the pet
     var pet = await Pet.create({
       breed: 'beagle',
@@ -169,15 +170,18 @@ waterline.initialize(config, function (err, ontology) {
       name: 'Astro',
       owner: user.id
     });
-		
+
     // Then we grab all users and their pets
     var users = await User.find().populate('pets');
-    console.dir(users);
-    
-  } catch (err) {
-    // If any errors occur execution jumps to the catch block.
-    console.log(err);
-  }
+    console.log(users);
+  })()
+  .then(()=>{
+    // All done.
+  })
+  .catch((err)=>{
+    console.error(err);
+  });//_∏_
+  
 });
 ```
 
