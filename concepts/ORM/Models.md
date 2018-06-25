@@ -71,9 +71,10 @@ findWithSameNameAsPerson: async function (opts) {
 	var person = await Person.findOne({ id: opts.id });
 	
 	if (!person) {
-		let err = new Error(require('util').format('Cannot find monkeys with the same name as the person w/ id=%s because that person does not exist.', opts.id));
-		err.code = 'E_UNKNOWN_PERSON';
-		throw err;
+		throw require('flaverr')({
+      message: `Cannot find monkeys with the same name as the person w/ id=${opts.id} because that person does not exist.`,
+      code: 'E_UNKNOWN_PERSON'
+    });
 	}
 	
 	return await Monkey.find({ name: person.name });
