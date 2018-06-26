@@ -116,7 +116,7 @@ Person.marry(personA.id, personB.id, function (err) {
 
 ### Case Sensitivity
 
-Queries in Sails 1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much improved query performance and better index utilization. Most databases are case *sensitive* by default but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
+Queries in Sails v1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much improved query performance and better index utilization. Most databases are case *sensitive* by default but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
 
 For example by default MySQL will use a database collation that is case *insensitive* which is different from sails-disk so you may experience different results from development to production. In order to fix this you can set the tables in your MySQL database to a case *sensitive* collation such as `utf8_bin`.
 
