@@ -4,7 +4,7 @@ Set the status code of this response.
 
 ### Usage
 ```usage
-res.status(200);
+res.status(statusCode);
 ```
 
 ### Example
