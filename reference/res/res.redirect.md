@@ -29,7 +29,7 @@ Sails/Express support a few forms of redirection, first being a fully qualified 
 return res.redirect('http://google.com');
 ```
 
-The second form is the domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/admin` would land you at http://example.com/admin:
+The second form is the domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/checkout` would land you at http://example.com/checkout:
 
 ```javascript
 return res.redirect('/checkout');

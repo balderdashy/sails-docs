@@ -27,7 +27,7 @@ The &ldquo;sort clause&ldquo; can be specified as either a string or an array of
 
 To sort users named Jake by age, in ascending order:
 ```javascript
-var users = await User.find({ name: 'Jake'});
+var users = await User.find({ name: 'Jake'})
 .sort('age ASC');
 
 return res.json(users);
@@ -35,7 +35,7 @@ return res.json(users);
 
 To sort users named Finn, first by age, then by when they joined:
 ```javascript
-var users = await User.find({ name: 'Finn'});
+var users = await User.find({ name: 'Finn'})
 .sort([
   { name: 'ASC' },
   { createdAt: 'ASC' },
