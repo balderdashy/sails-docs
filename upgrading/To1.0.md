@@ -4,7 +4,7 @@ Sails v1.0 is here!  Keep reading for a high-level overview of what's changed in
 
 
 ### A note about breaking changes
-While working on this version of Sails, a lot of the decisions we made favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you're finished, there's be a much better chance that the features you're using in Sails are things that its author and maintainers understand thoroughly and use almost every day.
+While working on this version of Sails, a lot of the decisions we made favored a better developer experience over backwards compatibility. Because of this, the upgrade to Sails 1.0 will involve dealing with more breaking changes than previous versions. But when you're finished, there'll be a much better chance that the features you're using in Sails are things that its author and maintainers understand thoroughly and use almost every day.
 
 For more about our philosophy behind many of the breaking changes in 1.0, you can read Mike McNeil's in-depth explanation [here](https://gitter.im/balderdashy/sails?at=5a1d8fcd3a80a84b5b907099).
 

@@ -1,6 +1,6 @@
 # Helpers
 
-As of version 1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  Like actions2, this also makes it much easier to create documentation for your app.
+As of v1.0, all Sails apps come with built-in support for **helpers**, simple utilities that let you share Node.js code in more than one place.  This helps you avoid repeating yourself, and makes development more efficient by reducing bugs and minimizing rewrites.  Like actions2, this also makes it much easier to create documentation for your app.
 
 ### Overview
 
@@ -57,18 +57,18 @@ Though simple, this file displays several characteristics of a good helper: it s
 
 ##### The `fn` function
 
-The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values, or "argins") and `exits` (a dictionary of callback functions).  The job of `fn` is to utilize and process the argins, and then trigger one of the provided exits to return control back to whatever code called the helper.  Note that, as opposed to a typical Javascript function that uses `return` to provide output to the caller, helpers provide that result value by passing it in to `exits.success()`.
+The core of the helper is the `fn` function, which contains the actual code that the helper will run.  The function takes two arguments: `inputs` (a dictionary of input values, or "argins") and `exits` (a dictionary of callback functions).  The job of `fn` is to utilize and process the argins, and then trigger one of the provided exits to return control back to whatever code called the helper.  Note that, as opposed to a typical JavaScript function that uses `return` to provide output to the caller, helpers provide that result value by passing it in to `exits.success()`.
 
 ##### Inputs
 
-A helper&rsquo;s declared _inputs_ are analogous to the parameters of a typical Javascript function: they define the values that the code has to work with.  However, unlike standard JavaScript function parameters, inputs are validated automatically.  If a helper is called using argins of the wrong type for their corresponding inputs, missing a value for a required input, it will trigger an error.  Thus, helpers are _self-validating_.
+A helper&rsquo;s declared _inputs_ are analogous to the parameters of a typical JavaScript function: they define the values that the code has to work with.  However, unlike standard JavaScript function parameters, inputs are validated automatically.  If a helper is called using argins of the wrong type for their corresponding inputs, missing a value for a required input, it will trigger an error.  Thus, helpers are _self-validating_.
 
 Input for a helper are defined in the `inputs` dictionary.  Each input definition is composed of, at minimum, a `type` property.  Helper inputs support types like:
 
 * `string` - a string value
 * `number` - a number value (both integers and floats are valid)
 * `boolean` - the value `true` or `false`
-* `ref` - a Javascript variable reference.  This can be _any_ value, including dictionaries, arrays, functions, streams, and more.
+* `ref` - a JavaScript variable reference.  This can be _any_ value, including dictionaries, arrays, functions, streams, and more.
 
 These are the same data types (and related semantics) that you might already be accustomed to from [defining model attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes).
 So as you might expect, you can provide a default value for an input by setting its `defaultsTo` property.  Or make it required by setting `required: true`.  You can even use `allowNull` and almost any of the higher-level validation rules like `isEmail`.

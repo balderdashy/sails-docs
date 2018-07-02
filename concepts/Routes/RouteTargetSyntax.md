@@ -41,19 +41,19 @@ will match all paths that *start* with **/user/foo**.
 
 > **Note:** When using a route with a wildcard, such as `'/*'`, be aware that this will also match requests to static assets (i.e. `/js/dependencies/sails.io.js`) and override them. To prevent this, consider using the `skipAssets` option [described below](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options).
 
-You can capture the parts of the address that are matched by wildcards into named parameters by using the `:paramName` wildcard syntax instead of the `*`:
+Another way to capture parts of the address is to use **pattern variables**.  This lets a route match special named parameters which _never contain any `/` characters_ by using the `:paramName` pattern variable syntax instead of the `*`:
 
 ```js
 '/user/foo/bar/:name'
 ```
 
-Will match _almost_ the same URLs as:
+Or for an optional path parameter, add `?` to the end of the pattern variable:
 
 ```js
-'/user/foo/bar/*'
+'/user/foo/bar/:name?'
 ```
 
-but will provide the value of the dynamic portions of the route URL to the route handler as parameter values.  In this case: `req.param('name')`.
+This will match _almost_ the same requests as `/user/foo/bar/*`, but will provide the value of the dynamic portions of the route URL to the route handler as parameter values (e.g. `req.param('name')`).
 
 > Note that the wildcard (`*`) syntax matches slashes, where the URL pattern variable (`:`) syntax does not.  So in the example above, given the route address `GET /user/foo/bar/*`, incoming requests with URLs like `/user/foo/bar/baz/bing/bong/bang` would match (whereas if you used the `:name` syntax, the same URL would not match.)
 

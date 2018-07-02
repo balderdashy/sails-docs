@@ -34,7 +34,7 @@ If the `request` argument is specified as an object, it can have the following p
 |--------------------------- | ------------------- | ------- | :-----------:
 | url                        | ((string))          | `"/foo"`, `"PUT /user/friend"`    | (required) The route in the Sails app to make a request to, with an optional HTTP method prefix
 | method                     | ((string))          | `"GET"`, `"POST"`    | (optional) The HTTP method to use in the request.  This will override any method supplied as part of the `url` property.
-| headers                    | ((dictionary))          | `{content-type: 'application/json'}`    | (optional) Dictionary of headers to use in the virtual request.
+| headers                    | ((dictionary))          | `{'content-type': 'application/json'}`    | (optional) Dictionary of headers to use in the virtual request.
 | data                       | ((json))            | `{foo:'bar'}`, `12345` | ((optional)) Data to send along with the request.  For `GET`, `HEAD` and `DELETE` requests, the data will be serialized into a querystring and added to the URL.  Otherwise, it will be sent as-is as the request body.
 
 #### Callback
