@@ -66,7 +66,7 @@ var peoplePossiblyNamedLyra = await Model.find({
   name : {
     'contains' : 'yra'
   }
-})
+});
 ```
 
 #### In Modifier
@@ -244,7 +244,7 @@ in conjunction with a `where` key. The current options available are:
 Limits the number of results returned from a query.
 
 ```usage
-Model.find({ where: { name: 'foo' }, limit: 20 })
+Model.find({ where: { name: 'foo' }, limit: 20 });
 ```
 
 > Note: if you set `limit` to 0, the query will always return an empty array.
