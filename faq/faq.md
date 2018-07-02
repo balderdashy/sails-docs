@@ -120,7 +120,7 @@ Thanks!
 <!-- 6-12-2013 -->
 
 ##### Video tutorials:
-+ [Develop Web Apps in Node.js and Sails.js](https://platzi.com/cursos/javascript-pro/)
++ [Develop Web Apps in Node.js and Sails.js](https://courses.platzi.com/courses/sails-js/)
 + [Jorge Casar: Introduccion a Sails.js](https://www.youtube.com/watch?v=7_zUNTtXtcg)
 <!-- 12-17-2014 -->
 + [Sails.js - How to render node views via Ajax, single page application, SPA](http://www.youtube.com/watch?v=Di50_eHqI7I&feature=youtu.be)

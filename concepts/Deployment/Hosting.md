@@ -16,11 +16,11 @@ The easiest (and free) way to deploy any Sails project generated using the "Web 
 6. In the terminal, make sure you've got everything pulled/pushed and are 100% in sync with the remote master branch on GitHub.
 7. Then type `sails run deploy`.
 
-You can see a demonstration of that in action [here](https://platzi.com/cursos/javascript-pro/).
+You can see a demonstration of that in action [here](https://courses.platzi.com/courses/sails-js/).
 
 ##### More resources for using Heroku with Node.js/Sails.js:
 
-+ [Platzi: Full Stack JavaScript: Pt 5 (2018)](https://platzi.com/cursos/javascript-pro/)
++ [Platzi: Full Stack JavaScript: Pt 5 (2018)](https://courses.platzi.com/courses/sails-js/)
 + [Hello Sails.js: Hosting your Sails.js application on Heroku (2016-2017)](https://hellosails.com/hosting-your-sails-js-application-heroku/)
 + [Platzi: Develop Apps with Sails.js: Pt 2 (2015)](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
 + [Sails.js on Heroku (2015)](http://vort3x.me/sailsjs-heroku/)
