@@ -274,7 +274,7 @@ Custom validation functions receive the incoming value being validated as their 
 
 ##### Custom Validation Messages
 
-Out of the box, Sails.js does not support custom validation messages.  Instead your code should look at validation errors in the callback from your `create()` or `update()` calls and take the appropriate action; whether that's sending a particular error code in your JSON response or rendering the appropriate message in an HTML error page.
+Out of the box, Sails.js does not support custom validation messages.  Instead your code should [look at (or "negotiate") validation errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors#?usage-errors) thrown by `.create()` or `.update()` calls and take the appropriate action; whether that's sending a particular error code in your JSON response or rendering the appropriate message in an HTML error page.
 
 
 <docmeta name="displayName" value="Validations">
