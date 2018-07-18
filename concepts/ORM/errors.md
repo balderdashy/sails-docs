@@ -88,7 +88,7 @@ await User.create({ emailAddress: inputs.emailAddress })
   return 'emailAlreadyInUse';
 })
 // Some other kind of usage / validation error
-.intercept('UsageError', (err)=> {
+.intercept({name:'UsageError'}, (err)=> {
   return 'invalid';
 });
 // If something completely unexpected happened, the error will be thrown as-is.
