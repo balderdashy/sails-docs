@@ -4,8 +4,8 @@ Stream records from your database one at a time or in batches, without first hav
 
 ```usage
 await Something.stream(criteria)
-.eachRecord(async (record, next)=>{
-  return next();
+.eachRecord(async (record)=>{
+
 });
 ```
 
@@ -20,15 +20,17 @@ await Something.stream(criteria)
 
 _Use one of the following:_
 
-+ `.eachRecord(async (record, next)=>{ ... })`
-+ `.eachBatch(async (batch, next)=>{ ... })`
++ `.eachRecord(async (record)=>{ ... })`
++ `.eachBatch(async (batch)=>{ ... })`
 
 <br/>
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:---------------------------------------------------------------------------------|
 | 1 | record _or_ batch   | ((dictionary)) _or_ ((array))      | The current record, or the current batch of records.  _A batch will always contain at least one (and no more than thirty) records._
-| 2 | next                | ((function))        | A callback function that the iteratee should invoke when it is finished processing the current record or batch.  Like any Node callback, if your code in the iteratee calls `next()` with a truthy first argument (conventionally an Error instance), then Waterline understands that to mean an error occurred, and that it should stop processing records/batches.  Otherwise, it is assumed that everything went according to plan.
+
+
+> Note that prior to Sails 1.1.0, the recommended usage of `.stream()` expected the iteratee to invoke a callback (`next`), which is provided as the second argument.  This is no longer necessary as long as you do not actually include a second argument in the function signature.
 
 
 ##### Errors
@@ -141,64 +143,8 @@ sails.log(`Successfully reported ${numReported} creepy comments.`);
 
 If we ran the code in the previous example, we'd be sending one email per creepy comment... which could be a lot!  Not only would this be slow, it could mean sending _thousands_ of individual API requests to our [transactional email provider](https://documentation.mailgun.com/faqs.html#why-not-just-use-sendmail-postfix-courier-imap), quickly overwhelming our API rate limit.
 
-Fortunately, there are a few easy changes we can make to our script to solve this.  Let's try again; but this go-round, instead of processing individual records one at a time, we'll receive and process them as batches:
+For this case, we could use `.eachBatch()` to grab the entire batch of records being fetched, rather than processing individual records one at a time; dramatically reducing the number of necessary API requests.
 
-```js
-// e.g. in a shell script, batch at a time
-var numReported = 0;
-var numEmailsSent = 0;
-
-await Comment.stream({
-  author: 'Bailey Bitterbumps'
-})
-.limit(1000)
-.skip(40)
-.sort('title ASC')
-.populate('attachedFiles', {
-  limit: 3,
-  sort: 'updatedAt'
-})
-.populate('fromBlogPost')
-.eachBatch(async (someCreepyComments)=>{
-
-  // If a comment contains the phrase "creepy", AND it has
-  // at least one attached file, then we'll consider it creepy.
-  // Otherwise, it's not creepy enough to worry about, so we'll
-  // remove it from the `someCreepyComments` array (effectively skipping it).
-  _.remove(someCreepyComments, function (comment){
-    var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/creepy/) && comment.attachedFiles.length > 1;
-    if (!isCreepyEnoughToWorryAbout) { return true; }//<< not creepy enough, remove it.
-    else { return false; }//<< this is creepy enough, keep it.
-  });
-
-  // If this batch doesn't contain any comments that are creepy enough,
-  // then bail now and skip to the next batch, if any are left.
-  if (someCreepyComments.length === 0) {
-    return next();
-  }//--•
-
-  await sails.helpers.sendTemplateEmail.with({
-    template: 'email-creepy-comment-digest',
-    templateData: {
-      urls: _.reduce(someCreepyComments, function (memo, creepyComment){
-        memo += ' • ' + `https://blog.example.com/${creepyComment.fromBlogPost.slug}/comments/${creepyComment.slug}.` + '\n';
-        return memo;
-      }, '')
-    },
-    to: 'authorities@cannedmeat.gov',
-    subject: 'Creepy comment alert: daily digest',
-  });
-
-  numReported += someCreepyComments.length;
-  numEmailsSent++;
-
-  return next();
-
-})//~∞%°
-
-sails.log('Successfully reported '+numReported+' creepy comment(s)-- spread across '+numEmailsSent+' different emails.');
-return exits.success();
-```
 
 
 ### Notes

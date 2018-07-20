@@ -21,15 +21,14 @@ _Or_
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
 | 1 | db                  | ((ref))             | Your newly-leased database connection.  (See [`.usingConnection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/using-connection) for more information on what to do with this.) |
-| 2 | proceed             | ((function))        | Call this function when your `during` code is finished, or if a fatal error occurs.<br/><br/>_Usage:_<br/>&bull; `return proceed();`<br/>&bull; `proceed(new Error('Oops))`<br/>&bull; `proceed(undefined, { some: 'arbitrary result'} )`<br/><br/>_Like any Node callback, if you call `proceed(new Error('Oops'))` (i.e. with a truthy first argument; conventionally an Error instance), then Sails understands that to mean a fatal error occurred.  Otherwise, it is assumed that everything went according to plan.  In any case, when your code calls `proceed()`, the connection is automatically released back to the pool before calling the final callback._
 
-
+> Note that prior to Sails 1.1.0, the recommended usage of `.leaseConnection()` expected your "during" code to call a callback (`proceed`) when it finished.  This is no longer necessary as long as you do not actually include a second argument in the function signature of your "during" code.
 
 ##### Result
 
 | Type                | Details |
 |---------------------|:---------------------------------------------------------------------------------|
-| ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you called `proceed(undefined, 'foo')`, then this will be `'foo'`. |
+| ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you did `return 'foo';`, then this will be `'foo'`. |
 
 ##### Errors
 
@@ -47,32 +46,26 @@ Lease a database connection from the default datastore, then use it to send two 
 
 ```javascript
 var inventory = await sails.getDatastore()
-.leaseConnection(async (db, proceed)=> {
-
-  var location = await Location.findOne({ id: req.param('locationId') })
+.leaseConnection(async (db)=> {
+  var location = await Location.findOne({ id: inputs.locationId })
   .usingConnection(db);
-
   if (!location) {
-    err = new Error('Cannot find location with that id (`'+req.param('locationId')+'`)');
+    let err = new Error('Cannot find location with that id (`'+inputs.locationId+'`)');
     err.code = 'E_NO_SUCH_LOCATION';
-    return proceed(err);
+    throw err;
   }
 
   // Get all products at the location
-  var productOfferings = await ProductOffering.find({ location: req.param('locationId') })
+  var productOfferings = await ProductOffering.find({ location: inputs.locationId })
   .populate('productType')
   .usingConnection(db);
 
-  var inventory = _.indexBy(productOfferings, 'id');
-  return proceed(undefined, inventory);
+  return productOfferings;
 })
-.intercept('E_NO_SUCH_LOCATION', ()=> {
-  return res.notFound();
-});
+.intercept('E_NO_SUCH_LOCATION', 'notFound');
 
-// All done!  Whatever we were doing with that connection worked.
+// All done!  Whatever we were doing with that database connection worked.
 // Now we can proceed with our business.
-return res.json(inventory);
 ```
 
 
