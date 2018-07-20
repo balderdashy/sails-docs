@@ -44,9 +44,9 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### When should I use this?
 
-The `.stream()` method is almost exactly like [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it does not actually provide a second argument to the `.exec()` callback nor does it provide it as a result.  Instead, you use `.eachRecord()` or `.eachBatch()` to provide an iteratee function which receives one record or batch at a time.
+The `.stream()` method is almost exactly like [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find), except that it fetches records one batch at a time.  Every time a batch of records is loaded, the iteratee function you provided is called one or more times.  If you used `.eachRecord()`, your per-record function will be called once for each record in the batch.  Otherwise, using `.eachBatch()`, your per-batch function will be called once with the entire batch.
 
-This is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, they would if you tried to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors: preparing reports, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
+This is useful for working with very large result sets; the kinds of result sets that might overflow your server's available RAM... at least, they would if you tried to hold the entire thing in memory at the same time.  You can use Waterline's `.stream()` method to do the kinds of things you might already be familiar with from Mongo cursors: preparing reports, looping over and modifying database records in a shell script, moving large amounts of data from one place to another, performing complex transformations, or even orchestrating map/reduce jobs.
 
 
 ### Examples
@@ -59,17 +59,14 @@ An action that iterates over users named Finn in the database, one at a time:
 
 ```javascript
 await User.stream({name:'Finn'})
-.eachRecord(async (user, next)=>{
+.eachRecord(async (user)=>{
 
   if (Math.random() > 0.5) {
-    return next(new Error('Oops!  This is a simulated error.'));
+    throw new Error('Oops!  This is a simulated error.');
   }
 
   sails.log(`Found a user ${user.id} named Finn.`);
-  return next();
-}
-
-return res.ok();
+});
 ```
 
 ##### Generating a dynamic sitemap
@@ -81,30 +78,20 @@ An action that responds with a dynamically-generated sitemap:
 
 var sitemapXml = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
-var RENDER_SITEMAP_XML_URL_EL = _.template(
-  '<url>\n'+
-  '  <loc><%= url %></loc>\n'+
-  '  <lastmod><%= updatedAt %></lastmod>\n'+
-  '<changefreq>monthly</changefreq>\n'+
-  '</url>'
-);
-
 await BlogPost.stream()
 .limit(50000)
 .sort('title ASC')
-.eachRecord(async (blogPost, next)=>{
-
-  sitemapXml += RENDER_SITEMAP_XML_URL_EL({
-    url: 'https://blog.example.com/' + blogPost.slug,
-    updatedAt: blogPost.updatedAt
-  });
-
-  return next();
+.eachRecord((blogPost)=>{
+  sitemapXml += (
+    '<url>\n'+
+    '  <loc>https://blog.example.com/' + _.escape(encodeURIComponent(blogPost.slug))+'</loc>\n'+
+    '  <lastmod>'+_.escape(blogPost.updatedAt)+'</lastmod>\n'+
+    '<changefreq>monthly</changefreq>\n'+
+    '</url>'
+  );
 });
 
 sitemapXml += '</urlset>';
-
-return res.send(sitemapXml);
 ```
 
 
@@ -127,11 +114,11 @@ await Comment.stream({ author: 'Bailey Bitterbumps' })
   sort: 'updatedAt'
 })
 .populate('fromBlogPost')
-.eachRecord(async (comment, next)=>{
+.eachRecord(async (comment)=>{
 
-  var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/beanie weenies/) && comment.attachedFiles.length > 1;
+  var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/creepy/) && comment.attachedFiles.length > 1;
   if (!isCreepyEnoughToWorryAbout) {
-    return next();
+    return;
   }
 
   await sails.helpers.sendTemplateEmail.with({
@@ -144,13 +131,10 @@ await Comment.stream({ author: 'Bailey Bitterbumps' })
   });
 
   numReported++;
-  return next();
 });
 
 sails.log(`Successfully reported ${numReported} creepy comments.`);
-return exits.success();
 ```
-
 
 
 ##### Batch-at-a-time
@@ -175,14 +159,14 @@ await Comment.stream({
   sort: 'updatedAt'
 })
 .populate('fromBlogPost')
-.eachBatch(async (someCreepyComments, next)=>{
+.eachBatch(async (someCreepyComments)=>{
 
-  // If a comment contains the phrase "beanie weenies", AND it has
+  // If a comment contains the phrase "creepy", AND it has
   // at least one attached file, then we'll consider it creepy.
   // Otherwise, it's not creepy enough to worry about, so we'll
   // remove it from the `someCreepyComments` array (effectively skipping it).
   _.remove(someCreepyComments, function (comment){
-    var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/beanie weenies/) && comment.attachedFiles.length > 1;
+    var isCreepyEnoughToWorryAbout = comment.rawMessage.match(/creepy/) && comment.attachedFiles.length > 1;
     if (!isCreepyEnoughToWorryAbout) { return true; }//<< not creepy enough, remove it.
     else { return false; }//<< this is creepy enough, keep it.
   });
@@ -218,7 +202,7 @@ return exits.success();
 
 
 ### Notes
-> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exe
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec)
 > + Internally, regardless whether you're using `.eachBatch()` or `.eachRecord()`, Waterline grabs pages of 30 records at a time.
 > + Just like async.eachSeries(), this method bails and throws an error (or calls its .exec() callback with an error) _immediately_ upon receiving the first error from any iteratee.
 > + `.stream()` runs the provided iteratee function on each record or batch, one at a time, in series.
