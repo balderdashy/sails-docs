@@ -53,7 +53,6 @@ To delete any users named Finn from the database:
 await User.destroy({name:'Finn'});
 
 sails.log('Any users named Finn have now been deleted, if there were any.');
-return res.ok();
 ```
 
 
@@ -65,7 +64,6 @@ await User.destroy({
 });
 
 sails.log('The records for troublesome users (3 and 97) have been deleted, if they still existed.');
-return res.ok();
 ```
 
 
@@ -81,8 +79,6 @@ if (burnedBooks.length === 0) {
 } else {
   sails.log('Deleted book with `id: 4`:', burnedBooks[0]);
 }
-
-return res.ok();
 ```
 
 

@@ -39,11 +39,11 @@ var finn = await Users.findOne({
 });
 
 if (!finn) {
-  return res.notFound('Could not find Finn, sorry.');
+  sails.log('Could not find Finn, sorry.');
 }
-
-sails.log('Found "%s"', finn.fullName);
-return res.json(finn);
+else {
+  sails.log('Found "%s"', finn.fullName);
+}
 ```
 
 

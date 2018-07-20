@@ -41,8 +41,6 @@ var averageBalance = await BankAccount.avg('balance')
 .where({
   ownerAge: { '>=': 35, '<=': 45 }
 });
-
-return res.json(averageBalance);
 ```
 
 ### Notes

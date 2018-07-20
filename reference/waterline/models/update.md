@@ -53,7 +53,6 @@ await User.update({name:'Pen'})
 .set({name:'Finn'});
 
 sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
-return res.ok();
 ```
 
 ##### Fetching updated records
@@ -67,8 +66,6 @@ var updatedUsers = await User.update({name:'Finn'})
 
 sails.log(`Updated all ${updatedUsers.length} user${updatedUsers.length===1?'':'s'} named "Finn" to have the name "Jake".  Here they are now:`);
 sails.log(updatedUsers);
-
-return res.ok();
 ```
 
 ### Notes

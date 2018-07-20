@@ -58,7 +58,6 @@ return res.ok();
 var createdUser = await User.create({name:'Finn'}).fetch();
 
 sails.log('Finn\'s id is:', createdUser.id);
-return res.json(createdUser);
 ```
 
 ### Negotiating errors

@@ -38,9 +38,7 @@ To find any users named Finn in the database:
 
 ```javascript
 var usersNamedFinn = await User.find({name:'Finn'});
-
 sails.log('Wow, there are %d users named Finn.  Check it out:', usersNamedFinn.length, usersNamedFinn);
-return res.json(usersNamedFinn);
 ```
 
 
@@ -53,12 +51,10 @@ var usersNamedFinn = await User.find({
   where: {name:'Finn'},
   select: ['name', 'email']
 });
-
-return res.json(usersNamedFinn);
 ```
 
 
-Might yield:
+This might yield:
 
 ```javascript
 [
