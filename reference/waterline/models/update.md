@@ -3,12 +3,13 @@
 Update all records matching criteria.
 
 ```usage
-await Something.update(criteria, valuesToSet);
+await Something.update(criteria)
+.set(valuesToSet);
 ```
 
 _Or:_
 
-+ `var updatedRecords = await Something.update(criteria, valuesToSet).fetch();`
++ `var updatedRecords = await Something.update(criteria).set(valuesToSet).fetch();`
 
 
 ### Usage
@@ -30,8 +31,8 @@ _Or:_
 |     Name        | Type                | When? |
 |:-------------------|---------------------|:---------------------------------------------------------------------------------|
 | UsageError			| ((Error))           | Thrown if something invalid was passed in.
-| AdapterError		| ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to create a record with a duplicate that would violate a uniqueness constraint).
-| Error				| ((Error))           | Thrown if anything else unexpected happens.
+| AdapterError		| ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (i.e. from attempting to update one or more records so that they violate a uniqueness constraint).
+| Error    				| ((Error))           | Thrown if anything else unexpected happens.
 
 See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
 
@@ -48,9 +49,15 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
+To update a particular record, use [`.updateOne()`](https://sailsjs.com/documentation/reference/waterline/update-one).
+
+Or to update one or more records at the same time:
+
 ```javascript
-await User.update({name:'Pen'})
-.set({name:'Finn'});
+await User.update({ name:'Pen' })
+.set({
+  name:'Finn'
+});
 
 sails.log('Updated all users named Pen so that their new name is "Finn".  I hope they like it.');
 ```
@@ -61,7 +68,9 @@ To fetch updated records, use enable the `fetch` meta key:
 
 ```javascript
 var updatedUsers = await User.update({name:'Finn'})
-.set({name:'Jake'})
+.set({
+  name:'Jake'
+})
 .fetch();
 
 sails.log(`Updated all ${updatedUsers.length} user${updatedUsers.length===1?'':'s'} named "Finn" to have the name "Jake".  Here they are now:`);

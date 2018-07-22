@@ -22,13 +22,9 @@ await Something.archive(criteria);
 
 ### Example
 
-To archive a particular user in the the database:
+To archive a particular user in the the database, use [`.archiveOne()`](https://sailsjs.com/documentation/reference/waterline/archive-one).
 
-```javascript
-await User.archiveOne({ id: 4 });
-```
-
-To archive multiple records in the the database:
+Or to archive multiple records in the the database:
 
 ```javascript
 await Pet.archive({ lastActiveAt: { '<': Date.now()-1000*60*60*24*365 } });
