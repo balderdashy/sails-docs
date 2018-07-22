@@ -8,7 +8,7 @@ await Something.update(criteria, valuesToSet);
 
 _Or:_
 
-+ `var updatedRecord = await Something.update(criteria, valuesToSet).fetch();`
++ `var updatedRecords = await Something.update(criteria, valuesToSet).fetch();`
 
 
 ### Usage
