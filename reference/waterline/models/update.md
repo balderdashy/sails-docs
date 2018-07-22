@@ -23,7 +23,7 @@ _Or:_
 
 | Type                | Description      |
 |:--------------------|:-----------------|
-| ((array?)) | By default, for better performance, the updated records are not provided as a result.   But if you chain `.fetch()`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
+| ((array?))          | By default, for better performance, the updated records are not provided as a result.   But if you chain `.fetch()`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
 
 
 ##### Errors
