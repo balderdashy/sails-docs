@@ -88,7 +88,7 @@ For example, imagine you have an attribute defined as follows:
 ```javascript
 workEmail: {
   type: 'string',
-  isEmail: true,
+  validations: { isEmail: true }
 }
 ```
 
@@ -106,8 +106,10 @@ If we wanted to indicate that an attribute supports certain numbers, like a star
 ```javascript
 starRating: {
   type: 'number',
-  min: 1,
-  max: 5,
+  validations: {
+    min: 1,
+    max: 5,
+  },
   required: true,
 }
 ```
@@ -128,8 +130,10 @@ To accomplish this, just use `allowNull`:
 starRating: {
   type: 'number',
   allowNull: true,
-  min: 1,
-  max: 5,
+  validations: {
+    min: 1,
+    max: 5,
+  }
 }
 ```
 
@@ -139,9 +143,11 @@ starRating: {
 > ```javascript
 > starRating: {
 >   type: 'json',
->   isNumber: true,
->   min: 1,
->   max: 5,
+>   validations: {
+      isNumber: true,
+>     min: 1,
+>     max: 5,
+>   }
 > }
 > ```
 
@@ -238,28 +244,34 @@ module.exports = {
       // Note that a base type (in this case "string") still has to be defined, even though validation rules are in use.
       type: 'string',
       required: true,
-      minLength: 5,
-      maxLength: 15
+      validations: {
+        minLength: 5,
+        maxLength: 15
+      }
     },
 
     location: {
       type: 'json',
-      custom: function(value) {
-        return _.isObject(value) &&
-        _.isNumber(value.x) && _.isNumber(value.y) &&
-        value.x !== Infinity && value.x !== -Infinity &&
-        value.y !== Infinity && value.y !== -Infinity;
+      validations: {
+        custom: function(value) {
+          return _.isObject(value) &&
+          _.isNumber(value.x) && _.isNumber(value.y) &&
+          value.x !== Infinity && value.x !== -Infinity &&
+          value.y !== Infinity && value.y !== -Infinity;
+        }
       }
     },
 
     password: {
       type: 'string',
-      custom: function(value) {
-        // • be a string
-        // • be at least 6 characters long
-        // • contain at least one number
-        // • contain at least one letter
-        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+      validations: {
+        custom: function(value) {
+          // • be a string
+          // • be at least 6 characters long
+          // • contain at least one number
+          // • contain at least one letter
+          return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
+        }
       }
     }
 
