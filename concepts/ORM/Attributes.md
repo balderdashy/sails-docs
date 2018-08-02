@@ -233,7 +233,7 @@ Whether to auto-encrypt this attribute. If set to `true`, when a record is retri
 ```javascript
 attributes: {
   ssn: {
-    type: number,
+    type: 'string',
     encrypt: true
   }
 }
