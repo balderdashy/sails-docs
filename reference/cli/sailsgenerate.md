@@ -28,9 +28,6 @@ The following _core generators_ are bundled with Sails:
 | _sails generate etc_            | **Experimental.** Adds the following files to your app:<br/>&bull; .gitignore <br/>&bull; .jshintrc <br/>&bull; .editorconfig <br/>&bull; .npmignore <br/>&bull; .travis.yml <br/>&bull; .appveyor.yml
 
 
-> TODO: finish documenting these https://github.com/balderdashy/sails-generate/tree/e845c44a4294adf86d52b22be2211edcbd4a2fe5/lib/core-generators
-
-
 ### Custom generators
 
 [Custom / 3rd party generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) allow you to extend or override the default functionality of `sails generate` (for example, by creating a generator that outputs view files for your favorite [view engine](https://sailsjs.com/documentation/concepts/views/view-engines).
