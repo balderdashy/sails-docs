@@ -12,7 +12,7 @@ req.params;
 ```
 
 ### Notes
-> + When a route address is defined using a regular expression, each capture group match from the regex is available as `req.params[0]`, `req.params[1]`, etc.This strategy is also applied to unnamed wild-card matches in string routes such as `/file/*`.
+> + When a route address is defined using a regular expression, each capture group match from the regex is available as `req.params[0]`, `req.params[1]`, etc. This strategy is also applied to unnamed wild-card matches in string routes such as `/file/*`.
 
 
 
