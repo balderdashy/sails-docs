@@ -203,7 +203,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 ### datastore
 
-The name of the [datastore configuration](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
+The name of the [datastore configuration](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores) that a model will use to find records, create records, etc.
 
 ```
 datastore: 'legacyECommerceDb'
@@ -215,7 +215,7 @@ datastore: 'legacyECommerceDb'
 
 This indicates the database where this model will fetch and save its data.  Unless otherwise specified, every model in your app uses a built-in datastore named "default", which is included in every new Sails app out of the box.  This makes it easy to configure your app's primary database, while still allowing you to override the `datastore` setting for any particular model.
 
-For more about configuring your app's datastores, see [Reference > Configuration > Datastores](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores).
+For more about configuring your app's datastores, see [Reference > Configuration > Datastores](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
 
 ### dataEncryptionKeys
