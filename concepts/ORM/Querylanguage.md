@@ -10,7 +10,7 @@ keys used in a query object. It is loosely based on the criteria used in MongoDB
 
 Queries can be built using either a `where` key to specify attributes, or excluding it.
 
-Using the `where` key allows you to also use [criteria clauses](https://sailsjs.com/documentation/concepts/models-and-orm/query-language#?criteria-clauses), such as `limit`, `skip`, and `sort`.
+Using the `where` key allows you to also use [query options](https://sailsjs.com/documentation/concepts/models-and-orm/query-language#?criteria-clauses), such as `limit`, `skip`, and `sort`.
 
 
 ```javascript
@@ -231,9 +231,9 @@ var historyCourses = await Course.find({
 _For performance reasons, case-sensitivity of `endsWith` depends on the database adapter._
 
 
-### Criteria Clauses
+### Query Options
 
-Criteria clauses allow you refine the results that are returned from a query. They are used
+Query options allow you refine the results that are returned from a query. They are used
 in conjunction with a `where` key. The current options available are:
 
 * `limit`
