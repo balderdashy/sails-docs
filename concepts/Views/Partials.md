@@ -21,10 +21,10 @@ Depending on where this  render the partial located at `views/partials/navbar.ej
  * > the EJS block).
  *
  */%>
-<div class="navbar">
+<nav class="navbar">
   <a href="/">Dashboard</a>
   <a href="/inbox">Inbox</a>
-</div>
+</nav>
 ```
 
 
@@ -49,27 +49,27 @@ Partials automatically inherit the view locals that are available wherever they 
  *   @property {Boolean} isLoggedIn
  *   @property {String} username
  */%>
-<div class="navbar">
-  <div class="links">
+<nav class="navbar">
+  <p class="links">
     <a href="/">Dashboard</a>
     <a href="/inbox">Inbox</a>
-  </div>
-  <div class="login-or-signup"><%
+  </p>
+  <p class="login-or-signup"><%
   // If the user accessing this page is logged in...
   if (currentUser.isLoggedIn) {
-  %><span>
+  %>
     You are signed in as <a href="/<%= currentUser.username %>"><%= currentUser.username %></a>.
-  </span><%
+  <%
   }
   // Otherwise the user accessing this page must be a visitor:
   else {
-  %><span>
+  %>
     <a href="/login">Log in</a>
-  </span><%
+  <%
   }
   %>
-  </div>
-</div>
+  </p>
+</nav>
 ```
 
 
@@ -129,7 +129,7 @@ And finally, here is our new partial representing an individual inbox message:
  */%>
 <li class="inbox-message" data-id="<%= message.id %>">
   <a href="/messages/<%= message.id %>"><%= message.subject %></a>
-  <button class="fa fa-trash" is="delete-btn"></button>
+  <button class="fa fa-trash" is="delete-btn" aria-label="Delete"></button>
 </li>
 ```
 
