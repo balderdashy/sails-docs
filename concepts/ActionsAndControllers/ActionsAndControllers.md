@@ -180,7 +180,7 @@ api/
    signup.js
 ```
 
-where each of the three Javascript files exports a `req, res` function or an actions2 definition.
+where each of the three JavaScript files exports a `req, res` function or an actions2 definition.
 
 Using standalone actions has several advantages over controller files:
 
@@ -195,7 +195,7 @@ Using standalone actions has several advantages over controller files:
 
 In the tradition of most MVC frameworks, mature Sails apps usually have "thin" controllers -- that is, your action code ends up lean, because reusable code has been moved into [helpers](https://sailsjs.com/documentation/concepts/helpers) or occasionally even extracted into separate node modules.  This approach can definitely make your app easier to maintain as it grows in complexity.
 
-But at the same time, extrapolating code into reusable helpers _too early_ can cause maintainence issues that waste time and productivity.  So the right answer lies somewhere in the middle.
+But at the same time, extrapolating code into reusable helpers _too early_ can cause maintenance issues that waste time and productivity.  So the right answer lies somewhere in the middle.
 
 Sails recommends this general rule of thumb:  **Wait until you're about to use the same piece of code for the _third_ time before you extrapolate it into a separate helper.**  But as with any dogma, use your judgement!  If the code in question is very long or complex, then it might make sense to pull it out into a helper much sooner.  Conversely, if you know what you're building is a quick, throwaway prototype, you might just copy and paste the code to save time.
 
