@@ -23,7 +23,7 @@ An action can have any file extension besides `.md` (Markdown) and `.txt` (text)
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _actions2_ (_recommended_) or _classic_.
+Action files can use one of two formats: _actions2 (recommended)_ or _classic_.
 
 ##### actions2 (_recommended_)
 
