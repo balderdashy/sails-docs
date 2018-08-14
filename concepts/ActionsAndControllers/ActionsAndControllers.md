@@ -23,42 +23,11 @@ An action can have any file extension besides `.md` (Markdown) and `.txt` (text)
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _classic_ or _actions2_.
+Action files can use one of two formats: _actions2_ (_recommended_) or _classic_.
 
-##### Classic actions
+##### actions2 (_recommended_)
 
-The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
-
-```javascript
-module.exports = async function welcomeUser (req, res) {
-
-  // Get the `userId` parameter from the request.
-  // This could have been set on the querystring, in
-  // the request body, or as part of the URL used to
-  // make the request.
-  var userId = req.param('userId');
-
-   // If no `userId` was specified, or it wasn't a number, return an error.
-  if (!_.isNumeric(userId)) {
-    return res.badRequest(new Error('No user ID specified!'));
-  }
-
-  // Look up the user whose ID was specified in the request.
-  var user = await User.findOne({ id: userId });
-
-  // If no user was found, redirect to signup.
-  if (!user) { return res.redirect('/signup' );
-
-  // Display the welcome view, setting the view variable
-  // named "name" to the value of the user's name.
-  return res.view('welcome', {name: user.name});
-
-}
-```
-
-##### actions2
-
-Another, more structured way to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the same action as above, rewritten using the actions2 format:
+Since the release of Sails v1.0, the recommended approach to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the actions2 format:
 
 ```javascript
 module.exports = {
@@ -117,7 +86,7 @@ Removed in order to reduce the amount of information:  (Mike nov 14, 2017)
 and to the Sails application object (in case you don&rsquo;t have [globals](https://sailsjs.com/documentation/concepts/globals) turned on) as `this.sails`.
 -->
 
-Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
+Using classic `req, res` functions for your actions (we'll get to this below) is technically less typing.  However, using the newer actions2 provides several advantages:
 
  * The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers).
  * You guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run.
@@ -147,6 +116,37 @@ throw { hasConflictingCourses: ['CS 301', 'M 402'] };
 ```
 
 Aside from being an easy-to-read shorthand, exit signals are especially useful if you're inside of a `for` loop, `forEach`, etc., but still want to exit through a particular exit.
+
+##### Classic actions
+
+The traditional way of getting started creating a Sails action (pre v1.0) is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+
+```javascript
+module.exports = async function welcomeUser (req, res) {
+
+  // Get the `userId` parameter from the request.
+  // This could have been set on the querystring, in
+  // the request body, or as part of the URL used to
+  // make the request.
+  var userId = req.param('userId');
+
+   // If no `userId` was specified, or it wasn't a number, return an error.
+  if (!_.isNumeric(userId)) {
+    return res.badRequest(new Error('No user ID specified!'));
+  }
+
+  // Look up the user whose ID was specified in the request.
+  var user = await User.findOne({ id: userId });
+
+  // If no user was found, redirect to signup.
+  if (!user) { return res.redirect('/signup' );
+
+  // Display the welcome view, setting the view variable
+  // named "name" to the value of the user's name.
+  return res.view('welcome', {name: user.name});
+
+}
+```
 
 ### Controllers
 
