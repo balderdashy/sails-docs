@@ -85,7 +85,7 @@ findWithSameNameAsPerson: async function (opts) {
 Then you can do:
 
 ```js
-var monkeys = await Monkey.findWithSameNameAsPerson(37);
+var monkeys = await Monkey.findWithSameNameAsPerson({id:37});
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
