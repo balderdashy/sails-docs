@@ -41,6 +41,7 @@ if (finn) {
 
 ### Notes
 > This method is best used in situations where you would otherwise use [`.destroyOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy-one), but you still need to keep the deleted data somewhere (e.g. for compliance reasons).  If you anticipate needing to access the data again in your app (e.g. if you allow un-deleting), you may want to consider using an `isDeleted` flag instead, since archived records are more difficult to work with programmatically.  (There is no built-in "unarchive".)
+> + This method **does not support .fetch()** -- because it _always_ returns the archived record, if one was matched.
 
 
 <docmeta name="displayName" value=".archiveOne()">
