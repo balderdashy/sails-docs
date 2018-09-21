@@ -40,6 +40,7 @@ if (burnedBook) {
 
 
 ### Notes
+> + This method **does not support .fetch()** -- because it _always_ returns the destroyed record, if one was matched.
 > + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
 
 
