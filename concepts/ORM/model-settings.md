@@ -280,7 +280,7 @@ If set to `true`, the model will _not_ use an auto-generated MongoDB ObjectID ob
 | ----------- |:------------------------|:--------------|
 | ((boolean)) | `true`                  | `false`
 
-This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({cascade: true})`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+This is disabled by default, for performance reasons.  You can enable it with this model setting, or on a per-query basis using [`.meta({dontUseObjectIds: true})`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
 
 
