@@ -14,6 +14,7 @@ The following _core generators_ are bundled with Sails:
 
 |  Command                        | Details               |
 |:--------------------------------|:----------------------|
+| sails generate page             | Generate four pages including your .ejs, .less, page script, and view action. You must add your .less file to the importer and you must set your route for your new page to work.
 | sails generate model            | Generate **api/models/Foo.js**, including attributes with the specified types if provided.
 | sails generate action           | Generate a standalone [action](https://sailsjs.com/documentation/concepts/actions-and-controllers/generating-actions-and-controllers#?generating-standalone-actions).
 | sails generate helper           | Generate a [helper](https://sailsjs.com/documentation/concepts/helpers) at **api/helpers/foo.js**.
