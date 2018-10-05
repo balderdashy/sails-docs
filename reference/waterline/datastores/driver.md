@@ -18,9 +18,9 @@ Imagine you're building your own structured data visualizer (e.g. phpMyAdmin).  
 var Driver = sails.getDatastore().driver;
 
 // Create our own dynamic connection manager (e.g. connection pool)
-var manager = (
+var managerReport = (
   await Driver.createManager({ connectionString: req.param('connectionUrl') })
-).manager;
+);
 
 var db;
 try {
