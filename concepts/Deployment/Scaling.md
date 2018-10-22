@@ -64,6 +64,6 @@ No matter what tool you're using, it is important to spend your focus and time o
 ### Notes
 
 > + You don't have to use Redis for your sessions-- you can actually use any Connect or Express-compatible session store.  See [sails.config.session](sailsjs.com/documentation/reference/configuration/sails-config-session) for more information.
-> + Some hosted Redis providers (such as <a href="https://elements.heroku.com/addons/redistogo" target="_blank">Redis To Go</a>) set a <a href="https://redis.io/topics/clients#client-timeouts" target="_blank">timeout for idle connections</a>.  In most cases you&rsquo;ll want to turn this off to avoid unexpected behavior in your app.  Details on how to turn off the timoeout vary depending on provider (you may have to contact their support team).
+> + Some hosted Redis providers (such as <a href="https://elements.heroku.com/addons/redistogo" target="_blank">Redis To Go</a>) set a <a href="https://redis.io/topics/clients#client-timeouts" target="_blank">timeout for idle connections</a>.  In most cases you'll want to turn this off to avoid unexpected behavior in your app. Details on how to turn off the timeout vary depending on provider (you may have to contact their support team).
 
 <docmeta name="displayName" value="Scaling">
