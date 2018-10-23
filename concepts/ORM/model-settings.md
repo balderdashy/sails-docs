@@ -203,7 +203,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 ### datastore
 
-The name of the [datastore configuration](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) that a model will use to find records, create records, etc.
+The name of the [datastore configuration](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores) that a model will use to find records, create records, etc.
 
 ```
 datastore: 'legacyECommerceDb'
