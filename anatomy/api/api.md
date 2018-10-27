@@ -4,7 +4,7 @@ This folder contains the vast majority of your app's back-end logic.  It is home
 
 In it you will find the following:
 
-- Controllers: [Actions](https://sailsjs.com/documentation/concepts/actions-and-controllers) contain back-end logic that handle incoming requests (like handling a form submission or responding with personalized, server-rendered HTML).
+- Controllers: [Controllers](https://sailsjs.com/documentation/concepts/actions-and-controllers) contain back-end logic that handle incoming requests (like handling a form submission or responding with personalized, server-rendered HTML).
 - Helpers: [Helpers](https://sailsjs.com/documentation/concepts/helpers) are shared functions that can be called from anywhere in your app.
 - Models: [Models](https://sailsjs.com/documentation/concepts/models-and-orm) are the structures that contain data for your Sails App.
 - Policies: [Policies](https://sailsjs.com/documentation/concepts/policies) are middleware that restrict access to certain actions in your app.
