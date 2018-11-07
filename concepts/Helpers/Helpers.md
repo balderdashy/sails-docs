@@ -110,7 +110,7 @@ var newUserId = sails.helpers.inviteNewUser('bubba@hawtmail.com')
 >
 > As for [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept)?  It's just another shortcut so you're not forced to write custom try/catch blocks and negotiate these errors by hand all the time.
 
-Internally, your helper's `fn` is responsible for triggering one of its exits-- either by throwing a [special exit signal]() or by invoking an exit callback (e.g. `exits.success('foo')`).  If your helper sends back a result through the success exit (e.g. `'foo'`), then that will be the return value of the helper.
+Internally, your helper's `fn` is responsible for triggering one of its exits-- either by throwing a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) or by invoking an exit callback (e.g. `exits.success('foo')`).  If your helper sends back a result through the success exit (e.g. `'foo'`), then that will be the return value of the helper.
 
 > Note: For non-success exits, Sails will use the exit's predefined description to create an appropriate JavaScript Error instance automatically, if needed.
 
@@ -183,7 +183,7 @@ But before you remove `await`, just make sure the helper is actually synchronous
 
 For more granular error handling (and for those exceptional cases that aren't _quite_ errors, even) you may be used to setting some kind of error code, then sniffing it out.  This approach works fine, but it can be time consuming and hard to keep track of.
 
-Fortunately, Sails helpers take things a couple of steps further.  See the pages on [.tolerate()](), [.intercept()](), and [special exit signals]() for more information.
+Fortunately, Sails helpers take things a couple of steps further.  See the pages on [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate), [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept), and [special exit signals](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) for more information.
 
 
 <!--
