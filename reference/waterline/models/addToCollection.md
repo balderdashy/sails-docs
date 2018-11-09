@@ -41,8 +41,8 @@ await User.addToCollection(3, 'pets')
 
 ### Edge cases
 
-+ If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
-+ If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP#Code).
++ If an empty array of child ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP_(code)).
++ If an empty array of parent ids is provided, then this is a [no-op](https://en.wikipedia.org/wiki/NOP_(code)).
 + If the parent id (or any _one_ of the parent ids, if specified as an array) does not actually correspond with an existing, persisted record, the exact behavior depends on what kind of association this is:
   + If this collection is a 1-way association, or a 2-way association where the other side is plural ([many-to-many](https://sailsjs.com/documentation/concepts/models-and-orm/associations/many-to-many)), then Waterline **pretends like the parent record(s) exist anyways**, tracking their relationships as prearranged, "aspirational" junction records in the database.
   + If this is a 2-way association where the other side is singular ([one-to-many](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many)), then the missing parent records are simply ignored.
