@@ -22,22 +22,18 @@ await Something.archive(criteria);
 
 ### Example
 
-To archive a user in the the database:
+To archive a particular user in the the database, use [`.archiveOne()`](https://sailsjs.com/documentation/reference/waterline/archive-one).
+
+Or to archive multiple records in the the database:
+
 ```javascript
-
-await User.archive({ id: 1 });
-```
-
-To archive multiple records in the the database:
-```javascript
-
 await Pet.archive({ lastActiveAt: { '<': Date.now()-1000*60*60*24*365 } });
 ```
 
 ### Accessing archived records
 If you need to access archived records in the future, you can do so by searching the Archive model.  For example, you might pass in the original record's primary key and [model identity](https://sailsjs.com/documentation/reference/waterline-orm/models#?sailsmodels) as constraints in a query.
 
-For example, to retrieve the archive record describing the user we got rid of above:
+For example, to retrieve the archive describing the user we got rid of above:
 
 ```javascript
 var archive = await Archive.findOne({
@@ -45,11 +41,11 @@ var archive = await Archive.findOne({
   originalRecordId: 1
 });
 
-// The original record is now available as `archive.originalRecord`.
+// The data from the original record is stored as `archive.originalRecord`.
 ```
 
 ### Notes
-> This method is best used in situations where you would otherwise use [`.destroy()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy), but you still need to keep the deleted data somewhere. If you anticipate needing to access the data again in your app (e.g. if you allow un-deleting), you may want to consider using an `isDeleted` flag instead, since the records become more difficult to work with once they are archived.
+> This method is best used in situations where you would otherwise use [`.destroy()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy), but you still need to keep the deleted data somewhere (e.g. for compliance reasons).  If you anticipate needing to access the data again in your app (e.g. if you allow un-deleting), you may want to consider using an `isDeleted` flag instead, since archived records are more difficult to work with programmatically.  (There is no built-in "unarchive".)
 
 
 <docmeta name="displayName" value=".archive()">

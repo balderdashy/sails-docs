@@ -35,8 +35,6 @@ For user 3, replace all pets in the "pets" collection with pets 99 and 98:
 ```javascript
 await User.replaceCollection(3, 'pets')
 .members([99,98]);
-
-return res.ok();
 ```
 
 ### Edge cases

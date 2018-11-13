@@ -53,7 +53,6 @@ To delete any users named Finn from the database:
 await User.destroy({name:'Finn'});
 
 sails.log('Any users named Finn have now been deleted, if there were any.');
-return res.ok();
 ```
 
 
@@ -65,24 +64,20 @@ await User.destroy({
 });
 
 sails.log('The records for troublesome users (3 and 97) have been deleted, if they still existed.');
-return res.ok();
 ```
 
 
 ##### Fetching destroyed records
 
-To delete a particular book, and also fetch the destroyed record:
+To delete a particular book, and also fetch the destroyed record, use [.destroyOne()](https://sailsjs.com/documentation/reference/waterline/destroy-one).
+
+Or to delete multiple books and also fetch all destroyed records:
 
 ```javascript
-var burnedBooks = await Book.destroy({id: 4}).fetch();
-
-if (burnedBooks.length === 0) {
-  sails.log('No book found with `id: 4`.');
-} else {
-  sails.log('Deleted book with `id: 4`:', burnedBooks[0]);
-}
-
-return res.ok();
+var burnedBooks = await Book.destroy({
+  controversiality: { '>': 0.9 }
+}).fetch();
+sails.log('Deleted books:', burnedBooks);
 ```
 
 

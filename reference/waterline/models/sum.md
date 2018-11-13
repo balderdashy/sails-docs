@@ -39,14 +39,12 @@ Get the cumulative account balance of all bank accounts that have less than $32,
 
 ```javascript
 var total = await BankAccount.sum('balance')
-  .where({
-    or: [
-      { balance: { '<': 32000 } },
-      { suspended: true }
-    ]
-  });
-
-return res.json(total);
+.where({
+  or: [
+    { balance: { '<': 32000 } },
+    { suspended: true }
+  ]
+});
 ```
 
 ### Notes

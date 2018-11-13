@@ -34,8 +34,6 @@ For user 3, remove pets 99 and 98 from the "pets" collection:
 ```javascript
 await User.removeFromCollection(3, 'pets')
 .members([99,98]);
-
-return res.ok();
 ```
 
 

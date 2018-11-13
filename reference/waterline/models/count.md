@@ -35,7 +35,6 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 ```javascript
 var total = await User.count({name:'Flynn'});
 sails.log(`There ${total===1?'is':'are'} ${total} user${total===1?'':'s'} named "Flynn".`);
-return res.json(total);
 ```
 
 ### Notes

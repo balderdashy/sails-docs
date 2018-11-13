@@ -185,7 +185,7 @@ module.exports = {
 
 Let's say there's a table called `our_users` in the old MySQL database that looks like this:
 
-| the_primary_key | email_address | full_name | seriously_encrypted_password|
+| the_primary_key | email_address | full_name | seriously_hashed_password|
 |------|---|----|---|
 | 7 | mike@sameness.foo | Mike McNeil | ranchdressing |
 | 14 | nick@sameness.foo | Nick Crumrine | thousandisland |
@@ -210,7 +210,7 @@ module.exports = {
     },
     password: {
       type: 'string',
-      columnName: 'seriously_encrypted_password'
+      columnName: 'seriously_hashed_password'
     },
     email: {
       type: 'string',
@@ -233,7 +233,7 @@ Whether to auto-encrypt this attribute. If set to `true`, when a record is retri
 ```javascript
 attributes: {
   ssn: {
-    type: number,
+    type: 'string',
     encrypt: true
   }
 }

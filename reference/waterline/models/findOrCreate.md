@@ -58,8 +58,6 @@ User.findOrCreate({ name: 'Finn' }, { name: 'Finn' })
   else {
     sails.log('Found existing user: ' + user.name);
   }
-
-  return res.json(user);
 });
 ```
 

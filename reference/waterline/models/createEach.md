@@ -53,16 +53,12 @@ To create users named Finn and Jake in the database:
 
 ```javascript
 await User.createEach([{name:'Finn'}, {name: 'Jake'}]);
-
-return res.ok();
 ```
 
 ##### Fetching newly-created records
 ```javascript
 var createdUsers = User.createEach([{name:'Finn'}, {name: 'Jake'}]).fetch();
-
 sails.log(`Created ${createdUsers.length} user${createdUsers.length===1?'':'s'}.`);
-return res.json(createdUsers);
 ```
 
 ### Notes

@@ -376,8 +376,8 @@ with something like:
 ```
 var passport = require('passport');
 middleware: {
-  passportInit: passport.initialize,
-  passportSession: passport.session
+  passportInit: passport.initialize(),
+  passportSession: passport.session()
 },
 ```
 being sure to insert `passportInit` and `passportSession` into your `middleware.order` array in `config/http.js`.

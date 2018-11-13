@@ -37,12 +37,11 @@ try {
     case 'E_VALIDATION':
       // => '[Error: Invalid `bankAccount`]'
       _.each(e.all, function(woe){
-        console.log(woe.attrName+': '+woe.message);
+        sails.log(woe.attrName+': '+woe.message);
       });
-      return res.badRequest(err);
-
+      break;
     default:
-      return res.serverError(e);
+      throw err;
   }
 }
 ```

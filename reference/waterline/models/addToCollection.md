@@ -34,8 +34,6 @@ For user 3, add pets 99 and 98 to the "pets" collection:
 ```javascript
 await User.addToCollection(3, 'pets')
 .members([99,98]);
-
-return res.ok();
 ```
 
 > If either user record already has one of those pets in its "pets", then we just silently skip over it.
