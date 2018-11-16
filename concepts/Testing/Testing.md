@@ -97,7 +97,7 @@ There is one option that is worth paying a bit of extra attention to.  The defau
 > ```
 >
 > _If you prefer Typescript, the approach is basically the same, except you'll want to use `--require ts-node/register`.
-
+>Also if mocha doesnt stop after tests are finished you can add --exit 
 
 ### Writing tests
 
