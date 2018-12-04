@@ -18,7 +18,7 @@ module.exports = {
     },
     pets:{
       collection: 'pet',
-      via: 'owners',
+      via: 'owner',
       through: 'petuser'
     }
   }
