@@ -90,6 +90,36 @@ var users = await User.find().populate('pets');
   // }]
 ```
 
+#### Mandatory association
+
+In the above example, the `owner` was not a mandatory association for the `Pet`. We can create a pet without an owner by omitting a user ID from the owner. To make the association mandatory add truthy `required` key to the model.
+
+```javascript
+// myApp/api/models/Pet.js
+// A pet may only belong to a single user
+module.exports = {
+  attributes: {
+    breed: {
+      type: 'string'
+    },
+    type: {
+      type: 'string'
+    },
+    name: {
+      type: 'string'
+    },
+
+    // Add a reference to User
+    owner: {
+      model: 'user',
+      // An owner is mandatory
+      required: true
+    }
+  }
+};
+```
+
+Now doing `Pet.create` without an owner, will throw a `UsageError`.
 
 <docmeta name="displayName" value="One-to-many">
 
