@@ -3,13 +3,13 @@
 Add a foreign record (e.g. a comment) to one of this record's collections (e.g. "comments").
 
 ```usage
-PUT /:model/:id/:association/:fk
+PUT /:model/:parentid/:association/:childid
 ```
 
 This action adds a reference to some other record (the "foreign", or "child" record) onto a particular collection of this record (the "primary", or "parent" record).
 
-+ If the specified `:id` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
-+ If the specified `:fk` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
++ If the specified `:parentid` does not correspond with a primary record that exists in the database, this responds using `res.notFound()`.
++ If the specified `:childid` does not correspond with a foreign record that exists in the database, this responds using `res.notFound()`.
 + If the primary record is already associated with this foreign record, this action will not modify any records.  (Note that currently, in the case of a many-to-many association, it _will_ add duplicate junction records though!  To resolve this, add a multi-column index at the database layer, if possible.  We are currently working on a friendlier solution/default for users of MongoDB, sails-disk, and other NoSQL databases.)
 + Note that, if the association is "2-way" (meaning it has `via`) then the foreign key or collection it points to with that `via` will also be updated on the foreign record.
 
@@ -19,9 +19,9 @@ This action adds a reference to some other record (the "foreign", or "child" rec
  Parameter                          | Type                                    | Details
 :-----------------------------------| --------------------------------------- |:---------------------------------
  model          | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model for the parent record.<br/><br/>e.g. `'employee'` (in `/employee/7/involvedinPurchases/47`)
- id                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
+ parentid                | ((string))    | The desired parent record's primary key value.<br/><br/>e.g. `'7'` (in `/employee/7/involvedInPurchases/47`)
  association       | ((string))                             | The name of the collection attribute.<br/><br/>e.g. `'involvedInPurchases'`
- fk | ((string))    | The primary key value (usually id) of the child record to add to this collection.<br/><br/>e.g. `'47'`
+ childid | ((string))    | The primary key value (usually id) of the child record to add to this collection.<br/><br/>e.g. `'47'`
 
 
 ### Example
