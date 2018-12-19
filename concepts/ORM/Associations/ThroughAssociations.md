@@ -48,10 +48,10 @@ module.exports = {
 // myApp/api/models/PetUser.js
 module.exports = {
   attributes: {
-    owner:{
+    owners:{
       model:'user'
     },
-    pet: {
+    pets: {
       model: 'pet'
     }
   }
