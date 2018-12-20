@@ -175,6 +175,8 @@ To use the Cloud SDK, first ensure you have a directory called "test" at the roo
 We next do the same trick we did with autneticated `supertest`. We should do this once in setup, it is recommended to do in the callback of the `sails.lift` call in `lifecycle.test.js`.
 
 ```
+const Cloud = require('../assets/dependencies/cloud');
+
 sails.lift(......, async function() {
   let SAILS_SID_COOKIE, CSRF_TOKEN;
 
@@ -197,6 +199,9 @@ sails.lift(......, async function() {
      protocol: sails.helpers.http,
      methods: require('/test/private/CLOUD_SDK_METHODS')
    });
+   
+   global.Cloud = Cloud;
+   
 });
 ```
 
