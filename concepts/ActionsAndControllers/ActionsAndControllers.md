@@ -27,6 +27,8 @@ Action files can use one of two formats: _classic_ or _actions2_.
 
 ##### Classic actions
 
+###### [`sails generate action user/signup --no-actions2`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create a classic action.
+
 The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
 
 ```javascript
@@ -57,6 +59,8 @@ module.exports = async function welcomeUser (req, res) {
 ```
 
 ##### actions2
+
+###### [`sails generate action user/signup`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
 Another, more structured way to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the same action as above, rewritten using the actions2 format:
 
