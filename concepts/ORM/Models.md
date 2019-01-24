@@ -12,8 +12,8 @@ module.exports = {
   attributes: {
     nameOnMenu: { type: 'string', required: true },
     price: { type: 'string', required: true },
-    percentRealMeat: { type: 'number', defaultsTo: 20, columnType: 'FLOAT' },
-    numCalories: { type: 'number' },
+    percentRealMeat: { type: 'integer', defaultsTo: 20, columnType: 'FLOAT' },
+    numCalories: { type: 'integer' },
   },
 };
 ```
