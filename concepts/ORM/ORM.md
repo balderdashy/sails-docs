@@ -69,7 +69,8 @@ A **datastore** represents a particular database configuration.  This configurat
   host: 'localhost',
   port: 3306,
   user: 'root',
-  password: 'g3tInCr4zee&stUfF'
+  password: 'g3tInCr4zee&stUfF',
+  database: 'database-name'
 }
 // ...
 ```
