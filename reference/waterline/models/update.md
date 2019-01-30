@@ -49,7 +49,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-To update a particular record, use [`.updateOne()`](https://sailsjs.com/documentation/reference/waterline/update-one).
+To update a particular record, use [`.updateOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update-one).
 
 Or to update one or more records at the same time:
 
