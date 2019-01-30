@@ -90,19 +90,21 @@ module.exports = {
       }
    },
 
-   fn: async function (inputs, exits) {
+   fn: async function ({userId}) {
 
       // Look up the user whose ID was specified in the request.
       // Note that we don't have to validate that `userId` is a number;
       // the machine runner does this for us and returns `badRequest`
       // if validation fails.
-      var user = await User.findOne({ id: inputs.userId });
+      var user = await User.findOne({ id: userId });
 
       // If no user was found, respond "notFound" (like calling `res.notFound()`)
-      if (!user) { return exits.notFound(); }
+      if (!user) { throw 'notFound'; }
 
-      // Display the welcome view.
-      return exits.success({name: user.name});
+      // Display a personalized welcome view.
+      return {
+        name: user.name
+      };
    }
 };
 ```
@@ -110,12 +112,6 @@ module.exports = {
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
 > Note that machine-as-action provides actions with access to the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.
-
-<!--
-Removed in order to reduce the amount of information:  (Mike nov 14, 2017)
-
-and to the Sails application object (in case you don&rsquo;t have [globals](https://sailsjs.com/documentation/concepts/globals) turned on) as `this.sails`.
--->
 
 Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
 
