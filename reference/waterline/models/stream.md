@@ -158,7 +158,7 @@ To increase or decrease the batch size, pass an additional argument to `.eachBat
 ```javascript
 .eachBatch(100, async (records)=>{
   console.log(`Got ${records.length} records.`);
-});
+})
 ```
 
 > Using `.eachBatch()` in your code is not necessarily more or less efficient than using `.eachRecord()`.  That's because, internally, regardless which iterator you use, Waterline asks the database for more than one record at a time (30, by default).  With `.eachBatch()`,  you can easily configure this batch size using the extra argument described above.  But you might _also_ want to customize the batch size while using `.eachRecord()` (for example, to avoid getting rate-limited by a 3rd party API you are using).  Fortunately, that is now possible too!  Just use [`.meta()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).  For example, `.meta({batchSize: 100})`.
