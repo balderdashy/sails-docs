@@ -198,7 +198,7 @@ If you'd like to have a system automatically run your tests every time you push 
 + [Semaphore CI](https://semaphoreci.com/)
 + [Appveyor](http://appveyor.com)  _(useful if you'll be deploying to a Windows server)_
 
-> All of the options above charge a monthly free to proprietary apps, but are free for open source.  Circle CI is free for proprietary apps as well, but throttled to two builds at a time. Semaphore is also free and and allows you 4x parallel CI/CD jobs.
+> All of the options above charge a monthly fee to proprietary apps, but are free for open source.  Circle CI is free for proprietary apps as well, but throttled to two builds at a time. Semaphore is also free and and allows you 4x parallel CI/CD jobs.
 
 
 ### Load testing
