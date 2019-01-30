@@ -102,25 +102,26 @@ tableName: 'some_preexisting_table'
 | ----------- |:---------------------------|:--------------|
 | ((string))  | `'some_preexisting_table'` | _Same as model's identity._
 
-By default, this is the same as the model's [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity).    But if you find yourself integrating with a shared/legacy database, the ability to customize `tableName` this way can save you a lot of time.
-
 The **tableName** setting gives you the ability to customize the name of the underlying _physical model_ that a particular model should use.  In other words, it lets you control where a model stores and retrieves records within the database, _without_ affecting the code in your controller actions / helpers.
 
-> But, what's in a name?  That which we call a "table", by any other word would query as swell.  In databases like MySQL and PostgreSQL, this setting refers to a "table".  In other databases like MongoDB and Redis, it refers to a "collection".
-
-By default, when no tableName is specified, Waterline uses the model's [identity](#?identity) (e.g. "user"):
+By default, Sails uses the model's [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings?identity) to determine its table name:
 
 ```js
 await User.find();
 // => SELECT * FROM user;
 ```
 
-This is a recommended convention, and shouldn't need to be changed in most cases.  But, if you are sharing a database with an existing PHP or Java app, or if you'd like to adhere to a different naming convention, then it may be useful to customize this mapping.  Returning to the example above, if you modified your model definition in `api/models/User.js`, and set `tableName: 'foo_bar'`, then you'd see slightly different results:
+This is a recommended convention, and shouldn't need to be changed in most cases.  But, if you are sharing a legacy database with an existing application written for a different platform like Python or C#, or if your team prefers a different naming convention for their database tables, then it may be useful to customize this mapping.
+
+Returning to the example above, if you modified your model definition in `api/models/User.js`, and set `tableName: 'foo_bar'`, then you'd see slightly different results:
 
 ```js
 await User.find();
 // => SELECT * FROM foo_bar;
 ```
+
+> What's in a `tableName`?  In databases like MySQL and PostgreSQL, the setting refers to a literal "table".  In MongoDB, it refers to a "collection".  It's really just about familiarity: That which we call a "table", by any other word would query as swell. 
+
 
 
 ### migrate
