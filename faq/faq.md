@@ -85,7 +85,7 @@ Thanks!
 <!-- 4-4-2015 -->
 + [Sails.js Development channel on Medium](https://medium.com/sails-js-development/)
 <!-- 3-19-2015 -->
-+ [Sails.js Course on Plurasight](https://www.pluralsight.com/courses/two-tier-enterprise-app-api-development-angular-sails)
++ [Sails.js Course on Pluralsight](https://www.pluralsight.com/courses/two-tier-enterprise-app-api-development-angular-sails)
 <!-- 2-10-2015 -->
 + Sails API Development
   + [Datalayer -models, connections, waterline](http://www.codeproject.com/Articles/898221/Sails-API-development-Datalayer-models-connections)
