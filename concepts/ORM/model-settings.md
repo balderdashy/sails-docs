@@ -293,7 +293,7 @@ The following low-level settings are included in the spirit of completeness, but
 
 The name of a model's primary key attribute.
 
-> **You should never need to change this setting, since you set a custom `columnName` on the "id" attribute.**
+> **You should never need to change this setting.  Instead, if you need to use a custom primary key, set a custom `columnName` on the "id" attribute.**
 
 ```javascript
 primaryKey: 'id'
