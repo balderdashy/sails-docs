@@ -101,13 +101,13 @@ module.exports = {
     // are _listening_.  In other words, to actually handle the socket message,
     // connected sockets need to be listening for this particular event (in this
     // case, we broadcasted our message with an event name of "hello").  The
-    // client-side you'd need to write looks like this:
-    // ```
-    // io.socket.on('hello', function (broadcastedData){
-    //   console.log(data.howdy);
-    //   // => 'hi there!'
-    // }
-    // ```
+    // client-side code you'd need to write looks like this:
+    // 
+    //   io.socket.on('hello', function (broadcastedData){
+    //       console.log(data.howdy);
+    //       // => 'hi there!'
+    //   }
+    // 
 
     // Now that we've broadcasted our socket message, we still have to continue on
     // with any other logic we need to take care of in our action, and then send a
