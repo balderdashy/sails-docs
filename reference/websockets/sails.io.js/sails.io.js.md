@@ -47,7 +47,7 @@ See the [sails.io.js GitHub repo](http://github.com/balderdashy/sails.io.js) for
 
 ### Configuring the `sails.io.js` library
 
-> This section focuses on the most common runtime environment for the JavaScript socket client: the browser.  See the [`sails.io.js` GitHub repository](github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
+> This section focuses on the most common runtime environment for the JavaScript socket client: the browser.  See the [`sails.io.js` GitHub repository](https://github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
 
 There are two ways to configure Sails' socket client in the browser: using HTML attributes on the `<script>` tag or by programmatically modifying the `io.sails` object.
 
