@@ -41,14 +41,14 @@ Might yield:
     id: 7392,
     age: 13,
     name: 'Finn',
-    createdAt: '2003-12-26T00:00:00.000Z',
-    updatedAt: '2012-12-26T00:00:00.000Z',
+    createdAt: 1451088000000,
+    updatedAt: 1545782400000,
     dad: {
       id: 108,
       age: 47,
       name: 'Joshua',
-      createdAt: Wed Dec 25 1969 00:00:00 GMT-0600 (CST),
-      updatedAt: Wed Jan 10 2015 12:00:00 GMT-0600 (CST),
+      createdAt: 1072396800000,
+      updatedAt: 1356480000000,
       dad: null
     }
   },
@@ -91,16 +91,16 @@ Might yield:
     id: 7392,
     age: 13,
     name: 'Finn',
-    createdAt: '2003-12-26T00:00:00.000Z',
-    updatedAt: '2017-02-13T00:06:50.000Z',
+    createdAt: 1451088000000,
+    updatedAt: 1545782400000,
     dad: 108,//<< not populated
     swords: [//<< populated
       {
         id: 9,
         title: 'Grape Soda Sword',
         color: 'purple',
-        createdAt: '2014-03-20T00:06:50.000Z',
-        updatedAt: '2016-02-12T00:06:50.000Z'
+        createdAt: 1540944000000,
+        updatedAt: 1540944000000
       },
       // ...more swords
     ]
