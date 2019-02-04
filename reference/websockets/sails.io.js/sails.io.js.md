@@ -42,12 +42,12 @@ To use the Sails socket client SDK in a Node.js script, you will need to install
 var io = require('sails.io.js')( require('socket.io-client') );
 ```
 
-See the [sails.io.js GitHub repo](http://github.com/balderdashy/sails.io.js) for more information on using the Sails socket client from Node.js.
+See the [sails.io.js GitHub repo](https://github.com/balderdashy/sails.io.js) for more information on using the Sails socket client from Node.js.
 
 
 ### Configuring the `sails.io.js` library
 
-> This section focuses on the most common runtime environment for the JavaScript socket client: the browser.  See the [`sails.io.js` GitHub repository](github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
+> This section focuses on the most common runtime environment for the JavaScript socket client: the browser.  See the [`sails.io.js` GitHub repository](https://github.com/balderdashy/sails.io.js) for help configuring the socket client for use in a Node.js script.
 
 There are two ways to configure Sails' socket client in the browser: using HTML attributes on the `<script>` tag or by programmatically modifying the `io.sails` object.
 
@@ -113,12 +113,12 @@ The `sails.io.js` library and its individual client sockets have a handful of co
 
 ##### Can I use this with XYZ front-end framework?
 
-Yes.  The Sails socket client can be used to great effect with any front-end framework-- no matter whether it's angular, react, ember, backbone, knockout, jQuery, [FishBerry](http://mrsharpoblunto.github.io/foswig.js/), etc.
+Yes.  The Sails socket client can be used to great effect with any front-end framework-- no matter whether it's angular, react, ember, backbone, knockout, jQuery, [FishBerry](https://mrsharpoblunto.github.io/foswig.js/), etc.
 
 
 ##### Do I have to use this?
 
-No. The Sails socket client is extremely helpful when building realtime/chat features in a browser-based UI, but like the rest of the `assets/` directory, it is probably not particularly useful if you are building a [native Android app](http://stackoverflow.com/questions/25081188/sending-socket-request-from-client-ios-android-to-sails-js-server/25081189#25081189), or an API with no user interface at all.
+No. The Sails socket client is extremely helpful when building realtime/chat features in a browser-based UI, but like the rest of the `assets/` directory, it is probably not particularly useful if you are building a [native Android app](https://stackoverflow.com/questions/25081188/sending-socket-request-from-client-ios-android-to-sails-js-server/25081189#25081189), or an API with no user interface at all.
 
 Fortunately, like every other boilerplate file and folder in Sails, the socket client is completely optional. To remove it, just delete `assets/js/dependencies/sails.io.js`.
 
