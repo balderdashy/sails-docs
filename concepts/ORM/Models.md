@@ -55,7 +55,7 @@ Sails also provides a few other "resourceful pubsub" (or "RPS") methods, specifi
 
 In addition to the built-in functionality provided by Sails, you can also define your own custom model methods.  Custom model methods are most useful for extrapolating controller code that relates to a particular model; i.e. this allows you to pull code out of your controllers and into reusuable functions that can be called from anywhere (i.e. don't depend on `req` or `res`.)
 
-> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods (don't define methods named "create", etc.)
+> This feature takes advantage of the fact that models ignore unrecognized settings, so you do need to be careful about inadvertently overriding built-in methods (don't define methods named "create", etc.).
 >
 > If you're at all unsure, write a [helper](https://sailsjs.com/documentation/concepts/helpers) instead.
 
