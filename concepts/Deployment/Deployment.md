@@ -32,7 +32,7 @@ Node.js is pretty darn fast.  For many apps, one server is enough to handle the 
 
 > This section focuses on _single-server Sails deployment_.  This kind of deployment is inherently limited in scale.  See [Scaling](https://sailsjs.com/documentation/concepts/deployment/scaling) for information about deploying your Sails/Node app behind a load balancer.
 
-Many teams decide to deploy their production app behind a load balancer or proxy (in a PaaS like Heroku or Modulus, maybe, or behind an nginx server).  This is often the right approach since it helps future-proof your app in case your scalability needs change and you need to add more servers.  If you are using a load balancer or proxy, there are a few things in the list below that you can ignore:
+Many teams decide to deploy their production app behind a load balancer or proxy (in a PaaS like Heroku or Now, maybe, or behind an nginx server).  This is often the right approach since it helps future-proof your app in case your scalability needs change and you need to add more servers.  If you are using a load balancer or proxy, there are a few things in the list below that you can ignore:
 
 + Don't worry about configuring Sails to use an SSL certificate.  SSL will almost always be resolved at your load balancer/proxy server or by your PaaS provider.
 + You _probably_ don't need to worry about setting your app to run on port 80 (if not behind a proxy like nginx). Most PaaS providers automatically figure out the port for you.  If you are using a proxy server, please refer to its documentation (whether or not you need to configure the port for your Sails app depends on how you set things up and can vary widely based on your needs).
