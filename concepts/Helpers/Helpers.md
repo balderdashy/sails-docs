@@ -180,7 +180,7 @@ But before you remove `await`, make sure the helper is actually synchronous. Wit
 
 For more granular error handling (and even for those exceptional cases that aren't _quite_ errors) you may be used to setting some kind of error code, then sniffing out the error.  This approach works fine, but it can be time-consuming and hard to track.
 
-Fortunately, Sails helpers come with a few methods to help handle errors.  See the pages on [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate), [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept), and [special exit signals](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) for more information.
+Fortunately, there are a few different ways to conveniently handle errors in Sails helpers.  See the pages on [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate), [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept), and [special exit signals](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) for more information.
 
 
 <!--
