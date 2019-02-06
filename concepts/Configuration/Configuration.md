@@ -93,8 +93,8 @@ Also note that configuration specified using environment variables does _not_ au
 Environment variables are one of the most powerful ways to configure your Sails app.  Since you can customize just about any setting (as long as it's JSON-serializable), this approach solves a number of problems, and is our core team's recommended strategy for production deployments.  Here are a few:
 
 + Using environment variables means you don't have to worry about checking in your production database credentials, API tokens, etc.
-+ This makes changing Postgresql hosts, Mailgun accounts, S3 credentials, and other maintenance straightforward, fast, and easy; plus you don't need to change any code or worry about merging in downstream commits from other people on your team
-+ Depending on your hosting situation, you may be able to manage your production configuration through a UI (most PaaS providers like [Heroku](http://heroku.com) or [Modulus](https://modulus.io) support this, as does [Azure Cloud](https://azure.microsoft.com/en-us/).)
++ This makes changing Postgresql hosts, Mailgun accounts, S3 credentials, and other maintenance straightforward, fast, and easy; plus you don't need to change any code or worry about merging in downstream commits from other people on your team.
++ Depending on your hosting situation, you may be able to manage your production configuration through a UI (most PaaS providers like [Heroku](http://heroku.com) or [Modulus](https://modulus.io) support this, as does [Azure Cloud](https://azure.microsoft.com/en-us/)).
 
 
 ### Setting `sails.config` values using command-line arguments
@@ -139,20 +139,20 @@ Depending on whether you're starting a Sails app from the command line using `sa
 
 ##### Order of precedence when starting via `sails lift` or `node app.js` (in order from highest to lowest priority):
 
-+ command-line options parsed by [minimist](https://github.com/substack/minimist/tree/0.0.10); e.g. `sails lift --custom.mailgun.apiToken='foo'` becomes `sails.config.custom.mailgun.apiToken`.
-+ [environment variables](https://en.wikipedia.org/wiki/Environment_variable) prefixed with `sails_`, and using double underlines to indicate dots; e.g.: `sails_port=1492 sails lift` ([A few more examples](https://gist.github.com/mikermcneil/92769de1e6c10f0159f97d575e18c6cf)).
++ command-line options parsed by [minimist](https://github.com/substack/minimist/tree/0.0.10); e.g. `sails lift --custom.mailgun.apiToken='foo'` becomes `sails.config.custom.mailgun.apiToken`
++ [environment variables](https://en.wikipedia.org/wiki/Environment_variable) prefixed with `sails_`, and using double underlines to indicate dots; e.g.: `sails_port=1492 sails lift` ([A few more examples](https://gist.github.com/mikermcneil/92769de1e6c10f0159f97d575e18c6cf))
 + a [`.sailsrc` file](https://sailsjs.com/documentation/concepts/configuration/using-sailsrc-files) in your app's directory, or the first found looking in `../`, `../../` etc.
-+ a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`).
-+ any existing `config/local.js` file in your app.
-+ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`).
-+ any other files in your app's `config/` directory (if one exists).
++ a global `.sailsrc` file in your home folder (e.g. `~/.sailsrc`)
++ any existing `config/local.js` file in your app
++ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`)
++ any other files in your app's `config/` directory (if one exists)
 
 ##### Order of precedence when starting programmatically (in order from highest to lowest priority):
 
-+ an optional dictionary (`{}`) of configuration overrides passed in as the first argument to `.lift()` or `.load()`.
-+ any existing `config/local.js` file in your app.
-+ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`).
-+ any other files in your app's `config/` directory (if one exists).
++ an optional dictionary (`{}`) of configuration overrides passed in as the first argument to `.lift()` or `.load()`
++ any existing `config/local.js` file in your app
++ any existing `config/env/*` files in your app that match the name of your current NODE_ENV environment (defaulting to `development`)
++ any other files in your app's `config/` directory (if one exists)
 
 
 ### Notes
