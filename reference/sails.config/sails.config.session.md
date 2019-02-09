@@ -130,7 +130,7 @@ Also realize that, even if you have an SSL certificate, and you always redirect 
 
 ##### Advanced options
 
-For implementation details and all available options for configuring the session ID cookie in Sails, see [express-session#cookie](https://github.com/expressjs/session#cookie).
+To see other available options (like "[domain](https://stackoverflow.com/a/7887384/486547)") for configuring the session ID cookie in Sails, see [express-session#cookie](https://github.com/expressjs/session/blob/v1.15.6/README.md#cookie).
 
 
 
