@@ -15,8 +15,8 @@ npm install consolidate --save
 After the install has completed and you have installed your view engine package, you can then set the view configuration.  For example, to use [Swig](https://github.com/paularmstrong/swig) templates you would `npm install swig --save` and then add the following into [`config/views.js`](https://sailsjs.com/documentation/anatomy/config/views.js):
 
 ```javascript
-'extension': 'swig',
-'getRenderFn': function() {
+extension: 'swig',
+getRenderFn: ()=>{
   // Import `consolidate`.
   var cons = require('consolidate');
   // Return the rendering function for Swig.
@@ -27,8 +27,8 @@ After the install has completed and you have installed your view engine package,
 The `getRenderFn` allows you to configure your view engine before plugging it into Sails:
 
 ```javascript
-'extension': 'swig',
-'getRenderFn': function() {
+extension: 'swig',
+getRenderFn: ()=>{
   // Import `consolidate`.
   var cons = require('consolidate');
   // Import `swig`.
