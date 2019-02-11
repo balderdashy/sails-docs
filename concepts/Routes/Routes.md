@@ -9,7 +9,7 @@ Like most web frameworks, Sails provides a router: a mechanism for mapping URLs 
 
 ### Custom Routes
 
-Sails lets you design your app's URLs in any way you like- there are no framework restrictions.
+Sails lets you design your app's URLs in any way you like&mdash;there are no framework restrictions.
 
 Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view.
 
@@ -32,7 +32,7 @@ For example, we might read `'get /me': 'UserController.profile'` as:
 
 > "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
 
-What if I want to change the view layout within the route itself?  No problem we could:
+What if I want to change the view layout within the route itself?  No problem. We could:
 
 ```javascript
 'get /privacy': {
@@ -45,7 +45,7 @@ What if I want to change the view layout within the route itself?  No problem we
 
 #### Notes
 + Just because a request matches a route address doesn't necessarily mean it will be passed to that route's target _directly_.  For instance, HTTP requests will usually pass through some [middleware](https://sailsjs.com/documentation/concepts/Middleware) first.  And if the route points to a controller [action](https://sailsjs.com/documentation/concepts/Controllers?q=actions), the request will need to pass through any configured [policies](https://sailsjs.com/documentation/concepts/Policies) first.  Finally, there are a few special [route options](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options) which allow a route to be "skipped" for certain kinds of requests.
-+ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target) when possible- it streamlines development, simplifies training, and makes your app more maintainable.
++ The router can also programmatically **bind** a **route** to any valid route target, including canonical Node middleware functions (i.e. `function (req, res, next) {}`).  However, you should always use the conventional [route target syntax](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target) when possible&mdash;it streamlines development, simplifies training, and makes your app more maintainable.
 
 
 
@@ -53,8 +53,8 @@ What if I want to change the view layout within the route itself?  No problem we
 
 In addition to your custom routes, Sails binds many routes for you automatically.  If a URL doesn't match a custom route, it may match one of the automatic routes and still generate a response.  The main types of automatic routes in Sails are:
 
-* [Blueprint routes](https://sailsjs.com/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](https://sailsjs.com/documentation/concepts/controllers) and [models](https://sailsjs.com/documentation/concepts//models-and-orm/models) with a full REST API.
-* [Assets](https://sailsjs.com/documentation/concepts/assets), such as images, Javascript and stylesheet files.
+* [blueprint routes](https://sailsjs.com/documentation/reference/blueprint-api?q=blueprint-routes), which provide your [controllers](https://sailsjs.com/documentation/concepts/controllers) and [models](https://sailsjs.com/documentation/concepts//models-and-orm/models) with a full REST API.
+* [assets](https://sailsjs.com/documentation/concepts/assets), such as images, Javascript and stylesheet files.
 
 
 ##### Unhandled Requests
@@ -63,7 +63,7 @@ If no custom or automatic route matches a request URL, Sails will send back a de
 
 ##### Unhandled Errors in Request Handlers
 
-If an unhandled error is thrown during the processing of a request (for instance, in some [action code](https://sailsjs.com/documentation/concepts/actions-and-controllers), Sails will send back a default 500 response. This response can be customized by adding a `api/responses/serverError.js` file to your app.  See [custom responses](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) for more info.
+If an unhandled error is thrown during the processing of a request (for instance, in some [action code](https://sailsjs.com/documentation/concepts/actions-and-controllers), Sails will send back a default 500 response), the response can be customized by adding an `api/responses/serverError.js` file to your app.  See [custom responses](https://sailsjs.com/documentation/concepts/extending-sails/custom-responses) for more info.
 
 ### Supported Protocols
 
@@ -72,7 +72,7 @@ The Sails router is "protocol-agnostic"; it knows how to handle both [HTTP reque
 
 
 #### Notes
-+ Advanced users may opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.  You can bind socket events directly in your app's [`onConnect`](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets#?commonlyused-options) function (located in [`config/sockets.js`](https://sailsjs.com/documentation/anatomy/config/sockets.js).)  But bear in mind that, in most cases, you are better off leveraging the request interpreter for socket communication - maintaining consistent routes across HTTP and WebSockets helps keep your app maintainable.
+Advanced users may opt to circumvent the router entirely and send low-level, completely customizable WebSocket messages directly to the underlying Socket.io server.  You can bind socket events directly in your app's [`onConnect`](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets#?commonlyused-options) function (located in [`config/sockets.js`](https://sailsjs.com/documentation/anatomy/config/sockets.js)),  but bear in mind that in most cases you are better off leveraging the request interpreter for socket communication. Maintaining consistent routes across HTTP and WebSockets helps keep your app maintainable.
 
 
 
