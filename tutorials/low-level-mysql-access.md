@@ -12,29 +12,31 @@ To obtain an active connection from the MySQL package you can call the [`.leaseC
 
 1. Get the registered datastore instance for the connection.
 
-```javascript
-// Get the named datastore
-var rdi = sails.getDatastore('default');
+  ```
+  javascript
+  // Get the named datastore
+  var rdi = sails.getDatastore('default');
 
-// Get the datastore configured for a specific model
-var rdi = Product.getDatastore();
-```
+  // Get the datastore configured for a specific model
+  var rdi = Product.getDatastore();
+  ```
 
 2. Call the `leaseConnection()` method to obtain an active connection.
 
-```javascript
-rdi.leaseConnection(function(connection, proceed) {
-  db.query('SELECT * from `user`;', function(err, results, fields) {
-    if (err) {
-      return proceed(err);
-    }
+  ```
+  javascript
+  rdi.leaseConnection(function(connection, proceed) {
+    db.query('SELECT * from `user`;', function(err, results, fields) {
+      if (err) {
+        return proceed(err);
+      }
 
-    proceed(undefined, results);
-  });
-}, function(err, results) {
-  // Handle results here after the connection has been closed
-})
-```
+      proceed(undefined, results);
+    });
+  }, function(err, results) {
+    // Handle results here after the connection has been closed 
+  })
+  ```
 
 ### Get access to the low level driver
 
@@ -42,41 +44,44 @@ To get access to the low-level driver and MySql package in a Sails app you can g
 
 1. Get the registered datastore instance for the connection.
 
-```javascript
-// Get the named datastore
-var rdi = sails.getDatastore('default');
+  ```
+  javascript
+  // Get the named datastore
+  var rdi = sails.getDatastore('default');
 
-// Get the datastore configured for a specific model
-var rdi = Product.getDatastore();
-```
+  // Get the datastore configured for a specific model
+  var rdi = Product.getDatastore();
+  ```
 
 2. Get the driver from the datastore instance which contains the MySQL module.
 
-```javascript
-var mysql = rdi.driver.mysql;
-```
+  ```
+  javascript
+  var mysql = rdi.driver.mysql;
+  ```
 
 3. You can now use the module to make native requests and call other function native to the MySQL module.
 
-```javascript
-// Get the named datastore
-var rdi = sails.getDatastore('default');
+  ```
+  javascript
+  // Get the named datastore
+  var rdi = sails.getDatastore('default');
 
-// Grab the MySQL module from the datastore instance
-var mysql = rdi.driver.mysql;
+  // Grab the MySQL module from the datastore instance
+  var mysql = rdi.driver.mysql;
 
-// Create a new connection
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'password',
-  database: 'example_database'
-});
+  // Create a new connection
+  var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'password',
+    database: 'example_database'
+  });
 
-// Make a query and pipe the results
-connection.query('SELECT * FROM posts')
-  .stream({highWaterMark: 5})
-  .pipe(...);
-```
+  // Make a query and pipe the results
+  connection.query('SELECT * FROM posts')
+    .stream({highWaterMark: 5})
+    .pipe(...);
+  ```
 
 <docmeta name="displayName" value="Low-level MySQL usage (advanced)">
