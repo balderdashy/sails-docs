@@ -6,18 +6,6 @@ Set the order in which retrieved records should be returned when executing a [qu
 .sort(sortClause)
 ```
 
-The &ldquo;sort clause&ldquo; can be specified as either a string or an array of dictionaries.
-
-
-
- For example:
-
-```
-// Sort by name, and for records with the same name, sort by age in descending order.
-
-```
-
-
 ### Usage
 |   |     Argument     | Type                | Details |
 |---|:-----------------|---------------------|------------|
