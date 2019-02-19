@@ -11,7 +11,7 @@ return res.json(data);
 
 This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
 
-### Example
+### Examples
 
 ```javascript
 return res.json({ firstName: 'Tobi' });
