@@ -1,4 +1,4 @@
-# Create (Blueprint)
+# Create (blueprint)
 
 Create a new record in your database.
 
