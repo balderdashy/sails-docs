@@ -1,4 +1,4 @@
-# Find One (Blueprint)
+# Find one (blueprint)
 
 Look up the record with the specified `id` from the database and (if possible) subscribe to the record to hear about any future changes.
 
@@ -32,7 +32,7 @@ GET /purchase/1
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 
  ```json
  {
