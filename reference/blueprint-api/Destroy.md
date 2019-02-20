@@ -1,4 +1,4 @@
-# Destroy (Blueprint)
+# Destroy (blueprint)
 
 Delete the record specified by `id` from the database forever and notify subscribed sockets.
 
@@ -28,7 +28,7 @@ Delete Pinkie Pie:
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 
 ```json
 {
