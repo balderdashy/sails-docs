@@ -120,9 +120,7 @@ module.exports = {
       anyData: 'we want to send back'
     });
 
-  }
-}
-```
+
 
 ### Reference
 
