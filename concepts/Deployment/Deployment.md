@@ -1,6 +1,6 @@
 # Deployment
 
-### Before You Deploy
+### Before you deploy
 
 Before you launch any web application, you should ask yourself a few questions:
 
@@ -101,7 +101,7 @@ If your API or website does anything that requires authentication, you should us
 
 
 
-##### Lift Your app
+##### Lift your app
 
 The last step of deployment is actually starting the server. For example:
 
