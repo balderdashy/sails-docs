@@ -17,7 +17,7 @@ Learn about several different types of attacks that Node.js/Sails helps prevent 
 + [Clickjacking](https://sailsjs.com/documentation/concepts/security/clickjacking)
 + [P3P](https://sailsjs.com/documentation/concepts/security/p3p)
 + [Content Security Policy](https://sailsjs.com/documentation/concepts/security/content-security-policy)
-+ [Socket Hijacking](https://sailsjs.com/documentation/concepts/security/socket-hijacking)
++ [Socket hijacking](https://sailsjs.com/documentation/concepts/security/socket-hijacking)
 + [XSS](https://sailsjs.com/documentation/concepts/security/xss)
 + [Strict Transport Security](https://sailsjs.com/documentation/concepts/security/strict-transport-security)
 
