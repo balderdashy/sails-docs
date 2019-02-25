@@ -4,7 +4,7 @@
 
 ### Overview
 
-Custom [generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) are a type of plugin for the Sails command-line.  Through templates, they control which files get generated in your Sails projects when you run `sails new` or `sails generate`, and also what those files look like.
+Custom [generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) are a type of plugin for the Sails command line.  Through templates, they control which files get generated in your Sails projects when you run `sails new` or `sails generate`, and also what those files look like.
 
 ### Creating a generator
 
@@ -50,13 +50,13 @@ sails generate awesome
 
 ### Publishing to NPM
 
-If your generator is useful across different projects, you might consider publishing it as an NPM package.  (Note that this doesn't mean that your generator must be open-source.  NPM also supports [private packages](https://docs.npmjs.com/private-modules/intro).)
+If your generator is useful across different projects, you might consider publishing it as an NPM package (note that this doesn't mean that your generator must be open-source: NPM also supports [private packages](https://docs.npmjs.com/private-modules/intro).
 
-First, pop open the `package.json` file and verify the package name (e.g. "@my-npm-name/sails-generate-awesome"), author ("My Name"), license, and other information are correct.  (If you're unsure, a good open source license to use is "MIT".  If you're publishing a private generator, and want it to remain proprietary to your organization, use "UNLICENSED".)
+First, pop open the `package.json` file and verify the package name (e.g. "@my-npm-name/sails-generate-awesome"), author ("My Name"), license, and other information are correct.  If you're unsure, a good open source license to use is "MIT".  If you're publishing a private generator and want it to remain proprietary to your organization, use "UNLICENSED".
 
 > **Note:**  If you don't already have an NPM account, go to [npmjs.com](https://www.npmjs.com/) and create one.  Then use `npm login` to get set up.
 
-When you're ready, to pull the trigger and publish your generator on NPM, cd into the generator's folder in the terminal and type:
+When you're ready to pull the trigger and publish your generator on NPM, cd into the generator's folder in the terminal and type:
 
 ```sh
 npm publish
