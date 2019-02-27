@@ -1,14 +1,14 @@
 # File uploads
 
-Uploading files in Sails is similar to how you would upload files for a vanilla Node.js or Express application.  It is, however, probably different than what you're used to if you're coming from a different server-side platform like PHP, .NET, Python, Ruby, or Java.  But fear not: the core team has gone to great lengths to make file uploads easier to accomplish, while still keeping them scalable and secure.
+Uploading files in Sails is similar to uploading files for a vanilla Node.js or Express application. However, the process may be unfamiliar if you're coming from a different server-side platform like PHP, .NET, Python, Ruby, or Java.  But fear not: the core team has gone to great lengths to make file uploads easier while maintaining scalability and security.
 
-Sails comes with a powerful "body parser" called [Skipper](https://github.com/balderdashy/skipper) which makes it easy to implement streaming file uploads-- not only to the server's filesystem (i.e. hard disk), but also to Amazon S3, MongoDB's gridfs, or any of its other supported file adapters.
+Sails comes with a powerful "body parser", [Skipper](https://github.com/balderdashy/skipper), which makes it easy to implement streaming file uploads&mdash;not only to the server's filesystem (i.e. hard disk), but also to Amazon S3, MongoDB's gridfs, or any other supported file adapter.
 
 
 
 ### Uploading a file
 
-Files are uploaded to HTTP web servers as _file parameters_.  In the same way you might send a form POST to a URL with text parameters like "name", "email", and "password", you send files as file parameters, like "avatar" or "newSong".
+Files are uploaded to HTTP web servers as _file parameters_.  In the same way that you might send a form POST to a URL with text parameters like "name", "email", and "password", you send files as file parameters like "avatar" or "newSong".
 
 Take this simple example:
 
@@ -18,7 +18,7 @@ req.file('avatar').upload(function (err, uploadedFiles) {
 });
 ```
 
-Files should be uploaded inside of an [action](https://sailsjs.com/documentation/concepts/actions-and-controllers).  Here's a more in-depth example that demonstrates how you could allow users to upload an avatar image and associate it with their accounts.  It assumes you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.userId`.
+Files should be uploaded inside of an [action](https://sailsjs.com/documentation/concepts/actions-and-controllers).  Below is a more in-depth example that demonstrates how you could allow users to upload an avatar image and link it to an account.  This example assumes that you've already taken care of access control in a policy, and that you're storing the id of the logged-in user in `req.session.userId`.
 
 ```javascript
 // api/controllers/UserController.js
@@ -107,11 +107,11 @@ avatar: function (req, res){
 
 
 #### Where do the files go?
-When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  You can override this using the `dirname` option.  Note that you'll need to provide this option both when you call the `.upload()` function AND when you invoke the skipper-disk adapter (so that you are uploading to and downloading from the same place.)
+When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` directory.  This can be overridden using the `dirname` option.  Note that you'll need to specify this option both when you call the `.upload()` function and when you invoke the skipper-disk adapter (so that you are uploading to and downloading from the same place).
 
 
 #### Uploading to a custom folder
-In the above example we upload the file to .tmp/uploads. So how do we configure it with a custom folder, say ‘assets/images’. We can achieve this by adding options to upload function as shown below.
+In the example above we upload the file to .tmp/uploads, but how can we configure it with a custom folder, say ‘assets/images’? We can achieve this by adding options to upload the function as shown below.
 
 ```javascript
 req.file('avatar').upload({
@@ -127,7 +127,7 @@ req.file('avatar').upload({
 
 ### Sending text parameters in the same form as a file upload
 
-As mentioned above, you can send text parameters like "name" and "email" to your Sails action along with your file upload field.  However, the text fields _must appear before any file fields_ in your form in order for them to be processed.  This is critical to Sails' ability to run your action code while files are uploading (rather than having to wait for them to finish). See the [Skipper docs](https://github.com/balderdashy/skipper#text-parameters) for more info.
+As mentioned above, you can send text parameters like "name" and "email" to your Sails action along with your file upload field.  However, the text fields _must appear before any file fields_ in your form in order for them to be processed.  This is critical to Sails' ability to run your action code while files are uploading, rather than having to wait for them to finish. See the [Skipper docs](https://github.com/balderdashy/skipper#text-parameters) for more info.
 
 ### Example
 
