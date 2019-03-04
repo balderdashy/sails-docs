@@ -47,7 +47,9 @@ module.exports = async function welcomeUser (req, res) {
   var user = await User.findOne({ id: userId });
 
   // If no user was found, redirect to signup.
-  if (!user) { return res.redirect('/signup' );
+  if (!user) {
+    return res.redirect('/signup' );
+  }
 
   // Display the welcome view, setting the view variable
   // named "name" to the value of the user's name.
