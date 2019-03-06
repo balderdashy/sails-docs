@@ -2,7 +2,7 @@
 
 ### Overview
 
-If your app will touch people or systems from all over the world, internationalization and localization (also known as "i18n") may be an important part of your international strategy.  This is particularly important for applications whose main user base is split across different languages: for example a tutorial site providing both Spanish and English content, or an online store with customers all over Quebec and British Columbia.
+If your app will touch people or systems from all over the world, internationalization and localization (also known as "i18n") may be an important part of your international strategy.  This is particularly important for applications whose main user base is split across different languages&mdash;for example, a tutorial site providing both Spanish and English content, or an online store with a customer base spanning Quebec and British Columbia.
 
 Fortunately, Sails provides built-in support for detecting user language preferences and translating static words/sentences.  As of Sails v1, this is implemented using the lightweight [`i18n-node-2` package](https://www.npmjs.com/package/i18n-2).  This package provides several additional options beyond what is covered here, which you can read about in its README file.  But for many Node.js/Sails.js apps with basic internationalization requirements, the simple usage below is all you'll need.
 
@@ -20,7 +20,7 @@ From a view:
 
 ##### Overriding language headers
 
-Sometimes, it is useful to override browser/device language headers -- for example, if you want to allow a user to set their own language preference.  Whether such a preference is session-based or associated with their account in the database, this is pretty straightforward to accomplish using [`req.setLocale()`](https://sailsjs.com/documentation/reference/request-req/req-set-locale).
+Sometimes, it is useful to override browser/device language headers&mdash;imagine, for example, that you want to allow a user to set their own language preference.  Whether such a preference is session-based or associated with their account in the database, this is pretty straightforward to accomplish using [`req.setLocale()`](https://sailsjs.com/documentation/reference/request-req/req-set-locale).
 
 
 ##### Internationalizing a shell script
