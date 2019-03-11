@@ -7,13 +7,13 @@ Sails comes installed with a powerful [ORM/ODM](http://stackoverflow.com/questio
 
 In schemaful databases like [Postgres](http://www.postgresql.org/), [Oracle](https://www.oracle.com/database), and [MySQL](http://www.mysql.com), models are represented by tables.  In [MongoDB](http://www.mongodb.org), they're represented by Mongo "collections".  In [Redis](http://redis.io), they're represented using key/value pairs.  Each database has its own distinct query dialect, and in some cases even requires installing and compiling a specific native module to connect to the server.  This involves a fair amount of overhead, and garners an unsettling level of [vendor lock-in](https://en.wikipedia.org/wiki/Vendor_lock-in) to a specific database; for example, if your app uses a bunch of SQL queries, it will be very hard to switch to Mongo later, or Redis, and vice versa.
 
-Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/populate) associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again&mdash;all without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](https://sailsjs.com/documentation/reference/waterline-orm/models/query) and [.native()](https://sailsjs.com/documentation/reference/waterline-orm/models/native).)
+Waterline query syntax floats above all that, focusing on business logic like creating new records, fetching/searching existing records, updating records, or destroying records.  No matter what database you're contacting, the usage is _exactly the same_.  Furthermore, Waterline allows you to [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/populate) associations between models, _even if_ the data for each model lives in a different database.  That means you can switch your app's models from Mongo, to Postgres, to MySQL, to Redis, and back again&mdash;all without changing any code.  For the times when you need low-level, database-specific functionality, Waterline provides a query interface that allows you to talk directly to your models' underlying database driver (see [.query()](https://sailsjs.com/documentation/reference/waterline-orm/models/query) and [.native()](https://sailsjs.com/documentation/reference/waterline-orm/models/native)).
 
 
 
 ### Scenario
 
-Let's imagine you're building an e-commerce website, with an accompanying mobile app.  Users browse products by category or search for products by keyword, then they buy them.  That's it!  Some parts of your app are quite ordinary; you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
+Let's imagine you're building an e-commerce website, with an accompanying mobile app.  Users browse products by category or search for products by keyword, then they buy them.  That's it!  Some parts of your app are quite ordinary: you have an API-driven flow for logging in, signing up, order/payment processing, resetting passwords, etc. However, you know there are a few mundane features lurking in your roadmap that will likely become more involved.  Sure enough:
 
 ##### Flexibility
 
@@ -23,7 +23,7 @@ _You ask the business what database they would like to use:_
 
 The traditional methodology of choosing one single database for a web application/API is actually prohibitive for many production use cases.  Oftentimes the application needs to maintain compatibility with one or more existing data sets, or it is necessary to use a few different types of databases for performance reasons.
 
-Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that even is), just change your app's [datastore configuration](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
+Since Sails uses `sails-disk` by default, you can start building your app with zero configuration, using a local temporary file as storage.  When you're ready to switch to the real thing (and when everyone knows what that is), just change your app's [datastore configuration](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
 
 
@@ -35,7 +35,7 @@ _The product owner/stakeholder walks up to you and says:_
 
 Many enterprise applications must integrate with an existing database.  If you're lucky, a one-time data migration may be all that's necessary, but more commonly, the existing dataset is still being modified by other applications.  In order to build your app, you might need to marry data from multiple legacy systems, or with a separate dataset stored elsewhere.  These datasets could live on five different servers scattered across the world! One colocated database server might house a SQL database with relational data, while another cloud server might hold a handful of Mongo or Redis collections.
 
-Sails/Waterline lets you hook up different models to different datastores; locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Same thing for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually)
+Sails/Waterline lets you hook up different models to different datastores, locally or anywhere on the internet.  You can build a User model that maps to a custom MySQL table in a legacy database (with weird crazy column names).  Likewise for a Product model that maps to a table in DB2, or an Order model that maps to a MongoDB collection.  Best of all, you can `.populate()` across these different datastores and adapters, so if you configure a model to live in a different database, your controller/model code doesn't need to change (note that you _will_ need to migrate any important production data manually).
 
 ##### Performance
 
@@ -44,7 +44,7 @@ _You're sitting in front of your laptop late at night, and you realize:_
 
 So what about the "big data"?  Normally when you hear bloggers and analyst use that buzzword, you think of data mining and business intelligence.  You might imagine a process that pulls data from multiple sources, processes/indexes/analyzes it, then writes that extracted information somewhere else and either keeps the original data or throws it away.
 
-However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases (for instance MongoDB provides geospatial indexing, and ElasticSearch provides excellent support for indexing data for full-text search).
+However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases. MongoDB, for instance, provides geospatial indexing, while ElasticSearch provides excellent support for indexing data for full-text search.
 
 Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with optimizations/trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales.
 
@@ -113,7 +113,7 @@ In your Sails app, a **model** is like one of the file cabinets.  It contains **
 
 
 ### Notes
-+ This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose.)
++ This documentation on models is not applicable if you are overriding the built-in ORM, [Waterline](https://github.com/balderdashy/waterline).  In that case, your models will follow whatever convention you set up, on top of whatever ORM library you're using (e.g. Mongoose).
 
 
 
