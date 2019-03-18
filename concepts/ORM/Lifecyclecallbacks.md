@@ -8,7 +8,7 @@ Sails exposes a handful of lifecycle callbacks by default:
 
 ##### Lifecycle callbacks on `.create()`
 
-The `afterCreate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+The `afterCreate` lifecycle callback will only be run on queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags, see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeCreate: fn(recordToCreate, proceed)
   - afterCreate: fn(newlyCreatedRecord, proceed)
@@ -17,14 +17,14 @@ The `afterCreate` lifecycle callback will only be run on queries that have the `
 
 ##### Lifecycle callbacks on `.update()`
 
-The `afterUpdate` lifecycle callback will only be run on `.update()` queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+The `afterUpdate` lifecycle callback will only be run on `.update()` queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags, see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeUpdate: fn(valuesToSet, proceed)
   - afterUpdate: fn(updatedRecord, proceed)
 
 ##### Lifecycle callbacks on `.destroy()`
 
-The `afterDestroy` lifecycle callback will only be run on `.destroy()` queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+The `afterDestroy` lifecycle callback will only be run on `.destroy()` queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags, see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
 
   - beforeDestroy: fn(criteria, proceed)
   - afterDestroy: fn(destroyedRecord, proceed)
