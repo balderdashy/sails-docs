@@ -111,7 +111,7 @@ When using the default `receiver`, file uploads go to the `myApp/.tmp/uploads/` 
 
 
 #### Uploading to a custom folder
-In the example above we upload the file to .tmp/uploads, but how can we configure it with a custom folder, say ‘assets/images’? We can achieve this by adding options to upload the function as shown below.
+In the example above we upload the file to .tmp/uploads, but how can we configure it with a custom folder, say `assets/images`? We can achieve this by adding options to the upload function as shown below.
 
 ```javascript
 req.file('avatar').upload({
