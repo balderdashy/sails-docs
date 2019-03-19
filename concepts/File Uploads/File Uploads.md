@@ -127,7 +127,13 @@ req.file('avatar').upload({
 
 ### Sending text parameters in the same form as a file upload
 
-As mentioned above, you can send text parameters like "name" and "email" to your Sails action along with your file upload field.  However, the text fields _must appear before any file fields_ in your form in order for them to be processed.  This is critical to Sails' ability to run your action code while files are uploading, rather than having to wait for them to finish. See the [Skipper docs](https://github.com/balderdashy/skipper#text-parameters) for more info.
+If you need to send text parameters along with your file upload, the simplest way is by including them in the URL.
+
+If you must send text parameters in the body of your request, the easiest way to handle this is by using the built in Cloud SDK that comes with the "Web app" template. (This also makes JSON parameters sent alongside file uploads "just work" when they wouldn't without extra work.)
+
+> As of Parasails v0.9.x, [the bundled Cloud SDK](https://github.com/mikermcneil/parasails/compare/v0.8.4...v0.9.0-4) properly handles additional parameters for you, so if you've generated your Sails app with the "Web app" template, you might want to make sure you're using the latest version of [`dist/parasails.js` and `dist/cloud.js`](https://github.com/mikermcneil/parasails/releases) in your project.
+
+Regardless of what you're using on the client side, you'll need to do things a little differently than usual in your Sails action on the back end. Because we're dealing with a multipart upload, any text parameters in your request body _must be sent before any files_.  This allows Sails to run your action code while files are still uploading, rather than having to wait for them to finish (avoiding a [famous DDoS vulnerability in Express-based Node.js apps](https://andrewkelley.me/post/do-not-use-bodyparser-with-express-js.html)). See the [Skipper docs](https://github.com/balderdashy/skipper#text-parameters) for advanced information on how this works behind the scenes.
 
 ### Example
 
