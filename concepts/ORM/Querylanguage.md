@@ -45,7 +45,7 @@ var waltersFromNewMexico = await Model.find({
 });
 ```
 
-#### Complex constaints
+#### Complex constraints
 
 Complex constraints also have model attributes for keys but they also use any of the supported criteria modifiers to perform queries where a strict equality check wouldn't work.
 
