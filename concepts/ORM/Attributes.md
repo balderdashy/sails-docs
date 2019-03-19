@@ -228,7 +228,7 @@ module.exports = {
 
 ##### encrypt
 
-Setting `encrypt` allow you to decide whether this attribute should be automatically encrypted. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
+Setting `encrypt` allows you to decide whether this attribute should be automatically encrypted. If set to `true`, when a record is retrieved, it will still contain the encrypted value for this attribute unless [`.decrypt()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/decrypt) is used.
 
 ```javascript
 attributes: {
