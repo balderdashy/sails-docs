@@ -1,6 +1,6 @@
 # File uploads
 
-Uploading files in Sails is similar to uploading files for a vanilla Node.js or Express application. However, the process may be unfamiliar if you're coming from a different server-side platform like PHP, .NET, Python, Ruby, or Java.  But fear not: the core team has gone to great lengths to make file uploads easier while maintaining scalability and security.
+Uploading files in Sails is similar to uploading files for a vanilla Node.js or Express application. However, the process may be unfamiliar if you're coming from a different server-side platform like PHP, .NET, Python, Ruby, or Java.  But fear not: the core team has gone to great lengths to make file uploads easier without sacrificing scalability or security.
 
 Sails comes with a powerful "body parser", [Skipper](https://github.com/balderdashy/skipper), which makes it easy to implement streaming file uploads&mdash;not only to the server's filesystem (i.e. hard disk), but also to Amazon S3, MongoDB's gridfs, or any other supported file adapter.
 
