@@ -135,6 +135,6 @@ The main advantage of using helpers is the ability to update functionality in ma
 A few more notes about the example `getRecentUsers()` helper above:
 
 > * Many of the fields such as `description` and `friendlyName` are not strictly required but are immensely helpful in keeping the code maintainable, especially when sharing the helper across multiple apps.
-> * The `noUsersFound` exit may or may not be helpful, depending on your app.  If you want to always perform some specific action whenever no users were returned (for example, redirecting to a different page), this exit would be a good idea.  On the other hand, if you simply want to tweak some text in a view based on whether or not users were returned, it might be better to just have the `success` exit and check the `length` of the returned array in your action or view code.
+> * The `noUsersFound` exit may or may not be helpful, depending on your app.  If you always want to perform a specific action when no users are returned (for example, redirecting to a different page), this exit would be a good idea.  On the other hand, if you simply want to tweak some text in a view based on whether or not users were returned, it might be better to just have the `success` exit and check the `length` of the returned array in your action or view code.
 
 <docmeta name="displayName" value="Example helper">
