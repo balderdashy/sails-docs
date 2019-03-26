@@ -206,7 +206,7 @@ While these requirements seem specific, there are still unanswered questions:
 - What happens to the billing email if a monthly invoice email cannot be delivered?
 - What happens to the billing email if a member of your support team logs into the admin interface and changes it manually?
 - What happens to the billing email if a POST request is received on the callback URL we provided to the LinkedIn API to notify our app that the user changed their email address on http://linkedin.com, saving a new `linkedInEmail`?
-- What happens to the billing email when an existing user disconnects theri LinkedIn account?
+- What happens to the billing email when an existing user disconnects their LinkedIn account?
 - Are two user accounts in the database allowed to have the same billing email?  What about the email from LinkedIn?  Or the one they entered manually?
 
 Depending on the answers to questions like these, we might end up keeping the `required` validation on `billingEmail`, adding new attributes (like `hasBillingEmailBeenChangedManually`), or even rethinking whether we use a `unique` constraint.
