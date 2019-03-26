@@ -21,7 +21,7 @@ module.exports = {
 
 In Sails/Waterline, model attributes always have some kind of data type guarantee.  This is above and beyond any physical-layer constraints which might exist in your underlying database&mdash;it's more about providing a way for developers to maintain reasonable assumptions about the data that goes in or comes out of a particular model.
 
-This data type guarantee is used for logical validation of results and criteria.  Here is a list of the data types supported by Sails and Waterline:
+This data type guarantee is used for logical validation and coercion of results and criteria.  Here is a list of the data types supported by Sails and Waterline:
 
 | Data Type        | Usage                         | Description                                                  |
 |:----------------:|:----------------------------- |:------------------------------------------------------------ |
