@@ -74,7 +74,7 @@ $ npm test
 3. Run the tests one last time.
 4. Do a [pull request to sails-docs](https://github.com/balderdashy/sails-docs/edit/master/concepts/extending-sails/Adapters/adapterList.md), adding your adapter's repo.
 5. We'll update the documentation with information about your new adapter.
-6. Let the people of world adore you with lavish praise.
+6. Let the people of the world adore you with lavish praise.
 7. Run `npm version patch`.
 8. Run `git push && git push --tags`.
 9. Run `npm publish`.
