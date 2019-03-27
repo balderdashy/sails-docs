@@ -9,7 +9,7 @@ Sails allows you to explicitly route URLs in several different ways in your **co
 ^^^address^^^  ^^^^^^^^^^target^^^^^^^^^^
 ```
 
-### Route Address
+### Route address
 
 The route address indicates what URL should be matched in order to apply the handler and options defined by the target.  A route consists of an optional verb and a mandatory path:
 
@@ -77,7 +77,7 @@ While you are free to add items to your **config/routes.js** file in any order, 
 
 If you have any [regular expression addresses](https://sailsjs.com/documentation/concepts/routes/custom-routes#?regular-expressions-in-addresses), they will be left in the order you specify.  For example, if your **config/routes.js** file contains a `GET /foo/bar` route followed by a `GET r|^/foo/\\d+$|` route, the second route will always be sorted to appear immediately after `GET /foo/bar`.  This is due to the extreme difficulty of determining the inclusiveness of a regular expression route.  Take care when specifying these routes that you order them so that they won't match more requests than intended.
 
-### Route Target
+### Route target
 
 The address portion of a custom route specifies which URLs the route should match.  The *target* portion specifies what Sails should do after the match is made.  A target can take one of several different forms.  In some cases you may want to chain multiple targets to a single address by placing them in an array, but in most cases each address will have only one target.  The different types of targets are discussed below, followed by a discussion of the various options that can be applied to them.
 
