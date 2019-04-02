@@ -6,7 +6,7 @@
 
 A one-to-many association states that a model can be associated with many other models. To build this
 association a virtual attribute is added to a model using the `collection` property. In a one-to-many
-association one side must have a `collection` attribute and the other side must contain a `model`
+association, the  `one` side must have a `collection` attribute and the `many` side must contain a `model`
 attribute. This allows the many side to know which records it needs to get when a `populate` is used.
 
 Because you may want a model to have multiple one-to-many associations on another model a `via` key
