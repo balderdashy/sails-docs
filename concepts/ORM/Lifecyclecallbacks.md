@@ -13,8 +13,6 @@ The `afterCreate` lifecycle callback will only be run on queries that have the `
   - beforeCreate: fn(recordToCreate, proceed)
   - afterCreate: fn(newlyCreatedRecord, proceed)
 
-> `beforeCreate()` is not run on bulk inserts of data using `createEach`.
-
 ##### Lifecycle callbacks on `.update()`
 
 The `afterUpdate` lifecycle callback will only be run on `.update()` queries that have the `fetch` meta flag set to `true`. For more information on using the `meta` flags, see [Waterline Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
