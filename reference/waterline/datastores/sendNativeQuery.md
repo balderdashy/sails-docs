@@ -17,7 +17,7 @@ var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ##### Result
 
 | Type                | Details |
-|:--------------------|---------------------|:---------------------------------------------------------------------------------|
+|:--------------------|:---------------------------------------------------------------------------------|
 | ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter/dialect you're using. See example below for links to relevant documentation.)_ |
 
 ##### Errors
