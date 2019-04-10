@@ -1,4 +1,4 @@
-# Understanding sessions in Sails
+# How sessions work in Sails (advanced)
 
 For our purposes, **sessions** are defined to be a few components that together allow you to store information about a user agent between requests.
 
@@ -16,12 +16,12 @@ There are three main components to the implementation of sessions in Sails:
 
 The **session store** can either be in memory (this is the default Sails session store) or in a database (Sails has built-in support for using Redis for this purpose).  Sails builds on top of Connect middleware to manage the session, which includes using a **cookie** to store a session id (`sid`) on the user agent.
 
-### A day in the life of a *request*, a *response*, and a *session*
+### A day in the life of a request, a response, and a session
 When a `request` is sent to Sails, the request header is parsed by the session middleware.
 
-##### Scenario 1: The request header has no *cookie property*
+##### Scenario 1: The request header has no cookie
 
-If the header does not contain a cookie property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following *login* action:
+If the header does not contain a cookie, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following login action:
 
 ```javascript
 module.exports = {
@@ -42,21 +42,21 @@ module.exports = {
 
 Here we added a `userId` property to `req.session`.
 
-> **Note:** the property will not be stored in the *session store* nor will it be available to other requests until the response is sent.
+> **Note:** the property will not be stored in the session store, nor will it be available to other requests until the response is sent.
 
-Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie *property* in the request header, a cookie will be established for us.
+Once the response is sent, any new requests will have access to `req.session.userId`. Since we didn't have a cookie in the request header, a cookie will be established for us.
 
-##### Scenario 2: The request header has a cookie *property* with a `Sails.sid`
+##### Scenario 2: The request header has a cookie with a `Sails.sid`
 
 Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity. If it matches an existing `sid` in the session store, the contents of the session store are added as a property on the `req` dictionary (`req.session`).  We can access properties on `req.session` (e.g. `req.session.userId`) or set properties on it (e.g. `req.session.userId == someValue`).  The values in the session store might change, but the `Sails.sid` and `sid` generally do not.
 
 ### When does the `Sails.sid` change?
-During development, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store disappears.  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
+During development, the Sails session store is in memory.  Therefore, when you close the Sails server, the current session store disappears.  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
 
 >The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
 
 
-### Using *Redis* as the session store
+### Using Redis as the session store
 
 Redis is a key-value database package that can be used as a session store that is separate from the Sails instance.  This configuration for sessions has two benefits.  The first is that the session store will remain viable between Sails restarts.  The second is that if you have multiple Sails instances behind a load balancer, all of the instances can point to a single consolidated session store.
 
