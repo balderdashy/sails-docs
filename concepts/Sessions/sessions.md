@@ -4,7 +4,7 @@ For our purposes, **sessions** are defined to be a few components that together 
 
 > A **user agent** is the software (i.e. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
 
-Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore, the lifecycle of a request/response ends when a response is made to the requesting user agent (i.e. `res.send()`).
+Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore, the lifecycle of a request/response ends when a response is made to the requesting user agent (e.g. `res.send()`).
 
 Note: we’re going to discuss sessions in the context of a browser user agent. While you can use sessions in Sails for whatever you like, it is generally a best practice to use them purely for storing the state of user agent authentication. Authentication is a process that allows a user agent to prove that they have a certain identity.  For example, in order to access some protected functionality, I might need to prove that my browser tab actually corresponds with a particular user record in a database.  If I provide you with a unique name and a password, you can look up the name and compare my password with a stored (hopefully [encrypted](http://node-machine.org/machinepack-passwords/encrypt-password)) password.  If there's a match, I'm authenticated. But how do you store that "authenticated-ness" between requests? That's where sessions come in.
 
@@ -21,7 +21,7 @@ When a `request` is sent to Sails, the request header is parsed by the session m
 
 ##### Scenario 1: The request header has no *cookie property*
 
-If the header does not contain a cookie property, a `sid` is created in the session and a default session dictionary is added to `req` (i.e. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following *login* action:
+If the header does not contain a cookie property, a `sid` is created in the session and a default session dictionary is added to `req` (e.g. `req.session`).  At this point you can make changes to the session property (usually in a controller/action).  For example, let's look at the following *login* action:
 
 ```javascript
 module.exports = {
