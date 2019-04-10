@@ -48,7 +48,7 @@ Once the response is sent, any new requests will have access to `req.session.use
 
 ##### Scenario 2: The request header has a cookie *property* with a `Sails.sid`
 
-Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity. If it matches an existing `sid` in the session store, the contents of the session store are added as a property on the `req` dictionary (`req.session`).  We can access properties on `req.session` (i.e. `req.session.userId`) or set properties on it (i.e. `req.session.userId == someValue`).  The values in the session store might change, but the `Sails.sid` and `sid` generally do not.
+Now when the user agent makes the next request, the `Sails.sid` stored on the cookie is checked for authenticity. If it matches an existing `sid` in the session store, the contents of the session store are added as a property on the `req` dictionary (`req.session`).  We can access properties on `req.session` (e.g. `req.session.userId`) or set properties on it (e.g. `req.session.userId == someValue`).  The values in the session store might change, but the `Sails.sid` and `sid` generally do not.
 
 ### When does the `Sails.sid` change?
 During development, the Sails session store is *in memory*.  Therefore, when you close the Sails server, the current session store disappears.  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
