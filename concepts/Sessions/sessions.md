@@ -2,7 +2,7 @@
 
 For our purposes, **sessions** are defined to be a few components that together allow you to store information about a user agent between requests.
 
-> A **user agent** is the software (i.e. browser or native application) that represents you on a device (i.e. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
+> A **user agent** is the software (i.e. browser or native application) that represents you on a device (e.g. a browser tab on your computer, a smartphone application, or your refrigerator).  It is associated one-to-one with a cookie or access token.
 
 Sessions can be very useful because the request/response cycle is **stateless**. The request/response cycle is considered stateless because neither the client nor the server inherently stores any information between different requests about a particular request.  Therefore, the lifecycle of a request/response ends when a response is made to the requesting user agent (i.e. `res.send()`).
 
