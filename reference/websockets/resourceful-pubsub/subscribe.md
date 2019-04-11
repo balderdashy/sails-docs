@@ -102,7 +102,7 @@ Organization.subscribe(this.req, orgId);
 // an additional private room (this is used for additional notifications intended only
 // for global admins):
 if (globalAdminOfOrganizations.includes(orgId)) {
-  let privateRoom = Organization.getRoomName(orgId+'-admins-only');
+  let privateRoom = Organization.getRoomName(`${orgId}-admins-only`);
   sails.sockets.join(this.req, privateRoom);
 }
 
