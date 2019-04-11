@@ -88,15 +88,12 @@ For some applications, you may run across the need to manage two different chann
 
 if (!orgId) { throw 'badRequest'; }
 
-if (!req.isSocket) { throw {badRequest: 'This action is designed for use with WebSockets.'}; }
+if (!this.req.isSocket) { throw {badRequest: 'This action is designed for use with WebSockets.'}; }
 
 let me = await User.findOne({
-  id: req.session.userId
+  id: this.req.session.userId
 })
-.populate('globalAdminOfOrganizations', {
-  where: { id: orgId },
-  select: ['id']
-});
+.populate('globalAdminOfOrganizations');
 
 // Subscribe to general notifications.
 Organization.subscribe(this.req, orgId);
@@ -104,9 +101,8 @@ Organization.subscribe(this.req, orgId);
 // If this user is a global admin of this organization, then also subscribe them to
 // an additional private room (this is used for additional notifications intended only
 // for global admins):
-let isGlobalAdminOfThisOrg = (globalAdminOfOrganizations.length > 0);
-if (isGlobalAdminOfThisOrg) {
-  let privateRoom = Organization.getRoomName(orgId+'-admins-only';
+if (globalAdminOfOrganizations.includes(orgId)) {
+  let privateRoom = Organization.getRoomName(orgId+'-admins-only');
   sails.sockets.join(this.req, privateRoom);
 }
 
