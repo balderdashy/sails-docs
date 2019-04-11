@@ -13,7 +13,7 @@ The `afterCreate` lifecycle callback will only be run on queries that have the `
   - beforeCreate: fn(recordToCreate, proceed)
   - afterCreate: fn(newlyCreatedRecord, proceed)
 
-> `beforeCreate()` is not run on bulk inserts of data using `createEach`.
+> `beforeCreate` is also run on bulk inserts of data when you call `.createEach()`. However, `afterCreate` is **not**.
 
 ##### Lifecycle callbacks on `.update()`
 
