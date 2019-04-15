@@ -53,7 +53,7 @@ Now when the user agent makes the next request, the `Sails.sid` stored on the co
 ### When does the `Sails.sid` change?
 During development, the Sails session store is in memory.  Therefore, when you close the Sails server, the current session store disappears.  When Sails is restarted, although a user agent request contains a `Sails.sid` in the cookie, the `sid` is no longer in the session store.  Therefore, a new `sid` will be generated and replaced in the cookie.  The `Sails.sid` will also change if the user agent cookie expires or is removed.
 
->The lifespan of a Sails cookie can be changed from its default setting (e.g. never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
+>The lifespan of a Sails cookie can be changed from its default setting (never expires) to a new setting by accessing the `cookie.maxAge` property in `projectName/config/session.js`.
 
 
 ### Using Redis as the session store
@@ -73,7 +73,7 @@ The value for the cookie is created by first hashing the `sid` with a configurab
 
 > You can change the session `secret` property in `projectName/config/session.js`.
 
-The Sails `sid` (i.e. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combines and hashes to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header.
+The Sails `sid` (e.g. `Sails.sid`) then becomes a combination of the plain `sid` followed by a hash of the `sid` plus the `secret`.  To take this out of the world of abstraction, let's use an example.  Sails creates a `sid` of `234lj232hg234jluy32UUYUHH` and a `session secret` of `9238cca11a83d473e10981c49c4f`. These values are simply two strings that Sails combines and hashes to create a `signature` of `AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi`.  So the `Sails.sid` becomes `234lj232hg234jluy32UUYUHH.AuSosBAbL9t3Ev44EofZtIpiMuV7fB2oi` and is stored in the user agent cookie by sending a `set-cookie` property in the response header.
 
 **What does this prevent?** This prevents a user from guessing the `sid`. It also prevents a evildoer from spoofing a user into making an authetication request with a `sid` that the evildoer knows.  This could allow the evildoer to use the `sid` to do bad things while the user is authenticated via the session.
 
