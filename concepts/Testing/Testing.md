@@ -38,7 +38,7 @@ Before you start building your test cases, organize your `test/` directory struc
 
 ##### lifecycle.test.js
 
-This file is useful when you want to execute some code before and after running your tests (i.e. lifting and lowering your Sails application). Since your models are converted to Waterline collections on lift, it is necessary to lift your Sails app before trying to test them (this applies controllers and other parts of your app, too, so be sure to call this file first).
+This file is useful when you want to execute some code before and after running your tests (e.g. lifting and lowering your Sails application). Since your models are converted to Waterline collections on lift, it is necessary to lift your Sails app before trying to test them (this applies controllers and other parts of your app, too, so be sure to call this file first).
 
 ```javascript
 var sails = require('sails');
