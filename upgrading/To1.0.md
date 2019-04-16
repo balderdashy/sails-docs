@@ -178,6 +178,31 @@ These properties were formerly used to indicate whether or not Waterline should 
 
 Furthermore, for any attribute, if you pass `new Date()` as a constraint within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
 
+<!-- TODO: finish filling in the gaps for this section:
+##### Changes to built-in data types
+
+As of Sails v1.0 / Waterline 0.13, we've made changes to the way that data types and type safety work in the ORM. This allows us to do more as far as type validation/coercion, which makes your app more future-proof and less error-prone[1]()[2]()[3](). As a result, we've narrowed down the `type` options to the following:
+
++ `'string'`
++ `'number'`
++ `'boolean'`
++ `'json'`
++ _`'ref'`_ _(advanced: do not use unless you have personally inspected the source code of your adapter to understand how it handles data of this type - this is a direct channel between the adapter and your app.)_
+
+This means that the following types are **no longer supported** (but can be simulated in most cases by including `columnType` and/or validation rules in your attribute definition):
+
++ `'text'` _(use `type: 'string'` and `columnType: 'TEXT'`)_
++ `'integer'` _(use `type: 'number'`, `columnType: 'INT'` and `isInteger: true`)_
++ `'float'` _(use `type: 'number'` and `columnType: 'FLOAT'`)_
++ `'date'`
++ `'datetime'`
++ `'binary'`
++ `'array'` _(use `type: 'json'`)_
++ `'mediumtext'` _(use `type: 'string'` and `columnType: 'MEDIUMTEXT'`)_
++ `'longtext'` _(use `type: 'string'` and `columnType: 'LONGTEXT'`)_
++ `'objectid'`
++ `'email'` _(use `type: 'string'` and `isEmail: true`)_
+-->
 
 ### Changes to `.create()`, `.createEach()`, `.update()`, and `.destroy()` results
 
