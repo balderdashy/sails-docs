@@ -7,3 +7,4 @@ Choose from any of the files or folders in the list to learn more about its purp
 <docmeta name="displayName" value="Anatomy of a Sails app">
 <docmeta name="isOverviewPage" value="true">
 
+<!-- testing sailsbot -->
