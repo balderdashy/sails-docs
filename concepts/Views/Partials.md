@@ -1,6 +1,6 @@
 # Partials
 
-When using the default view engine (`ejs`), Sails supports the use of _partials_ (aka "view partials").  Partials are basically just views that are designed to be used from within other views.
+When using the default view engine (`ejs`), Sails supports the use of _partials_ (i.e. "view partials").  Partials are basically just views that are designed to be used from within other views.
 
 They are particularly useful for reusing the same markup between different views, layouts, and even other partials.
 
@@ -8,7 +8,7 @@ They are particularly useful for reusing the same markup between different views
 <%- partial('./partials/navbar.ejs') %>
 ```
 
-Depending on where this  render the partial located at `views/partials/navbar.ejs`, which might look something like this:
+This should render the partial located at `views/partials/navbar.ejs`, which might look something like this:
 
 ```ejs
 <%
@@ -75,7 +75,7 @@ Partials automatically inherit the view locals that are available wherever they 
 
 ### Overriding locals in a partial
 
-Automatic inheritance of view locals takes care of most use cases for partials.  But sometimes, you might want to pass in additional, dynamic data.  For example, imagine your app has duplicate copies of the following code in a few different views:
+Automatic inheritance of view locals takes care of most use cases for partials,  But sometimes you might want to pass in additional, dynamic data.  For example, imagine your app has duplicate copies of the following code in a few different views:
 
 ```ejs
 <%
@@ -92,7 +92,7 @@ Automatic inheritance of view locals takes care of most use cases for partials. 
 
 To refactor this, you might extrapolate the `<li>` into a partial to avoid duplicating code.  But if we do that, _we cannot rely on automatic inheritance_.  Partials only inherit locals that are available to the view, partial, or layout where they're called as a whole, but this `<li>` relies on a variable called `message`, which comes from the call to [`_.each()`](https://lodash.com/docs/3.10.1#forEach).
 
-Fortunately, Sails also allows you to pass in an optional dictionary (aka plain JavaScript object) of overrides as the second argument to `partial()`:
+Fortunately, Sails also allows you to pass in an optional dictionary (i.e. a plain JavaScript object) of overrides as the second argument to `partial()`:
 
 ```
 <%- partial(relPathToPartial, optionalOverrides) %>
