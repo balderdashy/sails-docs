@@ -35,5 +35,6 @@ After all hooks have initialized, Sails exposes global variables (by default: `s
 + What is the difference between `sails.lift()` and `sails.load()`?
   + `lift()` === `load()` + `initialize()`.  It does everything `load()` does, plus it starts any attached servers (e.g. HTTP) and logs a picture of a boat.
 
+testing sailsbot
 
 <docmeta name="displayName" value="Lifecycle">
