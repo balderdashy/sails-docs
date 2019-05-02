@@ -75,7 +75,7 @@ Partials automatically inherit the view locals that are available wherever they 
 
 ### Overriding locals in a partial
 
-Automatic inheritance of view locals takes care of most use cases for partials,  But sometimes you might want to pass in additional, dynamic data.  For example, imagine your app has duplicate copies of the following code in a few different views:
+Automatic inheritance of view locals takes care of most use cases for partials, but sometimes you might want to pass in additional, dynamic data.  For example, imagine your app has duplicate copies of the following code in a few different views:
 
 ```ejs
 <%
