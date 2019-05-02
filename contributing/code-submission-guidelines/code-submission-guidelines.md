@@ -26,7 +26,7 @@ Sails has several dependencies referenced in the `package.json` file that are no
 
 #### Contributing to an adapter
 
-If the adapter is part of core (code base located in the Sails repo), please follow the general best practices for contributing to Sails core.  If it is located in a different repo, please send feature requests, patches, and issues there.
+If the adapter is part of core (code base located in the Sails repo), please follow the general best practices for contributing to Sails core.  If it is located in a different repo, please send feature requests and patches there.
 
 #### Authoring a new adapter
 
