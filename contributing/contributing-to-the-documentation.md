@@ -1,7 +1,7 @@
 # Contributing to the documentation
 The official documentation on the Sails website is compiled from markdown files in the [sails-docs](https://github.com/balderdashy/sails-docs) repo. Please send a pull request to the **master** branch with amendments and they'll be double-checked and merged as soon as possible.
 
-We are open to suggestions about the process we're using to manage our documentation, and to working with the community in general.  Please post to the [Google Group](https://groups.google.com/forum/#!forum/sailsjs) with your ideas; or, if you're interested in helping directly, contact @fancydoilies, @rudeboot, or @mikermcneil on Twitter.
+We are open to suggestions about the process we're using to manage our documentation, and to working with the community in general.  Please post to the [Gitter](https://gitter.im/balderdashy/sails) with your ideas; or, if you're interested in helping directly, contact @fancydoilies or @mikermcneil on Twitter.
 
 #### What branch should I edit?
 
