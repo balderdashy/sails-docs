@@ -96,11 +96,11 @@ res.view('myView', {
   someObject: { owl: 'hoot' },
   someArray: [1, 'boot', true],
   someBool: false
-  someXSS: '<script>alert("all your credit cards is belongs to us");</script>'
+  someXSS: '<script>alert("all your credit cards belong to me!!");</script>'
 });
 ```
 
-then using `exposeLocalsToBrowser` as shown above would cause the locals to be safely bootstrapped in such a way that `window.SAILS_LOCALS.someArray` would contain the array `[1, 'boot', true]`, and  `window.SAILS_LOCALS.someXSS` would contain the _string_ `<script>alert("all your credit cards is belongs to us");</script>` without causing that code to actually be executed on the page.
+then using `exposeLocalsToBrowser` as shown above would cause the locals to be safely bootstrapped in such a way that `window.SAILS_LOCALS.someArray` would contain the array `[1, 'boot', true]`, and  `window.SAILS_LOCALS.someXSS` would contain the _string_ `<script>alert("all your credit cards belong to me!!");</script>` without causing that code to actually be executed on the page.
 
 The `exposeLocalsToBrowser` function has a single `options` parameter that can be used to configure what data is outputted, and how.  The `options` parameter is a dictionary that can contain the following properties:
 
