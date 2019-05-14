@@ -83,9 +83,6 @@ module.exports = {
     items: {
       collection: 'item',
       via: 'invoice'
-    },
-    user: {
-      model: 'user'
     }
   },
 
@@ -116,6 +113,21 @@ module.exports = {
     }
   },
 };
+
+
+// Delete Invoice Action
+
+  deleteInvoice: async(req, res) => {
+    let invoice;
+    try {
+      //invoice_id is parameter send by client
+      invoice = await Invoice.destroy({id: req.param('invoice_id')}); 
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+    return res.status(202).json({message: 'invoice deleted'});
+  },
 
 
 
