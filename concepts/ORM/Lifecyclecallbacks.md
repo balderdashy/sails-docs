@@ -66,7 +66,7 @@ module.exports = {
 };
 ```
 
-If you want to delete child objects after deleting its parent, you can use the `afterDestroy` lifecycle callback. Be careful when using this, as you may lose sensitive data! In this example we will have 2 Models. `Invoice` and `Item`. `Invoice` to `Item` corresponds to `One-to-many` association relation. See [One-to-many associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many).
+If you want to delete child objects when deleting its parent, you can use the `beforeDestroy` lifecycle callback. By using `beforeDestory` lifecycle, it will delete the child objects before the parent is deleted. You can stimulate a `cascade on delete` with this. Be careful when using this, as you may lose sensitive data! In this example we will have 2 Models. `Invoice` and `Item`. `Invoice` to `Item` corresponds to `One-to-many` association relation. See [One-to-many associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many).
 
 ```javascript
 // Invoice.js
