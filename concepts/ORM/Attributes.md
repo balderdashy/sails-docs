@@ -257,7 +257,6 @@ module.exports = {
 
 > The `columnName` property is not valid for plural associations (that is, attributes with their `collection` property set).  If you&rsquo;re trying to customize a join table for a many-to-many association, use the [`through` property](http://sailsjs.com/documentation/concepts/models-and-orm/associations/through-associations) instead.
 
-> The `columnName` property is not valid for plural associations (that is, attributes with their `collection` property set).  If you&rsquo;re trying to customize a join table for a many-to-many association, use the [`through` property](http://sailsjs.com/documentation/concepts/models-and-orm/associations/through-associations) instead.
 
 
 
