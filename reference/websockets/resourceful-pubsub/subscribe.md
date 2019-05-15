@@ -23,33 +23,21 @@ When a client socket is subscribed to a record, it is a member of its dynamic "r
 On the server, in a controller action:
 
 ```javascript
-  // On the server:
+// On the server:
 
-  subscribeToLouies: function (req, res) {
-    if (!req.isSocket) {
-      return res.badRequest('Only a client socket can subscribe to Louies.  But you look like an HTTP request to me.');
-    }
+if (!this.req.isSocket) {
+  throw {badRequest: 'Only a client socket can subscribe to Louies.  But you look like an HTTP request to me.'};
+}
 
-    // Let's say our client socket has a problem with people named "louie".
+// Let's say our client socket has a problem with people named "louie".
 
-    // First we'll find all users named "louie" (or "louis" even-- we should be thorough)
-    User.find({ or: [{name: 'louie'},{name: 'louis'}] }).exec(function(err, usersNamedLouie){
-      if (err) {
-        return res.serverError(err);
-      }
+// First we'll find all users named "louie" (or "louis" even-- we should be thorough)
+let usersNamedLouie = await User.find({ or: [{name: 'louie'},{name: 'louis'}] });
 
-      // Now we'll subscribe our client socket to each of these records.
-      User.subscribe(req, _.pluck(usersNamedLouie, 'id'));
+// Now we'll subscribe our client socket to each of these records.
+User.subscribe(this.req, _.pluck(usersNamedLouie, 'id'));
 
-      // All done!  We could send down some data, but instead, we just send an empty 200 (OK) response.
-      //
-      // > Although we're ok telling this vengeful client socket when our users get
-      // > destroyed, it seems ill-advised to send him our Louies' sensitive user data.
-      // > (We don't want to help this guy to hunt them down in real life!)
-      return res.ok();
-
-    });//</ User.find() >
-  }
+// All done!  We might send down some data, or just an empty 200 (OK) response.
 ```
 
 
@@ -79,6 +67,8 @@ From now on, as long as our requesting client socket stays connected, it will re
 In order for our client-side code to handle these future notifications, it must _listen_ for the relevant event with `.on()`.  For example:
 
 ```js
+// On the client:
+
 // Whenever a `user` event is received, say something.
 io.socket.on('user', function(msg) {
   console.log('Got a message about a Louie: ', msg);
@@ -96,35 +86,29 @@ For some applications, you may run across the need to manage two different chann
 ```js
 // On the server, in your subscribe action…
 
-var orgId = req.param('organizationId');
-if (!orgId) { return res.badRequest(); }
+if (!orgId) { throw 'badRequest'; }
 
-if (!req.isSocket) { return res.badRequest('This action is designed for use with WebSockets.'); }
+if (!this.req.isSocket) { throw {badRequest: 'This action is designed for use with WebSockets.'}; }
 
-var me = await User.findOne({
-  id: req.session.userId
+let me = await User.findOne({
+  id: this.req.session.userId
 })
-.populate('globalAdminOfOrganizations', {
-  where: { id: orgId },
-  select: ['id']
-});
+.populate('globalAdminOfOrganizations');
 
 // Subscribe to general notifications.
-Organization.subscribe(req, orgId);
+Organization.subscribe(this.req, orgId);
 
 // If this user is a global admin of this organization, then also subscribe them to
 // an additional private room (this is used for additional notifications intended only
 // for global admins):
-var isGlobalAdminOfThisOrg = (globalAdminOfOrganizations.length > 0);
-if (isGlobalAdminOfThisOrg) {
-  var privateRoom = Organization.getRoomName(req.param('organizationId')) + 'admins-only';
-  sails.sockets.join(req, privateRoom);
+if (globalAdminOfOrganizations.includes(orgId)) {
+  let privateRoom = Organization.getRoomName(`${orgId}-admins-only`);
+  sails.sockets.join(this.req, privateRoom);
 }
 
-return res.ok();
 ```
 
-Then later, to publish to one of these rooms, just compute the appropriate room name and use [sails.sockets.broadcast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) to blast out your notification.
+Then later, to publish to one of these rooms, just compute the appropriate room name (e.g. "13-admins-only") and use [sails.sockets.broadcast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) to blast out your notification.
 
 
 

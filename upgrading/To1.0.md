@@ -53,7 +53,7 @@ Sails v1 comes with several improvements to how your app is configured.  For exa
   + Set `async` and `lodash` to either have `require('async')` and `require('lodash')` respectively, or else `false`. You may need to `npm install --save lodash` and `npm install --save async` as well.
 * **Comment out any database configuration your aren&rsquo;t using** in `config/connections.js`.  Unlike previous versions, Sails 1.0 will load _all_ database adapters that are referenced in config files, regardless of whether they are actually used by a model.  See the [migration guide section on database configuration](https://sailsjs.com/documentation/upgrading/to-v-1-0/#?changes-to-database-configuration) for more info.
 * **The `/csrfToken` route** is no longer provided to all apps by default when using CSRF.  If you're utilizing this route in your app, add it manually to `config/routes.js` as `'GET /csrfToken': { action: 'security/grant-csrf-token' }`.
-* **If your app relies on [action shadow routes](https://sailsjs.com/documentation/concepts/blueprints blueprint-routes#?action-routes)** (where every custom controller action is automatically mapped to a route), you&rsquo;ll need to update your `config/blueprints.js` file and set `actions` to `true`.  This setting is now `false` by default.
+* **If your app relies on [action shadow routes](https://sailsjs.com/documentation/concepts/blueprints/blueprint-routes#?action-routes)** (where every custom controller action is automatically mapped to a route), you&rsquo;ll need to update your `config/blueprints.js` file and set `actions` to `true`.  This setting is now `false` by default.
 * **If your app uses CoffeeScript or TypeScript** see the [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) and [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) tutorials for info on how to update it.
 * **If your app uses a view engine other than EJS**, you&rsquo;ll need to configure it yourself in the `config/views.js` file, and will likely need to run `npm install --save consolidate` for your project.  See the "Views" section below for more details.
 * **If your `api` or `config` folders and subfolders contain any non-source files**, they&rsquo;ll need to be moved.  The exception is for Markdown (.md) and text (.txt) files, which will continue to be ignored.  Sails will attempt to read all other files in those folders as code, allowing for more flexibility in choosing a Javascript dialect (see the notes about CoffeeScript and TypeScript above).
@@ -80,6 +80,7 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 * **The `create` blueprint response is now fully populated**, just like responses from `find`, `findOne`, `update` and `destroy`.  To suppress records from being populated, add a `parseBlueprintOptions` to your blueprints config or to a specific route.  See the [blueprints configuration reference](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?using-parseblueprintoptions) for more info.
 * **If you're using `createEach`** to insert large numbers of rows into a database, keep in mind that the Sails 1.0-compatible versions of most adapters now optimize the `createEach` method to use a single query, instead of using one query per row.  Depending on your database, per-request data size limits may apply.  See the [notes at the bottom of the `.createEach()` reference page](https://sailsjs.com/documentation/reference/waterline-orm/models/create-each#?notes) for more info.
 * **The `size` property for attributes** is no longer supported.  Instead, you may indicate column size using [the `columnType` property](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype).
+* **The `defaultsTo` property for attributes may no longer be defined as a function.** Instead, you will either need to hard-code a default value, or remove the `defaultsTo` entirely and update your code to determine the appropriate value for the attribute before creating new records. (This can either be handled before calls to `.create()`/`.createEach()` in your actions, or in the model's [`beforeCreate`](https://sailsjs.com/documentation/concepts/models-and-orm/lifecycle-callbacks#?lifecycle-callbacks-on-create)).
 
 
 
@@ -178,6 +179,31 @@ These properties were formerly used to indicate whether or not Waterline should 
 
 Furthermore, for any attribute, if you pass `new Date()` as a constraint within a Waterline criteria's `where` clause, or as a new record, or within the values to set in a `.update()` query, then these same rules are applied based on the type of the attribute. If the attribute is `type: 'json'`, it uses the latter approach.
 
+<!-- TODO: finish filling in the gaps for this section:
+##### Changes to built-in data types
+
+As of Sails v1.0 / Waterline 0.13, we've made changes to the way that data types and type safety work in the ORM. This allows us to do more as far as type validation/coercion, which makes your app more future-proof and less error-prone[1]()[2]()[3](). As a result, we've narrowed down the `type` options to the following:
+
++ `'string'`
++ `'number'`
++ `'boolean'`
++ `'json'`
++ _`'ref'`_ _(advanced: do not use unless you have personally inspected the source code of your adapter to understand how it handles data of this type - this is a direct channel between the adapter and your app.)_
+
+This means that the following types are **no longer supported** (but can be simulated in most cases by including `columnType` and/or validation rules in your attribute definition):
+
++ `'text'` _(use `type: 'string'` and `columnType: 'TEXT'`)_
++ `'integer'` _(use `type: 'number'`, `columnType: 'INT'` and `isInteger: true`)_
++ `'float'` _(use `type: 'number'` and `columnType: 'FLOAT'`)_
++ `'date'`
++ `'datetime'`
++ `'binary'`
++ `'array'` _(use `type: 'json'`)_
++ `'mediumtext'` _(use `type: 'string'` and `columnType: 'MEDIUMTEXT'`)_
++ `'longtext'` _(use `type: 'string'` and `columnType: 'LONGTEXT'`)_
++ `'objectid'`
++ `'email'` _(use `type: 'string'` and `isEmail: true`)_
+-->
 
 ### Changes to `.create()`, `.createEach()`, `.update()`, and `.destroy()` results
 

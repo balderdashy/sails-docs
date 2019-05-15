@@ -9,6 +9,8 @@
 
 > `lusca` is open-source under the [Apache license](https://github.com/krakenjs/lusca/blob/master/LICENSE.txt)
 
+First:
+
 ```sh
 # In your sails app
 npm install lusca --save --save-exact

@@ -1,4 +1,4 @@
-# Populate (Blueprint)
+# Populate (blueprint)
 
 Populate and return foreign record(s) for the given association of this record.
 

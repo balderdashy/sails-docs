@@ -15,7 +15,7 @@ For an example bootstrap function, generate a new Sails app and have a look at [
 
 ### Notes
 
-> - Sails will log a warning if the bootstrap function is "taking too long".  You can change the default timeout of 5 seconds by setting `sails.config.bootstrapTimeout`.
+> - Sails will log a warning if the bootstrap function is "taking too long".  If your bootstrap function is taking longer to run than the default timeout of 30 seconds and you would like to prevent the warning from being displayed, you can stall it by configuring `sails.config.bootstrapTimeout` to a larger number of milliseconds. (For example, you can increase the timeout to one minute by using `60000`.)
 
 <docmeta name="displayName" value="sails.config.bootstrap()">
 <docmeta name="pageType" value="property">

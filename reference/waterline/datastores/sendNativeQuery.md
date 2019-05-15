@@ -6,7 +6,7 @@ Execute a raw SQL query using this datastore.
 var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ```
 
-> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
+> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. MySQL, SQL Server, or PostgreSQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
 
 ### Usage
 |   |     Argument        | Type                | Details
@@ -17,8 +17,8 @@ var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ##### Result
 
 | Type                | Details |
-|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.)_ |
+|:--------------------|:---------------------------------------------------------------------------------|
+| ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter/dialect you're using. See example below for links to relevant documentation.)_ |
 
 ##### Errors
 
@@ -32,7 +32,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-> Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  The standard [MySQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
+> Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter/dialect you're using.  The standard [MySQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
 
 
 ```js
@@ -46,7 +46,7 @@ WHERE pet.species_label = $1 OR pet.species_label = $2`;
 var rawResult = await sails.sendNativeQuery(NAMES_OF_PETS_SQL, [ 'dog', 'cat' ]);
 
 sails.log(rawResult);
-// (result format depends on the SQL query that was passed in, and the adapter you're using)
+// (result format depends on the SQL query that was passed in, and the adapter/dialect you're using)
 
 // Then parse the raw result and do whatever you like with it.
 

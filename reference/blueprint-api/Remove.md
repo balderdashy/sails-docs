@@ -1,4 +1,4 @@
-# Remove (Blueprint)
+# Remove (blueprint)
 
 Remove a foreign record (e.g. a comment) from one of this record's collections (e.g. "comments").
 
