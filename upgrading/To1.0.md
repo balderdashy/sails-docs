@@ -243,7 +243,7 @@ Article.update({
 > That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.create()`, `.createEach()`, `.update()`, and `.destroy()` calls and add `.fetch()` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
 ### Changes to Waterline criteria usage
-* As of Sails v1.0 / Waterline 0.13, criteria passed into Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case).
+* For performance reasons, as of Sails v1.0 / Waterline 0.13, criteria passed into Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case).
 * Aggregation clauses (`sum`, `average`, `min`, `max`, and `groupBy`) are no longer supported in criteria.  Instead, see new model methods [.sum()](https://sailsjs.com/documentation/reference/waterline-orm/models/sum) and [.avg()](https://sailsjs.com/documentation/reference/waterline-orm/models/avg).
 * Changes to limit and skip:
   + `limit: 0` **no longer does the same thing as `limit: undefined`**.  Instead of matching ∞ results, it now matches 0 results.
