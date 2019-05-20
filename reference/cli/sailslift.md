@@ -1,7 +1,7 @@
-# sails lift
+# Sails lift
 
 
-Run the Sails app in the current dir (if `node_modules/sails` exists, it will be used instead of the globally installed Sails)
+Run the Sails app in the current dir (if `node_modules/sails` exists, it will be used instead of the globally installed Sails).
 
 ```usage
 sails lift
