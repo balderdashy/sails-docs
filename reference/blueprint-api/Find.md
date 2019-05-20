@@ -1,4 +1,4 @@
-# Find (Blueprint)
+# Find (blueprint)
 
 Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
 
@@ -37,7 +37,7 @@ GET /purchase?sort=createdAt DESC&limit=30
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 
 e.g.
 ```json
