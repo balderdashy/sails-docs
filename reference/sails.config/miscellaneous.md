@@ -51,7 +51,7 @@ SSL/TLS (transport-layer security) is critical for preventing potential man-in-t
 
 > ##### SSL and load balancers
 >
-> The `sails.config.ssl` setting is only relevant if you want your _Sails process_ to manage SSL.  This isn't always the case.  For example, if you expect your Sails app to get more traffic over time, it will need to scale to multiple servers, necesitating a load balancer.  Most of the time, for performance and simplicity, it is a good idea to terminate SSL at your load balancer.  If you do that, then since SSL/TLS will have already been dealt with _before packets reach your Sails app_, you won't need to use the `sails.config.ssl` setting at all.  (This is also true if you're using a PaaS like Heroku, or almost any other host with a built-in load balancer.)
+> The `sails.config.ssl` setting is only relevant if you want your _Sails process_ to manage SSL.  This isn't always the case.  For example, if you expect your Sails app to get more traffic over time, it will need to scale to multiple servers, necessitating a load balancer.  Most of the time, for performance and simplicity, it is a good idea to terminate SSL at your load balancer.  If you do that, then since SSL/TLS will have already been dealt with _before packets reach your Sails app_, you won't need to use the `sails.config.ssl` setting at all.  (This is also true if you're using a PaaS like Heroku, or almost any other host with a built-in load balancer.)
 >
 > If you're satisfied that this configuration setting applies to your app, then please continue below for more details.
 
