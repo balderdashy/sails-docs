@@ -1,4 +1,4 @@
-# Sails debug
+# `sails debug`
 
 > ##### _**This command should only be used with older versions of Node.  For Node v6 and above, use [`sails inspect`](https://sailsjs.com/documentation/reference/command-line-interface/sails-inspect).**_
 
