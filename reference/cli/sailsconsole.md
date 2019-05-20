@@ -60,7 +60,7 @@ sails> undefined { name: 'Brian',
   id: 1 }
 ```
 
-It inserts it into the database, which is pretty cool. However, you might be noticing the undefined and null&mdash;don't worry about those. Remember that the .exec() returns errors and data for values, so `.exec(console.log)` has the same effect as `.exec(console.log(err, data))`. The second method will remove the undefined message, but add null on a new line. Whether you want to type more is up to you.
+It inserts it into the database, which is pretty cool. However, you might be noticing the `undefined` and `null`&mdash;don't worry about those. Remember that the .exec() returns errors and data for values, so `.exec(console.log)` has the same effect as `.exec(console.log(err, data))`. The second method will remove the undefined message, but add null on a new line. Whether you want to type more is up to you.
 
 > Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
 >
@@ -74,7 +74,7 @@ It inserts it into the database, which is pretty cool. However, you might be not
 
 ##### Exposing Sails
 
-In `sails console`, type in `sails` to view a list of Sails properties. You can use this to learn more about Sails, override properties, or check to see if you disabled globals.
+In `sails console`, type `sails` to view a list of Sails properties. You can use this to learn more about Sails, override properties, or check to see if you disabled globals.
 
 ```text
 sails> sails
