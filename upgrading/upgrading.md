@@ -1,6 +1,6 @@
 # Upgrading
 
-Like most Node packages, Sails respects [semantic versioning](http://semver.org/).  For example, if you are using Sails v0.11.3, and then upgrade to Sails v0.11.4, you shouldn't need to change your application code.  This is called a **patch release**.  On the other hand, if you upgrade from Sails v0.11.3 to v1.0.0, you can expect some _breaking changes_-- meaning that you will need to change your Sails app's code in order to use the new version.  With any framework or tool, _some_ breaking changes are inevitable over time, but you can expect to see these kinds of changes less often as the APIs in Node and Sails continue to stabilize.  In the meantime, the core maintainers strive to minimize breaking changes and maintain backwards compatibility where possible.
+Like most Node packages, Sails respects [semantic versioning](http://semver.org/).  For example, if you are using Sails v0.11.3, and then upgrade to Sails v0.11.4, you shouldn't need to change your application code.  This is called a **patch release**.  On the other hand, if you upgrade from Sails v0.11.3 to v1.0.0, you can expect some _breaking changes_, meaning that you will need to change your Sails app's code in order to use the new version.  With any framework or tool, _some_ breaking changes are inevitable over time, but you can expect to see these kinds of changes less often as the APIs in Node and Sails continue to stabilize.  In the meantime, the core maintainers strive to minimize breaking changes and maintain backwards compatibility where possible.
 
 ### Version notes
 
