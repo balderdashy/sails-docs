@@ -129,20 +129,20 @@ The points above cover the majority of upgrade issues that Sails contributors ha
 * **The query modifiers `lessThan`, `lessThanOrEqual`, `greaterThan`, and `greaterThanOrEqual` have been removed**. Use the shorthand versions instead. i.e. `<`, `<=`, `>`, `>=`.
 * **The [`add`](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and [`remove`](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) blueprint actions** now require that the primary key of the child record to add or remove be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
 * **The [`destroy`](https://sailsjs.com/documentation/reference/blueprint-api/destroy) blueprint action** now requires that the primary key of the record to destroy be supplied as part of the URL, rather than allowing it to be passed on the query string or in the body.
-* **The `sails.config.session.routesDisabled` setting has changed** to `sails.config.session.isSessionDisabled()`, a function.  See the [`config/session.js` docs](https://sailsjs.com/documentation/reference/configuration/sails-config-session) for more info on configuring `isSessionDisabled()`.
+* **The `sails.config.session.routesDisabled` setting has changed** to `sails.config.session.isSessionDisabled()`, a function.  See the [`config/session.js` docs](https://sailsjs.com/documentation/reference/configuration/sails-config-session) for more information on configuring `isSessionDisabled()`.
 * **The experimental &ldquo;switchback-style&rdquo; usage for Waterline methods is no longer supported**.  Only function callbacks may be used with Waterline model methods.
 * **The experimental `create` auto-migration scheme is no longer supported**.  It is highly recommended that you use a migration tool such as [Knex](http://knexjs.org/#Migrations) to handle migrations of your production database.
 * **The experimental `forceLoadAdapter` datastore setting is no longer supported**.  Instead, all adapters referenced in `config/datastores.js` (formerly `config/connections.js`) are automatically loaded whenever Sails lifts.
 * **The experimental `usage` route option has been removed.**  It is recommended that you perform any route parameter validation in your controller code.
 * **The experimental &ldquo;associated-item&rdquo; blueprint shadow routes have been removed.** These were routes like `GET /user/1/pets/2`, whose functionality can be replicated by simply using the much-clearer route `GET /pets/2`.
-* **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](https://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more info.
+* **The experimental `.validate()` method in model classes** (e.g. `User.validate()`) is now fully supported, but its usage has changed.  See the [`.validate()` docs](https://sailsjs.com/documentation/reference/waterline-orm/models/validate) for more information.
 * **The ordering of attributes** in the internal representation of model classes has changed (association attributes are now sorted at the bottom).  This has the effect of causing tables created using `migrate: 'alter'` to have their columns in a different order than in previous versions of Waterline, so be aware of this if column ordering is important in your application.  As a reminder, auto-migrations are intended to help you design your schema as you build your app.  They are not guaranteed to be consistent regarding any details of your physical database columns besides setting the column name, type (including character set / encoding if specified) and uniqueness.
 * **Using `_config` to link a controller to a model** will no longer work.  This was never a supported feature, but it was used in some projects to change the URLs that were mapped to the blueprint actions for a model.  Please use [`restPrefix`](https://sailsjs.com/documentation/reference/configuration/sails-config-blueprints#?properties) instead.
 
 ### Changes to database configuration
 
-* The `sails.config.connections` setting has been deprecated in favor of `sails.config.datastores`.  If you lift an app that still has `sails.config.connections` configured, you&rsquo;ll get a warning which you can avoid by simply changing `module.exports.connections` in `config/connections.js` to `module.exports.datastores`.  For your own sanity it&rsquo;s recommended that you also change the filename to `config/datastores.js`.
-* The `sails.config.models.connection` setting has been deprecated in favor of `sails.config.models.datastore`.  As above, simply changing the name of the property in `config/models.js` is enough to turn off any warnings.
+* The `sails.config.connections` setting has been deprecated in favor of `sails.config.datastores`.  If you lift an app that still has `sails.config.connections` configured, you&rsquo;ll get a warning which you can avoid by simply changing `module.exports.connections` in `config/connections.js` to `module.exports.datastores`.  For your own sanity, it&rsquo;s recommended that you also change the filename to `config/datastores.js`.
+* The `sails.config.models.connection` setting has been deprecated in favor of `sails.config.models.datastore`.  As above, changing the name of the property in `config/models.js` should be sufficient to turn off any warnings.
 * Every app now has a default datastore (appropriately named `default`) that is configured to use a built-in version of the [`sails-disk` adapter](https://github.com/balderdashy/sails-disk).  In Sails 1.0, the default value of `sails.config.models.datastore` is `default` (rather than `localDiskDb`). The recommended approach to setting the default datastore for your models is to simply to add the desired configuration under the `default` key in `config/datastores.js`, and leave the `datastore` key in `config/models.js` undefined, rather than the previous approach of setting `datastore` to (for example) `myPostgresqlDb` and then adding a `myPostgresqlDb` key to `config/datastores.js`.  This makes it a lot easier to change the datastore used by different environments (for instance, by changing the configuration of the `default` datastore in `config/env/production.js`).
 * _All_ datastores that are configured in an app will be loaded at runtime (rather than only loading datastores that were being used by at least one model).  This has the benefit of allowing the use of a datastore outside the context of an individual model, but it does mean that if you don&rsquo;t want to connect to a certain database when Sails lifts, you should comment out that datastore connection config!
 
@@ -230,7 +230,7 @@ Article.update({
 ```
 
 
-> If the prospect of changing all of your app's queries looks daunting, there is a temporary convenience you might want to take advantage of.
+> If the prospect of changing all of your app's queries seems daunting, there is a temporary convenience you might want to take advantage of.
 > To ease the process of upgrading an existing app, you can tell Sails/Waterline to fetch created/updated/destroyed records for ALL of your app's `.create()`/`.createEach()`/`.update()`/`.destroy()` queries.  Just edit your app-wide model settings in `config/models.js`:
 >
 > ```js
@@ -243,7 +243,7 @@ Article.update({
 > That's it!  Still, to improve performance and future-proof your app, you should go through all of your `.create()`, `.createEach()`, `.update()`, and `.destroy()` calls and add `.fetch()` when you can.  Support for these model settings will eventually be removed in Sails v2.
 
 ### Changes to Waterline criteria usage
-* As of Sails v1.0 / Waterline 0.13, for performance, criteria passed in to Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case.)
+* For performance reasons, as of Sails v1.0 / Waterline 0.13, criteria passed into Waterline's model methods will now be mutated in-place in most situations (whereas in Sails/Waterline v0.12, this was not necessarily the case).
 * Aggregation clauses (`sum`, `average`, `min`, `max`, and `groupBy`) are no longer supported in criteria.  Instead, see new model methods [.sum()](https://sailsjs.com/documentation/reference/waterline-orm/models/sum) and [.avg()](https://sailsjs.com/documentation/reference/waterline-orm/models/avg).
 * Changes to limit and skip:
   + `limit: 0` **no longer does the same thing as `limit: undefined`**.  Instead of matching ∞ results, it now matches 0 results.
@@ -262,7 +262,7 @@ Criteria dictionaries with a mixed `where` clause are no longer supported. For e
   select: ['beardLength', 'lat', 'long']
 }
 ```
-You should use:
+you should use:
 ```javascript
 {
   where: { username: 'santaclaus' },
@@ -270,18 +270,18 @@ You should use:
   select: ['beardLength', 'lat', 'long']
 }
 ```
-> Note that you can still do `{ username: 'santaclaus' }` as shorthand for `{ where: { username: 'santaclaus' } }` -- it's just that you can't mix other top-level criteria clauses (like `limit`) alongside constraints (e.g. `username`).
+> Note that you can still do `{ username: 'santaclaus' }` as shorthand for `{ where: { username: 'santaclaus' } }`, you just can't mix other top-level criteria clauses (like `limit`) alongside constraints (e.g. `username`).
 >
-> And as for anywhere you're building criteria using Waterline's chainable deferred object, then don't worry about this-- it's taken care of for you.
+> For places where you're using Waterline's chainable deferred object to build criteria, don't worry about this&mdash;it's already taken care of for you.
 
 ### Security
 
-New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files, but apps migrating from earlier versions can keep their existing files as long as they perform the following upgrades:
+New apps created with Sails 1.0 will contain a **config/security.js** file instead of individual **config/cors.js** and **config/csrf.js** files. Apps migrating from earlier versions can keep their existing files, as long as they perform the following upgrades:
 
 * Change `module.exports.cors` to `module.exports.security.cors` in `config/cors.js`
 * Change CORS config settings names to match the newly documented names in [Reference > Configuration > sails.config.security](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors)
 * Change `module.exports.csrf` to `module.exports.security.csrf` in `config/csrf.js`.  This value is now simply `true` or `false`; no other CSRF options are supported (see below).
-* `sails.config.csrf.routesDisabled` is no longer supported -- instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
+* `sails.config.csrf.routesDisabled` is no longer supported. Instead, add `csrf: false` to any route in `config/routes.js` that you wish to be unprotected by CSRF, for example:
 
 ```js
 'POST /some-thing': { action: 'do-a-thing', csrf: false },
@@ -298,12 +298,11 @@ New apps created with Sails 1.0 will contain a **config/security.js** file inste
 }
 ```
 
-* `sails.config.csrf.grantTokenViaAjax` is no longer supported.  This setting was used to turn the CSRF token-granting route on or off.  In Sails 1.0, you add that route manually in your `config/routes.js` file (see above), so if you don&rsquo;t want to grant CSRF tokens via AJAX, you can simply not add the route for it!
-
+* `sails.config.csrf.grantTokenViaAjax` is no longer supported.  This setting was used to turn the CSRF token-granting route on or off.  In Sails 1.0, you add that route manually in your `config/routes.js` file (see above). If you don&rsquo;t want to grant CSRF tokens via AJAX, just leave that route out of `config/routes.js`.
 
 ### Views
 
-For maximum flexibility, Consolidate is no longer bundled within Sails.  If you are using a view engine besides EJS, you'll probably want to install Consolidate as a direct dependency of your app.  Then you can configure the view engine in `config/views.js` like so:
+For maximum flexibility, Consolidate is no longer bundled with Sails.  If you are using a view engine besides EJS, you'll probably want to install Consolidate as a direct dependency of your app.  You can then configure the view engine in `config/views.js`, like so:
 
 ```javascript
 extension: 'swig',
@@ -341,7 +340,7 @@ Note that the [built-in support for layouts](https://sailsjs.com/documentation/c
 * Removed deprecated `.subscribers()` method.
 * Removed deprecated "firehose" functionality.
 * Removed support for 0.9.x socket client API.
-* The following resourceful pubsub methods have been removed:
+* The following resourceful pubsub methods have also been removed:
   * `.publishAdd()`
   * `.publishCreate()`
   * `.publishDestroy()`
@@ -351,7 +350,7 @@ Note that the [built-in support for layouts](https://sailsjs.com/documentation/c
   * `.unwatch()`
   * `.message()`
 
-In place of the removed methods, you should use the new `.publish()` method, or the low-level [sails.sockets](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so you'll need to include the ID yourself as part of the data if it&rsquo;s important.  For example, in Sails v0.12.x, doing `User.message(123, {owl: 'hoot'})` would have resulted in the following notification being broadcast to clients:
+In place of the removed methods, you should use the new `.publish()` method, or the low-level [sails.sockets](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods.  Keep in mind that unlike `.message()`, `.publish()` does _not_ wrap your data in an envelope containing the record ID, so&mdash;if it's important&mdash;you'll need to include the ID yourself as part of the data.  For example, in Sails v0.12.x, `User.message(123, {owl: 'hoot'})` would have resulted in the following notification being broadcasted to clients:
 
 ```
 {
@@ -374,7 +373,7 @@ By contrast, in Sails v1.0, `User.publish(123, {owl: 'hoot'})` will simply broad
 
 ### Replacing custom blueprints
 
-Out of the box, it is no longer possible to add a file to `api/blueprints/` that will automatically be used as a blueprint action for all models.  However, this behavior can be replicated easily by installing [`sails-hook-custom-blueprints`](https://www.npmjs.com/package/sails-hook-custom-blueprints).
+Out of the box, it is no longer possible to add a file to `api/blueprints/` that will automatically be used as a blueprint action for all models.  However, this behavior can easily be replicated by installing [`sails-hook-custom-blueprints`](https://www.npmjs.com/package/sails-hook-custom-blueprints).
 
 <!--
 Another way is to add a route like `'POST /:model': 'SharedController.create'` to the bottom of your `config/routes.js` file, and then add the custom `create` blueprint to a `api/controllers/SharedController.js` file (or a `api/controllers/shared/create.js` standalone action).
@@ -384,7 +383,7 @@ Yet another option would be to add a `api/helpers/create.js` helper which takes 
 
 ### Express 4
 
-Sails 1.0 comes with an update to the internal Express server from version 3 to version 4 (thanks to some great work by [@josebaseba](http://github.com/josebaseba)).  This change is mainly about maintainability for the Sails framework, and should be transparent to your app.  However, there are a couple of differences worth noting:
+Sails 1.0 comes with an update to the internal Express server from version 3 to version 4 (thanks to some great work by [@josebaseba](http://github.com/josebaseba)).  This change is mainly about maintainability for the Sails framework and should be transparent to your app.  However, there are a couple of differences worth noting:
 
 * The `404`, `500` and `startRequestTimer` middleware are now built-in to every Sails app, and have been removed from the `sails.config.http.middleware.order` array.  If your app has an overridden `404` or `500` handler, you should instead override `api/responses/notFound.js` and `api/responses/serverError.js` respectively.
 * Session middleware that was designed specifically for Express 3 (e.g. very old versions of `connect-redis` or `connect-mongo`) will no longer work, so you&rsquo;ll need to upgrade to more recent versions.
@@ -415,7 +414,7 @@ being sure to insert `passportInit` and `passportSession` into your `middleware.
 
 ### i18n
 
-Sails 1.0 switches from using the [i18n](http://npmjs.org/package/i18n) to the lighter-weight [i18n-2](http://npmjs.org/package/i18n-2) module.  The overwhelming majority of users should see no difference in their apps.  However, if you&rsquo;re using the `sails.config.i18n.updateFiles` option, be aware that this is no longer supported -- instead, locale files will _always_ be updated in development mode, and _never_ in production mode.  If this is a problem or you&rsquo;re missing some other feature from the i18n module, you can install [sails-hook-i18n](http://npmjs.org/package/sails-hook-i18n) to revert to pre-Sails-1.0 functionality.
+Sails 1.0 switches from using the [i18n](http://npmjs.org/package/i18n) to the lighter-weight [i18n-2](http://npmjs.org/package/i18n-2) module.  The overwhelming majority of users should see no difference in their apps.  However, if you&rsquo;re using the `sails.config.i18n.updateFiles` option, be aware that this is no longer supported; instead, locale files will _always_ be updated in development mode, and _never_ in production mode.  If this is a problem or you&rsquo;re missing some other feature from the i18n module, you can install [sails-hook-i18n](http://npmjs.org/package/sails-hook-i18n) to revert to pre-Sails-1.0 functionality.
 
 > If your 0.12 application is running into issues during upgrade due to its use of i18n features, see [#4343](https://github.com/balderdashy/sails/issues/4343) for more troubleshooting tips.
 
@@ -424,7 +423,7 @@ Sails 1.0 switches from using the [i18n](http://npmjs.org/package/i18n) to the l
 All Sails 1.0 projects that use websockets must install the latest `sails-hook-sockets` dependency (`npm install --save sails-hook-sockets`).  This version of `sails-hook-sockets` differs from previous ones in a couple of ways:
 
 * The default `transports` setting is simply `['websocket']`.  In the majority of production deployments, restricting your app to the `websocket` transport (rather than using `['polling', 'websocket']`) avoids problems with sessions (see the pre-1.0 [scaling guide notes](https://github.com/balderdashy/sails-docs/blob/1038b38cb34fd945086480ee45325a1ac95a0950/concepts/Deployment/Scaling.md#notes) for details).  If you&rsquo;re using the `sails.io.js` websocket client, the easiest way to make your app compatible with the new websocket settings is to install the new `sails.io.js` version with `sails generate sails.io.js`.  The latest version of that package also defaults to the &ldquo;websocket-only&rdquo; transport strategy.  If you&rsquo;ve customized the `transports` setting in your front-end code and `config/sockets.js` file, then you'll just need to continue to ensure that the values in both places match.
-* The latest `sails-hook-sockets` hook uses a newer version of Socket.io.  See the [Socket.io changelog](https://github.com/socketio/socket.io/blob/master/History.md#150--2016-10-06) for a full update, but one thing to keep in mind is that socket IDs no longer have `/#` prepended to them by default.
+* The latest `sails-hook-sockets` hook uses a newer version of Socket.io.  See the [Socket.io changelog](https://github.com/socketio/socket.io/blob/master/History.md#150--2016-10-06) for a full update, but keep in mind that socket IDs no longer have `/#` prepended to them by default.
 
 ### Grunt
 
@@ -467,7 +466,7 @@ to remove those dependencies from your project.
 
 ##### Still displaying v0.12 at launch?
 
-Make sure you have `sails` installed locally in your project, and also that you're using the v1 version of the command-line tool:
+Make sure you have `sails` installed locally in your project, and that you're using the v1 version of the command-line tool.
 
 To install the v1.0 globally, run `npm install sails@^1.0.0 -g`. To install it for a particular Sails app, cd into that app's directory, then run `npm install sails@^1.0.0 --save`.  (After installing locally, be sure to also install the necessary hooks -- see above.)
 
