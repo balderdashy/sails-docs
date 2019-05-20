@@ -30,7 +30,7 @@ In production, Sails configures itself (and its dependencies) to optimize perfor
 
 By default, Sails determines its environment using the `NODE_ENV` environment variable. If `NODE_ENV` is not set, Sails will look to see if you provided a `sails.config.environment` setting, and use it if possible.  Otherwise, it runs in the development environment.
 
-When you lift your app with the NODE_ENV environment variable to `production`, Sails automatically sets `sails.config.environment` to `production` too.  This is the recommended way of switching to production mode. We don't usually recommend configuring `sails.config.environment` manually , since the NODE_ENV environment variable is relied upon by some of Sails&rsquo; dependencies and automatically set by most Sails/Node.js hosting services.
+When you lift your app with the `NODE_ENV` environment variable set to `production`, Sails automatically sets `sails.config.environment` to `production` too.  This is the recommended way of switching to production mode. We don't usually recommend configuring `sails.config.environment` manually , since the NODE_ENV environment variable is relied upon by some of Sails&rsquo; dependencies and automatically set by most Sails/Node.js hosting services.
 
 If you attempt to lift a Sails app in the production environment _without_ setting `NODE_ENV` to `production` (for example, by running `sails lift --prod`), Sails automatically sets `NODE_ENV` to `production` for you.  If you attempt to lift a Sails app in production while `NODE_ENV` is set to a _different_ value (for example `NODE_ENV=development sails lift --prod`), the app fails to start.
 
