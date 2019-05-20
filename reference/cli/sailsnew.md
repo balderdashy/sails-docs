@@ -1,4 +1,4 @@
-# Sails new
+# `sails new`
 
 Create a new Sails project.
 
