@@ -86,7 +86,7 @@ The new release of Waterline ORM (v0.13) introduces full support for SQL transac
 
 ### Other breaking changes
 
-The upgrade gude above provides for the most common upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0. Every app is different, though, so we recommend reading through the points below, as well.  Not all of the changes discussed will necessarily apply to your app, but some might.
+The upgrade guide above provides for the most common upgrade issues that Sails contributors have encountered when upgrading various apps between version 0.12 and version 1.0. Every app is different, though, so we recommend reading through the points below, as well.  Not all of the changes discussed will necessarily apply to your app, but some might.
 
 * **Several properties and methods on `req` now work a little differently:**
   * `req.accepted` has been replaced with [`req.accepts()`](https://sailsjs.com/documentation/reference/request-req/req-accepts)
