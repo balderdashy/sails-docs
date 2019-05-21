@@ -1,9 +1,9 @@
-# sails.config.session
+# `sails.config.session`
 
-Configuration for Sails's built-in session support.
+Configuration for Sails' built-in session support.
 
-Sails's default session integration leans heavily on the great work already done by Express and Connect, but also adds
-a bit of its own special sauce by hooking into the request interpreter.  This allows Sails to access and auto-save any changes your code makes to `req.session` when handling a virtual request from Socket.io.  Most importantly, it means you can just write code that uses `req.session` in the way you might be used to from Express or Connect; whether your controller actions are designed to handle HTTP requests, WebSocket messages, or both.
+Sails' default session integration leans heavily on the great work already done by Express and Connect, but also adds
+a bit of its own special sauce by hooking into the request interpreter.  This allows Sails to access and auto-save any changes your code makes to `req.session` when handling a virtual request from Socket.io.  Most importantly, it means you can just write code that uses `req.session` in the way you might be used to from Express or Connect, whether your controller actions are designed to handle HTTP requests, WebSocket messages, or both.
 
 ### Properties
 
@@ -11,7 +11,7 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 |:------------|:----------:|:----------|:--------|
 | `adapter`   | ((string))    | `undefined` | If left unspecified, Sails will use the default memory store bundled in the underlying session middleware.  This is fine for development, but in production, you _must_ pass in the name of an installed scalable session store module instead (e.g. `@sailshq/connect-redis`).  See [Production config](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) below for details.
 | `name`        | ((string))       | `sails.sid`      | The name of the session ID cookie to set in the response (and read from in the request) when sessions are enabled (which is the case by default for Sails apps). If you are running multiple different Sails apps from the same shared cookie namespace (i.e. the top-level DNS domain, like `frog-enthusiasts.net`), you must be especially careful to configure separate unique keys for each separate app, otherwise the wrong cookie could be used.
-| `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production-- doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
+| `secret` | ((string))| _n/a_     | This session secret is automatically generated when your new app is created. Care should be taken any time this secret is changed in production, as doing so will invalidate the sesssion cookies of your users, forcing them to log in again.  Note that this is also used as the "cookie secret" for signed cookies.
 | `cookie` | ((dictionary)) | _see [below](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie)_ | Configuration for the session ID cookie, including `maxAge`, `secure`, and more.  See [below](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?the-session-id-cookie) for more info.
 | `isSessionDisabled` | ((function)) | (see details) | A function to be run for every request which, if it returns a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy" target="_blank">&ldquo;truthy&rdquo; value</a>, will cause session support to be disabled for the request (i.e. `req.session` will not exist).  By default, this function will check the request path against the [sails.LOOKS_LIKE_ASSET_RX](https://sailsjs.com/documentation/reference/application/advanced-usage/sails-looks-like-asset-rx) regular expression, effectively disabling session support when requesting [assets](https://sailsjs.com/documentation/concepts/assets).
 
@@ -19,12 +19,12 @@ a bit of its own special sauce by hooking into the request interpreter.  This al
 
 ### Advanced session config
 
-If you are using Redis as a session store in development, additional configuration options are available. Most apps can use Sails's default Redis support as described [here](https://sailsjs.com/documentation/concepts/sessions#?using-redis-as-the-session-store), but some advanced use cases may include the following optional config:
+If you are using Redis as a session store in development, additional configuration options are available. Most apps can use Sails' default Redis support as described [here](https://sailsjs.com/documentation/concepts/sessions#?using-redis-as-the-session-store), but some advanced use cases may include the following optional config:
 
 
 | Property      | Type       | Default  | Details |
 |:--------------|------------|:---------|:--------|
-| `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` _or_ a combination of the settings below, to avoid confusion.
+| `url`          | ((string)) | `undefined` | The URL of the Redis instance to connect to.  This may include one or more of the other settings below, e.g. `redis://:mypass@myredishost.com:1234/5` would indicate a `host` of `myredishost.com`, a `port` of `1234`, a `pass` of `mypass` and a `db` of `5`.  In general, you should use either `url` or a combination of the settings below, to avoid confusion.
 | `host`         | ((string))  |`'127.0.0.1'` | Hostname of your Redis instance.  If a `url` setting is configured, this setting will be ignored.
 | `port`         | ((number)) |`6379`   | Port of your Redis instance.  If a `url` setting is configured, this setting will be ignored.
 | `pass`         | ((string)) | `undefined` | The password for your Redis instance. Leave blank if you are not using a password.  If a `url` setting is configured that includes a password, this setting will override the password in `url`.
@@ -97,7 +97,7 @@ session: {
 }
 ```
 
-Otherwise, by default, this option is set as `null` -- meaning that session ID cookies will not send any kind of ["Expires" or "Max Age" header](https://en.wikipedia.org/wiki/HTTP_cookie), and will last only for as long as a user's web browser is open.
+Otherwise, by default, this option is set as `null`, meaning that session ID cookies will not send any kind of ["Expires" or "Max Age" header](https://en.wikipedia.org/wiki/HTTP_cookie) and will last only for as long as a user's web browser is open.
 
 
 ##### The "secure" flag
@@ -116,7 +116,7 @@ During development, when you are not using HTTPS, you should leave `sails.config
 
 But in production, you'll want to set it to `true`.  This instructs web browsers that they should refuse to send back the session ID cookie _except_ over a secure protocol (`https://`).
 
-> **Note:** If you are using HTTPS, but behind a proxy/load balancer - for example, on a PaaS like Heroku - then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](https://sailsjs.com/documentation/reference/configuration/sails-config-http).
+> **Note:** If you are using HTTPS behind a proxy/load balancer&mdash;for example, on a PaaS like Heroku&mdash;then you should still set `secure: true`.  But note that, in order for sessions to work with `secure` enabled, you will _also_ need to set another option called [`sails.config.http.trustProxy`](https://sailsjs.com/documentation/reference/configuration/sails-config-http).
 
 
 ##### Do I need an SSL certificate?
