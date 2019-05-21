@@ -10,7 +10,7 @@ req.hostname;
 
 ### Example
 
-If this request's "Host" header was: "ww3.staging.ibm.com:1492":
+If this request's "Host" header was "ww3.staging.ibm.com:1492":
 
 ```javascript
 req.hostname;
