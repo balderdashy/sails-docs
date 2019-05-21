@@ -1,4 +1,4 @@
-# req.hostname
+# `req.hostname`
 
 Returns the hostname supplied in the host HTTP header. This header may be set either by the client or by the proxy.
 
