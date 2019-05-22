@@ -1,6 +1,5 @@
 # `req.ip`
 
-### Purpose
 The IP address of the client who sent this request (`req`).
 
 > **Note:**
