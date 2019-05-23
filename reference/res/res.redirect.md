@@ -42,7 +42,7 @@ return res.redirect('/checkout');
 ```javascript
 return res.redirect('..');
 ```
-4. A back redirect, which allows you to redirect a request back from whence came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default):
+4. A back redirect, which allows you to redirect a request back from whence it came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default):
 
 ```javascript
 return res.redirect('back');
