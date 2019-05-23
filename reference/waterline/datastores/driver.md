@@ -1,4 +1,4 @@
-# .driver
+# `.driver`
 
 The generic, stateless, low-level driver for this datastore (if supported by the adapter).
 
