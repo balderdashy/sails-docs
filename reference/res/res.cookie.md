@@ -13,10 +13,10 @@ res.cookie(name, value [,options]);
 
 The `path` option defaults to "/".
 
-`maxAge` is a convenience option for setting `expires` relative to the current time in milliseconds. 
+`maxAge` is a convenience option that sets `expires` relative to the current time in milliseconds. 
 
 ```javascript
-res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true })
+res.cookie('rememberme', '1', { maxAge: 900000, httpOnly: true });
 ```
 
 An object that is passed is then serialized as JSON, which is automatically parsed by the Express body-parser middleware.
