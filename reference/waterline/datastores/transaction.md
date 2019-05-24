@@ -1,12 +1,12 @@
-# .transaction()
+# `.transaction()`
 
-Fetch a preconfigured deferred object hooked up to the sails-mysql or sails-postgresql adapter (and consequently the appropriate driver)
+Fetch a preconfigured, deferred object hooked up to the sails-mysql or sails-postgresql adapter (and consequently the appropriate driver).
 
 ```usage
 await datastore.transaction(during);
 ```
 
-_Or_
+or
 
 + `var result = await datastore.transaction(during);`
 
@@ -25,7 +25,7 @@ _Or_
 ##### Result
 | Type                | Details |
 |---------------------|:---------------------------------------------------------------------------------|
-|  ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you did `return 'foo';`, then this will be `'foo'`. |
+|  ((Ref?))            | The optional result data sent back from `during`.  In other words, if in your `during` function you did `return 'foo';`, then this will be `'foo'`. |
 
 ##### Errors
 
@@ -40,7 +40,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-Subtract the specified amount from one user's balance and add it to another.
+Subtract the specified amount from one user's balance and add it to another's.
 
 ```javascript
 // e.g. in an action:
@@ -89,7 +89,7 @@ await sails.getDatastore()
 .intercept('E_NO_SUCH_RECIPIENT', ()=>'notFound');
 ```
 
-> Note that the example above is just a demonstration: in practice, this kind of increment/decrement logic should also include row-level locking.  [Unsure?](https://sailsjs.com/support)
+> Note that the example above is just a demonstration; in practice, this kind of increment/decrement logic should also include row-level locking.  [Unsure?](https://sailsjs.com/support).
 
 <docmeta name="displayName" value=".transaction()">
 <docmeta name="pageType" value="method">
