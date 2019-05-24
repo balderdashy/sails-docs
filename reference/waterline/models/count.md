@@ -1,4 +1,4 @@
-# .count()
+# `.count()`
 
 Get the total number of records matching the specified criteria.
 
@@ -17,7 +17,7 @@ var numRecords = await Model.count(criteria);
 
 | Type                | Description      |
 |---------------------|:-----------------|
-| ((number))          | The number of records from your database which match the given criteria.
+| ((number))          | The number of records from your database that match the given criteria.
 
 
 ##### Errors
