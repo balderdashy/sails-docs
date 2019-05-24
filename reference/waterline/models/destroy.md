@@ -22,7 +22,7 @@ or
 
 | Type                | Description      |
 |---------------------|:-----------------|
-| ((array?)) of ((dictionary))  | The created records are not provided as a result by default in order to optimize for performance.  To override the default setting, chain `.fetch()` and the newly-created records will be sent back. (Be aware that this requires an extra database query in some adapters.)
+| ((array?)) of ((dictionary))  | The created records are not provided as a result by default in order to optimize for performance.  To override the default setting, chain `.fetch()` and the newly detroyed records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 
 ##### Errors
