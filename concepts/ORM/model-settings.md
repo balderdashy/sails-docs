@@ -120,7 +120,7 @@ await User.find();
 // => SELECT * FROM foo_bar;
 ```
 
-> What's in a `tableName`?  In databases like MySQL and PostgreSQL, the setting refers to a literal "table".  In MongoDB, it refers to a "collection".  It's really just about familiarity: That which we call a "table", by any other word would query as swell.
+> What's in a `tableName`?  In databases like MySQL and PostgreSQL, the setting refers to a literal "table".  In MongoDB, it refers to a "collection".  It's really just about familiarity: That which we call a "table", by any other word would query as well.
 
 
 
