@@ -1,4 +1,4 @@
-# .sort()
+# `.sort()`
 
 Set the order in which retrieved records should be returned when executing a [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
