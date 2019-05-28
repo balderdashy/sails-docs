@@ -26,7 +26,7 @@ encryptWith                           | ((string))  | 'default' | The id of a cu
 ### Example
 
 ```javascript
-var user = await User.create({name: 'alice'})
+var newUser = await User.create({name: 'alice'})
 .meta({fetch: true});
 
 return res.json(newUser);
