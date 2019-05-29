@@ -22,7 +22,7 @@ _Or:_
 |---|---------------------|---------------------|:------------------------|
 | 1 | err                 | ((Error))           | Your anticipated Error. |
 
-> `.tolerate()` is useful for tolerating a kind of error (or all errors). If you chain on `.tolerate()` and it matches the error that occurs, then the underlying logic won't throw. It will return instead. What it returns is the return value of the function you passed into .tolerate()
+> `.tolerate()` is useful for tolerating a kind of error (or all errors). If you chain on `.tolerate()` and it matches the error that occurs, then the underlying logic won't throw. Instead, it returns the return value of the "Handler" function you passed into .tolerate().
 
 
 
