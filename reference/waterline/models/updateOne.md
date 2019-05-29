@@ -7,7 +7,7 @@ var updatedRecord = await Something.updateOne(criteria)
 .set(valuesToSet);
 ```
 
-> Before attempting to modify the database, Waterline will check to see if more than one record match the given criteria; if so, it will throw an error instead of proceeding.
+> Before attempting to modify the database, Waterline will check to see if more than one record matches the given criteria; if so, it will throw an error instead of proceeding.
 
 
 ### Usage
