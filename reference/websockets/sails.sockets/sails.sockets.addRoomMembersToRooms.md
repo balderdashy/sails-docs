@@ -1,4 +1,4 @@
-# .addRoomMembersToRooms()
+# `.addRoomMembersToRooms()`
 
 Subscribe all members of a room to one or more additional rooms.
 
@@ -12,9 +12,9 @@ sails.sockets.addRoomMembersToRooms(sourceRoom, destRooms, cb);
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
-| 1 | sourceRoom | ((string)) | The room to retrieve members from.
-| 2 | destRooms  | ((string)), ((array))  | The room or rooms to subscribe the members of `sourceRoom` to.
-| 3 | _cb_       | ((function?))| An optional callback which will be called when the operation is complete on the current server (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
+| 1 | sourceRoom | ((string)) | The room from which to retrieve members.
+| 2 | destRooms  | ((string)), ((array))  | The room or rooms to which to subscribe the members of `sourceRoom`.
+| 3 | _cb_       | ((function?))| An optional callback, which will be called when the operation is complete on the current server (see notes below for more information) or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
 
 
 ### Example
