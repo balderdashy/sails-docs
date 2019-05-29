@@ -23,7 +23,7 @@ or
 
 Return an Error instance or (if applicable) a [special exit signal](https://sailsjs.com/documentation/concepts/actions-and-controllers#?exit-signals) that will be thrown from the original logic instead of throwing the intercepted error.
 
-> .intercept() is for intercepting a certain kind of error (or all errors). If you chain on .intercept(), and it matches the error that occurs, then the underlying logic will throw. But what it throws is determined by what your `handler` function returns.
+> .intercept() is for intercepting a certain kind of error (or all errors). If you chain on .intercept(), and it matches the error that occurs, then the underlying logic will throw. But what it throws is determined by what your handler function returns.
 
 
 
