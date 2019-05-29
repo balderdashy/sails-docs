@@ -1,4 +1,4 @@
-# .getRoomName()
+# `.getRoomName()`
 
 Retrieve the name of the PubSub &ldquo;room&rdquo; for a given record.
 
