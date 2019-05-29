@@ -83,7 +83,7 @@ Zookeeper.find().exec(function afterFind(err, zookeepers) {
 ```
 
 
-As shown in the example above, the query is not executed right away, but notice that instead of using `await` to execute the query and wait for its result, we use the traditional `.exec()` method with a callback function.  With this usage, we cannot rely on try/catch and normal error handling in JavaScript to take care of our errors!  Instead, we have to manually handle them in our callback to .exec().  This style of error handling is the traditional approach used in Node.js apps prior to ~Summer 2017.
+As shown in the example above, the query is not executed right away, but notice that instead of using `await` to execute the query and wait for its result, we use the traditional `.exec()` method with a callback function.  With this usage, we cannot rely on try/catch and normal error handling in JavaScript to take care of our errors!  Instead, we have to manually handle them in our callback to `.exec()`.  This style of error handling is the traditional approach used in Node.js apps prior to ~Summer 2017.
 
 
 Under the covers, Sails and Waterline also provide a minimalist integration with the [Bluebird](https://github.com/petkaantonov/bluebird) promise library, exposing `.then()` and `.catch()` methods.
@@ -91,7 +91,7 @@ Under the covers, Sails and Waterline also provide a minimalist integration with
 
 ```js
 Zookeeper.find()
-.then(function (zookeepers) {...});
+.then(function (zookeepers) {...})
 .catch(function (err) {...});
 //
 // (don't put code out here)
