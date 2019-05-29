@@ -50,8 +50,8 @@ Let's make sure our test user, Finn, exists:
 ```javascript
 User.findOrCreate({ name: 'Finn' }, { name: 'Finn' })
 .exec(async(err, user, wasCreated)=> {
-  if (err) { return res.serverError(err); 
-  }
+  if (err) { return res.serverError(err); }
+  
   if(wasCreated) {
     sails.log('Created a new user: ' + user.name);
   }
