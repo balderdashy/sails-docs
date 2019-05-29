@@ -45,7 +45,7 @@ await User.replaceCollection(3, 'pets')
 
 ### Notes
 > + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
-> + If the association is "two-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other side is singular, the each newly-linked-or-unlinked child record's foreign key will be changed.  If it's plural, then each child record's collection will be modified accordingly.
+> + If the association is "2-way" (meaning it has `via`) then the child records will be modified accordingly.  If the attribute on the other side is singular, the each newly-linked-or-unlinked child record's foreign key will be changed.  If it's plural, then each child record's collection will be modified accordingly.
 > + In addition, if the `via` points at a singular ("model") attribute on the other side, then `.addToCollection()` will "steal" these child records if necessary.  For example, imagine you have an Employee model with this plural ("collection") attribute: `involvedInPurchases: { collection: 'Purchase', via: 'cashier' }`.  If you executed `Employee.addToCollection(7, 'involvedInPurchases', [47])` to assign this purchase to employee #7 (Dolly), but purchase #47 was already associated with a different employee (e.g. #12, Motoki), then this would "steal" the purchase from Motoki and give it to Dolly.  In other words, if you executed `Employee.find([7, 12]).populate('involvedInPurchases')`, Dolly's `involvedInPurchases` array would contain purchase #47 and Motoki's would not.
 
 
