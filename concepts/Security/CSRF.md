@@ -89,7 +89,7 @@ In AJAX/Socket-heavy apps, you might prefer to get the CSRF token dynamically ra
 
 ```json
 {
-  "GET /csrfToken": { action: "security/grant-csrf-token" }
+  'GET /csrfToken': { action: 'security/grant-csrf-token' }
 }
 ```
 
@@ -97,7 +97,7 @@ Then send a GET request to the route you defined, and you'll get CSRF token retu
 
 ```json
 {
-  "_csrf": "ajg4JD(JGdajhLJALHDa"
+  _csrf: 'ajg4JD(JGdajhLJALHDa'
 }
 ```
 

@@ -1,4 +1,4 @@
-# Destroy (Blueprint)
+# Destroy (blueprint)
 
 Delete the record specified by `id` from the database forever and notify subscribed sockets.
 
@@ -6,9 +6,9 @@ Delete the record specified by `id` from the database forever and notify subscri
 DELETE /:model/:id
 ```
 
-This destroys the record which matches the **id** parameter and responds with a JSON dictionary representing the destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
+This destroys the record that matches the **id** parameter and responds with a JSON dictionary representing the destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the record room.  And all sockets currently subscribed to the record will be unsubscribed from it.
+Additionally, a `destroy` event will be published to all sockets subscribed to the record room, and all sockets currently subscribed to the record will be unsubscribed from it.
 
 
 ### Parameters
@@ -28,7 +28,7 @@ Delete Pinkie Pie:
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 
 ```json
 {

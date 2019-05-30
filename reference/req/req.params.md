@@ -1,4 +1,4 @@
-# req.params
+# `req.params`
 
 An object containing parameter values parsed from the URL path.
 

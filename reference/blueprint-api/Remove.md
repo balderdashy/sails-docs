@@ -1,4 +1,4 @@
-# Remove (Blueprint)
+# Remove (blueprint)
 
 Remove a foreign record (e.g. a comment) from one of this record's collections (e.g. "comments").
 
@@ -6,7 +6,7 @@ Remove a foreign record (e.g. a comment) from one of this record's collections (
 DELETE /:model/:id/:association/:fk
 ```
 
-This action removes a reference to some other record (the "foreign" or "child" record) from a collection of this record (the "primary" or "parent" record).  Note that this does not actually destroy the foreign record-- it just unlinks it.
+This action removes a reference to some other record (the "foreign" or "child" record) from a collection of this record (the "primary" or "parent" record).  Note that this does not actually destroy the foreign record, it just unlinks it.
 
 + If the primary record does not exist, this responds using `res.notFound()`.
 + If the foreign record does not exist, this responds using `res.notFound()`.

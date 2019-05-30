@@ -2,13 +2,9 @@
 
 Sails is committed to providing a secure framework, and quickly responding to any suspected security vulnerabilities.  Contributors work carefully to ensure best practices, but we also rely heavily on the community when it comes to discovering, reporting, and remediating security issues.
 
-### Subscribe to announcements
-
-Security announcements are sent to the Sails [newsgroup](https://groups.google.com/forum/#!forum/sailsjs), and are released roughly at the same time NSP advisories are issued.
-
 ### Reporting a security issue in Sails
 
-If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at sailsjs dot io**.  In the spirit of [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure), we ask that you privately report any security vulnerability at that email address, and give us time to patch the issue before publishing the details</em>.
+If you believe you've found a security vulnerability in Sails, Waterline, or one of the other modules maintained by the Sails core team, please send an email to **critical at sailsjs dot com**.  In the spirit of [responsible disclosure](https://en.wikipedia.org/wiki/Responsible_disclosure), we ask that you privately report any security vulnerability at that email address, and give us time to patch the issue before publishing the details</em>.
 
 ### What is a security vulnerability?
 

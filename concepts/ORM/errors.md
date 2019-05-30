@@ -17,9 +17,9 @@ try {
 
 ### Negotiating errors
 
-Catchall error handling, while better than nothing, often just isn't enough. (There's a big difference between "that is not a valid username" and "we aren't able to create new users at all right now".)  In order to negotiate the different kinds of errors appropriately, you'll need to be able to examine them in a granular way.
+Catch-all error handling, while better than nothing, often just isn't enough. (There's a big difference between "that is not a valid username" and "we aren't able to create new users at all right now".)  In order to negotiate the different kinds of errors appropriately, you'll need to be able to examine them in a granular way.
 
-Fortunately, Sails provides some syntactic sugar for doing this out of the box, without resorting to try…catch: [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept) and [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate).
+Fortunately, Sails provides some syntactic sugar for doing this out of the box, without resorting to try… catch: [.intercept()](https://sailsjs.com/documentation/reference/waterline-orm/queries/intercept) and [.tolerate()](https://sailsjs.com/documentation/reference/waterline-orm/queries/tolerate).
 
 ```javascript
 await Something.create({…})
@@ -75,7 +75,7 @@ err.code === 'E_UNIQUE'
 
 ### Examples
 
-The exact strategy you use to do this in your Sails app depends on whether you're using `await`, promises or callbacks.
+The exact strategy you use to do this in your Sails app depends on whether you're using `await`, promises, or callbacks.
 
 ##### Negotiating errors with `await`
 

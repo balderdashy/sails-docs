@@ -21,7 +21,7 @@ sails run hello
 
 ### Example
 
-Here's a more complex example that you'd be more likely to see in a real-world app:
+Here's a more complex example that you might see in a real-world app:
 
 ```js
 // scripts/send-email-proof-reminders.js
