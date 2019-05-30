@@ -58,7 +58,6 @@ When your app is running in a production environment:
 
 If you have sockets enabled for your app (that is, you have the `sails-hook-sockets` module installed), then for security reasons you'll need to set `sails.config.sockets.onlyAllowOrigins` to the array of origins that should be allowed to connect to your app via websockets.  You'll likely set this in your app's `config/env/production.js` file.  See the [socket configuration documentation](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets) for more info on `onlyAllowOrigins`.
 
-
 ##### Configure your app to run on port 80
 
 Whether it's by using the `sails_port` environment variable, setting the `--port` command-line option, or changing your production config file(s), add the following to the top level of your Sails config:

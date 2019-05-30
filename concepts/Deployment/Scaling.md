@@ -29,7 +29,7 @@ One of the big challenges of scaling an application is that these sorts of clust
 + ensure none of the other dependencies you might be using in your app rely on shared memory
 + make sure the database(s) for your models (e.g. MySQL, Postgres, Mongo) are scalable (e.g. sharding/cluster)
 + **If your app uses sessions:**
-  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the "@sailshq/connect-redis" session adapter as a dependency of your app (e.g. `npm install @sailshq/connect-redis --save`). 
+  + Configure your app to use a shared session store such as Redis (simply uncomment the `adapter` option in `config/session.js`) and install the "@sailshq/connect-redis" session adapter as a dependency of your app (e.g. `npm install @sailshq/connect-redis --save`).
   + For more information about configuring your session store for production, see the [sails.config.session](https://sailsjs.com/documentation/reference/configuration/sails-config-session#?production-config) docs.
 + **If your app uses sockets:**
   + Configure your app to use Redis as a shared message queue for delivering socket.io messages. Socket.io (and consequently Sails.js) apps support Redis for sockets by default, so to enable a remote redis pubsub server, uncomment the relevant lines in `config/env/production.js`.
@@ -58,7 +58,7 @@ Optimizing an endpoint in your Node/Sails app is exactly like optimizing an endp
 
 But remember:
 
-> Premature optimization is the root of all evil.  
+> Premature optimization is the root of all evil.
 > &mdash;[Donald Knuth](http://c2.com/cgi/wiki?PrematureOptimization)
 
 No matter what tool you're using, it is important to spend your time and energy writing high quality, well documented, readable code.  That way, if/when you are forced to optimize a code path in your application, you'll find it much easier to do.
@@ -66,8 +66,7 @@ No matter what tool you're using, it is important to spend your time and energy 
 
 
 ### Notes
-
-+ You don't have to use Redis for your sessions-- you can actually use any Connect or Express-compatible session store.  See [sails.config.session](sailsjs.com/documentation/reference/configuration/sails-config-session) for more information.
-+ Some hosted Redis providers (such as <a href="https://elements.heroku.com/addons/redistogo" target="_blank">Redis To Go</a>) set a <a href="https://redis.io/topics/clients#client-timeouts" target="_blank">timeout for idle connections</a>.  In most cases you&rsquo;ll want to turn this off to avoid unexpected behavior in your app.  Details on how to turn off the timeout vary depending on provider, so you may have to contact their support team.
+> + You don't have to use Redis for your sessions; you can actually use any Connect or Express-compatible session store.  See [sails.config.session](sailsjs.com/documentation/reference/configuration/sails-config-session) for more information.
+> + Some hosted Redis providers (such as <a href="https://elements.heroku.com/addons/redistogo" target="_blank">Redis To Go</a>) set a <a href="https://redis.io/topics/clients#client-timeouts" target="_blank">timeout for idle connections</a>.  In most cases you&rsquo;ll want to turn this off to avoid unexpected behavior in your app.  Details on how to turn off the timeout vary depending on provider, so you may have to contact their support team.
 
 <docmeta name="displayName" value="Scaling">
