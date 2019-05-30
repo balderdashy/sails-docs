@@ -2,11 +2,11 @@
 
 ### Overview
 
-The majority of the time, you will interact with Sails through its [command-line interface](https://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](https://sailsjs.com/documentation/reference/command-line-interface/sails-lift).  However, Sails apps can also be started and manipulated from within other Node apps, using the [programmatic interface](https://sailsjs.com/documentation/reference/application).  One of the main uses for this interface is to run Sails apps inside of automated test suites.
+Usually you will interact with Sails through its [command-line interface](https://sailsjs.com/documentation/reference/command-line-interface), starting servers with [`sails lift`](https://sailsjs.com/documentation/reference/command-line-interface/sails-lift), but Sails apps can also be started and manipulated from within other Node apps by using the [programmatic interface](https://sailsjs.com/documentation/reference/application).  One of the main uses of this interface is to run Sails apps inside of automated test suites.
 
 ### Creating a Sails app programmatically
 
-To create a new Sails app from within a Node.js script, use the Sails _constructor_.  You can use the same constructor to create as many distinct Sails apps as you like:
+To create a new Sails app from within a Node.js script, use the Sails _constructor_.  The same constructor can be used to create as many distinct Sails apps as you like:
 
 ```javascript
 var Sails = require('sails').constructor;
@@ -91,7 +91,7 @@ mySailsApp.lift(rc('sails'), function(err) {
 
 ##### .load()
 
-Here's an alternative to the previous example:  Starting a Sails app with `.load()` and sending what is _semantically_ the same POST request-- but this time, under the covers we'll use a virtual request instead of HTTP:
+Here's an alternative to the previous example:  starting a Sails app with `.load()` and sending what is _semantically_ the same POST request, but this time we'll use a virtual request instead of HTTP:
 
 ```javascript
 mySailsApp.load({
@@ -150,7 +150,7 @@ mySailsApp.lower(function(err) {
 
 ##### Using `moduleDefinitions` to add actions, models and more
 
-> **Warning:**  Declarative loading of modules with the `moduleDefinitions` setting is **currently experimental**, and may undergo breaking changes _even between major version releases_.  Before using this setting, be sure your project's Sails dependency is pinned to an exact version (i.e. no `^`).
+> **Warning:**  declarative loading of modules with the `moduleDefinitions` setting is **currently experimental**, and may undergo breaking changes _even between major version releases_.  Before using this setting, be sure your project's Sails dependency is pinned to an exact version (i.e. no `^`).
 
 Whenever a Sails app starts, it typically loads and initializes all modules stored in `api/*` (e.g. models from `api/models`, policies from `api/policies`, etc.).  You can add _additional_ modules by specifying them in the runtime configuration passed in as the first argument to `.load()` or `.lift()`, using the `moduleDefinitions` key.  This is mainly useful when running tests.
 

@@ -1,6 +1,6 @@
 # Records
 
-In Sails, [records](https://sailsjs.com/documentation/concepts/models-and-orm/records) come from model methods like `.find()`, and represent data from your database. You can work with records just like you would any other data.
+In Sails, [records](https://sailsjs.com/documentation/concepts/models-and-orm/records) come from model methods like `.find()` and represent data from your database. You can work with records just like you would any other data.
 
 ```js
 var orders = await Order.find();

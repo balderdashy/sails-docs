@@ -22,7 +22,7 @@ Locales can be accessed in controller actions and policies through `res.i18n()`,
 <p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
 ```
 
-Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here, and it really depends on who/how often you'll be editing the stringfiles vs. HTML in the future.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
+Note that the keys in your stringfiles (e.g. "Hello %s, how are you today?") are **case sensitive** and require exact matches.  There are a few different schools of thought on the best approach here; it really depends on who is editing the stringfiles and how often.  Especially if you'll be editing the translations by hand, simpler, all-lowercase key names may be preferable for maintainability.
 
 For example, here's another way you could approach `config/locales/es.json`:
 
@@ -42,7 +42,7 @@ And here's `config/locales/en.json`:
 }
 ```
 
-To represent nested strings, use `.` in keys.  For example, here's some of the strings for an app's "Edit profile" page:
+To represent nested strings, use `.` in keys.  For example, here are some of the strings for an app's "Edit profile" page:
 
 ``` json
 {
@@ -66,7 +66,7 @@ req.setLocale('de');
 // (this will use the strings located in `config/locales/de.json` for translation)
 ```
 
-By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.  (For a deeper dive into one way you might go about implementing this, check out [this gist](https://gist.github.com/mikermcneil/0af155ed546f3ddf164b4885fb67830c).)
+By default, node-i18n will detect the desired language of a request by examining its language headers.  Language headers are set in your users' browser settings, and while they're correct most of the time, you may need the flexibility to override this detected locale and provide your own.  For a deeper dive into one way you might go about implementing this, check out [this gist](https://gist.github.com/mikermcneil/0af155ed546f3ddf164b4885fb67830c).
 
 
 <docmeta name="displayName" value="Locales">

@@ -14,7 +14,7 @@ While actions are mainly registered automatically when the files in an app&rsquo
 | &nbsp;  |       Argument             | Type                | Details
 |---|--------------------------- | ------------------- |:-----------
 | 1 |      action                | ((function)) or ((dictionary))    | Either a [classic action](https://sailsjs.com/documentation/concepts/actions-and-controllers#?classic-actions) (aka `(req, res)`) function or an [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2) definition.
-| 2 |     identity               | ((string)) | The identifier for the action.   This is the string that will be used to reference the action elsewhere in an app, for instance when [binding the action to a route](http://sailsj.com/documentation/concepts/routes/custom-routes#?standalone-action-target-syntax).
+| 2 |     identity               | ((string)) | The identifier for the action.   This is the string that will be used to reference the action elsewhere in an app, for instance when [binding the action to a route](http://sailsjs.com/documentation/concepts/routes/custom-routes#?standalone-action-target-syntax).
 
 
 <docmeta name="displayName" value="sails.registerAction()">

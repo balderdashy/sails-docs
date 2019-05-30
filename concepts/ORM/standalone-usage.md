@@ -27,9 +27,9 @@ The `sails-disk` adapter is a common choice for development and testing.
 
 ### Getting Started
 
-To get started with Waterline as a standalone module, we need two ingredients - adapters and model definitions.
+To get started with Waterline as a standalone module, we need two ingredients: adapters and model definitions.
 
-The simplest adapter to use is the `sails-disk` adapter, so let's install it and Waterline in an empty directory.
+The simplest adapter is the `sails-disk` adapter. Let's install that and Waterline in an empty directory.
 
 ```sh
 mkdir my-tool
@@ -39,9 +39,9 @@ npm init
 npm install waterline sails-disk
 ```
 
-Now we want some sample code. Copy the [example code demonstrating raw Waterline usage from here](https://github.com/balderdashy/waterline-docs/blob/master/examples/src/getting-started.js) into a file in the same directory where you installed the `waterline` and `sails-disk` packages.
+Now we want some sample code. Copy the [example code demonstrating raw Waterline usage from here](https://github.com/balderdashy/waterline-docs/blob/master/examples/src/getting-started.js) into a file in the same directory where the `waterline` and `sails-disk` packages were installed.
 
-Before we run it, let's unpack how it works.
+Before we run it, let's explore how it works.
 
 ```js
 var Waterline = require('waterline');
@@ -49,15 +49,15 @@ var sailsDiskAdapter = require('sails-disk');
 var waterline = new Waterline();
 ```
 
-Here we are simply bootstrapping our main objects. We are setting up the `Waterline` factory object, an instance of an adapter and an instance of `waterline` itself.
+Here we are simply bootstrapping our main objects. We are setting up the `Waterline` factory object, an instance of an adapter, and an instance of `waterline` itself.
 
-Next, we define the specification for the user model, like so:
+Next we define the specification for the user model, like so:
 
 ```js
 var userCollection = Waterline.Collection.extend({
   identity: 'user',
   datastore: 'default',
-  primaryKey: 'id'
+  primaryKey: 'id',
   
   attributes: {
     id: {
@@ -78,15 +78,15 @@ var userCollection = Waterline.Collection.extend({
 
 What's important here is the object that we are passing into that factory method.
 
-We need to give our model an `identity` that we can refer to later, and also declare which datastore we are going to use.
+We need to give our model an `identity` by which it can be referred to later, and also declare which datastore we are going to use.
 
-> A datastore is an instance of an adapter. For example, you could have one datastore for each type of storage you are using (file, MySQL, etc), or you might even have more than one datastore for the same type of adapter.
+> A datastore is an instance of an adapter. For example, you could have one datastore for each type of storage you are using (file, MySQL, etc). You might even have more than one datastore for the same type of adapter.
 
-The `attributes` define the properties of the model. In a traditional database, these attributes would align with columns in a table. But `pets` is a little different because it is defining an association that allows a user to own a number of pets.
+The `attributes` define the properties of the model. In a traditional database, these attributes would align with columns in a table. Our example, `pets`, is a little different because it's defining an association that allows a user to own multiple pets.
 
-> In a relational database, the `pets` attribute won't appear as a column. Rather it establishes a virtual one-to-many association with the pets model that we are about to define.
+> In a relational database, the `pets` attribute won't appear as a column. Rather, it establishes a virtual one-to-many association with the pets model that we are about to define.
 
-Obviously we now need to define what a pet is.
+We must now define what a pet is:
 
 ```js
 var petCollection = Waterline.Collection.extend({
@@ -111,11 +111,11 @@ var petCollection = Waterline.Collection.extend({
 });
 ```
 
-Most of the structure is the same as for the user. However, the `owner` field specifies the owner of this pet.
+Most of the structure is the same as for the user, except there's an additional `owner` field which specifies the owner of this pet.
 
-> In this case, a pet can only have one owner, so we define which model it is associated with. The name of the model needs to marry to the `identity` you give the model. Also, in this case, in a relational database this will create a column called `owner` that will contain a foreign key back to the `user` table.
+> In our example, a pet can only have one owner, and we provide the associated model (in this case, `user`) within the `owner` field. Notice that the name of the model needs to match the `identity` given to the model. See, too, that a relational database will, in this example, create a column called `owner` containing a foreign key back to the `user` table.
 
-Next we have some more boring setup chores.
+Next we have some more boring setup chores:
 
 ```js
 waterline.registerModel(userCollection);
@@ -124,7 +124,7 @@ waterline.registerModel(petCollection);
 
 Here we are adding the model specifications into the `waterline` instance itself.
 
-And last, but not least, we have to configure the datastores.
+Last, but not least, we have to configure the datastores:
 
 ```js
 var config = {
@@ -140,12 +140,13 @@ var config = {
 };
 ```
 
-So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `datastores` which will usually contain datastore details for the target storage system (login details, file paths, etc). Each datastore can be named, and in this case we've simply settled on "default" to name the datastore.  Depending on which adapter is used, each item in `datastores` may allow further configuration.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more info.
+Here we specify the `adapters` that will be used&mdash;one for each type of storage we intend to employ&mdash;and our `datastores`, which will usually contain datastore details for the target storage system (login details, file paths, etc.). Each datastore can be named; in this case we've named our datastore "default" for simplicity.  Depending on the adapter, further configuration may be available for items within `datastores`.  For instance, the `sails-disk` adapter allows the `dir` and `inMemoryOnly` settings to be configured.  See the [sails-disk adapter reference](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?optional-datastore-settings-for-sailsdisk) for more information.
 
-Ok, it's time to actually crank things up and work with the datastore. First we need to initialize the `waterline` instance, and then we can go to work.
+
+Ok, it's time to crank things up and work with the datastore. First we'll initialize the `waterline` instance, and then we can go to work:
 
 ```js
-waterline.initialize(config, function (err, ontology) {
+waterline.initialize(config, (err, ontology)=>{
   if (err) {
     console.error(err);
     return;
@@ -155,13 +156,14 @@ waterline.initialize(config, function (err, ontology) {
   var User = ontology.collections.user;
   var Pet = ontology.collections.pet;
 
-  try {
+  // Since we're using `await`, we'll scope our selves an async IIFE:
+  (async ()=>{
     // First we create a user
     var user = await User.create({
       firstName: 'Neil',
       lastName: 'Armstrong'
     });
-	  
+
     // Then we create the pet
     var pet = await Pet.create({
       breed: 'beagle',
@@ -169,39 +171,42 @@ waterline.initialize(config, function (err, ontology) {
       name: 'Astro',
       owner: user.id
     });
-		
+
     // Then we grab all users and their pets
     var users = await User.find().populate('pets');
-    console.dir(users);
-    
-  } catch (err) {
-    // If any errors occur execution jumps to the catch block.
-    console.log(err);
-  }
+    console.log(users);
+  })()
+  .then(()=>{
+    // All done.
+  })
+  .catch((err)=>{
+    console.error(err);
+  });//_∏_
+  
 });
 ```
 
-That's a fair chunk of code so let's unpack it slower.
+That's a fair chunk of code, so let's unpack it piece by piece.
 
-First we need to `initialize` the waterline instance. This wires up the datastores (maybe logs into a database server or two) and parses all the models looking for associations as well as a heap of other whizbangery. When that is done, it defers to the callback we passed in the second argument.
+First we `initialize` the Waterline instance. This wires up the datastores (maybe logs into a database server or two), parses any models looking for associations, and does a heap of other whizbangery. When all that's done, it defers to the callback we passed in the second argument.
 
-After checking for an error, the `ontology` variable contains the collection objects for our users and our pets, so we add some shortcuts to them in the form of `User` and `Pet`.
+After checking for an error, the `ontology` variable gathers the collection objects for our users and our pets. In the next lines, we add some shortcut variables to those collection objects in the form of `User` and `Pet`.
 
-> We usually name models in the singular form. That is, what is the _type_ of _object_ that you'd get back from a query.
+> We typically name models in the singular form; that is, for the _type_ of _object_ you'd get back from a query.
 
-We will use some `await` goodness to create a user and a pet and see what we can get back out of the datastore.
+Next, we use some `await` goodness to create a user and a pet and see what we can get back out of the datastore.
 
-First, we use the `create` method to create a new user. We just need to supply the attributes for our user, and we'll get back a copy of the record that was created.
+We first use the `create` method to create a new user. We just need to supply the attributes for our user to get a copy of the record that was created.
 
-> Note that by default, Waterline adds an `id` primary key for you, unless you specifically tell it not to.
+> Note: unless you specify otherwise, Waterline adds an `id` primary key by default.
 
-Next we create a new pet, but we can use the `id` of the user that was created in the previous step to associate with the pet. We do this by setting the `owner` field directly.
+We then create a new pet. Notice that we can associate the `id` of the user that was created in the previous step with that pet. This is done by setting the `owner` field directly.
 
-Once the pet is created we have both sides of the association ready. To join them together, we can simply add the pet to a `pets` array in our new user. Then all we need to do is save the record using the `save` method on the model.
+Once the pet is created, both sides of the association are ready. To join them, we simply add the pet to a `pets` array in our new user. Then we just save the record using the `save` method on the model.
 
-> Note that `save` is only available on the model objects returned by the query. Our `User` collection object does not have access to this.
+> Note that `save` is only available on model objects returned by the query. Our `User` collection object does not have access to this.
 
-Finally, we want to see what actually got stuffed into the database, so we use `User.find` to get all the `User` records out of the datastore. We also want the query to resolve the pet association, so we add the `populate` method to tell the query to go find the pet records for each user.
+Finally, we want to see what actually got stuffed into the database, so we use `User.find` to get all the `User` records out of the datastore. We also want the query to resolve the pet association, so we add the `populate` method to tell the query to retrieve the pet records for each user.
 
 Running that simple application gives us:
 
@@ -222,7 +227,7 @@ $ node getting-started.js
     id: 1 } ]
 ```
 
-Interesting. There are the attributes we gave the models, and we can also see the primary keys that were automatically generated for us. We can also see that waterline has thrown in some default `createdAt` and `updatedAt` timestamps too. Cool!
+There are the attributes given to the models, and we can see the primary keys that were automatically generated for us. We can also see that Waterline has thrown in some default `createdAt` and `updatedAt` timestamps. Cool!
 
 > You can turn off the timestamps with other global or per-model configuration options.
 
@@ -233,17 +238,17 @@ This section will walk you through running integration tests for Waterline model
 
 ##### The testing framework
 
-To run the tests we need a testing framework. There are a few around but for our examples we will be using [Mocha](mochajs.org). It's best to install this on the command line like so:
+To run the tests, we need a testing framework. There are several out there, but for our examples we will be using [Mocha](mochajs.org). It's best to install this on the command line like so:
 
 ```js
 $ npm install -g mocha
 ```
 
-If you are interested in code coverage, you might also like to research a tool called [Istanbul](https://www.npmjs.com/package/istanbul). For spying, stubbing, and mocking [Sinon](http://sinonjs.org) is a good choice. For simulating HTTP requests, [nock](https://www.npmjs.com/package/nock) is worth a look.
+If you are interested in code coverage, you might want to check out a tool called [Istanbul](https://www.npmjs.com/package/istanbul). For spying, stubbing, and mocking, [Sinon](http://sinonjs.org) is a good choice. For simulating HTTP requests, [nock](https://www.npmjs.com/package/nock) is worth a look.
 
 ##### Testing a Waterline model
 
-The following example illustrates how you might attempt to test a Waterline model. It assumes the following, and extremely simple, application structure:
+The following example shows how you might test a Waterline model. It assumes the following extremely simple application structure:
 
 ```none
 root
@@ -257,7 +262,7 @@ root
 
 ##### `Pet.js`
 
-Our standard example Pet model.
+Here's our standard example Pet model:
 
 ```js
 module.exports = {
@@ -280,7 +285,7 @@ module.exports = {
 
 ##### `User.js`
 
-Our standard example User model.
+And our standard example User model:
 
 ```js
 module.exports = {
@@ -303,15 +308,13 @@ module.exports = {
 
 ##### `UserModelTest.js`
 
-Here's how we test our `User` model.
+Here's how to test our `User` model.
 
-The `setup` function wires up the Waterline instance with our models, then initializes it. The models are using the `default` adapter and here the test is overriding the configuration to use the disk adapter. We do this because it's fast, and it might also pick up where we are trying to use "magic" in our models that might not be portable across database storages.
+The `setup` function wires up the Waterline instance with our models, then initializes it. The models are using the `default` adapter, but here the test is overriding that configuration to use the disk adapter. We do this because it's fast, and because it may detect where we're trying to use "magic" in our models that might not be portable across database storages.
 
-The `teardown` function annihilates the adapters so that future tests can start with a clean slate (it allows you to safely use the `-w` option with Mocha). It does assume you are using Node 0.12. If you aren't, you'll need to use a Promise library like Bluebird or convert the method to use `async` or similar.
+The `teardown` function clears the adapters so that future tests can start with a clean slate (it allows you to safely use the `-w` option with Mocha). Note that `teardown` assumes you are using Node 0.12; if you aren't, you'll either need to use a promise library, like Bluebird, or to convert the method to use `async` or similar.
 
-Finally we get to our test method that is just trying to create a user and make some basic assertions.
-
-Obviously there is a lot of scope to refactor the code into a utility library as you at more and more test files for your models.
+Finally, we get to our test method that tries to create a user and make some basic assertions:
 
 ```js
 var assert = require('assert');
@@ -378,6 +381,7 @@ suite('UserModel', function () {
   });
 });
 ```
+> Obviously there is a lot of scope to refactoring the code into a utility library as you add more test files for your models.
 
 Now all we have to to is run the tests:
 

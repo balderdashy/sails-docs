@@ -15,7 +15,7 @@ _Or:_
 + `sails.request(url, callback)`
 + `sails.request(url, body, callback)`
 
-This method can be used on a instances that have been started with [`sails.load()`](https://sailsjs.com/documentation/reference/application/sails-load), which are not actively listening for HTTP requests on a server port.  This makes it useful for testing scenarios where running [`sails.lift()`](https://sailsjs.com/documentation/reference/application/sails-lift) is not necessary.  However, it should be noted that the data may not be processed in exactly the same way as an HTTP request; in particular, a much simpler body parser will be employed, and Express middleware such as the static asset server will not be used.
+This method can be used on instances that have been started with [`sails.load()`](https://sailsjs.com/documentation/reference/application/sails-load) and that are not actively listening for HTTP requests on a server port.  This makes `sails.request()` useful for testing scenarios where running [`sails.lift()`](https://sailsjs.com/documentation/reference/application/sails-lift) is not necessary.  However, it should be noted that the data may not be processed in exactly the same way as an HTTP request; in particular, a much simpler body parser will be employed, and Express middleware such as the static asset server will not be used.
 
 
 ### Usage
@@ -34,7 +34,7 @@ If the `request` argument is specified as an object, it can have the following p
 |--------------------------- | ------------------- | ------- | :-----------:
 | url                        | ((string))          | `"/foo"`, `"PUT /user/friend"`    | (required) The route in the Sails app to make a request to, with an optional HTTP method prefix
 | method                     | ((string))          | `"GET"`, `"POST"`    | (optional) The HTTP method to use in the request.  This will override any method supplied as part of the `url` property.
-| headers                    | ((dictionary))          | `{content-type: 'application/json'}`    | (optional) Dictionary of headers to use in the virtual request.
+| headers                    | ((dictionary))          | `{'content-type': 'application/json'}`    | (optional) Dictionary of headers to use in the virtual request.
 | data                       | ((json))            | `{foo:'bar'}`, `12345` | ((optional)) Data to send along with the request.  For `GET`, `HEAD` and `DELETE` requests, the data will be serialized into a querystring and added to the URL.  Otherwise, it will be sent as-is as the request body.
 
 #### Callback

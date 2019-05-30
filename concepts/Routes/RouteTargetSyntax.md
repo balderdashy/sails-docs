@@ -9,7 +9,7 @@ Sails allows you to explicitly route URLs in several different ways in your **co
 ^^^address^^^  ^^^^^^^^^^target^^^^^^^^^^
 ```
 
-### Route Address
+### Route address
 
 The route address indicates what URL should be matched in order to apply the handler and options defined by the target.  A route consists of an optional verb and a mandatory path:
 
@@ -41,25 +41,25 @@ will match all paths that *start* with **/user/foo**.
 
 > **Note:** When using a route with a wildcard, such as `'/*'`, be aware that this will also match requests to static assets (i.e. `/js/dependencies/sails.io.js`) and override them. To prevent this, consider using the `skipAssets` option [described below](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target-options).
 
-You can capture the parts of the address that are matched by wildcards into named parameters by using the `:paramName` wildcard syntax instead of the `*`:
+Another way to capture parts of the address is to use **pattern variables**.  This lets a route match special named parameters which _never contain any `/` characters_ by using the `:paramName` pattern variable syntax instead of the `*`:
 
 ```js
 '/user/foo/bar/:name'
 ```
 
-Will match _almost_ the same URLs as:
+Or for an optional path parameter, add `?` to the end of the pattern variable:
 
 ```js
-'/user/foo/bar/*'
+'/user/foo/bar/:name?'
 ```
 
-but will provide the value of the dynamic portions of the route URL to the route handler as parameter values.  In this case: `req.param('name')`.
+This will match _almost_ the same requests as `/user/foo/bar/*`, but will provide the value of the dynamic portions of the route URL to the route handler as parameter values (e.g. `req.param('name')`).
 
 > Note that the wildcard (`*`) syntax matches slashes, where the URL pattern variable (`:`) syntax does not.  So in the example above, given the route address `GET /user/foo/bar/*`, incoming requests with URLs like `/user/foo/bar/baz/bing/bong/bang` would match (whereas if you used the `:name` syntax, the same URL would not match.)
 
 ### Regular expressions in addresses
 
-In addition to the wildcard address syntax, you may also use Regular Expressions to define the URLs that a route should match.  The syntax for defining an address with a regular expression is:
+In addition to the wildcard address syntax, you may also use regular expressions to define the URLs that a route should match.  The syntax for defining an address with a regular expression is:
 
 `'r|<regular expression string>|<comma-delimited list of param names>'`
 
@@ -67,7 +67,7 @@ That's the letter "**r**", followed by a pipe character `|`, a regular expressio
 
 `'r|^/\\d+/(\\w+)/(\\w+)$|foo,bar": "message/my-action'`
 
-Will match `/123/abc/def`, running the action in **api/controllers/message/my-action.js** and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
+Will match `/123/abc/def`, running the action in **api/controllers/message/my-action.js**, and supplying the values `abc` and `def` as `req.param('foo')` and `req.param('bar')`, respectively.
 
 Note the double-backslash in `\\d` and `\\w`; this escaping is necessary for the regular expression to work correctly!
 
@@ -77,7 +77,7 @@ While you are free to add items to your **config/routes.js** file in any order, 
 
 If you have any [regular expression addresses](https://sailsjs.com/documentation/concepts/routes/custom-routes#?regular-expressions-in-addresses), they will be left in the order you specify.  For example, if your **config/routes.js** file contains a `GET /foo/bar` route followed by a `GET r|^/foo/\\d+$|` route, the second route will always be sorted to appear immediately after `GET /foo/bar`.  This is due to the extreme difficulty of determining the inclusiveness of a regular expression route.  Take care when specifying these routes that you order them so that they won't match more requests than intended.
 
-### Route Target
+### Route target
 
 The address portion of a custom route specifies which URLs the route should match.  The *target* portion specifies what Sails should do after the match is made.  A target can take one of several different forms.  In some cases you may want to chain multiple targets to a single address by placing them in an array, but in most cases each address will have only one target.  The different types of targets are discussed below, followed by a discussion of the various options that can be applied to them.
 
@@ -140,7 +140,7 @@ This tells Sails to handle `GET` requests to `/team` by serving the view templat
 
 
 ##### Redirect target syntax
-You can have one address redirect to another--either within your Sails app, or on another server entirely--you can do so just by specifying the redirect URL as a string:
+You can have one address redirect to another, either within your Sails app or on another server entirely. This can be done just by specifying the redirect URL as a string:
 
 ```js
 '/alias' : '/some/other/route/url',
@@ -162,13 +162,13 @@ Simply specify the name of the response file in your **api/responses** folder, w
 
 ##### Policy target syntax
 
-In most cases, you will want to apply [policies](https://sailsjs.com/documentation/concepts/policies) to your controller actions using the [**config/policies.js**](https://sailsjs.com/documentation/reference/configuration/sails-config-policies) config file.  However, there are some times when you will want to apply a policy directly to a custom route: particularly when you are using the [view](https://sailsjs.com/documentation/concepts/routes/custom-routes#?view-target-syntax) target syntax.  The policy target syntax is:
+In most cases, you will want to apply [policies](https://sailsjs.com/documentation/concepts/policies) to your controller actions using the [**config/policies.js**](https://sailsjs.com/documentation/reference/configuration/sails-config-policies) config file.  However, there are some instances when you'll want to apply a policy directly to a custom route, particularly when you are using the [view](https://sailsjs.com/documentation/concepts/routes/custom-routes#?view-target-syntax) target syntax.  The policy target syntax is:
 
 ```js
 '/foo': { policy: 'my-policy' }
 ```
 
-However, you will always want to chain the policy to at least one other type of target, using an array:
+Note that you will always want to chain the policy to at least one other type of target using an array:
 
 ```js
 '/foo': [
@@ -181,14 +181,14 @@ This will apply the **my-policy** policy to the route and, if it passes, continu
 
 ##### Function target syntax
 
-For quick-and-dirty jobs (useful for quick tests), you can assign a route directly to a function:
+For one-off jobs (quick tests, for example), you can assign a route directly to a function:
 ```js
 '/foo': function(req, res) {
   return res.send('hello!');
 },
 ```
 
-You can also combine this syntax with others using an array, allowing you to define quick, inline middleware:
+You can also combine this syntax with others using an array. This allows you to define quick, inline middleware:
 
 ```js
 '/foo': [
@@ -210,11 +210,11 @@ You can also use a dictionary with an `fn` key to assign a function.  This allow
 },
 ```
 
-> Best practice is to use the function syntax only for temporary routes, since it goes against the structural conventions that make Sails useful!  (Plus, the less cluttered your routes.js file, the better.)
+> Best practice is to use the function syntax only for temporary routes, since doing so goes against the structural conventions that make Sails useful!  (Plus, the less cluttered your routes.js file, the better.)
 
 ### Route target options
 
-In addition to the options discussed in the various route target syntaxes above, any other property you add to a route target object will be passed through to the route handler in the `req.options` object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.
+In addition to the options discussed in the various route target syntaxes above, any other property added to a route target object will be passed through to the route handler in the `req.options` object.  There are several reserved properties that can be used to affect the behavior of the route handlers.  These are listed in the table below.
 
 | Property    | Applicable Target Types       | Data Type | Details |
 |-------------|:----------:|-----------|-----------|

@@ -1,4 +1,4 @@
-# .avg()
+# `.avg()`
 
 Get the aggregate mean of the specified attribute across all matching records.
 
@@ -41,12 +41,11 @@ var averageBalance = await BankAccount.avg('balance')
 .where({
   ownerAge: { '>=': 35, '<=': 45 }
 });
-
-return res.json(averageBalance);
 ```
 
 ### Notes
 > + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
+> + Some databases like MySQL may return `null` for this kind of query, however it's best practice for Sails/Waterline adapter authors to return `0` for consistency and type safety in app-level code.
 
 <docmeta name="displayName" value=".avg()">
 <docmeta name="pageType" value="method">

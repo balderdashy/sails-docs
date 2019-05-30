@@ -7,20 +7,21 @@ Here is a non-comprehensive list of Node/Sails hosting providers and a few avail
 
 <a title="Deploy your Sails/Node.js app on Heroku" href="http://heroku.com"><img style="width:285px;" src="https://sailsjs.com/images/deployment_heroku.png" alt="Heroku logo"/></a>
 
-The easiest (and free) way to deploy any Sails project generated using the "Web App" template is probably via Heroku:
-1. Create a GitHub repo and push your code up to the `master` branch.
-2. Create a Heroku pipeline, and create a staging app within that pipeline (e.g. `my-cool-site-staging`)
-3. Using the point-and-click interface, set up that staging Heroku app to auto-deploy from the `deploy` branch of your GitHub repo.
-4. Under "Add-ons", set up Papertrail for logging, Redis2Go as your production session store (+ for delivering socket messages, if relevant), Heroku Scheduler for scheduled jobs (if relevant), and either MySQL, PostgreSQL, or a MongoDB host for your database (pick any).
-5. Run through `config/production.js` and `config/staging.js` in your project and set it up.  Any information you feel is too sensitive to hard-code in those files in your repo (like database credentials) can be set up as "Config Variables" in Heroku's user interface.  (See bundled config files for examples.)
-6. In the terminal, make sure you've got everything pulled/pushed and are 100% in sync with the remote master branch on GitHub.
-7. Then type `sails run deploy`.
+Heroku offers easy, free deployment for any Sails project generated using the Web App template:
 
-You can see a demonstration of that in action [here](https://platzi.com/cursos/javascript-pro/).
+1. Create a GitHub repo and push your code up to the `master` branch.
+2. Create a Heroku pipeline and a staging app within that pipeline (e.g. `my-cool-site-staging`).
+3. Using the point-and-click interface, set up that staging app to auto-deploy from the `deploy` branch of your GitHub repo.
+4. Under "Add-ons", set up Papertrail for logging, Redis2Go as your production session store (and for delivering socket messages, if relevant), Heroku Scheduler for scheduled jobs (if relevant), and a database host of your choosing (e.g. MySQL, PostgreSQL, MongoDB).
+5. Run through `config/production.js` and `config/staging.js` in your project and set it up.  Any information you feel is too sensitive to hard-code into those files (like database credentials) can be stored in Heroku's config vars (see bundled config files for examples).
+6. In the terminal, make sure you've got everything pulled/pushed and are fully in sync with the remote master branch on GitHub.
+7. Deploy by typing `sails run deploy`.
+
+You can see a demonstration of this in action [here](https://courses.platzi.com/courses/sails-js/).
 
 ##### More resources for using Heroku with Node.js/Sails.js:
 
-+ [Platzi: Full Stack JavaScript: Pt 5 (2018)](https://platzi.com/cursos/javascript-pro/)
++ [Platzi: Full Stack JavaScript: Pt 5 (2018)](https://courses.platzi.com/courses/sails-js/)
 + [Hello Sails.js: Hosting your Sails.js application on Heroku (2016-2017)](https://hellosails.com/hosting-your-sails-js-application-heroku/)
 + [Platzi: Develop Apps with Sails.js: Pt 2 (2015)](https://courses.platzi.com/classes/develop-apps-sails-js/)  _(see part 2)_
 + [Sails.js on Heroku (2015)](http://vort3x.me/sailsjs-heroku/)
@@ -39,16 +40,23 @@ More 2013:
 <a title="Deploy a Sails.js web app to Azure App Service" href="https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-nodejs-sails"><img style="width:350px;" src="https://sailsjs.com/images/deployment_azure.png" alt="Azure logo"/></a>
 
 + [Deploy a Sails.js web app to Azure App Service (2017)](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-nodejs-sails)
+
+<!--
 + [Deploying Sails.js to Azure Web Apps (2015)](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/07/16/y-combinator-collaboration-deploying-sailsjs-to-azure-web-apps/)
+PAGE NOT FOUND
+-->
 
 ### Google Cloud Platform
 
 <a title="Deploy your Sails/Node.js app to Google Cloud Platform" href="https://cloud.google.com/nodejs/resources/frameworks/sails"><img style="width:350px;" src="https://sailsjs.com/images/deployment_googlecloud.png" alt="Google Cloud Platform logo"/></a>
 
-> It's easy to get enterprise-grade Sails.js apps running on Google Cloud Platform. And because the apps you create will be running on the same infrastructure that powers all of Google's products, you can be confident that they will scale to serve all of your users, whether there are a few or millions of them.
+Using Google Cloud Platform means that your apps run on the same infrastructure that powers all of Google's products, so you can be confident that they'll scale seamlessly&mdash;no matter how many users you have.
 
 + [Run Sails.js on Google Cloud Platform (2016)](https://cloud.google.com/nodejs/resources/frameworks/sails)
+<!--
 + [Deploying Sails.js to Google Cloud (2016)](http://www.mot.la/2016-06-04-deploying-sails-js-to-google-cloud.html)
+PAGE NOT FOUND
+-->
 + [A couple of Googlers demonstrate and deploy their app built on Sails.js and GO in a talk called `runtime:yours` at Google Cloud Platform Live (2014)](https://www.facebook.com/sailsjs/posts/721341477911963)
 
 
@@ -72,7 +80,10 @@ More 2013:
 
 
 + [Creating a Sails.js application on AWS (2017)](http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html) _(see also [this question on ServerFault](http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance))_
+<!--
 + [Deploy a Sails app to AWS](https://www.distelli.com/docs/tutorials/build-and-deploy-sails-angular-application)
+REDIRECTS TO SOMETHING ELSE
+-->
 + [Your own mini-Heroku on AWS (2014)](http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html)
 + [Deploying Sails/Node.js apps to AWS (2012)](http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac)
 
@@ -119,7 +130,7 @@ More 2013:
 
 ### RoseHosting
 
-> All hosting plans from RoseHosting are fully-managed with free 24/7 support, so you can contact their [support team](https://www.rosehosting.com/support.html) and they will install and configure Sails.js for you.
+All hosting plans from RoseHosting are fully-managed with free 24/7 support. Their [support team](https://www.rosehosting.com/support.html) will even install and configure Sails.js for you!
 
  + [Install Sails.js with Apache as a reverse proxy on CentOS 7 (2016)](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
  + [Install Sails.js on Ubuntu (2014)](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
@@ -127,8 +138,8 @@ More 2013:
 
 ### More options
 
-+ Like [Heroku](https://stackshare.io/heroku), there are many [other Platform as a Service (PaaS) solutions that support Node.js/Sails.js](https://stackshare.io/heroku/alternatives)
-+ Like [Microsoft Azure](https://stackshare.io/microsoft-azure) and [EC2](https://stackshare.io/amazon-ec2), there are many [other Node.js/Sails.js-compatible "bare-metal"/IaaS cloud servers](https://stackshare.io/amazon-ec2/alternatives)
-+ Like [Cloudflare](https://stackshare.io/cloudflare), there are [other great CDNs for optimized hosting of your static assets](https://stackshare.io/cloudflare/alternatives)
++ Like [Heroku](https://stackshare.io/heroku), there are many [other Platform as a Service (PaaS) solutions that support Node.js/Sails.js](https://stackshare.io/heroku/alternatives).
++ Like [Microsoft Azure](https://stackshare.io/microsoft-azure) and [EC2](https://stackshare.io/amazon-ec2), there are many [other Node.js/Sails.js-compatible "bare-metal"/IaaS cloud servers](https://stackshare.io/amazon-ec2/alternatives).
++ Like [Cloudflare](https://stackshare.io/cloudflare), there are [other great CDNs for optimized hosting of your static assets](https://stackshare.io/cloudflare/alternatives).
 
 <docmeta name="displayName" value="Hosting">

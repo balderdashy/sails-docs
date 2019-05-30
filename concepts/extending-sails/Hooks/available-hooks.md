@@ -48,20 +48,21 @@ There are more than 200 community hooks for Sails.js [available on NPM](https://
 
 | Hook        | Maintainer  | Purpose        | Stable release |
 |-------------|-------------|:---------------|----------------|
-| [sails-hook-webpack](https://www.npmjs.com/package/sails-hook-webpack) | [Michael Diarmid](https://github.com/Salakar) &amp; [Team FA](http://teamfa.com/)| Use Webpack for your Sails app's asset pipeline instead of Grunt. | [![Release info for sails-hook-webpack](https://img.shields.io/npm/dm/sails-hook-webpack.svg?style=plastic)](http://npmjs.com/package/sails-hook-webpack)
+| [sails-hook-webpack](https://www.npmjs.com/package/sails-hook-webpack) | [Michael Diarmid](https://github.com/Salakar) | Use Webpack for your Sails app's asset pipeline instead of Grunt. | [![Release info for sails-hook-webpack](https://img.shields.io/npm/dm/sails-hook-webpack.svg?style=plastic)](http://npmjs.com/package/sails-hook-webpack)
 | [sails-hook-postcss](https://www.npmjs.com/package/sails-hook-postcss) | [Jeff Jewiss](https://github.com/jeffjewiss)| Process your Sails application’s CSS with Postcss. | [![Release info for sails-hook-postcss](https://img.shields.io/npm/dm/sails-hook-postcss.svg?style=plastic)](http://npmjs.com/package/sails-hook-postcss)
 | [sails-hook-babel](https://www.npmjs.com/package/sails-hook-babel) |  [Onoshko Dan](https://github.com/dangreen), [Markus Padourek](https://github.com/globegitter) &amp; [SANE](http://sanestack.com/) | Process your Sails application’s CSS with Postcss. | [![Release info for sails-hook-babel](https://img.shields.io/npm/dm/sails-hook-babel.svg?style=plastic)](http://npmjs.com/package/sails-hook-babel)
 | [sails-hook-responsetime](https://www.npmjs.com/package/sails-hook-responsetime) | [Luis Lobo Borobia](https://github.com/luislobo)| Add X-Response-Time to both HTTP and Socket request headers. | [![Release info for sails-hook-responsetime](https://img.shields.io/npm/dm/sails-hook-responsetime.svg?style=plastic)](http://npmjs.com/package/sails-hook-responsetime)
 | [sails-hook-winston](https://www.npmjs.com/package/sails-hook-winston) | [Kikobeats](https://github.com/Kikobeats) | Integrate the Winston logging system with your Sails application. | [![Release info for sails-hook-winston](https://img.shields.io/npm/dm/sails-hook-winston.svg?style=plastic)](http://npmjs.com/package/sails-hook-winston)
 | [sails-hook-allowed-hosts](https://www.npmjs.com/package/sails-hook-allowed-hosts) | [Akshay Bist](https://github.com/elssar) | Ensure that only requests made from authorized hosts/IP addresses are allowed. | [![Release info for sails-hook-allowed-hosts](https://img.shields.io/npm/dm/sails-hook-allowed-hosts.svg?style=plastic)](http://npmjs.com/package/sails-hook-allowed-hosts)
 | [sails-hook-cron](https://www.npmjs.com/package/sails-hook-cron) | [Eugene Obrezkov](https://github.com/ghaiklor) | Run cron tasks for your Sails app. | [![Release info for sails-hook-cron](https://img.shields.io/npm/dm/sails-hook-cron.svg?style=plastic)](http://npmjs.com/package/sails-hook-cron)
+| [sails-hook-organics](https://www.npmjs.com/package/sails-hook-organics) | [Mike McNeil](https://github.com/mikermcneil) | Exposes a set of commonly-used functions ("organics") as built-in helpers in your Sails app. | [![Release info for sails-hook-organics](https://img.shields.io/npm/dm/sails-hook-organics.svg?style=plastic)](http://npmjs.com/package/sails-hook-organics)
 
 
 ##### Add your hook to this list
 
 If you see out of date information on this page, or if you want to add a hook you made, please submit a pull request to this file updating the table of community hooks above.
 
-Note that, to be listed on this page, an adapter must be free and open-source (_libre_ and _gratis_), preferably under the MIT license.
+Note: to be listed on this page, an adapter must be free and open-source (_libre_ and _gratis_), preferably under the MIT license.
 
 
 <docmeta name="displayName" value="Available hooks">

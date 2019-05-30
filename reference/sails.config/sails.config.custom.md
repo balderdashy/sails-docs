@@ -2,9 +2,9 @@
 
 ### What is this?
 
-The custom configuration for your app. This is useful for one-off settings specific to your application-- things like the domain to use when sending emails, or 3rd party API keys for Stripe, Mailgun, Twitter, Facebook, etc.
+The custom configuration for your app. This is useful for one-off settings specific to your application, like the domain to use when sending emails, or third-party API keys for Stripe, Mailgun, Twitter, Facebook, etc.
 
-These values are usually set in the [`config/custom.js`](https://sailsjs.com/documentation/anatomy/config/custom-js) file, and potentially overridden in production using `config/env/production.js`, environment variables, or any  of the other [configuration mechanisms](https://sailsjs.com/documentation/concepts/configuration) provided by Sails.
+These values are usually set in the [`config/custom.js`](https://sailsjs.com/documentation/anatomy/config/custom-js) file and may be overridden in production using `config/env/production.js`, environment variables, or any  of the other [configuration mechanisms](https://sailsjs.com/documentation/concepts/configuration) provided by Sails.
 
 ### Example
 
