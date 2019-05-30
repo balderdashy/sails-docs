@@ -1,6 +1,6 @@
-# req.headers
+# `req.headers`
 
-An object containing pre-defined/custom header given in the current request.
+An object containing the predefined/custom header given in the current request.
 
 ### Usage
 
@@ -10,7 +10,7 @@ req.headers;
 
 ### Details
 
-Often we want to check the headers of the current request, so this can be done easily in the sails.
+Often we want to check the headers of the current request. This can be done easily in Sails.
 
 ### Example
 
@@ -30,9 +30,9 @@ console.log(req.headers);
 ```
 
 
-### Example
+### Note
 
-And if you want to access any specific, custom or pre-defined header, it can be done with bracket notation:
+If you want to access any specific, custom, or predefined header, it can be done with bracket notation:
 
 ```javascript
 req.headers['custom-header'];

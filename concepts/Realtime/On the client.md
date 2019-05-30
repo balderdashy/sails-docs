@@ -17,7 +17,7 @@ io.socket.get('/hello', function responseFromServer (body, response) {
 </script>
 ```
 
-Now consider this more advanced (and much rarer) use case: Let's disable the eager (auto-connecting) socket, and instead create a new client socket manually.  When it successfully connects to the server, we'll make it log a message:
+Now consider this more advanced (and less common) use case: let's disable the eager (auto-connecting) socket, and instead create a new client socket manually.  When it successfully connects to the server, we'll make it log a message:
 ```html
 <script type="text/javascript" src="/js/dependencies/sails.io.js" autoConnect="false"></script>
 <script type="text/javascript">

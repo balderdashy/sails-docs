@@ -1,5 +1,6 @@
-# req.method
-The request method (aka "verb".)
+# `req.method`
+
+The request method (aka "verb").
 
 ### Usage
 ```usage
@@ -17,7 +18,7 @@ req.method;
 
 ### Notes
 
-> + All requests to a Sails server have a "method", even via WebSockets (this is thanks to the request interpreter)
+> + All requests to a Sails server have a "method", even via WebSockets (this is thanks to the request interpreter).
 
 
 
