@@ -1,4 +1,4 @@
-# .exec()
+# `.exec()`
 
 Execute a Waterline [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
@@ -14,7 +14,7 @@ Execute a Waterline [query instance](https://sailsjs.com/documentation/reference
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    callback         | ((function))                                 | The Node-style callback that will be called when the query completes; successfully or otherwise.
+| 1 |    callback         | ((function))                                 | The Node-style callback that will be called when the query completes, successfully or otherwise.
 
 ##### Callback
 

@@ -1,6 +1,6 @@
-# io.socket.get()
+# `io.socket.get()`
 
-Send a socket request (virtual GET) to a Sails server using Socket.io.
+Send a socket request (virtual GET) to a Sails server using Socket.IO.
 
 ```js
 io.socket.get(url, data, function (resData, jwres){
@@ -14,8 +14,8 @@ io.socket.get(url, data, function (resData, jwres){
 |   | Argument   | Type         | Details |
 |---|:-----------|:------------:|:--------|
 | 1 | url        | ((string))   | The destination URL path, e.g. "/checkout".
-| 2 | _data_     | ((json?))        | Optional request data- if provided, will be URL encoded and appended to `url` (existing query string params in url will be preserved)
-| 3 | _callback_ | ((function?)) | Optional callback- if provided, will be called when the server responds.
+| 2 | _data_     | ((json?))        | Optional request data. If provided, it will be URL-encoded and appended to `url` (existing query string params in url will be preserved).
+| 3 | _callback_ | ((function?)) | Optional callback. If provided, it will be called when the server responds.
 
 ##### Callback
 
@@ -38,7 +38,7 @@ io.socket.get('/users/9', function (resData) {
 
 ### Notes
 > + Remember that you can communicate with _any of your routes_ using socket requests.
-> + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-request) method, or to set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
+> + Need to customize request headers?  Check out the slightly lower-level [`io.socket.request()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-request) method. To set custom headers for _all_ outgoing requests, check out [`io.sails.headers`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails).
 
 <docmeta name="displayName" value="io.socket.get()">
 <docmeta name="pageType" value="method">

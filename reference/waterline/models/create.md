@@ -1,4 +1,4 @@
-# .create()
+# `.create()`
 
 Create a record in the database.
 
@@ -6,7 +6,7 @@ Create a record in the database.
 await Something.create(initialValues);
 ```
 
-_Or:_
+or
 
 + `var createdRecord = await Something.create(initialValues).fetch();`
 

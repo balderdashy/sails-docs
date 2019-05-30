@@ -1,8 +1,8 @@
-# sails inspect
+# Sails inspect
 
 > ##### _**This command should only be used with modern versions of Node.  For Node v5 and below, use [`sails debug`](https://sailsjs.com/documentation/reference/command-line-interface/sails-debug).**_
 
-Attach the node debugger and lift the sails app; similar to running `node --inspect app.js`. You can then use a tool like the Chrome DevTools to interactively debug your apps (see the [Node Inspector docs](https://nodejs.org/en/docs/inspector/) for more info).
+Attach the Node debugger and lift the Sails app (similar to running `node --inspect app.js`). You can then use a tool like Chrome DevTools to interactively debug your apps (see the [Node Inspector docs](https://nodejs.org/en/docs/inspector/) for more information).
 
 ```usage
 sails inspect
@@ -28,7 +28,7 @@ For help see https://nodejs.org/en/docs/inspector
 ```
 
 
-> To use the standard (command-line) node debugger with sails, you can always just run `node inspect app.js`.
+> To use the standard (command-line) Node debugger with Sails, you can always just run `node inspect app.js`.
 
 > If you don't see your files in the Chrome DevTools, try clicking the "Filesystem" tab and adding your project folder to the workspace.
 

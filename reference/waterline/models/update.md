@@ -1,4 +1,4 @@
-# .update()
+# `.update()`
 
 Update all records matching criteria.
 
@@ -7,7 +7,7 @@ await Something.update(criteria)
 .set(valuesToSet);
 ```
 
-_Or:_
+or
 
 + `var updatedRecords = await Something.update(criteria).set(valuesToSet).fetch();`
 
@@ -16,14 +16,14 @@ _Or:_
 
 |   |     Argument        | Type              | Details                            |
 |---|:--------------------|-------------------|:-----------------------------------|
-| 1 | criteria            | ((dictionary))    | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `update` queries do not support pagination using `skip` and `limit` or projections using `select`.
-| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values to that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
+| 1 | criteria            | ((dictionary))    | The [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. `update` queries do not support pagination using `skip` and `limit`, or projections using `select`.
+| 2 | valuesToSet         | ((dictionary))    | A dictionary (plain JavaScript object) of values that all matching records should be updated to have.  _(Note that, if this model is in ["schemaful" mode](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?schema), then any extraneous keys will be silently omitted.)_
 
 ##### Result
 
 | Type                | Description      |
 |:--------------------|:-----------------|
-| ((array?))          | By default, for better performance, the updated records are not provided as a result.   But if you chain `.fetch()`, then the array of updated record(s) will be sent back. (Be aware that this requires extra database queries in some adapters.)
+| ((array?))          | The created records are not provided as a result by default, in order to optimize for performance.  To override the default setting, chain `.fetch()` and an array of the updated records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 
 ##### Errors
@@ -79,7 +79,7 @@ sails.log(updatedUsers);
 
 ### Notes
 > + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec).
-> + This method can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replaceCollection` method](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).  To modify items in a collection individually, use the [`addToCollection`](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [removeFromCollection](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) methods.
+> + This method can be used to replace an entire collection association (for example, a user&rsquo;s list of friends), achieving the same result as the [`replaceCollection` method](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).  To modify items in a collection individually, use the [`addToCollection`](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [removeFromCollection](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) methods.
 
 
 <docmeta name="displayName" value=".update()">

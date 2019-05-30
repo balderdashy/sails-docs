@@ -1,4 +1,5 @@
-# req.protocol
+# `req.protocol`
+
 The protocol used to send this request (`req`).
 
 ### Usage
