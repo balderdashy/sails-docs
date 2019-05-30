@@ -50,11 +50,11 @@ Partials automatically inherit the view locals that are available wherever they 
  *   @property {String} username
  */%>
 <nav class="navbar">
-  <p class="links">
+  <div class="links">
     <a href="/">Dashboard</a>
     <a href="/inbox">Inbox</a>
-  </p>
-  <p class="login-or-signup"><%
+  </div>
+  <span class="login-or-signup"><%
   // If the user accessing this page is logged in...
   if (currentUser.isLoggedIn) {
   %>
@@ -68,7 +68,7 @@ Partials automatically inherit the view locals that are available wherever they 
   <%
   }
   %>
-  </p>
+  </span>
 </nav>
 ```
 
