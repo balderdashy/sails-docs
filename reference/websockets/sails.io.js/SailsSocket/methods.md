@@ -53,7 +53,7 @@ Reconnects a SailsSocket instance to a server after it's been disconnected (eith
 io.socket.reconnect();
 ```
 
-> When an instance is in a disconnected state, its properties may be changed. This method allows an instance that has been disconnected from one server to be reconnected to another without losing its event bindings or queued requests.
+> When an instance is in a disconnected state, its properties may be changed. This means that an instance that has been disconnected from one server to be reconnected to another without losing its event bindings or queued requests.
 
 
 ##### `.removeAllListeners()`
