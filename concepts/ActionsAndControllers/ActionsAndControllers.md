@@ -47,7 +47,9 @@ module.exports = async function welcomeUser (req, res) {
   var user = await User.findOne({ id: userId });
 
   // If no user was found, redirect to signup.
-  if (!user) { return res.redirect('/signup' );
+  if (!user) {
+    return res.redirect('/signup' );
+  }
 
   // Display the welcome view, setting the view variable
   // named "name" to the value of the user's name.
@@ -55,6 +57,8 @@ module.exports = async function welcomeUser (req, res) {
 
 }
 ```
+
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) with `--no-actions2` to quickly create a classic action.
 
 ##### actions2
 
@@ -108,6 +112,7 @@ module.exports = {
    }
 };
 ```
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 

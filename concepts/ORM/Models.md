@@ -85,7 +85,7 @@ findWithSameNameAsPerson: async function (opts) {
 Then you can do:
 
 ```js
-var monkeys = await Monkey.findWithSameNameAsPerson(37);
+var monkeys = await Monkey.findWithSameNameAsPerson({id:37});
 ```
 
 > For more tips, read about the incident involving [Timothy the Monkey]().
@@ -114,7 +114,7 @@ Person.marry(personA.id, personB.id, function (err) {
 })
 ```
 
-### Case Sensitivity
+### Case sensitivity
 
 Queries in Sails v1.0 are no longer forced to be case *insensitive* regardless of how the database processes the query. This leads to much-improved query performance and better index utilization. Most databases are case *sensitive* by default, but in the rare cases where they aren't and you would like to change that behavior you must modify the database to do so.
 

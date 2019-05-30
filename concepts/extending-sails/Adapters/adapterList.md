@@ -1,6 +1,6 @@
 # Available database adapters
 
-This page is meant to be an up to date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.
+This page is meant to be an up-to-date, comprehensive list of all of the core adapters available for the Sails.js framework, and a reference of a few of the most robust community adapters out there.
 
 All supported adapters can be configured in roughly the same way: by passing in a Sails/Waterline adapter (`adapter`), as well as a connection URL (`url`).  For more information on configuring datastores, see [sails.config.datastores](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
@@ -38,8 +38,8 @@ url: 'mysql://user:password@host:port/database',
 ```
 
 > + The default port for MySQL is `3306`.
-> + If you plan on saving special characters like emojis in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.  You may use the [`columnType` setting](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) in a model attribute to set the character set.
-> + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the mysql REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
+> + If you plan on saving special characters&mdash;like emojis&mdash;in your data, you may need to set the [`charset`](https://dev.mysql.com/doc/refman/5.7/en/charset-charsets.html) configuration option for your datastore.  To allow emojis, use `charset: 'utf8mb4'`.  You may use the [`columnType` setting](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) in a model attribute to set the character set.
+> + For relational database servers like MySQL and PostgreSQL, you may have to create a "database" first using a free tool like [SequelPro](https://www.sequelpro.com/) or in the MySQL REPL on the command-line (if you're an experience SQL user). It's customary to make a database specifically for your app to use.
 > + The sails-mysql adapter is also 100% compatible with [Amazon Aurora](https://aws.amazon.com/rds/aurora/) databases.
 
 ##### Handshake inactivity timeout errors
@@ -70,7 +70,7 @@ url: 'postgresql://user:password@host:port/database',
 ```
 
 > + The default port for PostgreSQL is `5432`.
-> + In addition to `adapter` and `url`, you might also need to set `ssl: true`.  (This depends on where your PostgreSQL database server is hosted.  For example, `ssl: true` is required when connecting to Heroku's hosted PostgreSQL service.)
+> + In addition to `adapter` and `url`, you might also need to set `ssl: true`.  This depends on where your PostgreSQL database server is hosted.  For example, `ssl: true` is required when connecting to Heroku's hosted PostgreSQL service.
 
 ### sails-mongo
 
@@ -126,10 +126,10 @@ Here are a few highlights:
 | **MS SQL Server**               | [sails-MSSQLserver](https://github.com/misterGF/sails-mssqlserver) | [misterGF](https://github.com/misterGF) | Semantic, Queryable                  | [![NPM package info for sails-sqlserver](https://img.shields.io/npm/dm/sails-sqlserver.svg?style=plastic)](http://npmjs.com/package/sails-sqlserver)
 | **OrientDB**                    | [sails-orientDB](https://github.com/appscot/sails-orientdb) | [appscot](https://github.com/appscot) | Semantic, Queryable, Associations, Migratable | [![NPM package info for sails-orientdb](https://img.shields.io/npm/dm/sails-orientdb.svg?style=plastic)](http://npmjs.com/package/sails-orientdb)
 | **Oracle**                      | [sails-oracleDB](https://npmjs.com/package/sails-oracledb) | [atiertant](https://github.com/atiertant) | Semantic, Queryable | [![NPM package info for sails-oracledb](https://img.shields.io/npm/dm/sails-oracledb.svg?style=plastic)](http://npmjs.com/package/sails-oracledb) |
-| **Oracle (AnyPresence)**        | [waterline-oracle-adapter](https://github.com/AnyPresence/waterline-oracle-adapter) | [AnyPresence](http://anypresence.com) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-oracle-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-oracle-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-oracle-adapter)
+| **Oracle (AnyPresence)**        | [waterline-oracle-adapter](https://github.com/AnyPresence/waterline-oracle-adapter) | [AnyPresence](https://github.com/AnyPresence) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-oracle-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-oracle-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-oracle-adapter)
 | **Oracle (stored procedures)**  | [sails-oracle-SP](https://npmjs.com/sails-oracle-sp) | [Buto](http://github.com/buto) and [nethoncho](http://github.com/nethoncho) | Semantic, Queryable     | [![NPM package info for sails-oracle-sp](https://img.shields.io/npm/dm/sails-oracle-sp.svg?style=plastic)](http://npmjs.com/package/sails-oracle-sp)
-| **SAP HANA DB**                 | [sails-HANA](https://npmjs.com/sails-hana) | [Digital Rockers](http://www.digitalrockers.it/) &amp; [Enrico Battistella](http://github.com/battishaar) | Semantic, Queryable     | [![NPM package info for sails-hana](https://img.shields.io/npm/dm/sails-hana.svg?style=plastic)](http://npmjs.com/package/sails-hana)
-| **SAP HANA (AnyPresence)**      | [waterline-SAP-HANA-adapter](https://github.com/AnyPresence/waterline-sap-hana-adapter) | [AnyPresence](http://anypresence.com) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-sap-hana-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-sap-hana-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-sap-hana-adapter)
+| **SAP HANA DB**                 | [sails-HANA](https://npmjs.com/sails-hana) | [Enrico Battistella](https://github.com/battistaar) | Semantic, Queryable     | [![NPM package info for sails-hana](https://img.shields.io/npm/dm/sails-hana.svg?style=plastic)](http://npmjs.com/package/sails-hana)
+| **SAP HANA (AnyPresence)**      | [waterline-SAP-HANA-adapter](https://github.com/AnyPresence/waterline-sap-hana-adapter) | [AnyPresence](https://github.com/AnyPresence) | Semantic, Queryable     | [![Release info for AnyPresence/waterline-sap-hana-adapter](https://img.shields.io/github/tag/AnyPresence/waterline-sap-hana-adapter.svg?style=plastic)](https://github.com/AnyPresence/waterline-sap-hana-adapter)
 | **IBM DB2**                     | [sails-DB2](https://npmjs.com/sails-db2) | [ibuildings Italia](https://github.com/IbuildingsItaly) &amp; [Vincenzo Ferrari](https://github.com/wilk) | Semantic, Queryable     | [![NPM package info for sails-db2](https://img.shields.io/npm/dm/sails-db2.svg?style=plastic)](http://npmjs.com/package/sails-db2)
 | **ServiceNow SOAP**             | [waterline-ServiceNow-SOAP](https://npmjs.com/waterline-servicenow-soap) | [Sungard Availability Services](http://www.sungardas.com/) | Semantic, Queryable     | [![NPM package info for waterline-servicenow-soap](https://img.shields.io/npm/dm/waterline-servicenow-soap.svg?style=plastic)](http://npmjs.com/package/waterline-servicenow-soap)
 | **Cassandra**                   | [sails-cassandra](https://github.com/dtoubelis/sails-cassandra) | [dtoubelis](https://github.com/dtoubelis) | Semantic, Migratable, Iterable | [![NPM package info for sails-cassandra](https://img.shields.io/npm/dm/sails-cassandra.svg?style=plastic)](http://npmjs.com/package/sails-cassandra)
@@ -146,9 +146,9 @@ If you see out of date information on this page, or if you want to add an adapte
 
 Note that, to be listed on this page, an adapter must:
 
-1. Be free and open-source (_libre_ and _gratis_), preferably under the MIT license.
+1. Be free and open source (_libre_ and _gratis_), preferably under the MIT license.
 2. Pass all of the Waterline adapter tests for the interface layers declared in its package.json file.
-3. Support configuration via a connection URL, as `url` (if applicable)
+3. Support configuration via a connection URL, as `url` (if applicable).
 
 
 If you find that any of these conventions are not true for any of the community adapters above (i.e. for latest stable release published on NPM, not for the code on GitHub), then please reach out to the maintainer of the adapter.  If you can't reach them or need further assistance, then please [get in touch](https://sailsjs.com/contact) with a member of the Sails core team.

@@ -1,4 +1,4 @@
-# .leave()
+# `.leave()`
 
 Unsubscribe a socket from a room.
 
@@ -7,7 +7,8 @@ Unsubscribe a socket from a room.
 sails.sockets.leave(socket, roomName);
 ```
 
-_Or:_
+or:
+
 + `sails.sockets.leave(socket, roomName, cb);`
 
 
@@ -15,9 +16,9 @@ _Or:_
 
 |   | Argument   | Type        | Details |
 |---|------------|:-----------:|:--------|
-| 1 | socket     | ((string)), ((req)) | The socket to be unsubscribed.  May be either the incoming socket request (req) or the id of another socket.
+| 1 | socket     | ((string)), ((req)) | The socket to be unsubscribed.  May be either the incoming socket request (req) or the ID of another socket.
 | 2 | roomName   | ((string))  | The name of the room to which the socket will be unsubscribed.
-| 3 | _cb_       | ((function?))| An optional callback which will be called when the operation is complete on the current server (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
+| 3 | _cb_       | ((function?))| An optional callback, which will be called when the operation is complete on the current server (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
 
 
 ### Example
@@ -47,13 +48,13 @@ leaveFunRoom: function(req, res) {
 
 ##### Additional Examples
 
-More examples of `sails.sockets.leave()` usage are [available here](https://gist.github.com/mikermcneil/971b4e92d833211a0243), including unsubscribing other sockets by id, deeper integration with the database, usage within a service, and usage with the `async` library.
+More examples of `sails.sockets.leave()` usage are [available here](https://gist.github.com/mikermcneil/971b4e92d833211a0243), including unsubscribing other sockets by ID, deeper integration with the database, usage within a service, and usage with the `async` library.
 
 
 ### Notes
-> + `sails.sockets.leave()` is more or less equivalent to the functionality of `.leave()` in Socket.io, but with additional built-in support for multi-server deployments.  With [recommended production settings](https://sailsjs.com/documentation/concepts/deployment/scaling), `sails.sockets.leave()` works as documented no matter what server the code happens to be running on, or the server the target socket is connected to.
+> + `sails.sockets.leave()` is more or less equivalent to the functionality of `.leave()` in Socket.IO, but with additional built-in support for multi-server deployments.  With [recommended production settings](https://sailsjs.com/documentation/concepts/deployment/scaling), `sails.sockets.leave()` works as documented no matter what server the code happens to be running on or the server to which the target socket is connected.
 > + In a multi-server environment, when calling `.leave()` with a socket ID argument, the callback function (`cb`) will be executed when the `.leave()` call completes _on the current server_.  This does not guarantee that other servers in the cluster have already finished running the operation.
-> + Be sure and check `req.isSocket === true` before passing in `req` as the socket to be unsubscribed.  For that to work, the provided `req` must be from a socket request, not just any old HTTP request.
+> + Be sure to check that `req.isSocket === true` before passing in `req` as the socket to be unsubscribed.  For that to work, the provided `req` must be from a socket request, not just any old HTTP request.
 
 
 

@@ -1,21 +1,21 @@
 # Policies
 ### Overview
 
-Policies in Sails are versatile tools for authorization and access control: they let you execute some logic _before_ an action is run to determine whether or not to continue processing the request.  The most common use-case for policies is to restrict certain actions to _logged-in users only_.
+Policies in Sails are versatile tools for authorization and access control: they let you execute some logic _before_ an action is run in order to determine whether or not to continue processing the request.  The most common use-case for policies is to restrict certain actions to _logged-in users only_.
 
-> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](https://sailsjs.com/documentation/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view, and point your route to that action. &nbsp;
+> NOTE: policies apply **only** to controllers and actions, not to views.  If you define a route in your [routes.js config file](https://sailsjs.com/documentation/reference/configuration/sails-config-routes) that points directly to a view, no policies will be applied to it.  To make sure policies are applied, you can instead define an action which displays your view and then point your route to that action. &nbsp;
 
 ### When to use policies
 
 It's best to avoid implementing numerous or complex policies in your app.  Instead, when implementing features like granular, role-based permissions, rely on your [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers) to reject unwanted access.  Your actions should also be responsible for any necessary personalization of the view locals and JSON response data you send in the response.
 
-For example, if you need to implement user-level or role-based permissions in your application, the most straightforward approach is to take care of the relevant checks at the top of your controller action&mdash;either inline, or by calling out to a helper.  Following this best practice will significantly enhance the maintainability of your code.
+For example, if you need to implement user-level or role-based permissions in your application, the most straightforward solution is to take care of the relevant checks at the top of your controller action&mdash;either inline or by calling out to a helper.  Following this best practice will significantly improve the maintainability of your code.
 
-### Protecting Actions and Controllers with Policies
+### Protecting actions and controllers with policies
 
-Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to your actions and controllers.
+Sails has a built in ACL (access control list) located in `config/policies.js`.  This file is used to map policies to actions and controllers.
 
-This file is  *declarative*, meaning it describes *what* the permissions for your app should look like rather than *how* they should work.  This makes it easier for new developers to jump in and understand what's going on, plus it makes your app more flexible as your requirements inevitably change over time.
+This file is  *declarative*, meaning it describes *what* the permissions for your app should look like rather than *how* they should work.  This makes it easier for new developers to understand what's going on, and it makes your app more flexible as requirements inevitably change over time.
 
 The `config/policies.js` file is a dictionary whose properties and values differ depending on whether you are applying policies to [controllers](https://sailsjs.com/documentation/concepts/actions-and-controllers#?controllers) or [standalone actions](https://sailsjs.com/documentation/concepts/actions-and-controllers#?standalone-actions).
 
