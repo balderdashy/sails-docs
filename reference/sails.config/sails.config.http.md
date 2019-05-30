@@ -16,7 +16,7 @@ Configuration for your app's underlying HTTP server.  These properties are conve
 
 ### Customizing the body parser
 
-The _body parser_ is what Sails and Express apps use to read and understand the body of incoming HTTP requests.  Many different body parsers are available, each with their own strengths and weaknesses.  By default, Sails apps use [Skipper](http://github.com/balderdashy/skipper), a general-purpose solution that knows how to parse most kinds of HTTP request bodies and provides support for streaming, multipart file uploads.
+The _body parser_ is what Sails/Express apps use to read and understand the body of incoming HTTP requests.  Many different body parsers are available, each with their own strengths and weaknesses.  By default, Sails apps use [Skipper](http://github.com/balderdashy/skipper), a general-purpose solution that knows how to parse most kinds of HTTP request bodies and provides support for streaming, multipart file uploads.
 
 > You can specify a different body parser or a custom function with `req`, `res`, and `next` parameters (just like any other [HTTP middleware function](https://sailsjs.com/documentation/concepts/middleware).)
 
