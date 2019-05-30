@@ -71,13 +71,13 @@ var waltersAndSkylers = await Model.find({
 
 #### Not-in modifier
 
-Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
+Provide an array wrapped in a dictionary under a `!=` key (like `{ '!=': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
 
 > This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
 ```javascript
 var everyoneExceptWaltersAndSkylers = await Model.find({
-  name: { '!' : ['walter', 'skyler'] }
+  name: { '!=' : ['walter', 'skyler'] }
 });
 ```
 

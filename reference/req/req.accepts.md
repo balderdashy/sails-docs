@@ -1,4 +1,4 @@
-# req.accepts()
+# `req.accepts()`
 
 Return whether this request (`req`) advertises that it understands the specified media type.
 
@@ -41,7 +41,7 @@ req.accepts('json');
 
 > + The specified media type may be provided as either a [MIME type string](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) such as "application/json", or an extension name such as "json".
 > + This is implemented by examining the request's ["Accept" header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept).
-> + See the [`accepts` package](https://www.npmjs.com/package/accepts) for the finer details of the header parsing algorithm used in Sails/Express.
+> + See the [`accepts` package](https://www.npmjs.com/package/accepts) for the finer details of the header-parsing algorithm used in Sails/Express.
 
 <docmeta name="displayName" value="req.accepts()">
 <docmeta name="pageType" value="method">

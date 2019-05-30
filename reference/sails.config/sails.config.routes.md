@@ -1,4 +1,4 @@
-# sails.config.routes
+# `sails.config.routes`
 
 Configuration for custom (aka "explicit") routes.  `sails.config.routes` is a dictionary whose keys are URL paths (the "route address") and whose values are one of several types of route handler configurations (called the "route target").
 
