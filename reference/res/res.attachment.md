@@ -16,7 +16,7 @@ This method should be called prior to streaming down the bytes of your file.
 For example, if you're using the [uploads hook](https://www.npmjs.com/package/sails-hook-uploads) with [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2):
 
 ```js
-fn: function({id}, exits) {
+fn: async function({id}, exits) {
   var file = await LegalDoc.findOne({ id });
   if(!file) { throw 'notFound'; }
   
