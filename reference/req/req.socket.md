@@ -1,6 +1,6 @@
 # `req.socket`
 
-If the current request (`req`) originated from a connected Socket.io client, `req.socket` refers to the raw Socket.io socket instance.
+If the current request (`req`) originated from a connected Socket.IO client, `req.socket` refers to the raw Socket.IO socket instance.
 
 ### Usage
 
