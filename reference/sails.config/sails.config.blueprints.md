@@ -31,7 +31,7 @@ Each blueprint action includes, at its core, a Waterline model method call.  For
 
 The `parseBlueprintOptions()` method takes a single argument (the [request object](https://sailsjs.com/documentation/reference/request-req)) and is expected to return a dictionary of Waterline query options.  (You can review an unrealistically-expanded example of a such a dictionary [here](https://gist.github.com/mikermcneil/1b87af6b6a8458254deb83a6d1cf264f), but keep in mind that not all keys apply to all blueprint actions. See [source code in Sails code](https://github.com/balderdashy/sails/tree/v1.2.2/lib/hooks/blueprints/actions) for complete details).
 
-Adding your own `parseBlueprintOptions()` is an advanced concept, and it is recommended that you first familiarize yourself with the [default method code](https://github.com/balderdashy/sails/blob/master/lib/hooks/blueprints/parse-blueprint-options.js) and use it as a starting point.  For small modifications to blueprint behavior, it is best to first call the default method inside your override and then make changes to the returned query options:
+Adding your own `parseBlueprintOptions()` is an advanced concept, and it is recommended that you first familiarize yourself with the [default method code](https://github.com/balderdashy/sails/blob/v1.2.2/lib/hooks/blueprints/parse-blueprint-options.js) and use it as a starting point.  For small modifications to blueprint behavior, it is best to first call the default method inside your override and then make changes to the returned query options:
 
 ```js
 parseBlueprintOptions: function(req) {
