@@ -13,7 +13,7 @@ The documentation for Sails has been translated to a number of different languag
 | ---------------------------- | ------- | ------- | ------------------ | ---------------------------------- |
 | Japanese                     | `ja`    | v0.11.x | [@kory-yhg](https://github.com/kory-yhg)      | [sails-docs-ja](https://github.com/balderdashy/sails-docs/tree/ja)
 | Spanish                      | `es`    | v0.12.x | [@eduartua](https://github.com/eduartua/) & [@alejandronanez](https://github.com/alejandronanez)   | [sails-docs-es](https://github.com/eduartua/sails-docs-es)
-| Brazilian Portuguese         | `pt-BR` | v1.0.x  | [@gabrielalmir10](https://github.com/gabrielalmir10) | [sails-docs-pt-BR](https://github.com/Avlye/sails-docs-pt-BR)
+| Brazilian Portuguese         | `pt-BR` | v1.0.x  | [@Avlye](https://github.com/Avlye) | [sails-docs-pt-BR](https://github.com/Avlye/sails-docs-pt-BR)
 |                              |         | v0.10.x | [@marceloboeira](https://github.com/marceloboeira)   | [sails-docs-pt-BR](https://github.com/balderdashy/sails-docs/tree/pt-BR)
 | Taiwanese Mandarin           | `zh-TW` | v0.10.x | [@CalvertYang](https://github.com/CalvertYang)   | [sails-docs-zh-TW](https://github.com/balderdashy/sails-docs/tree/zh-TW)
 | Korean                       | `ko`    | v0.10.x | [@sapsaldog](https://github.com/sapsaldog)   | [sails-docs-ko](https://github.com/balderdashy/sails-docs/tree/ko)
