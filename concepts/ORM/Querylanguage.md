@@ -40,7 +40,7 @@ var peopleNamedMary = await Model.find({
 
 #### Key pairs
 
-A key pair can be used to search records for values matching exactly what is specified. Again, using the example above when `where` is excluded, this is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
+A key pair can be used to search records for values matching exactly what is specified. This is the base of a criteria object where the key represents an attribute on a model and the value is a strict equality check of the records for matching values.
 
 ```javascript
 var peopleNamedLyra = await Model.find({
