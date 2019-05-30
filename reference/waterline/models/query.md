@@ -1,4 +1,4 @@
-# .query()
+# `.query()`
 
 > **As of Sails v1.0, this method is deprecated.**
 > Instead, please use [`Model.getDatastore().sendNativeQuery()`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query), the new version of this method that standardizes the format of SQL escape bindings, as well as fully supporting `.exec()` and promise-based usage.
@@ -15,7 +15,7 @@ SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 
 ### Usage
 
-`.query()` is only available on Sails/Waterline models that are configured to use a SQL database (e.g. PostgreSQL or mySQL).  Its purpose is to perform raw SQL queries.  Note that exact usage and result format varies between adapters, so you'll need to refer to the documentation for the underlying database driver.  (See below for a couple of simple examples to help get you started.)
+`.query()` is only available on Sails/Waterline models that are configured to use a SQL database (e.g. PostgreSQL or MySQL).  Its purpose is to perform raw SQL queries.  Note that exact usage and result format varies between adapters, so you'll need to refer to the documentation for the underlying database driver.  (See below for a couple of simple examples to help get you started.)
 
 
 |   |     Argument        | Type              | Details                            |
@@ -35,7 +35,7 @@ SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 
 ### Example
 
-Remember: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  Below, you'll find two examples: one for PostgreSQL and one for MySQL.
+Remember that usage and result data vary depending on the SQL query you send and the adapter you're using.  Below, you'll find two examples: one for PostgreSQL and one for MySQL.
 
 ##### PostgreSQL example
 

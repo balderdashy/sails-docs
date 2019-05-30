@@ -1,6 +1,6 @@
-# res.badRequest()
+# `res.badRequest()`
 
-This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">400</a> ("Bad Request") response back down to the client indicating that the request is invalid.  This usually means it contained invalid parameters or headers, or tried to do something impossible based on your app logic.
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">400</a> ("Bad Request") response back down to the client, indicating that the request is invalid.  This usually means that the request contained invalid parameters or headers, or that it tried to do something not supported by your app logic.
 
 
 
@@ -21,8 +21,8 @@ Like the other built-in custom response modules, the behavior of this method is 
 
 By default, it works as follows:
 
-+ The status code of the response will be set to 400.
-+ Sails will send any provided error `data` as JSON.  If no `data` is provided a default response body will be sent (the string `"Bad Request"`).
++ The status code of the response is set to 400.
++ Sails sends any provided error `data` as JSON.  If no `data` is provided, a default response body will be sent (the string `"Bad Request"`).
 
 
 ### Example
