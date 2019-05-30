@@ -1,4 +1,4 @@
-# .archive()
+# `.archive()`
 
 Archive ("soft-delete") records that match the specified criteria, saving them as new records in the built-in Archive model, then destroying the originals.
 
@@ -10,14 +10,14 @@ await Something.archive(criteria);
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    criteria         | ((dictionary))                               | Records which match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be archived.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ |
+| 1 |    criteria         | ((dictionary))                               | Records that match this [Waterline criteria](https://github.com/balderdashy/waterline-docs/blob/master/queries/query-language.md) will be archived.  Be warned, if you specify an empty dictionary (`{}`) as your criteria, _all records will be destroyed!_ |
 
 ##### Callback
 
 |   |     Argument        | Type                | Details |
 |---|:--------------------|---------------------|:-----------------------------------------------------------------------------|
 | 1 |    err              | ((Error?))          | The error that occurred, or `null` if there were no errors.
-| 2 |  _archivedRecords_  | ((array?)) of ((dictionary))  |  For improved performance, the archived records are not provided to this callback by default.  But if you chain `.fetch()`, then the recently-archived records will be sent back. (Be aware that this requires an extra database query in some adapters.)
+| 2 |  _archivedRecords_  | ((array?)) of ((dictionary))  |  For improved performance, the archived records are not provided to this callback by default.  But if you chain `.fetch()`, then the recently archived records will be sent back. (Be aware that this requires an extra database query in some adapters.)
 
 
 ### Example

@@ -1,4 +1,4 @@
-# req.query
+# `req.query`
 
 A dictionary containing the parsed query-string, defaulting to `{}`.
 

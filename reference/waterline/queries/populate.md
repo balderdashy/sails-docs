@@ -1,4 +1,4 @@
-# .populate()
+# `.populate()`
 
 Modify a [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries) so that, when executed, it will populate child records for the specified collection, optionally filtering by `subcriteria`.  Populate may be called more than once on the same query, as long as each call is for a different association.
 
@@ -12,17 +12,17 @@ Modify a [query instance](https://sailsjs.com/documentation/reference/waterline-
 
 |   |     Argument           | Type                                         | Details                            |
 |---|:-----------------------|----------------------------------------------|:-----------------------------------|
-| 1 |    association         | ((string))                                   | The name of the association to populate.  e.g. `snacks`
+| 1 |    association         | ((string))                                   | The name of the association to populate.  e.g. `snacks`.
 | 2 |    _subcriteria_       | ((dictionary?))                              | Optional.  When populating `collection` associations between two models which reside in the same database, a [Waterline criteria](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) may be specified as a second argument to populate.  This will be used for filtering, sorting, and limiting the array of associated records (e.g. snacks) associated with each primary record.
 
-> **Important:** Both the basic join polyfill (cross-datastore populate, or populate between models whose configured adapter does not provide a `.join()` implementation) and the subcriteria argument to `.populate()` are fully supported in Sails **individually**. But using the subcriteria argument to `.populate()` at the same time as the join polyfill is experimental. That means that, if an association spans multiple datastores, or if its datastore's configured adapter does not support a physical layer join, then you should not rely on the subcriteria argument to `.populate()`. If you try that in production, you will see a warning logged to the console. SQL adapters such as [sails-postgresql](https://github.com/balderdashy/sails-postgresql) and [sails-mysql](https://github.com/balderdashy/sails-mysql) support native joins and should be ok to use the subcriteria argument.
+> **Important:** Both the basic join polyfill (cross-datastore populate, or populate between models whose configured adapter does not provide a `.join()` implementation) and the subcriteria argument to `.populate()` are fully supported in Sails **individually**. However, using the subcriteria argument to `.populate()` at the same time as the join polyfill is experimental. This means that, if an association spans multiple datastores or its datastore's configured adapter does not support a physical layer join, then you should not rely on the subcriteria argument to `.populate()`. If you try that in production, you will see a warning logged to the console. SQL adapters such as [sails-postgresql](https://github.com/balderdashy/sails-postgresql) and [sails-mysql](https://github.com/balderdashy/sails-mysql) support native joins and should be okay to use the subcriteria argument.
 
 
 ### Example
 
 ##### Populating a model association
 
-To find any users named Finn in the database and, for each one, also populate their dad:
+The following finds any users named Finn in the database and, for each one, also populates their dad:
 ```javascript
 var usersNamedFinn = await User.find({name:'Finn'}).populate('dad');
 
@@ -32,8 +32,7 @@ sails.log('Check it out, some of them probably have a dad named Joshua or Martin
 return res.json(usersNamedFinn);
 ```
 
-
-Might yield:
+This might yield:
 
 ```javascript
 [
@@ -61,7 +60,7 @@ Might yield:
 
 > This example uses the optional subcriteria argument.
 
-To find any users named Finn in the database and, for each one, also populate their 3 hippest purple swords, sorted most hip to least hip:
+The following finds any users named Finn in the database and, for each one, also populates their three hippest purple swords, in descending order of hipness:
 
 ```javascript
 // Warning: This is only safe to use on large datasets if both models are in the same database,
@@ -76,14 +75,14 @@ var usersNamedFinn = await User.find({ name:'Finn' })
   sort: 'hipness DESC'
 });
 
-// Note that Finns without any swords are still included-- their `currentSwords` arrays will just be empty.
+// Note that Finns without any swords are still included -- their `currentSwords` arrays will just be empty.
 sails.log('Wow, there are %d users named Finn.', usersNamedFinn.length);
 sails.log('Check it out, some of them probably have non-empty arrays of purple swords:', usersNamedFinn);
 
 return res.json(usersNamedFinn);
 ```
 
-Might yield:
+This might yield:
 
 ```javascript
 [

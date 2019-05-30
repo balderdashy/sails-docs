@@ -1,4 +1,4 @@
-# .subscribe()
+# `.subscribe()`
 
 Subscribe the requesting client socket to changes/deletions of one or more database records.
 
@@ -75,13 +75,13 @@ io.socket.on('user', function(msg) {
 });
 ```
 
-See [Concepts > Realtime](https://sailsjs.com/documentation/concepts/realtime) for more background on the difference between rooms and events in Sails/Socket.io.
+See [Concepts > Realtime](https://sailsjs.com/documentation/concepts/realtime) for more background on the difference between rooms and events in Sails/Socket.IO.
 
 
 
 ### Multiple rooms per record
 
-For some applications, you may run across the need to manage two different channels related to the same record.  To accomplish this, you can combine [.getRoomName()](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/get-room-name) and [sails.sockets.join()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/join):
+For some applications, you may find yourself needing to manage two different channels related to the same record.  To accomplish this, you can combine [`.getRoomName()`](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/get-room-name) and [`sails.sockets.join()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/join):
 
 ```js
 // On the server, in your subscribe action…
@@ -108,15 +108,15 @@ if (globalAdminOfOrganizations.includes(orgId)) {
 
 ```
 
-Then later, to publish to one of these rooms, just compute the appropriate room name (e.g. "13-admins-only") and use [sails.sockets.broadcast()](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) to blast out your notification.
+Later, to publish to one of these rooms, just compute the appropriate room name (e.g. "13-admins-only") and use [`sails.sockets.broadcast()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/broadcast) to blast out your notification.
 
 
 
 ### Notes
 
 > + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
-> + `.subscribe()` will only work with requests made over a socket.io connection (e.g. using `io.socket.get()`), *not* over an http connection (e.g. using `jQuery.get()`).  See the [sails.io.js socket client documentation](https://sailsjs.com/documentation/reference/web-sockets/socket-client) for information on using client sockets to send WebSockets/Socket.io messages with Sails.
-> + This function does _not actually talk to the database_!  In fact, none of the resourceful pubsub methods do.  Remember: these are just a simplified abstraction layer built on top of the lower-level `sails.sockets` methods, designed to make your app cleaner and easier to debug by using conventional names for events/rooms/namespaces etc.
+> + `.subscribe()` will only work with requests made over a Socket.IO connection (e.g. using `io.socket.get()`), *not* over an HTTP connection (e.g. using `jQuery.get()`).  See the [`sails.io.js` socket client documentation](https://sailsjs.com/documentation/reference/web-sockets/socket-client) for information on using client sockets to send WebSockets/Socket.IO messages with Sails.
+> + This function does _not actually talk to the database_!  In fact, none of the resourceful PubSub methods do.  Rather, these make up a simplified abstraction layer built on top of the lower-level `sails.sockets` methods, designed to make your app cleaner and easier to debug by using conventional names for events/rooms/namespaces etc.
 
 
 

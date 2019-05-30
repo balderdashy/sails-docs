@@ -1,4 +1,4 @@
-# .where()
+# `.where()`
 
 Specify a where clause for filtering a query.
 
@@ -24,7 +24,7 @@ return res.json(users);
 ```
 
 ### Notes
-> The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
+> The `.find()` method returns a chainable object if you don't supply a callback.  This method can be chained to `.find()` to further filter your results.
 
 
 
