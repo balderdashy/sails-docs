@@ -2,7 +2,7 @@
 
 ### Overview
 
-The `io.sails` object is the home of global configuration options for the `sails.io.js` library, as well as any sockets it creates.  Most of the properties on `io.sails` are used as settings when connecting a client socket to the server, or as top-level configuration for the client library itself.  `io.sails` also provides a `.connect()` method used for creating new socket connections manually.
+The `io.sails` object is the home of global configuration options for the `sails.io.js` library and any sockets it creates.  Most of the properties on `io.sails` are used as settings when connecting a client socket to the server, or as top-level configuration for the client library itself.  `io.sails` also provides a `.connect()` method used for creating new socket connections manually.
 
 See [Socket Client](https://sailsjs.com/documentation/reference/web-sockets/socket-client) for information about your different options for configuring `io.sails`.
 
