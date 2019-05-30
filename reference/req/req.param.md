@@ -22,7 +22,7 @@ req.param(name[, defaultValue]);
 
 ### Example
 
-Consider a route (`POST /product/:sku`) that points to a custom action or policy that have the following code:
+Consider a route (`POST /product/:sku`) that points to a custom action or policy that has the following code:
 
 ```javascript
 req.param('sku');
