@@ -1,4 +1,4 @@
-# sails generate
+# Sails generate
 
 Generate a code file (or multiple files) in a Sails app.
 
@@ -14,6 +14,7 @@ The following _core generators_ are bundled with Sails:
 
 |  Command                        | Details               |
 |:--------------------------------|:----------------------|
+| sails generate page             | Generate four pages: .ejs, .less, page script, and view action. You must add your .less file to the importer and you must set your route for your new page to work.
 | sails generate model            | Generate **api/models/Foo.js**, including attributes with the specified types if provided.
 | sails generate action           | Generate a standalone [action](https://sailsjs.com/documentation/concepts/actions-and-controllers/generating-actions-and-controllers#?generating-standalone-actions).
 | sails generate helper           | Generate a [helper](https://sailsjs.com/documentation/concepts/helpers) at **api/helpers/foo.js**.
@@ -30,7 +31,7 @@ The following _core generators_ are bundled with Sails:
 
 ### Custom generators
 
-[Custom / 3rd party generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) allow you to extend or override the default functionality of `sails generate` (for example, by creating a generator that outputs view files for your favorite [view engine](https://sailsjs.com/documentation/concepts/views/view-engines).
+[Custom / third party generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) allow you to extend or override the default functionality of `sails generate` (for example, by creating a generator that outputs view files for your favorite [view engine](https://sailsjs.com/documentation/concepts/views/view-engines)).
 
 You can also use custom generators to automate frequent tasks or generate app-specific files.  For example, if you are using React, you might wire up a quick custom generator to allow you to generate [React components](https://facebook.github.io/react/docs/react-component.html) in the appropriate folder in your project (`sails generate react component`).
 

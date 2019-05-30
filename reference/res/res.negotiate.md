@@ -1,4 +1,4 @@
-# res.negotiate()
+# `res.negotiate()`
 
 > _**This method is deprecated**._
 >

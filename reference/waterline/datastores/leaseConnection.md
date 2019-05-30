@@ -1,4 +1,4 @@
-# .leaseConnection()
+# `.leaseConnection()`
 
 Lease a new connection from the datastore for use in running multiple queries on the same connection (i.e. so that the logic provided in `during` can reuse the db connection).
 
@@ -15,7 +15,7 @@ _Or_
 ### Usage
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 | during              | ((function))        | A [procedural parameter](https://en.wikipedia.org/wiki/Procedural_parameter) which Sails will call automatically when a connection has been obtained and made ready for you.  It will receive the arguments specified in the "During" usage table below. |
+| 1 | during              | ((function))        | A [procedural parameter](https://en.wikipedia.org/wiki/Procedural_parameter) that Sails will call automatically when a connection has been obtained and made ready for you.  It will receive the arguments specified in the "During" usage table below. |
 
 ##### During
 |   |     Argument        | Type                | Details
