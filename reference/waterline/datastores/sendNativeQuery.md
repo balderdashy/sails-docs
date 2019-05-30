@@ -1,4 +1,4 @@
-# .sendNativeQuery()
+# `.sendNativeQuery()`
 
 Execute a raw SQL query using this datastore.
 
@@ -6,7 +6,7 @@ Execute a raw SQL query using this datastore.
 var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ```
 
-> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. PostgreSQL or MySQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
+> `.sendNativeQuery()` is only available on Sails/Waterline [datastores](https://sailsjs.com/documentation/reference/waterline-orm/datastores) that are configured to use a SQL database (e.g. MySQL, SQL Server, or PostgreSQL). Note that exact SQL and result format varies between databases, so you'll need to refer to the documentation for your underlying database adapter. (See below for a simple example to help get you started.)
 
 ### Usage
 |   |     Argument        | Type                | Details
@@ -17,8 +17,8 @@ var rawResult = await datastore.sendNativeQuery(sql, valuesToEscape);
 ##### Result
 
 | Type                | Details |
-|:--------------------|---------------------|:---------------------------------------------------------------------------------|
-| ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter you're using. See example below for links to relevant documentation.)_ |
+|:--------------------|:---------------------------------------------------------------------------------|
+| ((Ref?))            | The raw result from the database adapter, if any. _(The exact format of this raw result data varies depending on the SQL query you passed in, as well as the adapter/dialect you're using. See example below for links to relevant documentation.)_ |
 
 ##### Errors
 
@@ -32,7 +32,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-> Below, you'll find a generic example that works with just about any relational database.  **But remember**: Usage and result data vary depending on the SQL query you send, as well as the adapter you're using.  The standard [MySQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
+> Below, you'll find a generic example that works with just about any relational database.  **But remember**: usage and result data vary depending on the SQL query you send, as well as on the adapter/dialect you're using.  The standard [MySQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql) for Sails and Waterline uses the [`mysql`](http://npmjs.com/package/mysql) NPM package.  The [PostgreSQL adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailspostgresql) uses [`pg`](http://npmjs.com/package/pg).
 
 
 ```js
@@ -46,7 +46,7 @@ WHERE pet.species_label = $1 OR pet.species_label = $2`;
 var rawResult = await sails.sendNativeQuery(NAMES_OF_PETS_SQL, [ 'dog', 'cat' ]);
 
 sails.log(rawResult);
-// (result format depends on the SQL query that was passed in, and the adapter you're using)
+// (result format depends on the SQL query that was passed in, and the adapter/dialect you're using)
 
 // Then parse the raw result and do whatever you like with it.
 
@@ -58,7 +58,7 @@ return exits.success();
 
 The SQL query you write should refer to table names and column names, not model identities and attribute names.  If your models are defined with custom table names, or if their attributes are defined with custom column names, you'll want to be sure you're using those custom names in your native SQL queries.
 
-Are you using custom table/column names and concerned about scattering them throughout your code, because they might change?  Fortunately, there's a way to work around this.  There's another way you can build your SQL query templates without referencing column name and table names directly: using the underlying references to `tableName` and `columnName` available on your Waterline model.
+Are you using custom table/column names and concerned about scattering them throughout your code, because they might change?  Fortunately, there's a way to work around this.  By using the underlying references to `tableName` and `columnName` available on your Waterline model, you can build your SQL query templates without directly referencing column name and table names.
 
 For example:
 
@@ -73,11 +73,11 @@ WHERE
 `;
 ```
 
-But be aware that you still have to deal with custom column names on the way out!  The `rawResult` you get back from `.sendNativeQuery()` is inherently database-specific and tied to the physical layer, thus it will inherit any complexity you've set up there (including custom table/column names from your model definitions).
+Be aware that you still have to deal with custom column names on the way out!  The `rawResult` you get back from `.sendNativeQuery()` is inherently database-specific and tied to the physical layer, thus it will inherit any complexity you've set up there (including custom table/column names from your model definitions).
 
 
 ### Notes
-> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.)
+> + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.).
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">

@@ -1,6 +1,6 @@
 # Waterline (ORM)
 
-By default, new Sails apps are bundled with an ORM called [Waterline](http://waterlinejs.org) (implemented in the [sails-hook-orm](http://npmjs.com/package/sails-hook-orm) dependency.)
+By default, new Sails apps are bundled with an ORM called [Waterline](http://waterlinejs.org) (implemented in the [sails-hook-orm](http://npmjs.com/package/sails-hook-orm) dependency).
 
 > To learn more about using Waterline, start in [Concepts > Models & ORM](https://sailsjs.com/documentation/concepts/models-and-orm).
 

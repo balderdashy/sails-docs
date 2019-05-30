@@ -1,4 +1,4 @@
-# sails.config.policies
+# `sails.config.policies`
 <!--
 > FUTURE:
 >

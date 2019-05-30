@@ -1,4 +1,4 @@
-# Update (Blueprint)
+# Update (blueprint)
 
 Update an existing record in the database and notify subscribed sockets that it has changed.
 
@@ -33,7 +33,7 @@ Change Applejack's hobby to "kickin":
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 ```json
 {
   "hobby": "kickin",
@@ -81,7 +81,7 @@ For instance, continuing the example above, all clients subscribed to `User` #47
 
 
 
-If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many) -- for instance:
+If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many). For instance:
 
 `PATCH /user/47`
 
@@ -91,7 +91,7 @@ If we were reassigning user #47 to store #25, we'd update `store`, which represe
 }
 ```
 
-Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. (See the [add blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.)
+Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. See the [add blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.
 
 
 
