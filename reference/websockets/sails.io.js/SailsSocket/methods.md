@@ -1,6 +1,6 @@
-# SailsSocket Methods
+# SailsSocket methods
 
-This section describes the methods available on each SailsSocket instance.  Most of these methods can be called even before the socket connects to the server.  In the case of request methods like `.get()` and `.request()`, calls will be queued up until the socket connects, at which time they will be replayed in order.
+This section describes the methods available on each SailsSocket instance.  Most of these methods can be called before the socket even connects to the server.  In the case of request methods like `.get()` and `.request()`, calls will be queued up until the socket connects, at which time they will be executed in order.
 
 ### Basic methods
 
@@ -8,57 +8,57 @@ The most common methods you will use with a SailsSocket instance are documented 
 
 ### Advanced methods
 
-In addition to the basic communication / event listening methods, each SailsSocket instance (including `io.socket`) exposes some additional methods for dealing with server connections.
+In addition to the basic communication and event-listening methods, each SailsSocket instance (including `io.socket`) exposes several methods for dealing with server connections.
 
-##### .isConnected()
+##### `.isConnected()`
 
-Determines whether the SailsSocket instance is currently connected to a server, returning `true` if a connection has been established.
+Determines whether the SailsSocket instance is currently connected to a server; returns `true` if a connection has been established.
 
 ```js
 io.socket.isConnected();
 ```
 
-##### .isConnecting()
+##### `.isConnecting()`
 
-Determines whether the SailsSocket instance is currently in the process of connecting to a server, returning `true` if a connection is being attempted.
+Determines whether the SailsSocket instance is currently in the process of connecting to a server; returns `true` if a connection is being attempted.
 
 ```js
 io.socket.isConnecting();
 ```
 
 
-##### .mightBeAboutToAutoConnect()
+##### `.mightBeAboutToAutoConnect()`
 
-Determines whether the SailsSocket instance is loaded, but has not yet fully configured and started its automatic connection attempt.
+Detects when the SailsSocket instance has already loaded but has not yet fully configured or attempted to autoconnect. 
 
-The `sails.io.js` library waits one tick of the event loop before checking whether [`autoConnect`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?iosailsautoconnect) is enabled and, if so, trying to connect.  This allows you to configure the `SailsSocket` instance (for example, by setting `io.sails.url`) before an attempt is made to estabilish a connection.  The `mightBeAboutToAutoConnect()` method allows you to detect the situation where `sails.io.js` has loaded, but the requisite tick of the event loop has not yet elapsed.
+The `sails.io.js` library waits one tick of the event loop before checking whether [`autoConnect`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?iosailsautoconnect) is enabled and, if so, trying to connect.  This allows you to configure the `SailsSocket` instance (for example, by setting `io.sails.url`) before an attempt is made to estabilish a connection.  The `mightBeAboutToAutoConnect()` method returns `true` in the situation where `sails.io.js` has loaded, but the requisite tick of the event loop has not yet elapsed.
 
 ```js
 io.socket.mightBeAboutToAutoConnect();
 ```
 
-##### .disconnect()
+##### `.disconnect()`
 
-Disconnect a SailsSocket instance from the server.  Will throw an error if the socket is already disconnected.
+Disconnects a SailsSocket instance from the server; throws an error if the socket is already disconnected.
 
 ```js
 io.socket.disconnect();
 ```
 
-##### .reconnect()
+##### `.reconnect()`
 
-Reconnect a SailsSocket instance to a server after being disconnected (either involuntarily or via a call to [`.disconnect()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/methods#?disconnect)).  The instance will connect using its currently configured [properties](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/properties).  Throws an error if the socket is already connected to a server.
+Reconnects a SailsSocket instance to a server after it's been disconnected (either involuntarily or via a call to [`.disconnect()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/methods#?disconnect)).  The instance connects using its currently configured [properties](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket/properties).  `.reconnect()` throws an error if the socket is already connected to a server.
 
 ```js
 io.socket.reconnect();
 ```
 
-> While an instance is in a disconnected state, all of its properties may be changed.  This allows you to disconnect an instance from one server and reconnect it to another without losing its event bindings or queued requests.
+> When an instance is in a disconnected state, its properties may be changed. This method allows an instance that has been disconnected from one server to be reconnected to another without losing its event bindings or queued requests.
 
 
-##### .removeAllListeners()
+##### `.removeAllListeners()`
 
-Stop listening for all server-related events on a SailsSocket instance.  Note that this includes `connect` and `disconnect` events!
+Stops listening for any server-related events on a SailsSocket instance, including `connect` and `disconnect`.
 
 ```js
 io.socket.removeAllListeners();
