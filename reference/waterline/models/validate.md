@@ -1,4 +1,4 @@
-# .validate()
+# `.validate()`
 
 Verify that a value would be valid for a given attribute, then return it, loosely coerced.
 
@@ -6,7 +6,7 @@ Verify that a value would be valid for a given attribute, then return it, loosel
 Something.validate(attrName, value);
 ```
 
-> This validates (and potentially coerces) the provided data as if it was one of the values passed in to [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update).  You might think about it like a "dry run".
+> This validates (and potentially coerces) the provided data as if it was one of the values passed into [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update).  You might think about it like a "dry run".
 
 ### Usage
 
@@ -47,9 +47,9 @@ try {
 ```
 
 ### Notes
-> + This is a synchronous method, so you don't need to use a solution like `await`, promise chaining, or traditional Node callbacks.
-> + `.validate()` is exposed as a separate method as a convenience.  You can always simply call `.create()` or `.update()`, _instead_ of calling `.validate()` first, since those model methods apply the same checks automatically.
-> + `.validate()` is useful when implementing use cases where it is beneficial or more aesthetically pleasing (/[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself)) to reuse your model validations for other purposes.  For example, you might want to validate some untrusted data before communicating with a 3rd party API like Mailgun or Stripe.  Or you might just want to run certain model validations initially to make some code easier to reason about.
+> + This is a synchronous method, so you don't need to use `await`, promise chaining, or traditional Node callbacks.
+> + `.validate()` is exposed as a separate method for convenience.  You can always simply call `.create()` or `.update()`, _instead_ of calling `.validate()` first, since those model methods apply the same checks automatically.
+> + `.validate()` is useful when implementing use cases where it is beneficial or more aesthetically pleasing (/[DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself)) to reuse your model validations for other purposes.  For example, you might want to validate some untrusted data before communicating with a 3rd party API like Mailgun or Stripe, or you might just want to run certain model validations initially to make some code easier to reason about.
 > + `.validate()` does not communicate with the database, and thus it only detects _logical failures_ such as type safety errors and high-level validation rule violations.  It cannot detect problems with _physical-layer_ constraints like uniqueness, since those constraints are checked by the underlying database, not by Sails or Waterline.
 
 

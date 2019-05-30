@@ -25,7 +25,7 @@ With Sails and Waterline, you can associate models across multiple data stores. 
 
 > **IMPORTANT NOTE**
 >
-> In tutorials and example code, you might sometimes see associations' `collection`, `model`, or `through` properties reference models in either lowercase (the _identity_) or capitalized (the _global ID_).  For example, in the following association, the `collection` property is set to `product`-- the identity of the Sails model called `Product`:
+> In tutorials and example code, you might sometimes see associations' `collection`, `model`, or `through` properties reference models in either lowercase (the _identity_) or capitalized (the _global ID_).  For example, in the following association, the `collection` property is set to `product`&mdash;the identity of the Sails model called `Product`:
 >
 >```javascript
 >wishlist: {

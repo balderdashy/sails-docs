@@ -13,34 +13,34 @@ Sails bundles some [default tasks](https://sailsjs.com/documentation/grunt/defau
 
 ### Asset pipeline
 
-The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). They are broken down into three sections.
+The asset pipeline is the place where you will organize the assets that will be injected into your views, and it can be found in the `tasks/pipeline.js` file. Configuring these assets is simple and uses Grunt [task file configuration](http://gruntjs.com/configuring-tasks#files) and [wildcard/glob/splat patterns](http://gruntjs.com/configuring-tasks#globbing-patterns). These are broken down into three sections:
 
 ##### CSS Files to Inject
-This is an array of css files to be injected into your html as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
+This is an array of CSS files to be injected into your HTML as `<link>` tags.  These tags will be injected between the `<!--STYLES--><!--STYLES END-->` comments in any view in which they appear.
 
-##### Javascript Files to Inject
-This is an array of Javascript files that gets injected into your html as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order they are in the array (i.e. you should place the path of dependencies before the file that depends on them.)
+##### JavaScript Files to Inject
+This is an array of JavaScript files that gets injected into your HTML as `<script>` tags.  These tags will be injected between the `<!--SCRIPTS--><!--SCRIPTS END-->` comments in any view in which they appear. The files get injected in the order in which they appear in the array, meaning you should place the path of dependencies before the file that depends on them.
 
 ##### Template Files to Inject
-This is an array of html files that will compiled to a jst function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your html.
+This is an array of HTML files that will compiled to a JST function and placed in a jst.js file. This file then gets injected as a `<script>` tag in between the `<!--TEMPLATES--><!--TEMPLATES END-->` comments in your HTML.
 
-> The same grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration js files themselves if you would like to change those too.
+> The same Grunt wildcard/glob/splat patterns and task file configuration are used in some of the task configuration JS files themselves if you would like to change those too.
 
 ### Task configuration
 
-Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`](https://sailsjs.com/documentation/anatomy/my-app/tasks/config) directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks- just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `tasks/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
+Configured tasks are the set of rules your Gruntfile will follow when run. They are completely customizable and are located in the [`tasks/config/`](https://sailsjs.com/documentation/anatomy/my-app/tasks/config) directory. You can modify, omit, or replace any of these Grunt tasks to fit your requirements. You can also add your own Grunt tasks&mdash;just add a `someTask.js` file in this directory to configure the new task, then register it with the appropriate parent task(s) (see files in `tasks/register/*.js`). Remember, Sails comes with a set of useful default tasks that are designed to get you up and running with no configuration required.
 
 ##### Configuring a custom task.
 
-Configuring a custom task into your project is very simple and uses Grunt&rsquo;s [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) APIs to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Let&rsquo;s say we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
+Configuring a custom task into your project is very simple and uses Grunt&rsquo;s [config](http://gruntjs.com/api/grunt.config) and [task](http://gruntjs.com/api/grunt.task) APIs to allow you to make your task modular. Let&rsquo;s go through a quick example of creating a new task that replaces an existing task. Suppose we want to use the [Handlebars](http://handlebarsjs.com/) templating engine instead of the underscore templating engine that comes configured by default:
 
-* The first step is to install the handlebars grunt plugin using the following command in your terminal:
+* The first step is to install the Handlebars Grunt plugin using the following command in your terminal:
 
 ```bash
 npm install grunt-contrib-handlebars --save-dev
 ```
 
-* Create a configuration file at `tasks/config/handlebars.js`. This is where we&rsquo;ll put our handlebars configuration.
+* Next, create a configuration file at `tasks/config/handlebars.js`. This is where we&rsquo;ll put our Handlebars configuration.
 
 ```javascript
 // tasks/config/handlebars.js
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 };
 ```
 
-* Replace the path to source files in asset pipeline. The only change here will be that handelbars looks for files with the extension .hbs while underscore templates can be in simple html files.
+* Replace the path to source files in asset pipeline. The only change here will be that Handlebars looks for files with the extension .hbs while underscore templates can be in simple HTML files.
 
 ```javascript
 // tasks/pipeline.js
@@ -104,7 +104,7 @@ module.exports = {
 };
 ```
 
-* Include the handlebars task into the compileAssets and syncAssets registered tasks. This is where the jst task was being used and we are going to replace it with the newly configured handlebars task.
+* Include the Handlebars task into the compileAssets and syncAssets registered tasks. This is where the JST task was being used; we will now replace it with the newly configured Handlebars task.
 
 ```javascript
 // tasks/register/compileAssets.js
@@ -135,9 +135,9 @@ module.exports = function (grunt) {
 };
 ```
 
-* Remove jst task config file. We are no longer using it so we can get rid of `tasks/config/jst.js`. Simply delete it from your project.
+* Remove JST task config file. We are no longer using it so we can get rid of `tasks/config/jst.js`. Simply delete it from your project.
 
-> Ideally you should delete it from your project and your project's node dependencies. This can be done by running this command in your terminal.
+> Ideally you should delete it from your project and your project's Node dependencies. This can be done by running this command in your terminal:
 ```bash
 npm uninstall grunt-contrib-jst --save-dev
 ```

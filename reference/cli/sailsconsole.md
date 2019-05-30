@@ -1,16 +1,16 @@
-# sails console
+# `sails console`
 
 Lift your Node.js/Sails.js app in interactive mode, and enter the [REPL](http://nodejs.org/api/repl.html).  This means you can access and use all of your models, helpers, configuration, services, and the `sails` app instance.  Useful for trying out Waterline queries, quickly managing your data, and checking out your project's runtime configuration.
 
 ```usage
 sails console
 ```
-By default, this still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser.)
+By default, this still lifts the server, so your routes will be accessible via HTTP and sockets (e.g. in a browser).
 
 
 ### Usage
 `sails console` takes the following options:
-  * `--dontLift` - Start `sails console` without lifting the server.
+  * `--dontLift`: start `sails console` without lifting the server
 
 ### Example
 
@@ -31,7 +31,7 @@ sails>
 
 ### Global variables in `sails console`
 
-Sails exposes [the same global variables](https://sailsjs.com/documentation/reference/Globals) in the REPL as it does in your app code. This is particularly useful in the REPL.  By default, you have access to the `sails` app instance and your models; as well as any of your other configured globals -- for example, lodash (`_`) and async (`async`).
+Sails exposes [the same global variables](https://sailsjs.com/documentation/reference/Globals) in the REPL as it does in your app code. By default, you have access to the `sails` app instance and your models, as well as any of your other configured globals (for example, lodash (`_`) and async (`async`)).
 
 
 > **Warning**
@@ -44,7 +44,7 @@ Sails exposes [the same global variables](https://sailsjs.com/documentation/refe
 > ```
 
 
-### More Examples
+### More examples
 
 ##### Waterline
 
@@ -60,7 +60,7 @@ sails> undefined { name: 'Brian',
   id: 1 }
 ```
 
-Pretty cool, it inserts it into the database. However, you might be noticing the undefined and null. Don't worry about those. Remember that the .exec() returns error and data for values. So doing `.exec(console.log)` is the same as doing .exec(console.log(err, data))` The second method will remove the undefined message, but add null on a new line. It's up to you if you want to type more.
+It inserts it into the database, which is pretty cool. However, you might be noticing the `undefined` and `null`&mdash;don't worry about those. Remember that the .exec() returns errors and data for values, so `.exec(console.log)` has the same effect as `.exec(console.log(err, data))`. The second method will remove the undefined message, but add null on a new line. Whether you want to type more is up to you.
 
 > Note that starting with Node 6, an object&rsquo;s constructor name is displayed next to it in the console.  For example, when using the [`sails-mysql` adapter](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?sailsmysql), the `create` query mentioned above would output:
 >
@@ -74,7 +74,7 @@ Pretty cool, it inserts it into the database. However, you might be noticing the
 
 ##### Exposing Sails
 
-In sails console, type in `sails` to view a list of sails properties. You can use this to learn more about sails, override properties, or check to see if you disabled globals.
+In `sails console`, type `sails` to view a list of Sails properties. You can use this to learn more about Sails, override properties, or check to see if you disabled globals.
 
 ```text
 sails> sails
