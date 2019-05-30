@@ -1,6 +1,6 @@
-# .driver
+# `.driver`
 
-The generic, stateless, low-level driver for this datastore (if the adapter supports it).
+The generic, stateless, low-level driver for this datastore (if supported by the adapter).
 
 ```usage
 datastore.driver;

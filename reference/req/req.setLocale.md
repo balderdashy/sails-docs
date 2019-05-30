@@ -1,4 +1,4 @@
-# req.setLocale()
+# `req.setLocale()`
 
 Override the inferred locale for this request.
 

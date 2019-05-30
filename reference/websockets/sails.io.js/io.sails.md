@@ -2,7 +2,7 @@
 
 ### Overview
 
-The `io.sails` object is the home of global configuration options for the `sails.io.js` library, as well as any sockets it creates.  Most of the properties on `io.sails` are used as settings when connecting a client socket to the server, or as top-level configuration for the client library itself.  `io.sails` also provides a `.connect()` method used for creating new socket connections manually.
+The `io.sails` object is the home of global configuration options for the `sails.io.js` library and any sockets it creates.  Most of the properties on `io.sails` are used as settings when connecting a client socket to the server or as top-level configuration for the client library itself.  `io.sails` also provides a `.connect()` method used for creating new socket connections manually.
 
 See [Socket Client](https://sailsjs.com/documentation/reference/web-sockets/socket-client) for information about your different options for configuring `io.sails`.
 
@@ -12,7 +12,7 @@ If [`io.sails.autoConnect`](https://sailsjs.com/documentation/reference/web-sock
 
 ### `io.sails.autoConnect`
 
-When `io.sails.autoConnect` is set to `true` (the default), the library will wait one cycle of the event loop after loading and then attempt to create a new [`SailsSocket`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket) and connect it to the URL specified by `io.sails.url`.  When used in the browser, the new socket will be exposed as `io.socket`.  When used in a Node.js script, the new socket will be attached as the `socket` property of the variable used to initialize the `sails.io.js` library.
+When `io.sails.autoConnect` is set to `true` (the default setting), the library will wait one cycle of the event loop after loading and then attempt to create a new [`SailsSocket`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket) and connect it to the URL specified by `io.sails.url`.  When used in the browser, the new socket will be exposed as `io.socket`.  When used in a Node.js script, the new socket will be attached as the `socket` property of the variable used to initialize the `sails.io.js` library.
 
 ### `io.sails.reconnection`
 
