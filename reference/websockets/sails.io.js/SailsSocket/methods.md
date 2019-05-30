@@ -29,7 +29,7 @@ io.socket.isConnecting();
 
 ##### `.mightBeAboutToAutoConnect()`
 
-Detects when the SailsSocket instance has already loaded but has not yet fully configured or attempted to autoconnect. 
+Detects when the SailsSocket instance has already loaded but is not yet fully configured or has not attempted to autoconnect. 
 
 The `sails.io.js` library waits one tick of the event loop before checking whether [`autoConnect`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-sails#?iosailsautoconnect) is enabled and, if so, trying to connect.  This allows you to configure the `SailsSocket` instance (for example, by setting `io.sails.url`) before an attempt is made to estabilish a connection.  The `mightBeAboutToAutoConnect()` method returns `true` in the situation where `sails.io.js` has loaded, but the requisite tick of the event loop has not yet elapsed.
 
