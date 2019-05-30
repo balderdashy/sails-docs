@@ -1,4 +1,4 @@
-# res.jsonp()
+# `res.jsonp()`
 
 Send a JSON or JSONP response.
 
@@ -35,9 +35,9 @@ gotStuff([{name: 'Thelma', id: 1}, {name: 'Louise', id: 2}])
 
 
 ### Notes
-> + Don't forget this method's name is all lowercase.
+> + Don't forget that this method's name is all lowercase.
 > + If no "callback" request parameter was provided, this method works exactly like `res.json()`.
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+> + This method is **terminal**, meaning that it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 
 
 

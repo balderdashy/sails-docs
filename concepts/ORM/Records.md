@@ -1,6 +1,6 @@
 # Records
 
-A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is a uniquely identifiable object that corresponds 1-to-1 with a physical database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
+A _record_ is what you get back from `.find()` or `.findOne()`.  Each record is a uniquely identifiable object that corresponds one-to-one with a physical database entry; e.g. a row in Oracle/MSSQL/PostgreSQL/MySQL, a document in MongoDB, or a hash in Redis.
 
 ```js
 var records = await Order.find();
@@ -23,8 +23,8 @@ In addition to basic attribute data like email addresses, phone numbers, and bir
 
 The type of a populated value depends on what kind of association it is:
 
-+ `null`, or a plain JavaScript object,  _(if it corresponds to a "model" association)_ or
-+ an empty array, or an array of plain JavaScript objects _(if it corresponds to a "collection" association)_
++ `null`, or a plain JavaScript object (if it corresponds to a "model" association)
++ an empty array, or an array of plain JavaScript objects (if it corresponds to a "collection" association)
 
 
 

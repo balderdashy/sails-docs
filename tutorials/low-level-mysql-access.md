@@ -10,7 +10,7 @@ This tutorial steps through how to access the raw MySQL connection instance from
 
 To obtain an active connection from the MySQL package you can call the [`.leaseConnection()`](/documentation/reference/waterline-orm/datastores/lease-connection) method of a registered datastore object (RDI).
 
-1. Get the registered datastore instance for the connection.
+1. Get the registered datastore instance for the connection:
 
 ```javascript
 // Get the named datastore
@@ -20,7 +20,7 @@ var rdi = sails.getDatastore('default');
 var rdi = Product.getDatastore();
 ```
 
-2. Call the `leaseConnection()` method to obtain an active connection.
+2. Call the `leaseConnection()` method to obtain an active connection:
 
 ```javascript
 rdi.leaseConnection(function(connection, proceed) {
@@ -36,11 +36,11 @@ rdi.leaseConnection(function(connection, proceed) {
 })
 ```
 
-### Get access to the low level driver
+### Get access to the low-level driver
 
-To get access to the low-level driver and MySql package in a Sails app you can grab them from the registered datastore object (RDI).
+To get access to the low-level driver and MySQL package in a Sails app, you can grab them from the registered datastore object (RDI).
 
-1. Get the registered datastore instance for the connection.
+1. Get the registered datastore instance for the connection:
 
 ```javascript
 // Get the named datastore
@@ -50,13 +50,13 @@ var rdi = sails.getDatastore('default');
 var rdi = Product.getDatastore();
 ```
 
-2. Get the driver from the datastore instance which contains the MySQL module.
+2. Get the driver from the datastore instance which contains the MySQL module:
 
 ```javascript
 var mysql = rdi.driver.mysql;
 ```
 
-3. You can now use the module to make native requests and call other function native to the MySQL module.
+3. You can now use the module to make native requests and call other function native to the MySQL module:
 
 ```javascript
 // Get the named datastore
