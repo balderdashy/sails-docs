@@ -31,7 +31,7 @@ or
 |     Name        | Type                | When? |
 |--------------------|---------------------|:---------------------------------------------------------------------------------|
 | UsageError            | ((Error))           | Thrown if something invalid was passed in.
-| AdapterError     | ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (arising from an attempt to create a record with a duplicate that would violate a uniqueness constraint).
+| AdapterError     | ((Error))           | Thrown if something went wrong in the database adapter. See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for an example of how to negotiate a uniqueness error (arising from an attempt to create a record with a duplicate value that would violate a uniqueness constraint).
 | Error             | ((Error))           | Thrown if anything else unexpected happens.
 
 See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/concepts/models-and-orm/errors) for examples of negotiating errors in Sails and Waterline.
