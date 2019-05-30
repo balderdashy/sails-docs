@@ -1,5 +1,6 @@
-# req.signedCookies
-A dictionary containing all the signed cookies from the request object. A signed cookie is protected against modification by the client. This protection is provided by a base64 encoded HMAC of the cookie value. When retrieving the cookie, if the HMAC signature does not match based on the cookie's value, then the cookie is not available as a member of the `req.signedCookies` object
+# `req.signedCookies`
+
+A dictionary containing all the signed cookies from the request object, where a signed cookie is one that is protected against modification by the client. This protection is provided by a Base64-encoded HMAC of the cookie value. When retrieving the cookie, if the HMAC signature does not match based on the cookie's value, then the cookie is not available as a member of the `req.signedCookies` object.
 
 ### Purpose
 A dictionary containing all of the signed cookies from this request (`req`).
@@ -24,8 +25,6 @@ Retrieving the cookie:
 req.signedCookies.chocolatechip;
 // "Yummy"
 ```
-
-
 
 
 

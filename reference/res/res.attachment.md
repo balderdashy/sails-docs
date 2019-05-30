@@ -1,4 +1,4 @@
-# res.attachment()
+# `res.attachment()`
 
 Indicate to a web browser or other user agent that an outgoing file download sent in this response should be "Saved as..." rather than "Opened", and optionally specify the name for the newly downloaded file on disk.
 
@@ -16,7 +16,7 @@ This method should be called prior to streaming down the bytes of your file.
 For example, if you're using the [uploads hook](https://www.npmjs.com/package/sails-hook-uploads) with [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2):
 
 ```js
-fn: function({id}, exits) {
+fn: async function({id}, exits) {
   var file = await LegalDoc.findOne({ id });
   if(!file) { throw 'notFound'; }
   
@@ -28,7 +28,7 @@ fn: function({id}, exits) {
 
 That's it!  When accessed in a browser, the file downloaded by this action will be saved as a new file (e.g. "Tax Return (Lerangis, 2019)") instead of being directly opened in the browser itself.
 
-Under the covers, `res.attachment()` isn't doing anything fancy-- it just sets response headers:
+Under the covers, `res.attachment()` isn't doing anything fancy, it just sets response headers:
 
 ```javascript
 res.attachment();

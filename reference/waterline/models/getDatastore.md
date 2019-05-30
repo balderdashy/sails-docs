@@ -1,4 +1,4 @@
-# .getDatastore()
+# `.getDatastore()`
 
 Access the [datastore](https://sailsjs.com/documentation/concepts/models-and-orm#?datastores) for a particular model.
 
@@ -15,7 +15,7 @@ Something.getDatastore();
 A [datastore instance](https://sailsjs.com/documentation/reference/waterline-orm/datastores).
 
 ### Notes
-> + This is a synchronous method, so you don't need to use a solution like `await`, promise chaining, or traditional Node callbacks.
+> + This is a synchronous method, so you don't need to use `await`, promise chaining, or traditional Node callbacks.
 
 
 
