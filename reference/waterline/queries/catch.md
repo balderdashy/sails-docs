@@ -1,4 +1,4 @@
-# .catch()
+# `.catch()`
 
 Execute a Waterline [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
 
@@ -12,7 +12,7 @@ Execute a Waterline [query instance](https://sailsjs.com/documentation/reference
 
 |   |     Argument        | Type                                         | Details                            |
 |---|:--------------------|----------------------------------------------|:-----------------------------------|
-| 1 |   filter            | ((dictionary?))                              | An optional dictionary whose properties will be checked against the Error. If they all match, then the callback will run. Otherwise, it won't.
+| 1 |   filter            | ((dictionary?))                              | An optional dictionary whose properties will be checked against the error. If they all match, then the callback will run. Otherwise, it won't.
 | 2 |   callback          | ((function))                                 | A function that runs if the query fails.<br/><br/> Takes the error as its argument.
 
 
@@ -49,7 +49,7 @@ User.findOne({
 ### Notes
 > + Whenever possible, it is recommended that you use `await` instead of calling this method.
 > + This is an alternative to `.exec()`.  When combined with `.then()`, it provides the same functionality.
-> + The `.catch()` function also returns a promise, to allow for chaining.  This is not recommended for all but the most advanced users of promises due to the complex (and arguably non-intuitive) behavior of chained `.catch()` calls.
+> + The `.catch()` function also returns a promise to allow for chaining.  This is not recommended for any but the most advanced users of promises due to the complex (and arguably non-intuitive) behavior of chained `.catch()` calls.
 > + For more information, see the [bluebird `.catch()` api docs](http://bluebirdjs.com/docs/api/catch).
 
 

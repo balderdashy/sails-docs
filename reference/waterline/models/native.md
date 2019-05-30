@@ -1,4 +1,4 @@
-# .native()
+# `.native()`
 
 > **As of Sails v1.x, this method is deprecated.**
 > Instead, please change your code to use [`Model.getDatastore().manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager), which offers a cleaner, simpler API.

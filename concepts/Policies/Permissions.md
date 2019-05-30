@@ -1,8 +1,8 @@
-# Access Control and Permissions
+# Access control and permissions
 
-Policies in Sails are designed for controlling binary ("yes or no") access to particular actions.  They work great for checking whether a user is logged in, or for other simple "yes or no" checks, like whether the logged in user is a "super admin".
+Policies in Sails are designed for controlling binary ("yes or no") access to particular actions.  They work great for checking whether a user is logged in or for other simple "yes or no" checks, like whether the logged in user is a "super admin".
 
-To see an example of access control in action, alongside login, authentication, and password recovery, generate the starter web app:
+To see an example of access control in action&mdash;as well as login, authentication, and password recovery&mdash;generate the starter web app:
 
 ```bash
 sails new foo
@@ -12,7 +12,7 @@ sails new foo
 
 ### Dynamic permissions
 
-For more complex permission schemes, where a requesting user agent's access rights depend on _who they are_ and _what they're trying to do_, you'll want to involve the database.  While you can use policies to accomplish this, it's usually more straightforward and maintainable to use a [helper](https://sailsjs.com/documentation/concepts/helpers).
+For more complex permission schemes, like those in which a requesting user agent's access rights depend on both _who they are_ and _what they're trying to do_, you'll want to involve the database.  While you can use policies to accomplish this, it's usually more straightforward and maintainable to use a [helper](https://sailsjs.com/documentation/concepts/helpers).
 
 For example, you might create `api/helpers/check-permissions.js`:
 
@@ -67,7 +67,7 @@ module.exports = {
 ```
 
 
-Then in your action, for example `api/controllers/demote-org-admin.js`:
+Your action&mdash;`api/controllers/demote-org-admin.js`, for example&mdash;might look like this:
 
 ```javascript
 //…
@@ -96,12 +96,7 @@ return exits.success();
 > });
 > ```
 >
-> The style you choose when calling a helper should depend on readability-- i.e.
-> the number of different values you need to pass in, the complexity of those
-> values, etc.  When in doubt, a good best practice is to optimize first for
-> explicitness, then for readability, and only then for conciseness.  But the
-> more confident/familiar you are with the usage of a helper, and the more frequently
-> you use it, the more those priorities flip-flop.
+> You may choose to use different ways of calling a helper in order to enhance code readability in different situations.        When in doubt, a good best practice is to optimize first for explicitness, then for readability, and last for conciseness.  Still, these priorities may shift as you implement a helper more frequently and become more familiar with its usage.
 
 
 <docmeta name="displayName" value="Access Control and Permissions">

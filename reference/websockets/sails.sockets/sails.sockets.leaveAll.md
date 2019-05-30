@@ -1,6 +1,6 @@
-# .leaveAll()
+# `.leaveAll()`
 
-Unsubscribe all members of a room (e.g. `chatroom7`) from that room _and_ every other room they are currently subscribed to; except the automatic room associated with their socket ID.
+Unsubscribe all members of a room (e.g. `chatroom7`) from that room _and_ every other room they are currently subscribed to, except the automatic room associated with their socket ID.
 
 ```javascript
 sails.sockets.leaveAll(roomName, cb);
@@ -12,7 +12,7 @@ sails.sockets.leaveAll(roomName, cb);
 |   | Argument   | Type        | Details |
 |---|:-----------|:-----------:|:--------|
 | 1 | roomName   | ((string)) | The room to evactuate.  Note that this room's members will be forced to leave _all of their rooms_, not just this one.
-| 2 | _cb_       | ((function?))| An optional callback which will be called when the operation is complete _on the current server_ (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
+| 2 | cb         | ((function?))| An optional callback, which will be called when the operation is complete _on the current server_ (see notes below for more information), or if fatal errors were encountered.  In the case of errors, it will be called with a single argument (`err`).
 
 ### Example
 

@@ -47,7 +47,9 @@ module.exports = async function welcomeUser (req, res) {
   var user = await User.findOne({ id: userId });
 
   // If no user was found, redirect to signup.
-  if (!user) { return res.redirect('/signup' );
+  if (!user) {
+    return res.redirect('/signup' );
+  }
 
   // Display the welcome view, setting the view variable
   // named "name" to the value of the user's name.
@@ -55,6 +57,8 @@ module.exports = async function welcomeUser (req, res) {
 
 }
 ```
+
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) with `--no-actions2` to quickly create a classic action.
 
 ##### actions2
 
@@ -90,38 +94,35 @@ module.exports = {
       }
    },
 
-   fn: async function (inputs, exits) {
+   fn: async function ({userId}) {
 
       // Look up the user whose ID was specified in the request.
       // Note that we don't have to validate that `userId` is a number;
       // the machine runner does this for us and returns `badRequest`
       // if validation fails.
-      var user = await User.findOne({ id: inputs.userId });
+      var user = await User.findOne({ id: userId });
 
       // If no user was found, respond "notFound" (like calling `res.notFound()`)
-      if (!user) { return exits.notFound(); }
+      if (!user) { throw 'notFound'; }
 
-      // Display the welcome view.
-      return exits.success({name: user.name});
+      // Display a personalized welcome view.
+      return {
+        name: user.name
+      };
    }
 };
 ```
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
 > Note that machine-as-action provides actions with access to the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.
 
-<!--
-Removed in order to reduce the amount of information:  (Mike nov 14, 2017)
-
-and to the Sails application object (in case you don&rsquo;t have [globals](https://sailsjs.com/documentation/concepts/globals) turned on) as `this.sails`.
--->
-
 Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
 
- * The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers).
- * You guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run.
- * You&rsquo;ll be able to see all of the possible outcomes from running the action without having to dissect the code.
+ * the code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers)
+ * you guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run
+ * you&rsquo;ll be able to see all of the possible outcomes from running the action without having to dissect the code
 
 In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.  And since you'll declare the action's parameters ahead of time, you'll be much less likely to expose edge cases and security holes.
 
@@ -150,7 +151,7 @@ Aside from being an easy-to-read shorthand, exit signals are especially useful i
 
 ### Controllers
 
-The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User controller" could be created at `api/controllers/UserController.js` file containing:
+The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User Controller" could be created at `api/controllers/UserController.js` file containing:
 
 ```javascript
 module.exports = {
@@ -184,22 +185,21 @@ where each of the three Javascript files exports a `req, res` function or an act
 
 Using standalone actions has several advantages over controller files:
 
-* It's easier to keep track of the actions that your app contains, by simply looking at the files contained in a folder rather than scanning through the code in a controller file.
-* Each action file is small and easy to maintain, whereas controller files tend to grow as your app grows.
-* [Routing to standalone actions](https://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than with nested controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`).
-
-* Blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to having to create an arbitrary controller file to hold the root action).
+* it's easier to keep track of the actions that your app contains by looking at the files contained in a folder than by scanning through the code in a controller file
+* each action file is small and easy to maintain, whereas controller files tend to grow as your app grows
+* [routing to standalone actions](https://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than in nested controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`)
+* blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to having to create an arbitrary controller file to hold the root action)
 
 
 ### Keeping it lean
 
-In the tradition of most MVC frameworks, mature Sails apps usually have "thin" controllers -- that is, your action code ends up lean, because reusable code has been moved into [helpers](https://sailsjs.com/documentation/concepts/helpers) or occasionally even extracted into separate node modules.  This approach can definitely make your app easier to maintain as it grows in complexity.
+In the tradition of most MVC frameworks, mature Sails apps usually have "thin" controllers&mdash;that is, your action code ends up lean because reusable code has been moved into [helpers](https://sailsjs.com/documentation/concepts/helpers) or occasionally even extracted into separate node modules.  This approach can definitely make your app easier to maintain as it grows in complexity.
 
-But at the same time, extrapolating code into reusable helpers _too early_ can cause maintainence issues that waste time and productivity.  So the right answer lies somewhere in the middle.
+But at the same time, extrapolating code into reusable helpers _too_ early can cause maintainence issues that waste time and productivity.  The right answer lies somewhere in the middle.
 
-Sails recommends this general rule of thumb:  **Wait until you're about to use the same piece of code for the _third_ time before you extrapolate it into a separate helper.**  But as with any dogma, use your judgement!  If the code in question is very long or complex, then it might make sense to pull it out into a helper much sooner.  Conversely, if you know what you're building is a quick, throwaway prototype, you might just copy and paste the code to save time.
+Sails recommends this general rule of thumb:  **wait until you're about to use the same piece of code for the _third_ time before you extrapolate it into a separate helper.**  But, as with any dogma, use your judgement!  If the code in question is very long or complex, then it might make sense to pull it out into a helper much sooner.  Conversely, if you know what you're building is a quick, throwaway prototype, you might just copy and paste the code to save time.
 
-> Whether you're developing for passion or profit, at the end of the day, the goal is to make the best possible use of your time as an engineer.  Some days that means getting more code written, and other days it means looking out for the long-term maintainability of the project.  If you're not sure which of these goals is more important at your current stage of development, you might take a step back and give it some thought.  (Better yet, have a chat with the rest of your team or [other folks building apps on Node.js/Sails](https://sailsjs.com/support).)
+> Whether you're developing for passion or profit, at the end of the day, the goal is to make the best possible use of your time as an engineer.  Some days that means getting more code written, and other days it means looking out for the long-term maintainability of the project.  If you're not sure which of these goals is more important at your current stage of development, you might take a step back and give it some thought (better yet, have a chat with the rest of your team or [other folks building apps on Node.js/Sails](https://sailsjs.com/support)).
 
 <docmeta name="displayName" value="Actions and controllers">
 <docmeta name="nextUpLink" value="/documentation/concepts/views">

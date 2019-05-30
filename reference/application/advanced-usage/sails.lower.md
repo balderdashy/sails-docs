@@ -1,6 +1,6 @@
 # sails.lower()
 
-Shut down a lifted Sails app and have it cease listening for / responding to any future requests.
+Shut down a lifted Sails app and have it cease listening for or responding to any future requests.
 
 
 
