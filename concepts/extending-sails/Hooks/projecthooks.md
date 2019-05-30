@@ -1,6 +1,6 @@
 # Creating a project hook
 
-Project hooks are custom Sails hooks that reside in an application&rsquo;s `api/hooks` folder.  They are typically useful when you want to take advantage of hook features like [defaults](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults) and [routes](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/routes) for code that is used by multiple components in a single app.  If you wish to re-use a hook in *more than one* Sails app, see [creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks) instead.
+Project hooks are custom Sails hooks that reside in an application&rsquo;s `api/hooks` folder.  They are most useful when you want to take advantage of hook features like [defaults](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults) and [routes](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/routes) for code that is used by multiple components in a single app.  If you wish to re-use a hook in *more than one* Sails app, see [creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/installable-hooks) instead.
 
 To create a new project hook:
 

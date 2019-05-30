@@ -1,4 +1,4 @@
-# req.setTimeout()
+# `req.setTimeout()`
 
 Time out this request if a response is not sent within the specified number of milliseconds.
 

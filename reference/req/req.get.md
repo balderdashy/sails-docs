@@ -1,4 +1,4 @@
-# req.get()
+# `req.get()`
 
 Returns the value of the specified `header` field in this request (`req`).  Note that header names are case-_insensitive_.
 
@@ -18,7 +18,7 @@ req.get('myField');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+ The `header` argument treats both "referrer" and "referer" as synonyms, because sp3ll1n6.
+>+ The `header` argument treats both "referrer" and "referer" as synonyms, because sp3ll1n9.
 
 
 

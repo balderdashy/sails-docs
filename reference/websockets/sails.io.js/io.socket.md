@@ -2,7 +2,7 @@
 
 ### Overview
 
-When used in the browser, `sails.io.js` will create a global instance of the [SailsSocket](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket) class as soon as it loads, and attempt to connect it to the server after waiting one event loop cycle (to allow for configuration options to be changed).  As with any [SailsSocket](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket), you can start using its properties and methods even before it connects to the server--any requests or event bindings will be queued up and replayed once the connection is established.
+When used in the browser, `sails.io.js` creates a global instance of the [SailsSocket](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket) class as soon as it loads and attempts to connect it to the server after waiting one event loop cycle (to allow for configuration options to be changed).  As with any [SailsSocket](https://sailsjs.com/documentation/reference/web-sockets/socket-client/sails-socket), you can start using its properties and methods even before it connects to the server. Any requests or event bindings will be queued up and replayed once the connection is established.
 
 ### Configuration Options
 
