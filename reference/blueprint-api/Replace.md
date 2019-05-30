@@ -1,4 +1,4 @@
-# Replace (Blueprint)
+# Replace (blueprint)
 
 Replace all of the foreign records in one of this record's collections (e.g. "comments").
 

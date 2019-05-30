@@ -1,4 +1,4 @@
-# req._startTime
+# `req._startTime`
 
 The moment that Sails started processing the request, as a [Javascript Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date).
 

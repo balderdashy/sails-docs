@@ -1,4 +1,4 @@
-# .usingConnection()
+# `.usingConnection()`
 
 Specify an existing database connection to use for this [query](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 

@@ -1,4 +1,4 @@
-# Populate (Blueprint)
+# Populate (blueprint)
 
 Populate and return foreign record(s) for the given association of this record.
 
@@ -107,7 +107,7 @@ You can also populate a collection. For example, to populate the `involvedInPurc
 ### Notes
 
 > + In the first example above, if purchase #47 did not have a `cashier` (i.e. `null`), then this action would respond with a 404 status code.
-> + The examples above assume "rest" blueprint routing is enabled (or that you've bound this blueprint action as a comparable [custom route](https://sailsjs.com/documentation/concepts/routes/custom-routes)), and that your project contains at least an empty 'Employee' model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
+> + The examples above assume "rest" blueprint routing is enabled (or that you've bound this blueprint action as a comparable [custom route](https://sailsjs.com/documentation/concepts/routes/custom-routes)), and that your project contains at least an empty `Employee` model as well as a `Purchase` model, and that `Employee` has the association attribute: `involvedInPurchases: {model: 'Purchase'}` and that `Purchase` has `cashier: {model: 'Employee'}`.  You can quickly achieve this by running:
 >
 >   ```shell
 >   $ sails new foo

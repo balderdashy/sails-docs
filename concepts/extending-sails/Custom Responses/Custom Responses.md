@@ -27,10 +27,10 @@ getProfile: function(req, res) {
 
 This code handles a database error by sending a 500 error status and sending the error data to a view to be displayed.  However, this code has several drawbacks, primarily:
 
-*  The response isn't *content-negotiated*; if the client is expecting a JSON response, they're out of luck
-*  The response *reveals too much* about the error -- in production, it'd be best to just log the error to the terminal
-*  It isn't *normalized*; even if we dealt with the other bullet points above, the code is specific to this action, and we'd have to work hard to keep the exact same format for error handling everywhere
-*  It isn't *abstracted*; if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
+*  The response isn't *content-negotiated*: if the client is expecting a JSON response, they're out of luck
+*  The response *reveals too much* about the error: in production, it'd be best to just log the error to the terminal
+*  It isn't *normalized*: even if we dealt with the other bullet points above, the code is specific to this action, and we'd have to work hard to keep the exact same format for error handling everywhere
+*  It isn't *abstracted*: if we wanted to use a similar approach elsewhere, we'd have to copy / paste the code
 
 
 Now, consider this replacement:

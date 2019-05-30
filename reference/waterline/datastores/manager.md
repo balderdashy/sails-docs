@@ -1,4 +1,4 @@
-# .manager
+# `.manager`
 
 The live connection manager for this datastore.
 
@@ -6,7 +6,7 @@ The live connection manager for this datastore.
 datastore.manager
 ```
 
->  Depending on the adapter, this might represent a connection pool, a single connection, or even just a reference to a pre-configured client library instance.
+>  Depending on the adapter, this might represent a connection pool, a single connection, or just a reference to a preconfigured client library instance.
 
 ### Example
 Access a raw Mongo collection instance representing a model `Pet`.
