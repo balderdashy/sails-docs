@@ -9,7 +9,7 @@ There are two different places you can build an adapter:
 
 ##### In your app's `api/adapters/` folder
 
-If an adapter is only going to be used in one app (e.g. a short-term fork of an existing adapter) you can put it in `api/adapters/`.  This is what you get out of the box when you run `sails generate adapter`.  In this case, the name of the adapter is determined by the name of the folder inside `api/adapters/`.  (By convention, the entry point for your adapter should be `index.js`.)
+If an adapter is only going to be used in one app (e.g. a short-term fork of an existing adapter) you can put it in `api/adapters/`.  This is what you get out of the box when you run `sails generate adapter`.  In this case, the name of the adapter is determined by the name of the folder inside `api/adapters/` (by convention, the entry point for your adapter should be `index.js`).
 
 ##### In a separate repo
 
@@ -20,18 +20,18 @@ Go with this option if you plan to share your adapter between multiple Sails app
 
 ### What goes in a custom adapter?
 
-In Sails, database adapters expose **interfaces**, which imply a conract to implemnt certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are primarily useful for integrating with databases, but they can also be used to support any open API or internal/proprietary web service that is _purely_ RESTful.
+In Sails, database adapters expose **interfaces**, which imply a contract to implement certain functionality.  This allows us to guarantee conventional usage patterns across multiple models, developers, apps, and even companies, making app code more maintainable, efficient, and reliable.  Adapters are primarily useful for integrating with databases, but they can also be used to support any open API or internal/proprietary web service that is _purely_ RESTful.
 
-> Not everything fits perfectly into a RESTful/CRUD mold.  Sometimes the service you're integrating with has more of an RPC-style interface, with one-off methods.  For example, consider an API request to send an email, or to read a remote sensor on a piece of connected hardware.  For that, you'll want to write or extend a machinepack.  [Learn more about machinepacks here](http://node-machine.org).
+> Not everything fits perfectly into a RESTful/CRUD mold.  Sometimes the service you're integrating with has an RPC-style interface with one-off methods.  For example, consider an API request to send an email, or to read a remote sensor on a piece of connected hardware.  For that, you'll want to write or extend a machinepack.  [Learn more about machinepacks here](http://node-machine.org).
 
 
 ### What kind of things can I do in an adapter?
 
 Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods `create()`, `find()`, `update()`, and `destroy()`.
 
-For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection informtion and runs an `INSERT ...` SQL query.
+For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection information and runs an `INSERT ...` SQL query.
 
-In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw datastore objects and any models which use them.
+In practice, your adapter can really do anything it likes&mdash;any method you write will be exposed on the raw datastore objects and any models which use them.
 
 ### Building a custom adapter
 
@@ -66,31 +66,31 @@ $ npm test
 
 #### Publish your adapter
 
-> You're welcome to write proprietary adapters and use them any way you wish--
+> You're welcome to write proprietary adapters and use them any way you wish&mdash;
 > these instructions are for releasing an open-source adapter.
 
-1. Create a [new public repo](https://github.com/new) and add it as a remote (`git remote add origin git@github.com:yourusername/sails-youradaptername.git)
+1. Create a [new public repo](https://github.com/new) and add it as a remote (`git remote add origin git@github.com:yourusername/sails-youradaptername.git).
 2. Make sure you attribute yourself as the author and set the license in the package.json to "MIT".
 3. Run the tests one last time.
-4. Do a [pull request to sails-docs](https://github.com/balderdashy/sails-docs/edit/master/concepts/extending-sails/Adapters/adapterList.md) adding your adapter's repo.
-5. We'll update the documentation with information about your new adapter
-6. Let the people of world adore you with lavish praises.
-7. Run `npm version patch`
-8. Run `git push && git push --tags`
-9. Run `npm publish`
+4. Do a [pull request to sails-docs](https://github.com/balderdashy/sails-docs/edit/master/concepts/extending-sails/Adapters/adapterList.md), adding your adapter's repo.
+5. We'll update the documentation with information about your new adapter.
+6. Let the people of the world adore you with lavish praise.
+7. Run `npm version patch`.
+8. Run `git push && git push --tags`.
+9. Run `npm publish`.
 
 
 
 ### Why would I need a custom adapter?
 
-When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can _technically_ be normalized into an adapter.  (viz. API integrations)
+When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can _technically_ be normalized into an adapter (viz. API integrations).
 
 > **From Wikipedia:**
 > *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
 
 > Although a relational database provides a common persistence layer in software applications, numerous other persistence layers exist. CRUD functionality can be implemented with an object database, an XML database, flat text files, custom file formats, tape, or card, for example.
 
-In other words, Waterline is not _necessarily_ just an ORM for your database.  It is a purpose-agnostic, open standard and toolset for integrating with all kinds of RESTful services, datasources, and devices, whether it's LDAP, Neo4J, or [a lamp](https://www.youtube.com/watch?v=OmcQZD_LIAE).
+In other words, Waterline is not _necessarily_ just an ORM for your database.  It is a purpose-agnostic open standard and toolset for integrating with all kinds of RESTful services, datasources, and devices&mdash;whether it's LDAP, Neo4J, or [a lamp](https://www.youtube.com/watch?v=OmcQZD_LIAE).
 
 > **But remember:** only use Waterline adapters for communicating with databases and APIs that support a "create", "read", "update", and "destroy" interface.  Not everything fits into that mold, and there are [better, more generic ways](http://node-machine.org) to address those other use cases.
 
@@ -99,9 +99,9 @@ In other words, Waterline is not _necessarily_ just an ORM for your database.  I
 
 To recap, writing your API integrations as adapters is **easier**, takes **less time**, and **absorbs a considerable amount of risk**, since you get the advantage of a **standardized set of conventions**, a **documented API**, and a **built-in community** of other developers who have gone through the same process.  Best of all, you (and your team) can **reuse the adapter** in other projects, **speeding up development** and **saving time and money**.
 
-Finally, if you choose to release your adapter as open-source, you provide a tremendous boon to our little framework and our budding Sails.js ecosystem.  Even if it's not via Sails, I encourage you to give back to the OSS community, even if you've never forked a repo before-- don't be intimidated, it's not that bad!
+Finally, if you choose to release your adapter as open source, you provide a tremendous boon to our little framework and our budding Sails.js ecosystem.  Even if it's not via Sails, I encourage you to give back to the OSS community, even if you've never forked a repo before&mdash;don't be intimidated, it's not that bad!
 
-The more high-quality adapters the Sails community collectively releases as open-source, the less repetitive work we all have to do when we integrate with various databases and services.  Our vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter (or machinepack/driver/generator/view engine/etc.) at a time.
+The more high-quality adapters the Sails community collectively releases as open source, the less repetitive work we all have to do when we integrate with various databases and services.  Our vision is to make building server-side apps more fun and less repetitive for everyone, and that happens one community adapter (or machinepack/driver/generator/view engine/etc.) at a time.
 
 
 ### What is an adapter interface?

@@ -1,6 +1,6 @@
 # sails.LOOKS_LIKE_ASSET_RX
 
-A regular expression designed for use in identifying URL paths that seem like they are _probably_ for a static asset of some kind (e.g. image, stylesheet, `favicon.ico`, `robots.txt`, etc).
+A regular expression designed for use in identifying URL paths that seem like they are _probably_ for a static asset of some kind (e.g. image, stylesheet, `favicon.ico`, `robots.txt`, etc.).
 
 ### Usage
 ```usage

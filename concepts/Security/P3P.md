@@ -2,7 +2,7 @@
 
 ### Background
 
-P3P stands for the "Platform for Privacy Preferences", a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browsers, it is only supported by Internet Explorer.  It comes into play most often when dealing with legacy applications.
+P3P stands for the "Platform for Privacy Preferences" and is a browser/web standard designed to facilitate better consumer web privacy control.  Currently (as of 2014), out of all the major browsers, only Internet Explorer supports it.  P3P most often comes into play when dealing with legacy applications.
 
 Many modern organizations are willfully ignoring P3P. Here's what [Facebook has to say](https://www.facebook.com/help/327993273962160/) on the subject:
 
@@ -13,7 +13,7 @@ Many modern organizations are willfully ignoring P3P. Here's what [Facebook has 
 
 ### Supporting P3P with Sails
 
-But all that aside, sometimes you just have to support P3P anyways.
+All of that aside, sometimes you have to support P3P anyways.
 
 Fortunately, a few different modules exist that bring P3P support to Express and Sails by enabling the relevant P3P headers.  To use one of these modules for handling P3P headers, install it from npm using the directions below, then open `config/http.js` in your project and configure it as a custom middleware.  To do that, define your P3P middleware as "p3p", and add the string "p3p" to your `middleware.order` array wherever you'd like it to run in the middleware chain (a good place to put it might be right before `cookieParser`):
 
@@ -50,7 +50,7 @@ module.exports.http = {
 ```
 
 
-Check out the examples below for more guidance - and be sure and follow the links to see the docs for the module you're using for the latest information, comparative analysis of its features, any recent bug fixes, and advanced usage details.
+Check out the examples below for more guidance, and be sure and follow the links to see the docs for the module you're using for the latest information, comparative analysis of its features, any recent bug fixes, and advanced usage details.
 
 
 ##### Using [node-p3p](https://github.com/troygoode/node-p3p)

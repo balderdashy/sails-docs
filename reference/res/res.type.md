@@ -1,4 +1,4 @@
-# res.type()
+# `res.type()`
 
 Sets the "Content-Type" response header to the specified `type`.
 

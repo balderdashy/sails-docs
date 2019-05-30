@@ -1,4 +1,4 @@
-# .blast()
+# `.blast()`
 
 Broadcast a message to all sockets connected to the server (or any server in the cluster, if you have a multi-server deployment using Redis).
 
@@ -6,7 +6,7 @@ Broadcast a message to all sockets connected to the server (or any server in the
 sails.sockets.blast(data);
 ```
 
-_Or:_
+or:
 + `sails.sockets.blast(eventName, data);`
 + `sails.sockets.blast(data, socketToOmit);`
 + `sails.sockets.blast(eventName, data, socketToOmit);`
@@ -39,7 +39,7 @@ sails.sockets.blast('user_logged_in', {
 ```
 
 ### Notes
-> + Be sure and check `req.isSocket === true` before passing in `req` to this method. For the socket to be omitted, the current `req`  must be from a socket request, not just any HTTP request.
+> + Be sure to check that `req.isSocket === true` before passing in `req` to this method. For the socket to be omitted, the current `req`  must be from a socket request, not just any HTTP request.
 
 
 <docmeta name="displayName" value=".blast()">

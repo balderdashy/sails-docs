@@ -2,7 +2,7 @@
 
 ### Overview
 
-Each Sails hook is implemeted as a Javascript function that takes a single argument&mdash;a reference to the running `sails` instance&mdash;and returns an object with one or more of the keys described later in this document.  So, the most basic hook would look like this:
+Each Sails hook is implemeted as a Javascript function that takes a single argument&mdash;a reference to the running `sails` instance&mdash;and returns an object with one or more of the keys described later in this document.  The most basic hook would look like this:
 
 ```javascript
 module.exports = function myBasicHook(sails) {
