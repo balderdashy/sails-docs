@@ -58,6 +58,8 @@ module.exports = async function welcomeUser (req, res) {
 }
 ```
 
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) with `--no-actions2` to quickly create a classic action.
+
 ##### actions2
 
 Another, more structured way to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the same action as above, rewritten using the actions2 format:
@@ -110,6 +112,7 @@ module.exports = {
    }
 };
 ```
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 

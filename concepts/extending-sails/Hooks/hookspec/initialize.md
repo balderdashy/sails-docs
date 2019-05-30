@@ -1,11 +1,11 @@
 # `.initialize(cb)`
 
-The `initialize` feature allows a hook to perform startup tasks that may be asynchronous or rely on other hooks.  All Sails configuration is guaranteed to be completed before a hook&rsquo;s `initialize` function runs.  Examples of tasks that you may want to put in `initialize` are:
+The `initialize` feature allows a hook to perform startup tasks that may be asynchronous or rely on other hooks.  All Sails configuration is guaranteed to be completed before a hook&rsquo;s `initialize` function runs.  Examples of tasks that you may want to put in `initialize` include:
 
-* Logging in to a remote API
-* Reading from a database that will be used by hook methods
-* Loading support files from a user-configured directory
-* Waiting for another hook to load first
+* logging in to a remote API
+* reading from a database that will be used by hook methods
+* loading support files from a user-configured directory
+* waiting for another hook to load first
 
 Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` takes one argument: a callback function which must be called in order for Sails to finish loading:
 
@@ -39,11 +39,11 @@ When a hook successfully initializes, it emits an event with the following name:
 
 For example:
 
-* The core `orm` hook emits `hook:orm:loaded` after its initialization is complete.
-* A hook installed into `node_modules/sails-hook-foo` emits `hook:foo:loaded` by default
-* The same `sails-hook-foo` hook, with `sails.config.installedHooks['sails-hook-foo'].name` set to `bar` would emit `hook:bar:loaded`
-* A hook installed into `node_modules/mygreathook` would emit `hook:mygreathook:loaded`
-* A hook installed into `api/hooks/mygreathook` would also emit `hook:mygreathook:loaded`
+* the core `orm` hook emits `hook:orm:loaded` after its initialization is complete
+* a hook installed into `node_modules/sails-hook-foo` emits `hook:foo:loaded` by default
+* the same `sails-hook-foo` hook, with `sails.config.installedHooks['sails-hook-foo'].name` set to `bar` would emit `hook:bar:loaded`
+* a hook installed into `node_modules/mygreathook` would emit `hook:mygreathook:loaded`
+* a hook installed into `api/hooks/mygreathook` would also emit `hook:mygreathook:loaded`
 
 You can use the "hook loaded" events to make one hook dependent on another.  To do so, simply wrap your hook&rsquo;s `initialize` logic in a call to `sails.on()`.  For example, to make your hook wait for the `orm` hook to load, you could make your `initialize` similar to the following:
 

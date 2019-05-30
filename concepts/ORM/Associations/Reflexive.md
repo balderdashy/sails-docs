@@ -2,7 +2,7 @@
 
 ### Overview
 
-In most cases, an association will be between attributes of two different models -- for example, a relationship between a `User` model and a `Pet` model.  However, it is also possible to have a relationship between two attributes in the _same_ model.  This is called a _reflexive association_.
+In most cases, an association will be between attributes of two different models&mdash;for example, a relationship between a `User` model and a `Pet` model.  However, it is also possible to have a relationship between two attributes in the _same_ model.  This is called a _reflexive association_.
 
 Consider the following `User` model:
 

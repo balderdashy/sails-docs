@@ -6,7 +6,7 @@ The default view engine in Sails is [EJS](https://github.com/mde/ejs).
 
 To use a different view engine, you should use npm to install it in your project, then in [`config/views.js`](https://sailsjs.com/documentation/anatomy/config/views.js) set `sails.config.views.extension` to your desired file extension and `sails.config.views.getRenderFn` to a function that returns your view engine's rendering function.
 
-If your view engine is supported by [Consolidate](https://github.com/tj/consolidate.js/blob/master/Readme.md#api), you can use that in your `getRenderFn` to easily get access to the rendering function. Firstly, you'll need to use npm to install `consolidate` into your project, if it is not already present:
+If your view engine is supported by [Consolidate](https://github.com/tj/consolidate.js/blob/master/Readme.md#api), you can use that in `getRenderFn` to easily access the rendering function. First, you'll need to use npm to install `consolidate` into your project, if it is not already present:
 
 ```bash
 npm install consolidate --save

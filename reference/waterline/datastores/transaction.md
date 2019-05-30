@@ -1,12 +1,12 @@
-# .transaction()
+# `.transaction()`
 
-Fetch a preconfigured deferred object hooked up to the sails-mysql or sails-postgresql adapter (and consequently the appropriate driver)
+Fetch a preconfigured, deferred object hooked up to the sails-mysql or sails-postgresql adapter (and consequently the appropriate driver).
 
 ```usage
 await datastore.transaction(during);
 ```
 
-_Or_
+or
 
 + `var result = await datastore.transaction(during);`
 
@@ -18,14 +18,14 @@ _Or_
 ##### During
 |   |     Argument        | Type                | Details
 |---|---------------------|---------------------|:------------|
-| 1 | db                  | ((ref))             | The leased (transactional) database connection. (See [`.usingConnection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/using-connection) for more information on what to do with this.) |
+| 1 | db                  | ((ref))             | The leased (transactional) database connection. (See [`.usingConnection()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/using-connection) for more information on what to do with this.) |
 
 > Note that prior to Sails 1.1.0, the recommended usage of `.transaction()` expected your "during" code to call a callback (`proceed`) when it finished.  This is no longer necessary as long as you do not actually include a second argument in the function signature of your "during" code.
 
 ##### Result
 | Type                | Details |
 |---------------------|:---------------------------------------------------------------------------------|
-|  ((Ref?))            | The optional result data sent back from `during`.  In other words, if, in your `during` function, you did `return 'foo';`, then this will be `'foo'`. |
+|  ((Ref?))            | The optional result data sent back from `during`.  In other words, if in your `during` function you did `return 'foo';`, then this will be `'foo'`. |
 
 ##### Errors
 
@@ -40,7 +40,7 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-Subtract the specified amount from one user's balance and add it to another.
+Subtract the specified amount from one user's balance and add it to another's.
 
 ```javascript
 // e.g. in an action:
@@ -89,7 +89,7 @@ await sails.getDatastore()
 .intercept('E_NO_SUCH_RECIPIENT', ()=>'notFound');
 ```
 
-> Note that the example above is just a demonstration: in practice, this kind of increment/decrement logic should also include row-level locking.  [Unsure?](https://sailsjs.com/support)
+> Note that the example above is just a demonstration; in practice, this kind of increment/decrement logic should also include row-level locking.  [Unsure?](https://sailsjs.com/support).
 
 <docmeta name="displayName" value=".transaction()">
 <docmeta name="pageType" value="method">
