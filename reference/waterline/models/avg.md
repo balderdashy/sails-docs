@@ -1,4 +1,4 @@
-# .avg()
+# `.avg()`
 
 Get the aggregate mean of the specified attribute across all matching records.
 

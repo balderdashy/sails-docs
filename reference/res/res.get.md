@@ -1,4 +1,4 @@
-# res.get()
+# `res.get()`
 
 Returns the current value of the specified response header (`header`).
 
@@ -15,7 +15,7 @@ res.get('Content-Type');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+Response headers can be changed up until the response is sent - see [`res.set()`](https://sailsjs.com/documentation/reference/response-res/res-set).
+>+ Response headers can be changed up until the response is sent. See [`res.set()`](https://sailsjs.com/documentation/reference/response-res/res-set) for details.
 
 
 

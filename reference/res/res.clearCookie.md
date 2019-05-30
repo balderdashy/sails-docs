@@ -1,4 +1,4 @@
-# res.clearCookie()
+# `res.clearCookie()`
 
 Clears cookie (`name`) in the response.
 

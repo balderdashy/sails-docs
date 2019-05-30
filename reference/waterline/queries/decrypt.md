@@ -1,4 +1,4 @@
-# .decrypt()
+# `.decrypt()`
 
 Decrypt any auto-encrypted attributes in the records returned for this particular query.
 

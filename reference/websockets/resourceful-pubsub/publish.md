@@ -1,4 +1,4 @@
-# .publish()
+# `.publish()`
 
 Broadcast an arbitrary message to socket clients [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) to one or more of this model's [records](https://sailsjs.com/documentation/concepts/models-and-orm).
 
@@ -66,7 +66,7 @@ Something.publish(ids, data, req);
 ```
 
 ### Notes
-> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
+> + Be sure to check that `req.isSocket === true` before passing in `req` to refer to the requesting socket.  If used, the provided `req` must be from a socket request, not just any old HTTP request.
 
 
 <docmeta name="displayName" value=".publish()">

@@ -1,6 +1,6 @@
-# Working with Models
+# Working with models
 
-This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful pubsub methods](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be hand-written in your app to wrap reusable custom code.
+This section of the documentation focuses on the model methods provided by Waterline out of the box.  In addition to these, additional methods can come from hooks (like the [resourceful PubSub methods](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub)) or be manually written in your app to wrap reusable custom code.
 
 > + For an in-depth introduction to models in Sails/Waterline, see [Concepts > Models and ORM > Models](https://sailsjs.com/documentation/concepts/models-and-orm/models).
 > + You can find an example of how to define a model [here](https://gist.github.com/rachaelshaw/f5bf442b2171154aa6021846d1a250f8).
@@ -8,7 +8,7 @@ This section of the documentation focuses on the model methods provided by Water
 
 
 
-### Built-In Model Methods
+### Built-in model methods
 
 In general, model methods are _asynchronous_, meaning you cannot just call them and use the return value.  Instead, you must use callbacks, promises or async/await. 
 Most built-in model methods accept a callback as an optional final argument. If the callback is not supplied, a chainable Query object is returned, which has methods like `.fetch()`, `.decrypt()`, and `.where()`. See [Working with Queries](https://sailsjs.com/documentation/reference/waterline-orm/queries) for more on that.
@@ -25,8 +25,8 @@ Here are some of the most common model methods you will encounter building Node.
  `.create()`           | Create a new record consisting of the specified values.
  `.createEach()`       | Create multiple new records at the same time.
  `.count()`            | Count the total number of records that match certain criteria.
- `.sum()`              | Compute the sum for a given attribute, totalled across all records which match certain criteria.
- `.avg()`              | Compute the arithmetic mean for an attribute, averaged over all records which match certain criteria.
+ `.sum()`              | Compute the sum for a given attribute, totalled across all records that match certain criteria.
+ `.avg()`              | Compute the arithmetic mean for an attribute, averaged over all records that match certain criteria.
  `.addToCollection()`      | Add existing records from an associated model to one of your collections.
  `.removeFromCollection()` | Remove record(s) from one of your collections.
 
