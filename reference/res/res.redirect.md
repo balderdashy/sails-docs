@@ -25,24 +25,24 @@ _Or:_
 
 Sails/Express support a few forms of redirection: 
 
-1. A fully qualified URI for redirecting to a different domain:
++ A fully qualified URI for redirecting to a different domain:
 
 ```javascript
 return res.redirect('http://google.com');
 ```
 
-2. The domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/checkout` would land you at http://example.com/checkout:
++ The domain-relative redirect.  For example, if you were on http://example.com/admin/post/new, the following redirect to `/checkout` would land you at http://example.com/checkout:
 
 ```javascript
 return res.redirect('/checkout');
 ```
 
-3. Pathname-relative redirects. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
++ Pathname-relative redirects. If you were on http://example.com/admin/post/new, the following redirect would land you at http//example.com/admin/post:
 
 ```javascript
 return res.redirect('..');
 ```
-4. A back redirect, which allows you to redirect a request back from whence it came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default):
++ A back redirect, which allows you to redirect a request back from whence it came from using the "Referer" (or "Referrer") header (if omitted, redirects to `/` by default):
 
 ```javascript
 return res.redirect('back');
