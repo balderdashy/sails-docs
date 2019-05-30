@@ -1,4 +1,4 @@
-# .then()
+# `.then()`
 
 Execute a Waterline [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries) using promises.
 
@@ -42,7 +42,7 @@ User.findOne({
 ### Notes
 > + Whenever possible, it is recommended that you use `await` instead of calling this method.
 > + This is an alternative to `.exec()`.  When combined with `.catch()`, it provides the same functionality.
-> + The `.then()` function returns a promise, to allow for chaining.
+> + The `.then()` function returns a promise to allow for chaining.
 > + For more information, see the [bluebird `.then()` api docs](http://bluebirdjs.com/docs/api/then).
 
 

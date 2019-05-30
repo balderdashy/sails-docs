@@ -1,4 +1,4 @@
-# .create()
+# `.create()`
 
 Create a record in the database.
 
@@ -6,7 +6,7 @@ Create a record in the database.
 await Something.create(initialValues);
 ```
 
-_Or:_
+or
 
 + `var createdRecord = await Something.create(initialValues).fetch();`
 
@@ -58,7 +58,6 @@ return res.ok();
 var createdUser = await User.create({name:'Finn'}).fetch();
 
 sails.log('Finn\'s id is:', createdUser.id);
-return res.json(createdUser);
 ```
 
 ### Negotiating errors

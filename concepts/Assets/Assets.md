@@ -2,7 +2,7 @@
 
 ### Overview
 
-Assets refer to [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc) on your server that you want to make accessible to the outside world.  In Sails, these files are placed in the [`assets/`](https://sailsjs.com/documentation/anatomy/assets) folder.  When you lift your app, add files to your `assets/` folder, or change existing assets, Sails' built-in asset pipeline processes and syncs those files to a hidden folder (`.tmp/public/`).
+Assets refer to [static files](http://en.wikipedia.org/wiki/Static_web_page) (js, css, images, etc.) on your server that you want to make accessible to the outside world.  In Sails, these files are placed in the [`assets/`](https://sailsjs.com/documentation/anatomy/assets) folder.  When you lift your app, add files to your `assets/` folder, or change existing assets, Sails' built-in asset pipeline processes and syncs those files to a hidden folder (`.tmp/public/`).
 
 > This intermediate step (moving files from `assets/` into `.tmp/public/`) allows Sails to pre-process assets for use on the client - things like LESS, CoffeeScript, SASS, spritesheets, Jade templates, etc.
 

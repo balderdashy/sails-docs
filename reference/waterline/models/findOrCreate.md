@@ -1,4 +1,4 @@
-# .findOrCreate()
+# `.findOrCreate()`
 
 Find the record matching the specified criteria.  If no such record exists, create one using the provided initial values.
 
@@ -6,7 +6,7 @@ Find the record matching the specified criteria.  If no such record exists, crea
 var newOrExistingRecord = await Something.findOrCreate(criteria, initialValues);
 ```
 
-_Or, if you need to know whether a new record was created:_
+or, if you need to know whether a new record was created,
 
 ```usage
 Something.findOrCreate(criteria, initialValues)
@@ -45,27 +45,25 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 
 ### Example
 
-Ensure our test user, Finn, exists:
+Let's make sure our test user, Finn, exists:
 
 ```javascript
 User.findOrCreate({ name: 'Finn' }, { name: 'Finn' })
 .exec(async(err, user, wasCreated)=> {
   if (err) { return res.serverError(err); }
-
+  
   if(wasCreated) {
     sails.log('Created a new user: ' + user.name);
   }
   else {
     sails.log('Found existing user: ' + user.name);
   }
-
-  return res.json(user);
 });
 ```
 
 ### Notes
-> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec). However, if you use `await`, the result will be the record only -- you will not have access to `wasCreated`.
-> + Behind the scenes, this uses `.findOne()`, so if more than one record in the database matches the provided criteria, there will be an error explaining as much.
+> + This method can be used with [`await`](https://github.com/mikermcneil/parley/tree/49c06ee9ed32d9c55c24e8a0e767666a6b60b7e8#usage), promise chaining, or [traditional Node callbacks](https://sailsjs.com/documentation/reference/waterline-orm/queries/exec). If you use `await`, be aware that the result will be the record only&mdash;you will not have access to `wasCreated`.
+> + Behind the scenes, this uses `.findOne()`, so if more than one record in the database matches the provided criteria, there will be an error explaining so.
 
 <docmeta name="displayName" value=".findOrCreate()">
 <docmeta name="pageType" value="method">

@@ -60,7 +60,7 @@ console.log(window.SAILS_LOCALS);
 </script>
 ```
 
-> Note that, when you use this strategy, the strings in your view locals are no longer HTML unescaped after being exposed to client-side JavaScript.
+> Note that when you use this strategy, the strings in your view locals are no longer HTML unescaped after being exposed to client-side JavaScript.
 > That's because you'll want to escape them _again_ when you stick them in the DOM.  If you always escape at the point of injection, this stuff is a
 > lot easier to keep track of.  This way, you know you can safely escape _any_ string you inject into the DOM from your client-side JavaScript.
 > (More on that below.)
@@ -94,7 +94,7 @@ welcomeMsg.text('Hello, '+window.SAILS_LOCALS.me.username+'!');
 // accidental escaping issues can cause really, really annoying client-side bugs.
 ```
 
-> As you've probably figured out, the example above assumes you are using jQuery- but the same concepts apply regardless of what front-end library you are using.
+> As you've probably figured out, the example above assumes you are using jQuery, but the same concepts apply regardless of what front-end library you are using.
 
 
 ### Additional Resources
