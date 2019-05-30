@@ -1,333 +1,140 @@
-# Many-to-Many
+# Many-to-many
+
+**AKA "Has and Belongs To Many"**
+
 ### Overview
 
-A many-to-many association states that a model can be associated with many other models and vice-versa.
-Because both models can have many related models a new join table will need to be created to keep track
-of these relations.
+A many-to-many association states that one record can be associated with many other records and vice-versa.  This type of relationship involves the creation of a _join table_ to keep track of the many links between records.  When Waterline detects that two models have collection attributes that point to each other through their `via` keys (see below), it will automatically build up a join table for you.
 
-Waterline will look at your models and if it finds that two models both have collection attributes that
-point to each other, it will automatically build up a join table for you.
+### The `via` key
 
-Because you may want a model to have multiple many-to-many associations on another model a `via` key
-is needed on the `collection` attribute. This states which `model` attribute on the one side of the
-association is used to populate the records.
+Because you may want a model to have multiple many-to-many associations on another model a `via` key is needed on the `collection` attribute. The `via` key indicates the related attribute on the other side of a many-to-many association.
 
-Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
-`Pet` records and a `Pet` may have multiple owners.
-
-
-### Many-to-Many Example
-
-In this example, we will start with an array of users and an array of pets.  We will create records for each element in each array then associate all of the `Pets` with all of the `Users`.  If everything worked properly, we should be able to query any `User` and see that they 'own' all of the `Pets`.  Furthermore, we should be able to query any `Pet` and see that it is 'owned' by every `User`.
-
-
-`myApp/api/models/pet.js`
-
+Using the `User` and `Pet` example, let&rsquo;s look at how to build a schema where a `User` may have many `Pet` records and a `Pet` may have multiple owners.
 
 ```javascript
-
+// myApp/api/models/User.js
+// A user may have many pets
 module.exports = {
+  attributes: {
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    },
 
-	attributes: {
-		name:'STRING',
-		color:'STRING',
-
-		// Add a reference to User
-		owners: {
-			collection: 'user',
-			via: 'pets',
-			dominant:true
-		}
-	}
-}
-
-```
-
-`myApp/api/models/user.js`
-
-```javascript
-
-module.exports = {
-
-	attributes: {
-		name:'STRING',
-		age:'INTEGER',
-
-		// Add a reference to Pet
-		pets:{
-			collection: 'pet',
-			via: 'owners'
-		}
-	}
-
-}
-
-```
-
-
-`myApp/config/bootstrap.js`
-
-```javascript
-
-module.exports.bootstrap = function (cb) {
-
-// After we create our users, we will store them here to associate with our pets
-var storeUsers = []; 
-
-var users = [{name:'Mike',age:'16'},{name:'Cody',age:'25'},{name:'Gabe',age:'107'}];
-var ponys = [{ name: 'Pinkie Pie', color: 'pink'},{ name: 'Rainbow Dash',color: 'blue'},{ name: 'Applejack', color: 'orange'}]
-
-// This does the actual associating.
-// It takes one Pet then iterates through the array of newly created Users, adding each one to it's join table
-var associate = function(onePony,cb){
-  var thisPony = onePony;
-  var callback = cb;
-
-  storeUsers.forEach(function(thisUser,index){
-    console.log('Associating ',thisPony.name,'with',thisUser.name);
-    thisUser.pets.add(thisPony.id);
-    thisUser.save(console.log);
-
-    if (index === storeUsers.length-1)
-      return callback(thisPony.name);
-  })
-};
-
-
-// This callback is run after all of the Pets are created.
-// It sends each new pet to 'associate' with our Users  
-var afterPony = function(err,newPonys){
-  while (newPonys.length){
-    var thisPony = newPonys.pop();
-    var callback = function(ponyID){
-      console.log('Done with pony ',ponyID)
+    // Add a reference to Pet
+    pets: {
+      collection: 'pet',
+      via: 'owners'
     }
-    associate(thisPony,callback)
   }
-  console.log('Everyone belongs to everyone!! Exiting.');
-
-  // This callback lets us leave bootstrap.js and continue lifting our app!
-  return cb()
 };
+```
+```javascript
+// myApp/api/models/Pet.js
+// A pet may have many owners
+module.exports = {
+  attributes: {
+    breed: {
+      type: 'string'
+    },
+    type: {
+      type: 'string'
+    },
+    name: {
+      type: 'string'
+    },
 
-// This callback is run after all of our Users are created.
-// It takes the returned User and stores it in our storeUsers array for later.
-var afterUser = function(err,newUsers){
-  while (newUsers.length)
-    storeUsers.push(newUsers.pop())
-
-  Pet.create(ponys).exec(afterPony)
-};
-
-
-User.create(users).exec(afterUser)
-
+    // Add a reference to User
+    owners: {
+      collection: 'user',
+      via: 'pets'
+    }
+  }
 };
 ```
 
-Lifting our app with `sails console`
+To associate records together, the Model method [.addToCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) is used. This allows you to set the primary keys of the records that will be associated.
 
-```sh
-
-dude@littleDude:~/node/myApp$ sails console
-
-info: Starting app in interactive mode...
-
-Associating  Applejack with Gabe
-Associating  Applejack with Cody
-Associating  Applejack with Mike
-Done with pony  Applejack
-Associating  Rainbow Dash with Gabe
-Associating  Rainbow Dash with Cody
-Associating  Rainbow Dash with Mike
-Done with pony  Rainbow Dash
-Associating  Pinkie Pie with Gabe
-Associating  Pinkie Pie with Cody
-Associating  Pinkie Pie with Mike
-Done with pony  Pinkie Pie
-Everyone belongs to everyone!! Exiting.
-info: Welcome to the Sails console.
-info: ( to exit, type <CTRL>+<C> )
-
-sails> null { name: 'Gabe',
-  age: 107,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 9 }
-null { name: 'Cody',
-  age: 25,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 8 }
-null { name: 'Mike',
-  age: 16,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 7 }
-null { name: 'Gabe',
-  age: 107,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 9 }
-null { name: 'Cody',
-  age: 25,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 8 }
-null { name: 'Mike',
-  age: 16,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 7 }
-null { name: 'Gabe',
-  age: 107,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 9 }
-null { name: 'Cody',
-  age: 25,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 8 }
-null { name: 'Mike',
-  age: 16,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 7 }
-sails> Pet.find().populate('owners').exec(function(e,r){while(r.length){var thisPet=r.pop();console.log(thisPet.toJSON())}});
-{ owners: 
-   [ { name: 'Mike',
-       age: 16,
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Cody',
-       age: 25,
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Gabe',
-       age: 107,
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Applejack',
-  color: 'orange',
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 9 }
-{ owners: 
-   [ { name: 'Mike',
-       age: 16,
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Cody',
-       age: 25,
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Gabe',
-       age: 107,
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Rainbow Dash',
-  color: 'blue',
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 8 }
-{ owners: 
-   [ { name: 'Mike',
-       age: 16,
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Cody',
-       age: 25,
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Gabe',
-       age: 107,
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Pinkie Pie',
-  color: 'pink',
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 7 }
-sails> User.find().populate('pets').exec(function(e,r){while(r.length){var thisUser=r.pop();console.log(thisUser.toJSON())}});
-{ pets: 
-   [ { name: 'Pinkie Pie',
-       color: 'pink',
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Rainbow Dash',
-       color: 'blue',
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Applejack',
-       color: 'orange',
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Gabe',
-  age: 107,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 9 }
-{ pets: 
-   [ { name: 'Pinkie Pie',
-       color: 'pink',
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Rainbow Dash',
-       color: 'blue',
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Applejack',
-       color: 'orange',
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Cody',
-  age: 25,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 8 }
-{ pets: 
-   [ { name: 'Pinkie Pie',
-       color: 'pink',
-       id: 7,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Rainbow Dash',
-       color: 'blue',
-       id: 8,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) },
-     { name: 'Applejack',
-       color: 'orange',
-       id: 9,
-       createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-       updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST) } ],
-  name: 'Mike',
-  age: 16,
-  createdAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  updatedAt: Wed Feb 12 2014 18:06:50 GMT-0600 (CST),
-  id: 7 }
-
-
+```javascript
+// To add a Pet to a user's `pets` collection where the User has an id of
+// 10 and the Pet has an id of 300.
+await User.addToCollection(10, 'pets', 300);
 ```
-### Notes
-> For a more detailed description of this type of association, see the [Waterline Docs](https://github.com/balderdashy/waterline-docs/blob/master/associations.md)
 
-<docmeta name="uniqueID" value="ManytoMany276455">
-<docmeta name="displayName" value="Many-to-Many">
+You can also add multiple pets at once:
+
+```javascript
+await User.addToCollection(10, 'pets', [300, 301]);
+```
+
+Removing associations is just as easy using the [.removeFromCollection()](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection) method. It works the same way as  `addToCollection`:
+
+```javascript
+// To remove a User from a pet's collection of owners where the User has an id of
+// 10 and the Pet has an id of 300.
+await Pet.removeFromCollection(300, 'owners', 10);
+```
+
+And you can remove multiple owners at once:
+
+```javascript
+await Pet.removeFromCollection(300, 'owners', [10, 12]);
+```
+
+Note that adding or removing associated records from one side of a many-to-many relationship will automatically affect the other side.  For example, adding records to the `pets` attribute of a `User` model record with `.addToCollection()` will immediately affect the `owners` attributes of the linked `Pet` records.
+
+To return associated collections along with a record retrieved by [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-one), use the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
+
+### Dominance
+
+In most cases, Sails will be able to create the join table for a many-to-many association without any input from you.  However, if the two models in the association use different datastores, you may want to choose which one should contain the join table.  You can do this by setting `dominant: true` on one of the associations in the relationship.
+
+Consider the following models:
+
+
+```javascript
+// User.js
+module.exports = {
+  datastore: 'ourMySQL',
+  attributes: {
+    email: 'string',
+    wishlist: {
+      collection: 'product',
+      via: 'wishlistedBy'
+    }
+  }
+};
+```
+
+
+```javascript
+// Product.js
+module.exports = {
+  datastore: 'ourRedis',
+  attributes: {
+    name: 'string',
+    wishlistedBy: {
+      collection: 'user',
+      via: 'wishlist'
+    }
+  }
+};
+```
+
+In this case, `User` and `Product` records exist in different databases.  By default, Sails will arbitrarily choose one of the datastores (either `ourMySQL` or `ourRedis`) to contain the join table linking the `wishlist` attribute of `User` to the `wishlistedBy` attribut of `Product`.  In order to force the join table to exist in the `ourMySQL` datastore, you would add `dominant: true` to the `wishlist` attribute definition.  Conversely, adding `dominant: true` to the `wishlistedBy` attribute would cause the join table to be created in the `ourRedis` datastore.
+
+
+##### Choosing a "dominant"
+
+Several factors may influence your decision of where to create the join table:
+
++ If one side is a SQL database, placing the join table on that side will allow your queries to be more efficient, since the relationship table can be joined before the other side is communicated with.  This reduces the number of total queries required from 3 to 2.
++ If one datastore is much faster than the other, all other things being equal, it probably makes sense to put the join table on that side.
++ If you know that it is much easier to migrate one of the datastores, you may choose to set that side as `dominant`.  Similarly, regulations or compliance issues may affect your decision as well.  If the relationship contains sensitive patient information (for instance, a relationship between `Patient` and `Medicine`) you want to be sure that all relevant data is saved in one particular database over the other (in this case, `Patient` is likely to be `dominant`).
++ Along the same lines, if one of your datastores is read-only (perhaps `Medicine` in the previous example is connected to a read-only vendor database), you won't be able to write to it, so you'll want to make sure your relationship data can be persisted safely on the other side.
+
+<docmeta name="displayName" value="Many-to-many">
 

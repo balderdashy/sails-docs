@@ -1,11 +1,13 @@
-# Page Needed
+# Página Necessária
 
-If you&rsquo;re seeing this page, it means you've clicked on a link to a Sails doc that has yet to be written.  Help make Sails better by contributing to the docs!
+Se você está vendo essa página, isso significa que clicou em um link para a documentação Sails que não foi escrita. Ajude a fazer Sails melhor ao contribuir para a documentação!
 
-Please send a pull request to master with corrections/additions and they'll be double-checked and merged as soon as possible.
+Por favor, mande uma pull request para o master com correções/adições e eles irão re-checar e incluir assim que possível.
 
-Secondly, we are open to suggestions about the process we're using to manage our documentation, and to work with the community in general. Please post to the Google Group with your ideas- or if you're interested in helping directly, contact @ncrumrine, @loicsaintroch, or @mikermcneil on Twitter.
+Secondly, we are open to suggestions about the process we're using to manage our documentation, and to work with the community in general. Please post to the Google Group with your ideas, or if you're interested in helping directly, contact @ncrumrine, @loicsaintroch, or @mikermcneil on Twitter.
 
-Love,
+Segundamente, nós estamos abertos para sugestões sobre o processo que usamos para gerenciar nossa documentação, e trabalhar com nossa comunidade em geral. Por favor, publique no Grupo do Google suas ideias, ou se estiver interessado em ajudar diretamente contate @ncrumrine, @loicsaintroch, ou @mikermcneil no Twitter.
 
-The Sails Team
+Com amor,
+
+O Time Sails

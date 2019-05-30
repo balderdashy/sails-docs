@@ -1,9 +1,9 @@
-# res.get()
+# `res.get()`
 
 Returns the current value of the specified response header (`header`).
 
 ### Usage
-```js
+```usage
 res.get(header);
 ```
 
@@ -15,7 +15,7 @@ res.get('Content-Type');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+Response headers can be changed up until the response is sent - see [`res.set()`](/#/documentation/reference/res/res.set.html).
+>+ Response headers can be changed up until the response is sent. See [`res.set()`](https://sailsjs.com/documentation/reference/response-res/res-set) for details.
 
 
 
@@ -29,6 +29,7 @@ res.get('Content-Type');
 
 
 
-<docmeta name="uniqueID" value="resget697790">
+
 <docmeta name="displayName" value="res.get()">
+<docmeta name="pageType" value="method">
 

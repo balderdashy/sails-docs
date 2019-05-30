@@ -1,9 +1,9 @@
-# req.query
+# `req.query`
 
-An object containing the parsed query-string, defaulting to `{}`.
+A dictionary containing the parsed query-string, defaulting to `{}`.
 
 ### Usage
-```js
+```usage
 req.query;
 ```
 
@@ -19,6 +19,6 @@ req.query.q
 
 
 
-<docmeta name="uniqueID" value="reqquery553014">
-<docmeta name="displayName" value="req.query">
 
+<docmeta name="displayName" value="req.query">
+<docmeta name="pageType" value="property">

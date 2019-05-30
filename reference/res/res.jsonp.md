@@ -1,57 +1,49 @@
-# res.jsonp()
+# `res.jsonp()`
 
 Send a JSON or JSONP response.
 
-Identical to [`res.json()`](/#/documentation/reference/res/res.json.html), except if a "callback" parameter exists, a [JSONP](http://en.wikipedia.org/wiki/JSONP) response will be sent instead, using the value of the "callback" parameter as the name of the function wrapper.
+Identical to [`res.json()`](https://sailsjs.com/documentation/reference/response-res/res-json) except that, if a request parameter named "callback" was provided in the query string, then Sails will send the response data as [JSONP](http://en.wikipedia.org/wiki/JSONP) instead of JSON.  The value of the "callback" request parameter will be used as the name of the JSONP function call wrapper in the response.
 
 ### Usage
-```js
-return res.jsonp([statusCode, ] data);
+```usage
+return res.jsonp(data);
 ```
 
 ### Example
 
+In an action:
+
 ```js
-return res.jsonp({
-  users: [{
+return res.jsonp([
+  {
     name: 'Thelma',
     id: 1
   }, {
     name: 'Leonardo'
     id: 2
-  }]
-});
+  }
+]);
 ```
 
-<!--
 
-Need to make this better:
-
-By default the JSONP callback name is simply callback, however you may alter this with the jsonp callback name setting. The following are some examples of JSONP responses using the same code:
+Given `?callback=gotStuff`, the code above would send back a response body like:
 
 ```javascript
-// ?callback=foo
-res.jsonp({ user: 'tobi' })
-// foo({ "user": "tobi" })
-
-app.set('jsonp callback name', 'cb');
-
-// ?cb=foo
-res.jsonp(500, { error: 'message' })
-// foo({ "error": "message" })
+gotStuff([{name: 'Thelma', id: 1}, {name: 'Louise', id: 2}])
 ```
--->
+
+
 
 ### Notes
-> + Don't forget this method's name is all lowercase.
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+> + Don't forget that this method's name is all lowercase.
+> + If no "callback" request parameter was provided, this method works exactly like `res.json()`.
+> + This method is **terminal**, meaning that it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
 
 
 
 
 
 
-
-<docmeta name="uniqueID" value="resjsonp798206">
 <docmeta name="displayName" value="res.jsonp()">
+<docmeta name="pageType" value="method">
 

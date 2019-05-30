@@ -1,8 +1,8 @@
 # req.url
 
-Like [`req.path`](http://sailsjs.org/#/documentation/reference/req/req.path.html), but also includes the query string suffix.
+Like [`req.path`](https://sailsjs.com/documentation/reference/request-req/req-path), but also includes the query string suffix.
 
-```js
+```usage
 req.url;
 
 // => "/search?q=worlds%20largest%20dogs"
@@ -15,13 +15,6 @@ req.url;
 
 
 
-<!--
-This doesn't seem to be true anymore: 
-
-The querystring parser in Express/Connect removes the query string from the standard `req.url` in Node, so in Sails/Express/Koa/Connect, `req.url` is effectively a synonym for `req.path`.  Please see `req.path` for example usage.
--->
-
-
-<docmeta name="uniqueID" value="requrl810500">
 <docmeta name="displayName" value="req.url">
+<docmeta name="pageType" value="property">
 

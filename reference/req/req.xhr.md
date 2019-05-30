@@ -3,7 +3,7 @@ A flag indicating whether the current request (`req`) appears to be an AJAX requ
 
 
 ### Usage
-```js
+```usage
 req.xhr;
 ```
 
@@ -22,6 +22,6 @@ if (req.xhr) {
 
 
 
-<docmeta name="uniqueID" value="reqxhr450203">
-<docmeta name="displayName" value="req.xhr">
 
+<docmeta name="displayName" value="req.xhr">
+<docmeta name="pageType" value="property">

@@ -1,4 +1,4 @@
-# Adapter Interface Reference
+# Adapter interface reference
 
 > The adapter interface specification is currently under active development and may change.
 
@@ -24,7 +24,7 @@ Deprecated-- should be moved to the pubsub hook docs:
 + automatic socket.io pubsub support is provided by Sails-- it manages "rooms" for every class (collection) and each instance (model)
   + As soon as a socket subscribes to the "class room" using `Foo.subscribe()`, it starts receiving `Foo.publishCreate()` notifications any time they're fired for `Foo`.
 -->
-  
+
 
 > All officially supported Sails.js database adapters implement the `Semantic` interface.
 
@@ -54,33 +54,28 @@ Deprecated-- should be moved to the pubsub hook docs:
 
 Query building features are common in traditional ORMs, but not at all a guarantee when working with Waterline.  Since Waterline adapters can support services as varied as Twitter, SMTP, and Skype, traditional assumptions around structured data don't always apply.
 
-If query modifiers are enabled, the adapter must support `Model.find()`, as well as the **complete** query interface, or, where it is impossible to do so, at least provide helper notices.  If coverage of the interace is unfinished, it's still not a bad idea to make the adapter available, but it's important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.
+If query modifiers are enabled, the adapter must support `Model.find()`, as well as the **complete** query interface, or, where it is impossible to do so, at least provide good error messages.  If coverage of the interface is unfinished, it's still not a bad idea to make the adapter available, but it's important to clearly state the unifinished parts, and consequent limitations, up front.  This helps prevent the creation of off-topic issues in Sails/Waterline core, protects developers from unexpected consequences, and perhaps most importantly, helps focus contributors on high-value tasks.
 
 > All officially supported Sails.js database adapters implement this interface.
 
 ###### Query modifiers
-Query modifiers include filters:
+Query modifiers include normalized syntax:
 + `where`
 + `limit`
 + `skip`
 + `sort`
 + `select`
-+ `distinct`
+
+And WHERE supports:
 
 Boolean logic:
 + `and`
 + `or`
 + `not`
 
-As well as `groupBy` and the aggregators:
-+ `count`
-+ `sum`
-+ `min`
-+ `max`
-+ `average`
 
 `IN` queries:
-Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.  
+Adapters which implement `where` should recognize a list of values (e.g. `name: ['Gandalf', 'Merlin']`) as an `IN` query.  In other words, if `name` is either of those values, a match occured.
 
 Sub-attribute modifiers:
 You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 } }`) with the notable exception of `contains`, `startsWith`, and `endsWith`, since support for those modifiers can be derived programatically by leveraging your definition of  `like`.
@@ -89,8 +84,6 @@ You are also responsible for sub-attribute modifiers, (e.g. `{ age: { '>=' : 65 
 + `'<' `
 + `'>='`
 + `'<='`
-+ TODO: range queries (e.g. `{ '<':4, >= 2 }`)
-
 
 
 ## Migratable (interface)
@@ -103,15 +96,16 @@ Adapters which implement the Migratable interface are usually interacting with S
 
 > This is not how it actually works, but how it could work soon:
 
-+ `Adaper.define()`
-+ `Adaper.describe()`
-+ `Adaper.drop()`
++ `Adapter.define()`
++ `Adapter.describe()`
++ `Adapter.drop()`
 + `Adapter.alter()` (change table name, other table metadata)
-+ `Adaper.addAttribute()` (add column)
-+ `Adaper.removeAttribute()` (remove column)
-+ `Adaper.alterAttribute()` (rename column, add or remove uniquness constraint to column)
-+ `Adaper.addIndex()`
-+ `Adaper.removeIndex()`
++ `Adapter.addAttribute()` (add column)
++ `Adapter.removeAttribute()` (remove column)
++ `Adapter.alterAttribute()` (rename column, add or remove uniquness constraint to column)
++ `Adapter.addIndex()`
++ `Adapter.removeIndex()`
+
 
 ###### Auto-migration strategies
 + `"safe"` (default in production env)
@@ -120,19 +114,33 @@ Adapters which implement the Migratable interface are usually interacting with S
   + drop all tables and recreate them each time the server starts-- useful for development
 + `"alter"`
   + experimental automigrations
++ `"create"`
+  + create all missing tables/columns without modifying existing data
 
 
 
+## SQL (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+Adapters which implement the SQL interface interact with databases supporting the SQL language. This interface exposes the method `.query()` allowing the user to run *raw* SQL queries against the database.
+
+###### Adapter methods
+
++ `Adapter.query(query,[ data,] cb)`
+
+
+<!--
 ## Iterable (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
 #### Background
 
-> Communicating with another server via messages/packets is the gold standard of performance-- 
+> Communicating with another server via messages/packets is the gold standard of performance--
 > network latency is the slowest I/O operation computers deal with, yet ironically, the standard methodology
 > used by most developers/frameworks/libraries outside of Node.js is detrimental to performance.
-> 
+>
 > In the Node community, you might say we're in the midst of a bit of an I/O renaissance.
 >
 > The standard approach to communicating with another server (or a disk) involves loading a message into memory
@@ -145,13 +153,13 @@ Adapters which implement the Migratable interface are usually interacting with S
 > Using Node streams is a different ball game.  It's like splitting up the big bag into smaller containers, then
 > floating them across one by one.  This way, no matter how much gold you end up with, you never drown.
 
-A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.  
+A huge advantage of using Node.js is the ease with which you can parse and manipulate streams of data.  Instead of pulling an entire dataset into RAM, you can inspect it a little at a time.  This unlocks a level of performance that is unachievable using conventional approaches.
 
 The most common use case is taking advantage of the available HTTP response stream to pipe the output byte stream from the database directly back to the user.  i.e. to generate a dynamic sitemap, you might need to respond with a huge set of data (far too large to fit in memory on a commodity server) and simultaneously transform it into XML.
 
-#### Implementation 
+#### Implementation
 
-Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don't have all the data at once.  
+Implementing the Streaming CRUD interface is actually pretty simple-- you just need to get comfortable with Node.js streams.  You can mutate streams as they come in-- you just need to find or design a mapping function designed for streams, where you don't have all the data at once.
 
 
 
@@ -203,6 +211,8 @@ When a subscriber needs to be informed of an incoming notifiation, the subscriba
 
 (#3 is where I'd like this head in the future, since it provides the most normalized, extensible interface)
 
+-->
+
 <!--
 deprecated:
 
@@ -210,9 +220,14 @@ They should call Sails' `Model.publishUpdate()`, `Model.publishCreate()`, and `M
 `Model.subscribe()` should still be called at the app layer, not in our adapter.
 We don't want to force users to handle realtime events-- we don't know the specific goals and requiements of their app, and since the broadcasts are volatile, pubsub notifications is a feature that should be opt-in anyway.
 -->
-
+<!--
 Examples:
 + Twitter streaming API (see new tweets as they come in)
 + IRC (see new chats as they come in)
 + Stock prices (visualize the latest market data as soon as it is available)
 + Hardware scanners (see new data as it comes in)
+
+-->
+
+<docmeta name="notShownOnWebsite" value="true">
+

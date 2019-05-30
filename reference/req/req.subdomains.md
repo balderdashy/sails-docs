@@ -1,8 +1,9 @@
-# req.subdomains
+# `req.subdomains`
+
 An array of all the subdomains in this request's URL.
 
 ### Usage
-```javascript
+```usage
 req.subdomains;
 ```
 
@@ -20,6 +21,6 @@ req.subdomains;
 
 
 
-<docmeta name="uniqueID" value="reqsubdomains686204">
-<docmeta name="displayName" value="req.subdomains">
 
+<docmeta name="displayName" value="req.subdomains">
+<docmeta name="pageType" value="property">

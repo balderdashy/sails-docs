@@ -1,9 +1,9 @@
-# Introduction to Custom Adapters for Sails / Waterline
+# Introduction to custom adapters for Sails/Waterline
 
 > ##### Stability: Varies
 
 ## Reference
- 
+
 Please see the [adapter interface specification](https://github.com/balderdashy/sails-docs/blob/0.9/adapter-specification.md).
 
 
@@ -17,16 +17,16 @@ Please see the [adapter interface specification](https://github.com/balderdashy/
 
 Adapters are mainly focused on providing model-contextualized CRUD methods.  CRUD stands for create, read, update, and delete.  In Sails/Waterline, we call these methods `create()`, `find()`, `update()`, and `destroy()`.
 
-For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection informtion and runs an `INSERT ...` SQL query.
+For example, a `MySQLAdapter` implements a `create()` method which, internally, calls out to a MySQL database using the specified table name and connection information and runs an `INSERT ...` SQL query.
 
-In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw connection objects and any models which use them.
+In practice, your adapter can really do anything it likes-- any method you write will be exposed on the raw datastore objects and any models which use them.
 
 
 
 
 ## Why would I need a custom adapter?
 
-When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations) 
+When building a Sails app, the sending or receiving of any asynchronous communication with another piece of hardware can be normalized into an adapter.  (viz. API integrations)
 
 > **From Wikipedia:**
 > *http://en.wikipedia.org/wiki/Create,_read,_update_and_delete*
@@ -109,7 +109,7 @@ http://en.wikipedia.org/wiki/MySQL
 
 ### PostgreSQL
 
-[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database. 
+[PostgreSQL](http://en.wikipedia.org/wiki/PostgreSQL) is another popular relational database.
 
 ###### Interfaces implemented:
 + Semantic
@@ -121,7 +121,7 @@ http://en.wikipedia.org/wiki/MySQL
 ### MongoDB
 
 [MongoDB](http://en.wikipedia.org/wiki/MongoDB) is the leading NoSQL database.
-  
+
 ###### Interfaces implemented:
 + Semantic
 + Queryable
@@ -186,6 +186,16 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 ### [Yelp](https://github.com/balderdashy/sails-adapter-boilerplate/pull/2)
 
+### [OrientDB](https://github.com/appscot/sails-orientdb)
+
+[OrientDB](http://en.wikipedia.org/wiki/OrientDB) is an Open Source NoSQL DBMS with the features of both Document and Graph DBMSs.
+
+###### Interfaces implemented:
++ Semantic
++ Queryable
++ Associations
++ Migratable
+
 
 > Search google and NPM for more-- there are new adapters being written all the time.
 
@@ -195,3 +205,4 @@ Community adapters are crucial to the success and central to the philosophy of a
 
 
 > Want to see your adapter listed here?  Send a pull request with a link and we'll merge it!
+<docmeta name="notShownOnWebsite" value="true">

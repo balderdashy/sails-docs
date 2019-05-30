@@ -1,29 +1,49 @@
-# .unsubscribe(`request`,`records`,[`contexts`])
-### Purpose
-This method will unsubscribe a socket from one or more model instances.
+# .unsubscribe()
 
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 | Request             | `Request object`    | Yes        |
-| 2 | Records             | `[]`, `object`      | Yes        |
-| 3 | Contexts to unsubscribe from | `string`, `array` |  No |
+Unsubscribe the requesting client socket from one or more database records.
 
-*Note*: `unsubscribe` will only work when the request is made over a socket connection (e.g. using `socket.get`), *not* over an http connection (e.g. using `jquery.get`).
-
-#### `context`
-
-See `.subscribe()` for a discussion of pubsub contexts.  Omit this argument to unsubscribe a socket from all contexts.
-
-### Example Usage
-Controller Code
-```javascript
-User.findOne({id: 123}).exec(function(err, userInstance) {
-    User.unsubscribe(req.socket, userInstance);
-});
+```js
+Something.unsubscribe(req, ids);
 ```
 
-<docmeta name="uniqueID" value="unsubscribe354769">
-<docmeta name="methodType" value="pubsub">
-<docmeta name="importance" value="undefined">
-<docmeta name="displayName" value=".unsubscribe()">
+### Usage
 
+|   | Argument   | Type         | Details |
+|---|:-----------|:------------:|:--------|
+| 1 | req        | ((req))      | The incoming socket request (`req`) containing the socket to unsubscribe.
+| 2 | ids        | ((array))    | An array of record ids (primary key values).
+
+
+
+### Example
+
+On the server:
+
+```javascript
+unsubscribeFromUsersNamedLenny: function (req, res) {
+
+  if (!req.isSocket) {
+    return res.badRequest();
+  }
+
+  User.find({name: 'Lenny'}).exec(function(err, lennies) {
+    if (err) { return res.serverError(err); }
+
+    var lennyIds = _.pluck(lennies, 'id');
+
+    User.unsubscribe(req, lennyIds);
+
+    return res.ok();
+
+  });
+},
+```
+
+
+### Notes
+> + Be sure and check `req.isSocket === true` before passing in `req` to refer to the requesting socket.  The provided `req` must be from a socket request, not just any old HTTP request.
+> + `unsubscribe` will only work when the request is made over a socket connection (e.g. using `io.socket.get()`), *not* over HTTP (e.g. using `jQuery.get()`).
+
+
+<docmeta name="displayName" value=".unsubscribe()">
+<docmeta name="pageType" value="method">

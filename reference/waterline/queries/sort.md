@@ -1,38 +1,39 @@
-# .sort(`string`)
-### Purpose
+# .sort()
 
-### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Sort String        |      `string`       | Yes        |
+Set the order in which retrieved records should be returned when executing a [query instance](https://sailsjs.com/documentation/reference/waterline-orm/queries).
 
-### Example Usage
-
-```javascript 
-var myQuery = User.find();
-
-var sortString= 'name ASC';
-
-// Sort strings look like this
-
-// '<Model Attribute> <sort type>' 
-
-myQuery.sort('name ASC');
-
-myQuery.exec(function callBack(err,results){
-    console.log(results)
-    });
-
+```usage
+.sort(sortClause)
 ```
+
+### Usage
+|   |     Argument     | Type                | Details |
+|---|:-----------------|---------------------|------------|
+| 1 |  sortClause      | ((string)) _or_ ((array)) of ((dictionary)) | If specified as a string, this should be formatted as: an attribute name, followed by a space, followed by either `ASC` or `DESC` to indicate an _ascending_ or _descending_ sort (e.g. `name ASC`). <br/>If specified as an array, then each array item should be a dictionary with a single key representing the attribute to sort by, whose value is either `ASC` or `DESC`. The array syntax allows for sorting by multiple attributes, using the array order to establish precedence <br/>(e.g. `[ { name: 'ASC' }, { age:  'DESC'} ]`). |
+
+### Example
+
+To sort users named Jake by age, in ascending order:
+```javascript
+var users = await User.find({ name: 'Jake'})
+.sort('age ASC');
+
+return res.json(users);
+```
+
+To sort users named Finn, first by age, then by when they joined:
+```javascript
+var users = await User.find({ name: 'Finn'})
+.sort([
+  { name: 'ASC' },
+  { createdAt: 'ASC' },
+]);
+
+return res.json(users);
+```
+
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
-> Other Sort Types include
-  - ASC
-  - DESC
-
-<docmeta name="uniqueID" value="sort822396">
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".sort()">
-
+<docmeta name="pageType" value="method">

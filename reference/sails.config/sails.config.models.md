@@ -1,26 +1,20 @@
 # sails.config.models
 
-Your default project-wide **model settings**. Can also be overridden on a per-model basis by providing a top-level property with the same name in that model definition.  For more details, see the conceptual docs on [Model Settings]().  These options are conventionally specified in the [config/models.js](/#/documentation/anatomy/myApp/config/models.js.html) configuration file.
+Your default project-wide **model settings**, conventionally specified in the [config/models.js](https://sailsjs.com/documentation/anatomy/config/models-js) configuration file.
 
-```js
-sails.config.models;
-```
-
+Most of the settings below can also be overridden on a per-model basis-- just edit the appropriate model definition file.  There are also some additional model settings, not listed below, which can _only_ be specified on a per-model basis.  For more details, see [Concepts > Model Settings](https://sailsjs.com/documentation/concepts/orm/model-settings).
 
 ### Properties
 
 
-  Property             | Type         | Default                         | Details
- ----------------------|:------------:|-------------------------------- | --------
- `attributes`          | ((object))   | `{}`                            | The basic pieces of information to store about a model. See [Attributes]().
- `migrate`             | ((string))   | _see [Model Settings]()_        | How & whether Sails will attempt to automatically rebuild the tables/collections/etc. in your schema
- `connection`          | ((string))   | `"localDiskDb"`                 | The default database [connection](http://beta.sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html) any given model will use without a configured override
- `autoPK`              | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `autoCreatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `autoUpdatedAt`       | ((boolean))  | `true`             | Toggle the automatic definition of a primary key in your model
- `tableName`           | ((string))   | _identity_       | Toggle the automatic definition of a primary key in your model
+  Property             | Type            | Default                         | Details
+ :---------------------|:---------------:|:------------------------------- |:--------
+  `attributes`         | ((dictionary))  | _see [Attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes)_ | Default [attributes](https://sailsjs.com/documentation/concepts/models-and-orm/attributes) to implicitly include in all of your app's model definitions.  (Can be overridden on an attribute-by-attribute basis.)
+ `migrate`             | ((string))   | _see [Model Settings](https://sailsjs.com/documentation/concepts/orm/model-settings)_        | The [auto-migration strategy](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?migrate) for your Sails app.  How & whether Sails will attempt to automatically rebuild the tables/collections/etc. in your schema every time it lifts.
+ `schema`              | ((boolean))     | `false`                      | Only relevant for models hooked up to a schemaless database like MongoDB.  If set to `true`, then the ORM will switch into "schemaful" mode.  For example, if properties passed in to `.create()`, `.createEach()`, or `.update()` do not correspond with recognized attributes, then they will be stripped out before saving.
+ `datastore`           | ((string))   | `'default'`                     | The default [datastore configuration](https://sailsjs.com/documentation/reference/sails-config/sails-config-datastores) any given model will use without a configured override.  Avoid changing this.
+ `primaryKey`          | ((string))   | `'id'`             | The name of the attribute that every model in your app should use as its primary key by default.  Can be overridden here, or on a per-model basis-- but there's [usually a better way](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?primarykey).
+  `archiveModelIdentity` | ((string)) _or_ ((boolean))   | `'archive'`             | The identity of the model to use when calling [`.archive()`](https://sailsjs.com/documentation/reference/waterline-orm/models/archive).  By default, this is the Archive model, an implicit model automatically defined by Sails/Waterline.  Set to `false` to disable built-in support for soft-deletes.
 
-
-<docmeta name="uniqueID" value="sailsconfigmodels258825">
 <docmeta name="displayName" value="sails.config.models">
-<docmeta name="stabilityIndex" value="3">
+<docmeta name="pageType" value="property">

@@ -1,36 +1,55 @@
-# sails.sockets.broadcast( `roomName`, [`event`], `data`, [`socketToOmit`] )
+# .broadcast()
 
-Broadcast a message to a room.
+Broadcast a message to all sockets in a room (or to a particular socket).
 
 ```javascript
-sails.sockets.broadcast(roomName, data);
+sails.sockets.broadcast(roomNames, data);
 ```
 
 _Or:_
-+ `sails.sockets.broadcast(roomName, eventName, data);`
-+ `sails.sockets.broadcast(roomName, data, socketToOmit);`
-+ `sails.sockets.broadcast(roomName, eventName, data, socketToOmit);`
++ `sails.sockets.broadcast(roomNames, eventName, data);`
++ `sails.sockets.broadcast(roomNames, data, socketToOmit);`
++ `sails.sockets.broadcast(roomNames, eventName, data, socketToOmit);`
 
 
 ### Usage
 
 |   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
-| 1 |        roomName            | ((string))          | The room to broadcast a message in (see [sails.sockets.join](http://beta.sailsjs.org/#/documentation/reference/websockets/sails.sockets/sails.sockets.join.html))
-| 2 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
-| 3 |        data                 | ((*))               | The data to send in the message.
-| 4 |        socketToOmit         | ((Socket))          | Optional. If provided, that socket will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
+|---|:--------------------------- | ------------------- |:-----------
+| 1 |        roomNames              | ((string)), ((Array))          | The name of one or more rooms to broadcast a message in (see [sails.sockets.join](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/join)).  To broadcast to individual sockets, use their IDs as room names.
+| 2 |        _eventName_            | ((string?))          | Optional. The unique name of the event used by the client to identify this message.  Defaults to `'message'`.
+| 3 |        data                   | ((json))          | The data to send in the message.
+| 4 |        _socketToOmit_         | ((req?))          | Optional. If provided, the socket belonging to the specified socket request will *not* receive the message.  This is useful if you trigger the broadcast from a client, but don't want that client to receive the message itself (for example, sending a message to everybody else in a chat room).
 
 
 ### Example
 
+In an action, service, or arbitrary script on the server:
+
 ```javascript
-sails.sockets.broadcast('artsAndEntertainment', { msg: 'Hi there!' });
+sails.sockets.broadcast('artsAndEntertainment', { greeting: 'Hola!' });
 ```
 
-### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+On the client:
 
-<docmeta name="uniqueID" value="sailssocketsbroadcast253997">
-<docmeta name="displayName" value="sails.sockets.broadcast()">
+```javascript
+io.socket.on('message', function (data){
+  console.log(data.greeting);
+});
+```
+
+
+##### Additional Examples
+
+More examples of `sails.sockets.brodcast()` usage are [available here](https://gist.github.com/mikermcneil/0a4d05750768a99b4fcb), including broadcasting to multiple rooms, using a custom event name, and omitting the requesting socket.
+
+
+### Notes
+> + `sails.sockets.broadcast()` is more or less equivalent to the functionality of `.emit()` and `.broadcast()` in Socket.io.
+> + Every socket is automatically subscribed to a room with its ID as the name, allowing direct messaging to a socket via [`sails.sockets.broadcast()`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets/sails-sockets-broadcast)
+> + Be sure and check `req.isSocket === true` before passing in `req` as `socketToOmit`. For the requesting socket to be omitted, the request (`req`) must be from a socket request, not just any old HTTP request.
+> + `data` must be JSON-serializable; i.e. it's best to use plain dictionaries/arrays, and make sure your data does not contain any circular references. If you aren't sure, build your broadcast `data` manually, or call something like [`rttc.dehydrate(data,true,true)`](https://github.com/node-machine/rttc/blob/master/README.md#dehydratevalue-allownullfalse-dontstringifyfunctionsfalse) on it first.
+
+<docmeta name="displayName" value=".broadcast()">
+<docmeta name="pageType" value="method">
 

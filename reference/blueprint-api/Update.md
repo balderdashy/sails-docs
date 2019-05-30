@@ -1,209 +1,106 @@
-# Update a Record
+# Update (blueprint)
 
-### `PUT /:model/:record`
+Update an existing record in the database and notify subscribed sockets that it has changed.
 
-Update an existing record.
-Attributes to change should be sent in the HTTP body as form-encoded values or JSON.
+```usage
+PATCH /:model/:id
+```
 
-### Description
-Updates the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly updated instance.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+This updates the record in the model which matches the **id** parameter and responds with the newly updated record as a JSON dictionary.  If a validation error occurred, a JSON response with the invalid attributes and a `400` status code will be returned instead.  If no model instance exists matching the specified **id**, a `404` is returned.
+
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
+_Attributes to change should be sent in the HTTP body as form-encoded values or JSON._
 
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
+ Parameter                          | Type                                                    | Details
+ ---------------------------------- | ------------------------------------------------------- |:---------------------------------
+ model                              | ((string))                                              | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'product'` (in `PATCH /product/5`)
+ id                                 | ((string))                                              | The primary key value of the record to update.<br/><br/>e.g. `'5'` (in `PATCH /product/5`)
+ *                                 | ((json))                                                 | For `PATCH` (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record. For `GET` (shortcut) requests, add the parameters to the query string.
 
-        The primary key value of the record to update.
+### Example
 
-        <br/><strong>Example:</strong>
-        <code>
-          PUT /product/<strong>5</strong>
-        </code>
+Change Applejack's hobby to "kickin":
 
-        <br/>
+`PATCH /user/47`
 
-      </td>
-    </tr>
-
-    <tr>
-      <td><code>&#42;</code></td>
-      <td>
-        <bubble>string</bubble>
-        <br/>
-        <bubble>number</bubble>
-        <br/>
-        <bubble>object</bubble>
-        <br/>
-        <bubble>array</bubble>
-      </td>
-      <td>
-
-        For <code>POST</code> (RESTful) requests, pass in body parameters with the same name as the attributes defined on your model to set those values on the desired record.  For <code>GET</code> (shortcut) requests, add the parameters to the query string.
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        If specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing results as the first (and only argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
-
-### Examples
-
-### Update Record (REST)
-
-Change AppleJack's hobby to "kickin".
-
-#### Route
-`PUT /pony/47`
-
-#### JSON Request Body
 ```json
 {
   "hobby": "kickin"
 }
 ```
 
-### Expected Response
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
+
+##### Expected response
 ```json
 {
-  "name": "AppleJack",
   "hobby": "kickin",
   "id": 47,
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
+  "name": "Applejack",
+  "createdAt": 1485462079725,
+  "updatedAt": 1485476060873
 }
 ```
 
-### Update Record (Shortcuts)
+### Socket notifications
 
-`GET /pony/update/47?hobby=kickin`
+If you have WebSockets enabled for your app, then every client [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the updated record will receive a notification where the event name is that of the model identity (e.g. `user`), and the data &ldquo;payload&rdquo; has the following format:
 
-#### Expected Response
+```
+verb: 'updated',
+id: <the record primary key>,
+data: <a dictionary of changes made to the record>,
+previous: <the record prior to the update>
+```
 
-Same as above.
+For instance, continuing the example above, all clients subscribed to `User` #47 (_except_ for the client making the request) would receive the following message:
 
-### Add association between two existing records (REST)
+```js
+{
+  id: 47,
+  verb: 'updated',
+  data: {
+    id: 47,
+    hobby: 'kickin'
+    updatedAt: 1485476060873
+  },
+  previous: {
+    hobby: 'pickin',
+    id: 47,
+    name: 'Applejack',
+    createdAt: 1485462079725,
+    updatedAt: 1485462079725
+  }
+}
+```
 
-Give Pinkie Pie the pre-existing pet named "Bubbles" who has ID 15.
+**If the update changed any links to other records, there might be some additional notifications:**
 
-#### Route
-`POST /pony/4/pets`
 
-#### JSON Request Body
+
+
+If we were reassigning user #47 to store #25, we'd update `store`, which represents the &ldquo;one&rdquo; side of a [one-to-many association](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many). For instance:
+
+`PATCH /user/47`
+
 ```json
 {
-  "id": 15
+  "store": 25
 }
 ```
 
-#### Expected Response
-```json
-{
-  "name": "Pinkie Pie",
-  "hobby": "kickin",
-  "id": 4,
-  "pets": [{
-      "name": "Gummy",
-      "species": "crocodile"
-      "id": 10,
-      "createdAt": "2014-02-13T00:06:50.603Z",
-      "updatedAt": "2014-02-13T00:06:50.603Z"
-    },{
-      "name": "Bubbles",
-      "species": "wiggleworm"
-      "id": 15,
-      "createdAt": "2014-02-13T00:06:50.603Z",
-      "updatedAt": "2014-02-13T00:06:50.603Z"
-    }],
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
-}
-```
+Clients subscribed to the new store (25) would receive an `addedTo` notification, and a `removedFrom` notification would be sent to any clients subscribed to the old store. See the [add blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/add-to) and the [remove blueprint reference](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) for more info about those notifications.
 
-### Add association between two existing records (Shortcuts)
-`GET /pony/4/pets/add/15`
 
-### Remove Association (Many-To-Many) (REST)
 
-Remove Pinkie Pie's pet, "Gummy" (ID 12)
+### Notes
 
-#### Route
-`DELETE /pony/4/pets`
+> + This action can be used to replace an entire collection association (for example, to replace a user&rsquo;s list of friends), achieving the same result as the [`replace` blueprint action](https://sailsjs.com/documentation/reference/blueprint-api/replace).  To modify items in a collection individually, use the [add](https://sailsjs.com/documentation/reference/blueprint-api/add-to) or [remove](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) actions.
+> + In previous Sails versions, this action was bound to the `PUT /:model/:id` route.
 
-#### JSON Request Body
-```json
-{
-  "id": 12
-}
-```
 
-#### Expected Response
-```json
-
-{
-  "name": "Pinkie Pie",
-  "hobby": "ice skating",
-  "pets": [{
-      "name": "Bubbles",
-      "species": "crackhead"
-      "id": 15,
-      "createdAt": "2014-02-13T00:06:50.603Z",
-      "updatedAt": "2014-02-13T00:06:50.603Z"
-    }],
-  "id": 4,
-  "createdAt": "2013-10-18T01:22:56.000Z",
-  "updatedAt": "2013-11-26T22:54:19.951Z"
-}
-
-```
-
-#### Remove Association (Many-To-Many) (Shortcuts)
-
-#### Route
-
-`GET /pony/4/pets/remove/12`
-
-#### Expected Response
-
-Same as above.
-
-<docmeta name="uniqueID" value="UpdateARecord421031">
 <docmeta name="displayName" value="update">
+<docmeta name="pageType" value="endpoint">
 

@@ -1,0 +1,19 @@
+{
+  "name": "sails-docs",
+  "version": "0.12.4",
+  "description": "Documentação para o framework Sails.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Erro: nenhum teste especificado\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/balderdashy/sails-docs.git"
+  },
+  "author": "Mike McNeil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/balderdashy/sails-docs/issues"
+  },
+  "homepage": "https://github.com/balderdashy/sails-docs#readme"
+}

@@ -1,21 +1,30 @@
 # res.json()
 
-Sends a JSON response composed of a stringified version of the specified `data`.
+Sends a JSON response composed of the specified `data`.
 
 ### Usage
-```js
-return res.json([statusCode, ] data);
+```usage
+return res.json(data);
 ```
 
 ### Details
 
 This method is identical to res.send() when an object or array is passed, however it may be used for explicit JSON conversion of non-objects (null, undefined, etc), though these are technically not valid JSON.
 
-### Example
+### Examples
+
 ```javascript
-res.json(null)
-res.json({ user: 'tobi' })
-res.json(500, { error: 'message' })
+return res.json({ firstName: 'Tobi' });
+```
+
+```javascript
+return res.status(201).json({ id: 201721 });
+```
+
+```javascript
+var leena = await User.findOne({ firstName: 'Leena' });
+if (!leena) { return res.notFound(); }
+return res.json(leena.id);//« you can send down primitives, like numbers
 ```
 
 ### Notes
@@ -24,6 +33,6 @@ res.json(500, { error: 'message' })
 
 
 
-<docmeta name="uniqueID" value="resjson72272">
-<docmeta name="displayName" value="res.json()">
 
+<docmeta name="displayName" value="res.json()">
+<docmeta name="pageType" value="method">

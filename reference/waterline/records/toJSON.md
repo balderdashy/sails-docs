@@ -1,79 +1,11 @@
 # .toJSON()
 
 ### Purpose
-This method also returns a cloned model instance.  This one however includes all instance methods.  Be sure to read the notes on this one.
+Whenever Waterline retrieves a record, it checks whether or not the record&rsquo;s model has a [`customToJSON`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) method defined, and if so, adds it to the record as its `toJSON` property.  It is _**not intended to be called directly in your code**_, but instead is used automatically when a record is serialized via a call to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#toJSON()_behavior" target="_blank">`JSON.stringify()`</a>.  The [`res.json()` method](https://sailsjs.com/documentation/reference/response-res/res-json) in particular stringifies objects in this way.
 
-### Overview
+When a [`customToJSON`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) is defined for a model, the `.toJSON()` method will be added to records retrieved via [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find), [`.findOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-one), [`.findOrCreate()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-or-create) and [`.stream()`](https://sailsjs.com/documentation/reference/waterline-orm/models/stream), as well as those retrieved by setting the [`fetch` meta key](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta) to `true` in calls to [`.create()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create), [`.createEach()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create-each), [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update) and [`.destroy()`](https://sailsjs.com/documentation/reference/waterline-orm/models/destroy).  If any child records are attached via [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/populate), and the corresponding models have [`customToJSON`](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) methods, then the child records will also have `.toJSON()` functions attached.
 
+See the [customToJSON documentation](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?customtojson) for more info on how to customize the way your records are presented.
 
-#### Return Value
-
-|   |     Description     | Possible Data Types |
-|---|---------------------|---------------------|
-|   |   Cloned Record     |        `{ }`        |
-
-
-### Example Usage
-
-```javascript
-User.find().exec(
-  function(err,myRecord){
-    var datUser = myRecord.pop().toObject();
-    console.log(datUser);
-  });
-
-/* { id: 2,
-  createdAt: '2013-10-31T22:42:25.459Z',
-  updatedAt: '2013-11-01T20:12:55.534Z',
-  name: 'Hank',
-  phoneNumber: '101-150-1337' } */
-
-User.find().exec(
-  function(err,myRecord){
-    var datUser = myRecord.pop().toJSON();
-    console.log(datUser);
-  });
-
-/* { id: 2,
-  createdAt: '2013-10-31T22:42:25.459Z',
-  updatedAt: '2013-11-01T20:12:55.534Z',
-  name: 'Hank' } */
-
-
-
-// Don't forget to handle your errors
-
-```
-
-For model
-
-```javascript
-module.exports = {
-  attributes: {
-    name: 'string',
-    phoneNumber: 'string',
-
-    // Override the default toJSON method
-
-    toJSON: function() {
-      var obj = this.toObject();
-      delete obj.phoneNumber;
-      return obj;
-    }
-  }
-}
-
-```
-### Notes
-> The real power of toJSON relies on the fact every model instance sent out via res.json is first passed through toJSON.
-> Instead of writing custom code for every controller action that uses a particular model (including the "out of the box" blueprints), you can manipulate outgoing records by simply overriding the default toJSON function in your model.  
-> You would use this to keep private data like email addresses and passwords from being sent back to every client.
-
-> This is an instance method.  Currently, instance methods ARE NOT TRANSACTIONAL.  Because of this, it is recommended that you use the equivalent model method instead.  
-
-
-<docmeta name="uniqueID" value="toJSON161307">
-<docmeta name="methodType" value="instance">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".toJSON()">
-
+<docmeta name="pageType" value="method">

@@ -1,8 +1,9 @@
-# req.protocol
+# `req.protocol`
+
 The protocol used to send this request (`req`).
 
 ### Usage
-```javascript
+```usage
 req.protocol;
 ```
 
@@ -21,6 +22,6 @@ switch (req.protocol) {
 
 
 
-<docmeta name="uniqueID" value="reqprotocol732076">
-<docmeta name="displayName" value="req.protocol">
 
+<docmeta name="displayName" value="req.protocol">
+<docmeta name="pageType" value="property">

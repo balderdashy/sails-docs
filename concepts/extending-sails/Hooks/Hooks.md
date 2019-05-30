@@ -1,52 +1,25 @@
 # Hooks
 
-## Status
+### What is a hook?
 
-> ##### Stability: [2](http://nodejs.org/api/documentation.html#documentation_stability_index) - Unstable
+A hook is a Node module that adds functionality to the Sails core.  The [hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification) defines the requirements a module must meet for Sails to be able to import its code and make the new functionality available.  Because they can be saved separately from the core, hooks allow Sails code to be shared between apps and developers without having to modify the framework.
 
-The API is in the process of settling, but has not yet had sufficient real-world testing to be considered stable.  
+### Types of hooks
 
-Backwards-compatibility will be maintained if reasonable.
+There are three types of hooks available in Sails:
 
-Most of the non-essential Sails core has been pulled into hooks already.
-These hooks may eventually be pulled out into separate modules, or they may continue to live in the main Sails repo (like Connect middleware).
+1. **Core hooks** are built in and provide many of the common features essential to a Sails app, such as request handling, blueprint route creation, and database integration via [Waterline](https://sailsjs.com/documentation/concepts/models-and-orm).  Core hooks are bundled with the Sails core and are thus available to every app.  You will rarely need to call core hook methods in your code.
+2. **App-level hooks** live in the `api/hooks/` folder of a Sails app.  Project hooks let you take advantage of the features of the hook system for code that doesn&rsquo;t need to be shared between apps.
+3. **Installable hooks** are plugins, installed into an app&rsquo;s `node_modules` folder using `npm install`.  Installable hooks allow developers in the Sails community to create &ldquo;plug-in&rdquo;-like modules for use in Sails apps.
 
-Custom hooks in userland are functional- specifiable as dependencies (`node_modules`) or by tossing them into a folder in your project.  However, this process is not currently well-documented and backwards-compatibility is not guaranteed.  Please check out the source for more details.
+### Read more
 
-
-## Purpose
-
-Hooks were introduced to Sails as part of major refactor designed to make the framework more modular and testable.
-Their primary purpose for now is to pull all but the most minimal functionality of Sails into independent modules.
-Eventually, this architecture will allow for built-in hooks to be overridden, and even new hooks to be mixed-in to projects (a proper plugin system).
-
-**Original Proposal:**
-https://gist.github.com/mikermcneil/5746660
+* [Using hooks in your app](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/using-hooks)
+* [The hook specification](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification)
+* [Creating a project hook](https://sailsjs.com/documentation/concepts/extending-sails/hooks/project-hooks)
+* [Creating an installable hook](https://sailsjs.com/documentation/concepts/extending-sails/Hooks/installable-hooks)
 
 
 
-## Custom Hooks = Plugins?
-
-Sort of! The goal is to make hooks powerful, and simple to work w/ for plugin developers, but also predictable, easy to distribute and install, and documented for end users.
-
-**The hooks API is tentative**, and it is currently going through at least one more set of changes.  We are quickly approaching the point where we can call this feature "Stable", prioritize backwards compatibilty, and limit API changes.
-
-That said, you _can_ write and distribute a custom hook today.  If you're interested in the roadmap for the plugin system, or developing a plugin yourself, consider/check out the following tools at your disposal:
-
-+ [Custom Generators](https://github.com/balderdashy/sails/blob/v0.10/bin/generators/README.md) :: coming in v0.10, useful for extending the Sails command-line interface (Stage 1 - Experimental)
-+ [Custom Adapters](https://github.com/balderdashy/sails-docs/blob/0.9/api.adapter-interface.md) :: Since v0.8, useful for adding database support, API integrations, etc. (Stage 2 - Unstable, but approaching Stage 3)
-+ [`sails` Core Events](https://gist.github.com/mikermcneil/5898598) :: Since v0.9, the `sails` object is an EventEmitter. (Stage 2 - Unstable, but approaching Stage 3)
-+ Custom blueprint middlewares (coming in v0.10: Stage 1 - Experimental)
-+ Custom API responses (coming in v0.10: Stage 2 - Unstable)
-+ Custom route-level options (since v0.9, but changing in 0.10: Stage 2 - Unstable, but approaching Stage 3)
-+ Custom configuration (since v0.7)
-+ Custom "shadow routes" (since v0.7, merged in hooks in v0.9)
-
-## FAQ
-
-> If you have a question that isn't covered here, please feel free to send a PR adding it to this section (even if you don't have the answer!)
-
-
-<docmeta name="uniqueID" value="Hooks74998">
 <docmeta name="displayName" value="Hooks">
-<docmeta name="stabilityIndex" value="2">
+<docmeta name="stabilityIndex" value="3">

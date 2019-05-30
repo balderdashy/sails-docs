@@ -4,7 +4,7 @@ Sets a cookie with name (`name`) and value (`value`) to be sent along with the r
 
 
 ### Usage
-```js
+```usage
 res.cookie(name, value [,options]);
 ```
 
@@ -50,6 +50,6 @@ res.cookie('rememberme', '1', {
 
 
 
-<docmeta name="uniqueID" value="rescookie624994">
-<docmeta name="displayName" value="res.cookie()">
 
+<docmeta name="displayName" value="res.cookie()">
+<docmeta name="pageType" value="method">

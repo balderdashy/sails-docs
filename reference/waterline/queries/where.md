@@ -1,31 +1,32 @@
-# .where(`criteria`)
-### Purpose
+# .where()
 
+Specify a where clause for filtering a query.
 
-### Parameters
-|   |     Description     | Accepted Data Types | Required ? |
-|---|---------------------|---------------------|------------|
-| 1 |  Criteria Object    |      `{}`           | Yes        |
-
-
-### Example Usage
-
-```javascript 
-var myQuery = User.find();
-myQuery.where({'name':{startsWith:'W'}});
-
-myQuery.exec(function callBack(err,results){
-    console.log(results)
-    });
-
+```usage
+.where(whereClause)
 ```
+
+
+### Usage
+|   |     Arguments      | Type                | Details    |
+|---|:-------------------|---------------------|------------|
+| 1 |  whereClause          |  ((dictionary))     | The [where clause](https://sailsjs.com/documentation/concepts/models-and-orm/query-language) to use for matching records in the database. |
+
+
+### Example
+
+To find all the users named Finn whose email addresses start with 'f':
+```javascript
+var users = await User.find({ name: 'Finn' })
+.where({ 'emailAddress' : { startsWith : 'f' } });
+
+return res.json(users);
+```
+
 ### Notes
 > The .find() method returns a chainable object if you don't supply a callback.  This method can be chained to .find() to further filter your results.
 
 
 
-<docmeta name="uniqueID" value="where700717">
-<docmeta name="methodType" value="mcm">
-<docmeta name="importance" value="undefined">
 <docmeta name="displayName" value=".where()">
-
+<docmeta name="pageType" value="method">

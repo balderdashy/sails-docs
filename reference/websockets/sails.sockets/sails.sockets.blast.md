@@ -1,6 +1,6 @@
-# sails.sockets.blast()
+# .blast()
 
-Broadcast a message to all sockets connected to the server.
+Broadcast a message to all sockets connected to the server (or any server in the cluster, if you have a multi-server deployment using Redis).
 
 ```javascript
 sails.sockets.blast(data);
@@ -15,11 +15,11 @@ _Or:_
 
 ### Usage
 
-|   |          Argument           | Type                | Details
-| - | --------------------------- | ------------------- | -----------
-| 1 |        eventName            | ((string))          | Optional. Defaults to `'message'`.
-| 2 |        data                 | ((*))               | The data to send in the message.
-| 3 |        socketToOmit         | ((Socket))          | Optional. If provided, that request socket will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
+|   |         Argument           | Type                | Details                                                           |
+|---|:-------------------------- | ------------------- |:----------------------------------------------------------------- |
+| 1 |        _eventName_         | ((string?))         | Optional. Defaults to `'message'`.
+| 2 |        data                | ((json))            | The data to send in the message.
+| 3 |       _socketToOmit_       | ((req?))            | Optional. If provided, the socket associated with this socket request will **not** receive the message blasted out to everyone else.  Useful when the broadcast-worthy event is triggered by a requesting user who doesn't need to hear about it again.
 
 
 
@@ -30,17 +30,17 @@ In a controller action...
 
 ```javascript
 sails.sockets.blast('user_logged_in', {
-  msg: 'User #' + req.session.userId + ' just logged in.',
+  msg: 'User #' + user.id + ' just logged in.',
   user: {
-    id: req.session.userId,
-    username: req.session.username
+    id: user.id,
+    username: user.username
   }
-}, req.socket);
+}, req);
 ```
 
 ### Notes
-> + The phrase "request socket" here refers to an application-layer WebSocket/Socket.io connection.  `req.socket` also exists for HTTP requests, but it refers to the underlying TCP socket at the transport layer, which is different.  Be sure and ensure `req.isSocket == true` before using `req.socket` with this method.
+> + Be sure and check `req.isSocket === true` before passing in `req` to this method. For the socket to be omitted, the current `req`  must be from a socket request, not just any HTTP request.
 
-<docmeta name="uniqueID" value="sailssocketsblast345475">
-<docmeta name="displayName" value="sails.sockets.blast()">
 
+<docmeta name="displayName" value=".blast()">
+<docmeta name="pageType" value="method">

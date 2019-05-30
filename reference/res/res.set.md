@@ -1,16 +1,17 @@
-# res.set()
-Sets specified response header (`header`) to the specified value (`value`).  
+# `res.set()`
 
-Alternatively, you can pass in a single object argument (`headers`) to set multiple header fields at once, where the keys are the header field names, and the corresponding values are the desired values.
+Sets specified response header (`header`) to the specified value (`value`).
+
+Alternatively, you can pass in a single object argument (`headers`) to set multiple header fields at once, where the keys are the header field names and the corresponding values are the desired values.
 
 ### Usage
-```js
+```usage
 res.set(header, value);
 ```
 
 -or-
 
-```js
+```usage
 res.set(headers);
 ```
 
@@ -28,6 +29,6 @@ res.set({
 ```
 
 
-<docmeta name="uniqueID" value="resset167965">
-<docmeta name="displayName" value="res.set()">
 
+<docmeta name="displayName" value="res.set()">
+<docmeta name="pageType" value="method">

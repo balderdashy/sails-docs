@@ -1,112 +1,75 @@
-# Destroy a Record
+# Destroy (blueprint)
 
-Deletes an existing record specified by `id` from the database forever and returns the values of the deleted record.
+Delete the record specified by `id` from the database forever and notify subscribed sockets.
 
+```usage
+DELETE /:model/:id
 ```
-DELETE /:model/:record
-```
 
-Destroys the model instance which matches the **id** parameter.  Responds with a JSON object representing the newly destroyed instance.  If no model instance exists matching the specified **id**, a `404` is returned.
+This destroys the record that matches the **id** parameter and responds with a JSON dictionary representing the destroyed instance. If no model instance exists matching the specified **id**, a `404` is returned.
 
-Additionally, a `destroy` event will be published to all sockets subscribed to the instance room.
-
-Consequently, all sockets currently subscribed to the instance will be unsubscribed from it.
+Additionally, a `destroy` event will be published to all sockets subscribed to the record room, and all sockets currently subscribed to the record will be unsubscribed from it.
 
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
-
-        The primary key value of the record to destroy.  For `POST` (RESTful) requests, this can be supplied in the JSON body or as part of the route path.  For `GET` (shortcut) requests, it must be supplied in the route path.
-
-        <br/>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ model          | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `/purchase/7`)
+ id<br/>*(required)*                | ((string))                              | The primary key value of the record to destroy, specified in the path.  <br/>e.g. `'7'` (in `/purchase/7`) .
 
 
 
-### Examples
+### Example
 
-#### Destroy (REST)
+Delete Pinkie Pie:
 
-Delete Pinkie Pie.
+`DELETE /user/4`
 
-#### Route
-`DELETE /pony`
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-#### JSON Request Body
-```json
-{
-  "id": 4
-}
-```
-
-#### Expected Response
+##### Expected response
 
 ```json
 {
   "name": "Pinkie Pie",
   "hobby": "kickin",
   "id": 4,
-  "createdAt": "2013-10-18T01:23:56.000Z",
-  "updatedAt": "2013-11-26T22:55:19.951Z"
+  "createdAt": 1485550644076,
+  "updatedAt": 1485550644076
 }
 ```
 
-#### Destroy (Shortcuts)
+### Socket notifications
 
-#### Route
-`GET /pony/destroy/4`
+If you have WebSockets enabled for your app, then every client [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to the destroyed record will receive a notification where the event name is that of the model identity (e.g. `user`), and the &ldquo;message&rdquo; has the following format:
 
-#### Expected Response
+```
+verb: 'destroyed',
+id: <the record primary key>,
+previous: <a dictionary of the attribute values of the destroyed record (including populated associations)>
+```
 
-Same as above.
+For instance, continuing the example above, all clients subscribed to `User` #4 (_except_ for the client making the request) might receive the following message:
+
+```js
+id: 4,
+verb: 'destroyed',
+previous: {
+  name: 'Pinkie Pie',
+  hobby: 'kickin',
+  createdAt: 1485550644076,
+  updatedAt: 1485550644076
+}
+```
+
+**If the destroyed record had any links to other records, there might be some additional notifications:**
+
+Assuming the record being destroyed in our example had an association with a `via`, then either `updated` or `removedFrom` notifications would also be sent to any clients who are [subscribed](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub) to those child records on the other side of the relationship.  See [**Blueprints > remove from**](https://sailsjs.com/documentation/reference/blueprint-api/remove-from) and [**Blueprints > update**](https://sailsjs.com/documentation/reference/blueprint-api/update) for more info about the structure of those notifications.
+
+> If the association pointed at by the `via` is plural (e.g. `cashiers`), then the `removedFrom` notification will be sent. Otherwise, if the `via` points at a singular association (e.g. `cashier`) then the `updated` notification will be sent.
 
 
-<docmeta name="uniqueID" value="DestroyARecord867513">
 <docmeta name="displayName" value="destroy">
+<docmeta name="pageType" value="endpoint">
 

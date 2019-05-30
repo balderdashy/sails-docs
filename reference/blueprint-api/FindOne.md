@@ -1,122 +1,49 @@
-# Find One
+# Find one (blueprint)
 
-Returns a single record from the model as a JSON Object.
+Look up the record with the specified `id` from the database, and (if possible) subscribe to the record in order to hear about any future changes.
 
+```usage
+GET /:model/:id
 ```
-GET /:model/:record
-```
 
-<!--
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Blueprint Routes</th>
-    </tr>
-    <tr>
-      <th>Type</th>
-      <th>URL</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>REST</td>
-      <td>
-        <code>GET /:modelIdentity/:id</code>
-      </td>
-    </tr>
-    <tr>
-      <td>Shortcut</td>
-      <td>
-        <code>GET /:modelIdentity/findOne/:id</code>
-      </td>
-    </tr>
-  </tbody>
-</table>
--->
 
-The **findOne()** blueprint action returns a single record from the model (given by `:modelIdentity`) as a JSON object.  The specified `id` is the [primary key](http://en.wikipedia.org/wiki/Unique_key) of the desired record.
+The **findOne()** blueprint action returns a single record from the model (given by `:model`) as a JSON object. The specified `id` is the [primary key](http://en.wikipedia.org/wiki/Unique_key) of the desired record.
 
-If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record.  If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change.  See the [docs for .subscribe()](https://github.com/balderdashy/sails-docs/blob/master/reference/ModelMethods.md#subscriberequestrecordscontexts) for more info.
+If the action was triggered via a socket request, the requesting socket will be "subscribed" to the returned record. If the record is subsequently updated or deleted, a message will be sent to that socket's client informing them of the change. See the [.subscribe()](https://sailsjs.com/documentation/reference/web-sockets/resourceful-pub-sub/subscribe) docs for more info.
 
 
 ### Parameters
 
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td>
-        <code>id</code>
-        <em>(required)</em>
-      </td>
-      <td>
-        <bubble>number</bubble>
-        <br/>
-        <em>-or-</em>
-        <br/>
-        <bubble>string</bubble>
-      </td>
-      <td>
-
-        The desired record's primary key value
-
-        <br/><strong>Example:</strong>
-        <code>
-          /product/7
-        </code>
-
-        <br/>
-
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <code>callback</code>
-      </td>
-      <td><bubble>string</bubble></td>
-      <td>
-        if specified, a JSONP response will be sent (instead of JSON).  This is the name of the client-side javascript function to call, passing the result as the first (and only) argument
-
-        <br/><strong>Example:</strong>
-        <code>
-          ?callback=myJSONPHandlerFn
-        </code>
-
-        <br/><strong>Default:</strong>
-        <code>''</code>
-      </td>
-    </tr>
-
-  </tbody>
-</table>
+ Parameter                          | Type                                    | Details
+ ---------------------------------- | --------------------------------------- |:---------------------------------
+ model          | ((string))   | The [identity](https://sailsjs.com/documentation/concepts/models-and-orm/model-settings#?identity) of the containing model.<br/><br/>e.g. `'purchase'` (in `/purchase/7`)
+ id                | ((string))    | The desired target record's primary key value<br/><br/>e.g. `'7'` (in `/purchase/7`).
+ _populate_       | ((string))    | If specified, overide the default automatic population process. Accepts a comma-separated list of attribute names for which to populate record values. See [here](https://sailsjs.com/documentation/concepts/models-and-orm/records#?populated-values) for more information on how the population process fills out attributes in the returned record according to the model's defined associations.
+ _select_         | ((string?))   | The attributes to include in the result, specified as a comma-delimited list.  By default, all attributes are selected.  Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?select=name,age`.
+ _omit_           | ((string?))   | The attributes to exclude from the result, specified as a comma-delimited list.  Cannot be used in conjuction with `select`.    Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?omit=favoriteColor,address`.
 
 
 ### Example
-Find the purchase with ID #1
+Find the purchase with id #1:
 
-#### Route
-`GET /purchase/1`
+```text
+GET /purchase/1
+```
 
+[![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-#### Expected Response
+##### Expected Response
 
  ```json
  {
    "amount": 49.99,
    "id": 1,
-   "createdAt": "2013-10-18T01:22:56.000Z",
-   "updatedAt": "2013-10-18T01:22:56.000Z"
+   "createdAt": 1485551132315,
+   "updatedAt": 1485551132315
  }
  ```
 
-<docmeta name="uniqueID" value="FindOne259267">
+
 <docmeta name="displayName" value="find one">
+<docmeta name="pageType" value="endpoint">
 

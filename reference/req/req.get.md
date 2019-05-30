@@ -1,10 +1,10 @@
-# req.get()
+# `req.get()`
 
 Returns the value of the specified `header` field in this request (`req`).  Note that header names are case-_insensitive_.
 
 ### Usage
 
-```js
+```usage
 req.get(header);
 ```
 
@@ -18,12 +18,12 @@ req.get('myField');
 
 ### Notes
 >+ The `header` argument is case-insensitive.
->+ The `header` argument treats both "referrer" and "referer" as synonyms, because sp3ll1n6.
+>+ The `header` argument treats both "referrer" and "referer" as synonyms, because sp3ll1n9.
 
 
 
 
 
-<docmeta name="uniqueID" value="reqget839626">
+
 <docmeta name="displayName" value="req.get()">
-
+<docmeta name="pageType" value="method">

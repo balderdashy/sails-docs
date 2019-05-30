@@ -1,10 +1,11 @@
-# req.is()
-Returns true if this request's declared "Content-Type" matches the specified media/mime `type`.  
+# `req.is()`
+
+Returns true if this request's declared "Content-Type" matches the specified media/mime `type`.
 
 Specifically, this method matches the given `type` against this request's "Content-Type" header.
 
 ### Usage
-```js
+```usage
 req.is(type);
 ```
 
@@ -22,6 +23,6 @@ req.is('text/*');
 
 
 
-<docmeta name="uniqueID" value="reqis371514">
-<docmeta name="displayName" value="req.is()">
 
+<docmeta name="displayName" value="req.is()">
+<docmeta name="pageType" value="method">

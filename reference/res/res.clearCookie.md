@@ -1,10 +1,10 @@
-# res.clearCookie()
+# `res.clearCookie()`
 
 Clears cookie (`name`) in the response.
 
 ### Usage
 
-```js
+```usage
 res.clearCookie(name [,options]);
 ```
 
@@ -25,6 +25,6 @@ res.clearCookie('name', { path: '/admin' });
 
 
 
-<docmeta name="uniqueID" value="resclearCookie314533">
-<docmeta name="displayName" value="res.clearCookie()">
 
+<docmeta name="displayName" value="res.clearCookie()">
+<docmeta name="pageType" value="method">
