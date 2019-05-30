@@ -16,7 +16,7 @@ The intended purpose of `req.wantsJSON` is to provide a clean, reusable indicati
 
 For instance, all major browsers set an "Accept: text/plain;" request header for requests typed in the URL field.  In this case, `req.wantsJSON` is false.  For many other cases, though, the distinction is less clear.  In those scenarios, Sails uses heuristics to determine the best value for `req.wantsJSON`.
 
-Technically, `req.wantsJSON` inspects the request's `"Content-type"`, `"Accepts"`, and `"X-Requested-With"` headers to determine whether the request expects a JSON response.  If the information in these headers is too scanty, Sails will err on the side of caution, and `req.wantsJSON` will be set to `true`.
+Technically, `req.wantsJSON` inspects the request's `"Content-type"`, `"Accepts"`, and `"X-Requested-With"` headers to determine whether the request expects a JSON response.  If the information in these headers is too scanty, Sails errs on the side of JSON, and `req.wantsJSON` will be set to `true`.
 
 The benefit of `req.wantsJSON` is that it future-proofs your app and makes it less brittle. As best practices for content negotiation change over time (e.g. a new type of consumer device or enterprise user agent introduces a new header), Sails can patch `req.wantsJSON` at the framework level and modify the heuristics accordingly. It also reduces code duplication and saves you the annoyance of manually inspecting the headers in each of your routes.
 
