@@ -25,7 +25,7 @@ To sort users named Finn, first by age, then by when they joined:
 ```javascript
 var users = await User.find({ name: 'Finn'})
 .sort([
-  { name: 'ASC' },
+  { age: 'ASC' },
   { createdAt: 'ASC' },
 ]);
 
