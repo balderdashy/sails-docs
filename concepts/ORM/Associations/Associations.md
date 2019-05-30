@@ -6,7 +6,7 @@ In addition to being literal types like `string` and `number`, attributes in a S
 
 ##### Setting values for associations
 
-Depending on the type of link, an association attribute can be set in a [`.create()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update) call by giving it the value of another record&rsquo;s primary key, or by using special model methods like [`.addToCollection`](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection) or [`.removeFromCollection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection).
+Depending on the type of link, an association attribute can be set in a [`.create()`](https://sailsjs.com/documentation/reference/waterline-orm/models/create) or [`.update()`](https://sailsjs.com/documentation/reference/waterline-orm/models/update) call by giving it the value of another record&rsquo;s primary key, or by using special model methods like [`.addToCollection`](https://sailsjs.com/documentation/reference/waterline-orm/models/add-to-collection), [`.removeFromCollection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/remove-from-collection), or [`.replaceCollection()`](https://sailsjs.com/documentation/reference/waterline-orm/models/replace-collection).
 
 ##### Associations in retrieved records
 
@@ -25,7 +25,7 @@ With Sails and Waterline, you can associate models across multiple data stores. 
 
 > **IMPORTANT NOTE**
 >
-> In tutorials and example code, you might sometimes see associations' `collection`, `model`, or `through` properties reference models in either lowercase (the _identity_) or capitalized (the _global ID_).  For example, in the following association, the `collection` property is set to `product`-- the identity of the Sails model called `Product`:
+> In tutorials and example code, you might sometimes see associations' `collection`, `model`, or `through` properties reference models in either lowercase (the _identity_) or capitalized (the _global ID_).  For example, in the following association, the `collection` property is set to `product`&mdash;the identity of the Sails model called `Product`:
 >
 >```javascript
 >wishlist: {

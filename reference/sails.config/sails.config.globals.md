@@ -1,7 +1,7 @@
-# sails.config.globals
+# `sails.config.globals`
 
 
-Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default. The globals configuration in sails is only for controlling global variables introduced by sails. The options are conventionally specified in the [`config/globals.js`](https://sailsjs.com/anatomy/config/globals-js) configuration file. 
+Configuration for the [global variables](https://developer.mozilla.org/en-US/docs/Glossary/Global_variable) that Sails exposes by default. The globals configuration in Sails is only for controlling global variables introduced by Sails. The options are conventionally specified in the [`config/globals.js`](https://sailsjs.com/anatomy/config/globals-js) configuration file. 
 
 
 
@@ -16,9 +16,9 @@ Configuration for the [global variables](https://developer.mozilla.org/en-US/doc
 | `services` | ((boolean)) | `true` | Expose each of your app's services as global variables (using their "globalId").  E.g. a service defined in `api/services/NaturalLanguage.js` would have a globalId of `NaturalLanguage` by default.  If this is disabled, you can still access your services via `sails.services.*`.
 
 
-### Using global Lodash (`_`) and async libraries
+### Using global Lodash (`_`) and Async libraries
 
-Newly-generated Sails 1.0 apps have Lodash v3.10.1 and async v2.0.1 installed by default and enabled globally so that you can reference `_` and `async` in your app code without needing to `require()`.  This is done with the following default configuration in `config/globals.js`:
+Newly-generated Sails 1.0 apps have Lodash v3.10.1 and Async v2.0.1 installed by default and enabled globally so that you can reference `_` and `async` in your app code without needing to `require()`.  This is effected with the following default configuration in `config/globals.js`:
 
 ```
 {
@@ -30,17 +30,17 @@ Newly-generated Sails 1.0 apps have Lodash v3.10.1 and async v2.0.1 installed by
 
 You can disable access by setting the properties to `false`. Prior to `Sails v1.0` you could set the properties to `true`; this has been deprecated and replaced by the syntax above.
 
-To use your own version of Lodash or async, you just need to `npm install` the version you want.  For example, to install the latest version of Lodash 4.x.x:
+To use your own version of Lodash or Async, you just need to `npm install` the version you want.  For example, to install the latest version of Lodash 4.x.x:
 
 ```sh
 npm install lodash@^4.x.x --save --save-exact
 ```
 
-### Using Lodash (`_`) and async without globals
+### Using Lodash (`_`) and Async without globals
 
-If you have to disable globals, but would still like to use Lodash and/or async, you're in luck.  With Node.js and NPM, importing packages is very straightforward.
+If you have to disable globals, but would still like to use Lodash and/or Async, you're in luck!  With Node.js and NPM, importing packages is very straightforward.
 
-To use your own version of Lodash or async without relying on globals, first modify the relevant settings in `config/globals.js`:
+To use your own version of Lodash or Async without relying on globals, first modify the relevant settings in `config/globals.js`:
 
 ```js
 // Disable `_` and `async` globals.
@@ -54,7 +54,7 @@ Then install your own Lodash:
 npm install lodash --save --save-exact
 ```
 
-Or async:
+Or Async:
 
 ```sh
 npm install async --save --save-exact

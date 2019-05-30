@@ -1,4 +1,5 @@
-# req.is()
+# `req.is()`
+
 Returns true if this request's declared "Content-Type" matches the specified media/mime `type`.
 
 Specifically, this method matches the given `type` against this request's "Content-Type" header.
