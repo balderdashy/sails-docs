@@ -1,4 +1,4 @@
-# .getId()
+# `.getId()`
 
 Parse the socket ID from an incoming socket request (`req`).
 
@@ -36,7 +36,7 @@ getSocketID: function(req, res) {
 
 
 ### Notes
-> + Be sure and check `req.isSocket === true` before passing in `req`. This method does not work for HTTP requests!
+> + Be sure to check that `req.isSocket === true` before passing in `req`. This method does not work for HTTP requests!
 
 
 <docmeta name="displayName" value=".getId()">

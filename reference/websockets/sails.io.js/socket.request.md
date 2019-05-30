@@ -1,6 +1,6 @@
-# io.socket.request()
+# `io.socket.request()`
 
-Send a virtual request to a Sails server using Socket.io.
+Send a virtual request to a Sails server using Socket.IO.
 
 This function is very similar to [`io.socket.get()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-get), [`io.socket.post()`](https://sailsjs.com/documentation/reference/web-sockets/socket-client/io-socket-post), etc. except that it provides lower-level access to the request headers, parameters, method, and URL of the request.
 
@@ -24,15 +24,15 @@ io.socket.request(options, function (resData, jwres)){
 |:-----------|:------------:|:--------|
 | method    | ((string))   | The HTTP request method; e.g. `'GET'`.
 | url       | ((string))   | The destination URL path; e.g. "/checkout".
-| _data_    | ((json?))        | Optional. If provided, this request data will be JSON-encoded and included as the virtual HTTP body.
-| _headers_ | ((dictionary?))        | Optional. If provided, this dictionary of string headers will be sent as virtual request headers.
+| _data_    | ((json?))    | Optional. If provided, this request data will be JSON-encoded and included as the virtual HTTP body.
+| _headers_ | ((dictionary?))   | Optional. If provided, this dictionary of string headers will be sent as virtual request headers.
 
 
 ##### Callback
 
 |   | Argument  | Type         | Details |
 |---|:----------|:------------:|:--------|
-| 1 | `resData` | ((json))     | Data received in the response from the Sails server (=== `jwres.body`, and also equivalent to the HTTP response body.)
+| 1 | `resData` | ((json))     | Data received in the response from the Sails server (=== `jwres.body`, and also equivalent to the HTTP response body).
 | 2 | `jwres`   | ((dictionary))      | A [JSON WebSocket Response](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) object.  Has `headers`, a `body`, and a `statusCode`.
 
 

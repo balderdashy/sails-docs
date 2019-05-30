@@ -1,4 +1,5 @@
-# res.location()
+# `res.location()`
+
 Sets the "Location" response header to the specified URL expression (`url`).
 
 ### Usage
@@ -16,7 +17,7 @@ res.location('back');
 ```
 
 ### Notes
->+ You can use the same kind of URL expressions as in res.redirect().
+>+ You can use the same kind of URL expressions as in `res.redirect()`.
 
 
 

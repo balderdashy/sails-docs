@@ -1,4 +1,4 @@
-# .count()
+# `.count()`
 
 Get the total number of records matching the specified criteria.
 
@@ -17,7 +17,7 @@ var numRecords = await Model.count(criteria);
 
 | Type                | Description      |
 |---------------------|:-----------------|
-| ((number))          | The number of records from your database which match the given criteria.
+| ((number))          | The number of records from your database that match the given criteria.
 
 
 ##### Errors
@@ -35,7 +35,6 @@ See [Concepts > Models and ORM > Errors](https://sailsjs.com/documentation/conce
 ```javascript
 var total = await User.count({name:'Flynn'});
 sails.log(`There ${total===1?'is':'are'} ${total} user${total===1?'':'s'} named "Flynn".`);
-return res.json(total);
 ```
 
 ### Notes

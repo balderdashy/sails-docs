@@ -1,8 +1,8 @@
 # Available generators
 
-The Sails framework's built-in [generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) can be customized using command-line options, and overridden by [mounting custom generators in the `.sailsrc` file](https://sailsjs.com/documentation/concepts/extending-sails/generators/custom-generators).  Other generators that add completely new sub-commands to [`sails generate`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) can be mounted in the same way.
+The Sails framework's built-in [generators](https://sailsjs.com/documentation/concepts/extending-sails/generators) can be customized using command-line options and overridden by [mounting custom generators in the `.sailsrc` file](https://sailsjs.com/documentation/concepts/extending-sails/generators/custom-generators).  Other generators that add completely new sub-commands to [`sails generate`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) can be mounted in the same way.
 
-### Core Generators
+### Core generators
 
 Certain generators are built in to Sails by default.
 
@@ -53,7 +53,7 @@ Certain generators are built in to Sails by default.
 _Since Sails v1.0, built-in generators are now [bundled](https://npmjs.com/package/sails-generate) in Sails core, rather than in separate NPM packages.  All generators can still be overridden the same way.  For advice setting up overrides for core generators in your environment, [click here](https://sailsjs.com/support)._
 
 
-### Community Generators
+### Community generators
 
 There are over 100 community-supported generators [available on NPM](https://www.npmjs.com/search?q=sails+generate):
 

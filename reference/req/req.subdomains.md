@@ -1,4 +1,5 @@
-# req.subdomains
+# `req.subdomains`
+
 An array of all the subdomains in this request's URL.
 
 ### Usage

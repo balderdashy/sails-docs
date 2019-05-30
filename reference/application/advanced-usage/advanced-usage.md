@@ -1,12 +1,12 @@
 # Advanced usage
 
-Most users of the Sails framework will never need to access more than a few basic methods of the `sails` application object. However, if you have an advanced use case, or are considering [contributing to Sails](https://sailsjs.com/documentation/contributing), you may need to delve into some of these lesser-used methods, or reference the [loading order of Sails core](https://sailsjs.com/documentation/reference/application/advanced-usage/lifecycle).
+Most users of the Sails framework will never need to access more than a few basic methods of the `sails` application object. However, if you have an advanced use case or are considering [contributing to Sails](https://sailsjs.com/documentation/contributing), you may need to delve into some of these lesser-used methods or reference the [loading order of Sails core](https://sailsjs.com/documentation/reference/application/advanced-usage/lifecycle).
 
 ### Disabling the `sails` global
 
-In Sails, the recommended approach is to use the `sails` global.
+We recommended using the `sails` global with Sails.
 
-However, the auto-globalization of `sails` [can be disabled](https://sailsjs.com/documentation/reference/configuration/sails-config-globals), e.g. for use cases where multiple Sails app instances need to exist at once, or where globals are not an option.
+However, the auto-globalization of `sails` [can be disabled](https://sailsjs.com/documentation/reference/configuration/sails-config-globals). Disabling the `sails` global might be a good idea for use cases where multiple Sails app instances need to exist at once, or where globals are not an option.
 
 If the `sails` global is disabled, then you'll need another way to reference the application instance.  Luckily, this is possible from almost anywhere in your app:
 
@@ -19,11 +19,11 @@ If the `sails` global is disabled, then you'll need another way to reference the
 
 ##### sails.hooks
 
-A dictionary of all loaded [Sails hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails; for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks#?types-of-hooks), for advanced usage.
+A dictionary of all loaded [Sails hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks), indexed by their _identity_.  Use `sails.hooks` to access properties and methods of hooks you've installed to extend Sails&mdash;for example, by calling `sails.hooks.email.send()`.  You can also use this dictionary to access the Sails [core hooks](https://sailsjs.com/documentation/concepts/extending-sails/hooks#?types-of-hooks), for advanced usage.
 
 By default, a hook's identity is the lowercased version of its folder name, with any `sails-hook-` prefix removed.  For example, the default identity for a hook loaded from `node_modules/sails-hook-email` would be `email`, and the hook would be accessible via `sails.hooks.email`.  An installed hook's identity can be changed via the [`installedHooks` config property](https://sailsjs.com/documentation/concepts/extending-sails/hooks/using-hooks#?changing-the-way-sails-loads-an-installable-hook).
 
-See the [hooks concept documentation](https://sailsjs.com/documentation/concepts/extending-sails/hooks) for more info about hooks.
+See the [hooks concept documentation](https://sailsjs.com/documentation/concepts/extending-sails/hooks) for more information about hooks.
 
 ##### `sails.io`
 
