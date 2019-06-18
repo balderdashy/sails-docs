@@ -111,7 +111,7 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 >   $ sails generate model purchase
 >   $ sails lift
 >     # You will see a prompt about database auto-migration settings.
->     # Just choose 2 (alter) and press <ENTER>.
+>     # Just choose 1 (alter) and press <ENTER>.
 >   ```
 
 
