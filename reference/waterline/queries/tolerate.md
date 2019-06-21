@@ -32,19 +32,17 @@ _Or:_
 Say you're building an address book that doesn't allow records with duplicate email addresses. To instead swallow the error caused by entering a non-unique email address and update the existing contact:
 
 ```javascript
-var newOrExistingContact = await Contact.create({
-  emailAddress: inputs.emailAddress,
-  fullName: inputs.fullName
+let newOrExistingContact = await Contact.create({
+  emailAddress,
+  fullName
 })
 .fetch()
 .tolerate('E_UNIQUE');
 
 if(!newOrExistingContact) {
-  newOrExistingContact = (
-    await Contact.update({ emailAddress: inputs.emailAddress })
-    .set({ fullName: inputs.fullName })
-    .fetch()
-  )[0];
+  newOrExistingContact = await Contact.updateOne({ emailAddress })
+  .set({ fullName })
+  .fetch();
 }
 ```
 
