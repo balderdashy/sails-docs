@@ -1,4 +1,5 @@
-# req.cookies
+# `req.cookies`
+
 An object containing all of the [**unsigned cookies**](https://github.com/balderdashy/sails-docs/blob/master/PAGE_NEEDED.md) from this request (`req`).
 
 

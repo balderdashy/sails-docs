@@ -1,4 +1,4 @@
-# req.originalUrl
+# `req.originalUrl`
 
 From the [Express docs](https://expressjs.com/en/4x/api.html#req.originalUrl):
 

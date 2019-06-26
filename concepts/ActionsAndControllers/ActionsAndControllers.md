@@ -23,44 +23,11 @@ An action can have any file extension besides `.md` (Markdown) and `.txt` (text)
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _classic_ or _actions2_.
-
-##### Classic actions
-
-The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
-
-```javascript
-module.exports = async function welcomeUser (req, res) {
-
-  // Get the `userId` parameter from the request.
-  // This could have been set on the querystring, in
-  // the request body, or as part of the URL used to
-  // make the request.
-  var userId = req.param('userId');
-
-   // If no `userId` was specified, or it wasn't a number, return an error.
-  if (!_.isNumeric(userId)) {
-    return res.badRequest(new Error('No user ID specified!'));
-  }
-
-  // Look up the user whose ID was specified in the request.
-  var user = await User.findOne({ id: userId });
-
-  // If no user was found, redirect to signup.
-  if (!user) {
-    return res.redirect('/signup' );
-  }
-
-  // Display the welcome view, setting the view variable
-  // named "name" to the value of the user's name.
-  return res.view('welcome', {name: user.name});
-
-}
-```
+Action files can use one of two formats: _actions2 (recommended)_ or _classic_.
 
 ##### actions2
 
-Another, more structured way to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the same action as above, rewritten using the actions2 format:
+Since the release of Sails v1.0, the recommended approach to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the actions2 format:
 
 ```javascript
 module.exports = {
@@ -110,6 +77,7 @@ module.exports = {
    }
 };
 ```
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
@@ -146,6 +114,41 @@ throw { hasConflictingCourses: ['CS 301', 'M 402'] };
 
 Aside from being an easy-to-read shorthand, exit signals are especially useful if you're inside of a `for` loop, `forEach`, etc., but still want to exit through a particular exit.
 
+##### Classic actions
+
+The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+
+```javascript
+module.exports = async function welcomeUser (req, res) {
+
+  // Get the `userId` parameter from the request.
+  // This could have been set on the querystring, in
+  // the request body, or as part of the URL used to
+  // make the request.
+  var userId = req.param('userId');
+
+   // If no `userId` was specified, or it wasn't a number, return an error.
+  if (!_.isNumeric(userId)) {
+    return res.badRequest(new Error('No user ID specified!'));
+  }
+
+  // Look up the user whose ID was specified in the request.
+  var user = await User.findOne({ id: userId });
+
+  // If no user was found, redirect to signup.
+  if (!user) {
+    return res.redirect('/signup' );
+  }
+
+  // Display the welcome view, setting the view variable
+  // named "name" to the value of the user's name.
+  return res.view('welcome', {name: user.name});
+
+}
+```
+> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) with `--no-actions2` to quickly create a classic action.
+
+
 ### Controllers
 
 The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User Controller" could be created at `api/controllers/UserController.js` file containing:
@@ -178,7 +181,7 @@ api/
    signup.js
 ```
 
-where each of the three Javascript files exports a `req, res` function or an actions2 definition.
+where each of the three JavaScript files exports a `req, res` function or an actions2 definition.
 
 Using standalone actions has several advantages over controller files:
 
@@ -192,7 +195,7 @@ Using standalone actions has several advantages over controller files:
 
 In the tradition of most MVC frameworks, mature Sails apps usually have "thin" controllers&mdash;that is, your action code ends up lean because reusable code has been moved into [helpers](https://sailsjs.com/documentation/concepts/helpers) or occasionally even extracted into separate node modules.  This approach can definitely make your app easier to maintain as it grows in complexity.
 
-But at the same time, extrapolating code into reusable helpers _too_ early can cause maintainence issues that waste time and productivity.  The right answer lies somewhere in the middle.
+But at the same time, extrapolating code into reusable helpers _too_ early can cause maintenance issues that waste time and productivity.  The right answer lies somewhere in the middle.
 
 Sails recommends this general rule of thumb:  **wait until you're about to use the same piece of code for the _third_ time before you extrapolate it into a separate helper.**  But, as with any dogma, use your judgement!  If the code in question is very long or complex, then it might make sense to pull it out into a helper much sooner.  Conversely, if you know what you're building is a quick, throwaway prototype, you might just copy and paste the code to save time.
 

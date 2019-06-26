@@ -1,6 +1,6 @@
 # sails.load()
 
-Load a Sails app into memory-- but without lifting an HTTP server.
+Load a Sails app into memory, but without lifting an HTTP server.
 
 _Useful for writing tests, command-line scripts, and scheduled jobs._
 

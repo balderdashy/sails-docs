@@ -1,4 +1,4 @@
-# res.status()
+# `res.status()`
 
 Set the status code of this response.
 
@@ -15,7 +15,7 @@ res.send('I am a teapot');
 
 ### Notes
 >+ The status code may be set up until the response is sent.
->+ `res.status()` is effectively just a chainable alias of node's `res.statusCode = …;`.
+>+ `res.status()` is effectively just a chainable alias of Node's `res.statusCode = …;`.
 
 
 

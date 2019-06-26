@@ -8,21 +8,33 @@ The syntax supported by Sails' model methods is called Waterline Query Language.
 The criteria objects are formed using one of four types of object keys. These are the top level
 keys used in a query object. They are loosely based on the criteria used in MongoDB, with a few slight variations.
 
-Queries can be built using either a `where` key to specify attributes, which will allow you to also use query options such as `limit` and `skip` or, if `where` is excluded, the entire object will be treated as a `where` criteria.
+Queries can be built using either a `where` key to specify attributes, or excluding it.
+
+Using the `where` key allows you to also use [query options](https://sailsjs.com/documentation/concepts/models-and-orm/query-language#?criteria-clauses), such as `limit`, `skip`, and `sort`.
+
 
 ```javascript
-
-var peopleNamedMary = await Model.find({
-  name: 'mary'
-});
-
-// OR
-
 var thirdPageOfRecentPeopleNamedMary = await Model.find({
   where: { name: 'mary' },
   skip: 20,
   limit: 10,
   sort: 'createdAt DESC'
+});
+```
+Constraints can be further joined together in a more complex example.
+
+```javascript
+var teachersNamedMaryInMaine = await Model.find({
+  where: { name: 'mary', state: 'me', occupation: { contains: 'teacher' } },
+  sort: [{ firstName: 'ASC'}, { lastName: 'ASC'}]
+});
+```
+
+If `where` is excluded, the entire object will be treated as a `where` criteria.
+
+```javascript
+var peopleNamedMary = await Model.find({
+  name: 'mary'
 });
 ```
 
@@ -54,7 +66,7 @@ var peoplePossiblyNamedLyra = await Model.find({
   name : {
     'contains' : 'yra'
   }
-})
+});
 ```
 
 #### In modifier
@@ -71,13 +83,13 @@ var waltersAndSkylers = await Model.find({
 
 #### Not-in modifier
 
-Provide an array wrapped in a dictionary under a `!` key (like `{ '!': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
+Provide an array wrapped in a dictionary under a `!=` key (like `{ '!=': [...] }`) to find records whose value for this attribute _ARE NOT_ exact matches for any of the specified search terms.
 
 > This is more or less equivalent to "NOT IN" queries in SQL, and the `$nin` operator in MongoDB.
 
 ```javascript
 var everyoneExceptWaltersAndSkylers = await Model.find({
-  name: { '!' : ['walter', 'skyler'] }
+  name: { '!=' : ['walter', 'skyler'] }
 });
 ```
 
@@ -103,11 +115,11 @@ The following modifiers are available to use when building queries.
 * `'>'`
 * `'>='`
 * `'!='`
-* `'nin'`
-* `'in'`
-* `'contains'`
-* `'startsWith'`
-* `'endsWith'`
+* `nin`
+* `in`
+* `contains`
+* `startsWith`
+* `endsWith`
 
 > Note that the availability and behavior of the criteria modifiers when matching against attributes with [JSON attributes](https://sailsjs.com/documentation/concepts/models-and-orm/validations#?builtin-data-types) may vary according to the database adapter you&rsquo;re using.  For instance, while `sails-postgresql` will map your JSON attributes to the <a href="https://www.postgresql.org/docs/9.4/static/datatype-json.html" target="_blank">JSON column type</a>, you&rsquo;ll need to [send a native query](https://sailsjs.com/documentation/reference/waterline-orm/datastores/send-native-query) in order to query those attributes directly.  On the other hand, `sails-mongo` supports queries against JSON-type attributes, but you should be aware that if a field contains an array, the query criteria will be run against every _item_ in the array, rather than the array itself (this is based on the behavior of MongoDB itself).
 
@@ -116,7 +128,9 @@ The following modifiers are available to use when building queries.
 Searches for records where the value is less than the value specified.
 
 ```usage
-Model.find({ age: { '<': 30 }})
+Model.find({
+  age: { '<': 30 }
+});
 ```
 
 #### '<='
@@ -124,7 +138,9 @@ Model.find({ age: { '<': 30 }})
 Searches for records where the value is less or equal to the value specified.
 
 ```usage
-Model.find({ age: { '<=': 20 }})
+Model.find({
+  age: { '<=': 20 }
+});
 ```
 
 #### '>'
@@ -132,7 +148,9 @@ Model.find({ age: { '<=': 20 }})
 Searches for records where the value is greater than the value specified.
 
 ```usage
-Model.find({ age: { '>': 18 }})
+Model.find({
+  age: { '>': 18 }
+});
 ```
 
 #### '>='
@@ -140,7 +158,9 @@ Model.find({ age: { '>': 18 }})
 Searches for records where the value is greater than or equal to the value specified.
 
 ```usage
-Model.find({ age: { '>=': 21 }})
+Model.find({
+  age: { '>=': 21 }
+});
 ```
 
 #### '!='
@@ -150,7 +170,7 @@ Searches for records where the value is not equal to the value specified.
 ```usage
 Model.find({
   name: { '!=': 'foo' }
-})
+});
 ```
 
 #### in
@@ -160,7 +180,7 @@ Searches for records where the value is in the list of values.
 ```usage
 Model.find({
   name: { in: ['foo', 'bar'] }
-})
+});
 ```
 
 #### nin
@@ -170,7 +190,7 @@ Searches for records where the value is NOT in the list of values.
 ```usage
 Model.find({
   name: { nin: ['foo', 'bar'] }
-})
+});
 ```
 
 #### contains
@@ -212,8 +232,8 @@ _For performance reasons, case-sensitivity of `endsWith` depends on the database
 
 ### Query options
 
-Query options allow you refine the results that are returned from a query. The current options
-available are:
+Query options allow you refine the results that are returned from a query. They are used
+in conjunction with a `where` key. The current options available are:
 
 * `limit`
 * `skip`
@@ -224,7 +244,7 @@ available are:
 Limits the number of results returned from a query.
 
 ```usage
-Model.find({ where: { name: 'foo' }, limit: 20 })
+Model.find({ where: { name: 'foo' }, limit: 20 });
 ```
 
 > Note: if you set `limit` to 0, the query will always return an empty array.

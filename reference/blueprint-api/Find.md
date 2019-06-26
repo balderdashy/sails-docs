@@ -1,4 +1,4 @@
-# Find (Blueprint)
+# Find (blueprint)
 
 Find a list of records that match the specified criteria and (if possible) subscribe to each of them.
 
@@ -23,7 +23,7 @@ If the action was triggered via a socket request, the requesting socket will be 
  _sort_           | ((string?))   | The sort order. By default, returned records are sorted by primary key value in ascending order. <br/> <br/> e.g. `?sort=lastName%20ASC`
  _select_         | ((string?))   | The attributes to include each record in the result, specified as a comma-delimited list.  By default, all attributes are selected.  Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?select=name,age`.
  _omit_           | ((string?))   | The attributes to exclude from each record in the result, specified as a comma-delimited list.  Cannot be used in conjuction with `select`.    Not valid for plural (&ldquo;collection&rdquo;) association attributes.<br/> <br/> e.g. `?omit=favoriteColor,address`.
- _populate_       | ((string))    | If specified, overide the default automatic population process. Accepts a comma separated list of attributes names for which to populate record values. See [here](https://sailsjs.com/documentation/concepts/models-and-orm/records#?populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
+ _populate_       | ((string))    | If specified, overide the default automatic population process. Accepts a comma-separated list of attribute names for which to populate record values, or specify `false` to have no attributes populated. See [here](https://sailsjs.com/documentation/concepts/models-and-orm/records#?populated-values) for more information on how the population process fills out attributes in the returned list of records according to the model's defined associations.
 
 
 
@@ -37,7 +37,7 @@ GET /purchase?sort=createdAt DESC&limit=30
 
 [![Run in Postman](https://s3.amazonaws.com/postman-static/run-button.png)](https://www.getpostman.com/run-collection/96217d0d747e536e49a4)
 
-##### Expected Response
+##### Expected response
 
 e.g.
 ```json
@@ -111,7 +111,7 @@ curl http://localhost:1337/purchase?sort=createdAt%20DESC
 >   $ sails generate model purchase
 >   $ sails lift
 >     # You will see a prompt about database auto-migration settings.
->     # Just choose 2 (alter) and press <ENTER>.
+>     # Just choose 1 (alter) and press <ENTER>.
 >   ```
 
 
