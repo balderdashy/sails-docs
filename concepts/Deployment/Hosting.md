@@ -130,8 +130,6 @@ REDIRECTS TO SOMETHING ELSE
 
 ### RoseHosting
 
-All hosting plans from RoseHosting are fully-managed with free 24/7 support. Their [support team](https://www.rosehosting.com/support.html) will even install and configure Sails.js for you!
-
  + [Install Sails.js with Apache as a reverse proxy on CentOS 7 (2016)](https://www.rosehosting.com/blog/install-sails-js-with-apache-as-a-reverse-proxy-on-centos-7/)
  + [Install Sails.js on Ubuntu (2014)](https://www.rosehosting.com/blog/install-the-sails-js-framework-on-an-ubuntu-vps/)
 
