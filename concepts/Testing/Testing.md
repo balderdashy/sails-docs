@@ -205,7 +205,7 @@ If you'd like to have a system automatically run your tests every time you push 
 
 ### Load testing
 
-A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help setting up your Sails app to be production-ready and scalable, see [Scalability](https://sailsjs.com/documentation/concepts/deployment/scalability).  For additional help or more specific questions, click [here](https://sailsjs.com/support).
+A [number of commercial options](http://www.bing.com/search?q=load+testing) exist for load testing web applications.  You can also get a reasonable idea of how your app will perform using tools like [`ab`](http://httpd.apache.org/docs/2.4/programs/ab.html) or [JMeter](http://jmeter.apache.org/).  Just remember, the goal is to simulate real traffic.  For more help setting up your Sails app to be production-ready and scalable, see [Scaling](https://sailsjs.com/documentation/concepts/deployment/scaling).  For additional help or more specific questions, click [here](https://sailsjs.com/support).
 
 
 ### Optimizing performance
