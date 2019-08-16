@@ -1,8 +1,8 @@
 # res.notFound()
 
-This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> ("Not Found") response using either [res.json()](https://sailsjs.com/documentation/reference/response-res/res-json) or [res.view()](https://sailsjs.com/documentation/reference/response-res/res-view). Called automatically when Sails receives a request which doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
+This method is used to send a <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error" target="_blank">404</a> ("Not Found") response using either [res.json()](https://sailsjs.com/documentation/reference/response-res/res-json) or [res.view()](https://sailsjs.com/documentation/reference/response-res/res-view). It is called automatically when Sails receives a request that doesn't match any of its explicit routes or route blueprints (i.e. serves the 404 page).
 
-When called manually from your app code, this method is normally used to indicate that the user-agent tried to find, update, or delete something that doesn't exist.
+When called manually from your app code, this method is normally used to indicate that the user agent tried to find, update, or delete something that doesn't exist.
 
 
 ### Usage
@@ -35,8 +35,8 @@ Pet.findOne()
 
 
 ### Notes
-> + This method is **terminal**, meaning it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
->+ `res.notFound()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `api/responses/notFound.js`.  If a `notFound.js` response method does not exist in your app, Sails will implicitly use the default behavior.
+> + This method is **terminal**, meaning that it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
+>+ `res.notFound()` (like other userland response methods) can be overridden or modified.  It runs the response method defined in `api/responses/notFound.js`.  If a `notFound.js` response method does not exist in your app, Sails will use the default behavior.
 
 
 

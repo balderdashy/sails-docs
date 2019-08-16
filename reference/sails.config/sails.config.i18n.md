@@ -1,7 +1,6 @@
-# sails.config.i18n
+# `sails.config.i18n`
 
-
-Configuration for Sails' built-in internationalization & localization features.  By convention, this is set in `config/i18n.js`, from where you can set your supported locales. For more information see the [concepts section on internationalization](https://sailsjs.com/documentation/concepts/Internationalization).
+Configuration for Sails' built-in internationalization and localization features.  By convention, this is set in `config/i18n.js`, from which you can set your supported locales. For more information see the [concepts section on internationalization](https://sailsjs.com/documentation/concepts/Internationalization).
 
 
 ### Properties

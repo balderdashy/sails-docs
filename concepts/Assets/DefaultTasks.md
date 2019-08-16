@@ -7,8 +7,6 @@ The asset pipeline bundled in Sails is a set of Grunt tasks configured with conv
 
 Here are a few things that the default Grunt configuration in Sails does to help you out:
 - Automatic LESS compilation
-- Automatic JST compilation
-- Automatic Coffeescript compilation
 - Cache busting
 - Optional automatic asset injection, minification, and concatenation
 - Creation of a web ready public directory
@@ -26,12 +24,6 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 > This grunt task is configured to clean out the contents in the `.tmp/public/` of your Sails project.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-clean)
-
-##### coffee
-
-> Compiles CoffeeScript files from `assets/js/` into Javascript and places them into `.tmp/public/js/` directory.
-
-> [usage docs](https://github.com/gruntjs/grunt-contrib-coffee)
 
 ##### hash
 
@@ -62,12 +54,6 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 > Minifies CSS files and places them into `.tmp/public/min/` directory.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-cssmin)
-
-##### jst
-
-> Precompiles Underscore templates to a `.jst` file. (i.e. takes HTML template files and turns them into tiny JavaScript functions). This can speed up template rendering on the client and reduce bandwidth usage.
-
-> [usage docs](https://github.com/gruntjs/grunt-contrib-jst)
 
 ##### less
 
@@ -101,7 +87,7 @@ Below is a list of the Grunt tasks that are included by default in new Sails pro
 
 ##### watch
 
-> Runs predefined tasks whenever watched file patterns are added, changed, or deleted. Watches for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. LESS and JST compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
+> Runs predefined tasks whenever watched file patterns are added, changed, or deleted. Watches for changes on files in the `assets/` folder, and re-runs the appropriate tasks (e.g. LESS compilation).  This allows you to see changes to your assets reflected in your app without having to restart the Sails server.
 
 > [usage docs](https://github.com/gruntjs/grunt-contrib-watch)
 
