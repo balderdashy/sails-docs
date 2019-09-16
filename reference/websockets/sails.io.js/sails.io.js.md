@@ -63,7 +63,7 @@ The easiest way to configure the four most common settings for the socket client
 ></script>
 ```
 
-This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that comoposite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names. 
+This example will disable the eager socket connection, force the client environment to "production" (which disables logs), and set an `x-csrf-token` header that will be sent in every socket request (unless overridden).  Note that composite values like the `headers` dictionary are wrapped in a pair of _single-quotes_.  That's because composite values specified this way must be _JSON-encoded_-- meaning they must use double-quotes around string values _and_ around key names. 
 
 Any configuration which may be provided as an HTML attribute may alternately be provided prefixed with `data-` (e.g. `data-autoConnect`, `data-environment`, `data-headers`, `data-url`).  This is for folks who need to support browsers that have issues with nonstandard HTML attributes (or if the idea of using nonstandard HTML attributes just creeps you out). If both the standard HTML attribute and the `data-` prefixed HTML attribute are provided, the latter takes precendence.
 
