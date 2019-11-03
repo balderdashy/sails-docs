@@ -124,65 +124,6 @@ await User.find();
 
 
 
-### migrate
-
-The **auto-migration strategy** that Sails will run every time your app loads.
-
-```
-migrate: 'alter'
-```
-
-| Type        | Example                 | Default       |
-| ----------- |:------------------------|:--------------|
-| ((string))  | `'alter'`               | _You'll be prompted._<br/><br/>_**Note**: In production, this is always `'safe'`._
-
-The `migrate` setting controls your app's auto-migration strategy.  In short, this tells Sails whether or not you'd like it to attempt to automatically rebuild the tables/collections/sets/etc. in your database(s).
-
-##### Database migrations
-
-In the course of developing an app, you will almost always need to make at least one or two **breaking changes** to the structure of your database.  Exactly _what_ constitutes a "breaking change" depends on the database you're using:  For example, imagine you add a new attribute to one of your model definitions.  If that model is configured to use MongoDB, then this is no big deal; you can keep developing as if nothing happened.  But if that model is configured to use MySQL, then there is an extra step: a column must be added to the corresponding table (otherwise model methods like `.create()` will stop working).  So for a model using MySQL, adding an attribute is a breaking change to the database schema.
-
-> Even if all of your models use MongoDB, there are still some breaking schema changes to watch out for.  For example, if you add `unique: true` to one of your attributes, a [unique index](https://docs.mongodb.com/manual/core/index-unique/) must be created in MongoDB.
-
-
-In Sails, there are two different modes of operation when it comes to [database migrations](https://en.wikipedia.org/wiki/Schema_migration):
-
-1. **Manual migrations**: The art of updating your database tables/collections/sets/etc. by hand.  For example, writing a SQL query to [add a new column](http://dev.mysql.com/doc/refman/5.7/en/alter-table.html), or sending a [Mongo command to create a unique index](https://docs.mongodb.com/manual/core/index-unique/).  If the database contains data you care about (in production, for example), you must carefully consider whether that data needs to change to fit the new schema, and, if necessary, write scripts to migrate it.  A [number of](https://www.npmjs.com/package/sails-migrations) great [open-source tools](http://knexjs.org/#Migrations-CLI) exist for managing manual migration scripts, as well as hosted products like the [database migration service on AWS](https://aws.amazon.com/blogs/aws/aws-database-migration-service/).
-2. **Auto-migrations**: A convenient, built-in feature in Sails that allows you to make iterative changes to your model definitions during development, without worrying about the reprecussions.  Auto-migrations should _never_ be enabled when connecting to a database with data you care about.  Instead use auto-migrations with fake data, or with cached data that you can easily recreate.
-
-
-Whenever you need to apply breaking changes to your _production database_, you should use manual database migrations. Otherwise, when you're developing on your laptop or running your automated tests, auto-migrations can save you tons of time.
-
-
-##### How auto-migrations work
-
-When you lift your Sails app in a development environment (e.g. running `sails lift` in a brand new Sails app), the configured auto-migration strategy will run.  If you are using `migrate: 'safe'`, then nothing additional will happen,  but if you are using `drop` or `alter`, Sails will load every record in your development database into memory, then drop and recreate the physical layer representation of the data (i.e. tables/collections/sets/etc.).  This allows any breaking changes you've made in your model definitions, like removing a uniqueness constraint, to be automatically applied to your development database.  Finally, if you are using `alter`, Sails will then attempt to re-seed the freshly generated tables/collections/sets with the records it saved earlier.
-
-
-| Auto-migration strategy  | Description |
-|:-------------------------|:---------------------------------------------|
-| `safe`                    | never auto-migrate my database(s). I will do it myself, by hand.
-| `alter`                   | auto-migrate columns/fields, but attempt to keep my existing data (experimental)
-| `drop`                    | wipe/drop ALL my data and rebuild models every time I lift Sails
-
-
-> Keep in mind that when using the `alter` or `drop` strategies, any manual changes you have made to your database since the last time you lifted your app may be lost.  This includes things like custom indexes, foreign key constraints, column order and comments.  In general, tables created by auto-migrations are not guaranteed to be consistent regarding any details of your physical database columns besides setting the column name, type (including character set / encoding if specified) and uniqueness.
-
-##### Can I use auto-migrations in production?
-
-The `drop` and `alter` auto-migration strategies in Sails exist as a feature for your convenience during development, and when running automated tests.  **They are not designed to be used with data you care about.**  Please take care to never use `drop` or `alter` with a production dataset.  In fact, as a failsafe to help protect you from doing this inadvertently, any time you lift your app [in a production environment](https://sailsjs.com/documentation/reference/configuration/sails-config#?sailsconfigenvironment), Sails _always_ uses `migrate: 'safe'`, no matter what you have configured.
-
-In many cases, hosting providers automatically set the `NODE_ENV` environment variable to "production" when they detect a Node.js app.  Even so, please don't rely only on that failsafe, and take the usual precautions to keep your users' data safe.  Any time you connect Sails (or any other tool or framework) to a database with pre-existing production data, **do a dry run**,  especially the very first time.  Production data is sensitive, valuable, and in many cases irreplaceable.  Customers, users, and their lawyers are not cool with it getting flushed.
-
-As a best practice, make sure to never lift or [deploy](https://sailsjs.com/documentation/concepts/deployment) your app with production database credentials unless you are 100% sure you are running in a production environment.  A popular approach for solving this at an organization-wide scale is simply to _never_ push up production database credentials to your source code repository in the first place, instead relying on [environment variables](https://sailsjs.com/documentation/reference/configuration) for all sensitive credentials.  (This is an especially good idea if your app is subject to regulatory requirements, or if a large number of people have access to your code base.)
-
-
-##### Are auto-migrations slow?
-
-If you are working with a relatively large amount of development/test data, the `alter` auto-migration strategy may take a long time to complete at startup.  If you notice that a command like `npm test`, `sails console`, or `sails lift` appears to hang, consider decreasing the size of your development dataset.  (Remember: Sails auto-migrations should only be used on your local laptop/desktop computer, and only with small, development datasets.)
-
-
-
 ### schema
 
 Whether or not a model expects records to conform to a specific set of attributes.
