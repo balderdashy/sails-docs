@@ -14,7 +14,11 @@ Then use it in one of your controllers:
   uploadFile: function (req, res) {
     req.file('avatar').upload({
       adapter: require('skipper-gridfs'),
-      uri: 'mongodb://[username:password@]host1[:port1][/[database[.bucket]]'
+      uri: 'mongodb://[username:password@]host1[:port1][/[database]',
+      bucketOptions: {
+        bucketName: '<bucket name>',
+        //other bucket parameters as seen at http://mongodb.github.io/node-mongodb-native/3.1/api/GridFSBucket.html
+      }
     }, function (err, filesUploaded) {
       if (err) return res.serverError(err);
       return res.ok();
