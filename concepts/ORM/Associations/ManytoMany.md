@@ -86,7 +86,7 @@ await Pet.removeFromCollection(300, 'owners', [10, 12]);
 
 Note that adding or removing associated records from one side of a many-to-many relationship will automatically affect the other side.  For example, adding records to the `pets` attribute of a `User` model record with `.addToCollection()` will immediately affect the `owners` attributes of the linked `Pet` records.
 
-To return associated collections along with a record retrieved by [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-one), use the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/query/populate) method.
+To return associated collections along with a record retrieved by [`.find()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find) or [`.findOne()`](https://sailsjs.com/documentation/reference/waterline-orm/models/find-one), use the [`.populate()`](https://sailsjs.com/documentation/reference/waterline-orm/queries/populate) method.
 
 ### Dominance
 
