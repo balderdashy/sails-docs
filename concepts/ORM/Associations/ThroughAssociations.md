@@ -4,7 +4,7 @@
 
 ### Overview
 
-Many-to-many through associations behave in the same way as many-to-many associations, except that in a many-to-many through association, the join table is created automatically. In a many-to-many through assocation, you define a model containing two fields that correspond to the two models you will be joining together. When defining an association, you will add the `through` key to show that the model should be used instead of the automatic join table.
+Many-to-many through associations behave in the same way as many-to-many associations, except that in a many-to-many association, the join table is created automatically. In a many-to-many through assocation, you define a model containing two fields that correspond to the two models you will be joining together. When defining an association, you will add the `through` key to show that the model should be used instead of the automatic join table.
 
 ### Has many through example
 
