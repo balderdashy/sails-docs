@@ -22,6 +22,8 @@ To further customize these settings for a particular model, you can specify them
 
 For example, if you add `fetchRecordsOnUpdate: true` to one of your model definitions (`api/models/UploadedFile.js`), then that model will now return the records that were updated.  But the rest of your models will be unaffected: they will still use the default setting (which is `fetchRecordsOnUpdate: false`, unless you've changed it).
 
+> Please note that not all model settings can be overridden for a particular model; specifically, `migrate` and `schema` should only be specified as app-wide defaults in `config/models.js`.
+
 
 ##### Choosing an approach
 
@@ -138,6 +140,8 @@ migrate: 'alter'
 
 The `migrate` setting controls your app's auto-migration strategy.  In short, this tells Sails whether or not you'd like it to attempt to automatically rebuild the tables/collections/sets/etc. in your database(s).
 
+> Please note that this model setting can only be specified as an app-wide default in `config/models.js` and may not be overridden on a per-model basis.
+
 ##### Database migrations
 
 In the course of developing an app, you will almost always need to make at least one or two **breaking changes** to the structure of your database.  Exactly _what_ constitutes a "breaking change" depends on the database you're using:  For example, imagine you add a new attribute to one of your model definitions.  If that model is configured to use MongoDB, then this is no big deal; you can keep developing as if nothing happened.  But if that model is configured to use MySQL, then there is an extra step: a column must be added to the corresponding table (otherwise model methods like `.create()` will stop working).  So for a model using MySQL, adding an attribute is a breaking change to the database schema.
@@ -200,6 +204,7 @@ The `schema` setting allows you to toggle a model between "schemaless" or "schem
 
 > This setting is only relevant for models using schemaless databases like MongoDB.  When hooked up to a relational database like MySQL or PostgreSQL, a model is always effectively `schema:true`, since the underlying database can only store data in tables and columns that have been set up ahead of time.
 
+> Please note that this model setting can only be specified as an app-wide default in `config/models.js` and may not be overridden on a per-model basis.
 
 
 ### datastore
