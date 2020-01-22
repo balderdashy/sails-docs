@@ -24,20 +24,20 @@ Here's an example configuring [Winston](https://github.com/winstonjs/winston) as
 // config/log.js
 
 var winston = require('winston');
-var customLogger = new winston.Logger();
+var customLogger = winston.createLogger();
 
 // A console transport logging debug and above.
-customLogger.add(winston.transports.Console, {
+customLogger.add(new winston.transports.Console, {
   level: 'debug',
   colorize: true
 });
 
 // A file based transport logging only errors formatted as json.
-customLogger.add(winston.transports.File, {
+customLogger.add(new winston.transports.File({
   level: 'error',
   filename: 'filename.log',
-  json: true
-});
+  format: winston.format.json(),
+}));
 
 module.exports.log = {
   // Pass in our custom logger, and pass all log levels through.
