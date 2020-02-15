@@ -166,6 +166,7 @@ module.exports = {
     res.end(
     '<form action="http://localhost:1337/file/upload" enctype="multipart/form-data" method="post">'+
     '<input type="text" name="title"><br>'+
+    '<input type="hidden" name="_csrf" value="<%= _csrf %>" />' +
     '<input type="file" name="avatar" multiple="multiple"><br>'+
     '<input type="submit" value="Upload">'+
     '</form>'
