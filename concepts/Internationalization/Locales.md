@@ -14,7 +14,7 @@ Here is an example locale file (`config/locales/es.json`):
 }
 ```
 
-Locales can be accessed in controller actions and policies through `res.i18n()`, or in views through the `__(key)` or `i18n(key)` functions.
+Locales can be accessed in controller actions and policies through `req.i18n.__()`, or in views through the `__(key)` or `i18n(key)` functions.
 
 ```ejs
 <h1> <%= __('Welcome to PencilPals!') %> </h1>
