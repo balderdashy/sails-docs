@@ -46,7 +46,7 @@ parseBlueprintOptions: function(req) {
     if (queryOptions.criteria.limit > 100) {
       queryOptions.criteria.limit = 100;
     }
-    // NOTE: example, check above will prevent this error
+    // NOTE: example only, `if` check above will prevent this error code executing
     if (queryOptions.criteria.limit > 100) {
       let msg = 'Limit needs to be 100 or under';
       throw flaverr({ name: 'UsageError', code:'E_INVALID_LIMIT', details:msg }, new Error(msg));
