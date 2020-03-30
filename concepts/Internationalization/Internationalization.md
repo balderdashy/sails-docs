@@ -17,6 +17,12 @@ From a view:
 <p> <%= i18n('That\'s right-- you can use either i18n() or __()') %> </p>
 ```
 
+From a controller:
+```javascript
+sails.__('Hello'); // uses config.i18n.defaultLocale
+req.i18n.__('Hello'); // uses language from request header
+```
+
 
 ##### Overriding language headers
 
