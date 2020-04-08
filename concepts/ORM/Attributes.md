@@ -296,6 +296,77 @@ attributes: {
 > When using `unique: true` on an attribute with the `utf8mb4` character set in a MySQL database, you will need to set the column size manually via the [`columnType` property](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?columntype) to avoid a possible 'index too long' error.  For example: `columnType: varchar(100) CHARACTER SET utf8mb4`.
 
 
+### Documenting Attributes
+
+The following properties may be used to document model attributes.
+
+For example:
+
+```javascript
+attributes: {
+  username: {
+    type: 'string',
+    description: 'Unique username for this user.',
+    extendedDescription: `
+      Username must be unique, may only contain alphanumeric characters and must start with a letter.
+      
+      They are **optional** as users may use their email address to sign in.
+      `,
+    moreInfoUrl: 'https://docs.website.com/all-about-usernames',
+    example: 'johnsmith'
+  }
+}
+```
+
+##### description
+
+The `description` property may be used to provide a short text description of the attribute. 
+Generally, it should be limited to ≤140 characters.
+
+##### extendedDescription
+
+The `extendedDescription` property should be used to provide an extended description of the attribute.
+In typical use cases this may include markdown e.g. where the model definitions are used to
+generate [OpenAPI/Swagger](https://swagger.io/) documentation.
+
+##### moreInfoUrl
+
+The `moreInfoUrl` property should be used to provide a link to an external reference containing 
+more information in relation to the attribute.
+
+##### example
+
+The `example` property should be used to provide an example value for the attribute.
+This may be any JSON value that is consistent with the attributes `type`.
+
+
+### Custom Properties
+
+When Waterline validates models at startup, it will report errors if invalid properties are
+set for attributes. In order to customize/extend Sails, the `meta` property may be used.
+
+For example:
+
+```javascript
+attributes: {
+  username: {
+    type: 'string',
+    meta: {
+      search: true, //< include this attribute in generic search index
+      defaultSort: 'asc', //< when no sort specified, use this attribute in ascending order
+    }
+  }
+}
+```
+
+
+### List of Valid Attribute Properties
+
+For reference, the list of all valid attribute properties may be found
+[here](https://github.com/balderdashy/waterline-schema/blob/master/accessible/valid-attribute-properties.js).
+
+
+
 <!--
 
 commented-out content at: https://gist.github.com/rachaelshaw/f10d70c73780d5087d4c936cdefd5648#2
