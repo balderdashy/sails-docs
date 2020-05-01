@@ -32,7 +32,7 @@ cors: {
 }
 ```
 
-Note that when using `allowOrigins: '*'`, the `credentials` setting _must_ be `false`, which means that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors) setting.
+Note that when using `allowOrigins: '*'`, the `allowCredentials` setting _must_ be `false`, which means that requests containing cookies will be blocked.  This restriction exists to prevent third-party sites from being able to trick your logged-in users into making unauthorized requests to your app.  You can lift this restriction (at your own risk!) using the [`allowAnyOriginWithCredentialsUnsafe`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors) setting.
 
 
 See [`sails.config.security.cors`](https://sailsjs.com/documentation/reference/configuration/sails-config-security#?sailsconfigsecuritycors) for a comprehensive reference of all available options.
