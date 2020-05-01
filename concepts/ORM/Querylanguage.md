@@ -127,7 +127,7 @@ The following modifiers are available to use when building queries.
 
 Searches for records where the value is less than the value specified.
 
-```usage
+```javascript
 Model.find({
   age: { '<': 30 }
 });
@@ -137,7 +137,7 @@ Model.find({
 
 Searches for records where the value is less or equal to the value specified.
 
-```usage
+```javascript
 Model.find({
   age: { '<=': 20 }
 });
@@ -147,7 +147,7 @@ Model.find({
 
 Searches for records where the value is greater than the value specified.
 
-```usage
+```javascript
 Model.find({
   age: { '>': 18 }
 });
@@ -157,7 +157,7 @@ Model.find({
 
 Searches for records where the value is greater than or equal to the value specified.
 
-```usage
+```javascript
 Model.find({
   age: { '>=': 21 }
 });
@@ -167,7 +167,7 @@ Model.find({
 
 Searches for records where the value is not equal to the value specified.
 
-```usage
+```javascript
 Model.find({
   name: { '!=': 'foo' }
 });
@@ -177,7 +177,7 @@ Model.find({
 
 Searches for records where the value is in the list of values.
 
-```usage
+```javascript
 Model.find({
   name: { in: ['foo', 'bar'] }
 });
@@ -187,7 +187,7 @@ Model.find({
 
 Searches for records where the value is NOT in the list of values.
 
-```usage
+```javascript
 Model.find({
   name: { nin: ['foo', 'bar'] }
 });
@@ -197,7 +197,7 @@ Model.find({
 
 Searches for records where the value for this attribute _contains_ the given string.
 
-```usage
+```javascript
 var musicCourses = await Course.find({
   subject: { contains: 'music' }
 });
@@ -209,7 +209,7 @@ _For performance reasons, case-sensitivity of `contains` depends on the database
 
 Searches for records where the value for this attribute _starts with_ the given string.
 
-```usage
+```javascript
 var coursesAboutAmerica = await Course.find({
   subject: { startsWith: 'american' }
 });
@@ -221,7 +221,7 @@ _For performance reasons, case-sensitivity of `startsWith` depends on the databa
 
 Searches for records where the value for this attribute _ends with_ the given string.
 
-```usage
+```javascript
 var historyCourses = await Course.find({
   subject: { endsWith: 'history' }
 });
@@ -243,7 +243,7 @@ in conjunction with a `where` key. The current options available are:
 
 Limits the number of results returned from a query.
 
-```usage
+```javascript
 Model.find({ where: { name: 'foo' }, limit: 20 });
 ```
 
@@ -253,7 +253,7 @@ Model.find({ where: { name: 'foo' }, limit: 20 });
 
 Returns all the results excluding the number of items to skip.
 
-```usage
+```javascript
 Model.find({ where: { name: 'foo' }, skip: 10 });
 ```
 
@@ -261,7 +261,7 @@ Model.find({ where: { name: 'foo' }, skip: 10 });
 
 `skip` and `limit` can be used together to build up a pagination system.
 
-```usage
+```javascript
 Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 ```
 
@@ -279,7 +279,7 @@ Model.find({ where: { name: 'foo' }, limit: 10, skip: 10 });
 Results can be sorted by attribute name. Simply specify an attribute name for natural (ascending)
 sort, or specify an `ASC` or `DESC` flag for ascending or descending orders respectively.
 
-```usage
+```javascript
 // Sort by name in ascending order
 Model.find({ where: { name: 'foo' }, sort: 'name' });
 
