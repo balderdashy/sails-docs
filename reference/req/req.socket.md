@@ -13,7 +13,7 @@ req.socket;
 
 > **Warning:**
 >
-> `req.socket` may be deprecated in a future release of Sails.  You should use the [`sails.sockets.*`](https://sailsjs.com/documentation/reference/Sockets) methods instead.
+> `req.socket` may be deprecated in a future release of Sails.  You should use the [`sails.sockets.*`](https://sailsjs.com/documentation/reference/web-sockets/sails-sockets) methods instead.
 
 If the current request (`req`) did NOT originate from a Socket.IO client, `req.socket` does not have the same meaning.  In the most common scenario&mdash;HTTP requests&mdash;`req.socket` _exists_, but it refers instead to the underlying TCP socket. Before using `req.socket`, you should check the [`req.isSocket`](https://sailsjs.com/documentation/reference/request-req/req-is-socket) flag to ensure the request arrived via a connected Socket.IO client.
 

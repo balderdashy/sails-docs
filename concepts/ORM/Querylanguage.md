@@ -10,7 +10,7 @@ keys used in a query object. They are loosely based on the criteria used in Mong
 
 Queries can be built using either a `where` key to specify attributes, or excluding it.
 
-Using the `where` key allows you to also use [query options](https://sailsjs.com/documentation/concepts/models-and-orm/query-language#?criteria-clauses), such as `limit`, `skip`, and `sort`.
+Using the `where` key allows you to also use [query options](https://sailsjs.com/documentation/concepts/models-and-orm/query-language#query-options), such as `limit`, `skip`, and `sort`.
 
 
 ```javascript
