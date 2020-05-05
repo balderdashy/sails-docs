@@ -9,7 +9,7 @@ sails version
 ### Example
 
 ```text
-$ sails version
+$ sails --version
 1.0.0
 ```
 
