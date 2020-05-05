@@ -1,15 +1,15 @@
-# `sails version`
+# `sails --version`
 
 Get the version of your computer's _globally_ installed Sails command-line tool (i.e. the version you installed with `npm install -g sails`).
 
 ```usage
-sails version
+sails --version
 ```
 
 ### Example
 
 ```text
-$ sails version
+$ sails --version
 1.0.0
 ```
 
@@ -18,6 +18,6 @@ $ sails version
 
 
 
-<docmeta name="displayName" value="sails version">
+<docmeta name="displayName" value="sails --version">
 <docmeta name="pageType" value="command">
 
