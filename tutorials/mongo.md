@@ -28,6 +28,20 @@ To use MongoDB in your Node.js/Sails app during development:
 
 That's it!  Lift your app again and you should be good to go.
 
+### Connecting to replica set
+
+In your `config/datastores.js` file, edit the `default` datastore configuration:
+
+    ```js
+    default: {
+      adapter: 'sails-mongo',
+      url: 'mongodb://user:pwd@host1.com:27017,host2.com:27017,host3.com:27017/foo?retryWrites=true&w=majority',
+      ssl: true,
+      replicaSet: 'mongo-shard-0',
+      authSource: 'admin',
+    }
+    ```
+
 ### Deploying your app with MongoDB
 
 To use MongoDB in production, edit your adapter setting in `config/env/production.js`:
