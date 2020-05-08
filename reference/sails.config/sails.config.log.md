@@ -18,7 +18,14 @@ It is sometimes useful to configure a custom logger, particularly for regulatory
 > Don't feel like you _have_ to use a custom logger if you want these sorts of notifications!  In fact, there are usually more straightforward ways to implement features like automated Slack, SMS, or email notifications when errors occur.  One approach is to customize your app's default server error response ([`responses/serverError.js`](https://sailsjs.com/documentation/anatomy/my-app/api/responses/server-error-js)).  Another popular option is to use a product like [Papertrail](https://papertrailapp.com/), or a monitoring service like [AppDynamics](https://www.appdynamics.com/nodejs/sails/) or [NewRelic](https://discuss.newrelic.com/t/using-newrelic-with-sails-js/3338/8).
 
 
-Here's an example configuring [Winston](https://github.com/winstonjs/winston) as a custom logger, defining both a console transport and file transport:
+Here's an example configuring [Winston](https://github.com/winstonjs/winston) as a custom logger, defining both a console transport and file transport.
+First of all, add `winston` as a dependency of your project:
+
+```bash
+npm install winston
+```
+
+Then, replace the content of `config/log.js` with the following:
 
 ```javascript
 // config/log.js
