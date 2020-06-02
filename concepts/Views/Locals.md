@@ -3,7 +3,7 @@
 The variables accessible in a particular view are called `locals`.  Locals represent server-side data that is _accessible_ to your view&mdash;locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
 
 ```ejs
-<div>Logged in as <a><%= me.fullName %></a>.</div>
+<div>Logged in as <a><%= user.fullName %></a>.</div>
 ```
 
 ### Using locals in your views
@@ -25,7 +25,7 @@ Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `
 
 ```ejs
 <div>
-  <h1><%= user.name %>'s first view</h1>
+  <h1><%= user.fullName %>'s first view</h1>
   <h2>My corndog collection:</h2>
   <ul>
     <% _.each(corndogs, function (corndog) { %>
@@ -45,7 +45,7 @@ If the data you wanted to pass down to this view was completely static, you woul
     view: 'backOffice/profile',
     locals: {
       user: {
-        name: 'Frank',
+        fullName: 'Frank',
         emailAddress: 'frank@enfurter.com'
       },
       corndogs: [
