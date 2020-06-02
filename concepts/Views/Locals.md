@@ -3,7 +3,7 @@
 The variables accessible in a particular view are called `locals`.  Locals represent server-side data that is _accessible_ to your view&mdash;locals are not actually _included_ in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.
 
 ```ejs
-<div>Logged in as <a><%= name %></a>.</div>
+<div>Logged in as <a><%= me.fullName %></a>.</div>
 ```
 
 ### Using locals in your views
