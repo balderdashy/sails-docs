@@ -28,9 +28,9 @@ Here's an example of a view (`views/backOffice/profile.ejs`) using two locals, `
   <h1><%= user.fullName %>'s first view</h1>
   <h2>My corndog collection:</h2>
   <ul>
-    <% _.each(corndogs, function (corndog) { %>
-    <li><%= corndog.name %></li>
-    <% }) %>
+    <% for (let corndog of corndogs) { %>
+    <li><%= _.capitalize(corndog.name) %></li>
+    <% } %>
   </ul>
 </div>
 ```
