@@ -80,12 +80,7 @@ More 2013:
 
 
 + [Creating a Sails.js application on AWS (2017)](http://bussing-dharaharsh.blogspot.com/2013/08/creating-sailsjs-application-on-aws-ami.html) _(see also [this question on ServerFault](http://serverfault.com/questions/531560/creating-an-sails-js-application-on-aws-ami-instance))_
-<!--
-+ [Deploy a Sails app to AWS](https://www.distelli.com/docs/tutorials/build-and-deploy-sails-angular-application)
-REDIRECTS TO SOMETHING ELSE
--->
 + [Your own mini-Heroku on AWS (2014)](http://blog.grio.com/2014/01/your-own-mini-heroku-on-aws.html)
-+ [Deploying Sails/Node.js apps to AWS (2012)](http://cloud.dzone.com/articles/how-deploy-nodejs-apps-aws-mac)
 
 
 
