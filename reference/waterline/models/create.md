@@ -10,6 +10,10 @@ or
 
 + `var createdRecord = await Something.create(initialValues).fetch();`
 
+or
+
++ `var createdRecord = await sails.modes.something.create(initialValues);`
+
 ### Usage
 
 |   | Argument            | Type                         | Details                               |
