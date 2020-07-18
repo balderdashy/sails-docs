@@ -4,7 +4,7 @@ When building an app with many different pages, it can be helpful to extrapolate
 
 In Sails and Express, layouts are implemented by the view engines themselves.  For instance, `jade` has its own layout system, with its own syntax.
 
-For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](https://sailsjs.com/documentation/concepts/concepts/views/view-engines) to find the appropriate syntax.
+For convenience, Sails bundles special support for layouts **when using the default view engine, EJS**. If you'd like to use layouts with a different view engine, check out [that view engine's documentation](https://sailsjs.com/documentation/concepts/views/view-engines) to find the appropriate syntax.
 
 
 ### Creating layouts
