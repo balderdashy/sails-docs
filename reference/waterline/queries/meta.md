@@ -22,6 +22,7 @@ skipRecordVerification                | ((boolean)) | false    | Set to `true` t
 skipExpandingDefaultSelectClause      | ((boolean)) | false    | Set to `true` to force Waterline to skip expanding the `select` clause in criteria when it forges stage 3 queries (i.e. the queries that get passed in to adapter methods).  Normally, if a model declares `schema: true`, then the S3Q `select` clause is expanded to an array of column names, even if the S2Q had factory default `select`/`omit` clauses (which is also what it would have if no explicit `select` or `omit` clauses were included in the original query). Useful for tools like sails-hook-orm's automigrations, where you want temporary access to properties that aren't necessarily in the current set of attribute definitions.  **Warning: Do not use this flag in your web application backend, or at least [ask for help](https://sailsjs.com/support) first.**
 decrypt                               | ((boolean)) | false    | Set to `true` to decrypt any [auto-encrypted](https://sailsjs.com/documentation/concepts/models-and-orm/attributes#?encrypt) data in the records.
 encryptWith                           | ((string))  | 'default' | The id of a custom key to use for encryption for this particular query. (For decryption, the appropriate key is always used based on the data being decrypted.)
+makeLikeModifierCaseInsensitive       | ((boolean)) | false     | Set to `true` to make your query case-insensitive (only for use with the MongoDB adapter). |
 
 ### Example
 
