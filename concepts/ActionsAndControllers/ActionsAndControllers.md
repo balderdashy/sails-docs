@@ -27,69 +27,70 @@ Action files can use one of two formats: _actions2_ (recommended) or _classic_.
 
 ##### actions2
 
-Since the release of Sails v1.0, we recommend writing your actions in the more modern ("actions2") syntax, which works much the same way as Sails [helpers](https://sailsjs.com/documentation/concepts/helpers). By defining your action with a declarative "machine" definition, it is essentially self-documenting and self-validating.  Here's the actions2 format:
+Since the release of Sails v1.0, we recommend writing your actions in the more modern "actions2" syntax, which works much the same way as Sails [helpers](https://sailsjs.com/documentation/concepts/helpers). By defining your actions in this way, they are essentially self-documenting and self-validating.
+
+Using actions2 provides several advantages:
+
++ You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 file
++ You can clearly define the names and types of the request parameters the action expects, and those parameters will be automatically validated before the action is run
++ All of the possible outcomes of running the action (`exits`) are clearly visible, without the need to dissect the code
++ The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers)
+> Note that when using actions2, you can access the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.
+
+In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.  And since you'll declare the action's parameters ahead of time, you'll be much less likely to expose edge cases and security holes.
+
+Here's an example of the actions2 format:
 
 ```javascript
 module.exports = {
 
-   friendlyName: 'Welcome user',
+  friendlyName: 'Welcome user',
 
-   description: 'Look up the specified user and welcome them, or redirect to a signup page if no user was found.',
+  description: 'Look up the specified user and welcome them, or redirect to a signup page if no user was found.',
 
-   inputs: {
-      userId: {
-        description: 'The ID of the user to look up.',
-        // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
-        // if the `userId` parameter is not a number.
-        type: 'number',
-        // By making the `userId` parameter required, Sails will automatically respond with
-        // `res.badRequest` if it's left out.
-        required: true
-      }
-   },
+  inputs: {
+    userId: {
+      description: 'The ID of the user to look up.',
+      // By declaring a numeric example, Sails will automatically respond with `res.badRequest`
+      // if the `userId` parameter is not a number.
+      type: 'number',
+      // By making the `userId` parameter required, Sails will automatically respond with
+      // `res.badRequest` if it's left out.
+      required: true
+    }
+  },
 
-   exits: {
-      success: {
-        responseType: 'view',
-        viewTemplatePath: 'pages/welcome'
-      },
-      notFound: {
-        description: 'No user with the specified ID was found in the database.',
-        responseType: 'notFound'
-      }
-   },
+  exits: {
+    success: {
+      responseType: 'view',
+      viewTemplatePath: 'pages/welcome'
+    },
+    notFound: {
+      description: 'No user with the specified ID was found in the database.',
+      responseType: 'notFound'
+    }
+  },
 
-   fn: async function ({userId}) {
+  fn: async function ({userId}) {
 
-      // Look up the user whose ID was specified in the request.
-      // Note that we don't have to validate that `userId` is a number;
-      // the machine runner does this for us and returns `badRequest`
-      // if validation fails.
-      var user = await User.findOne({ id: userId });
+    // Look up the user whose ID was specified in the request.
+    // Note that we don't have to validate that `userId` is a number;
+    // the machine runner does this for us and returns `badRequest`
+    // if validation fails.
+    var user = await User.findOne({ id: userId });
 
-      // If no user was found, respond "notFound" (like calling `res.notFound()`)
-      if (!user) { throw 'notFound'; }
+    // If no user was found, respond "notFound" (like calling `res.notFound()`)
+    if (!user) { throw 'notFound'; }
 
-      // Display a personalized welcome view.
-      return {
-        name: user.name
-      };
-   }
+    // Display a personalized welcome view.
+    return {
+      name: user.name
+    };
+  }
 };
 ```
-> You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) to quickly create an actions2 action.
 
-Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
-
-> Note that machine-as-action provides actions with access to the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.
-
-Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
-
- * the code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers)
- * you guarantee that you&rsquo;ll be able to quickly determine the names and types of the request parameters the action expects, and you'll know that they will be automatically validated before the action is run
- * you&rsquo;ll be able to see all of the possible outcomes from running the action without having to dissect the code
-
-In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.  And since you'll declare the action's parameters ahead of time, you'll be much less likely to expose edge cases and security holes.
+> Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of actions formatted like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
 ###### Exit signals
 
@@ -113,6 +114,7 @@ throw { hasConflictingCourses: ['CS 301', 'M 402'] };
 ```
 
 Aside from being an easy-to-read shorthand, exit signals are especially useful if you're inside of a `for` loop, `forEach`, etc., but still want to exit through a particular exit.
+
 
 ##### Classic actions
 
