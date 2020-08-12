@@ -19,15 +19,15 @@ Actions are defined in the `api/controllers/` folder and subfolders (we&rsquo;ll
 
 ##### File extensions for actions
 
-An action can have any file extension besides `.md` (Markdown) and `.txt` (text).  By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) as well.
+By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) as well. An action can have any file extension that isn't `.md` (Markdown) and `.txt` (text).
 
 ### What does an action file look like?
 
-Action files can use one of two formats: _actions2 (recommended)_ or _classic_.
+Action files can use one of two formats: _actions2_ (recommended) or _classic_.
 
 ##### actions2
 
-Since the release of Sails v1.0, the recommended approach to create an action is by writing it in the more modern ("actions2") syntax.  In much the same way that Sails [helpers](https://sailsjs.com/documentation/concepts/helpers) work, by defining your action with a declarative definition ("_machine_"), it is essentially self-documenting and self-validating.  Here's the actions2 format:
+Since the release of Sails v1.0, we recommend writing your actions in the more modern ("actions2") syntax, which works much the same way as Sails [helpers](https://sailsjs.com/documentation/concepts/helpers). By defining your action with a declarative "machine" definition, it is essentially self-documenting and self-validating.  Here's the actions2 format:
 
 ```javascript
 module.exports = {
