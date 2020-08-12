@@ -2,9 +2,7 @@
 
 ### Overview
 
-The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
-
-Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to actions and views.  **Routes** are rules that tell Sails what to do when faced with an incoming request.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
+The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response. Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to actions and views.  **Routes** are rules that tell Sails what to do when faced with a request.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
 
 
 ### Custom routes
@@ -26,13 +24,13 @@ module.exports.routes = {
 ```
 
 
-Each **route** consists of an **address** on the left (e.g. `'get /me'`) and a **target** on the right (e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Each **route** consists of an **address** on the left (e.g. `'get /me'`) and a **target** on the right (e.g. `'UserController.profile'`)  The **address** is a URL path and an optional specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
 
 For example, we might read `'get /me': 'UserController.profile'` as:
 
 > "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
 
-What if I want to change the view layout within the route itself?  No problem. We could:
+Want to change the view layout within the route itself?  No problem. You could:
 
 ```javascript
 'get /privacy': {
