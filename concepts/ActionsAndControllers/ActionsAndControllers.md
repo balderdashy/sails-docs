@@ -14,14 +14,14 @@ async function (req, res) {
 
 Any time a web browser navigates to the `/hello` URL on your app's server, the page will display the message: &ldquo;Hi there!&rdquo;.
 
-### Where are actions defined?
+### Defining your action
 Actions are defined in the `api/controllers/` folder and subfolders (we&rsquo;ll talk more about _controllers_ in a bit). In order for Sails to recognize a file as an action, the filename must be _kebab-cased_ (containing only lowercase letters, numbers and dashes).  When referencing an action in Sails (in most cases, when [binding it to a route](https://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax)), use its path relative to `api/controllers`, without any file extension.  For example, to bind a route to an action located at `api/controllers/user/find.js`, you would point its URL to `user/find`.
 
 ##### File extensions for actions
 
 By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) as well. An action can have any file extension that isn't `.md` (Markdown) and `.txt` (text).
 
-### What does an action file look like?
+### Creating an action
 
 Action files can use one of two formats: _actions2_ (recommended) or _classic_.
 
