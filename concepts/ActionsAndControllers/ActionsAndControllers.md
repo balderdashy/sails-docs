@@ -118,7 +118,9 @@ Aside from being an easy-to-read shorthand, exit signals are especially useful i
 
 ##### Classic actions
 
-The traditional way of getting started creating a Sails action is to declare it as a function.  When a client requests a route that is bound to that action, the function will be called using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (typically named `req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (typically named `res`).  Here's a sample action function that looks up a user by ID, and either displays a "welcome" view or redirects to a signup page if the user can't be found:
+If you're working with an existing codebase or an app that was upgraded from v0.12, you may be more used to the classic action format. Classic actions are declared as functions with `req` and `res` arguments. When a client requests a route bound to this type of action, the function runs using the [incoming request object](https://sailsjs.com/documentation/reference/request-req) as the first argument (`req`), and the [outgoing response object](https://sailsjs.com/documentation/reference/response-res) as the second argument (`res`).
+
+Here's a sample action that looks up a user by ID, then either displays a "welcome" view or redirects to a signup page if the user can't be found:
 
 ```javascript
 module.exports = async function welcomeUser (req, res) {
@@ -148,12 +150,13 @@ module.exports = async function welcomeUser (req, res) {
 
 }
 ```
+
 > You can use [`sails generate action`](https://sailsjs.com/documentation/reference/command-line-interface/sails-generate) with `--no-actions2` to quickly create a classic action.
 
 
 ### Controllers
 
-The quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User Controller" could be created at `api/controllers/UserController.js` file containing:
+For simpler projects and prototypes, often the quickest way to get started writing Sails apps is to organize your actions into _controller files_.  A controller file is a [_PascalCased_](https://en.wikipedia.org/wiki/PascalCase) file whose name must end in `Controller`, containing a dictionary of actions.  For example, a  "User Controller" could be created at `api/controllers/UserController.js` file containing:
 
 ```javascript
 module.exports = {
@@ -167,7 +170,7 @@ You can use [`sails generate controller`](https://sailsjs.com/documentation/refe
 
 ##### File extensions for controllers
 
-A controller can have any file extension besides `.md` (Markdown) and `.txt` (text).  By default, Sails only knows how to interpret `.js` files, but you can customize your app to use things like [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script) as well.
+Just like with action files, you can customize your app to use things like [CoffeeScript](https://sailsjs.com/documentation/tutorials/using-coffee-script) or [TypeScript](https://sailsjs.com/documentation/tutorials/using-type-script), although Sails only knows how to interpret `.js` files by default. A controller can have any file extension besides `.md` (Markdown) and `.txt` (text).
 
 
 ### Standalone actions
@@ -182,8 +185,6 @@ api/
    logout.js
    signup.js
 ```
-
-where each of the three JavaScript files exports a `req, res` function or an actions2 definition.
 
 Using standalone actions has several advantages over controller files:
 
