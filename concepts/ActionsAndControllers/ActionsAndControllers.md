@@ -188,10 +188,10 @@ api/
 
 Using standalone actions has several advantages over controller files:
 
-* it's easier to keep track of the actions that your app contains by looking at the files contained in a folder than by scanning through the code in a controller file
-* each action file is small and easy to maintain, whereas controller files tend to grow as your app grows
-* [routing to standalone actions](https://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than in nested controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`)
-* blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to having to create an arbitrary controller file to hold the root action)
++ It's easier to see a clear overview of the actions in your app, because you can reference your project's file structure instead of scanning through individual controller files
++ Each action file is smaller and easy to maintain, whereas controller files tend to grow as your app grows
++ [Routing to standalone actions](https://sailsjs.com/documentation/concepts/routes/custom-routes#?action-target-syntax) in nested subfolders is more intuitive than routing to actions in controller files (`foo/bar/baz.js` vs. `foo/BarController.baz`)
++ Blueprint index routes apply to top-level standalone actions, so you can create an `api/controllers/index.js` file and have it automatically bound to your app&rsquo;s `/` route (as opposed to creating an arbitrary controller file to hold the root action)
 
 
 ### Keeping it lean
