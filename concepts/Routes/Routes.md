@@ -11,18 +11,17 @@ Like most web frameworks, Sails provides a router: a mechanism for mapping URLs 
 
 Sails lets you design your app's URLs in any way you like&mdash;there are no framework restrictions.
 
-Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view:
+Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to actions, while others route directly to views:
 
 ```javascript
 // config/routes.js
 module.exports.routes = {
-  'get /signup': { view: 'conversion/signup' },
-  'post /signup': 'AuthController.processSignup',
-  'get /login': { view: 'portal/login' },
-  'post /login': 'AuthController.processLogin',
-  '/logout': 'AuthController.logout',
-  'get /me': 'UserController.profile'
-}
+  'GET /signup': { view: 'conversion/signup' },
+  'POST /signup': { action: 'entrance/signup' },
+  'GET /login': { view: 'portal/login' },
+  'POST /login': { action: 'entrance/login' },
+  '/logout': { action: 'account/logout' },
+  'GET /me': { action: 'account/profile' }
 ```
 
 
