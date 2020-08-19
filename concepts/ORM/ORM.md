@@ -44,22 +44,22 @@ _You're sitting in front of your laptop late at night, and you realize:_
 
 So what about the "big data"?  Normally when you hear bloggers and analyst use that buzzword, you think of data mining and business intelligence.  You might imagine a process that pulls data from multiple sources, processes/indexes/analyzes it, then writes that extracted information somewhere else and either keeps the original data or throws it away.
 
-However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs; features like "driving-direction-closeness" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases. MongoDB, for instance, provides geospatial indexing, while ElasticSearch provides excellent support for indexing data for full-text search.
+However, there are some much more common challenges that lend themselves to the same sort of indexing/analysis needs: for example, features like "driving-direction-proximity" search, or a recommendation engine for related products.  Fortunately, a number of databases simplify specific big-data use cases. MongoDB, for instance, provides geospatial indexing, while ElasticSearch provides excellent support for indexing data for full-text search.
 
-Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with optimizations/trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales.
+Using databases in the way they're intended affords tremendous performance benefits, particularly when it comes to complex report queries, searching (which is really just customized sorting), and NLP/machine learning.  Certain databases are very good at answering traditional relational business queries, while others are better suited for map/reduce-style processing of data, with both optimizations and trade-offs for blazing-fast read/writes.  This consideration is especially important as your app's user-base scales.
 
 ### Adapters
 
 Like most MVC frameworks, Sails supports [multiple databases](https://sailsjs.com/features).  That means the syntax to query and manipulate our data is always the same, whether we're using MongoDB, MySQL, or any other supported database.
 
-Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](https://sailsjs.com/features), and a wealth of [community adapters](https://github.com/balderdashy/sails-docs/blob/0.9/Database-Support.md) are also available.
+Waterline builds on this flexibility with its concept of adapters.  An adapter is a bit of code that maps methods like `find()` and `create()` to a lower-level syntax like `SELECT * FROM` and `INSERT INTO`.  The Sails core team maintains open-source adapters for a handful of the [most popular databases](https://sailsjs.com/features), and a wealth of [community adapters](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters#?communitysupported-database-adapters) are also available.
 
 Custom Waterline adapters are actually [pretty simple to build](https://github.com/balderdashy/sails-generate-adapter), and can make for more maintainable integrations: anything from a proprietary enterprise account system, to a cache, to a traditional database.
 
 
 ### Datastores
 
-A **datastore** represents a particular database configuration.  This configuration object includes an adapter to use, as well as information like the host, port, username, password, and so forth.  Datastores are defined in the Sails config [`config/datastores.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
+A **datastore** represents a particular database configuration.  This configuration object includes an adapter to use, plus information like the host, port, username, password, and so forth.  Datastores are defined in the Sails config [`config/datastores.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-datastores).
 
 ```javascript
 // in config/datastores.js
