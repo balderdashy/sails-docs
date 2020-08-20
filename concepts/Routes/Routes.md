@@ -25,17 +25,17 @@ module.exports.routes = {
 ```
 
 
-Each **route** consists of an **address** on the left (e.g. `'get /me'`) and a **target** on the right (e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Each **route** consists of an **address** on the left (e.g. `'GET /me'`) and a **target** on the right (e.g. `{ action: 'account/profile' }`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the syntax above is the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
 
-For example, we might read `'get /me': 'UserController.profile'` as:
+For example, we might read `'GET /me': { action: 'account/profile' }` as:
 
-> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
+> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `account/profile` action, would'ya?"
 
-What if I want to change the view layout within the route itself?  No problem. We could:
+You can also specify the view layout within the route itself like so:
 
 ```javascript
-'get /privacy': {
-    view: 'users/privacy',
+'GET /privacy': {
+    view: 'legal/privacy',
     locals: {
       layout: 'users'
     }
