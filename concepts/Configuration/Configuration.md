@@ -72,7 +72,7 @@ In addition to using configuration _files_, you can set individual configuration
 sails_security__cors__allowOrigins='["http://somedomain.com","https://anotherdomain.com:1337"]' sails console
 ```
 
-> Note the use of double quotes to indicate strings within the JSON-encoded value, and the single quotes surrounding the whole value so that it is passed correctly from to Sails from the console.
+> Note the use of double quotes to indicate strings within the JSON-encoded value, and the single quotes surrounding the whole value so that it is passed correctly to Sails from the console.
 
 This value will be in effect _only_ for the lifetime of this particular Sails instance, and will override any values in the configuration files.
 

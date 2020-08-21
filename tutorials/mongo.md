@@ -28,6 +28,10 @@ To use MongoDB in your Node.js/Sails app during development:
 
 That's it!  Lift your app again and you should be good to go.
 
+#### Case-sensitivity
+
+After configuring your project to use MongoDB, you may notice that your Waterline [queries](https://sailsjs.com/documentation/reference/waterline-orm/queries) are now case-sensitive by default. To do case-insensitive queries, you can use [`.meta({makeLikeModifierCaseInsensitive: true})`](https://sailsjs.com/documentation/reference/waterline-orm/queries/meta).
+
 ### Deploying your app with MongoDB
 
 To use MongoDB in production, edit your adapter setting in `config/env/production.js`:

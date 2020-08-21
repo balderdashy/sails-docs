@@ -1,4 +1,4 @@
-# `.configure()`
+# `.configure`
 
 The `configure` feature provides a way to configure a hook after the [`defaults` objects](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults) have been applied to all hooks.  By the time a custom hook&rsquo;s `configure()` function runs, all user-level configuration and core hook settings will have been merged into `sails.config`.  However, you should *not* depend on the configuration of other custom hooks at this point, as the load order of custom hooks is not guaranteed.
 
@@ -21,5 +21,5 @@ configure: function() {
 The main benefit of `configure` is that all hook `configure` functions are guaranteed to run before any [`initialize` functions](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/initialize) run; therefore, a hook&rsquo;s `initialize` function can examine the configuration settings of other hooks.
 
 
-<docmeta name="displayName" value=".configure()">
+<docmeta name="displayName" value=".configure">
 <docmeta name="stabilityIndex" value="3">

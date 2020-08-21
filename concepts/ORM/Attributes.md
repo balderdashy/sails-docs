@@ -238,8 +238,7 @@ attributes: {
   }
 }
 ```
-
-
+> If you're using `encrypt: true` for an attribute, you won't be able to look up records by the unencrypted value.
 
 
 

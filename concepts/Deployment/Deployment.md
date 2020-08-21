@@ -128,7 +128,7 @@ Unless you're deploying to a PaaS like Heroku, you will want to use a tool like 
 + [Security](https://sailsjs.com/documentation/concepts/security)
 + [Hosting options](https://sailsjs.com/documentation/concepts/deployment/hosting)
 + [Scaling your Sails/Node.js app](https://sailsjs.com/documentation/concepts/deployment/scaling)
-+ [Complete API Reference](https://sailsjs.com/documentation/reference)
++ [Complete API reference](https://sailsjs.com/documentation/reference)
 
 
 <docmeta name="displayName" value="Deployment">

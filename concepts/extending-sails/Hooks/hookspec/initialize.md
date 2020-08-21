@@ -1,4 +1,4 @@
-# `.initialize(cb)`
+# `.initialize`
 
 The `initialize` feature allows a hook to perform startup tasks that may be asynchronous or rely on other hooks.  All Sails configuration is guaranteed to be completed before a hook&rsquo;s `initialize` function runs.  Examples of tasks that you may want to put in `initialize` include:
 
@@ -7,21 +7,19 @@ The `initialize` feature allows a hook to perform startup tasks that may be asyn
 * loading support files from a user-configured directory
 * waiting for another hook to load first
 
-Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` takes one argument: a callback function which must be called in order for Sails to finish loading:
+Like all hook features, `initialize` is optional and can be left out of your hook definition.  If implemented, `initialize` should be an `async function` which must be resolved (i.e. not throw or hang forever) in order for Sails to finish loading:
 
 ```javascript
-initialize: function(cb) {
+initialize: async function() {
 
    // Do some stuff here to initialize hook
-   // And then call `cb` to continue
-   return cb();
 
 }
 ```
 
 ##### Hook timeout settings
 
-By default, hooks have ten seconds to complete their `initialize` function and call `cb` before Sails throws an error.  That timeout can be configured by setting the `_hookTimeout` key to the number of milliseconds that Sails should wait.  This can be done in the hook&rsquo;s [`defaults`](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults):
+By default, hooks have ten seconds to complete their `initialize` function and resolve before Sails throws an error.  That timeout can be configured by setting the `_hookTimeout` key to the number of milliseconds that Sails should wait.  This can be done in the hook&rsquo;s [`defaults`](https://sailsjs.com/documentation/concepts/extending-sails/hooks/hook-specification/defaults):
 
 ```
 defaults: {
@@ -48,31 +46,27 @@ For example:
 You can use the "hook loaded" events to make one hook dependent on another.  To do so, simply wrap your hook&rsquo;s `initialize` logic in a call to `sails.on()`.  For example, to make your hook wait for the `orm` hook to load, you could make your `initialize` similar to the following:
 
 ```javascript
-initialize: function(cb) {
-
-   sails.on('hook:orm:loaded', function() {
-
+initialize: async function() {
+  return new Promise((resolve)=>{
+    sails.on('hook:orm:loaded', ()=>{
       // Finish initializing custom hook
-      // Then call cb()
-      return cb();
-
-   });
+      // Then resolve.
+      resolve();
+    });
+  });
 }
 ```
 
 To make a hook dependent on several others, gather the event names to wait for into an array and call `sails.after`:
 
 ```javascript
-initialize: function(cb) {
-
-   var eventsToWaitFor = ['hook:orm:loaded', 'hook:mygreathook:loaded'];
-   sails.after(eventsToWaitFor, function() {
-
-      // Finish initializing custom hook
-      // Then call cb()
-      return cb();
-
-   });
+initialize: async function() {
+  return new Promise((resolve)=>{
+    var eventsToWaitFor = ['hook:orm:loaded', 'hook:mygreathook:loaded'];
+    sails.after(eventsToWaitFor, ()=>{
+      resolve();
+    });
+  });
 }
 ```
 

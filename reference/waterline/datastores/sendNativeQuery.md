@@ -78,6 +78,7 @@ Be aware that you still have to deal with custom column names on the way out!  T
 
 ### Notes
 > + This method only works with SQL databases.  If you are using another database like MongoDB, use [`.manager`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/manager) to get access to the raw MongoDB client, or [`.driver`](https://sailsjs.com/documentation/reference/waterline-orm/datastores/driver) to get access to the static, underlying db library (e.g. `mysql`, `pg`, etc.).
+> + Depending on the adapter you are using, the `valuesToEscape` may be mutated. This was a deliberate decision that was made for performance reasons, but may change in a future major version of Sails. For now if you are passing in a variable for `valuesToEscape` and you're using that variable later on in your code, clone it first.
 
 <docmeta name="displayName" value=".sendNativeQuery()">
 <docmeta name="pageType" value="method">

@@ -18,35 +18,59 @@ It is sometimes useful to configure a custom logger, particularly for regulatory
 > Don't feel like you _have_ to use a custom logger if you want these sorts of notifications!  In fact, there are usually more straightforward ways to implement features like automated Slack, SMS, or email notifications when errors occur.  One approach is to customize your app's default server error response ([`responses/serverError.js`](https://sailsjs.com/documentation/anatomy/my-app/api/responses/server-error-js)).  Another popular option is to use a product like [Papertrail](https://papertrailapp.com/), or a monitoring service like [AppDynamics](https://www.appdynamics.com/nodejs/sails/) or [NewRelic](https://discuss.newrelic.com/t/using-newrelic-with-sails-js/3338/8).
 
 
-Here's an example configuring [Winston](https://github.com/winstonjs/winston) as a custom logger, defining both a console transport and file transport:
+Here's an example configuring [Winston](https://github.com/winstonjs/winston) as a custom logger, defining both a console transport and file transport.
+First of all, add `winston` as a dependency of your project:
+
+```bash
+npm install winston
+```
+
+Then, replace the content of `config/log.js` with the following:
 
 ```javascript
 // config/log.js
 
-var winston = require('winston');
-var customLogger = new winston.Logger();
+const { version } = require('../package');
 
-// A console transport logging debug and above.
-customLogger.add(winston.transports.Console, {
-  level: 'debug',
-  colorize: true
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, colorize, label, printf, align } = format;
+const { SPLAT } = require('triple-beam');
+const { isObject } = require('lodash');
+
+function formatObject(param) {
+  if (isObject(param)) {
+    return JSON.stringify(param);
+  }
+  return param;
+}
+
+// Ignore log messages if they have { private: true }
+const all = format((info) => {
+  const splat = info[SPLAT] || [];
+  const message = formatObject(info.message);
+  const rest = splat.map(formatObject).join(' ');
+  info.message = `${message} ${rest}`;
+  return info;
 });
 
-// A file based transport logging only errors formatted as json.
-customLogger.add(winston.transports.File, {
-  level: 'error',
-  filename: 'filename.log',
-  json: true
+const customLogger = createLogger({
+  format: combine(
+    all(),
+    label({ label: version }),
+    timestamp(),
+    colorize(),
+    align(),
+    printf(info => `${info.timestamp} [${info.label}] ${info.level}: ${formatObject(info.message)}`)
+  ),
+  transports: [new transports.Console()]
 });
 
 module.exports.log = {
-  // Pass in our custom logger, and pass all log levels through.
   custom: customLogger,
-  level: 'silly',
-
-  // Disable captain's log so it doesn't prefix or stringify our meta data.
   inspect: false
+  // level: 'info'
 };
+
 ```
 
 

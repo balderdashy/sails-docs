@@ -16,8 +16,7 @@ Set the maximum number of records to retrieve when executing a [query instance](
 To retrieve records for up to 10 users named Jake:
 
 ```javascript
-var jakes = await User.find({ name: 'Jake' });
-.limit(10);
+var jakes = await User.find({ name: 'Jake' }).limit(10);
 
 return res.json(jakes);
 ```
