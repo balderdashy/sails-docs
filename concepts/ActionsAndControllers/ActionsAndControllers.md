@@ -81,7 +81,7 @@ module.exports = {
 
 Sails uses the [machine-as-action](https://github.com/treelinehq/machine-as-action) module to automatically create route-handling functions out of machines like the example above.  See the [machine-as-action docs](https://github.com/treelinehq/machine-as-action#customizing-the-response) for more information.
 
-> Note that machine-as-action provides actions with access to the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.
+> Note that machine-as-action provides actions with access to the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.</br>Alternativly, you can pass `env` into the function with `inputs` and `exits` to get access to `req` without using `this.req`.
 
 Using classic `req, res` functions for your actions is technically less typing.  However, using actions2 provides several advantages:
 
