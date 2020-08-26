@@ -17,7 +17,7 @@ req.setTimeout(240000);
 
 ### Notes
 
-+ By default, normal HTTP requests to Node.js/Express/Sails.js apps time out [after 2 minutes](https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_server_settimeout_msecs_callback) (120000 milliseconds) if a response is not sent.
++ By default, normal HTTP requests to Node.js/Express/Sails.js apps time out [after 2 minutes](https://nodejs.org/dist/latest/docs/api/http.html#http_server_settimeout_msecs_callback) (120000 milliseconds) if a response is not sent.
 
 <docmeta name="displayName" value="req.setTimeout()">
 <docmeta name="pageType" value="method">

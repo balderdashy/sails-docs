@@ -35,8 +35,8 @@ await Something.create({…})
 | Property       | Type          | Details            |
 |:---------------|---------------|:-------------------|
 | name           | ((string))    | The broad classification of the error. <br/><br/> e.g.`'UsageError'`     |
-| message        | ((string))    | <em>See [.message](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_message).</em> |
-| stack          | ((string))    | <em>See [.stack](https://nodejs.org/dist/latest-v7.x/docs/api/errors.html#errors_error_stack).<em>     |
+| message        | ((string))    | <em>See [.message](https://nodejs.org/dist/latest/docs/api/errors.html#errors_error_message).</em> |
+| stack          | ((string))    | <em>See [.stack](https://nodejs.org/dist/latest/docs/api/errors.html#errors_error_stack).<em>     |
 | _code_         | ((string?))   | A narrower classification of the error that is sometimes included.<br/><br/>e.g. `'E_UNIQUE'`       |
 
 When using code that interacts with Waterline (usually through model methods) there are a few different kinds of error you may encounter.
