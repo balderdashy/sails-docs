@@ -8,4 +8,7 @@ This video tutorial is an in-depth guide to building your first Node.js/Sails.js
 + [Try out the demo app (Ration)](https://ration.io)
 + [Download the source code](https://github.com/mikermcneil/ration) for the demo app
 
+#### Updated Guides
++ [Sails Guide](https://www.sailsguide.com) 
+
 <docmeta name="displayName" value="Full-stack JavaScript with Sails">
