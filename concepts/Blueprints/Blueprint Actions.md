@@ -72,6 +72,6 @@ module.exports = {
 }
 ```
 
-> Alternatively, we could have created this as a standalone action at `api/controllers/user/find-one.js` or used [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
+> Alternatively, we could have created this as a standalone action at `api/controllers/user/findone.js` or used [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
 
 <docmeta name="displayName" value="Blueprint actions">
