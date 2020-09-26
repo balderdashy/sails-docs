@@ -3,7 +3,7 @@ According to the [official Parasails repo](https://github.com/mikermcneil/parasa
 
 > (Parasails is a ) lightweight structures for apps with more than one page. Built on top of Vue.js.
 > Out of the box, parasails supports:
-> - pages
+> - [pages](/documentation/concepts/parasails/pages)
 > - components
 > - utilities
 > - constants
@@ -20,7 +20,7 @@ The aim of these docs is to explain how Parasails interacts with Vue / jQuery an
 This documentation is a work in progress and it aims to cover Parasails...:
 - Pages
 - Components
-- “Cloud” object (for easy API calls to your [actions](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2))
+- “Cloud” object (for easy API calls to your [actions](/documentation/concepts/actions-and-controllers#?actions-2))
 - Vue Router
 
 
