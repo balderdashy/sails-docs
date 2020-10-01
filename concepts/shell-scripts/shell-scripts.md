@@ -67,6 +67,12 @@ Then you can run:
 sails run send-email-proof-reminders
 ```
 
+To provide inputs values:
+
+```bash
+sails run send-email-proof-reminders --template='alternative-reminder'
+```
+
 For more detailed information on usage, see the [`whelk` README](https://github.com/sailshq/whelk/blob/master/README.md).
 
 <docmeta name="displayName" value="Shell scripts">
