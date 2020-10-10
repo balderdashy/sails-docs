@@ -30,6 +30,10 @@ The `afterDestroy` lifecycle callback will only be run on `.destroy()` queries t
   - afterDestroy: fn(destroyedRecord, proceed)
 
 
+### Error Handling
+
+Errors reporting via `proceed(err)` result in `res.serverError()` (HTTP 500) or `res.badRequest()` (HTTP 400) for blueprints based upon the use of `flaverr`. See example below.
+
 ### Example
 
 If you want to hash a password before saving in the database, you might use the `beforeCreate` lifecycle callback.
@@ -55,6 +59,11 @@ module.exports = {
 
 
   beforeCreate: function (valuesToSet, proceed) {
+    // Check password complexity
+    if(!meetsComplexityRequirements(valuesToSet.password)) {
+      let msg = 'Password does not meet complexity requirements';
+        return proceed(flaverr({ name: 'UsageError', code:'E_PASSWORD_ERROR', details:msg }, new Error(msg)));
+    }
     // Hash password
     sails.helpers.passwords.hashPassword(valuesToSet.password).exec((err, hashedPassword)=>{
       if (err) { return proceed(err); }
