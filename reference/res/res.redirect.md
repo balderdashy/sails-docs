@@ -4,20 +4,16 @@ Redirect the requesting user agent to the given absolute or relative URL.
 
 
 ### Usage
-```usage
-return res.redirect(url);
+```js
+return res.redirect([status,] url);
 ```
-
-
-_Or:_
-+ `return res.redirect(statusCode, url);`
 
 ### Arguments
 
 |   | Argument       | Type        | Details |
 |---|----------------|:-----------:|---------|
-| 1 | _statusCode_   | ((number?)) | An optional status code (e.g. 301).  (If omitted, a status code of 302 will be assumed.)
-| 2 | url            | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
+| 1 | `status`       | ((integer)) |  (optional) a positive integer that corresponds to an [HTTP status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).  Defaults to 302 ("found").|
+| 2 | `url`          | ((string))  | A URL expression (see below for complete specification).<br/> e.g. `"http://google.com"` or `"/login"`
 
 
 
@@ -47,6 +43,12 @@ return res.redirect('..');
 ```javascript
 return res.redirect('back');
 ```
+
+If you want to send a custom status code along with a redirect, you can do so by sending the status as the first argument to res.redirect:
+```javascript
+return res.redirect(301, '/foo');
+```
+
 
 ### Notes
 > + This method is **terminal**, meaning that it is generally the last line of code your app should run for a given request (hence the advisory usage of `return` throughout these docs).
