@@ -4,12 +4,16 @@
 
 But Sails also supports using CoffeeScript to write your custom app code (like [actions](http://www.sailsjs.com/documentation/concepts/actions-and-controllers) and [models](http://www.sailsjs.com/documentation/concepts/core-concepts-table-of-contents/models-and-orm)).  You can enable this support in three steps:
 
-1. Run `npm install coffee-script --save` in your app folder.
-2. Add the following line at the top of your app's `app.js` file:
-```javascript
-require('coffee-script/register');
+1. Run `npm install coffeescript --save` in your app folder.
+2. Rename /usr/local/bin/node as /usr/local/bin/node.org.
+3. Create /usr/local/bin/node with execute mode and following content
 ```
-3. Start your app with `node app.js` instead of `sails lift`.
+#!/bin/sh
+
+/usr/local/bin/node.org -r 'coffeescript/register' $*
+```
+
+3. Start your app with `node app.js` or `sails lift`.
 
 ### Using CoffeeScript generators
 
