@@ -66,5 +66,72 @@ module.exports = {
 };
 ```
 
+If you want to delete child objects when deleting its parent, you can use the `beforeDestroy` lifecycle callback. By using `beforeDestory` lifecycle, it will delete the child objects before the parent is deleted. You can stimulate a `cascade on delete` with this. Be careful when using this, as you may lose sensitive data! In this example we will have 2 Models. `Invoice` and `Item`. `Invoice` to `Item` corresponds to `One-to-many` association relation. See [One-to-many associations](https://sailsjs.com/documentation/concepts/models-and-orm/associations/one-to-many).
+
+```javascript
+// Invoice.js
+
+module.exports = {
+  attributes: {
+    client_name: { type: 'string', required: true },
+    client_email: { type: 'string', required: false },
+    project_name: { type: 'string', required: true },
+    project_description: { type: 'string', required: false },
+    invoice_status: { type: 'string', defaultsTo: 'unpaid' },
+    due_date: { type: 'string', required: false },
+    total_price: { type: 'number', required: true},
+    items: {
+      collection: 'item',
+      via: 'invoice'
+    }
+  },
+
+  async beforeDestroy(criteria, proceed) {
+    try {
+      // destroy items related to parent
+      // we can access the deleted parent object using 
+      // criteria object
+      await Item.destroy({invoice: criteria.where.id});      
+    } catch (error) {
+      return proceed(error);
+    }
+    return proceed();
+  }
+
+};
+
+
+// Item.js
+
+module.exports = {
+
+  attributes: {
+    name: { type: 'string', required: true },
+    price: { type: 'number', columnType: 'float', required: false },
+    invoice: {
+      model: 'invoice'
+    }
+  },
+};
+
+
+// Delete Invoice Action
+
+  deleteInvoice: async(req, res) => {
+    let invoice;
+    try {
+      //invoice_id is parameter send by client
+      invoice = await Invoice.destroy({id: req.param('invoice_id')}); 
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+    return res.status(202).json({message: 'invoice deleted'});
+  },
+
+
+
+```
+
 
 <docmeta name="displayName" value="Lifecycle callbacks">
