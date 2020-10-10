@@ -10,6 +10,8 @@ At the API layer, there isn't much that can be done in the way of prevention.  H
 
 > Note that, if you have the long-polling transport enabled in [sails.config.sockets](https://sailsjs.com/documentation/reference/configuration/sails-config-sockets), you'll still want to make sure TCP sticky sessions are enabled at your load balancer.  For more on that, check out this writeup about [sockets on Deis and Kubernetes](https://deis.com/blog/2016/socket.io-applications-kubernetes/).
 
++ [rate-limiter-flexible] package helps to limit amount of requests by user, IP or any other unique identifier. It works with Redis, MongoDB, Cluster or PM2, MySQL, PostgreSQL and others. Insurance and In-memory Block strategies helps to mitigate powerful DDOS and smart brute-force attacks effect. Read more on [official docs](https://github.com/animir/node-rate-limiter-flexible/wiki).
+
 
 ### Additional Resources
 
