@@ -2,7 +2,7 @@
 
 ### Overview
 
-The most basic feature of any web application is the ability to interpret a request sent to a URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
+The most basic feature of any web application is the ability to interpret a request sent to an URL, then send back a response.  In order to do this, your application has to be able to distinguish one URL from another.
 
 Like most web frameworks, Sails provides a router: a mechanism for mapping URLs to actions and views.  **Routes** are rules that tell Sails what to do when faced with an incoming request.  There are two main types of routes in Sails: **custom** (or "explicit") and **automatic** (or "implicit").
 
