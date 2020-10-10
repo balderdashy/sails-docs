@@ -97,7 +97,7 @@ One notable customization option is timeout. The default timeout in Mocha is 2 s
 > ```
 >
 > _If you prefer Typescript, the approach is basically the same, except you'll want to use `--require ts-node/register`.
-
+>Also if mocha doesnt stop after tests are finished you can add --exit 
 
 ### Writing tests
 
