@@ -168,6 +168,46 @@ describe('UserController.login', function() {
 });
 ```
 
+##### Cloud SDK
+
+To use the Cloud SDK, first ensure you have a directory called "test" at the root level (as in the structure defined in the [Preparation](#?preparation) section. Then run `sails run rebuild-cloud-sdk`. You will notice a `test/private/CLOUD_SDK_METHODS.json` gets created, this is why it was important to ensure your directory is named `test`.
+
+We next do the same trick we did with autneticated `supertest`. We should do this once in setup, it is recommended to do in the callback of the `sails.lift` call in `lifecycle.test.js`.
+
+```
+const Cloud = require('../assets/dependencies/cloud');
+
+sails.lift(......, async function() {
+  let SAILS_SID_COOKIE, CSRF_TOKEN;
+
+  if (sails.config.security.csrf) {
+    const res = await sails.helpers.http.sendHttpRequest.with({
+      method: 'GET',
+      url: sails.getUrlFor('entrance/view-login').substr(1),
+      baseUrl: sails.config.custom.baseUrl
+    })
+    CSRF_TOKEN = /_csrf:\s*unescape\('([^']+)'\)/.exec(res.body)[1];
+    SAILS_SID_COOKIE = res.headers['set-cookie'][0].split(';')[0].trim();
+  }
+  
+   Cloud.setup({
+     apiBaseUrl: baseUrl,
+     headers: {
+       'x-csrf-token': CSRF_TOKEN,
+       'cookie': SAILS_SID_COOKIE
+     },
+     protocol: sails.helpers.http,
+     methods: require('/test/private/CLOUD_SDK_METHODS')
+   });
+   
+   global.Cloud = Cloud;
+   
+});
+```
+
+You can now use Cloud SDK methods:
+
+    await Cloud.login('admin@example.com', 'abc123');
 
 ### Running tests
 
