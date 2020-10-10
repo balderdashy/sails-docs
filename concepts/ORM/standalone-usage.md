@@ -118,8 +118,8 @@ Most of the structure is the same as for the user, except there's an additional 
 Next we have some more boring setup chores:
 
 ```js
-waterline.registerModel(userCollection);
-waterline.registerModel(petCollection);
+waterline.loadCollection(userCollection);
+waterline.loadCollection(petCollection);
 ```
 
 Here we are adding the model specifications into the `waterline` instance itself.
