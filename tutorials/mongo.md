@@ -13,7 +13,7 @@ To use MongoDB in your Node.js/Sails app during development:
 
     ```js
     default: {
-      adapter: 'sails-mongo',
+      adapter: require('sails-mongo'),
       url: 'mongodb://root@localhost/foo'
     }
     ```
