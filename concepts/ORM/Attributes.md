@@ -107,7 +107,7 @@ In addition to basic type safety checks, Sails offers several different high-lev
 ```javascript
 unsubscribeReason: {
   type: 'string',
-  isIn: ['boring', 'too many emails', 'recipes too difficult', 'other'],
+  validations: { isIn: ['boring', 'too many emails', 'recipes too difficult', 'other'] },
   required: true
 }
 ```
