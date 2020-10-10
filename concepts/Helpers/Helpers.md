@@ -20,6 +20,7 @@ sails.log(greeting);
 ### How helpers are defined
 
 Here's an example of a simple, well-defined helper:
+(notice the _kabab-case_ file name)
 
 ```javascript
 // api/helpers/format-welcome-message.js
@@ -53,7 +54,7 @@ module.exports = {
 
 Though simple, this file displays several characteristics of a good helper: it starts with a friendly name and description that make it immediately clear what the utility does, it describes its inputs so that it&rsquo;s easy to see how the utility is used, and it accomplishes a discrete task in the simplest way possible.
 
-> Look familiar?  Helpers follow the same specification as [shell scripts](https://sailsjs.com/documentation/concepts/shell-scripts) and [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).
+> Look familiar?  Helpers follow the same specification as [shell scripts](https://sailsjs.com/documentation/concepts/shell-scripts) and [actions2](https://sailsjs.com/documentation/concepts/actions-and-controllers#?actions-2).  
 
 ##### The `fn` function
 
