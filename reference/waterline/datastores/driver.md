@@ -25,10 +25,10 @@ var manager = (
 var db;
 try {
   db = (
-    await Driver.getConnection({ manager: managerReport.manager })
+    await Driver.getConnection({ manager: manager })
   ).connection;
 } catch (err) {
-  await Driver.destroyManager({ manager: managerReport.manager });
+  await Driver.destroyManager({ manager: manager });
   throw err;
 }
 
