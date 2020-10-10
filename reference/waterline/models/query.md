@@ -11,7 +11,7 @@ SomeModel.query(sql, valuesToEscape, function(err, rawResult) {
 });
 ```
 
-> **WARNING:** Unlike other Waterine model methods, `.query()` supports neither promise-based usage nor the use of `.exec()`.  In other words, it does not utilize Waterline's normal deferred object mechanism.  Instead, it provides raw access directly to the underlying database driver.
+> **WARNING:** Unlike other Waterline model methods, `.query()` supports neither promise-based usage nor the use of `.exec()`.  In other words, it does not utilize Waterline's normal deferred object mechanism.  Instead, it provides raw access directly to the underlying database driver.
 
 ### Usage
 
