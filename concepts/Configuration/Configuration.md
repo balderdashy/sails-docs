@@ -38,6 +38,10 @@ By default, your app runs in the "development" environment.  The recommended app
 ```
 NODE_ENV=production node app.js
 ```
+On Windows, you need to update your package.json file with this new script command:
+```
+set \"NODE_ENV=production\" && node app.js"
+```
 
 > The `production` environment is special: depending on your configuration, it enables compression, caching, minification, etc.
 >
