@@ -168,6 +168,41 @@ describe('UserController.login', function() {
 });
 ```
 
+###### Authenticated Supertest
+If you have CSRF enabled, then for endpoints that need to be logged in, you need to provide it with a cookie and CSRF, here is how you can do that:
+
+```js
+// test/integration/controllers/UserController.test.js
+var supertest = require('supertest');
+
+describe('UserController.login', function() {
+
+  let SAILS_SID_COOKIE, CSRF_TOKEN;
+  before(async () => {
+     if (sails.config.security.csrf) {
+        const res = await supertest(sails.hooks.http.app).get('/login')
+        CSRF_TOKEN = /_csrf:\s*unescape\('([^']+)'\)/.exec(res.text)[1];
+        SAILS_SID_COOKIE = res.headers['set-cookie'][0].split(';')[0].trim();
+     }
+  });
+  
+  describe('#login()', function() {
+    it('should redirect to /my/page', async function () {
+      await supertest(sails.hooks.http.app)
+      .post('/users/login')
+      .set('Cookie', SAILS_SID_COOKIE)
+      .set('X-CSRF-Token', CSRF_TOKEN)
+      .send({ name: 'test', password: 'test' })
+      .expect(302)
+      .expect('location','/my/page');
+    });
+  });
+
+});
+```
+
+In the `before` hook, it goes to the login page, and extracts the CSRF token. The token only changes when HTML pages are loaded, so we can use this token indefinitely with our requests as they do not load pages.
+
 
 ### Running tests
 
