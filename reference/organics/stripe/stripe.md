@@ -1,0 +1,1 @@
+These helpers are used to communicate with the Stripe API to charge credit cards, etc.

@@ -1,0 +1,1 @@
+These helpers may be used for password encryption and authentication.

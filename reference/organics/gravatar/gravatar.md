@@ -1,0 +1,1 @@
+This helper is used to look up the avatar image associated with a particular email address.

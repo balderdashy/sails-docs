@@ -1,0 +1,1 @@
+These helpers are for communicating with the SendGrid API, which is used to send automated emails.
