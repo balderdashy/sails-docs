@@ -35,7 +35,7 @@ Using actions2 provides several advantages:
 + You can clearly define the names and types of the request parameters the action expects, and those parameters will be automatically validated before the action is run
 + All of the possible outcomes of running the action (`exits`) are clearly visible, without the need to dissect the code
 + The code you write is not directly dependent on `req` and `res`, making it easier to re-use or abstract into a [helper](https://sailsjs.com/documentation/concepts/helpers)
-> Note that when using actions2, you can access the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.</br>Alternativly, you can pass `env` into the function with `inputs` and `exits` to get access to `req` without using `this.req`.
+> Note that when using actions2, you can access the [request object](https://sailsjs.com/documentation/reference/request-req) as `this.req`.</br>Alternatively, you can pass `env` into the function with `inputs` and `exits` to get access to `req` without using `this.req`.
 
 In a nutshell, your code will be standardized in a way that makes it easier to re-use and modify later.  And since you'll declare the action's parameters ahead of time, you'll be much less likely to expose edge cases and security holes.
 
