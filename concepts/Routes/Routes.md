@@ -11,32 +11,31 @@ Like most web frameworks, Sails provides a router: a mechanism for mapping URLs 
 
 Sails lets you design your app's URLs in any way you like&mdash;there are no framework restrictions.
 
-Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to a controller's action, while others route directly to a view:
+Every Sails project comes with [`config/routes.js`](https://sailsjs.com/documentation/reference/configuration/sails-config-routes), a simple [Node.js module](http://nodejs.org/api/modules.html) that exports an object of custom, or "explicit" **routes**. For example, this `routes.js` file defines six routes; some of them point to actions, while others route directly to views:
 
 ```javascript
 // config/routes.js
 module.exports.routes = {
-  'get /signup': { view: 'conversion/signup' },
-  'post /signup': 'AuthController.processSignup',
-  'get /login': { view: 'portal/login' },
-  'post /login': 'AuthController.processLogin',
-  '/logout': 'AuthController.logout',
-  'get /me': 'UserController.profile'
-}
+  'GET /signup': { view: 'conversion/signup' },
+  'POST /signup': { action: 'entrance/signup' },
+  'GET /login': { view: 'portal/login' },
+  'POST /login': { action: 'entrance/login' },
+  '/logout': { action: 'account/logout' },
+  'GET /me': { action: 'account/profile' }
 ```
 
 
-Each **route** consists of an **address** on the left (e.g. `'get /me'`) and a **target** on the right (e.g. `'UserController.profile'`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the two different syntaxes above are the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
+Each **route** consists of an **address** on the left (e.g. `'GET /me'`) and a **target** on the right (e.g. `{ action: 'account/profile' }`)  The **address** is a URL path and (optionally) a specific [HTTP method](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods). The **target** can be defined in a number of different ways ([see the expanded concepts section on the subject](https://sailsjs.com/documentation/concepts/routes/custom-routes#?route-target)), but the syntax above is the most common.  When Sails receives an incoming request, it checks the **address** of all custom routes for matches.  If a matching route is found, the request is then passed to its **target**.
 
-For example, we might read `'get /me': 'UserController.profile'` as:
+For example, we might read `'GET /me': { action: 'account/profile' }` as:
 
-> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `profile` action of `UserController`, would'ya?"
+> "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `account/profile` action, would'ya?"
 
-What if I want to change the view layout within the route itself?  No problem. We could:
+You can also specify the view layout within the route itself:
 
 ```javascript
-'get /privacy': {
-    view: 'users/privacy',
+'GET /privacy': {
+    view: 'legal/privacy',
     locals: {
       layout: 'users'
     }
