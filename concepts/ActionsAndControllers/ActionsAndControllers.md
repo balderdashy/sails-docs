@@ -4,7 +4,7 @@
 
 _Actions_ are responsible for responding to *requests* from a web browser, mobile application or any other system capable of communicating with a server.  They often act as a middleman between your [models](https://sailsjs.com/documentation/concepts/models-and-orm) and [views](https://sailsjs.com/documentation/concepts/views), and orchestrate the bulk of your project&rsquo;s [business logic](http://en.wikipedia.org/wiki/Business_logic): you can use actions to serve web pages, handle form submissions, manage 3rd party API requests, and everything in between.
 
-Actions are bound to [routes](https://sailsjs.com/documentation/concepts/Routes) in your application. When a user agent requests a particular URL, the action bound to that route will perform the business logic within and send back a response.  For example, the `GET /hello` route in your application could be bound to an action like:
+Actions are bound to [routes](https://sailsjs.com/documentation/concepts/Routes) in your application. When a user agent requests a particular URL, the action bound to that route performs the business logic within and sends back a response.  For example, the `GET /hello` route in your application could be bound to an action like:
 
 ```javascript
 async function (req, res) {
