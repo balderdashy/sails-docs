@@ -46,7 +46,7 @@ module.exports = {
     })
     .eachRecord(async (user, proceed)=>{
       await sails.helpers.sendTemplateEmail.with({
-        template: 'reminder-to-confirm-email',
+        template: inputs.template,
         templateData: {
           user: user
         },
