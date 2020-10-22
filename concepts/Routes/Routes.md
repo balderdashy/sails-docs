@@ -31,7 +31,7 @@ For example, we might read `'GET /me': { action: 'account/profile' }` as:
 
 > "Hey Sails, when you receive a GET request to `http://mydomain.com/me`, run the `account/profile` action, would'ya?"
 
-You can also specify the view layout within the route itself like so:
+You can also specify the view layout within the route itself:
 
 ```javascript
 'GET /privacy': {
