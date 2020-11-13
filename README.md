@@ -1,5 +1,5 @@
+### The Sails Docs have been moved to [balderdashy/sails/sails-docs](https://github.com/balderdashy/sails/tree/master/sails-docs)
 ![Squiddy reads the docs](https://sailsjs.com/images/squidford_swimming.png)
-
 # Sails.js Documentation
 
 The official documentation for the current stable release of Sails is on the [master branch](https://github.com/balderdashy/sails-docs) of this repository.  Content for most sections on the [official Sails website](https://sailsjs.com) is compiled from here.
