@@ -1,9 +1,10 @@
-![Squiddy reads the docs](https://sailsjs.com/images/squidford_swimming.png)
-# Sails.js Documentation
-> The contribution guide & documentation for Sails **v1 and later** has been moved to [balderdashy/sails/sails-docs](https://github.com/balderdashy/sails/tree/master/sails-docs) as of **November 12, 2020**. Going forward, we ask that any changes to the docs for Sails v1+ be made in the main Sails repo instead. 
+# The Sails documentation is now in the Sails repo
 
-You can find the markdown files for your version of the Sails documentation below:
-+ [v1.0.x](https://github.com/balderdashy/sails/tree/master/sails-docs)
+The Sails framework's documentation & contribution guide has been moved to [the Sails repo](https://github.com/balderdashy/sails/tree/master/sails-docs).
+
+
+> ### Need help with an older version of Sails?
+You can find the markdown documentation for your legacy version of Sails (2012-2018) below:
 + [v0.12.x](https://github.com/balderdashy/sails-docs/tree/0.12)
 + [v0.11.x](https://github.com/balderdashy/sails-docs/tree/0.11)
 + [v0.10.x](https://github.com/balderdashy/sails-docs/tree/0.10)
@@ -11,11 +12,4 @@ You can find the markdown files for your version of the Sails documentation belo
 + [v0.8.x](https://github.com/balderdashy/sails-docs/tree/0.8)
 
 
-## License
-
-[MIT](./LICENSE.md)
-
-The [Sails framework](https://sailsjs.com) is free and open-source under the [MIT License](https://sailsjs.com/license).
-
-_(And the files in this repo are too.)_
-
+![Squiddy reads the docs](https://sailsjs.com/images/squidford_swimming.png)
