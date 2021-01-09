@@ -1,6 +1,6 @@
 # The Sails documentation is now in the Sails repo
 
-The Sails framework's documentation & contribution guide has been moved to [the Sails repo](https://github.com/balderdashy/sails/tree/master/sails-docs).
+The Sails framework's documentation & contribution guide has been moved to [the Sails repo](https://github.com/balderdashy/sails/tree/master/docs).
 
 
 > ### Need help with an older version of Sails?
